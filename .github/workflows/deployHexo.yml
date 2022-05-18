@@ -1,68 +1,68 @@
-name: LeetCode markdown to hexo
+# name: LeetCode markdown to hexo
 
-on:
-  push:
-    branches:
-      - master
+# on:
+#   push:
+#     branches:
+#       - master
 
-env:
-  GIT_USER: LetMeFly666
-  GIT_EMAIL: 814114971@qq.com
-  THEME_REPO: sanonz/hexo-theme-concise
-  THEME_BRANCH: master
-  DEPLOY_REPO: LetMeFly666/LeetCode
-  DEPLOY_BRANCH: master
+# env:
+#   GIT_USER: LetMeFly666
+#   GIT_EMAIL: 814114971@qq.com
+#   THEME_REPO: sanonz/hexo-theme-concise
+#   THEME_BRANCH: master
+#   DEPLOY_REPO: LetMeFly666/LeetCode
+#   DEPLOY_BRANCH: master
 
-jobs:
-  build:
-    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node_version: [12.x]
+# jobs:
+#   build:
+#     name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest]
+#         node_version: [12.x]
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      - name: Checkout theme repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.THEME_REPO }}
-          ref: ${{ env.THEME_BRANCH }}
-          path: themes/concise
+#       - name: Checkout theme repo
+#         uses: actions/checkout@v2
+#         with:
+#           repository: ${{ env.THEME_REPO }}
+#           ref: ${{ env.THEME_BRANCH }}
+#           path: themes/concise
 
-      - name: Checkout deploy repo
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.DEPLOY_REPO }}
-          ref: ${{ env.DEPLOY_BRANCH }}
-          path: .deploy_git
+#       - name: Checkout deploy repo
+#         uses: actions/checkout@v2
+#         with:
+#           repository: ${{ env.DEPLOY_REPO }}
+#           ref: ${{ env.DEPLOY_BRANCH }}
+#           path: .deploy_git
 
-      - name: Use Node.js ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node_version }}
+#       - name: Use Node.js ${{ matrix.node_version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node_version }}
 
-      - name: Configuration environment
-        env:
-          HEXO_DEPLOY_PRI: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
-        run: |
-          sudo timedatectl set-timezone "Asia/Shanghai"
-          mkdir -p ~/.ssh/
-          echo "$GITHUBLEETCODEDEPLOYKEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.name $GIT_USER
-          git config --global user.email $GIT_EMAIL
-          # tree
-          # cp _config.theme.yml themes/concise/_config.yml
+#       - name: Configuration environment
+#         env:
+#           HEXO_DEPLOY_PRI: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
+#         run: |
+#           sudo timedatectl set-timezone "Asia/Shanghai"
+#           mkdir -p ~/.ssh/
+#           echo "$GITHUBLEETCODEDEPLOYKEY" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+#           ssh-keyscan github.com >> ~/.ssh/known_hosts
+#           git config --global user.name $GIT_USER
+#           git config --global user.email $GIT_EMAIL
+#           # tree
+#           # cp _config.theme.yml themes/concise/_config.yml
 
-      - name: Install dependencies
-        run: |
-          npm install
+#       - name: Install dependencies
+#         run: |
+#           npm install
 
-      - name: Deploy hexo
-        run: |
-          npm run deploy
+#       - name: Deploy hexo
+#         run: |
+#           npm run deploy
