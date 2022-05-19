@@ -29,17 +29,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       
-      - name: Copy config files from branch website_Static
-        run: |
-          cp -r Solutions ../Articles
-          git checkout website_Static
-          cp -r ToCopy ../staticFiles
-          rm -rf ../staticFiles/_posts
-          mv ../Articles ../staticFiles/_posts
-          git checkout website
-          mv -f ../staticFiles/* .
-          tree ..
-      
       - name: Config environment
         env:
           HEXO_DEPLOY_PRI: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
@@ -52,10 +41,20 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
       
-      - name: Install dependencies
+      - name: Copy config files from branch website_Static
         run: |
-          npm install
+          cp -r Solutions ../Articles
+          git checkout website_Static
+          cp -r ToCopy ../staticFiles
+          rm -rf ../staticFiles/_posts
+          mv ../Articles ../staticFiles/_posts
+          git checkout website
+          mv -f ../staticFiles/* .
+          tree ..
       
       - name: Deploy hexo
         run: |
-          npm run deploy
+          npm install hexo-renderer-markdown-it-plus --save
+          # npm run deploy
+          npm uninstall hexo-renderer-marked --save
+          npm install markdown-it-katex --save
