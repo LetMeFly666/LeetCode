@@ -1,0 +1,41 @@
+name: LeetCode markdown to hexo
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  GIT_USER: LetMeFly666
+  GIT_EMAIL: 814114971@qq.com
+  DEPLOY_REPO: LetMeFly666/LeetCode
+  DEPLOY_BRANCH: website
+
+jobs:
+  build:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [16.x]
+    
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      
+      - name: Copy config files from branch website_Static
+        run: |
+          cd LeetCode
+          git checkout website_Static
+          cd ..
+          cp -r LeetCode staticFiles
+          tree
+
