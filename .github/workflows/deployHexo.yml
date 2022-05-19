@@ -44,10 +44,14 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g hexo-cli
+          npm install -g hexo-deployer-git
+          hexo init ../hexoWorkspace
+          cd ../hexoWorkspace
           npm install hexo-deployer-git --save
           npm install hexo-renderer-markdown-it-plus --save
           npm uninstall hexo-renderer-marked --save
           npm install markdown-it-katex --save
+          cd ../LeetCode
 
       - name: Copy config files from branch website_Static
         run: |
@@ -57,7 +61,6 @@ jobs:
           rm -rf ../staticFiles/_posts
           mv ../Articles ../staticFiles/_posts
           # git checkout website
-          hexo init ../hexoWorkspace
           # mv -f ../staticFiles/* ../hexoWorkspace
           rsync -a ../staticFiles/* ../hexoWorkspace
           tree -d ..
