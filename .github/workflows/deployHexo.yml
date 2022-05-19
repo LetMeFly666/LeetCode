@@ -29,6 +29,21 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       
+      - name: Install Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+
+      - name: Install requirements
+        run: |
+          pip install requests
+      
+      - name: Use python to debug
+        with:
+          GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
+        run: |
+          python del.py
+      
       - name: Config environment
         env:
           GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
