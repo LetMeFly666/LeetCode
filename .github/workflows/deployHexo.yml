@@ -8,9 +8,6 @@ on:
 env:
   GIT_USER: LetMeFly666
   GIT_EMAIL: 814114971@qq.com
-  DEPLOY_REPO: LetMeFly666/LeetCode
-  DEPLOY_BRANCH: website
-
 
 jobs:
   build:
@@ -32,13 +29,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       
-      - name: Checkout deploy repo
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ env.DEPLOY_REPO }}
-          ref: ${{ env.DEPLOY_BRANCH }}
-          path: .deploy_git
-      
       - name: Config environment
         env:
           GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
@@ -54,10 +44,10 @@ jobs:
       - name: Install dependencies
         run: |
           npm install -g hexo-cli
-          # npm install -g hexo-deployer-git
+          npm install -g hexo-deployer-git
           hexo init ../hexoWorkspace
           cd ../hexoWorkspace
-          # npm install hexo-deployer-git --save
+          npm install hexo-deployer-git --save
           npm install hexo-renderer-markdown-it-plus --save
           npm uninstall hexo-renderer-marked --save
           npm install markdown-it-katex --save
