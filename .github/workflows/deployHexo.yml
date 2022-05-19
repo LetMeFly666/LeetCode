@@ -56,14 +56,14 @@ jobs:
           rm -rf ../staticFiles/_posts
           mv ../Articles ../staticFiles/_posts
           git checkout website
-          mv -f ../staticFiles/* .
+          hexo init ../hexoWorkspace
+          mv -f ../staticFiles/* ../hexoWorkspace
           tree -d ..
       
       - name: Deploy hexo
         run: |
-          tree -d ..
-          cd ..
+          cd ../hexoWorkspace
           echo hexo g:
           hexo g
           echo hexo d:
-          hexo deploy
+          hexo d
