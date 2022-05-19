@@ -41,6 +41,13 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
       
+      - name: Install dependencies
+        run: |
+          npm install hexo
+          npm install hexo-renderer-markdown-it-plus --save
+          npm uninstall hexo-renderer-marked --save
+          npm install markdown-it-katex --save
+
       - name: Copy config files from branch website_Static
         run: |
           cp -r Solutions ../Articles
@@ -54,10 +61,6 @@ jobs:
       
       - name: Deploy hexo
         run: |
-          npm install hexo-renderer-markdown-it-plus --save
-          # npm run deploy
-          npm uninstall hexo-renderer-marked --save
-          npm install markdown-it-katex --save
           hexo g
           echo hexo d:
           hexo d
