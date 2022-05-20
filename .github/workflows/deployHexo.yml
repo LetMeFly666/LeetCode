@@ -94,14 +94,18 @@ jobs:
           # echo tree -d -a ..
           # tree -d -a ..
           mv .deploy_git/.git .deploy_git/git
-          echo tree .deploy_git -a
-          tree .deploy_git -a
-          echo tree .deploy_git -d -a
-          tree .deploy_git -d -a
           rsync -a .deploy_git/* ../LeetCode/.deploy_git
           cd ../LeetCode
-          git add .
-          git commit -m "backup .deploy_git"
-          echo cat .git/config
-          cat .git/config
-          git push origin website_Static
+          # git add .
+          # git commit -m "backup .deploy_git"
+          # echo cat .git/config
+          # cat .git/config
+          # git push origin website_Static
+      
+      - name: Push to branch website_Static
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: LetMeFly
+          author_email: 814114971@qq.com
+          message: "backup .deploy_git"
+          add: "."
