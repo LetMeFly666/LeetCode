@@ -19,6 +19,13 @@ jobs:
         node_version: [16.x]
     
     steps:
+      - name: Using cache
+        uses: actions/cache@v3
+        with:
+          path: ../.deploy_git
+          key: ${{ runner.os }}-deploy_git
+          restore-keys: ${{ runner.os }}-deploy_git
+
       - name: Check if cached
         run: |
           tree .. -d -a
