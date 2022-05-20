@@ -91,30 +91,43 @@ jobs:
           hexo g
           echo hexo d:
           hexo d
-          # echo tree -d -a ..
-          # tree -d -a ..
-          mv .deploy_git/.git .deploy_git/git
-          rsync -a .deploy_git/* ../LeetCode/.deploy_git
           cd ../LeetCode
-          # echo git config --list
-          # git config --list
-          # echo git remote -v
-          # git remote -v
-          git add .
-          git commit -m "backup .deploy_git"
-          # git push origin website_Static
-          # echo cat .git/config
-          # cat .git/config
-          # echo ssh -T git@github.com
-          # ssh -T git@github.com
       
-      - name: Push to branch website_Static
-        uses: ad-m/github-push-action@master
+      - name: Move cache dir to other place
+        run: |
+          mv ../hexoWorkspace/.deploy_git ..
+          tree .. -d
+      
+      - name: Using cache
+        uses: actions/cache@v3
         with:
-          github_token: ${{ secrets.WORKFLOWTOKEN }}
-          # branch: ${{ github.ref }}
-          # branch: website_Static
-          branch: refs/heads/website_Static
+          path: ../.deploy_git
+
+      # - name: Try to keep logs
+      #   run: |
+      #     echo tree -d -a ..
+      #     tree -d -a ..
+      #     mv .deploy_git/.git .deploy_git/git
+      #     rsync -a .deploy_git/* ../LeetCode/.deploy_git
+      #     echo git config --list
+      #     git config --list
+      #     echo git remote -v
+      #     git remote -v
+      #     git add .
+      #     git commit -m "backup .deploy_git"
+      #     git push origin website_Static
+      #     echo cat .git/config
+      #     cat .git/config
+      #     echo ssh -T git@github.com
+      #     ssh -T git@github.com
+      
+      # - name: Push to branch website_Static
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.WORKFLOWTOKEN }}
+      #     # branch: ${{ github.ref }}
+      #     # branch: website_Static
+      #     branch: refs/heads/website_Static
       
       # - name: Push to branch website_Static
       #   uses: EndBug/add-and-commit@v9
