@@ -1,10 +1,8 @@
 ---
-title: 0
+title: 564.寻找最近的回文数
 date: 2022-03-03 14:53:21
 tags: LeetCode 贪心 字符串
 ---
-
-#  564.寻找最近的回文数
 
 [力扣题目链接](https://leetcode-cn.com/problems/find-the-closest-palindrome/)
 
