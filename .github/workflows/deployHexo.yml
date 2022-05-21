@@ -79,11 +79,22 @@ jobs:
           npm install hexo-renderer-markdown-it-plus --save
           npm uninstall hexo-renderer-marked --save
           npm install markdown-it-katex --save
+          npm uninstall hexo-generator-index --save
+          npm install hexo-generator-index-pin-top --save
           cd ../LeetCode
 
       - name: Copy config files from branch website_Static
         run: |
           cp -r Solutions ../Articles
+
+          echo --- > ../Articles/README.md
+          echo title: README >> ../Articles/README.md
+          echo date: 2022-05-173 14:53:21 >> ../Articles/README.md
+          echo tags: README >> ../Articles/README.md
+          echo top: true >> ../Articles/README.md
+          echo --- >> ../Articles/README.md
+          cat README.md >> ../Articles/README.md
+
           git checkout website_Static
           cp -r ToCopy ../staticFiles
           rm -rf ../staticFiles/source/_posts
