@@ -6,7 +6,7 @@ tags: [题解, LeetCode, 简单, 数组, 哈希, set, Rand, 排序, 数学]
 
 # 【LetMeFly】四种方式解决 961.在长度2N的数组中找出重复N次的元素
 
-力扣题目链接：[https://leetcode-cn.com/problems/find-the-closest-palindrome/](https://leetcode-cn.com/problems/find-the-closest-palindrome/)
+力扣题目链接：[https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/](https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/)
 
 给你一个整数数组 $nums$ ，该数组具有以下属性：
 

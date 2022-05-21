@@ -69,3 +69,10 @@ int main() {
 }
 #endif
 ```
+
+## 现有题解
+
+|题目名称|困难程度|题目地址|题解地址|CSDN题解|LeetCode题解|
+|:--|:--|:--|:--|:--|:--|
+|0564.寻找最近的回文数|困难|https://leetcode.cn/problems/find-the-closest-palindrome/|https://leetcode.letmefly.xyz/2022/05/21/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0/|https://letmefly.blog.csdn.net/article/details/123254172|https://leetcode.cn/problems/find-the-closest-palindrome/solution/letmefly-da-an-hou-xuan-by-letmefly-2-k2vn/|
+|0961.在长度2N的数组中找出重复N次的元素|简单|https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/|https://leetcode.letmefly.xyz/2022/05/21/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0/|https://letmefly.blog.csdn.net/article/details/124897591|https://leetcode.cn/problems/find-the-closest-palindrome/solution/letmefly-da-an-hou-xuan-by-letmefly-2-k2vn/|

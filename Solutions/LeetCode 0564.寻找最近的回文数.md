@@ -4,7 +4,7 @@ date: 2022-03-03 14:53:21
 tags: [题解, LeetCode, 困难, 贪心, 字符串]
 ---
 
-[力扣题目链接](https://leetcode-cn.com/problems/find-the-closest-palindrome/)
+力扣题目链接：[https://leetcode-cn.com/problems/find-the-closest-palindrome/](https://leetcode-cn.com/problems/find-the-closest-palindrome/)
 
 给定一个表示整数的字符串 $n$ ，返回与它最近的回文整数（不包括自身）。如果不止一个，返回较小的那个。
 
@@ -113,5 +113,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://letmefly.blog.csdn.net/article/details/123254172)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/03/03/LeetCode%200564.%E5%AF%BB%E6%89%BE%E6%9C%80%E8%BF%91%E7%9A%84%E5%9B%9E%E6%96%87%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/123254172](https://letmefly.blog.csdn.net/article/details/123254172)
