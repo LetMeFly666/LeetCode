@@ -14,7 +14,7 @@ tags: [题解, LeetCode, 中等, dp, 动态规划]
 
 现在给定另一个字符串```p```。返回```s```中 **唯一** 的```p```的 **非空子串** 的数量 。 
 
-<small>给LeetCode提的<a href="https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/7420">issue</a>通过了竟然。“唯一”改成了“不同”，虽然可能更容易理解了，但是与题目不匹配了。</small>
+<del>笔者：<small>给LeetCode提的<a href="https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/7420">issue</a>通过了竟然。“唯一”改成了“不同”，虽然可能更容易理解了，但是与题目不匹配了。</small></del>
 
 **示例 1:**
 
