@@ -43,7 +43,7 @@ tags: [题解, LeetCode, 中等, 模拟, 螺旋矩阵, 矩阵遍历, 矩阵]
 
 <small>先小开心一波，这次执行效率小高了一次嘻嘻</small>
 
-![执行效率小高了一次嘻嘻.jpg](https://pic.leetcode-cn.com/1653708013-NnsPQN-0.jpg)
+![执行效率小高了一次嘻嘻.jpg](https://img-blog.csdnimg.cn/img_convert/d4779e92cf8d4f868809aed3275b5e0e.png)
 
 我们定义一个```directions```数组，来代表要遍历的方向。
 
@@ -194,7 +194,7 @@ center>table[style="border: 0px solid #0094ff; border-collapse: collapse; paddin
 
 图片版本为：
 
-![LetMeFly.xyz题解图片.jpg](https://pic.leetcode-cn.com/1653724602-IXWfBR-0.jpg)
+![LetMeFly.xyz题解图片.jpg](https://img-blog.csdnimg.cn/img_convert/0d800546a60da3c09770990699a5c5f9.png)
 
 不难发现，若以下标为$0$开始：
 
