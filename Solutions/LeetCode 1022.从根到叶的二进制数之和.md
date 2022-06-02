@@ -6,6 +6,8 @@ tags: [题解, LeetCode, 简单, 二叉树, 树, 交互, 模拟]
 
 # 【LetMeFly】1022.从根到叶的二进制数之和
 
+力扣题目链接：[https://leetcode.cn/problems/sum-of-root-to-leaf-binary-numbers/](https://leetcode.cn/problems/sum-of-root-to-leaf-binary-numbers/)
+
 给出一棵二叉树，其上每个结点的值都是 ```0``` 或 ```1``` 。每一条从根到叶的路径都代表一个从最高有效位开始的二进制数。
 
 + 例如，如果路径为 ```0 -> 1 -> 1 -> 0 -> 1```，那么它表示二进制数 ```01101```，也就是 ```13``` 。
