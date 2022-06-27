@@ -96,13 +96,10 @@ bool isNum(string& s, int l, int r) {  // 判断“s[l]s[r]”是否为有效编
 
 $dp[i]$初值为$0$，状态转移方程为：
 
-$$
-dp[i] +=
-\begin{cases}
+$$dp[i] +=\begin{cases}
  dp[i + 1]  & \text{ 如果 } “s[i]”是有效编码 \\
  dp[i + 2] & \text{ 如果 } “s[i]s[i+1]”是有效编码
-\end{cases}
-$$
+\end{cases}$$
 
 上述方程意思为：
 
