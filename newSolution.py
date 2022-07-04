@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2022-07-04 22:24:32
+LastEditTime: 2022-07-04 22:28:06
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -95,10 +95,14 @@ def readmeNewLine(readme: str) -> str:
         return (begin, end)
     beginLine, endLine = getTiJieBeginEnd(splited)
     print(beginLine, endLine)
+    haveBigger = False
     for i in range(beginLine, endLine):
         thisNum = int(splited[i].split("|")[1].split(".")[0])
         if thisNum > num:
+            haveBigger = True
             break
+    if not haveBigger:
+        i = endLine
     def generateNewLine():
         def getHard():
             solutionSplited = solution.split("\n")
