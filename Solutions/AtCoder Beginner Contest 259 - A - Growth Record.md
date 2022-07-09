@@ -4,6 +4,8 @@ date: 2022-07-09 21:46:19
 tags: [题解, AtCoder, 简单, 模拟, 数列]
 ---
 
+Time Limit: 2 sec / Memory Limit: 1024 MB
+
 <span class="lang-en" style="display: inline;">
 <p>Score : <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span></span></var> points</p>
 
