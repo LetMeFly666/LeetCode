@@ -1,7 +1,7 @@
 ---
 title: AtCoder Beginner Contest 259 - B - Counterclockwise Rotation
 date: 2022-07-09 22:09:34
-tags: [题解, AtCoder, 中等, 数学, 坐标, 旋转]
+tags: [题解, AtCoder, 中等, 数学, 坐标, 旋转, 直角坐标与极坐标的转换]
 ---
 
 Time Limit: 2 sec / Memory Limit: 1024 MB
