@@ -1,7 +1,7 @@
 ---
 title: AtCoder Beginner Contest 259 - D - Circumferences
 date: 2022-07-09 23:37:24
-tags: [题解, AtCoder, 中等, 坐标, 数学, 连通图]
+tags: [题解, AtCoder, 中等, 坐标, 数学, 连通图, 图, 思维]
 ---
 
 Time Limit: 2 sec / Memory Limit: 1024 MB
