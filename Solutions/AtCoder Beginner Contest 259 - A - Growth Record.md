@@ -52,14 +52,18 @@ Additionally, we know the following facts:</p>
 <hr>
 <div class="part">
 <section>
-<h3>Sample Input 1 </h3><pre id="pre-sample6">38 20 17 168 3
-</pre>
+<h3>Sample Input 1 </h3>
+
+```
+38 20 17 168 3
+```
+
 </section>
 </div>
 
 <div class="part">
 <section>
-<h3>Sample Output 1 <span class="btn btn-default btn-sm btn-copy" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample7" data-original-title="Copied!">Copy</span></h3><div class="div-btn-copy"><span class="btn-copy btn-pre" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample7" data-original-title="Copied!">Copy</span></div><pre id="pre-sample7">168
+<h3>Sample Output 1 </h3><div class="div-btn-copy"><pre id="pre-sample7">168
 </pre>
 <p>In this sample, Takahashi was <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>168</mn></mrow><annotation encoding="application/x-tex">168</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">8</span></span></span></span></span></var> centimeters tall on his <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>38</mn></mrow><annotation encoding="application/x-tex">38</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span><span class="mord">8</span></span></span></span></span></var>-th birthday. Also, his height did not change between his <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>17</mn></mrow><annotation encoding="application/x-tex">17</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">7</span></span></span></span></span></var>-th birthday and <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>38</mn></mrow><annotation encoding="application/x-tex">38</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">3</span><span class="mord">8</span></span></span></span></span></var>-th birthday.<br>
 From these facts, we find that he was <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>168</mn></mrow><annotation encoding="application/x-tex">168</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">8</span></span></span></span></span></var> centimeters tall on his <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn></mrow><annotation encoding="application/x-tex">20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">2</span><span class="mord">0</span></span></span></span></span></var>-th birthday, so the answer is <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>168</mn></mrow><annotation encoding="application/x-tex">168</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">8</span></span></span></span></span></var>.</p>
