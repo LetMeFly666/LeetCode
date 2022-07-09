@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-04 22:25:39
+ * @LastEditTime: 2022-07-09 22:02:33
 -->
 # LeetCode
 
@@ -110,6 +110,12 @@ int main() {
 |1200.最小绝对差|简单|<a href="https://leetcode.cn/problems/minimum-absolute-difference/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/07/04/LeetCode%201200.%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125609898" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/minimum-absolute-difference/solution/letmefly-1200zui-xiao-jue-dui-chai-by-ti-nocj/" target="_blank">地址点我</a>|
 |剑指OfferII0091.粉刷房子|中等|<a href="https://leetcode.cn/problems/JEj789/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/06/25/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200091.%20%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125456885" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/JEj789/solution/letmefly-jian-zhi-offer-ii-091fen-shua-f-3olz/" target="_blank">地址点我</a>|
 |面试题17.11.单词距离|中等|<a href="https://leetcode.cn/problems/find-closest-lcci/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/05/27/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.11.%20%E5%8D%95%E8%AF%8D%E8%B7%9D%E7%A6%BB/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/124998677" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/find-closest-lcci/solution/letmefly-mian-shi-ti-1711dan-ci-ju-chi-k-t5d5/" target="_blank">地址点我</a>|
+
+### 其他平台题解
+
+|题目|题解|CSDN题解|
+|:--|:--|:--|
+|<a href="https://atcoder.jp/contests/abc259/tasks/abc259_a">AtCoder Beginner Contest 259 - A - Growth Record</a>|<a href="https://leetcode.letmefly.xyz/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20A%20-%20Growth%20Record/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125699180">地址点我</a>|
 
 ## TODO:
 

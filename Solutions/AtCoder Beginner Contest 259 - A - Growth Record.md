@@ -73,15 +73,23 @@ From these facts, we find that he was <var><span><span class="katex"><span class
 <hr>
 <div class="part">
 <section>
-<h3>Sample Input 2 <span class="btn btn-default btn-sm btn-copy" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample8" data-original-title="Copied!">Copy</span></h3><div class="div-btn-copy"><span class="btn-copy btn-pre" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample8" data-original-title="Copied!">Copy</span></div><pre id="pre-sample8">1 0 1 3 2
-</pre>
+<h3>Sample Input 2 </h3>
+
+```
+1 0 1 3 2
+```
+
 </section>
 </div>
 
 <div class="part">
 <section>
-<h3>Sample Output 2 <span class="btn btn-default btn-sm btn-copy" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample9" data-original-title="Copied!">Copy</span></h3><div class="div-btn-copy"><span class="btn-copy btn-pre" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample9" data-original-title="Copied!">Copy</span></div><pre id="pre-sample9">1
-</pre>
+<h3>Sample Output 2 </h3>
+
+```
+1
+```
+
 <p>In this sample, Takahashi was <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></var> centimeter tall on his <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo stretchy="false">(</mo><mo>=</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">0(=M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">0</span><span class="mopen">(</span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">M</span><span class="mclose">)</span></span></span></span></span></var>-th birthday and <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mo>=</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">3(=T)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.13889em;">T</span><span class="mclose">)</span></span></span></span></span></var> centimeters tall on his <var><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo stretchy="false">(</mo><mo>=</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1(=N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mopen">(</span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord mathnormal" style="margin-right: 0.10903em;">N</span><span class="mclose">)</span></span></span></span></span></var>-st birthday.</p>
 </section>
 </div>
@@ -89,14 +97,67 @@ From these facts, we find that he was <var><span><span class="katex"><span class
 <hr>
 <div class="part">
 <section>
-<h3>Sample Input 3 <span class="btn btn-default btn-sm btn-copy" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample10" data-original-title="Copied!">Copy</span></h3><div class="div-btn-copy"><span class="btn-copy btn-pre" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample10" data-original-title="Copied!">Copy</span></div><pre id="pre-sample10">100 10 100 180 1
-</pre>
+<h3>Sample Input 3 </h3>
+
+```
+100 10 100 180 1
+```
+
 </section>
 </div>
 
 <div class="part">
 <section>
-<h3>Sample Output 3 <span class="btn btn-default btn-sm btn-copy" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample11" data-original-title="Copied!">Copy</span></h3><div class="div-btn-copy"><span class="btn-copy btn-pre" tabindex="0" data-toggle="tooltip" data-trigger="manual" title="" data-target="pre-sample11" data-original-title="Copied!">Copy</span></div><pre id="pre-sample11">90
-</pre></section>
+<h3>Sample Output 3 </h3>
+
+```
+90
+```
+</section>
 </div>
 </span>
+
+
+# 题目大意
+
+高橋君$N$岁时身高为$T$，在$X$岁之前，每年长$D$厘米。（$X\sim N$岁就不长了）
+
+问高橋君$M$岁时多高。
+
+
+# 解题思路
+
+题目保证了$X < N$，也就是说现在高橋君的身高就是他的最终身高（已经不长了）
+
+因此，对于询问的$M$，如果$M\geq X$，那么就输出高橋君的最终身高；否则看从$M$到$X$有几年，就说明长了几个$D$，用最终身高减去$X-M$个$D$即可。
+
+---
+
+
+
+# AC代码
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+int main() {
+    int n, m, x, t, d;
+    cin >> n >> m >> x >> t >> d;
+    if (m >= x) {
+        cout << t << endl;
+    }
+    else {
+        int diffYear = x - m;
+        cout << t - d * diffYear << endl;
+    }
+    return 0;
+}
+```
+
+
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20A%20-%20Growth%20Record/)哦~
+> Tisfy：[https://letmefly.blog.csdn.net/article/details/125699180](https://letmefly.blog.csdn.net/article/details/125699180)
