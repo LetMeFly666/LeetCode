@@ -155,9 +155,11 @@ struct circle {
 };
 ```
 
-## 判断两个圆⚪是否相交
+## 判断两个圆⚪是否相交/相切
 
-相交条件：$R-r \leq 圆心距离 \leq R+r$
+相交/相切 条件：$R-r \leq 圆心距离 \leq R+r$
+
+<small>严格地说“相切”不属于“相交”。这里感谢<a href="https://blog.csdn.net/yueshehanjiang">@ZZXzzx0_0</a>大佬的指正~</small>
 
 ```cpp
 inline bool intersect(int x, int y) {
