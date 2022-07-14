@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-09 23:44:38
+ * @LastEditTime: 2022-07-14 22:04:10
 -->
 # LeetCode
 
@@ -114,6 +114,7 @@ int main() {
 |0961.在长度2N的数组中找出重复N次的元素|简单|<a href="https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/05/21/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/124897591" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/find-the-closest-palindrome/solution/letmefly-da-an-hou-xuan-by-letmefly-2-k2vn/" target="_blank">地址点我</a>|
 |1021.删除最外层的括号|简单|<a href="https://leetcode.cn/problems/remove-outermost-parentheses/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/05/28/LeetCode%201021.%E5%88%A0%E9%99%A4%E6%9C%80%E5%A4%96%E5%B1%82%E7%9A%84%E6%8B%AC%E5%8F%B7" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125015777" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/remove-outermost-parentheses/solution/letmefly-1021shan-chu-zui-wai-ceng-de-gu-nyio/" target="_blank">地址点我</a>|
 |1022.从根到叶的二进制数之和|简单|<a href="https://leetcode.cn/problems/sum-of-root-to-leaf-binary-numbers/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/05/30/LeetCode%201022.%E4%BB%8E%E6%A0%B9%E5%88%B0%E5%8F%B6%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E4%B9%8B%E5%92%8C" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125043202" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/sum-of-root-to-leaf-binary-numbers/solution/letmefly-1022cong-gen-dao-xie-de-er-jin-xcjny/" target="_blank">地址点我</a>|
+|1037.有效的回旋镖|简单|<a href="https://leetcode.cn/problems/valid-boomerang/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/07/14/LeetCode%201037.%E6%9C%89%E6%95%88%E7%9A%84%E5%9B%9E%E6%97%8B%E9%95%96/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125793916" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/valid-boomerang/solution/by-tisfy-kjy8/" target="_blank">地址点我</a>|
 |1200.最小绝对差|简单|<a href="https://leetcode.cn/problems/minimum-absolute-difference/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/07/04/LeetCode%201200.%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125609898" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/minimum-absolute-difference/solution/letmefly-1200zui-xiao-jue-dui-chai-by-ti-nocj/" target="_blank">地址点我</a>|
 |1252.奇数值单元格的数目|简单|<a href="https://leetcode.cn/problems/cells-with-odd-values-in-a-matrix/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/07/12/LeetCode%201252.%E5%A5%87%E6%95%B0%E5%80%BC%E5%8D%95%E5%85%83%E6%A0%BC%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125738504" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/cells-with-odd-values-in-a-matrix/solution/by-tisfy-fqsc/" target="_blank">地址点我</a>|
 |剑指OfferII0091.粉刷房子|中等|<a href="https://leetcode.cn/problems/JEj789/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/06/25/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200091.%20%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125456885" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/JEj789/solution/letmefly-jian-zhi-offer-ii-091fen-shua-f-3olz/" target="_blank">地址点我</a>|
@@ -130,9 +131,10 @@ int main() {
 
 ## TODO:
 
-+ 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
-+ [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
-+ 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
-+ [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
-+ [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
-+ [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
+- [ ] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
+- [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
+- [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
+- [ ] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
+
+- [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
+- [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
