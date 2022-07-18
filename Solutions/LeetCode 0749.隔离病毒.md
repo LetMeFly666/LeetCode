@@ -1,7 +1,7 @@
 ---
 title: 749.隔离病毒
 date: 2022-07-18 11:11:24
-tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 数组, 矩阵, 模拟, 大模拟, DFS, 多重DFS]
+tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 数组, 矩阵, 模拟, 大模拟, DFS, 多重DFS, 哈希, set]
 ---
 
 # 【LetMeFly】749.隔离病毒
@@ -172,6 +172,7 @@ pair<int, int> oneOfThisArea = area2loc[max1adjacent];
 ans += loc2wallNum[oneOfThisArea];
 
 // 再次BFS标记此区域病毒为已隔离
+// 其他区域扩散
 ```
 
 具体BFS方法为：
@@ -190,6 +191,61 @@ while (q.size()) {
             if (isInfected[tx][ty] == 1) {
                 isInfected[tx][ty] = 2;
                 q.push({tx, ty});
+            }
+        }
+    }
+}
+```
+
+其他区域扩散的具体实现为：
+
+#### 方法一
+
+```cpp
+visited = vector<vector<bool>>(n, vector<bool>(m, false));
+for (int x = 0; x < n; x++) {
+    for (int y = 0; y < m; y++) {
+        if (isInfected[x][y] == 1 && !visited[x][y]) {
+            visited[x][y] = true;
+            q.push({x, y})                        ;
+            for (int d = 0; d < 4; d++) {
+                int tx = x + direction[d][0];
+                int ty = y + direction[d][0];
+                if (tx >= 0 && tx < n && ty >= 0 && ty < m) {
+                    if (isInfected[tx][ty] == 0) {  // 空地
+                        isInfected[tx][ty] = 1;
+                        visited[tx][ty] = true;  // 防止继续感染拓展
+                    }
+                    else if (isInfected[tx][ty] == 1 && !visited[tx][ty]) {  // 还是病毒 && 还未被处理过
+                        visited[tx][ty] = true;
+                        q.push({tx, ty});
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+#### 方法二
+
+其实这次就没必要再搜索了
+
+```cpp
+visited = vector<vector<bool>>(n, vector<bool>(m, false));
+for (int x = 0; x < n; x++) {
+    for (int y = 0; y < m; y++) {
+        if (isInfected[x][y] == 1 && !visited[x][y]) {
+            visited[x][y] = true;
+            for (int d = 0; d < 4; d++) {
+                int tx = x + direction[d][0];
+                int ty = y + direction[d][1];
+                if (tx >= 0 && tx < n && ty >= 0 && ty < m) {
+                    if (isInfected[tx][ty] == 0) {
+                        isInfected[tx][ty] = 1;
+                        visited[tx][ty] = true;
+                    }
+                }
             }
         }
     }

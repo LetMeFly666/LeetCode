@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-07-18 11:05:58
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-18 11:52:04
+ * @LastEditTime: 2022-07-18 12:10:30
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -46,7 +46,7 @@ public:
                             for (int d = 0; d < 4; d++) {
                                 int tx = x + direction[d][0];
                                 int ty = y + direction[d][1];
-                                if (tx >= 0 && tx < n && ty > 0 && ty < m) {  // 下一个单元在合法范围内
+                                if (tx >= 0 && tx < n && ty >= 0 && ty < m) {  // 下一个单元在合法范围内
                                     if (isInfected[tx][ty] == 1 && !visited[tx][ty]) {  // 下一个单元是未被标记的病毒
                                         visited[tx][ty] = true;
                                         q.push({tx, ty});
@@ -83,7 +83,7 @@ public:
                 for (int d = 0; d < 4; d++) {
                     int tx = x + direction[d][0];
                     int ty = y + direction[d][1];
-                    if (tx >= 0 && tx < n && ty > 0 && ty < m) {
+                    if (tx >= 0 && tx < n && ty >= 0 && ty < m) {
                         if (isInfected[tx][ty] == 1) {
                             isInfected[tx][ty] = 2;
                             q.push({tx, ty});
@@ -91,6 +91,51 @@ public:
                     }
                 }
             }
+
+#ifdef FirstTry  // 搜索
+            visited = vector<vector<bool>>(n, vector<bool>(m, false));
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < m; y++) {
+                    if (isInfected[x][y] == 1 && !visited[x][y]) {
+                        visited[x][y] = true;
+                        q.push({x, y})                        ;
+                        for (int d = 0; d < 4; d++) {
+                            int tx = x + direction[d][0];
+                            int ty = y + direction[d][1];
+                            if (tx >= 0 && tx < n && ty >= 0 && ty < m) {
+                                if (isInfected[tx][ty] == 0) {  // 空地
+                                    isInfected[tx][ty] = 1;
+                                    visited[tx][ty] = true;  // 防止继续感染拓展
+                                }
+                                else if (isInfected[tx][ty] == 1 && !visited[tx][ty]) {  // 还是病毒 && 还未被处理过
+                                    visited[tx][ty] = true;
+                                    q.push({tx, ty});
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+#else  // FirstTry
+            visited = vector<vector<bool>>(n, vector<bool>(m, false));
+            for (int x = 0; x < n; x++) {
+                for (int y = 0; y < m; y++) {
+                    if (isInfected[x][y] == 1 && !visited[x][y]) {
+                        visited[x][y] = true;
+                        for (int d = 0; d < 4; d++) {
+                            int tx = x + direction[d][0];
+                            int ty = y + direction[d][1];
+                            if (tx >= 0 && tx < n && ty >= 0 && ty < m) {
+                                if (isInfected[tx][ty] == 0) {
+                                    isInfected[tx][ty] = 1;
+                                    visited[tx][ty] = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+#endif  // FirstTry
 
             if (!has1)
                 break;
