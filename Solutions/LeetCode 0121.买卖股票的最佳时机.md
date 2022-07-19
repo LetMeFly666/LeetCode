@@ -3,6 +3,7 @@ title: 121.买卖股票的最佳时机
 date: 2022-07-19 11:03:37
 tags: [题解, LeetCode, 简单, 数组, 动态规划, 模拟]
 ---
+
 # 【LetMeFly】121.买卖股票的最佳时机 - 从后往前模拟
 
 力扣题目链接：[https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/)
@@ -58,7 +59,7 @@ int ans = 0;  // 代表最大收益
 
 这样，就判断今天买入股票的话，能够赚取多少钱即可。
 
-+ 时间复杂度$O(N)$，其中$N$为已知股票金额的天数。
++ 时间复杂度$O(N)$，其中$N$为已知股票金额的天数($prices.size()$)。
 + 空间复杂度$O(1)$
 
 ### AC代码
