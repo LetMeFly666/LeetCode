@@ -53,7 +53,7 @@ string strip(string& s) {
     for (char& c : s) {
         if (c >= 'a' && c <= 'z')
             ans += c;
-        else if (c >= 'A' && c <= 'Z')  // 大写字母的话顺便转成小写（本题大小写不敏感）
+        else if (c >= 'A' && c <= 'Z')  // 大写字母的话顺统一便转成小写（本题大小写不敏感）
             ans += (char)(c + 32);
         else if (c >= '0' && c <= '9')
             ans += c;
