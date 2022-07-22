@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-07-22 11:21:10
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-22 11:40:53
+ * @LastEditTime: 2022-07-22 11:43:08
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -19,7 +19,7 @@ private:
     void extend(int x, int y, vector<vector<char>>& a) {
         if (a[x][y] == 'O' && !isnot[x][y]) {
             queue<pii> q;
-            isnot[x][y] == true;
+            isnot[x][y] = true;
             q.push({x, y});
             while (q.size()) {
                 auto[x, y] = q.front();
