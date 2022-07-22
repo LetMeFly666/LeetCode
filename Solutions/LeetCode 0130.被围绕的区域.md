@@ -14,7 +14,7 @@ tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 并查�
 <p> </p>
 
 <p><strong>示例 1：</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg" style="width: 550px; height: 237px;" />
+<img alt="" src="https://img-blog.csdnimg.cn/bb5e87df3a6844b2bc0edd142ac65d90.jpeg" style="width: 550px; height: 237px;" />
 <pre>
 <strong>输入：</strong>board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
 <strong>输出：</strong>[["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
