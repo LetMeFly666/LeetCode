@@ -97,5 +97,7 @@ public:
 };
 ```
 
+![result](https://img-blog.csdnimg.cn/dce5c0c7f7154663acab376af13ede0f.jpeg#pic_center)
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/24/LeetCode%201184.%E5%85%AC%E4%BA%A4%E7%AB%99%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125960214](https://letmefly.blog.csdn.net/article/details/125960214)
