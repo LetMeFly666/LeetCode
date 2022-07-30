@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-23 11:18:47
+ * @LastEditTime: 2022-07-30 12:00:27
 -->
 # LeetCode
 
@@ -75,6 +75,8 @@ int main() {
 }
 #endif
 ```
+
+可以通过[Github Gist](https://gist.github.com/LetMeFly666/9e9c47db429532b212537cc1f6f36a42)进行下载/查看
 
 ## 现有题解
 
