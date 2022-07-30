@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-07-30 09:54:10
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-30 10:58:47
+ * @LastEditTime: 2022-07-30 11:19:59
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -31,6 +31,7 @@ public:
             hasThisFactor[t].push_back(t);
             num4Factor[t].push_back(t);
         }
+        // 开始建图
         int ans = 0;
         vector<bool> visitedFactor(100010, false);
         vector<bool> visitedNum(100010, false);
