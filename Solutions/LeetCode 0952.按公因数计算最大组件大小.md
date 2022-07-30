@@ -24,7 +24,8 @@ tags: [题解, LeetCode, 困难, 并查集, 数组, 数学, 广度优先搜索, 
 
 <p><strong>示例 1：</strong></p>
 
-<p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex1.png" style="height: 97px; width: 500px;" /></p>
+<!-- <p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex1.png" style="height: 97px; width: 500px;" /></p> -->
+<p><img src="https://img-blog.csdnimg.cn/b61f8b4bfdfb466fb38dc778b36a8a37.png" style="height: 97px; width: 500px;" /></p>
 
 <pre>
 <strong>输入：</strong>nums = [4,6,15,35]
@@ -33,7 +34,8 @@ tags: [题解, LeetCode, 困难, 并查集, 数组, 数学, 广度优先搜索, 
 
 <p><strong>示例 2：</strong></p>
 
-<p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex2.png" style="height: 85px; width: 500px;" /></p>
+<!-- <p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex2.png" style="height: 85px; width: 500px;" /></p> -->
+<p><img src="https://img-blog.csdnimg.cn/c6a044f00e8d4fb2b8cb6c07c34a53f7.png" style="height: 85px; width: 500px;" /></p>
 
 <pre>
 <strong>输入：</strong>nums = [20,50,9,63]
@@ -42,7 +44,8 @@ tags: [题解, LeetCode, 困难, 并查集, 数组, 数学, 广度优先搜索, 
 
 <p><strong>示例 3：</strong></p>
 
-<p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex3.png" style="height: 260px; width: 500px;" /></p>
+<!-- <p><img src="https://assets.leetcode.com/uploads/2018/12/01/ex3.png" style="height: 260px; width: 500px;" /></p> -->
+<p><img src="https://img-blog.csdnimg.cn/a3333bef9ff94b19bb8672ff1b355b95.png" style="height: 260px; width: 500px;" /></p>
 
 <pre>
 <strong>输入：</strong>nums = [2,3,6,7,4,12,21,39]
