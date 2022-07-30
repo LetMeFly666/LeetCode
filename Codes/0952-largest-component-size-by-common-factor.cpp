@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-07-30 09:54:10
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-07-30 10:57:34
+ * @LastEditTime: 2022-07-30 10:58:47
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -63,6 +63,7 @@ public:
     }
 };
 #else  // FirstTry
+// SecondTry  // 并查集
 class UnionFind {
 private:
     int* father;
@@ -110,7 +111,7 @@ class Solution {
 public:
     int largestComponentSize(vector<int>& nums) {
         // 并查集构建
-        UnionFind unionFind(nums.size() + 1);
+        UnionFind unionFind(*max_element(nums.begin(), nums.end()) + 1);
         for (int t : nums) {
             int k = sqrt(t);
             for (int i = 2; i <= k; i++) {
