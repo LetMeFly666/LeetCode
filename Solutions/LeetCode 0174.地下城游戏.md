@@ -61,37 +61,21 @@ table.dungeon, .dungeon th, .dungeon td {
 
 
 <table class="dungeon">
-
 <tr> 
-
 <td>-2 (K)</td> 
-
 <td>-3</td> 
-
 <td>3</td> 
-
 </tr> 
-
 <tr> 
-
 <td>-5</td> 
-
 <td>-10</td> 
-
 <td>1</td> 
-
 </tr> 
-
 <tr> 
-
 <td>10</td> 
-
 <td>30</td> 
-
 <td>-5 (P)</td> 
-
 </tr> 
-
 </table>
 
 <!---2K   -3  3
