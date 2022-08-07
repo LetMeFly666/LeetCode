@@ -164,6 +164,17 @@ vector<string> stringToVectorString(string s)  // [1,2,5]
     return v;
 }
 
+vector<string> stringToVectorStringWithQuots(string s) {  // ["1sfa","halj","LetMeFly"]
+    vector<string>v;
+    s = s.substr(1, s.size() - 1).substr(0, s.size() - 2);
+    vector<string> vs = split(s, ',');
+    for (int i = 0; i < vs.size(); i++) {
+        string temp = vs[i];
+        v.push_back(temp.substr(1, temp.size() - 1).substr(0, temp.size() - 2));
+    }
+    return v;
+}
+
 struct ListNode {
     int val;
     ListNode *next;
