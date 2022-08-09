@@ -170,6 +170,78 @@ public:
 };
 ```
 
+#### Java
+
+感谢 [@Fomalhaut1998](https://leetcode.cn/u/fomalhaut1998/)大佬 提供Java版本的代码~
+
+```Java
+class Solution {
+    public boolean sequenceReconstruction(int[] nums, int[][] seq) {
+        /*
+        拓扑排序:
+        1 <= n <= 1e4
+        1 <= sequences[i].length <= 1e4
+        1 <= sum(sequences[i].length) <= 1e5
+        我们先将seq表示的子序列顺序都保存为一张图，并能统计每一个节点的对应的入度
+        要满足题目要求必须满足3个条件:
+        1.入度为0的节点只能有1个，否则出来的超序列不唯一
+        2.不能成环，否则出来的超序列不唯一
+        3.最后入队的节点数=n，否则不能保证超序列最短
+        如果全部满足返回true，构造返回false
+         */
+        int n = nums.length;
+        boolean[] vis = new boolean[n + 1];
+        List<Integer>[] edges = new List[n + 1];
+        for (int i = 0; i <= n; i++) {
+            edges[i] = new ArrayList<>();
+        }
+        // 建图
+        for (int[] p : seq) {
+            for (int j = 0; j < p.length - 1; j++) {
+                edges[p[j]].add(p[j + 1]);
+            }
+        }
+        int[] inDegree = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            for (Integer ne : edges[i]) {
+                inDegree[ne]++;
+            }
+        }
+        Queue<Integer> que = new LinkedList<>();
+        int cnt = 0;    // 统计某一时间入度为0的节点数目
+        for (int i = 1; i <= n; i++) {
+            if (inDegree[i] == 0) {
+                que.add(i);
+                vis[i] = true;
+                cnt++;
+            }
+            if (cnt > 1) return false;  // >1个节点入度为0返回false
+        }
+        while (!que.isEmpty()) {
+            int p = que.poll(); // 要删除的节点
+            cnt = 0;
+            for (Integer ne : edges[p]) {
+                if (--inDegree[ne] == 0) {
+                    que.add(ne);
+                    vis[ne] = true;
+                    cnt++;
+                }
+            }
+            if (cnt > 1) return false;
+        }
+        // 环检测
+        for (int i = 1; i <= n; i++) {
+            if (inDegree[i] != 0) return false;
+        }
+        // 检测是否n个节点都入队了
+        for (int i = 1; i <= n; i++) {
+            if (!vis[i]) return false;
+        }
+        return true;
+    }
+}
+```
+
 **图片制作不易，喜欢了就点个赞再走吧~**
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/23/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97/)哦~
