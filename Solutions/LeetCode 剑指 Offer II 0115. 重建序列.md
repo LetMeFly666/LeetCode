@@ -172,7 +172,7 @@ public:
 
 #### Java
 
-感谢 [@Fomalhaut1998](https://leetcode.cn/u/fomalhaut1998/)大佬 提供Java版本的代码~
+🔥 感谢 [@Fomalhaut1998](https://leetcode.cn/u/fomalhaut1998/)大佬 提供Java版本的代码~
 
 ```Java
 class Solution {
@@ -239,6 +239,44 @@ class Solution {
         }
         return true;
     }
+}
+```
+
+#### TypeScript
+
+🔥 感谢 [@木鲸](https://leetcode.cn/u/woodwhale/)大佬 提供TypeScript版本的代码~
+
+```TypeScript
+function sequenceReconstruction(nums: number[], sequences: number[][]): boolean {
+    let len: number = nums.length
+    let map: number[][] = new Array(len+1)  // map[i]表示i指向的儿子们
+    for (let i = 0; i < map.length; i++) map[i] = new Array()
+    let degree: number[] = new Array(len + 1).fill(0)
+    degree[0] = -1  // degree[i]表示i的度数，nums是从1开始的，所以0没用
+
+    // 存入map
+    sequences.forEach(it => {
+        for (let i = 1; i < it.length; i++) {
+            map[it[i-1]].push(it[i])
+            degree[it[i]]++
+        }
+    })
+
+    // 拓扑排序
+    let que: number[] = []
+    degree.forEach((it, idx) => {if (it === 0) que.push(idx)}) // 入度为0的数字进入队列
+
+    while (que.length) {
+        if (que.length > 1) return false  // 如果有多个入度为0的点，那么就是无法推测唯一最短序列
+        let idx: number = que.shift()
+        let sons: number[] = map[idx]
+        sons.forEach(it => {
+            degree[it]-- // 所有的儿子，入度-1
+            if (!degree[it]) que.push(it)  // 再次查找入度为0的节点
+        })
+    }
+
+    return !degree.some((val) => val > 0)   // 如果存在入度大于0的，证明有问题
 }
 ```
 
