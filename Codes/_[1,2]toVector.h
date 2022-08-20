@@ -286,3 +286,28 @@ void testForSplitS()
 //     testForStringToVector();
 //     return 0;
 // }
+
+ostream& operator << (ostream& ostr, TreeNode* node) {
+    if (!node) {
+        ostr << "nullptr";
+    }
+    else {
+        ostr << node->val << "[";
+        // ostr << (node->left ? node->left->val : "nullptr") << ", ";
+        if (node->left) {
+            ostr << node->left->val;
+        }
+        else {
+            ostr << "nullptr";
+        }
+        ostr << ", ";
+        if (node->right) {
+            ostr << node->right->val;
+        }
+        else {
+            ostr << "nullptr";
+        }
+        ostr << "]";
+    }
+    return ostr;
+}

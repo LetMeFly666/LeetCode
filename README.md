@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-08-04 10:06:53
+ * @LastEditTime: 2022-08-20 10:39:46
 -->
 # LeetCode
 
@@ -208,6 +208,7 @@ int main() {
 
 ## TODO:
 
+- [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
 - [ ] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
