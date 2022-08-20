@@ -134,7 +134,9 @@ public:
 
 视频制作不易，喜欢了就点个赞再走吧
 
-<iframe src="//player.bilibili.com/player.html?aid=771269060&bvid=BV14r4y1L7N8&cid=785812924&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=899738739&bvid=BV14N4y1F7tQ&cid=809337052&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="500px" width="100%"> </iframe>
+
+BiliBili视频地址： [https://b23.tv/ktZRYxI](https://b23.tv/ktZRYxI)  [_](https://www.bilibili.com/video/BV14N4y1F7tQ)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/08/20/LeetCode%200654.%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126443463](https://letmefly.blog.csdn.net/article/details/126443463)
