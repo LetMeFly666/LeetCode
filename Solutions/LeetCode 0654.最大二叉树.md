@@ -111,23 +111,26 @@ public:
 
 ```cpp
 class Solution {
-private:
-    TreeNode* main(vector<int>::iterator l, vector<int>::iterator r) {
-        if (l >= r)  // 数组为空
-            return nullptr;
-        vector<int>::iterator maxIt = l;  // 用来记录最大值的位置
-        int maxVal = *l;
-        for (vector<int>::iterator it = l; it != r; it++) {  // 找到最大值
-            if (*it > maxVal) {
-                maxVal = *it;
-                maxIt = it;
-            }
-        }
-        return new TreeNode(maxVal, main(l, maxIt), main(maxIt + 1, r));  // 以最大值为根，前后缀分别递归建树。
-    }
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-        return main(nums.begin(), nums.end());
+        stack<TreeNode*> st;
+        for (int &t : nums) {
+            TreeNode* thisNode = new TreeNode(t);
+            while (st.size() && st.top()->val < t) {
+                thisNode->left = st.top();
+                st.pop();
+            }
+            if (st.size()) {
+                st.top()->right = thisNode;
+            }
+            st.push(thisNode);
+        }
+        TreeNode* ans;
+        while (st.size()) {
+            ans = st.top();
+            st.pop();
+        }
+        return ans;
     }
 };
 ```
