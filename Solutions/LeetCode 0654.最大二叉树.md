@@ -135,6 +135,30 @@ public:
 };
 ```
 
+#### Java
+
+🔥 感谢 [@于洛东](https://leetcode.cn/u/lodoo/)大佬 提供Java版本的代码~
+
+```Java
+class Solution {
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        for(int num : nums){
+
+            TreeNode node = new TreeNode(num);
+
+            while(!stack.isEmpty() && num > stack.getLast().val) node.left = stack.removeLast();
+
+            if(!stack.isEmpty() && num < stack.getLast().val) stack.getLast().right = node;
+
+            stack.addLast(node);
+        }
+        return stack.getFirst();
+    }
+}
+```
+
 视频制作不易，喜欢了就点个赞再走吧
 
 <iframe src="//player.bilibili.com/player.html?aid=899738739&bvid=BV14N4y1F7tQ&cid=809337052&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="500px" width="100%"> </iframe>
