@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-08-22 09:39:10
+ * @LastEditTime: 2022-08-30 19:22:47
 -->
 # LeetCode
 
@@ -222,6 +222,13 @@ int main() {
 |<a href="https://matiji.net/exam/brushquestion/182/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3182 - 填矩阵 </a>|<a href="https://leetcode.letmefly.xyz/2022/07/21/MaTiJi%20-%20MT3182%20-%20%E5%A1%AB%E7%9F%A9%E9%98%B5/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125918304">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/203/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3203 - 填坑 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/22/MaTiJi%20-%20MT3203%20-%20%E5%A1%AB%E5%9D%91/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126459346">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/251/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3251 - 多重回文 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/22/MaTiJi%20-%20MT3251%20-%20%E5%A4%9A%E9%87%8D%E5%9B%9E%E6%96%87/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126459839">地址点我</a>|
+
+### 其他
+
+|名称|博客|CSDN博客地址|
+|:--|:--|:--|
+|码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">地址点我</a>|
+
 
 ## TODO:
 
