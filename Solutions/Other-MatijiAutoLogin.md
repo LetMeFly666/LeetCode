@@ -82,5 +82,11 @@ setCookie("token", token, 100);  // 100天内不用重新登录
 
 登录码蹄集，在码蹄集[首页](https://matiji.net/exam/)打开控制台（打开控制台的手把手教程可以参考：[https://letmefly.blog.csdn.net/article/details/106959306](https://letmefly.blog.csdn.net/article/details/106959306)），然后复制上面一段代码，粘贴并回车即可。
 
+<small>本来想着实现免频繁登录是为了节省登录时间，但是写博客、做视频用了一个多小时</small>  :snowflake:
+
+<small>不过我想发明洗衣机的耗时应该也比洗衣服时间长，希望能方便到各位看官吧</small>
+
+<iframe src="//player.bilibili.com/player.html?aid=857601399&bvid=BV1DV4y1H75q&cid=819266825&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="500px"> </iframe>
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126610331](https://letmefly.blog.csdn.net/article/details/126610331)
