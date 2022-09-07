@@ -146,5 +146,18 @@ public:
 };
 ```
 
+附上一个LeetCode官解的Python代码（好简洁）
+
+```python
+class Solution:
+    def reorderSpaces(self, text: str) -> str:
+        words = text.split()
+        space = text.count(' ')
+        if len(words) == 1:
+            return words[0] + ' ' * space
+        per_space, rest_space = divmod(space, len(words) - 1)
+        return (' ' * per_space).join(words) + ' ' * rest_space
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/09/07/LeetCode%201592.%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126752968](https://letmefly.blog.csdn.net/article/details/126752968)
