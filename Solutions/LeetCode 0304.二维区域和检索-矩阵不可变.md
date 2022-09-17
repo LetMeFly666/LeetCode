@@ -25,7 +25,9 @@ tags: [题解, LeetCode, 中等, 设计, 数组, 矩阵, 前缀和, 二维前缀
 
 <p><strong>示例 1：</strong></p>
 
-<p><img src="https://pic.leetcode-cn.com/1626332422-wUpUHT-image.png" style="width: 200px;" /></p>
+<!-- <p><img src="https://pic.leetcode-cn.com/1626332422-wUpUHT-image.png" style="width: 200px;" /></p> -->
+
+<p><img src="https://img-blog.csdnimg.cn/53a93754c50947a5b8fdc29c8d0da50f.png" style="width: 200px;" /></p>
 
 <pre>
 <strong>输入:</strong> 
