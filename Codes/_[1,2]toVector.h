@@ -153,6 +153,8 @@ vector<vector<char>> stringToVectorVectorC(string s) //[[1,2,5],[2,5,6],[5,6]]
 
 vector<string> stringToVectorString(string s)  // [1,2,5]
 {
+    if (s == "[]")
+        return {};
     vector<string>v;
     s=s.substr(1, s.size()).substr(0, s.size()-1);
     vector<string>vs=split(s, ',');
@@ -243,6 +245,35 @@ TreeNode* stringToTree(string s) {
 string oneNodeToString(TreeNode* root) {
     if (!root) return "NULL";
     else return to_string(root->val);
+}
+
+string treeToString(TreeNode* root) {
+    string ans = "[";
+    queue<TreeNode*> q;
+    q.push(root);
+    bool first = true;
+    string toAdd;  // 放置最后又一堆的null
+    while (q.size()) {
+        TreeNode* thisNode = q.front();
+        q.pop();
+        if (first) {
+            first = false;
+        }
+        else {
+            toAdd += ",";
+        }
+        if (thisNode) {
+            ans += toAdd + to_string(thisNode->val);
+            toAdd.clear();
+            q.push(thisNode->left);
+            q.push(thisNode->right);
+        }
+        else {
+            toAdd += "null";
+        }
+    }
+    ans += ']';
+    return ans;
 }
 
 /* 低级debugTree */
