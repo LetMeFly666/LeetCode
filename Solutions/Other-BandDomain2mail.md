@@ -10,7 +10,7 @@ tags: [其他, 域名, 邮箱]
 
 有了自己的域名后，采用本篇文章的方式，就可以**免费**地将自己的域名绑定至邮箱。
 
-**说人话**就是：假如你拥有域名“[letmefly.xyz](letmefly.xyz)”，那么根据这篇文章，你可以实现“使用[admin@letmefly.xyz](mailto:admin@letmefly.xyz)”收发邮件。
+**说人话**就是：假如你拥有域名“[letmefly.xyz](https://letmefly.xyz)”，那么根据这篇文章，你可以实现“使用[admin@letmefly.xyz](mailto:admin@letmefly.xyz)”收发邮件。
 
 ## 申请免费邮箱
 
