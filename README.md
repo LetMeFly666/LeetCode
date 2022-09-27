@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-09-06 13:16:55
+ * @LastEditTime: 2022-09-27 19:39:03
 -->
 # LeetCode
 
@@ -261,6 +261,7 @@ int main() {
 |名称|博客|CSDN博客地址|
 |:--|:--|:--|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">地址点我</a>|
+|有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://leetcode.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">地址点我</a>|
 
 
 ## TODO:
