@@ -31,6 +31,7 @@ tags: [其他, 域名, 邮箱]
 如果域名不是购买自[阿里云](https://wanwang.aliyun.com/?userCode=s6usmdta)，那么需要前往所购买域名的管理平台，设置以下三个值：
 
 |主机记录值|解析类型|优先级|解析记录值|
+|:--:|:--:|:--:|:--:|
 |@|MX|5|mxn.mxhichina.com|
 |@|MX|10|mxw.mxhichina.com|
 |@|TXT|-|v=spf1 include:spf.mxhichina.com -all|
