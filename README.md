@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-09-28 21:32:56
+ * @LastEditTime: 2022-09-28 21:41:11
 -->
 # LeetCode
 
@@ -260,6 +260,7 @@ int main() {
 |<a href="https://matiji.net/exam/brushquestion/182/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3182 - 填矩阵 </a>|<a href="https://leetcode.letmefly.xyz/2022/07/21/MaTiJi%20-%20MT3182%20-%20%E5%A1%AB%E7%9F%A9%E9%98%B5/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125918304">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/203/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3203 - 填坑 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/22/MaTiJi%20-%20MT3203%20-%20%E5%A1%AB%E5%9D%91/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126459346">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/251/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3251 - 多重回文 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/22/MaTiJi%20-%20MT3251%20-%20%E5%A4%9A%E9%87%8D%E5%9B%9E%E6%96%87/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126459839">地址点我</a>|
+|<a href="https://matiji.net/exam/brushquestion/252/3846/4C6668FEB8CFD6520DE73B365B31D1A4">码蹄集 - MT3252 - 子序列问题 </a>|<a href="https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT3252%20-%20%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127097657">地址点我</a>|
 
 ### 其他
 
