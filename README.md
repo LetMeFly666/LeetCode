@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-09-28 21:24:21
+ * @LastEditTime: 2022-09-28 21:32:56
 -->
 # LeetCode
 
@@ -249,6 +249,7 @@ int main() {
 |<a href="https://matiji.net/exam/brushquestion/93/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2093 · 回文数数位 </a>|<a href="https://leetcode.letmefly.xyz/2022/07/21/MaTiJi%20-%20MT2093%20-%20%E5%9B%9E%E6%96%87%E6%95%B0%E6%95%B0%E4%BD%8D/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125909744">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/94/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2094 - 回文之时 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/04/MaTiJi%20-%20MT2094%20-%20%E5%9B%9E%E6%96%87%E4%B9%8B%E6%97%B6/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126152710">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/95/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2095 - 曲径折跃 </a>|<a href="https://leetcode.letmefly.xyz/2022/07/21/MaTiJi%20-%20MT2095%20-%20%E6%9B%B2%E5%BE%84%E6%8A%98%E8%B7%83/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125909920">地址点我</a>|
+|<a href="https://matiji.net/exam/brushquestion/140/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2140 - 双端队列 </a>|<a href="https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT2140%20-%20%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127097523">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/142/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2142 - 万民堂大厨 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/04/MaTiJi%20-%20MT2142%20-%20%E4%B8%87%E6%B0%91%E5%A0%82%E5%A4%A7%E5%8E%A8/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126152888">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/165/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2165 - 小码哥的抽卡之旅1 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/04/MaTiJi%20-%20MT2165%20-%20%E5%B0%8F%E7%A0%81%E5%93%A5%E7%9A%84%E6%8A%BD%E5%8D%A1%E4%B9%8B%E6%97%851/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126153308">地址点我</a>|
 |<a href="https://matiji.net/exam/brushquestion/201/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2201 - 各位之和 </a>|<a href="https://leetcode.letmefly.xyz/2022/07/21/MaTiJi%20-%20MT2201%20-%20%E5%90%84%E4%BD%8D%E4%B9%8B%E5%92%8C/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125918169">地址点我</a>|
