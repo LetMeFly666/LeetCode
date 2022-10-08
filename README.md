@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-10-03 10:27:25
+ * @LastEditTime: 2022-10-08 14:11:06
 -->
 # LeetCode
 
@@ -289,6 +289,8 @@ int main() {
 ## TODO:
 
 - [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
+- [ ] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
+- [ ] hexo代码中默认Tab是8空格长！
 - [ ] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
