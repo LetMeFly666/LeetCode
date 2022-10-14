@@ -14,7 +14,9 @@ tags: [题解, LeetCode, 简单, 位运算, 回溯, 二进制枚举, 状态压�
 	<li>例如，下面的二进制手表读取 <code>"3:25"</code> 。</li>
 </ul>
 
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/03/29/binary_clock_samui_moon.jpg" style="height: 300px; width" /></p>
+<!-- <p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/03/29/binary_clock_samui_moon.jpg" style="height: 300px; width" /></p> -->
+
+<p><img src="https://img-blog.csdnimg.cn/0e65d0f8c1664633a161c0e67f5e936f.jpeg" style="height: 300px; width" /></p>
 
 <p><small><em>（图源：<a href="https://commons.m.wikimedia.org/wiki/File:Binary_clock_samui_moon.jpg">WikiMedia - Binary clock samui moon.jpg</a> ，许可协议：<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)</a> ）</em></small></p>
 
