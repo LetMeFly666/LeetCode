@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>LetMeFly的LeetCode题解</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LeetCode 题解、解题技巧 力扣题解">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LetMeFly的LeetCode题解">
+<meta property="og:url" content="https://leetcode.letmefly.xyz/page/11/index.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解">
+<meta property="og:description" content="LeetCode 题解、解题技巧 力扣题解">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="LetMeFly">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="LetMeFly的LeetCode题解" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">LetMeFly的LeetCode题解</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://leetcode.letmefly.xyz"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-LeetCode 0640.求解方程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/10/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B/" class="article-date">
+  <time datetime="2022-08-10T02:54:55.000Z" itemprop="datePublished">2022-08-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/10/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B/">640.求解方程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly640求解方程过几天就看不懂了的迷惑性代码但是是详解"><a class="markdownIt-Anchor" href="#letmefly640求解方程过几天就看不懂了的迷惑性代码但是是详解"></a> 【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/solve-the-equation/">https://leetcode.cn/problems/solve-the-equation/</a></p>
+<p>求解一个给定的方程，将<code>x</code>以字符串 <code>"x=#value"</code>&nbsp;的形式返回。该方程仅包含 <code>'+'</code> ， <code>'-'</code> 操作，变量&nbsp;<code>x</code>&nbsp;和其对应系数。</p>
+<p>如果方程没有解，请返回&nbsp;<code>"No solution"</code>&nbsp;。如果方程有无限解，则返回 <code>“Infinite solutions”</code> 。</p>
+<p>如果方程中只有一个解，要保证返回值 <font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">'x'</span></span></font></font>&nbsp;是一个整数。</p>
+<p>&nbsp;</p>
+<p><strong>示例 1：</strong></p>
+<pre>
+<strong>输入:</strong> equation = "x+5-3+x=6+x-2"
+<strong>输出:</strong> "x=2"
+</pre>
+<p><strong>示例 2:</strong></p>
+<pre>
+<strong>输入:</strong> equation = "x=x"
+<strong>输出:</strong> "Infinite solutions"
+</pre>
+<p><strong>示例 3:</strong></p>
+<pre>
+<strong>输入:</strong> equation = "2x=x"
+<strong>输出:</strong> "x=0"
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>提示:</strong></p>
+<ul>
+	<li><code>3 &lt;= equation.length &lt;= 1000</code></li>
+	<li><code>equation</code>&nbsp;只有一个&nbsp;<code>'='</code>.</li>
+	<li><code>equation</code>&nbsp;方程由整数组成，其绝对值在&nbsp;<code>[0, 100]</code>&nbsp;范围内，不含前导零和变量 <code>'x'</code> 。&nbsp;<span style="display:block"><span style="height:0px"><span style="position:absolute">​​​</span></span></span></li>
+</ul>
+<h2 id="方法一模拟"><a class="markdownIt-Anchor" href="#方法一模拟"></a> 方法一：模拟</h2>
+<p><strong>自认为这道题代码写得太具有迷惑性了，推荐一波</strong><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/solve-the-equation/solution/qiu-jie-fang-cheng-by-leetcode-solution-knct/">官解</a>。如果不嫌弃，也可以看一看我的思路：</p>
+<p>首先确定等号的位置，这样我们就可以得知左边的表达式和右边的表达式的范围了。</p>
+<p>对于某个表达式，我们求出其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>的系数和常数分别为多少。</p>
+<p>那么具体怎么求呢？</p>
+<p>首先我们把表达式分割成一个一个的小单元“-2”、“+3”、“5”、“-x”、“-2x”、“x”、“3x”等，分割规则是：遇到下一个“加减号”或到表达式结尾。</p>
+<p>对于某个“小单元”，可以手写一个<code>atoi</code>函数求出这个小单元的值/<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>的系数（如果最后一个字符是<code>x</code>就加到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>的系数上，否则就加到常数上）（如果最后一个字符是<code>x</code>，那么调用<code>atoi</code>时就把长度减少一位，不把<code>x</code>这个字符传递给<code>atoi</code>函数）</p>
+<p>那么怎么写<code>atoi</code>函数呢？</p>
+<p>首先要讨论传递到这个函数中的字符串有哪几种情况：</p>
+<ul>
+<li><code>-2</code>（来自<code>-2</code>或<code>-2x</code>）</li>
+<li><code>+3</code>（来自<code>+3</code>或<code>+3x</code>）</li>
+<li><code>5</code>（来自<code>5</code>或<code>5x</code>）</li>
+<li><code>-</code>（来自<code>-x</code>）</li>
+<li><code> </code>（来自<code>x</code>）</li>
+</ul>
+<p>只要我们能处理好上述<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">5</span></span></span></span>种情况，那么对于本题来说，就是一个完美的<code>atoi</code>函数。（不能使用自带的<code>atoi</code>，否则<code>+</code>、<code>-</code>、<code> </code>都将被处理为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>）</p>
+<p>最后回到初始问题，我们知道了左边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>的系数、左边的常数、右边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>的系数、右边的常数，如果“左边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>系数等于右边并且左边常数不等于右边”那么就“无解”(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><mi>x</mi><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">x + 1 = x + 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathrm">2</span></span></span></span>)，如果“左边<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>系数等于右边并且左边并且左边常数等于右边”那么就“无数解”(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn><mo>=</mo><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x + 1 = x + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span>)，否则方程的解为x=\frac{右边常数 - 左边常数}{左边x系数 - 右边x系数}</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是字符串长度，每个字符最多遍历<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span></span></span></span>次（判断等号位置、确定下一个加减号的位置、确定某个“小单元”的值）</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getEqualLocation</span><span class="params">(string&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// Fake Return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> __LetMeFly_atoi(string&amp; s, <span class="type">int</span> left, <span class="type">int</span> length) &#123;</span><br><span class="line">        <span class="keyword">if</span> (length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (length == <span class="number">1</span> &amp;&amp; s[left] == <span class="string">&#x27;-&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (length == <span class="number">1</span> &amp;&amp; s[left] == <span class="string">&#x27;+&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> k = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (s[left] == <span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">            left++, length--;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (s[left] == <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">            left++, length--, k = <span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (length--) &#123;</span><br><span class="line">            ans *= <span class="number">10</span>;</span><br><span class="line">            ans += s[left++] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans * k;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; <span class="title">getXandConst</span><span class="params">(string&amp; s, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;  <span class="comment">// get [l, r) &#x27;s x and const</span></span><br><span class="line">        pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="type">int</span> lastLoc = l;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> nowLoc = l; nowLoc &lt;= r; nowLoc++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nowLoc != l &amp;&amp; (nowLoc == r || s[nowLoc] == <span class="string">&#x27;+&#x27;</span> || s[nowLoc] == <span class="string">&#x27;-&#x27;</span>)) &#123;</span><br><span class="line">                <span class="comment">// (lastLoc, nowLoc)</span></span><br><span class="line">                (s[nowLoc - <span class="number">1</span>] == <span class="string">&#x27;x&#x27;</span> ? ans.first : ans.second) += __LetMeFly_atoi(s, lastLoc, (s[nowLoc - <span class="number">1</span>] == <span class="string">&#x27;x&#x27;</span> ? nowLoc - <span class="number">1</span> : nowLoc) - lastLoc);</span><br><span class="line">                lastLoc = nowLoc;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">solveEquation</span><span class="params">(string&amp; equation)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> locEqual = <span class="built_in">getEqualLocation</span>(equation);</span><br><span class="line">        <span class="keyword">auto</span> [leftX, leftConst] = <span class="built_in">getXandConst</span>(equation, <span class="number">0</span>, locEqual);</span><br><span class="line">        <span class="keyword">auto</span> [rightX, rightConst] = <span class="built_in">getXandConst</span>(equation, locEqual + <span class="number">1</span>, equation.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">if</span> (leftX == rightX) &#123;</span><br><span class="line">            <span class="keyword">return</span> leftConst == rightConst ? <span class="string">&quot;Infinite solutions&quot;</span> : <span class="string">&quot;No solution&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;x=&quot;</span> + <span class="built_in">to_string</span>((rightConst - leftConst) / (leftX - rightX));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/10/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126262898">https://letmefly.blog.csdn.net/article/details/126262898</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/10/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B/" data-id="cl97zsjy20066edox8js7451v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90/" rel="tag">字符串解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 1413.逐步求和得到正数的最小值" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/09/LeetCode%201413.%E9%80%90%E6%AD%A5%E6%B1%82%E5%92%8C%E5%BE%97%E5%88%B0%E6%AD%A3%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/" class="article-date">
+  <time datetime="2022-08-09T01:44:59.000Z" itemprop="datePublished">2022-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/09/LeetCode%201413.%E9%80%90%E6%AD%A5%E6%B1%82%E5%92%8C%E5%BE%97%E5%88%B0%E6%AD%A3%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/">1413.逐步求和得到正数的最小值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly1413逐步求和得到正数的最小值"><a class="markdownIt-Anchor" href="#letmefly1413逐步求和得到正数的最小值"></a> 【LetMeFly】1413.逐步求和得到正数的最小值</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum/">https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum/</a></p>
+<p>给你一个整数数组 <code>nums</code>&nbsp;。你可以选定任意的&nbsp;<strong>正数</strong> startValue 作为初始值。</p>
+<p>你需要从左到右遍历 <code>nums</code>&nbsp;数组，并将 startValue 依次累加上&nbsp;<code>nums</code>&nbsp;数组中的值。</p>
+<p>请你在确保累加和始终大于等于 1 的前提下，选出一个最小的&nbsp;<strong>正数</strong>&nbsp;作为 startValue 。</p>
+<p>&nbsp;</p>
+<p><strong>示例 1：</strong></p>
+<pre>
+<strong>输入：</strong>nums = [-3,2,-3,4,2]
+<strong>输出：</strong>5
+<strong>解释：</strong>如果你选择 startValue = 4，在第三次累加时，和小于 1 。
+<strong>                累加求和
+&nbsp;               startValue = 4 | startValue = 5 | nums
+</strong>&nbsp;                 (4 <strong>-3</strong> ) = 1  | (5 <strong>-3</strong> ) = 2    |  -3
+&nbsp;                 (1 <strong>+2</strong> ) = 3  | (2 <strong>+2</strong> ) = 4    |   2
+&nbsp;                 (3 <strong>-3</strong> ) = 0  | (4 <strong>-3</strong> ) = 1    |  -3
+&nbsp;                 (0 <strong>+4</strong> ) = 4  | (1 <strong>+4</strong> ) = 5    |   4
+&nbsp;                 (4 <strong>+2</strong> ) = 6  | (5 <strong>+2</strong> ) = 7    |   2
+</pre>
+<p><strong>示例 2：</strong></p>
+<pre>
+<strong>输入：</strong>nums = [1,2]
+<strong>输出：</strong>1
+<strong>解释：</strong>最小的 startValue 需要是正数。
+</pre>
+<p><strong>示例 3：</strong></p>
+<pre>
+<strong>输入：</strong>nums = [1,-2,-3]
+<strong>输出：</strong>5
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
+</ul>
+<h2 id="方法一模拟"><a class="markdownIt-Anchor" href="#方法一模拟"></a> 方法一：模拟</h2>
+<p>从前到后遍历数组，并求和。</p>
+<blockquote>
+<p>如果当前这一步和为<code>-4</code>，那么就说明初始值至少是<code>5</code>（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn><mo>=</mo><mo>−</mo><mn>4</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5 = -4 + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">5</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">4</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span>）</p>
+</blockquote>
+<p>因此，遍历过程中，不断更新初始值的最小值即可。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组中元素的个数</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minStartValue</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums) &#123;</span><br><span class="line">            cnt += t;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, -cnt + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/09/LeetCode%201413.%E9%80%90%E6%AD%A5%E6%B1%82%E5%92%8C%E5%BE%97%E5%88%B0%E6%AD%A3%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126241399">https://letmefly.blog.csdn.net/article/details/126241399</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/09/LeetCode%201413.%E9%80%90%E6%AD%A5%E6%B1%82%E5%92%8C%E5%BE%97%E5%88%B0%E6%AD%A3%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/" data-id="cl97zskbm018vedox4pa9hdwu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0179.最大数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/08/LeetCode%200179.%E6%9C%80%E5%A4%A7%E6%95%B0/" class="article-date">
+  <time datetime="2022-08-08T01:05:30.000Z" itemprop="datePublished">2022-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/08/LeetCode%200179.%E6%9C%80%E5%A4%A7%E6%95%B0/">179.最大数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly179最大数"><a class="markdownIt-Anchor" href="#letmefly179最大数"></a> 【LetMeFly】179.最大数</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-number/">https://leetcode.cn/problems/largest-number/</a></p>
+<p>给定一组非负整数 <code>nums</code>，重新排列每个数的顺序（每个数不可拆分）使之组成一个最大的整数。</p>
+<p><strong>注意：</strong>输出结果可能非常大，所以你需要返回一个字符串而不是整数。</p>
+<p>&nbsp;</p>
+<p><strong>示例 1：</strong></p>
+<pre>
+<strong>输入<code>：</code></strong><code>nums = [10,2]</code>
+<strong>输出：</strong><code>"210"</code></pre>
+<p><strong>示例&nbsp;2：</strong></p>
+<pre>
+<strong>输入<code>：</code></strong><code>nums = [3,30,34,5,9]</code>
+<strong>输出：</strong><code>"9534330"</code>
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+	<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
+<h2 id="方法一自定义排序方式"><a class="markdownIt-Anchor" href="#方法一自定义排序方式"></a> 方法一：自定义排序方式</h2>
+<p>其实不证明的话，这题非常简单。</p>
+<p>对于两个数而言，哪个应该放在前面，哪个应该放在后面呢？</p>
+<p>我们只需要比较一下哪个放前面结果比较大即可。</p>
+<p>也就是说，对于两个数<code>a</code>和<code>b</code>，如果<code>ab &gt; ba</code>，那么就把<code>a</code>放在<code>b</code>前。反之将<code>b</code>置前。</p>
+<p>**注意：**如果所有元素全部为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>，记得不要返回<code>000...0</code>，只能返回一个<code>0</code>。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>L</mi><mo>×</mo><mi>n</mi><mi>log</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(L\times n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">L</span><span class="mbin">×</span><span class="mord mathit">n</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组中元素的个数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">L</span></span></span></span>是数字的平均位数</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>L</mi><mo>×</mo><mi>log</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(L\times\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">L</span><span class="mbin">×</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> <span class="type">int</span>&amp; a, <span class="type">const</span> <span class="type">int</span>&amp; b)</span> </span>&#123;</span><br><span class="line">        string sa = <span class="built_in">to_string</span>(a);</span><br><span class="line">        string sb = <span class="built_in">to_string</span>(b);</span><br><span class="line">        <span class="keyword">return</span> sa + sb &gt; sb + sa;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">largestNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        string ans;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums) &#123;</span><br><span class="line">            ans += <span class="built_in">to_string</span>(t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ans[<span class="number">0</span>] == <span class="string">&#x27;0&#x27;</span>) &#123;  <span class="comment">// 不能是00000</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/08/LeetCode%200179.%E6%9C%80%E5%A4%A7%E6%95%B0/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126221099">https://letmefly.blog.csdn.net/article/details/126221099</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/08/LeetCode%200179.%E6%9C%80%E5%A4%A7%E6%95%B0/" data-id="cl97zsjwl002zedoxb804es02" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cmp/" rel="tag">cmp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0174.地下城游戏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/06/LeetCode%200174.%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/" class="article-date">
+  <time datetime="2022-08-06T01:38:31.000Z" itemprop="datePublished">2022-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/06/LeetCode%200174.%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">174.地下城游戏</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly174地下城游戏原数组上修改"><a class="markdownIt-Anchor" href="#letmefly174地下城游戏原数组上修改"></a> 【LetMeFly】174.地下城游戏：原数组上修改</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/dungeon-game/">https://leetcode.cn/problems/dungeon-game/</a></p>
+<style>
+
+table.dungeon, .dungeon th, .dungeon td {
+
+  border:3px solid black;
+
+}
+
+
+
+ .dungeon th, .dungeon td {
+
+    text-align: center;
+
+    height: 70px;
+
+    width: 70px;
+
+}
+
+</style>
+<p>一些恶魔抓住了公主（<strong>P</strong>）并将她关在了地下城的右下角。地下城是由&nbsp;M x N 个房间组成的二维网格。我们英勇的骑士（<strong>K</strong>）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。</p>
+<p>骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。</p>
+<p>有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为<em>负整数</em>，则表示骑士将损失健康点数）；其他房间要么是空的（房间里的值为 <em>0</em>），要么包含增加骑士健康点数的魔法球（若房间里的值为<em>正整数</em>，则表示骑士将增加健康点数）。</p>
+<p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
+<p>&nbsp;</p>
+<p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
+<p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
+<table class="dungeon">
+<tr> 
+<td>-2 (K)</td> 
+<td>-3</td> 
+<td>3</td> 
+</tr> 
+<tr> 
+<td>-5</td> 
+<td>-10</td> 
+<td>1</td> 
+</tr> 
+<tr> 
+<td>10</td> 
+<td>30</td> 
+<td>-5 (P)</td> 
+</tr> 
+</table>
+<!---2K   -3  3
+
+-5   -10   1
+
+10 30   5P-->
+<p>&nbsp;</p>
+<p><strong>说明:</strong></p>
+<ul>
+<pre><code>&lt;li&gt;
+
+&lt;p&gt;骑士的健康点数没有上限。&lt;/p&gt;
+
+&lt;/li&gt;
+
+&lt;li&gt;任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。&lt;/li&gt;
+</code></pre>
+</ul>
+<h2 id="方法一原数组上dp"><a class="markdownIt-Anchor" href="#方法一原数组上dp"></a> 方法一：原数组上dp</h2>
+<p>这道题需要从右下向左上进行dp。因为从左上方向右下方dp的话，“路径和最大”不一定“所需初始值最小”（可能路上有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">-10000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">−</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">20000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span>，虽然路径和最大，但是经过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">-10000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord">−</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span></span></span></span>的时候至少需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn></mrow><annotation encoding="application/x-tex">10001</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">1</span></span></span></span>的血）</p>
+<p>从右下方向左上方dp，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>表示从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>到终点所需最小初始血量。</p>
+<p>那么，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mn>0</mn><mo>]</mo><mo>[</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[0][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span></span>即为从起点到终点所需最小初始血量，即为答案。</p>
+<p>从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>可以到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i + 1][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>或<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j + 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span>，具体要到哪个呢？当然是要到两个中最小的那个（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>min</mi><mo>{</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">\min \{dp[i + 1][j], dp[i][j + 1]\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mop">min</span><span class="mopen">{</span><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mclose">}</span></span></span></span>）。</p>
+<p>同时，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>这一点经过“掉血”或“回血”后至少还有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>滴血，因此<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>max</mi><mo>{</mo><mn>1</mn><mo separator="true">,</mo><mi>min</mi><mo>{</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>+</mo><mn>1</mn><mo>]</mo><mo>}</mo><mo>−</mo><mi>d</mi><mi>u</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max\{1, \min \{dp[i + 1][j], dp[i][j + 1]\} - dungeon[i][j]\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="mop">max</span><span class="mopen">{</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mop">min</span><span class="mopen">{</span><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mclose">}</span><span class="mbin">−</span><span class="mord mathit">d</span><span class="mord mathit">u</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">o</span><span class="mord mathit">n</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">}</span></span></span></span></p>
+<p>初始值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>max</mi><mo>{</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo>−</mo><mi>d</mi><mi>u</mi><mi>n</mi><mi>g</mi><mi>e</mi><mi>o</mi><mi>n</mi><mo>[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>}</mo></mrow><annotation encoding="application/x-tex">dp[n - 1][m - 1]=\max\{1, 1 - dungeon[n - 1][m - 1]\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">d</span><span class="mord mathit">p</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mop">max</span><span class="mopen">{</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit">d</span><span class="mord mathit">u</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">e</span><span class="mord mathit">o</span><span class="mord mathit">n</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathit">m</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mclose">}</span></span></span></span></p>
+<p>如果原始地图数组允许修改，那么我们可以直接在原始数组上dp，这样空间复杂度就降为了1。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>×</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\times m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">×</span><span class="mord mathit">m</span><span class="mclose">)</span></span></span></span>，其中地图大小为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n\times m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mbin">×</span><span class="mord mathit">m</span></span></span></span></li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span>。如果原始地图数组不允许修改，那么我们就需要额外开辟一个dp空间，空间复杂度就变成了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mo>×</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\times m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">×</span><span class="mord mathit">m</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">calculateMinimumHP</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = dungeon.<span class="built_in">size</span>(), m = dungeon[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        dungeon[n - <span class="number">1</span>][m - <span class="number">1</span>] = <span class="built_in">max</span>(<span class="number">1</span>, <span class="number">1</span> - dungeon[n - <span class="number">1</span>][m - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> &lt; n &amp;&amp; j + <span class="number">1</span> &lt; m) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, <span class="built_in">min</span>(dungeon[i + <span class="number">1</span>][j], dungeon[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i + <span class="number">1</span> &lt; n) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, dungeon[i + <span class="number">1</span>][j] - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j + <span class="number">1</span> &lt; m) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, dungeon[i][j + <span class="number">1</span>] - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dungeon[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/06/LeetCode%200174.%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126190011">https://letmefly.blog.csdn.net/article/details/126190011</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/06/LeetCode%200174.%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/" data-id="cl97zsjwj002xedox0j3ybmzm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dp/" rel="tag">dp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%B0%E9%9A%BE/" rel="tag">困难</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5/" rel="tag">矩阵</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 1408.数组中的字符串匹配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/06/LeetCode%201408.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="article-date">
+  <time datetime="2022-08-06T00:52:25.000Z" itemprop="datePublished">2022-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/06/LeetCode%201408.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">1408.数组中的字符串匹配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly1408数组中的字符串匹配"><a class="markdownIt-Anchor" href="#letmefly1408数组中的字符串匹配"></a> 【LetMeFly】1408.数组中的字符串匹配</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/string-matching-in-an-array/">https://leetcode.cn/problems/string-matching-in-an-array/</a></p>
+<p>给你一个字符串数组 <code>words</code> ，数组中的每个字符串都可以看作是一个单词。请你按 <strong>任意</strong> 顺序返回 <code>words</code> 中是其他单词的子字符串的所有单词。</p>
+<p>如果你可以删除 <code>words[j]</code>&nbsp;最左侧和/或最右侧的若干字符得到 <code>word[i]</code> ，那么字符串 <code>words[i]</code> 就是 <code>words[j]</code> 的一个子字符串。</p>
+<p>&nbsp;</p>
+<p><strong>示例 1：</strong></p>
+<pre><strong>输入：</strong>words = [&quot;mass&quot;,&quot;as&quot;,&quot;hero&quot;,&quot;superhero&quot;]
+<strong>输出：</strong>[&quot;as&quot;,&quot;hero&quot;]
+<strong>解释：</strong>&quot;as&quot; 是 &quot;mass&quot; 的子字符串，&quot;hero&quot; 是 &quot;superhero&quot; 的子字符串。
+[&quot;hero&quot;,&quot;as&quot;] 也是有效的答案。
+</pre>
+<p><strong>示例 2：</strong></p>
+<pre><strong>输入：</strong>words = [&quot;leetcode&quot;,&quot;et&quot;,&quot;code&quot;]
+<strong>输出：</strong>[&quot;et&quot;,&quot;code&quot;]
+<strong>解释：</strong>&quot;et&quot; 和 &quot;code&quot; 都是 &quot;leetcode&quot; 的子字符串。
+</pre>
+<p><strong>示例 3：</strong></p>
+<pre><strong>输入：</strong>words = [&quot;blue&quot;,&quot;green&quot;,&quot;bu&quot;]
+<strong>输出：</strong>[]
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>1 &lt;= words.length &lt;= 100</code></li>
+	<li><code>1 &lt;= words[i].length &lt;= 30</code></li>
+	<li><code>words[i]</code> 仅包含小写英文字母。</li>
+	<li>题目数据 <strong>保证</strong> 每个 <code>words[i]</code> 都是独一无二的。</li>
+</ul>
+<h2 id="方法一字符串暴力匹配"><a class="markdownIt-Anchor" href="#方法一字符串暴力匹配"></a> 方法一：字符串暴力匹配</h2>
+<p>两层循环遍历字符串数组，如果第一层循环到的字符串是第二层循环到的字符串的子串，就把第一层循环的字符串添加到答案中，并结束第二层循环。</p>
+<ul>
+<li>时间复杂度O(n^2\tiems L^2)，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是原始字符串数组的长度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">L</span></span></span></span>是平均每个字符串的长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span>，答案不计入算法复杂度</li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">stringMatching</span><span class="params">(vector&lt;string&gt;&amp; words)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; ans;</span><br><span class="line">        <span class="type">int</span> n = words.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i == j)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (words[j].<span class="built_in">find</span>(words[i]) &lt; words[j].<span class="built_in">size</span>()) &#123;</span><br><span class="line">                    ans.<span class="built_in">push_back</span>(words[i]);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/06/LeetCode%201408.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126189255">https://letmefly.blog.csdn.net/article/details/126189255</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/06/LeetCode%201408.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" data-id="cl97zskbh018sedox5nukf2vt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/find/" rel="tag">find</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9A%B4%E5%8A%9B/" rel="tag">暴力</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0173.二叉搜索树迭代器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/05/LeetCode%200173.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="article-date">
+  <time datetime="2022-08-05T08:31:03.000Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/05/LeetCode%200173.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/">173.二叉搜索树迭代器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly173二叉搜索树迭代器中序遍历的非递归实现"><a class="markdownIt-Anchor" href="#letmefly173二叉搜索树迭代器中序遍历的非递归实现"></a> 【LetMeFly】173.二叉搜索树迭代器：中序遍历的非递归实现</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-search-tree-iterator/">https://leetcode.cn/problems/binary-search-tree-iterator/</a></p>
+<p>实现一个二叉搜索树迭代器类<code>BSTIterator</code> ，表示一个按中序遍历二叉搜索树（BST）的迭代器：</p>
+<div class="original__bRMd">
+<div>
+<ul>
+	<li><code>BSTIterator(TreeNode root)</code> 初始化 <code>BSTIterator</code> 类的一个对象。BST 的根节点 <code>root</code> 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 中的任何元素。</li>
+	<li><code>boolean hasNext()</code> 如果向指针右侧遍历存在数字，则返回 <code>true</code> ；否则返回 <code>false</code> 。</li>
+	<li><code>int next()</code>将指针向右移动，然后返回指针处的数字。</li>
+</ul>
+<p>注意，指针初始化为一个不存在于 BST 中的数字，所以对 <code>next()</code> 的首次调用将返回 BST 中的最小元素。</p>
+</div>
+</div>
+<p>你可以假设 <code>next()</code> 调用总是有效的，也就是说，当调用 <code>next()</code> 时，BST 的中序遍历中至少存在一个下一个数字。</p>
+<p> </p>
+<p><strong>示例：</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2018/12/25/bst-tree.png" style="width: 189px; height: 178px;" />
+<pre>
+<strong>输入</strong>
+["BSTIterator", "next", "next", "hasNext", "next", "hasNext", "next", "hasNext", "next", "hasNext"]
+[[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]
+<strong>输出</strong>
+[null, 3, 7, true, 9, true, 15, true, 20, false]
+<p><strong>解释</strong><br />
+BSTIterator bSTIterator = new BSTIterator([7, 3, 15, null, null, 9, 20]);<br />
+bSTIterator.next();    // 返回 3<br />
+bSTIterator.next();    // 返回 7<br />
+bSTIterator.hasNext(); // 返回 True<br />
+bSTIterator.next();    // 返回 9<br />
+bSTIterator.hasNext(); // 返回 True<br />
+bSTIterator.next();    // 返回 15<br />
+bSTIterator.hasNext(); // 返回 True<br />
+bSTIterator.next();    // 返回 20<br />
+bSTIterator.hasNext(); // 返回 False<br />
+</pre></p>
+<p> </p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li>树中节点的数目在范围 <code>[1, 10<sup>5</sup>]</code> 内</li>
+	<li><code>0 <= Node.val <= 10<sup>6</sup></code></li>
+	<li>最多调用 <code>10<sup>5</sup></code> 次 <code>hasNext</code> 和 <code>next</code> 操作</li>
+</ul>
+<p> </p>
+<p><strong>进阶：</strong></p>
+<ul>
+	<li>你可以设计一个满足下述条件的解决方案吗？<code>next()</code> 和 <code>hasNext()</code> 操作均摊时间复杂度为 <code>O(1)</code> ，并使用 <code>O(h)</code> 内存。其中 <code>h</code> 是树的高度。</li>
+</ul>
+<h2 id="方法一中序遍历的非递归实现"><a class="markdownIt-Anchor" href="#方法一中序遍历的非递归实现"></a> 方法一：中序遍历的非递归实现</h2>
+<p>二叉树的中序遍历使用递归很容易实现，但是如果不适用递归就需要用栈来模拟。</p>
+<p>用一个栈来存放“经过”但待“遍历”的节点，用一个指针指向待遍历节点。</p>
+<p>初始时将根节点入栈，并将指针指向根节点。</p>
+<p>每次都将指针不断向左子移动，直到没有左子为止（中序遍历应先遍历左子），移动过程中将每个节点入栈。</p>
+<p>从栈顶取出一个元素，这个元素就是最左子，现在就“遍历”到它了，返回这个元素，并将指针指向这个元素的右子</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span>，总复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，平均一次复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是二叉树节点个数</li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">BSTIterator</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    stack&lt;TreeNode*&gt; st;</span><br><span class="line">    TreeNode* cur;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">BSTIterator</span>(TreeNode* root) &#123;</span><br><span class="line">        cur = root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            st.<span class="built_in">push</span>(cur);</span><br><span class="line">            cur = cur-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = st.<span class="built_in">top</span>();</span><br><span class="line">        st.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> ans = cur-&gt;val;</span><br><span class="line">        cur = cur-&gt;right;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cur != <span class="literal">nullptr</span> || st.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/05/LeetCode%200173.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126181336">https://letmefly.blog.csdn.net/article/details/126181336</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/05/LeetCode%200173.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/" data-id="cl97zsjwi002uedoxhwvl2as0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0/" rel="tag">中序遍历的非递归实现</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="tag">迭代器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0623.在二叉树中增加一行" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/05/LeetCode%200623.%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E8%A1%8C/" class="article-date">
+  <time datetime="2022-08-05T07:41:28.000Z" itemprop="datePublished">2022-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/05/LeetCode%200623.%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E8%A1%8C/">623.在二叉树中增加一行</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly623在二叉树中增加一行dfs-bfs"><a class="markdownIt-Anchor" href="#letmefly623在二叉树中增加一行dfs-bfs"></a> 【LetMeFly】623.在二叉树中增加一行：DFS / BFS</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/add-one-row-to-tree/">https://leetcode.cn/problems/add-one-row-to-tree/</a></p>
+<p>给定一个二叉树的根&nbsp;<code>root</code>&nbsp;和两个整数 <code>val</code> 和&nbsp;<code>depth</code>&nbsp;，在给定的深度&nbsp;<code>depth</code>&nbsp;处添加一个值为 <code>val</code> 的节点行。</p>
+<p>注意，根节点&nbsp;<code>root</code>&nbsp;位于深度&nbsp;<code>1</code>&nbsp;。</p>
+<p>加法规则如下:</p>
+<ul>
+	<li>给定整数&nbsp;<code>depth</code>，对于深度为&nbsp;<code>depth - 1</code> 的每个非空树节点 <code>cur</code> ，创建两个值为 <code>val</code> 的树节点作为 <code>cur</code> 的左子树根和右子树根。</li>
+	<li><code>cur</code> 原来的左子树应该是新的左子树根的左子树。</li>
+	<li><code>cur</code> 原来的右子树应该是新的右子树根的右子树。</li>
+	<li>如果 <code>depth == 1 </code>意味着&nbsp;<code>depth - 1</code>&nbsp;根本没有深度，那么创建一个树节点，值 <code>val </code>作为整个原始树的新根，而原始树就是新根的左子树。</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>示例 1:</strong></p>
+<!-- <p><img src="https://assets.leetcode.com/uploads/2021/03/15/addrow-tree.jpg" style="height: 231px; width: 500px;" /></p> -->
+<p><img src="https://img-blog.csdnimg.cn/a21274e0411a4c8ba0553a27ea5a4f5e.jpeg" style="height: 277px; width: 500px;" /></p>
+<pre>
+<strong>输入:</strong> root = [4,2,6,3,1,5], val = 1, depth = 2
+<strong>输出:</strong> [4,1,1,2,null,null,6,3,1,5]</pre>
+<p><strong>示例 2:</strong></p>
+<!-- <p><img src="https://assets.leetcode.com/uploads/2021/03/11/add2-tree.jpg" style="height: 277px; width: 500px;" /></p> -->
+<p><img src="https://img-blog.csdnimg.cn/99bcacfbf30345f1964a83c8859fe774.jpeg" style="height: 231px; width: 500px;" /></p>
+<pre>
+<strong>输入:</strong> root = [4,2,null,3,1], val = 1, depth = 3
+<strong>输出:</strong>  [4,2,null,1,1,3,null,null,1]
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示:</strong></p>
+<ul>
+	<li>节点数在&nbsp;<code>[1, 10<sup>4</sup>]</code>&nbsp;范围内</li>
+	<li>树的深度在&nbsp;<code>[1, 10<sup>4</sup>]</code>范围内</li>
+	<li><code>-100 &lt;= Node.val &lt;= 100</code></li>
+	<li><code>-10<sup>5</sup>&nbsp;&lt;= val &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= depth &lt;= the depth of tree + 1</code></li>
+</ul>
+<h2 id="方法一1广度优先搜索"><a class="markdownIt-Anchor" href="#方法一1广度优先搜索"></a> 方法一.1：广度优先搜索</h2>
+<p>按照经典的 <a href="https://leetcode.letmefly.xyz/2022/07/04/LeetCode%200107.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86II/">二叉树层次遍历的方法</a> 对二叉树进行层次遍历，当遍历到对应的层的上一层时，为这一层的左右子都新建立一个值为<code>val</code>的新的子节点，并将新左子指向旧左子，新右子指向旧右子。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是二叉树节点的个数</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">addOneRow</span><span class="params">(TreeNode* root, <span class="type">int</span> val, <span class="type">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">1</span>) &#123;</span><br><span class="line">            TreeNode* newRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val);</span><br><span class="line">            newRoot-&gt;left = root;</span><br><span class="line">            <span class="keyword">return</span> newRoot;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> nowLayer = <span class="number">1</span>;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (q.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> thisLayerNodesNum = q.<span class="built_in">size</span>();</span><br><span class="line">            nowLayer++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; thisLayerNodesNum; i++) &#123;</span><br><span class="line">                TreeNode* thisNode = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (nowLayer == depth) &#123;</span><br><span class="line">                    TreeNode* leftNewNode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, thisNode-&gt;left, <span class="literal">nullptr</span>);</span><br><span class="line">                    TreeNode* rightNewNode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, <span class="literal">nullptr</span>, thisNode-&gt;right);</span><br><span class="line">                    thisNode-&gt;left = leftNewNode, thisNode-&gt;right = rightNewNode;</span><br><span class="line">                    <span class="keyword">if</span> (leftNewNode-&gt;left) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(leftNewNode-&gt;left);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (rightNewNode-&gt;right) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(rightNewNode-&gt;right);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (thisNode-&gt;left) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(thisNode-&gt;left);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (thisNode-&gt;right) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(thisNode-&gt;right);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="方法一2广度优先搜索-提前退出"><a class="markdownIt-Anchor" href="#方法一2广度优先搜索-提前退出"></a> 方法一.2：广度优先搜索 + 提前退出</h2>
+<p>在方法一.1的基础上，如果我们已经新建了节点，那么就已经没有必要再遍历下去了，因为层次遍历越往下层数越深，下面的节点不需要做出任何改变。</p>
+<p>因此，方法一.2就是在方法一.1的基础上，插入新节点后，退出遍历。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是二叉树节点的个数</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码-2"><a class="markdownIt-Anchor" href="#ac代码-2"></a> AC代码</h3>
+<h4 id="c-2"><a class="markdownIt-Anchor" href="#c-2"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">addOneRow</span><span class="params">(TreeNode* root, <span class="type">int</span> val, <span class="type">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">1</span>) &#123;</span><br><span class="line">            TreeNode* newRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val);</span><br><span class="line">            newRoot-&gt;left = root;</span><br><span class="line">            <span class="keyword">return</span> newRoot;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> nowLayer = <span class="number">1</span>;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (q.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> thisLayerNodesNum = q.<span class="built_in">size</span>();</span><br><span class="line">            nowLayer++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; thisLayerNodesNum; i++) &#123;</span><br><span class="line">                TreeNode* thisNode = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (nowLayer == depth) &#123;</span><br><span class="line">                    TreeNode* leftNewNode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, thisNode-&gt;left, <span class="literal">nullptr</span>);</span><br><span class="line">                    TreeNode* rightNewNode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, <span class="literal">nullptr</span>, thisNode-&gt;right);</span><br><span class="line">                    thisNode-&gt;left = leftNewNode, thisNode-&gt;right = rightNewNode;</span><br><span class="line"></span><br><span class="line">					<span class="comment">// 相应地，这里也取消了入队操作  // -------------------</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (thisNode-&gt;left) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(thisNode-&gt;left);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (thisNode-&gt;right) &#123;</span><br><span class="line">                        q.<span class="built_in">push</span>(thisNode-&gt;right);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nowLayer == depth) &#123;  <span class="comment">// ------------------------</span></span><br><span class="line">                <span class="keyword">break</span>;  <span class="comment">// 直接break掉即可</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="方法二深度优先搜索"><a class="markdownIt-Anchor" href="#方法二深度优先搜索"></a> 方法二：深度优先搜索</h2>
+<blockquote>
+<p>为什么先讲广度优先搜索再讲深度优先搜索？</p>
+<p>因为深搜代码比广搜要简洁许多。</p>
+</blockquote>
+<p>深搜时，如果<code>depth &gt; 2</code>，就正常地递归即可</p>
+<p>但是当<code>depth = 2</code>时，就说明这一层的下一层需要插入值为<code>val</code>的节点。那么就对这个节点新建两个值为<code>val</code>的新的子节点，(类似一.1)并将新左子指向旧左子，新右子指向旧右子。</p>
+<p>建立新节点后，就不需要再继续递归了。</p>
+<p><strong>特别的</strong>，如果<code>depth = 1</code>（除非题目原始输入就是<code>depth</code>为<code>1</code>，否则不会遇到这种情况），就按题目要求新建值为<code>val</code>的节点，并将原始根节点赋值为新节点的左子节点，并返回新节点。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是二叉树节点的个数</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码-3"><a class="markdownIt-Anchor" href="#ac代码-3"></a> AC代码</h3>
+<h4 id="c-3"><a class="markdownIt-Anchor" href="#c-3"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;  <span class="comment">// 递归的魅力</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">addOneRow</span><span class="params">(TreeNode* root, <span class="type">int</span> val, <span class="type">int</span> depth)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">1</span>) &#123;</span><br><span class="line">            TreeNode* newRoot = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, root, <span class="literal">nullptr</span>);</span><br><span class="line">            <span class="keyword">return</span> newRoot;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (depth == <span class="number">2</span>) &#123;  <span class="comment">// 不必再继续递归</span></span><br><span class="line">            root-&gt;left = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, root-&gt;left, <span class="literal">nullptr</span>);</span><br><span class="line">            root-&gt;right = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(val, <span class="literal">nullptr</span>, root-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">addOneRow</span>(root-&gt;left, val, depth - <span class="number">1</span>);</span><br><span class="line">            <span class="built_in">addOneRow</span>(root-&gt;right, val, depth - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/05/LeetCode%200623.%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E8%A1%8C/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126179967">https://letmefly.blog.csdn.net/article/details/126179967</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/05/LeetCode%200623.%E5%9C%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A2%9E%E5%8A%A0%E4%B8%80%E8%A1%8C/" data-id="cl97zsjy10063edox30s66tuf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" rel="tag">层次遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="tag">广度优先搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="tag">深度优先搜索</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0168.Excel表列名称" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/" class="article-date">
+  <time datetime="2022-08-04T03:23:59.000Z" itemprop="datePublished">2022-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/">168.Excel表列名称</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly168excel表列名称"><a class="markdownIt-Anchor" href="#letmefly168excel表列名称"></a> 【LetMeFly】168.Excel表列名称</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/excel-sheet-column-title/">https://leetcode.cn/problems/excel-sheet-column-title/</a></p>
+<p>给你一个整数 <code>columnNumber</code> ，返回它在 Excel 表中相对应的列名称。</p>
+<p>例如：</p>
+<pre>
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+</pre>
+<p> </p>
+<p><strong>示例 1：</strong></p>
+<pre>
+<strong>输入：</strong>columnNumber = 1
+<strong>输出：</strong>"A"
+</pre>
+<p><strong>示例 2：</strong></p>
+<pre>
+<strong>输入：</strong>columnNumber = 28
+<strong>输出：</strong>"AB"
+</pre>
+<p><strong>示例 3：</strong></p>
+<pre>
+<strong>输入：</strong>columnNumber = 701
+<strong>输出：</strong>"ZY"
+</pre>
+<p><strong>示例 4：</strong></p>
+<pre>
+<strong>输入：</strong>columnNumber = 2147483647
+<strong>输出：</strong>"FXSHRXW"
+</pre>
+<p> </p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>1 <= columnNumber <= 2<sup>31</sup> - 1</code></li>
+</ul>
+<h2 id="方法一模拟"><a class="markdownIt-Anchor" href="#方法一模拟"></a> 方法一：模拟</h2>
+<p>详细的介绍可以参考我之前的一篇博客：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/124512136">https://letmefly.blog.csdn.net/article/details/124512136</a></p>
+<p>有点类似十进制转二十六进制，但是Excel中列数是从1开始的而不是从0开始的。</p>
+<p>也就是说0没有对应的字符。</p>
+<p>如果是简单的进制转换，0应该对应字符A，但是这种情况下1对应字符A，因此在转换字符的每一位之前，把数字减去1即可。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msub><mi>log</mi><mrow><mn>2</mn><mn>6</mn></mrow></msub><mi>c</mi><mi>o</mi><mi>l</mi><mi>u</mi><mi>m</mi><mi>n</mi><mi>N</mi><mi>u</mi><mi>m</mi><mi>b</mi><mi>e</mi><mi>r</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\log_{26} columnNumber)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="vlist"><span style="top:0.24444em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span><span class="mord mathrm">6</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">c</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mord mathit">b</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mclose">)</span></span></span></span></li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">convertToTitle</span><span class="params">(<span class="type">int</span> columnNumber)</span> </span>&#123;</span><br><span class="line">        string ans;</span><br><span class="line">        <span class="keyword">while</span> (--columnNumber &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            ans = (<span class="type">char</span>)(columnNumber % <span class="number">26</span> + <span class="string">&#x27;A&#x27;</span>) + ans;</span><br><span class="line">            columnNumber /= <span class="number">26</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126156416">https://letmefly.blog.csdn.net/article/details/126156416</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/" data-id="cl97zsjwh002sedoxh9zh3z3s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6/" rel="tag">进制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 0167.两数之和II-输入有序数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2022-08-04T03:04:24.000Z" itemprop="datePublished">2022-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">167.两数之和 II - 输入有序数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly167两数之和-ii-输入有序数组"><a class="markdownIt-Anchor" href="#letmefly167两数之和-ii-输入有序数组"></a> 【LetMeFly】167.两数之和 II - 输入有序数组</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/">https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/</a></p>
+<p>给你一个下标从 <strong>1</strong> 开始的整数数组&nbsp;<code>numbers</code> ，该数组已按<strong><em> </em>非递减顺序排列&nbsp; </strong>，请你从数组中找出满足相加之和等于目标数&nbsp;<code>target</code> 的两个数。如果设这两个数分别是 <code>numbers[index<sub>1</sub>]</code> 和 <code>numbers[index<sub>2</sub>]</code> ，则 <code>1 &lt;= index<sub>1</sub> &lt; index<sub>2</sub> &lt;= numbers.length</code> 。</p>
+<p>以长度为 2 的整数数组 <code>[index<sub>1</sub>, index<sub>2</sub>]</code> 的形式返回这两个整数的下标 <code>index<sub>1</sub></code><em> </em>和<em> </em><code>index<sub>2</sub></code>。</p>
+<p>你可以假设每个输入 <strong>只对应唯一的答案</strong> ，而且你 <strong>不可以</strong> 重复使用相同的元素。</p>
+<p>你所设计的解决方案必须只使用常量级的额外空间。</p>
+&nbsp;
+<p><strong>示例 1：</strong></p>
+<pre>
+<strong>输入：</strong>numbers = [<strong><em>2</em></strong>,<strong><em>7</em></strong>,11,15], target = 9
+<strong>输出：</strong>[1,2]
+<strong>解释：</strong>2 与 7 之和等于目标数 9 。因此 index<sub>1</sub> = 1, index<sub>2</sub> = 2 。返回 [1, 2] 。</pre>
+<p><strong>示例 2：</strong></p>
+<pre>
+<strong>输入：</strong>numbers = [<strong><em>2</em></strong>,3,<strong><em>4</em></strong>], target = 6
+<strong>输出：</strong>[1,3]
+<strong>解释：</strong>2 与 4 之和等于目标数 6 。因此 index<sub>1</sub> = 1, index<sub>2</sub> = 3 。返回 [1, 3] 。</pre>
+<p><strong>示例 3：</strong></p>
+<pre>
+<strong>输入：</strong>numbers = [<strong><em>-1</em></strong>,<strong><em>0</em></strong>], target = -1
+<strong>输出：</strong>[1,2]
+<strong>解释：</strong>-1 与 0 之和等于目标数 -1 。因此 index<sub>1</sub> = 1, index<sub>2</sub> = 2 。返回 [1, 2] 。
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>2 &lt;= numbers.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-1000 &lt;= numbers[i] &lt;= 1000</code></li>
+	<li><code>numbers</code> 按 <strong>非递减顺序</strong> 排列</li>
+	<li><code>-1000 &lt;= target &lt;= 1000</code></li>
+	<li><strong>仅存在一个有效答案</strong></li>
+</ul>
+<h2 id="方法00暴力"><a class="markdownIt-Anchor" href="#方法00暴力"></a> 方法0.0：暴力</h2>
+<p>直接两重循环遍历数组，看能否找到两个数之和正好等于target。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p>数组长度最大为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">3\times 10^4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>运算量要接近<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">9</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>，不知道能不能通过，因此命名为<code>方法0</code></p>
+<h2 id="方法01哈希"><a class="markdownIt-Anchor" href="#方法01哈希"></a> 方法0.1：哈希</h2>
+<p>预处理用哈希表记录出现过哪些元素（以及出现次数(防止<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>+</mo><mi>a</mi><mo>=</mo><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">a+a=2a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathit">a</span></span></span></span>重复计算)）</p>
+<p>遍历一遍数组，看是否存在target-当前元素</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p>虽然能通过，但是不满足题目要求“使用常数的额外空间”</p>
+<h2 id="方法一二分"><a class="markdownIt-Anchor" href="#方法一二分"></a> 方法一：二分</h2>
+<p>数组是非递减的。因此我们可以遍历一遍原数组，在寻找target - 当前元素时，使用二分查找，看是否存在即可。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; numbers, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = numbers.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> finding = target - numbers[i];</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt;::iterator it = <span class="built_in">lower_bound</span>(numbers.<span class="built_in">begin</span>() + i + <span class="number">1</span>, numbers.<span class="built_in">end</span>(), finding);</span><br><span class="line">            <span class="keyword">if</span> (it == numbers.<span class="built_in">end</span>() || *it != finding)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">return</span> &#123;i + <span class="number">1</span>, (<span class="type">int</span>)(it - numbers.<span class="built_in">begin</span>() + <span class="number">1</span>)&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;  <span class="comment">// Fake Return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="方法二双指针"><a class="markdownIt-Anchor" href="#方法二双指针"></a> 方法二：双指针</h2>
+<p>数组是非递减的。因此我们可以使用两个“指针”，初始位置分别为第一个元素和最后一个元素。</p>
+<p>当两指针不重合时：</p>
+<ul>
+<li>如果两元素之和正好等于target，那么我们就找到了答案，直接返回。</li>
+<li>如果两元素之和小于target，那么左指针右移（越往右数越大）</li>
+<li>如果两元素之和大于target，那么右指针左移（越往左数越小）</li>
+</ul>
+<p>这样，每个元素最多被遍历一遍。</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是数组长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码-2"><a class="markdownIt-Anchor" href="#ac代码-2"></a> AC代码</h3>
+<h4 id="c-2"><a class="markdownIt-Anchor" href="#c-2"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; numbers, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = numbers.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="type">int</span> s = numbers[l] + numbers[r];</span><br><span class="line">            <span class="keyword">if</span> (s == target)</span><br><span class="line">                <span class="keyword">return</span> &#123;l + <span class="number">1</span>, r + <span class="number">1</span>&#125;;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s &lt; target)</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                r--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;  <span class="comment">// Fake Return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126155983">https://letmefly.blog.csdn.net/article/details/126155983</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" data-id="cl97zsjwg002qedox300bh4kv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LeetCode 1403.非递增顺序的最小子序列" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/04/LeetCode%201403.%E9%9D%9E%E9%80%92%E5%A2%9E%E9%A1%BA%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E5%BA%8F%E5%88%97/" class="article-date">
+  <time datetime="2022-08-04T02:47:16.000Z" itemprop="datePublished">2022-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/04/LeetCode%201403.%E9%9D%9E%E9%80%92%E5%A2%9E%E9%A1%BA%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E5%BA%8F%E5%88%97/">1403.非递增顺序的最小子序列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="letmefly1403非递增顺序的最小子序列"><a class="markdownIt-Anchor" href="#letmefly1403非递增顺序的最小子序列"></a> 【LetMeFly】1403.非递增顺序的最小子序列</h1>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-subsequence-in-non-increasing-order/">https://leetcode.cn/problems/minimum-subsequence-in-non-increasing-order/</a></p>
+<p>给你一个数组 <code>nums</code>，请你从中抽取一个子序列，满足该子序列的元素之和 <strong>严格</strong> 大于未包含在该子序列中的各元素之和。</p>
+<p>如果存在多个解决方案，只需返回 <strong>长度最小</strong> 的子序列。如果仍然有多个解决方案，则返回 <strong>元素之和最大</strong> 的子序列。</p>
+<p>与子数组不同的地方在于，「数组的子序列」不强调元素在原数组中的连续性，也就是说，它可以通过从数组中分离一些（也可能不分离）元素得到。</p>
+<p><strong>注意</strong>，题目数据保证满足所有约束条件的解决方案是 <strong>唯一</strong> 的。同时，返回的答案应当按 <strong>非递增顺序</strong> 排列。</p>
+<p>&nbsp;</p>
+<p><strong>示例 1：</strong></p>
+<pre><strong>输入：</strong>nums = [4,3,10,9,8]
+<strong>输出：</strong>[10,9] 
+<strong>解释：</strong>子序列 [10,9] 和 [10,8] 是最小的、满足元素之和大于其他各元素之和的子序列。但是 [10,9] 的元素之和最大。&nbsp;
+</pre>
+<p><strong>示例 2：</strong></p>
+<pre><strong>输入：</strong>nums = [4,4,7,6,7]
+<strong>输出：</strong>[7,7,6] 
+<strong>解释：</strong>子序列 [7,7] 的和为 14 ，不严格大于剩下的其他元素之和（14 = 4 + 4 + 6）。因此，[7,6,7] 是满足题意的最小子序列。注意，元素按非递增顺序返回。  
+</pre>
+<p><strong>示例 3：</strong></p>
+<pre><strong>输入：</strong>nums = [6]
+<strong>输出：</strong>[6]
+</pre>
+<p>&nbsp;</p>
+<p><strong>提示：</strong></p>
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 500</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
+</ul>
+<h2 id="方法一排序取大"><a class="markdownIt-Anchor" href="#方法一排序取大"></a> 方法一：排序取大</h2>
+<p>既然让子序列长度尽可能短，那么就要子序列中每个数取值尽可能大。</p>
+<p>因此对原数组排序，大的在前。</p>
+<p>预处理时，原数组求和并记录。</p>
+<p>从前到后取出原数组中的元素，累加到子序列的和中。</p>
+<p>如果子序列的和 ＞ 了剩余元素的和，就退出循环</p>
+<p>返回子序列即可。</p>
+<p>这样，满足题目要求的所有条件：严格大于、长度最小、元素和最大、非递增 等</p>
+<ul>
+<li>时间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>是原数组的长度</li>
+<li>空间复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h3>
+<h4 id="c"><a class="markdownIt-Anchor" href="#c"></a> C++</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">minSubsequence</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            s += nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="type">int</span> nowSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            nowSum += nums[i];</span><br><span class="line">            <span class="keyword">if</span> (nowSum &gt; s - nowSum)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%201403.%E9%9D%9E%E9%80%92%E5%A2%9E%E9%A1%BA%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E5%BA%8F%E5%88%97/">原文链接</a>哦~<br />
+Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126155397">https://letmefly.blog.csdn.net/article/details/126155397</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://leetcode.letmefly.xyz/2022/08/04/LeetCode%201403.%E9%9D%9E%E9%80%92%E5%A2%9E%E9%A1%BA%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E5%BA%8F%E5%88%97/" data-id="cl97zskbf018qedoxe2lmcq55" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%90%E9%97%AE%E9%A2%98/" rel="tag">子问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80x%E5%AD%90xx/" rel="tag">最x子xx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/12/">下一页 &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AtCoder/" rel="tag">AtCoder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BST/" rel="tag">BST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LOL/" rel="tag">LOL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/N%E7%9A%87%E5%90%8E/" rel="tag">N皇后</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/README/" rel="tag">README</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rand/" rel="tag">Rand</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XOR/" rel="tag">XOR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmp/" rel="tag">cmp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/" rel="tag">dp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/find/" rel="tag">find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/" rel="tag">set</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/" rel="tag">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E5%9C%88/" rel="tag">一圈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">中序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0/" rel="tag">中序遍历的非递归实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AD%E7%AD%89/" rel="tag">中等</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%BA%E4%BA%86%E8%BF%87%E9%A2%98%E8%80%8C%E8%BF%87%E9%A2%98/" rel="tag">为了过题而过题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">二维前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" rel="tag">二进制枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A4%E4%BA%92/" rel="tag">交互</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BC%9A%E5%91%98/" rel="tag">会员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E7%A7%BB%E5%8F%98%E6%8D%A2/" rel="tag">位移变换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%8D%E7%99%BB%E5%BD%95/" rel="tag">免登录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B1%E7%BA%BF/" rel="tag">共线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%95%B0/" rel="tag">分数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E6%B2%BB/" rel="tag">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E9%85%8D/" rel="tag">分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%92%E5%88%86/" rel="tag">划分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%97%E8%A1%A8/" rel="tag">列表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">前序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%9B%E6%89%A3%E4%BC%9A%E5%91%98/" rel="tag">力扣会员</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0/" rel="tag">原地</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9C%B0%E6%BB%9A%E5%8A%A8/" rel="tag">原地滚动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" rel="tag">双端队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%96%E6%A8%A1/" rel="tag">取模</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%84%E4%BD%8D%E5%92%8C/" rel="tag">各位和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8C%E4%BD%99/" rel="tag">同余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">后序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87/" rel="tag">回文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%B0%E9%9A%BE/" rel="tag">困难</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E9%81%8D%E5%8E%86/" rel="tag">图遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9D%90%E6%A0%87/" rel="tag">坐标</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%9F%E5%90%8D/" rel="tag">域名</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/" rel="tag">堆（优先队列）</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E9%87%8DBFS/" rel="tag">多重BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%A8%A1%E6%8B%9F/" rel="tag">大模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A5%87%E5%81%B6/" rel="tag">奇偶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E5%BA%8F%E5%88%97/" rel="tag">子序列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%90%E9%97%AE%E9%A2%98/" rel="tag">子问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" rel="tag">字典树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="tag">字符串匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8D%E8%BD%AC/" rel="tag">字符串反转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E6%8D%A2/" rel="tag">字符串变换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90/" rel="tag">字符串解析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%98%E4%B8%8B%E6%A0%87/" rel="tag">存下标</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">完全二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA/" rel="tag">完全二叉树的数组表示</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%9A%E9%95%BF%E9%98%9F%E5%88%97/" rel="tag">定长队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" rel="tag">层次遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A7/" rel="tag">巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="tag">广度优先搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%82%E6%88%96/" rel="tag">异或</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" rel="tag">快慢指针</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" rel="tag">快速选择</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%92%E7%BB%9D%E9%87%87%E6%A0%B7/" rel="tag">拒绝采样</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="tag">拓扑排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/" rel="tag">括号匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%88%97/" rel="tag">数列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" rel="tag">数据流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%94%B5/" rel="tag">数电</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84%E5%8F%98%E6%8D%A2/" rel="tag">数组变换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%9C%E7%8E%87/" rel="tag">斜率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B9%E6%A1%88%E6%95%B0/" rel="tag">方案数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%8B%E8%BD%AC/" rel="tag">旋转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%B6%E9%97%B4/" rel="tag">时间</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9A%B4%E5%8A%9B/" rel="tag">暴力</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80x%E5%AD%90xx/" rel="tag">最x子xx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%A4%A7%E7%8E%AF/" rel="tag">最大环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%80%BC/" rel="tag">最小值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E5%85%A8%E9%83%A8/" rel="tag">最小全部</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/" rel="tag">有序集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" rel="tag">杨辉三角</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E4%B8%8Adp/" rel="tag">树上dp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" rel="tag">树的深度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/" rel="tag">桶排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" rel="tag">概率论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E6%96%B9%E5%BD%A2%E5%88%A4%E6%96%AD/" rel="tag">正方形判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E5%A4%A7%E5%B0%8F/" rel="tag">比大小</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" rel="tag">深度优先搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" rel="tag">生成函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E4%B8%8E%E6%9E%81%E5%9D%90%E6%A0%87%E7%9A%84%E8%BD%AC%E6%8D%A2/" rel="tag">直角坐标与极坐标的转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5/" rel="tag">矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E5%A1%AB%E5%85%85/" rel="tag">矩阵填充</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" rel="tag">矩阵遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%81%E8%B9%84%E9%9B%86/" rel="tag">码蹄集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB/" rel="tag">类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/" rel="tag">组合数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" rel="tag">螺旋矩阵</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A1%A5%E7%A0%81/" rel="tag">补码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E6%95%B0/" rel="tag">计数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97/" rel="tag">计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96/" rel="tag">记忆化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" rel="tag">记忆化搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B6%A3/" rel="tag">趣</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%B3%E8%B7%83%E5%88%B0%E7%BB%88%E7%82%B9/" rel="tag">跳跃到终点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BE%85%E5%8A%A9%E6%A0%88/" rel="tag">辅助栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6/" rel="tag">进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9E%E9%80%9A%E5%9B%BE/" rel="tag">连通图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%9E%E9%80%9A%E5%9D%97/" rel="tag">连通块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="tag">迭代器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">逆波兰表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%81%8D%E5%8E%86/" rel="tag">遍历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%82%AE%E7%AE%B1/" rel="tag">邮箱</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%9C%BA/" rel="tag">随机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%9C%BA%E5%8C%96/" rel="tag">随机化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/" rel="tag">静态数组模拟队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AtCoder/" style="font-size: 11.38px;">AtCoder</a> <a href="/tags/BFS/" style="font-size: 14.14px;">BFS</a> <a href="/tags/BST/" style="font-size: 10.34px;">BST</a> <a href="/tags/DFS/" style="font-size: 12.07px;">DFS</a> <a href="/tags/LOL/" style="font-size: 10px;">LOL</a> <a href="/tags/LeetCode/" style="font-size: 19.66px;">LeetCode</a> <a href="/tags/N%E7%9A%87%E5%90%8E/" style="font-size: 10.34px;">N皇后</a> <a href="/tags/README/" style="font-size: 10px;">README</a> <a href="/tags/Rand/" style="font-size: 10.69px;">Rand</a> <a href="/tags/STL/" style="font-size: 10px;">STL</a> <a href="/tags/XOR/" style="font-size: 10px;">XOR</a> <a href="/tags/cmp/" style="font-size: 10px;">cmp</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 13.79px;">dp</a> <a href="/tags/find/" style="font-size: 10px;">find</a> <a href="/tags/set/" style="font-size: 11.03px;">set</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/%E4%B8%80%E5%9C%88/" style="font-size: 10px;">一圈</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">中序遍历</a> <a href="/tags/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">中序遍历的非递归实现</a> <a href="/tags/%E4%B8%AD%E7%AD%89/" style="font-size: 19.31px;">中等</a> <a href="/tags/%E4%B8%BA%E4%BA%86%E8%BF%87%E9%A2%98%E8%80%8C%E8%BF%87%E9%A2%98/" style="font-size: 10px;">为了过题而过题</a> <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10.34px;">二分</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 11.72px;">二分查找</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" style="font-size: 10.69px;">二叉搜索树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 16.55px;">二叉树</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">二维前缀和</a> <a href="/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%9E%9A%E4%B8%BE/" style="font-size: 10px;">二进制枚举</a> <a href="/tags/%E4%BA%A4%E4%BA%92/" style="font-size: 10.34px;">交互</a> <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" style="font-size: 10.34px;">优先队列</a> <a href="/tags/%E4%BC%9A%E5%91%98/" style="font-size: 10px;">会员</a> <a href="/tags/%E4%BD%8D%E7%A7%BB%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">位移变换</a> <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" style="font-size: 12.41px;">位运算</a> <a href="/tags/%E5%85%8D%E7%99%BB%E5%BD%95/" style="font-size: 10px;">免登录</a> <a href="/tags/%E5%85%B1%E7%BA%BF/" style="font-size: 10.34px;">共线</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10.34px;">其他</a> <a href="/tags/%E5%87%A0%E4%BD%95/" style="font-size: 11.03px;">几何</a> <a href="/tags/%E5%88%86%E6%95%B0/" style="font-size: 10px;">分数</a> <a href="/tags/%E5%88%86%E6%B2%BB/" style="font-size: 11.72px;">分治</a> <a href="/tags/%E5%88%86%E9%85%8D/" style="font-size: 10px;">分配</a> <a href="/tags/%E5%88%92%E5%88%86/" style="font-size: 10px;">划分</a> <a href="/tags/%E5%88%97%E8%A1%A8/" style="font-size: 10px;">列表</a> <a href="/tags/%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10.34px;">前序遍历</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 11.03px;">前缀和</a> <a href="/tags/%E5%8A%9B%E6%89%A3%E4%BC%9A%E5%91%98/" style="font-size: 10px;">力扣会员</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 17.59px;">动态规划</a> <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" style="font-size: 10.69px;">单调栈</a> <a href="/tags/%E5%8E%9F%E5%9C%B0/" style="font-size: 10px;">原地</a> <a href="/tags/%E5%8E%9F%E5%9C%B0%E6%BB%9A%E5%8A%A8/" style="font-size: 10.34px;">原地滚动</a> <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 15.52px;">双指针</a> <a href="/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">双端队列</a> <a href="/tags/%E5%8F%96%E6%A8%A1/" style="font-size: 10px;">取模</a> <a href="/tags/%E5%90%84%E4%BD%8D%E5%92%8C/" style="font-size: 10.34px;">各位和</a> <a href="/tags/%E5%90%8C%E4%BD%99/" style="font-size: 10px;">同余</a> <a href="/tags/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 10px;">后序遍历</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 14.48px;">哈希</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 17.24px;">哈希表</a> <a href="/tags/%E5%9B%9E%E6%96%87/" style="font-size: 10.69px;">回文</a> <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" style="font-size: 10px;">回文串</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 12.07px;">回溯</a> <a href="/tags/%E5%9B%B0%E9%9A%BE/" style="font-size: 15.86px;">困难</a> <a href="/tags/%E5%9B%BE/" style="font-size: 13.1px;">图</a> <a href="/tags/%E5%9B%BE%E9%81%8D%E5%8E%86/" style="font-size: 10px;">图遍历</a> <a href="/tags/%E5%9D%90%E6%A0%87/" style="font-size: 11.03px;">坐标</a> <a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 10px;">域名</a> <a href="/tags/%E5%A0%86%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/" style="font-size: 11.72px;">堆（优先队列）</a> <a href="/tags/%E5%A4%9A%E9%87%8DBFS/" style="font-size: 10px;">多重BFS</a> <a href="/tags/%E5%A4%A7%E6%A8%A1%E6%8B%9F/" style="font-size: 10px;">大模拟</a> <a href="/tags/%E5%A5%87%E5%81%B6/" style="font-size: 10px;">奇偶</a> <a href="/tags/%E5%AD%90%E5%BA%8F%E5%88%97/" style="font-size: 10px;">子序列</a> <a href="/tags/%E5%AD%90%E9%97%AE%E9%A2%98/" style="font-size: 12.41px;">子问题</a> <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" style="font-size: 10.69px;">字典树</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 18.28px;">字符串</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" style="font-size: 10.69px;">字符串匹配</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%8D%E8%BD%AC/" style="font-size: 10px;">字符串反转</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E6%8D%A2/" style="font-size: 10.34px;">字符串变换</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90/" style="font-size: 10px;">字符串解析</a> <a href="/tags/%E5%AD%98%E4%B8%8B%E6%A0%87/" style="font-size: 10px;">存下标</a> <a href="/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10.34px;">完全二叉树</a> <a href="/tags/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA/" style="font-size: 10px;">完全二叉树的数组表示</a> <a href="/tags/%E5%AE%9A%E9%95%BF%E9%98%9F%E5%88%97/" style="font-size: 10px;">定长队列</a> <a href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" style="font-size: 11.03px;">层序遍历</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/" style="font-size: 12.07px;">层次遍历</a> <a href="/tags/%E5%B7%A7/" style="font-size: 10px;">巧</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 11.38px;">并查集</a> <a href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 16.21px;">广度优先搜索</a> <a href="/tags/%E5%BC%82%E6%88%96/" style="font-size: 10px;">异或</a> <a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 10px;">快慢指针</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 10px;">快速幂</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" style="font-size: 10px;">快速选择</a> <a href="/tags/%E6%80%9D%E7%BB%B4/" style="font-size: 12.07px;">思维</a> <a href="/tags/%E6%8B%92%E7%BB%9D%E9%87%87%E6%A0%B7/" style="font-size: 10px;">拒绝采样</a> <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" style="font-size: 11.03px;">拓扑排序</a> <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">括号匹配</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14.83px;">排序</a> <a href="/tags/%E6%95%B0%E5%88%97/" style="font-size: 10px;">数列</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 17.59px;">数学</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" style="font-size: 10.34px;">数据流</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E7%94%B5/" style="font-size: 10px;">数电</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 18.62px;">数组</a> <a href="/tags/%E6%95%B0%E7%BB%84%E5%8F%98%E6%8D%A2/" style="font-size: 10px;">数组变换</a> <a href="/tags/%E6%96%9C%E7%8E%87/" style="font-size: 10px;">斜率</a> <a href="/tags/%E6%96%B9%E6%A1%88%E6%95%B0/" style="font-size: 10px;">方案数</a> <a href="/tags/%E6%97%8B%E8%BD%AC/" style="font-size: 10px;">旋转</a> <a href="/tags/%E6%97%B6%E9%97%B4/" style="font-size: 10px;">时间</a> <a href="/tags/%E6%9A%B4%E5%8A%9B/" style="font-size: 11.38px;">暴力</a> <a href="/tags/%E6%9C%80x%E5%AD%90xx/" style="font-size: 11.03px;">最x子xx</a> <a href="/tags/%E6%9C%80%E5%A4%A7%E7%8E%AF/" style="font-size: 10px;">最大环</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%80%BC/" style="font-size: 10px;">最小值</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E5%85%A8%E9%83%A8/" style="font-size: 10px;">最小全部</a> <a href="/tags/%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/" style="font-size: 10px;">有序集合</a> <a href="/tags/%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/" style="font-size: 10.34px;">杨辉三角</a> <a href="/tags/%E6%9E%84%E9%80%A0/" style="font-size: 12.07px;">构造</a> <a href="/tags/%E6%A0%88/" style="font-size: 15.17px;">栈</a> <a href="/tags/%E6%A0%91/" style="font-size: 16.55px;">树</a> <a href="/tags/%E6%A0%91%E4%B8%8Adp/" style="font-size: 10px;">树上dp</a> <a href="/tags/%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/" style="font-size: 10px;">树的深度</a> <a href="/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">桶排序</a> <a href="/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/" style="font-size: 10px;">概率论</a> <a href="/tags/%E6%A8%A1%E6%8B%9F/" style="font-size: 17.93px;">模拟</a> <a href="/tags/%E6%AD%A3%E6%96%B9%E5%BD%A2%E5%88%A4%E6%96%AD/" style="font-size: 10px;">正方形判断</a> <a href="/tags/%E6%AF%94%E5%A4%A7%E5%B0%8F/" style="font-size: 10px;">比大小</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" style="font-size: 16.9px;">深度优先搜索</a> <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" style="font-size: 10.69px;">滑动窗口</a> <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" style="font-size: 10.69px;">状态压缩</a> <a href="/tags/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/" style="font-size: 10px;">生成函数</a> <a href="/tags/%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E4%B8%8E%E6%9E%81%E5%9D%90%E6%A0%87%E7%9A%84%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">直角坐标与极坐标的转换</a> <a href="/tags/%E7%9F%A9%E9%98%B5/" style="font-size: 12.76px;">矩阵</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E5%A1%AB%E5%85%85/" style="font-size: 10px;">矩阵填充</a> <a href="/tags/%E7%9F%A9%E9%98%B5%E9%81%8D%E5%8E%86/" style="font-size: 10px;">矩阵遍历</a> <a href="/tags/%E7%A0%81%E8%B9%84%E9%9B%86/" style="font-size: 15.52px;">码蹄集</a> <a href="/tags/%E7%AE%80%E5%8D%95/" style="font-size: 18.97px;">简单</a> <a href="/tags/%E7%B1%BB/" style="font-size: 10.34px;">类</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/" style="font-size: 10px;">组合数</a> <a href="/tags/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" style="font-size: 10px;">螺旋矩阵</a> <a href="/tags/%E8%A1%A5%E7%A0%81/" style="font-size: 10px;">补码</a> <a href="/tags/%E8%AE%A1%E6%95%B0/" style="font-size: 11.38px;">计数</a> <a href="/tags/%E8%AE%A1%E7%AE%97/" style="font-size: 10px;">计算</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96/" style="font-size: 10px;">记忆化</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 11.03px;">记忆化搜索</a> <a href="/tags/%E8%AE%BE%E8%AE%A1/" style="font-size: 12.76px;">设计</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 13.79px;">贪心</a> <a href="/tags/%E8%B6%A3/" style="font-size: 10px;">趣</a> <a href="/tags/%E8%B7%B3%E8%B7%83%E5%88%B0%E7%BB%88%E7%82%B9/" style="font-size: 10px;">跳跃到终点</a> <a href="/tags/%E8%BE%85%E5%8A%A9%E6%A0%88/" style="font-size: 10px;">辅助栈</a> <a href="/tags/%E8%BF%9B%E5%88%B6/" style="font-size: 10px;">进制</a> <a href="/tags/%E8%BF%9E%E9%80%9A%E5%9B%BE/" style="font-size: 10px;">连通图</a> <a href="/tags/%E8%BF%9E%E9%80%9A%E5%9D%97/" style="font-size: 10.69px;">连通块</a> <a href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/" style="font-size: 10px;">迭代器</a> <a href="/tags/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">逆波兰表达式</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 13.45px;">递归</a> <a href="/tags/%E9%81%8D%E5%8E%86/" style="font-size: 11.03px;">遍历</a> <a href="/tags/%E9%82%AE%E7%AE%B1/" style="font-size: 10px;">邮箱</a> <a href="/tags/%E9%87%8D%E8%BD%BD/" style="font-size: 10.34px;">重载</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14.48px;">链表</a> <a href="/tags/%E9%98%9F%E5%88%97/" style="font-size: 10.69px;">队列</a> <a href="/tags/%E9%9A%8F%E6%9C%BA/" style="font-size: 10.69px;">随机</a> <a href="/tags/%E9%9A%8F%E6%9C%BA%E5%8C%96/" style="font-size: 10px;">随机化</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97/" style="font-size: 10px;">静态数组模拟队列</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 20px;">题解</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/9999/12/">十二月 9999</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/9999/12/31/README/">README</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/14/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/14/LeetCode%200401.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%89%8B%E8%A1%A8/">401.二进制手表</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/14/LeetCode%200445.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0II/">445.两数相加 II</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/13/LeetCode%200395.%E8%87%B3%E5%B0%91%E6%9C%89K%E4%B8%AA%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">395.至少有 K 个重复字符的最长子串</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 LetMeFly<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
