@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-10-18 09:18:38
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-10-18 10:26:23
+ * @LastEditTime: 2022-10-18 10:50:01
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -63,25 +63,25 @@ public:
 // SecondTry
 class Solution {
 private:
-    int ans;
+    bool isIn(char c, vector<string>& digits) {
+        for (string& s : digits) {
+            if (c == s[0])
+                return true;
+        }
+        return false;
+    }
 
-    void dfs(vector<char>& chars, string nowString, int n) {
-        // dbg(nowString);
-        if (nowString.size() == to_string(n).size()) {
-            if (atoll(nowString.c_str()) <= n)
+    int cntLessThan(char c, vector<string>& digits) {
+        int ans = 0;
+        for (string& s : digits) {
+            if (s[0] < c)
                 ans++;
         }
-        else {
-            for (char c : chars) {
-                nowString += c;
-                dfs(chars, nowString, n);
-                nowString.pop_back();
-            }
-        }
+        return ans;
     }
 public:
     int atMostNGivenDigitSet(vector<string>& digits, int n) {
-        ans = 0;
+        int ans = 0;
         int len = to_string(n).size();
         for (int i = 1; i < len; i++) {
             int cnt = digits.size();
@@ -90,11 +90,20 @@ public:
             }
             ans += cnt;
         }
-        vector<char> chars;
-        for (string& d : digits) {
-            chars.push_back(d[0]);
+        string strify = to_string(n);
+        // int cntEqual = 1;
+        // for (int i = 0; i < len; i++) {
+        //     if (cntEqual && !isIn(strify[i], digits)) {
+        //         cntEqual = 0;
+        //     }
+        //     ans += (cntLessThan(strify[i], digits) + cntEqual) * pow(digits.size(), len - i - 1);
+        // }
+        int lessThan = cntLessThan(strify[0], digits), equal = isIn(strify[0], digits);
+        for (int i = 1; i < len; i++) {
+            lessThan = lessThan * digits.size() + equal * cntLessThan(strify[i], digits);;
+            equal = equal * isIn(strify[i], digits);
         }
-        dfs(chars, "", n);
+        ans += lessThan + equal;
         return ans;
     }
 };
