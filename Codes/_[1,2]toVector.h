@@ -156,7 +156,7 @@ vector<string> stringToVectorString(string s)  // [1,2,5]
     if (s == "[]")
         return {};
     vector<string>v;
-    s=s.substr(1, s.size()).substr(0, s.size()-1);
+    s=s.substr(1, s.size() - 1).substr(0, s.size() - 2);
     vector<string>vs=split(s, ',');
     for(int i=0;i<vs.size();i++)
     {
