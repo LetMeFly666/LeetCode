@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-10-18 09:18:38
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-10-18 10:59:16
+ * @LastEditTime: 2022-10-18 12:09:24
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -79,23 +79,13 @@ private:
         }
         return ans;
     }
-
-    int cntShort(vector<string>& digits, int len) {
-        int ans = 0;
-        for (int i = 1; i < len; i++) {
-            int cnt = digits.size();
-            for (int j = 1; j < i; j++) {
-                cnt *= digits.size();
-            }
-            ans += cnt;
-        }
-        return ans;
-    }
 public:
     int atMostNGivenDigitSet(vector<string>& digits, int n) {
         int ans = 0;
         int len = to_string(n).size();
-        ans += cntShort(digits, len);
+        for (int i = 1; i < len; i++) {
+            ans += pow(digits.size(), i);
+        }
         string strify = to_string(n);
         // int cntEqual = 1;
         // for (int i = 0; i < len; i++) {
@@ -126,6 +116,12 @@ public:
 /*
 ["1"]
 834
+
+*/
+
+/*
+["2","6","7"]
+631
 
 */
 int main() {
