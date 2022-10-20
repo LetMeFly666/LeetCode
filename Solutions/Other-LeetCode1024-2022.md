@@ -133,5 +133,9 @@ print(ok)
 
 俺写这篇文章的目的有两个，一个是分享，一个是想涨点粉😻
 
+**我制作了一个简单的小网站，可以进行在线计算**：[Count1024.LetMeFly.xyz](https://count1024.letmefly.xyz/)
+
+![网站截图](https://img-blog.csdnimg.cn/f08a1d97405d493d86c46a486621a0e3.png)
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127413787](https://letmefly.blog.csdn.net/article/details/127413787)
