@@ -95,5 +95,9 @@ public:
 };
 ```
 
+运气比较好
+
+![Lucky](https://img-blog.csdnimg.cn/555c0ee492f9437187111ae144cea411.jpeg#pic_center)
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/23/LeetCode%201768.%E4%BA%A4%E6%9B%BF%E5%90%88%E5%B9%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127470753](https://letmefly.blog.csdn.net/article/details/127470753)
