@@ -112,7 +112,7 @@ while (q.size()) {
 }
 ```
 
-+ 时间复杂度$O(n\times m)$，其中地图大小位$n\times m$
++ 时间复杂度$O(n\times m)$，其中地图大小为$n\times m$
 + 空间复杂度$O(n\times m)$
 
 ### AC代码
