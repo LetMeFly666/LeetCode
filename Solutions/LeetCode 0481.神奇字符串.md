@@ -132,6 +132,50 @@ public:
 };
 ```
 
+对于这种初始化方法，[@Lin](https://leetcode.cn/u/lin-uu1/) 提供了一种方法：
+
+```cpp
+char str[100010] = "122";
+int init = []() {
+    int locFront = 2, locEnd = 3;
+    char nowChar = '1';
+    while (locEnd < 100000) {
+        for (int i = str[locFront] - '0'; i > 0; i--) {
+            str[locEnd++] = nowChar;
+        }
+        locFront++;
+        nowChar = nowChar == '1' ? '2' : '1';
+    }
+    return 0;
+}();
+
+
+class Solution {
+public:
+    int magicalString(int n) {
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += str[i] == '1';
+        }
+        return ans;
+    }
+};
+```
+
+其中
+
+```cpp
+[]() {
+    // ....
+}
+```
+
+为C++ lambda函数
+
+而其后紧接着跟随一个```()```表示对这个函数的调用。
+
+因其处在全局变量中，故这个函数只执行一次。
+
 ![result](https://img-blog.csdnimg.cn/f466a3a26cf64844966b16fd3682efbf.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/28/LeetCode%200481.%E7%A5%9E%E5%A5%87%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
