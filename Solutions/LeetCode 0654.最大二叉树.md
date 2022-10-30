@@ -159,6 +159,30 @@ class Solution {
 }
 ```
 
+🔥 感谢 [@蜗先生正在学习Go](https://leetcode.cn/u/snailoxo/)大佬 提供Go版本的代码~
+
+```go
+func constructMaximumBinaryTree(nums []int) *TreeNode {
+    stack := make([]*TreeNode, 0, len(nums))
+
+    for _, num := range nums {
+        node := &TreeNode{Val: num}
+        top := len(stack) - 1
+        for top >= 0 && num > stack[top].Val {
+            node.Left = stack[top]
+            stack = stack[:top]
+            top--
+        } 
+        if top >= 0 {
+            stack[top].Right = node
+        }
+        stack = append(stack, node)
+    }
+
+    return stack[0]
+}
+```
+
 视频制作不易，喜欢了就点个赞再走吧
 
 <iframe src="//player.bilibili.com/player.html?aid=899738739&bvid=BV14N4y1F7tQ&cid=809337052&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="500px" width="100%"> </iframe>
