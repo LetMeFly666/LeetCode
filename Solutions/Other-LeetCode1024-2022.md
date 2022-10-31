@@ -137,5 +137,9 @@ print(ok)
 
 ![网站截图](https://img-blog.csdnimg.cn/f08a1d97405d493d86c46a486621a0e3.png)
 
+**我又制作了一个网站，可以领取并分享卡牌**： [Share1024.LetMeFly.xyz](https://share1024.letmefly.xyz/)
+
+![分享网截图](https://img-blog.csdnimg.cn/7cfb57df01eb46f6ac5afccc50cbf573.jpeg)
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127413787](https://letmefly.blog.csdn.net/article/details/127413787)
