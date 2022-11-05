@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2022-08-06 09:05:48
+LastEditTime: 2022-11-05 16:24:15
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -62,7 +62,7 @@ solution = refreshPublistTime(solution)
 print(solution)
 
 solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
-with open(solutionName, "w", encoding="utf-8") as f:
+with open(solutionName, "x", encoding="utf-8") as f:
     f.write(solution)
 print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
 
