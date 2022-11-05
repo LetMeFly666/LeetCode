@@ -1,6 +1,6 @@
 ---
 title: 记录一下今日见到的.appinstaller格式的小巧文件
-date: 2022-08-30 18:27:57
+date: 2022-11-05 16:10:00
 tags: [其他, .appinstaller, 简单, Windows]
 ---
 
