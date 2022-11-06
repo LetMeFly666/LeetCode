@@ -2,13 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2022-11-06 08:53:18
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-11-06 12:05:47
+ * @LastEditTime: 2022-11-06 12:16:22
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
-#ifdef FirstTry  // 两个多余变量模拟
+#ifdef FirstTry  // 两个额外变量模拟
 class Solution {
 public:
     int fib(int n) {
