@@ -153,13 +153,26 @@ vector<vector<char>> stringToVectorVectorC(string s) //[[1,2,5],[2,5,6],[5,6]]
 
 vector<string> stringToVectorString(string s)  // [1,2,5]
 {
+    if (s == "[]")
+        return {};
     vector<string>v;
-    s=s.substr(1, s.size()).substr(0, s.size()-1);
+    s=s.substr(1, s.size() - 1).substr(0, s.size() - 2);
     vector<string>vs=split(s, ',');
     for(int i=0;i<vs.size();i++)
     {
         string temp=vs[i];
         v.push_back(temp);
+    }
+    return v;
+}
+
+vector<string> stringToVectorStringWithQuots(string s) {  // ["1sfa","halj","LetMeFly"]
+    vector<string>v;
+    s = s.substr(1, s.size() - 1).substr(0, s.size() - 2);
+    vector<string> vs = split(s, ',');
+    for (int i = 0; i < vs.size(); i++) {
+        string temp = vs[i];
+        v.push_back(temp.substr(1, temp.size() - 1).substr(0, temp.size() - 2));
     }
     return v;
 }
@@ -234,6 +247,35 @@ string oneNodeToString(TreeNode* root) {
     else return to_string(root->val);
 }
 
+string treeToString(TreeNode* root) {
+    string ans = "[";
+    queue<TreeNode*> q;
+    q.push(root);
+    bool first = true;
+    string toAdd;  // 放置最后又一堆的null
+    while (q.size()) {
+        TreeNode* thisNode = q.front();
+        q.pop();
+        if (first) {
+            first = false;
+        }
+        else {
+            toAdd += ",";
+        }
+        if (thisNode) {
+            ans += toAdd + to_string(thisNode->val);
+            toAdd.clear();
+            q.push(thisNode->left);
+            q.push(thisNode->right);
+        }
+        else {
+            toAdd += "null";
+        }
+    }
+    ans += ']';
+    return ans;
+}
+
 /* 低级debugTree */
 void debug(TreeNode* root) {
     if (!root) return;
@@ -275,3 +317,28 @@ void testForSplitS()
 //     testForStringToVector();
 //     return 0;
 // }
+
+ostream& operator << (ostream& ostr, TreeNode* node) {
+    if (!node) {
+        ostr << "nullptr";
+    }
+    else {
+        ostr << node->val << "[";
+        // ostr << (node->left ? node->left->val : "nullptr") << ", ";
+        if (node->left) {
+            ostr << node->left->val;
+        }
+        else {
+            ostr << "nullptr";
+        }
+        ostr << ", ";
+        if (node->right) {
+            ostr << node->right->val;
+        }
+        else {
+            ostr << "nullptr";
+        }
+        ostr << "]";
+    }
+    return ostr;
+}

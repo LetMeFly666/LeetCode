@@ -119,5 +119,68 @@ public:
 };
 ```
 
+#### Java
+
+🔥 感谢 [@Fomalhaut🥝](https://leetcode.cn/u/Fomalhaut1998/)大佬 提供Java版本的代码~
+
+```java
+class Solution {
+    char[][] board;
+    int n;
+    int res = 0;
+
+    public int totalNQueens(int _n) {
+        /*
+        与51.N皇后十分类似:这题相比更简单
+         */
+        n = _n;
+        board = new char[n][n];
+        for (int i = 0; i < n; i++) {
+            // '.'表示没有放置国王
+            Arrays.fill(board[i], '.');
+        }
+        // 按照行的顺序进行遍历
+        dfs(0);
+        return res;
+    }
+
+    private void dfs(int r) {
+        // 遍历到n,说明[0,n-1]行已经全部遍历完毕,合法结果+1
+        if (r == n) res++;
+        // 遍历第r行的所有列
+        for (int c = 0; c < n; c++) {
+            // 无效的直接跳过
+            if (!valid(r, c)) continue;
+            // 可以放置的在该处放置国王
+            board[r][c] = 'Q';
+            // 继续判断下一行(因为一行只能放一个)
+            dfs(r + 1);
+            // 撤回(回到原来这行肯定要删除掉刚刚标记的'Q')
+            board[r][c] = '.';
+        }
+    }
+
+    // 判定在[r,c]坐标放置国王是否合法(排除法)
+    private boolean valid(int r, int c) {
+        // 同一行必定不会重复放置(递归逻辑决定)
+        // 因此只要判断列与两条斜边即可
+        // 列[0,r-1]
+        for (int i = 0; i < r; i++) {
+            if (board[i][c] != '.') return false;
+        }
+        // 斜边:左上->右下
+        for (int i = r - 1, j = c - 1; i >= 0 && j >= 0; i--, j--) {
+            if (board[i][j] != '.') return false;
+        }
+        // 斜边:右上->左下
+        for (int i = r - 1, j = c + 1; i >= 0 && j <= n - 1; i--, j++) {
+            if (board[i][j] != '.') return false;
+        }
+        // 排除后的情形就是合法的
+        return true;
+    }
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125000091](https://letmefly.blog.csdn.net/article/details/125000091)

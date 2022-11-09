@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2022-07-04 23:17:44
+LastEditTime: 2022-11-05 16:24:15
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -10,7 +10,6 @@ import sys
 import time
 from urllib.parse import quote
 
-from numpy import linspace
 
 argv = sys.argv
 print(argv)
@@ -63,11 +62,11 @@ solution = refreshPublistTime(solution)
 print(solution)
 
 solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
-with open(solutionName, "w", encoding="utf-8") as f:
+with open(solutionName, "x", encoding="utf-8") as f:
     f.write(solution)
 print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
 
-print("请去掉可能的由其他插件自动生成的头部注释信息")
+print("请去掉可能的由其他插件自动生成的头部注释信息，并保存你所编辑的题解")
 csdnid = input("请输入CSDN题解文章的id(11022152)：")
 solutionURLcs = "https://letmefly.blog.csdn.net/article/details/{0}".format(csdnid)
 
