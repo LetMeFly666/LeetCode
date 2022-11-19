@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-11-17 18:29:56
+ * @LastEditTime: 2022-11-19 16:13:14
 -->
 # LeetCode
 
@@ -351,6 +351,7 @@ int main() {
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">地址点我</a>|
 |记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://leetcode.letmefly.xyz/2022/11/05/Other-.appinstaller-firstfound/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">地址点我</a>|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">地址点我</a>|
+|Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">地址点我</a>|无|
 
 
 ## TODO:
