@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-12-01 13:09:21
+ * @LastEditTime: 2022-12-01 15:20:46
 -->
 # LeetCode
 
@@ -366,6 +366,7 @@ int main() {
 |循环队列的纯C语言实现|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">地址点我</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">地址点我</a>|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">地址点我</a>|
+|提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">地址点我</a>|无|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">地址点我</a>|无|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">地址点我</a>|
 
