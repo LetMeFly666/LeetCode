@@ -124,5 +124,7 @@ read-host
 
 [提瓦特小助手官网](https://www.lelaer.com/about.php)
 
+**开发者很赞👍**
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)哦~
 > [https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/](https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)
