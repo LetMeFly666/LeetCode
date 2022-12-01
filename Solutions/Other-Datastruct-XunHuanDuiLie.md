@@ -77,5 +77,110 @@ int main() {
 }
 ```
 
+**执行结果：**
+
+```
+PS F:\OtherApps\Program\VsCode\Code> gcc MyQueue.c -o MyQueue
+PS F:\OtherApps\Program\VsCode\Code> ./MyQueue.exe
+push or pop or size or exit? 
+size
+The size of the queue is 0   
+push or pop or size or exit? 
+pop
+Error! The queue is empty!   
+push or pop or size or exit? 
+push
+push what? 
+1
+push or pop or size or exit? 
+size
+The size of the queue is 1   
+push or pop or size or exit? 
+pop
+1
+push or pop or size or exit? 
+size
+The size of the queue is 0
+push or pop or size or exit?
+push
+push what? 
+1
+push or pop or size or exit? 
+push
+push what? 
+2
+push or pop or size or exit? 
+push
+push what? 
+3
+push or pop or size or exit? 
+size
+The size of the queue is 3
+push or pop or size or exit?
+pop
+1
+push or pop or size or exit?
+size
+The size of the queue is 2
+push or pop or size or exit?
+push
+push what? 
+4
+push or pop or size or exit? 
+size
+The size of the queue is 3
+push or pop or size or exit?
+push 5
+push what? 
+push or pop or size or exit?
+size
+The size of the queue is 4
+push or pop or size or exit?
+push 5
+Error! no more space
+push or pop or size or exit?
+Error option!
+push or pop or size or exit?
+push
+Error! no more space
+push or pop or size or exit?
+pop
+PS F:\OtherApps\Program\VsCode\Code> gcc MyQueue.c -o MyQueue
+PS F:\OtherApps\Program\VsCode\Code> ./MyQueue.exe
+push or pop or size or exit? 
+push
+push what? 
+1
+push or pop or size or exit? 
+push
+push what? 
+2
+push or pop or size or exit? 
+size
+The size of the queue is 2   
+push or pop or size or exit? 
+push
+push what? 
+3
+push or pop or size or exit? 
+size
+The size of the queue is 3
+push or pop or size or exit?
+push 4
+push what? 
+push or pop or size or exit?
+size
+The size of the queue is 4
+push or pop or size or exit?
+push 5
+push what? 
+push or pop or size or exit?
+size
+The size of the queue is 0
+push or pop or size or exit?
+exit
+Bye~
+```
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/)哦~
 > [https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/](https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/)
