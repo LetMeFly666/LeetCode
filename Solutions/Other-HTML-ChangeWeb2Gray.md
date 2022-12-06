@@ -25,5 +25,24 @@ tags: [其他, HTML, 简单]
 </style>
 ```
 
+通过JS将**主页**修改为黑白
+
+```javascript
+const THEGRAYSTYLE = document.createElement("style");
+THEGRAYSTYLE.innerHTML = "html { \n-webkit-filter: grayscale(100%); \n-moz-filter: grayscale(100%); \n-ms-filter: grayscale(100%); \n-o-filter: grayscale(100%); \nfilter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);  \n_filter:none; \n}"
+function ifChange() {
+    const href = location.href;
+    const mainHref = href.indexOf("://") ? href.substring(href.indexOf("://") + 3) : href;
+    for (var i = 0; i + 1 < mainHref.length; i++) {
+        if (mainHref[i] == '/' && mainHref[i + 1] != '?')
+            return false;
+    }
+    return true;
+}
+if (ifChange()) {
+    document.querySelector("head").append(THEGRAYSTYLE);
+}
+```
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/)哦~
 > [https://leetcode.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/](https://leetcode.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/)
