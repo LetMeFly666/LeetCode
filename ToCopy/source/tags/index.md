@@ -1,4 +1,0 @@
----
-type: "tags"
-layout: "tags"
----
