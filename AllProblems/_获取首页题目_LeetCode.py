@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-06-02 14:14:26
 LastEditors: LetMeFly
-LastEditTime: 2022-06-02 20:30:13
+LastEditTime: 2023-01-03 19:01:04
 '''
 import requests
 import datetime
@@ -103,6 +103,7 @@ def getAllProblemLinks() -> list:
     }
 
     results = []
+    # begin = 2200  # Change here for begin
     begin = 0
     while True:
         print(begin)
