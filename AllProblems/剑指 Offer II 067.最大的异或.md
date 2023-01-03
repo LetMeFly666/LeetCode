@@ -1,6 +1,6 @@
 ---
 title: 剑指 Offer II 067.最大的异或
-date: 2022-06-02 20-17-01
+date: 2023-01-03 18-56-04
 tags: [题解, LeetCode, 中等, 位运算, 字典树, 数组, 哈希表]
 ---
 
@@ -8,7 +8,7 @@ tags: [题解, LeetCode, 中等, 位运算, 字典树, 数组, 哈希表]
 
 力扣题目链接：[https://leetcode.cn/problems/ms70jA/](https://leetcode.cn/problems/ms70jA/)
 
-<p>给定一个整数数组 <code>nums</code> ，返回<em> </em><code>nums[i] XOR nums[j]</code> 的最大运算结果，其中 <code>0 &le; i &le; j &lt; n</code> 。</p>
+<p>给你一个整数数组 <code>nums</code> ，返回<em> </em><code>nums[i] XOR nums[j]</code> 的最大运算结果，其中 <code>0 ≤ i ≤ j &lt; n</code> 。</p>
 
 <p>&nbsp;</p>
 
@@ -24,27 +24,6 @@ tags: [题解, LeetCode, 中等, 位运算, 字典树, 数组, 哈希表]
 <p><strong>示例 2：</strong></p>
 
 <pre>
-<strong>输入：</strong>nums = [0]
-<strong>输出：</strong>0
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre>
-<strong>输入：</strong>nums = [2,4]
-<strong>输出：</strong>6
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre>
-<strong>输入：</strong>nums = [8,10,2]
-<strong>输出：</strong>10
-</pre>
-
-<p><strong>示例 5：</strong></p>
-
-<pre>
 <strong>输入：</strong>nums = [14,70,53,83,49,91,36,80,92,51,66,70]
 <strong>输出：</strong>127
 </pre>
@@ -54,15 +33,11 @@ tags: [题解, LeetCode, 中等, 位运算, 字典树, 数组, 哈希表]
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>5</sup></code></li>
 	<li><code>0 &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>
 </ul>
 </div>
 </div>
-
-<p>&nbsp;</p>
-
-<p><strong>进阶：</strong>你可以在 <code>O(n)</code> 的时间解决这个问题吗？</p>
 
 <p>&nbsp;</p>
 

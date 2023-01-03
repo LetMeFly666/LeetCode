@@ -1,6 +1,6 @@
 ---
 title: 剑指 Offer II 115.重建序列
-date: 2022-06-02 20-17-25
+date: 2023-01-03 18-56-27
 tags: [题解, LeetCode, 中等, 图, 拓扑排序, 数组]
 ---
 
@@ -8,52 +8,65 @@ tags: [题解, LeetCode, 中等, 图, 拓扑排序, 数组]
 
 力扣题目链接：[https://leetcode.cn/problems/ur2n8P/](https://leetcode.cn/problems/ur2n8P/)
 
-<p>请判断原始的序列&nbsp;<code>org</code>&nbsp;是否可以从序列集&nbsp;<code>seqs</code>&nbsp;中唯一地 <strong>重建&nbsp;</strong>。</p>
+<p>给定一个长度为 <code>n</code> 的整数数组 <code>nums</code> ，其中 <code>nums</code> 是范围为 <code>[1，n]</code> 的整数的排列。还提供了一个 2D 整数数组&nbsp;<code>sequences</code>&nbsp;，其中&nbsp;<code>sequences[i]</code>&nbsp;是&nbsp;<code>nums</code>&nbsp;的子序列。<br />
+检查 <code>nums</code> 是否是唯一的最短&nbsp;<strong>超序列</strong> 。最短 <strong>超序列</strong> 是 <strong>长度最短</strong> 的序列，并且所有序列&nbsp;<code>sequences[i]</code>&nbsp;都是它的子序列。对于给定的数组&nbsp;<code>sequences</code>&nbsp;，可能存在多个有效的 <strong>超序列</strong> 。</p>
 
-<p>序列&nbsp;<code>org</code>&nbsp;是 1 到 n 整数的排列，其中 1 &le; n &le; 10<sup>4</sup>。<strong>重建&nbsp;</strong>是指在序列集 <code>seqs</code> 中构建最短的公共超序列，即&nbsp;&nbsp;<code>seqs</code>&nbsp;中的任意序列都是该最短序列的子序列。</p>
+<ul>
+	<li>例如，对于&nbsp;<code>sequences = [[1,2],[1,3]]</code>&nbsp;，有两个最短的 <strong>超序列</strong> ，<code>[1,2,3]</code> 和 <code>[1,3,2]</code> 。</li>
+	<li>而对于&nbsp;<code>sequences = [[1,2],[1,3],[1,2,3]]</code>&nbsp;，唯一可能的最短 <strong>超序列</strong> 是 <code>[1,2,3]</code> 。<code>[1,2,3,4]</code> 是可能的超序列，但不是最短的。</li>
+</ul>
+
+<p><em>如果 <code>nums</code> 是序列的唯一最短 <strong>超序列</strong> ，则返回 <code>true</code> ，否则返回 <code>false</code> 。</em><br />
+<strong>子序列</strong> 是一个可以通过从另一个序列中删除一些元素或不删除任何元素，而不改变其余元素的顺序的序列。</p>
 
 <p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
 
 <pre>
-<strong>输入: </strong>org = [1,2,3], seqs = [[1,2],[1,3]]
-<strong>输出: </strong>false
-<strong>解释：</strong>[1,2,3] 不是可以被重建的唯一的序列，因为 [1,3,2] 也是一个合法的序列。
+<strong>输入：</strong>nums = [1,2,3], sequences = [[1,2],[1,3]]
+<strong>输出：</strong>false
+<strong>解释：</strong>有两种可能的超序列：[1,2,3]和[1,3,2]。
+序列 [1,2] 是[<u><strong>1,2</strong></u>,3]和[<u><strong>1</strong></u>,3,<u><strong>2</strong></u>]的子序列。
+序列 [1,3] 是[<u><strong>1</strong></u>,2,<u><strong>3</strong></u>]和[<u><strong>1,3</strong></u>,2]的子序列。
+因为 nums 不是唯一最短的超序列，所以返回false。
 </pre>
 
 <p><strong>示例 2：</strong></p>
 
 <pre>
-<strong>输入: </strong>org = [1,2,3], seqs = [[1,2]]
-<strong>输出: </strong>false
-<strong>解释：</strong>可以重建的序列只有 [1,2]。
+<strong>输入：</strong>nums = [1,2,3], sequences = [[1,2]]
+<strong>输出：</strong>false
+<strong>解释：</strong>最短可能的超序列为 [1,2]。
+序列 [1,2] 是它的子序列：[<u><strong>1,2</strong></u>]。
+因为 nums 不是最短的超序列，所以返回false。
 </pre>
 
 <p><strong>示例 3：</strong></p>
 
 <pre>
-<strong>输入: </strong>org = [1,2,3], seqs = [[1,2],[1,3],[2,3]]
-<strong>输出: </strong>true
-<strong>解释：</strong>序列 [1,2], [1,3] 和 [2,3] 可以被唯一地重建为原始的序列 [1,2,3]。
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre>
-<strong>输入: </strong>org = [4,1,5,2,6,3], seqs = [[5,2,6,3],[4,1,5,2]]
-<strong>输出: </strong>true
-</pre>
+<strong>输入：</strong>nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
+<strong>输出：</strong>true
+<strong>解释：</strong>最短可能的超序列为[1,2,3]。
+序列 [1,2] 是它的一个子序列：[<strong>1,2</strong>,3]。
+序列 [1,3] 是它的一个子序列：[<u><strong>1</strong></u>,2,<u><strong>3</strong></u>]。
+序列 [2,3] 是它的一个子序列：[1,<u><strong>2,3</strong></u>]。
+因为 nums 是唯一最短的超序列，所以返回true。</pre>
 
 <p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
+	<li><code>n == nums.length</code></li>
 	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
-	<li><code>org</code> 是数字 <code>1</code> 到 <code>n</code> 的一个排列</li>
-	<li><code>1 &lt;= segs[i].length &lt;= 10<sup>5</sup></code></li>
-	<li><code>seqs[i][j]</code> 是 <code>32</code> 位有符号整数</li>
+	<li><code>nums</code>&nbsp;是&nbsp;<code>[1, n]</code>&nbsp;范围内所有整数的排列</li>
+	<li><code>1 &lt;= sequences.length &lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= sequences[i].length &lt;= 10<sup>4</sup></code></li>
+	<li><code>1 &lt;= sum(sequences[i].length) &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= sequences[i][j] &lt;= n</code></li>
+	<li><code>sequences</code>&nbsp;的所有数组都是 <strong>唯一 </strong>的</li>
+	<li><code>sequences[i]</code>&nbsp;是&nbsp;<code>nums</code> 的一个子序列</li>
 </ul>
 
 <p>&nbsp;</p>

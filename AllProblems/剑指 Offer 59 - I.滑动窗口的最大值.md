@@ -1,6 +1,6 @@
 ---
 title: 剑指 Offer 59 - I.滑动窗口的最大值
-date: 2022-06-02 20-16-23
+date: 2023-01-03 18-55-28
 tags: [题解, LeetCode, 困难, 队列, 滑动窗口, 单调队列, 堆（优先队列）]
 ---
 
@@ -12,7 +12,8 @@ tags: [题解, LeetCode, 困难, 队列, 滑动窗口, 单调队列, 堆（优�
 
 <p><strong>示例:</strong></p>
 
-<pre><strong>输入:</strong> <em>nums</em> = <code>[1,3,-1,-3,5,3,6,7]</code>, 和 <em>k</em> = 3
+<pre>
+<strong>输入:</strong> <em>nums</em> = <code>[1,3,-1,-3,5,3,6,7]</code>, 和 <em>k</em> = 3
 <strong>输出: </strong><code>[3,3,5,5,6,7] 
 <strong>解释: 
 </strong></code>
@@ -29,7 +30,7 @@ tags: [题解, LeetCode, 困难, 队列, 滑动窗口, 单调队列, 堆（优�
 
 <p><strong>提示：</strong></p>
 
-<p>你可以假设 <em>k </em>总是有效的，在输入数组不为空的情况下，1 &le; k &le;&nbsp;输入数组的大小。</p>
+<p>你可以假设 <em>k </em>总是有效的，在输入数组&nbsp;<strong>不为空&nbsp;</strong>的情况下，<code>1 ≤ k ≤&nbsp;nums.length</code>。</p>
 
 <p>注意：本题与主站 239 题相同：<a href="https://leetcode-cn.com/problems/sliding-window-maximum/">https://leetcode-cn.com/problems/sliding-window-maximum/</a></p>
 
