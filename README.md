@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-01-03 21:34:00
+ * @LastEditTime: 2023-01-06 19:49:43
 -->
 # LeetCode
 
@@ -401,8 +401,8 @@ int main() {
 |Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">地址点我</a>|无|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">地址点我</a>|无|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">地址点我</a>|
-|Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">地址点我</a>|无|
-|Verilog学习笔记|<a href="https://leetcode.letmefly.xyz/2023/01/03/Other-Verilog-Note/">地址点我</a>|无|
+|Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">地址点我</a>|
+|Verilog学习笔记 - 极简极入门级|<a href="https://leetcode.letmefly.xyz/2023/01/06/Other-Verilog-Note/">地址点我</a>|无|
 
 
 ## TODO:
