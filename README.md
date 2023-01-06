@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-01-01 09:37:24
+ * @LastEditTime: 2023-01-03 21:34:00
 -->
 # LeetCode
 
@@ -345,6 +345,7 @@ int main() {
 |2037.使每位学生都有座位的最少移动次数|简单|<a href="https://leetcode.cn/problems/minimum-number-of-moves-to-seat-everyone/solutions/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/12/31/LeetCode%202037.%E4%BD%BF%E6%AF%8F%E4%BD%8D%E5%AD%A6%E7%94%9F%E9%83%BD%E6%9C%89%E5%BA%A7%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/128509361" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/minimum-number-of-moves-to-seat-everyone/solutions/2039583/letmefly-2037shi-mei-wei-xue-sheng-du-yo-2gpy/" target="_blank">地址点我</a>|
 |2042.检查句子中的数字是否递增|简单|<a href="https://leetcode.cn/problems/check-if-numbers-are-ascending-in-a-sentence/solutions/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2023/01/03/LeetCode%202042.%E6%A3%80%E6%9F%A5%E5%8F%A5%E5%AD%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E9%80%92%E5%A2%9E/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/128538008" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/check-if-numbers-are-ascending-in-a-sentence/solutions/2043292/letmefly-2042jian-cha-ju-zi-zhong-de-shu-5leg/" target="_blank">地址点我</a>|
 |2105.给植物浇水II|中等|<a href="https://leetcode.cn/problems/watering-plants-ii/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/09/05/LeetCode%202105.%E7%BB%99%E6%A4%8D%E7%89%A9%E6%B5%87%E6%B0%B4II/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/126709258" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/watering-plants-ii/solution/by-tisfy-0erl/" target="_blank">地址点我</a>|
+|2180.统计各位数字之和为偶数的整数个数|简单|<a href="https://leetcode.cn/problems/count-integers-with-even-digit-sum/solutions/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2023/01/06/LeetCode%202180.%E7%BB%9F%E8%AE%A1%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C%E4%B8%BA%E5%81%B6%E6%95%B0%E7%9A%84%E6%95%B4%E6%95%B0%E4%B8%AA%E6%95%B0/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/128583772" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/count-integers-with-even-digit-sum/solutions/2048274/letmefly-2180tong-ji-ge-wei-shu-zi-zhi-h-g2ib/" target="_blank">地址点我</a>|
 |2351.第一个出现两次的字母|中等|<a href="https://leetcode.cn/problems/first-letter-to-appear-twice/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2023/01/01/2351.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%87%BA%E7%8E%B0%E4%B8%A4%E6%AC%A1%E7%9A%84%E5%AD%97%E6%AF%8D/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/128510526" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/first-letter-to-appear-twice/solutions/2039779/letmefly-2351di-yi-ge-chu-xian-liang-ci-bl62e/" target="_blank">地址点我</a>|
 |剑指OfferII0041.滑动窗口的平均值|简单|<a href="https://leetcode.cn/problems/qIsx9U/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/07/16/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200041.%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125819216" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/qIsx9U/solution/by-tisfy-30mq/" target="_blank">地址点我</a>|
 |剑指OfferII0091.粉刷房子|中等|<a href="https://leetcode.cn/problems/JEj789/" target="_blank">地址点我</a>|<a href="https://leetcode.letmefly.xyz/2022/06/25/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200091.%20%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/125456885" target="_blank">地址点我</a>|<a href="https://leetcode.cn/problems/JEj789/solution/letmefly-jian-zhi-offer-ii-091fen-shua-f-3olz/" target="_blank">地址点我</a>|
@@ -401,6 +402,7 @@ int main() {
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">地址点我</a>|无|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">地址点我</a>|
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">地址点我</a>|无|
+|Verilog学习笔记|<a href="https://leetcode.letmefly.xyz/2023/01/03/Other-Verilog-Note/">地址点我</a>|无|
 
 
 ## TODO:
