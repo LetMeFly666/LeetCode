@@ -51,7 +51,7 @@ int main() {
 }
 ```
 
-```++i.cpp```为：
+而```++i.cpp```为：
 
 ```cpp
 #include <iostream>
@@ -141,7 +141,7 @@ int main() {
 }
 ```
 
-```++iNC.cpp```为
+而```++iNC.cpp```为
 
 ```cpp
 #include <iostream>
