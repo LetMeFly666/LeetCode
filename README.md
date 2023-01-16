@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-01-15 10:00:47
+ * @LastEditTime: 2023-01-16 23:29:58
 -->
 # LeetCode
 
@@ -420,6 +420,7 @@ int main() {
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
 - [ ] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
+- [ ] 修改```newSolution.py```中自动分析修改Readme力扣题目列表的生成格式
 
 - [x] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
