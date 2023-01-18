@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2022-11-05 16:24:15
+LastEditTime: 2023-01-18 10:04:30
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -131,7 +131,7 @@ def readmeNewLine(readme: str) -> str:
             del splitedUrl[len(splitedUrl) - 3]
             del splitedUrl[len(splitedUrl) - 2]
             return "/".join(splitedUrl)
-        return """|{0:04d}.{1}|{2}|<a href="{3}" target="_blank">地址点我</a>|<a href="{4}" target="_blank">地址点我</a>|<a href="https://letmefly.blog.csdn.net/article/details/{5}" target="_blank">地址点我</a>|<a href="{6}" target="_blank">地址点我</a>|""".format(num, title, getHard(), getProblemUrl(), solutionURLll, csdnid, solutionURLlc)
+        return """|{0:04d}.{1}|{2}|<a href="{3}" target="_blank">题目地址</a>|<a href="{4}" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/{5}" target="_blank">CSDN题解</a>|<a href="{6}" target="_blank">LeetCode题解</a>|""".format(num, title, getHard(), getProblemUrl(), solutionURLll, csdnid, solutionURLlc)
     splited.insert(i, generateNewLine())
     return "\n".join(splited)
 
