@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2023-01-19 22:36:44
 LastEditors: LetMeFly
-LastEditTime: 2023-01-19 22:41:28
+LastEditTime: 2023-01-19 22:49:04
 '''
 
 
@@ -14,7 +14,7 @@ class Solution:
         if len(password) < 8:
             return False
         lastChar = ''
-        hasLower, hasUpper, hasDigit, hasSpical = False, False, False, False
+        hasLower, hasUpper, hasDigit, hasSpecial = False, False, False, False
         for c in password:
             if c == lastChar:
                 return False
@@ -26,5 +26,5 @@ class Solution:
             elif c.isdigit():
                 hasDigit = True
             else:
-                hasSpical = True
-        return hasLower and hasUpper and hasDigit and hasSpical
+                hasSpecial = True
+        return hasLower and hasUpper and hasDigit and hasSpecial

@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-01-19 22:31:38
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-01-19 22:35:16
+ * @LastEditTime: 2023-01-19 22:48:57
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -14,7 +14,7 @@ public:
         if (password.size() < 8)
             return false;
         char lastChar = 0;
-        bool hasLower = false, hasUpper = false, hasDigit = false, hasSpical = false;
+        bool hasLower = false, hasUpper = false, hasDigit = false, hasSpecial = false;
         for (char c : password) {
             if (c == lastChar)
                 return false;
@@ -26,8 +26,8 @@ public:
             else if (c >= 'A' && c <= 'Z')
                 hasUpper = true;
             else
-                hasSpical = true;
+                hasSpecial = true;
         }
-        return hasLower && hasUpper && hasDigit && hasSpical;
+        return hasLower && hasUpper && hasDigit && hasSpecial;
     }
 };

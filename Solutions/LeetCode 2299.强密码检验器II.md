@@ -76,7 +76,7 @@ public:
         if (password.size() < 8)
             return false;
         char lastChar = 0;
-        bool hasLower = false, hasUpper = false, hasDigit = false, hasSpical = false;
+        bool hasLower = false, hasUpper = false, hasDigit = false, hasSpecial = false;
         for (char c : password) {
             if (c == lastChar)
                 return false;
@@ -88,9 +88,9 @@ public:
             else if (c >= 'A' && c <= 'Z')
                 hasUpper = true;
             else
-                hasSpical = true;
+                hasSpecial = true;
         }
-        return hasLower && hasUpper && hasDigit && hasSpical;
+        return hasLower && hasUpper && hasDigit && hasSpecial;
     }
 };
 ```
@@ -106,7 +106,7 @@ class Solution:
         if len(password) < 8:
             return False
         lastChar = ''
-        hasLower, hasUpper, hasDigit, hasSpical = False, False, False, False
+        hasLower, hasUpper, hasDigit, hasSpecial = False, False, False, False
         for c in password:
             if c == lastChar:
                 return False
@@ -118,8 +118,8 @@ class Solution:
             elif c.isdigit():
                 hasDigit = True
             else:
-                hasSpical = True
-        return hasLower and hasUpper and hasDigit and hasSpical
+                hasSpecial = True
+        return hasLower and hasUpper and hasDigit and hasSpecial
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/01/19/LeetCode%202299.%E5%BC%BA%E5%AF%86%E7%A0%81%E6%A3%80%E9%AA%8C%E5%99%A8II/)哦~
