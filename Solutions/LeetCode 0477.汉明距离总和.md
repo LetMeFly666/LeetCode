@@ -84,5 +84,45 @@ public:
 };
 ```
 
+#### Java
+
+🔥 感谢 [@Fomalhaut🥝](https://leetcode.cn/u/Fomalhaut1998/)大佬 提供 Java统计每一位贡献并且运行速度超越100% 的代码，以及详细的注释~
+
+```java
+class Solution {
+    public int totalHammingDistance(int[] nums) {
+        /*
+        统计每一位的贡献
+        以[4,14,2]为例进行说明
+        0 1 0 0
+        1 1 1 0
+        0 0 1 0
+        1.若该位为0，则其他的1对汉明距离有贡献
+        2.若该位为1，则其他的0对汉明距离有贡献
+        角度1:我们只要统计出每一位的1和0的数目即可快速统计出该数字每一位对于汉明距离的贡献
+        第一个数字4为:1 + 1 + 2 + 0 = 4
+        第一个数字14为:2 + 1 + 1 + 0 = 4
+        第一个数字2为:1 + 2 + 1 + 0 = 4
+        将结果/2就是答案
+        角度2:统计每一位的总贡献进行累加
+        位3:0 1 0 不妨将顺序调换成  1 0 0 那么有效的组合只有两个1 0
+        相当于直接用每一位的1和0的个数进行相乘就可以得到该位的总贡献，最后将每一位的总贡献累加就是答案
+        时间复杂度O:(C*N) 空间复杂度:O(1)
+         */
+        int n = nums.length;
+        // 统计该位1的数目
+        int res = 0;
+        for (int i = 0; i < 30; i++) {
+            int one = 0;
+            for (int num : nums) {
+                one += (num >> i) & 1;
+            }
+            res += one * (n - one);
+        }
+        return res;
+    }
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/26/LeetCode%200477.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB%E6%80%BB%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127540353](https://letmefly.blog.csdn.net/article/details/127540353)
