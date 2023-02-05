@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-04 21:34:21
+ * @LastEditTime: 2023-02-05 15:20:27
 -->
 # LeetCode
 
@@ -405,6 +405,7 @@ int main() {
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://leetcode.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://leetcode.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |循环队列的纯C语言实现|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
+|原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://leetcode.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
