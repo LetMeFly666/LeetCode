@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-05 15:20:27
+ * @LastEditTime: 2023-02-07 22:32:25
 -->
 # LeetCode
 
@@ -396,6 +396,7 @@ int main() {
 |———|———|———|
 |<a href="https://edu.csdn.net/contest/detail/16">CSDN竞赛6 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2022/09/23/CSDN%20-%20CSDN6%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/127013101">CSDN题解</a>|
 |<a href="https://edu.csdn.net/contest/detail/22">CSDN竞赛9 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2022/11/17/CSDN%20-%20CSDN9%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/127909233">CSDN题解</a>|
+|<a href="https://edu.csdn.net/contest/detail/40">CSDN竞赛26 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2023/02/07/CSDN%20-%20CSDN26%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/128927254">CSDN题解</a>|
 
 ### 其他
 
