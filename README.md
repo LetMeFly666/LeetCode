@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-20 10:44:06
+ * @LastEditTime: 2023-02-21 21:59:57
 -->
 # LeetCode
 
@@ -409,6 +409,7 @@ int main() {
 |名称|博客|CSDN博客地址|
 |:--|:--|:--|
 |记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://leetcode.letmefly.xyz/2022/11/05/Other-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
+|日积月累 - 一些小知识|<a href="https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无>|
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://leetcode.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://leetcode.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |循环队列的纯C语言实现|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
