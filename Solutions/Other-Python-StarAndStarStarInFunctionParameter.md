@@ -23,5 +23,22 @@ f(1, 2, 3, hshf="0sfsfsf", a="sf")
 {'hshf': '0sfsfsf', 'a': 'sf'}
 ```
 
+**What's more:**
+
+```python
+def func(a, b):
+    print(a, b)
+
+func(1, 2)
+func(*(1, 2))
+```
+
+运行结果：
+
+```
+1 2
+1 2
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/)哦~
 > Tisfy：[https://leetcode.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/](https://leetcode.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/)
