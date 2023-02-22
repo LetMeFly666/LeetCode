@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-22 15:40:25
+ * @LastEditTime: 2023-02-22 16:10:17
 -->
 # LeetCode
 
@@ -422,6 +422,7 @@ int main() {
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://leetcode.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
 |Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
+|Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索|<a href="https://leetcode.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129164772">CSDN博客</a>|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
