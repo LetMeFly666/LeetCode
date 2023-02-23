@@ -38,5 +38,15 @@ tags: [其他, 中等, 抓包, Fiddler]
 
 **当然，使用Fiddler自带的卸载工具也可以**
 
+## What's more
+
+今天发现Fiddler在抓包的过程中，python的requests库是会报错的。。。
+
+```
+ValueError: check_hostname requires server_hostname
+```
+
+想要python模拟发包时记得关下抓包（```File -> Capture Traffic(F12)```）
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)哦~
 > [https://leetcode.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/](https://leetcode.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)
