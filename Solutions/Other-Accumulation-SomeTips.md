@@ -20,7 +20,17 @@ tags: [其他, 小杂, 知识, 中等]
 
 这是一个空白字符：“ㅤ”
 
+## About Windows
 
+### Windows应用商店安装的应用
+
+Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？
+
+```
+C:\Program Files\WindowsApps
+```
+
+例如[胡桃工具箱](https://hut.ao/)1.4.1.0_x64_Test的安装位置是：```C:\Program Files\WindowsApps\7f0db578-026f-4e0b-a75b-d5d06bb0a74d_1.4.1.0_x64__7jfyf5536hdrr```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
