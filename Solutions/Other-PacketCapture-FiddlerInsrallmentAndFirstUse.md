@@ -34,7 +34,7 @@ tags: [其他, 中等, 抓包, Fiddler]
 
 若想要卸载掉Fiddler安装的用来抓取HTTPS网络包的证书，可以打开“windows证书管理器”
 
-```Win + R```，```certmgr.msc```，在左侧的各个文件夹（各类证书）内能找到很多颁发者为“DO_NOT_TRUST_FiddlerRoot”的证书，这些一般都是由Fiddler安装所至。(可以点击证书列表的“颁发者”以颁发者名称为依据对证书进行排序)
+ ```Win + R```，```certmgr.msc```，在左侧的各个文件夹（各类证书）内能找到很多颁发者为“DO_NOT_TRUST_FiddlerRoot”的证书，这些一般都是由Fiddler安装所至。(可以点击证书列表的“颁发者”以颁发者名称为依据对证书进行排序)
 
 **当然，使用Fiddler自带的卸载工具也可以**
 
