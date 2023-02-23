@@ -20,6 +20,12 @@ tags: [其他, 小杂, 知识, 中等]
 
 这是一个空白字符：“ㅤ”
 
+### WebView2
+
+（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电脑上安装有WebView2，则程序可以直接借助WebView2实现网页的浏览。
+
+见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
+
 ## About Windows
 
 ### Windows应用商店安装的应用
