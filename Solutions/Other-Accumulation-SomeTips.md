@@ -14,6 +14,12 @@ tags: [其他, 小杂, 知识, 中等]
 
 更新日志文件，格式可参考：[https://www.bestyii.com/topic/75](https://www.bestyii.com/topic/75)
 
+## About HTML
+
+### 空白字符
+
+这是一个空白字符：“ㅤ”
+
 
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
