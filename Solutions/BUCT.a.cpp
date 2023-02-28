@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-24 21:57:56
+ * @LastEditTime: 2023-02-27 21:54:04
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,8 +12,9 @@ using namespace std;
 #define cd(a) scanf("%d", &a)
 typedef long long ll;
 typedef pair<int, int> pii;
+#define INF 1e9
 
-int ans[111];
+int shortest[111];
 vector<pii> graph[111];
 bool visited[111];
 
@@ -23,56 +24,49 @@ int main() {
     while (T--) {
         int n, m;
         cin >> n >> m;
+        // init
         for (int i = 1; i <= n; i++) {
-            ans[i] = 1e9;
+            shortest[i] = INF;
             visited[i] = false;
-            graph[i].clear();
+            for (int j = 1; j <= n; j++) {
+                graph[i].clear();
+            }
         }
-        while (m--) {
-            int a, b, l;
-            scanf("%d%d%d", &a, &b, &l);
-            graph[a].push_back({b, l});
-            // graph[b].push_back({a, l});
+        // cin
+        for (int i = 0; i < m; i++) {
+            int u, v, d;
+            scanf("%d%d%d", &u, &v, &d);
+            graph[u].push_back({v, d});
         }
         int start;
         cin >> start;
-        queue<int> q;
-        q.push(start);
-        visited[start] = true;
-        ans[start] = 0;
-        while (q.size()) {
-            int loc = q.front();
-            q.pop();
-            for (pii& edge : graph[loc]) {
-                int toLoc = edge.first;
-                int distance = edge.second;
-                if (!visited[toLoc]) {
-                    visited[toLoc] = true;
-                    q.push(toLoc);
+        // begin
+        shortest[start] = 0;
+        for (int i = 0; i < n; i++) {  // 第一次求出start到start的最短距离
+            int thisMinDistance = INF;
+            int shortestPoint = -1;
+            for (int j = 1; j <= n; j++) {
+                if (!visited[j] && shortest[j] < thisMinDistance) {
+                    thisMinDistance = shortest[j];
+                    shortestPoint = j;
                 }
-                if (toLoc == 2 && ans[toLoc] > ans[loc] + distance) {  //**********
-                    printf("ans[%d] + %d = %d\n", loc, distance, ans[loc] + distance);
-                }
-                ans[toLoc] = min(ans[toLoc], ans[loc] + distance);
+            }
+            if (shortestPoint == -1) {  // 节点可达
+                break;
+            }
+            visited[shortestPoint] = true;
+            for (auto[toPoint, distance] : graph[shortestPoint]) {
+                shortest[toPoint] = min(shortest[toPoint], shortest[shortestPoint] + distance);
             }
         }
         for (int i = 1; i <= n; i++) {
-            if (ans[i] > 1e8) {
+            if (shortest[i] == INF) {
                 printf("impossible ");
             }
             else {
-                printf("%d ", ans[i]);
+                printf("%d ", shortest[i]);
             }
         }
-        puts("");
     }
     return 0;
 }
-
-// ans[11] + 15 = 27
-
-
-/*
-1 22 18 9 9 41 8 20 21 16 12 13 27 15 83 18 24 6 19 34 30 80 0 74 22 40
-
-*/

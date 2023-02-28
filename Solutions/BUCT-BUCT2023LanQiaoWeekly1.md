@@ -752,15 +752,15 @@ l1 l2 ... ln (若某城市无法达到则输出impossible）
 
 ### 解题思路
 
-TODO: 解题思路
+这道题是典型的单源起点最短路径的Dijstra算法。
+
+这里不得不提一提我的班主任[彭老师](https://github.com/TeacherPeng)，他的[数据结构PPT](https://github.com/TeacherPeng/Datastruct)做得特别好。其中图论PPT地址为：[https://github.com/TeacherPeng/Datastruct/blob/master/教案/第07章 图.pptx](https://github.com/TeacherPeng/Datastruct/blob/master/%E6%95%99%E6%A1%88/%E7%AC%AC07%E7%AB%A0%20%E5%9B%BE.pptx)，此算法在75页。（[05064f61c0b16a8764e7d63ae2bfef0b2dd04798版本](https://github.com/TeacherPeng/Datastruct/commit/05064f61c0b16a8764e7d63ae2bfef0b2dd04798)）
 
 **注意**，这道题是单向边，AC代码中是按单向边处理的。
 
 ### AC代码
 
 #### C++
-
-##### 我的代码
 
 ```cpp
 #include <bits/stdc++.h>
@@ -771,8 +771,9 @@ using namespace std;
 #define cd(a) scanf("%d", &a)
 typedef long long ll;
 typedef pair<int, int> pii;
+#define INF 1e9
 
-int ans[111];
+int shortest[111];
 vector<pii> graph[111];
 bool visited[111];
 
@@ -782,509 +783,54 @@ int main() {
     while (T--) {
         int n, m;
         cin >> n >> m;
+        // init
         for (int i = 1; i <= n; i++) {
-            ans[i] = 1e9;
+            shortest[i] = INF;
             visited[i] = false;
-            graph[i].clear();
+            for (int j = 1; j <= n; j++) {
+                graph[i].clear();
+            }
         }
-        while (m--) {
-            int a, b, l;
-            scanf("%d%d%d", &a, &b, &l);
-            graph[a].push_back({b, l});
-            // graph[b].push_back({a, l});
+        // cin
+        for (int i = 0; i < m; i++) {
+            int u, v, d;
+            scanf("%d%d%d", &u, &v, &d);
+            graph[u].push_back({v, d});
         }
         int start;
         cin >> start;
-        queue<int> q;
-        q.push(start);
-        visited[start] = true;
-        ans[start] = 0;
-        while (q.size()) {
-            int loc = q.front();
-            q.pop();
-            for (pii& edge : graph[loc]) {
-                int toLoc = edge.first;
-                int distance = edge.second;
-                if (!visited[toLoc]) {
-                    visited[toLoc] = true;
-                    q.push(toLoc);
+        // begin
+        shortest[start] = 0;
+        for (int i = 0; i < n; i++) {  // 第一次求出start到start的最短距离
+            int thisMinDistance = INF;
+            int shortestPoint = -1;
+            for (int j = 1; j <= n; j++) {
+                if (!visited[j] && shortest[j] < thisMinDistance) {
+                    thisMinDistance = shortest[j];
+                    shortestPoint = j;
                 }
-                // if (toLoc == 2 && ans[toLoc] > ans[loc] + distance) {  //**********
-                //     printf("ans[%d] + %d = %d\n", loc, distance, ans[loc] + distance);
-                // }
-                ans[toLoc] = min(ans[toLoc], ans[loc] + distance);
+            }
+            if (shortestPoint == -1) {  // 节点可达
+                break;
+            }
+            visited[shortestPoint] = true;
+            for (auto[toPoint, distance] : graph[shortestPoint]) {
+                shortest[toPoint] = min(shortest[toPoint], shortest[shortestPoint] + distance);
             }
         }
         for (int i = 1; i <= n; i++) {
-            if (ans[i] > 1e8) {
+            if (shortest[i] == INF) {
                 printf("impossible ");
             }
             else {
-                printf("%d ", ans[i]);
+                printf("%d ", shortest[i]);
             }
         }
-        puts("");
     }
     return 0;
 }
 ```
 
-##### AC代码
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-int t;
-int g[110][110];
-int dis[110];
-int n, m, s;
-bool f[110];
-
-void dijksta()
-{
-    memset(f, 0, sizeof(f));
-    memset(dis, 0x3f, sizeof(dis));
-
-    dis[s] = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        int t = -1;
-        for (int j = 1; j <= n; j++)
-        {
-            if (!f[j] && (t == -1 || dis[j] < dis[t]))
-                t = j; //寻找还未确定最短路的点中路径最短的点
-        }
-
-        // if (f[t])continue;   //如果某个点已经被确定就直接跳过  //*********
-        f[t] = 1;
-        printf("t = %d\n", t);
-
-        for (int j = 1; j <= n; j++)
-        {
-            dis[j] = min(dis[j], dis[t] + g[t][j]);
-        }
-    }
-}
-
-void hp()
-{
-
-    cin >> n >> m;
-
-    memset(g, 0x3f, sizeof(g));
-    for (int i = 0; i < m; i++)
-    {
-        int a, b, x;
-        cin >> a >> b >> x;
-        g[a][b] = min(g[a][b], x);
-    }
-    cin >> s;
-    dijksta();
-    for (int i = 1; i <= n; i++)
-        if (dis[i] != 0x3f3f3f3f)
-            cout << dis[i] << " ";
-        else
-            cout << "impossible"
-                 << " ";
-    puts("");
-}
-
-int main()
-{
-    // ios::sync_with_stdio(0);
-    // cin.tie(0);
-
-    cin >> t;
-
-    while (t--)
-        hp();
-
-    return 0;
-}
-```
-
-**What's more**： 这道题我和答案计算出来的不一样。
-
-对于样例：
-
-```
-1
-26 343
-18 7 38
-8 22 93
-14 23 57
-5 14 99
-12 5 68
-16 19 40
-25 20 56
-15 13 50
-18 4 3
-22 1 51
-9 12 7
-23 4 70
-9 20 93
-23 19 20
-19 9 36
-11 5 2
-24 19 64
-13 22 53
-23 16 89
-22 4 15
-7 5 43
-6 22 77
-21 15 57
-7 9 62
-17 8 57
-22 5 31
-23 5 9
-18 10 31
-3 14 18
-12 1 25
-20 2 49
-21 6 16
-1 26 88
-9 7 91
-11 4 5
-8 18 58
-11 2 15
-1 23 7
-10 8 16
-6 21 74
-10 18 94
-13 2 60
-8 17 22
-8 5 32
-4 21 36
-13 25 13
-23 18 27
-13 6 59
-11 6 78
-16 26 29
-14 18 32
-5 19 32
-14 13 12
-3 12 55
-11 16 6
-6 20 27
-26 6 13
-21 10 11
-10 4 61
-26 11 7
-25 18 85
-14 13 80
-21 11 37
-26 15 71
-2 25 21
-7 15 75
-24 12 100
-24 21 86
-18 20 28
-3 4 71
-23 1 1
-17 10 10
-5 19 72
-21 18 81
-12 3 81
-3 17 48
-9 12 90
-19 8 51
-16 22 76
-16 20 84
-12 21 30
-16 4 8
-1 10 15
-9 17 93
-5 19 20
-15 23 29
-10 14 61
-13 1 95
-11 13 15
-12 17 36
-14 7 47
-15 8 94
-6 19 40
-9 22 60
-16 13 74
-5 7 73
-1 11 11
-1 8 88
-25 15 70
-3 8 75
-3 4 12
-17 3 32
-23 11 30
-17 9 33
-16 12 41
-24 16 8
-21 1 66
-23 3 85
-24 2 22
-3 17 6
-23 11 85
-19 24 82
-1 18 5
-7 21 63
-4 2 43
-6 22 96
-26 23 64
-13 3 40
-17 24 98
-20 13 61
-5 12 84
-17 14 52
-15 1 82
-11 26 33
-25 1 56
-18 15 81
-11 1 96
-24 13 3
-2 17 97
-25 11 87
-26 16 11
-17 1 96
-1 25 40
-8 18 89
-16 1 74
-2 12 4
-6 18 20
-4 5 79
-17 15 74
-15 2 1
-1 5 97
-20 26 76
-8 1 76
-5 13 45
-15 19 1
-5 14 33
-1 2 33
-21 18 73
-9 21 99
-25 9 20
-16 4 85
-6 10 84
-12 25 98
-17 3 97
-15 20 5
-4 10 98
-1 7 7
-5 18 79
-13 20 87
-4 14 6
-24 16 6
-12 23 29
-18 8 25
-15 19 29
-6 17 77
-1 6 100
-11 10 78
-23 21 30
-22 26 40
-25 21 65
-18 3 71
-19 14 82
-22 10 19
-2 8 62
-11 4 18
-13 10 45
-26 25 49
-24 21 77
-17 20 43
-1 9 83
-5 16 82
-12 10 52
-3 9 90
-17 14 82
-4 16 66
-6 14 50
-9 14 77
-1 19 18
-10 14 19
-12 3 43
-11 10 61
-3 1 45
-8 22 68
-23 15 87
-15 26 48
-3 9 17
-18 9 18
-24 26 42
-9 13 77
-18 10 84
-18 20 83
-18 6 48
-7 9 13
-18 3 51
-25 14 11
-12 13 23
-1 7 42
-13 24 89
-10 5 39
-1 11 78
-22 20 81
-6 7 22
-7 3 10
-22 19 77
-17 19 48
-20 6 97
-15 26 60
-12 25 14
-16 13 78
-6 2 3
-11 25 10
-9 3 15
-21 11 24
-5 16 28
-11 3 75
-5 26 92
-15 19 31
-1 16 85
-17 23 4
-12 11 82
-14 2 7
-15 17 52
-6 14 44
-7 21 41
-4 26 74
-15 24 8
-13 10 80
-22 3 82
-13 14 81
-21 3 83
-23 3 76
-17 26 45
-24 11 60
-12 9 79
-18 20 52
-7 8 20
-8 13 85
-24 1 37
-10 26 24
-17 15 88
-15 7 30
-16 26 77
-21 23 4
-24 19 16
-22 19 56
-6 25 96
-12 19 67
-17 5 8
-1 17 78
-16 5 17
-24 16 12
-7 17 84
-12 14 79
-10 8 4
-17 9 21
-4 10 95
-3 9 65
-24 3 83
-17 11 27
-22 4 63
-20 5 49
-14 23 54
-8 19 81
-7 25 31
-21 6 42
-8 5 85
-19 21 41
-20 9 97
-26 18 7
-20 6 26
-26 17 5
-2 12 91
-13 19 49
-11 18 13
-17 10 37
-24 7 93
-8 19 2
-12 17 78
-16 1 19
-17 20 40
-2 10 82
-13 21 83
-2 12 50
-11 25 14
-19 17 80
-2 11 72
-9 14 39
-5 16 48
-26 20 8
-14 20 50
-10 26 74
-19 12 9
-22 6 25
-10 6 25
-14 13 35
-23 20 52
-15 5 32
-8 7 39
-18 20 88
-19 6 44
-22 16 43
-1 17 35
-2 16 24
-6 12 88
-17 21 28
-6 5 27
-9 1 16
-26 20 85
-23 12 13
-6 20 50
-10 17 100
-16 11 51
-12 11 45
-26 22 68
-8 10 50
-9 22 85
-21 1 20
-23 6 47
-19 20 88
-22 11 99
-9 4 90
-17 22 73
-12 20 86
-9 7 43
-6 7 42
-2 4 96
-2 19 32
-24 18 36
-6 9 48
-22 7 42
-10 24 58
-23 1 76
-6 13 95
-23
-```
-
-由答案得到的结果为：
-
-```
-1 22 18 9 9 41 8 20 21 16 12 13 27 15 83 18 24 6 19 34 30 80 0 74 22 40
-```
-
-上述结果由AC代码同样能得到。
-
-但是我的代码运行的结果是：
-
-```
-1 27 18 17 9 41 8 20 21 16 12 13 27 33 83 18 36 6 19 48 30 80 0 74 22 40
-```
-
-**假设答案是正确的**，那么从起点到达点11的最短距离是12（答案中的第11个数）
-
-输入样例中存在这么一行：
-
-```
-11 2 15
-```
-
-也就是说存在一条路径，从点11出发，到达点2，距离是15。
-
-我们经过点11走这条路到达点2，这样起点到达点2的距离就可以为：12 + 15 = 27
-
-但是答案中第二个数是
 
 # TODO: 修改下方链接、Readme链接
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~
