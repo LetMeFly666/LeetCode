@@ -38,5 +38,25 @@ C:\Program Files\WindowsApps
 
 例如[胡桃工具箱](https://hut.ao/)1.4.1.0_x64_Test的安装位置是：```C:\Program Files\WindowsApps\7f0db578-026f-4e0b-a75b-d5d06bb0a74d_1.4.1.0_x64__7jfyf5536hdrr```
 
+## About Python
+
+### Python chain
+
+连接两个iterable的东西为一个iterable的东西
+
+```python
+from itertools import chain
+a = [1, 2, 6]
+b = [2, 5, 7]
+for i in chain(a, b):
+    print(i, end=', ')
+```
+
+执行结果：
+
+```
+1, 2, 6, 2, 5, 7,
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
