@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-27 21:54:04
+ * @LastEditTime: 2023-02-28 12:26:03
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,7 +14,7 @@ typedef long long ll;
 typedef pair<int, int> pii;
 #define INF 1e9
 
-int shortest[111];
+int shortestDistance[111];
 vector<pii> graph[111];
 bool visited[111];
 
@@ -26,11 +26,9 @@ int main() {
         cin >> n >> m;
         // init
         for (int i = 1; i <= n; i++) {
-            shortest[i] = INF;
+            shortestDistance[i] = INF;
             visited[i] = false;
-            for (int j = 1; j <= n; j++) {
-                graph[i].clear();
-            }
+            graph[i].clear();
         }
         // cin
         for (int i = 0; i < m; i++) {
@@ -41,32 +39,34 @@ int main() {
         int start;
         cin >> start;
         // begin
-        shortest[start] = 0;
-        for (int i = 0; i < n; i++) {  // 第一次求出start到start的最短距离
+        shortestDistance[start] = 0;
+        for (int i = 0; i < n; i++) {
             int thisMinDistance = INF;
-            int shortestPoint = -1;
+            int shortestNode = -1;
             for (int j = 1; j <= n; j++) {
-                if (!visited[j] && shortest[j] < thisMinDistance) {
-                    thisMinDistance = shortest[j];
-                    shortestPoint = j;
+                if (!visited[j] && shortestDistance[j] < thisMinDistance) {
+                    thisMinDistance = shortestDistance[j];
+                    shortestNode = j;
                 }
             }
-            if (shortestPoint == -1) {  // 节点可达
+            if (shortestNode == -1) {
                 break;
             }
-            visited[shortestPoint] = true;
-            for (auto[toPoint, distance] : graph[shortestPoint]) {
-                shortest[toPoint] = min(shortest[toPoint], shortest[shortestPoint] + distance);
+            visited[shortestNode] = true;
+            for (auto& [nodeTo, thisDistance] : graph[shortestNode]) {
+                shortestDistance[nodeTo] = min(shortestDistance[nodeTo], shortestDistance[shortestNode] + thisDistance);
             }
         }
+        // cout
         for (int i = 1; i <= n; i++) {
-            if (shortest[i] == INF) {
+            if (shortestDistance[i] == INF) {
                 printf("impossible ");
             }
             else {
-                printf("%d ", shortest[i]);
+                printf("%d ", shortestDistance[i]);
             }
         }
-    }
+        puts("");
+    }    
     return 0;
 }

@@ -758,6 +758,12 @@ l1 l2 ... ln (若某城市无法达到则输出impossible）
 
 **注意**，这道题是单向边，AC代码中是按单向边处理的。
 
+Dijstra单源起点最短路径算法的思路是，从起点开始，遍历所有的起点能到达的点中，路径最短的一条。
+
+接着将“路径最短的一条路径”所到达的点标记为“已算出”，再更新从这个点出发的所有的路径所能到达的顶点中，距离起点的最近距离（原始距离 或 起点到刚刚算出的点的距离+刚刚点的距离到这个点的距离）。
+
+直到 起点到所有点的最短距离都计算出来为止。
+
 ### AC代码
 
 #### C++
@@ -787,9 +793,7 @@ int main() {
         for (int i = 1; i <= n; i++) {
             shortest[i] = INF;
             visited[i] = false;
-            for (int j = 1; j <= n; j++) {
-                graph[i].clear();
-            }
+            graph[i].clear();
         }
         // cin
         for (int i = 0; i < m; i++) {
@@ -818,6 +822,7 @@ int main() {
                 shortest[toPoint] = min(shortest[toPoint], shortest[shortestPoint] + distance);
             }
         }
+        // cout
         for (int i = 1; i <= n; i++) {
             if (shortest[i] == INF) {
                 printf("impossible ");
