@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-01 19:32:20
+ * @LastEditTime: 2023-03-01 19:36:20
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -44,7 +44,7 @@ int main() {
     }
     // begin
     shortestDistance[start] = 0;
-    int lastPoint = start;
+    path[start] = start;
     for (int i = 0; i < n; i++) {
         int thisMinDistance = INF;
         int thisShortestPoint = -1;
@@ -58,16 +58,17 @@ int main() {
             break;
         }
         visited[thisShortestPoint] = true;
-        path[thisShortestPoint] = lastPoint;
-        lastPoint = thisShortestPoint;
         for (auto& [toPoint, thisDistance] : graph[thisShortestPoint]) {
-            shortestDistance[toPoint] = min(shortestDistance[toPoint], shortestDistance[thisShortestPoint] + thisDistance);
+            if (shortestDistance[thisShortestPoint] + thisDistance < shortestDistance[toPoint]) {
+                shortestDistance[toPoint] = shortestDistance[thisShortestPoint] + thisDistance;
+                path[toPoint] = thisShortestPoint;
+            }
         }
     }
     // output
     for (int i = 0; i < n; i++) {
         if (shortestDistance[i] == INF) {
-            puts("Point %d is unreachable.");
+            printf("Point %d is unreachable.", i);
         }
         else {
             stack<int> thisPath;
