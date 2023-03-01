@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-28 22:00:38
+ * @LastEditTime: 2023-03-01 19:32:20
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,21 +12,85 @@ using namespace std;
 #define cd(a) scanf("%d", &a)
 typedef long long ll;
 typedef pair<int, int> pii;
+#define INF 1e9
 
-int [SIZE];
-bool visited[SIZE];
-vector<int> graph[SIZE];
+/*
+5 7 0
+0 1 2
+1 3 4
+0 3 8
+0 2 9
+4 0 1
+4 0 5
+4 2 1
+*/
 
 int main() {
-    int n, m;
-    cin >> n >> m;
     // init
+    int n, m, start;
+    cin >> n >> m >> start;
     int* shortestDistance = new int[n];
     bool* visited = new bool[n];
-    vector<int>* graph = new vector<int>[n];
+    int* path = new int[n];
+    vector<pii>* graph = new vector<pii>[n];
     for (int i = 0; i < n; i++) {
-        // TODO:
+        shortestDistance[i] = INF;
+        visited[i] = false;
     }
+    for (int i = 0; i < m; i++) {
+        int u, v, d;
+        cin >> u >> v >> d;
+        graph[u].push_back({v, d});
+    }
+    // begin
+    shortestDistance[start] = 0;
+    int lastPoint = start;
+    for (int i = 0; i < n; i++) {
+        int thisMinDistance = INF;
+        int thisShortestPoint = -1;
+        for (int j = 0; j < n; j++) {
+            if (!visited[j] && shortestDistance[j] < thisMinDistance) {
+                thisMinDistance = shortestDistance[j];
+                thisShortestPoint = j;
+            }
+        }
+        if (thisShortestPoint == -1) {
+            break;
+        }
+        visited[thisShortestPoint] = true;
+        path[thisShortestPoint] = lastPoint;
+        lastPoint = thisShortestPoint;
+        for (auto& [toPoint, thisDistance] : graph[thisShortestPoint]) {
+            shortestDistance[toPoint] = min(shortestDistance[toPoint], shortestDistance[thisShortestPoint] + thisDistance);
+        }
+    }
+    // output
+    for (int i = 0; i < n; i++) {
+        if (shortestDistance[i] == INF) {
+            puts("Point %d is unreachable.");
+        }
+        else {
+            stack<int> thisPath;
+            thisPath.push(i);
+            while (thisPath.top() != start) {
+                thisPath.push(path[thisPath.top()]);
+            }
+            printf("Point %d's min distance is %d, and the path is: ", i, shortestDistance[i]);
+            bool first = true;
+            while (thisPath.size()) {
+                if (first)
+                    first = false;
+                else {
+                    printf(" -> ");
+                }
+                printf("%d", thisPath.top());
+                thisPath.pop();
+            }
+            puts("");
+        }
+    }
+    // after
+    delete[] path;
     delete[] shortestDistance;
     delete[] visited;
     delete[] graph;
