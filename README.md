@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-22 16:10:17
+ * @LastEditTime: 2023-03-02 10:02:39
 -->
 # LeetCode
 
@@ -371,6 +371,7 @@ int main() {
 |剑指OfferII0091.粉刷房子|中等|<a href="https://leetcode.cn/problems/JEj789/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2022/06/25/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200091.%20%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125456885" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/JEj789/solution/letmefly-jian-zhi-offer-ii-091fen-shua-f-3olz/" target="_blank">LeetCode题解</a>|
 |剑指OfferII0115.重建序列|中等|<a href="https://leetcode.cn/problems/ur2n8P/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2022/07/23/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125945290" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/ur2n8P/solution/letmefly-tu-jie-jian-zhi-offer-ii-115zho-fj58/" target="_blank">LeetCode题解</a>|
 |面试题01.09.字符串轮转|中等|<a href="https://leetcode.cn/problems/string-rotation-lcci/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2022/09/29/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2001.09.%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AE%E8%BD%AC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/127104669" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/string-rotation-lcci/solution/letmefly-mian-shi-ti-0109zi-fu-chuan-lun-0uht/" target="_blank">LeetCode题解</a>|
+|面试题05.02.二进制数转字符串|中等|<a href="https://leetcode.cn/problems/bianry-number-to-string-lcci/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2023/03/02/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2005.02.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/129295125" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/bianry-number-to-string-lcci/solutions/2142123/letmefly-mian-shi-ti-0502er-jin-zhi-shu-tt0ck/" target="_blank">LeetCode题解</a>|
 |面试题17.09.第k个数|中等|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2022/09/28/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.09.%20%E7%AC%AC%20k%20%E4%B8%AA%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/127087237" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/solution/by-tisfy-u77a/" target="_blank">LeetCode题解</a>|
 |面试题17.11.单词距离|中等|<a href="https://leetcode.cn/problems/find-closest-lcci/" target="_blank">题目地址</a>|<a href="https://leetcode.letmefly.xyz/2022/05/27/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.11.%20%E5%8D%95%E8%AF%8D%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/124998677" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-closest-lcci/solution/letmefly-mian-shi-ti-1711dan-ci-ju-chi-k-t5d5/" target="_blank">LeetCode题解</a>|
 
