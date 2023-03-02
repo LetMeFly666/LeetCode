@@ -874,6 +874,8 @@ for __CASE in range(T):
     print()
 ```
 
+<font size="15">我做了个讲解Dijstra算法的视频，快去看看吧！<a href="https://www.bilibili.com/video/BV1Y84y1N7Lm/">https://www.bilibili.com/video/BV1Y84y1N7Lm</a></font>
+
 
 # TODO: 修改下方链接、Readme链接
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~
