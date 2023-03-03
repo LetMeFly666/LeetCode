@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-03 19:49:07
+ * @LastEditTime: 2023-03-03 19:56:36
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,35 +16,31 @@ int a[10010];
 int temp[10010];
 
 void mergeSort(int l, int r) {
-    // printf("l = %d, r = %d\n", l, r);  //*********
-    if (l + 1 >= r)
+    if (l + 1 == r) {
         return;
-    int to = (l + r) >> 1;
-    mergeSort(l, to);
-    mergeSort(to, r);
-    int l1 = l, l2 = to;
-    int lt = 0;
-    while (l1 < to && l2 < r) {
-        if (a[l1] < a[l2])
-            temp[lt++] = a[l1++];
-        else
-            temp[lt++] = a[l2++];
     }
-    while (l1 < to) {
-        temp[lt++] = a[l1++];
+    int m = (l + r) >> 1;
+    mergeSort(l, m);
+    mergeSort(m, r);
+    int ll = l, lr = m;  // loc l, loc r
+    int lt = l;  // loc temp
+    while (ll < m && lr < r) {
+        if (a[ll] < a[lr]) {
+            temp[lt++] = a[ll++];
+        }
+        else {
+            temp[lt++] = a[lr++];
+        }
     }
-    while (l2 < r) {
-        temp[lt++] = a[l2++];
+    while (ll < m) {
+        temp[lt++] = a[ll++];
     }
-    // swap(a, temp);  // 不可！temp中有很多的0
-    for (int i = l, lt = 0; i < r; i++, lt++) {
-        a[i] = temp[lt];
+    while (lr < r) {
+        temp[lt++] = a[lr++];
     }
-    // printf("l = %d, r = %d", l, r);  //***********
-    // for (int i = l; i < r; i++) {  //***********
-    //     printf(", a[%d] = %d", i, a[i]);  //***********
-    // }  //***********
-    // puts("");  //***********
+    for (int i = l; i < r; i++) {
+        a[i] = temp[i];
+    }
 }
 
 int main() {
@@ -61,7 +57,7 @@ int main() {
             printf("%d ", a[i]);
         }
         puts("");
-    }
+    }    
     return 0;
 }
 
