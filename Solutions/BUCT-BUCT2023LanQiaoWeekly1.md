@@ -1252,6 +1252,189 @@ $\sum len(code_i)\times freq(char_i)$
 2. 如果“压缩程度”大于标准答案，则说明用户的答案不是最优解
 3. 如果“压缩程度”小于标准答案，则说明标准答案错误，标准答案不是最优解
 
+## 问题 J: 2.7 沟通无限校园网
+
+[题目地址](https://buctcoder.com/problem.php?id=5809)
+
+### 题目描述
+
+校园网是为学校师生提供资源共享、信息交流和协同工作的计算机网络。校园网是一个宽带、具有交互功能和专业性很强的局域网络。如果一所学校包括多个学院及部门，也可以形成多个局域网络，并通过有线或无线方式连接起来。
+
+原来的网络系统只局限于以学院、图书馆为单位的局域网，不能形成集中管理以及各种资源的共享，个别学院还远离大学本部，这些情况严重地阻碍了整个学校的网络化需求。现在需要设计网络电缆布线，将各个单位的 局域网络连通起来，如何设计能够使费用最少呢？
+
+### 输入
+
+```
+输入样例组数：
+t ( 0 < t < 10 )
+输入结点数和边数：
+n m ( 0 < n < 100 , 0 < m < 10000 )
+输入结点数u，v和边值 w： ( 0 < w < 100 )
+u1 v1 w1
+u2 v2 w2
+...
+ui vi wi
+```
+
+### 输出
+
+最小的花费 ans
+
+### 输入样例
+
+```
+1
+7 12 
+1 2 23 
+1 6 28 
+1 7 36 
+2 3 20 
+2 7 1 
+3 4 15 
+3 7 4 
+4 5 3
+4 7 9 
+5 6 17 
+5 7 16 
+6 7 25 
+1
+```
+
+### 输出样例
+
+```
+57
+```
+
+### 解题思路
+
+**写在前面：** 这道题没有说：“当给定图为非连通图时，输出0”。。。。。。
+
+**还有：** 样例最后一行多出来的那个1是什么鬼😂
+
+这道题是典型的最小生成树问题。
+
+我C++代码所采用的方案是：从某个点开始，将所有能走的路“入队”。接着每次从队列中取出权重最小的那一条，如果这条边的终点还未被接通，就使用这条边，并将终点能到达的所有边入队。
+
+### AC代码
+
+#### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+
+struct Edge {
+    int toNode;
+    int weight;
+
+    Edge(int toNode, int weight) : toNode(toNode), weight(weight) {}
+
+    friend bool operator < (const Edge& a, const Edge& b) {
+        return a.weight > b.weight;  // 权重小的在前
+    }
+};
+
+int main() {
+    // freopen("C:/Users/LetMe/Desktop/test1.in", "r", stdin);
+    int T;
+    cin >> T;
+    while (T--) {
+        int n, m;
+        cin >> n >> m;
+        vector<bool> visited(n + 1, false);
+        vector<vector<Edge>> graph(n + 1);
+        for (int i = 0; i < m; i++) {
+            int u, v, w;
+            scanf("%d%d%d", &u, &v, &w);
+            graph[u].push_back({v, w});
+            graph[v].push_back({u, w});
+        }
+        visited[1] = true;
+        priority_queue<Edge> pq;
+        for (Edge& thisEdge : graph[1]) {
+            pq.push(thisEdge);
+        }
+        int ans = 0;
+        int cntEdge = 0;
+        while (cntEdge < n - 1) {
+            if (!pq.size()) {
+                break;
+            }
+            Edge thisEdge = pq.top();
+            pq.pop();
+            // printf("pq.size() = %lld\n", pq.size());  //*********
+            if (!visited[thisEdge.toNode]) {
+                visited[thisEdge.toNode] = true;
+                ans += thisEdge.weight;
+                cntEdge++;
+                for (Edge& thatEdge : graph[thisEdge.toNode]) {
+                    pq.push(thatEdge);
+                }
+            }
+        }
+        // printf("n = %d, cntEdge = %d, ans = ",n, cntEdge);  //*********
+        if (cntEdge != n - 1) {
+            puts("0");
+        }
+        else {
+            cout << ans << endl;
+        }
+    }
+    return 0;
+}
+```
+
+#### Python
+
+```python
+from queue import PriorityQueue
+
+class Edge:
+    toNode = weight = 0
+
+    def __init__(self, toNode, weight) -> None:
+        self.toNode = toNode
+        self.weight = weight
+    
+    def __lt__(self, other: "Edge") -> bool:
+        return self.weight < other.weight
+
+T = int(input())
+for _CASE in range(T):
+    n, m = map(int, input().split())
+    visited = [False for _ in range(n + 1)]
+    graph = [[] for _ in range(n + 1)]
+    for _ in range(m):
+        u, v, w = map(int, input().split())
+        graph[u].append(Edge(v, w))
+        graph[v].append(Edge(u, w))
+    visited[1] = True
+    pq = PriorityQueue()
+    for thisNode in graph[1]:
+        pq.put(thisNode)
+    ans = 0
+    cntEdge = 0
+    while cntEdge < n - 1:
+        if pq.empty():
+            break
+        thisEdge = pq.get()
+        if not visited[thisEdge.toNode]:
+            visited[thisEdge.toNode] = True
+            ans += thisEdge.weight
+            cntEdge += 1
+            for thatEdge in graph[thisEdge.toNode]:
+                pq.put(thatEdge)
+    if cntEdge is not n - 1:
+        print("0")
+    else:
+        print(ans)
+```
 
 # TODO: 修改下方链接、Readme链接
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~

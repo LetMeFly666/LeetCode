@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-03 16:14:51
+ * @LastEditTime: 2023-03-03 16:50:44
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,16 +13,18 @@ using namespace std;
 typedef long long ll;
 
 struct Edge {
-    int u, v, w;
+    int toNode;
+    int weight;
 
-    Edge(int u, int v, int w) : u(u), v(v), w(w) {}
+    Edge(int toNode, int weight) : toNode(toNode), weight(weight) {}
 
     friend bool operator < (const Edge& a, const Edge& b) {
-        return a.w > b.w;  // 权重小的优先
+        return a.weight > b.weight;  // 权重小的在前
     }
 };
 
 int main() {
+    // freopen("C:/Users/LetMe/Desktop/test1.in", "r", stdin);
     int T;
     cin >> T;
     while (T--) {
@@ -33,9 +35,8 @@ int main() {
         for (int i = 0; i < m; i++) {
             int u, v, w;
             scanf("%d%d%d", &u, &v, &w);
-            Edge newEdge(u, v, w);
-            graph[u].push_back(newEdge);
-            graph[v].push_back(newEdge);
+            graph[u].push_back({v, w});
+            graph[v].push_back({u, w});
         }
         visited[1] = true;
         priority_queue<Edge> pq;
@@ -45,15 +46,40 @@ int main() {
         int ans = 0;
         int cntEdge = 0;
         while (cntEdge < n - 1) {
-            Edge thisEdge = pq.top();  // 未考虑非连通图的情况，连通图下此时pq不会为空
+            if (!pq.size()) {
+                break;
+            }
+            Edge thisEdge = pq.top();
             pq.pop();
-            if (!visited[thisEdge.u] || !visited[thisEdge.v]) {
-                ans += thisEdge.w;
+            // printf("pq.size() = %lld\n", pq.size());  //*********
+            if (!visited[thisEdge.toNode]) {
+                visited[thisEdge.toNode] = true;
+                ans += thisEdge.weight;
                 cntEdge++;
-                visited[thisEdge.u] = visited[thisEdge.v] = true;
+                for (Edge& thatEdge : graph[thisEdge.toNode]) {
+                    pq.push(thatEdge);
+                }
             }
         }
-        cout << ans << endl;
+        // printf("n = %d, cntEdge = %d, ans = ",n, cntEdge);  //*********
+        if (cntEdge != n - 1) {
+            puts("0");
+        }
+        else {
+            cout << ans << endl;
+        }
     }
     return 0;
 }
+
+/*
+451
+86
+366
+84
+141
+0
+150
+47
+
+*/
