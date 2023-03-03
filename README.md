@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-02-22 16:10:17
+ * @LastEditTime: 2023-03-03 21:46:42
 -->
 # LeetCode
 
@@ -406,6 +406,8 @@ int main() {
 |<a href="https://edu.csdn.net/contest/detail/22">CSDN竞赛9 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2022/11/17/CSDN%20-%20CSDN9%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/127909233">CSDN题解</a>|
 |<a href="https://edu.csdn.net/contest/detail/40">CSDN竞赛26 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2023/02/07/CSDN%20-%20CSDN26%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/128927254">CSDN题解</a>|
 |<a href="https://edu.csdn.net/contest/detail/41">CSDN竞赛26 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2023/02/10/CSDN%20-%20CSDN27%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/128975414">CSDN题解</a>|
+|———|———|———|
+|<a href="https://buctcoder.com/contest.php?cid=2963">2023上半年ACM&蓝桥杯每周训练题-1 - 题解 </a>|<a href="https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/129327761">CSDN题解</a>|
 
 ### 其他
 

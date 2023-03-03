@@ -4,7 +4,15 @@ date: 2023-02-21 21:23:52
 tags: [题解, BUCTOJ, 中等]
 ---
 
-# BUCTOJ - 2023上半年ACM&蓝桥杯每周训练题-1
+# BUCTOJ - 2023上半年ACM&蓝桥杯每周训练题-1-A~K题C++Python双语版
+
+# 前言
+
+这篇题解写包含《2023上半年ACM&蓝桥杯每周训练题-1》的A~K题的解析以及C++和Python双版本代码
+
+蒟蒻的我为了《问题 H: 2.5 一场说走就走的旅行》还心血来潮地做了个无人问津的视频，也耽误了不少时间，导致题解现在才完成至这个模样。
+
+PDF不能播放视频，还是比较推荐在网页端看题解的。地址：[https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)
 
 ## 问题 A: 1.2 神奇兔子数列
 
@@ -1652,6 +1660,9 @@ for _CASE in range(T):
 
 对于test1.in需要执行约4s的时间，在BUCTOJ上可能会T
 
-# TODO: 修改下方链接、Readme链接
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/129117439](https://letmefly.blog.csdn.net/article/details/129117439)
+# The End
+
+题解是从2月21号开始写的，但这都结束一周了，就先这样吧。
+
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)哦~
+> Tisfy：[https://letmefly.blog.csdn.net/article/details/129327761](https://letmefly.blog.csdn.net/article/details/129327761)
