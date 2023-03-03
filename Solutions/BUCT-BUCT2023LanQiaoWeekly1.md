@@ -1436,6 +1436,102 @@ for _CASE in range(T):
         print(ans)
 ```
 
+## 问题 K: 3.3 合久必分，分久必合
+
+[题目地址](https://buctcoder.com/problem.php?id=5811)
+
+### 题目描述
+
+```
+在数列排序中，如果只有一个数，那么他本身就是有序的；如果只有两个数，那么一次比较就可以完成排序。也就是说，数越少，排序越容易。那么，如果有一个有大量数据组成的数列，我们很难快速完成排序，该怎么办呢？可以考虑将其分解为很小的数列，直到只剩下一个数时，本身已有序，再把这些有序的数列合并在一起，执行一个和分解相反的过程，从而完成整个数列的排序。
+```
+
+### 输入
+
+```
+请输入样例组数；
+t ( 0 < t < 100 )
+请输入数列中元素的个数：
+n ( 0 < n < 10000 )
+请依次输入数列中的元素：
+x1 x2 ... xn ( 0 < x < 10000 )
+```
+
+### 输出
+
+```
+合并排序的结果
+x1 x2 ... xn
+```
+
+### 输入样例
+
+```
+1
+8
+42 15 20 6 8 38 50 12
+```
+
+### 输出样例
+
+```
+6 8 12 15 20 38 42 50
+```
+
+### 解题思路
+
+题目作者大概是想让我们使用“归并排序”吧！
+
+遇到这种题当然是要先愉快地AC了再说。（先直接一个内置的sort）
+
+
+### AC代码
+
+#### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+
+int a[10010];
+
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
+        }
+        sort(a, a + n);
+        for (int i = 0; i < n; i++) {
+            printf("%d ", a[i]);
+        }
+        puts("");
+    }
+    return 0;
+}
+```
+
+#### Python
+
+```python
+T = int(input())
+for _CASE in range(T):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    for i in a:
+        print(i, end=' ')
+    print()
+```
+
 # TODO: 修改下方链接、Readme链接
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129117439](https://letmefly.blog.csdn.net/article/details/129117439)
