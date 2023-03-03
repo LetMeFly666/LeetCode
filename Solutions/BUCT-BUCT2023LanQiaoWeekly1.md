@@ -1489,6 +1489,8 @@ x1 x2 ... xn
 
 #### C++
 
+**内置sort版：**
+
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -1519,7 +1521,77 @@ int main() {
 }
 ```
 
+**真正的归并排序版：**
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+
+int a[10010];
+int temp[10010];
+
+void mergeSort(int l, int r) {
+    if (l + 1 == r) {
+        return;
+    }
+    int m = (l + r) >> 1;
+    mergeSort(l, m);
+    mergeSort(m, r);
+    int ll = l, lr = m;  // loc l, loc r
+    int lt = l;  // loc temp
+    while (ll < m && lr < r) {
+        if (a[ll] < a[lr]) {
+            temp[lt++] = a[ll++];
+        }
+        else {
+            temp[lt++] = a[lr++];
+        }
+    }
+    while (ll < m) {
+        temp[lt++] = a[ll++];
+    }
+    while (lr < r) {
+        temp[lt++] = a[lr++];
+    }
+    for (int i = l; i < r; i++) {
+        a[i] = temp[i];
+    }
+}
+
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
+        }
+        mergeSort(0, n);
+        for (int i = 0; i < n; i++) {
+            printf("%d ", a[i]);
+        }
+        puts("");
+    }    
+    return 0;
+}
+
+/*
+1
+8
+42 15 20 6 8 38 50 12
+
+*/
+```
+
 #### Python
+
+**内置sort版：**
 
 ```python
 T = int(input())
@@ -1531,6 +1603,54 @@ for _CASE in range(T):
         print(i, end=' ')
     print()
 ```
+
+**真正的归并排序版：**
+
+```python
+a = []
+temp = [0 for _ in range(10010)]
+
+def mergeSort(l: int, r: int) -> None:
+    if l + 1 == r:
+        return
+    m = (l + r) >> 1
+    mergeSort(l, m)
+    mergeSort(m, r)
+    ll, lr = l, m
+    lt = l
+    while ll < m and lr < r:
+        if a[ll] < a[lr]:
+            temp[lt] = a[ll]
+            lt += 1
+            ll += 1
+        else:
+            temp[lt] = a[lr]
+            lt += 1
+            lr += 1
+    while ll < m:
+        temp[lt] = a[ll]
+        lt += 1
+        ll += 1
+    while lr < r:
+        temp[lt] = a[lr]
+        lt += 1
+        lr += 1
+    for i in range(l, r):
+        a[i] = temp[i]
+
+
+T = int(input())
+for _CASE in range(T):
+    n = int(input())
+    a = list(map(int, input().split()))
+    mergeSort(0, n)
+    # for i in a:
+    #     print(i, end=' ')
+    # print()
+    print(*a)
+```
+
+对于test1.in需要执行约4s的时间，在BUCTOJ上可能会T
 
 # TODO: 修改下方链接、Readme链接
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/)哦~
