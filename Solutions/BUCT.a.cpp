@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-02-21 21:25:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-02 22:00:45
+ * @LastEditTime: 2023-03-03 16:14:51
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,13 +12,15 @@ using namespace std;
 #define cd(a) scanf("%d", &a)
 typedef long long ll;
 
-struct Node {
+struct Edge {
     int u, v, w;
-} a[10010];
 
-bool cmp(const Node& a, const Node& b) {
-    return a.w < b.w;
-}
+    Edge(int u, int v, int w) : u(u), v(v), w(w) {}
+
+    friend bool operator < (const Edge& a, const Edge& b) {
+        return a.w > b.w;  // 权重小的优先
+    }
+};
 
 int main() {
     int T;
@@ -26,30 +28,29 @@ int main() {
     while (T--) {
         int n, m;
         cin >> n >> m;
+        vector<bool> visited(n + 1, false);
+        vector<vector<Edge>> graph(n + 1);
         for (int i = 0; i < m; i++) {
-            scanf("%d%d%d", &a[i].u, &a[i].v, &a[i].w);
+            int u, v, w;
+            scanf("%d%d%d", &u, &v, &w);
+            Edge newEdge(u, v, w);
+            graph[u].push_back(newEdge);
+            graph[v].push_back(newEdge);
         }
-        sort(a, a + m, cmp);
-        vector<bool> visited(n + 1);
-        int cntNode = 0;
+        visited[1] = true;
+        priority_queue<Edge> pq;
+        for (Edge& thisEdge : graph[1]) {
+            pq.push(thisEdge);
+        }
         int ans = 0;
-        for (int i = 0; i < m; i++) {
-            bool use = false;
-            if (!visited[a[i].u]) {
-                visited[a[i].u] = true;
-                cntNode += 1;
-                use = true;
-            }
-            if (!visited[a[i].v]) {
-                visited[a[i].v] = true;
-                cntNode += 1;
-                use = true;
-            }
-            if (use) {
-                ans += a[i].w;
-            }
-            if (cntNode == n) {
-                break;
+        int cntEdge = 0;
+        while (cntEdge < n - 1) {
+            Edge thisEdge = pq.top();  // 未考虑非连通图的情况，连通图下此时pq不会为空
+            pq.pop();
+            if (!visited[thisEdge.u] || !visited[thisEdge.v]) {
+                ans += thisEdge.w;
+                cntEdge++;
+                visited[thisEdge.u] = visited[thisEdge.v] = true;
             }
         }
         cout << ans << endl;
