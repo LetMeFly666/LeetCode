@@ -898,6 +898,8 @@ for __CASE in range(T):
 
 <iframe src="//player.bilibili.com/player.html?aid=610289111&bvid=BV1Y84y1N7Lm&cid=1034907457&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600px" width="100%"> </iframe>
 
+<!-- [video(video-pJFA3AY4-1677908081287)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=610289111)(image-https://img-blog.csdnimg.cn/img_convert/a9c1ee0fc2e5e42e295a5aa696c6b3d8.jpeg)(title-单源最短路的Dijstra算法)] -->
+
 ## 问题 I: 2.6 神秘电报密码
 
 [题目地址](https://buctcoder.com/problem.php?id=5808)
