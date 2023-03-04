@@ -1,7 +1,7 @@
 ---
 title: BUCTOJ - 2023上半年ACM&蓝桥杯每周训练题-1
 date: 2023-02-21 21:23:52
-tags: [题解, BUCTOJ, 中等]
+tags: [题解, BUCTOJ, 中等, 数组, 递归, 动态规划, 循环, 模拟, 素数, 质数, 贪心, 排序, 图论, 图, 迪杰斯特拉, Dijstra, 树, 哈夫曼树, 最小生成树, 归并排序]
 ---
 
 # BUCTOJ - 2023上半年ACM&蓝桥杯每周训练题-1-A~K题C++Python双语版
@@ -12,11 +12,15 @@ tags: [题解, BUCTOJ, 中等]
 
 蒟蒻的我为了《问题 H: 2.5 一场说走就走的旅行》还心血来潮地做了个无人问津的视频，也耽误了不少时间，导致题解现在才完成至这个模样。
 
-PDF不能播放视频，还是比较推荐在网页端看题解的。地址：[https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)
+PDF不能播放视频，且一段代码可能会分页显示，因此还是比较推荐在网页端看题解的。地址：[https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)
+
+若想查找某一知识点，可以直接Ctrl + F。
 
 ## 问题 A: 1.2 神奇兔子数列
 
 [题目地址](https://buctcoder.com/problem.php?id=5803)
+
+知识点：数组，递归，动态规划
 
 ### 题目描述
 
@@ -79,6 +83,8 @@ print(_3)
 
 [题目地址](https://buctcoder.com/problem.php?id=5804)
 
+知识点：循环，模拟
+
 ### 题目描述
 
 马克思手稿中有一道趣味数学问题：有 30 个人，其中有男人、女人和小孩，这些人在一家饭馆吃饭花了 50 先令；每个男人花 3 先令，每个女人花 2 先令，每个小孩花 1 先令；问男人、女人和小孩各有几人？
@@ -140,6 +146,8 @@ for x in range(1, 31):
 
 [题目地址](https://buctcoder.com/problem.php?id=5805)
 
+知识点：模拟
+
 ### 题目描述
 
 爱因斯坦家里有一条长阶梯，若每步跨 2 阶，则最后剩 1 阶；若每步跨 3 阶，则最后剩 2 阶；若每步跨 5 阶，则最后剩 4 阶；若每步跨 6 阶，则最后剩 5 阶。只有每次跨 7 阶，最后才正好 1 阶不剩。请问这条阶梯共有多少阶？
@@ -196,6 +204,8 @@ while True:
 ## 问题 D: 1.5 哥德巴赫猜想
 
 [题目地址](https://buctcoder.com/problem.php?id=5806)
+
+知识点：模拟、素数/质数
 
 ### 题目描述
 
@@ -304,6 +314,8 @@ for i in range(4, 2001, 2):
 
 [题目地址](https://buctcoder.com/problem.php?id=5800)
 
+知识点：贪心
+
 ### 题目描述
 
 ```
@@ -406,6 +418,8 @@ for _ in range(T):
 ## 问题 F: 2.3 阿里巴巴与四十大盗
 
 [题目地址](https://buctcoder.com/problem.php?id=5801)
+
+知识点：贪心
 
 ### 题目描述
 
@@ -563,6 +577,8 @@ for _ in range(T):
 
 [题目地址](https://buctcoder.com/problem.php?id=5802)
 
+知识点：排序、贪心
+
 ### 题目描述
 
 ```
@@ -663,12 +679,6 @@ int main() {
 #### Python
 
 ```python
-'''
-Author: LetMeFly
-Date: 2023-02-24 11:15:31
-LastEditors: LetMeFly
-LastEditTime: 2023-02-24 20:58:03
-'''
 T = int(input())
 for _ in range(T):
     thisLine = ''
@@ -693,6 +703,8 @@ for _ in range(T):
 ## 问题 H: 2.5 一场说走就走的旅行
 
 [题目地址](https://buctcoder.com/problem.php?id=5807)
+
+知识点：图论/图，Dijstra算法/迪杰斯特拉算法
 
 ### 题目描述
 
@@ -887,6 +899,8 @@ for __CASE in range(T):
 ## 问题 I: 2.6 神秘电报密码
 
 [题目地址](https://buctcoder.com/problem.php?id=5808)
+
+知识点：树、哈夫曼树
 
 ### 题目描述
 
@@ -1264,6 +1278,8 @@ $\sum len(code_i)\times freq(char_i)$
 
 [题目地址](https://buctcoder.com/problem.php?id=5809)
 
+知识点：图论/图、最小生成树
+
 ### 题目描述
 
 校园网是为学校师生提供资源共享、信息交流和协同工作的计算机网络。校园网是一个宽带、具有交互功能和专业性很强的局域网络。如果一所学校包括多个学院及部门，也可以形成多个局域网络，并通过有线或无线方式连接起来。
@@ -1447,6 +1463,8 @@ for _CASE in range(T):
 ## 问题 K: 3.3 合久必分，分久必合
 
 [题目地址](https://buctcoder.com/problem.php?id=5811)
+
+知识点：排序、归并排序
 
 ### 题目描述
 
