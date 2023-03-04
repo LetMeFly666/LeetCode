@@ -896,6 +896,8 @@ for __CASE in range(T):
 
 <font size="15">我做了个讲解Dijstra算法的视频，快去看看吧！<a href="https://www.bilibili.com/video/BV1Y84y1N7Lm/">https://www.bilibili.com/video/BV1Y84y1N7Lm</a></font>
 
+<iframe src="//player.bilibili.com/player.html?aid=610289111&bvid=BV1Y84y1N7Lm&cid=1034907457&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600px" width="100%"> </iframe>
+
 ## 问题 I: 2.6 神秘电报密码
 
 [题目地址](https://buctcoder.com/problem.php?id=5808)
