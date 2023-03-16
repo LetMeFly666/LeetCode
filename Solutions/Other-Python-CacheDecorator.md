@@ -1,7 +1,7 @@
 ---
 title: Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索
 date: 2022-11-07 09:23:13
-tags: [其他, Python, 中等, Note, 修饰器, 记忆化]
+tags: [其他, Python, 中等, Notes, 修饰器, 记忆化]
 ---
 
 # Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索

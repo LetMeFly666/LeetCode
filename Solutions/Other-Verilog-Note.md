@@ -1,7 +1,7 @@
 ---
 title: Verilog学习笔记 - 极简极入门级
 date: 2023-01-06 19:02:59
-tags: [Verilog, 简单, Note]
+tags: [Verilog, 简单, Notes]
 ---
 
 # Verilog小总结
