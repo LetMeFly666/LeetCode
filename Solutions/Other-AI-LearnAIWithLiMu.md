@@ -39,9 +39,7 @@ B站链接：[https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358
 
 解压出来有三个文件夹（mxnet版本、pytorch版本、transformer版本）
 
-# TODO: Added to README
-
-# TODO: Change Links
+# TODO: 等完成地差不多了发布至CSDN
 
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
 > [https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)
