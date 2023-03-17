@@ -1,5 +1,5 @@
 ---
-title: Windows - UWP - 通过链接启动Windows设置中的应用
+title: Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings
 date: 2023-03-16 20:46:27
 tags: [其他, Windows, UWP]
 ---
@@ -418,6 +418,6 @@ pyperclip.copy(markdown_table)
 > By the way, 今天有Google账号和ChatGPT等账号啦，2美元买的虚拟号，一条短信近7￥😭😂
 
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
+> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/16/Other-WIndows-UWP-launchSttingsApp/)哦~
 > [https://letmefly.blog.csdn.net/article/details/129601344](https://letmefly.blog.csdn.net/article/details/129601344)
 

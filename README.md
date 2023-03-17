@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-16 22:01:15
+ * @LastEditTime: 2023-03-17 12:40:20
 -->
 # LeetCode
 
@@ -451,6 +451,7 @@ int main() {
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
 |Python - 函数参数中的*和**|<a href="https://leetcode.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
 |Verilog学习笔记 - 极简极入门级|<a href="https://leetcode.letmefly.xyz/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
+|Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://leetcode.letmefly.xyz/2023/03/16/Other-WIndows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 
 
 ## TODO:
