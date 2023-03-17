@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-17 12:40:20
+ * @LastEditTime: 2023-03-17 21:51:21
 -->
 # LeetCode
 
@@ -445,6 +445,7 @@ int main() {
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://leetcode.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
+|PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://leetcode.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
 |Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
 |Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索|<a href="https://leetcode.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129164772">CSDN博客</a>|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
