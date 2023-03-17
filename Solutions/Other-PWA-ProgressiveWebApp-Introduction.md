@@ -91,5 +91,43 @@ PWA（Progressive Web Apps）是一种使用 Web 技术编写的应用程序，�
 
 总之，编写 PWA 应用需要了解 Web 技术和 PWA 的相关规范，同时使用现代的开发工具和框架可以帮助开发人员更加高效地开发 PWA 应用。
 
+## Sample
+
+附上修改简化后的“W3开放网”的PWA的manifest.json
+
+```json
+{
+    "name": "W3开放网",
+    "short_name": "W3开放网",
+    "start_url": "/?source=pwa",
+    "display": "standalone",
+    "scope": "/",
+    "background_color": "#fff",
+    "homepage": "http://127.0.0.1:5500/",
+    "icons": [
+        {
+          "src": "https://www.w3dev.cn/images/48x48.png",
+          "type": "image/png",
+          "sizes": "48x48"
+        },
+        {
+          "src": "https://www.w3dev.cn/images/96x96.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        },
+        {
+          "src": "https://www.w3dev.cn/images/144x144.png",
+          "type": "image/png",
+          "sizes": "144x144"
+        },
+        {
+          "src": "https://www.w3dev.cn//images/192x192.png",
+          "type": "image/png",
+          "sizes": "192x192"
+        }
+    ]
+}
+```
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129629012](https://letmefly.blog.csdn.net/article/details/129629012)
