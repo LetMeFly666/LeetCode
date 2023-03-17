@@ -58,5 +58,13 @@ for i in chain(a, b):
 1, 2, 6, 2, 5, 7,
 ```
 
+### Python bisect
+
+二分查找用。
+
+```bisect.bisect_right(list, val)```类似于C++的```upper_bound(list.begin(), lise.end(), val) - list.begin()```
+
+同理，```bisect_left```类似于```lower_bound```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
