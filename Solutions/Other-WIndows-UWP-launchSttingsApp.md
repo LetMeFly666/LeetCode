@@ -417,6 +417,13 @@ pyperclip.copy(markdown_table)
 
 > By the way, 今天有Google账号和ChatGPT等账号啦，2美元买的虚拟号，一条短信近7￥😭😂
 
+## Other
+
+其他的一些可以使用命令行直接打开的有：
+
+|页面|命令|
+|:--:|:--:|
+|环境变量|rundll32 sysdm.cpl,EditEnvironmentVariables|
 
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/16/Other-WIndows-UWP-launchSttingsApp/)哦~
 > [https://letmefly.blog.csdn.net/article/details/129601344](https://letmefly.blog.csdn.net/article/details/129601344)
