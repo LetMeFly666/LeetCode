@@ -18,21 +18,6 @@ void debug(vector<Type>v)
 }
 
 template<class Type>
-void debug(vector<Type>v)
-{
-    for(int i=0;i<v.size();i++)
-    {
-        try {
-            cout<<v[i]<<' ';
-        }
-        catch (...) {
-            debug(v[i], "");
-        }
-    }
-    puts("");
-}
-
-template<class Type>
 void debug(vector<vector<Type>> v) {
     if (v.empty()) {
         puts("++\n++\n");
