@@ -39,6 +39,15 @@ B站链接：[https://space.bilibili.com/1567748478/channel/seriesdetail?sid=358
 
 解压出来有三个文件夹（mxnet版本、pytorch版本、transformer版本）
 
+本课程主要使用Pytorch版本。此外，本课程还将使用幻灯片版本的“记事本”：```git clone https://github.com/d2l-ai/d2l-zh-pytorch-slides```  并进入：```cd .\d2l-zh-pytorch-slides\```
+
+打开jupyter：```jupyter notebook```。这样将会在机器上开辟一个8888端口。
+
+如果是在服务器上进行的上述操作，也可以将远端的端口映射到本地```ssh -L8888:localhost:8888 root@www.letmefly.xyz```
+
+可以安装一个插件，```pip install rise```来以幻灯片格式显示。
+
+
 # TODO: 等完成地差不多了发布至CSDN
 
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
