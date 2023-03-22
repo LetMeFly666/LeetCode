@@ -8,30 +8,13 @@ using namespace std;
 typedef long long ll;
 
 template<class Type>
-void debug(Type a, string end="\n") {
-    try {
-        cout << a << end;
+void debug(vector<Type>v)
+{
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<' ';
     }
-    catch (...) {
-        try {
-            cout << "{" << a.first << ", " << a.second << "}" << end;
-        }
-        catch (...) {
-            cout << "{";
-            bool first = true;
-            for (auto i : a) {
-                if (first) {
-                    first = false;
-                }
-                else {
-                    cout << ", ";
-                }
-                cout << i;
-            }
-            cout << "}"
-            cout << end;
-        }
-    }
+    puts("");
 }
 
 template<class Type>
