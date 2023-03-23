@@ -1,8 +1,10 @@
 ---
 title: 不能函数重载的Python如何实现“伪重载”
 date: 2023-03-23 20:19:21
-tags: [其他, Python, 中等, overload, 函数重载]
+tags: [其他, Python, 中等, overload, 函数重载, 重载]
 ---
+
+# 能函数重载的Python如何实现“伪重载”
 
 ## 认清现实吧！函数重载在Python中不存在
 
