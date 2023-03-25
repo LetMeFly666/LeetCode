@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-03-25 09:22:25
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-03-25 09:44:45
+ * @LastEditTime: 2023-03-25 10:03:44
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -19,15 +19,12 @@ public:
             return 0;
         }
         int ans = right;
-        for (int left = 0; left < arr.size(); left++) {  // left和right肯定不会相遇
+        for (int left = 0; arr[right + 1] >= arr[right]; left++) {  // left和right肯定不会相遇
             while (right < arr.size() && arr[right] < arr[left]) {
                 right++;
             }
             ans = min(ans, right - left - 1);
-            // printf("left = %d, right = %d, ans = %d\n", left, right, ans);  //*************
-            if (left + 1 < arr.size() && arr[left + 1] < arr[left]) {
-                break;
-            }
+            
         }
         return ans;
     }
