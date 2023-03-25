@@ -122,6 +122,17 @@ nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
 
 如果同时满足上述两个条件，就返回```true```
 
+---
+
+**2023.3.25日更：** 感谢[@Theseus](https://leetcode.cn/u/great-vaughannym/)大佬的提醒！！
+
+本题中题目描述说明了“sequences[i] 是 nums 的子序列”，因此所构建的图**不会存在自环**。
+
+因此不必检查“是否所有节点的入度都为0”，这是判断是否能进行拓扑排序的（有向无环图才能进行拓扑排序）
+
+只需要满足上述两个条件中的第一个即可返回```true```
+
+---
 
 + 时间复杂度$O(n + m)$，其中$n$是排列的长度，$m$是$sequences$中元素的个数
 + 空间复杂度$O(n + m)$
@@ -161,10 +172,10 @@ public:
                 }
             }
         }
-        for (int i = 1; i <= n; i++) {
-            if (inDegree[i])
-                return false;
-        }
+        // for (int i = 1; i <= n; i++) {  // 这里并不需要！
+        //     if (inDegree[i])
+        //         return false;
+        // }
         return true;
     }
 };
