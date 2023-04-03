@@ -94,5 +94,7 @@ PS，今日添加了table_definition_cache，内存占用大概降低了5%（2G 
 
 > 若Mysql增删改查频率较高则不建议随意修改。
 
+2023.4.3更：有时重启一下MySQL服务也是个不错的选择
+
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129120029](https://letmefly.blog.csdn.net/article/details/129120029)
