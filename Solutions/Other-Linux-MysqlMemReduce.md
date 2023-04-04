@@ -1,7 +1,7 @@
 ---
-title: Linux - 减小Mysql的内存占用
+title: Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况
 date: 2023-02-20 08:56:33
-tags: [其他, Linux, Mysql]
+tags: [其他, Linux, Mysql, 内存]
 ---
 
 # 减小Mysql在Linux的内存占用
@@ -95,6 +95,14 @@ PS，今日添加了table_definition_cache，内存占用大概降低了5%（2G 
 > 若Mysql增删改查频率较高则不建议随意修改。
 
 2023.4.3更：有时重启一下MySQL服务也是个不错的选择
+
+## Linux查看内存占用
+
+```bash
+free
+```
+
+其中```free -m```是以M形式显示（显示多少M），```free -g```是以G的形式显示（1.7G会显示为1G哈哈）
 
 > 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129120029](https://letmefly.blog.csdn.net/article/details/129120029)
