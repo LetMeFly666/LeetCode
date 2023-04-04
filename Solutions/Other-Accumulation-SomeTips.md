@@ -66,5 +66,55 @@ for i in chain(a, b):
 
 同理，```bisect_left```类似于```lower_bound```
 
+### Python json.dumps
+
+格式化输出json（实质是将python字典转化为格式化后的字符串）
+
+```python
+import json
+data = {"name": "你好", "list": [1, 2]}
+print("data:", data)
+formatted = json.dumps(data, indent=4, ensure_ascii=False)
+print("json.dumps:", formatted)
+```
+
+运行结果：
+
+```
+data: {'name': '你好', 'list': [1, 2]}
+json.dumps: {
+    "name": "你好",
+    "list": [
+        1,
+        2
+    ]
+}
+```
+
+其中```ensure_ascii```默认为```True```，这时会以ASCII码的形式输出（中文你好就变成了"\u4f60\u597d"）
+
+More：json.dumps是将字典转为字符串，json.loads是将字符串转为字典。假如从爬虫得到的返回值是json格式的字符串，想将其格式化后输出，那么就可以：
+
+```python
+import json
+responsedData = '{"name": "\\u4f60\\u597d", "list": [1, 2]}'  # 假设responsedData由爬虫获得
+print("不好看的原版responsedData:", responsedData)
+formatted = json.dumps(json.loads(responsedData), indent=4, ensure_ascii=False)
+print("json.dumps(json.loads):", formatted)
+```
+
+运行结果：
+
+```
+不好看的原版responsedData: {"name": "\u4f60\u597d", "list": [1, 2]}
+json.dumps(json.loads): {
+    "name": "你好",
+    "list": [
+        1,
+        2
+    ]
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
