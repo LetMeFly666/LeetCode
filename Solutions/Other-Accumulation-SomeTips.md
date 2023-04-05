@@ -56,6 +56,12 @@ C:\Program Files\WindowsApps
 
 我想，也许其原理是通过剪贴板的看不见的“文件链路”进行传输的？
 
+### autohotkey
+
+记录一下autohotkey，它是一款是一款免费的、Windows平台下开放源代码的热键脚本语言
+
+官网：[https://www.autohotkey.com/](www.autohotkey.com)
+
 ## About Python
 
 ### Python chain
