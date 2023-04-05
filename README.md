@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-05 21:03:32
+ * @LastEditTime: 2023-04-05 22:18:39
 -->
 # LeetCode
 
@@ -409,6 +409,8 @@ int main() {
 |<a href="https://atcoder.jp/contests/abc259/tasks/abc259_c">AtCoder Beginner Contest 259 - C - XX to XXX </a>|<a href="https://leetcode.letmefly.xyz/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20C%20-%20XX%20to%20XXX/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/125700254">CSDN题解</a>|
 |<a href="https://atcoder.jp/contests/abc259/tasks/abc259_d">AtCoder Beginner Contest 259 - D - Circumferences </a>|<a href="https://leetcode.letmefly.xyz/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20D%20-%20Circumferences/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/125700650">CSDN题解</a>|
 |<a href="https://atcoder.jp/contests/arc149/tasks/arc149_a">AtCoder Regular Contest 149 - A - Repdigit Number </a>|<a href="https://leetcode.letmefly.xyz/2022/10/03/AtCoder%20Regular%20Contest%20149%20-%20A%20-%20Repdigit%20Number/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/127149808">CSDN题解</a>|
+|———|———|———|
+|<a href="https://codeforces.com/contest/1802/problem/B">Codeforces - Codeforces Round 857 (Div. 2) - B. Settlement of Guinea Pigs</a>|<a href="https://leetcode.letmefly.xyz/2023/04/05/Codeforces%20-%20Codeforces%20Round%20857%20(Div.%202)%20-%20B.%20Settlement%20of%20Guinea%20Pigs/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/129978565">CSDN题解</a>|
 |———|———|———|
 |<a href="https://matiji.net/exam/brushquestion/5/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2005 · 玉璋 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/21/MaTiJi%20-%20MT2005%20-%20%E7%8E%89%E7%92%8B/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/126455355">CSDN题解</a>|
 |<a href="https://matiji.net/exam/brushquestion/65/3181/1DC60EA6DF83A333301CFFE1407FBA59">码蹄集 - MT2065 · 整数大小比较 </a>|<a href="https://leetcode.letmefly.xyz/2022/08/21/MaTiJi%20-%20MT2065%20-%20%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/126455447">CSDN题解</a>|

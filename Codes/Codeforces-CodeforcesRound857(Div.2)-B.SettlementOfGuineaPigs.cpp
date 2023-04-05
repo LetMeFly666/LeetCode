@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-04-05 22:11:00
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-05 22:13:09
+ * @LastEditTime: 2023-04-05 22:15:45
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,6 +28,9 @@ int main() {
             }
             else {
                 if (!nowBoy) {
+                    if (!nowSingle) {  // 没单鸟
+                        continue;
+                    }
                     nowBoy = 1;
                     nowGirl = nowSingle - 1;
                     nowSingle = 0;
