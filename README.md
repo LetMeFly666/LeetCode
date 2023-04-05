@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-05 16:25:43
+ * @LastEditTime: 2023-04-05 20:53:13
 -->
 # LeetCode
 
@@ -466,6 +466,7 @@ int main() {
 |Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）|<a href="https://leetcode.letmefly.xyz/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129972641">CSDN博客</a>|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
 |不能函数重载的Python如何实现“伪重载”|<a href="https://leetcode.letmefly.xyz/2023/03/23/Other-Python-Overload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129738983">CSDN博客</a>|
+|Python - 记录一下pydebugger的BUG|<a href="https://leetcode.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG">本平台博客</a>|无|
 |Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
 |Python - 函数参数中的*和**|<a href="https://leetcode.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
