@@ -106,7 +106,7 @@ Now let's show that the answer is at least $4$. Let's say that among the first $
 
 这样，我们就知道了每时每刻需要多少笼子，取整个过程的最大值就是答案。
 
-**What's More** <small>这让我想起了我们学校大约半个月前的甲流隔离，也是两人间，但是，可能🚹🚺混寝！kz的病友就是被分配到了妹子的房间后不愿意要求调换后来到柯舟隔间的。。。</small>
+**What's More** <small>这让我想起了我们学校大约半个月前的甲流隔离，也是两人间，但是，可能🚹🚺混寝！kz的病友就是被分配到了妹子的房间后不愿意要求调换后来到kz隔间的。。。</small>
 
 ### AC代码
 
