@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-04 19:51:56
+ * @LastEditTime: 2023-04-05 15:54:10
 -->
 # LeetCode
 
@@ -453,6 +453,7 @@ int main() {
 |离别：哪些是在家而不是在学校很方便的事情|<a href="https://leetcode.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
 |原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://leetcode.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://leetcode.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
+|HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://leetcode.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://leetcode.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://leetcode.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://leetcode.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
