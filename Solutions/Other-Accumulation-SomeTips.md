@@ -70,6 +70,8 @@ C:\Program Files\WindowsApps
 
 其视频讲解可见：[科技宅小明](https://space.bilibili.com/5626102)的视频[科技还是魔法？！2分钟重建我的家！](https://www.bilibili.com/video/BV1mV4y1A7PP)
 
+早点有的话就能多建模两个地方喽~
+
 ## About Python
 
 ### Python chain
