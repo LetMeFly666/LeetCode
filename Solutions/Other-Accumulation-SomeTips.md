@@ -62,6 +62,14 @@ C:\Program Files\WindowsApps
 
 官网：[https://www.autohotkey.com/](www.autohotkey.com)
 
+## About Phone
+
+### Phone APP 如视VR
+
+记录一款软件，使用智能手机拍摄就能三维建模。智能手机拍摄将信息传到服务器上，云计算后返回，可在线浏览。免费，但不可下载模型。
+
+其视频讲解可见：[科技宅小明](https://space.bilibili.com/5626102)的视频[科技还是魔法？！2分钟重建我的家！](https://www.bilibili.com/video/BV1mV4y1A7PP)
+
 ## About Python
 
 ### Python chain
