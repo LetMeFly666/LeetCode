@@ -18,4 +18,4 @@ class Solution:
                 nowDirection = (nowDirection + 3) % 4
             else:
                 nowDirection = (nowDirection + 1) % 4
-        return nowDirection or (not x and not y)
+        return nowDirection != 0 or (not x and not y)
