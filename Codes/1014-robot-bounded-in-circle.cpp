@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-04-11 10:38:34
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-11 10:40:58
+ * @LastEditTime: 2023-04-11 10:46:37
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -27,6 +27,6 @@ public:
                 nowDirection = (nowDirection + 1) % 4;
             }
         }
-        return !x && !y;
+        return (x == 0) != (y == 0);
     }
 };
