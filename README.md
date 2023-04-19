@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-09 18:43:29
+ * @LastEditTime: 2023-04-19 16:56:07
 -->
 # LeetCode
 
@@ -475,6 +475,7 @@ int main() {
 |Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://leetcode.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
 |Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索|<a href="https://leetcode.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129164772">CSDN博客</a>|
 |Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）|<a href="https://leetcode.letmefly.xyz/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129972641">CSDN博客</a>|
+|Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目|<a href="https://leetcode.letmefly.xyz/2023/04/19/Other-Python-Django-Merge2DjangoProject/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130248202">CSDN博客</a>|
 |Python生成列表的简洁代码|<a href="https://leetcode.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
 |不能函数重载的Python如何实现“伪重载”|<a href="https://leetcode.letmefly.xyz/2023/03/23/Other-Python-Overload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129738983">CSDN博客</a>|
 |Python - 记录一下pydebugger的BUG|<a href="https://leetcode.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG">本平台博客</a>|无|
