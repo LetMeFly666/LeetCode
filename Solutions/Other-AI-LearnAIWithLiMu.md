@@ -384,6 +384,130 @@ tensor([1]) 1 1.0 1
 tensor([1.]) 1.0 1.0 1
 ```
 
+### 数据预处理
+
+新建一个数据集
+
+```python
+dataFile = "data.csv"
+with open(dataFile, 'w') as f:
+    f.write('NumRooms,Alley,Price\n')
+    f.write('NA,Pave,127500\n')
+    f.write('2,NA,106000\n')
+    f.write('4,NA,178100\n')
+    f.write('NA,NA,140000\n')
+```
+
+读取到pandas中
+
+```python
+import pandas as pd  # pip install pandas
+data = pd.read_csv(dataFile)
+print(data)
+data  # 在jupyter中直接调用data输出效果会更好
+```
+
+运行结果：
+
+```
+   NumRooms Alley   Price
+0       NaN  Pave  127500
+1       2.0   NaN  106000
+2       4.0   NaN  178100
+3       NaN   NaN  140000
+```
+
+**获取输入和输出**
+
+```python
+# pandas的数据需要.iloc之后才能向torch那样取值
+inputs, outputs = data.iloc[:, 0:2], data.iloc[:, 2]
+```
+
+**处理缺失值**
+
+使用平均值填补NaN：
+
+```python
+inputs = inputs.fillna(inputs.mean())
+print(inputs)
+```
+
+运行结果：
+
+```
+   NumRooms Alley
+0       3.0  Pave
+1       2.0   NaN
+2       4.0   NaN
+3       3.0   NaN
+/tmp/ipykernel_13420/2420151946.py:1: FutureWarning: The default value of numeric_only in DataFrame.mean is deprecated. In a future version, it will default to False. In addition, specifying 'numeric_only=None' is deprecated. Select only valid columns or specify the value of numeric_only to silence this warning.
+  inputs = inputs.fillna(inputs.mean())
+```
+
+警告的意思是说在未来的版本中，numeric_only将不设置默认值。因此手动添加```numeric_only=True```以消除警告：
+
+```python
+inputs = inputs.fillna(inputs.mean(numeric_only=True))
+```
+
+**将pandas中的nan视为一个类别**
+
+```python
+inputs = pd.get_dummies(inputs, dummy_na=True)
+print(inputs)
+```
+
+运行结果：
+
+```
+   NumRooms  Alley_Pave  Alley_nan
+0       3.0           1          0
+1       2.0           0          1
+2       4.0           0          1
+3       3.0           0          1
+```
+
+**将数据转为torch的张量**
+
+```python
+print(inputs.values)
+import torch
+X, y = torch.tensor(inputs.values), torch.tensor(outputs.values)
+print(X)
+print(y)
+```
+
+运行结果：
+
+```
+[[3. 1. 0.]
+ [2. 0. 1.]
+ [4. 0. 1.]
+ [3. 0. 1.]]
+tensor([[3., 1., 0.],
+        [2., 0., 1.],
+        [4., 0., 1.],
+        [3., 0., 1.]], dtype=torch.float64)
+tensor([127500, 106000, 178100, 140000])
+```
+
+注意这里X的dtype是64位浮点数。但其实64位运行较慢，实际使用时经常使用32位浮点数。
+
+```python
+X = X.to(dtype=torch.float32)
+print(X)
+print(X.dtype)
+```
+
+运行结果：
+
+```
+X = X.to(dtype=torch.float32)
+print(X)
+print(X.dtype)
+```
+
 **：**
 
 ```python
