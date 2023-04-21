@@ -468,7 +468,7 @@ print(inputs)
 inputs = inputs.fillna(inputs.mean(numeric_only=True))
 ```
 
-**将pandas中的nan视为一个类别**
+**将pandas中的Nan视为一个类别**
 
 ```python
 inputs = pd.get_dummies(inputs, dummy_na=True)
