@@ -176,6 +176,214 @@ tensor([ 1.,  4., 16., 64.])
 tensor([2.7183e+00, 7.3891e+00, 5.4598e+01, 2.9810e+03])
 ```
 
+**向量连接(concatenate)：torch.cat**
+
+```python
+X = torch.arange(12, dtype=torch.float32).reshape((3, 4))
+Y = torch.tensor([[2.0, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])
+torch.cat((X, Y), dim=0), torch.cat((X, Y), dim=1)
+```
+
+运行结果：
+
+```
+(tensor([[ 0.,  1.,  2.,  3.],
+         [ 4.,  5.,  6.,  7.],
+         [ 8.,  9., 10., 11.],
+         [ 2.,  1.,  4.,  3.],
+         [ 1.,  2.,  3.,  4.],
+         [ 4.,  3.,  2.,  1.]]),
+ tensor([[ 0.,  1.,  2.,  3.,  2.,  1.,  4.,  3.],
+         [ 4.,  5.,  6.,  7.,  1.,  2.,  3.,  4.],
+         [ 8.,  9., 10., 11.,  4.,  3.,  2.,  1.]]))
+```
+
+默认dim = 0
+
+```python
+x = torch.tensor([[1, 2], [3, 4]])
+y = torch.tensor([[5, 6]])
+print(torch.cat((x, y)))
+```
+
+运行结果：
+
+```
+tensor([[1, 2],
+        [3, 4],
+        [5, 6]])
+```
+
+只有拼接的那一维度的长度可以不同，其他维度必须相同（By Let，未完全验证）。例如下面代码会报错：
+
+```python
+x = torch.tensor([[1, 2], [3, 4]])
+y = torch.tensor([[5, 6]])
+torch.cat((x, y), dim=1)
+```
+
+运行结果：
+
+```
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+Cell In[15], line 3
+      1 x = torch.tensor([[1, 2], [3, 4]])
+      2 y = torch.tensor([[5, 6]])
+----> 3 torch.cat((x, y), dim=1)
+```
+
+**求和：x.sum()**
+
+产生一个只有一个元素的张量：
+
+```python
+print(x)
+print(x.sum())
+```
+
+运行结果：
+
+```
+tensor([[1, 2],
+        [3, 4]])
+tensor(10)
+```
+
+**广播机制：形状不同的向量进行运算**
+
+```python
+a = torch.arange(3).reshape((3, 1))
+b = torch.arange(2).reshape((1, 2))
+print(a)
+print(b)
+print(a + b)
+```
+
+运行结果：
+
+```
+tensor([[0],
+        [1],
+        [2]])
+tensor([[0, 1]])
+tensor([[0, 1],
+        [1, 2],
+        [2, 3]])
+```
+
+同理
+
+**取元素/改元素：[第一维列表操作, 第二维列表操作, 第三维]**
+
+```python
+x = torch.arange(12).reshape(3, 4)
+print(x)
+print(x[0:2, 1:3])
+x[:, -1] = 0
+print(x)
+x[0] = -1
+print(x)
+```
+
+运行结果：
+
+```
+tensor([[ 0,  1,  2,  3],
+        [ 4,  5,  6,  7],
+        [ 8,  9, 10, 11]])
+tensor([[1, 2],
+        [5, 6]])
+tensor([[ 0,  1,  2,  0],
+        [ 4,  5,  6,  0],
+        [ 8,  9, 10,  0]])
+tensor([[-1, -1, -1, -1],
+        [ 4,  5,  6,  0],
+        [ 8,  9, 10,  0]])
+```
+
+**一些操作可能导致为结果重新分配内存：**
+
+```python
+before = id(Y)
+print(before)
+Y = X + Y
+after = id(Y)
+print(after)
+print(before == after)
+```
+
+运行结果：
+
+```
+139769251739696
+139769252745984
+False
+```
+
+那是当然的，X + Y肯定要新赋值给一个元素，不能把X或Y的值给修改掉。
+
+原地执行操作：
+
+```python
+before = id(Y)
+Y += X
+after = id(Y)
+print(before == after)
+```
+
+运行结果：
+
+```
+True
+```
+
+原地执行：
+
+```python
+Z = torch.zeros_like(Y)
+before = id(Z)
+Z[:] = X + Y
+after = id(Z)
+print(before == after)
+```
+
+运行结果：
+
+```
+True
+```
+
+
+**转为Numpy张量**
+
+```python
+A = x.numpy()
+print(type(A), type(x))
+```
+
+运行结果：
+
+```
+<class 'numpy.ndarray'> <class 'torch.Tensor'>
+```
+
+**将大小为1的张量转为Python的标量：**
+
+```python
+x = torch.tensor([1])
+print(x, x.item(), float(x), int(x))
+y = torch.tensor([1.])
+print(y, y.item(), float(y), int(y))
+```
+
+运行结果：
+
+```
+tensor([1]) 1 1.0 1
+tensor([1.]) 1.0 1.0 1
+```
+
 **：**
 
 ```python
