@@ -150,5 +150,21 @@ json.dumps(json.loads): {
 }
 ```
 
+### Python sortedcontainers.SortedSet
+
+Python有序集合，类似C++的set
+
+但缺点是需要手动安装，非Python自带
+
+```bash
+pip install sortedcontainers
+```
+
+```python
+from sortedcontainers import SortedSet
+se = SortedSet()
+# 增删改查未完待续
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
