@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, 安全]
 ---
 
 # 日积月累 - 一些小知识
