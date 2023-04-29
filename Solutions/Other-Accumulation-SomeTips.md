@@ -166,5 +166,13 @@ se = SortedSet()
 # 增删改查未完待续
 ```
 
+## About Website
+
+### ip扫描工具censys
+
+很多网站为了防止DDos等都使用CDN等将自己的真实ip隐藏起来。但是如果直接访问真实ip的话，还是有可能会返回SSL证书（例如浏览器提示的“证书无效/不匹配”
+
+censys扫描全球所有IP并记录ip于域名直接的关系，并且扫描速度快得惊人[{{{(>_<)}}}]
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
