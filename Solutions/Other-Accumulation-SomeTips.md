@@ -182,5 +182,21 @@ censys扫描全球所有IP并记录ip于域名直接的关系，并且扫描速�
 
 并且，输入一个域名，它的所有子域名甚至都能被查到（似乎前提是开了https）。
 
+## About API
+
+### bilibili API
+
+bilibili数据查询API：能得到JSON格式的某个BV视频的播放点赞等数据
+
+```
+https://api.bilibili.com/x/web-interface/view?bvid={BV号}
+```
+
+例如
+
+```
+https://api.bilibili.com/x/web-interface/view?bvid=BV1ak4y1J7j7
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
