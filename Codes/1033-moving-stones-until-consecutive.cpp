@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-04-30 09:53:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-30 10:00:41
+ * @LastEditTime: 2023-04-30 10:11:04
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -21,16 +21,15 @@ public:
         if (a > b) {
             swap(a, b);
         }
-        // begin
-        int m = 0, M = 0;
+        // calculate
         if (a + 1 == b && b + 1 == c) {  // 直接相连
             return {0, 0};
         }
-        if (a + 1 == b || b + 1 == c) {  // 有两个相连
-            return {1, max((b - a - 1) + (c - a - 2), (c - b - 1) + (c - a - 2))};
+        if (a + 1 == b || b + 1 == c || a + 2 == b || b + 2 == c) {  // 有两个相连 或 有两个间隔为2
+            return {1, c - a - 2};
         }
         else {  // 三个各不相连
-            return {2, max((b - a - 1) + (c - a - 2), (c - b - 1) + (c - a - 2))};
+            return {2, c - a - 2};
         }
     }
 };
