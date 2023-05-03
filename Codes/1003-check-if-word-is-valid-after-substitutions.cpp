@@ -2,19 +2,38 @@
  * @Author: LetMeFly
  * @Date: 2023-05-03 09:37:14
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-05-03 09:38:19
+ * @LastEditTime: 2023-05-03 09:43:53
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
 class Solution {
-private:
-    int endWith(string& s, int startLoc, char startChar) {
-        
-    }
 public:
     bool isValid(string& s) {
-        return endWith(s, 0, 'a') == s.size();
+        stack<char> st;
+        for (char c : s) {
+            if (c == 'a') {
+                st.push('a');
+            }
+            else if (c == 'b') {
+                if (st.empty() || st.top() != 'a') {
+                    return false;
+                }
+                else {
+                    st.pop();
+                    st.push('b');
+                }
+            }
+            else {
+                if (st.empty() || st.top() != 'b') {
+                    return false;
+                }
+                else {
+                    st.pop();
+                }
+            }
+        }
+        return st.empty();
     }
 };
