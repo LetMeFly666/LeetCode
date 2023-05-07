@@ -136,5 +136,50 @@ class Solution:
         return ans if not nowFrog else -1
 ```
 
+#### Java
+
+🔥 感谢 [@水](https://leetcode.cn/u/shui-ar/)大佬 提供Java版本的代码~
+
+```java
+class Solution {
+    public int minNumberOfFrogs(String croakOfFrogs) {
+        if(croakOfFrogs.length()%5!=0){
+            return -1;
+        }
+        HashMap<Character,Integer> map=new HashMap<>();
+        map.put('c',0);
+        map.put('r',1);
+        map.put('o',2);
+        map.put('a',3);
+        map.put('k',4);
+        int frog=0;
+        int maxfrog=0;
+        int[] count=new int[5];
+        for(char now:croakOfFrogs.toCharArray()){
+            int croak=map.get(now);
+            if(now=='c'){
+                frog++;
+                count[0]++;
+                maxfrog=Math.max(frog,maxfrog);
+            }else{
+                if(count[croak-1]==0){
+                return -1;
+                }
+                count[croak-1]--;
+                if(now=='k'){
+                    frog--;
+                }else{
+                    count[croak]++;
+                }
+            }
+        }
+        if(frog>0){
+            return -1;
+        }
+        return maxfrog;
+    }
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/05/06/LeetCode%201419.%E6%95%B0%E9%9D%92%E8%9B%99/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130520908](https://letmefly.blog.csdn.net/article/details/130520908)
