@@ -547,6 +547,90 @@ tensor([[ 0,  4,  8],
         [ 3,  7, 11]])
 ```
 
+## 自动求导
+
+**自动求导：requires_grad**
+
+```python
+x = torch.arange(4.)
+x.requires_grad_(True)  # 等价于 x = torch.arange(4., requires_grad=True)
+print(x)
+y = 2 * torch.dot(x, x)  # y = 2x^2
+print(y)
+y.backward()  # 反向求导
+x.grad
+print(x.grad == 4 * x)  # y' = 4x
+```
+
+运行结果：
+
+```
+tensor([0., 1., 2., 3.], requires_grad=True)
+tensor(28., grad_fn=<MulBackward0>)
+tensor([True, True, True, True])
+```
+
+**清除梯度：x.grad.zero_**
+
+默认情况torch会把梯度累积起来，因此计算下一个梯度是时候记得清除掉之前的梯度
+
+```python
+x = torch.arange(4., requires_grad=True)
+y = 2 * torch.dot(x, x)
+y.backward()
+print(x.grad)
+y = torch.dot(x, x)
+y.backward()
+print(x.grad)  # 两个grad的累加
+x.grad.zero_()
+y = torch.dot(x, x)
+y.backward()
+print(x.grad)  # y=x^2的真正的grad
+```
+
+运行结果：
+
+```
+tensor([ 0.,  4.,  8., 12.])
+tensor([ 0.,  6., 12., 18.])
+tensor([0., 2., 4., 6.])
+```
+
+**将某些计算结果移动到记录的计算图之外：y.detach()**
+
+```python
+x = torch.arange(4., requires_grad=True)
+y = x * x
+print(y)
+u = y.detach()  # u视为一个对x的常数
+print(u)
+z = u * x
+z.sum().backward()
+print(x.grad == u)
+```
+
+运行结果：
+
+```
+tensor([0., 1., 4., 9.], grad_fn=<MulBackward0>)
+tensor([0., 1., 4., 9.])
+tensor([True, True, True, True])
+```
+
+但注意y.detach()不改变y，y仍是关于x的函数
+
+```python
+x.grad.zero_()
+y.sum().backward()
+print(x.grad == 2 * x)
+```
+
+运行结果：
+
+```
+tensor([True, True, True, True])
+```
+
 **：**
 
 ```python
