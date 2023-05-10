@@ -314,7 +314,9 @@ int main() {
 #### Python
 
 ```python
-
+T = int(input())
+for _CASE in range(T):
+    print('Yes')
 ```
 
 ## 问题 F: 乘号漂移
