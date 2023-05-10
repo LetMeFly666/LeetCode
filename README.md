@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-04-29 15:09:07
+ * @LastEditTime: 2023-05-10 14:57:25
 -->
 # LeetCode
 
@@ -518,3 +518,4 @@ int main() {
 - [x] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
+- [x] 将域名修改为blog.tisfy.eu.org，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
