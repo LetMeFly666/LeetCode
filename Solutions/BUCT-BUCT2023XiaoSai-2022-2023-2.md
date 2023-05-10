@@ -1,7 +1,7 @@
 ---
 title: BUCTOJ - 2023校赛 - 2022-2023-2
 date: 2023-05-10 16:09:20
-tags: [题解, BUCTOJ, 中等]
+tags: [题解, BUCTOJ, 中等, 阅读理解, 字符串匹配]
 ---
 
 # BUCTOJ - 2023校赛 - 2022-2023-2
@@ -14,6 +14,229 @@ tags: [题解, BUCTOJ, 中等]
 
 比赛地址：[]() TODO: 填写比赛地址和补题地址
 补题地址：[]()
+
+## 问题 A: 大雪封路
+
+[题目地址](https://buctcoder.com/problem.php?id=7024)
+
+知识点：
+
+### 题目描述
+
+
+
+### 输入
+
+
+
+### 输出
+
+
+
+### 样例输入
+
+```
+
+```
+
+### 样例输出
+
+```
+
+```
+
+### 解题思路
+
+
+
+### AC代码
+
+#### C++
+
+```cpp
+
+```
+
+#### Python
+
+```python
+
+```
+
+## 问题 B: 本题由ChatGPT生成
+
+[题目地址](https://buctcoder.com/problem.php?id=7025)
+
+知识点：阅读理解, 字符串匹配
+
+### 题目描述
+
+莎士比亚穿越到了现代，对电影这种新奇的艺术形式产生了浓厚的兴趣。
+
+他观看了几部不同类型的经典影片：Gone with the Wind（乱世佳人）讲述了一段动荡时代的爱恨情仇，Twelve Angry Men（十二怒汉）展现了一个陪审团的辩论过程，The Sound of Music（音乐之声）唱出了一家人的欢乐与困难，The Godfather（教父）揭示了黑手党的权力斗争，Star Wars（星球大战）描绘了一个遥远的银河系中的冒险故事，Alien（异形）惊悚地揭示了外星生物的恐怖，Back to the Future（回到未来）幽默地展示了时空旅行的可能性。
+
+莎翁被这些影片深深地打动，于是用他独特的诗才，用这几部影片的片名拼凑出了一首诗：莎翁被这些影片深深地打动，于是用他独特的诗才，用这几部影片的片名拼凑出了一首诗：
+
+```
+In days of old when knights were bold,
+And journeys gone with the wind,
+A tale was told of men so cold,
+Twelve angry men within.
+
+Their fury raged like fire ablaze,
+But hark! What's that I hear?
+The sound of music through the haze,
+A melody so clear.
+
+It spoke of love and family ties,
+Of the godfather's might,
+And battles fought in distant skies,
+In star wars day and night.
+
+But though the future seemed so grand,
+With alien life to find,
+Our hero wished to take a stand,
+And journey back to the future in time.
+
+For in his heart he knew so true,
+That the sound of music's call,
+Would guide him home to love anew,
+And peace would come to all.
+```
+
+### 输入
+
+无
+
+### 输出
+
+请输出一部电影的英文原名。
+
+例如，如果他最喜欢的是《回到未来》，请输出一行"Back to the Future"（不含引号）。
+
+### 解题思路
+
+我们只需要复制题目描述中的所有影片名：“Gone with the Wind”、“Twelve Angry Men”、...在网页中Ctrl + F搜索一下，看看哪个影片名出现了两次，就输出哪个影片名即可
+
+### AC代码
+
+#### C++
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+int main() {
+    puts("The Sound of Music");
+    return 0;
+}
+```
+
+#### Python
+
+```python
+print('The Sound of Music')
+```
+
+## 问题 : 
+
+[题目地址](https://buctcoder.com/problem.php?id=TODO:)
+
+知识点：
+
+### 题目描述
+
+
+
+### 输入
+
+
+
+### 输出
+
+
+
+### 样例输入
+
+```
+
+```
+
+### 样例输出
+
+```
+
+```
+
+### 解题思路
+
+
+
+### AC代码
+
+#### C++
+
+```cpp
+
+```
+
+#### Python
+
+```python
+
+```
+
+## 问题 : 
+
+[题目地址](https://buctcoder.com/problem.php?id=TODO:)
+
+知识点：
+
+### 题目描述
+
+
+
+### 输入
+
+
+
+### 输出
+
+
+
+### 样例输入
+
+```
+
+```
+
+### 样例输出
+
+```
+
+```
+
+### 解题思路
+
+
+
+### AC代码
+
+#### C++
+
+```cpp
+
+```
+
+#### Python
+
+```python
+
+```
 
 ## 问题 : 
 
