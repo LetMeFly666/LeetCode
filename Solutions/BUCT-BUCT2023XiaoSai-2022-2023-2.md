@@ -439,7 +439,7 @@ for _CASE in range(T):
 
 [题目地址](https://buctcoder.com/problem.php?id=7030)
 
-知识点：
+知识点：思维
 
 ### 题目描述
 
