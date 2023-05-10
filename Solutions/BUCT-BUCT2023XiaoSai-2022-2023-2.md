@@ -1,7 +1,7 @@
 ---
 title: BUCTOJ - 2023校赛 - 2022-2023-2
 date: 2023-05-10 16:09:20
-tags: [题解, BUCTOJ, 中等, 阅读理解, 字符串匹配]
+tags: [题解, BUCTOJ, 中等, 阅读理解, 字符串匹配, 字符串, 数学, 暴力, 模拟]
 ---
 
 # BUCTOJ - 2023校赛 - 2022-2023-2
@@ -290,48 +290,116 @@ print('The Sound of Music')
 
 [题目地址](https://buctcoder.com/problem.php?id=7029)
 
-知识点：
+知识点：字符串, 数学, 暴力, 模拟
 
 ### 题目描述
 
+乘号漂移是一种数字现象，指的是在一个只有一个乘号的算式中，将乘号像漂移一样滑动到另一个（非开头或结尾的）位置，而不影响算式的结果。
 
+比如：1 ∗ 6664，将乘号向右滑动三位之后，得到 1666 ∗ 4，而这两个算式的值都是 6664。
+
+还有一些其他的乘号漂移的例子：
+
++ 3999 ∗ 75 → 3 ∗ 99975
++ 1 ∗ 0101 → 101 ∗ 01
+
+现在给你只有一个乘号的算式，请你判断这个算式能否进行乘号漂移。
 
 ### 输入
 
+输入的第一行为一个整数 T(1 ≤ T ≤ 100)，表示共有 T 组测试数据。
 
+接下来依次出现 T 组测试数据，每组数据包含一行字符串 S(3 ≤ |S| ≤ 18)，S 仅包含阿拉伯数字和一个乘号 “ ∗”，表示一个算式，乘数和被乘数可能有前导0，乘号不会出现在开头或结尾
 
 ### 输出
 
-
+对于每组数据，如果算式能进行乘号漂移，请输出一行“Yes”，否则输出一行“No”（不含引号）。
 
 ### 样例输入
 
 ```
-
+4
+1*6664
+101*01
+3*99975
+412*43
 ```
 
 ### 样例输出
 
 ```
-
+Yes
+Yes
+Yes
+No
 ```
 
 ### 解题思路
 
-
+模拟，将乘号“漂移”到所有的非原始位置，看有无与漂移前相同的结果。
 
 ### AC代码
 
 #### C++
 
 ```cpp
-
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a) memset(a, 0, sizeof(a))
+#define dbg(x) cout << #x << " = " << x << endl
+#define fi(i, l, r) for (int i = l; i < r; i++)
+#define cd(a) scanf("%d", &a)
+typedef long long ll;
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        string s;
+        cin >> s;
+        int locMul = s.find('*');
+        ll originalVal = stoll(s.substr(0, locMul)) * stoll(s.substr(locMul + 1, s.size() - locMul - 1));
+        string pureNum = s.substr(0, locMul) + s.substr(locMul + 1, s.size() - locMul - 1);
+        for (int loc = 1; loc < pureNum.size(); loc++) {  // 将乘号置于哪个下标之前
+            if (loc == locMul) {
+                continue;
+            }
+            if (originalVal == stoll(pureNum.substr(0, loc)) * stoll(pureNum.substr(loc, pureNum.size() - loc))) {
+                puts("Yes");
+                goto loop;
+            }
+        }
+        puts("No");
+        loop:;
+    }
+    return 0;
+}
 ```
 
 #### Python
 
-```python
+我不知道提交上去为什么连样例都无法通过
 
+本地测试是可以的
+
+```bash
+python BUCT.py < in > out 
+```
+
+```python
+T = int(input())
+for _CASE in range(T):
+    s = input()
+    locMul = s.find('*')
+    originalVal = int(s[:locMul]) * int(s[locMul + 1:])
+    pureNum = s[:locMul] + s[locMul + 1:]
+    can = False
+    for loc in range(1, len(pureNum)):
+        if loc == locMul:
+            continue
+        if int(pureNum[:loc]) * int(pureNum[loc:]) == originalVal:
+            can = True
+            break
+    print('Yes' if can else 'No')
 ```
 
 ## 问题 G: 铲雪
