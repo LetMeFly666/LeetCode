@@ -219,5 +219,5 @@ int main() {
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/01/13/Other-C++-Comparei++and++iAndi++O2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128675905](https://letmefly.blog.csdn.net/article/details/128675905)

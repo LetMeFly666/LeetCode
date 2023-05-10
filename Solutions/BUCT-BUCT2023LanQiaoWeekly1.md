@@ -12,7 +12,7 @@ tags: [题解, BUCTOJ, 中等, 数组, 递归, 动态规划, 循环, 模拟, 素
 
 蒟蒻的我为了《问题 H: 2.5 一场说走就走的旅行》还心血来潮地做了个无人问津的视频，也耽误了不少时间，导致题解现在才完成至这个模样。
 
-PDF不能播放视频，且一段代码可能会分页显示，因此还是比较推荐在网页端看题解的。地址：[https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)
+PDF不能播放视频，且一段代码可能会分页显示，因此还是比较推荐在网页端看题解的。地址：[https://blog.tisfy.eu.org/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1](https://blog.tisfy.eu.org/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)
 
 若想查找某一知识点，可以直接Ctrl + F。
 
@@ -1686,5 +1686,5 @@ for _CASE in range(T):
 
 题解是从2月21号开始写的，但这都结束一周了，就先这样吧。
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129327761](https://letmefly.blog.csdn.net/article/details/129327761)

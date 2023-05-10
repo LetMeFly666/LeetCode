@@ -163,5 +163,5 @@ int main() {
 
 <!-- <font color="black" face="楷体" size="5px">每周提前更新菁英班周赛题解，点关注，不迷路</font> -->
 
->原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT2140%20-%20%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/)哦~
+>原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/28/MaTiJi%20-%20MT2140%20-%20%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/)哦~
 >Tisfy：[https://letmefly.blog.csdn.net/article/details/127097523](https://letmefly.blog.csdn.net/article/details/127097523)

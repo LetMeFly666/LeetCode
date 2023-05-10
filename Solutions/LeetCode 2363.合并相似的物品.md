@@ -198,5 +198,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/28/LeetCode%202363.%E5%90%88%E5%B9%B6%E7%9B%B8%E4%BC%BC%E7%9A%84%E7%89%A9%E5%93%81/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/28/LeetCode%202363.%E5%90%88%E5%B9%B6%E7%9B%B8%E4%BC%BC%E7%9A%84%E7%89%A9%E5%93%81/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129257424](https://letmefly.blog.csdn.net/article/details/129257424)

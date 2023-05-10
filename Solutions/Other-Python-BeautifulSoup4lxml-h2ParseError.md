@@ -57,4 +57,4 @@ lxml: 4.7.1
 
 大概率和lxml无关，因为将```soup = BeautifulSoup(content, "lxml")```更换为```soup = BeautifulSoup(content)```后解析结果相同。
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/)哦~

@@ -133,5 +133,5 @@ public:
 
 图片制作不易，喜欢了就点个赞再走吧
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/25/LeetCode%200135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/25/LeetCode%200135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125977968](https://letmefly.blog.csdn.net/article/details/125977968)

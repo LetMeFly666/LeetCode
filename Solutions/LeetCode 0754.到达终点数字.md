@@ -150,5 +150,5 @@ public:
 
 执行结果确实快了点
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/11/04/LeetCode%200754.%E5%88%B0%E8%BE%BE%E7%BB%88%E7%82%B9%E6%95%B0%E5%AD%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/04/LeetCode%200754.%E5%88%B0%E8%BE%BE%E7%BB%88%E7%82%B9%E6%95%B0%E5%AD%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127684453](https://letmefly.blog.csdn.net/article/details/127684453)

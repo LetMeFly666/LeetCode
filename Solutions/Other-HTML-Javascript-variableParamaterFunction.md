@@ -59,5 +59,5 @@ Arguments(3) [1, 2, 'Hello', callee: ƒ, Symbol(Symbol.iterator): ƒ]
 
 完全可以将其理解为一个有着特殊属性的列表/数组。
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/05/Other-HTML-Javascript-variableParamaterFunction)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129977062](https://letmefly.blog.csdn.net/article/details/129977062)

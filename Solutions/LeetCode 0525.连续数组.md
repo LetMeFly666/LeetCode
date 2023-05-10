@@ -43,7 +43,7 @@ tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, 前缀和]
 
 这样，“含有相同数量的$-1$、$1$的子数组”的元素之和就是$0$
 
-我们计算这个数组的“前缀和”（类似于今天的上一题[523.连续的子数组和](https://leetcode.letmefly.xyz/2022/11/22/LeetCode%200523.%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/)），在计算的过程中，我们将“首次得到这个前缀和结果的下标记录下来”。
+我们计算这个数组的“前缀和”（类似于今天的上一题[523.连续的子数组和](https://blog.tisfy.eu.org/2022/11/22/LeetCode%200523.%E8%BF%9E%E7%BB%AD%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/)），在计算的过程中，我们将“首次得到这个前缀和结果的下标记录下来”。
 
 例如：
 
@@ -101,5 +101,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/11/22/LeetCode%200525.%E8%BF%9E%E7%BB%AD%E6%95%B0%E7%BB%84/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/22/LeetCode%200525.%E8%BF%9E%E7%BB%AD%E6%95%B0%E7%BB%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127982922](https://letmefly.blog.csdn.net/article/details/127982922)

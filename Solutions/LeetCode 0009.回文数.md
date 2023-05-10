@@ -179,5 +179,5 @@ public:
 
 执行效率果然有所提升
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/31/LeetCode%200009.%E5%9B%9E%E6%96%87%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/31/LeetCode%200009.%E5%9B%9E%E6%96%87%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127609755](https://letmefly.blog.csdn.net/article/details/127609755)

@@ -32,5 +32,5 @@ ssh user@B.ip
 
 这样，我们直接使用A电脑，去SSH登录B电脑，就可以发现不用输入密码啦！
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/22/Other-Linux-SSHLoginWithoutPassword/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130302379](https://letmefly.blog.csdn.net/article/details/130302379)

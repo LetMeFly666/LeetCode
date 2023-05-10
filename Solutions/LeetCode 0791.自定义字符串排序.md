@@ -86,5 +86,5 @@ public:
 
 ![result.png](https://img-blog.csdnimg.cn/22d9bf14b5d84e8ca34af6ec8de954b7.png#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/11/13/LeetCode%200791.%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/13/LeetCode%200791.%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127829276](https://letmefly.blog.csdn.net/article/details/127829276)

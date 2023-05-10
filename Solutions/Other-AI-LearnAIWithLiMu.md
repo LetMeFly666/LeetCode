@@ -669,5 +669,5 @@ tensor([True, True, True, True])
 
 # TODO: 等完成地差不多了发布至CSDN
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
-> [https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/](https://leetcode.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
+> [https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/](https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/)

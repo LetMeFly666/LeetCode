@@ -37,5 +37,5 @@ demo.launch()
 
 更高级的操作可以查看Readme。
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/)哦~
-> 原文链接：[https://leetcode.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/](https://leetcode.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/)哦~
+> 原文链接：[https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/](https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/)

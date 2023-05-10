@@ -45,7 +45,7 @@ HammingDistance(4, 14) + HammingDistance(4, 2) + HammingDistance(14, 2) = 2 + 2 
     
 ## 方法一：位运算
 
-类似于[力扣461.汉明距离](https://leetcode.letmefly.xyz/2022/10/25/LeetCode%200461.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/)，这道题我们同样把每一位分开单独计算。
+类似于[力扣461.汉明距离](https://blog.tisfy.eu.org/2022/10/25/LeetCode%200461.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/)，这道题我们同样把每一位分开单独计算。
 
 对于某一位，我们遍历一遍原始数组，并将这一位是1和这一位是0的数字个数统计下来。
 
@@ -124,5 +124,5 @@ class Solution {
 }
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/10/26/LeetCode%200477.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB%E6%80%BB%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/26/LeetCode%200477.%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB%E6%80%BB%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127540353](https://letmefly.blog.csdn.net/article/details/127540353)

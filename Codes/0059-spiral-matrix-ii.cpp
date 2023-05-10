@@ -10,7 +10,7 @@
 
 const int directions[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};  // 👉👇👈👆
 
-// Change From https://leetcode.letmefly.xyz/2022/05/28/LeetCode%200054.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/
+// Change From https://blog.tisfy.eu.org/2022/05/28/LeetCode%200054.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {

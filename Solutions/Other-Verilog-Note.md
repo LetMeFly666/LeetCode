@@ -132,5 +132,5 @@ Verilog中数字很多时候使用“```位宽``` ```'``` ```进制``` ```数值
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/01/03/Other-Verilog-Note/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/01/03/Other-Verilog-Note/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128584160](https://letmefly.blog.csdn.net/article/details/128584160)

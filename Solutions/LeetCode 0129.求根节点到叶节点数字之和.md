@@ -63,7 +63,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉树, BFS]
 
 这道题类似[LeetCode 112.路径总和](https://leetcode.cn/problems/path-sum/)，直接进行一次遍历并修改原节点的值即可。
 
-可参考题解[https://leetcode.letmefly.xyz/2022/07/11/LeetCode 0112.路径总和/](https://leetcode.letmefly.xyz/2022/07/11/LeetCode%200112.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/)
+可参考题解[https://blog.tisfy.eu.org/2022/07/11/LeetCode 0112.路径总和/](https://blog.tisfy.eu.org/2022/07/11/LeetCode%200112.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/)
 
 + 时间复杂度$O(n)$，其中$n$是二叉树节点的个数
 + 空间复杂度$O(n)$
@@ -101,5 +101,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/22/LeetCode%200129.%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/22/LeetCode%200129.%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125928616](https://letmefly.blog.csdn.net/article/details/125928616)

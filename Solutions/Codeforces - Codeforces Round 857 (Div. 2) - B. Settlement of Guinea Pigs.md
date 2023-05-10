@@ -165,5 +165,5 @@ And：
 
 上次使用脚本将CF题面转Markdown还是2022.3.7 20:02，那次获取的题面是1649的D。天呐，时光飞逝，我都这么久没写CF的题解了吗！
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/05/Codeforces%20-%20Codeforces%20Round%20857%20(Div.%202)%20-%20B.%20Settlement%20of%20Guinea%20Pigs/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/05/Codeforces%20-%20Codeforces%20Round%20857%20(Div.%202)%20-%20B.%20Settlement%20of%20Guinea%20Pigs/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129978565](https://letmefly.blog.csdn.net/article/details/129978565)

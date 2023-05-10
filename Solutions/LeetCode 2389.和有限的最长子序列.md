@@ -99,5 +99,5 @@ class Solution:
         return queries
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/17/LeetCode%202389.%E5%92%8C%E6%9C%89%E9%99%90%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E5%BA%8F%E5%88%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/17/LeetCode%202389.%E5%92%8C%E6%9C%89%E9%99%90%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E5%BA%8F%E5%88%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129618747](https://letmefly.blog.csdn.net/article/details/129618747)

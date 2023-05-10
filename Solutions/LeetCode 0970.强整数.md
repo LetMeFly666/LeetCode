@@ -142,5 +142,5 @@ class Solution:
         return list(se)
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/05/02/LeetCode%200970.%E5%BC%BA%E6%95%B4%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/02/LeetCode%200970.%E5%BC%BA%E6%95%B4%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130461751](https://letmefly.blog.csdn.net/article/details/130461751)

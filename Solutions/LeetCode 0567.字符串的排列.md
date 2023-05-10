@@ -107,5 +107,5 @@ class Solution:
         return False
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/18/LeetCode%200567.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/18/LeetCode%200567.%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8E%92%E5%88%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129636871](https://letmefly.blog.csdn.net/article/details/129636871)

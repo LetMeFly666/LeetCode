@@ -252,5 +252,5 @@ public:
 };
 ```
 
-> 这是我较为用心写的一篇博客，题解图片是由HTML画的。同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/05/28/LeetCode%200054.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5)哦~
+> 这是我较为用心写的一篇博客，题解图片是由HTML画的。同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/05/28/LeetCode%200054.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125016209](https://letmefly.blog.csdn.net/article/details/125016209)

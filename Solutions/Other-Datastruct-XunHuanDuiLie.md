@@ -364,5 +364,5 @@ Status QueueLength(SqQueue Q) {  //返回Q的元素个数
 请选择要进行的操作：0
 ```
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/)哦~
-> [https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/](https://leetcode.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/)哦~
+> [https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/](https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/)

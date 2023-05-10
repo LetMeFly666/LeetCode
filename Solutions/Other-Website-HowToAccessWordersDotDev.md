@@ -40,5 +40,5 @@ url.letmefly.eu.org    A    8.8.8.8
 
 ```url.letmefly.eu.org```没有被污染（良民的域名，别乱用），它所指向的Cloudflare服务在中国也有很大的市场（也不会被无缘无故地一下墙掉），因此就能访问原本访问不到的```xx.xx.workers.dev```了
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/)哦~
-> Tisfy：[https://leetcode.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/](https://leetcode.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/)哦~
+> Tisfy：[https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/](https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/)

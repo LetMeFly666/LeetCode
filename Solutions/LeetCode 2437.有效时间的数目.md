@@ -171,5 +171,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/05/09/LeetCode%202437.%E6%9C%89%E6%95%88%E6%97%B6%E9%97%B4%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/09/LeetCode%202437.%E6%9C%89%E6%95%88%E6%97%B6%E9%97%B4%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130573965](https://letmefly.blog.csdn.net/article/details/130573965)

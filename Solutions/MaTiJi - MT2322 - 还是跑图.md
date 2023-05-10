@@ -87,11 +87,11 @@ tags: [题解, 码蹄集, 简单, 图]
 
 # 题目分析
 
-这道题和[2320-跑图](https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT2320%20-%20%E8%B7%91%E5%9B%BE/)差不多
+这道题和[2320-跑图](https://blog.tisfy.eu.org/2022/09/28/MaTiJi%20-%20MT2320%20-%20%E8%B7%91%E5%9B%BE/)差不多
 
 我们仍然可以用```vector<pair<int, int>> graph[1010];```来存储图
 
-具体方法可参考：[https://leetcode.letmefly.xyz/2022/09/28/MaTiJi - MT2320 - 跑图/](https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT2320%20-%20%E8%B7%91%E5%9B%BE/)
+具体方法可参考：[https://blog.tisfy.eu.org/2022/09/28/MaTiJi - MT2320 - 跑图/](https://blog.tisfy.eu.org/2022/09/28/MaTiJi%20-%20MT2320%20-%20%E8%B7%91%E5%9B%BE/)
 
 因此，输入完成后，先统计一遍“最大出度”为多少，并统计出“出度为最大出度”且“编号尽可能小”的节点的编号。
 
@@ -154,5 +154,5 @@ int main() {
 
 <!-- <font color="black" face="楷体" size="5px">每周提前更新菁英班周赛题解，点关注，不迷路</font> -->
 
->原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT2322%20-%20%E8%BF%98%E6%98%AF%E8%B7%91%E5%9B%BE/)哦~
+>原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/28/MaTiJi%20-%20MT2322%20-%20%E8%BF%98%E6%98%AF%E8%B7%91%E5%9B%BE/)哦~
 >Tisfy：[https://letmefly.blog.csdn.net/article/details/127097400](https://letmefly.blog.csdn.net/article/details/127097400)

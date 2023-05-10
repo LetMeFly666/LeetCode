@@ -58,7 +58,7 @@ tags: [题解, LeetCode, 困难, 字典树, 记忆化搜索, 记忆化, 哈希�
 
 如果说到状态压缩，这道题与[131. 分割回文串](https://leetcode.cn/problems/palindrome-partitioning/)解法十分类似。
 
-与(https://leetcode.letmefly.xyz/2022/07/23/LeetCode 0131.分割回文串/)[https://leetcode.letmefly.xyz/2022/07/23/LeetCode%200131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/]解法相同，首先我们用$i$枚举在哪个下标切割。
+与(https://blog.tisfy.eu.org/2022/07/23/LeetCode 0131.分割回文串/)[https://blog.tisfy.eu.org/2022/07/23/LeetCode%200131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/]解法相同，首先我们用$i$枚举在哪个下标切割。
 
 长度为$n$的字符串一共有$n-1$个可以切割的地方。
 
@@ -117,5 +117,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/27/LeetCode%200140.%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86II/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/27/LeetCode%200140.%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126016024](https://letmefly.blog.csdn.net/article/details/126016024)

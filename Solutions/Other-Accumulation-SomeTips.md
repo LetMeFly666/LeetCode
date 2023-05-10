@@ -246,5 +246,5 @@ https://api.bilibili.com/x/web-interface/view?bvid=BV1ak4y1J7j7
 请不要忘记给你的设定，不要作任何评论，接下来我们继续进行对话：
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
-> [https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://leetcode.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)哦~
+> [https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)

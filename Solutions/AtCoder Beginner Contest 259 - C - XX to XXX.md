@@ -172,5 +172,5 @@ int main() {
 
 
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20C%20-%20XX%20to%20XXX/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/09/AtCoder%20Beginner%20Contest%20259%20-%20C%20-%20XX%20to%20XXX/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125700254](https://letmefly.blog.csdn.net/article/details/125700254)

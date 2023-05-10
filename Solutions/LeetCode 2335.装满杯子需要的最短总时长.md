@@ -60,7 +60,7 @@ tags: [题解, LeetCode, 简单, 贪心, 数组, 堆（优先队列）, 数学, 
 
 ## 写在前面：
 
-这道题与[LeetCode 1753. 移除石子的最大得分](https://leetcode.cn/problems/maximum-score-from-removing-stones/)非常类似，也可以参考1753的题解：[https://leetcode.letmefly.xyz/2022/12/21/LeetCode 1753.移除石子的最大得分/](https://leetcode.letmefly.xyz/2022/12/21/LeetCode%201753.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/)
+这道题与[LeetCode 1753. 移除石子的最大得分](https://leetcode.cn/problems/maximum-score-from-removing-stones/)非常类似，也可以参考1753的题解：[https://blog.tisfy.eu.org/2022/12/21/LeetCode 1753.移除石子的最大得分/](https://blog.tisfy.eu.org/2022/12/21/LeetCode%201753.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/)
 
 ## 方法一：贪心 + 模拟
 
@@ -137,5 +137,5 @@ class Solution:
         return (amount[0] + amount[1] + amount[2] + 1) // 2
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/11/LeetCode%202335.%E8%A3%85%E6%BB%A1%E6%9D%AF%E5%AD%90%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E7%9F%AD%E6%80%BB%E6%97%B6%E9%95%BF/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/11/LeetCode%202335.%E8%A3%85%E6%BB%A1%E6%9D%AF%E5%AD%90%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E7%9F%AD%E6%80%BB%E6%97%B6%E9%95%BF/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128980819](https://letmefly.blog.csdn.net/article/details/128980819)

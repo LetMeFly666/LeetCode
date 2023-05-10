@@ -126,5 +126,5 @@ read-host
 
 **开发者很赞👍**
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)哦~
-> [https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/](https://leetcode.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)哦~
+> [https://blog.tisfy.eu.org/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/](https://blog.tisfy.eu.org/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/)

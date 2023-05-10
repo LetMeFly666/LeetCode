@@ -37,7 +37,7 @@ http://linuxB.ip:8888/?token=47a90a1933b28b74903c8b436c7f12d3f8aafe35db85f8f1
 
 ![Jupyter服务连接成功](https://img-blog.csdnimg.cn/2ea41cb2ab1147c9af68014aeba3723d.png)
 
-这时，如果已经配置好了机器A登录机器B时的免密登录（没有配置也没关系，请参考[SSH免密登录](https://leetcode.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/)），那么我们就可以打开机器A的VsCode，使用机器B的Jupyter内核了：
+这时，如果已经配置好了机器A登录机器B时的免密登录（没有配置也没关系，请参考[SSH免密登录](https://blog.tisfy.eu.org/2023/04/22/Other-Linux-SSHLoginWithoutPassword/)），那么我们就可以打开机器A的VsCode，使用机器B的Jupyter内核了：
 
 在刚刚新建的demo.ipynb中，点击“内核”
 
@@ -85,5 +85,5 @@ D2LFiles
 
 这样，就实现了，虽然我是在机器A上编写的Jupyter记事本，但其实质上是在机器B上执行的。
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/22/Other-Python-Jupyter-RemoteKoreConnection/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/22/Other-Python-Jupyter-RemoteKoreConnection/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130303588](https://letmefly.blog.csdn.net/article/details/130303588)

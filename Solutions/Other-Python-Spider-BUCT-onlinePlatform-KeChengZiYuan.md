@@ -390,4 +390,4 @@ PDF下载完毕，其它未下载： ['https://course.buct.edu.cn/meol/common/sc
 
 分享出来供大家学习的是技术，请勿用于其他用途，更不要通过这种方式将老师辛辛苦苦制作的课件下载下来随意传播！请仅限于自己查看（例如飞机上无网时可借此方法提前缓存并于下飞机后删除所下载文件）。
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/)哦~

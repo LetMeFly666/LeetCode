@@ -88,5 +88,5 @@ setCookie("token", token, 100);  // 100天内不用重新登录
 
 <iframe src="//player.bilibili.com/player.html?aid=857601399&bvid=BV1DV4y1H75q&cid=819266825&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="500px"> </iframe>
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/30/Other-MatijiAutoLogin/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126610331](https://letmefly.blog.csdn.net/article/details/126610331)

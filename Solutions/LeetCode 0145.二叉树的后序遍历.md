@@ -50,7 +50,7 @@ tags: [题解, LeetCode, 简单, 栈, 树, 深度优先搜索, 二叉树, DFS, �
     
 ## 方法一：DFS
 
-在学习后序遍历之前，有必要先了解以下[前序遍历](https://leetcode.letmefly.xyz/2022/07/29/LeetCode%200144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/)
+在学习后序遍历之前，有必要先了解以下[前序遍历](https://blog.tisfy.eu.org/2022/07/29/LeetCode%200144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/)
 
 可以参考题解：[https://letmefly.blog.csdn.net/article/details/126057536](https://letmefly.blog.csdn.net/article/details/126057536)
 
@@ -112,5 +112,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/07/29/LeetCode%200145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/29/LeetCode%200145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126057794](https://letmefly.blog.csdn.net/article/details/126057794)

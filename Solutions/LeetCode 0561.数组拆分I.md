@@ -88,5 +88,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/15/LeetCode%200561.%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86I/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/15/LeetCode%200561.%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86I/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129548105](https://letmefly.blog.csdn.net/article/details/129548105)

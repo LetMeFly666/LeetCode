@@ -31,5 +31,5 @@ tags: [其他, 散文, 笔记, 总结, 离别]
 **所以(だから)**，这个寒假有抓住这些机会吗？😆
 
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/)哦~
-> [https://leetcode.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/](https://leetcode.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/)
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/)哦~
+> [https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/](https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/)

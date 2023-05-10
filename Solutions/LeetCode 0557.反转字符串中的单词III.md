@@ -103,5 +103,5 @@ class Solution:
         return ' '.join(i[::-1] for i in s.split())
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/14/LeetCode%200557.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8DIII/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/14/LeetCode%200557.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8DIII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129526011](https://letmefly.blog.csdn.net/article/details/129526011)

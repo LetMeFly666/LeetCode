@@ -131,5 +131,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/19/LeetCode%201792.%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E9%80%9A%E8%BF%87%E7%8E%87/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/19/LeetCode%201792.%E6%9C%80%E5%A4%A7%E5%B9%B3%E5%9D%87%E9%80%9A%E8%BF%87%E7%8E%87/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129115416](https://letmefly.blog.csdn.net/article/details/129115416)

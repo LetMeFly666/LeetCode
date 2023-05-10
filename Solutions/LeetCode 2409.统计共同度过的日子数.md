@@ -123,5 +123,5 @@ class Solution:
         return min(la, lb) - ab + 1
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/17/LeetCode%202409.%E7%BB%9F%E8%AE%A1%E5%85%B1%E5%90%8C%E5%BA%A6%E8%BF%87%E7%9A%84%E6%97%A5%E5%AD%90%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/17/LeetCode%202409.%E7%BB%9F%E8%AE%A1%E5%85%B1%E5%90%8C%E5%BA%A6%E8%BF%87%E7%9A%84%E6%97%A5%E5%AD%90%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130194499](https://letmefly.blog.csdn.net/article/details/130194499)

@@ -92,5 +92,5 @@ print(id(a[0]) == id(a[1]))  # False
 
 可以研究一下 copy.copy()和copy.deepcopy()
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129972641](https://letmefly.blog.csdn.net/article/details/129972641)

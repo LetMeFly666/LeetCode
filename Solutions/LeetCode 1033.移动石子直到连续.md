@@ -117,5 +117,5 @@ class Solution:
             return [2, c - a - 2]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/04/30/LeetCode%201033.%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/30/LeetCode%201033.%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130446773](https://letmefly.blog.csdn.net/article/details/130446773)

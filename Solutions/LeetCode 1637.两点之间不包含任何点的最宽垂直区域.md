@@ -93,5 +93,5 @@ class Solution:
         return max(x[i] - x[i - 1] for i in range(1, len(x)))
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/03/30/LeetCode%201637.%E4%B8%A4%E7%82%B9%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%8C%85%E5%90%AB%E4%BB%BB%E4%BD%95%E7%82%B9%E7%9A%84%E6%9C%80%E5%AE%BD%E5%9E%82%E7%9B%B4%E5%8C%BA%E5%9F%9F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/30/LeetCode%201637.%E4%B8%A4%E7%82%B9%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%8C%85%E5%90%AB%E4%BB%BB%E4%BD%95%E7%82%B9%E7%9A%84%E6%9C%80%E5%AE%BD%E5%9E%82%E7%9B%B4%E5%8C%BA%E5%9F%9F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129851128](https://letmefly.blog.csdn.net/article/details/129851128)

@@ -110,5 +110,5 @@ class Solution:
         return [cntPair, len(nums) - cntPair * 2]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2023/02/16/LeetCode%202341.%E6%95%B0%E7%BB%84%E8%83%BD%E5%BD%A2%E6%88%90%E5%A4%9A%E5%B0%91%E6%95%B0%E5%AF%B9/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/16/LeetCode%202341.%E6%95%B0%E7%BB%84%E8%83%BD%E5%BD%A2%E6%88%90%E5%A4%9A%E5%B0%91%E6%95%B0%E5%AF%B9/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129055398](https://letmefly.blog.csdn.net/article/details/129055398)

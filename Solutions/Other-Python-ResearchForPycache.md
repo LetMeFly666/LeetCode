@@ -120,5 +120,5 @@ print(result)
 
 **pycache并不是为了存储“历史某次的执行结果”，而只是“为了快速加载模块的速度，把模块的编译版缓存在 __pycache__ 目录”**
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/07/Other-Python-ResearchForPycache/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127724471](https://letmefly.blog.csdn.net/article/details/127724471)

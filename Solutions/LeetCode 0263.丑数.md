@@ -84,5 +84,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/09/13/LeetCode%200263.%E4%B8%91%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/13/LeetCode%200263.%E4%B8%91%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126826353](https://letmefly.blog.csdn.net/article/details/126826353)

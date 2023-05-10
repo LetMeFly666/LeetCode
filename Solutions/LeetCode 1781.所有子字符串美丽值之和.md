@@ -45,7 +45,7 @@ tags: [题解, LeetCode, 中等, 哈希表, 字符串, 计数, 前缀和, 遍历
     
 ## 方法一：前缀和
 
-我们分别统计出26种字母的[前缀和](https://leetcode.letmefly.xyz/tags/%E5%89%8D%E7%BC%80%E5%92%8C/)
+我们分别统计出26种字母的[前缀和](https://blog.tisfy.eu.org/tags/%E5%89%8D%E7%BC%80%E5%92%8C/)
 
 这样，我们只需要枚举子串区间（两重循环枚举子串首尾），再统计出这个区间中，字母的最大和最小出现频率，累加到答案中即可。
 
@@ -125,5 +125,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/12/12/LeetCode%201781.%E6%89%80%E6%9C%89%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BE%8E%E4%B8%BD%E5%80%BC%E4%B9%8B%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/12/LeetCode%201781.%E6%89%80%E6%9C%89%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BE%8E%E4%B8%BD%E5%80%BC%E4%B9%8B%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128285137](https://letmefly.blog.csdn.net/article/details/128285137)

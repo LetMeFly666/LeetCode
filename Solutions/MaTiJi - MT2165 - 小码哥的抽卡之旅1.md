@@ -169,5 +169,5 @@ printf("%.6lf%\n", n == 90 ? double(1) : 1 - pow(1 - 0.006, n));
 
 <!-- <font color="black" face="楷体" size="5px">每周提前更新菁英班周赛题解，点关注，不迷路</font> -->
 
-> 原创不易，转载请附上[原文链接](https://leetcode.letmefly.xyz/2022/08/04/MaTiJi%20-%20MT2165%20-%20%E5%B0%8F%E7%A0%81%E5%93%A5%E7%9A%84%E6%8A%BD%E5%8D%A1%E4%B9%8B%E6%97%851/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/04/MaTiJi%20-%20MT2165%20-%20%E5%B0%8F%E7%A0%81%E5%93%A5%E7%9A%84%E6%8A%BD%E5%8D%A1%E4%B9%8B%E6%97%851/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126153308](https://letmefly.blog.csdn.net/article/details/126153308)
