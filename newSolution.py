@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2023-03-13 12:18:13
+LastEditTime: 2023-05-10 14:20:32
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -27,7 +27,7 @@ title = ""
 for i in range(2, len(argv)):
     title += argv[i]
 
-solutionURLll = "https://leetcode.letmefly.xyz/{0}/LeetCode%20{1:04d}.{2}/".format(time.strftime("%Y/%m/%d", time.localtime()), num, quote(title, "utf-8"))
+solutionURLll = "https://blog.tisfy.eu.org/{0}/LeetCode%20{1:04d}.{2}/".format(time.strftime("%Y/%m/%d", time.localtime()), num, quote(title, "utf-8"))
 print(solutionURLll)
 
 with open(nameProblem, "r", encoding="utf-8") as f:
