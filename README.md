@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-05-10 15:00:37
+ * @LastEditTime: 2023-05-12 16:48:27
 -->
 # LeetCode
 
@@ -485,6 +485,7 @@ int main() {
 |Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.tisfy.eu.org/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.tisfy.eu.org/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.tisfy.eu.org/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
+|物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.tisfy.eu.org/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
 |PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.tisfy.eu.org/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
 |Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://blog.tisfy.eu.org/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
