@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-05-12 16:48:27
+ * @LastEditTime: 2023-05-12 20:14:12
 -->
 # LeetCode
 
@@ -508,6 +508,7 @@ int main() {
 
 - [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
 - [ ] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
+- [ ] 想让hexo支持个latex咋就这么难捏？虽然之前有时表现得不尽人意，但总体还好。但是今日写了一篇物理博客，凡是带中文字符的公式都无法渲染诶。
 - [ ] hexo代码中默认Tab是8空格长！
 - [ ] hexo中，行首若使用三个“`”则会解析错误。详见[Tag v0.4.1.1](https://github.com/LetMeFly666/LeetCode/releases/tag/v0.4.1.1)的修复
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
