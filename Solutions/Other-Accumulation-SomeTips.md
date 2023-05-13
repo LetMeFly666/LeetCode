@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, 安全]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, API, ChatGPT, Office, Word, 安全]
 ---
 
 # 日积月累 - 一些小知识
@@ -245,6 +245,14 @@ https://api.bilibili.com/x/web-interface/view?bvid=BV1ak4y1J7j7
 
 请不要忘记给你的设定，不要作任何评论，接下来我们继续进行对话：
 ```
+
+## About Office
+
+### Word公式 - 部分居右
+
+Word中经常需要插入一些公式，但是很多时候需要在公式的最右边标注（1-1）类似的内容。这就涉及到了公式的部分居右显示。
+
+怎么实现呢？首先是编写一个公式（插入 -> 公式），接着编写完成后，在后面输入```#(1-1)```并```回车```，就可以看到```#```后面的```(1-1)```已经居右显示啦
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)
