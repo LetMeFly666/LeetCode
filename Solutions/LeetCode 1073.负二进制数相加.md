@@ -82,8 +82,8 @@ tags: [题解, LeetCode, 中等, 数组, 数学, 进制转换, 高精度加法]
 
 完毕。
 
-+ 时间复杂度$\mathcal O(N^2)$
-+ 空间复杂度$\mathcal O(N\log N)$
++ 时间复杂度$\mathcal O(len(arr1) + len(arr2))$
++ 空间复杂度$\mathcal O(1)$
 
 ### AC代码
 
