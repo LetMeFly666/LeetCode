@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-05-20 09:51:44
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-05-20 10:34:31
+ * @LastEditTime: 2023-05-20 10:36:02
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -14,11 +14,6 @@ struct MyNode {
     MyNode(int minValue, int maxVlaue, int sumValue, bool isBST) : minValue(minValue), maxValue(maxValue), sumValue(sumValue), isBST(isBST) {};
 };
 
-// struct MyNode {
-//     int minValue, maxValue, sumValue;
-//     bool isBST;
-//     MyNode(int minValue, int maxValue, int sumValue, bool isBST) : minValue(minValue), maxValue(maxValue), sumValue(sumValue), isBST(isBST) {};
-// };
 
 class Solution {
 private:
