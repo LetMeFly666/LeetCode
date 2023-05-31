@@ -1,8 +1,9 @@
-name: LeetCode markdown to hexo - From branch website_Static 2022-1-19
+name: Blog markdown to hexo  -  From branch website_Static 2022-1-19
 
 on:
   push:
     branches:
+      - master
       - website_Static
 
 env:
@@ -34,15 +35,27 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      
-      - name: Checkout to branch master
-        run: |
-          git checkout master
 
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
+      
+      # - name: Install Python
+      #   uses: actions/setup-python@v1
+      #   with:
+      #     python-version: 3.7
+
+      # - name: Install requirements
+      #   run: |
+      #     pip install requests
+      
+      # - name: Use python to debug
+      #   env:
+      #     GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
+      #     FORPYTHONDEBUG: ${{ secrets.FORPYTHONDEBUG }}
+      #   run: |
+      #     python debug.py
       
       - name: Config environment
         env:
@@ -66,15 +79,24 @@ jobs:
           npm install hexo-renderer-markdown-it-plus --save
           npm uninstall hexo-renderer-marked --save
           npm install markdown-it-katex --save
+          npm install hexo-renderer-less --save           # 主题默认使用 less 作为 css 预处理工具
+          npm install hexo-generator-feed --save          # 用于生成 rss
+          npm install hexo-generator-json-content --save  # 用于生成静态站点数据，用作站内搜索的数据源
+          npm install hexo-helper-qrcode --save           # 用来显示文章更多信息，比如：字数，阅读时间
+          npm install hexo-abbrlink --save                # 文章唯一链接，有利于SEO，主题脚本也对其有依赖
+          npm install hexo-filter-github-emojis --save    # Emoji插件，让文章更生动
+          # sudo apt-get install pandoc
+          # npm install hexo-renderer-pandoc --save
           # echo npm uninstall hexo-generator-index --save
           # npm uninstall hexo-generator-index --save
           # echo npm install hexo-generator-index-pin-top --save
           # npm install hexo-generator-index-pin-top --save
           cd ../LeetCode
-      
+
       - name: Copy config files from branch website_Static
         run: |
           cp -r Solutions ../Articles
+
           echo --- > ../Articles/README.md
           echo title: README >> ../Articles/README.md
           echo date: 9999-12-31 14:53:21 >> ../Articles/README.md
@@ -82,6 +104,7 @@ jobs:
           echo top: true >> ../Articles/README.md
           echo --- >> ../Articles/README.md
           cat README.md >> ../Articles/README.md
+
           git checkout website_Static
           cp -r ToCopy ../staticFiles
           rm -rf ../staticFiles/source/_posts
@@ -101,3 +124,49 @@ jobs:
           echo hexo d:
           hexo d
           cd ../LeetCode
+      
+      # - name: Move cache dir to other place
+      #   run: |
+      #     mv ../hexoWorkspace/.deploy_git ..
+      #     tree .. -d -a
+      
+      # - name: Using cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.deploy_git
+      #     key: deployGit
+      #     restore-keys: deployGit
+
+      # - name: Try to keep logs
+      #   run: |
+      #     echo tree -d -a ..
+      #     tree -d -a ..
+      #     mv .deploy_git/.git .deploy_git/git
+      #     rsync -a .deploy_git/* ../LeetCode/.deploy_git
+      #     echo git config --list
+      #     git config --list
+      #     echo git remote -v
+      #     git remote -v
+      #     git add .
+      #     git commit -m "backup .deploy_git"
+      #     git push origin website_Static
+      #     echo cat .git/config
+      #     cat .git/config
+      #     echo ssh -T git@github.com
+      #     ssh -T git@github.com
+      
+      # - name: Push to branch website_Static
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.WORKFLOWTOKEN }}
+      #     # branch: ${{ github.ref }}
+      #     # branch: website_Static
+      #     branch: refs/heads/website_Static
+      
+      # - name: Push to branch website_Static
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: LetMeFly
+      #     author_email: 814114971@qq.com
+      #     message: "backup .deploy_git"
+      #     add: "."
