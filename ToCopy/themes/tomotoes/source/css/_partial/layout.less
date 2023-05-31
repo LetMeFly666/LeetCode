@@ -1,0 +1,137 @@
+.container,
+#main {
+    position: relative;
+}
+
+#main {
+    padding-left: @menuWidth;
+    min-height: 100%;
+    .transition(.4s);
+    background-image: @bg-main;
+}
+
+.body-wrap {
+    padding: 30px 0 40px;
+    min-height: ~'calc(100vh - 340px)';
+}
+
+.container {
+    width: @contentWidth;
+    margin: 0 auto;
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+#main {
+    &.menuoff {
+        .transition(.4s, cubic-bezier(.18, .81, .3, .89));
+        padding-left: 0;
+    }
+    &.show {
+        padding-left: 0;
+        -webkit-transition: padding-left 0s;
+        transition: padding-left 0s;
+        .container {
+            width: 62%;
+        }
+        .header-title {
+            margin-right: -3%;
+        }
+    }
+    &.tocshow {
+        .container {
+            width: 92%;
+        }
+    }
+}
+
+.mask {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 888;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    .transition(.4s);
+    &.in {
+        visibility: visible;
+        pointer-events: auto;
+        opacity: .3;
+    }
+}
+
+.Mask {
+    -moz-filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.imgShow {
+    position: fixed;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-box-shadow: 0 10px 50px rgb(233, 233, 233);
+    box-shadow: 0 10px 50px rgb(233, 233, 233);
+    opacity: 0;
+    &:hover {
+        -webkit-box-shadow: 0 10px 50px rgb(102, 102, 102);
+        box-shadow: 0 10px 50px rgb(102, 102, 102);
+        -webkit-transition: all .5s;
+        transition: all .5s;
+    }
+}
+
+@media screen and (max-width:1240px) {
+    #main {
+        &.show,
+        &.tocshow {
+            .container {
+                width: 100%;
+            }
+        }
+    }
+    .Mask {
+        -moz-filter: blur(0px);
+        -webkit-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+    }
+    #main {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width:1040px) {
+    .container {
+        width: 100%;
+        padding: 20px 16px;
+    }
+}
+
+@media screen and (max-width:760px) {
+    #main {
+        width: 100%;
+        overflow-x: hidden;
+    }
+     ::-webkit-scrollbar {
+        display: none;
+    }
+}
