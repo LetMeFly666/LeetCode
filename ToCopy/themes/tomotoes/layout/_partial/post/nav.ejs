@@ -1,0 +1,25 @@
+<% if (post.prev || post.next){ %>
+<nav class="post-nav flex-row flex-justify-between<% if(!post.prev){ %> flex-row-reverse<% } %>">
+  <% if (post.prev){
+    var prevTitle = post.prev.title || '[no title]';
+    %>
+    <div class="waves-block waves-effect prev">
+      <a href="<%- url_for(post.prev.path) %>" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：<%=prevTitle %>
+        </h4>
+      </a>
+    </div>
+  <% } %>
+
+  <% if (post.next){
+      var nextTitle = post.next.title || '[no title]';
+    %>
+    <div class="waves-block waves-effect next">
+      <a href="<%- url_for(post.next.path) %>" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：<%=nextTitle %>">下一篇：<%=nextTitle %></h4>
+      </a>
+    </div>
+  <% } %>
+</nav>
+<% } %>

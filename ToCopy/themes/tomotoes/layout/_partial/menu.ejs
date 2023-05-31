@@ -1,0 +1,60 @@
+<aside id="menu"  <% if((is_post() || page.layout === 'page') && theme.hideMenu){ %>class="hide"<% } %> >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" >
+      <div class="brand">
+        <a href="<%- url_for(theme.avatar_link) %>" class="avatar waves-effect waves-circle waves-light">
+          <img src="<%- url_for(theme.avatar) %>" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name"><%- config.author %></h5>
+          <% if(theme.mymotto) { %>
+            <div id="mymotto" class="motto"></div>
+          <% } else { %>
+            <div id="yiyanmotto" class="motto">&nbsp;</div>
+          <% } %>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        <%
+          var menuItem, isActive = function(item) {
+              var pageUrl = url_for(page.path)
+              return item.url === '/' ? pageUrl === url_for(item.url + 'index.html') : _.startsWith(pageUrl, url_for(item.url))
+          };
+              for (var i in theme.menu) {
+                menuItem = theme.menu[i];
+              %>
+              <li class="waves-block waves-effect<% if(isActive(menuItem)){ %> active<% } %>">
+                  <a href="<%- url_for(menuItem.url) %>" <% if(menuItem.target){ %>target="_blank"<% } %> >
+                    <i class="icon icon-lg icon-<%= i %>"></i>
+                    <span><%=(menuItem.text || _.startCase(i)) %></span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            <% } %>
+      <div class="nav2">
+          <%
+            var menuItem, isActive = function(item) {
+                var pageUrl = url_for(page.path)
+                return item.url === '/' ? pageUrl === url_for(item.url + 'index.html') : _.startsWith(pageUrl, url_for(item.url))
+            };
+            for (var i in theme.menu2) {
+              menuItem = theme.menu2[i];
+            %>
+              <a class="nav2item" data-title="<%-menuItem.text %>" href="<%- url_for(menuItem.url) %>" <% if(menuItem.target){ %>target="<%- menuItem.target %>"<% } if(menuItem.text){ %>title="<%-menuItem.text %>"<% } %> >
+                <i class="icon icon-lg icon-<%= i %> <%= i %>"></i>
+              </a>
+          <% } %>
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
