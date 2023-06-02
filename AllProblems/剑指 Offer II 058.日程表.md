@@ -1,7 +1,7 @@
 ---
 title: 剑指 Offer II 058.日程表
 date: 2022-06-02 20-16-56
-tags: [题解, LeetCode, 中等, 设计, 线段树, 有序集合]
+tags: [题解, LeetCode, 中等, 设计, 线段树, 二分查找, 有序集合]
 ---
 
 # 【LetMeFly】剑指 Offer II 058.日程表

@@ -45,14 +45,14 @@ tags: [题解, LeetCode, 简单, 数组, 双指针, 二分查找]
 <ul>
 	<li><code>2 &lt;= numbers.length &lt;= 3 * 10<sup>4</sup></code></li>
 	<li><code>-1000 &lt;= numbers[i] &lt;= 1000</code></li>
-	<li><code>numbers</code> 按 <strong>递增顺序</strong> 排列</li>
+	<li><code>numbers</code> 按 <strong>非递减顺序</strong> 排列</li>
 	<li><code>-1000 &lt;= target &lt;= 1000</code></li>
 	<li>仅存在一个有效答案</li>
 </ul>
 
 <p>&nbsp;</p>
 
-<p>注意：本题与主站 167 题相似（下标起点不同）：<a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/">https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/</a></p>
+<p>注意：本题与主站 167 题相似（下标起点不同）：<a href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/">https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/</a></p>
 
 
     

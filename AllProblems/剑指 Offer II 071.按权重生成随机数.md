@@ -1,7 +1,7 @@
 ---
 title: 剑指 Offer II 071.按权重生成随机数
 date: 2022-06-02 20-17-03
-tags: [题解, LeetCode, 中等, 数学, 二分查找, 前缀和, 随机化]
+tags: [题解, LeetCode, 中等, 数组, 数学, 二分查找, 前缀和, 随机化]
 ---
 
 # 【LetMeFly】剑指 Offer II 071.按权重生成随机数
