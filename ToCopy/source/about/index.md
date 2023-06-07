@@ -1,5 +1,6 @@
 ---
+title: about
 layout: about
-comments: true
-reward: false
 ---
+
+TODO: 这里是关于页面
