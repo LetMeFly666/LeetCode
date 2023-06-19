@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-06-07 14:42:05
+ * @LastEditTime: 2023-06-19 18:44:43
 -->
 # LeetCode
 
@@ -484,6 +484,7 @@ int main() {
 |<a href="https://edu.csdn.net/contest/detail/55">CSDN竞赛41 - 题解 </a>|<a href="https://blog.tisfy.eu.org/2023/04/07/CSDN%20-%20CSDN41%E9%A2%98%E8%A7%A3/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/130045753">CSDN题解</a>|
 |———|———|———|
 |<a href="https://buctcoder.com/contest.php?cid=2963">2023上半年ACM&蓝桥杯每周训练题-1 - 题解 </a>|<a href="https://blog.tisfy.eu.org/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/129327761">CSDN题解</a>|
+|<a href="https://buctcoder.com/contest.php?cid=3176">北京化工大学第十八届程序设计竞赛 - 题解 </a>|<a href="https://blog.tisfy.eu.org/2023/05/10/BUCT-BUCT2023XiaoSai-2022-2023-2/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/131293300">CSDN题解</a>|
 
 ### 其他
 
