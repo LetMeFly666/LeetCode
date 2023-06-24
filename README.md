@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-06-19 18:44:43
+ * @LastEditTime: 2023-06-24 11:41:54
 -->
 # LeetCode
 
@@ -504,6 +504,7 @@ int main() {
 |HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
+|教资（教师资格证）学习笔记|<a href="https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.tisfy.eu.org/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.tisfy.eu.org/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
 |Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.tisfy.eu.org/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
