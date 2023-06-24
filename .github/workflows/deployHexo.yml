@@ -69,15 +69,10 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
       
-      - name: Install dependencies
+      - name: Install hexo
         run: |
           npm install -g hexo-cli --save
           hexo init ../hexoWorkspace
-          cd ../hexoWorkspace
-          npm install hexo-deployer-git --save
-          npm install lodash --save
-          npm install css --save     # 主题fluid需要使用
-          cd ../LeetCode
 
       - name: Copy config files from branch website_Static
         run: |
@@ -100,7 +95,14 @@ jobs:
           rsync -a ../staticFiles/* ../hexoWorkspace
           # echo tree ../hexoWorkspace/source/_posts
           # tree ../hexoWorkspace/source/_posts
-          tree -d ..
+      
+      - name: Install dependencies
+        run: |
+          cd ../hexoWorkspace
+          npm install hexo-deployer-git --save
+          npm install lodash --save
+          npm install css --save     # 主题fluid需要使用
+          cd ../LeetCode
       
       - name: Deploy hexo
         run: |
