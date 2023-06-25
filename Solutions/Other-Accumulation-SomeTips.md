@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, API, ChatGPT, Office, Word, 安全]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, API, ChatGPT, Office, Word, 安全, BAT, shell]
 ---
 
 # 日积月累 - 一些小知识
@@ -61,6 +61,26 @@ C:\Program Files\WindowsApps
 记录一下autohotkey，它是一款是一款免费的、Windows平台下开放源代码的热键脚本语言
 
 官网：[https://www.autohotkey.com/](www.autohotkey.com)
+
+### Bat中获取bat文件所在目录
+
+在.bat文件中，```%~dp0```代表所执行bat所在的路径。
+
+我们在```C:\BatDir\test.bat```中写入以下代码：
+
+```bat
+echo "%~dp0"
+explorer "%~dp0"
+cd /d "%~dp0"
+```
+
+然后在```F:\CWD```目录下使用cmd执行上述bat文件：
+
+```bash
+F:\CWD>"C:\BatDir\test.bat"
+```
+
+则会```echo "%~dp0"```会显示```C:\BatDir\```；```explorer "%~dp0"```会打开资源管理器，且位置是```C:\BatDir\```；```cd /d "%~dp0"```则会使CMD的工作路径变成```C:\BatDir\```
 
 ## About Phone
 
