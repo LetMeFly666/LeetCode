@@ -2,6 +2,7 @@
 title: HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）
 date: 2023-06-29 21:31:14
 tags: [其他, HTML, mermaid]
+mermaid: true
 ---
 
 # HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）
