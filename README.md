@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-06-26 08:03:57
+ * @LastEditTime: 2023-06-29 19:37:37
 -->
 # LeetCode
 
@@ -531,13 +531,13 @@ int main() {
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
 |Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.tisfy.eu.org/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 
+## About Posting New Articles
+
+发文时，原文markdown中的公式会自动被渲染。但是如果原文中包含mermaid图，则需要在文章首“Front-matter”处开启“mermaid: true”
 
 ## TODO:
 
 - [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
-- [ ] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
-- [ ] 想让hexo支持个latex咋就这么难捏？虽然之前有时表现得不尽人意，但总体还好。但是今日写了一篇物理博客，凡是带中文字符的公式都无法渲染诶。
-- [ ] 还是不支持带有中文的公式捏，并且英文公式也变成显示两次了。
 - [ ] hexo代码中默认Tab是8空格长！
 - [ ] hexo中，行首若使用三个“`”则会解析错误。详见[Tag v0.4.1.1](https://github.com/LetMeFly666/LeetCode/releases/tag/v0.4.1.1)的修复
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
@@ -545,6 +545,9 @@ int main() {
 - [ ] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 
+- [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
+- [x] 想让hexo支持个latex咋就这么难捏？虽然之前有时表现得不尽人意，但总体还好。但是今日写了一篇物理博客，凡是带中文字符的公式都无法渲染诶。
+- [x] 还是不支持带有中文的公式捏，并且英文公式也变成显示两次了。
 - [x] 修改```newSolution.py```中自动分析修改Readme力扣题目列表的生成格式
 - [x] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
