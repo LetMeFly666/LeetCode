@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-06-29 21:29:45
+ * @LastEditTime: 2023-06-29 21:36:16
 -->
 # LeetCode
 
@@ -507,6 +507,7 @@ int main() {
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
+|HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
 |教资（教师资格证）学习笔记|<a href="https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.tisfy.eu.org/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.tisfy.eu.org/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
