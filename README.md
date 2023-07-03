@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-01 18:09:51
+ * @LastEditTime: 2023-07-03 16:07:28
 -->
 # LeetCode
 
@@ -504,6 +504,7 @@ int main() {
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.tisfy.eu.org/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |循环队列的纯C语言实现|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
 |离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
+|FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
 |模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
 |原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.tisfy.eu.org/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
