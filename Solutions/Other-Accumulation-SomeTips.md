@@ -186,6 +186,24 @@ se = SortedSet()
 # 增删改查未完待续
 ```
 
+### Python enumerate
+
+python的enumerate可以将可迭代的“iterable”，打包成```(index, value)```的tuple：
+
+```python
+iterable = ['First', 'Second', 'Third']
+for index, value in enumerate(iterable):
+    print(f'The {index}-th is {value}')
+```
+
+运行结果：
+
+```
+The 0-th is First
+The 1-th is Second
+The 2-th is Third 
+```
+
 ## About Website
 
 ### ip扫描工具censys
