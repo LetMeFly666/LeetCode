@@ -34,8 +34,7 @@ Win10登录界面右下角有个轻松访问图标：
 
 我在<a href='https://pixso.cn/app/editor/4SEAIWPs_c3GjqF9A7NArQ?showGuide=true&page-id=111%3A12' title='我的在线编辑项目你可能访问不了'>Pixso</a>上编辑了一个，效果如下：
 
-<center id='ToShowSVG'>
-<svg width='102.000000' height='93.000000' viewBox='0 0 102 93' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+<center id='ToShowSVG'><svg width='102.000000' height='93.000000' viewBox='0 0 102 93' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
     <desc>
         Author: LetMeFly(https://www.letmefly.xyz). Created with Pixso(https://pixso.cn/).
     </desc>
@@ -54,22 +53,23 @@ Win10登录界面右下角有个轻松访问图标：
     <line id='直线 4' x1='73.000000' y1='73.000000' x2='79.363968' y2='79.363968' stroke='#FFFFFF' stroke-width='3.000000'/>
     <line id='直线 4' x1='46.000000' y1='93.000000' x2='46.000000' y2='84.000000' stroke='#FFFFFF' stroke-width='3.000000'/>
     <path id='多边形 1' d='M46.5 52L55.5933 42.25L37.4067 42.25L46.5 52Z' fill-rule='evenodd' fill='#000000'/>
-</svg>
-</center>
+</svg></center>
 
 <a class='btn' id='ToDownloadSVG' title='LetMeFly\'s Easy Access'>点我下载SVG</a>
 
 <script>
     function setSVGDownload() {
-        const toDownloadSVG = document.querySelector('#ToDownloadSVG');
-        const SVGHTML = document.querySelector('#ToShowSVG').innerHTML;
-        const prefix = 'data:text/plain;charset=utf-8,';
-        toDownloadSVG.setAttribute('href', prefix + SVGHTML);
-        toDownloadSVG.setAttribute('download', '轻松访问.svg');
+        const fileName = '轻松访问.svg';
+        const fileStream = document.querySelector('#ToShowSVG').innerHTML;
+        const blob = new Blob([fileStream], {type: 'application/text'});
+        const href = window.URL.createObjectURL(blob);
+        const a = document.querySelector('#ToDownloadSVG');
+        a.href = href;
+        a.download = decodeURI(fileName);
+        // window.URL.revokeObjectURL(href);
     }
     setSVGDownload();
 </script>
-
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/)哦~
 > [https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/](https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/)
