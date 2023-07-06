@@ -26,6 +26,23 @@ tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Web
 
 见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
 
+### HTML中使用JS下载文本文件
+
+如果只希望将一些文本以文件形式保存到本地，则可以使用```a```标签
+
+```html
+<a href="data:text/plain;charset=utf-8,要保存文件的文本" download="文本.txt">点我下载</a>
+```
+
+<a href="data:text/plain;charset=utf-8,要保存文件的文本" download="文本.txt">点我下载</a>
+
+拓展：字符串形式的DOM：
+
+```javascript
+div = document.querySelector("div");
+str = div.innerHTML
+```
+
 ## About Windows
 
 ### Windows应用商店安装的应用
