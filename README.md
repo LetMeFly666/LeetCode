@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-05 17:06:25
+ * @LastEditTime: 2023-07-06 10:17:53
 -->
 # LeetCode
 
@@ -538,6 +538,7 @@ int main() {
 |Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看|<a href="https://blog.tisfy.eu.org/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131493348">CSDN博客</a>|
 |Python - 函数参数中的*和**|<a href="https://blog.tisfy.eu.org/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
 |北邮暑期课 - R语言数据分析|<a href="https://blog.tisfy.eu.org/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
+|SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
 |Verilog学习笔记 - 极简极入门级|<a href="https://blog.tisfy.eu.org/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
