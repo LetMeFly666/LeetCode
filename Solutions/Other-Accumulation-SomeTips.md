@@ -30,6 +30,8 @@ tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Web
 
 如果只希望将一些文本以文件形式保存到本地，则可以使用```a```标签
 
+#### 方法一：使用href属性
+
 ```html
 <a href="data:text/plain;charset=utf-8,要保存文件的文本" download="文本.txt">点我下载</a>
 ```
@@ -42,6 +44,44 @@ tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Web
 div = document.querySelector("div");
 str = div.innerHTML
 ```
+
+#### 方法二：使用Blog文件流
+
+方法一中若要下载的文本中有引号，则转义起来比较麻烦。因此可以使用文件流来进行下载：
+
+```html
+<a id="ToDownload">点我下载</a>
+<script>
+    function set1download(a, fileName, fileStream) {
+        const blob = new Blob([fileStream], {type: 'application/text'});
+        const href = window.URL.createObjectURL(blob);
+        a.href = href;
+        a.download = decodeURI(fileName);
+        // window.URL.revokeObjectURL(href);
+    }
+    set1download(
+        document.querySelector("#ToDownload"),
+        '文本文件下载测试.txt',
+        '要下载的内容，引号测试"6"666'
+    );
+</script>
+```
+
+<a id="ToDownload20230706">点我下载</a>
+<script>
+    function set1download(a, fileName, fileStream) {
+        const blob = new Blob([fileStream], {type: 'application/text'});
+        const href = window.URL.createObjectURL(blob);
+        a.href = href;
+        a.download = decodeURI(fileName);
+        // window.URL.revokeObjectURL(href);
+    }
+    set1download(
+        document.querySelector("#ToDownload20230706"),
+        '文本文件下载测试.txt',
+        '要下载的内容，引号测试"6"666'
+    );
+</script>
 
 ## About Windows
 
