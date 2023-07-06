@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-06 11:18:09
+ * @LastEditTime: 2023-07-06 11:19:18
 -->
 # LeetCode
 
@@ -513,6 +513,7 @@ int main() {
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
+|HTML - HTML中使用JS下载文本文件|<a href="https://blog.tisfy.eu.org/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131572006">CSDN博客</a>|
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
 |HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
