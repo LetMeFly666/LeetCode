@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-06 10:17:53
+ * @LastEditTime: 2023-07-06 11:18:09
 -->
 # LeetCode
 
@@ -510,9 +510,9 @@ int main() {
 |FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
 |模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
 |原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.tisfy.eu.org/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
-|如何将网站某页面全部修改为黑白色|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
-|HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.tisfy.eu.org/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
+|HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
+|如何将网站某页面全部修改为黑白色|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
 |HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
