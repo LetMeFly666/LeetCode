@@ -101,6 +101,21 @@ public:
 };
 ```
 
+```python
+# from typing import List
+# from bisect import bisect_left
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        for i in range(n):
+            finding = target - numbers[i]
+            loc = bisect_left(numbers, finding, i + 1)
+            if loc < n and numbers[loc] == finding:
+                return [i + 1, loc + 1]
+        return []  # Fake Return
+```
+
 ## 方法二：双指针
 
 数组是非递减的。因此我们可以使用两个“指针”，初始位置分别为第一个元素和最后一个元素。
@@ -137,6 +152,23 @@ public:
         return {};  // Fake Return
     }
 };
+```
+
+```python
+# from typing import List
+
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        l, r = 0, len(numbers) - 1
+        while l < r:
+            s = numbers[l] + numbers[r]
+            if s == target:
+                return [l + 1, r + 1]
+            elif s < target:
+                l += 1
+            else:
+                r -= 1
+        return []  # Fake Return
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/)哦~
