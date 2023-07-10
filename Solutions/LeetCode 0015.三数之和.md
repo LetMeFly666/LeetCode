@@ -94,8 +94,8 @@ Q：答案中不得包含重复三元组？
 
 A：枚举i时，若$nums[i] == nums[i - 1]$则continue；如果找到了和为target的lr，则$nums[l] == nums[l - 1]$时不断地$l++$，$nums[r] == nums[r + 1]$时不断$r--$
 
-+ 时间复杂度$O(n^2)$。其中$n = len(nums)$
-+ 空间复杂度$O(1)$
++ 时间复杂度$O(n^2)$。其中$n = len(nums)$。
++ 空间复杂度$O(\log n)$。空间为排序产生。
 
 ### AC代码
 
