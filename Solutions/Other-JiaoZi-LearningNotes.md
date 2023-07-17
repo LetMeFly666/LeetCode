@@ -15,7 +15,8 @@ mermaid: true
 
 ```mermaid
 graph LR
-KeMu1[综合素质] --> KeGuanXuanZeTi["客观选择题（单选）29x2’=58’"]
+classDef green fill:#008b4c
+KeMu1[综合素质]:::green --> KeGuanXuanZeTi["客观选择题（单选）29x2’=58’"]
 ```
 
 
