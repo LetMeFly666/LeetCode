@@ -28,7 +28,7 @@ public:
             if (q.size()) {
                 ans = max(ans, x + y + q.front().first);
             }
-            while (q.size() && y - x > q.back().first) {
+            while (q.size() && y - x >= q.back().first) {
                 q.pop_back();
             }
             q.push_back({y - x, x});
