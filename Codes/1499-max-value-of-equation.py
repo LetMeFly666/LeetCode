@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2023-07-21 08:04:09
 LastEditors: LetMeFly
-LastEditTime: 2023-07-21 08:22:57
+LastEditTime: 2023-07-21 08:27:19
 '''
 from typing import List
 from collections import deque
@@ -12,7 +12,7 @@ class Solution:
         ans = -1e9
         q = deque()
         for x, y in points:
-            if q and x - q[0][1] > k:
+            while q and x - q[0][1] > k:
                 q.popleft()
             if q:
                 ans = max(ans, x + y + q[0][0])
