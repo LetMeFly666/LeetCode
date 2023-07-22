@@ -73,9 +73,7 @@ jobs:
         run: |
           npm install -g hexo-cli --save
           hexo init ../hexoWorkspace
-          tree ../hexoWorkspace/source/_posts     #---- x3
-          rm -f ../hexoWorkspace/source/_posts/hello-world.md
-          tree ../hexoWorkspace/source/_posts
+          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
           sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
           # cat ../hexoWorkspace/node_modules/marked/lib/*
 
@@ -93,13 +91,11 @@ jobs:
 
           git checkout website_Static
           cp -r ToCopy ../staticFiles
-          rm -rf ../staticFiles/source/_posts
+          # rm -rf ../staticFiles/source/_posts  # 删除了 branch website_Static 的 ToCopy/source/_posts
           mv ../Articles ../staticFiles/source/_posts
-          tree ../hexoWorkspace/source/_posts   #----
           # mv -f ../staticFiles/* ../hexoWorkspace
           rsync -a ../staticFiles/* ../hexoWorkspace
           # echo tree ../hexoWorkspace/source/_posts
-          tree ../hexoWorkspace/source/_posts  #------
       
       - name: Install dependencies
         run: |
