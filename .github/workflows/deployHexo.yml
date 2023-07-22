@@ -69,10 +69,13 @@ jobs:
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
       
-      - name: Install hexo
+      - name: Install hexo and init
         run: |
           npm install -g hexo-cli --save
           hexo init ../hexoWorkspace
+          tree ../hexoWorkspace/source/_posts     #---- x3
+          rm -f ../hexoWorkspace/source/_posts/hello-world.md
+          tree ../hexoWorkspace/source/_posts
           sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
           # cat ../hexoWorkspace/node_modules/marked/lib/*
 
@@ -92,11 +95,11 @@ jobs:
           cp -r ToCopy ../staticFiles
           rm -rf ../staticFiles/source/_posts
           mv ../Articles ../staticFiles/source/_posts
-          # git checkout website
+          tree ../hexoWorkspace/source/_posts   #----
           # mv -f ../staticFiles/* ../hexoWorkspace
           rsync -a ../staticFiles/* ../hexoWorkspace
           # echo tree ../hexoWorkspace/source/_posts
-          # tree ../hexoWorkspace/source/_posts
+          tree ../hexoWorkspace/source/_posts  #------
       
       - name: Install dependencies
         run: |
