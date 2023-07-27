@@ -1,7 +1,7 @@
 ---
 title: HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）
 date: 2023-06-29 19:39:42
-tags: [其他, HTML, MathJax, Latex, HEXO]
+tags: [其他, HTML, MathJax, Latex, Hexo]
 ---
 
 # HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）
