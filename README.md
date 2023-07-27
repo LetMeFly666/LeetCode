@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-13 08:29:14
+ * @LastEditTime: 2023-07-27 15:54:58
 -->
 # LeetCode
 
@@ -515,6 +515,7 @@ int main() {
 |日积月累 - 一些小知识|<a href="https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
 |人工智能 - 跟李沐学AI|<a href="https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.tisfy.eu.org/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
+|安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.tisfy.eu.org/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
 |C语言：在控制台输出香菱和火圈|<a href="https://blog.tisfy.eu.org/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.tisfy.eu.org/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
