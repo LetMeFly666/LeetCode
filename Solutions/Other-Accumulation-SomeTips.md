@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, Website, API, ChatGPT, Office, Word, 安全, BAT, shell]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, 双端队列, 优先队列, Website, API, ChatGPT, Office, Word, 安全, BAT, shell]
 ---
 
 # 日积月累 - 一些小知识
@@ -202,6 +202,30 @@ for index, value in enumerate(iterable):
 The 0-th is First
 The 1-th is Second
 The 2-th is Third 
+```
+
+### Python 双端队列 deque
+
+```python
+from collections import deque
+dq = deque()
+dq.append(1)
+dq.appendleft(2)
+dq.pop()
+dq.popleft()
+```
+
+### Python 优先队列 heapq
+
+Python优先队列小元素先出队（小根堆）。
+
+```python
+import heapq
+pq = []
+heapq.heappush(pq, 2)
+heapq.heappush(pq, 1)
+heapq.heappush(pq, 3)
+heapq.heappop(pq)  # 1
 ```
 
 ## About Website
