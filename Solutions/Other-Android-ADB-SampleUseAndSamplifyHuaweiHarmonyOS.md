@@ -19,7 +19,7 @@ ADB（Android Debug Bridge）可以做到很多手机上做不到的事情（例
 |进入shell（进入后无需再输```adb shell```命令）|```adb shell```|
 |adb卸载应用|```pm uninstall --user 0 包名```|
 |获取应用列表|```pm list packages```|
-|获取包含huawei的列表|```pm list packages | grep huawei```|
+|获取包含huawei的列表|```pm list packages \| grep huawei```|
 |查看某应用信息|```dumpsys package```|
 |启动应用|```am start -n 包名/activity名```|
 |清除应用数据|```pm clear 包名```|
