@@ -65,5 +65,39 @@ ffmpeg -i input.mp3 -vn -f segment -segment_time 7 output%03d.mp3
 
 🤫
 
+### 给视频添加图片文字
+
+所用到素材及结果详见：[阿里云盘分享](https://www.aliyundrive.com/s/EQKti4XkgB3)
+
+#### 给视频添加图片
+
+如果想要往某个视频上的某个位置添加一个图片（比如二维码），则可以使用以下命令将```0.png```添加到```0.mp4```的左上角```(10, 10)```的位置：
+
+```bash
+ffmpeg -i 0.mp4 -i 0.png -filter_complex "overlay=10:10" output.mp4
+```
+
+如果想要0.png仅在第5到10秒出现，则可以：
+
+```bash
+ffmpeg -i 0.mp4 -i 0.png -filter_complex "overlay=10:10:enable='between(t,5,10)" output.mp4
+```
+
+#### 给视频添加图片文字
+
+如果想在```0.mp4```的```(130, 320)```处添加大小为```70```的```黑```色```华文行楷```的```欢迎来到我的空间```，则可以：
+
+```bash
+ffmpeg -i 0.mp4 -i 0.png -vf "drawtext=text='欢迎来到我的空间':fontsize=70:fontcolor=black:x=130:y=320:fontfile=C\\:/Windows/Fonts/STXINGKA.TTF" output.mp4
+```
+
+#### 同时给视频添加图片和文字
+
+ffmpeg中```-vf```和```-filter_complex```不能同时用于同一个输出流。想要同时往视频中添加图片和文字，可以使用```-filter_complex```选项来指定所有过滤器：
+
+```bash
+ffmpeg -i 0.mp4 -i 0.png -filter_complex "[0:v][1:v]overlay=180:450,drawtext=text='欢迎来到我的空间':fontsize=70:fontcolor=black:x=130:y=320:fontfile=C\\:/Windows/Fonts/STXINGKA.TTF[outv]" -map "[outv]" output.mp4
+```
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
 > [https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
