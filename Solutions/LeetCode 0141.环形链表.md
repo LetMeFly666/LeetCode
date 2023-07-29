@@ -112,6 +112,8 @@ public:
 
 #### C++
 
+使用```do - while```：
+
 ```cpp
 class Solution {
 public:
@@ -129,6 +131,47 @@ public:
         return fast == slow;
     }
 };
+```
+
+更简便的方式，直接使用while且不特判头节点是否为空：
+
+```cpp
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* fast = head, *slow = head;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) {
+                return true;
+            }
+        }
+        return false;
+    }
+};
+```
+
+#### Python
+
+```python
+# from typing import Optional
+
+# # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        fast, slow = head, head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
+                return True
+        return False
 ```
 
 ## 方法三：为了过题而过题
