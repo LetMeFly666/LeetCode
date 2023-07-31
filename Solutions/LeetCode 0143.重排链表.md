@@ -1,10 +1,10 @@
 ---
-title: 143.重排链表
+title: 143.重排链表：O(1)空间的做法
 date: 2022-07-28 11:32:11
-tags: [题解, LeetCode, 中等, 栈, 递归, 链表, 双指针, 哈希表, 数组]
+tags: [题解, LeetCode, 中等, 栈, 递归, 链表, 双指针, 哈希表, 哈希, map, 数组]
 ---
 
-# 【LetMeFly】143.重排链表
+# 【LetMeFly】143.重排链表：O(1)空间的做法
 
 力扣题目链接：[https://leetcode.cn/problems/reorder-list/](https://leetcode.cn/problems/reorder-list/)
 
@@ -52,7 +52,7 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 
 
     
-## 方法一：哈希表
+## 方法一：哈希表 / 数组
 
 遍历链表，将链表节点存入哈希表中，映射关系为```<[第几个节点, 节点]>``` （其实这里使用数组也可以，虽然复杂度相同，但是数组的实际开销还是要小一些）
 
@@ -71,6 +71,8 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 ### AC代码
 
 #### C++
+
+使用哈希表：
 
 ```cpp
 class Solution {
@@ -99,6 +101,145 @@ public:
         head->next = nullptr;  // 最后一个节点的next置空
     }
 };
+```
+
+使用数组：
+
+```cpp
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        vector<ListNode*> v;
+        while (head) {
+            v.push_back(head);
+            head = head->next;
+        }
+        int l = 0, r = v.size() - 1;
+        head = v[0];
+        while (l <= r) {
+            head->next = v[l++];
+            head = head->next;
+            head->next = v[r--];
+            head = head->next;
+        }
+        head->next = nullptr;
+    }
+};
+```
+
+## 方法二：找中点 + reverse + 合并
+
+一共分为三步：
+
+1. 找到链表的中点（使用快慢指针O(n) + O(1)）
+2. 翻转后半链表（遍历O(n) + O(1)）
+3. 链表合并（双指针O(n) + O(1)）
+
+**注意事项：**
+
+1. 在寻找链表中点的过程中，我们要返回的是```中间节点的前一个节点```，因为“前半个链表的最后一个节点”的next要置空
+2. 奇数长度的数组[0, 1, 2]返回1，偶数长度的数组[0, 1]返回0
+3. 翻转后半部分列表的函数所接收参数的节点可能为空，需要特判
+
++ 时间复杂度$O(n)$，其中$n$是链表节点个数
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+private:
+    ListNode* getMiddle(ListNode* head) {  // 奇数长度[0, 1, 2]返回1，偶数长度[0, 1]返回0
+        ListNode* fast = head, *slow = head;
+        while (fast->next && fast->next->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+
+    ListNode* reverseList(ListNode* head) {
+        if (!head) {
+            return nullptr;
+        }
+        ListNode* next = head->next;
+        head->next = nullptr;
+        while (next) {
+            ListNode* nextNext = next->next;
+            next->next = head;
+            head = next;
+            next = nextNext;
+        }
+        return head;
+    }
+
+    void mergeList(ListNode* p1, ListNode* p2) {
+        while (p1 && p2) {
+            ListNode* p1next = p1->next;
+            ListNode* p2next = p2->next;
+            p1->next = p2, p2->next = p1next;
+            p1 = p1next, p2 = p2next;
+        }
+    }
+public:
+    void reorderList(ListNode* head) {
+        ListNode* middle4pre = getMiddle(head);
+        ListNode* middle = reverseList(middle4pre->next);
+        middle4pre->next = nullptr;
+        mergeList(head, middle);
+    }
+};
+```
+
+#### Python
+
+```python
+# from typing import Optional
+
+# # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def getMiddle(self, head: ListNode) -> ListNode:  # [0, 1, 2] -> 1, [0, 1] -> 0
+        fast = slow = head
+        while fast.next and fast.next.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+
+    def reverse(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        next = head.next
+        head.next = None
+        while next:
+            nextNext = next.next
+            next.next = head
+            head = next
+            next = nextNext
+        return head
+
+    def merge(self, p1: ListNode, p2: Optional[ListNode]):
+        while p1 and p2:
+            p1next = p1.next
+            p2next = p2.next
+            p1.next = p2
+            p2.next = p1next
+            p1, p2 = p1next, p2next
+
+    def reorderList(self, head: ListNode) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        middle4pre = self.getMiddle(head)
+        middle = self.reverse(middle4pre.next)
+        middle4pre.next = None
+        self.merge(head, middle)
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/28/LeetCode%200143.%E9%87%8D%E6%8E%92%E9%93%BE%E8%A1%A8/)哦~
