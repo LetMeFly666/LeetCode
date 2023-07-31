@@ -51,7 +51,15 @@ KeMu1 --> ZuoWen["作文 1x50’=50’"]:::orange
 
 ```mermaid
 graph LR
-KeMu1[综合素质] --> KeGuanXuanZeTi[客观选择题]
+
+classDef green fill:#008b4c
+classDef orange fill:#ffba00
+classDef white fill:white
+
+KeMu2["教育知识与能力"] --> KeGuanXuanZeTi["客观选择题（单选）21x2’=42’"]
+KeMu2 --> BianXiTi["辨析题 4x8’=32’"]
+KeMu2 --> JianDaTi["简答题 4x1’=42’"]
+KeMu2 --> CaiLiaoFenXiTi["材料分析题 2x18’=36’"]
 ```
 
 ```mermaid
