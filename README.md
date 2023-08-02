@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-07-27 17:25:02
+ * @LastEditTime: 2023-08-02 09:53:28
 -->
 # LeetCode
 
@@ -555,6 +555,7 @@ int main() {
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://blog.tisfy.eu.org/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
 |Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看|<a href="https://blog.tisfy.eu.org/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131493348">CSDN博客</a>|
 |Python - 函数参数中的*和**|<a href="https://blog.tisfy.eu.org/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
+|QT - 实例 - 可点击的进度条、无窗口应用|<a href="https://blog.tisfy.eu.org/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/">本平台博客</a>|无|
 |北邮暑期课 - R语言数据分析|<a href="https://blog.tisfy.eu.org/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
 |SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
 |Verilog学习笔记 - 极简极入门级|<a href="https://blog.tisfy.eu.org/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
