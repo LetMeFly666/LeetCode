@@ -1,8 +1,14 @@
 <!--
  * @Author: LetMeFly
+ * @Date: 2023-04-11 10:38:12
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2023-08-02 22:14:25
+-->
+<!--
+ * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-02 09:53:28
+ * @LastEditTime: 2023-08-02 22:13:06
 -->
 # LeetCode
 
@@ -519,6 +525,7 @@ int main() {
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.tisfy.eu.org/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
 |安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.tisfy.eu.org/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
+|C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.tisfy.eu.org/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
 |C语言：在控制台输出香菱和火圈|<a href="https://blog.tisfy.eu.org/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.tisfy.eu.org/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |循环队列的纯C语言实现|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
