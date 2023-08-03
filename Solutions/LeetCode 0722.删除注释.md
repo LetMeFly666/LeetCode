@@ -99,46 +99,101 @@ a = b + c;
 + ```ans = []```，用来存放答案。
 
 遍历每一行：
+   + 遍历这一行的每个元素：
+      + 如果处于块注释中 且 遇到了```*/```：更新findingEnd = false
+      + 否则：
+         + 如果遇到了```/*```：更新findingEnd = true
+         + 如果遇到了```//```：跳过处理这一行
+         + 否则：当前元素添加到thisLine中
+   + 这一行处理结束后，若不是处于块注释中，则：
+      + ```ans.append(thisLine)```
+      + ```thisLine.clear()```
 
-    遍历这一行的每个元素：
-	    
-		如果处于块注释中 且 遇到了“*/”：更新findingEnd = false
-		否则：
-		    如果遇到了
+最终返回ans即可
 
-    这一行处理结束后，若不是处于块注释中，则：
-	
-        ```ans.append(thisLine)```
-	    ```thisLine.clear()```
++ 时间复杂度$O(\sum c)$，其中$\sum c$是代码中字符个数。
++ 空间复杂度$O(\sum c)$，空间复杂度主要来自$thisLine$，极端情况下每一行仅注释掉一个换行符，则thisLine的长度将达到代码长度的级别。
 
+TODO: 本题的另外两种解法：
 
-这里是格式测试
-   1健身房
-      jfsojf
-
-
-这里是格式测试
-
-   1健身房
-   
-      jfsojf
-
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+1. [状态机（类似LL1）](https://leetcode.cn/problems/remove-comments/solutions/2365861/shan-chu-zhu-shi-by-leetcode-solution-lb9x/comments/2082824)
+2. 正则表达式：[Python](https://leetcode.cn/problems/remove-comments/solutions/2365861/shan-chu-zhu-shi-by-leetcode-solution-lb9x/comments/2082754)、[C++](https://leetcode.cn/problems/remove-comments/solutions/2365861/shan-chu-zhu-shi-by-leetcode-solution-lb9x/comments/2082880)
 
 ### AC代码
 
 #### C++
 
 ```cpp
-
+class Solution {
+public:
+    vector<string> removeComments(vector<string>& source) {
+        vector<string> ans;
+        bool findingEnd = false;
+        string thisLine;
+        for (string& s : source) {
+            for (int i = 0; i < s.size(); i++) {
+                if (findingEnd) {
+                    if (s[i] == '*' && i + 1 < s.size() && s[i + 1] == '/') {
+                        findingEnd = false;
+                        i++;
+                    }
+                }
+                else {
+                    if (s[i] == '/' && i + 1 < s.size() && s[i + 1] == '*') {
+                        findingEnd = true;
+                        i++;
+                    }
+                    else if (s[i] == '/' && i + 1 < s.size() && s[i + 1] == '/') {
+                        break;
+                    }
+                    else {
+                        thisLine += s[i];
+                    }
+                }
+            }
+            if (!findingEnd) {
+                if (thisLine.size()) {
+                    ans.push_back(thisLine);
+                    thisLine.clear();
+                }
+            }
+        }
+        return ans;
+    }
+};
 ```
 
 #### Python
 
 ```python
+# from typing import List
 
+class Solution:
+    def removeComments(self, source: List[str]) -> List[str]:
+        ans = []
+        findingEnd = False
+        thisLine = ''
+        for s in source:
+            i = 0
+            while i < len(s):
+                if findingEnd:
+                    if s[i] == '*' and i + 1 < len(s) and s[i + 1] == '/':
+                        findingEnd = False
+                        i += 1
+                else:
+                    if s[i] == '/' and i + 1 < len(s) and s[i + 1] == '*':
+                        findingEnd = True
+                        i += 1
+                    elif s[i] == '/' and i + 1 < len(s) and s[i + 1] == '/':
+                        break
+                    else:
+                        thisLine += s[i]
+                i += 1
+            if not findingEnd and len(thisLine):
+                ans.append(thisLine)
+                thisLine = ''
+        return ans
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/03/LeetCode%200722.%E5%88%A0%E9%99%A4%E6%B3%A8%E9%87%8A/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/--------------------------](https://letmefly.blog.csdn.net/article/details/--------------------------)
+> Tisfy：[https://letmefly.blog.csdn.net/article/details/132075300](https://letmefly.blog.csdn.net/article/details/132075300)
