@@ -48,6 +48,19 @@ ffmpeg -ss 0:0:20 -to 0:0:30 -i input.mp4 output.mp4
 
 另外的，若```-to```和```-t```同时设置，则以```-t```为准。
 
+**特别提醒：**
+
+使用ffmpeg进行视频裁剪时，请务必将```-ss```参数放在```-i```前面！
+
+虽然先```-i```和先```-ss```都能正常裁剪，但是先```-i```的话，可能会比先```-ss```慢很多。
+
+```bash
+# 十来秒后才开始裁剪
+ffmpeg -i "[DMG&LoliHouse] BOCCHI THE ROCK! - 05 [WebRip 1080p HEVC-10bit AAC ASSx2].mkv" -ss 200 -t 5 output.mp4 -y
+# 几乎立刻开始裁剪
+ffmpeg -ss 200 -t 5 -i "[DMG&LoliHouse] BOCCHI THE ROCK! - 05 [WebRip 1080p HEVC-10bit AAC ASSx2].mkv" output.mp4 -y
+```
+
 ### 等长分割（批量分割）
 
 ```bash
