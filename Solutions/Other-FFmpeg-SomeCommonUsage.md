@@ -38,7 +38,7 @@ ffmpeg -i input.mp4 -ss 20 -t 10 output.mp4
 ffmpeg -i input.mp4 -ss 20 -to 30 output.mp4
 ```
 
-其中，```-ss```是开始时间，```-t0```是结束时间。
+其中，```-ss```是开始时间，```-to```是结束时间。
 
 ```bash
 ffmpeg -i input.mp4 -ss 0:0:20 -to 0:0:30 output.mp4
