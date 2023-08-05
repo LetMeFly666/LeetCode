@@ -29,19 +29,19 @@ ffmpeg -i input.mp4 output.flv
 ### 音视频裁剪
 
 ```bash
-ffmpeg -i input.mp4 -ss 20 -t 10 output.mp4
+ffmpeg -ss 20 -t 10 -i input.mp4 output.mp4
 ```
 
 其中，```-ss```是开始时间，```-t```是持续时间。
 
 ```bash
-ffmpeg -i input.mp4 -ss 20 -to 30 output.mp4
+ffmpeg -ss 20 -to 30 -i input.mp4 output.mp4
 ```
 
 其中，```-ss```是开始时间，```-to```是结束时间。
 
 ```bash
-ffmpeg -i input.mp4 -ss 0:0:20 -to 0:0:30 output.mp4
+ffmpeg -ss 0:0:20 -to 0:0:30 -i input.mp4 output.mp4
 ```
 
 其中，```20```代表20秒，```0:0:20```代表0时0分20秒。
