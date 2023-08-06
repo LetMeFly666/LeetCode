@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-04-11 10:38:12
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-04 08:38:48
+ * @LastEditTime: 2023-08-06 19:05:35
 -->
 <!--
  * @Author: LetMeFly
@@ -542,6 +542,7 @@ int main() {
 |如何将网站某页面全部修改为黑白色|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
 |HTML - HTML中使用JS下载文本文件|<a href="https://blog.tisfy.eu.org/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131572006">CSDN博客</a>|
 |HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线|<a href="https://blog.tisfy.eu.org/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/">本平台博客</a>|无|
+|HTML - Javascript - 原生的JS HTTP请求：实用主义的一篇文章|<a href="https://blog.tisfy.eu.org/2023/08/06/Other-HTML-Javascript-NaiveHTTPRequestByJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132134252">CSDN博客</a>|
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.tisfy.eu.org/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
 |HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
