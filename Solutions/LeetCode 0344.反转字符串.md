@@ -63,5 +63,19 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        for i in range(len(s) // 2):
+            s[i], s[len(s) - i - 1] = s[len(s) - i - 1], s[i]
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/01/LeetCode%200344.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127131770](https://letmefly.blog.csdn.net/article/details/127131770)
