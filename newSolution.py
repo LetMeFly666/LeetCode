@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2023-05-10 14:20:32
+LastEditTime: 2023-08-13 07:49:50
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -55,7 +55,7 @@ solution = problem + """
 
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接]({0})哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接]({0})哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/--------------------------](https://letmefly.blog.csdn.net/article/details/--------------------------)
 """.format(solutionURLll)
 
