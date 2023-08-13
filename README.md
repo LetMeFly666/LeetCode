@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-13 09:46:18
+ * @LastEditTime: 2023-08-13 10:07:12
 -->
 # LeetCode
 
@@ -594,6 +594,7 @@ int main() {
 |Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.tisfy.eu.org/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
+|Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
 |Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.tisfy.eu.org/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 
 ## About Posting New Articles
