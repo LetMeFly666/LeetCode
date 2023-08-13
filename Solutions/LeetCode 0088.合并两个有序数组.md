@@ -137,7 +137,7 @@ public:
 #### Python
 
 ```python
-from typing import List
+# from typing import List
 
 class Solution:
     def merge(self, nums1: List[int], l1: int, nums2: List[int], l2: int) -> None:
