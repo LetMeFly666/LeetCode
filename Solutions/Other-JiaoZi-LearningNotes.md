@@ -48,6 +48,7 @@ KeMu1 --> ZuoWen["作文 1x50’=50’"]:::orange
     ZuoWen --> number09["1题"]:::white --> ZuoWenMoreInfo["最简单稳妥的写作方式：和教育挂钩"]
 ```
 
+**科目二：教育知识与能力**
 
 ```mermaid
 graph LR
@@ -55,18 +56,64 @@ graph LR
 classDef green fill:#008b4c
 classDef orange fill:#ffba00
 classDef white fill:white
+classDef blue1 fill:#00a0f4
+classDef pink fill:pink
+classDef green1 fill:#008498
 
 KeMu2["教育知识与能力"] --> KeGuanXuanZeTi["客观选择题（单选）21x2’=42’"]
+    KeGuanXuanZeTi --> a0["教育基础知识和基本原理"] --> a1["5题"]:::white
+    KeGuanXuanZeTi --> a2["中学课程"] --> a3["2题"]:::white
+    KeGuanXuanZeTi --> a4["中学教学"] --> a5["3题"]:::white
+    KeGuanXuanZeTi --> a6["中学生学习心理"] --> asf["2题"]:::white
+    KeGuanXuanZeTi --> a434["中学生发展心理"] --> a66567["2题"]:::white
+    KeGuanXuanZeTi --> a245["中学生心理辅导"] --> asfa1["1题"]:::white
+    KeGuanXuanZeTi --> a56["中学德育"] --> a23f["2题"]:::white
+    KeGuanXuanZeTi --> afds["中学班级管理与教师心理"] --> as3f["4题"]:::white
 KeMu2 --> BianXiTi["辨析题 4x8’=32’"]
+    BianXiTi --> ljw["教育基础知识和基本原理"]:::blue1 --> ba1["1题"]:::white
+    BianXiTi --> l32jw["中学教育"]:::pink --> asf11["1题"]:::white
+    BianXiTi --> jlf["中学生学习心理"]:::green1 --> a41a1["2题"]:::white
 KeMu2 --> JianDaTi["简答题 4x1’=42’"]
+    JianDaTi --> jwi13["教育基础知识和基本原理"]:::blue1 --> oa1["1题"]:::white
+    JianDaTi --> jw2i13["中学教育"]:::pink --> ha1["1题"]:::white
+    JianDaTi --> jw2i1["中学生发展心理"] --> gha1["1题"]:::white
+    JianDaTi --> ji13["中学生辅导心理"] --> ma1["1题"]:::white
 KeMu2 --> CaiLiaoFenXiTi["材料分析题 2x18’=36’"]
+    CaiLiaoFenXiTi --> j038h["中学生学习心理"]:::green1 --> pbga1["1题"]:::white
+    CaiLiaoFenXiTi --> j38h["中学生德育"] --> a1hd["1题"]:::white
 ```
 
 ```mermaid
 graph LR
-KeMu1[a] --> KeGuanXuanZeTi[b]
+
+classDef white fill:white
+classDef blue1 fill:#00a0f4
+classDef pink fill:pink
+classDef green1 fill:#008498
+
+a["（科二）各模块分支权重"]
+   a --> b["中学生学习心理"]:::green1 --> c["25%"]:::white
+   a --> d["教育基础知识与基本原理"]:::blue1 --> p["19%"]:::white
+   a --> m["中学教育"]:::pink --> o["16%"]:::white
+   a --> f["中学德育"] --> i["15%"]:::white
+   a --> g["中学生发展心理"] --> u["9%"]:::white
+   a --> q["中学生心理辅导"] --> y["8%"]:::white
+   a --> w["中学班级管理与教师心理"] --> t["5%"]:::white
+   a --> e["中学课程"] --> r["3%"]:::white
 ```
 
+**科目三：学科知识与教学能力**
+
+```mermaid
+graph LR
+
+classDef white fill:white
+
+a["学科知识与教学能力"] --> b["客观选择题（单选）30x2’=60’"]
+a --> c["简答题 1x20’=20’"]
+a --> d["教学情境分析题 1x30’=30’"]
+a --> e["教学设计题 1x40’=40’"]
+```
 
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)哦~
 > [https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)
