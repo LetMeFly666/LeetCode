@@ -118,7 +118,7 @@ a --> e["教学设计题 1x40’=40’"]
 ## 科目一
 
 <style>
-    .red {
+    red {
         color: red;
     }
 </style>
@@ -134,12 +134,12 @@ a --> d["教师观"]
 ```mermaid
 graph LR
 
-jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b class='red'>必备</b>）"]
-    a --> a1["<small>素质教育是</small><b>以<a class='red'>提</a>高国民<a class='red'>素</a>质</b><small>为根本宗旨的教育</small>"]
-    a --> a2["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
-    a --> a3["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
-    a --> a4["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
-    a --> a5["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
+jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><red>必备</red></b>）"]
+    a --> a1["<small>素质教育是</small><b>以<red>提</red>高国民<red>素</red>质为根本宗旨</b><small>的教育</small>"]
+    a --> a2["<small>素质教育是</small><b>面向<red>全体</red>学生</b><small>的教育</small>"]
+    a --> a3["<small>素质教育是</small><b>促进学生<red>全面</red>发展</b><small>的教育</small>"]
+    a --> a4["<small>素质教育是</small><b>促进学生<red>个性</red>发展</b><small>的教育</small>"]
+    a --> a5["<small>素质教育是</small><b>以培养学生的<red>创</red>新精神和实践能力为重点</b><small>的教育</small>"]
 jiaoyuguan --> b["新课改下的教学观"]
 ```
 
