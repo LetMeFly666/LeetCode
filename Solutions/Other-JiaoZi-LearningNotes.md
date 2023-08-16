@@ -131,8 +131,8 @@ a --> c["学生观"]
 a --> d["教师观"]
 ```
 
-```mermaid
 {% raw %}
+```mermaid
 graph LR
 
 classDef white fill:white
@@ -150,8 +150,8 @@ jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><red>必备</red
     a5 --> aa
 jiaoyuguan --> b["新课改下的教学观"]
 
-{% endraw %}
 ```
+{% endraw %}
 
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)哦~
 > [https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)
