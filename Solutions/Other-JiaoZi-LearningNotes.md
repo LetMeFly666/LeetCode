@@ -115,5 +115,33 @@ a --> d["教学情境分析题 1x30’=30’"]
 a --> e["教学设计题 1x40’=40’"]
 ```
 
+## 科目一
+
+<style>
+    .red {
+        color: red;
+    }
+</style>
+
+```mermaid
+graph LR
+
+a["职业理念"] --> b["教育观"]
+a --> c["学生观"]
+a --> d["教师观"]
+```
+
+```mermaid
+graph LR
+
+jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b class='red'>必备</b>）"]
+    a --> a1["<small>素质教育是</small><b>以<a class='red'>提</a>高国民<a class='red'>素</a>质</b><small>为根本宗旨的教育</small>"]
+    a --> a2["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
+    a --> a3["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
+    a --> a4["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
+    a --> a5["<small>素质教育是</small><small>为根本宗旨的教育</small>"]
+jiaoyuguan --> b["新课改下的教学观"]
+```
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)哦~
 > [https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)
