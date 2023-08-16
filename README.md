@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-16 22:36:27
+ * @LastEditTime: 2023-08-16 22:57:57
 -->
 # LeetCode
 
@@ -609,6 +609,7 @@ int main() {
 - [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
 - [ ] hexo中，行首若使用三个“`”则会解析错误。详见[Tag v0.4.1.1](https://github.com/LetMeFly666/LeetCode/releases/tag/v0.4.1.1)的修复
 - [ ] hexo中的代码块部分，小于号等都是被转义过的！！！
+- [ ] mermaid不渲染red标签
 - [ ] ```Other-JiaoZi-LearningNotes.md```教资md中删除补丁raw和endraw
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
