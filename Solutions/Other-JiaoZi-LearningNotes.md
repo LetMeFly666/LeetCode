@@ -132,7 +132,10 @@ a --> d["教师观"]
 ```
 
 ```mermaid
+{% raw %}
 graph LR
+
+classDef white fill:white
 
 jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><red>必备</red></b>）"]
     a --> a1["<small>素质教育是</small><b>以<red>提</red>高国民<red>素</red>质为根本宗旨</b><small>的教育</small>"]
@@ -140,7 +143,14 @@ jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><red>必备</red
     a --> a3["<small>素质教育是</small><b>促进学生<red>全面</red>发展</b><small>的教育</small>"]
     a --> a4["<small>素质教育是</small><b>促进学生<red>个性</red>发展</b><small>的教育</small>"]
     a --> a5["<small>素质教育是</small><b>以培养学生的<red>创</red>新精神和实践能力为重点</b><small>的教育</small>"]
+    a1 --> aa["提素个性创两全"]:::white
+    a2 --> aa
+    a3 --> aa
+    a4 --> aa
+    a5 --> aa
 jiaoyuguan --> b["新课改下的教学观"]
+
+{% endraw %}
 ```
 
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)哦~

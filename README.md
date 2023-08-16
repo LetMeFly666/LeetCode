@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-13 10:07:12
+ * @LastEditTime: 2023-08-16 22:36:27
 -->
 # LeetCode
 
@@ -607,15 +607,17 @@ int main() {
 ## TODO:
 
 - [ ] ```_[1,2]toVector.h```更新时，自动同步更改gist
-- [ ] hexo代码中默认Tab是8空格长！
 - [ ] hexo中，行首若使用三个“`”则会解析错误。详见[Tag v0.4.1.1](https://github.com/LetMeFly666/LeetCode/releases/tag/v0.4.1.1)的修复
+- [ ] hexo中的代码块部分，小于号等都是被转义过的！！！
+- [ ] ```Other-JiaoZi-LearningNotes.md```教资md中删除补丁raw和endraw
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
 - [ ] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
-
+- hexo我是一刻也待不下去了
+- [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
 - [x] 想让hexo支持个latex咋就这么难捏？虽然之前有时表现得不尽人意，但总体还好。但是今日写了一篇物理博客，凡是带中文字符的公式都无法渲染诶。
 - [x] 还是不支持带有中文的公式捏，并且英文公式也变成显示两次了。
