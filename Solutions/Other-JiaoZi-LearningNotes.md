@@ -144,7 +144,14 @@ jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><span style='col
     a4 --> aa
     a5 --> aa
 jiaoyuguan --> b["新课改下的教学观"]
-
+    b --> b1["<small>教学从“</small><b>以教育者为中心</b><small>”向“</small><b><span style='color: red'>学</span>习者为中心</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b2["<small>教学从“</small><b>教会学生知识</b><small>”向“</small><b>教会学生学<span style='color: red'>习</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b3["<small>教学从“</small><b>重结论轻过程</b><small>”向“</small><b>重结论更重<span style='color: red'>过</span>程</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b4["<small>教学从“</small><b>关注学科</b><small>”向“</small><b>关注<span style='color: red'>人</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b1 --> ba["学习过人/四个<span style='color: #4079a0'>转变</span>"]:::white
+    b2 --> ba
+    b3 --> ba
+    b4 --> ba
 </code>
 </pre>
 {% endraw %}
