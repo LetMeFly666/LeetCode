@@ -1,7 +1,7 @@
 ---
 title: Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录
 date: 2023-08-13 09:23:23
-tags: [其他, Windows, UWP]
+tags: [其他, Windows]
 description: 你需要来自xxx的权限才能对此文件进行更改
 ---
 
