@@ -2,7 +2,6 @@
 title: Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading
 date: 2023-08-25 21:07:56
 tags: [其他, Chrome, 谷歌, 谷歌浏览器]
-description: microsoft store无法安装、0x80070005
 ---
 
 # Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading
