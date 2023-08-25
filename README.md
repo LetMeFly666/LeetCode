@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-08-16 22:57:57
+ * @LastEditTime: 2023-08-25 21:10:52
 -->
 # LeetCode
 
@@ -559,6 +559,7 @@ int main() {
 |C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.tisfy.eu.org/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
 |C语言：在控制台输出香菱和火圈|<a href="https://blog.tisfy.eu.org/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.tisfy.eu.org/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
+|Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading|<a href="https://blog.tisfy.eu.org/2023/08/25/Other-Chrome-EnableParallelDownloading">本平台博客</a>|无|
 |循环队列的纯C语言实现|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
 |离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
 |FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
