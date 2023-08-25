@@ -58,4 +58,4 @@ MS Generation Project：[store.rg-adguard.net](https://store.rg-adguard.net/)
 ## 参考
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/)哦~
-> [https://letmefly.blog.csdn.net/article/details/132257018](https://letmefly.blog.csdn.net/article/details/132257018)
+> 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132257018](https://letmefly.blog.csdn.net/article/details/132257018)
