@@ -120,5 +120,11 @@ ffmpeg -i 0.mp4 -i 0.png -filter_complex "[0:v][1:v]overlay=180:450,drawtext=tex
 ffmpeg -i 0.mp4 -vf "ass=0.ass" -c:a copy output.mp4
 ```
 
+假设提示“找不到字体”，则可以
+
+```bash
+ffmpeg -i 0.mp4 -vf "ass=0.ass:fontsdir=/path/to/fonts/" -c:a copy  output.mp4
+```
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
 > [https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
