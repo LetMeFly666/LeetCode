@@ -64,7 +64,7 @@ tags: [题解, LeetCode, 简单, 数组, 构造]
 如果这个元素和上个元素“不连续”（不等于上个元素+1），那么就在答案中加入这个区间（开始元素到上一个元素）
 
 + 时间复杂度$O(n)$
-+ 空间复杂度$O(1)$
++ 空间复杂度$O(1)$，力扣返回值不计入算法空间复杂度
 
 ### AC代码
 
@@ -98,6 +98,30 @@ public:
         return ans;
     }
 };
+```
+
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def genStr(self, l: int, r: int) -> str:
+        if l == r:
+            return str(l)
+        return str(l) + '->' + str(r)
+    
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        if not nums:
+            return []
+        ans = []
+        beginNum = nums[0]
+        for i in range(1, len(nums)):
+            if nums[i] !=  nums[i - 1] + 1:
+                ans.append(self.genStr(beginNum, nums[i - 1]))
+                beginNum = nums[i]
+        ans.append(self.genStr(beginNum, nums[-1]))
+        return ans
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/07/LeetCode%200228.%E6%B1%87%E6%80%BB%E5%8C%BA%E9%97%B4/)哦~
