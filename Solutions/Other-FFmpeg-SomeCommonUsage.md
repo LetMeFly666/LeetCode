@@ -112,5 +112,13 @@ ffmpeg中```-vf```和```-filter_complex```不能同时用于同一个输出流�
 ffmpeg -i 0.mp4 -i 0.png -filter_complex "[0:v][1:v]overlay=180:450,drawtext=text='欢迎来到我的空间':fontsize=70:fontcolor=black:x=130:y=320:fontfile=C\\:/Windows/Fonts/STXINGKA.TTF[outv]" -map "[outv]" output.mp4
 ```
 
+### 合并视频和字幕
+
+假设当前目录下有```0.mp4```和````0.ass``，则可以：
+
+```bash
+ffmpeg -i 0.mp4 -vf "ass=0.ass" -c:a copy output.mp4
+```
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
 > [https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
