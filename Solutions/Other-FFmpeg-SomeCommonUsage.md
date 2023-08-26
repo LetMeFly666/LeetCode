@@ -96,7 +96,7 @@ ffmpeg -i 0.mp4 -i 0.png -filter_complex "overlay=10:10" output.mp4
 ffmpeg -i 0.mp4 -i 0.png -filter_complex "overlay=10:10:enable='between(t,5,10)" output.mp4
 ```
 
-#### 给视频添加图片文字
+#### 给视频添加文字
 
 如果想在```0.mp4```的```(130, 320)```处添加大小为```70```的```黑```色```华文行楷```的```欢迎来到我的空间```，则可以：
 
