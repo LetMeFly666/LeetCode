@@ -126,5 +126,36 @@ ffmpeg -i 0.mp4 -vf "ass=0.ass" -c:a copy output.mp4
 ffmpeg -i 0.mp4 -vf "ass=0.ass:fontsdir=/path/to/fonts/" -c:a copy  output.mp4
 ```
 
+### 使用硬件加速（GPU）
+
+首先确定可用硬件列表：
+
+```bash
+ffmpeg -hwaccels
+```
+
+得到结果：
+
+```
+ffmpeg versioxxx
+xxx
+
+Hardware acceleration methods:
+cuda
+qsv
+d3d11va
+opencl
+vulkan
+```
+
+则说明可以使用```cuda```、```qsv```等进行硬件加速。
+
+接着只需要：
+
+```bash
+# ffmpeg -hwaccel <加速器> -i 输入视频文件 输出视频文件
+ffmpeg -hwaccel cuda -i 0.mp4 1.flv
+```
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
 > [https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
