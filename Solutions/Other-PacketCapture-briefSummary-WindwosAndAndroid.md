@@ -85,5 +85,7 @@ chmod 777 cacerts
 
 QQ音乐アイドル的“在听”时长有单日2W多分钟的，刚开始我也想抓包冲个榜，但是失败了。。。技术还不够，只抓到了“单日听歌时长”（音响力）的包。还偶然发现QQ音乐首次绑定手机送三天豪华绿钻。花费了几天基本无果，也没有什么冲榜的兴趣了。[遂](https://hanyu.baidu.com/shici/detail?pid=54d154714ab7420c98ee632aee2c8340#:~:text=%E9%81%82)总结并尘封之。
 
+好像，，本来就只手机端有效。（电脑端似乎只记当日时长，手机端记时长也记音响力）
+
 > 文章原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132504020](https://letmefly.blog.csdn.net/article/details/132504020)
