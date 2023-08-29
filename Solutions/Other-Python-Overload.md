@@ -57,15 +57,15 @@ print(f(1, 2))                  #line17
 
 推荐将上述代码的line1到line15复制到VsCode中，line16和line17手动打上去
 
-![运行效果](https://img-blog.csdnimg.cn/8c81362e197948928a92c249d710130b.gif)
+![运行效果](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8c81362e197948928a92c249d710130b.gif)
 
 可以发现，当我们在函数```f```中输入一个参数```1```时，编译器提示：```(a: int) -> int```
 
-![一个参数](https://img-blog.csdnimg.cn/6e5fc3dd49634b629b17d61c8da70ae4.png)
+![一个参数](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6e5fc3dd49634b629b17d61c8da70ae4.png)
 
 在函数```f```中输入两个参数```1```和```2```时，编译器提示：```(a: int, b: int) -> int```
 
-![两个参数](https://img-blog.csdnimg.cn/cc7098e6ac6a4f01891727fe4973e033.png)
+![两个参数](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/cc7098e6ac6a4f01891727fe4973e033.png)
 
 执行上述代码，发现```f(1)```返回值为```1```，```f(1, 2)```返回值为```1 + 2```的值```3```，似乎实现了```加法函数```的重载
 

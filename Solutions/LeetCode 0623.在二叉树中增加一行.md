@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 <p><strong>示例 1:</strong></p>
 
 <!-- <p><img src="https://assets.leetcode.com/uploads/2021/03/15/addrow-tree.jpg" style="height: 231px; width: 500px;" /></p> -->
-<p><img src="https://img-blog.csdnimg.cn/a21274e0411a4c8ba0553a27ea5a4f5e.jpeg" style="height: 277px; width: 500px;" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/a21274e0411a4c8ba0553a27ea5a4f5e.jpeg" style="height: 277px; width: 500px;" /></p>
 
 <pre>
 <strong>输入:</strong> root = [4,2,6,3,1,5], val = 1, depth = 2
@@ -35,7 +35,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 <p><strong>示例 2:</strong></p>
 
 <!-- <p><img src="https://assets.leetcode.com/uploads/2021/03/11/add2-tree.jpg" style="height: 277px; width: 500px;" /></p> -->
-<p><img src="https://img-blog.csdnimg.cn/99bcacfbf30345f1964a83c8859fe774.jpeg" style="height: 231px; width: 500px;" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/99bcacfbf30345f1964a83c8859fe774.jpeg" style="height: 231px; width: 500px;" /></p>
 
 <pre>
 <strong>输入:</strong> root = [4,2,null,3,1], val = 1, depth = 3

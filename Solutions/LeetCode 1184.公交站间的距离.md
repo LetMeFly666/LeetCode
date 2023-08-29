@@ -19,7 +19,7 @@ tags: [题解, LeetCode, 简单, 数组, 模拟, 一圈]
 <p><strong>示例 1：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/09/08/untitled-diagram-1.jpg" style="height: 240px; width: 388px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/76569fe05e0b4ade8dd1cf057655f9fa.jpeg" style="height: 240px; width: 388px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/76569fe05e0b4ade8dd1cf057655f9fa.jpeg" style="height: 240px; width: 388px;"></p>
 
 <pre><strong>输入：</strong>distance = [1,2,3,4], start = 0, destination = 1
 <strong>输出：</strong>1
@@ -30,7 +30,7 @@ tags: [题解, LeetCode, 简单, 数组, 模拟, 一圈]
 <p><strong>示例 2：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/09/08/untitled-diagram-1-1.jpg" style="height: 240px; width: 388px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/c767a7f2d13c4837891b59bf80c968d0.jpeg" style="height: 240px; width: 388px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c767a7f2d13c4837891b59bf80c968d0.jpeg" style="height: 240px; width: 388px;"></p>
 
 <pre><strong>输入：</strong>distance = [1,2,3,4], start = 0, destination = 2
 <strong>输出：</strong>3
@@ -42,7 +42,7 @@ tags: [题解, LeetCode, 简单, 数组, 模拟, 一圈]
 <p><strong>示例 3：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/09/08/untitled-diagram-1-2.jpg" style="height: 240px; width: 388px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/4cefdc64770d4512a0309eef028d0f3d.jpeg" style="height: 240px; width: 388px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4cefdc64770d4512a0309eef028d0f3d.jpeg" style="height: 240px; width: 388px;"></p>
 
 <pre><strong>输入：</strong>distance = [1,2,3,4], start = 0, destination = 3
 <strong>输出：</strong>4
@@ -97,7 +97,7 @@ public:
 };
 ```
 
-![result](https://img-blog.csdnimg.cn/dce5c0c7f7154663acab376af13ede0f.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/dce5c0c7f7154663acab376af13ede0f.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/24/LeetCode%201184.%E5%85%AC%E4%BA%A4%E7%AB%99%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125960214](https://letmefly.blog.csdn.net/article/details/125960214)

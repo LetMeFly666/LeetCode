@@ -98,14 +98,14 @@ nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
 那么样例一的图将被构建为：
 
 <!-- ![\[\[1, 2\], \[1, 3\]\].png](https://pic.leetcode-cn.com/1658545276-fKlUZN-%5B%5B1,%202%5D,%20%5B1,%203%5D%5D.png) -->
-![\[\[1, 2\], \[1, 3\]\].png](https://img-blog.csdnimg.cn/img_convert/762f0fd484890d5bafcd97ec2cc806b9.png)
+![\[\[1, 2\], \[1, 3\]\].png](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/762f0fd484890d5bafcd97ec2cc806b9.png)
 
 从```入度为0```的节点```1```开始进行拓扑排序，排序之后发现剩下两个节点，彼此之间无法确定相对顺序。
 
 样例二的图将被构建为：
 
 <!-- ![\[\[1, 2\], \[1, 3\], \[2, 3\]\].png](https://pic.leetcode-cn.com/1658545463-cKKVqc-%5B%5B1,%202%5D,%20%5B1,%203%5D,%20%5B2,%203%5D%5D.png) -->
-![\[\[1, 2\], \[1, 3\], \[2, 3\]\].png](https://img-blog.csdnimg.cn/img_convert/859ea01b2abb82009669262e8ca27776.png)
+![\[\[1, 2\], \[1, 3\], \[2, 3\]\].png](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/859ea01b2abb82009669262e8ca27776.png)
 
 从```入度为0```的节点```1```开始进行拓扑排序，排序之后只剩下了最终节点```3```
 

@@ -18,7 +18,7 @@ tags: [题解, LeetCode, 中等, 哈希表, 哈希, 链表]
 
 <!-- <p><img src="https://assets.leetcode.com/uploads/2021/07/22/lc-linkedlistcom1.jpg" /></p> -->
 
-<p><img src="https://img-blog.csdnimg.cn/06fae68410c945fc9c392ddca9a2c185.jpeg" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/06fae68410c945fc9c392ddca9a2c185.jpeg" /></p>
 
 <pre>
 <strong>输入:</strong> head = [0,1,2,3], nums = [0,1,3]
@@ -29,7 +29,7 @@ tags: [题解, LeetCode, 中等, 哈希表, 哈希, 链表]
 
 <!-- <p><strong>&nbsp;</strong><img src="https://assets.leetcode.com/uploads/2021/07/22/lc-linkedlistcom2.jpg" /></p> -->
 
-<p><strong>&nbsp;</strong><img src="https://img-blog.csdnimg.cn/81397d1ff87c4fd5ad764a13232139a3.jpeg" /></p>
+<p><strong>&nbsp;</strong><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/81397d1ff87c4fd5ad764a13232139a3.jpeg" /></p>
 
 <pre>
 <strong>输入:</strong> head = [0,1,2,3,4], nums = [0,3,1,4]

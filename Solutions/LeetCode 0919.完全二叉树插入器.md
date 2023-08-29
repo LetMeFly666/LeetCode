@@ -28,7 +28,7 @@ tags: [题解, LeetCode, 中等, 树, 广度优先搜索, 设计, 二叉树, 完
 <p><strong>示例 1：</strong></p>
 
 <!-- <p><img src="https://assets.leetcode.com/uploads/2021/08/03/lc-treeinsert.jpg" style="height: 143px; width: 500px;" /></p> -->
-<p><img src="https://img-blog.csdnimg.cn/2c0bcf240d4046a5a26794d3c388e5fa.jpeg" style="height: 143px; width: 500px;" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/2c0bcf240d4046a5a26794d3c388e5fa.jpeg" style="height: 143px; width: 500px;" /></p>
 
 <pre>
 <strong>输入</strong>
@@ -61,7 +61,7 @@ cBTInserter.get_root(); // 返回 [1, 2, 3, 4]</pre>
 
 完全二叉树具有以下性质：
 
-![完全二叉树的数组表示](https://img-blog.csdnimg.cn/9e721d0b2e5a47ca94b4c66e3afb06e4.png#pic_center)
+![完全二叉树的数组表示](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/9e721d0b2e5a47ca94b4c66e3afb06e4.png#pic_center)
 
 如果根节点从1开始按层次遍历的方式进行编号，那么$父节点的编号=\lfloor \frac{子节点的编号}{2}\rfloor$
 

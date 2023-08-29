@@ -14,7 +14,7 @@ tags: [题解, LeetCode, 困难, 几何, 数组, 哈希表, 数学, 共线, 坐�
 
 <p><strong>示例 1：</strong></p>
 <!-- <img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/plane1.jpg" style="width: 300px; height: 294px;" /> -->
-<img alt="" src="https://img-blog.csdnimg.cn/476420f4dbf24b7e9c20087039369fe1.jpeg" style="width: 300px; height: 294px;" />
+<img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/476420f4dbf24b7e9c20087039369fe1.jpeg" style="width: 300px; height: 294px;" />
 <pre>
 <strong>输入：</strong>points = [[1,1],[2,2],[3,3]]
 <strong>输出：</strong>3
@@ -22,7 +22,7 @@ tags: [题解, LeetCode, 困难, 几何, 数组, 哈希表, 数学, 共线, 坐�
 
 <p><strong>示例 2：</strong></p>
 <!-- <img alt="" src="https://assets.leetcode.com/uploads/2021/02/25/plane2.jpg" style="width: 300px; height: 294px;" /> -->
-<img alt="" src="https://img-blog.csdnimg.cn/69c247626123430f976fa1e5a51cafc6.jpeg" style="width: 300px; height: 294px;" />
+<img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/69c247626123430f976fa1e5a51cafc6.jpeg" style="width: 300px; height: 294px;" />
 <pre>
 <strong>输入：</strong>points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 <strong>输出：</strong>4

@@ -12,7 +12,7 @@ tags: [题解, LeetCode, 简单, 数组, 动态规划, 杨辉三角]
 
 <p><small>在「杨辉三角」中，每个数是它左上方和右上方的数的和。</small></p>
 
-<p><img alt="" src="https://img-blog.csdnimg.cn/83bb725b0de24d27b6908f384d347f03.gif" /></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/83bb725b0de24d27b6908f384d347f03.gif" /></p>
 
 <p> </p>
 
@@ -60,7 +60,7 @@ tags: [题解, LeetCode, 简单, 数组, 动态规划, 杨辉三角]
 
 > 当计算到第$3$行的第$2$个元素时，$i=2,j=1$。此时$ans[i][j]=ans[i-1][j-1]+ans[i-1][j]=1+1=2$，说明第$3$行的第$2$个元素的值为$2$。
 
-![1+1](https://img-blog.csdnimg.cn/cf11d3123c1248afb7d55d1e719c920f.jpeg#pic_center)
+![1+1](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/cf11d3123c1248afb7d55d1e719c920f.jpeg#pic_center)
 
 + 时间复杂度$O(size^2)$
 + 空间复杂度$O(1)$，答案不计入算法空间复杂度
@@ -89,7 +89,7 @@ public:
 
 运行结果：耗时还挺少
 
-![挺快的这次](https://img-blog.csdnimg.cn/062fef3809fd4c878ac408f98b2f2d24.jpeg#pic_center)
+![挺快的这次](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/062fef3809fd4c878ac408f98b2f2d24.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125829159](https://letmefly.blog.csdn.net/article/details/125829159)

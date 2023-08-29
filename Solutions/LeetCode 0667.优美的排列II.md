@@ -50,7 +50,7 @@ tags: [题解, LeetCode, 中等, 数组, 数学, 思维, 构造]
 
 如图
 
-![图解](https://img-blog.csdnimg.cn/6557ccb126ff45c6abc348ffd88cb061.png#pic_center)
+![图解](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6557ccb126ff45c6abc348ffd88cb061.png#pic_center)
 
 数组前面(橘色)采用“一前一后”的方式构造（1、8、2、7、3、6、……），后面(蓝色)从紧邻前面的最后一个数字开始连续递增或递减。
 

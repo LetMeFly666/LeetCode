@@ -85,7 +85,7 @@ double x = dis(gen);
 
 引用一张 [@LeetCode-Solution](https://leetcode.cn/u/leetcode-solution/)的图片：
 
-![⚪与矩形](https://img-blog.csdnimg.cn/dc53089fba824bffbdc2c3c838de4020.jpeg#pic_center)
+![⚪与矩形](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/dc53089fba824bffbdc2c3c838de4020.jpeg#pic_center)
 
 我们随机rand x和y，这样rand出来的点就会落在矩形里。如果点落在了蓝色范围内，就返回这个点作为结果。否则落在红色区域内的话就继续rand。
 
@@ -156,7 +156,7 @@ public:
 
 <!-- ![图一-随机半径的圆](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/0-1.jpg#pic_center) -->
 
-![图一-随机半径的圆](https://img-blog.csdnimg.cn/62a6b0d0848d467287d4cdc16ae4cfa8.jpeg#pic_center)
+![图一-随机半径的圆](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/62a6b0d0848d467287d4cdc16ae4cfa8.jpeg#pic_center)
 
 上图中我们模拟了线性随机rand半径（也就是说，每种长度的半径是等概率的。上图每个红色圆的半径呈等差数列）
 
@@ -164,7 +164,7 @@ public:
 
 <!-- ![图二-随机半径 + 随机角度](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/1-1.jpg#pic_center) -->
 
-![图二-随机半径 + 随机角度](https://img-blog.csdnimg.cn/1bb9e130682941caa29cad959510dcea.jpeg#pic_center)
+![图二-随机半径 + 随机角度](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1bb9e130682941caa29cad959510dcea.jpeg#pic_center)
 
 角度也是等可能rand的，上图蓝色线表示角度，每两条相邻蓝线之间的角度差值相同。
 
@@ -172,7 +172,7 @@ public:
 
 <!-- ![图三-随机半径 + 随机角度](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/2-1.jpg#pic_center) -->
 
-![图三-随机半径 + 随机角度](https://img-blog.csdnimg.cn/48057458b4724a9485660b6ed8989426.jpeg#pic_center)
+![图三-随机半径 + 随机角度](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/48057458b4724a9485660b6ed8989426.jpeg#pic_center)
 
 只看绿色的点（采用上述方式随机出来的点），不难发现半径越小密度越大（也就是说有更大概率点会落在距离圆心很近的位置）。
 

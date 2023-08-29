@@ -57,11 +57,11 @@ tags: [题解, LeetCode, 困难, 贪心, 数组, 模拟]
 
 延伸过程中，分配糖果的数量累加。
 
-![极小点](https://img-blog.csdnimg.cn/5a567f411b9e4bf1ba62dd787515bdad.png#pic_center)
+![极小点](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/5a567f411b9e4bf1ba62dd787515bdad.png#pic_center)
 
 之后，再次遍历一遍“糖果分配数组”，如果遇到**相邻**的不符合条件的情况，就修正不呼和条件的分配：
 
-![再次遍历](https://img-blog.csdnimg.cn/4b9ac48aa1e74da6bc158821763368e4.png#pic_center)
+![再次遍历](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4b9ac48aa1e74da6bc158821763368e4.png#pic_center)
 
 + 时间复杂度$O(n)$，其中$n$是小朋友的数量
 + 空间复杂度$O(n)$

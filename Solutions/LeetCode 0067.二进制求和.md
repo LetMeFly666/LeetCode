@@ -46,7 +46,7 @@ tags: [题解, LeetCode, 简单, 位运算, 数学, 字符串, 模拟]
 
 然后令```a```为长度长的数字，从```0```到```a.size()```枚举```a```的每一位，如果```b```也有对应的这一位，就加之。
 
-![今日收到百度寄过来的礼品啦](https://img-blog.csdnimg.cn/8a7c122488d14b2b9ab60b982372b049.jpeg#pic_center)
+![今日收到百度寄过来的礼品啦](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8a7c122488d14b2b9ab60b982372b049.jpeg#pic_center)
 
 + 时间复杂度$O(n)$，其中$n$是两个数字的最大长度
 + 空间复杂度$O(1)$（没考虑reverse所消耗的空间）

@@ -66,7 +66,7 @@ tags: [题解, LeetCode, 中等, 字符串, 动态规划]
 	<li><code>s</code> 只包含数字，并且可能包含前导零。</li>
 </ul>
 
-![比较高效的算法](https://img-blog.csdnimg.cn/9f1dda529e7c4a96b1cc6d0c37790e75.jpeg#pic_center)
+![比较高效的算法](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/9f1dda529e7c4a96b1cc6d0c37790e75.jpeg#pic_center)
 
 ## 方法一：动态规划
 

@@ -16,7 +16,7 @@ tags: [题解, LeetCode, 中等, 树, 二叉搜索树, 链表, 分治, 二叉树
 
 <p><strong>示例 1:</strong></p>
 
-<p><img src="https://img-blog.csdnimg.cn/b3c0269ea1ee43d69db7f7f5f61975f2.jpeg" style="height: 388px; width: 500px;" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b3c0269ea1ee43d69db7f7f5f61975f2.jpeg" style="height: 388px; width: 500px;" /></p>
 
 <pre>
 <strong>输入:</strong> head = [-10,-3,0,5,9]

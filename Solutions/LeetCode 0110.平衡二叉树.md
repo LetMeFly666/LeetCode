@@ -20,7 +20,7 @@ tags: [题解, LeetCode, 简单, 树, 深度优先搜索, 二叉树]
 
 <p><strong>示例 1：</strong></p>
 <!-- <img alt="" src="https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg" style="width: 342px; height: 221px;" /> -->
-<img alt="" src="https://img-blog.csdnimg.cn/d1af0ddebbd343a69b85f0136f153bc4.jpeg" style="width: 342px; height: 221px;" />
+<img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d1af0ddebbd343a69b85f0136f153bc4.jpeg" style="width: 342px; height: 221px;" />
 <pre>
 <strong>输入：</strong>root = [3,9,20,null,null,15,7]
 <strong>输出：</strong>true
@@ -28,7 +28,7 @@ tags: [题解, LeetCode, 简单, 树, 深度优先搜索, 二叉树]
 
 <p><strong>示例 2：</strong></p>
 <!-- <img alt="" src="https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg" style="width: 452px; height: 301px;" /> -->
-<img alt="" src="https://img-blog.csdnimg.cn/fd2c38a76b0a41a9a88300ef32854711.jpeg" style="width: 452px; height: 301px;" />
+<img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/fd2c38a76b0a41a9a88300ef32854711.jpeg" style="width: 452px; height: 301px;" />
 <pre>
 <strong>输入：</strong>root = [1,2,2,3,3,null,null,4,4]
 <strong>输出：</strong>false

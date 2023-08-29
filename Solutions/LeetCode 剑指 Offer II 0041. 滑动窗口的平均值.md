@@ -106,7 +106,7 @@ else {
 
 运行结果：
 
-![result](https://img-blog.csdnimg.cn/07494cd6ca7c4ada98102869944bb8fa.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/07494cd6ca7c4ada98102869944bb8fa.jpeg#pic_center)
 
 如果想要更加严谨一点，可以在类析构的时候```delete```new出来的数组
 
@@ -118,7 +118,7 @@ else {
 
 运行时间竟然减少了
 
-![加上delete](https://img-blog.csdnimg.cn/1e2419eab57244078e0a68b3e07c80c6.jpeg#pic_center)
+![加上delete](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1e2419eab57244078e0a68b3e07c80c6.jpeg#pic_center)
 
 + 时间复杂度$O(n)$，其中$n$是要添加的元素的个数
 + 空间复杂度$O(m)$，其中$m$是“滑动窗口”的大小

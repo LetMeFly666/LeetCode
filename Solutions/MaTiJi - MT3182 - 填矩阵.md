@@ -70,7 +70,7 @@ $2≤k≤10,1≤n≤100$
 
 **为了便于理解题意，我画了一张图来解释：**
 
-![示例](https://img-blog.csdnimg.cn/291c41e010444833ad335c2b9d9bac30.jpeg#pic_center)
+![示例](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/291c41e010444833ad335c2b9d9bac30.jpeg#pic_center)
 
 # 题目分析
 

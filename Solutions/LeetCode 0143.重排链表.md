@@ -26,7 +26,7 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 <p><strong>示例 1：</strong></p>
 
 <!-- <p><img alt="" src="https://pic.leetcode-cn.com/1626420311-PkUiGI-image.png" style="width: 240px; " /></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/8af42f232ca647fcbef61f28611c7f47.png" style="width: 240px; " /></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8af42f232ca647fcbef61f28611c7f47.png" style="width: 240px; " /></p>
 
 <pre>
 <strong>输入：</strong>head = [1,2,3,4]
@@ -35,7 +35,7 @@ L<sub>0</sub> → L<sub>n</sub> → L<sub>1</sub> → L<sub>n - 1</sub> → L<su
 <p><strong>示例 2：</strong></p>
 
 <!-- <p><img alt="" src="https://pic.leetcode-cn.com/1626420320-YUiulT-image.png" style="width: 320px; " /></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/f38f64faab124f53ae3c293a76a10b2f.png" style="width: 320px; " /></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f38f64faab124f53ae3c293a76a10b2f.png" style="width: 320px; " /></p>
 
 <pre>
 <strong>输入：</strong>head = [1,2,3,4,5]

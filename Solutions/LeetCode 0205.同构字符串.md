@@ -96,7 +96,7 @@ public:
 
 <!-- ![result.jpg](https://pic.leetcode-cn.com/1660871526-JCjlBn-result.jpg) -->
 
-![result](https://img-blog.csdnimg.cn/44b49e5b43474538b10cb20c8df5b881.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/44b49e5b43474538b10cb20c8df5b881.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/19/LeetCode%200205.%E5%90%8C%E6%9E%84%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126417676](https://letmefly.blog.csdn.net/article/details/126417676)

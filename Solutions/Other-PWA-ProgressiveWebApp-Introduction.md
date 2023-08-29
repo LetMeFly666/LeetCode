@@ -10,23 +10,23 @@ tags: [其他, PWA, Notes, Web, Web App]
 
 在（使用Google浏览器）访问一些网站时，有时右上角会弹出“安装应用”的按钮。
 
-![安装应用](https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png)
+![安装应用](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png)
 
 例如[谷歌V8官网](https://v8.dev/)
 
-![V8官网](https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png)
+![V8官网](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png)
 
 如果我们点击“安装”，则会在桌面生成一个“快捷方式”，并且当前页面也会弹出为独立的窗口。
 
-![独立窗口](https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png)
+![独立窗口](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png)
 
 我们双击桌面的快捷方式也能达到同样的效果。
 
-![快捷方式](https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png)
+![快捷方式](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png)
 
 **这就像是我们打开了一个安装在本地的程序一样**，并且能在“设置->应用和功能”中找到（Win10下可以```Win + R```，```ms-settings:appsfeatures```，```回车```）
 
-![应用和功能](https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png)
+![应用和功能](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png)
 
 查看快捷方式的属性，可以发现其实质上是指向了```chrome_proxy.exe```，其目标为```"C:\Program Files\Google\Chrome\Application\chrome_proxy.exe"  --profile-directory=Default --app-id=omahloekemgldcjjnolkgifggmedapio```
 
@@ -44,15 +44,15 @@ tags: [其他, PWA, Notes, Web, Web App]
 
 两种方法，一个是直接在Windows设置中卸载
 
-![卸载1](https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png)
+![卸载1](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png)
 
 另一个是在打开应用后，点击右上方三个点，并选择卸载
 
-![卸载2](https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png)
+![卸载2](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png)
 
 记得清除数据
 
-![清除数据](https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png)
+![清除数据](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png)
 
 前言讲完了，接下来是其简介，以及如何编写PWA应用：
 

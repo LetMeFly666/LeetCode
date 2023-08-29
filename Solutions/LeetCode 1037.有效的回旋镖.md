@@ -53,7 +53,7 @@ tags: [题解, LeetCode, 简单, 几何, 数组, 数学, 共线, 斜率, 坐标]
 + 时间复杂度$O(1)$
 + 空间复杂度$O(1)$
 
-![result](https://img-blog.csdnimg.cn/962004024ef649b18454e35de5b80331.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/962004024ef649b18454e35de5b80331.jpeg#pic_center)
 
 ### AC代码
 

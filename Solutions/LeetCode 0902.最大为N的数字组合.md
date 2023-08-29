@@ -154,7 +154,7 @@ public:
 };
 ```
 
-![result](https://img-blog.csdnimg.cn/0050bb334943415bbf7489d1441fe618.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/0050bb334943415bbf7489d1441fe618.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/18/LeetCode%200902.%E6%9C%80%E5%A4%A7%E4%B8%BAN%E7%9A%84%E6%95%B0%E5%AD%97%E7%BB%84%E5%90%88/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127385999](https://letmefly.blog.csdn.net/article/details/127385999)

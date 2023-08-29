@@ -14,23 +14,23 @@ tags: [其他, Windows, UWP]
 
 首先```Win + R -> shell:AppsFolder -> 回车```，
 
-![Win+R](https://img-blog.csdnimg.cn/20563c6194104c218b5281629262f86d.jpeg)
+![Win+R](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/20563c6194104c218b5281629262f86d.jpeg)
 
 这将显示电脑上的已安装应用（Win32 & UWP）：
 
-![Applications](https://img-blog.csdnimg.cn/92a23d855c64466eb4923d697f0ac5e1.jpeg)
+![Applications](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/92a23d855c64466eb4923d697f0ac5e1.jpeg)
 
 找到想要创建快捷方式的UWP应用（这里以QQ音乐UWP为例），```右键 -> 创建快捷方式```
 
-![创建快捷方式](https://img-blog.csdnimg.cn/37a1acd4d6be49399c79fcfea03b1688.jpeg)
+![创建快捷方式](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/37a1acd4d6be49399c79fcfea03b1688.jpeg)
 
 接着会弹出“是否在桌面创建快捷方式”的提醒：
 
-![是否在桌面创建快捷方式](https://img-blog.csdnimg.cn/2b2ae5e9fea84783b7d4be084d413a43.png)
+![是否在桌面创建快捷方式](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/2b2ae5e9fea84783b7d4be084d413a43.png)
 
 选择“是”即可
 
-![shortcuts](https://img-blog.csdnimg.cn/559fc56596c0439685938ed4b9f8e117.png)
+![shortcuts](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/559fc56596c0439685938ed4b9f8e117.png)
 
 其中用到的命令（可复制）
 

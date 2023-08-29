@@ -29,7 +29,7 @@ MS Generation Project：[store.rg-adguard.net](https://store.rg-adguard.net/)
 
 在出现的列表中，选择```.appxbundle```结尾或```.appx```结尾的文件，点击下载。
 
-![find](https://img-blog.csdnimg.cn/31e4af1ff8264c8cb1bdf8f4971c4b9b.png)
+![find](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/31e4af1ff8264c8cb1bdf8f4971c4b9b.png)
 
 如果点击后没反应，可以试试```右键 -> 复制连接地址```，之后```新建标签页 -> 输入地址```。
 

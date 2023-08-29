@@ -16,7 +16,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 
 <!-- <p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/12/28/1483_ex1.png" style="height: 265px; width: 273px;" /></strong></p> -->
 
-<p><strong><img alt="" src="https://img-blog.csdnimg.cn/fad04952e29b43a998ffacb6d81ab73d.png" style="height: 265px; width: 273px;" /></strong></p>
+<p><strong><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/fad04952e29b43a998ffacb6d81ab73d.png" style="height: 265px; width: 273px;" /></strong></p>
 
 <pre>
 <strong>输入：</strong>root = [1,2,3,4,5,null,6,7,null,null,null,null,8]

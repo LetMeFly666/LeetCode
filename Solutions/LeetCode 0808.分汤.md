@@ -130,7 +130,7 @@ public:
 };
 ```
 
-![result](https://img-blog.csdnimg.cn/2bff54f8c1a14ba18c4534e04387bd5c.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/2bff54f8c1a14ba18c4534e04387bd5c.jpeg#pic_center)
 
 <!-- ![result.jpg](https://pic.leetcode.cn/1669038960-JGQGVK-result.jpg) -->
 

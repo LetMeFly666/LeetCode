@@ -27,7 +27,7 @@ tags: [题解, LeetCode, 中等, 设计, 数组, 矩阵, 前缀和, 二维前缀
 
 <!-- <p><img src="https://pic.leetcode-cn.com/1626332422-wUpUHT-image.png" style="width: 200px;" /></p> -->
 
-<p><img src="https://img-blog.csdnimg.cn/53a93754c50947a5b8fdc29c8d0da50f.png" style="width: 200px;" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/53a93754c50947a5b8fdc29c8d0da50f.png" style="width: 200px;" /></p>
 
 <pre>
 <strong>输入:</strong> 
@@ -67,7 +67,7 @@ numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
 
 初始化和查询的方法如图所示
 
-![Demonstration](https://img-blog.csdnimg.cn/c92fff4ce271419183ccb93512ea68d9.png#pic_center)
+![Demonstration](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c92fff4ce271419183ccb93512ea68d9.png#pic_center)
 
 <!-- ![Demonstration.png](https://pic.leetcode-cn.com/1663412553-DXuxDJ-Demonstration.png) -->
 

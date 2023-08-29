@@ -40,7 +40,7 @@ Config = {
 
 ```CourseId```、```Sign```、```Domain```都可用从当前课程的url中获取。
 
-![coursePage.jpg](https://img-blog.csdnimg.cn/6b8faea060684253b35a5cfd4f0231c6.png)
+![coursePage.jpg](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6b8faea060684253b35a5cfd4f0231c6.png)
 
 ```uv_id```和```SaveDirName```一般情况下无需更改。
 
@@ -50,7 +50,7 @@ Config = {
 
 所有视频及字幕（如果有）将会被保存到工作目录的Config.SaveDirName文件夹下。
 
-![keepResult.jpg](https://img-blog.csdnimg.cn/966531a5efeb450685b58e1c4a63bf53.png)
+![keepResult.jpg](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/966531a5efeb450685b58e1c4a63bf53.png)
 
 之后就可用任意倍速、快进等学习自己感兴趣的部分了。
 

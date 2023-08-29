@@ -95,11 +95,11 @@ int main() {
 
 接着以尽快的速度（1秒内）在三个终端中分别键入回车，让三个程序在尽可能短的时间内“同时”启动运行并等待结果。
 
-![init](https://img-blog.csdnimg.cn/f89b9d0db3a246adbf63a05ded0d60c0.png)
+![init](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f89b9d0db3a246adbf63a05ded0d60c0.png)
 
 经过一段时间后（约7h），我们得到了运行结果：
 
-![result](https://img-blog.csdnimg.cn/1381ccfff3b845909873a2b56c6530b2.png)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1381ccfff3b845909873a2b56c6530b2.png)
 
 结果显示：
 
@@ -178,11 +178,11 @@ int main() {
 2. ```./++iNC```
 3. ```./i++NCO2```
 
-![init2](https://img-blog.csdnimg.cn/bc6dbc770ce84d8e843c3c10fd08b3d3.png)
+![init2](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/bc6dbc770ce84d8e843c3c10fd08b3d3.png)
 
 接近同时（1秒内）启动三个程序，并观察运行结果
 
-![result2](https://img-blog.csdnimg.cn/b270b0c8bcfd4ef5814c578531a8c12d.jpeg)
+![result2](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b270b0c8bcfd4ef5814c578531a8c12d.jpeg)
 
 可以看到：
 

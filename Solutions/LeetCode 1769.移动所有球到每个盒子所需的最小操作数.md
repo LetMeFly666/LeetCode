@@ -107,7 +107,7 @@ public:
 
 运行结果还不错：
 
-![result](https://img-blog.csdnimg.cn/c10a7627b74d42d7abb5af376be815b1.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c10a7627b74d42d7abb5af376be815b1.jpeg#pic_center)
 
 <!-- https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ecbd922fbc34ee6976b7c6e5c3f9bc2~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp -->
 

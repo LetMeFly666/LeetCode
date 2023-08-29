@@ -98,7 +98,7 @@ public:
 
 运行结果还不错
 
-![result](https://img-blog.csdnimg.cn/e1042e37b17e4c27bdd1083fd3f62719.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/e1042e37b17e4c27bdd1083fd3f62719.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/20/LeetCode%200799.%E9%A6%99%E6%A7%9F%E5%A1%94/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127946948](https://letmefly.blog.csdn.net/article/details/127946948)

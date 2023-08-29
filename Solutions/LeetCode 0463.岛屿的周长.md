@@ -20,7 +20,7 @@ tags: [题解, LeetCode, 简单, 深度优先搜索, 广度优先搜索, BFS, �
 
 <!-- <p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/island.png" /></p> -->
 <!-- <p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f66f804f1ab649d1a26cbc44e44aeee3~tplv-k3u1fbpfcp-zoom-1.image" alt="掘金图源"/></p> -->
-<p><img src="https://img-blog.csdnimg.cn/eb11a3cbad234923a14025b3e03f838d.png" /></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/eb11a3cbad234923a14025b3e03f838d.png" /></p>
 
 
 <pre>

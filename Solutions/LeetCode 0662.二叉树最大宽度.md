@@ -91,7 +91,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 
 具体原因为：
 
-![why](https://img-blog.csdnimg.cn/8efa2bd7e4404d3a9a395a8377a47ccb.png#pic_center)
+![why](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8efa2bd7e4404d3a9a395a8377a47ccb.png#pic_center)
 
 + 时间复杂度$O(n)$，其中$n$为二叉树节点个数
 + 空间复杂度$O(n)$
@@ -100,7 +100,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 
 已反馈至Github:[https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/8816](https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/8816)
 
-![反馈](https://img-blog.csdnimg.cn/75bc5cf8a77d41d3b09bdad3c23bca52.jpeg#pic_center)
+![反馈](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/75bc5cf8a77d41d3b09bdad3c23bca52.jpeg#pic_center)
 
 <!-- https://leetcode.cn/problems/maximum-width-of-binary-tree/comments/1724874/ -->
 

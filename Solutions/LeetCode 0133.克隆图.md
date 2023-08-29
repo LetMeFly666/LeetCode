@@ -32,7 +32,7 @@ tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 图, �
 <p><strong>示例 1：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/01/133_clone_graph_question.png" style="height: 500px; width: 500px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/08c9bf3b85054cd39c6107e13f8b0f0e.png" style="height: 500px; width: 500px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/08c9bf3b85054cd39c6107e13f8b0f0e.png" style="height: 500px; width: 500px;"></p>
 
 <pre><strong>输入：</strong>adjList = [[2,4],[1,3],[2,4],[1,3]]
 <strong>输出：</strong>[[2,4],[1,3],[2,4],[1,3]]
@@ -47,7 +47,7 @@ tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 图, �
 <p><strong>示例 2：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/01/graph.png" style="height: 148px; width: 163px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/4379bcf1050345528a2f69ecadd03e4d.png" style="height: 148px; width: 163px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4379bcf1050345528a2f69ecadd03e4d.png" style="height: 148px; width: 163px;"></p>
 
 <pre><strong>输入：</strong>adjList = [[]]
 <strong>输出：</strong>[[]]
@@ -64,7 +64,7 @@ tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 图, �
 <p><strong>示例 4：</strong></p>
 
 <!-- <p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/01/graph-1.png" style="height: 133px; width: 272px;"></p> -->
-<p><img alt="" src="https://img-blog.csdnimg.cn/f9438857aacb42ca81f1b723cd85fe56.png" style="height: 133px; width: 272px;"></p>
+<p><img alt="" src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f9438857aacb42ca81f1b723cd85fe56.png" style="height: 133px; width: 272px;"></p>
 
 <pre><strong>输入：</strong>adjList = [[2],[1]]
 <strong>输出：</strong>[[2],[1]]</pre>

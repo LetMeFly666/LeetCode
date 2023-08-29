@@ -20,13 +20,13 @@ tags: [VsCode, 简单, 美化, 二次元]
 
 直接在VsCode的插件中搜索```background```（或者```Ctrl + P -> ext install background -> Enter```），点击第一个安装即可。
 
-![background-extention](https://img-blog.csdnimg.cn/1dbd2a8087a949f2b135c22e15066cfa.png#pic_center)
+![background-extention](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1dbd2a8087a949f2b135c22e15066cfa.png#pic_center)
 
 #### 方法二
 
 打开[该插件的marketplace](https://marketplace.visualstudio.com/items?itemName=shalldie.background)，点击Install即可。
 
-![install2](https://img-blog.csdnimg.cn/fff098861c734df49afd6e8908c6e04d.png)
+![install2](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/fff098861c734df49afd6e8908c6e04d.png)
 
 ### 配置
 
@@ -36,17 +36,17 @@ tags: [VsCode, 简单, 美化, 二次元]
 
 打开左下角设置：
 
-![settings](https://img-blog.csdnimg.cn/3d44e736f65f4c7e9623cfa55636a6b0.png)
+![settings](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/3d44e736f65f4c7e9623cfa55636a6b0.png)
 
 搜索```background```，点击```拓展```，点击```background```，就可以开始配置了。
 
 可以直接修改```settings.json```来配置（其实该settings.json的路径为```%userprofile%/AppData/Roaming/Code/User/settings.json```）：
 
-![settings.json1](https://img-blog.csdnimg.cn/e2e20f7245204f2ab7018237965609ac.jpeg)
+![settings.json1](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/e2e20f7245204f2ab7018237965609ac.jpeg)
 
 在最外层大括号内添加如下代码即可将图片添加至右下角：
 
-![settings-code](https://img-blog.csdnimg.cn/f3cea492936e4a27886808ac1aa5526f.jpeg)
+![settings-code](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f3cea492936e4a27886808ac1aa5526f.jpeg)
 
 ```json
 "background.enabled": true,
@@ -88,7 +88,7 @@ tags: [VsCode, 简单, 美化, 二次元]
 
 ### 效果
 
-![效果](https://img-blog.csdnimg.cn/a212fdbfd4d14b3db08c5e5a03b71233.jpeg)
+![效果](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/a212fdbfd4d14b3db08c5e5a03b71233.jpeg)
 
 ### 文件分享
 
@@ -104,11 +104,11 @@ VsCode更新后第一次启动，老婆会不显示。但是不用怕，什么�
 
 不爽之处：每次启动后，VsCode右下角总会提示“Code 安装似乎损坏，请重新安装”。
 
-![不爽](https://img-blog.csdnimg.cn/b8a359be45f2441d822c770ef18b9acb.jpeg)
+![不爽](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b8a359be45f2441d822c770ef18b9acb.jpeg)
 
 不过想要屏蔽的话也很简单，点击小齿轮，点击不再显示就好了。
 
-![屏蔽](https://img-blog.csdnimg.cn/cb6bf44ff5134199ad382d217a497d59.jpeg)
+![屏蔽](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/cb6bf44ff5134199ad382d217a497d59.jpeg)
 
 ## End
 

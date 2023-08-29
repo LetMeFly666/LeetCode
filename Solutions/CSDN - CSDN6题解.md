@@ -178,7 +178,7 @@ int main() {
 ## BUG反馈
 最初成绩不能正确显示，但是最后这个BUG被修复了：[反馈链接](https://bbs.csdn.net/topics/608098305?#601784609)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b852a1fb61304cdc9703bf069f022c23.png)
+![在这里插入图片描述](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b852a1fb61304cdc9703bf069f022c23.png)
 > 这道题我用Python提交没有全部通过，然后我用C++提交，全部通过了。
 > 因此，最终成绩应该是100分，但是系统没有取最高成绩，也没有取最后一次提交的成绩（最后一次我使用C++通过了全部的测试样例），而是取了Python的最后一次提交
 

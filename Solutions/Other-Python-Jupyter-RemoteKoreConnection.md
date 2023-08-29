@@ -16,7 +16,7 @@ tags: [其他, Python, Jupyter, Linux, 远程连接, 端口]
 
 打开这个文件，如果系统环境变量中配置好了Python等的话，应该可以看到当前正在使用本地的内核
 
-![系统内核](https://img-blog.csdnimg.cn/f13e405e0e214f30a09f8cc88fad12a8.png)
+![系统内核](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f13e405e0e214f30a09f8cc88fad12a8.png)
 
 现在登录电脑B，在终端中进入你想要进入的目录，打开jupyter服务（若未安装jupyter可以使用命令```pip install jupyter```），设置端口、token：
 
@@ -35,7 +35,7 @@ http://linuxB.ip:8888/?token=47a90a1933b28b74903c8b436c7f12d3f8aafe35db85f8f1
 
 可以看到Jupyter服务连接成功
 
-![Jupyter服务连接成功](https://img-blog.csdnimg.cn/2ea41cb2ab1147c9af68014aeba3723d.png)
+![Jupyter服务连接成功](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/2ea41cb2ab1147c9af68014aeba3723d.png)
 
 这时，如果已经配置好了机器A登录机器B时的免密登录（没有配置也没关系，请参考[SSH免密登录](https://blog.tisfy.eu.org/2023/04/22/Other-Linux-SSHLoginWithoutPassword/)），那么我们就可以打开机器A的VsCode，使用机器B的Jupyter内核了：
 
@@ -43,15 +43,15 @@ http://linuxB.ip:8888/?token=47a90a1933b28b74903c8b436c7f12d3f8aafe35db85f8f1
 
 连接新的内核：
 
-![连接新的内核](https://img-blog.csdnimg.cn/10c6b35e23d84000993df874a2bb07c1.png)
+![连接新的内核](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/10c6b35e23d84000993df874a2bb07c1.png)
 
 输入刚刚和浏览器中相同的URL并回车：
 
-![输入刚刚和浏览器中相同的URL](https://img-blog.csdnimg.cn/f84fa43e967a4db4a8c85731be007b22.png)
+![输入刚刚和浏览器中相同的URL](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f84fa43e967a4db4a8c85731be007b22.png)
 
 可以看到内核发生了改变：
 
-![内核发生了改变](https://img-blog.csdnimg.cn/6c2bc5ed8f604e098e12ea2713582d4d.png)
+![内核发生了改变](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6c2bc5ed8f604e098e12ea2713582d4d.png)
 
 在记事本中输入一些命令进行尝试：
 
@@ -67,7 +67,7 @@ Mem:             62          12          26           0          23          49
 Swap:            18           0          18
 ```
 
-![free -g](https://img-blog.csdnimg.cn/77f6f8ee3e314a15b9d0bc0c5006b4fd.png)
+![free -g](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/77f6f8ee3e314a15b9d0bc0c5006b4fd.png)
 
 ```bash
 !dir
@@ -79,7 +79,7 @@ Swap:            18           0          18
 D2LFiles
 ```
 
-![D2lFiles](https://img-blog.csdnimg.cn/ad48e29993574e39bbfbfbe2733585cd.png)
+![D2lFiles](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ad48e29993574e39bbfbfbe2733585cd.png)
 
 正是我们刚刚在Linux服务器上选择的文件夹。
 

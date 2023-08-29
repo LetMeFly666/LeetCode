@@ -157,7 +157,7 @@ public:
 
 例如计算$F(6)$时：
 
-![demo](https://img-blog.csdnimg.cn/016d3e18ed4e4c0fb50cdf99c2cc489a.png)
+![demo](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/016d3e18ed4e4c0fb50cdf99c2cc489a.png)
 
 $F(4)$计算了两次，$F(3)$计算了三次，$F(2)$更是计算了五次。
 
@@ -169,7 +169,7 @@ $n$越大，这种重复计算就越明显。
 
 我们使用一个哈希表，将计算过的结果记录下来，那么再次调用这个函数时，直接返回之前计算过的结果不就可以了吗？
 
-![demo2](https://img-blog.csdnimg.cn/4973f2d70be24f3ca12d6ed09ecc63ea.png)
+![demo2](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4973f2d70be24f3ca12d6ed09ecc63ea.png)
 
 这样就避免了没必要的重复计算。
 

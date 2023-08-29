@@ -176,7 +176,7 @@ public:
 
 因其处在全局变量中，故这个函数只执行一次。
 
-![result](https://img-blog.csdnimg.cn/f466a3a26cf64844966b16fd3682efbf.jpeg#pic_center)
+![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f466a3a26cf64844966b16fd3682efbf.jpeg#pic_center)
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/28/LeetCode%200481.%E7%A5%9E%E5%A5%87%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127565144](https://letmefly.blog.csdn.net/article/details/127565144)
