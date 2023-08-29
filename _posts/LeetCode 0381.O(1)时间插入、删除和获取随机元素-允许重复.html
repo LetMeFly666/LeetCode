@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】STL的应用：381.O(1) 时间插入、删除和获取随机元素 - 允许重复力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;insert-delete-getrandom-o1-duplicates-allowed&#x2F; RandomizedCollection 是一种包含数字集合(可能是重复的)的数据结构。它应该支持插入和删除特定元素，以及删除随机元素。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="381.O(1) 时间插入、删除和获取随机元素 - 允许重复">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/LeetCode%200381.O(1)%E6%97%B6%E9%97%B4%E6%8F%92%E5%85%A5%E3%80%81%E5%88%A0%E9%99%A4%E5%92%8C%E8%8E%B7%E5%8F%96%E9%9A%8F%E6%9C%BA%E5%85%83%E7%B4%A0-%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】STL的应用：381.O(1) 时间插入、删除和获取随机元素 - 允许重复力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;insert-delete-getrandom-o1-duplicates-allowed&#x2F; RandomizedCollection 是一种包含数字集合(可能是重复的)的数据结构。它应该支持插入和删除特定元素，以及删除随机元素。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-11T05:16:35.000Z">
+<meta property="article:modified_time" content="2023-08-29T09:45:50.983Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="随机化">
+<meta property="article:tag" content="STL">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>381.O(1) 时间插入、删除和获取随机元素 - 允许重复 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="381.O(1) 时间插入、删除和获取随机元素 - 允许重复"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】STL的应用：381-O-1-时间插入、删除和获取随机元素-允许重复"><a href="#【LetMeFly】STL的应用：381-O-1-时间插入、删除和获取随机元素-允许重复" class="headerlink" title="【LetMeFly】STL的应用：381.O(1) 时间插入、删除和获取随机元素 - 允许重复"></a>【LetMeFly】STL的应用：381.O(1) 时间插入、删除和获取随机元素 - 允许重复</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/insert-delete-getrandom-o1-duplicates-allowed/">https://leetcode.cn/problems/insert-delete-getrandom-o1-duplicates-allowed/</a></p>
+<p><code>RandomizedCollection</code> 是一种包含数字集合(可能是重复的)的数据结构。它应该支持插入和删除特定元素，以及删除随机元素。</p>
+
+<p>实现 <code>RandomizedCollection</code> 类:</p>
+
+<ul>
+    <li><code>RandomizedCollection()</code>初始化空的 <code>RandomizedCollection</code> 对象。</li>
+    <li><code>bool insert(int val)</code>&nbsp;将一个 <code>val</code> 项插入到集合中，即使该项已经存在。如果该项不存在，则返回 <code>true</code> ，否则返回 <code>false</code> 。</li>
+    <li><code>bool remove(int val)</code>&nbsp;如果存在，从集合中移除一个 <code>val</code> 项。如果该项存在，则返回 <code>true</code> ，否则返回 <code>false</code> 。注意，如果 <code>val</code> 在集合中出现多次，我们只删除其中一个。</li>
+    <li><code>int getRandom()</code> 从当前的多个元素集合中返回一个随机元素。每个元素被返回的概率与集合中包含的相同值的数量 <strong>线性相关</strong> 。</li>
+</ul>
+
+<p>您必须实现类的函数，使每个函数的 <strong>平均</strong> 时间复杂度为 <code>O(1)</code> 。</p>
+
+<p><strong>注意：</strong>生成测试用例时，只有在 <code>RandomizedCollection</code> 中 <strong>至少有一项</strong> 时，才会调用 <code>getRandom</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1:</strong></p>
+
+<pre>
+<strong>输入</strong>
+["RandomizedCollection", "insert", "insert", "insert", "getRandom", "remove", "getRandom"]
+[[], [1], [1], [2], [], [1], []]
+<strong>输出</strong>
+[null, true, false, true, 2, true, 1]
+
+<strong>解释</strong>
+RandomizedCollection collection = new RandomizedCollection();// 初始化一个空的集合。
+collection.insert(1);// 向集合中插入 1 。返回 true 表示集合不包含 1 。
+collection.insert(1);// 向集合中插入另一个 1 。返回 false 表示集合包含 1 。集合现在包含 [1,1] 。
+collection.insert(2);// 向集合中插入 2 ，返回 true 。集合现在包含 [1,1,2] 。
+collection.getRandom();// getRandom 应当有 2/3 的概率返回 1 ，1/3 的概率返回 2 。
+collection.remove(1);// 从集合中删除 1 ，返回 true 。集合现在包含 [1,2] 。
+collection.getRandom();// getRandom 应有相同概率返回 1 和 2 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+    <li><code>-2<sup>31</sup>&nbsp;&lt;= val &lt;= 2<sup>31</sup>&nbsp;- 1</code></li>
+    <li><code>insert</code>,&nbsp;<code>remove</code>&nbsp;和&nbsp;<code>getRandom</code>&nbsp;最多 <strong>总共</strong> 被调用&nbsp;<code>2 * 10<sup>5</sup></code>&nbsp;次</li>
+    <li>当调用 <code>getRandom</code> 时，数据结构中 <strong>至少有一个</strong> 元素</li>
+</ul>
+
+
+    
+<h2 id="方法一：STL的灵活运用"><a href="#方法一：STL的灵活运用" class="headerlink" title="方法一：STL的灵活运用"></a>方法一：STL的灵活运用</h2><p>本题考查对STL的灵活运用。</p>
+<p>如果使用STL，那么插入删除操作都很容易完成。</p>
+<p>但是如果想要在$O(1)$时间内返回随机值，想使用STL就不是那么容易了。</p>
+<p>数组中返回一个随机值很容易，时间复杂度是$O(1)$，插入数据也很容易，只是删除数据有点麻烦（一是难以找到待删除的数据在哪里，二是删除中间的数据的时间复杂度并不是$O(1)$）</p>
+<p>因此，我们可以把以上两者结合起来：</p>
+<ul>
+<li>既然数组中难以找到值为<code>val</code>的元素的下标，那么我们就用哈希表把值为<code>val</code>的元素的下标存起来</li>
+<li>既然删除中间元素耗时交长，那么我们不删除中间的元素，二是把中间的元素和末尾的元素进行交换，再删除末尾的元素</li>
+</ul>
+<p>好了，目的明确，开始搞事情</p>
+<p>我们很容易使用哈希表来存放某个元素在数组中的下标。比如<code>unordered_map&lt;int, int&gt;</code></p>
+<p>但由于元素可能重复，因此改成使用<code>unordered_map&lt;int, unordered_set&lt;int&gt;&gt;</code></p>
+<p>至于为什么不使用<code>unordered_multimap&lt;int, int&gt;</code>，是因为<code>unordered_multimap&lt;int, int&gt;</code>难以在$O(1)$的时间内删除指定键值对<code>pair&lt;int, int&gt;</code></p>
+<p>具体可见代码注释。</p>
+<ul>
+<li>单次操作时间复杂度$O(1)$。虽为$O(1)$，但是时间复杂度常数特别大。</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">RandomizedCollection</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    unordered_map&lt;<span class="hljs-type">int</span>, unordered_set&lt;<span class="hljs-type">int</span>&gt;&gt; ma;  <span class="hljs-comment">// &lt;val, [locOfThisVal]&gt;</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; a;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">RandomizedCollection</span>() &#123;<br><br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;  <span class="hljs-comment">// 插入并返回插入前是否无此数</span><br>        ma[val].<span class="hljs-built_in">insert</span>(a.<span class="hljs-built_in">size</span>());<br>        a.<span class="hljs-built_in">push_back</span>(val);<br>        <span class="hljs-keyword">return</span> ma[val].<span class="hljs-built_in">size</span>() == <span class="hljs-number">1</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!ma.<span class="hljs-built_in">count</span>(val))  <span class="hljs-comment">// 不存在次数</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>		<br>		<span class="hljs-comment">// erase掉这个数</span><br>        unordered_set&lt;<span class="hljs-type">int</span>&gt;::iterator it = ma[val].<span class="hljs-built_in">begin</span>();<br>        <span class="hljs-type">int</span> index = *it;<br>        ma[val].<span class="hljs-built_in">erase</span>(it);<br>        <span class="hljs-keyword">if</span> (ma[val].<span class="hljs-built_in">empty</span>())<br>            ma.<span class="hljs-built_in">erase</span>(val);<br>		<br>		<span class="hljs-comment">// 如果这个数在数组中不是最后一个元素，那么就需要将其与最后一个元素交换，再将最后一个元素删除</span><br>        <span class="hljs-keyword">if</span> (index &lt; a.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-type">int</span> index2swap = a.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>            a[index] = a[index2swap];<br>			<span class="hljs-comment">// 更新最后一个元素的下标</span><br>            ma[a[index2swap]].<span class="hljs-built_in">erase</span>(index2swap);<br>            ma[a[index2swap]].<span class="hljs-built_in">insert</span>(index);<br>        &#125;<br>        a.<span class="hljs-built_in">pop_back</span>();<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getRandom</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> a[<span class="hljs-built_in">rand</span>() % a.<span class="hljs-built_in">size</span>()];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2022/10/11/LeetCode%200381.O%281%29%E6%97%B6%E9%97%B4%E6%8F%92%E5%85%A5%E3%80%81%E5%88%A0%E9%99%A4%E5%92%8C%E8%8E%B7%E5%8F%96%E9%9A%8F%E6%9C%BA%E5%85%83%E7%B4%A0-%E5%85%81%E8%AE%B8%E9%87%8D%E5%A4%8D/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127262069">https://letmefly.blog.csdn.net/article/details/127262069</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

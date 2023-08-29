@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】图解：剑指 Offer II 115.重建序列 - 拓扑排序力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;ur2n8P&#x2F; 请判断原始的序列&amp;nbsp;org&amp;nbsp;是否可以从序列集&amp;nbsp;seqs&amp;nbsp;中唯一地 重建&amp;nbsp;。  序列&amp;nbsp;org&amp;nbsp;是 1 到 n 整数的排列，其中 1 &amp;le; n &amp;le; 104。重">
+<meta property="og:type" content="website">
+<meta property="og:title" content="剑指 Offer II 115.重建序列">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】图解：剑指 Offer II 115.重建序列 - 拓扑排序力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;ur2n8P&#x2F; 请判断原始的序列&amp;nbsp;org&amp;nbsp;是否可以从序列集&amp;nbsp;seqs&amp;nbsp;中唯一地 重建&amp;nbsp;。  序列&amp;nbsp;org&amp;nbsp;是 1 到 n 整数的排列，其中 1 &amp;le; n &amp;le; 104。重">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/762f0fd484890d5bafcd97ec2cc806b9.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/859ea01b2abb82009669262e8ca27776.png">
+<meta property="article:published_time" content="2022-07-23T02:27:08.000Z">
+<meta property="article:modified_time" content="2023-08-29T09:45:50.991Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="图">
+<meta property="article:tag" content="拓扑排序">
+<meta property="article:tag" content="数组">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/762f0fd484890d5bafcd97ec2cc806b9.png">
+  
+  
+  
+  <title>剑指 Offer II 115.重建序列 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="剑指 Offer II 115.重建序列"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】图解：剑指-Offer-II-115-重建序列-拓扑排序"><a href="#【LetMeFly】图解：剑指-Offer-II-115-重建序列-拓扑排序" class="headerlink" title="【LetMeFly】图解：剑指 Offer II 115.重建序列 - 拓扑排序"></a>【LetMeFly】图解：剑指 Offer II 115.重建序列 - 拓扑排序</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ur2n8P/">https://leetcode.cn/problems/ur2n8P/</a></p>
+<p>请判断原始的序列&nbsp;<code>org</code>&nbsp;是否可以从序列集&nbsp;<code>seqs</code>&nbsp;中唯一地 <strong>重建&nbsp;</strong>。</p>
+
+<p>序列&nbsp;<code>org</code>&nbsp;是 1 到 n 整数的排列，其中 1 &le; n &le; 10<sup>4</sup>。<strong>重建&nbsp;</strong>是指在序列集 <code>seqs</code> 中构建最短的公共超序列，即&nbsp;&nbsp;<code>seqs</code>&nbsp;中的任意序列都是该最短序列的子序列。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入: </strong>org = [1,2,3], seqs = [[1,2],[1,3]]
+<strong>输出: </strong>false
+<strong>解释：</strong>[1,2,3] 不是可以被重建的唯一的序列，因为 [1,3,2] 也是一个合法的序列。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入: </strong>org = [1,2,3], seqs = [[1,2]]
+<strong>输出: </strong>false
+<strong>解释：</strong>可以重建的序列只有 [1,2]。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入: </strong>org = [1,2,3], seqs = [[1,2],[1,3],[2,3]]
+<strong>输出: </strong>true
+<strong>解释：</strong>序列 [1,2], [1,3] 和 [2,3] 可以被唯一地重建为原始的序列 [1,2,3]。
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre>
+<strong>输入: </strong>org = [4,1,5,2,6,3], seqs = [[5,2,6,3],[4,1,5,2]]
+<strong>输出: </strong>true
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
+    <li><code>org</code> 是数字 <code>1</code> 到 <code>n</code> 的一个排列</li>
+    <li><code>1 &lt;= segs[i].length &lt;= 10<sup>5</sup></code></li>
+    <li><code>seqs[i][j]</code> 是 <code>32</code> 位有符号整数</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>注意：本题与主站 444&nbsp;题相同：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sequence-reconstruction/">https://leetcode-cn.com/problems/sequence-reconstruction/</a></p>
+
+
+<h2 id="方法一：拓扑排序"><a href="#方法一：拓扑排序" class="headerlink" title="方法一：拓扑排序"></a>方法一：拓扑排序</h2><p>我们根据样例来分析：</p>
+<p><strong>样例一：</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">nums = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], sequences = <span class="hljs-string">[[1,2],[1,3]]</span><br></code></pre></td></tr></table></figure>
+
+<p>样例一中，我们已知排列<code>[1, 2, 3]</code>的两个子序列<code>[1, 2]</code>和<code>[1, 3]</code>。这就说明：<code>1</code>必须出现在<code>2</code>的前面并且<code>1</code>必须出现在<code>3</code>的前面。（因为子序列中元素相对位置必须保持不变）</p>
+<p>但是<code>2</code>和<code>3</code>哪个在前哪个在后呢？根据给定输入<code>[[1,2],[1,3]]</code>无法判断。</p>
+<p>因此，样例一不能唯一确定“<code>超序列</code>”</p>
+<p><strong>样例二：</strong></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">nums = <span class="hljs-comment">[1,2,3]</span>, sequences = <span class="hljs-comment">[<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[2,3]</span>]</span><br></code></pre></td></tr></table></figure>
+
+<p>样例二中，我们已知排列<code>[1, 2, 3]</code>的三个子序列<code>[1, 2]</code>、<code>[1, 3]</code>和<code>[2, 3]</code>。这就说明<code>1</code>在<code>2</code>前、<code>1</code>在<code>3</code>前、<code>2</code>在<code>3</code>前。</p>
+<p>那么要满足上述三个条件，有且仅有一种排列方式：<code>[1, 2, 3]</code></p>
+<p>因此样例二能唯一确定“<code>超序列</code>”<code>[1, 2, 3]</code></p>
+<p><strong>实现思路：</strong></p>
+<p>“<code>1</code>在<code>2</code>前、<code>1</code>在<code>3</code>前”让我们很容易想到<code>拓扑排序</code>。</p>
+<p>我们可以构建一张图，图中节点是<code>nums</code>中的每一个元素。如果<code>1</code>在<code>2</code>前就添加一条<code>1→2</code>的边。</p>
+<p>那么样例一的图将被构建为：</p>
+<!-- ![\[\[1, 2\], \[1, 3\]\].png](https://pic.leetcode-cn.com/1658545276-fKlUZN-%5B%5B1,%202%5D,%20%5B1,%203%5D%5D.png) -->
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/762f0fd484890d5bafcd97ec2cc806b9.png" srcset="/img/loading.gif" lazyload alt="[[1, 2], [1, 3]].png"></p>
+<p>从<code>入度为0</code>的节点<code>1</code>开始进行拓扑排序，排序之后发现剩下两个节点，彼此之间无法确定相对顺序。</p>
+<p>样例二的图将被构建为：</p>
+<!-- ![\[\[1, 2\], \[1, 3\], \[2, 3\]\].png](https://pic.leetcode-cn.com/1658545463-cKKVqc-%5B%5B1,%202%5D,%20%5B1,%203%5D,%20%5B2,%203%5D%5D.png) -->
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/859ea01b2abb82009669262e8ca27776.png" srcset="/img/loading.gif" lazyload alt="[[1, 2], [1, 3], [2, 3]].png"></p>
+<p>从<code>入度为0</code>的节点<code>1</code>开始进行拓扑排序，排序之后只剩下了最终节点<code>3</code></p>
+<p><strong>具体实现方法</strong></p>
+<ol>
+<li>初始时遍历<code>sequences</code>中的所有元素，对于<code>sequences</code>中的<code>[a, b, c]</code>，构建一条<code>a→b</code>的边和一条<code>b→c</code>的边，并把<code>b</code>和<code>c</code>的入度<code>+1</code></li>
+<li>遍历所有节点，将入度为0的节点入队。不断从队列中取出节点，去掉从这个节点开始的所有的边，并把去掉的边所指向的节点的入度-1。（假如从节点<code>a</code>出发有两条边<code>a→b</code>和<code>a→c</code>，那么<code>b</code>和<code>c</code>的入度-1）</li>
+<li>直到队列为空</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>整个排序过程中，队列中最多有1个节点。（那是因为如果同时有多个入度为0的节点，就无法判断这些节点之间的相对顺序）</li>
+<li>排序结束后，所有节点的入度必须全部为0</li>
+</ol>
+<p>如果同时满足上述两个条件，就返回<code>true</code></p>
+<hr>
+<p><strong>2023.3.25日更：</strong> 感谢<a target="_blank" rel="noopener" href="https://leetcode.cn/u/great-vaughannym/">@Theseus</a>大佬的提醒！！</p>
+<p>本题中题目描述说明了“sequences[i] 是 nums 的子序列”，因此所构建的图<strong>不会存在自环</strong>。</p>
+<p>因此不必检查“是否所有节点的入度都为0”，这是判断是否能进行拓扑排序的（有向无环图才能进行拓扑排序）</p>
+<p>只需要满足上述两个条件中的第一个即可返回<code>true</code></p>
+<hr>
+<ul>
+<li>时间复杂度$O(n + m)$，其中$n$是排列的长度，$m$是$sequences$中元素的个数</li>
+<li>空间复杂度$O(n + m)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">sequenceReconstruction</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; sequences)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">from</span>(n + <span class="hljs-number">1</span>);<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">inDegree</span><span class="hljs-params">(n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-type">int</span>&gt;&amp; v : sequences) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++) &#123;  <span class="hljs-comment">// v[i - 1] → v[i]</span><br>                from[v[i - <span class="hljs-number">1</span>]].<span class="hljs-built_in">push_back</span>(v[i]);<br>                inDegree[v[i]]++;<br>            &#125;<br>        &#125;<br>        queue&lt;<span class="hljs-type">int</span>&gt; zero;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (inDegree[i] == <span class="hljs-number">0</span>) &#123;<br>                zero.<span class="hljs-built_in">push</span>(i);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (zero.<span class="hljs-built_in">size</span>()) &#123;<br>            <span class="hljs-keyword">if</span> (zero.<span class="hljs-built_in">size</span>() != <span class="hljs-number">1</span>)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-type">int</span> thisFrom = zero.<span class="hljs-built_in">front</span>();<br>            zero.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; thisTo : from[thisFrom]) &#123;<br>                inDegree[thisTo]--;<br>                <span class="hljs-keyword">if</span> (!inDegree[thisTo]) &#123;<br>                    zero.<span class="hljs-built_in">push</span>(thisTo);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// for (int i = 1; i &lt;= n; i++) &#123;  // 这里并不需要！</span><br>        <span class="hljs-comment">//     if (inDegree[i])</span><br>        <span class="hljs-comment">//         return false;</span><br>        <span class="hljs-comment">// &#125;</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p>🔥 感谢 <a target="_blank" rel="noopener" href="https://leetcode.cn/u/fomalhaut1998/">@Fomalhaut1998</a>大佬 提供Java版本的代码~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">sequenceReconstruction</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span>[][] seq)</span> &#123;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        拓扑排序:</span><br><span class="hljs-comment">        1 &lt;= n &lt;= 1e4</span><br><span class="hljs-comment">        1 &lt;= sequences[i].length &lt;= 1e4</span><br><span class="hljs-comment">        1 &lt;= sum(sequences[i].length) &lt;= 1e5</span><br><span class="hljs-comment">        我们先将seq表示的子序列顺序都保存为一张图，并能统计每一个节点的对应的入度</span><br><span class="hljs-comment">        要满足题目要求必须满足3个条件:</span><br><span class="hljs-comment">        1.入度为0的节点只能有1个，否则出来的超序列不唯一</span><br><span class="hljs-comment">        2.不能成环，否则出来的超序列不唯一</span><br><span class="hljs-comment">        3.最后入队的节点数=n，否则不能保证超序列最短</span><br><span class="hljs-comment">        如果全部满足返回true，构造返回false</span><br><span class="hljs-comment">         */</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-type">boolean</span>[] vis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[n + <span class="hljs-number">1</span>];<br>        List&lt;Integer&gt;[] edges = <span class="hljs-keyword">new</span> <span class="hljs-title class_">List</span>[n + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= n; i++) &#123;<br>            edges[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        &#125;<br>        <span class="hljs-comment">// 建图</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] p : seq) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; p.length - <span class="hljs-number">1</span>; j++) &#123;<br>                edges[p[j]].add(p[j + <span class="hljs-number">1</span>]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span>[] inDegree = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">for</span> (Integer ne : edges[i]) &#123;<br>                inDegree[ne]++;<br>            &#125;<br>        &#125;<br>        Queue&lt;Integer&gt; que = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">cnt</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;    <span class="hljs-comment">// 统计某一时间入度为0的节点数目</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (inDegree[i] == <span class="hljs-number">0</span>) &#123;<br>                que.add(i);<br>                vis[i] = <span class="hljs-literal">true</span>;<br>                cnt++;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (cnt &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;  <span class="hljs-comment">// &gt;1个节点入度为0返回false</span><br>        &#125;<br>        <span class="hljs-keyword">while</span> (!que.isEmpty()) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> que.poll(); <span class="hljs-comment">// 要删除的节点</span><br>            cnt = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (Integer ne : edges[p]) &#123;<br>                <span class="hljs-keyword">if</span> (--inDegree[ne] == <span class="hljs-number">0</span>) &#123;<br>                    que.add(ne);<br>                    vis[ne] = <span class="hljs-literal">true</span>;<br>                    cnt++;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (cnt &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">// 环检测</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (inDegree[i] != <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-comment">// 检测是否n个节点都入队了</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (!vis[i]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h4><p>🔥 感谢 <a target="_blank" rel="noopener" href="https://leetcode.cn/u/woodwhale/">@木鲸</a>大佬 提供TypeScript版本的代码~</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs TypeScript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sequenceReconstruction</span>(<span class="hljs-params">nums: <span class="hljs-built_in">number</span>[], sequences: <span class="hljs-built_in">number</span>[][]</span>): <span class="hljs-built_in">boolean</span> &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">len</span>: <span class="hljs-built_in">number</span> = nums.<span class="hljs-property">length</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">map</span>: <span class="hljs-built_in">number</span>[][] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(len+<span class="hljs-number">1</span>)  <span class="hljs-comment">// map[i]表示i指向的儿子们</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; map.<span class="hljs-property">length</span>; i++) map[i] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>()<br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">degree</span>: <span class="hljs-built_in">number</span>[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(len + <span class="hljs-number">1</span>).<span class="hljs-title function_">fill</span>(<span class="hljs-number">0</span>)<br>    degree[<span class="hljs-number">0</span>] = -<span class="hljs-number">1</span>  <span class="hljs-comment">// degree[i]表示i的度数，nums是从1开始的，所以0没用</span><br><br>    <span class="hljs-comment">// 存入map</span><br>    sequences.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">it</span> =&gt;</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; it.<span class="hljs-property">length</span>; i++) &#123;<br>            map[it[i-<span class="hljs-number">1</span>]].<span class="hljs-title function_">push</span>(it[i])<br>            degree[it[i]]++<br>        &#125;<br>    &#125;)<br><br>    <span class="hljs-comment">// 拓扑排序</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-attr">que</span>: <span class="hljs-built_in">number</span>[] = []<br>    degree.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">it, idx</span>) =&gt;</span> &#123;<span class="hljs-keyword">if</span> (it === <span class="hljs-number">0</span>) que.<span class="hljs-title function_">push</span>(idx)&#125;) <span class="hljs-comment">// 入度为0的数字进入队列</span><br><br>    <span class="hljs-keyword">while</span> (que.<span class="hljs-property">length</span>) &#123;<br>        <span class="hljs-keyword">if</span> (que.<span class="hljs-property">length</span> &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>  <span class="hljs-comment">// 如果有多个入度为0的点，那么就是无法推测唯一最短序列</span><br>        <span class="hljs-keyword">let</span> <span class="hljs-attr">idx</span>: <span class="hljs-built_in">number</span> = que.<span class="hljs-title function_">shift</span>()<br>        <span class="hljs-keyword">let</span> <span class="hljs-attr">sons</span>: <span class="hljs-built_in">number</span>[] = map[idx]<br>        sons.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">it</span> =&gt;</span> &#123;<br>            degree[it]-- <span class="hljs-comment">// 所有的儿子，入度-1</span><br>            <span class="hljs-keyword">if</span> (!degree[it]) que.<span class="hljs-title function_">push</span>(it)  <span class="hljs-comment">// 再次查找入度为0的节点</span><br>        &#125;)<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> !degree.<span class="hljs-title function_">some</span>(<span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> val &gt; <span class="hljs-number">0</span>)   <span class="hljs-comment">// 如果存在入度大于0的，证明有问题</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>图片制作不易，喜欢了就点个赞再走吧~</strong></p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2022/07/23/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/125945290">https://letmefly.blog.csdn.net/article/details/125945290</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

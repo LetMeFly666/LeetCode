@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介前言在（使用Google浏览器）访问一些网站时，有时右上角会弹出“安装应用”的按钮。  例如谷歌V8官网  如果我们点击“安装”，则会在桌面生成一个“快捷方式”，并且当前页面也会弹出为独立的窗口。  我们双击桌面的快捷方式也能达到同样的效果。  这就像是我们打开了一个安装在本地的程序一样，并且能在“设置-&amp;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/Other-PWA-ProgressiveWebApp-Introduction.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介前言在（使用Google浏览器）访问一些网站时，有时右上角会弹出“安装应用”的按钮。  例如谷歌V8官网  如果我们点击“安装”，则会在桌面生成一个“快捷方式”，并且当前页面也会弹出为独立的窗口。  我们双击桌面的快捷方式也能达到同样的效果。  这就像是我们打开了一个安装在本地的程序一样，并且能在“设置-&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png">
+<meta property="article:published_time" content="2023-03-17T13:38:06.000Z">
+<meta property="article:modified_time" content="2023-08-29T09:45:50.991Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="PWA">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Web App">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png">
+  
+  
+  
+  <title>PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="PWA-Progressive-web-apps-：Web技术实现类似原生应用-入门简介"><a href="#PWA-Progressive-web-apps-：Web技术实现类似原生应用-入门简介" class="headerlink" title="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介"></a>PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在（使用Google浏览器）访问一些网站时，有时右上角会弹出“安装应用”的按钮。</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png" srcset="/img/loading.gif" lazyload alt="安装应用"></p>
+<p>例如<a target="_blank" rel="noopener" href="https://v8.dev/">谷歌V8官网</a></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png" srcset="/img/loading.gif" lazyload alt="V8官网"></p>
+<p>如果我们点击“安装”，则会在桌面生成一个“快捷方式”，并且当前页面也会弹出为独立的窗口。</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png" srcset="/img/loading.gif" lazyload alt="独立窗口"></p>
+<p>我们双击桌面的快捷方式也能达到同样的效果。</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png" srcset="/img/loading.gif" lazyload alt="快捷方式"></p>
+<p><strong>这就像是我们打开了一个安装在本地的程序一样</strong>，并且能在“设置-&gt;应用和功能”中找到（Win10下可以<code>Win + R</code>，<code>ms-settings:appsfeatures</code>，<code>回车</code>）</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png" srcset="/img/loading.gif" lazyload alt="应用和功能"></p>
+<p>查看快捷方式的属性，可以发现其实质上是指向了<code>chrome_proxy.exe</code>，其目标为<code>&quot;C:\Program Files\Google\Chrome\Application\chrome_proxy.exe&quot;  --profile-directory=Default --app-id=omahloekemgldcjjnolkgifggmedapio</code></p>
+<p>实质上只是在具有专属边框的独立窗口中打开了这个网页而已。</p>
+<p>这样做有什么<strong>好处</strong>呢？</p>
+<p>首先相比于单独的程序而言，这个方法不需要真正地安装程序，其实质上可以理解为一个快捷方式。</p>
+<p>其次，相比于普通的网页而言，安装为“应用”的网页可以离线打开、方便缓存很多内容等。</p>
+<p>假如我做了一个纯前端的在线图片生成工具箱，那么我就可以将其打包成PWA应用，这样用户在“安装到本地后”，可以在几乎不占用额外硬盘空间的情况下（当然缓存当前前端页面及其资源还是要占用一丢丢的空间的），<strong>离线</strong>使用这个工具箱。</p>
+<p>有点介绍完了，怎么卸载呢？</p>
+<p>两种方法，一个是直接在Windows设置中卸载</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png" srcset="/img/loading.gif" lazyload alt="卸载1"></p>
+<p>另一个是在打开应用后，点击右上方三个点，并选择卸载</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png" srcset="/img/loading.gif" lazyload alt="卸载2"></p>
+<p>记得清除数据</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png" srcset="/img/loading.gif" lazyload alt="清除数据"></p>
+<p>前言讲完了，接下来是其简介，以及如何编写PWA应用：</p>
+<h2 id="简介（Answered-by-ChatGPT）"><a href="#简介（Answered-by-ChatGPT）" class="headerlink" title="简介（Answered by ChatGPT）"></a>简介（Answered by ChatGPT）</h2><p>PWA指的是Progressive Web App，是一种通过Web技术实现类似原生应用的用户体验的应用程序。</p>
+<p>与传统的Web应用程序不同，PWA可以离线访问，有着更快的加载速度、更流畅的交互体验，并且可以在桌面上以应用程序的形式运行。PWA利用了现代浏览器提供的一些API和技术，如Service Workers和Web App Manifests，实现了离线缓存、推送通知、添加到主屏幕等功能，使得用户可以像使用原生应用程序一样使用它们。</p>
+<p>PWA的优点包括：</p>
+<ol>
+<li>不需要下载安装：PWA不需要用户下载和安装，可以通过浏览器直接使用。</li>
+<li>快速加载：PWA可以利用Service Workers等技术，实现本地缓存和离线访问，使得加载速度更快。</li>
+<li>可以离线访问：PWA可以离线使用，用户不必依赖网络连接。</li>
+<li>可以添加到主屏幕：用户可以将PWA添加到主屏幕，以应用程序的形式进行访问。</li>
+<li>推送通知：PWA可以通过推送通知的方式向用户发送信息，增强用户体验。</li>
+</ol>
+<p>总的来说，PWA是一种融合了Web和原生应用程序的优点的新型应用程序，为用户提供了更好的体验，也为开发者提供了更便捷的开发方式。</p>
+<h2 id="如何编写PWA应用"><a href="#如何编写PWA应用" class="headerlink" title="如何编写PWA应用"></a>如何编写PWA应用</h2><p>当然还是看官方文档为妙：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/progressive-web-apps">谷歌官方文档</a>（点击后会跳转到<a target="_blank" rel="noopener" href="https://web.dev/progressive-web-apps/">这里</a>大陆可直接访问）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps">Mozilla文档</a></li>
+</ul>
+<p>最后贴上ChatGPT对“如何编写PWA应用”的总结：</p>
+<p>PWA（Progressive Web Apps）是一种使用 Web 技术编写的应用程序，可以像原生应用程序一样运行，并提供离线缓存、推送通知等功能。下面是编写 PWA 应用的一般步骤：</p>
+<ol>
+<li>确定应用程序的功能和设计，以及响应式布局、离线缓存等功能。</li>
+<li>使用 HTML、CSS 和 JavaScript 编写应用程序代码。建议使用模块化的代码结构和框架（如 React、Vue.js 等）。</li>
+<li>在代码中添加必要的 Web App Manifest 和 Service Worker。Web App Manifest 是一个 JSON 文件，包含应用程序的元数据，如名称、图标、颜色、起始页 URL 等。Service Worker 是一个 JavaScript 文件，用于缓存应用程序的静态资源并提供离线访问功能。</li>
+<li>部署应用程序到 Web 服务器上，并确保它是通过 HTTPS 协议访问的，以确保应用程序的安全性和信任度。</li>
+<li>在浏览器中访问应用程序，添加到主屏幕，并测试其功能和性能。</li>
+</ol>
+<p>总之，编写 PWA 应用需要了解 Web 技术和 PWA 的相关规范，同时使用现代的开发工具和框架可以帮助开发人员更加高效地开发 PWA 应用。</p>
+<h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><p>附上修改简化后的“W3开放网”的PWA的manifest.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;W3开放网&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;short_name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;W3开放网&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;start_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/?source=pwa&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;display&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;standalone&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;scope&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;background_color&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;#fff&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;homepage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://127.0.0.1:5500/&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;icons&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.w3dev.cn/images/48x48.png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;image/png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sizes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;48x48&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.w3dev.cn/images/96x96.png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;image/png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sizes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;96x96&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.w3dev.cn/images/144x144.png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;image/png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sizes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;144x144&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>          <span class="hljs-attr">&quot;src&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://www.w3dev.cn//images/192x192.png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;image/png&quot;</span><span class="hljs-punctuation">,</span><br>          <span class="hljs-attr">&quot;sizes&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;192x192&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129629012">https://letmefly.blog.csdn.net/article/details/129629012</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
