@@ -104,7 +104,7 @@ description: Cloud Computing, 飞桨
 1. 脚本类型的项目，提交任务时不会自动获得算力卡，需要点击一个Notebook类型的项目[运行一下](#算力获得)
 2. 脚本类项目中，脚本执行完成后可能不会立即退出，大约15分钟后才会退出
 3. 输出日志中可能会有重复（一行显示好几遍）
-4. 4张V100（第二个选项）的算力大约是1张V100（第一个选项）的4倍，算力时长消耗4张是1张的8倍（但快确实爽）
+4. 4张V100（第二个选项）的算力大约是1张V100（第一个选项）的4倍（有时不只4倍，甚至能达到7.9倍），算力时长消耗4张是1张的8倍（但快确实爽）
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132535648](https://letmefly.blog.csdn.net/article/details/132535648)
