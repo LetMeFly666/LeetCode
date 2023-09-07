@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-09-07 15:09:05
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-09-07 15:15:09
+ * @LastEditTime: 2023-09-07 15:18:14
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -11,10 +11,10 @@
 using ll = long long;
 class Solution {
 private:
-    bool check(vector<int>& ranks, int cars, ll t) {
+    bool check(vector<int>& ranks, ll cars, ll t) {
         ll cnt = 0;
-        for (auto r : ranks) {
-            cars -= sqrt(t / r);
+        for (int r : ranks) {
+            cnt += sqrt(t / r);
         }
         return cnt >= cars;
     };

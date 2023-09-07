@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-09-07 14:47:33
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-09-07 15:05:48
+ * @LastEditTime: 2023-09-07 15:22:14
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -11,12 +11,20 @@
 typedef long long ll;
 class Solution {
 private:
-    bool check(vector<int>& ranks, int cars, ll t) {
+    bool check1(vector<int>& ranks, ll cars, ll t) {  // cars一定用ll，否则可能溢出！
         for (int r : ranks) {
             cars -= sqrt(t / r);
         }
         return cars <= 0;
     }
+
+    bool check(vector<int>& ranks, ll cars, ll t) {
+        ll cnt = 0;
+        for (int r : ranks) {
+            cnt += sqrt(t / r);
+        }
+        return cnt >= cars;
+    };
 
 public:
     long long repairCars(vector<int>& ranks, int cars) {
