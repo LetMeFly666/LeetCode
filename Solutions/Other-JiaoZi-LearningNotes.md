@@ -117,7 +117,9 @@ a --> e["教学设计题 1x40’=40’"]
 
 ## 科目一
 
-```mermaid
+{% raw %}
+<pre>
+<code class="mermaid">
 graph LR
 
 a["职业理念"] --> b["教育观"]
@@ -125,9 +127,54 @@ a --> c["学生观"]
 a --> d["教师观"]
 
 click b "#教育观"
-```
+</code>
+</pre>
+{% endraw %}
 
 ### 教育观
+
+{% raw %}
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+
+jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><span style='color: red'>必背</span></b>）"]
+    a --> a1["<small>素质教育是</small><b>以<span style='color: red'>提</span>高国民<span style='color: red'>素</span>质为根本宗旨</b><small>的教育</small>"]
+    a --> a2["<small>素质教育是</small><b>面向<span style='color: red'>全体</span>学生</b><small>的教育</small>"]
+    a --> a3["<small>素质教育是</small><b>促进学生<span style='color: red'>全面</span>发展</b><small>的教育</small>"]
+    a --> a4["<small>素质教育是</small><b>促进学生<span style='color: red'>个性</span>发展</b><small>的教育</small>"]
+    a --> a5["<small>素质教育是</small><b>以培养学生的<span style='color: red'>创</span>新精神和实践能力为重点</b><small>的教育</small>"]
+    a1 --> aa["提素个性创两全"]:::white
+    a2 --> aa
+    a3 --> aa
+    a4 --> aa
+    a5 --> aa
+jiaoyuguan --> b["新课<span style='color: red'>改</span>下的教学观"]
+    b --> b1["<small>教学从“</small><b>以教育者为中心</b><small>”向“</small><b><span style='color: red'>学</span>习者为中心</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b2["<small>教学从“</small><b>教会学生知识</b><small>”向“</small><b>教会学生学<span style='color: red'>习</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b3["<small>教学从“</small><b>重结论轻过程</b><small>”向“</small><b>重结论更重<span style='color: red'>过</span>程</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b4["<small>教学从“</small><b>关注学科</b><small>”向“</small><b>关注<span style='color: red'>人</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b1 --> ba["学习过人/四个<span style='color: #4079a0'>转变</span>"]:::white
+    b2 --> ba
+    b3 --> ba
+    b4 --> ba
+</code>
+</pre>
+{% endraw %}
+
+### 学生观
+
+{% raw %}
+<pre>
+<code class="mermaid">
+graph LR
+</code>
+</pre>
+{% endraw %}
+
+### 教师观
 
 {% raw %}
 <pre>
