@@ -109,5 +109,33 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from collections import deque
+# from typing import List
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = [[] for _ in range(numCourses)]
+        indegree = [0] * numCourses
+        for a, b in prerequisites:
+            graph[b].append(a)
+            indegree[a] += 1
+        q = deque()
+        for i in range(numCourses):
+            if not indegree[i]:
+                q.append(i)
+        remain = numCourses
+        while q:
+            thisCourse = q.popleft()
+            remain -= 1
+            for to in graph[thisCourse]:
+                indegree[to] -= 1
+                if not indegree[to]:
+                    q.append(to)
+        return not remain
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/21/LeetCode%200207.%E8%AF%BE%E7%A8%8B%E8%A1%A8/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126448507](https://letmefly.blog.csdn.net/article/details/126448507)
