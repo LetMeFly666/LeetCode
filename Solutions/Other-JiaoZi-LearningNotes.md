@@ -120,13 +120,15 @@ a --> e["教学设计题 1x40’=40’"]
 {% raw %}
 <pre>
 <code class="mermaid">
-flowchart LR
+graph LR
 
 a["职业理念"] --> b["教育观"]
 a --> c["学生观"]
 a --> d["教师观"]
 
 click b href "#教育观" "教育观"
+click c href "#学生观" "学生观"
+click d href "#教师观" "教师观"
 </code>
 </pre>
 {% endraw %}
