@@ -188,7 +188,7 @@ classDef small fill:white, font-size:small, stroke:#f66, stroke-width:2px, strok
 
 jiaoshiguan["教师观"] --> a["教师<span style='color: red'>角色</span>的转变"]
     aend["建促放研(见醋放盐)"]:::white
-    a --> a1["⭐ 教师是学生的引导着和发展的<span style='color: red'>促</span>进者"] --> aend
+    a --> a1["⭐ 教师是学生的引导者和发展的<span style='color: red'>促</span>进者"] --> aend
         a12("发现、探索、动手、做人"):::small -.- a1
     a --> a2["⭐ 教师是课程的<span style='color: red'>建</span>设者和开发者"] --> aend
         a22["课本课程、开发课程"]:::small -.- a2
