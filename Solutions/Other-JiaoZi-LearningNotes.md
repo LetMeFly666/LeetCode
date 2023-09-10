@@ -186,9 +186,21 @@ graph LR
 classDef white fill:white
 
 jiaoshiguan["教师观"] --> a["教师<span style='color: red'>角色</span>的转变"]
-    a -->
-
+    aend["建促放研(见醋放盐)"]:::white
+    a --> a1["教师是学生的引导着和发展的<span style='color: red'>促</span>进者"] --> aend
+        a12["发现、探索、动手、做人"] --> a1
+    a --> a2["教师是课程的<span style='color: red'>建</span>设者和开发者"] --> aend
+        a22["课本课程、开发课程"] --> a2
+    a --> a3["教师是教育教学的<span style='color: red'>研</span>究者"] --> aend
+        a32["研究问题、论文、课题等"] --> a2
+    a --> a4["教师是社区型的开<span style='color: red'>放</span>教师"] --> aend
+        a42["从学校到社区（没考过）"] --> a4
 jiaoshiguan --> b["教师<span style='color: red'>行为</span>的转变"]
+    bend["你它我她/赞助合反(赞助盒饭)"]:::white
+    b --> b1["在对待<span style='color: red'>师生</span>关系上，新课程强调尊重、<span style='color: red'>赞</span>赏"] --> bend
+    b --> b2["在对待<span style='color: red'>教学</span>上，新课程强调帮<span style='color: red'>助</span>、引导"] --> b22["学习方法、价值观"] --> bend
+    b --> b3["在对待自<span style='color: red'>我</span>上，新课程强调<span style='color: red'>反</span>思"] --> b32["教学前、中、后都要反思"] --> bend
+    b --> b4["在对待与其<span style='color: red'>他</span>教育者的关系上，新课程强调<span style='color: red'>合</span>作"] --> bend
 
 </code>
 </pre>
