@@ -116,5 +116,33 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from collections import deque
+# from typing import List
+
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = [[] for _ in range(numCourses)]
+        indegree = [0] * numCourses
+        for a, b in prerequisites:
+            graph[b].append(a)
+            indegree[a] += 1
+        q = deque()
+        for i in range(numCourses):
+            if not indegree[i]:
+                q.append(i)
+        ans = []
+        while q:
+            thisCourse = q.popleft()
+            ans.append(thisCourse)
+            for to in graph[thisCourse]:
+                indegree[to] -= 1
+                if not indegree[to]:
+                    q.append(to)
+        return ans if len(ans) == numCourses else []
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/22/LeetCode%200210.%E8%AF%BE%E7%A8%8B%E8%A1%A8II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126461788](https://letmefly.blog.csdn.net/article/details/126461788)
