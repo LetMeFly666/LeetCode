@@ -135,6 +135,8 @@ public:
 };
 ```
 
+今日才发现vector没有|=、+= ....
+
 #### Python
 
 ```python
