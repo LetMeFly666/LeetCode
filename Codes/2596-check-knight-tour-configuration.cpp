@@ -27,8 +27,7 @@ public:
         int nowX = get<1>(v[0]), nowY = get<2>(v[0]);
         for (int i = 1; i < n * n; i++) {
             int nextX = get<1>(v[i]), nextY = get<2>(v[i]);
-            int diffX = abs(nextX - nowX), diffY = abs(nextY -nowY);
-            if (!(diffX == 2 && diffY == 1 || diffX == 1 && diffY == 2)) {
+            if (abs(nextX - nowX) * abs(nextY -nowY) != 2) {
                 return false;
             }
             nowX = nextX, nowY = nextY;
