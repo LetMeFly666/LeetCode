@@ -2,12 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2023-09-13 08:49:02
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-09-13 09:48:13
+ * @LastEditTime: 2023-09-13 09:56:57
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
+
+#ifdef FirstTry
 typedef tuple<int, int, int> iii;
 
 class Solution {
@@ -35,7 +37,31 @@ public:
         return true;
     }
 };
-
+#else  // FirstTry
+// SecondTry
+typedef pair<int, int> pii;
+class Solution {
+public:
+    bool checkValidGrid(vector<vector<int>>& grid) {
+        int n = grid.size();
+        vector<pii> indices(n * n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                indices[grid[i][j]] = {i, j};
+            }
+        }
+        int nowX = -2, nowY = -1;
+        for (int i = 0; i < n * n; i++) {
+            int nextX =indices[i].first, nextY = indices[i].second;
+            if (abs(nowX - nextX) * abs(nowY - nextY) != 2) {
+                return false;
+            }
+            nowX = nextX, nowY = nextY;
+        }
+        return true;
+    }
+};
+#endif  // FirstTry
 
 /*
 0 3 6
