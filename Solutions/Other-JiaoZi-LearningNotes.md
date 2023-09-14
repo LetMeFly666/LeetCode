@@ -192,7 +192,7 @@ xueshengguan["学生观"] --> a["学生是<span style='color: red'>独</span>立
     a --> a1["⭐学生具有个体独立性，不以教师的意志为转移"] --> bigEnd
         a1 -.- a12["尊重学生"]:::small
     a --> a2["⭐学生具有独立意义的主体，不以教师的意志为转移"] --> bigEnd
-        a2 -.- a22["学生是学习的主任，教师起主导地位"]:::small
+        a2 -.- a22["学生是学习的主人，教师起主导地位"]:::small
     a --> a3["学生是责权的主体"] --> bigEnd
         a3 -.- a32["责权与利益相统一"]:::small
 xueshengguan --> b["学生是<span style='color: red'>独</span>特的人<small>(学生与学生不同，学生与成人不同)</small>"]
@@ -207,7 +207,7 @@ xueshengguan --> c["学生是<span style='color: red'>发</span>展的人"]
         c2 -.- c22["可塑性"]:::small
     c --> c3["⭐学生是处于发展过程中的人"] --> bigEnd
         c3 -.- c32["容错性、包容性"]:::small
-xueshengguan --> d["<span style='color: red'>全</span>全面发展"]
+xueshengguan --> d["<span style='color: red'>全</span>面发展"]
     d --> d1["德智体美劳全面发展"] --> bigEnd
 xueshengguan --> e["面向<span style='color: red'>全</span>体学生"]
     e --> e1["公平公正对待每个学生，不能偏爱某个学生"] --> bigEnd
