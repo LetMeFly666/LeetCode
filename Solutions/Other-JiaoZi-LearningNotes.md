@@ -195,12 +195,11 @@ xueshengguan["学生观"] --> a["学生是<span style='color: red'>独</span>立
         a2 -.- a22["学生是学习的主任，教师起主导地位"]:::small
     a --> a3["学生是责权的主体"] --> bigEnd
         a3 -.- a32["责权与利益相统一"]:::small
-xueshengguan --> b["学生是<span style='color: red'>独</span>特的人"]
-    bend["学生与学生不同，学生与成人不同"] --> bigEnd
-    b --> b1["⭐学生是完整的人"] --> bend
-    b --> b2["⭐每个学生都具有自身的独特性"] --> bend
+xueshengguan --> b["学生是<span style='color: red'>独</span>特的人<small>(学生与学生不同，学生与成人不同)</small>"]
+    b --> b1["⭐学生是完整的人"] --> bigEnd
+    b --> b2["⭐每个学生都具有自身的独特性"] --> bigEnd
         b2 -.- b22["因材施教"]:::small
-    b --> b3["⭐学生与成人之间存在着巨大的差异"] --> bend
+    b --> b3["⭐学生与成人之间存在着巨大的差异"] --> bigEnd
         b3 -.- b32["老师要换位思考"]:::small
 xueshengguan --> c["学生是<span style='color: red'>发</span>展的人"]
     c --> c1["学生的身心发展是有规律的"] --> bigEnd
