@@ -250,5 +250,51 @@ jiaoshiguan --> b["教师<span style='color: red'>行为</span>的转变"]
 </pre>
 {% endraw %}
 
+### 职业道德
+
+{% raw %}
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+classDef whiteWithNoBoard fill:white, stroke-width: 0px
+classDef small fill:white, font-size:small, stroke:#f66, stroke-width:2px, stroke-dasharray: 5
+
+zhiyedaode["教师职业道德规范"] --> a["<span style='color: red'>爱</span>国守法"]
+    a-->a1["热爱祖国、热爱人民，拥护共产党和社会主义制度"]:::whiteWithNoBoard-->bigEnd
+    a-->a2["遵守法律法规，依法履行教师的职责和权利"]:::whiteWithNoBoard-->bigEnd
+    asmall["基本要求"]:::small-.-a
+zhiyedaode-->b["⭐ <span style='color: red'>爱</span>岗敬业"]
+    b-->b1["认真备课、上课、批改作业、辅导学生"]:::whiteWithNoBoard-->bigEnd
+    b-->b2["勤恳敬业、乐于奉献"]:::whiteWithNoBoard-->bigEnd
+    bsmall["本质要求"]:::small-.-b
+zhiyedaode-->c["⭐ 关<span style='color: red'>爱</span>学生"]
+    c-->c1["关爱全体学生、尊重学生人格、平等公正"]:::whiteWithNoBoard-->bigEnd
+    c-->c2["严慈相济、良师益友"]:::whiteWithNoBoard-->bigEnd
+    c-->c3["不体罚、不变相体罚、不讽刺、不挖苦、不歧视"]:::whiteWithNoBoard-->bigEnd
+    csmall["道德灵魂"]:::small-.-c
+zhiyedaode-->d["⭐ 教书育<span style='color: red'>人</span>"]
+    d-->d1["素质教育"]:::whiteWithNoBoard-->bigEnd
+    d-->d2["循循善诱、诲人不倦、因材施教"]:::whiteWithNoBoard-->bigEnd
+    d-->d3["培养学生的良好品行、激发创造力、全面发展"]:::whiteWithNoBoard-->bigEnd
+    d-->d4["不以分数作为评价学生的唯一标准"]:::whiteWithNoBoard-->bigEnd
+    dsmall["天职、核心"]:::small-.-d
+zhiyedaode-->e["⭐ 为<span style='color: red'>人</span>师表"]
+    e-->e1["以身作则——服装、言谈举止"]:::whiteWithNoBoard-->bigEnd
+    e-->e2["尊重理解加载"]:::whiteWithNoBoard-->bigEnd
+    e-->e3["与同事合作"]:::whiteWithNoBoard-->bigEnd
+    e-->e4["与金钱相关的<b>全部</b>Say No"]:::whiteWithNoBoard-->bigEnd
+    esmall["内在要求"]:::small-.-e
+zhiyedaode-->f["⭐ <span style='color: red'>终身</span>学习"]
+    f-->f1["不断学习、钻研业务、勇于创新"]:::whiteWithNoBoard-->bigEnd
+    f-->f2["提升自身能力（专业素养+教学水平）"]:::whiteWithNoBoard-->bigEnd
+    fsmall["不竭动力"]:::small-.-f
+
+bigEnd["三爱两人一终身"]:::white
+</code>
+</pre>
+{% endraw %}
+
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)哦~
 > [https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes](https://blog.tisfy.eu.org/2023/06/24/Other-JiaoZi-LearningNotes)
