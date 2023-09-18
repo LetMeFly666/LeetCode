@@ -86,5 +86,31 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from typing import List, Optional, Tuple
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def dfs(self, root: Optional[TreeNode]) -> Tuple[int, int]:
+        if not root:
+            return 0, 0
+        robleft, notleft = self.dfs(root.left)
+        robright, notright = self.dfs(root.right)
+        robthis = root.val + notleft + notright
+        notthis = max(robleft, notleft) + max(robright, notright)
+        return robthis, notthis
+    
+    def rob(self, root: List[TreeNode]) -> int:
+        return max(self.dfs(root))
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/27/LeetCode%200337.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DIII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127065525](https://letmefly.blog.csdn.net/article/details/127065525)
