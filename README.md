@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-09-15 09:35:34
+ * @LastEditTime: 2023-09-20 10:52:36
 -->
 # LeetCode
 
@@ -511,6 +511,7 @@ int main() {
 |面试题05.02.二进制数转字符串|中等|<a href="https://leetcode.cn/problems/bianry-number-to-string-lcci/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/03/02/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2005.02.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/129295125" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/bianry-number-to-string-lcci/solutions/2142123/letmefly-mian-shi-ti-0502er-jin-zhi-shu-tt0ck/" target="_blank">LeetCode题解</a>|
 |面试题17.09.第k个数|中等|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/09/28/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.09.%20%E7%AC%AC%20k%20%E4%B8%AA%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/127087237" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/solution/by-tisfy-u77a/" target="_blank">LeetCode题解</a>|
 |面试题17.11.单词距离|中等|<a href="https://leetcode.cn/problems/find-closest-lcci/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/05/27/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.11.%20%E5%8D%95%E8%AF%8D%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/124998677" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-closest-lcci/solution/letmefly-mian-shi-ti-1711dan-ci-ju-chi-k-t5d5/" target="_blank">LeetCode题解</a>|
+|LCP 06.拿硬币|简单|<a href="https://leetcode.cn/problems/na-ying-bi/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/09/20/LeetCode%20LCP%2006.%20%E6%8B%BF%E7%A1%AC%E5%B8%81/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133070027" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/na-ying-bi/solutions/2450517/letmefly-lcp-06na-ying-bi-by-tisfy-sati/" target="_blank">LeetCode题解</a>|
 |LCP 50. 宝石补给|中等|<a href="https://leetcode.cn/problems/WHnhjV/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/09/15/LeetCode%20LCP%2050.%20%E5%AE%9D%E7%9F%B3%E8%A1%A5%E7%BB%99/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/132895132" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/WHnhjV/solutions/2442975/letmefly-lcp-50bao-shi-bu-gei-by-tisfy-smck/" target="_blank">LeetCode题解</a>|
 
 ### 其他平台题解
