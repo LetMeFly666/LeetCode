@@ -35,6 +35,7 @@ private:
         
         thisNode->next = head->next;
         head->next = thisNode;
+        thisNode->previous = head;
         thisNode->next->previous = thisNode;
     }
 public:
@@ -48,17 +49,14 @@ public:
     int get(int key) {
         if (ma.count(key)) {
             refresh(key, ma[key]->value);
-            debug();  //*****************
             return ma[key]->value;
         }
-        debug();  //*********
         return -1;
     }
     
     void put(int key, int value) {
         if (ma.count(key)) {
             refresh(key, value);
-            debug();  //*****************
             return;
         }
         LRU_Node* thisNode = new LRU_Node(head, head->next, key, value);
@@ -70,7 +68,6 @@ public:
             toRemove->previous->next = tail;
             tail->previous = toRemove->previous;
         }
-        debug();  //*****************
     }
 
     void debug() {
