@@ -63,7 +63,6 @@ public:
             ma.erase(toRemove->key);
             toRemove->previous->next = tail;
             tail->previous = toRemove->previous;
-            delete toRemove;
         }
     }
 };
