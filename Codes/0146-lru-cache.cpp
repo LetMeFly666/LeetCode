@@ -2,17 +2,17 @@
  * @Author: LetMeFly
  * @Date: 2023-09-24 13:04:40
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-09-24 14:11:32
+ * @LastEditTime: 2023-09-24 14:14:47
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
-class Node {
+class LRU_Node {
 public:
-    Node* previous, *next;
+    LRU_Node* previous, *next;
     int key, value;
-    Node(Node* previous, Node* next, int key, int value) {
+    LRU_Node(LRU_Node* previous, LRU_Node* next, int key, int value) {
         this->previous = previous;
         this->next = next;
         this->key = key;
@@ -22,14 +22,14 @@ public:
 
 class LRUCache {
 private:
-    Node* head, *tail;
+    LRU_Node* head, *tail;
     int capacity;
-    unordered_map<int, Node*> ma;
+    unordered_map<int, LRU_Node*> ma;
 
     void refresh(int key, int value) {
-        Node* thisNode = ma[key];
+        LRU_Node* thisNode = ma[key];
         thisNode->value = value;
-        Node* previous = thisNode->previous, *next = thisNode->next;
+        LRU_Node* previous = thisNode->previous, *next = thisNode->next;
         previous->next = next, next->previous = previous;
         thisNode->next = head->next;
         head->next = thisNode;
@@ -37,8 +37,8 @@ private:
     }
 public:
     LRUCache(int capacity) {
-        head = new Node(nullptr, nullptr, 0, 0);
-        tail = new Node(head, nullptr, 0, 0);
+        head = new LRU_Node(nullptr, nullptr, 0, 0);
+        tail = new LRU_Node(head, nullptr, 0, 0);
         head->next = tail;
         this->capacity = capacity;
     }
@@ -58,11 +58,11 @@ public:
             debug();  //*****************
             return;
         }
-        Node* thisNode = new Node(head, head->next, key, value);
+        LRU_Node* thisNode = new LRU_Node(head, head->next, key, value);
         ma[key] = thisNode;
         head->next = thisNode, thisNode->next->previous = thisNode;
         if (ma.size() > capacity) {
-            Node* toRemove = tail->previous;
+            LRU_Node* toRemove = tail->previous;
             ma.erase(toRemove->key);
             toRemove->previous->next = tail;
             tail->previous = toRemove->previous;
@@ -72,7 +72,7 @@ public:
 
     void debug() {
         cout << "Now size: " << ma.size() << endl;
-        Node* p = head;
+        LRU_Node* p = head;
         while (p != tail) {
             if (p == head) {
                 cout << "[";
