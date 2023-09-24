@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2023-09-24 13:04:45
 LastEditors: LetMeFly
-LastEditTime: 2023-09-24 15:06:50
+LastEditTime: 2023-09-24 15:20:51
 '''
 class LRU_Node:
     
@@ -49,7 +49,7 @@ class LRUCache:
             thisNode = LRU_Node(self.head, self.head.next, key, value)
             self.ma[key] = thisNode
             self.head.next = thisNode
-            thisNode.previous = thisNode
+            thisNode.next.previous = thisNode
             if len(self.ma) > self.capacity:
                 toRemove = self.tail.previous
                 del self.ma[toRemove.key]
