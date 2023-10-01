@@ -81,5 +81,19 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        ans, m = 0, prices[0]
+        for t in prices:
+            m = min(m, t)
+            ans = max(ans, t - m)
+        return
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/19/LeetCode%200121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125867999](https://letmefly.blog.csdn.net/article/details/125867999)
