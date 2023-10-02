@@ -85,5 +85,30 @@ public:
 };
 ```
 
+或者
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int ans = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            ans += max(0, prices[i] - prices[i - 1]);
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        return sum(max(0, prices[i] - prices[i - 1]) for i in range(1, len(prices)))
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/19/LeetCode%200122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125868266](https://letmefly.blog.csdn.net/article/details/125868266)
