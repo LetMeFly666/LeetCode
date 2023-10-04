@@ -82,5 +82,24 @@ public:
 };
 ```
 
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        if not prices:
+            return 0
+        buy = [-prices[0]] * (k + 1)
+        sell = [0] * (k + 1)
+        buy[0] = 0
+        for i in range(1, len(prices)):
+            for j in range(1, k + 1):
+                buy[j] = max(buy[j], sell[j - 1] - prices[i])
+                sell[j] = max(sell[j], buy[j] + prices[i])
+        return sell[k]
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/12/LeetCode%200188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126299307](https://letmefly.blog.csdn.net/article/details/126299307)
