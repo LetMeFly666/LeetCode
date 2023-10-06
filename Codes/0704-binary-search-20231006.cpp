@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-10-06 12:44:27
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-06 12:48:11
+ * @LastEditTime: 2023-10-06 13:03:43
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -14,13 +14,16 @@ public:
         int l = 0, r = nums.size();
         while (l < r) {
             int mid = (l + r) >> 1;
-            if (nums[mid] < target) {
+            if (nums[mid] > target) {
+                r = mid;
+            }
+            else if (nums[mid] < target) {
                 l = mid + 1;
             }
             else {
-                r = mid;
+                return mid;
             }
         }
-        return nums[l] == target ? l : -1;
+        return -1;
     }
 };
