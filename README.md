@@ -2,9 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-07 10:16:05
+ * @LastEditTime: 2023-10-07 22:30:48
 -->
 # LeetCode
+
+[![Blog markdown to hexo](https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml/badge.svg?branch=master)](https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml)
 
 <table border="0" width="10%">
   <tr>
