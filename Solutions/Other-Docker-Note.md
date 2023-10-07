@@ -22,7 +22,7 @@ Docker主打一个“极小成本”的虚拟环境的一键部署，使用少�
 
 |命令|说明|文档地址|
 |:--:|:--:|:--:|
-|[docker pull](#Docker-pull)|拉取镜像|[docker pull](https://docs.docker.com/engine/reference/commandline/pull/)|
+|[docker pull](#docker-pull)|拉取镜像|[docker pull](https://docs.docker.com/engine/reference/commandline/pull/)|
 |docker push|推送镜像到DockerRegistry|docker push|
 |docker images|查看本地镜像|docker images|
 |docker rmi|删除本地镜像|docker rmi|
@@ -38,7 +38,7 @@ Docker主打一个“极小成本”的虚拟环境的一键部署，使用少�
 |docker load|加载本地压缩文件到镜像|docker load|
 |docker inspect|查看容器详细信息|docker inspect|
 
-### Docker pull
+### docker pull
 
 
 
