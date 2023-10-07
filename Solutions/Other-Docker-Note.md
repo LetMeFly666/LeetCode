@@ -23,9 +23,9 @@ Docker主打一个“极小成本”的虚拟环境的一键部署，使用少�
 |命令|说明|文档地址|
 |:--:|:--:|:--:|
 |[docker pull](#docker-pull)|拉取镜像|[docker pull](https://docs.docker.com/engine/reference/commandline/pull/)|
-|docker push|推送镜像到DockerRegistry|docker push|
-|docker images|查看本地镜像|docker images|
-|docker rmi|删除本地镜像|docker rmi|
+|[docker push](#docker-push)|推送镜像到DockerRegistry|[docker push](https://docs.docker.com/engine/reference/commandline/push/)|
+|[docker images](#docker-images)|查看本地镜像|[docker images](https://docs.docker.com/engine/reference/commandline/images/)|
+|[docker rmi](#docker-rmi)|删除本地镜像|[docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/)|
 |docker run|创建并运行容器（不能重复创建）|docker run|
 |docker stop|停止指定容器|docker stop|
 |docker start|启动指定容器|docker start|
@@ -38,9 +38,108 @@ Docker主打一个“极小成本”的虚拟环境的一键部署，使用少�
 |docker load|加载本地压缩文件到镜像|docker load|
 |docker inspect|查看容器详细信息|docker inspect|
 
+可以在几乎任何时候使用```--help```来查看帮助。例如```docker --help```、```docker pull --help```
+
 ### docker pull
 
+拉取镜像。
 
+```bash
+docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+```
+
+OPTIONS说明：
+
++ -a :拉取所有 tagged 镜像
++ --disable-content-trust :忽略镜像的校验,默认开启
+
+实例（以nginx为例）：
+
+```bash
+docker pull nginx
+```
+
+这样的话docker会默认拉取最新(latest)的nginx镜像到本地。
+
+其实不拉取镜像也可以，在```docker run```时若还未拉取过镜像，则docker会自动拉取。
+
+### docker push
+
+将本地的镜像上传到镜像仓库,要先登陆到镜像仓库。
+
+```bash
+docker push [OPTIONS] NAME[:TAG]
+```
+
+OPTIONS说明：
+
++ --disable-content-trust :忽略镜像的校验,默认开启
+
+实例：
+
+```bash
+docker push mynginx
+```
+
+### docker images
+
+列出本地镜像。执行过```docker pull```或```docker run```后镜像可能会被保存。
+
+```bash
+docker images [OPTIONS] [REPOSITORY[:TAG]]
+```
+
+OPTIONS说明：
+
++ -a :列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）
+
+实例：
+
+```bash
+docker images
+```
+
+```bash
+docker images ubuntu
+```
+
+将会得到本地所有版本的ubuntu镜像。
+
+### docker rmi
+
+删除本地一个或多个镜像。
+
+```bash
+docker rmi [OPTIONS] IMAGE [IMAGE...]
+```
+
+OPTIONS说明：
+
++ -f :强制删除
+
+实例：
+
+```bash
+docker rmi -f nginx
+```
+
+有容器正在使用nginx镜像，但还是会被强制删除。
+
+## 其他设置
+
+编辑```deamon.json```或者直接在Docker Desktop的settings中修改配置文件即可更改docker的一些设置。
+
+### 镜像加速
+
+阿里云为个人提供了免费的Docker镜像加速服务。位置：[控制台 -> 容器镜像服务 -> 镜像加速器](https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors)。
+
+复制```加速器地址```（xxx.mirror.aliyuncs.com）并在```deamon.json```中新增一项即可：
+
+```json
+"registry-mirrors": ["xxx.mirror.aliyuncs.com"]
+```
+
+阿里云明确说明只给个人使用，因此不要分享这个私有地址。
 
 ## 个人的话
 
@@ -63,6 +162,12 @@ docker环境的底层似乎是Linux系统，因此感觉在Windows上的适配/�
 ![总占用](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/92f2409eb64e49b686d003c8959304e1.png)
 
 所以，求一个有效的Windows上使用Docker后释放内存的好办法（重启除外）[Doge]
+
+## 参考链接
+
++ [Bilibili@BV1HP4118797: 黑马程序员Docker快速入门到项目部署](https://www.bilibili.com/video/BV1HP4118797)
++ [飞书文档：day02-Docker（和上述视频配套）](https://b11et3un53m.feishu.cn/wiki/MWQIw4Zvhil0I5ktPHwcoqZdnec)
++ [菜鸟教程：docker 命令大全](https://www.runoob.com/docker/docker-command-manual.html)
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
