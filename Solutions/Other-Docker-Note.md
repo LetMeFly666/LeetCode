@@ -532,17 +532,129 @@ docker compose [OPTIONS] [COMMAND]
 
 |docker run 参数|docker compose 指令|说明|
 |:--:|:--:|:--:|
-|--name|container_name|容器名称|
+|&ndash;&ndash;name|container_name|容器名称|
 |-p|ports|端口映射|
 |-e|environment|环境变量|
 |-v|volumes|数据卷配置|
-|--network|networks|网络|
+|&ndash;&ndash;network|networks|网络|
 
 实例：
 
-```bash
+新建一个文件夹并在终端中进入，新建```server.py```文件并写入以下内容：
 
+```python
+from flask import Flask
+import pymysql
+
+app = Flask('demo')
+MYSQL_HOST = 'mysql'
+inited = False
+
+
+def initdb():  # 创建数据表
+    conn = pymysql.connect(host=MYSQL_HOST, user='root', passwd='123')
+    cursor = conn.cursor()
+    cursor.execute('CREATE DATABASE IF NOT EXISTS demo;')
+    cursor.execute('USE demo;')
+    cursor.execute('CREATE TABLE IF NOT EXISTS times(num INT, times INT);')
+    cursor.execute('SELECT * FROM times;')
+    if not cursor.fetchone():
+        cursor.execute('INSERT INTO times (num, times) VALUES (1, 1)')
+        conn.commit()
+    cursor.close()
+    conn.close()
+
+
+@app.route('/')
+def count():
+    global inited
+    if not inited:
+        try:
+            initdb()
+            inited = True
+        except Exception as e:
+            print(e)
+    try:
+        conn = pymysql.connect(host=MYSQL_HOST, user='root', database='demo', passwd='123')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM times;')
+        now = cursor.fetchone()[1]
+        cursor.execute(f'UPDATE times SET times = {now + 1} WHERE num = 1;')
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return f'the {now}-th'
+    except Exception as e:
+        return f'{e}\n请耐心等待至Mysql初始化完成后重试'
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
 ```
+
+新建```Dockerfile```文件并写入以下内容：
+
+```docker
+FROM python
+LABEL maintainer="LetMeFly"
+WORKDIR /root
+COPY ./server.py /root/
+RUN pip3 install pymysql -i https://mirrors.aliyun.com/pypi/simple
+RUN pip3 install flask -i https://mirrors.aliyun.com/pypi/simple
+RUN pip3 install cryptography -i https://mirrors.aliyun.com/pypi/simple
+ENTRYPOINT ["python3", "server.py"]
+EXPOSE 5000
+```
+
+新建```docker-compose.yml```文件并写入以下内容：
+
+```yaml
+version: "1.0"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql1
+    ports:
+      - "3306:3306"
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123
+    networks:
+      - flask
+  
+  python:
+    build:
+      context: .
+    image: flask-img-counttime
+    container_name: flask-server
+    ports:
+      - "80:5000"
+    networks:
+      - flask
+    depends_on:
+      - mysql
+
+networks:
+  flask:
+    name: flask
+```
+
+接着在终端中执行命令
+
+```bash
+docker compose up -d
+```
+
+等待容器构建完成，访问[localhost](http://localhost/)即可看到Flask中的信息。
+
+Mysql容器启动后可能需要很久才能建立连接，因此刚开始访问[localhost](http://localhost/)时，看到的是“connection refused 请耐心等待mysql初始化完成”。
+
+过了可能好几分钟，硬盘占用突然降低，Mysql初始化完成，容器```flask-img-counttime```能够访问到容器```mysql1```，再次访问[localhost](http://localhost/)，可以看到“the 1-th”。刷新后变成了“the 2-th”，再刷新“the 3-th”，......。
+
+这说明我们使用```docker compose```成功实现了关联容器的快速部署。（若想一键清除，可以在当前目录下```docker compose down```）
+
+另附：将docker commands转为docker-compose的[在线网站](https://www.composerize.com/)
 
 ## 其他设置
 
