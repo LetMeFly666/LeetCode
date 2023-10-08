@@ -114,7 +114,7 @@ for i in chain(a, b):
 
 ### Python bisect
 
-二分查找用。
+python二分查找用。
 
 ```bisect.bisect_right(list, val)```类似于C++的```upper_bound(list.begin(), lise.end(), val) - list.begin()```
 
@@ -204,7 +204,7 @@ The 1-th is Second
 The 2-th is Third 
 ```
 
-### Python 双端队列 deque
+### Python双端队列 deque
 
 ```python
 from collections import deque
@@ -215,7 +215,7 @@ dq.pop()
 dq.popleft()
 ```
 
-### Python 优先队列 heapq
+### Python优先队列 heapq
 
 Python优先队列小元素先出队（小根堆）。
 
@@ -226,6 +226,24 @@ heapq.heappush(pq, 2)
 heapq.heappush(pq, 1)
 heapq.heappush(pq, 3)
 heapq.heappop(pq)  # 1
+```
+
+### Python有序集合SortedList
+
+类似于```C++```的```multiset```。
+
+```python
+from sortedcontainers import SortedList
+
+se = SortedList()
+se.add(2)  # SortedList([2])
+se.add(1)  # SortedList([1, 2])
+se.add(3)  # SortedList([1, 2, 3])
+se.add(2)  # SortedList([1, 2, 2, 3])
+se.discard(2)  # SortedList([1, 2, 3])
+se[0]  # 1
+se[-1]  # 3
+2 in se  # True
 ```
 
 ## About Website
