@@ -147,17 +147,17 @@ OPTIONS说明：
 + -p: 指定端口映射，格式为：主机(宿主)端口:容器端
 + -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用
 + &ndash;&ndash;name="nginx-lb": 为容器指定一个名称
-+ --dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致
-+ --dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致
++ &ndash;&ndash;dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致
++ &ndash;&ndash;dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致
 + -h "mars": 指定容器的hostname
 + -e username="ritchie": 设置环境变量
-+ --env-file=[]: 从指定文件读入环境变量
-+ --cpuset="0-2" or --cpuset="0,1,2": 绑定容器到指定CPU运行
++ &ndash;&ndash;env-file=[]: 从指定文件读入环境变量
++ &ndash;&ndash;cpuset="0-2" or &ndash;&ndash;cpuset="0,1,2": 绑定容器到指定CPU运行
 + -m :设置容器使用内存最大值
-+ --net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型。详情请见[docker network](#docker-network)
-+ --link=[]: 添加链接到另一个容器
-+ --expose=[]: 开放一个端口或一组端口
-+ --volume , -v: 绑定一个卷，格式为：宿主机路径或卷名:容器中对应的路径。详情请见[docker volume](#docker-volume)
++ &ndash;&ndash;net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型。详情请见[docker network](#docker-network)
++ &ndash;&ndash;link=[]: 添加链接到另一个容器
++ &ndash;&ndash;expose=[]: 开放一个端口或一组端口
++ &ndash;&ndash;volume , -v: 绑定一个卷，格式为：宿主机路径或卷名:容器中对应的路径。详情请见[docker volume](#docker-volume)
 
 一般都会加上参数```-d```，否则容器会在当前终端运行，一旦```Ctrl + C```容器就停止运行了。
 
@@ -239,8 +239,8 @@ docker ps [OPTIONS]
 
 OPTIONS说明：
 
-+ -a/--all :显示所有的容器，包括未运行的
-+ --format :指定返回值的模板文件
++ -a/&ndash;&ndash;all :显示所有的容器，包括未运行的
++ &ndash;&ndash;format :指定返回值的模板文件
 
 实例：
 
@@ -307,9 +307,9 @@ docker logs [OPTIONS] CONTAINER
 OPTIONS说明：
 
 + -f : 跟踪日志输出
-+ --since :显示某个开始时间的所有日志
++ &ndash;&ndash;since :显示某个开始时间的所有日志
 + -t : 显示时间戳
-+ --tail :仅列出最新N条容器日志
++ &ndash;&ndash;tail :仅列出最新N条容器日志
 
 实例：
 
@@ -389,7 +389,7 @@ docker build [OPTIONS] PATH | URL | -
 OPTIONS说明：
 
 + -f：指定要使用的Dockerfile路径（若为当前路径则可以省略）
-+ --tag/-t：镜像的名字及标签，通常```name:tag```或者```name```(则默认标签latest)格式；可以在一次构建中为一个镜像设置多个标签
++ &ndash;&ndash;tag/-t：镜像的名字及标签，通常```name:tag```或者```name```(则默认标签latest)格式；可以在一次构建中为一个镜像设置多个标签
 
 关于```Dockerfile```的编写，常用命令有：
 
@@ -528,7 +528,7 @@ docker compose [OPTIONS] [COMMAND]
 
 假设在```/root/demo/```路径下执行的```docker compose up -d```命令，则移除时还应在此目录或其子目录下。（否则直接```docker compose down```的话会“no configuration file provided: not found”。
 
-```docker-compose.yml```的编写 与 ```docker run```命令的对比：
+&nbsp;```docker-compose.yml```的编写 与 ```docker run```命令的对比：
 
 |docker run 参数|docker compose 指令|说明|
 |:--:|:--:|:--:|
