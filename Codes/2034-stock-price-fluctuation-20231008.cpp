@@ -14,7 +14,7 @@ public:
     
     void update(int timestamp, int price) {
         if (ma.count(timestamp)) {
-            se.erase(ma[timestamp]);
+            se.erase(se.find(ma[timestamp]));
         }
         ma[timestamp] = price;
         se.insert(price);
@@ -26,11 +26,11 @@ public:
     }
     
     int maximum() {
-        return ma[*se.end()];
+        return *se.rbegin();
     }
     
     int minimum() {
-        return ma[*se.begin()];
+        return *se.begin();
     }
 };
 
