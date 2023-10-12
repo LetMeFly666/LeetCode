@@ -57,6 +57,12 @@ MS Generation Project：[store.rg-adguard.net](https://store.rg-adguard.net/)
 虽然与win32相比少了很多功能，也存在很多BUG，但是系统开销是真的小，界面也算美观，虽然成本可能很高，但还是很支持腾讯开发QQ音乐的UWP[Doge]。
 ```
 
+### Win10 LTSC安装MicrosoftStore等
+
+[Github@kkkgo/LTSC-Add-MicrosoftStore](https://github.com/kkkgo/LTSC-Add-MicrosoftStore)
+
+下载Release后管理员身份运行```Add-Store.cmd```即可。
+
 ## 参考
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/)哦~
