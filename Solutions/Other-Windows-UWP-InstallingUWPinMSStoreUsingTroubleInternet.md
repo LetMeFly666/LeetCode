@@ -41,6 +41,8 @@ MS Generation Project：[store.rg-adguard.net](https://store.rg-adguard.net/)
 
 下载完成后，双击就可以安装了。
 
+若双击安装失败，也可以打开Powershell，输入命令```Add-AppxPackage -Path xx.appx```进行安装。
+
 ## More
 
 ### 文件
