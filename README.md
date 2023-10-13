@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-07 22:30:48
+ * @LastEditTime: 2023-10-13 21:12:07
 -->
 # LeetCode
 
@@ -579,6 +579,7 @@ int main() {
 |名称|博客|CSDN博客地址|
 |:--|:--|:--|
 |记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.tisfy.eu.org/2022/11/05/Other-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
+|AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.tisfy.eu.org/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
 |日积月累 - 一些小知识|<a href="https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
 |人工智能 - 跟李沐学AI|<a href="https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.tisfy.eu.org/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
