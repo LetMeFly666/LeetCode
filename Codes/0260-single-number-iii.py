@@ -8,5 +8,5 @@ class Solution:
         mask = temp & (-temp)
         ans = [0, 0]
         for t in nums:
-            nums[(t & mask) != 0] ^= t
+            ans[(t & mask) != 0] ^= t
         return ans
