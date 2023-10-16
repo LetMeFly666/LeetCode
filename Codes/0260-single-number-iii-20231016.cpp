@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-10-16 22:38:39
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-16 22:43:27
+ * @LastEditTime: 2023-10-16 22:46:00
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -11,7 +11,7 @@
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
-        int temp = 0;
+        unsigned int temp = 0;
         for (int t : nums) {
             temp ^= t;
         }
