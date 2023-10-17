@@ -34,6 +34,7 @@ Docker主打一个“极小成本”的虚拟环境的一键部署，使用少�
 |[docker ps](#docker-ps)|查看容器|[ps](https://docs.docker.com/engine/reference/commandline/ps/)|
 |[docker exec](#docker-exec)|进入容器（执行指令）|[exec](https://docs.docker.com/engine/reference/commandline/exec/)|
 |[docker logs](#docker-logs)|查看容器运行日志|[logs](https://docs.docker.com/engine/reference/commandline/logs/)|
+|[docker cp](#docker-cp)|容器内外文件复制|[cp](https://docs.docker.com/engine/reference/commandline/cp/)|
 |[docker save](#docker-saveload)|保存镜像到本地压缩文件|[save](https://docs.docker.com/engine/reference/commandline/save/)|
 |[docker load](#docker-saveload)|加载本地压缩文件到镜像|[load](https://docs.docker.com/engine/reference/commandline/load/)|
 |[docker inspect](#docker-inspect)|查看容器详细信息|[inspect](https://docs.docker.com/engine/reference/commandline/inspect/)|
@@ -324,6 +325,29 @@ docker logs --since="2023-10-07" --tail=10 myNginx
 ```
 
 查看myNginx从2023.10.7后的最新10条输出。
+
+### docker cp
+
+容器内外复制文件。
+
+```bash
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+```
+
+实例：
+
+```bash
+docker cp /path/filename 容器id或名称:/path/filename
+```
+
+将文件从主机复制到docker中；
+
+```bash
+docker cp 容器id或名称:/path/filename /path/filename
+```
+
+将文件从docker复制到主机中。
 
 ### docker save/load
 
