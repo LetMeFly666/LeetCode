@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-19 21:21:55
+ * @LastEditTime: 2023-10-19 21:33:01
 -->
 # LeetCode
 
@@ -668,7 +668,6 @@ int main() {
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
-- [ ] 自动发起pr
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
@@ -679,3 +678,4 @@ int main() {
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] 将域名修改为blog.tisfy.eu.org，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
+- [x] 自动发起pr
