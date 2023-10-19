@@ -59,5 +59,5 @@ gh pr merge GHNote -m -d
 
 在几乎任何使用，使用```gh xx --help```以获得帮助。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133935823](https://letmefly.blog.csdn.net/article/details/133935823)
