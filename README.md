@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-20 22:26:59
+ * @LastEditTime: 2023-10-20 22:36:37
 -->
 # LetLeet Blog
 
@@ -28,7 +28,7 @@
 
 [Tisfy](https://letmefly.xyz)的博客，包括算法题题解、一些计算机博客等实用技巧。关于[力扣](https://leetcode.cn/)，将会长期更新【力扣题解】、【解题技巧】等，目标包括但不限于力扣中数字开头的2k多道题。欢迎各位大佬共同参与、提交PR。
 
-现有代码：[Codes](https://github.com/LetMeFly666/LeetCode/Codes)
+现有代码：[Codes](https://github.com/LetMeFly666/LeetCode/tree/master/Codes)
 
 ## 现有题解
 
