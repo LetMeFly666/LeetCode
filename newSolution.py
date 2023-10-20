@@ -2,10 +2,11 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2023-08-13 07:49:50
+LastEditTime: 2023-10-20 11:59:02
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
+import os
 import sys
 import time
 from urllib.parse import quote
@@ -70,6 +71,12 @@ print(solution)
 solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
 with open(solutionName, "x", encoding="utf-8") as f:
     f.write(solution)
+
+# 认领issue
+os.system(f'git checkout -b {num}')
+issueCreateResult = os.popen(f'gh issue create -t "Add 1 more problem of {num}"').read()
+issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
+
 print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
 
 print("请去掉可能的由其他插件自动生成的头部注释信息，并保存你所编辑的题解")
@@ -145,3 +152,12 @@ readme = readmeNewLine(readme)
 print(readme)
 with open("README.md", "w", encoding="utf-8") as f:
     f.write(readme)
+
+# commit push pr merge delete-branch
+os.system('git add .')
+os.system(f'git commit -m "添加了问题“{num}.{title}”的代码和题解"')
+os.system(f'git push --set-upstream origin {num}')
+prResult = os.popen(f'gh pr create -t "添加了问题“{num}.{title}”的代码和题解" -b "By newSolution.py using GH | close: #{issueNum}"').read()
+print(prResult)
+prNumber = int(prResult.split('/')[-1])
+os.system(f'gh pr merge {prNumber} -m -d')
