@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-10-21 15:19:43
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-21 15:29:18
+ * @LastEditTime: 2023-10-21 15:35:33
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -19,7 +19,7 @@ public:
         }
         vector<ll> sizes;
         vector<bool> visited(n);
-        ll mul = 1;
+        ll cnt = 0;
         for (int i = 0; i < n; i++) {
             if (visited[i]) {
                 continue;
@@ -40,15 +40,12 @@ public:
                 }
             }
             sizes.push_back(cntNode);
-            mul *= cntNode;
-        }
-        if (sizes.size() == 1) {  // 注意！
-            return 0;
+            cnt += cntNode;
         }
         ll ans = 0;
         for (ll t : sizes) {
-            ans += mul / t;
+            ans += t * (cnt - t);
         }
-        return ans;
+        return ans / 2;
     }
 };
