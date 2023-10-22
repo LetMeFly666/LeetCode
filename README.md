@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-20 22:36:37
+ * @LastEditTime: 2023-10-22 17:35:59
 -->
 # LetLeet Blog
 
@@ -604,6 +604,7 @@
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
+- [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
