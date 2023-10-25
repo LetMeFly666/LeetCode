@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-10-25 20:05:46
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-25 20:19:56
+ * @LastEditTime: 2023-10-25 20:23:48
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -23,8 +23,8 @@ private:
                     nowNum = 0;
                 }
             }
-            if (cnt == n) {
-                return cnt * cnt;
+            if (cnt + nowNum == n) {  // 想着“会有结尾的i是不行的”
+                return n * n;
             }
         }
         return 0;
