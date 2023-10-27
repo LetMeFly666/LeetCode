@@ -10,10 +10,15 @@ tags: [数学, 简单, 图论, Notes]
 
 + **环(loop, selfloop)**：两个端点相同的边
 + **棱(link)**：两个端点不同的边
-+ **孤立点(isolated vertex)**：捕鱼任何顶点相邻的顶点
++ **孤立点(isolated vertex)**：不与任何顶点相邻的顶点
 + **简单图(simple graph)**：无环，无重边的图
 + **平凡图(trival graph)**：仅有一个顶点的图（可有多条环）
-+ **空图(empty graph)**：没有边的图（也叫**零图**）
++ **空图(empty graph)/零图**：没有边的图
++ **奇点(odd vertex)/偶点(even vertex)**：度为奇/偶的点
++ **悬挂点(end vertex)/叶点(leaf)**：度为1的顶点
++ **悬挂边(end edge)**：悬挂点的关联边
++ **邻域(neighborhood)**：点$u$相邻的点的集合称为点$u$的邻域，记作$N(u)$
++ **独立集(independent set)**：若图$G$的顶点子集$V'(V'\subseteq V(G))$中任意两个顶点在图$G$中都互不相邻，则称$V'$为图$G$的独立集
 
 ## End
 
