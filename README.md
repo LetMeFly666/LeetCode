@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-22 17:35:59
+ * @LastEditTime: 2023-10-27 13:08:51
 -->
 # LetLeet Blog
 
@@ -29,6 +29,8 @@
 [Tisfy](https://letmefly.xyz)的博客，包括算法题题解、一些计算机博客等实用技巧。关于[力扣](https://leetcode.cn/)，将会长期更新【力扣题解】、【解题技巧】等，目标包括但不限于力扣中数字开头的2k多道题。欢迎各位大佬共同参与、提交PR。
 
 现有代码：[Codes](https://github.com/LetMeFly666/LeetCode/tree/master/Codes)
+
+在线博客：[blog.tisfy.eu.org](https://blog.tisfy.eu.org/)
 
 ## 现有题解
 
@@ -621,3 +623,7 @@
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] 将域名修改为blog.tisfy.eu.org，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
+
+## What's more
+
+[本人](https://github.com/LetMeFly666)保留所有权，禁爬虫🚫
