@@ -246,6 +246,20 @@ se[-1]  # 3
 2 in se  # True
 ```
 
+## About C++
+
+### C++原地建堆make_heap
+
+```cpp
+vector<int> v = {1, 5, 9, 9, 8};
+make_heap(v.begin(), v.end());
+pop_heap(v.begin(), v.end());  // 堆顶元素（v[0]）放入数组v的末尾，其余元素调整为建堆
+v.pop_back();  // pop_heap并没有将元素弹出v数组
+v.push_back(2);
+push_heap(v.begin(), v.end());  // 将v的最后一个元素（v.back()）插入到堆中
+sort_heap(v.begin(), v.end()); // 将堆排序，排序后将失去堆的特性；非堆调用此函数将会报错；大根堆会变成从小到大的排序
+```
+
 ## About Website
 
 ### ip扫描工具censys
