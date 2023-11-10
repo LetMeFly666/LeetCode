@@ -35,7 +35,7 @@ private:
             }
         }
         while (q.size()) {
-            auto&& [x, y] = q.front();
+            auto [x, y] = q.front();
             q.pop();
             for (int d = 0; d < 4; d++) {
                 int tx = x + direction[d][0];
@@ -56,7 +56,7 @@ private:
         q.push({0, 0});
         graph[0][0] = 2;
         while (q.size()) {
-            auto&& [x, y] = q.front();
+            auto [x, y] = q.front();
             q.pop();
             for (int d = 0; d < 4; d++) {
                 int tx = x + direction[d][0];
