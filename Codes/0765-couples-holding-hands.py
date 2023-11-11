@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2023-11-11 22:42:21
 LastEditors: LetMeFly
-LastEditTime: 2023-11-11 22:48:32
+LastEditTime: 2023-11-11 22:57:24
 '''
 from typing import List
 
@@ -19,6 +19,7 @@ class Solution:
                 continue
             q = []
             q.append(i)
+            visited[i] = True
             thisCnt = 0
             while q:
                 thisCnt += 1
