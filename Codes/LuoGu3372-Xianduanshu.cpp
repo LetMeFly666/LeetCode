@@ -2,7 +2,8 @@
  * @Author: LetMeFly
  * @Date: 2023-11-13 14:10:59
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-11-13 22:38:55
+ * @LastEditTime: 2023-11-15 10:46:43
+ * @WARN: update下一层后记得更新一下这一层 | query可能需要返回long long | 2n的空间不一定够用
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -11,7 +12,18 @@ using namespace std;
 #define fi(i, l, r) for (int i = l; i < r; i++)
 #define cd(a) scanf("%d", &a)
 typedef long long ll;
-ll a[100010], tree[200010], mark[200010];
+ll a[100010], tree[400010], mark[400010];  // 1 2 4 8 ... n | 2^0 2^1 ... 2^(log_2 n) | sum=1*(2^(log_2 n + 1)-1)/(2-1)=2n-1  但为什么2n不行呢？因为n不一定填满了最后一层
+/*
+例如6个元素1, 3, 5, 7, 9, 11
+      36
+     /  \
+    9   27
+   / \  /\
+  4  5 16 11
+ /\    /\
+1 3 -- 7 9 
+至少需要13个空间
+*/
 
 inline int lc(int p) {  // Left Child
     return p << 1;
@@ -58,9 +70,10 @@ void update(int p, int l, int r, int x, int y, ll val) {
     int mid = gm(l, r);
     update(lc(p), l, mid, x, y, val);
     update(rc(p), mid + 1, r, x, y, val);
+    tree[p] = tree[lc(p)] + tree[rc(p)];
 }
 
-int query(int p, int l, int r, int x, int y) {
+ll query(int p, int l, int r, int x, int y) {
     if (r < x || l > y) {
         return 0;
     }
@@ -75,8 +88,8 @@ int query(int p, int l, int r, int x, int y) {
 int main() {
     int n, m;
     cin >> n >> m;
-    for (int i = 0; i < n; i++) {
-        cd(a[i]);
+    for (int i = 1; i <= n; i++) {
+        scanf("%lld", &a[i]);
     }
     build(1, 1, n);
     while (m--) {
