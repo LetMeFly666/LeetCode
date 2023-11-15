@@ -4,7 +4,7 @@ date: 2023-10-22 15:48:30
 tags: [题解, LeetCode, 困难, 贪心, 数组, 动态规划, 排序]
 ---
 
-# 【LetMeFly】1402.做菜顺序：排序 + 二分查找 + 前缀（贪心） - 按思路讲解
+# 【LetMeFly】1402.做菜顺序：排序 + 前缀（贪心） - 按思路讲解
 
 力扣题目链接：[https://leetcode.cn/problems/reducing-dishes/](https://leetcode.cn/problems/reducing-dishes/)
 
@@ -53,7 +53,7 @@ tags: [题解, LeetCode, 困难, 贪心, 数组, 动态规划, 排序]
 
 
     
-## 方法一：排序 + 二分查找 + 前缀（贪心）
+## 方法一：排序 + 前缀（贪心）
 
 假设选了一个做菜序列$[a,b,c,d,\cdots]$，那么很容易想到这道题的关键：菜开始的越晚权重越大。因此本题的核心思路（贪心）是：**satisfaction越高的菜越往后放**。
 
@@ -67,6 +67,10 @@ tags: [题解, LeetCode, 困难, 贪心, 数组, 动态规划, 排序]
 
 + 时间复杂度$O(n\times \log n)$。排序的时间复杂度是$n\log n$，二分（只二分了一次）的时间复杂度为$\log n$，选菜的总时间复杂度不超过$O(n)$。其中$n=len(satisfaction)$。
 + 空间复杂度$O(\log n)$。排序的空间复杂度为$O(\log n)$，其余部分空间复杂度都为$O(1)$。
+
+> 其实本题中也可以不使用二分查找来获取“第一个正菜”的位置，可以使用遍历（复杂的不变）或从数组末尾开始往前遍历（不一定从最小的正菜开始）。
+>
+> 这里感谢[github@5hepp](https://github.com/kahakaha)以及[github@HuangSizhe](https://github.com/SWHsz)的建议~
 
 ### AC代码
 
