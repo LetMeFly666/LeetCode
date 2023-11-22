@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-11-22 19:55:22
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-11-22 20:17:41
+ * @LastEditTime: 2023-11-22 20:44:45
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -12,18 +12,16 @@ class Solution {
 public:
     int minPathCost(vector<vector<int>>& grid, vector<vector<int>>& moveCost) {
         int n = grid.size(), m = grid[0].size();
-        for (int i = 1; i < n; i++) {
+        for (int i = n - 2; i >= 0; i--) {
             for (int j = 0; j < m; j++) {
                 int m_ = 100000000;
                 for (int k = 0; k < m; k++) {
-                    // printf("grid[%d][%d], moveCost[%d][%d]\n", i - 1, k, grid[i - 1][k], j);
-                    m_ = min(m_, grid[i - 1][k] + moveCost[grid[i - 1][k]][j]);
+                    m_ = min(m_, grid[i + 1][k] + moveCost[grid[i][j]][k]);
                 }
-                cout << m_ << endl;
                 grid[i][j] += m_;
             }
         }
-        return *min_element(grid.back().begin(), grid.back().end());
+        return *min_element(grid[0].begin(), grid[0].end());
     }
 };
 

@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2023-11-22 21:03:16
 LastEditors: LetMeFly
-LastEditTime: 2023-11-22 21:07:24
+LastEditTime: 2023-11-22 21:09:31
 '''
 from typing import List
 
@@ -13,7 +13,6 @@ class Solution:
             for j in range(m):
                 m_ = 100000000
                 for k in range(m):
-                    m_ = min(m, grid[i + 1][k] + moveCost[grid[i][j]][k])
+                    m_ = min(m_, grid[i + 1][k] + moveCost[grid[i][j]][k])
                 grid[i][j] += m_
-        print(grid)
         return min(grid[0])
