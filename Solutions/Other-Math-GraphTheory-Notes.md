@@ -1,9 +1,3 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2023-11-14 22:49:21
- * @LastEditors: LetMeFly
- * @LastEditTime: 2023-11-24 18:58:11
--->
 ---
 title: 图论笔记 - 极简极入门级
 date: 2023-10-27 14:14:21
@@ -19,7 +13,7 @@ tags: [数学, 简单, 图论, Notes]
 + **孤立点(isolated vertex)** ：不与任何顶点相邻的顶点
 + **简单图(simple graph)** ：无环，无重边的图
 + **平凡图(trival graph)** ：仅有一个顶点的图（可有多条环）
-+ **空图(empty graph)/零图** ：没有边的图（注意：任何一图都有$V\neq \empty$）
++ **空图(empty graph)/零图** ：没有边的图（注意：任何一图都有$V\neq \emptyset$）
 + **奇点(odd vertex)/偶点(even vertex)** ：度为奇/偶的点
 + **悬挂点(end vertex)/叶点(leaf)** ：度为1的顶点
 + **悬挂边(end edge)** ：悬挂点的关联边
