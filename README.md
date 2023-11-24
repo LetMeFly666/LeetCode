@@ -2,11 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-11-24 14:08:06
+ * @LastEditTime: 2023-11-24 14:26:39
 -->
 # LetLeet Blog
 
-[![Blog markdown to hexo](https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml/badge.svg?branch=master)](https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml)
+[![Blog markdown to hexo](https://cors.tisfy.eu.org/https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml/badge.svg?branch=master)](https://github.com/LetMeFly666/LeetCode/actions/workflows/deployHexo.yml)
 
 <table border="0" width="10%">
   <tr>
