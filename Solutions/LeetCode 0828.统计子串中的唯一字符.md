@@ -99,5 +99,22 @@ public:
 };
 ```
 
+#### Python
+
+```python
+class Solution:
+    def uniqueLetterString(self, s: str) -> int:
+        pos = [[-1] for _ in range(26)]
+        for i in range(len(s)):
+            pos[ord(s[i]) - ord('A')].append(i)
+        for i in range(26):
+            pos[i].append(len(s))
+        ans = 0
+        for i in range(26):
+            for j in range(1, len(pos[i]) - 1):
+                ans += (pos[i][j] - pos[i][j - 1]) * (pos[i][j + 1] - pos[i][j])
+        return ans
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/06/LeetCode%200828.%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126722643](https://letmefly.blog.csdn.net/article/details/126722643)
