@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-11-29 12:45:15
+ * @LastEditTime: 2023-12-10 20:32:18
 -->
 # LetLeet Blog
 
@@ -637,7 +637,6 @@
 - [ ] ```Other-JiaoZi-LearningNotes.md```教资md中删除补丁raw和endraw
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
-- [ ] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
@@ -650,6 +649,7 @@
 - [x] 修改```newSolution.py```中自动分析修改Readme力扣题目列表的生成格式
 - [x] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
+- [x] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] 将域名修改为blog.tisfy.eu.org，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
