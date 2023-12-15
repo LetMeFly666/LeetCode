@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-12-15 09:32:05
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-15 09:38:21
+ * @LastEditTime: 2023-12-15 15:50:29
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -23,28 +23,33 @@ class Solution {
 public:
     TreeNode* reverseOddLevels(TreeNode* root) {
         queue<TreeNode*> q;
-        stack<pair<TreeNode*, bool>> parent;
-        int layer = 0;
         q.push(root);
         while (q.size()) {
-            int size = q.size();
-            if (layer % 2) {
-
+            int n = q.size();
+            queue<TreeNode*> p = q;  // parent
+            stack<TreeNode*> c;  // child
+            if (!q.front()->left) {
+                break;
             }
-            else {
-                for (int i = 0; i < size; i++) {
-                    TreeNode* thisNode = q.front();
-                    q.pop();
-                    if (thisNode->left) {
-                        q.push(thisNode->left);
-                        parent.push({thisNode, true});
-                    }
-                    if (thisNode->right) {
-                        q.push(thisNode->right);
-                        
-                    }
-                }
+            while (n--) {
+                TreeNode* thisNode = q.front();
+                q.pop();
+                c.push(thisNode->left);
+                c.push(thisNode->right);
+                q.push(thisNode->left);
+                q.push(thisNode->left);
+            }
+            while (p.size()) {
+                TreeNode* thisNode = p.front();
+                p.pop();
+                TreeNode* c1 = c.top();
+                c.pop();
+                TreeNode* c2 = c.top();
+                c.pop();
+                thisNode->left = c1;
+                thisNode->right = c2;
             }
         }
+        return root;
     }
 };
