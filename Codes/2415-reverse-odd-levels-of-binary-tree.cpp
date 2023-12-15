@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-12-15 09:32:05
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-15 15:50:29
+ * @LastEditTime: 2023-12-15 15:59:59
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -20,36 +20,21 @@
  * };
  */
 class Solution {
+private:
+    // 若shouldReverse则交换其左右子
+    void dfs(TreeNode* root, bool shouldReverse) {
+        if (!root->left) {
+            return;
+        }
+        if (shouldReverse) {
+            swap(root->left->val, root->right->val);
+        }
+        dfs(root->left, !shouldReverse);
+        dfs(root->right, !shouldReverse);
+    }
 public:
     TreeNode* reverseOddLevels(TreeNode* root) {
-        queue<TreeNode*> q;
-        q.push(root);
-        while (q.size()) {
-            int n = q.size();
-            queue<TreeNode*> p = q;  // parent
-            stack<TreeNode*> c;  // child
-            if (!q.front()->left) {
-                break;
-            }
-            while (n--) {
-                TreeNode* thisNode = q.front();
-                q.pop();
-                c.push(thisNode->left);
-                c.push(thisNode->right);
-                q.push(thisNode->left);
-                q.push(thisNode->left);
-            }
-            while (p.size()) {
-                TreeNode* thisNode = p.front();
-                p.pop();
-                TreeNode* c1 = c.top();
-                c.pop();
-                TreeNode* c2 = c.top();
-                c.pop();
-                thisNode->left = c1;
-                thisNode->right = c2;
-            }
-        }
+        dfs(root, true);
         return root;
     }
 };
