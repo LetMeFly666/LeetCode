@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-10 20:32:18
+ * @LastEditTime: 2023-12-16 14:40:55
 -->
 # LetLeet Blog
 
@@ -573,6 +573,7 @@
 |Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading|<a href="https://blog.tisfy.eu.org/2023/08/25/Other-Chrome-EnableParallelDownloading">本平台博客</a>|无|
 |云计算 - 百度AIStudio使用小结|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132535648">CSDN博客</a>|
 |循环队列的纯C语言实现|<a href="https://blog.tisfy.eu.org/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
+|分布式操作系统笔记 - 极简极入门级|<a href="https://blog.tisfy.eu.org/2023/12/16/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |Docker学习笔记 - 极简极入门级|<a href="https://blog.tisfy.eu.org/2023/10/07/Other-Docker-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133633479">CSDN博客</a>|
 |离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.tisfy.eu.org/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
 |FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
