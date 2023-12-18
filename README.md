@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-16 14:40:55
+ * @LastEditTime: 2023-12-18 17:31:34
 -->
 # LetLeet Blog
 
@@ -99,6 +99,7 @@
 |0155.最小栈|简单|<a href="https://leetcode.cn/problems/min-stack/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/08/03/LeetCode%200155.%E6%9C%80%E5%B0%8F%E6%A0%88/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126144246" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/min-stack/solution/letmefly-155zui-xiao-zhan-by-tisfy-4z1o/" target="_blank">LeetCode题解</a>|
 |0156.上下翻转二叉树|中等|<a href="https://leetcode.cn/problems/binary-tree-upside-down/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/05/29/LeetCode%200156.%E4%B8%8A%E4%B8%8B%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125028889" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/partition-list/solution/letmefly-86fen-ge-lian-biao-by-tisfy-64z3/" target="_blank">LeetCode题解</a>|
 |0157.用Read4读取N个字符|简单|<a href="https://leetcode.cn/problems/read-n-characters-given-read4/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/05/29/LeetCode%200157.%E7%94%A8Read4%E8%AF%BB%E5%8F%96N%E4%B8%AA%E5%AD%97%E7%AC%A6" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125030886" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/read-n-characters-given-read4/solution/letmefly-157yong-read4du-qu-nge-zi-fu-by-ve20/" target="_blank">LeetCode题解</a>|
+|0162.寻找峰值|中等|<a href="https://leetcode.cn/problems/find-peak-element/solutions/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/12/18/LeetCode%200162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135067872" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-peak-element/solutions/2570998/letmefly-162xun-zhao-feng-zhi-er-fen-cha-6s4a/" target="_blank">LeetCode题解</a>|
 |0167.两数之和II-输入有序数组|中等|<a href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126155983" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/solution/letmefly-167liang-shu-zhi-he-ii-shu-ru-y-u1fu/" target="_blank">LeetCode题解</a>|
 |0168.Excel表列名称|简单|<a href="https://leetcode.cn/problems/excel-sheet-column-title/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126156416" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/excel-sheet-column-title/solution/letmefly-168excelbiao-lie-ming-cheng-by-bo87h/" target="_blank">LeetCode题解</a>|
 |0173.二叉搜索树迭代器|中等|<a href="https://leetcode.cn/problems/binary-search-tree-iterator/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/08/05/LeetCode%200173.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BF%AD%E4%BB%A3%E5%99%A8/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126181336" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/binary-search-tree-iterator/solution/letmefly-173er-cha-sou-suo-shu-die-dai-q-n76i/" target="_blank">LeetCode题解</a>|
@@ -658,6 +659,7 @@
 - [x] 考完闲一些的时候，特别想写写[62. 不同路径](https://leetcode.cn/problems/unique-paths) 的题解
 - [x] [67. 二进制求和](https://leetcode.cn/problems/add-binary/)
 - [x] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
+- [x] [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] 将域名修改为blog.tisfy.eu.org，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
