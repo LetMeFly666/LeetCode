@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2023-12-26 09:12:20
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-26 10:04:32
+ * @LastEditTime: 2023-12-26 10:08:27
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -31,7 +31,7 @@ private:
         return true;
     }
 
-    int RealDFS(int row, int status) {
+    int dfs(int row, int status) {
         if (visited.count((row << n) + status)) {
             return visited[(row << n) + status];
         }
@@ -44,21 +44,30 @@ private:
         }
         int ans = 0;
         for (int lastStatus = 0; lastStatus < (1 << n); lastStatus++) {
+            for (int j = 0; j < n; j++) {
+                if (j > 0 && (status & (1 << j)) && (lastStatus & (1 << (j - 1)))) {
+                    goto loop;
+                }
+                if (j + 1 < n && (status & (1 << j)) && (lastStatus & (1 << (j + 1)))) {
+                    goto loop;
+                }
+            }
             ans = max(ans, dfs(row - 1, lastStatus));
+            loop:;
         }
         ans += cnt1;
         return visited[(row << n) + status] = ans;
     }
 
-    int dfs(int row, int status) {
-        int ans = RealDFS(row, status);
-        char bin[33];
-        itoa(status, bin, 2);
-        if (row == 2) {
-            printf("row = %d, status = %d = %s, ans = %d\n", row, status, bin, ans);
-        }
-        return ans;
-    }
+    // int dfs(int row, int status) {
+    //     int ans = RealDFS(row, status);
+    //     char bin[33];
+    //     itoa(status, bin, 2);
+    //     if (row == 2) {
+    //         printf("row = %d, status = %d = %s, ans = %d\n", row, status, bin, ans);
+    //     }
+    //     return ans;
+    // }
 public:
     int maxStudents(vector<vector<char>>& seats) {
         this->seats = move(seats);
