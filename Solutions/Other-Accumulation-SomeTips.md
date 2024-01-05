@@ -356,5 +356,29 @@ Word中经常需要插入一些公式，但是很多时候需要在公式的最�
 
 讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
 
+## About Linux
+
+### Ubuntu防火墙
+
+查看当前防火墙状态：
+
+```bash
+sudo ufw status
+```
+
+```
+状态： 激活
+
+至                          动作          来自
+-                          --          --
+21/tcp (v6)                ALLOW       Anywhere (v6) 
+```
+
+开启某个端口并且仅允许单个ip访问：
+
+```bash
+sudo ufw allow from 192.168.1.0 to any port 3306
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)哦~
 > [https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)
