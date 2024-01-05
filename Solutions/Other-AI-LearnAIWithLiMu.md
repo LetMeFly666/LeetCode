@@ -571,6 +571,19 @@ tensor([[ 0,  4,  8],
         [ 3,  7, 11]])
 ```
 
+**简单操作：**
+
++ $c = a + b$ where $c_i=a_i+b_i$
++ $c=\alpha\cdot b$ where $c_i=\alpha b_i$
++ $c=\sin a$ where $c_i=\sin a_i$
+
+**长度：**
+
++ $||a||_2=[\sum^m_{i=1}a_i^2]^{\frac12}$
++ $||a||\geq 0$ for all $a$
++ $||a + b||\leq ||a|| + ||b||$
++ $||a\cdot b||=|a|\cdot||b||$
+
 ## 自动求导
 
 **自动求导：requires_grad**
