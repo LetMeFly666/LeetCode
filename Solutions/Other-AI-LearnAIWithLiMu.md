@@ -497,7 +497,7 @@ inputs = pd.get_dummies(inputs, dummy_na=True)
 print(inputs)
 ```
 
-运行结果：
+运行结果（结果中的1和0也有可能被标记为True和False）：
 
 ```
    NumRooms  Alley_Pave  Alley_nan
@@ -513,6 +513,8 @@ print(inputs)
 print(inputs.values)
 import torch
 X, y = torch.tensor(inputs.values), torch.tensor(outputs.values)
+# 若上一步被标记为了True和False而非1和0，这一步应强制转一个float类型：
+# X, y = torch.tensor(inputs.values.astype(float)), torch.tensor(outputs.values)
 print(X)
 print(y)
 ```
