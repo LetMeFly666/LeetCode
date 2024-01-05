@@ -180,6 +180,7 @@ print(x * y)
 print(x / y)
 print(x ** y)
 print(torch.exp(x))  # e ^ 1, e ^ 2, e ^ 3, e ^ 4
+print(x == y)
 ```
 
 运行结果：
@@ -191,6 +192,7 @@ tensor([ 2.,  4.,  8., 16.])
 tensor([0.5000, 1.0000, 2.0000, 4.0000])
 tensor([ 1.,  4., 16., 64.])
 tensor([2.7183e+00, 7.3891e+00, 5.4598e+01, 2.9810e+03])
+tensor([False,  True, False, False])
 ```
 
 **向量连接(concatenate)：torch.cat**
@@ -275,7 +277,13 @@ b = torch.arange(2).reshape((1, 2))
 print(a)
 print(b)
 print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a == b)
 ```
+
+相当于是把```a```复制成了```3 x 2```，把```b```也复制成了```3 x 2```。
 
 运行结果：
 
@@ -287,6 +295,18 @@ tensor([[0, 1]])
 tensor([[0, 1],
         [1, 2],
         [2, 3]])
+tensor([[ 0, -1],
+        [ 1,  0],
+        [ 2,  1]])
+tensor([[0, 0],
+        [0, 1],
+        [0, 2]])
+tensor([[nan, 0.],
+        [inf, 1.],
+        [inf, 2.]])
+tensor([[ True, False],
+        [False,  True],
+        [False, False]])
 ```
 
 同理
@@ -301,6 +321,7 @@ x[:, -1] = 0
 print(x)
 x[0] = -1
 print(x)
+print(x[1, 2] == x[1][2])
 ```
 
 运行结果：
@@ -317,6 +338,7 @@ tensor([[ 0,  1,  2,  0],
 tensor([[-1, -1, -1, -1],
         [ 4,  5,  6,  0],
         [ 8,  9, 10,  0]])
+tensor(True)
 ```
 
 **一些操作可能导致为结果重新分配内存：**
