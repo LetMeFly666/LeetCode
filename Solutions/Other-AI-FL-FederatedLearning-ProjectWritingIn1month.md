@@ -1,0 +1,41 @@
+---
+title: 人工智能 - 跟李沐学AI
+date: 2024-01-06 12:32:45
+tags: [其他, AI, DL, 人工智能, 深度学习, Notes]
+---
+
+# FL
+
+## 2024.1.4(15:00)-2024.1.6(14:30)
+
+**任务**
+
+Learn FL，找数据集
+
+**数据集**
+
+其中[LEAF](https://leaf.cmu.edu/)提供了几个联邦学习的基准数据集。
+
+准备选择下面列表中的前3个。
+
++ MNIST: 手写数字识别（[官网(访问需要密码)](https://yann.lecun.com/exdb/mnist/)、[官网的Web Archive](https://web.archive.org/web/20231229081350/http://yann.lecun.com/exdb/mnist/)、[Kaggle数据集](https://www.kaggle.com/datasets/hojjatk/mnist-dataset)）
++ CIFAR-10：airplane automobile bird cat deer dog frog horse ship truck（[官网](https://www.cs.toronto.edu/~kriz/cifar.html)、[数据集](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz)）
++ FEMINIST: 识别英文字母和数字（[官方数据预处理与划分代码](https://github.com/TalwalkarLab/leaf)，[下载地址1 by_class](https://s3.amazonaws.com/nist-srd/SD19/by_class.zip)、[下载地址2 by_write](https://s3.amazonaws.com/nist-srd/SD19/by_write.zip)）
++ FMINIST(FashionMNIST): 物品识别
+
+## 2024.1.6(16:10)-2024.1.8(晚)(暂定)
+
+**任务**
+
+- [x] 数据集的更换
+- [ ] 搞懂FL、ViT（理解 + Code）
+- [ ] 过程中遇到有帮助的图留意下
+- [ ] 完成后预定1.8日晚或1.9日早的会议
+
+**数据集**
+
+数据集最终决定使用这三个：
+
++ MNIST: 手写数字识别（[官网(访问需要密码)](https://yann.lecun.com/exdb/mnist/)、[官网的Web Archive](https://web.archive.org/web/20231229081350/http://yann.lecun.com/exdb/mnist/)、[Kaggle数据集](https://www.kaggle.com/datasets/hojjatk/mnist-dataset)）
++ CIFAR-10: airplane automobile bird cat deer dog frog horse ship truck（[官网](https://www.cs.toronto.edu/~kriz/cifar.html)、[数据集](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz)）
++ OrganAMNIST: 其实是属于[MedMNIST](https://www.nature.com/articles/s41597-022-01721-8)（[MedMNIST数据集](https://zenodo.org/records/6496656)、[OrganAMNIST](https://zenodo.org/records/6496656/files/organamnist.npz?download=1)）
