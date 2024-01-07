@@ -1,7 +1,7 @@
 ---
-title: 人工智能 - 跟李沐学AI
+title: 人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)
 date: 2024-01-06 12:32:45
-tags: [其他, AI, DL, 人工智能, 深度学习, Notes]
+tags: [其他, AI, DL, 人工智能, 深度学习, 联邦学习]
 ---
 
 # FL
@@ -39,3 +39,7 @@ Learn FL，找数据集
 + MNIST: 手写数字识别（[官网(访问需要密码)](https://yann.lecun.com/exdb/mnist/)、[官网的Web Archive](https://web.archive.org/web/20231229081350/http://yann.lecun.com/exdb/mnist/)、[Kaggle数据集](https://www.kaggle.com/datasets/hojjatk/mnist-dataset)）
 + CIFAR-10: airplane automobile bird cat deer dog frog horse ship truck（[官网](https://www.cs.toronto.edu/~kriz/cifar.html)、[数据集](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz)）
 + OrganAMNIST: 其实是属于[MedMNIST](https://www.nature.com/articles/s41597-022-01721-8)（[MedMNIST数据集](https://zenodo.org/records/6496656)、[OrganAMNIST](https://zenodo.org/records/6496656/files/organamnist.npz?download=1)）
+
+
+> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
+> [https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)

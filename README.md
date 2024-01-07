@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2023-12-27 21:37:06
+ * @LastEditTime: 2024-01-07 12:55:56
 -->
 # LetLeet Blog
 
@@ -578,7 +578,8 @@
 |AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.tisfy.eu.org/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
 |日积月累 - 一些小知识 - 杂乱 - 啥都有|<a href="https://blog.tisfy.eu.org/2023/10/19/Other-Accumulation-Messy/">本平台博客</a>|无|
 |日积月累 - 一些小知识|<a href="https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
-|人工智能 - 跟李沐学AI|<a href="https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
+|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)|<a href="https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">本平台博客</a>|无|
+|人工智能 - 跟李沐学AI|<a href="https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.tisfy.eu.org/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
 |安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
 |App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.tisfy.eu.org/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
