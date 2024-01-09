@@ -23,14 +23,14 @@ Learn FL，找数据集
 + FEMINIST: 识别英文字母和数字（[官方数据预处理与划分代码](https://github.com/TalwalkarLab/leaf)，[下载地址1 by_class](https://s3.amazonaws.com/nist-srd/SD19/by_class.zip)、[下载地址2 by_write](https://s3.amazonaws.com/nist-srd/SD19/by_write.zip)）
 + FMINIST(FashionMNIST): 物品识别
 
-## 2024.1.6(16:10)-2024.1.8(晚)(暂定)
+## 2024.1.6(16:10)-2024.1.9(10:00)
 
 **任务**
 
 - [x] 数据集的更换
 - [ ] 搞懂FL、ViT（理解 + Code）
-- [ ] 过程中遇到有帮助的图留意下
-- [ ] 完成后预定1.8日晚或1.9日早的会议
+- [x] 过程中遇到有帮助的图留意下
+- [x] 完成后预定1.8日晚或1.9日早的会议
 
 **数据集**
 
@@ -40,6 +40,22 @@ Learn FL，找数据集
 + CIFAR-10: airplane automobile bird cat deer dog frog horse ship truck（[官网](https://www.cs.toronto.edu/~kriz/cifar.html)、[数据集](https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz)）
 + OrganAMNIST: 其实是属于[MedMNIST](https://www.nature.com/articles/s41597-022-01721-8)（[MedMNIST数据集](https://zenodo.org/records/6496656)、[OrganAMNIST](https://zenodo.org/records/6496656/files/organamnist.npz?download=1)）
 
+## 2024.1.9(19:00)-近几天(待定)
+
+**任务**
+
+- [ ] ViT敏感层确定
+- [ ] 画出实验图
+- [ ] 写理论部分
+- [ ] 设计实验并执行
+
+其他（小杂）：
+
++ 攻击找两三个backdoor；防御 现有的 替换个
++ 安全性（识别、结果、...）
++ 名字：mask（安全掩码）
++ 图：选层 放大
++ 1. ViT选层、2. 放大、3. cos计算（信用）
 
 > 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
 > [https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)
