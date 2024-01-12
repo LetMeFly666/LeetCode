@@ -20,7 +20,7 @@ public:
         }
         int ans = 0;
         for (auto&& [str, cnt] : m1) {
-            if (m2[str] == 1) {
+            if (cnt == 1 && m2[str] == 1) {
                 ans++;
             }
         }
