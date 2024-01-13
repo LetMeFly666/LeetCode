@@ -114,7 +114,7 @@ ffmpeg -i 0.mp4 -i 0.png -filter_complex "[0:v][1:v]overlay=180:450,drawtext=tex
 
 ### 合并视频和字幕
 
-假设当前目录下有```0.mp4```和````0.ass``，则可以：
+假设当前目录下有```0.mp4```和```0.ass```，则可以：
 
 ```bash
 ffmpeg -i 0.mp4 -vf "ass=0.ass" -c:a copy output.mp4
