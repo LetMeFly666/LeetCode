@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-01-15 21:33:23
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-01-15 21:38:33
+ * @LastEditTime: 2024-01-15 21:43:18
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ public:
                     nextNode = nextNode->next;
                 }
                 lastNode->next = nextNode;
-                lastNode = thisNode, thisNode = nextNode;
+                thisNode = nextNode;
             }
             else {
                 lastNode = thisNode, thisNode = thisNode->next;
