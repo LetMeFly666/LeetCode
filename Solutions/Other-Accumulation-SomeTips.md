@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, 双端队列, 优先队列, Website, API, ChatGPT, Office, Word, 安全, BAT, shell]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, 双端队列, 优先队列, Website, API, 深度学习, AI, DL, ChatGPT, Office, Word, 安全, BAT, shell]
 ---
 
 # 日积月累 - 一些小知识
