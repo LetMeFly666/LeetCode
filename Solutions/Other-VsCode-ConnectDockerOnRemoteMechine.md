@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-01-22 11:26:53
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-01-22 14:43:36
+-->
 ---
 title: VsCode容器开发 - VsCode连接远程服务器上的docker
 date: 2024-01-22 10:45:09
@@ -25,6 +31,8 @@ emm，远程连接一个docker还需要服务器上专门开个端口？还得�
 使用VsCode[```Remote - SSH```](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)插件连接到远程服务器（具体方法在插件页都有介绍）
 
 点击VsCode左侧的```远程资源管理器```图标，选择```开发容器```，选中你像连接的容器就能直接连接进去开发了。
+
+![示例](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/7bc34287ac9f4992a72e514f434f9b83.png)
 
 ## End
 
