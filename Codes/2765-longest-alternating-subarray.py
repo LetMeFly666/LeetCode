@@ -13,7 +13,7 @@ class Solution:
         cnt = 1
         for i in range(len(self.nums)):
             shouldAdd = oddLoc if i % 2 else evenLoc
-            if 1 + 1 == len(self.nums) or self.nums[i + 1] != self.nums[i] + shouldAdd or (cnt == 1 and shouldAdd == -1):
+            if i + 1 == len(self.nums) or self.nums[i + 1] != self.nums[i] + shouldAdd or (cnt == 1 and shouldAdd == -1):
                 ans = max(ans, cnt)
                 cnt = 1
             else:

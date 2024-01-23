@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-01-23 21:58:59
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-01-23 22:17:30
+ * @LastEditTime: 2024-01-23 22:21:13
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -15,7 +15,8 @@ private:
         int ans = 1;
         int cnt = 1;
         for (int i = 0; i < nums.size(); i++) {
-            if (i + 1 == nums.size() || nums[i + 1] != nums[i] + (i % 2 ? oddLoc : evenLoc)) {
+            int shouldAdd = i % 2 ? oddLoc : evenLoc;
+            if (i + 1 == nums.size() || nums[i + 1] != nums[i] + shouldAdd || cnt == 1 && shouldAdd == -1) {
                 ans = max(ans, cnt);
                 cnt = 1;
             }
