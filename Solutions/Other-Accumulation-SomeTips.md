@@ -106,6 +106,12 @@ F:\CWD>"C:\BatDir\test.bat"
 
 则会```echo "%~dp0"```会显示```C:\BatDir\```；```explorer "%~dp0"```会打开资源管理器，且位置是```C:\BatDir\```；```cd /d "%~dp0"```则会使CMD的工作路径变成```C:\BatDir\```
 
+### Windows安装或卸载程序失败时的修复程序
+
+安装外星人AWCC(Alienware Command Center)后暴力删除残留文件了，导致卸载和重装AWCC时都失败。
+
+因此发现了一款微软官方的修复程序：[修复阻止程序安装或删除的问题](https://support.microsoft.com/zh-cn/windows/%E4%BF%AE%E5%A4%8D%E9%98%BB%E6%AD%A2%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85%E6%88%96%E5%88%A0%E9%99%A4%E7%9A%84%E9%97%AE%E9%A2%98-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d)，可下载[MicrosoftProgram_Install_and_Uninstall.meta.diagcab](https://download.microsoft.com/download/7/E/9/7E9188C0-2511-4B01-8B4E-0A641EC2F600/MicrosoftProgram_Install_and_Uninstall.meta.diagcab)并运行。
+
 ## About Phone
 
 ### Phone APP 如视VR
