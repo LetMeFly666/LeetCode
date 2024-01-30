@@ -276,6 +276,22 @@ se[-1]  # 3
 2 in se  # True
 ```
 
+### Python selenium踩坑记录
+
+Python的```selenium```可以控制浏览器对网站进行模拟操作，但需要注意的地方有且不仅仅有如下二：
+
+1. 执行js脚本时：
+    ```
+    function ha() {console.log("666")}
+    ha()
+    报错 未定义
+
+    ha = function() {console.log("666")}
+    ha()
+    正常执行
+    ```
+2. selenium4.0之后移除了find_element(s)_by_xx的方法（[#2](https://github.com/LetMeFly666/YuketangAutoPlayer/issues/2)），需要使用find_element(s)_by方法。
+
 ## About C++
 
 ### C++原地建堆make_heap
