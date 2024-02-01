@@ -2,7 +2,7 @@
 title: AboutMyself - 个人吐槽 - 微信的密码找回机制
 date: 2023-10-13 21:06:39
 tags: [其他, AboutMyself, 吐槽]
-Description: 纯个人吐槽
+description: 纯个人吐槽
 ---
 
 # AboutMyself - 个人吐槽 - 微信的密码找回机制
