@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-01-30 12:19:35
+ * @LastEditTime: 2024-02-01 21:08:24
 -->
 # LetLeet Blog
 
@@ -659,6 +659,7 @@
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.tisfy.eu.org/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
 |Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.tisfy.eu.org/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
+|Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.tisfy.eu.org/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.tisfy.eu.org/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
 |Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
