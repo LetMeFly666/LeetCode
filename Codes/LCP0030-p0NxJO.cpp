@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-02-06 10:30:51
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-06 10:33:07
+ * @LastEditTime: 2024-02-06 10:35:29
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -12,8 +12,8 @@ class Solution {
 public:
     int magicTower(vector<int>& nums) {
         priority_queue<int> pq;
-        int now = 1;
-        int totalNegative = 0;
+        long long now = 1;
+        long long totalNegative = 0;
         int ans = 0;
         for (int t : nums) {
             if (t < 0) {
