@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-04 13:50:34
+ * @LastEditTime: 2024-02-06 10:57:01
 -->
 # LetLeet Blog
 
@@ -541,6 +541,7 @@
 |面试题17.09.第k个数|中等|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/09/28/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.09.%20%E7%AC%AC%20k%20%E4%B8%AA%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/127087237" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/get-kth-magic-number-lcci/solution/by-tisfy-u77a/" target="_blank">LeetCode题解</a>|
 |面试题17.11.单词距离|中等|<a href="https://leetcode.cn/problems/find-closest-lcci/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2022/05/27/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.11.%20%E5%8D%95%E8%AF%8D%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/124998677" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-closest-lcci/solution/letmefly-mian-shi-ti-1711dan-ci-ju-chi-k-t5d5/" target="_blank">LeetCode题解</a>|
 |LCP 06.拿硬币|简单|<a href="https://leetcode.cn/problems/na-ying-bi/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/09/20/LeetCode%20LCP%2006.%20%E6%8B%BF%E7%A1%AC%E5%B8%81/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133070027" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/na-ying-bi/solutions/2450517/letmefly-lcp-06na-ying-bi-by-tisfy-sati/" target="_blank">LeetCode题解</a>|
+|LCP 30.魔塔游戏|中等|<a href="https://leetcode.cn/problems/p0NxJO/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2024/02/06/LeetCode%20LCP%2030.%20%E9%AD%94%E5%A1%94%E6%B8%B8%E6%88%8F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136053198" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/p0NxJO/solutions/2633291/letmefly-lcp-30mo-ta-you-xi-tan-xin-you-ddsmu/" target="_blank">LeetCode题解</a>|
 |LCP 50. 宝石补给|中等|<a href="https://leetcode.cn/problems/WHnhjV/" target="_blank">题目地址</a>|<a href="https://blog.tisfy.eu.org/2023/09/15/LeetCode%20LCP%2050.%20%E5%AE%9D%E7%9F%B3%E8%A1%A5%E7%BB%99/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/132895132" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/WHnhjV/solutions/2442975/letmefly-lcp-50bao-shi-bu-gei-by-tisfy-smck/" target="_blank">LeetCode题解</a>|
 
 ### 其他平台题解
