@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-06 10:57:01
+ * @LastEditTime: 2024-02-08 22:25:38
 -->
 # LetLeet Blog
 
@@ -666,6 +666,7 @@
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.tisfy.eu.org/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
 |Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.tisfy.eu.org/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
+|Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.tisfy.eu.org/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203s">CSDN博客</a>|
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.tisfy.eu.org/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
 |Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
 |Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.tisfy.eu.org/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
