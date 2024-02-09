@@ -1,10 +1,10 @@
 ---
 title: 236.二叉树的最近公共祖先
 date: 2022-09-09 14:42:04
-tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉树]
+tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树, 位运算]
 ---
 
-# 【LetMeFly】236.二叉树的最近公共祖先
+# 【LetMeFly】236.二叉树的最近公共祖先：深度优先搜索（巧用位运算）
 
 力扣题目链接：[https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
 
@@ -118,6 +118,105 @@ public:
         return nullptr;  // FakeReturn
     }
 };
+```
+
+## 方法二：：深度优先搜索 + 巧用位运算
+
+正常深搜（DFS），深搜过程中使用一个“状态”表示“当前节点及其子节点中PQ的存在情况”。
+
+这样，第一个满足$状态=PQ都存在$的节点就是要找的答案（最近公共祖先）。
+
+**怎么表示“状态”呢？**
+
+可以使用二进制（位运算），用一个二进制位表示子树中是否有节点p和节点q，例如：
+
++ 0($00_2$)表示PQ都不存在
++ 1($01_2$)表示P存在Q不存在
++ 2($10_2$)表示P不存在Q存在
++ 3($11_2$)表示PQ都存在
+
+这样，$当前节点状态 | 左子树状态 | 右子树状态$即为$当前子树状态$（其中$|$为或运算）
+
+### AC代码
+
+#### C++
+
+```cpp
+typedef int Status;  // 一个二进制位表示子树中是否有节点p和节点q
+#define NONE 0
+#define ONLYP 1
+#define ONLYQ 2
+#define BOTH 3
+
+class Solution {
+private:
+    TreeNode* ans;
+
+    Status dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (!root) {
+            return NONE;
+        }
+        Status thisStatus = NONE;
+        if (root == p) {
+            thisStatus |= ONLYP;
+        }
+        if (root == q) {
+            thisStatus |= ONLYQ;
+        }
+        thisStatus |= dfs(root->left, p, q) | dfs(root->right, p, q);
+        if (thisStatus == BOTH && !ans) {
+            ans = root;
+        }
+        return thisStatus;
+    }
+
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        ans = nullptr;
+        dfs(root, p, q);
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+# # AC,93.83%,86.17%
+# from typing import Optional
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Status:
+    none = 0
+    onlyP = 1
+    onlyQ = 2
+    both = 3
+
+class Solution:
+    def dfs(self, root: Optional[TreeNode], p: 'TreeNode', q: 'TreeNode') -> Status:
+        if not root:
+            return Status.none
+        thisStatus = Status.none
+        if root == p:
+            thisStatus |= Status.onlyP
+        if root == q:
+            thisStatus |= Status.onlyQ
+        thisStatus |= self.dfs(root.left, p, q) | self.dfs(root.right, p, q)
+        if thisStatus == Status.both and not self.ans:
+            self.ans = root
+        return thisStatus
+    
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        self.ans = None
+        self.dfs(root, p, q)
+        return self.ans
+
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/09/LeetCode%200236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/)哦~
