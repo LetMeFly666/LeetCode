@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2024-02-10 11:29:24
 LastEditors: LetMeFly
-LastEditTime: 2024-02-10 11:30:40
+LastEditTime: 2024-02-10 11:33:44
 '''
 from typing import Optional, List
 
@@ -24,7 +24,7 @@ class Solution:
             if ifPushedChild:
                 ans.append(thisNode.val)
             else:
-                st.append((root.right, False))
-                st.append((root, True))
-                st.append((root.left, False))
+                st.append((thisNode.right, False))
+                st.append((thisNode, True))
+                st.append((thisNode.left, False))
         return ans
