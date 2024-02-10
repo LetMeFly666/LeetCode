@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-02-10 11:17:35
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-10 11:24:52
+ * @LastEditTime: 2024-02-10 11:28:23
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -26,7 +26,7 @@ public:
         stack<pair<TreeNode*, bool>> st;  // [<node, ifPushedChild>, ...
         st.push({root, false});
         while (st.size()) {
-            auto&& [thisNode, ifPushedChild] = st.top();
+            auto [thisNode, ifPushedChild] = st.top();
             st.pop();
             if (!thisNode) {
                 continue;
