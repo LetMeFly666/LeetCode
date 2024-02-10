@@ -1,8 +1,8 @@
 /*
  * @Author: LetMeFly
- * @Date: 2024-02-10 10:37:49
+ * @Date: 2024-02-10 11:11:31
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-10 11:10:00
+ * @LastEditTime: 2024-02-10 11:12:30
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -25,7 +25,7 @@ private:
 
     void dfs(TreeNode* root) {
         if (!root) {
-            return;
+            return ;
         }
         dfs(root->left);
         ans.push_back(root->val);
