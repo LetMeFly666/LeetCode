@@ -4,7 +4,7 @@ date: 2022-07-29 15:50:29
 tags: [题解, LeetCode, 简单, 栈, 树, 深度优先搜索, 二叉树, DFS, 后序遍历]
 ---
 
-# 【LetMeFly】145.二叉树的后序遍历：二叉树必会算法
+# 【LetMeFly】145.二叉树的后序遍历：二叉树必会算法-递归/迭代(栈模拟递归)
 
 力扣题目链接：[https://leetcode.cn/problems/binary-tree-postorder-traversal/](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
 
@@ -48,7 +48,7 @@ tags: [题解, LeetCode, 简单, 栈, 树, 深度优先搜索, 二叉树, DFS, �
 
 
     
-## 方法一：DFS
+## 方法一：深度优先搜索DFS(递归)
 
 在学习后序遍历之前，有必要先了解以下[前序遍历](https://blog.tisfy.eu.org/2022/07/29/LeetCode%200144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/)
 
@@ -111,6 +111,103 @@ public:
     }
 };
 ```
+
+#### Python
+
+```python
+# from typing import List, Optional
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def dfs(self, root: Optional[TreeNode]) -> None:
+        if not root:
+            return
+        self.dfs(root.left)
+        self.dfs(root.right)
+        self.ans.append(root.val)
+    
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        self.ans = []
+        self.dfs(root)
+        return self.ans
+```
+
+## 方法二：使用栈模拟递归（栈模拟递归）
+
+使用栈模拟递归，具体做法可参考[94. 中序遍历](https://leetcode.letmefly.xyz/2024/02/10/LeetCode%200094.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/#方法二：使用栈模拟递归（栈模拟递归）)
+
+与之不同的是，出栈顺序应该是左子右子根，因此入栈顺序为根右子左子。
+
++ 时间复杂度$O(N)$，其中$N$是二叉树节点的个数
++ 空间复杂度$O(N)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<pair<TreeNode*, bool>> st;
+        st.push({root, false});
+        while (st.size()) {
+            auto [thisNode, ifPushed] = st.top();
+            st.pop();
+            if (!thisNode) {
+                continue;
+            }
+            if (ifPushed) {
+                ans.push_back(thisNode->val);
+            }
+            else {
+                st.push({thisNode, true});
+                st.push({thisNode->right, false});
+                st.push({thisNode->left, false});
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+# from typing import List, Optional
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        st =  [(root, False)]
+        while st:
+            thisNode, ifPushed = st.pop()
+            if not thisNode:
+                continue
+            if ifPushed:
+                ans.append(thisNode.val)
+            else:
+                st.append((thisNode, True))
+                st.append((thisNode.right, False))
+                st.append((thisNode.left, False))
+        return ans
+
+```
+
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/29/LeetCode%200145.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126057794](https://letmefly.blog.csdn.net/article/details/126057794)
