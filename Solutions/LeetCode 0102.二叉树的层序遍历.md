@@ -149,5 +149,77 @@ public:
 };
 ```
 
+## 方法三：更简单点的方法（不需要将“那一层”的信息入队）
+
+我们只需要将节点入队，当队列非空时：
+
+> 假如当前队列的大小为$size$，那么就一共循环$size$次，并作为一层加入到答案中。
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ans;
+        queue<TreeNode*> q;
+        if (root) {
+            q.push(root);
+        }
+        while (q.size()) {
+            ans.push_back({});
+            for (int i = q.size(); i > 0; i--) {
+                TreeNode* thisNode = q.front();
+                q.pop();
+                ans.back().push_back(thisNode->val);
+                if (thisNode->left) {
+                    q.push(thisNode->left);
+                }
+                if (thisNode->right) {
+                    q.push(thisNode->right);
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+# from typing import List, Optional
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        ans = []
+        q = []
+        if root:
+            q.append(root)
+        while q:
+            ans.append([])
+            for _ in range(len(q)):
+                thisNode = q[0]
+                q = q[1:]
+                ans[-1].append(thisNode.val)
+                if thisNode.left:
+                    q.append(thisNode.left)
+                if thisNode.right:
+                    q.append(thisNode.right)
+        return ans
+```
+
++ 时间复杂度$O(N)$，其中$N$是节点个数
++ 空间复杂度$O(N2)$，其中$N2$是节点最多的一层的节点数
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125584554](https://letmefly.blog.csdn.net/article/details/125584554)
