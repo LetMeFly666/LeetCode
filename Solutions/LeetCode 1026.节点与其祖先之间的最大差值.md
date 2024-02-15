@@ -50,7 +50,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树]
     
 ## 方法一：深度优先搜索DFS
 
-有关[深度优先搜索](https://blog.tisfy.eu.org/tags/DFS/)的题解有很多，本题也可以参考[二叉树的前序遍历的深度优先搜索的方式](https://blog.tisfy.eu.org/2022/07/29/LeetCode%200144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/)进行求解。
+有关[深度优先搜索](https://blog.letmefly.xyz/tags/DFS/)的题解有很多，本题也可以参考[二叉树的前序遍历的深度优先搜索的方式](https://blog.letmefly.xyz/2022/07/29/LeetCode%200144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/)进行求解。
 
 在深度优先搜索的过程中，我们额外传递两个参数：分别是当前所有祖先节点的最大值 和 最小值。
 
@@ -119,5 +119,5 @@ class Solution:
         return self.ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/18/LeetCode%201026.%E8%8A%82%E7%82%B9%E4%B8%8E%E5%85%B6%E7%A5%96%E5%85%88%E4%B9%8B%E9%97%B4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/18/LeetCode%201026.%E8%8A%82%E7%82%B9%E4%B8%8E%E5%85%B6%E7%A5%96%E5%85%88%E4%B9%8B%E9%97%B4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130218910](https://letmefly.blog.csdn.net/article/details/130218910)

@@ -138,5 +138,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/21/LeetCode%202316.%E7%BB%9F%E8%AE%A1%E6%97%A0%E5%90%91%E5%9B%BE%E4%B8%AD%E6%97%A0%E6%B3%95%E4%BA%92%E7%9B%B8%E5%88%B0%E8%BE%BE%E7%82%B9%E5%AF%B9%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/21/LeetCode%202316.%E7%BB%9F%E8%AE%A1%E6%97%A0%E5%90%91%E5%9B%BE%E4%B8%AD%E6%97%A0%E6%B3%95%E4%BA%92%E7%9B%B8%E5%88%B0%E8%BE%BE%E7%82%B9%E5%AF%B9%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133962709](https://letmefly.blog.csdn.net/article/details/133962709)

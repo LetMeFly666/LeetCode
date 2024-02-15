@@ -102,5 +102,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/06/LeetCode%202807.%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E6%8F%92%E5%85%A5%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/LeetCode%202807.%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E6%8F%92%E5%85%A5%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135424056](https://letmefly.blog.csdn.net/article/details/135424056)

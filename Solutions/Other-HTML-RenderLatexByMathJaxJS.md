@@ -35,5 +35,5 @@ MathJax的官网是[mathjax.org](https://www.mathjax.org/)，在Github的地址�
 
 [笔者](https://letmefly.xyz)为此提供了一个大陆的不完全服务，使用笔者提供的```https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js```能够正常使用mathjax的大部分功能。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131464796](https://letmefly.blog.csdn.net/article/details/131464796)

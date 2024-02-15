@@ -65,5 +65,5 @@ emm，都说了本文自用。
 
 <script>alert('一个保护互联网隐私的软件<br />本文仅自用');</script>
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1)哦~
-> [https://blog.tisfy.eu.org/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1](https://blog.tisfy.eu.org/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1)
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1)哦~
+> [https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1](https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1)

@@ -98,5 +98,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/27/LeetCode%200056.%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/27/LeetCode%200056.%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132520291](https://letmefly.blog.csdn.net/article/details/132520291)

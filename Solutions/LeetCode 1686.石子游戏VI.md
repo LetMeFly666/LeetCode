@@ -137,5 +137,5 @@ class Solution:  # AC,71.26%,71.26%
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/02/02/LeetCode%201686.%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8FVI/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/02/LeetCode%201686.%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8FVI/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135998504](https://letmefly.blog.csdn.net/article/details/135998504)

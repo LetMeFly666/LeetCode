@@ -6,7 +6,7 @@ tags: [其他, 小杂, 知识, 中等, Github]
 
 # 日积月累 - 一些小知识 - 杂乱 - 啥都有
 
-这里准备放一些日积月累的小知识，但是相比于[日积月累 - 一些小知识](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips/)而言，本文更加随意（杂乱）。
+这里准备放一些日积月累的小知识，但是相比于[日积月累 - 一些小知识](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/)而言，本文更加随意（杂乱）。
 
 ## Github 在issue中引用代码的代码段
 
@@ -46,5 +46,5 @@ q.pop();
 
 其中```q.pop()```将会导致```x```和```y```的值失效！ 详情可见一个De了1个多小时的BUG：[7d4f27d](https://github.com/LetMeFly666/LeetCode/commit/7d4f27da29d30e4d7a38fd91b34dbff9af52d154)
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/19/Other-Accumulation-Messy)哦~
-> [https://blog.tisfy.eu.org/2023/10/19/Other-Accumulation-Messy](https://blog.tisfy.eu.org/2023/10/19/Other-Accumulation-Messy)
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy)哦~
+> [https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy](https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy)

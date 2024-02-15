@@ -114,7 +114,7 @@ VsCode更新后第一次启动，老婆会不显示。但是不用怕，什么�
 
 中文文档：[github.com/shalldie/vscode-background/blob/HEAD/README.zh-CN.md](https://github.com/shalldie/vscode-background/blob/HEAD/README.zh-CN.md)
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/10/Other-VsCode-Custome-BackgroundPic/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132215972](https://letmefly.blog.csdn.net/article/details/132215972)
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>

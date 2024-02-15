@@ -129,5 +129,5 @@ PWA（Progressive Web Apps）是一种使用 Web 技术编写的应用程序，�
 }
 ```
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129629012](https://letmefly.blog.csdn.net/article/details/129629012)

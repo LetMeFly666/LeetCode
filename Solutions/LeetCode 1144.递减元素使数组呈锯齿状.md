@@ -98,5 +98,5 @@ class Solution:
         return min(ansOdd, ansEven)
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/27/LeetCode%201144.%E9%80%92%E5%87%8F%E5%85%83%E7%B4%A0%E4%BD%BF%E6%95%B0%E7%BB%84%E5%91%88%E9%94%AF%E9%BD%BF%E7%8A%B6/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/27/LeetCode%201144.%E9%80%92%E5%87%8F%E5%85%83%E7%B4%A0%E4%BD%BF%E6%95%B0%E7%BB%84%E5%91%88%E9%94%AF%E9%BD%BF%E7%8A%B6/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129235998](https://letmefly.blog.csdn.net/article/details/129235998)

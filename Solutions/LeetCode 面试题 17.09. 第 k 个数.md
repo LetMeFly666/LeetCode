@@ -20,9 +20,9 @@ tags: [题解, LeetCode, 中等, 哈希表, 数学, 动态规划, 堆（优先�
 
 ## 方法一：取最小
 
-这道题和[LeetCode 264. 丑数 II](https://blog.tisfy.eu.org/2022/09/13/LeetCode%200264.%E4%B8%91%E6%95%B0II/) 几乎相同
+这道题和[LeetCode 264. 丑数 II](https://blog.letmefly.xyz/2022/09/13/LeetCode%200264.%E4%B8%91%E6%95%B0II/) 几乎相同
 
-具体方法可参考我在[LeetCode 264. 丑数 II](https://letmefly.blog.csdn.net/article/details/126840084)写的题解：[https://blog.tisfy.eu.org/2022/09/13/LeetCode 0264.丑数II](https://blog.tisfy.eu.org/2022/09/13/LeetCode%200264.%E4%B8%91%E6%95%B0II/)
+具体方法可参考我在[LeetCode 264. 丑数 II](https://letmefly.blog.csdn.net/article/details/126840084)写的题解：[https://blog.letmefly.xyz/2022/09/13/LeetCode 0264.丑数II](https://blog.letmefly.xyz/2022/09/13/LeetCode%200264.%E4%B8%91%E6%95%B0II/)
 
 方法完全相同，用三个指针每次确定出一个最小值，哪个小就将哪个“入队”（加入候选）
 
@@ -60,5 +60,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/28/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.09.%20%E7%AC%AC%20k%20%E4%B8%AA%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/28/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.09.%20%E7%AC%AC%20k%20%E4%B8%AA%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127087237](https://letmefly.blog.csdn.net/article/details/127087237)

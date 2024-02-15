@@ -31,5 +31,5 @@ tags: [R, R语言, R语言数据分析]
 + 研讨互动：7月7日 9:50-10:35
 
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/26/Other-RLanguageDataAnalysis)哦~
-> [https://blog.tisfy.eu.org/2023/06/26/Other-RLanguageDataAnalysis](https://blog.tisfy.eu.org/2023/06/26/Other-RLanguageDataAnalysis-LearningNotes)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis)哦~
+> [https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis](https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis-LearningNotes)

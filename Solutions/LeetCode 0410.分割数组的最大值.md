@@ -146,5 +146,5 @@ class Solution:
         return l
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/21/LeetCode%200410.%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/21/LeetCode%200410.%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135728821](https://letmefly.blog.csdn.net/article/details/135728821)

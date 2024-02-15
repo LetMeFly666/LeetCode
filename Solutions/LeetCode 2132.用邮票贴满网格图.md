@@ -151,5 +151,5 @@ class Solution:
         return True
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/14/LeetCode%202132.%E7%94%A8%E9%82%AE%E7%A5%A8%E8%B4%B4%E6%BB%A1%E7%BD%91%E6%A0%BC%E5%9B%BE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/14/LeetCode%202132.%E7%94%A8%E9%82%AE%E7%A5%A8%E8%B4%B4%E6%BB%A1%E7%BD%91%E6%A0%BC%E5%9B%BE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135002925](https://letmefly.blog.csdn.net/article/details/135002925)

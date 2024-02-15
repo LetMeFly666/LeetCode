@@ -61,7 +61,7 @@ str = div.innerHTML
     );
 </script>
 
-在CSDN中可能因为无法执行JS等原因看不到效果，具体效果可以前往[我的Blog](https://blog.tisfy.eu.org/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/)查看。
+在CSDN中可能因为无法执行JS等原因看不到效果，具体效果可以前往[我的Blog](https://blog.letmefly.xyz/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/)查看。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131572006](https://letmefly.blog.csdn.net/article/details/131572006)

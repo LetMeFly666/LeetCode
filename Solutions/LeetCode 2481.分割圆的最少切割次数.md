@@ -97,5 +97,5 @@ class Solution:
         return n if n % 2 else n // 2
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/17/LeetCode%202481.%E5%88%86%E5%89%B2%E5%9C%86%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%87%E5%89%B2%E6%AC%A1%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/17/LeetCode%202481.%E5%88%86%E5%89%B2%E5%9C%86%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%87%E5%89%B2%E6%AC%A1%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131257304](https://letmefly.blog.csdn.net/article/details/131257304)

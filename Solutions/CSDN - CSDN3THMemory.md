@@ -46,5 +46,5 @@ tags: [题解, CSDN, Notes]
 
 
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/08/CSDN%20-%20CSDN3THMemory/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/08/CSDN%20-%20CSDN3THMemory/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129408507](https://letmefly.blog.csdn.net/article/details/129408507)

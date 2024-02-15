@@ -113,5 +113,5 @@ class Solution:
         return [v[0] for v in temp]
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/27/LeetCode%201333.%E9%A4%90%E5%8E%85%E8%BF%87%E6%BB%A4%E5%99%A8/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/27/LeetCode%201333.%E9%A4%90%E5%8E%85%E8%BF%87%E6%BB%A4%E5%99%A8/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133362152](https://letmefly.blog.csdn.net/article/details/133362152)

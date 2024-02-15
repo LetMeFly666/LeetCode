@@ -163,5 +163,5 @@ class Solution:
         return -1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/06/LeetCode%200704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/06/LeetCode%200704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133610614](https://letmefly.blog.csdn.net/article/details/133610614)

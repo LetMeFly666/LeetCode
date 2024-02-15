@@ -75,6 +75,6 @@ net user 用户名 新密码
 
 为什么不再U盘重装系统时的CMD中修改用户密码呢？权限不够？CMD执行者非当前用户？
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)哦~
-> [https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/](https://blog.tisfy.eu.org/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)哦~
+> [https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/](https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)
 

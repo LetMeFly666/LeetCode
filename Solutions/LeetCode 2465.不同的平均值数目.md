@@ -108,5 +108,5 @@ class Solution:
         return len(se)
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/04/LeetCode%202465.%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/04/LeetCode%202465.%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B9%B3%E5%9D%87%E5%80%BC%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131038154](https://letmefly.blog.csdn.net/article/details/131038154)

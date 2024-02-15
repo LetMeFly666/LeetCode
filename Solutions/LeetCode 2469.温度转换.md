@@ -84,5 +84,5 @@ class Solution:
         return [celsius + 273.15, celsius * 1.8 + 32]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/21/LeetCode%202469.%E6%B8%A9%E5%BA%A6%E8%BD%AC%E6%8D%A2/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/21/LeetCode%202469.%E6%B8%A9%E5%BA%A6%E8%BD%AC%E6%8D%A2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129685884](https://letmefly.blog.csdn.net/article/details/129685884)

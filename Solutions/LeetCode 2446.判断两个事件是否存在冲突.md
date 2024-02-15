@@ -144,5 +144,5 @@ class Solution:
         return not(event1[1] < event2[0] or event2[1] < event1[0])
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/17/LeetCode%202446.%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%86%B2%E7%AA%81/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/17/LeetCode%202446.%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%86%B2%E7%AA%81/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130718458](https://letmefly.blog.csdn.net/article/details/130718458)

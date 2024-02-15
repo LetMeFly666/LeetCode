@@ -40,4 +40,4 @@ emm，我才核验到一半，还没点“没有办法邀请足够好友”呢�
 + 在“账号找回”页怎么向小号发“验证号码”
 
 > 本篇纯属个人吐槽，禁止转载。
-> 本文地址：[https://blog.tisfy.eu.org/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback](https://blog.tisfy.eu.org/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback)
+> 本文地址：[https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback](https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback)

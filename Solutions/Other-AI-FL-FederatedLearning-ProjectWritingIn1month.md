@@ -58,5 +58,5 @@ Learn FL，找数据集
 + 图：选层 放大
 + 1. ViT选层、2. 放大、3. cos计算（信用）
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
-> [https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
+> [https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)

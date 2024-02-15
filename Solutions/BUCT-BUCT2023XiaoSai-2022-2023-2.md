@@ -321,5 +321,5 @@ for _CASE in range(T):
 
 [题目地址](https://buctcoder.com/problem.php?id=7033)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/10/BUCT-BUCT2023XiaoSai-2022-2023-2/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/10/BUCT-BUCT2023XiaoSai-2022-2023-2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131293300](https://letmefly.blog.csdn.net/article/details/131293300)

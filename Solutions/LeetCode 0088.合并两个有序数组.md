@@ -154,5 +154,5 @@ class Solution:
             l, l2 = l - 1, l2 - 1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/LeetCode%200088.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/13/LeetCode%200088.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132256535](https://letmefly.blog.csdn.net/article/details/132256535)

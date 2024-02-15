@@ -122,5 +122,5 @@ zjg55543同学在博客里给出了珠算加减法用到的口诀表：珠心算
 
 
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/07/CSDN%20-%20CSDN41%E9%A2%98%E8%A7%A3/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/07/CSDN%20-%20CSDN41%E9%A2%98%E8%A7%A3/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130045753](https://letmefly.blog.csdn.net/article/details/130045753)

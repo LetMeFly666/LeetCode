@@ -48,7 +48,7 @@ tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, 双指针, 二分查
     
 ## 方法一：哈希
 
-类似于[LeetCode 349. 两个数组的交集](https://blog.tisfy.eu.org/2022/10/02/LeetCode%200349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/)，这道题同样可以使用哈希表来解决。
+类似于[LeetCode 349. 两个数组的交集](https://blog.letmefly.xyz/2022/10/02/LeetCode%200349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/)，这道题同样可以使用哈希表来解决。
 
 这次建立一个可以计数的哈希表，遍历一遍第一个数组，将第一个数组中的数字（及其出现次数）存入哈希表中
 
@@ -128,5 +128,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/02/LeetCode%200350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/02/LeetCode%200350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127140436](https://letmefly.blog.csdn.net/article/details/127140436)

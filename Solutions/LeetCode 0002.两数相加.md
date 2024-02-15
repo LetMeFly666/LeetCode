@@ -121,5 +121,5 @@ class Solution:
         return head.next
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/02/LeetCode%200002.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/02/LeetCode%200002.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131497536](https://letmefly.blog.csdn.net/article/details/131497536)

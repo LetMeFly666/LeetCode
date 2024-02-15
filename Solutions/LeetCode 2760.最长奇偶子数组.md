@@ -126,5 +126,5 @@ class Solution:
         return max(ans, nowCnt)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/11/16/LeetCode%202760.%E6%9C%80%E9%95%BF%E5%A5%87%E5%81%B6%E5%AD%90%E6%95%B0%E7%BB%84/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/16/LeetCode%202760.%E6%9C%80%E9%95%BF%E5%A5%87%E5%81%B6%E5%AD%90%E6%95%B0%E7%BB%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134449952](https://letmefly.blog.csdn.net/article/details/134449952)

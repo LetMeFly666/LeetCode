@@ -94,5 +94,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/04/LeetCode%200168.Excel%E8%A1%A8%E5%88%97%E5%90%8D%E7%A7%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126156416](https://letmefly.blog.csdn.net/article/details/126156416)

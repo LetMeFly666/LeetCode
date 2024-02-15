@@ -618,5 +618,5 @@ int main() {
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135256408](https://letmefly.blog.csdn.net/article/details/135256408)

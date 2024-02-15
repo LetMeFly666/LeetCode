@@ -139,5 +139,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/10/LeetCode%202731.%E7%A7%BB%E5%8A%A8%E6%9C%BA%E5%99%A8%E4%BA%BA/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/10/LeetCode%202731.%E7%A7%BB%E5%8A%A8%E6%9C%BA%E5%99%A8%E4%BA%BA/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133758255](https://letmefly.blog.csdn.net/article/details/133758255)

@@ -52,7 +52,7 @@ tags: [题解, LeetCode, 困难, 队列, 数组, 滑动窗口, 单调队列, 堆
 
 我们可以遍历所有点，将已经遍历过的点视为$(x_i, y_i)$，当前正被遍历到的点视为$(x_j, y_j)$。
 
-使用一个[双端队列](https://blog.tisfy.eu.org/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/)存放```递减```的$(y_i - x_i)$，那么对于当前的$(x_j, y_j)$，使用$x_j + y_j$加上最大的（队首的）$(y_i - x_i)$即为最优选择。
+使用一个[双端队列](https://blog.letmefly.xyz/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/)存放```递减```的$(y_i - x_i)$，那么对于当前的$(x_j, y_j)$，使用$x_j + y_j$加上最大的（队首的）$(y_i - x_i)$即为最优选择。
 
 我们要做的，就是维护双端队列的递减特性：
 
@@ -143,5 +143,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/21/LeetCode%201499.%E6%BB%A1%E8%B6%B3%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/21/LeetCode%201499.%E6%BB%A1%E8%B6%B3%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131844105](https://letmefly.blog.csdn.net/article/details/131844105)

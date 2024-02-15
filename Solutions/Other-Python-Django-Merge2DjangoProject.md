@@ -120,5 +120,5 @@ sys.path.insert(0, PathToAdd)
 
 相当于对于整个项目ZJSystem来说，```127.0.0.1:8000/LetVisit/HelloWord```会被转发给LetVisit，但是对于LetVisit来说，它所匹配的URL是```HelloWorld```，而不是```LetVisit/HelloWorld```。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/19/Other-Python-Django-Merge2DjangoProject/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/19/Other-Python-Django-Merge2DjangoProject/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130248202](https://letmefly.blog.csdn.net/article/details/130248202)

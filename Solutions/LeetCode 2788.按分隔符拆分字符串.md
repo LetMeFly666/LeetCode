@@ -120,5 +120,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/20/LeetCode%202788.%E6%8C%89%E5%88%86%E9%9A%94%E7%AC%A6%E6%8B%86%E5%88%86%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/20/LeetCode%202788.%E6%8C%89%E5%88%86%E9%9A%94%E7%AC%A6%E6%8B%86%E5%88%86%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135724019](https://letmefly.blog.csdn.net/article/details/135724019)

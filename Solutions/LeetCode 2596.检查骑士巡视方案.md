@@ -119,5 +119,5 @@ class Solution:
         return True
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/13/LeetCode%202596.%E6%A3%80%E6%9F%A5%E9%AA%91%E5%A3%AB%E5%B7%A1%E8%A7%86%E6%96%B9%E6%A1%88/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/13/LeetCode%202596.%E6%A3%80%E6%9F%A5%E9%AA%91%E5%A3%AB%E5%B7%A1%E8%A7%86%E6%96%B9%E6%A1%88/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132847346](https://letmefly.blog.csdn.net/article/details/132847346)

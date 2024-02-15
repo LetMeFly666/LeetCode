@@ -164,5 +164,5 @@ class Solution:
         return front1 + 1 == back1 or front2 + 1 == back2
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/01/16/LeetCode%201813.%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E6%80%A7III/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/01/16/LeetCode%201813.%E5%8F%A5%E5%AD%90%E7%9B%B8%E4%BC%BC%E6%80%A7III/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128710464](https://letmefly.blog.csdn.net/article/details/128710464)

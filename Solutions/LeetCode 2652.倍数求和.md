@@ -86,5 +86,5 @@ class Solution:
         return f(3) + f(5) + f(7) - f(15) - f(21) - f(35) + f(105)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/17/LeetCode%202652.%E5%80%8D%E6%95%B0%E6%B1%82%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/17/LeetCode%202652.%E5%80%8D%E6%95%B0%E6%B1%82%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133876939](https://letmefly.blog.csdn.net/article/details/133876939)

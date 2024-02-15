@@ -71,5 +71,5 @@ class Solution:
         return sum((i + 1) // 2 for i in coins)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/20/LeetCode%20LCP%2006.%20%E6%8B%BF%E7%A1%AC%E5%B8%81/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/20/LeetCode%20LCP%2006.%20%E6%8B%BF%E7%A1%AC%E5%B8%81/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133070027](https://letmefly.blog.csdn.net/article/details/133070027)

@@ -845,5 +845,5 @@ b的估计误差： tensor([0.0012])
 
 # TODO: 等完成地差不多了发布至CSDN
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
-> [https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/](https://blog.tisfy.eu.org/2023/03/15/Other-AI-LearnAIWithLiMu/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)哦~
+> [https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/](https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/)

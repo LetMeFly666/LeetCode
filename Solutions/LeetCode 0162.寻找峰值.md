@@ -109,5 +109,5 @@ class Solution:
         return -1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/18/LeetCode%200162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/18/LeetCode%200162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135067872](https://letmefly.blog.csdn.net/article/details/135067872)

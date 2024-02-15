@@ -165,5 +165,5 @@ void RestReminder::on_pushbutton_clicked() {
 //}
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/)哦~
-> Tisfy：[https://blog.tisfy.eu.org/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/](https://blog.tisfy.eu.org/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/)
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/)哦~
+> Tisfy：[https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/](https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/)

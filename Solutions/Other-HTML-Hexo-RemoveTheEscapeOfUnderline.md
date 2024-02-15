@@ -32,7 +32,7 @@ sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_mod
 
 为了解决Hexo的公式问题，我尝试了很多渲染引擎。但每个引擎都有其不尽人意的地方。有的不支持行内公式，有的不支持公式中出现中文字符，有的...。
 
-想要渲染公式，一个很不错的思路是[使用强大的MathJax渲染](https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderLatexByMathJaxJS/)。
+想要渲染公式，一个很不错的思路是[使用强大的MathJax渲染](https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS/)。
 
 正当我以为终于解决了公式问题的时候，我发现Hexo的Markdown渲染引擎会转义很多东西，```$ $```之间的内容也会转义！！！
 
@@ -40,5 +40,5 @@ sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_mod
 
 <center><font size="6px" face="楷体">想让Hexo完美支持公式咋就这么难呢(:cry:)</font></center>
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/)哦~
-> Tisfy：[https://blog.tisfy.eu.org/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/](https://blog.tisfy.eu.org/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/)哦~
+> Tisfy：[https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/](https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/)

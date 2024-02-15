@@ -47,9 +47,9 @@ tags: [题解, LeetCode, 困难, N皇后, 回溯]
 
 # 思路
 
-具体思路方法请见 [https://blog.tisfy.eu.org/2022/05/27/LeetCode 0051.N皇后/](https://blog.tisfy.eu.org/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)
+具体思路方法请见 [https://blog.letmefly.xyz/2022/05/27/LeetCode 0051.N皇后/](https://blog.letmefly.xyz/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)
 
-我们可以小修改[LeetCode 51.N皇后](https://blog.tisfy.eu.org/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)的代码:
+我们可以小修改[LeetCode 51.N皇后](https://blog.letmefly.xyz/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)的代码:
 
 首先不需要用字符表示棋盘了，我们可以使用布尔类型的数据来表示棋盘。true代表皇后，false代表空。
 
@@ -57,7 +57,7 @@ tags: [题解, LeetCode, 困难, N皇后, 回溯]
 
 ## 方法一：回溯
 
-下面是具体实现，可多关注与[LeetCode 51.N皇后](https://blog.tisfy.eu.org/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)的不同之处。
+下面是具体实现，可多关注与[LeetCode 51.N皇后](https://blog.letmefly.xyz/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)的不同之处。
 
 + 时间复杂度$O(n!)$
 + 空间复杂度$O(n)$
@@ -182,5 +182,5 @@ class Solution {
 }
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/05/27/LeetCode%200051.N%E7%9A%87%E5%90%8E/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125000091](https://letmefly.blog.csdn.net/article/details/125000091)

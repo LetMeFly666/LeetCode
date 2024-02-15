@@ -47,7 +47,7 @@ tags: [题解, LeetCode, 困难, 数组, 动态规划]
 
 这道题类似[LeetCode 0123.买卖股票的最佳时机 III](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/)，不同之处在于```0123```只能购买并出售两次，而```0188```能购买并出售$k$次。
 
-与```0123```同理（解决方案请参考[https://blog.tisfy.eu.org/2022/07/20/LeetCode%200123.买卖股票的最佳时机 III](https://blog.tisfy.eu.org/2022/07/20/LeetCode%200123.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIII/)），我们用$buy[i]$严格代表进行了$i$次买入和$i-1$次卖出的最大收益，用$sell[i]$严格表示进行了$i$次买卖的最大收益。
+与```0123```同理（解决方案请参考[https://blog.letmefly.xyz/2022/07/20/LeetCode%200123.买卖股票的最佳时机 III](https://blog.letmefly.xyz/2022/07/20/LeetCode%200123.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIII/)），我们用$buy[i]$严格代表进行了$i$次买入和$i-1$次卖出的最大收益，用$sell[i]$严格表示进行了$i$次买卖的最大收益。
 
 初始值$buy[0] = sell[0] = 0$，而第一天$buy[i] = -prices[0],sell[i] = 0(i \neq 0)$
 
@@ -101,5 +101,5 @@ class Solution:
         return sell[k]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/12/LeetCode%200188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/12/LeetCode%200188.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAIV/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126299307](https://letmefly.blog.csdn.net/article/details/126299307)

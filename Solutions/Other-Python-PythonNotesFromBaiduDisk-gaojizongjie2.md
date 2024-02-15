@@ -383,4 +383,4 @@ print(obj)
 >
 > 若原作者发现了此文，请与[我](https://github.com/LetMeFly666)联系🌹
 >
-> [本文地址](https://blog.tisfy.eu.org/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/)
+> [本文地址](https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/)

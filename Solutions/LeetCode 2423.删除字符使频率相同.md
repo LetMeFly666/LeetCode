@@ -138,5 +138,5 @@ class Solution:
         return False
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/29/LeetCode%202423.%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%BD%BF%E9%A2%91%E7%8E%87%E7%9B%B8%E5%90%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/29/LeetCode%202423.%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%BD%BF%E9%A2%91%E7%8E%87%E7%9B%B8%E5%90%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130440474](https://letmefly.blog.csdn.net/article/details/130440474)

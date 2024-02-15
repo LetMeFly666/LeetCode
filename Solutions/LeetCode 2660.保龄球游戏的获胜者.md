@@ -131,5 +131,5 @@ class Solution:
         return 0 if v1 == v2 else 2 if v1 < v2 else 1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/27/LeetCode%202660.%E4%BF%9D%E9%BE%84%E7%90%83%E6%B8%B8%E6%88%8F%E7%9A%84%E8%8E%B7%E8%83%9C%E8%80%85/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/27/LeetCode%202660.%E4%BF%9D%E9%BE%84%E7%90%83%E6%B8%B8%E6%88%8F%E7%9A%84%E8%8E%B7%E8%83%9C%E8%80%85/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135247177](https://letmefly.blog.csdn.net/article/details/135247177)

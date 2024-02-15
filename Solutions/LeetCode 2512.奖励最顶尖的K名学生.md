@@ -130,5 +130,5 @@ class Solution:
         return [t[1] for t in v[:k]]
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/11/LeetCode%202512.%E5%A5%96%E5%8A%B1%E6%9C%80%E9%A1%B6%E5%B0%96%E7%9A%84K%E5%90%8D%E5%AD%A6%E7%94%9F/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/11/LeetCode%202512.%E5%A5%96%E5%8A%B1%E6%9C%80%E9%A1%B6%E5%B0%96%E7%9A%84K%E5%90%8D%E5%AD%A6%E7%94%9F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133762019](https://letmefly.blog.csdn.net/article/details/133762019)

@@ -102,5 +102,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/28/LeetCode%202251.%E8%8A%B1%E6%9C%9F%E5%86%85%E8%8A%B1%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/28/LeetCode%202251.%E8%8A%B1%E6%9C%9F%E5%86%85%E8%8A%B1%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133378624](https://letmefly.blog.csdn.net/article/details/133378624)

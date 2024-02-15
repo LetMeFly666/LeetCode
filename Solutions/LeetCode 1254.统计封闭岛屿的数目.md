@@ -173,5 +173,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131270866](https://letmefly.blog.csdn.net/article/details/131270866)

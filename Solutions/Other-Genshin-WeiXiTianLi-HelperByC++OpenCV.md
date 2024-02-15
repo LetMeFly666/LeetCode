@@ -14,5 +14,5 @@ tags: [其他, 中等, OpenCV, 原神, Genshin, 游戏辅助]
 
 大致是通过OpenCV的识别进行地图定位，从而标注资源位置等
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/)哦~
-> [https://blog.tisfy.eu.org/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/](https://blog.tisfy.eu.org/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/)哦~
+> [https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/](https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/)

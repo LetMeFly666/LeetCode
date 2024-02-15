@@ -60,7 +60,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
     
 ## 方法一：排序 + 双指针
 
-这道题其实和昨天的每日一题[167.两数之和 II - 输入有序数组](https://blog.tisfy.eu.org/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/)一样。
+这道题其实和昨天的每日一题[167.两数之和 II - 输入有序数组](https://blog.letmefly.xyz/2022/08/04/LeetCode%200167.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8CII-%E8%BE%93%E5%85%A5%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/)一样。
 
 昨天的问题就是：
 
@@ -168,5 +168,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/09/LeetCode%200015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/09/LeetCode%200015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131619103](https://letmefly.blog.csdn.net/article/details/131619103)

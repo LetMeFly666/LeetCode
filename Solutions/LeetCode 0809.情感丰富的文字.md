@@ -47,7 +47,7 @@ words = ["hello", "hi", "helo"]
 
 ### 题目分析
 
-这道题题目挺难读懂的，因此叫“[阅读理解](https://blog.tisfy.eu.org/tags/%E9%98%85%E8%AF%BB%E7%90%86%E8%A7%A3/)题”
+这道题题目挺难读懂的，因此叫“[阅读理解](https://blog.letmefly.xyz/tags/%E9%98%85%E8%AF%BB%E7%90%86%E8%A7%A3/)题”
 
 说白了就是：假如字符串中有连续的$n_1$个```'a'```，那么我们可以将这$n_1$个```'a'```增加至```$n_2$个（其中$n_1\geq1,n_2\geq3$
 
@@ -127,5 +127,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/25/LeetCode%200809.%E6%83%85%E6%84%9F%E4%B8%B0%E5%AF%8C%E7%9A%84%E6%96%87%E5%AD%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/25/LeetCode%200809.%E6%83%85%E6%84%9F%E4%B8%B0%E5%AF%8C%E7%9A%84%E6%96%87%E5%AD%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128035958](https://letmefly.blog.csdn.net/article/details/128035958)

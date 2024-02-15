@@ -124,5 +124,5 @@ class Solution:
         return sum(self.check(i) for i in range(1, n + 1))
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/25/LeetCode%202698.%E6%B1%82%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9A%84%E6%83%A9%E7%BD%9A%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/25/LeetCode%202698.%E6%B1%82%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E7%9A%84%E6%83%A9%E7%BD%9A%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134043248](https://letmefly.blog.csdn.net/article/details/134043248)

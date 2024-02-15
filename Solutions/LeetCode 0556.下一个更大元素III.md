@@ -94,6 +94,6 @@ public:
 
 ![100.00%,93.66%](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea16b8ef5f844202886d7d393739f8f5.jpeg#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/03/LeetCode%200556.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0III)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/03/LeetCode%200556.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0III)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125582351](https://letmefly.blog.csdn.net/article/details/125582351)
 

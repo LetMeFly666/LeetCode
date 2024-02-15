@@ -187,5 +187,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/15/LeetCode%201072.%E6%8C%89%E5%88%97%E7%BF%BB%E8%BD%AC%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%80%BC%E7%AD%89%E8%A1%8C%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/15/LeetCode%201072.%E6%8C%89%E5%88%97%E7%BF%BB%E8%BD%AC%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%80%BC%E7%AD%89%E8%A1%8C%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130680800](https://letmefly.blog.csdn.net/article/details/130680800)

@@ -46,5 +46,5 @@ console.log(data);
 console.log(typeof(data));
 ```
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/06/Other-HTML-Javascript-NaiveHTTPRequestByJS/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/06/Other-HTML-Javascript-NaiveHTTPRequestByJS/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132134252](https://letmefly.blog.csdn.net/article/details/132134252)

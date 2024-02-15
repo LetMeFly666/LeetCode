@@ -103,5 +103,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/05/LeetCode%202600.K%E4%BB%B6%E7%89%A9%E5%93%81%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/05/LeetCode%202600.K%E4%BB%B6%E7%89%A9%E5%93%81%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131547457](https://letmefly.blog.csdn.net/article/details/131547457)

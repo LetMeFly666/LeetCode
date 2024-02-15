@@ -102,5 +102,5 @@ class Solution:
         return root1 if root1 else root2
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/14/LeetCode%200617.%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/14/LeetCode%200617.%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132268393](https://letmefly.blog.csdn.net/article/details/132268393)

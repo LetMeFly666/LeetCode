@@ -24,5 +24,5 @@ tags: [C, 控制台, 输出控制, 音乐播放, 趣, 整活]
 + Gist代码：[https://gist.github.com/LetMeFly666/e69a49728c3f985bbb961df787a57746](https://gist.github.com/LetMeFly666/e69a49728c3f985bbb961df787a57746)
 + 可执行exe（需要VS环境）：[https://github.com/LetMeFly666/LeetCode/releases/download/v2.4.1/misaka.exe](https://github.com/LetMeFly666/LeetCode/releases/download/v2.4.1/misaka.exe)
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/)哦~
-> Tisfy：[https://blog.tisfy.eu.org/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/](https://blog.tisfy.eu.org/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/)哦~
+> Tisfy：[https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/](https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/)

@@ -95,5 +95,5 @@ class Solution:
         return n % 4 != 0  # 注意这里不能像C一样只return一个n%4
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/02/04/LeetCode%200292.Nim%E6%B8%B8%E6%88%8F/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/04/LeetCode%200292.Nim%E6%B8%B8%E6%88%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/136024724](https://letmefly.blog.csdn.net/article/details/136024724)

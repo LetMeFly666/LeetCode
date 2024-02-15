@@ -88,7 +88,7 @@ tags: [题解, LeetCode, 中等, 数组, 模拟, 哈希表, 哈希, set]
 
 先来看看数据量：最多移动$10^4$次，每次最多移动$9$步，完全可以一步一步地模拟。
 
-因此，我们只需要建立一个[哈希表](https://blog.tisfy.eu.org/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/)，将所有的障碍物存入哈希表中；接下来模拟机器人的每一步，遇到障碍就停下，否则就执行命令并更新答案最大值。
+因此，我们只需要建立一个[哈希表](https://blog.letmefly.xyz/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/)，将所有的障碍物存入哈希表中；接下来模拟机器人的每一步，遇到障碍就停下，否则就执行命令并更新答案最大值。
 
 **细节处理：**
 
@@ -169,5 +169,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/19/LeetCode%200874.%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/19/LeetCode%200874.%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131800691](https://letmefly.blog.csdn.net/article/details/131800691)

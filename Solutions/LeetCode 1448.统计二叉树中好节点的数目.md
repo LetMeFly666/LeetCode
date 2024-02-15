@@ -99,5 +99,5 @@ class Solution:
         return (root.val >= parentMax) + self.goodNodes(root.left, nowMax) + self.goodNodes(root.right, nowMax)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/LeetCode%201448.%E7%BB%9F%E8%AE%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A5%BD%E8%8A%82%E7%82%B9%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/25/LeetCode%201448.%E7%BB%9F%E8%AE%A1%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E5%A5%BD%E8%8A%82%E7%82%B9%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132491754](https://letmefly.blog.csdn.net/article/details/132491754)

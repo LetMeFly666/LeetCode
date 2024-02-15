@@ -119,5 +119,5 @@ public:
 
 就不放代码展示了。
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/16/LeetCode%200289.%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/16/LeetCode%200289.%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126883144](https://letmefly.blog.csdn.net/article/details/126883144)

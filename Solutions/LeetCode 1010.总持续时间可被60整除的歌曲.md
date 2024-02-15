@@ -91,5 +91,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/07/LeetCode%201010.%E6%80%BB%E6%8C%81%E7%BB%AD%E6%97%B6%E9%97%B4%E5%8F%AF%E8%A2%AB60%E6%95%B4%E9%99%A4%E7%9A%84%E6%AD%8C%E6%9B%B2/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/07/LeetCode%201010.%E6%80%BB%E6%8C%81%E7%BB%AD%E6%97%B6%E9%97%B4%E5%8F%AF%E8%A2%AB60%E6%95%B4%E9%99%A4%E7%9A%84%E6%AD%8C%E6%9B%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130544996](https://letmefly.blog.csdn.net/article/details/130544996)

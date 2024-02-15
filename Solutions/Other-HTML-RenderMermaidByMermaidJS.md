@@ -48,5 +48,5 @@ Box1["中文"] --> BoxHaha["Haha"]
 
 [笔者](https://letmefly.xyz)为此提供了一个大陆的可用服务，使用笔者提供的```https://letmefly.xyz/Links/mermaid.min.js```能够正常使用mermaid。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131464925](https://letmefly.blog.csdn.net/article/details/131464925)

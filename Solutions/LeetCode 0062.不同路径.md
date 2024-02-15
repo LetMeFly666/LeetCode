@@ -136,5 +136,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/26/LeetCode%200062.%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/26/LeetCode%200062.%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128059055](https://letmefly.blog.csdn.net/article/details/128059055)

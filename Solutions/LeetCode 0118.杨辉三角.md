@@ -91,5 +91,5 @@ public:
 
 ![挺快的这次](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/062fef3809fd4c878ac408f98b2f2d24.jpeg#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125829159](https://letmefly.blog.csdn.net/article/details/125829159)

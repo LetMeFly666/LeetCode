@@ -106,5 +106,5 @@ description: Cloud Computing, 飞桨
 3. 输出日志中可能会有重复（一行显示好几遍）
 4. 4张V100（第二个选项）的算力大约是1张V100（第一个选项）的4倍（有时不只4倍，甚至能达到7.9倍），算力时长消耗4张是1张的8倍（但快确实爽）
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132535648](https://letmefly.blog.csdn.net/article/details/132535648)

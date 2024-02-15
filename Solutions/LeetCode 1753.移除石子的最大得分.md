@@ -125,5 +125,5 @@ public:
 
 [LeetCode 2335.装满杯子需要的最短总时长](https://leetcode.cn/problems/minimum-amount-of-time-to-fill-cups)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/21/LeetCode%201753.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/21/LeetCode%201753.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128403163](https://letmefly.blog.csdn.net/article/details/128403163)

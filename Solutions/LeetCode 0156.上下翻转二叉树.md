@@ -130,5 +130,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/05/29/LeetCode%200156.%E4%B8%8A%E4%B8%8B%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/05/29/LeetCode%200156.%E4%B8%8A%E4%B8%8B%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125028889](https://letmefly.blog.csdn.net/article/details/125028889)

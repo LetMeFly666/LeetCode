@@ -113,5 +113,5 @@ int main() {
 
 <!-- <font color="black" face="楷体" size="5px">每周提前更新菁英班周赛题解，点关注，不迷路</font> -->
 
->原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/28/MaTiJi%20-%20MT3521%20-%20X%E6%AF%94Y/)哦~
+>原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/28/MaTiJi%20-%20MT3521%20-%20X%E6%AF%94Y/)哦~
 >Tisfy：[https://letmefly.blog.csdn.net/article/details/127097898](https://letmefly.blog.csdn.net/article/details/127097898)

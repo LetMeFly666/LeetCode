@@ -118,5 +118,5 @@ class Solution:
         return self.minMaxGame(newNum)
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/01/15/LeetCode%202293.%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E6%B8%B8%E6%88%8F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/01/15/LeetCode%202293.%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E6%B8%B8%E6%88%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128691681](https://letmefly.blog.csdn.net/article/details/128691681)

@@ -91,5 +91,5 @@ class Solution:
 
 本题无输入为“0”的测试样例，截至当前（2023.3.2 9:53），在控制台输入0时得到的答案是“0.”。但其实答案为“0”比较好
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/02/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2005.02.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/02/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2005.02.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129295125](https://letmefly.blog.csdn.net/article/details/129295125)

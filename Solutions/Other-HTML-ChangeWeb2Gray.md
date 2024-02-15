@@ -44,5 +44,5 @@ if (ifChange()) {
 }
 ```
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/)哦~
-> [https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/](https://blog.tisfy.eu.org/2022/12/01/Other-HTML-ChangeWeb2Gray/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/)哦~
+> [https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/](https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/)

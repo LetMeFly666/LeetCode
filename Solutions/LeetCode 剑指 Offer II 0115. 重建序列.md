@@ -293,5 +293,5 @@ function sequenceReconstruction(nums: number[], sequences: number[][]): boolean 
 
 **图片制作不易，喜欢了就点个赞再走吧~**
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/23/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/23/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200115.%20%E9%87%8D%E5%BB%BA%E5%BA%8F%E5%88%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125945290](https://letmefly.blog.csdn.net/article/details/125945290)

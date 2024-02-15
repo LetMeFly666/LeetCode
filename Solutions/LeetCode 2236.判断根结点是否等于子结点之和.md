@@ -78,5 +78,5 @@ class Solution:
         return root.val == root.left.val + root.right.val
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/20/LeetCode%202236.%E5%88%A4%E6%96%AD%E6%A0%B9%E7%BB%93%E7%82%B9%E6%98%AF%E5%90%A6%E7%AD%89%E4%BA%8E%E5%AD%90%E7%BB%93%E7%82%B9%E4%B9%8B%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/20/LeetCode%202236.%E5%88%A4%E6%96%AD%E6%A0%B9%E7%BB%93%E7%82%B9%E6%98%AF%E5%90%A6%E7%AD%89%E4%BA%8E%E5%AD%90%E7%BB%93%E7%82%B9%E4%B9%8B%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132388754](https://letmefly.blog.csdn.net/article/details/132388754)

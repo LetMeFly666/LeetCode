@@ -117,5 +117,5 @@ class Solution:
         return ans if ans * ans == (n * n + n) / 2 else -1
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/26/LeetCode%202485.%E6%89%BE%E5%87%BA%E4%B8%AD%E6%9E%A2%E6%95%B4%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/26/LeetCode%202485.%E6%89%BE%E5%87%BA%E4%B8%AD%E6%9E%A2%E6%95%B4%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131391141](https://letmefly.blog.csdn.net/article/details/131391141)

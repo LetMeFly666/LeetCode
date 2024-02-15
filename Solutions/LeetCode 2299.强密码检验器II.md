@@ -122,5 +122,5 @@ class Solution:
         return hasLower and hasUpper and hasDigit and hasSpecial
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/01/19/LeetCode%202299.%E5%BC%BA%E5%AF%86%E7%A0%81%E6%A3%80%E9%AA%8C%E5%99%A8II/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/01/19/LeetCode%202299.%E5%BC%BA%E5%AF%86%E7%A0%81%E6%A3%80%E9%AA%8C%E5%99%A8II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128738747](https://letmefly.blog.csdn.net/article/details/128738747)

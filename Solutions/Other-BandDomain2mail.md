@@ -72,5 +72,5 @@ tags: [其他, 域名, 邮箱]
 
 心动不如行动，赶快收藏一波然后去试试吧！
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/09/27/Other-BandDomain2mail/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/27/Other-BandDomain2mail/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127077055](https://letmefly.blog.csdn.net/article/details/127077055)

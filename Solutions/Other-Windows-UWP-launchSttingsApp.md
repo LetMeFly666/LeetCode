@@ -425,6 +425,6 @@ pyperclip.copy(markdown_table)
 |:--:|:--:|
 |环境变量|rundll32 sysdm.cpl,EditEnvironmentVariables|
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/16/Other-Windows-UWP-launchSttingsApp/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/)哦~
 > [https://letmefly.blog.csdn.net/article/details/129601344](https://letmefly.blog.csdn.net/article/details/129601344)
 

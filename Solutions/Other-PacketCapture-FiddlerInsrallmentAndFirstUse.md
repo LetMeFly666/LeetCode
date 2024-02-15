@@ -48,5 +48,5 @@ ValueError: check_hostname requires server_hostname
 
 想要python模拟发包时记得关下抓包（```File -> Capture Traffic(F12)```）
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)哦~
-> [https://blog.tisfy.eu.org/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/](https://blog.tisfy.eu.org/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)哦~
+> [https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/](https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)

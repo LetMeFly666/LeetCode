@@ -166,5 +166,5 @@ class Solution:
         return ans if ans else -1
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/05/LeetCode%201599.%E7%BB%8F%E8%90%A5%E6%91%A9%E5%A4%A9%E8%BD%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/05/LeetCode%201599.%E7%BB%8F%E8%90%A5%E6%91%A9%E5%A4%A9%E8%BD%AE%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129345304](https://letmefly.blog.csdn.net/article/details/129345304)

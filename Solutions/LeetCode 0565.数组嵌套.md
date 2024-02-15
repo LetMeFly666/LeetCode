@@ -117,5 +117,5 @@ public:
 
 ![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/aa14df7da5194e37982867e06991236d.png#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/17/LeetCode%200565.%E6%95%B0%E7%BB%84%E5%B5%8C%E5%A5%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/17/LeetCode%200565.%E6%95%B0%E7%BB%84%E5%B5%8C%E5%A5%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125828684](https://letmefly.blog.csdn.net/article/details/125828684)

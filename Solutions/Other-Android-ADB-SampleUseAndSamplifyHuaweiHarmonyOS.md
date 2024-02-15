@@ -226,5 +226,5 @@ adb shell pm uninstall --user 0 com.huawei.hifolder   # 精品推荐
 |SIM卡应用|com.android.stk|
 
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/)哦~
-> 地址：[https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/](https://blog.tisfy.eu.org/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/)哦~
+> 地址：[https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/](https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/)

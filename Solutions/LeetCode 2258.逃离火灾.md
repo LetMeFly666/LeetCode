@@ -278,5 +278,5 @@ if __name__ == '__main__':
 
 因$2^{15}>2\times10^4$，故方法一中也不会二分太多次。
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/11/09/LeetCode%202258.%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/09/LeetCode%202258.%E9%80%83%E7%A6%BB%E7%81%AB%E7%81%BE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134331955](https://letmefly.blog.csdn.net/article/details/134331955)
