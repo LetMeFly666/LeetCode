@@ -4,7 +4,7 @@ date: 2022-07-04 23:18:27
 tags: [题解, LeetCode, 中等, 树, 广度优先搜索, 二叉树, 层次遍历]
 ---
 
-# 【LetMeFly】107.二叉树的层序遍历 II
+# 【LetMeFly】107.二叉树的层序遍历 II：正常遍历后翻转
 
 力扣题目链接：[https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
 
@@ -92,6 +92,40 @@ public:
     }
 };
 ```
+
+#### Python
+
+```python
+# from typing import List, Optional
+
+# # Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        ans = []
+        q = []
+        if root:
+            q.append(root)
+        while q:
+            ans.append([])
+            for _ in range(len(q)):
+                thisNode = q[0]
+                q = q[1:]
+                ans[-1].append(thisNode.val)
+                if thisNode.left:
+                    q.append(thisNode.left)
+                if thisNode.right:
+                    q.append(thisNode.right)
+        ans.reverse()
+        return ans
+```
+
+其实Python的队列可以使用collections.deque。
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/04/LeetCode%200107.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125610699](https://letmefly.blog.csdn.net/article/details/125610699)
