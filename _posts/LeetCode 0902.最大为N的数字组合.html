@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】902.最大为 N 的数字组合「抽象出了函数，看着较为明白的代码 + 手推」力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;numbers-at-most-n-given-digit-set&#x2F; 给定一个按&nbsp;非递减顺序&nbsp;排列的数字数组&nbsp;digits&nbsp;。你可以用任意次数&nbsp;digits[i]&nbsp;来写的数">
+<meta property="og:type" content="website">
+<meta property="og:title" content="902.最大为 N 的数字组合">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/LeetCode%200902.%E6%9C%80%E5%A4%A7%E4%B8%BAN%E7%9A%84%E6%95%B0%E5%AD%97%E7%BB%84%E5%90%88.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】902.最大为 N 的数字组合「抽象出了函数，看着较为明白的代码 + 手推」力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;numbers-at-most-n-given-digit-set&#x2F; 给定一个按&nbsp;非递减顺序&nbsp;排列的数字数组&nbsp;digits&nbsp;。你可以用任意次数&nbsp;digits[i]&nbsp;来写的数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/0050bb334943415bbf7489d1441fe618.jpeg#pic_center">
+<meta property="article:published_time" content="2022-10-18T03:00:27.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.388Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="数字">
+<meta property="article:tag" content="二分查找">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="排列组合">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/0050bb334943415bbf7489d1441fe618.jpeg#pic_center">
+  
+  
+  
+  <title>902.最大为 N 的数字组合 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="902.最大为 N 的数字组合"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】902-最大为-N-的数字组合「抽象出了函数，看着较为明白的代码-手推」"><a href="#【LetMeFly】902-最大为-N-的数字组合「抽象出了函数，看着较为明白的代码-手推」" class="headerlink" title="【LetMeFly】902.最大为 N 的数字组合「抽象出了函数，看着较为明白的代码 + 手推」"></a>【LetMeFly】902.最大为 N 的数字组合「抽象出了函数，看着较为明白的代码 + 手推」</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/numbers-at-most-n-given-digit-set/">https://leetcode.cn/problems/numbers-at-most-n-given-digit-set/</a></p>
+<p>给定一个按&nbsp;<strong>非递减顺序</strong>&nbsp;排列的数字数组<meta charset="UTF-8" />&nbsp;<code>digits</code>&nbsp;。你可以用任意次数&nbsp;<code>digits[i]</code>&nbsp;来写的数字。例如，如果<meta charset="UTF-8" />&nbsp;<code>digits = ['1','3','5']</code>，我们可以写数字，如<meta charset="UTF-8" />&nbsp;<code>'13'</code>,&nbsp;<code>'551'</code>, 和&nbsp;<code>'1351315'</code>。</p>
+
+<p>返回 <em>可以生成的小于或等于给定整数 <code>n</code> 的正整数的个数</em>&nbsp;。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>digits = ["1","3","5","7"], n = 100
+<strong>输出：</strong>20
+<strong>解释：</strong>
+可写出的 20 个数字是：
+1, 3, 5, 7, 11, 13, 15, 17, 31, 33, 35, 37, 51, 53, 55, 57, 71, 73, 75, 77.
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>digits = ["1","4","9"], n = 1000000000
+<strong>输出：</strong>29523
+<strong>解释：</strong>
+我们可以写 3 个一位数字，9 个两位数字，27 个三位数字，
+81 个四位数字，243 个五位数字，729 个六位数字，
+2187 个七位数字，6561 个八位数字和 19683 个九位数字。
+总共，可以使用D中的数字写出 29523 个整数。</pre>
+
+<p><strong>示例 3:</strong></p>
+
+<pre>
+<strong>输入：</strong>digits = ["7"], n = 8
+<strong>输出：</strong>1
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+<meta charset="UTF-8" />
+
+<ul>
+    <li><code>1 &lt;= digits.length &lt;= 9</code></li>
+    <li><code>digits[i].length == 1</code></li>
+    <li><code>digits[i]</code>&nbsp;是从&nbsp;<code>'1'</code>&nbsp;到&nbsp;<code>'9'</code> 的数</li>
+    <li><code>digits</code>&nbsp;中的所有值都 <strong>不同</strong>&nbsp;</li>
+    <li><code>digits</code>&nbsp;按&nbsp;<strong>非递减顺序</strong>&nbsp;排列</li>
+    <li><code>1 &lt;= n &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：排列组合-动态规划"><a href="#方法一：排列组合-动态规划" class="headerlink" title="方法一：排列组合 + 动态规划"></a>方法一：排列组合 + 动态规划</h2><p>有两种数字小于$n$：</p>
+<ol>
+<li>数字位数直接小于$n$的</li>
+<li>数字位数和$n$相同，但仍然小于$n$</li>
+</ol>
+<h3 id="长度短的数字"><a href="#长度短的数字" class="headerlink" title="长度短的数字"></a>长度短的数字</h3><p>对于第一种情况，假设$n&#x3D;1024$，那么所有的三位数都小于$n$</p>
+<p>假设候选数字$digits &#x3D; {2, 5}$（有$2$个），那么：</p>
+<ul>
+<li>个位数有$2^1&#x3D;2$个</li>
+<li>两位数有$2^2&#x3D;4$个</li>
+<li>三位数有$2^3&#x3D;8$个</li>
+</ul>
+<p>所有的三位数有$2+4+8&#x3D;14$个</p>
+<h3 id="长度和-n-相等的数字"><a href="#长度和-n-相等的数字" class="headerlink" title="长度和$n$相等的数字"></a>长度和$n$相等的数字</h3><p>假设$n&#x3D;631$，$digits &#x3D; {2, 6, 7}$</p>
+<p>怎么计算长度为$3$的数字中，小于$n$的有多少个呢？</p>
+<p>这里可以借助动态规划的思想，用两个变量$lessThan$和$equal$，分别代表遍历到$631$的某一位（记为$i$）时，“小于”和“等于”$631$前$i$位的$i$位数的个数。</p>
+<p>说人话就是：假如当前遍历到了$631$的第$2$位（第一个数是$6$，第二个数是$3$）</p>
+<p>那么$lessThan$就是<strong>小于</strong>$63$的两位数，$equal$就是<strong>等于</strong>$63$的两位数。</p>
+<p>最终遍历完$631$的每一位后，$lessThan + equal$即为_小于等于_$631$的三位数</p>
+<ol>
+<li>首先看$631$的前$1$位$6$：<ul>
+<li>小于$6$的$1$位数有一个（$2$），因此$lessThan &#x3D; 1$</li>
+<li>等于$6$的$1$位数有一个（$6$），因此$equal &#x3D; 1$</li>
+</ul>
+</li>
+<li>接着看$631$的前$2$位$63$：<ul>
+<li>小于$63$的$2$位数有$4$个（$lessThan &#x3D; lessThan \times len(digits) + equal * lessThanThisWei &#x3D; 1 \times 3 + 1\times 1 &#x3D; 4$，小于$63$的包括<code>第一位就小于6，这一位任意</code>和<code>第一位等于6，这一位必须小于3</code>，而小于$3$的数有$1$个），因此$lessThan &#x3D; 4$</li>
+<li>等于$63$的$2$位数有$0$个（$equal &#x3D; equal\times equalThisWei &#x3D; 1\ times 0 &#x3D; 0$，等于$63$的方案数为$第一位等于6的方案数\times这一位等于3的方案数$），因此$equal &#x3D; 0$</li>
+</ul>
+</li>
+<li>最后看$631$的前$3$位$631$：<ul>
+<li>小于$631$的$3$位数有$12$个（$lessThan &#x3D; lessThan \times len(digits) + equal * lessThanThisWei &#x3D; 4 \times 3 + 0\times 0 &#x3D; 12$，而小于$1$的数有$0$个），因此$lessThan &#x3D; 12$</li>
+<li>等于$631$的$3$位数有$0$个（$equal &#x3D; equal\times equalThisWei &#x3D; 0\ times 0 &#x3D; 0$），因此$equal &#x3D; 0$</li>
+</ul>
+</li>
+</ol>
+<p>因此小于等于$631$的三位数有$lessThan + equal &#x3D; 12 + 0 &#x3D; 12$个</p>
+<p>（加上一位数$3$个和两位数$3\times3&#x3D;9$个，由<code>[2, 6, 7]</code>组成的小于等于$631$的数一共有$12+(3+9)&#x3D;24$个）</p>
+<ul>
+<li>时间复杂度$O((\log_{10}n)\times(\log_{10}n + len(digits)))$。前面求“短数字”的时间复杂度是$O((\log_{10}n)^2)$，后面求“等长数字”的时间复杂度是$O(\log_{10}n\times len(digits))$（这里题目中说$digits$是升序的，因此还可以实用二分查找，但是数据量不大，因此不是很有必要）</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-comment">/* 字符c是否在digits中 */</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isIn</span><span class="hljs-params">(<span class="hljs-type">char</span> c, vector&lt;string&gt;&amp; digits)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (string&amp; s : digits) &#123;<br>            <span class="hljs-keyword">if</span> (c == s[<span class="hljs-number">0</span>])<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>	<span class="hljs-comment">/* digits中小于字符c的元素的个数 */</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">cntLessThan</span><span class="hljs-params">(<span class="hljs-type">char</span> c, vector&lt;string&gt;&amp; digits)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (string&amp; s : digits) &#123;<br>            <span class="hljs-keyword">if</span> (s[<span class="hljs-number">0</span>] &lt; c)<br>                ans++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">atMostNGivenDigitSet</span><span class="hljs-params">(vector&lt;string&gt;&amp; digits, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>		<span class="hljs-comment">// 求“短数字”</span><br>        <span class="hljs-type">int</span> len = <span class="hljs-built_in">to_string</span>(n).<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>            ans += <span class="hljs-built_in">pow</span>(digits.<span class="hljs-built_in">size</span>(), i);<br>        &#125;<br>		<span class="hljs-comment">// 求“等长数字”</span><br>        string strify = <span class="hljs-built_in">to_string</span>(n);<br>        <span class="hljs-type">int</span> lessThan = <span class="hljs-built_in">cntLessThan</span>(strify[<span class="hljs-number">0</span>], digits), equal = <span class="hljs-built_in">isIn</span>(strify[<span class="hljs-number">0</span>], digits);  <span class="hljs-comment">// 实用常数空间</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; len; i++) &#123;<br>            lessThan = lessThan * digits.<span class="hljs-built_in">size</span>() + equal * <span class="hljs-built_in">cntLessThan</span>(strify[i], digits);  <span class="hljs-comment">// 公式原理在“631”的举例中详细说明了</span><br>            equal = equal * <span class="hljs-built_in">isIn</span>(strify[i], digits);<br>        &#125;<br>        ans += lessThan + equal;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/0050bb334943415bbf7489d1441fe618.jpeg#pic_center" srcset="/img/loading.gif" lazyload alt="result"></p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2022/10/18/LeetCode%200902.%E6%9C%80%E5%A4%A7%E4%B8%BAN%E7%9A%84%E6%95%B0%E5%AD%97%E7%BB%84%E5%90%88/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127385999">https://letmefly.blog.csdn.net/article/details/127385999</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python提高一、动态库加载 编译C语言代码(会生成xx.out 二进制可执行文件)  gcc xx.c   运行编译后的文件  .&#x2F;xx.out   把一个C语言文件编译成一个动态库的命令(平台下)  gcc xx.c -shared -o -fPIC libxx.so   加载动态库  lib &#x3D; ctypes.cdll.LoadLibrary(“.&#x2F;libxx">
+<meta property="og:type" content="website">
+<meta property="og:title" content="python - 下载自百度网盘的远古の - 高级知识总结2">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="Python提高一、动态库加载 编译C语言代码(会生成xx.out 二进制可执行文件)  gcc xx.c   运行编译后的文件  .&#x2F;xx.out   把一个C语言文件编译成一个动态库的命令(平台下)  gcc xx.c -shared -o -fPIC libxx.so   加载动态库  lib &#x3D; ctypes.cdll.LoadLibrary(“.&#x2F;libxx">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-25T14:03:00.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.400Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Notes">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>python - 下载自百度网盘的远古の - 高级知识总结2 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="python - 下载自百度网盘的远古の - 高级知识总结2"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Python提高"><a href="#Python提高" class="headerlink" title="Python提高"></a>Python提高</h1><h2 id="一、动态库加载"><a href="#一、动态库加载" class="headerlink" title="一、动态库加载"></a>一、动态库加载</h2><ol>
+<li><p>编译C语言代码(会生成xx.out 二进制可执行文件)</p>
+<ul>
+<li>gcc xx.c</li>
+</ul>
+</li>
+<li><p>运行编译后的文件</p>
+<ul>
+<li>.&#x2F;xx.out</li>
+</ul>
+</li>
+<li><p>把一个C语言文件编译成一个动态库的命令(平台下)</p>
+<ul>
+<li>gcc xx.c -shared -o -fPIC libxx.so</li>
+</ul>
+</li>
+<li><p>加载动态库</p>
+<ul>
+<li>lib &#x3D; ctypes.cdll.LoadLibrary(“.&#x2F;libxx.so”)</li>
+</ul>
+</li>
+<li><p>多线程执行任务</p>
+<ul>
+<li>Thread(target&#x3D;lib.文件封装的函数名).start()</li>
+</ul>
+</li>
+<li><p>代码示例</p>
+<p>​</p>
+<p>1&gt; C 代码 文件名: loop.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">Dead_Loop</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        ;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2&gt; 将loop.c编译成动态库 libloop.so</p>
+<p>3&gt; 文件名:thread_dynamic_load.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> threading <span class="hljs-keyword">import</span> Thread<br><span class="hljs-keyword">from</span> ctypes <span class="hljs-keyword">import</span> cdll<br><br>lib = cdll.LoadLibrary(<span class="hljs-string">&quot;./libloop.so&quot;</span>)<br>Thread(target=lib.Dead_Loop).start()<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>结论</p>
+</li>
+</ol>
+<ul>
+<li>python是一门胶水语言,可以通过加载动态库的方式在一个项目中运行不同语言的程序</li>
+<li>通过动态库加载其他语言的方式可以解决多线程GIL使用C解释器运行无法并发的问题</li>
+</ul>
+<h2 id="二、拷贝"><a href="#二、拷贝" class="headerlink" title="二、拷贝"></a>二、拷贝</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gcode">copy.copy<span class="hljs-comment">()</span> — 浅拷贝<br><span class="hljs-number">1</span>、对可变类型对象进行浅拷贝, 只做顶层拷贝<br><span class="hljs-number">2</span>、对不可变类型对象进行浅拷贝, 那么不拷贝<br><br>copy.deepcopy<span class="hljs-comment">()</span> — 深拷贝<br><span class="hljs-number">1</span>、对可变类型对象进行深拷贝, 除了顶层拷贝,还会对该对象的子元素进行深拷贝<br><span class="hljs-number">2</span>、对不可变类型对象进行深拷贝<span class="hljs-comment">(递归思维,以递归出口为最终 是否执行拷贝操作的依据)</span><br>	 <span class="hljs-comment">(1)</span>如果该对象存在可变类型数据的子元素, 那么会顶层拷贝, 并且对其子元素进行深拷贝<br>     <span class="hljs-comment">(2)</span>如果该对象不存在可变数据对象, 那么不拷贝<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、私有化"><a href="#三、私有化" class="headerlink" title="三、私有化"></a>三、私有化</h2><ul>
+<li><p>xx:	    公有变量</p>
+</li>
+<li><p>_x:       单前置下划线,私有化属性或方法，from somemodule import *禁止导入,类对象和子类可以访问</p>
+<p>说明: 使用from somemodule import *的方式从一个包导入所有资源, _x不会被导入 但通过 from somemodule import _x的方式是可以导入的</p>
+</li>
+<li><p>__xx:     双前置下划线,避免与子类中的属性命名冲突，无法在外部直接访问(名字重整&lt;_类名__xx&gt;所以访问不到)</p>
+</li>
+<li><p>__xx__: 双前后下划线,用户名字空间的魔法对象或属性</p>
+</li>
+<li><p>xx__:  单后置下划线,用于避免与Python关键词的冲突</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="四、模块导入"><a href="#四、模块导入" class="headerlink" title="四、模块导入"></a>四、模块导入</h2><ul>
+<li><p>模块被导入后，<code>import module/from xx import yy</code>不能重新导入模块，重新导入需用<code>reload</code></p>
+<p>说明: python解释器在运行时,会将导入的包编译为.pyc的二进制文件;提升代码运行速度, 所以<code>程序在运行的过程中</code>如果包的内容有修改,即便再次导入,解释器发现对应的.pyc文件已经存在,并不会重新编译加载资源</p>
+<p>文件名 test1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">_a = <span class="hljs-string">&quot;_a&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>文件名 test2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># import test1</span><br><span class="hljs-keyword">from</span> test1 <span class="hljs-keyword">import</span> _a<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-comment"># print(test1._a)</span><br><span class="hljs-built_in">print</span>(_a)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    time.sleep(<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">from</span> test1 <span class="hljs-keyword">import</span> _a<br>    <span class="hljs-built_in">print</span>(_a)<br>    <span class="hljs-comment"># import test1</span><br>    <span class="hljs-comment"># print(test1._a)</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>结论: 修改test1 中_a的值, 打印结果不会改变</strong></p>
+<p>​</p>
+<p>修改test2代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from imp import reload -- Python3.4版本以上源代码中的引用由imp自动变为importlib</span><br><span class="hljs-keyword">from</span> importlib <span class="hljs-keyword">import</span> reload<br><span class="hljs-keyword">import</span> test1<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-built_in">print</span>(test1._a)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    time.sleep(<span class="hljs-number">1</span>)<br>    reload(test1)<br>    <span class="hljs-built_in">print</span>(test1._a)<br></code></pre></td></tr></table></figure>
+
+<p><strong>结论: 使用reload重新加载, 修改test1 中_a的值, 打印结果发生改变</strong></p>
+</li>
+</ul>
+<h2 id="五、property属性"><a href="#五、property属性" class="headerlink" title="五、property属性"></a>五、property属性</h2><ol>
+<li><p>定义</p>
+<p>一种用起来像是使用的实例属性一样的特殊属性，可以对应于某个方法</p>
+</li>
+<li><p>property属性的两种方式</p>
+<ul>
+<li>装饰器    &#x3D;&gt; 在方法上应用装饰器</li>
+<li>类属性    &#x3D;&gt; 在类中定义值为property对象的类属性</li>
+</ul>
+</li>
+<li><p>装饰器方式</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Goods</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 原价</span><br>        self.original_price = <span class="hljs-number">100</span><br>        <span class="hljs-comment"># 折扣</span><br>        self.discount = <span class="hljs-number">0.8</span><br><br><span class="hljs-meta">    @property</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">price</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 实际价格 = 原价 * 折扣</span><br>        new_price = self.original_price * self.discount<br>        <span class="hljs-keyword">return</span> new_price<br><br>    <span class="hljs-comment"># 新式类独有</span><br><span class="hljs-meta">    @price.setter</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">price</span>(<span class="hljs-params">self, value</span>):<br>        self.original_price = value<br><br>    <span class="hljs-comment"># 新式类独有</span><br><span class="hljs-meta">    @price.deleter</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">price</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">del</span> self.original_price<br><br>obj = Goods()<br>obj.price         <span class="hljs-comment"># 获取商品价格</span><br>obj.price = <span class="hljs-number">200</span>   <span class="hljs-comment"># 修改商品原价</span><br><span class="hljs-keyword">del</span> obj.price     <span class="hljs-comment"># 删除商品原价</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>定义时，在实例方法的基础上添加 @property 装饰器；并且仅有一个self参数</li>
+<li>调用时，无需括号</li>
+<li>经典类中的属性只有一种访问方式，其对应被 @property 修饰的方法</li>
+<li>新式类中的属性有三种访问方式，并分别对应了三个被@property、@方法名.setter、@方法名.deleter修饰的方法</li>
+<li>新式类中具有三种访问方式，我们可以根据它们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</li>
+<li>简单实例</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Pager</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, current_page</span>):<br>        <span class="hljs-comment"># 用户当前请求的页码（第一页、第二页...）</span><br>        self.current_page = current_page<br>        <span class="hljs-comment"># 每页默认显示10条数据</span><br>        self.per_items = <span class="hljs-number">10</span> <br><br><span class="hljs-meta">    @property</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">start</span>(<span class="hljs-params">self</span>):<br>        val = (self.current_page - <span class="hljs-number">1</span>) * self.per_items<br>        <span class="hljs-keyword">return</span> val<br><br><span class="hljs-meta">    @property</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">end</span>(<span class="hljs-params">self</span>):<br>        val = self.current_page * self.per_items<br>        <span class="hljs-keyword">return</span> val<br><br><span class="hljs-comment"># ############### 调用 ###############</span><br>p = Pager(<span class="hljs-number">1</span>)<br>p.start  <span class="hljs-comment"># 就是起始值，即：m</span><br>p.end  <span class="hljs-comment"># 就是结束值，即：n</span><br><br><span class="hljs-comment"># Python的property属性的功能是：property属性内部进行一系列的逻辑计算，最终将计算结果返回。</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>类属性方式</li>
+</ol>
+<ul>
+<li>当使用类属性的方式创建property属性时，<code>经典类</code>和<code>新式类</code>无区别</li>
+<li>简单实例</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Goods</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 原价</span><br>        self.original_price = <span class="hljs-number">100</span><br>        <span class="hljs-comment"># 折扣</span><br>        self.discount = <span class="hljs-number">0.8</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">get_price</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 实际价格 = 原价 * 折扣</span><br>        new_price = self.original_price * self.discount<br>        <span class="hljs-keyword">return</span> new_price<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_price</span>(<span class="hljs-params">self, value</span>):<br>        self.original_price = value<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">del_price</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">del</span> self.original_price<br><br>    PRICE = <span class="hljs-built_in">property</span>(get_price, set_price, del_price, <span class="hljs-string">&#x27;价格属性描述...&#x27;</span>)<br><br>obj = Goods()<br>obj.PRICE         <span class="hljs-comment"># 获取商品价格</span><br>obj.PRICE = <span class="hljs-number">200</span>   <span class="hljs-comment"># 修改商品原价</span><br><span class="hljs-keyword">del</span> obj.PRICE     <span class="hljs-comment"># 删除商品原价</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>property方法中有个四个参数<ul>
+<li>第一个参数是方法名，调用 对象.属性 时自动触发执行方法</li>
+<li>第二个参数是方法名，调用 对象.属性 ＝ XXX 时自动触发执行方法</li>
+<li>第三个参数是方法名，调用 del 对象.属性 时自动触发执行方法</li>
+<li>第四个参数是字符串，调用 对象.属性.<strong>doc</strong> ，此参数是该属性的描述信息</li>
+</ul>
+</li>
+<li>由于<code>类属性方式</code>创建property属性具有3种访问方式，我们可以根据它们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</li>
+</ul>
+<h2 id="六、魔法属性"><a href="#六、魔法属性" class="headerlink" title="六、魔法属性"></a>六、魔法属性</h2><ol>
+<li>__doc__   类的描述信息</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>:<br>    <span class="hljs-string">&quot;&quot;&quot; 描述类信息，这是用于看片的神奇 &quot;&quot;&quot;</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">func</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-built_in">print</span>(Foo.__doc__)<br><span class="hljs-comment">#输出：类的描述信息</span><br></code></pre></td></tr></table></figure>
+
+<p>   ​</p>
+<ol start="2">
+<li><p>__module__    当前操作的对象在那个模块</p>
+</li>
+<li><p>__class__        当前操作的对象的类是什么</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> test <span class="hljs-keyword">import</span> Person<br><br>obj = Person()<br><span class="hljs-built_in">print</span>(obj.__module__)  <span class="hljs-comment"># 输出 test 即：输出模块</span><br><span class="hljs-built_in">print</span>(obj.__class__)  <span class="hljs-comment"># 输出 test.Person 即：输出类</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>__del__            当对象在内存中被释放时，自动触发执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__del__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>__call__    对象后面加括号，触发执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">pass</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self, *args, **kwargs</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__call__&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>​       obj &#x3D; Foo()  # 执行__init__<br>​       obj()  # 执行 __call__</p>
+<p>​    6.__dict__  	  类或对象中的所有属性	</p>
+<ol start="7">
+<li>__str__  	         如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>:<br>	<span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):<br>		<span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;laowang&#x27;</span><br><br>obj = Foo()<br><span class="hljs-built_in">print</span>(obj)<br><span class="hljs-comment"># 输出：laowang</span><br></code></pre></td></tr></table></figure>
+
+<p>   ​</p>
+<ol start="8">
+<li><p>__getitem__  	 __setitem__  	__delitem__  	   用于索引操作，如字典。以上分别表示获取、设置、删除数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getitem__</span>(<span class="hljs-params">self, key</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__getitem__&#x27;</span>, key)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__setitem__</span>(<span class="hljs-params">self, key, value</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__setitem__&#x27;</span>, key, value)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__delitem__</span>(<span class="hljs-params">self, key</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__delitem__&#x27;</span>, key)<br></code></pre></td></tr></table></figure>
+
+
+<p>obj &#x3D; Foo()</p>
+<p>result &#x3D; obj[‘k1’]      # 自动触发执行 __getitem__<br>obj[‘k2’] &#x3D; ‘laowang’   # 自动触发执行 __setitem__<br>del obj[‘k1’]           # 自动触发执行 __delitem__</p>
+</li>
+<li><p>__getslice__  	 __setslice__  	__delslice__  	   该三个方法用于切片操作，如：列表</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span>(<span class="hljs-title class_ inherited__">object</span>):<br><br>      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__getslice__</span>(<span class="hljs-params">self, i, j</span>):<br>          <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__getslice__&#x27;</span>, i, j)<br><br>      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__setslice__</span>(<span class="hljs-params">self, i, j, sequence</span>):<br>          <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__setslice__&#x27;</span>, i, j)<br><br>      <span class="hljs-keyword">def</span> <span class="hljs-title function_">__delslice__</span>(<span class="hljs-params">self, i, j</span>):<br>          <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;__delslice__&#x27;</span>, i, j)<br><br>  obj = Foo()<br><br>  obj[-<span class="hljs-number">1</span>:<span class="hljs-number">1</span>]                   <span class="hljs-comment"># 自动触发执行 __getslice__</span><br>  obj[<span class="hljs-number">0</span>:<span class="hljs-number">1</span>] = [<span class="hljs-number">11</span>,<span class="hljs-number">22</span>,<span class="hljs-number">33</span>,<span class="hljs-number">44</span>]    <span class="hljs-comment"># 自动触发执行 __setslice__</span><br>  <span class="hljs-keyword">del</span> obj[<span class="hljs-number">0</span>:<span class="hljs-number">2</span>]                <span class="hljs-comment"># 自动触发执行 __delslice__</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>于2020.2.11日下载自百度网盘（个人笔记.rar），共包含三个md文件，这是其一。</p>
+<p>无法追述到作者及来源，但所总结的内容确实较为优质，不忍心删除之，不想令其石沉大海。</p>
+<p>若原作者发现了此文，请与<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666">我</a>联系🌹</p>
+<p><a href="https://blog.tisfy.eu.org/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/">本文地址</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

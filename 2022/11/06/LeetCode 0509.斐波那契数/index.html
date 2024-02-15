@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】尝试以四种方式吃透：509.斐波那契数（四种大方法+两种小优化）先说明本题解法：  动态规划（及 原地滚动的优化） 递归（及 记忆化的优化） 矩阵快速幂 通项公式   力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;fibonacci-number&#x2F; 斐波那契数&nbsp;（通常用&nbsp;F(n) 表示）形成的序列称为 斐波那契数列 。该数列由&amp;nb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="509.斐波那契数">
+<meta property="og:url" content="https://blog.tisfy.eu.org/2022/11/06/LeetCode%200509.%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0/index.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】尝试以四种方式吃透：509.斐波那契数（四种大方法+两种小优化）先说明本题解法：  动态规划（及 原地滚动的优化） 递归（及 记忆化的优化） 矩阵快速幂 通项公式   力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;fibonacci-number&#x2F; 斐波那契数&nbsp;（通常用&nbsp;F(n) 表示）形成的序列称为 斐波那契数列 。该数列由&amp;nb">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/016d3e18ed4e4c0fb50cdf99c2cc489a.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4973f2d70be24f3ca12d6ed09ecc63ea.png">
+<meta property="article:published_time" content="2022-11-06T00:55:29.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.384Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="递归">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="记忆化搜索">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="原地滚动">
+<meta property="article:tag" content="记忆化">
+<meta property="article:tag" content="斐波那契">
+<meta property="article:tag" content="矩阵快速幂">
+<meta property="article:tag" content="通项公式">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/016d3e18ed4e4c0fb50cdf99c2cc489a.png">
+  
+  
+  
+  <title>509.斐波那契数 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="509.斐波那契数"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-06 08:55" pubdate>
+          2022年11月6日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">509.斐波那契数</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】尝试以四种方式吃透：509-斐波那契数（四种大方法-两种小优化）"><a href="#【LetMeFly】尝试以四种方式吃透：509-斐波那契数（四种大方法-两种小优化）" class="headerlink" title="【LetMeFly】尝试以四种方式吃透：509.斐波那契数（四种大方法+两种小优化）"></a>【LetMeFly】尝试以四种方式吃透：509.斐波那契数（四种大方法+两种小优化）</h1><p>先说明本题解法：</p>
+<ol>
+<li>动态规划（及 原地滚动的优化）</li>
+<li>递归（及 记忆化的优化）</li>
+<li>矩阵快速幂</li>
+<li>通项公式</li>
+</ol>
+<hr>
+<p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fibonacci-number/">https://leetcode.cn/problems/fibonacci-number/</a></p>
+<p><strong>斐波那契数</strong>&nbsp;（通常用&nbsp;<code>F(n)</code> 表示）形成的序列称为 <strong>斐波那契数列</strong> 。该数列由&nbsp;<code>0</code> 和 <code>1</code> 开始，后面的每一项数字都是前面两项数字的和。也就是：</p>
+
+<pre>
+F(0) = 0，F(1)&nbsp;= 1
+F(n) = F(n - 1) + F(n - 2)，其中 n &gt; 1
+</pre>
+
+<p>给定&nbsp;<code>n</code> ，请计算 <code>F(n)</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 2
+<strong>输出：</strong>1
+<strong>解释：</strong>F(2) = F(1) + F(0) = 1 + 0 = 1
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 3
+<strong>输出：</strong>2
+<strong>解释：</strong>F(3) = F(2) + F(1) = 1 + 1 = 2
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 4
+<strong>输出：</strong>3
+<strong>解释：</strong>F(4) = F(3) + F(2) = 2 + 1 = 3
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>0 &lt;= n &lt;= 30</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：动态规划"><a href="#方法一：动态规划" class="headerlink" title="方法一：动态规划"></a>方法一：动态规划</h2><p>开辟一个大小为$30$的数组$a$（或开辟大小为$n+1$的数组也可）</p>
+<p>初始值$a[0] &#x3D; 0, a[1] &#x3D; 1$</p>
+<p>之后从下标$2$开始到$n$为止，使用转移方程$a[n] &#x3D; a[n - 1] + a[n - 2]$求解</p>
+<p>最终返回<code>a[n]</code>即可</p>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(C)$，这里$C$是数据中$n$的最大值$30$（也可以只开辟$n+1$的数组，则空间复杂度为$O(n)$）</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;  <span class="hljs-comment">// 开辟一整个数组</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-type">int</span> a[<span class="hljs-number">31</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)<br>            a[i] = a[i - <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">return</span> a[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法一-2：动态规划-原地滚动"><a href="#方法一-2：动态规划-原地滚动" class="headerlink" title="方法一.2：动态规划 + 原地滚动"></a>方法一.2：动态规划 + 原地滚动</h2><p>不难发现，在计算$a[n]$时，我们只用到了$a[n-1]$和$a[n-2]$，再往前的数据就再也用不到了</p>
+<p>因此，我们只需要使用两个额外的空间$_0$和$_1$来分别记录$a[n-1]$和a[n-2]$的值，在计算过程中，不断更新$_0$和$_1$的值即可</p>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;  <span class="hljs-comment">// 两个额外变量模拟</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-type">int</span> _0 = <span class="hljs-number">0</span>, _1 = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 分别代表a[n - 2]和a[n - 1]</span><br>        <span class="hljs-type">int</span> ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>            ans = _0 + _1;<br>            _0 = _1, _1 = ans;  <span class="hljs-comment">// Update</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二：递归"><a href="#方法二：递归" class="headerlink" title="方法二：递归"></a>方法二：递归</h2><p>斐波那契数列很容易看出“递归”</p>
+<p>题目都说明了，$F(n) &#x3D; F(n - 1) + F(n - 2)$，终止条件是$n &#x3D; 0$或$n &#x3D; 1$</p>
+<p>那么，我们只需要在非终止条件下无脑递归即可。</p>
+<ul>
+<li>时间复杂度$O(n^2)$，<strong>这个时间复杂度待会儿分析</strong></li>
+<li>空间复杂度$O(n)$，不论总递归次数为多少，总递归深度为$n$</li>
+</ul>
+<h3 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;  <span class="hljs-comment">// 递归</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">fib</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fib</span>(n - <span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二-2：递归-记忆化"><a href="#方法二-2：递归-记忆化" class="headerlink" title="方法二.2：递归 + 记忆化"></a>方法二.2：递归 + 记忆化</h2><p>方法二在数据量小的前提下能很轻松地计算出结果。</p>
+<p>但是为什么方法二的时间复杂度是$O(n^2)$呢？</p>
+<p>不难发现，计算$F(5)$时，会调用$F(4)$和$F(3)$，但在计算$F(4)$时，会再调用一次$F(3)$，也就是说$F(3)$不只被调用了一次</p>
+<p>例如计算$F(6)$时：</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/016d3e18ed4e4c0fb50cdf99c2cc489a.png" srcset="/img/loading.gif" lazyload alt="demo"></p>
+<p>$F(4)$计算了两次，$F(3)$计算了三次，$F(2)$更是计算了五次。</p>
+<p>$n$越大，这种重复计算就越明显。</p>
+<p>那么，既然算过一遍$F(3)$了，为什么要再算一次呢？</p>
+<p><strong>记忆化</strong>出现了</p>
+<p>我们使用一个哈希表，将计算过的结果记录下来，那么再次调用这个函数时，直接返回之前计算过的结果不就可以了吗？</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4973f2d70be24f3ca12d6ed09ecc63ea.png" srcset="/img/loading.gif" lazyload alt="demo2"></p>
+<p>这样就避免了没必要的重复计算。</p>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码-3"><a href="#AC代码-3" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-3"><a href="#C-3" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;  <span class="hljs-comment">// 递归 + 记忆化</span><br><span class="hljs-keyword">private</span>:<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ma;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-keyword">if</span> (ma.<span class="hljs-built_in">count</span>(n))<br>            <span class="hljs-keyword">return</span> ma[n];<br>        <span class="hljs-keyword">return</span> ma[n] = <span class="hljs-built_in">fib</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-built_in">fib</span>(n - <span class="hljs-number">2</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法三：矩阵快速幂"><a href="#方法三：矩阵快速幂" class="headerlink" title="方法三：矩阵快速幂"></a>方法三：矩阵快速幂</h2><p>$$\left[\begin{array}{ll}<br>1 &amp; 1 \<br>1 &amp; 0<br>\end{array}\right]\left[\begin{array}{c}<br>a_n \<br>a_{n-1}<br>\end{array}\right]&#x3D;\left[\begin{array}{c}<br>a_n+a_{n-1} \<br>a_n<br>\end{array}\right]&#x3D;\left[\begin{array}{c}<br>a_{n+1} \<br>a_n<br>\end{array}\right]$$</p>
+<p>因此</p>
+<p>$$\left[\begin{array}{c}<br>a_{n+1} \<br>a_n<br>\end{array}\right]&#x3D;\left[\begin{array}{ll}<br>1 &amp; 1 \<br>1 &amp; 0<br>\end{array}\right]^{n}\left[\begin{array}{l}<br>a_1 \<br>a_0<br>\end{array}\right]$$</p>
+<p>因此可以使用矩阵快速幂求出</p>
+<p>$$\left[\begin{array}{ll}<br>1 &amp; 1 \<br>1 &amp; 0<br>\end{array}\right]^{n-1}$$</p>
+<p>再将其右乘$\left[\begin{array}{c}a_{1} \ a_0\end{array}\right]$即得到$\left[\begin{array}{c}a_{n} \ a_{n-1}\end{array}\right]$</p>
+<p>假设：</p>
+<p>$$\left[\begin{array}{ll}1 &amp; 1 \ 1 &amp; 0\end{array}\right]^{n-1}&#x3D;\left[\begin{array}{ll}x &amp; y \ m &amp; n\end{array}\right]$$</p>
+<p>那么：</p>
+<p>$$\left[\begin{array}{c}a_{n} \ a_{n-1}\end{array}\right]&#x3D;\left[\begin{array}{ll}1 &amp; 1 \ 1 &amp; 0\end{array}\right]^{n-1}\left[\begin{array}{c}a_{1} \ a_0\end{array}\right]&#x3D;\left[\begin{array}{ll}x &amp; y \ m &amp; n\end{array}\right]\left[\begin{array}{ll}1\ 0\end{array}\right]&#x3D;\left[\begin{array}{ll}x\ m\end{array}\right]$$</p>
+<p>因此$a_n&#x3D;x$，也就是$\left[\begin{array}{ll}1 &amp; 1 \ 1 &amp; 0\end{array}\right]^{n-1}$的左上角的值</p>
+<ul>
+<li>时间复杂度$O(\log n)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-4"><a href="#AC代码-4" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-4"><a href="#C-4" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Matrix</span> &#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>];<br><br>    <span class="hljs-built_in">Matrix</span>(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span> n) &#123;<br>        a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = x, a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = y;<br>        a[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = m, a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = n;<br>    &#125;<br><br>    <span class="hljs-built_in">Matrix</span>() &#123;<br>        a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>, a[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        a[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>, a[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br><br>Matrix <span class="hljs-keyword">operator</span>* (<span class="hljs-type">const</span> Matrix&amp; a, <span class="hljs-type">const</span> Matrix&amp; b) &#123;<br>    Matrix result;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">2</span>; j++) &#123;<br>            result.a[i][j] = a.a[i][<span class="hljs-number">0</span>] * b.a[<span class="hljs-number">0</span>][j] + a.a[i][<span class="hljs-number">1</span>] * b.a[<span class="hljs-number">1</span>][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function">Matrix <span class="hljs-title">Pow</span><span class="hljs-params">(Matrix a, <span class="hljs-type">int</span> n)</span> </span>&#123;  <span class="hljs-comment">// 这里只接受&gt;0的n</span><br>        <span class="hljs-function">Matrix <span class="hljs-title">result</span><span class="hljs-params">(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>)</span></span>;<br>        <span class="hljs-keyword">while</span> (n) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>)<br>                result = result * a;<br>            n &gt;&gt;= <span class="hljs-number">1</span>;<br>            a = a * a;<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>)<br>            <span class="hljs-keyword">return</span> n;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Pow</span>(<span class="hljs-built_in">Matrix</span>(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>), n - <span class="hljs-number">1</span>).a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法四：通项公式"><a href="#方法四：通项公式" class="headerlink" title="方法四：通项公式"></a>方法四：通项公式</h2><p>使用生成函数求斐波那契的通项公式</p>
+<p>设$\ \ \ \ F(x)&#x3D;F_1x+F_2x^2+F_3x^3+F_4x^4+\cdots$</p>
+<p>则$\ \ xF(x)&#x3D;\ \ \ \ \ \ \ \ \ \ \ F_1x^2+F_2x^3+F_3x^4+\cdots$</p>
+<p>且$x^2F(x)&#x3D;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ F_1x^3+F_2x^4+\cdots$</p>
+<p>因此，$(x^2+x)F(x)&#x3D;F_1x^2+(F_2+F_1)x^3+(F_3+F_4)x^4+\cdots&#x3D;F_1x^2+F_3x^3+F_4x^4+\cdots$</p>
+<p>因此，$(1-(x^2+x))F(x)&#x3D;F_1x+(F_2-F_1)x^2$</p>
+<p>即$(1-x-x^2)F(x)&#x3D;x$</p>
+<p>所以$F(x)&#x3D;\frac{x}{1-x-x^2}&#x3D;-\frac{x}{\left(x-\frac{\sqrt{5}-1}{2}\right)\left(x+\frac{\sqrt{5}+1}{2}\right)}&#x3D;-\frac{1}{\sqrt{5}}(\frac{1}{\frac{\sqrt{5}-1}{2} x+1}+\frac{1}{\frac{\sqrt{5}+1}{2} x-1})$</p>
+<p>我们求出了斐波那契数列的生成函数</p>
+<p><strong>接下来通过生成函数求原始数列</strong></p>
+<p>设$G(x)&#x3D;\frac{1}{ax+b}$，其对应的原始数列是${g_i}$</p>
+<p>则有$\frac{1}{ax+b}&#x3D;\sum_{i&#x3D;1}^\infty g_ix^i$</p>
+<p>已知$n\to \infty$时$1+x+x^2+\cdots+x^n&#x3D;\frac{1}{1-x}$</p>
+<p>用$-x$替换$x$得$\frac{1}{1+x}&#x3D;1-x+x^2-x^3+\cdots$</p>
+<p>所以$\frac{1}{bx+b}&#x3D;\frac1b-\frac1bx+\frac1bx^2-\frac1bx^3+\cdots$</p>
+<p>用$\frac{a}bx$替换$x$得$\frac1{ax+b}&#x3D;\frac{1}{b}-\frac{a}{b^{2}} x+\frac{a^{2}}{b^{3}} x^{2}-\frac{a^{3}}{b^{4}} x^{3}+\cdots$</p>
+<p>所以$x^n$的系数$g_n&#x3D;(-1)^na^nb^{-(n+1)}$</p>
+<p>之前我们求出$F(x)&#x3D;-\frac{1}{\sqrt{5}}(\frac{1}{\frac{\sqrt{5}-1}{2} x+1}+\frac{1}{\frac{\sqrt{5}+1}{2} x-1})$</p>
+<p>对于$\frac{1}{\frac{\sqrt{5}-1}{2} x+1}$，令$a&#x3D;\frac{\sqrt{5}-1}{2},b&#x3D;1$得$g_n&#x3D;(\frac{1-\sqrt5}{2})^n$，因此$G(x)&#x3D;{(\frac{1-\sqrt5}{2})^x}$</p>
+<p>对于$\frac{1}{\frac{\sqrt{5}+1}{2} x-1}$，令$a&#x3D;\frac{\sqrt{5}+1}{2},b&#x3D;-1$得$g_n&#x3D;-(\frac{1+\sqrt5}{2})^n$，因此$G(x)&#x3D;{-(\frac{1+\sqrt5}{2})^x}$</p>
+<p>所以$a_n&#x3D;-\frac{1}{\sqrt{5}}[(\frac{1-\sqrt5}{2})^x-(\frac{1+\sqrt5}{2})^x]&#x3D;\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right]$ 即为所求</p>
+<ul>
+<li>时间复杂度不好衡量（也不能说O(1)吧，但是肯定比矩阵快速幂快，毕竟CPU有专门的求幂指令）</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-5"><a href="#AC代码-5" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-5"><a href="#C-5" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1.</span> / <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>) * (<span class="hljs-built_in">pow</span>((<span class="hljs-number">1</span> + <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>)) / <span class="hljs-number">2</span>, n) - <span class="hljs-built_in">pow</span>((<span class="hljs-number">1</span> - <span class="hljs-built_in">sqrt</span>(<span class="hljs-number">5</span>)) / <span class="hljs-number">2</span>, n));<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>有同学说，比赛的时候忘记了通项公式怎么办，总不能现场手推一遍吧</p>
+<p>其实我们只需要记得通项公式的大概形势：$a_n&#x3D;\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^{n}-\left(\frac{1-\sqrt{5}}{2}\right)^{n}\right]&#x3D;x_1y_1^n+x_2y_2^n$</p>
+<p>因此代入几个$a$就把$x_1,y_1,x_2,y_2$解出来了（$a_0&#x3D;0,a_1&#x3D;1,\cdots$）</p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2022/11/06/LeetCode%200509.%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127712505">https://letmefly.blog.csdn.net/article/details/127712505</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E7%AE%80%E5%8D%95/">#简单</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+      
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E5%9B%B0%E9%9A%BE/">#困难</a>
+      
+        <a href="/tags/%E5%93%88%E5%B8%8C/">#哈希</a>
+      
+        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/">#记忆化搜索</a>
+      
+        <a href="/tags/dp/">#dp</a>
+      
+        <a href="/tags/%E5%8E%9F%E5%9C%B0%E6%BB%9A%E5%8A%A8/">#原地滚动</a>
+      
+        <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96/">#记忆化</a>
+      
+        <a href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91/">#斐波那契</a>
+      
+        <a href="/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/">#矩阵快速幂</a>
+      
+        <a href="/tags/%E9%80%9A%E9%A1%B9%E5%85%AC%E5%BC%8F/">#通项公式</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>509.斐波那契数</div>
+      <div>https://blog.tisfy.eu.org/2022/11/06/LeetCode 0509.斐波那契数/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LetMeFly</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/07/Other-Python-ResearchForPycache/" title="Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/06/LeetCode%200503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0II/" title="503.下一个更大元素 II">
+                        <span class="hidden-mobile">503.下一个更大元素 II</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-profit-in-job-scheduling&#x2F; 你打算利用空闲时间来做兼职工作赚些零花钱。  这里有&nbsp;n&nbsp;份兼职工作，每份工作预计从&nbsp;startTime[i]&nbsp;开">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1235.规划兼职工作">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/LeetCode%201235.%E8%A7%84%E5%88%92%E5%85%BC%E8%81%8C%E5%B7%A5%E4%BD%9C.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-profit-in-job-scheduling&#x2F; 你打算利用空闲时间来做兼职工作赚些零花钱。  这里有&nbsp;n&nbsp;份兼职工作，每份工作预计从&nbsp;startTime[i]&nbsp;开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample1_1584.png">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample22_1584.png">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample3_1584.png">
+<meta property="article:published_time" content="2022-10-22T02:00:11.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.388Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="二分查找">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="离散化">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample1_1584.png">
+  
+  
+  
+  <title>1235.规划兼职工作 - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1235.规划兼职工作"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1235-规划兼职工作：-离散化：多次哈希-DPx1-二分查找-DP"><a href="#【LetMeFly】1235-规划兼职工作：-离散化：多次哈希-DPx1-二分查找-DP" class="headerlink" title="【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]"></a>【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-profit-in-job-scheduling/">https://leetcode.cn/problems/maximum-profit-in-job-scheduling/</a></p>
+<p>你打算利用空闲时间来做兼职工作赚些零花钱。</p>
+
+<p>这里有&nbsp;<code>n</code>&nbsp;份兼职工作，每份工作预计从&nbsp;<code>startTime[i]</code>&nbsp;开始到&nbsp;<code>endTime[i]</code>&nbsp;结束，报酬为&nbsp;<code>profit[i]</code>。</p>
+
+<p>给你一份兼职工作表，包含开始时间&nbsp;<code>startTime</code>，结束时间&nbsp;<code>endTime</code>&nbsp;和预计报酬&nbsp;<code>profit</code>&nbsp;三个数组，请你计算并返回可以获得的最大报酬。</p>
+
+<p>注意，时间上出现重叠的 2 份工作不能同时进行。</p>
+
+<p>如果你选择的工作在时间&nbsp;<code>X</code>&nbsp;结束，那么你可以立刻进行在时间&nbsp;<code>X</code>&nbsp;开始的下一份工作。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample1_1584.png" srcset="/img/loading.gif" lazyload style="width: 300px;"></strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
+<strong>输出：</strong>120
+<strong>解释：
+</strong>我们选出第 1 份和第 4 份工作， 
+时间范围是 [1-3]+[3-6]，共获得报酬 120 = 50 + 70。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample22_1584.png" srcset="/img/loading.gif" lazyload style="height: 112px; width: 600px;"> </strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60]
+<strong>输出：</strong>150
+<strong>解释：
+</strong>我们选择第 1，4，5 份工作。 
+共获得报酬 150 = 20 + 70 + 60。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample3_1584.png" srcset="/img/loading.gif" lazyload style="height: 112px; width: 400px;"></strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
+<strong>输出：</strong>6
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= startTime.length == endTime.length ==&nbsp;profit.length&nbsp;&lt;= 5 * 10^4</code></li>
+    <li><code>1 &lt;=&nbsp;startTime[i] &lt;&nbsp;endTime[i] &lt;= 10^9</code></li>
+    <li><code>1 &lt;=&nbsp;profit[i] &lt;= 10^4</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：离散化：多次哈希-DPx1"><a href="#方法一：离散化：多次哈希-DPx1" class="headerlink" title="方法一：离散化：多次哈希 + DPx1"></a>方法一：离散化：多次哈希 + DPx1</h2><p>我们将所有出现过的时间记录下来并排序，那么我们就只需要考虑“出现过的时间”这些特殊节点，最多一共$2n$个节点。</p>
+<p>假设一共有$n$个节点（$appearedTime.size() &#x3D; n$），我们建立一个长度为$n$的$dp$数组，其中$dp[i]$代表到时间$appearedTime[i]$为止的最大获利。</p>
+<p>$dp[i] &#x3D; \max{dp[i - 1], dp[第t份工作的开始时间在appearedTime中的下标] + profit[t]}$，其中$endTime[t] &#x3D; appearedTime[i]$</p>
+<p>什么意思呢？就是假如有一份工作在$appearedTime[i]$时刻结束，那么选择这份工作的话获利为$这份工作开始时的最大获利 + 这份工作的工资 &#x3D; dp[这份工作开始时间对应的index] + profit[这份工作]$</p>
+<p>以上所有需要用到的东西，均由哈希表映射即可。</p>
+<h3 id="如何处理出现过的时间节点"><a href="#如何处理出现过的时间节点" class="headerlink" title="如何处理出现过的时间节点"></a>如何处理出现过的时间节点</h3><p>首先将所有出现过的时间放入哈希表中，然后将哈希表中的所有时间取出来，再排个序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n = startTime.<span class="hljs-built_in">size</span>();<br><span class="hljs-comment">// 插入哈希表</span><br>unordered_set&lt;<span class="hljs-type">int</span>&gt; appearedTimeSet;  <span class="hljs-comment">// 所有的出现过的时间</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    appearedTimeSet.<span class="hljs-built_in">insert</span>(startTime[i]);<br>    appearedTimeSet.<span class="hljs-built_in">insert</span>(endTime[i]);<br>&#125;<br><span class="hljs-comment">// 存入数组并排序</span><br>vector&lt;<span class="hljs-type">int</span>&gt; appearedTime;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; t : appearedTimeSet) &#123;<br>    appearedTime.<span class="hljs-built_in">push_back</span>(t);<br>&#125;<br><span class="hljs-built_in">sort</span>(appearedTime.<span class="hljs-built_in">begin</span>(), appearedTime.<span class="hljs-built_in">end</span>());<br></code></pre></td></tr></table></figure>
+
+<h3 id="如何由结束时间映射到这是第几份工作"><a href="#如何由结束时间映射到这是第几份工作" class="headerlink" title="如何由结束时间映射到这是第几份工作"></a>如何由结束时间映射到这是第几份工作</h3><p>将<code>&lt;工作结束时间, 这是第几份工作&gt;</code>插入哈希表，就可以通过<code>工作结束时间</code>获取所有的<code>在这个时间结束的工作</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n = startTime.<span class="hljs-built_in">size</span>();<br><br>unordered_multimap&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; endBy;  <span class="hljs-comment">// &lt;在这个时间结束, 这个任务对应的编号&gt;</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    endBy.<span class="hljs-built_in">insert</span>(&#123;endTime[i], i&#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="如何由工作的开始时间映射到其在appearedTime中的index"><a href="#如何由工作的开始时间映射到其在appearedTime中的index" class="headerlink" title="如何由工作的开始时间映射到其在appearedTime中的index"></a>如何由工作的开始时间映射到其在appearedTime中的index</h3><p>遍历appearedTime中的时间，将<code>&lt;时间, 这个时间的index&gt;</code>插入哈希表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> nTime = appearedTime.<span class="hljs-built_in">size</span>();<br>unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; time2loc;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nTime; i++) &#123;<br>    time2loc[appearedTime[i]] = i;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="动态规划部分怎么实现"><a href="#动态规划部分怎么实现" class="headerlink" title="动态规划部分怎么实现"></a>动态规划部分怎么实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(nTime)</span></span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nTime; i++) &#123;<br>    dp[i] = dp[i - <span class="hljs-number">1</span>];  <span class="hljs-comment">// 继承上一时刻的最大获利</span><br>    <span class="hljs-keyword">auto</span> range = endBy.<span class="hljs-built_in">equal_range</span>(appearedTime[i]);  <span class="hljs-comment">// 结束时间等于appearedTime[i]的所有的工作 在哈希表中存在的范围</span><br>    for_each(range.first, range.second, [&amp;](unordered_multimap&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;::value_type&amp; x) &#123;  <span class="hljs-comment">// 对于在appearedTime[i]结束的每一份工作</span><br>        <span class="hljs-comment">// x.second是这份工作的编号</span><br>        <span class="hljs-comment">// startTime[x.second]是这份工作的开始时间</span><br>        <span class="hljs-comment">// time2loc[startTime[x.second]]是这份工作的开始时间在appearedTime中对应的下标</span><br>        <span class="hljs-comment">// dp[time2loc[startTime[x.second]]是这份工作开始时间的最大获利</span><br>        <span class="hljs-comment">// profit[x.second]是这份工作的获利</span><br>        dp[i] = <span class="hljs-built_in">max</span>(dp[i], dp[time2loc[startTime[x.second]]] + profit[x.second]);<br>    &#125;);<br>&#125;<br><span class="hljs-comment">// dp中的最后一个元素（所有出现过的时刻中的最后一个时刻）即为答案</span><br><span class="hljs-keyword">return</span> dp.<span class="hljs-built_in">back</span>();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度$O(\n log n)$，其中$n$是工作数量，时间复杂度主要来自排序</li>
+<li>空间复杂度$O(n)$，使用了数次哈希表，每次的空间复杂度都是$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jobScheduling</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; startTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; endTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; profit)</span> </span>&#123;<br>        unordered_set&lt;<span class="hljs-type">int</span>&gt; appearedTimeSet;  <span class="hljs-comment">// 所有的出现过的时间</span><br>        unordered_multimap&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; endBy;  <span class="hljs-comment">// &lt;在这个时间结束, 这个任务对应的编号&gt;</span><br>        <span class="hljs-type">int</span> n = startTime.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            appearedTimeSet.<span class="hljs-built_in">insert</span>(startTime[i]);<br>            appearedTimeSet.<span class="hljs-built_in">insert</span>(endTime[i]);<br>            endBy.<span class="hljs-built_in">insert</span>(&#123;endTime[i], i&#125;);<br>        &#125;<br>        vector&lt;<span class="hljs-type">int</span>&gt; appearedTime;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-type">int</span>&amp; t : appearedTimeSet) &#123;<br>            appearedTime.<span class="hljs-built_in">push_back</span>(t);<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(appearedTime.<span class="hljs-built_in">begin</span>(), appearedTime.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> nTime = appearedTime.<span class="hljs-built_in">size</span>();<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; time2loc;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nTime; i++) &#123;<br>            time2loc[appearedTime[i]] = i;<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(nTime)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; nTime; i++) &#123;<br>            dp[i] = dp[i - <span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">auto</span> range = endBy.<span class="hljs-built_in">equal_range</span>(appearedTime[i]);<br>            for_each(range.first, range.second, [&amp;](unordered_multimap&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;::value_type&amp; x) &#123;<br>                dp[i] = <span class="hljs-built_in">max</span>(dp[i], dp[time2loc[startTime[x.second]]] + profit[x.second]);<br>            &#125;);<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;i = %d, appearedTime[%d] = %d, dp[%d] = %d\n&quot;</span>, i, i, appearedTime[i], i, dp[i]);  <span class="hljs-comment">//************</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> dp.<span class="hljs-built_in">back</span>();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二：二分查找-DP"><a href="#方法二：二分查找-DP" class="headerlink" title="方法二：二分查找 + DP"></a>方法二：二分查找 + DP</h2><p>方法一中我们使用了数个哈希表将时间和工作映射了起来</p>
+<p>方法二学习自力扣官解：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-profit-in-job-scheduling/solution/gui-hua-jian-zhi-gong-zuo-by-leetcode-so-gu0e/">https://leetcode.cn/problems/maximum-profit-in-job-scheduling/solution/gui-hua-jian-zhi-gong-zuo-by-leetcode-so-gu0e/</a></p>
+<p>这种方法中，$dp[i]$代表前$i$份兼职工作可以获得的最大报酬。</p>
+<p>因此，$dp[i] &#x3D; \max{dp[i-1], dp[k] + profit[i - 1]}$，其中$k$表示结束时间不超过第$i-1$份工作的开始时间的工作数量</p>
+<p>这个$k$怎么来呢？当然是二分查找</p>
+<p>因此我们还需要对工作按照“结束时间”从小到大排个序。</p>
+<ul>
+<li>时间复杂度$O(\n log n)$，其中$n$是工作数量，时间复杂度主要来自排序</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">jobScheduling</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; startTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; endTime, vector&lt;<span class="hljs-type">int</span>&gt;&amp; profit)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = startTime.<span class="hljs-built_in">size</span>();<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">jobs</span>(n);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            jobs[i] = &#123;startTime[i], endTime[i], profit[i]&#125;;<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(jobs.<span class="hljs-built_in">begin</span>(), jobs.<span class="hljs-built_in">end</span>(), [&amp;](<span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;&amp; a, <span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;&amp; b)&#123;<br>            <span class="hljs-keyword">return</span> a[<span class="hljs-number">1</span>] &lt; b[<span class="hljs-number">1</span>];<br>        &#125;);<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-type">int</span> k = <span class="hljs-built_in">upper_bound</span>(jobs.<span class="hljs-built_in">begin</span>(), jobs.<span class="hljs-built_in">begin</span>() + i - <span class="hljs-number">1</span>, jobs[i - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>], [&amp;](<span class="hljs-type">int</span> st, vector&lt;<span class="hljs-type">int</span>&gt;&amp; job) &#123;<br>                <span class="hljs-keyword">return</span> st &lt; job[<span class="hljs-number">1</span>];<br>            &#125;) - jobs.<span class="hljs-built_in">begin</span>();<br>            dp[i] = <span class="hljs-built_in">max</span>(dp[i - <span class="hljs-number">1</span>], dp[k] + jobs[i - <span class="hljs-number">1</span>][<span class="hljs-number">2</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2022/10/22/LeetCode%201235.%E8%A7%84%E5%88%92%E5%85%BC%E8%81%8C%E5%B7%A5%E4%BD%9C/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127458533">https://letmefly.blog.csdn.net/article/details/127458533</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

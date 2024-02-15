@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1499.满足不等式的最大值：双端队列（一步步讲解）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;max-value-of-equation&#x2F; 给你一个数组 points 和一个整数 k 。数组中每个元素都表示二维平面上的点的坐标，并按照横坐标 x 的值从小到大排序。也就是说 points[i] &#x3D; [xi, yi] ，并且在 1 &lt;&#x3D; i &amp;l">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1499.满足不等式的最大值：双端队列（一步步讲解）">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/LeetCode%201499.%E6%BB%A1%E8%B6%B3%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1499.满足不等式的最大值：双端队列（一步步讲解）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;max-value-of-equation&#x2F; 给你一个数组 points 和一个整数 k 。数组中每个元素都表示二维平面上的点的坐标，并按照横坐标 x 的值从小到大排序。也就是说 points[i] &#x3D; [xi, yi] ，并且在 1 &lt;&#x3D; i &amp;l">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-21T00:28:23.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.392Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="队列">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="滑动窗口">
+<meta property="article:tag" content="单调队列">
+<meta property="article:tag" content="堆（优先队列）">
+<meta property="article:tag" content="双端队列">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1499.满足不等式的最大值：双端队列（一步步讲解） - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1499.满足不等式的最大值：双端队列（一步步讲解）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1499-满足不等式的最大值：双端队列（一步步讲解）"><a href="#【LetMeFly】1499-满足不等式的最大值：双端队列（一步步讲解）" class="headerlink" title="【LetMeFly】1499.满足不等式的最大值：双端队列（一步步讲解）"></a>【LetMeFly】1499.满足不等式的最大值：双端队列（一步步讲解）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-value-of-equation/">https://leetcode.cn/problems/max-value-of-equation/</a></p>
+<p>给你一个数组 <code>points</code> 和一个整数 <code>k</code> 。数组中每个元素都表示二维平面上的点的坐标，并按照横坐标 x 的值从小到大排序。也就是说 <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> ，并且在 <code>1 &lt;= i &lt; j &lt;= points.length</code> 的前提下， <code>x<sub>i</sub> &lt; x<sub>j</sub></code> 总成立。</p>
+
+<p>请你找出<em> </em><code>y<sub>i</sub>&nbsp;+ y<sub>j</sub>&nbsp;+ |x<sub>i</sub>&nbsp;- x<sub>j</sub>|</code> 的 <strong>最大值</strong>，其中 <code>|x<sub>i</sub>&nbsp;- x<sub>j</sub>|&nbsp;&lt;= k</code> 且 <code>1 &lt;= i &lt; j &lt;= points.length</code>。</p>
+
+<p>题目测试数据保证至少存在一对能够满足 <code>|x<sub>i</sub>&nbsp;- x<sub>j</sub>|&nbsp;&lt;= k</code> 的点。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
+<strong>输出：</strong>4
+<strong>解释：</strong>前两个点满足 |x<sub>i</sub>&nbsp;- x<sub>j</sub>| &lt;= 1 ，代入方程计算，则得到值 3 + 0 + |1 - 2| = 4 。第三个和第四个点也满足条件，得到值 10 + -10 + |5 - 6| = 1 。
+没有其他满足条件的点，所以返回 4 和 1 中最大的那个。</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>points = [[0,0],[3,0],[9,2]], k = 3
+<strong>输出：</strong>3
+<strong>解释：</strong>只有前两个点满足 |x<sub>i</sub>&nbsp;- x<sub>j</sub>| &lt;= 3 ，代入方程后得到值 0 + 0 + |0 - 3| = 3 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 &lt;= points.length &lt;= 10^5</code></li>
+    <li><code>points[i].length == 2</code></li>
+    <li><code>-10^8&nbsp;&lt;= points[i][0], points[i][1] &lt;= 10^8</code></li>
+    <li><code>0 &lt;= k &lt;= 2 * 10^8</code></li>
+    <li>对于所有的<code>1 &lt;= i &lt; j &lt;= points.length</code> ，<code>points[i][0] &lt; points[j][0]</code> 都成立。也就是说，<code>x<sub>i</sub></code> 是严格递增的。</li>
+</ul>
+
+
+    
+<h2 id="方法一：双端队列"><a href="#方法一：双端队列" class="headerlink" title="方法一：双端队列"></a>方法一：双端队列</h2><p><strong>先不考虑“必须|xi - xj| &lt;&#x3D; k”：</strong></p>
+<p>要求的是$y_i + y_j + |x_i - x_j| &#x3D; y_i + y_j + (x_j - x_i) &#x3D; (y_i - x_i) + (x_j + y_j)$的最大值，</p>
+<p>我们可以遍历所有点，将已经遍历过的点视为$(x_i, y_i)$，当前正被遍历到的点视为$(x_j, y_j)$。</p>
+<p>使用一个<a href="https://blog.tisfy.eu.org/tags/%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97/">双端队列</a>存放<code>递减</code>的$(y_i - x_i)$，那么对于当前的$(x_j, y_j)$，使用$x_j + y_j$加上最大的（队首的）$(y_i - x_i)$即为最优选择。</p>
+<p>我们要做的，就是维护双端队列的递减特性：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp">q = <span class="hljs-built_in">deque</span>(<span class="hljs-type">int</span>);<br><span class="hljs-keyword">for</span> (xj, yj in points) &#123;<br>    ans = <span class="hljs-built_in">max</span>(ans, (xj + yj) + q[<span class="hljs-number">0</span>]);  <span class="hljs-comment">// q[0]为最大的(yi - xi)</span><br>    <span class="hljs-keyword">while</span> (q非空 &amp;&amp; yj - xj &gt;= q.back) &#123;  <span class="hljs-comment">// 当队尾不大于当前时弹出队尾，使得当前元素入队后队列仍递减</span><br>        q.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>    q.<span class="hljs-built_in">push_back</span>(&#123;yj - xj&#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>接下来加上限制“必须|xi - xj| &lt;&#x3D; k”：</strong></p>
+<p>原理不变，在入队时加上当前点的<code>横坐标</code>这一信息，遍历到点$(x_j, y_j)$时，当队首元素与当前元素横坐标之差大于$k$时，不断弹出队首元素 即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">q = <span class="hljs-built_in">deque</span>(pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;);  <span class="hljs-comment">// 队列中的每个点变成：[yi - xi, x]</span><br><span class="hljs-keyword">for</span> (xj, yj in points) &#123;<br>	<span class="hljs-keyword">while</span> (q非空 &amp;&amp; xj - q[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] &gt; k) &#123;  <span class="hljs-comment">// 加上这一行，满足横坐标之差不大于k</span><br>		q.<span class="hljs-built_in">pop_front</span>();<br>	&#125;<br>    ans = <span class="hljs-built_in">max</span>(ans, (xj + yj) + q[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);  <span class="hljs-comment">// q[0]变为q[0][0]</span><br>    <span class="hljs-keyword">while</span> (q非空 &amp;&amp; yj - xj &gt;= q.back[<span class="hljs-number">0</span>]) &#123;  <span class="hljs-comment">// 这里back变成back[0]</span><br>        q.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>    q.<span class="hljs-built_in">push_back</span>(&#123;yj - xj, xj&#125;);  <span class="hljs-comment">// 这里节点中多存入一个“xj”</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度$O(len(points))$，每个节点最多入队一次出队一次。</li>
+<li>空间复杂度$O(len(points))$，空间复杂度取决于同时在队列中的最大元素数。</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment">yi + yj + |xi - xj| = (yi - xi) + (xj + yj)</span><br><span class="hljs-comment">队列中放从大到小的(yi - xi)</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; pii;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findMaxValueOfEquation</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; points, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = INT_MIN;<br>        deque&lt;pii&gt; q;<br>        <span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-type">int</span>&gt;&amp; point : points) &#123;<br>            <span class="hljs-type">int</span> x = point[<span class="hljs-number">0</span>], y = point[<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>() &amp;&amp; x - q.<span class="hljs-built_in">front</span>().second &gt; k) &#123;<br>                q.<span class="hljs-built_in">pop_front</span>();<br>            &#125;<br>            <span class="hljs-keyword">if</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>                ans = <span class="hljs-built_in">max</span>(ans, x + y + q.<span class="hljs-built_in">front</span>().first);<br>            &#125;<br>            <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>() &amp;&amp; y - x &gt;= q.<span class="hljs-built_in">back</span>().first) &#123;<br>                q.<span class="hljs-built_in">pop_back</span>();<br>            &#125;<br>            q.<span class="hljs-built_in">push_back</span>(&#123;y - x, x&#125;);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import List</span><br><span class="hljs-comment"># from collections import deque</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">findMaxValueOfEquation</span>(<span class="hljs-params">self, points: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        ans = -<span class="hljs-number">1e9</span><br>        q = deque()<br>        <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> points:<br>            <span class="hljs-keyword">while</span> q <span class="hljs-keyword">and</span> x - q[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] &gt; k:<br>                q.popleft()<br>            <span class="hljs-keyword">if</span> q:<br>                ans = <span class="hljs-built_in">max</span>(ans, x + y + q[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>])<br>            <span class="hljs-keyword">while</span> q <span class="hljs-keyword">and</span> q[-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;= y - x:<br>                q.pop()<br>            q.append([y - x, x])<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.tisfy.eu.org/2023/07/21/LeetCode%201499.%E6%BB%A1%E8%B6%B3%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/131844105">https://letmefly.blog.csdn.net/article/details/131844105</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

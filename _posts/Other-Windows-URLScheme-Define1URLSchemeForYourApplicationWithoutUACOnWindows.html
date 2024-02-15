@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LetMeFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL SchemeWhat想不想在浏览器打开&#x2F;控制你的电脑应用？ 比如我在浏览器地址栏输入wegame:&#x2F;&#x2F;后回车会提示是否打开URL:wegame Portocol。  若出现了始终允许选项，你甚至可以写一个Web界面，在始终允许后通过Web控制你的本地程序。 这是怎么实现的呢？很简单，我教你啊">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme">
+<meta property="og:url" content="https://blog.tisfy.eu.org/_posts/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows.html">
+<meta property="og:site_name" content="LetMeFly的LeetCode题解等博客">
+<meta property="og:description" content="Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL SchemeWhat想不想在浏览器打开&#x2F;控制你的电脑应用？ 比如我在浏览器地址栏输入wegame:&#x2F;&#x2F;后回车会提示是否打开URL:wegame Portocol。  若出现了始终允许选项，你甚至可以写一个Web界面，在始终允许后通过Web控制你的本地程序。 这是怎么实现的呢？很简单，我教你啊">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/86380087cf4044cf9414bb8b1e7fd74a.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/4885732667fa42ffb09ca34846010ca0.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/4009f365f50947cf8607f4a1fe143b49.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/55a6bc1432814264a206190c140e02b8.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/dfacf91181e74ee7a35cf877e1e3f304.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/f21c4b246416447ebc04c44c03f67a3e.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/1d7d73b2ece34f42bb070c11d1362caf.png">
+<meta property="article:published_time" content="2024-02-08T14:15:06.000Z">
+<meta property="article:modified_time" content="2024-02-15T02:29:21.404Z">
+<meta property="article:author" content="LetMeFly">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="URL Scheme">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/86380087cf4044cf9414bb8b1e7fd74a.png">
+  
+  
+  
+  <title>Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme - LetMeFly的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.tisfy.eu.org","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Windows-URL-Scheme-在Windows上无管理员权限为你的程序添加URL-Scheme"><a href="#Windows-URL-Scheme-在Windows上无管理员权限为你的程序添加URL-Scheme" class="headerlink" title="Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme"></a>Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme</h1><h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>想不想在浏览器打开&#x2F;控制你的电脑应用？</p>
+<p>比如我在浏览器地址栏输入<code>wegame://</code>后回车会提示<code>是否打开URL:wegame Portocol</code>。</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/86380087cf4044cf9414bb8b1e7fd74a.png" srcset="/img/loading.gif" lazyload alt="wegame:/"></p>
+<p>若出现了<code>始终允许</code>选项，你甚至可以写一个Web界面，在<code>始终允许</code>后通过Web控制你的本地程序。</p>
+<p>这是怎么实现的呢？<span title="覆雪之下喜欢说的一句话">很简单，我教你啊！</span></p>
+<h2 id="要张脑子了"><a href="#要张脑子了" class="headerlink" title="要张脑子了"></a>要张脑子了</h2><p>想要了解这种协议，可以Google<code>URL Scheme</code>。</p>
+<ul>
+<li>在Windows和MacOS上，你可以使用这种协议打开或控制本地应用（也许<a target="_blank" rel="noopener" href="https://github.com/youssef-attai/linux-custom-url-scheme">Linux</a>也行？）</li>
+<li>在Android和iOS上，你可以使用这种协议在应用之间跳转（并传参）</li>
+</ul>
+<p>比如<span title="LX Music">某开源音乐播放器</span>就支持通过<a target="_blank" rel="noopener" href="https://lxmusic.toside.cn/desktop/scheme-url">Scheme URL</a>来控制音乐的播放。</p>
+<p>有了这种协议，你也可以在用户访问你的某个软件的官网时，实现“在xx软件中打开并查看”的功能。</p>
+<p>本篇<b title="主要是安卓苹果我暂时不会">只以</b>Windows为例，演示如何在不需要用户的管理员权限的情况下，为你的应用创建URL Scheme。</p>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><p>只需要向注册表<code>HKEY_LOCAL_MACHINE\Software\Classes</code>或<code>HKEY_CURRENT_USER\Software\Classes</code>中添加一些子键。其中<code>HKEY_LOCAL_MACHINE</code>对所有用户生效，但需要管理员权限。现在以只对当前用户生效的不需要管理员权限的<code>HKEY_CURRENT_USER</code>为例：<span title="这两个位置叫“HKEY_CLASSES_ROOT”" style="color: black; background-color: black">(这两个位置叫“HKEY_CLASSES_ROOT”)</span></p>
+<p>首先<code>Win+R</code>，<code>regedit</code>并<code>回车</code>打开注册表，进入到<code>HKEY_CURRENT_USER\Software\Classes</code>的位置:</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/4885732667fa42ffb09ca34846010ca0.png" srcset="/img/loading.gif" lazyload alt="进入HKEY_CLASSES_ROOT"></p>
+<p>在<code>Classes</code>下<code>右键→新建项</code>并<code>重命名</code>新建的项（文件夹）。这里的名字就是你待会儿在浏览器中输入的scheme。这里以<code>LetTest</code>为例。</p>
+<p>在<code>LetTest</code>文件夹空白处双击<code>默认</code>并修改默认值，这里的值就是浏览器中显示的内容（就像WeGame显示的<code>URL:wegame Portocol</code>）。这里以<code>URL Scheme测试</code>为例。（其实这里的值写成<code>URL:&lt;myapp&gt; Protocol</code>比较规范）</p>
+<p>在<code>LetTest</code>文件夹上或空白处<code>右键→新建→字符串值</code>，名字为<code>URL Protocol</code>（不能更改），值一般为你的可执行程序的位置。这里以<code>F:\OtherApps\Program\Python\Python\python.exe</code>为例。（其实这里写什么都能正常执行，但建议这么写）</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/4009f365f50947cf8607f4a1fe143b49.png" srcset="/img/loading.gif" lazyload alt="next step"></p>
+<p>在<code>LetTest</code>文件夹上依次建立<code>shell→open→command</code>文件夹，其中<code>shell</code>和<code>open</code>的默认值都为空，<code>command</code>的值为你要执行的命令。</p>
+<p>这里的命令一般为<code>&quot;可执行程序&quot; &quot;%1&quot;</code>（其中<code>&quot;%1&quot;</code>为浏览器等传递的参数）。一般为<code>&quot;C:\LetMeFly.exe&quot; &quot;%1&quot;</code>，但是这里以一个简单的Python脚本为例，写为<code>&quot;F:\OtherApps\Program\Python\Python\python.exe&quot; &quot;F:\OtherApps\Program\VsCode\Code\TrySchemeURL\test.py&quot; &quot;%1&quot;</code>。（其中Python.exe的位置和<code>test.py</code>的位置都需要根据实际需求来调整）</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/55a6bc1432814264a206190c140e02b8.png" srcset="/img/loading.gif" lazyload alt="next step 2"></p>
+<p>在<code>F:\OtherApps\Program\VsCode\Code\TrySchemeURL</code>目录下（或其他位置）新建<code>test.py</code>，写入以下内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-built_in">print</span>(sys.argv)<br>os.system(<span class="hljs-string">&#x27;pause&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>在浏览器中输入<code>LetTest://hello/world/?a=1</code>回车，大功告成！</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/dfacf91181e74ee7a35cf877e1e3f304.png" srcset="/img/loading.gif" lazyload alt="原神启动！"></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/f21c4b246416447ebc04c44c03f67a3e.png" srcset="/img/loading.gif" lazyload alt="按任意键进入异世界"></p>
+<p>关于这里为什么显示的是<code>Python</code>而不是<code>URL Scheme测试</code>，我发现<code>command</code>为一个文件的位置时会显示文件名，否则会显示你起的名字。</p>
+<p>你还可以为这个Scheme设置一个图标（虽然在浏览器中也不会显示）：</p>
+<p>在<code>LetTest</code>下新建<code>DefaultIcon</code>项，默认值为图标路径。</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/1d7d73b2ece34f42bb070c11d1362caf.png" srcset="/img/loading.gif" lazyload alt="icon?"></p>
+<h2 id="这描述太详细（太长）了，能否可视化一点"><a href="#这描述太详细（太长）了，能否可视化一点" class="headerlink" title="这描述太详细（太长）了，能否可视化一点"></a>这描述太详细（太长）了，能否可视化一点</h2><p>没问题，结构如下：</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-type">HKEY_CURRENT</span><span class="hljs-type">_USER</span>\<span class="hljs-variable">Software</span>\<span class="hljs-variable">Classes</span><br>    <span class="hljs-variable">LetTest</span><br>        <span class="hljs-punctuation">(</span><span class="hljs-built_in">Default</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">URL</span> <span class="hljs-variable">Scheme</span>测试<br>        <span class="hljs-built_in">URL</span> <span class="hljs-variable">Protocol</span> <span class="hljs-operator">=</span> <br>        <span class="hljs-variable">DefaultIcon</span><br>            <span class="hljs-punctuation">(</span><span class="hljs-built_in">Default</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\favicon.ico&quot;</span><br>        <span class="hljs-variable">Shell</span><br>            <span class="hljs-built_in">Open</span><br>                <span class="hljs-variable">Command</span><br>                    <span class="hljs-punctuation">(</span><span class="hljs-built_in">Default</span><span class="hljs-punctuation">)</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;F:\OtherApps\Program\Python\Python\python.exe&quot;</span> <span class="hljs-string">&quot;F:\OtherApps\Program\VsCode\Code\TrySchemeURL\test.py&quot;</span> <span class="hljs-string">&quot;%1&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>导出的.reg文件为：（双击即可食用）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs regedit">Windows Registry Editor Version 5.00<br><br>[HKEY_CURRENT_USER\SOFTWARE\Classes\LetTest]<br>@=&quot;URL Scheme测试&quot;<br>&quot;URL Protocol&quot;=&quot;F:\\OtherApps\\Program\\Python\\Python\\python.exe&quot;<br><br>[HKEY_CURRENT_USER\SOFTWARE\Classes\LetTest\DefaultIcon]<br>@=&quot;F:\\OtherApps\\Program\\Python\\Python\\python.exe&quot;<br><br>[HKEY_CURRENT_USER\SOFTWARE\Classes\LetTest\shell]<br><br>[HKEY_CURRENT_USER\SOFTWARE\Classes\LetTest\shell\open]<br><br>[HKEY_CURRENT_USER\SOFTWARE\Classes\LetTest\shell\open\command]<br>@=&quot;\&quot;F:\\OtherApps\\Program\\Python\\Python\\python.exe\&quot; \&quot;F:\\OtherApps\\Program\\VsCode\\Code\\TrySchemeURL\\test.py\&quot; \&quot;%1\&quot;&quot;<br></code></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.walterlv.com/post/windows-uri-scheme-association.htm">吕毅的博客</a>写得不错。</li>
+</ul>
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.tisfy.eu.org/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">原文链接</a>哦~<br><a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136083203">https://letmefly.blog.csdn.net/article/details/136083203</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
