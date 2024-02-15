@@ -87,5 +87,5 @@ class Solution:
         return mul - cnt
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/09/LeetCode%201281.%E6%95%B4%E6%95%B0%E7%9A%84%E5%90%84%E4%BD%8D%E7%A7%AF%E5%92%8C%E4%B9%8B%E5%B7%AE/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/09/LeetCode%201281.%E6%95%B4%E6%95%B0%E7%9A%84%E5%90%84%E4%BD%8D%E7%A7%AF%E5%92%8C%E4%B9%8B%E5%B7%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132179859](https://letmefly.blog.csdn.net/article/details/132179859)

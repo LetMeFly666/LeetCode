@@ -155,5 +155,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/05/LeetCode%201944.%E9%98%9F%E5%88%97%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BA%BA%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/05/LeetCode%201944.%E9%98%9F%E5%88%97%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BA%BA%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135416441](https://letmefly.blog.csdn.net/article/details/135416441)

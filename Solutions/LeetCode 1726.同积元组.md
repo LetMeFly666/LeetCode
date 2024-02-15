@@ -99,5 +99,5 @@ class Solution:
         return sum([v * (v - 1) * 4 for _, v in Counter([nums[i] * nums[j] for i in range(len(nums)) for j in range(i + 1, len(nums))]).items()])
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/19/LeetCode%201726.%E5%90%8C%E7%A7%AF%E5%85%83%E7%BB%84/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/19/LeetCode%201726.%E5%90%8C%E7%A7%AF%E5%85%83%E7%BB%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133921549](https://letmefly.blog.csdn.net/article/details/133921549)

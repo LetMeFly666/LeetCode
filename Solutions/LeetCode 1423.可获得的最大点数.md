@@ -126,5 +126,5 @@ class Solution:
         return s - m
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/03/LeetCode%201423.%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%82%B9%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/03/LeetCode%201423.%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E7%82%B9%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134764681](https://letmefly.blog.csdn.net/article/details/134764681)

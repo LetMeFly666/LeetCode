@@ -67,7 +67,7 @@ tags: [题解, LeetCode, 中等, 哈希表, 链表, 双指针]
     
 ## 方法一：哈希表
 
-这道题类似 [LeetCode 141.环形链表](https://leetcode.cn/problems/linked-list-cycle/LeetCode ) ，可参考题解[https://blog.tisfy.eu.org/2022/07/27/LeetCode 0141.环形链表/](https://blog.tisfy.eu.org/2022/07/27/LeetCode%200141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/)的方法一
+这道题类似 [LeetCode 141.环形链表](https://leetcode.cn/problems/linked-list-cycle/LeetCode ) ，可参考题解[https://blog.letmefly.xyz/2022/07/27/LeetCode 0141.环形链表/](https://blog.letmefly.xyz/2022/07/27/LeetCode%200141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/)的方法一
 
 同样地，我们用哈希表记录每个节点是否出现过，之后遍历链表。如果遇到了出现过的节点，那么就说明这个节点是环的开始，直接返回这个节点即可。
 
@@ -137,5 +137,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/28/LeetCode%200142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/28/LeetCode%200142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126030761](https://letmefly.blog.csdn.net/article/details/126030761)

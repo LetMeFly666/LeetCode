@@ -28,7 +28,7 @@ title = ""
 for i in range(2, len(argv)):
     title += argv[i]
 
-solutionURLll = "https://blog.tisfy.eu.org/{0}/LeetCode%20{1:04d}.{2}/".format(time.strftime("%Y/%m/%d", time.localtime()), num, quote(title, "utf-8"))
+solutionURLll = "https://blog.letmefly.xyz/{0}/LeetCode%20{1:04d}.{2}/".format(time.strftime("%Y/%m/%d", time.localtime()), num, quote(title, "utf-8"))
 print(solutionURLll)
 
 with open(nameProblem, "r", encoding="utf-8") as f:

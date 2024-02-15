@@ -102,5 +102,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/02/06/LeetCode%20LCP%2030.%20%E9%AD%94%E5%A1%94%E6%B8%B8%E6%88%8F/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/06/LeetCode%20LCP%2030.%20%E9%AD%94%E5%A1%94%E6%B8%B8%E6%88%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/136053198](https://letmefly.blog.csdn.net/article/details/136053198)

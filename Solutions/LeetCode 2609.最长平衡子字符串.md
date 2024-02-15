@@ -112,5 +112,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/11/08/LeetCode%202609.%E6%9C%80%E9%95%BF%E5%B9%B3%E8%A1%A1%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/08/LeetCode%202609.%E6%9C%80%E9%95%BF%E5%B9%B3%E8%A1%A1%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134296484](https://letmefly.blog.csdn.net/article/details/134296484)

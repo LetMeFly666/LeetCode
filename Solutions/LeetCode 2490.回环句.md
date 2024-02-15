@@ -115,5 +115,5 @@ class Solution:
         return sentence[-1] == sentence[0]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/30/LeetCode%202490.%E5%9B%9E%E7%8E%AF%E5%8F%A5/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/30/LeetCode%202490.%E5%9B%9E%E7%8E%AF%E5%8F%A5/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131468453](https://letmefly.blog.csdn.net/article/details/131468453)

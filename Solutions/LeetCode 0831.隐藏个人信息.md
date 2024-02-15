@@ -258,5 +258,5 @@ class Solution:
         return ["", "+*-", "+**-", "+***-"][len(s) - 10] + "***-***-" + s[-4:]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/01/LeetCode%200831.%E9%9A%90%E8%97%8F%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/01/LeetCode%200831.%E9%9A%90%E8%97%8F%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129893329](https://letmefly.blog.csdn.net/article/details/129893329)

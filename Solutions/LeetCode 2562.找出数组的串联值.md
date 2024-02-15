@@ -131,5 +131,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/12/LeetCode%202562.%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%B2%E8%81%94%E5%80%BC/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/12/LeetCode%202562.%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%B2%E8%81%94%E5%80%BC/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133797249](https://letmefly.blog.csdn.net/article/details/133797249)

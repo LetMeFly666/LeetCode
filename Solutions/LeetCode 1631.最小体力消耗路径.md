@@ -151,5 +151,5 @@ class Solution:
         return ans[-1]
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/11/LeetCode%201631.%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/11/LeetCode%201631.%E6%9C%80%E5%B0%8F%E4%BD%93%E5%8A%9B%E6%B6%88%E8%80%97%E8%B7%AF%E5%BE%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134934684](https://letmefly.blog.csdn.net/article/details/134934684)

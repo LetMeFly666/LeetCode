@@ -344,7 +344,7 @@ https://api.bilibili.com/x/web-interface/view?bvid=BV1ak4y1J7j7
 
 #### torch.cuda.empty_cache()
 
-使用```torch.cuda.empty_cache()```命令可以清除```nvidia```显卡中一些已经不使用的显存。在我的[一个实验](https://blog.tisfy.eu.org/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)中，它能将显存降个十几个G。
+使用```torch.cuda.empty_cache()```命令可以清除```nvidia```显卡中一些已经不使用的显存。在我的[一个实验](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)中，它能将显存降个十几个G。
 
 为什么nviDia要使用这么多的额外空间呢？D君这么做一定有他的道理。
 
@@ -428,5 +428,5 @@ Word中经常需要插入一些公式，但是很多时候需要在公式的最�
 
 # End
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)哦~
-> [https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips](https://blog.tisfy.eu.org/2023/02/21/Other-Accumulation-SomeTips)
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
+> [https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)

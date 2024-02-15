@@ -94,7 +94,7 @@ print(withCache(2, 3))
 
 那么这个修饰器是怎么实现的呢？接下来我们实现一个低配版的cache修饰器
 
-可以参考文章[Python - 函数参数中的*和**](https://blog.tisfy.eu.org/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/)获取函数中的参数
+可以参考文章[Python - 函数参数中的*和**](https://blog.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/)获取函数中的参数
 
 ```python
 dic = {}
@@ -144,5 +144,5 @@ def f(a, b):
 
 其中maxsize代表最大缓存数量，typed代表是否区分数据类型（typed为True的话将会分别缓存不同类型的数据，例如3和3.0）
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/22/Other-Python-CacheDecorator/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129164772](https://letmefly.blog.csdn.net/article/details/129164772)

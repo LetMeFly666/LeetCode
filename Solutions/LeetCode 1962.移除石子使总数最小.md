@@ -103,5 +103,5 @@ class Solution:
         return -sum(piles)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/23/LeetCode%201962.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E4%BD%BF%E6%80%BB%E6%95%B0%E6%9C%80%E5%B0%8F/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/23/LeetCode%201962.%E7%A7%BB%E9%99%A4%E7%9F%B3%E5%AD%90%E4%BD%BF%E6%80%BB%E6%95%B0%E6%9C%80%E5%B0%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135165032](https://letmefly.blog.csdn.net/article/details/135165032)

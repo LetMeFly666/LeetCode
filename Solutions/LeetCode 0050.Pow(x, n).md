@@ -90,5 +90,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/05/25/LeetCode%200050.Pow(x,%20n)/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/05/25/LeetCode%200050.Pow(x,%20n)/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/124972517](https://letmefly.blog.csdn.net/article/details/124972517)

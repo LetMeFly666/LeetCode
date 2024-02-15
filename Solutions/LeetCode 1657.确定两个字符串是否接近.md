@@ -149,5 +149,5 @@ class Solution:
         return bin1 == bin2
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/11/30/LeetCode%201657.%E7%A1%AE%E5%AE%9A%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%8E%A5%E8%BF%91/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/30/LeetCode%201657.%E7%A1%AE%E5%AE%9A%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%8E%A5%E8%BF%91/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134721619](https://letmefly.blog.csdn.net/article/details/134721619)

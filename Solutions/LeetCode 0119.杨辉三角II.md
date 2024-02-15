@@ -64,7 +64,7 @@ tags: [题解, LeetCode, 简单, 数组, 动态规划, 杨辉三角, 原地滚�
 
 那么方法一就是类似[LeetCode 118.杨辉三角](https://letmefly.blog.csdn.net/article/details/125829159)，返回时只返回最后一行即可。
 
-具体思路可参考[https://blog.tisfy.eu.org/2022/07/17/LeetCode 0118.杨辉三角/](https://blog.tisfy.eu.org/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)
+具体思路可参考[https://blog.letmefly.xyz/2022/07/17/LeetCode 0118.杨辉三角/](https://blog.letmefly.xyz/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)
 
 + 时间复杂度$O(N^2)$
 + 空间复杂度$O(N^2)$，因为需要存储整个三角
@@ -124,5 +124,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/18/LeetCode%200119.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92II/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/18/LeetCode%200119.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125853536](https://letmefly.blog.csdn.net/article/details/125853536)

@@ -30,8 +30,8 @@ tags: [其他, 汉语]
 
 同“韬”。多用于人名。
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/)哦~
-> [https://blog.tisfy.eu.org/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/](https://blog.tisfy.eu.org/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/)
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/)哦~
+> [https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/](https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/)
 
 
 [pic-fu]: https://hanyu-word-gif.cdn.bcebos.com/b6deced9cd89548d39ce1077c4e4028bf.gif

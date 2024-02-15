@@ -96,5 +96,5 @@ class Solution:
 
 <center><font size="6px" face="楷体">それわ, steins;gate!</font></center>
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/24/LeetCode%200771.%E5%AE%9D%E7%9F%B3%E4%B8%8E%E7%9F%B3%E5%A4%B4/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/24/LeetCode%200771.%E5%AE%9D%E7%9F%B3%E4%B8%8E%E7%9F%B3%E5%A4%B4/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131888350](https://letmefly.blog.csdn.net/article/details/131888350)

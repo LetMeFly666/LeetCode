@@ -239,5 +239,5 @@ int main() {
 ```
 
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/10/03/AtCoder%20Regular%20Contest%20149%20-%20A%20-%20Repdigit%20Number/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/03/AtCoder%20Regular%20Contest%20149%20-%20A%20-%20Repdigit%20Number/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127149808](https://letmefly.blog.csdn.net/article/details/127149808)

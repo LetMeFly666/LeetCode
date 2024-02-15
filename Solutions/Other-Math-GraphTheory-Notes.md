@@ -78,4 +78,4 @@ tags: [数学, 简单, 图论, Notes]
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/27/Other-Math-GraphTheory-Notes/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/)哦~

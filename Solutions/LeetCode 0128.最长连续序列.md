@@ -140,5 +140,5 @@ public:
 
 数据可能存在很大的偶然性误差，但是上述提交方法一的表现要比方法二优秀
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/21/LeetCode%200128.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/21/LeetCode%200128.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125922929](https://letmefly.blog.csdn.net/article/details/125922929)

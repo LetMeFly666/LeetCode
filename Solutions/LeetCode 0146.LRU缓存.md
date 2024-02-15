@@ -242,5 +242,5 @@ class LRUCache:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/24/LeetCode%200146.LRU%E7%BC%93%E5%AD%98/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/24/LeetCode%200146.LRU%E7%BC%93%E5%AD%98/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133241877](https://letmefly.blog.csdn.net/article/details/133241877)

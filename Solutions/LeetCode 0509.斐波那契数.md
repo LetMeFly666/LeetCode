@@ -362,5 +362,5 @@ public:
 
 因此代入几个$a$就把$x_1,y_1,x_2,y_2$解出来了（$a_0=0,a_1=1,\cdots$）
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/11/06/LeetCode%200509.%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/06/LeetCode%200509.%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127712505](https://letmefly.blog.csdn.net/article/details/127712505)

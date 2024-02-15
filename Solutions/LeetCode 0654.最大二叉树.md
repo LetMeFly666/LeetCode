@@ -189,5 +189,5 @@ func constructMaximumBinaryTree(nums []int) *TreeNode {
 
 BiliBili视频地址： [https://b23.tv/ktZRYxI](https://b23.tv/ktZRYxI)  [_](https://www.bilibili.com/video/BV14N4y1F7tQ)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/20/LeetCode%200654.%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/20/LeetCode%200654.%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126443463](https://letmefly.blog.csdn.net/article/details/126443463)

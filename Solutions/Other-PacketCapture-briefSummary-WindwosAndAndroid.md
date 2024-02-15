@@ -8,7 +8,7 @@ tags: [其他, 抓包, Fiddler, Windows, Android]
 
 ## 前言
 
-小巧且强大的抓包工具“Fiddler”安装可参考我的另一篇博客：[抓包 - 经典抓包工具Fiddler的安装与初使用](https://blog.tisfy.eu.org/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)
+小巧且强大的抓包工具“Fiddler”安装可参考我的另一篇博客：[抓包 - 经典抓包工具Fiddler的安装与初使用](https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/)
 
 本文主要介绍如何使用Fiddler抓包Windows和安卓。
 
@@ -87,5 +87,5 @@ QQ音乐アイドル的“在听”时长有单日2W多分钟的，刚开始我�
 
 好像，，本来就只手机端有效。（电脑端似乎只记当日时长，手机端记时长也记音响力）
 
-> 文章原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/)哦~
+> 文章原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132504020](https://letmefly.blog.csdn.net/article/details/132504020)

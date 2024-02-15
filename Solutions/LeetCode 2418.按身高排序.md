@@ -94,5 +94,5 @@ class Solution:
         return [i[1] for i in a]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/25/LeetCode%202418.%E6%8C%89%E8%BA%AB%E9%AB%98%E6%8E%92%E5%BA%8F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/25/LeetCode%202418.%E6%8C%89%E8%BA%AB%E9%AB%98%E6%8E%92%E5%BA%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130373729](https://letmefly.blog.csdn.net/article/details/130373729)

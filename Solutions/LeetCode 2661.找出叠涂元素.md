@@ -123,5 +123,5 @@ class Solution:
         return -1  # Fake Return
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/01/LeetCode%202661.%E6%89%BE%E5%87%BA%E5%8F%A0%E6%B6%82%E5%85%83%E7%B4%A0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/01/LeetCode%202661.%E6%89%BE%E5%87%BA%E5%8F%A0%E6%B6%82%E5%85%83%E7%B4%A0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134729002](https://letmefly.blog.csdn.net/article/details/134729002)

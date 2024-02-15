@@ -71,5 +71,5 @@ Win10登录界面右下角有个轻松访问图标：
     setSVGDownload();
 </script>
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/)哦~
-> [https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/](https://blog.tisfy.eu.org/2023/07/06/Other-SVG-ToLearnAndToCreate/)
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/)哦~
+> [https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/](https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/)

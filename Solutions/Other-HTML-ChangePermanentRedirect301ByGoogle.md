@@ -53,5 +53,5 @@ server {
 
 这就告诉我们，不要轻易使用301！！！除非已经测试好了，并且真的考虑了接近所有的情况，真的不准备改了，再使用301。。。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/)哦~
-> 原文链接：[https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/](https://blog.tisfy.eu.org/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/)哦~
+> 原文链接：[https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/](https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/)

@@ -114,5 +114,5 @@ else:
 
 <!-- <font color="black" face="楷体" size="5px">每周提前更新菁英班周赛题解，点关注，不迷路</font> -->
 
->原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/21/MaTiJi%20-%20MT2065%20-%20%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83/)哦~
+>原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/21/MaTiJi%20-%20MT2065%20-%20%E6%95%B4%E6%95%B0%E5%A4%A7%E5%B0%8F%E6%AF%94%E8%BE%83/)哦~
 >Tisfy：[https://letmefly.blog.csdn.net/article/details/126455447](https://letmefly.blog.csdn.net/article/details/126455447)

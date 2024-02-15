@@ -97,5 +97,5 @@ class Solution:
         return True
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/07/LeetCode%200383.%E8%B5%8E%E9%87%91%E4%BF%A1/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/07/LeetCode%200383.%E8%B5%8E%E9%87%91%E4%BF%A1/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135438384](https://letmefly.blog.csdn.net/article/details/135438384)

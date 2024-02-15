@@ -125,5 +125,5 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/22/LeetCode%201402.%E5%81%9A%E8%8F%9C%E9%A1%BA%E5%BA%8F/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/22/LeetCode%201402.%E5%81%9A%E8%8F%9C%E9%A1%BA%E5%BA%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133974648](https://letmefly.blog.csdn.net/article/details/133974648)

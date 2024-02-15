@@ -113,5 +113,5 @@ class Solution:
         return dfs()
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/19/LeetCode%201079.%E6%B4%BB%E5%AD%97%E5%8D%B0%E5%88%B7/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/19/LeetCode%201079.%E6%B4%BB%E5%AD%97%E5%8D%B0%E5%88%B7/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130773195](https://letmefly.blog.csdn.net/article/details/130773195)

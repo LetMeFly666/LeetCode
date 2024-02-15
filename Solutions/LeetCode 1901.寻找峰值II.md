@@ -61,7 +61,7 @@ tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分, 矩阵]
 + 时间复杂度$O(nm)$，其中$mat$未$n$行$m$列
 + 空间复杂度$O(1)$
 
-小数据下方法二不一定快于方法一，但其不失为一个不错的思路。阅读前可参考上一题[162.寻找峰值](https://blog.tisfy.eu.org/2023/12/18/LeetCode%200162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/)。
+小数据下方法二不一定快于方法一，但其不失为一个不错的思路。阅读前可参考上一题[162.寻找峰值](https://blog.letmefly.xyz/2023/12/18/LeetCode%200162.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/)。
 
 ## 方法二：二分查找
 
@@ -124,5 +124,5 @@ class Solution:
         return []  # Fake Return
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/19/LeetCode%201901.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BCII/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/19/LeetCode%201901.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BCII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135083347](https://letmefly.blog.csdn.net/article/details/135083347)

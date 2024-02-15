@@ -167,5 +167,5 @@ b.reverse()
 print(" ".join(b))
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/07/CSDN%20-%20CSDN26%E9%A2%98%E8%A7%A3/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/07/CSDN%20-%20CSDN26%E9%A2%98%E8%A7%A3/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128927254](https://letmefly.blog.csdn.net/article/details/128927254)

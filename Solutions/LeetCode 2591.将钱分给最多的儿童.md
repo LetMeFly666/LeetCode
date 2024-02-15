@@ -105,5 +105,5 @@ class Solution:
         return (money - children) // 7
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/22/LeetCode%202591.%E5%B0%86%E9%92%B1%E5%88%86%E7%BB%99%E6%9C%80%E5%A4%9A%E7%9A%84%E5%84%BF%E7%AB%A5/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/22/LeetCode%202591.%E5%B0%86%E9%92%B1%E5%88%86%E7%BB%99%E6%9C%80%E5%A4%9A%E7%9A%84%E5%84%BF%E7%AB%A5/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133167460](https://letmefly.blog.csdn.net/article/details/133167460)

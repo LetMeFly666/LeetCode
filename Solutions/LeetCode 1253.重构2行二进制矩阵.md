@@ -138,5 +138,5 @@ class Solution:
         return ans if cntUpper == upper and cntLower == lower else []
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/29/LeetCode%201253.%E9%87%8D%E6%9E%842%E8%A1%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9F%A9%E9%98%B5/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/29/LeetCode%201253.%E9%87%8D%E6%9E%842%E8%A1%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9F%A9%E9%98%B5/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131448811](https://letmefly.blog.csdn.net/article/details/131448811)

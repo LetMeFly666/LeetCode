@@ -152,5 +152,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/04/LeetCode%202106.%E6%91%98%E6%B0%B4%E6%9E%9C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/04/LeetCode%202106.%E6%91%98%E6%B0%B4%E6%9E%9C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130482457](https://letmefly.blog.csdn.net/article/details/130482457)

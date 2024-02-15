@@ -137,5 +137,5 @@ print(f'v3 = {v3} m/s = {v3 / 1000} km/s')
 
 单位换算：$N = kg·m/s^2$
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/12/Other-Physics-ThreeCosmicVelocities/)哦~
-> 原文链接：[https://blog.tisfy.eu.org/2023/05/12/Other-Physics-ThreeCosmicVelocities/](https://blog.tisfy.eu.org/2023/05/12/Other-Physics-ThreeCosmicVelocities/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/)哦~
+> 原文链接：[https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/](https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/)

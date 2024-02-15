@@ -123,5 +123,5 @@ class Solution:
         return even
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/11/LeetCode%201911.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E4%BA%A4%E6%9B%BF%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/11/LeetCode%201911.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E4%BA%A4%E6%9B%BF%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131652316](https://letmefly.blog.csdn.net/article/details/131652316)

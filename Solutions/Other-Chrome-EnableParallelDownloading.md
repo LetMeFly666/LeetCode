@@ -12,5 +12,5 @@ tags: [其他, Chrome, 谷歌, 谷歌浏览器]
 2. 找到```Parallel downloading```并将```Default```修改为```Enable```。
 3. 重启谷歌浏览器。
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/Other-Chrome-EnableParallelDownloading)哦~
-> [https://blog.tisfy.eu.org/2023/08/25/Other-Chrome-EnableParallelDownloading](https://blog.tisfy.eu.org/2023/08/25/Other-Chrome-EnableParallelDownloading)
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/25/Other-Chrome-EnableParallelDownloading)哦~
+> [https://blog.letmefly.xyz/2023/08/25/Other-Chrome-EnableParallelDownloading](https://blog.letmefly.xyz/2023/08/25/Other-Chrome-EnableParallelDownloading)

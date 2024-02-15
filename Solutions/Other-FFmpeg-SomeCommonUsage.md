@@ -157,5 +157,5 @@ vulkan
 ffmpeg -hwaccel cuda -i 0.mp4 1.flv
 ```
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
-> [https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.tisfy.eu.org/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
+> [https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/)

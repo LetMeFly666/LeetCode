@@ -134,5 +134,5 @@ class Solution:
         return self.ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/30/LeetCode%201110.%E5%88%A0%E7%82%B9%E6%88%90%E6%9E%97/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/30/LeetCode%201110.%E5%88%A0%E7%82%B9%E6%88%90%E6%9E%97/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130941100](https://letmefly.blog.csdn.net/article/details/130941100)

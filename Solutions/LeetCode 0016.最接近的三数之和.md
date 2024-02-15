@@ -45,7 +45,7 @@ tags: [题解, LeetCode, 中等, 数组, 双指针, 排序]
     
 ## 方法一：排序 + 双指针
 
-这道题和昨天的每日一题[0016. 最接近的三数之和](https://blog.tisfy.eu.org/2023/07/09/LeetCode%200015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)几乎一样，昨天是寻找三个数之和为target的数，今天是找到三个数之和最接近target的数。
+这道题和昨天的每日一题[0016. 最接近的三数之和](https://blog.letmefly.xyz/2023/07/09/LeetCode%200015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)几乎一样，昨天是寻找三个数之和为target的数，今天是找到三个数之和最接近target的数。
 
 因此，我们只需要在移动指针lr时，更新一下最优解即可。这里再次讲解一下大致思路：
 
@@ -123,5 +123,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/10/LeetCode%200016.%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/10/LeetCode%200016.%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131631627](https://letmefly.blog.csdn.net/article/details/131631627)

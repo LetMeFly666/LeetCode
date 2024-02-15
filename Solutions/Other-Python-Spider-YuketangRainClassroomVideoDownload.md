@@ -65,5 +65,5 @@ Config = {
 + [ ] 会不会有除了courseChapter.sectionLeafList.leafList的第4层
 + [ ] 多字幕处理（当前有多个字幕的话，只会保存第一个字幕）
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131493348](https://letmefly.blog.csdn.net/article/details/131493348)

@@ -8,7 +8,7 @@ tags: [VsCode, 简单, Docker]
 
 ## 前言
 
-之前在服务器上的[Docker](https://blog.tisfy.eu.org/2023/10/07/Other-Docker-Note/)内开发，文件编辑起来就很不爽。不如**使用VsCode直接打开远程服务器上的Docker**，这样就能在VsCode里直接无缝编辑Docker里的文件了。
+之前在服务器上的[Docker](https://blog.letmefly.xyz/2023/10/07/Other-Docker-Note/)内开发，文件编辑起来就很不爽。不如**使用VsCode直接打开远程服务器上的Docker**，这样就能在VsCode里直接无缝编辑Docker里的文件了。
 
 但是[百度](https://web.archive.org/web/20240122030455/https://www.baidu.com/s?wd=VsCode%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84docker)和[必应](https://web.archive.org/web/20240122030037/https://www.bing.com/search?q=VsCode%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84docker&rdr=1&rdrig=7596A6693EFF4E13AF5DBB24A2105E29)得到的中文结果都很奇葩，都是什么“给docker添加端口映射”、“给服务器开放被映射的端口”、“远程连接到这个端口”就连接到了Docker里。
 
@@ -30,7 +30,7 @@ emm，远程连接一个docker还需要服务器上专门开个端口？还得�
 
 ## End
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135743708](https://letmefly.blog.csdn.net/article/details/135743708)
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>

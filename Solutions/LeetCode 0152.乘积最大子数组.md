@@ -88,5 +88,5 @@ public:
 
 ![运行结果还可以](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c4685fff14d54e5c9b7d6652eae1b6e9.jpeg#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/08/01/LeetCode%200152.%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/01/LeetCode%200152.%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126094071](https://letmefly.blog.csdn.net/article/details/126094071)

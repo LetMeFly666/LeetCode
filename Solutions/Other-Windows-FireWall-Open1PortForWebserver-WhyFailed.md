@@ -76,6 +76,6 @@ description: 无效搜索：windows防火墙开放了端口 局域网还是无�
 
 ## End
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/)哦~
 > [https://letmefly.blog.csdn.net/article/details/135981716](https://letmefly.blog.csdn.net/article/details/135981716)
 

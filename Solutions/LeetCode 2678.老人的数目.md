@@ -85,5 +85,5 @@ class Solution:
         return sum(((ord(d[11]) - ord('0')) * 10 + (ord(d[12]) - ord('0')) > 60) for d in details)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/23/LeetCode%202678.%E8%80%81%E4%BA%BA%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/23/LeetCode%202678.%E8%80%81%E4%BA%BA%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133988079](https://letmefly.blog.csdn.net/article/details/133988079)

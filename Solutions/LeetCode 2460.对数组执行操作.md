@@ -121,5 +121,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/06/05/LeetCode%202460.%E5%AF%B9%E6%95%B0%E7%BB%84%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/05/LeetCode%202460.%E5%AF%B9%E6%95%B0%E7%BB%84%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131046033](https://letmefly.blog.csdn.net/article/details/131046033)

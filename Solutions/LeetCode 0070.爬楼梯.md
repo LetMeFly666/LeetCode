@@ -82,5 +82,5 @@ class Solution:
         return _1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/10/LeetCode%200070.%E7%88%AC%E6%A5%BC%E6%A2%AF/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/10/LeetCode%200070.%E7%88%AC%E6%A5%BC%E6%A2%AF/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134913892](https://letmefly.blog.csdn.net/article/details/134913892)

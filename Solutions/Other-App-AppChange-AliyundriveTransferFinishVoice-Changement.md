@@ -38,5 +38,5 @@ tags: [其他, App, 趣, 整活]
 
 并且，经过不完全测试，提示音似乎只有在阿里云盘处于后台时才会发出。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132096003](https://letmefly.blog.csdn.net/article/details/132096003)

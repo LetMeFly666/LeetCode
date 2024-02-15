@@ -69,7 +69,7 @@ struct Node {
 
 如果这个节点和上一个节点位于同一层，则将上一个节点的**next**指向这一个节点。
 
-有关二叉树的层序遍历可以参考[LeetCode 102. 二叉树的层序遍历](https://blog.tisfy.eu.org/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/)
+有关二叉树的层序遍历可以参考[LeetCode 102. 二叉树的层序遍历](https://blog.letmefly.xyz/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/)
 
 + 时间复杂度$O(N)$，其中$N$是节点的个数
 + 空间复杂度$O(M)$，其中$M$是最后一层的节点的数量
@@ -107,5 +107,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/16/LeetCode%200116.%E5%A1%AB%E5%85%85%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%8F%B3%E4%BE%A7%E8%8A%82%E7%82%B9%E6%8C%87%E9%92%88/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/16/LeetCode%200116.%E5%A1%AB%E5%85%85%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E5%8F%B3%E4%BE%A7%E8%8A%82%E7%82%B9%E6%8C%87%E9%92%88/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125821076](https://letmefly.blog.csdn.net/article/details/125821076)

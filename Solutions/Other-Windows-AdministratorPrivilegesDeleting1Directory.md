@@ -123,5 +123,5 @@ Windows Registry Editor Version 5.00
 1. 设置当选择"runas"选项时要执行的命令，即运行所选可执行文件本身，并传递任何命令行参数。
 1. "IsolatedCommand"值与"command"键相同，用于与旧版Windows的兼容性。
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/)哦~
-> [https://blog.tisfy.eu.org/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/](https://blog.tisfy.eu.org/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/)
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/)哦~
+> [https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/](https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/)

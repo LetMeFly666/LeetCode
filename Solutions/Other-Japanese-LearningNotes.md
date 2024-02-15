@@ -75,5 +75,5 @@ xx型
 |||||
 
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/11/24/Other-Japanese-LearningNotes)哦~
-> [https://blog.tisfy.eu.org/2023/11/24/Other-Japanese-LearningNotes](https://blog.tisfy.eu.org/2023/11/24/Other-Japanese-LearningNotes)
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)哦~
+> [https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)

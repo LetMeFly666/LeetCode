@@ -83,5 +83,5 @@ class Solution:
         return len(citations)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/29/LeetCode%200274.H%E6%8C%87%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/29/LeetCode%200274.H%E6%8C%87%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134099234](https://letmefly.blog.csdn.net/article/details/134099234)

@@ -93,5 +93,5 @@ class Solution:
         return sum((-1 if i % 2 else 1) * (ord(s[i]) - ord('0')) for i in range(len(s)))
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/12/LeetCode%202544.%E4%BA%A4%E6%9B%BF%E6%95%B0%E5%AD%97%E5%92%8C/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/12/LeetCode%202544.%E4%BA%A4%E6%9B%BF%E6%95%B0%E5%AD%97%E5%92%8C/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131673485](https://letmefly.blog.csdn.net/article/details/131673485)

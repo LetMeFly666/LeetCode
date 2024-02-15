@@ -99,5 +99,5 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/12/31/LeetCode%202037.%E4%BD%BF%E6%AF%8F%E4%BD%8D%E5%AD%A6%E7%94%9F%E9%83%BD%E6%9C%89%E5%BA%A7%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/31/LeetCode%202037.%E4%BD%BF%E6%AF%8F%E4%BD%8D%E5%AD%A6%E7%94%9F%E9%83%BD%E6%9C%89%E5%BA%A7%E4%BD%8D%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E5%8A%A8%E6%AC%A1%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128509361](https://letmefly.blog.csdn.net/article/details/128509361)

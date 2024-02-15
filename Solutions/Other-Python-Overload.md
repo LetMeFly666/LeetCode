@@ -168,5 +168,5 @@ Argument is a string
 
 总之，使用```typing```中的```overload```修饰器，可以做到效果不错的“伪重载”。
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/23/Other-Python-Overload/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/23/Other-Python-Overload/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129738983](https://letmefly.blog.csdn.net/article/details/129738983)

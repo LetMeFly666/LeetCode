@@ -159,5 +159,5 @@ class StockPrice:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/08/LeetCode%202034.%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E6%B3%A2%E5%8A%A8/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/08/LeetCode%202034.%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E6%B3%A2%E5%8A%A8/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133677649](https://letmefly.blog.csdn.net/article/details/133677649)

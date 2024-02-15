@@ -106,5 +106,5 @@ free
 
 **对于我的服务器**，MySQL大约会使用300M，远程VSCode在有连接时大约会使用160M，无连接时大约会使用70M，django项目每个约70M，nginx大约会使用5M
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/20/Other-Linux-MysqlMemReduce/)哦~
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129120029](https://letmefly.blog.csdn.net/article/details/129120029)

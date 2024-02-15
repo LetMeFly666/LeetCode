@@ -113,5 +113,5 @@ class Solution:
         return max(self.realRob(nums, 0, len(nums) - 1), self.realRob(nums, 1, len(nums)))
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/17/LeetCode%200213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DII/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/17/LeetCode%200213.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8DII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132945449](https://letmefly.blog.csdn.net/article/details/132945449)

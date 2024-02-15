@@ -72,5 +72,5 @@ class Solution:
         return (arrivalTime + delayedTime) % 24
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/08/LeetCode%202651.%E8%AE%A1%E7%AE%97%E5%88%97%E8%BD%A6%E5%88%B0%E7%AB%99%E6%97%B6%E9%97%B4/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/08/LeetCode%202651.%E8%AE%A1%E7%AE%97%E5%88%97%E8%BD%A6%E5%88%B0%E7%AB%99%E6%97%B6%E9%97%B4/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132753201](https://letmefly.blog.csdn.net/article/details/132753201)

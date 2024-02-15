@@ -100,5 +100,5 @@ class Solution:
         return 0 if ans == 2001 else ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/08/02/LeetCode%200822.%E7%BF%BB%E8%BD%AC%E5%8D%A1%E7%89%87%E6%B8%B8%E6%88%8F/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/08/02/LeetCode%200822.%E7%BF%BB%E8%BD%AC%E5%8D%A1%E7%89%87%E6%B8%B8%E6%88%8F/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132053927](https://letmefly.blog.csdn.net/article/details/132053927)

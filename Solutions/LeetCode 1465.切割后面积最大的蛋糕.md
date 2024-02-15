@@ -110,5 +110,5 @@ class Solution:
         return self.getMax(h, horizontalCuts) * self.getMax(w, verticalCuts) % 1000000007
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/27/LeetCode%201465.%E5%88%87%E5%89%B2%E5%90%8E%E9%9D%A2%E7%A7%AF%E6%9C%80%E5%A4%A7%E7%9A%84%E8%9B%8B%E7%B3%95/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/27/LeetCode%201465.%E5%88%87%E5%89%B2%E5%90%8E%E9%9D%A2%E7%A7%AF%E6%9C%80%E5%A4%A7%E7%9A%84%E8%9B%8B%E7%B3%95/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134073948](https://letmefly.blog.csdn.net/article/details/134073948)

@@ -221,5 +221,5 @@ class Solution:
 + 时间复杂度$O(N)$，其中$N$是节点个数
 + 空间复杂度$O(N2)$，其中$N2$是节点最多的一层的节点数
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125584554](https://letmefly.blog.csdn.net/article/details/125584554)

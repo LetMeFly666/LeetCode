@@ -103,5 +103,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/03/14/LeetCode%200554.%E7%A0%96%E5%A2%99/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/14/LeetCode%200554.%E7%A0%96%E5%A2%99/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/129525388](https://letmefly.blog.csdn.net/article/details/129525388)

@@ -101,5 +101,5 @@ class Solution:
         return len(st)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/10/LeetCode%202696.%E5%88%A0%E9%99%A4%E5%AD%90%E4%B8%B2%E5%90%8E%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%B0%8F%E9%95%BF%E5%BA%A6/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/10/LeetCode%202696.%E5%88%A0%E9%99%A4%E5%AD%90%E4%B8%B2%E5%90%8E%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%80%E5%B0%8F%E9%95%BF%E5%BA%A6/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135511159](https://letmefly.blog.csdn.net/article/details/135511159)

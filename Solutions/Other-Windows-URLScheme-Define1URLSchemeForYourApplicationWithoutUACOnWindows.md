@@ -118,6 +118,6 @@ Windows Registry Editor Version 5.00
 
 + [吕毅的博客](https://blog.walterlv.com/post/windows-uri-scheme-association.htm)写得不错。
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/)哦~
 > [https://letmefly.blog.csdn.net/article/details/136083203](https://letmefly.blog.csdn.net/article/details/136083203)
 

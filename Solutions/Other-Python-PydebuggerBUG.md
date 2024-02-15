@@ -49,5 +49,5 @@ f()
 
 这说明pydebugger中的打印函数的```longlist```将修改的```a```变回了原值。
 
-> 原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/05/Other-Python-PydebuggerBUG)哦~
-> 原文链接：[https://blog.tisfy.eu.org/2023/04/05/Other-Python-PydebuggerBUG](https://blog.tisfy.eu.org/2023/04/05/Other-Python-PydebuggerBUG)
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG)哦~
+> 原文链接：[https://blog.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG](https://blog.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG)

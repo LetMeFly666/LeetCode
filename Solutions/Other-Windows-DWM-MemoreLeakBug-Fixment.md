@@ -73,5 +73,5 @@ tags: [其他, Windows]
 
 啊咧，操作教程，竟然没图？
 
-> 文章原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/)哦~
+> 文章原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/)哦~
 > 同步发文于CSDN：[https://letmefly.blog.csdn.net/article/details/132503580](https://letmefly.blog.csdn.net/article/details/132503580)

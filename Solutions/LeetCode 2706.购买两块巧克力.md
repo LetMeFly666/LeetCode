@@ -91,5 +91,5 @@ class Solution:
         return money if m1 + m2 > money else money - m1 - m2
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/29/LeetCode%202706.%E8%B4%AD%E4%B9%B0%E4%B8%A4%E5%9D%97%E5%B7%A7%E5%85%8B%E5%8A%9B/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/29/LeetCode%202706.%E8%B4%AD%E4%B9%B0%E4%B8%A4%E5%9D%97%E5%B7%A7%E5%85%8B%E5%8A%9B/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135295305](https://letmefly.blog.csdn.net/article/details/135295305)

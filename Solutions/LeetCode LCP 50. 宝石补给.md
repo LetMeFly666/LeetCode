@@ -98,5 +98,5 @@ class Solution:
         return max(gem) - min(gem)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/15/LeetCode%20LCP%2050.%20%E5%AE%9D%E7%9F%B3%E8%A1%A5%E7%BB%99/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/15/LeetCode%20LCP%2050.%20%E5%AE%9D%E7%9F%B3%E8%A1%A5%E7%BB%99/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/132895132](https://letmefly.blog.csdn.net/article/details/132895132)

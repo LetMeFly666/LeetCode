@@ -103,5 +103,5 @@ class Solution:
         return True
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/20/LeetCode%202828.%E5%88%A4%E5%88%AB%E9%A6%96%E5%AD%97%E6%AF%8D%E7%BC%A9%E7%95%A5%E8%AF%8D/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/20/LeetCode%202828.%E5%88%A4%E5%88%AB%E9%A6%96%E5%AD%97%E6%AF%8D%E7%BC%A9%E7%95%A5%E8%AF%8D/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135106811](https://letmefly.blog.csdn.net/article/details/135106811)

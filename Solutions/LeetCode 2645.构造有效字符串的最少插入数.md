@@ -158,5 +158,5 @@ class Solution:
         return cntABC * 3 - len(word)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/11/LeetCode%202645.%E6%9E%84%E9%80%A0%E6%9C%89%E6%95%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%8F%92%E5%85%A5%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/11/LeetCode%202645.%E6%9E%84%E9%80%A0%E6%9C%89%E6%95%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%8F%92%E5%85%A5%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135531917](https://letmefly.blog.csdn.net/article/details/135531917)

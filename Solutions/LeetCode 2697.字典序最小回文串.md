@@ -91,5 +91,5 @@ class Solution:
         return ''.join(li)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/12/13/LeetCode%202697.%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%9B%9E%E6%96%87%E4%B8%B2/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/12/13/LeetCode%202697.%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%9B%9E%E6%96%87%E4%B8%B2/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134964337](https://letmefly.blog.csdn.net/article/details/134964337)

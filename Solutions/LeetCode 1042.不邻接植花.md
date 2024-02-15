@@ -126,5 +126,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/04/15/LeetCode%201042.%E4%B8%8D%E9%82%BB%E6%8E%A5%E6%A4%8D%E8%8A%B1/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/15/LeetCode%201042.%E4%B8%8D%E9%82%BB%E6%8E%A5%E6%A4%8D%E8%8A%B1/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130168403](https://letmefly.blog.csdn.net/article/details/130168403)

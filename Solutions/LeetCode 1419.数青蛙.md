@@ -181,5 +181,5 @@ class Solution {
 }
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/05/06/LeetCode%201419.%E6%95%B0%E9%9D%92%E8%9B%99/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/05/06/LeetCode%201419.%E6%95%B0%E9%9D%92%E8%9B%99/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/130520908](https://letmefly.blog.csdn.net/article/details/130520908)

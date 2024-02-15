@@ -56,7 +56,7 @@ tags: [题解, LeetCode, 中等, 位运算, 数组]
 
 异或结果中，为0的位代表两数这一位也相等，为1的位代表两数的这一位不同。那么，我们就可以根据这个异或结果的“最低一个不为0的位”为依据，将所有的数分为两组。这样，不相同的两个数一定会被分到不同的组中。
 
-这样，对于单个组，只有一个只出现了一次的数字 和 出现了两次的数字，按照[136.只出现一次的数字](https://blog.tisfy.eu.org/2022/07/25/LeetCode%200136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/)的方法分别提取出这两个数了。
+这样，对于单个组，只有一个只出现了一次的数字 和 出现了两次的数字，按照[136.只出现一次的数字](https://blog.letmefly.xyz/2022/07/25/LeetCode%200136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/)的方法分别提取出这两个数了。
 
 关于如何求得一个数二进制下第一个不为0的位，可以依据[lowbit](https://web.letmefly.eu.org/Notes/ACM/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/)的原理。
 
@@ -102,5 +102,5 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/16/LeetCode%200260.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97III/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/16/LeetCode%200260.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97III/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133872707](https://letmefly.blog.csdn.net/article/details/133872707)

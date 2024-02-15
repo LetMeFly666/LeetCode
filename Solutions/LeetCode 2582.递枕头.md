@@ -84,5 +84,5 @@ class Solution:
         return time + 1 if time <= n - 1 else 2 * n - time - 1
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/09/26/LeetCode%202582.%E9%80%92%E6%9E%95%E5%A4%B4/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/26/LeetCode%202582.%E9%80%92%E6%9E%95%E5%A4%B4/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/133294825](https://letmefly.blog.csdn.net/article/details/133294825)

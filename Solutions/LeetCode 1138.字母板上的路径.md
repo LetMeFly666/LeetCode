@@ -192,5 +192,5 @@ class Solution:
         return "".join(ans)
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/02/12/LeetCode%201138.%E5%AD%97%E6%AF%8D%E6%9D%BF%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%84/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/12/LeetCode%201138.%E5%AD%97%E6%AF%8D%E6%9D%BF%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%84/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/128992281](https://letmefly.blog.csdn.net/article/details/128992281)

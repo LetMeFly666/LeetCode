@@ -127,5 +127,5 @@ and the repository exists.
 
 目前可用的方式：ssh的方式连ssh.github.com。别再疯了球球了。
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2024/01/17/LeetCode%202744.%E6%9C%80%E5%A4%A7%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%85%8D%E5%AF%B9%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/01/17/LeetCode%202744.%E6%9C%80%E5%A4%A7%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%85%8D%E5%AF%B9%E6%95%B0%E7%9B%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/135662583](https://letmefly.blog.csdn.net/article/details/135662583)

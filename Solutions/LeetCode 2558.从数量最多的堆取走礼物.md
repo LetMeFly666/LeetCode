@@ -103,5 +103,5 @@ class Solution:
         return -sum(gifts)
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/28/LeetCode%202558.%E4%BB%8E%E6%95%B0%E9%87%8F%E6%9C%80%E5%A4%9A%E7%9A%84%E5%A0%86%E5%8F%96%E8%B5%B0%E7%A4%BC%E7%89%A9/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/28/LeetCode%202558.%E4%BB%8E%E6%95%B0%E9%87%8F%E6%9C%80%E5%A4%9A%E7%9A%84%E5%A0%86%E5%8F%96%E8%B5%B0%E7%A4%BC%E7%89%A9/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134088006](https://letmefly.blog.csdn.net/article/details/134088006)

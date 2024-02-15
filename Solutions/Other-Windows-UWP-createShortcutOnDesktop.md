@@ -41,8 +41,8 @@ shell:AppsFolder
 ## 参考
 
 + [微软Q&A: Desktop shortcut of an UWP app](https://learn.microsoft.com/en-us/answers/questions/69921/desktop-shortcut-of-an-uwp-app)
-+ 网络不好的情况下安装UWP：[https://letmefly.blog.csdn.net/article/details/132257018](https://blog.tisfy.eu.org/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/)
++ 网络不好的情况下安装UWP：[https://letmefly.blog.csdn.net/article/details/132257018](https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/)
 
-> 原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/)哦~
+> 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/)哦~
 > [https://letmefly.blog.csdn.net/article/details/132254567](https://letmefly.blog.csdn.net/article/details/132254567)
 

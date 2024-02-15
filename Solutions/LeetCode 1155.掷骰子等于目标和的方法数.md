@@ -122,5 +122,5 @@ class Solution:
         return dp[-1]
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.tisfy.eu.org/2023/10/24/LeetCode%201155.%E6%8E%B7%E9%AA%B0%E5%AD%90%E7%AD%89%E4%BA%8E%E7%9B%AE%E6%A0%87%E5%92%8C%E7%9A%84%E6%96%B9%E6%B3%95%E6%95%B0/)哦~
+> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/10/24/LeetCode%201155.%E6%8E%B7%E9%AA%B0%E5%AD%90%E7%AD%89%E4%BA%8E%E7%9B%AE%E6%A0%87%E5%92%8C%E7%9A%84%E6%96%B9%E6%B3%95%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/134023955](https://letmefly.blog.csdn.net/article/details/134023955)

@@ -158,5 +158,5 @@ public:
 
 因Py代码较为简洁，故今日将Py代码置于了C艹前。
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.tisfy.eu.org/2023/07/28/LeetCode%202050.%E5%B9%B6%E8%A1%8C%E8%AF%BE%E7%A8%8BIII/)哦~
+> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/28/LeetCode%202050.%E5%B9%B6%E8%A1%8C%E8%AF%BE%E7%A8%8BIII/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/131973511](https://letmefly.blog.csdn.net/article/details/131973511)
