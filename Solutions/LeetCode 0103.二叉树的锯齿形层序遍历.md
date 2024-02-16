@@ -14,6 +14,7 @@ tags: [题解, LeetCode, 中等, 树, 广度优先搜索, BFS, 二叉树, 层序
 
 <p><strong>示例 1：</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg" style="width: 277px; height: 302px;" />
+<!-- <img alt="" src="https://img-blog.csdnimg.cn/direct/57b9ffe3ef2d4e28bd04475c824cbd57.jpeg" style="width: 277px; height: 302px;" /> -->
 <pre>
 <strong>输入：</strong>root = [3,9,20,null,null,15,7]
 <strong>输出：</strong>[[3],[20,9],[15,7]]
