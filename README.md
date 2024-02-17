@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-08 22:25:38
+ * @LastEditTime: 2024-02-17 18:00:31
 -->
 # LetLeet Blog
 
@@ -10,19 +10,19 @@
 
 <table border="0" width="10%">
   <tr>
-    <td><img src="https://img1.github.io/tmp/1.jpg" height="80" width="82"></td>
-    <td><img src="https://img1.github.io/tmp/2.jpg" height="80" width="82"></td>
-    <td><img src="https://img1.github.io/tmp/3.jpg" height="80" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/1.jpg" height="80" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/2.jpg" height="80" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/3.jpg" height="80" width="82"></td>
   </tr>
   <tr>
-    <td><img src="https://img1.github.io/tmp/4.jpg" height="80" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/4.jpg" height="80" width="82"></td>
     <td><img src="https://img.shields.io/github/stars/LetMeFly666/LeetCode.svg?style=social"></td>
-    <td><img src="https://img1.github.io/tmp/6.jpg" height="82" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/6.jpg" height="82" width="82"></td>
   </tr>
    <tr>
-    <td><img src="https://img1.github.io/tmp/7.jpg" height="82" width="82"></td>
-    <td><img src="https://img1.github.io/tmp/8.jpg" height="82" width="82"></td>
-    <td><img src="https://img1.github.io/tmp/9.jpg" height="82" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/7.jpg" height="82" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/8.jpg" height="82" width="82"></td>
+    <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/9.jpg" height="82" width="82"></td>
   </tr>
 </table>
 
@@ -670,7 +670,8 @@
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
 |Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
-|Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203s">CSDN博客</a>|
+|Windows程序互斥锁 - 一个程序同时仅允许运行一个实例|<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136139822">CSDN博客</a>|
+|Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203">CSDN博客</a>|
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
 |Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
 |Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
