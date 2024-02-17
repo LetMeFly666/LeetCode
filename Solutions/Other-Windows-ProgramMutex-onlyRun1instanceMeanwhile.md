@@ -122,6 +122,38 @@ gcc tryLock.c -o tryLock
 
 <small>向下载下来玩玩也可以<a href="https://www.alipan.com/s/UrvvSK4dMYb">点击这里</a>下载。</small>
 
+不传参仅限制单个实例同时运行的简单版本：
+
+```c
+#include <windows.h>
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main(int argc, char* argv[])
+{
+    HANDLE m_hMutex = CreateMutex(NULL, TRUE, "my_app_name");
+    DWORD dwRet = GetLastError();
+ 
+    if (m_hMutex) {
+        if (ERROR_ALREADY_EXISTS == dwRet)
+        {
+            printf("Another Instance Running!\n");
+            CloseHandle(m_hMutex);
+            return 0;
+        }
+    } else {
+        printf("Creating Lock Failed!\n");
+        CloseHandle(m_hMutex);
+        return 0;
+    }
+ 
+    system("pause");
+ 
+    // CloseHandle(m_hMutex);
+    return 0;
+}
+```
+
 ### 通过文件（锁）实现 —— 完美的程序中不推荐
 
 这种方法的思路是：程序启动时创建一个文件，程序结束时删除这个文件。若程序启动时发现这个文件已经存在，则认为有实例正在运行，自己退出。
