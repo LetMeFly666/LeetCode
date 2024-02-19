@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-17 18:00:31
+ * @LastEditTime: 2024-02-19 22:21:16
 -->
 # LetLeet Blog
 
@@ -619,6 +619,7 @@
 |循环队列的纯C语言实现|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
 |分布式操作系统笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/12/16/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |Docker学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/07/Other-Docker-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133633479">CSDN博客</a>|
+|英语学习笔记（自用） - 英语易忘单词等|<a href="https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/">本平台博客</a>|无|
 |离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
 |FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
 |模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
