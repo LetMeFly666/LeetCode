@@ -75,5 +75,30 @@ xx型
 |||||
 
 
+不严谨版本（来自多邻国的日常积累）
+
+|假名|词义|
+|:--|:--|
+|きる|穿|
+|よむ|读|
+|のむ|喝|
+|<hr/>|<hr/>|
+|やさい|蔬菜|
+|すし|寿司|
+|おさけ|酒|
+|てりやき|照烧|
+|<hr/>|<hr/>|
+|きたない|脏的|
+|あまい|甜的|
+|<hr/>|<hr/>|
+|すき|喜欢|
+|ほしい|想要|
+|<hr/>|<hr/>|
+|よる|晚上|
+|<hr/>|<hr/>|
+|おはよう|早（上好）|
+|こんにちわ|你好|
+|さようなら|再见|
+
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)哦~
 > [https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)
