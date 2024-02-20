@@ -18,11 +18,17 @@ tags: [其他, 知识, 英语, Notes]
 |delinquency|n. 违法行为，不良行为|
 |||
 |portrait|n. 肖像，画像<br/>adj. 竖向的，纵向打印格式的|
-|fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行</details>|
+|fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>v. 用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行</details>|
+|telescope|v. (使)叠套缩短, 精简<br/>n. 望远镜|
+|aggravation|n. 加重，恶化|
+|flee|v. 迅速离开，逃避，逃跑<br/><details><summary>例句</summary>The frightened people <font color="#28bea0">fled</font> from the fire.<br/>人们惊恐万状地逃离了火灾现场。</details>|
+|necessitate|<font color="red">v.</font> 使成为必要<br/><details><summary>例句</summary>The team's lack of money necessitated a change of plan.<br/>这个团队经费短缺，让他们必须改变计划。</details>|
 
 
-
-<audio src="https://media-audio1.baydn.com/abc_pub_audio/0b64324d07fbeb886df8091532978174.67ef702e136e3a29a0778b1e9b3c8ffa.mp3"></audio>
+<details>
+<summary>扇贝音频测试</summary>
+<audio controls src="https://media-audio1.baydn.com/abc_pub_audio/0b64324d07fbeb886df8091532978174.67ef702e136e3a29a0778b1e9b3c8ffa.mp3"></audio>
+</details>
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)哦~
 > [https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)
