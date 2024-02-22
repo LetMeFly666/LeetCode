@@ -23,7 +23,9 @@ tags: [其他, 知识, 英语, Notes]
 |aggravation|n. 加重，恶化|
 |flee|v. 迅速离开，逃避，逃跑<br/><details><summary>例句</summary>The frightened people <font color="#28bea0">fled</font> from the fire.<br/>人们惊恐万状地逃离了火灾现场。</details>|
 |necessitate|<font color="red">v.</font> 使成为必要<br/><details><summary>例句</summary>The team's lack of money necessitated a change of plan.<br/>这个团队经费短缺，让他们必须改变计划。</details>|
-
+|||
+|seek|v. 寻找，搜索<br/><details><summary>例句</summary>They <font color="#28bea0">sought</font> in vain for somewhere to shelter.<br/>他们怎么也找不到一个藏身的地方。</details>|
+|endeavor|n. 努力，尽力，尝试<br/>v. 努力，尽力，尝试|
 
 <details>
 <summary>扇贝音频测试</summary>
