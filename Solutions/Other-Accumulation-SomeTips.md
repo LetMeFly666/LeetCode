@@ -112,6 +112,14 @@ F:\CWD>"C:\BatDir\test.bat"
 
 因此发现了一款微软官方的修复程序：[修复阻止程序安装或删除的问题](https://support.microsoft.com/zh-cn/windows/%E4%BF%AE%E5%A4%8D%E9%98%BB%E6%AD%A2%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85%E6%88%96%E5%88%A0%E9%99%A4%E7%9A%84%E9%97%AE%E9%A2%98-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d)，可下载[MicrosoftProgram_Install_and_Uninstall.meta.diagcab](https://download.microsoft.com/download/7/E/9/7E9188C0-2511-4B01-8B4E-0A641EC2F600/MicrosoftProgram_Install_and_Uninstall.meta.diagcab)并运行。（[自解压程序](https://www.alipan.com/s/uGoikCXQxNm)）
 
+### Windows禁用某些Win开头的快捷键
+
+今日按快捷键```Ctrl+C```，不小心按成了```Win+C```，弹出了```Cortana```，还告诉我说“你的语言不可用”。？？？
+
+想要禁用快捷键```Win+C```，需要在注册表```HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced```下新建一个“字符串值”，名为```DisabledHotkeys```，值为```C```。（若想禁用```Win+C```和```Win+S```，则值为```CS```）
+
+重启计算机或重启资源管理器即可生效。
+
 ## About Phone
 
 ### Phone APP 如视VR

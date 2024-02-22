@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-02-19 22:13:59
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-02-22 17:49:43
+-->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
 date: 2024-02-19 22:13:59
@@ -26,6 +32,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |seek|v. 寻找，搜索<br/><details><summary>例句</summary>They <font color="#28bea0">sought</font> in vain for somewhere to shelter.<br/>他们怎么也找不到一个藏身的地方。</details>|
 |endeavor|n. 努力，尽力，尝试<br/>v. 努力，尽力，尝试|
+|||
+|hamper|v. 妨碍，阻碍<br/>(放食物的)带盖大篮子|
+|remuneration|n. 报酬，薪水|
 
 <details>
 <summary>扇贝音频测试</summary>
