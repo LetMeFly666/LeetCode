@@ -58,9 +58,9 @@ tags: [题解, LeetCode, 中等, 树, 数组, 哈希表, 哈希, map, 递归, �
 > + 假设此节点只有<font color='red'>左子树</font>，那么遍历结果为：前序【<font color='gray'>根</font> <font color='red'>左子树</font>】后序【<font color='red'>左子树</font><font color='gray'>根</font>】
 > + 假设此节点只有<font color='blue'>右子树</font>，那么遍历结果为：前序【<font color='gray'>根</font> <font color='blue'>右子树</font>】后序【<font color='blue'>右子树</font><font color='gray'>根</font>】
 >
-> 仅凭遍历结果无法得知到底是<font color='red'>左子树</font>还是<font color='blue'>右子树</font>
+> 二者等价，仅凭遍历结果无法得知到底是<font color='red'>左子树</font>还是<font color='blue'>右子树</font>
 
-因此我们可以按照“只有一个子树的情况下将其还原为左子树”的方式进行建树。
+因此我们可以按照“只有一个子树的情况下将其视为左子树”的方式进行建树。
 
 因此我们可以写一个函数```dfs```接收```前序遍历数组```和```后序遍历数组```作为参数：
 
@@ -77,7 +77,6 @@ tags: [题解, LeetCode, 中等, 树, 数组, 哈希表, 哈希, map, 递归, �
 >    > 因此从```前序遍历数组```中可以得到<font color='red'>左子树</font>的根节点，由这个节点在```后序遍历数组```中的位置，能得到<font color='red'>左子树</font>的长度。
 >    >
 >    > 从而<font color='blue'>右子树</font>的长度也能从任意一个遍历数组中，减去<font color='red'>左子树</font>的长度（减<font color='gray'>根</font>节点的长度）得出。
->    >
 >    >
 
 递归的终止条件为“前序遍历数组为空”，此时返回空节点。
