@@ -296,5 +296,9 @@ bigEnd["三爱两人一终身"]:::white
 </pre>
 {% endraw %}
 
+## 科目二
+
++ 打篮球属于教育
+
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes)哦~
 > [https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes](https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes)
