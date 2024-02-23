@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2024-02-23 10:26:30
 LastEditors: LetMeFly
-LastEditTime: 2024-02-23 10:28:02
+LastEditTime: 2024-02-23 11:32:41
 '''
 # Definition for a binary tree node.
 class TreeNode:
@@ -17,9 +17,9 @@ class Solution:
         q = [root]
         while q:
             cnt = 0
-            for _ in range(len(q)):
-                thisNode = q[0]
-                q = q[1:]
+            thisLayer = q
+            q = []
+            for thisNode in thisLayer:
                 cnt += thisNode.val
                 if thisNode.left:
                     q.append(thisNode.left)
