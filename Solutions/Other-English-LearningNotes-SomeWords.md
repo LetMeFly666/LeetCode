@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-02-19 22:13:59
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-22 17:49:43
+ * @LastEditTime: 2024-02-23 22:55:47
 -->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
@@ -35,6 +35,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |hamper|v. 妨碍，阻碍<br/>(放食物的)带盖大篮子|
 |remuneration|n. 报酬，薪水|
+|||
+|tally|n. 记录，积分表，账<br/>v. 吻合，与...符合|
+|homesick|adj. 思乡的，患思乡病的<br/>n. 思乡病|
+|equilibrium|n. 平衡，安宁|
 
 <details>
 <summary>扇贝音频测试</summary>
