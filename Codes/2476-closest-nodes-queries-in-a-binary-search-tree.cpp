@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-02-24 10:28:49
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-24 10:43:21
+ * @LastEditTime: 2024-02-24 11:04:07
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -20,26 +20,38 @@
  * };
  */
 class Solution {
+private:
+    vector<int> v;
+
+    void dfs(TreeNode* root) {
+        if (!root) {
+            return;
+        }
+        dfs(root->left);
+        v.push_back(root->val);
+        dfs(root->right);
+    }
+
 public:
     vector<vector<int>> closestNodes(TreeNode* root, vector<int>& queries) {
-        vector<int> v;
-        queue<TreeNode*> q;
-        q.push(root);
-        while (q.size()) {
-            TreeNode* thisNode = q.front();
-            q.pop();
-            v.push_back(thisNode->val);
-            if (thisNode->left) {
-                q.push(thisNode->left);
-            }
-            if (thisNode->right) {
-                q.push(thisNode->right);
-            }
-        }
+        dfs(root);
         vector<vector<int>> ans(queries.size());
         for (int i = 0; i < queries.size(); i++) {
-            vector<int>::iterator upper = lower_bound(v.begin(), v.end(), queries[i]);
-
+            int m = -1, M = -1;
+            vector<int>::iterator it = lower_bound(v.begin(), v.end(), queries[i]);
+            if (it != v.end()) {
+                M = *it;
+                if (M == queries[i]) {
+                    m = M;
+                    goto loop;
+                }
+            }
+            if (it != v.begin()) {
+                m = *(it - 1);
+            }
+            loop:
+            ans[i] = {m, M};
         }
+        return ans;
     }
 };
