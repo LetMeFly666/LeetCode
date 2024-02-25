@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-02-19 22:13:59
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-23 22:55:47
+ * @LastEditTime: 2024-02-24 11:31:21
 -->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
@@ -39,6 +39,9 @@ tags: [其他, 知识, 英语, Notes]
 |tally|n. 记录，积分表，账<br/>v. 吻合，与...符合|
 |homesick|adj. 思乡的，患思乡病的<br/>n. 思乡病|
 |equilibrium|n. 平衡，安宁|
+|||
+|notably|adv. 特别，非常，尤其，极大程度上<details><summary>例句</summary>Population has <font color="#28bea0">notably</font> increased over the past three years.<br/>过去三年人口显著增加。</details>|
+|repetition|n. 重复，重复做的事|
 
 <details>
 <summary>扇贝音频测试</summary>
