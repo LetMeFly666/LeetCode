@@ -50,6 +50,45 @@ sudo ufw status
 sudo ufw allow from 192.168.1.0 to any port 3306
 ```
 
+### SheBang
+
+shell脚本文件开头的```#!```，也叫```Sha-bang```（```Sharp bang```的缩写），无正式中文名，有时被翻译为```释伴```（```解释伴随行```的简称）。
+
+位于文件开头，指定解释器（若无对应解释器则使用默认shell执行）
+
+
+<details>
+<summary>代码示例</summary>
+
+```shell
+#!/bin/bash
+echo $SHELL
+
+parent_pid=$(ps -p $$ -o ppid=)  # 获取当前脚本的父进程ID
+current_shell=$(ps -p $parent_pid -o comm=)  # 查询父进程的命令名
+echo $current_shell
+
+if [ -n "$BASH_VERSION" ]; then
+    echo "Bash path: $BASH: $BASH_VERSION"
+else
+    echo "This script is not running in Bash."
+fi
+
+interpreter=$(tr '\0' ' ' < /proc/$$/cmdline | cut -d ' ' -f 1)
+echo "Interpreter: $interpreter"
+```
+
+运行结果
+
+```
+/bin/zsh
+zsh
+Bash path: /bin/bash: 5.0.17(1)-release
+Interpreter: /bin/bash
+```
+
+</details>
+
 ## About Windows
 
 ### Windows应用商店安装的应用
