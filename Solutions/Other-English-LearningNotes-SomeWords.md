@@ -1,9 +1,3 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2024-02-19 22:13:59
- * @LastEditors: LetMeFly
- * @LastEditTime: 2024-02-24 11:31:21
--->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
 date: 2024-02-19 22:13:59
@@ -42,6 +36,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |notably|adv. 特别，非常，尤其，极大程度上<details><summary>例句</summary>Population has <font color="#28bea0">notably</font> increased over the past three years.<br/>过去三年人口显著增加。</details>|
 |repetition|n. 重复，重复做的事|
+|||
+|elaborate|adj. 复杂的，精致的<br/>v. 详细说明，精心制作|
+|harness|v. 控制（利用），驾驭<br/>n. 马具|
 
 <details>
 <summary>扇贝音频测试</summary>
