@@ -1,0 +1,712 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;advantage-shuffle&#x2F; 给定两个大小相等的数组&nbsp;nums1&nbsp;和&nbsp;nums2，nums1&nbsp;相对于 nums&nbsp;的优势可以用满足&nbsp;nums1[i] &gt; nums2[i]&amp;n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="870.优势洗牌">
+<meta property="og:url" content="https://blog.letmefly.xyz/2022/10/08/LeetCode%200870.%E4%BC%98%E5%8A%BF%E6%B4%97%E7%89%8C/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;advantage-shuffle&#x2F; 给定两个大小相等的数组&nbsp;nums1&nbsp;和&nbsp;nums2，nums1&nbsp;相对于 nums&nbsp;的优势可以用满足&nbsp;nums1[i] &gt; nums2[i]&amp;n">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-08T05:18:20.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.218Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>870.优势洗牌 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="870.优势洗牌"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-08 13:18" pubdate>
+          2022年10月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">870.优势洗牌</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心）-870-优势洗牌"><a href="#【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心）-870-优势洗牌" class="headerlink" title="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌"></a>【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/advantage-shuffle/">https://leetcode.cn/problems/advantage-shuffle/</a></p>
+<p>给定两个大小相等的数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code>，<code>nums1</code>&nbsp;相对于 <code>nums</code>&nbsp;的<em>优势</em>可以用满足&nbsp;<code>nums1[i] &gt; nums2[i]</code>&nbsp;的索引 <code>i</code>&nbsp;的数目来描述。</p>
+
+<p>返回 <font color="#c7254e" face="Menlo, Monaco, Consolas, Courier New, monospace" size="1"><span style="background-color: rgb(249, 242, 244);">nums1</span></font>&nbsp;的<strong>任意</strong>排列，使其相对于 <code>nums2</code>&nbsp;的优势最大化。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums1 = [2,7,11,15], nums2 = [1,10,4,11]
+<strong>输出：</strong>[2,11,7,15]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums1 = [12,24,8,32], nums2 = [13,25,32,11]
+<strong>输出：</strong>[24,32,8,12]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= nums1.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>nums2.length == nums1.length</code></li>
+    <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：田忌赛马（贪心）"><a href="#方法一：田忌赛马（贪心）" class="headerlink" title="方法一：田忌赛马（贪心）"></a>方法一：田忌赛马（贪心）</h2><p>思路很简单，就是：</p>
+<blockquote>
+<p>从对手战力最弱的🐎开始，每次从 自己未出场 且 战力大于对手的这匹🐎 的🐎中，挑选战力最小的一匹。<br>若无🐎可敌，则<strong>开始摆烂</strong></p>
+</blockquote>
+<p>举个例子，假如自己的五匹马的战力为<code>12、24、8、32、6</code>，对手的五匹马的战力为<code>13、25、32、11、998</code></p>
+<p>从对手的战力最弱的🐎开始，先看对手战力为<code>11</code>的🐎，再看战力为<code>13</code>的🐎，再看<code>25</code>，再看<code>32</code>，最后看<code>998</code></p>
+<ol>
+<li>对于对手的<code>11</code>，自己的🐎中，未出场 且 战力大于<code>11</code>的有<code>12、24、32</code>，其中战力最小的是<code>12</code>，因此选派自己的<code>12</code>对抗对手的<code>11</code></li>
+<li>对于对手的<code>13</code>，自己的🐎中，未出场 且 战力大于<code>13</code>的有<code>24、32</code>，其中战力最小的是<code>24</code>，因此选派自己的<code>24</code>对抗对手的<code>13</code></li>
+<li>对于对手的<code>25</code>，自己的🐎中，未出场 且 战力大于<code>25</code>的有<code>32</code>，其中战力最小的是<code>32</code>，因此选派自己的<code>32</code>对抗对手的<code>25</code></li>
+<li>对于对手的<code>32</code>，自己的🐎中，没有 未出场 且 战力大于<code>32</code>的🐎，<strong>无🐎可敌，开始摆烂！</strong></li>
+</ol>
+<p>怎么摆烂呢？反正也赢不了了，那么就在自己未出场的🐎中随便上吧！上谁都无所谓，反正也赢不了。</p>
+<p>对面还有两匹马<code>32、998</code>没有对手，自己还有两匹马<code>8、6</code>没有出场。那就用自己的<code>8</code>对抗对手的<code>32</code>，自己的<code>6</code>对抗对手的<code>998</code>好了。</p>
+<p>因此，对于对手的出场顺序（数组2）<code>[13, 25, 32, 11, 998]</code>，我们的回敬（打乱的数组1）是：<code>[24, 32, 8, 12, 6]</code></p>
+<p>能胜三场，还行还行。</p>
+<p><strong>那么编程怎么实现呢？</strong></p>
+<p>其实不难发现，我们在挑选对手和自己的🐎时，在背后默默进行了排序操作。</p>
+<p>我们将对手的<code>[13, 25, 32, 11, 998]</code>默默排序成了<code>[11, 13, 25, 32, 998]</code>作为出场顺序；我们将自己的<code>[12, 24, 8, 32, 6]</code>默默排序成了<code>[6, 8, 12, 24, 32]</code>以方便选取“大于敌方且尽可能小”的🐎。</p>
+<p>但是需要注意的是，对手的马匹排序后，原始顺序不能丢失，因为我们默默地将对手马匹按战力排序了，对手可不会因为你的排序而改变自己的出场顺序。</p>
+<p>因此，在对对手的马匹进行排序前，不如先做个手脚：将对手的&lt;马匹战力, 出场编号&gt;进行绑定，依据战力排序，排序后出厂编号信息不会丢失。</p>
+<p>至于自己的🐎，用一个“指针”记录当前判断到了哪一匹，如果这一匹马的战力不大于当前遍历到的对手的🐎的战力，就指针后移，找到第一个大于对手战力的位置，就是自己“未出场 且 战力大于对手”的🐎中，战力最小的那匹。 （若自己这匹马战力不足，那么指针后移之前，记得将这匹马标记或者存起来，表示“指针扫过了但是未出场”，以到最后和敌方的“无敌之🐎”进行摆烂）</p>
+<ul>
+<li>时间复杂度$O(n\log n)$，其中$n$是马匹个数。排序的时间复杂度是$O(n\log n)$，选马的时间复杂度是$O(n)$</li>
+<li>空间复杂度$O(n)$。我们使用了额外的空间来记录对手马匹的“出场编号”信息（$O(n)$），且使用了额外空间记录了自己“指针扫过但因战力不足而未出场的🐎”（$O(n)$）；排序的空间复杂度是$O(\log n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; pii;  <span class="hljs-comment">// &lt;战力, 出场编号&gt;</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">advantageCount</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums1, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums2)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = nums1.<span class="hljs-built_in">size</span>();<br>		<span class="hljs-comment">// 记录对手(nums2)出场顺序信息</span><br>        <span class="hljs-function">vector&lt;pii&gt; <span class="hljs-title">tempNums2</span><span class="hljs-params">(n)</span></span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            tempNums2[i] = &#123;nums2[i], i&#125;;<br>        &#125;<br>		<span class="hljs-comment">// 对对手、自己马匹排序</span><br>        <span class="hljs-built_in">sort</span>(tempNums2.<span class="hljs-built_in">begin</span>(), tempNums2.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">sort</span>(nums1.<span class="hljs-built_in">begin</span>(), nums1.<span class="hljs-built_in">end</span>());<br><br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ans</span><span class="hljs-params">(n)</span></span>;  <span class="hljs-comment">// ans存放最终答案</span><br>        <span class="hljs-type">int</span> loc1 = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 自己的马匹的“指针”</span><br>        vector&lt;<span class="hljs-type">int</span>&gt; unused;  <span class="hljs-comment">// 指针扫过但未出场的马，留着摆烂使用</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;  <span class="hljs-comment">// 遍历对手马</span><br>            <span class="hljs-keyword">while</span> (loc1 &lt; n &amp;&amp; nums1[loc1] &lt;= tempNums2[i].first) &#123;  <span class="hljs-comment">// 自己的马战力不足</span><br>                unused.<span class="hljs-built_in">push_back</span>(nums1[loc1]);  <span class="hljs-comment">// 放入“未使用数组”</span><br>                loc1++;  <span class="hljs-comment">// 指针后移</span><br>            &#125;<br>            <span class="hljs-keyword">if</span> (loc1 == n) &#123;  <span class="hljs-comment">// 指针到数组尾部，扫描完毕，无高战力马可出场，开始摆烂，摆烂完退出循环</span><br>                <span class="hljs-type">int</span> locUnused = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 为了遍历“未使用数组”</span><br>                <span class="hljs-keyword">while</span> (i &lt; n) &#123;  <span class="hljs-comment">// 为后面所有的“对手无敌马”分配自己的“摆烂马”</span><br>                    ans[tempNums2[i++].second] = unused[locUnused++];<br>                &#125;<br>                <span class="hljs-keyword">break</span>;  <span class="hljs-comment">// 摆烂完退出循环</span><br>            &#125;<br>            ans[tempNums2[i].second] = nums1[loc1++];  <span class="hljs-comment">// 为对手的彼马分配自己的 未使用且战力更强 的战力尽可能小马</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/08/LeetCode%200870.%E4%BC%98%E5%8A%BF%E6%B4%97%E7%89%8C/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127207642">https://letmefly.blog.csdn.net/article/details/127207642</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/">#中等</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>870.优势洗牌</div>
+      <div>https://blog.letmefly.xyz/2022/10/08/LeetCode 0870.优势洗牌/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/08/LeetCode%200368.%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/" title="368.最大整除子集">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">368.最大整除子集</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/07/LeetCode%201800.%E6%9C%80%E5%A4%A7%E5%8D%87%E5%BA%8F%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/" title="1800.最大升序子数组和">
+                        <span class="hidden-mobile">1800.最大升序子数组和</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

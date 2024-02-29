@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】2581.统计可能的树根数目：换根DP(树形DP)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-number-of-possible-root-nodes&#x2F; Alice 有一棵 n 个节点的树，节点编号为 0 到 n - 1 。树用一个长度为 n - 1 的二维整数数组 edges 表示，其中 edges[i] &#x3D; [ai, bi] ，表示">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2581.统计可能的树根数目">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%202581.%E7%BB%9F%E8%AE%A1%E5%8F%AF%E8%83%BD%E7%9A%84%E6%A0%91%E6%A0%B9%E6%95%B0%E7%9B%AE.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】2581.统计可能的树根数目：换根DP(树形DP)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-number-of-possible-root-nodes&#x2F; Alice 有一棵 n 个节点的树，节点编号为 0 到 n - 1 。树用一个长度为 n - 1 的二维整数数组 edges 表示，其中 edges[i] &#x3D; [ai, bi] ，表示">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2022/12/19/ex-1.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2022/12/19/ex-2.png">
+<meta property="og:image" content="https://assets.leetcode.cn/solution-static/2581/2581.png">
+<meta property="article:published_time" content="2024-02-29T06:48:27.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.226Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="树形DP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2022/12/19/ex-1.png">
+  
+  
+  
+  <title>2581.统计可能的树根数目 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2581.统计可能的树根数目"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】2581-统计可能的树根数目：换根DP-树形DP"><a href="#【LetMeFly】2581-统计可能的树根数目：换根DP-树形DP" class="headerlink" title="【LetMeFly】2581.统计可能的树根数目：换根DP(树形DP)"></a>【LetMeFly】2581.统计可能的树根数目：换根DP(树形DP)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-number-of-possible-root-nodes/">https://leetcode.cn/problems/count-number-of-possible-root-nodes/</a></p>
+<p>Alice 有一棵 <code>n</code> 个节点的树，节点编号为 <code>0</code> 到 <code>n - 1</code> 。树用一个长度为 <code>n - 1</code> 的二维整数数组 <code>edges</code> 表示，其中 <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> ，表示树中节点 <code>a<sub>i</sub></code> 和 <code>b<sub>i</sub></code> 之间有一条边。</p>
+
+<p>Alice 想要 Bob 找到这棵树的根。她允许 Bob 对这棵树进行若干次 <strong>猜测</strong> 。每一次猜测，Bob 做如下事情：</p>
+
+<ul>
+    <li>选择两个 <strong>不相等</strong>&nbsp;的整数&nbsp;<code>u</code> 和&nbsp;<code>v</code>&nbsp;，且树中必须存在边&nbsp;<code>[u, v]</code>&nbsp;。</li>
+    <li>Bob 猜测树中&nbsp;<code>u</code>&nbsp;是&nbsp;<code>v</code>&nbsp;的 <strong>父节点</strong>&nbsp;。</li>
+</ul>
+
+<p>Bob 的猜测用二维整数数组&nbsp;<code>guesses</code> 表示，其中&nbsp;<code>guesses[j] = [u<sub>j</sub>, v<sub>j</sub>]</code>&nbsp;表示 Bob 猜&nbsp;<code>u<sub>j</sub></code> 是&nbsp;<code>v<sub>j</sub></code>&nbsp;的父节点。</p>
+
+<p>Alice 非常懒，她不想逐个回答&nbsp;Bob 的猜测，只告诉 Bob 这些猜测里面 <strong>至少</strong>&nbsp;有&nbsp;<code>k</code>&nbsp;个猜测的结果为&nbsp;<code>true</code>&nbsp;。</p>
+
+<p>给你二维整数数组 <code>edges</code>&nbsp;，Bob 的所有猜测和整数&nbsp;<code>k</code>&nbsp;，请你返回可能成为树根的&nbsp;<strong>节点数目</strong>&nbsp;。如果没有这样的树，则返回 <code>0</code>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/19/ex-1.png" srcset="/img/loading.gif" lazyload style="width: 727px; height: 250px;" /></p>
+
+<pre>
+<b>输入：</b>edges = [[0,1],[1,2],[1,3],[4,2]], guesses = [[1,3],[0,1],[1,0],[2,4]], k = 3
+<b>输出：</b>3
+<b>解释：</b>
+根为节点 0 ，正确的猜测为 [1,3], [0,1], [2,4]
+根为节点 1 ，正确的猜测为 [1,3], [1,0], [2,4]
+根为节点 2 ，正确的猜测为 [1,3], [1,0], [2,4]
+根为节点 3 ，正确的猜测为 [1,0], [2,4]
+根为节点 4 ，正确的猜测为 [1,3], [1,0]
+节点 0 ，1 或 2 为根时，可以得到 3 个正确的猜测。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><img alt="" src="https://assets.leetcode.com/uploads/2022/12/19/ex-2.png" srcset="/img/loading.gif" lazyload style="width: 600px; height: 303px;" /></p>
+
+<pre>
+<b>输入：</b>edges = [[0,1],[1,2],[2,3],[3,4]], guesses = [[1,0],[3,4],[2,1],[3,2]], k = 1
+<b>输出：</b>5
+<b>解释：</b>
+根为节点 0 ，正确的猜测为 [3,4]
+根为节点 1 ，正确的猜测为 [1,0], [3,4]
+根为节点 2 ，正确的猜测为 [1,0], [2,1], [3,4]
+根为节点 3 ，正确的猜测为 [1,0], [2,1], [3,2], [3,4]
+根为节点 4 ，正确的猜测为 [1,0], [2,1], [3,2]
+任何节点为根，都至少有 1 个正确的猜测。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>edges.length == n - 1</code></li>
+    <li><code>2 &lt;= n &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= guesses.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>0 &lt;= a<sub>i</sub>, b<sub>i</sub>, u<sub>j</sub>, v<sub>j</sub> &lt;= n - 1</code></li>
+    <li><code>a<sub>i</sub> != b<sub>i</sub></code></li>
+    <li><code>u<sub>j</sub> != v<sub>j</sub></code></li>
+    <li><code>edges</code>&nbsp;表示一棵有效的树。</li>
+    <li><code>guesses[j]</code>&nbsp;是树中的一条边。</li>
+    <li><code>guesses</code>&nbsp;是唯一的。</li>
+    <li><code>0 &lt;= k &lt;= guesses.length</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：换根DP-树形DP"><a href="#方法一：换根DP-树形DP" class="headerlink" title="方法一：换根DP(树形DP)"></a>方法一：换根DP(树形DP)</h2><p>首先我们可以把所有的猜想都存入哈希表中，以便对于某条边，能快速知道其是否有被猜过。</p>
+<blockquote>
+<p>由于节点范围是$10^5$，因此可以将$父节点 \times 10^6 + 子节点$作为哈希表的键值。（注意可能会超32位整数）</p>
+</blockquote>
+<p>假如只问“<code>0</code>”为根的话猜中次数是否$\geq k$，那么我们只需要从$0$开始对树进行深度优先搜索：</p>
+<blockquote>
+<p>搜索过程中统计边被猜中的次数（借助哈希表可以在$O(1)$时间内完成一次查询），搜索结束后判断是否$\geq k$。</p>
+</blockquote>
+<p>现在要问“各个节点”为根的话猜中次数。怎么办？在原有结果的基础上再DP一次即可：</p>
+<blockquote>
+<p>假设在现有的基础上，<code>x</code>是<code>y</code>的父节点。此时有<code>cnt</code>个猜中的边。若把<code>y</code>变成<code>x</code>的父节点呢？</p>
+<p><img src="https://assets.leetcode.cn/solution-static/2581/2581.png" srcset="/img/loading.gif" lazyload alt="来自LeetCode官方题解的“树换根图”"></p>
+<p>变化的只有<code>x</code>与<code>y</code>之间的一条边。</p>
+<p>若有猜<code>(x, y)</code>，则猜中次数$cnt-1$；若有猜<code>(y, x)</code>，则猜中次数$cnt+1$。</p>
+<p>DP过程中（其实就是沿边走的过程）不断将父子关系对调，并统计$cnt\geq k$的个数即为答案。</p>
+</blockquote>
+<ul>
+<li>时间复杂度$O(N + M)$，其中$N$是树的节点个数，$M&#x3D;len(guesses)$</li>
+<li>空间复杂度$O(N+M)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> cnt;  <span class="hljs-comment">// 以0为根时答对的数目</span><br>    <span class="hljs-type">int</span> ans;<br>    <span class="hljs-type">int</span> k;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; graph;<br>    unordered_set&lt;ll&gt; se;<br><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> thisNode, <span class="hljs-type">int</span> lastNode=<span class="hljs-number">-1</span>)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nextNode : graph[thisNode]) &#123;<br>            <span class="hljs-keyword">if</span> (nextNode == lastNode) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (se.<span class="hljs-built_in">count</span>((ll)thisNode * <span class="hljs-number">1000000</span> + nextNode)) &#123;<br>                cnt++;<br>            &#125;<br>            <span class="hljs-built_in">dfs</span>(nextNode, thisNode);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">change</span><span class="hljs-params">(<span class="hljs-type">int</span> thisNode, <span class="hljs-type">int</span> lastNode, <span class="hljs-type">int</span> cnt)</span> </span>&#123;<br>        <span class="hljs-type">int</span> cnt_bak = cnt;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nextNode : graph[thisNode]) &#123;<br>            <span class="hljs-keyword">if</span> (nextNode == lastNode) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (se.<span class="hljs-built_in">count</span>((ll)thisNode * <span class="hljs-number">1000000</span> + nextNode)) &#123;<br>                cnt--;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (se.<span class="hljs-built_in">count</span>((ll)nextNode * <span class="hljs-number">1000000</span> + thisNode)) &#123;<br>                cnt++;<br>            &#125;<br>            ans += cnt &gt;= k;<br>            <span class="hljs-built_in">change</span>(nextNode, thisNode, cnt);<br>            cnt = cnt_bak;<br>        &#125;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rootCount</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; edges, vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; guesses, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        graph.<span class="hljs-built_in">resize</span>(edges.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-type">int</span>&gt;&amp; edge : edges) &#123;<br>            graph[edge[<span class="hljs-number">0</span>]].<span class="hljs-built_in">push_back</span>(edge[<span class="hljs-number">1</span>]);<br>            graph[edge[<span class="hljs-number">1</span>]].<span class="hljs-built_in">push_back</span>(edge[<span class="hljs-number">0</span>]);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-type">int</span>&gt;&amp; guess : guesses) &#123;<br>            se.<span class="hljs-built_in">insert</span>((ll)guess[<span class="hljs-number">0</span>] * <span class="hljs-number">1000000</span> + guess[<span class="hljs-number">1</span>]);<br>        &#125;<br>        cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">this</span>-&gt;k = k;<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);<br>        ans = cnt &gt;= k;<br>        <span class="hljs-built_in">change</span>(<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, cnt);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:  <span class="hljs-comment"># AC,100.00%,92.59%</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">self, thisNode: <span class="hljs-built_in">int</span>, lastNode: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">for</span> nextNode <span class="hljs-keyword">in</span> self.graph[thisNode]:<br>            <span class="hljs-keyword">if</span> nextNode == lastNode:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> (thisNode * <span class="hljs-number">1000000</span> + nextNode) <span class="hljs-keyword">in</span> self.se:<br>                self.cnt += <span class="hljs-number">1</span><br>            self.dfs(nextNode, thisNode)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">change</span>(<span class="hljs-params">self, thisNode: <span class="hljs-built_in">int</span>, lastNode: <span class="hljs-built_in">int</span>, cnt: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        cnt_bak = cnt<br>        <span class="hljs-keyword">for</span> nextNode <span class="hljs-keyword">in</span> self.graph[thisNode]:<br>            <span class="hljs-keyword">if</span> nextNode == lastNode:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> (thisNode * <span class="hljs-number">1000000</span> + nextNode) <span class="hljs-keyword">in</span> self.se:<br>                cnt -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> (nextNode * <span class="hljs-number">1000000</span> + thisNode) <span class="hljs-keyword">in</span> self.se:<br>                cnt += <span class="hljs-number">1</span><br>            self.ans += cnt &gt;= self.k<br>            self.change(nextNode, thisNode, cnt)<br>            cnt = cnt_bak            <br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rootCount</span>(<span class="hljs-params">self, edges: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], guesses: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        self.graph = [[] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(edges) + <span class="hljs-number">1</span>)]<br>        <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> edges:<br>            self.graph[x].append(y)<br>            self.graph[y].append(x)<br>        self.se = <span class="hljs-built_in">set</span>()<br>        <span class="hljs-keyword">for</span> x, y <span class="hljs-keyword">in</span> guesses:<br>            self.se.add(x * <span class="hljs-number">1000000</span> + y)<br>        self.cnt = <span class="hljs-number">0</span><br>        self.dfs(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>)<br>        self.k = k<br>        self.ans = <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> self.cnt &gt;= k <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>        self.change(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, self.cnt)<br>        <span class="hljs-keyword">return</span> self.ans<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/02/29/LeetCode%202581.%E7%BB%9F%E8%AE%A1%E5%8F%AF%E8%83%BD%E7%9A%84%E6%A0%91%E6%A0%B9%E6%95%B0%E7%9B%AE/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136372137">https://letmefly.blog.csdn.net/article/details/136372137</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

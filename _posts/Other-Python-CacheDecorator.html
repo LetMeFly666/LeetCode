@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索今日在看力扣题解时发现了大佬的“@cache”，发现很方便，就小研究了一番。 实验和结论先说下结论cache是functools中的一个用于缓存计算结果的修饰器 1from functools import cache  可用于修饰函数 123@cachedef myAdd(a, b):    return a + b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Python-CacheDecorator.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索今日在看力扣题解时发现了大佬的“@cache”，发现很方便，就小研究了一番。 实验和结论先说下结论cache是functools中的一个用于缓存计算结果的修饰器 1from functools import cache  可用于修饰函数 123@cachedef myAdd(a, b):    return a + b">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-07T01:23:13.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.230Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="Notes">
+<meta property="article:tag" content="修饰器">
+<meta property="article:tag" content="记忆化">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Python-cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索"><a href="#Python-cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索" class="headerlink" title="Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索"></a>Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索</h1><p>今日在看力扣题解时发现了大佬的“@cache”，发现很方便，就小研究了一番。</p>
+<h2 id="实验和结论"><a href="#实验和结论" class="headerlink" title="实验和结论"></a>实验和结论</h2><h3 id="先说下结论"><a href="#先说下结论" class="headerlink" title="先说下结论"></a>先说下结论</h3><p>cache是functools中的一个用于缓存计算结果的修饰器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cache<br></code></pre></td></tr></table></figure>
+
+<p>可用于修饰函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@cache</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">myAdd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">return</span> a + b<br></code></pre></td></tr></table></figure>
+
+<!-- 这样做的好处是，在第二次计算某个已经计算过的值的时候，会直接返回之前计算过的结果。 -->
+
+<p>这样做的好处是，对于被修饰的函数，相同的参数只会被真正计算一次。后续再使用相同的参数调用这个函数的话，会直接返回先前已经计算过的结果。</p>
+<p>若在程序中第一次调用<code>myAdd(1, 2)</code>，则真的会在<code>myAdd</code>函数中计算<code>1 + 2 = 3</code></p>
+<p>但是在程序中再次调用<code>myAdd(1, 2)</code>时，由于之前已经计算过参数为<code>(1, 2)</code>时结果为<code>3</code>，所以这次实际上不会再次计算<code>1 + 2 = ?</code>，而是直接返回<code>3</code></p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><p>下面进行验证：</p>
+<p>编写两个简单的“加法运算”函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cache<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">withoutCache</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-built_in">print</span>(a, b)<br>    c = a + b<br>    <span class="hljs-keyword">return</span> c<br><br><br><span class="hljs-meta">@cache</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">withCache</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-built_in">print</span>(a, b)<br>    c = a + b<br>    <span class="hljs-keyword">return</span> c<br></code></pre></td></tr></table></figure>
+
+<p>在计算<code>a + b</code>之前，会先进行打印操作，意思是“我要开始计算a+b了”</p>
+<p>接着调用这两个函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(withoutCache(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span> * <span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(withoutCache(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span> * <span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(withCache(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span> * <span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(withCache(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))<br></code></pre></td></tr></table></figure>
+
+<p>相当于是用相同的参数对每个函数各调用两次。</p>
+<p>我们得到运行结果：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">1 2<br><span class="hljs-section">3</span><br><span class="hljs-section">----------</span><br>1 2<br><span class="hljs-section">3</span><br><span class="hljs-section">----------</span><br>2 3<br><span class="hljs-section">5</span><br><span class="hljs-section">----------</span><br>5<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，在第二次调用<code>withCache(2, 3)</code>时，实际上没有真正地计算<code>2 + 3 = ?</code>，而是直接返回了先前已经计算过的<code>5</code>。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>那么这个修饰器是怎么实现的呢？接下来我们实现一个低配版的cache修饰器</p>
+<p>可以参考文章<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">Python - 函数参数中的_和_*</a>获取函数中的参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">dic = &#123;&#125;<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">myCache</span>(<span class="hljs-params">func</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>(<span class="hljs-params">*a</span>):<br>        <span class="hljs-keyword">if</span> a <span class="hljs-keyword">in</span> dic:<br>            <span class="hljs-keyword">return</span> dic[a]<br>        dic[a] = func(*a)<br>        <span class="hljs-keyword">return</span> dic[a]<br>    <span class="hljs-keyword">return</span> main<br><br><br><span class="hljs-meta">@myCache</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">myAdd</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-built_in">print</span>(a, b)<br>    c = a + b<br>    <span class="hljs-keyword">return</span> c<br><br><span class="hljs-built_in">print</span>(myAdd(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;-&#x27;</span> * <span class="hljs-number">10</span>)<br><span class="hljs-built_in">print</span>(myAdd(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc">1 2<br><span class="hljs-section">3</span><br><span class="hljs-section">----------</span><br>3<br></code></pre></td></tr></table></figure>
+
+<p>上述只是一个简单的延时，未经优化，且未记录调用函数，多个函数调用时可能会产生冲突。</p>
+<h2 id="lru-cache"><a href="#lru-cache" class="headerlink" title="lru_cache"></a>lru_cache</h2><p>阅读源码可发现，其实cache修饰器是调用了lru_cache修饰器。</p>
+<p>lru（Least Recently Used），即最近最少使用。下面简单介绍一下lru_cache</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@lru_cache(<span class="hljs-params">maxsize=<span class="hljs-number">2</span>, typed=<span class="hljs-literal">False</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<p>其中maxsize代表最大缓存数量，typed代表是否区分数据类型（typed为True的话将会分别缓存不同类型的数据，例如3和3.0）</p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129164772">https://letmefly.blog.csdn.net/article/details/129164772</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

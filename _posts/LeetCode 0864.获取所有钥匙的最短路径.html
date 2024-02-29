@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】864.获取所有钥匙的最短路径：广搜 + 状压力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;shortest-path-to-get-all-keys&#x2F; 给定一个二维网格&nbsp;grid&nbsp;，其中：       &#39;.&#39; 代表一个空房间     &#39;#&#39; 代表一堵     &#39;@&#39;&nbsp;是起点     小写字母代表钥匙     大写字母代表">
+<meta property="og:type" content="website">
+<meta property="og:title" content="864.获取所有钥匙的最短路径">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200864.%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】864.获取所有钥匙的最短路径：广搜 + 状压力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;shortest-path-to-get-all-keys&#x2F; 给定一个二维网格&nbsp;grid&nbsp;，其中：       &#39;.&#39; 代表一个空房间     &#39;#&#39; 代表一堵     &#39;@&#39;&nbsp;是起点     小写字母代表钥匙     大写字母代表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/23/lc-key2.jpg">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/23/lc-keys3.jpg">
+<meta property="article:published_time" content="2022-11-10T02:09:32.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.218Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="位运算">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="状态压缩">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg">
+  
+  
+  
+  <title>864.获取所有钥匙的最短路径 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="864.获取所有钥匙的最短路径"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】864-获取所有钥匙的最短路径：广搜-状压"><a href="#【LetMeFly】864-获取所有钥匙的最短路径：广搜-状压" class="headerlink" title="【LetMeFly】864.获取所有钥匙的最短路径：广搜 + 状压"></a>【LetMeFly】864.获取所有钥匙的最短路径：广搜 + 状压</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-path-to-get-all-keys/">https://leetcode.cn/problems/shortest-path-to-get-all-keys/</a></p>
+<p>给定一个二维网格&nbsp;<code>grid</code>&nbsp;，其中：</p>
+
+<ul>
+    <li><font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">'.'</span></span></font></font> 代表一个空房间</li>
+    <li><font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">'#'</span></span></font></font> 代表一堵</li>
+    <li><font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">'@'</span></span></font></font>&nbsp;是起点</li>
+    <li>小写字母代表钥匙</li>
+    <li>大写字母代表锁</li>
+</ul>
+
+<p>我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无法穿过一堵墙。如果途经一个钥匙，我们就把它捡起来。除非我们手里有对应的钥匙，否则无法通过锁。</p>
+
+<p>假设 k&nbsp;为 钥匙/锁 的个数，且满足&nbsp;<code>1 &lt;= k&nbsp;&lt;= 6</code>，字母表中的前 <code>k</code>&nbsp;个字母在网格中都有自己对应的一个小写和一个大写字母。换言之，每个锁有唯一对应的钥匙，每个钥匙也有唯一对应的锁。另外，代表钥匙和锁的字母互为大小写并按字母顺序排列。</p>
+
+<p>返回获取所有钥匙所需要的移动的最少次数。如果无法获取所有钥匙，返回&nbsp;<code>-1</code>&nbsp;。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img src="https://assets.leetcode.com/uploads/2021/07/23/lc-keys2.jpg" srcset="/img/loading.gif" lazyload /></p>
+
+<pre>
+<strong>输入：</strong>grid = ["@.a.#","###.#","b.A.B"]
+<strong>输出：</strong>8
+<strong>解释：</strong>目标是获得所有钥匙，而不是打开所有锁。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><img src="https://assets.leetcode.com/uploads/2021/07/23/lc-key2.jpg" srcset="/img/loading.gif" lazyload /></p>
+
+<pre>
+<strong>输入：</strong>grid = ["@..aA","..B#.","....b"]
+<strong>输出：</strong>6
+</pre>
+
+<p><strong>示例 3:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/07/23/lc-keys3.jpg" srcset="/img/loading.gif" lazyload />
+<pre>
+<strong>输入:</strong> grid = ["@Aa"]
+<strong>输出:</strong> -1</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>m == grid.length</code></li>
+    <li><code>n == grid[i].length</code></li>
+    <li><code>1 &lt;= m, n &lt;= 30</code></li>
+    <li><code>grid[i][j]</code>&nbsp;只含有&nbsp;<code>'.'</code>,&nbsp;<code>'#'</code>,&nbsp;<code>'@'</code>,&nbsp;<code>'a'-</code><code>'f</code><code>'</code>&nbsp;以及&nbsp;<code>'A'-'F'</code></li>
+    <li>钥匙的数目范围是&nbsp;<code>[1, 6]</code>&nbsp;</li>
+    <li>每个钥匙都对应一个 <strong>不同</strong> 的字母</li>
+    <li>每个钥匙正好打开一个对应的锁</li>
+</ul>
+
+
+    
+<h2 id="方法一：广搜-状压"><a href="#方法一：广搜-状压" class="headerlink" title="方法一：广搜 + 状压"></a>方法一：广搜 + 状压</h2><p>如果不考虑钥匙和锁的问题，那么一个简单的广搜就解决了。</p>
+<p>广搜是“走完一步能到达的位置”，然后“走完两步能到达的位置”，“……”</p>
+<p>因此第一次搜到终点所走的步数即为答案。</p>
+<p>本题中，增加了钥匙与锁，那么，不如把普通广搜的“位置”替换为“状态”</p>
+<p>其中，状态包含：坐标和钥匙搜集情况</p>
+<p>如果两次到达“同一位置”时所携带的钥匙情况不同，那么我们就认为这是“两种状态”</p>
+<p>怎么处理钥匙收集情况呢？地图中最多有6把钥匙，因此我们可以用6位二进制数来分别代表6把钥匙。某位为1代表已获得该钥匙，0代表未获得。</p>
+<p>这样，我们就可以把普通的广搜：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123;<br>	<span class="hljs-type">int</span> x, y;<br>	<span class="hljs-type">int</span> step;<br>&#125;;<br><br>queue&lt;Node&gt; q;<br>q.<span class="hljs-built_in">push</span>(&#123;startX, startY, <span class="hljs-number">0</span>&#125;);<br><span class="hljs-type">bool</span> visited[n][m] = &#123;<span class="hljs-literal">false</span>&#125;;<br>visited[startX][startY] = <span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>    <span class="hljs-keyword">auto</span> [thisX, thisY, thisStep] = q.<span class="hljs-built_in">front</span>();<br>    q.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">4</span>; d++) &#123;<br>		<span class="hljs-type">int</span> tx = x + directions[d][<span class="hljs-number">0</span>];<br>		<span class="hljs-type">int</span> ty = y + directions[d][<span class="hljs-number">1</span>];<br>		<span class="hljs-keyword">if</span> (tx &gt;= <span class="hljs-number">0</span> &amp;&amp; tx &lt; n &amp;&amp; ty &gt;= <span class="hljs-number">0</span> &amp;&amp; ty &lt; n) &#123;<br>			<span class="hljs-keyword">if</span> (!visited[tx][ty]) &#123;<br>				visited[tx][ty] = <span class="hljs-literal">true</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;tx, ty, thisStep + <span class="hljs-number">1</span>&#125;);<br>				<span class="hljs-keyword">if</span> (tx == targetX &amp;&amp; ty == targetY) &#123;<br>					<span class="hljs-keyword">return</span> thisStep + <span class="hljs-number">1</span>;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><br><span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123;<br>	<span class="hljs-type">int</span> x, y;<br>	<span class="hljs-type">int</span> mask;  <span class="hljs-comment">// Change</span><br>	<span class="hljs-type">int</span> step;<br>&#125;;<br><br>queue&lt;Node&gt; q;<br>q.<span class="hljs-built_in">push</span>(&#123;startX, startY, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;);<br><span class="hljs-type">bool</span> visited[n][m] = &#123;<span class="hljs-literal">false</span>&#125;;<br>visited[startX][startY][<span class="hljs-number">1</span> &lt;&lt; keyNum] = <span class="hljs-literal">true</span>;<br><br><span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>    <span class="hljs-keyword">auto</span> [thisX, thisY, thisMask, thisStep] = q.<span class="hljs-built_in">front</span>();<br>    q.<span class="hljs-built_in">pop</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">4</span>; d++) &#123;<br>		<span class="hljs-type">int</span> tx = x + directions[d][<span class="hljs-number">0</span>];<br>		<span class="hljs-type">int</span> ty = y + directions[d][<span class="hljs-number">1</span>];<br>		<span class="hljs-keyword">if</span> (tx &gt;= <span class="hljs-number">0</span> &amp;&amp; tx &lt; n &amp;&amp; ty &gt;= <span class="hljs-number">0</span> &amp;&amp; ty &lt; n) &#123;<br>			<span class="hljs-type">int</span> newMask = mask;  <span class="hljs-comment">// Change</span><br>			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">isKey</span>(grid[tx][ty])) &#123;<br>				newMask |= (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-built_in">getTh</span>(grid[tx][ty]));<br>			&#125;<br>			<span class="hljs-keyword">if</span> (!visited[tx][ty][newMask]) &#123;  <span class="hljs-comment">// Change:  visited[tx][ty] -&gt; visited[tx][ty][newMask]</span><br>				visited[tx][ty][newMask] = <span class="hljs-literal">true</span>;<br>				q.<span class="hljs-built_in">push</span>(&#123;tx, ty, newMask, thisStep + <span class="hljs-number">1</span>&#125;);<br>				<span class="hljs-keyword">if</span> (tx == targetX &amp;&amp; ty == targetY &amp;&amp; newMask == <span class="hljs-built_in">AllKeyMask</span>()) &#123;<br>					<span class="hljs-keyword">return</span> thisStep + <span class="hljs-number">1</span>;<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>&#125;<br><br><span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>说白了就是在广搜“位置”的基础上加一个“钥匙状态”</p>
+<p>之后在广搜的过程中：</p>
+<ul>
+<li>遇到“未到达过的空地”，就尝试到达（广搜）</li>
+<li>遇到“钥匙”，就计算获得钥匙后的新状态，若“钥匙坐标&amp;新状态”未到达过，就尝试到达（广搜）</li>
+<li>遇到“锁”，就看当前的“钥匙状态”中是否包含这把锁的钥匙，若“包含钥匙&amp;锁的位置状态未到达过”，就尝试到达（广搜）</li>
+</ul>
+<p>广搜期间，一旦出现“获得一把钥匙后 集齐了所有的钥匙”，就返回当前步数作为答案。</p>
+<p>广搜结束（未集齐全部钥匙）则返回-1</p>
+<ul>
+<li>时间复杂度$O(nm\times k^2)$，其中$gird.size() &#x3D; n\times m$，钥匙数量未$k$</li>
+<li>空间复杂度$O(nm\times k^2)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">MyNode</span> &#123;<br>    <span class="hljs-type">int</span> x, y;<br>    <span class="hljs-type">int</span> mask;<br>    <span class="hljs-type">int</span> step;<br><br>    <span class="hljs-built_in">MyNode</span>(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y) : <span class="hljs-built_in">x</span>(x), <span class="hljs-built_in">y</span>(y), <span class="hljs-built_in">mask</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">step</span>(<span class="hljs-number">0</span>) &#123;&#125;<br>&#125;;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> directions[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">shortestPathAllKeys</span><span class="hljs-params">(vector&lt;string&gt;&amp; grid)</span> </span>&#123;<br>        <span class="hljs-type">int</span> startX, startY;<br>        <span class="hljs-type">int</span> cntLock = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> n = grid.<span class="hljs-built_in">size</span>(), m = grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> key2th[<span class="hljs-number">26</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++) &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">islower</span>(grid[i][j])) &#123;<br>                    key2th[grid[i][j] - <span class="hljs-string">&#x27;a&#x27;</span>] = cntLock++;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (grid[i][j] == <span class="hljs-string">&#x27;@&#x27;</span>) &#123;<br>                    startX = i, startY = j;<br>                &#125;<br>            &#125;<br>        &#125;<br>        vector&lt;vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt;&gt; <span class="hljs-built_in">visited</span>(n, vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt;(m, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(<span class="hljs-number">1</span> &lt;&lt; cntLock, <span class="hljs-literal">false</span>)));<br>        queue&lt;MyNode&gt; q;<br>        q.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">MyNode</span>(startX, startY));<br>        visited[startX][startY][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>            MyNode thisNode = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-type">int</span> thisX = thisNode.x, thisY = thisNode.y, thisMask = thisNode.mask;<br>            <span class="hljs-comment">// if (thisX == 1 &amp;&amp; thisY == 4) &#123;</span><br>            <span class="hljs-comment">//     puts(&quot;Debug begin&quot;);  //********</span><br>            <span class="hljs-comment">// &#125;</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">4</span>; d++) &#123;<br>                <span class="hljs-type">int</span> tx = thisX + directions[d][<span class="hljs-number">0</span>], ty = thisY + directions[d][<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span> (tx &gt;= <span class="hljs-number">0</span> &amp;&amp; tx &lt; n &amp;&amp; ty &gt;= <span class="hljs-number">0</span> &amp;&amp; ty &lt; m &amp;&amp; grid[tx][ty] != <span class="hljs-string">&#x27;#&#x27;</span>) &#123;<br>                    <span class="hljs-keyword">if</span> (grid[tx][ty] == <span class="hljs-string">&#x27;.&#x27;</span> || grid[tx][ty] == <span class="hljs-string">&#x27;@&#x27;</span>) &#123;  <span class="hljs-comment">// @也是空地！！！</span><br>                        <span class="hljs-keyword">if</span> (!visited[tx][ty][thisMask]) &#123;<br>                            visited[tx][ty][thisMask] = <span class="hljs-literal">true</span>;<br>                            MyNode newNode = thisNode;<br>                            newNode.x = tx, newNode.y = ty;<br>                            newNode.step++;<br>                            q.<span class="hljs-built_in">push</span>(newNode);<br>                        &#125;<br>                    &#125;<br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">islower</span>(grid[tx][ty])) &#123;<br>                        <span class="hljs-type">int</span> toMask = thisMask | (<span class="hljs-number">1</span> &lt;&lt; key2th[grid[tx][ty] - <span class="hljs-string">&#x27;a&#x27;</span>]);<br>                        <span class="hljs-keyword">if</span> (!visited[tx][ty][toMask]) &#123;<br>                            visited[tx][ty][toMask] = <span class="hljs-literal">true</span>;<br>                            MyNode newNode = thisNode;<br>                            newNode.x = tx, newNode.y = ty;<br>                            newNode.step++;<br>                            newNode.mask = toMask;<br>                            q.<span class="hljs-built_in">push</span>(newNode);<br>                            <span class="hljs-keyword">if</span> (toMask == (<span class="hljs-number">1</span> &lt;&lt; cntLock) - <span class="hljs-number">1</span>) &#123;<br>                                <span class="hljs-keyword">return</span> newNode.step; <br>                            &#125;<br>                        &#125;<br>                    &#125;<br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isupper</span>(grid[tx][ty])) &#123;<br>                        <span class="hljs-keyword">if</span> (thisMask &amp; (<span class="hljs-number">1</span> &lt;&lt; key2th[grid[tx][ty] - <span class="hljs-string">&#x27;A&#x27;</span>])) &#123;<br>                            <span class="hljs-keyword">if</span> (!visited[tx][ty][thisMask]) &#123;<br>                                visited[tx][ty][thisMask] = <span class="hljs-literal">true</span>;<br>                                MyNode newNode = thisNode;<br>                                newNode.x = tx, newNode.y = ty;<br>                                newNode.step++;<br>                                q.<span class="hljs-built_in">push</span>(newNode);<br>                            &#125;<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/11/10/LeetCode%200864.%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127784094">https://letmefly.blog.csdn.net/article/details/127784094</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

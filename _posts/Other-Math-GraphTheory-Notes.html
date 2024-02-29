@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="图论笔记 - 极简极入门级图的概念 环(loop, selfloop) ：两个端点相同的边 棱(link) ：两个端点不同的边 孤立点(isolated vertex) ：不与任何顶点相邻的顶点 简单图(simple graph) ：无环，无重边的图 平凡图(trival graph) ：仅有一个顶点的图（可有多条环） 空图(empty graph)&#x2F;零图 ：没有边的图（注意：任何一图都">
+<meta property="og:type" content="website">
+<meta property="og:title" content="图论笔记 - 极简极入门级">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Math-GraphTheory-Notes.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="图论笔记 - 极简极入门级图的概念 环(loop, selfloop) ：两个端点相同的边 棱(link) ：两个端点不同的边 孤立点(isolated vertex) ：不与任何顶点相邻的顶点 简单图(simple graph) ：无环，无重边的图 平凡图(trival graph) ：仅有一个顶点的图（可有多条环） 空图(empty graph)&#x2F;零图 ：没有边的图（注意：任何一图都">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-27T06:14:21.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.230Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="Notes">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>图论笔记 - 极简极入门级 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="图论笔记 - 极简极入门级"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="图论笔记-极简极入门级"><a href="#图论笔记-极简极入门级" class="headerlink" title="图论笔记 - 极简极入门级"></a>图论笔记 - 极简极入门级</h1><h2 id="图的概念"><a href="#图的概念" class="headerlink" title="图的概念"></a>图的概念</h2><ul>
+<li><strong>环(loop, selfloop)</strong> ：两个端点相同的边</li>
+<li><strong>棱(link)</strong> ：两个端点不同的边</li>
+<li><strong>孤立点(isolated vertex)</strong> ：不与任何顶点相邻的顶点</li>
+<li><strong>简单图(simple graph)</strong> ：无环，无重边的图</li>
+<li><strong>平凡图(trival graph)</strong> ：仅有一个顶点的图（可有多条环）</li>
+<li><strong>空图(empty graph)&#x2F;零图</strong> ：没有边的图（注意：任何一图都有$V\neq \emptyset$）</li>
+<li><strong>奇点(odd vertex)&#x2F;偶点(even vertex)</strong> ：度为奇&#x2F;偶的点</li>
+<li><strong>悬挂点(end vertex)&#x2F;叶点(leaf)</strong> ：度为1的顶点</li>
+<li><strong>悬挂边(end edge)</strong> ：悬挂点的关联边</li>
+<li><strong>邻域(neighborhood)</strong> ：点$u$相邻的点的集合称为点$u$的邻域，记作$N(u)$</li>
+<li><strong>独立集(independent set)</strong> ：若图$G$的顶点子集$V’(V’\subseteq V(G))$中任意两个顶点在图$G$中都互不相邻，则称$V’$为图$G$的独立集</li>
+<li>有向图的<strong>基础图</strong> ：将有向图每条边改为无向边得到的图</li>
+<li>无向图的<strong>定向图</strong> ：将无向图每条边改为有向边得到的图</li>
+<li><strong>完全图(Complete graph)</strong> ：任意两点之间都有边的图（$n$个顶点的完全图记为$K_n$）</li>
+<li><strong>二部图(偶图, bipartite graph)</strong> ：$G&#x3D;(X, Y; E)$，其中$X\cap Y&#x3D;\emptyset$且$V(G)&#x3D;X+Y$（将$G$分为$X$和$Y$两个独立集）</li>
+<li><strong>完全二部图</strong> ：$K_{m, n}$指$|X|&#x3D;m, |Y|&#x3D;n$的二部图</li>
+<li><strong>k-正则图(k-regular g.)</strong> ：每个顶点度都为$k$的_无向_简单图</li>
+<li><strong>线图</strong> &#x2F; <strong>边图</strong> ：以图的边为顶点所做的图</li>
+<li><strong>联图</strong> ： 不相交的图$G_1$和$G_2$，将$G_1$中的每个顶点分别和$G_2$中每个顶点相连得到的图</li>
+<li><strong>途径(walk)</strong> 例如$AaBcEdB$；<strong>迹(trail)</strong> 是边各不相同的途径；<strong>路(path)</strong> 是顶点各不相同的途径（顶点不同说明边也一定不同）<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">节点重复情况</th>
+<th align="center">边重复情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">途径(Walks)</td>
+<td align="center">允许</td>
+<td align="center">允许</td>
+</tr>
+<tr>
+<td align="center">迹(Trails)</td>
+<td align="center">允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">路(Paths)</td>
+<td align="center">不允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">回路(Circuits) ⇔ 闭迹</td>
+<td align="center">允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">圈(Cycle) ⇔ 起点终点相同的路</td>
+<td align="center">不允许(起点除外)</td>
+<td align="center">不允许</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>边割</strong> &#x2F; <strong>割集</strong> ： 连接$S$和$V\backslash S$的所有边（$S$非空）；<strong>关联边割</strong> ：$V&#x3D;{v}$（只有一个顶点）</li>
+<li><strong>强连通</strong> ：任意两点相互可达；<strong>单向连通</strong> ：任意两点有可达方式；<strong>弱连通</strong>： 有向图的基础图连通</li>
+<li><strong>关联矩阵(Incidence Matrix)</strong> ：“点”行“边”列的矩阵（点1有向外的边2则$mat[1][2]&#x3D;1$，若边2指向点1则$mat[1][2]&#x3D;-1$，其余为$0$）若边有权则增加一行代表权，若边有多个权则增加多行。两图同构$\Leftrightarrow$关联矩阵可通过行列变换转化</li>
+<li><strong>邻接矩阵(Adjacency Matrix)</strong> ：“点”行“点”列的矩阵（点1有指向点3的边则$mat[1][3]&#x3D;1$，其余为$0$）若边有权则值为权而不是$1$</li>
+<li><strong>弧表(Arc List)</strong> ：3（或2）行“边（+1）”列的矩<blockquote>
+<table>
+<thead>
+<tr>
+<th>起点</th>
+<th>1</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>4</th>
+<th>5</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>终点</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>权</td>
+<td>8</td>
+<td>9</td>
+<td>6</td>
+<td>4</td>
+<td>0</td>
+<td>3</td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody></table>
+</blockquote>
+</li>
+<li><strong>邻接表(Adjany Lists)</strong> ：“点”大小的指针数组，数组中每个指针是链表头节点，链表节点是从这个点出发的所有的边</li>
+<li><strong>割边(cut edge)</strong> ：$e$为图$G$的割边$\Leftrightarrow\omega(G - e) &#x3D; \omega(G) + 1$</li>
+<li><strong>偏心率</strong> &#x2F; <strong>离心率</strong> ：$e(v) &#x3D; max({d(u, v)|u\in V(G)})$</li>
+<li><strong>半径</strong> ：$r(G) &#x3D; min{e(v)|v\in V(G)}$</li>
+<li><strong>直径</strong> ：最大偏心率</li>
+<li><strong>中心点</strong> ：偏心率等于半径的点</li>
+<li><strong>中心</strong> ：中心点的集合</li>
+<li><strong>边割(cut edge)</strong> ：一端在$S$一端在$\overline{S}$的边的集合</li>
+<li><strong>键(bond)</strong> ：极小非空边割</li>
+<li><strong>余树</strong> ：图$G$生成树$T$的补图$\overline{T}$称为$G$的余树</li>
+<li><strong>竞赛图</strong> ：无向完全图的定向图</li>
+<li><strong>团</strong> ：$V$的子集$S$中任意两点在$G$中相邻，称$S$为图$G$的团</li>
+<li><strong>覆盖(covering)</strong> &#x2F; <strong>点覆盖(vertex cover)</strong> ：$V$的子集$K$，$G$中每条边都至少有一端点在$K$中</li>
+</ul>
+<ul>
+<li>TODO: 匹配</li>
+</ul>
+<p>记号：</p>
+<ul>
+<li>$\mathcal{v}&#x3D;|V(G)|$，$\varepsilon &#x3D;|E(G)|$（点的个数、边的个数）</li>
+<li>$\Delta(G)$：最大度；$\delta(G)$：最小度</li>
+<li>$d^-(v)$：点$v$的入度；$d^+(v)$：点$v$的出度</li>
+<li>$uv$一般指无向边，$&lt;u, v&gt;$一般指有向边     </li>
+<li>$G^C$图$G$的补图</li>
+<li>$&#x3D;$ ：恒等（完全相同。a和a’是同构不是恒等）；$\cong$：同构（非标号图一般称为同构）</li>
+<li>$\omega(G)$： $G$的分支数</li>
+<li>$W(G)$： <strong>赋权图</strong>的权（每条边的权的和）</li>
+<li>$e(v)$：点$v$的 偏心率&#x2F;离心率</li>
+<li>$r(G)$：图$G$的 半径</li>
+<li>$G[E\setminus E’]$: $G$的边导出子图（点可能变少）；$G-E’$：$G$的边去掉$E’$后的图（点不变）</li>
+<li>$\alpha(G)$：<strong>独立数(independent number)</strong> 最大独立集的元素个数； $\beta(G)$：<strong>覆盖数(covering number)</strong> 最小覆盖的元素个数。$\alpha + \beta &#x3D; v$</li>
+</ul>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><center><font size="6px" face="Ink Free">The End, thanks!</font></center>
+
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">原文链接</a>哦~</p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

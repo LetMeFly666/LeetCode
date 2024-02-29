@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】102.二叉树的层序遍历 + 针对C++的使用空间优化 （可能不同于常规做法）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;binary-tree-level-order-traversal&#x2F; 给你二叉树的根节点 root ，返回其节点值的 层序遍历 。 （即逐层地，从左到右访问所有节点）。  &nbsp;  示例 1：   输入：root &#x3D; [3,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="102.二叉树的层序遍历">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】102.二叉树的层序遍历 + 针对C++的使用空间优化 （可能不同于常规做法）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;binary-tree-level-order-traversal&#x2F; 给你二叉树的根节点 root ，返回其节点值的 层序遍历 。 （即逐层地，从左到右访问所有节点）。  &nbsp;  示例 1：   输入：root &#x3D; [3,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg">
+<meta property="article:published_time" content="2022-07-03T06:28:54.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.210Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="层次遍历">
+<meta property="article:tag" content="层序遍历">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg">
+  
+  
+  
+  <title>102.二叉树的层序遍历 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="102.二叉树的层序遍历"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】102-二叉树的层序遍历-针对C-的使用空间优化-（可能不同于常规做法）"><a href="#【LetMeFly】102-二叉树的层序遍历-针对C-的使用空间优化-（可能不同于常规做法）" class="headerlink" title="【LetMeFly】102.二叉树的层序遍历 + 针对C++的使用空间优化 （可能不同于常规做法）"></a>【LetMeFly】102.二叉树的层序遍历 + 针对C++的使用空间优化 （可能不同于常规做法）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">https://leetcode.cn/problems/binary-tree-level-order-traversal/</a></p>
+<p>给你二叉树的根节点 <code>root</code> ，返回其节点值的 <strong>层序遍历</strong> 。 （即逐层地，从左到右访问所有节点）。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg" srcset="/img/loading.gif" lazyload style="width: 277px; height: 302px;" />
+<pre>
+<strong>输入：</strong>root = [3,9,20,null,null,15,7]
+<strong>输出：</strong>[[3],[9,20],[15,7]]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>root = [1]
+<strong>输出：</strong>[[1]]
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>root = []
+<strong>输出：</strong>[]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li>树中节点数目在范围 <code>[0, 2000]</code> 内</li>
+    <li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：层次遍历"><a href="#方法一：层次遍历" class="headerlink" title="方法一：层次遍历"></a>方法一：层次遍历</h2><p>记根节点为第$0$层</p>
+<p>我们用<code>pair&lt;TreeNode*, int&gt;</code>记录<code>&lt;此节点, 此节点的层数&gt;</code></p>
+<p>初始时将根节点入队，在队列不空的时候：</p>
+<blockquote>
+<p>不断取出队首元素，如果此元素不空，就判断此元素和上一个元素是否在同一层</p>
+<p>如果不在同一层，就把上一层的所有节点添加到答案中</p>
+<p>把此节点的左右子入队（层数&#x3D;此层+1）</p>
+</blockquote>
+<p>详见代码注释。</p>
+<ul>
+<li>时间复杂度$O(N)$，其中$N$是节点个数</li>
+<li>空间复杂度$O(N2)$，其中$N2$是节点最多的一层的节点数</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> pair&lt;TreeNode*, <span class="hljs-type">int</span>&gt; pii;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        <span class="hljs-keyword">if</span> (!root)  <span class="hljs-comment">// root本来就为空</span><br>            <span class="hljs-keyword">return</span> &#123;&#125;;<br>        queue&lt;pii&gt; q;  <span class="hljs-comment">// 队列</span><br>        <span class="hljs-type">int</span> lastLayer = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 上一个节点是第几层</span><br>        q.<span class="hljs-built_in">push</span>(&#123;root, <span class="hljs-number">0</span>&#125;);<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;  <span class="hljs-comment">// 答案</span><br>        vector&lt;<span class="hljs-type">int</span>&gt; thisAns;  <span class="hljs-comment">// 用来存放某一层的节点</span><br>        <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;  <span class="hljs-comment">// 不空的时候</span><br>            <span class="hljs-keyword">auto</span>[p, thisLayer] = q.<span class="hljs-built_in">front</span>();  <span class="hljs-comment">// 取出队首元素</span><br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span> (!p)  <span class="hljs-comment">// 若为空节点，不做任何处理</span><br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span> (thisLayer != lastLayer) &#123;  <span class="hljs-comment">// 这是新的一层</span><br>                lastLayer = thisLayer;  <span class="hljs-comment">// 更新lastLayer</span><br>                ans.<span class="hljs-built_in">push_back</span>(thisAns);  <span class="hljs-comment">// 答案中添加这一层</span><br>                thisAns.<span class="hljs-built_in">clear</span>();  <span class="hljs-comment">// 这一层清空</span><br>            &#125;<br>            thisAns.<span class="hljs-built_in">push_back</span>(p-&gt;val);  <span class="hljs-comment">// 添加到这一层中</span><br>            q.<span class="hljs-built_in">push</span>(&#123;p-&gt;left, thisLayer + <span class="hljs-number">1</span>&#125;);  <span class="hljs-comment">// 左子入队</span><br>            q.<span class="hljs-built_in">push</span>(&#123;p-&gt;right, thisLayer + <span class="hljs-number">1</span>&#125;);  <span class="hljs-comment">// 右子入队</span><br>        &#125;<br>        ans.<span class="hljs-built_in">push_back</span>(thisAns);  <span class="hljs-comment">// 最后的一层添加到答案中</span><br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二：层次遍历-针对C-的使用空间优化"><a href="#方法二：层次遍历-针对C-的使用空间优化" class="headerlink" title="方法二：层次遍历 + 针对C++的使用空间优化"></a>方法二：层次遍历 + 针对C++的使用空间优化</h2><p>不难发现，方法一中，<code>vector&lt;int&gt; thisAns</code>用来记录这一层的节点。</p>
+<p>当遇到新的一层的节点时，我们将&#96;&#96;&#96;&#96;thisAns<code>push到了</code>ans<code>中，然后将</code>thisAns&#96;&#96;&#96;清空。</p>
+<p>通俗地讲，就是先<code>copy</code>后<code>删除</code>。也许上述现象在某些语言中并不会发生，但C++中，确实会先为<code>ans</code>申请一些新的空间，再释放掉<code>thisAns</code>的空间，而不是直接让<code>ans</code>的下一个元素指向<code>thisAns</code>。</p>
+<p>那么，我们如何避免上述现象呢？也很简单，只需要在<code>ans</code>中提前开辟一层，并且使用<code>ans[ans.size() - 1]</code>代替<code>thisAns</code>即可。</p>
+<ul>
+<li>时间复杂度$O(N)$，其中$N$是节点个数。与方法一相比，不需要专门将“某一层”添加到答案中，也不需要清空“用于存储某一层的空间”</li>
+<li>空间复杂度$O(N2)$，其中$N2$是节点最多的一层的节点数。与方法一相比，优势在于没有专门为某一层申请临时存储空间</li>
+</ul>
+<p>上述优化仅仅是个小优化，并不会改变复杂度。</p>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> pair&lt;TreeNode*, <span class="hljs-type">int</span>&gt; pii;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        <span class="hljs-keyword">if</span> (!root)<br>            <span class="hljs-keyword">return</span> &#123;&#125;;<br>        <span class="hljs-type">int</span> lastLayer = <span class="hljs-number">0</span>;<br>        queue&lt;pii&gt; q;<br>        q.<span class="hljs-built_in">push</span>(&#123;root, <span class="hljs-number">0</span>&#125;);<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        ans.<span class="hljs-built_in">push_back</span>(&#123;&#125;);<br>        <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>            <span class="hljs-keyword">auto</span>[p, thisLayer] = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">if</span> (!p)<br>                <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span> (thisLayer != lastLayer) &#123;<br>                lastLayer = thisLayer;<br>                ans.<span class="hljs-built_in">push_back</span>(&#123;&#125;);  <span class="hljs-comment">// 这里不需要clear()了</span><br>            &#125;<br>            ans[thisLayer].<span class="hljs-built_in">push_back</span>(p-&gt;val);<br>            q.<span class="hljs-built_in">push</span>(&#123;p-&gt;left, thisLayer + <span class="hljs-number">1</span>&#125;);<br>            q.<span class="hljs-built_in">push</span>(&#123;p-&gt;right, thisLayer + <span class="hljs-number">1</span>&#125;);<br>        &#125;<br>        <span class="hljs-comment">// 这里也不需要push最后一层了</span><br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法三：更简单点的方法（不需要将“那一层”的信息入队）"><a href="#方法三：更简单点的方法（不需要将“那一层”的信息入队）" class="headerlink" title="方法三：更简单点的方法（不需要将“那一层”的信息入队）"></a>方法三：更简单点的方法（不需要将“那一层”的信息入队）</h2><p>我们只需要将节点入队，当队列非空时：</p>
+<blockquote>
+<p>假如当前队列的大小为$size$，那么就一共循环$size$次，并作为一层加入到答案中。</p>
+</blockquote>
+<h3 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-2"><a href="#C-2" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">levelOrder</span>(TreeNode* root) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        queue&lt;TreeNode*&gt; q;<br>        <span class="hljs-keyword">if</span> (root) &#123;<br>            q.<span class="hljs-built_in">push</span>(root);<br>        &#125;<br>        <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(&#123;&#125;);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = q.<span class="hljs-built_in">size</span>(); i &gt; <span class="hljs-number">0</span>; i--) &#123;<br>                TreeNode* thisNode = q.<span class="hljs-built_in">front</span>();<br>                q.<span class="hljs-built_in">pop</span>();<br>                ans.<span class="hljs-built_in">back</span>().<span class="hljs-built_in">push_back</span>(thisNode-&gt;val);<br>                <span class="hljs-keyword">if</span> (thisNode-&gt;left) &#123;<br>                    q.<span class="hljs-built_in">push</span>(thisNode-&gt;left);<br>                &#125;<br>                <span class="hljs-keyword">if</span> (thisNode-&gt;right) &#123;<br>                    q.<span class="hljs-built_in">push</span>(thisNode-&gt;right);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import List, Optional</span><br><br><span class="hljs-comment"># # Definition for a binary tree node.</span><br><span class="hljs-comment"># class TreeNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.left = left</span><br><span class="hljs-comment">#         self.right = right</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">levelOrder</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        ans = []<br>        q = []<br>        <span class="hljs-keyword">if</span> root:<br>            q.append(root)<br>        <span class="hljs-keyword">while</span> q:<br>            ans.append([])<br>            <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(q)):<br>                thisNode = q[<span class="hljs-number">0</span>]<br>                q = q[<span class="hljs-number">1</span>:]<br>                ans[-<span class="hljs-number">1</span>].append(thisNode.val)<br>                <span class="hljs-keyword">if</span> thisNode.left:<br>                    q.append(thisNode.left)<br>                <span class="hljs-keyword">if</span> thisNode.right:<br>                    q.append(thisNode.right)<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度$O(N)$，其中$N$是节点个数</li>
+<li>空间复杂度$O(N2)$，其中$N2$是节点最多的一层的节点数</li>
+</ul>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/07/03/LeetCode%200102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/125584554">https://letmefly.blog.csdn.net/article/details/125584554</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

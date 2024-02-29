@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！ 如果你已经了解了此活动，直接跳到代码处即可。  和去年类似，今年的力扣又举行了1024程序员节的活动。 活动地址为https:&#x2F;&#x2F;leetcode.cn&#x2F;2022-1024&#x2F; 活动攻略为https:&#x2F;&#x2F;leetcode.cn&#x2F;circle&#x2F;discuss&#x2F;OV9VUd&#x2F; 先说明哈，这篇文章不是广告，因">
+<meta property="og:type" content="website">
+<meta property="og:title" content="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-LeetCode1024-2022.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！ 如果你已经了解了此活动，直接跳到代码处即可。  和去年类似，今年的力扣又举行了1024程序员节的活动。 活动地址为https:&#x2F;&#x2F;leetcode.cn&#x2F;2022-1024&#x2F; 活动攻略为https:&#x2F;&#x2F;leetcode.cn&#x2F;circle&#x2F;discuss&#x2F;OV9VUd&#x2F; 先说明哈，这篇文章不是广告，因">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/33cee57d374443e78f1587c61eaf3f77.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/5d7b238ab5da426ea951211e4c20ba5c.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f08a1d97405d493d86c46a486621a0e3.png">
+<meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/7cfb57df01eb46f6ac5afccc50cbf573.jpeg">
+<meta property="article:published_time" content="2022-10-19T11:01:20.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.230Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="1024">
+<meta property="article:tag" content="程序员">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/33cee57d374443e78f1587c61eaf3f77.png">
+  
+  
+  
+  <title>力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！ - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！"><a href="#力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！" class="headerlink" title="力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！"></a>力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！</h1><blockquote>
+<p>如果你已经了解了此活动，直接跳到代码处即可。</p>
+</blockquote>
+<p>和去年类似，今年的力扣又举行了1024程序员节的活动。</p>
+<p>活动地址为<a target="_blank" rel="noopener" href="https://leetcode.cn/2022-1024/">https://leetcode.cn/2022-1024/</a></p>
+<p>活动攻略为<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/OV9VUd/">https://leetcode.cn/circle/discuss/OV9VUd/</a></p>
+<p>先说明哈，这篇文章<strong>不是广告</strong>，因为有很多程序员都直到力扣的，根本不需要我这无流量小博主宣传。</p>
+<p>大概玩法就是通过各种途径获得卡牌</p>
+<p>卡牌分为_数字卡_和_符合卡_</p>
+<p>通过四个数的三次运算，得到结果<code>1024</code>，则会获得一枚“1024币”</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/33cee57d374443e78f1587c61eaf3f77.png" srcset="/img/loading.gif" lazyload alt="截图01"></p>
+<p>很快，自己就会拥有很多张牌，那么问题来了，我这么多牌，到底能否组成1024呢？</p>
+<p>那就愉快地编程实现吧！</p>
+<p>只需要把下方Python代码中的“数字”和“运算符”改为自己的，然后运行这个脚本就可以。</p>
+<p>程序会自动计算出你的卡牌能否经过“四数三算”得到1024。</p>
+<p>比如我自己目前的卡牌有：<code>[2, 13, 4, 26, 2, 2, 14, 18, 2]</code>和<code>[&quot;&gt;&gt;&quot;, &quot;&amp;&quot;, &quot;|&quot;, &quot;|&quot;, &quot;%&quot;]</code></p>
+<p>那么运行结果就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">[]<br></code></pre></td></tr></table></figure>
+
+<p>┭┮﹏┭┮</p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/5d7b238ab5da426ea951211e4c20ba5c.png" srcset="/img/loading.gif" lazyload alt="榜一大神"></p>
+<p>但是如果“全网第一个合成成功的大神的卡牌”：<code>[16, 2, 16, 0]</code>和<code>[&quot;&lt;&lt;&quot;, &quot;*&quot;, &quot;+&quot;]</code></p>
+<p>那么运行结果就是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">[<span class="hljs-string">&#x27;(((16&lt;&lt;2)*16)+0)&#x27;</span>, <span class="hljs-string">&#x27;(((16&lt;&lt;2)+0)*16)&#x27;</span>, <span class="hljs-string">&#x27;(((16*16)&lt;&lt;2)+0)&#x27;</span>, <span class="hljs-string">&#x27;(((16*16)+0)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((16+0)&lt;&lt;2)*16)&#x27;</span>, <span class="hljs-string">&#x27;(((16+0)*16)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((16*16)&lt;&lt;2)+0)&#x27;</span>, <span class="hljs-string">&#x27;(((16*16)+0)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((16&lt;&lt;2)*16)+0)&#x27;</span>, <span class="hljs-string">&#x27;(((16&lt;&lt;2)+0)*16)&#x27;</span>, <span class="hljs-string">&#x27;(((16+0)*16)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((16+0)&lt;&lt;2)*16)&#x27;</span>, <span class="hljs-string">&#x27;(((0+16)&lt;&lt;2)*16)&#x27;</span>, <span class="hljs-string">&#x27;(((0+16)*16)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((0+16)*16)&lt;&lt;2)&#x27;</span>, <span class="hljs-string">&#x27;(((0+16)&lt;&lt;2)*16)&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+<p>有很多种组成1024的方法。</p>
+<p>好了，废话不多说了，上代码：</p>
+<h2 id="版本1"><a href="#版本1" class="headerlink" title="版本1"></a>版本1</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2022-10-19 15:41:14</span><br><span class="hljs-string">LastEditors: LetMeFly</span><br><span class="hljs-string">LastEditTime: 2022-10-19 18:25:27</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><span class="hljs-comment"># 将这里的数字牌和符号牌改成自己的即可</span><br>numbers = [<span class="hljs-number">2</span>, <span class="hljs-number">13</span>, <span class="hljs-number">4</span>, <span class="hljs-number">26</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">14</span>, <span class="hljs-number">18</span>, <span class="hljs-number">2</span>]<br>operators = [<span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-string">&quot;&amp;&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;%&quot;</span>]<br><br><br>ok = []<br><br><span class="hljs-keyword">for</span> n1 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>    <span class="hljs-keyword">for</span> n2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>        <span class="hljs-keyword">for</span> n3 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>            <span class="hljs-keyword">for</span> n4 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>                <span class="hljs-keyword">for</span> o1 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                    <span class="hljs-keyword">for</span> o2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                        <span class="hljs-keyword">for</span> o3 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                            <span class="hljs-keyword">if</span> (n1 == n2 <span class="hljs-keyword">or</span> n1 == n3 <span class="hljs-keyword">or</span> n1 == n4 <span class="hljs-keyword">or</span> n2 == n3 <span class="hljs-keyword">or</span> n2 == n4 <span class="hljs-keyword">or</span> n3 == n4) <span class="hljs-keyword">or</span> (o1 == o2 <span class="hljs-keyword">or</span> o2 == o3 <span class="hljs-keyword">or</span> o1 == o3):<br>                                <span class="hljs-keyword">continue</span><br>                            string = <span class="hljs-string">f&quot;(((<span class="hljs-subst">&#123;numbers[n1]&#125;</span><span class="hljs-subst">&#123;operators[o1]&#125;</span><span class="hljs-subst">&#123;numbers[n2]&#125;</span>)<span class="hljs-subst">&#123;operators[o2]&#125;</span><span class="hljs-subst">&#123;numbers[n3]&#125;</span>)<span class="hljs-subst">&#123;operators[o3]&#125;</span><span class="hljs-subst">&#123;numbers[n4]&#125;</span>)&quot;</span><br>                            <span class="hljs-keyword">if</span> <span class="hljs-built_in">eval</span>(string) == <span class="hljs-number">1024</span>:<br>                                ok.append(string)<br><br><span class="hljs-built_in">print</span>(ok)<br></code></pre></td></tr></table></figure>
+
+<h2 id="版本2（更新于2022-10-20-10-22-52）"><a href="#版本2（更新于2022-10-20-10-22-52）" class="headerlink" title="版本2（更新于2022-10-20 10:22:52）"></a>版本2（更新于2022-10-20 10:22:52）</h2><ol>
+<li>修复了取模或者除法运算时，被除数可能为0的BUG</li>
+<li>显示了尝试次数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2022-10-19 15:41:14</span><br><span class="hljs-string">LastEditors: LetMeFly</span><br><span class="hljs-string">LastEditTime: 2022-10-20 10:22:52</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><span class="hljs-comment"># numbers = [16, 2, 16, 0]</span><br><span class="hljs-comment"># operators = [&quot;&lt;&lt;&quot;, &quot;*&quot;, &quot;+&quot;]</span><br>numbers = [<span class="hljs-number">0</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">19</span>, <span class="hljs-number">2</span>, <span class="hljs-number">18</span>, <span class="hljs-number">2</span>, <span class="hljs-number">13</span>, <span class="hljs-number">4</span>, <span class="hljs-number">26</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">14</span>]<br>operators = [<span class="hljs-string">&quot;*&quot;</span>, <span class="hljs-string">&quot;&gt;&gt;&quot;</span>, <span class="hljs-string">&quot;&amp;&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;%&quot;</span>]<br><br><br>ok = []<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(numbers)&#125;</span> ^ 4 * <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(operators)&#125;</span> ^ 3 = <span class="hljs-subst">&#123;<span class="hljs-built_in">len</span>(numbers) ** <span class="hljs-number">4</span> * <span class="hljs-built_in">len</span>(operators) ** <span class="hljs-number">3</span>&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">for</span> n1 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>    <span class="hljs-keyword">for</span> n2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>        <span class="hljs-keyword">for</span> n3 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>            <span class="hljs-keyword">for</span> n4 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(numbers)):<br>                <span class="hljs-keyword">for</span> o1 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                    <span class="hljs-keyword">for</span> o2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                        <span class="hljs-keyword">for</span> o3 <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(operators)):<br>                            <span class="hljs-keyword">if</span> (n1 == n2 <span class="hljs-keyword">or</span> n1 == n3 <span class="hljs-keyword">or</span> n1 == n4 <span class="hljs-keyword">or</span> n2 == n3 <span class="hljs-keyword">or</span> n2 == n4 <span class="hljs-keyword">or</span> n3 == n4) <span class="hljs-keyword">or</span> (o1 == o2 <span class="hljs-keyword">or</span> o2 == o3 <span class="hljs-keyword">or</span> o1 == o3):<br>                                <span class="hljs-keyword">continue</span><br>                            string = <span class="hljs-string">f&quot;(((<span class="hljs-subst">&#123;numbers[n1]&#125;</span><span class="hljs-subst">&#123;operators[o1]&#125;</span><span class="hljs-subst">&#123;numbers[n2]&#125;</span>)<span class="hljs-subst">&#123;operators[o2]&#125;</span><span class="hljs-subst">&#123;numbers[n3]&#125;</span>)<span class="hljs-subst">&#123;operators[o3]&#125;</span><span class="hljs-subst">&#123;numbers[n4]&#125;</span>)&quot;</span><br>                            <span class="hljs-keyword">try</span>:<br>                                <span class="hljs-keyword">if</span> <span class="hljs-built_in">eval</span>(string) == <span class="hljs-number">1024</span>:<br>                                    ok.append(string)<br>                            <span class="hljs-keyword">except</span>:<br>                                <span class="hljs-keyword">pass</span><br><br><span class="hljs-built_in">print</span>(ok)<br></code></pre></td></tr></table></figure>
+
+<p>俺写这篇文章的目的有两个，一个是分享，一个是想涨点粉😻</p>
+<p><strong>我制作了一个简单的小网站，可以进行在线计算</strong>：<a target="_blank" rel="noopener" href="https://count1024.letmefly.xyz/">Count1024.LetMeFly.xyz</a></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f08a1d97405d493d86c46a486621a0e3.png" srcset="/img/loading.gif" lazyload alt="网站截图"></p>
+<p><strong>我又制作了一个网站，可以领取并分享卡牌</strong>： <a target="_blank" rel="noopener" href="https://share1024.letmefly.xyz/">Share1024.LetMeFly.xyz</a></p>
+<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/7cfb57df01eb46f6ac5afccc50cbf573.jpeg" srcset="/img/loading.gif" lazyload alt="分享网截图"></p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127413787">https://letmefly.blog.csdn.net/article/details/127413787</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

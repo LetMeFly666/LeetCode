@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）为什么取消下划线的转义公式中可能会用到很多下划线，然而下划线在Markdown中有特殊含义，例如_a_代表斜体的a。 基于Hexo的渲染原理，Markdown源码首先会被Markdown引擎渲染，之后才会被公式引擎渲染。 因此$a_i + b_i$本应被渲染成$a_i + b_i$，但会被Hexo的M">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-HTML-Hexo-RemoveTheEscapeOfUnderline.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）为什么取消下划线的转义公式中可能会用到很多下划线，然而下划线在Markdown中有特殊含义，例如_a_代表斜体的a。 基于Hexo的渲染原理，Markdown源码首先会被Markdown引擎渲染，之后才会被公式引擎渲染。 因此$a_i + b_i$本应被渲染成$a_i + b_i$，但会被Hexo的M">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-27T09:19:21.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.230Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="MathJax">
+<meta property="article:tag" content="Latex">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="sed">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式） - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="HTML-Hexo-取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）"><a href="#HTML-Hexo-取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）" class="headerlink" title="HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）"></a>HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）</h1><h2 id="为什么取消下划线的转义"><a href="#为什么取消下划线的转义" class="headerlink" title="为什么取消下划线的转义"></a>为什么取消下划线的转义</h2><p>公式中可能会用到很多下划线，然而下划线在Markdown中有特殊含义，例如<code>_a_</code>代表斜体的<code>a</code>。</p>
+<p>基于Hexo的渲染原理，Markdown源码首先会被Markdown引擎渲染，之后才会被公式引擎渲染。</p>
+<p>因此<code>$a_i + b_i$</code>本应被渲染成$a_i + b_i$，但会被Hexo的Markdown引擎渲染成<code>$a&lt;em&gt;i + b&lt;/em&gt;i$</code>，之后渲染成公式的时候就会很离谱。</p>
+<p>所以要取消下划线的转义。</p>
+<p>这里不得不吐槽一句，其他支持公式的Markdown编辑器哪个都没有这种错误！</p>
+<h2 id="如何取消转义"><a href="#如何取消转义" class="headerlink" title="如何取消转义"></a>如何取消转义</h2><p>取消转义只需要将<code>../hexoWorkspace/node_modules/marked/lib/</code>下的所有文件中的<code>&quot;&lt;em&gt;&quot; + text + &quot;&lt;/em&gt;&quot;</code>替换为<code>&quot;_&quot; + text + &quot;_&quot;</code>即可。</p>
+<p>因此在Linux系统上只需要使用<code>sed</code>命令（有关sed命令推荐<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">菜鸟教程-sed</a>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -i <span class="hljs-string">&#x27;s/&quot;&lt;em&gt;&quot; + text + &quot;&lt;\/em&gt;&quot;/&quot;_&quot; + text + &quot;_&quot;/g&#x27;</span> ../hexoWorkspace/node_modules/marked/lib/*<br></code></pre></td></tr></table></figure>
+
+<h2 id="为什么不使用其他的渲染引擎"><a href="#为什么不使用其他的渲染引擎" class="headerlink" title="为什么不使用其他的渲染引擎"></a>为什么不使用其他的渲染引擎</h2><p>为了解决Hexo的公式问题，我尝试了很多渲染引擎。但每个引擎都有其不尽人意的地方。有的不支持行内公式，有的不支持公式中出现中文字符，有的…。</p>
+<p>想要渲染公式，一个很不错的思路是<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS/">使用强大的MathJax渲染</a>。</p>
+<p>正当我以为终于解决了公式问题的时候，我发现Hexo的Markdown渲染引擎会转义很多东西，<code>$ $</code>之间的内容也会转义！！！</p>
+<p>因此经过多次尝试，终于取消了Hexo对下划线的转义。但是对于公式中的自减运算符<code>a--</code>的转义，至今还未能解决！</p>
+<center><font size="6px" face="楷体">想让Hexo完美支持公式咋就这么难呢(:cry:)</font></center>
+
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/">原文链接</a>哦~<br>Tisfy：<a href="https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/">https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

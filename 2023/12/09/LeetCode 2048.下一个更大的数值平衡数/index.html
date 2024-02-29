@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】2048.下一个更大的数值平衡数力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;next-greater-numerically-balanced-number&#x2F; 如果整数&nbsp; x 满足：对于每个数位&nbsp;d ，这个数位&nbsp;恰好 在 x 中出现 d 次。那么整数 x 就是一个 数值平衡数 。  给你一个整数 n ，请你返回 严格大于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2048.下一个更大的数值平衡数">
+<meta property="og:url" content="https://blog.letmefly.xyz/2023/12/09/LeetCode%202048.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0%E5%80%BC%E5%B9%B3%E8%A1%A1%E6%95%B0/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】2048.下一个更大的数值平衡数力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;next-greater-numerically-balanced-number&#x2F; 如果整数&nbsp; x 满足：对于每个数位&nbsp;d ，这个数位&nbsp;恰好 在 x 中出现 d 次。那么整数 x 就是一个 数值平衡数 。  给你一个整数 n ，请你返回 严格大于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-09T12:50:36.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.226Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="回溯">
+<meta property="article:tag" content="枚举">
+<meta property="article:tag" content="打表">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>2048.下一个更大的数值平衡数 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2048.下一个更大的数值平衡数"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-09 20:50" pubdate>
+          2023年12月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2048.下一个更大的数值平衡数</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】2048-下一个更大的数值平衡数"><a href="#【LetMeFly】2048-下一个更大的数值平衡数" class="headerlink" title="【LetMeFly】2048.下一个更大的数值平衡数"></a>【LetMeFly】2048.下一个更大的数值平衡数</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-numerically-balanced-number/">https://leetcode.cn/problems/next-greater-numerically-balanced-number/</a></p>
+<p>如果整数&nbsp; <code>x</code> 满足：对于每个数位&nbsp;<code>d</code> ，这个数位&nbsp;<strong>恰好</strong> 在 <code>x</code> 中出现 <code>d</code> 次。那么整数 <code>x</code> 就是一个 <strong>数值平衡数</strong> 。</p>
+
+<p>给你一个整数 <code>n</code> ，请你返回 <strong>严格大于</strong> <code>n</code> 的 <strong>最小数值平衡数</strong> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 1
+<strong>输出：</strong>22
+<strong>解释：</strong>
+22 是一个数值平衡数，因为：
+- 数字 2 出现 2 次 
+这也是严格大于 1 的最小数值平衡数。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 1000
+<strong>输出：</strong>1333
+<strong>解释：</strong>
+1333 是一个数值平衡数，因为：
+- 数字 1 出现 1 次。
+- 数字 3 出现 3 次。 
+这也是严格大于 1000 的最小数值平衡数。
+注意，1022 不能作为本输入的答案，因为数字 0 的出现次数超过了 0 。</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>n = 3000
+<strong>输出：</strong>3133
+<strong>解释：</strong>
+3133 是一个数值平衡数，因为：
+- 数字 1 出现 1 次。
+- 数字 3 出现 3 次。 
+这也是严格大于 3000 的最小数值平衡数。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>0 &lt;= n &lt;= 10<sup>6</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：枚举"><a href="#方法一：枚举" class="headerlink" title="方法一：枚举"></a>方法一：枚举</h2><p>我们可以很方便地写一个函数用来判断一个数$n$是否为“数值平衡数”。</p>
+<blockquote>
+<p>只需要取出这个数的每一位并统计出现次数，从0到10遍历，如果出现次数不等于这个数就返回false，否则返回true。</p>
+</blockquote>
+<p>接下来从给定的$n$的下一个数开始枚举，直到枚举到了“数值平衡数”为止。</p>
+<ul>
+<li>时间复杂度：不易计算，但是能过（方法二中也可以看出无论给定n是多少，枚举量都不超过557778）</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isok</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-type">int</span> cnt[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>        <span class="hljs-keyword">while</span> (n) &#123;<br>            cnt[n % <span class="hljs-number">10</span>]++;<br>            n /= <span class="hljs-number">10</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">9</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (cnt[i] &amp;&amp; cnt[i] != i) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">nextBeautifulNumber</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">isok</span>(++n));<br>        <span class="hljs-keyword">return</span> n;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ok</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        cnt = [<span class="hljs-number">0</span>] * <span class="hljs-number">10</span><br>        <span class="hljs-keyword">while</span> n:<br>            cnt[n % <span class="hljs-number">10</span>] += <span class="hljs-number">1</span><br>            n //= <span class="hljs-number">10</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>            <span class="hljs-keyword">if</span> cnt[i] <span class="hljs-keyword">and</span> cnt[i] != i:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">nextBeautifulNumber</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            n += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> self.ok(n):<br>                <span class="hljs-keyword">return</span> n<br></code></pre></td></tr></table></figure>
+
+<h2 id="方法二：打表"><a href="#方法二：打表" class="headerlink" title="方法二：打表"></a>方法二：打表</h2><p>方法一中我们实现了“判断一个数是否为数值平衡数的函数”，因此我们可以写一个简单的程序，预先将所有可能用到的“数值平衡数”存下来：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> mem(a) memset(a, 0, sizeof(a))</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> dbg(x) cout &lt;&lt; #x &lt;&lt; <span class="hljs-string">&quot; = &quot;</span> &lt;&lt; x &lt;&lt; endl</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> fi(i, l, r) for (int i = l; i &lt; r; i++)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> cd(a) scanf(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a)</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isok</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-type">int</span> cnt[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-keyword">while</span> (n) &#123;<br>        cnt[n % <span class="hljs-number">10</span>]++;<br>        n /= <span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">9</span>; i++) &#123;<br>        <span class="hljs-keyword">if</span> (cnt[i] &amp;&amp; cnt[i] != i) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; ok;<br>    <span class="hljs-type">int</span> n = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (++n) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isok</span>(n)) &#123;<br>            ok.<span class="hljs-built_in">push_back</span>(n);<br>            <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">1000000</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t : ok) &#123;<br>        cout &lt;&lt; t &lt;&lt; <span class="hljs-string">&quot;, &quot;</span>;<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述代码不重要，反正只要能得到下面的这个表就好：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">122</span>, <span class="hljs-number">212</span>, <span class="hljs-number">221</span>, <span class="hljs-number">333</span>, <span class="hljs-number">1333</span>, <span class="hljs-number">3133</span>, <span class="hljs-number">3313</span>, <span class="hljs-number">3331</span>, <span class="hljs-number">4444</span>, <span class="hljs-number">14444</span>, <span class="hljs-number">22333</span>, <span class="hljs-number">23233</span>, <span class="hljs-number">23323</span>, <span class="hljs-number">23332</span>, <span class="hljs-number">32233</span>, <span class="hljs-number">32323</span>, <span class="hljs-number">32332</span>, <span class="hljs-number">33223</span>, <span class="hljs-number">33232</span>, <span class="hljs-number">33322</span>, <span class="hljs-number">41444</span>, <span class="hljs-number">44144</span>, <span class="hljs-number">44414</span>, <span class="hljs-number">44441</span>, <span class="hljs-number">55555</span>, <span class="hljs-number">122333</span>, <span class="hljs-number">123233</span>, <span class="hljs-number">123323</span>, <span class="hljs-number">123332</span>, <span class="hljs-number">132233</span>, <span class="hljs-number">132323</span>, <span class="hljs-number">132332</span>, <span class="hljs-number">133223</span>, <span class="hljs-number">133232</span>, <span class="hljs-number">133322</span>, <span class="hljs-number">155555</span>, <span class="hljs-number">212333</span>, <span class="hljs-number">213233</span>, <span class="hljs-number">213323</span>, <span class="hljs-number">213332</span>, <span class="hljs-number">221333</span>, <span class="hljs-number">223133</span>, <span class="hljs-number">223313</span>, <span class="hljs-number">223331</span>, <span class="hljs-number">224444</span>, <span class="hljs-number">231233</span>, <span class="hljs-number">231323</span>, <span class="hljs-number">231332</span>, <span class="hljs-number">232133</span>, <span class="hljs-number">232313</span>, <span class="hljs-number">232331</span>, <span class="hljs-number">233123</span>, <span class="hljs-number">233132</span>, <span class="hljs-number">233213</span>, <span class="hljs-number">233231</span>, <span class="hljs-number">233312</span>, <span class="hljs-number">233321</span>, <span class="hljs-number">242444</span>, <span class="hljs-number">244244</span>, <span class="hljs-number">244424</span>, <span class="hljs-number">244442</span>, <span class="hljs-number">312233</span>, <span class="hljs-number">312323</span>, <span class="hljs-number">312332</span>, <span class="hljs-number">313223</span>, <span class="hljs-number">313232</span>, <span class="hljs-number">313322</span>, <span class="hljs-number">321233</span>, <span class="hljs-number">321323</span>, <span class="hljs-number">321332</span>, <span class="hljs-number">322133</span>, <span class="hljs-number">322313</span>, <span class="hljs-number">322331</span>, <span class="hljs-number">323123</span>, <span class="hljs-number">323132</span>, <span class="hljs-number">323213</span>, <span class="hljs-number">323231</span>, <span class="hljs-number">323312</span>, <span class="hljs-number">323321</span>, <span class="hljs-number">331223</span>, <span class="hljs-number">331232</span>, <span class="hljs-number">331322</span>, <span class="hljs-number">332123</span>, <span class="hljs-number">332132</span>, <span class="hljs-number">332213</span>, <span class="hljs-number">332231</span>, <span class="hljs-number">332312</span>, <span class="hljs-number">332321</span>, <span class="hljs-number">333122</span>, <span class="hljs-number">333212</span>, <span class="hljs-number">333221</span>, <span class="hljs-number">422444</span>, <span class="hljs-number">424244</span>, <span class="hljs-number">424424</span>, <span class="hljs-number">424442</span>, <span class="hljs-number">442244</span>, <span class="hljs-number">442424</span>, <span class="hljs-number">442442</span>, <span class="hljs-number">444224</span>, <span class="hljs-number">444242</span>, <span class="hljs-number">444422</span>, <span class="hljs-number">515555</span>, <span class="hljs-number">551555</span>, <span class="hljs-number">555155</span>, <span class="hljs-number">555515</span>, <span class="hljs-number">555551</span>, <span class="hljs-number">666666</span>, <span class="hljs-number">1224444</span><br></code></pre></td></tr></table></figure>
+
+<p>这是从1到1224444的所有“数值平衡数”。有了这张表，不论给你的n等于几，你都可以通过二分等方式在极短的时间内找到第一个大于n的“数值平衡数”。</p>
+<ul>
+<li>时间复杂度$\log len(Biao)$，其中表的大小$len(Biao)&#x3D;110$</li>
+<li>空间复杂度$O(len(Biao))$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> ok[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">122</span>, <span class="hljs-number">212</span>, <span class="hljs-number">221</span>, <span class="hljs-number">333</span>, <span class="hljs-number">1333</span>, <span class="hljs-number">3133</span>, <span class="hljs-number">3313</span>, <span class="hljs-number">3331</span>, <span class="hljs-number">4444</span>, <span class="hljs-number">14444</span>, <span class="hljs-number">22333</span>, <span class="hljs-number">23233</span>, <span class="hljs-number">23323</span>, <span class="hljs-number">23332</span>, <span class="hljs-number">32233</span>, <span class="hljs-number">32323</span>, <span class="hljs-number">32332</span>, <span class="hljs-number">33223</span>, <span class="hljs-number">33232</span>, <span class="hljs-number">33322</span>, <span class="hljs-number">41444</span>, <span class="hljs-number">44144</span>, <span class="hljs-number">44414</span>, <span class="hljs-number">44441</span>, <span class="hljs-number">55555</span>, <span class="hljs-number">122333</span>, <span class="hljs-number">123233</span>, <span class="hljs-number">123323</span>, <span class="hljs-number">123332</span>, <span class="hljs-number">132233</span>, <span class="hljs-number">132323</span>, <span class="hljs-number">132332</span>, <span class="hljs-number">133223</span>, <span class="hljs-number">133232</span>, <span class="hljs-number">133322</span>, <span class="hljs-number">155555</span>, <span class="hljs-number">212333</span>, <span class="hljs-number">213233</span>, <span class="hljs-number">213323</span>, <span class="hljs-number">213332</span>, <span class="hljs-number">221333</span>, <span class="hljs-number">223133</span>, <span class="hljs-number">223313</span>, <span class="hljs-number">223331</span>, <span class="hljs-number">224444</span>, <span class="hljs-number">231233</span>, <span class="hljs-number">231323</span>, <span class="hljs-number">231332</span>, <span class="hljs-number">232133</span>, <span class="hljs-number">232313</span>, <span class="hljs-number">232331</span>, <span class="hljs-number">233123</span>, <span class="hljs-number">233132</span>, <span class="hljs-number">233213</span>, <span class="hljs-number">233231</span>, <span class="hljs-number">233312</span>, <span class="hljs-number">233321</span>, <span class="hljs-number">242444</span>, <span class="hljs-number">244244</span>, <span class="hljs-number">244424</span>, <span class="hljs-number">244442</span>, <span class="hljs-number">312233</span>, <span class="hljs-number">312323</span>, <span class="hljs-number">312332</span>, <span class="hljs-number">313223</span>, <span class="hljs-number">313232</span>, <span class="hljs-number">313322</span>, <span class="hljs-number">321233</span>, <span class="hljs-number">321323</span>, <span class="hljs-number">321332</span>, <span class="hljs-number">322133</span>, <span class="hljs-number">322313</span>, <span class="hljs-number">322331</span>, <span class="hljs-number">323123</span>, <span class="hljs-number">323132</span>, <span class="hljs-number">323213</span>, <span class="hljs-number">323231</span>, <span class="hljs-number">323312</span>, <span class="hljs-number">323321</span>, <span class="hljs-number">331223</span>, <span class="hljs-number">331232</span>, <span class="hljs-number">331322</span>, <span class="hljs-number">332123</span>, <span class="hljs-number">332132</span>, <span class="hljs-number">332213</span>, <span class="hljs-number">332231</span>, <span class="hljs-number">332312</span>, <span class="hljs-number">332321</span>, <span class="hljs-number">333122</span>, <span class="hljs-number">333212</span>, <span class="hljs-number">333221</span>, <span class="hljs-number">422444</span>, <span class="hljs-number">424244</span>, <span class="hljs-number">424424</span>, <span class="hljs-number">424442</span>, <span class="hljs-number">442244</span>, <span class="hljs-number">442424</span>, <span class="hljs-number">442442</span>, <span class="hljs-number">444224</span>, <span class="hljs-number">444242</span>, <span class="hljs-number">444422</span>, <span class="hljs-number">515555</span>, <span class="hljs-number">551555</span>, <span class="hljs-number">555155</span>, <span class="hljs-number">555515</span>, <span class="hljs-number">555551</span>, <span class="hljs-number">666666</span>, <span class="hljs-number">1224444</span>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">nextBeautifulNumber</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-built_in">upper_bound</span>(ok, ok + <span class="hljs-built_in">sizeof</span>(ok) / <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>), n);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from bisect import bisect_right</span><br><br>ok = [<span class="hljs-number">1</span>, <span class="hljs-number">22</span>, <span class="hljs-number">122</span>, <span class="hljs-number">212</span>, <span class="hljs-number">221</span>, <span class="hljs-number">333</span>, <span class="hljs-number">1333</span>, <span class="hljs-number">3133</span>, <span class="hljs-number">3313</span>, <span class="hljs-number">3331</span>, <span class="hljs-number">4444</span>, <span class="hljs-number">14444</span>, <span class="hljs-number">22333</span>, <span class="hljs-number">23233</span>, <span class="hljs-number">23323</span>, <span class="hljs-number">23332</span>, <span class="hljs-number">32233</span>, <span class="hljs-number">32323</span>, <span class="hljs-number">32332</span>, <span class="hljs-number">33223</span>, <span class="hljs-number">33232</span>, <span class="hljs-number">33322</span>, <span class="hljs-number">41444</span>, <span class="hljs-number">44144</span>, <span class="hljs-number">44414</span>, <span class="hljs-number">44441</span>, <span class="hljs-number">55555</span>, <span class="hljs-number">122333</span>, <span class="hljs-number">123233</span>, <span class="hljs-number">123323</span>, <span class="hljs-number">123332</span>, <span class="hljs-number">132233</span>, <span class="hljs-number">132323</span>, <span class="hljs-number">132332</span>, <span class="hljs-number">133223</span>, <span class="hljs-number">133232</span>, <span class="hljs-number">133322</span>, <span class="hljs-number">155555</span>, <span class="hljs-number">212333</span>, <span class="hljs-number">213233</span>, <span class="hljs-number">213323</span>, <span class="hljs-number">213332</span>, <span class="hljs-number">221333</span>, <span class="hljs-number">223133</span>, <span class="hljs-number">223313</span>, <span class="hljs-number">223331</span>, <span class="hljs-number">224444</span>, <span class="hljs-number">231233</span>, <span class="hljs-number">231323</span>, <span class="hljs-number">231332</span>, <span class="hljs-number">232133</span>, <span class="hljs-number">232313</span>, <span class="hljs-number">232331</span>, <span class="hljs-number">233123</span>, <span class="hljs-number">233132</span>, <span class="hljs-number">233213</span>, <span class="hljs-number">233231</span>, <span class="hljs-number">233312</span>, <span class="hljs-number">233321</span>, <span class="hljs-number">242444</span>, <span class="hljs-number">244244</span>, <span class="hljs-number">244424</span>, <span class="hljs-number">244442</span>, <span class="hljs-number">312233</span>, <span class="hljs-number">312323</span>, <span class="hljs-number">312332</span>, <span class="hljs-number">313223</span>, <span class="hljs-number">313232</span>, <span class="hljs-number">313322</span>, <span class="hljs-number">321233</span>, <span class="hljs-number">321323</span>, <span class="hljs-number">321332</span>, <span class="hljs-number">322133</span>, <span class="hljs-number">322313</span>, <span class="hljs-number">322331</span>, <span class="hljs-number">323123</span>, <span class="hljs-number">323132</span>, <span class="hljs-number">323213</span>, <span class="hljs-number">323231</span>, <span class="hljs-number">323312</span>, <span class="hljs-number">323321</span>, <span class="hljs-number">331223</span>, <span class="hljs-number">331232</span>, <span class="hljs-number">331322</span>, <span class="hljs-number">332123</span>, <span class="hljs-number">332132</span>, <span class="hljs-number">332213</span>, <span class="hljs-number">332231</span>, <span class="hljs-number">332312</span>, <span class="hljs-number">332321</span>, <span class="hljs-number">333122</span>, <span class="hljs-number">333212</span>, <span class="hljs-number">333221</span>, <span class="hljs-number">422444</span>, <span class="hljs-number">424244</span>, <span class="hljs-number">424424</span>, <span class="hljs-number">424442</span>, <span class="hljs-number">442244</span>, <span class="hljs-number">442424</span>, <span class="hljs-number">442442</span>, <span class="hljs-number">444224</span>, <span class="hljs-number">444242</span>, <span class="hljs-number">444422</span>, <span class="hljs-number">515555</span>, <span class="hljs-number">551555</span>, <span class="hljs-number">555155</span>, <span class="hljs-number">555515</span>, <span class="hljs-number">555551</span>, <span class="hljs-number">666666</span>, <span class="hljs-number">1224444</span>]<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">nextBeautifulNumber</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> ok[bisect_right(ok, n)]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/12/09/LeetCode%202048.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0%E5%80%BC%E5%B9%B3%E8%A1%A1%E6%95%B0/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/134900679">https://letmefly.blog.csdn.net/article/details/134900679</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/">#中等</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E5%9B%9E%E6%BA%AF/">#回溯</a>
+      
+        <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
+      
+        <a href="/tags/%E6%89%93%E8%A1%A8/">#打表</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2048.下一个更大的数值平衡数</div>
+      <div>https://blog.letmefly.xyz/2023/12/09/LeetCode 2048.下一个更大的数值平衡数/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/10/LeetCode%200070.%E7%88%AC%E6%A5%BC%E6%A2%AF/" title="70.爬楼梯">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">70.爬楼梯</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/08/LeetCode%202008.%E5%87%BA%E7%A7%9F%E8%BD%A6%E7%9A%84%E6%9C%80%E5%A4%A7%E7%9B%88%E5%88%A9/" title="2008.出租车的最大盈利">
+                        <span class="hidden-mobile">2008.出租车的最大盈利</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

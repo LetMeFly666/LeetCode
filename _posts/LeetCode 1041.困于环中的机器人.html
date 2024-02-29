@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1041.困于环中的机器人力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;robot-bounded-in-circle&#x2F; 在无限的平面上，机器人最初位于&nbsp;(0, 0)&nbsp;处，面朝北方。注意:       北方向 是y轴的正方向。     南方向 是y轴的负方向。     东方向 是x轴的正方向。     西方向 是x轴的负方向。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1041.困于环中的机器人">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201041.%E5%9B%B0%E4%BA%8E%E7%8E%AF%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1041.困于环中的机器人力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;robot-bounded-in-circle&#x2F; 在无限的平面上，机器人最初位于&nbsp;(0, 0)&nbsp;处，面朝北方。注意:       北方向 是y轴的正方向。     南方向 是y轴的负方向。     东方向 是x轴的正方向。     西方向 是x轴的负方向。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-11T03:00:14.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.218Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="坐标">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1041.困于环中的机器人 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1041.困于环中的机器人"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1041-困于环中的机器人"><a href="#【LetMeFly】1041-困于环中的机器人" class="headerlink" title="【LetMeFly】1041.困于环中的机器人"></a>【LetMeFly】1041.困于环中的机器人</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/robot-bounded-in-circle/">https://leetcode.cn/problems/robot-bounded-in-circle/</a></p>
+<p>在无限的平面上，机器人最初位于&nbsp;<code>(0, 0)</code>&nbsp;处，面朝北方。注意:</p>
+
+<ul>
+    <li><strong>北方向</strong> 是y轴的正方向。</li>
+    <li><strong>南方向</strong> 是y轴的负方向。</li>
+    <li><strong>东方向</strong> 是x轴的正方向。</li>
+    <li><strong>西方向</strong> 是x轴的负方向。</li>
+</ul>
+
+<p>机器人可以接受下列三条指令之一：</p>
+
+<ul>
+    <li><code>"G"</code>：直走 1 个单位</li>
+    <li><code>"L"</code>：左转 90 度</li>
+    <li><code>"R"</code>：右转 90 度</li>
+</ul>
+
+<p>机器人按顺序执行指令&nbsp;<code>instructions</code>，并一直重复它们。</p>
+
+<p>只有在平面中存在环使得机器人永远无法离开时，返回&nbsp;<code>true</code>。否则，返回 <code>false</code>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>instructions = "GGLLGG"
+<strong>输出：</strong>true
+<strong>解释：</strong>机器人最初在(0,0)处，面向北方。
+“G”:移动一步。位置:(0,1)方向:北。
+“G”:移动一步。位置:(0,2).方向:北。
+“L”:逆时针旋转90度。位置:(0,2).方向:西。
+“L”:逆时针旋转90度。位置:(0,2)方向:南。
+“G”:移动一步。位置:(0,1)方向:南。
+“G”:移动一步。位置:(0,0)方向:南。
+重复指令，机器人进入循环:(0,0)——&gt;(0,1)——&gt;(0,2)——&gt;(0,1)——&gt;(0,0)。
+在此基础上，我们返回true。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>instructions = "GG"
+<strong>输出：</strong>false
+<strong>解释：</strong>机器人最初在(0,0)处，面向北方。
+“G”:移动一步。位置:(0,1)方向:北。
+“G”:移动一步。位置:(0,2).方向:北。
+重复这些指示，继续朝北前进，不会进入循环。
+在此基础上，返回false。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>instructions = "GL"
+<strong>输出：</strong>true
+<strong>解释：</strong>机器人最初在(0,0)处，面向北方。
+“G”:移动一步。位置:(0,1)方向:北。
+“L”:逆时针旋转90度。位置:(0,1).方向:西。
+“G”:移动一步。位置:(- 1,1)方向:西。
+“L”:逆时针旋转90度。位置:(- 1,1)方向:南。
+“G”:移动一步。位置:(- 1,0)方向:南。
+“L”:逆时针旋转90度。位置:(- 1,0)方向:东方。
+“G”:移动一步。位置:(0,0)方向:东方。
+“L”:逆时针旋转90度。位置:(0,0)方向:北。
+重复指令，机器人进入循环:(0,0)——&gt;(0,1)——&gt;(- 1,1)——&gt;(- 1,0)——&gt;(0,0)。
+在此基础上，我们返回true。</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= instructions.length &lt;= 100</code></li>
+    <li><code>instructions[i]</code>&nbsp;仅包含&nbsp;<code>'G', 'L', 'R'</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：模拟"><a href="#方法一：模拟" class="headerlink" title="方法一：模拟"></a>方法一：模拟</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>首先需要明确的是，执行一次<code>instructions</code>，结束状态为什么的时候说明会被困住（多次执行会循环）</p>
+<p>当执行结束时，恰好回到了起点 或者 当前方向不为北  的话，多次执行必定会回到起点。</p>
+<p>首先如果执行一次回到了起点，那么之后执行也会回到起点，顶多每次的方向不同；</p>
+<p>其次如果结束时方向不为北的话，4次或2次内就会绕回到起点。例如：<code>GL</code>等。</p>
+<h3 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h3><p>知道了解题思路，怎么编程实现模拟呢？</p>
+<p>首先我们可以定义一个数组，代表朝向为北东南西时，前进一步的坐标变化。<code>directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]</code></p>
+<p>接着使用一个变量记录当前方向，向右转时方向加一并对4取模，向左转时方向加三并对4取模（相当于方向减一后取模），向前走时就坐标累加即可。</p>
+<p>（当然，无脑模拟4次判断是否回到了起点也可以）</p>
+<ul>
+<li>时间复杂度$O(len(instructions))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> directions[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;&#125;;  <span class="hljs-comment">// 北东南西</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isRobotBounded</span><span class="hljs-params">(string&amp; instructions)</span> </span>&#123;<br>        <span class="hljs-type">int</span> nowDirection = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, y = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : instructions) &#123;<br>            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;G&#x27;</span>) &#123;<br>                x += directions[nowDirection][<span class="hljs-number">0</span>];<br>                y += directions[nowDirection][<span class="hljs-number">1</span>];<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;L&#x27;</span>) &#123;<br>                nowDirection = (nowDirection + <span class="hljs-number">3</span>) % <span class="hljs-number">4</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                nowDirection = (nowDirection + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> nowDirection || (!x &amp;&amp; !y);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python">directions = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]]<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isRobotBounded</span>(<span class="hljs-params">self, instructions: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        nowDirection = <span class="hljs-number">0</span><br>        x, y = <span class="hljs-number">0</span>, <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> instructions:<br>            <span class="hljs-keyword">if</span> c == <span class="hljs-string">&#x27;G&#x27;</span>:<br>                x += directions[nowDirection][<span class="hljs-number">0</span>]<br>                y += directions[nowDirection][<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">elif</span> c == <span class="hljs-string">&#x27;L&#x27;</span>:<br>                nowDirection = (nowDirection + <span class="hljs-number">3</span>) % <span class="hljs-number">4</span><br>            <span class="hljs-keyword">else</span>:<br>                nowDirection = (nowDirection + <span class="hljs-number">1</span>) % <span class="hljs-number">4</span><br>        <span class="hljs-keyword">return</span> nowDirection != <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> (<span class="hljs-keyword">not</span> x <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> y)<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/04/11/LeetCode%201041.%E5%9B%B0%E4%BA%8E%E7%8E%AF%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/130079272">https://letmefly.blog.csdn.net/article/details/130079272</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

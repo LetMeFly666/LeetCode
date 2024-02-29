@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目前言我开发了一个小项目，是BUCT的学生访客申请的后端，叫LetVisit；我校有一个已有的项目，是平安校园管理系统，叫ZJSystem。 LetVisit已经基本开发好且测试好了，但是突然要把LetVisit整合到ZJSystem中。怎么办？重构？太麻烦了。 于是我就想有没有一个较好的合并两个djang">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Python-Django-Merge2DjangoProject.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目前言我开发了一个小项目，是BUCT的学生访客申请的后端，叫LetVisit；我校有一个已有的项目，是平安校园管理系统，叫ZJSystem。 LetVisit已经基本开发好且测试好了，但是突然要把LetVisit整合到ZJSystem中。怎么办？重构？太麻烦了。 于是我就想有没有一个较好的合并两个djang">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-19T08:52:59.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:02:15.230Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Django">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Python-Django-合并两个django项目，将一个项目作为另一个项目的子项目"><a href="#Python-Django-合并两个django项目，将一个项目作为另一个项目的子项目" class="headerlink" title="Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目"></a>Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我开发了一个小项目，是BUCT的学生访客申请的后端，叫LetVisit；我校有一个已有的项目，是平安校园管理系统，叫ZJSystem。</p>
+<p>LetVisit已经基本开发好且测试好了，但是突然要把LetVisit整合到ZJSystem中。怎么办？重构？太麻烦了。</p>
+<p>于是我就想有没有一个较好的合并两个django项目的方法，发现基本上没有。跟着为数不多的文章尝试也失败了。</p>
+<p>最后，借助ChatGPT的帮助，成功合并了两个项目，特将方法记录如下。</p>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><p>平安校园的目录结构为：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">ZJSystem<br>    ZJSystem<br>        urls.<span class="hljs-keyword">py</span><br>        settings.<span class="hljs-keyword">py</span><br>        ...<br>    manage.<span class="hljs-keyword">py</span><br></code></pre></td></tr></table></figure>
+
+<p>访客申请后端的目录结构为：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vim">LetVisit<br>    LetVisit<br>        urls.<span class="hljs-keyword">py</span><br>        settings.<span class="hljs-keyword">py</span><br>        ...<br>    manage.<span class="hljs-keyword">py</span><br></code></pre></td></tr></table></figure>
+
+<p>现在将<strong>LetVisit作为ZJSystem的一个APP并合并到ZJSystem中</strong>。</p>
+<p>首先，将<code>LetVisit</code>整个文件夹移动到<code>ZJsystem/ZJSystem</code>下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vim">ZJSystem<br>    ZJSystem<br>        LetVisit<br>            LetVisit<br>                urls.<span class="hljs-keyword">py</span><br>                settings.<span class="hljs-keyword">py</span><br>                ...<br>            manage.<span class="hljs-keyword">py</span><br>        urls.<span class="hljs-keyword">py</span><br>        settings.<span class="hljs-keyword">py</span><br>        ...<br>    manage.<span class="hljs-keyword">py</span><br></code></pre></td></tr></table></figure>
+
+<p>然后，将<code>LetVisit</code>修改为一个APP。怎么做呢？只需要在<code>ZJSystem/ZJSystem/LetVisit/LetVisit/urls.py</code>中添加一段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">app_name = <span class="hljs-string">&#x27;LetVisit&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在<code>ZJSystem</code>中使用这个APP。怎么做呢？需要在<code>ZJSystem/ZJSystem/settings.py</code>的<code>INSTALLED_APPS</code>中，加上<code>LetVisit</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">INSTALLED_APPS = [<br>    ...<br>    <span class="hljs-string">&#x27;LetVisit&#x27;</span><br>]<br></code></pre></td></tr></table></figure>
+
+<p>最后，我们需要做的就是：将访问<code>LetVisit</code>的请求转发给<code>LetVisit</code>这个APP处理。这里，我们可以选择<strong>将所有以LetVisit开头的请求转交给LetVisit这个APP</strong>。怎么做呢？我们只需要在<code>ZJSystem/ZJSystem/urls.py</code>中添加一行<code>path(&#39;LetVisit/&#39;, include(&#39;LetVisit.urls&#39;, namespace=&#39;LetVisit&#39;))</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">urlpatterns = [<br>    ...<br>    path(<span class="hljs-string">&#x27;LetVisit/&#x27;</span>, include(<span class="hljs-string">&#x27;LetVisit.urls&#x27;</span>, namespace=<span class="hljs-string">&#x27;LetVisit&#x27;</span>))<br>]<br></code></pre></td></tr></table></figure>
+
+<p>这样，所有的以<code>LetVisit/</code>开头的请求都会转交给<code>LetVisit</code>这个APP来处理啦！</p>
+<p>先别着急，运行一下试试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ZJSystem<br>python manage.py runserver<br></code></pre></td></tr></table></figure>
+
+<p>咦？发现<code>LetVisit</code>这个APP报错了：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs clean">    <span class="hljs-keyword">from</span> LetVisit <span class="hljs-keyword">import</span> a<br>ModuleNotFoundError: No <span class="hljs-keyword">module</span> named <span class="hljs-string">&#x27;LetVisit&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>这是因为，在单独的LetVisit项目中，<code>LetVisit/manage.py</code>和<code>LetVisit/LetVisit</code>是同级的，因此自然能找到LetVisit这个“包”。但是LetVisit作为ZJSystem的子项目后，运行的是<code>ZJSystem/manage.py</code>，找不到<code>ZJSystem/ZJSystem/LetVisit/LetVisit</code>。</p>
+<p>怎么办呢？也不难，把LetVisit添加到Python执行路径的环境中就好了。在<code>ZJSystem/ZJSystem/settings.py</code>中，添加：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br>PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))<br>PathToAdd = os.path.join(PROJECT_ROOT, <span class="hljs-string">&#x27;LetVisit/&#x27;</span>)<br>sys.path.insert(<span class="hljs-number">0</span>, PathToAdd)<br></code></pre></td></tr></table></figure>
+
+<p>这样执行<code>ZJSystem</code>时，就能找到<code>LetVisit</code>了。</p>
+<p>大功告成。</p>
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>注意，这时候所有对LetVisit的请求的URL都要以<code>LetVisit</code>开头，可能会与原始的地址不匹配，注意修改一下。</p>
+<p>相当于对于整个项目ZJSystem来说，<code>127.0.0.1:8000/LetVisit/HelloWord</code>会被转发给LetVisit，但是对于LetVisit来说，它所匹配的URL是<code>HelloWorld</code>，而不是<code>LetVisit/HelloWorld</code>。</p>
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/04/19/Other-Python-Django-Merge2DjangoProject/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/130248202">https://letmefly.blog.csdn.net/article/details/130248202</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
