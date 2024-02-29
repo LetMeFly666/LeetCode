@@ -108,14 +108,26 @@ jobs:
           # npm install hexo-renderer-pandoc --save
           cd ../LeetCode
       
-      - name: Deploy hexo
+      - name: Generate hexo
         run: |
           cd ../hexoWorkspace
           echo hexo g:
           hexo g
-          echo hexo d:
-          hexo d
+          # echo hexo d:
+          # hexo d
           cd ../LeetCode
+      
+      - name: Push to github
+        run: |
+          git checkout website
+          ls -la
+          cp -r .git ../hexoWorkspace/public
+          cd ../hexoWorkspace/public
+          git add .
+          git commit -m "continue?"
+          git push
+          cd ../../LeetCode
+
       
       # - name: Move cache dir to other place
       #   run: |

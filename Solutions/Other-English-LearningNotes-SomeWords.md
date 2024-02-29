@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-02-29 15:20:08
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-02-29 21:39:37
+-->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
 date: 2024-02-19 22:13:59
@@ -43,6 +49,10 @@ tags: [其他, 知识, 英语, Notes]
 |diagnose|v. 诊断，判断|
 |decent|adj. 得体的，合适的|
 |prescribe|v. 开药方，指定|
+|||
+|flicker|v. 闪烁，闪现，抖动<br/>闪烁，摇曳|
+|simplicity|n. 简单，简朴|
+|foe|n. 仇人，敌人|
 
 <details>
 <summary>扇贝音频测试</summary>
