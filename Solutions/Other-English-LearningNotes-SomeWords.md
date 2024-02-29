@@ -39,6 +39,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |elaborate|adj. 复杂的，精致的<br/>v. 详细说明，精心制作|
 |harness|v. 控制（利用），驾驭<br/>n. 马具|
+|||
+|diagnose|v. 诊断，判断|
+|decent|adj. 得体的，合适的|
+|prescribe|v. 开药方，指定|
 
 <details>
 <summary>扇贝音频测试</summary>
