@@ -80,11 +80,13 @@ jobs:
           # 上次commit记录
           MESSAGE=$(git log -1 --format="%s")
           HASH=$(git log -1 --format="%H")
-          ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
-          echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
-          echo "$ENCODED_MESSAGE"
-          DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)  # can remove
-          echo "$DECODED_MESSAGE"
+          # ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
+          # echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
+          # echo "$ENCODED_MESSAGE"
+          echo "$MESSAGE"
+          echo "$HASH"
+          echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
+          echo "HASH=$HASH" >> $GITHUB_ENV
 
       - name: Copy config files from branch website_Static
         run: |
@@ -153,10 +155,13 @@ jobs:
           ls -la
           cp -r .git ../hexoWorkspace/public
           cd ../hexoWorkspace/public
-          DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
-          echo "$DECODED_MESSAGE"
+          # DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
+          # echo "$DECODED_MESSAGE"
+          TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
+          echo "$TOCOMMIT"
           git add .
-          git commit --allow-empty -m "$DECODED_MESSAGE"
+          # git commit --allow-empty -m "$DECODED_MESSAGE"
+          git commit --allow-empty -m "$TOCOMMIT"
           git push
           cd ../../LeetCode
 
