@@ -34,4 +34,4 @@ class expands {
   constructor() {}
 }
 
-let expand = new expands();
+let expand_arknights = new expands();
