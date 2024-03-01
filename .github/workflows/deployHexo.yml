@@ -148,6 +148,8 @@ jobs:
           HASH=$(git log -1 --format="%H")
           ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
           echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
+          echo $ENCODED_MESSAGE
+          DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
           git add .
           git commit --allow-empty -m "$DECODED_MESSAGE"
           git push
