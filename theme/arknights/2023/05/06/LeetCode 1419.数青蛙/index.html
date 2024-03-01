@@ -1,116 +1,113 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1419.数青蛙 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1419.数青蛙</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-05-06T01:54:31.000Z" id="date"> 2023-05-06</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1419-数青蛙"><a href="#【LetMeFly】1419-数青蛙" class="headerlink" title="【LetMeFly】1419.数青蛙"></a>【LetMeFly】1419.数青蛙</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-frogs-croaking/">https://leetcode.cn/problems/minimum-number-of-frogs-croaking/</a></p>
+<p>给你一个字符串 <code>croakOfFrogs</code>，它表示不同青蛙发出的蛙鸣声（字符串 <code>"croak"</code> ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以&nbsp;<code>croakOfFrogs</code> 中会混合多个 <code>“croak”</code> <em>。</em></p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。</p>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>要想发出蛙鸣 "croak"，青蛙必须 <strong>依序</strong> 输出 <code>‘c’, ’r’, ’o’, ’a’, ’k’</code> 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。如果字符串 <code>croakOfFrogs</code> 不是由若干有效的 "croak" 字符混合而成，请返回 <code>-1</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>croakOfFrogs = "croakcroak"
+<strong>输出：</strong>1 
+<strong>解释：</strong>一只青蛙 “呱呱” 两次
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>croakOfFrogs = "crcoakroak"
+<strong>输出：</strong>2 
+<strong>解释：</strong>最少需要两只青蛙，“呱呱” 声用黑体标注
+第一只青蛙 "<strong>cr</strong>c<strong>oak</strong>roak"
+第二只青蛙 "cr<strong>c</strong>oak<strong>roak</strong>"
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>croakOfFrogs = "croakcrook"
+<strong>输出：</strong>-1
+<strong>解释：</strong>给出的字符串不是 "croak<strong>"</strong> 的有效组合。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= croakOfFrogs.length &lt;= 10<sup>5</sup></code></li>
+    <li>字符串中的字符只有 <code>'c'</code>, <code>'r'</code>, <code>'o'</code>, <code>'a'</code> 或者 <code>'k'</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：计数-模拟"><a href="#方法一：计数-模拟" class="headerlink" title="方法一：计数 + 模拟"></a>方法一：计数 + 模拟</h2><p>题目大意是每只青蛙依次叫完“c、r、o、a、k”算作一次发声，一只青蛙完整叫完这一次后可以叫下一次，但是不能只叫一半。问最少有多少只青蛙在叫。</p>
+<p>我们只需要一个计数器“cnt”，分别统计当前叫到“c、r、o、a、k”的青蛙数量。</p>
+<p>接着还需要一个变量“nowFrog”来统计当前正在叫且还没有叫完的青蛙的数量。答案用变量“ans”来表示。</p>
+<p>遍历发生字符串：</p>
+<ul>
+<li><p>如果当前字符是“c”，那么就说明这个声音来自某一只青蛙的开始，$nowFrog++$，并更新答案（同时发声的最大青蛙数量）和cnt</p>
+</li>
+<li><p>否则，这个声音来自某只叫了一半的青蛙，假如这一声是“o”，那么就需要由一只“r”青蛙改叫“o”</p>
+<ul>
+<li>如果“r”青蛙数量为0，直接返回-1</li>
+<li>否则cnt[r]–，cnt[o]++<br>注意查看这一声是否为最后一声“k”，如果为k，则说明某只青蛙叫完了，nowFrog–，cnt[o]–（其实cnt[0]可以恒为0）</li>
+</ul>
+</li>
+<li><p>时间复杂度$O(len(croakOfFrogs))$</p>
+</li>
+<li><p>空间复杂度$O(1)$</p>
+</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minNumberOfFrogs</span><span class="params">(string croakOfFrogs)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; ma = &#123;&#123;<span class="string">&#x27;c&#x27;</span>, <span class="number">0</span>&#125;, &#123;<span class="string">&#x27;r&#x27;</span>, <span class="number">1</span>&#125;, &#123;<span class="string">&#x27;o&#x27;</span>, <span class="number">2</span>&#125;, &#123;<span class="string">&#x27;a&#x27;</span>, <span class="number">3</span>&#125;, &#123;<span class="string">&#x27;k&#x27;</span>, <span class="number">4</span>&#125;&#125;;</span><br><span class="line">        <span class="type">int</span> cnt[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">int</span> nowFrog = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : croakOfFrogs) &#123;</span><br><span class="line">            <span class="type">int</span> th = ma[c];</span><br><span class="line">            <span class="keyword">if</span> (th == <span class="number">0</span>) &#123;  <span class="comment">// 新青蛙</span></span><br><span class="line">                nowFrog++;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, nowFrog);</span><br><span class="line">                cnt[<span class="number">0</span>]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;  <span class="comment">// 老青蛙</span></span><br><span class="line">                <span class="keyword">if</span> (!cnt[th - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                cnt[th - <span class="number">1</span>]--;</span><br><span class="line">                <span class="keyword">if</span> (th == <span class="number">4</span>) &#123;  <span class="comment">// 这个青蛙叫完了</span></span><br><span class="line">                    nowFrog--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    cnt[th]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nowFrog ? <span class="number">-1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minNumberOfFrogs</span>(<span class="params">self, croakOfFrogs: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ma = &#123;<span class="string">&#x27;c&#x27;</span>:<span class="number">0</span>, <span class="string">&#x27;r&#x27;</span>:<span class="number">1</span>, <span class="string">&#x27;o&#x27;</span>:<span class="number">2</span>, <span class="string">&#x27;a&#x27;</span>:<span class="number">3</span>, <span class="string">&#x27;k&#x27;</span>:<span class="number">4</span>&#125;</span><br><span class="line">        cnt = [<span class="number">0</span>] * <span class="number">5</span></span><br><span class="line">        nowFrog = <span class="number">0</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> croakOfFrogs:</span><br><span class="line">            th = ma[c]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> th:  <span class="comment"># 新青蛙</span></span><br><span class="line">                nowFrog += <span class="number">1</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, nowFrog)</span><br><span class="line">                cnt[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 老青蛙</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> cnt[th - <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                cnt[th - <span class="number">1</span>] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> th == <span class="number">4</span>:  <span class="comment"># 这个青蛙叫完了</span></span><br><span class="line">                    nowFrog -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    cnt[th] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans <span class="keyword">if</span> <span class="keyword">not</span> nowFrog <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p>🔥 感谢 <a target="_blank" rel="noopener" href="https://leetcode.cn/u/shui-ar/">@水</a>大佬 提供Java版本的代码~</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minNumberOfFrogs</span><span class="params">(String croakOfFrogs)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(croakOfFrogs.length()%<span class="number">5</span>!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        HashMap&lt;Character,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&#x27;c&#x27;</span>,<span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;r&#x27;</span>,<span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;o&#x27;</span>,<span class="number">2</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;a&#x27;</span>,<span class="number">3</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;k&#x27;</span>,<span class="number">4</span>);</span><br><span class="line">        <span class="type">int</span> frog=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> maxfrog=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] count=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> now:croakOfFrogs.toCharArray())&#123;</span><br><span class="line">            <span class="type">int</span> croak=map.get(now);</span><br><span class="line">            <span class="keyword">if</span>(now==<span class="string">&#x27;c&#x27;</span>)&#123;</span><br><span class="line">                frog++;</span><br><span class="line">                count[<span class="number">0</span>]++;</span><br><span class="line">                maxfrog=Math.max(frog,maxfrog);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(count[croak-<span class="number">1</span>]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                count[croak-<span class="number">1</span>]--;</span><br><span class="line">                <span class="keyword">if</span>(now==<span class="string">&#x27;k&#x27;</span>)&#123;</span><br><span class="line">                    frog--;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    count[croak]++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(frog&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxfrog;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/05/06/LeetCode%201419.%E6%95%B0%E9%9D%92%E8%9B%99/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/130520908">https://letmefly.blog.csdn.net/article/details/130520908</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/05/07/LeetCode%201010.%E6%80%BB%E6%8C%81%E7%BB%AD%E6%97%B6%E9%97%B4%E5%8F%AF%E8%A2%AB60%E6%95%B4%E9%99%A4%E7%9A%84%E6%AD%8C%E6%9B%B2/">← Next 1010.总持续时间可被 60 整除的歌曲</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/05/05/LeetCode%202432.%E5%A4%84%E7%90%86%E7%94%A8%E6%97%B6%E6%9C%80%E9%95%BF%E7%9A%84%E9%82%A3%E4%B8%AA%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%91%98%E5%B7%A5/">2432.处理用时最长的那个任务的员工 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911419-%E6%95%B0%E9%9D%92%E8%9B%99"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1419.数青蛙</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%AE%A1%E6%95%B0-%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：计数 + 模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Java"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">Java</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

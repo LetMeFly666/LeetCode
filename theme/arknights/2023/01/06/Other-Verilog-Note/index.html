@@ -1,116 +1,76 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Verilog学习笔记 - 极简极入门级 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Verilog学习笔记 - 极简极入门级</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-01-06T11:02:59.000Z" id="date"> 2023-01-06</time></div></span></div></div><hr><div id="post-content"><h1 id="Verilog小总结"><a href="#Verilog小总结" class="headerlink" title="Verilog小总结"></a>Verilog小总结</h1><h2 id="01-语言风格、语法"><a href="#01-语言风格、语法" class="headerlink" title="01 语言风格、语法"></a>01 语言风格、语法</h2><p>Verilog语法和C语言较像，每句结尾同样需要分号。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assign</span> a = b ? c : d;</span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>注释方式和C语言一致，可以单行注释（在<code>//</code>之后），也可以多行注释（在<code>/*</code>和<code>*/</code>之间）</p>
+<h2 id="02-module模块"><a href="#02-module模块" class="headerlink" title="02 module模块"></a>02 module模块</h2><p>Verilog语言绝大多数内容需要包括在<code>module</code>和<code>endmodule</code>之间</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> Demo(a, b, c, d);</span><br><span class="line">    <span class="keyword">assign</span> a = b ? c : d;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>其中module后的参数列表写法比较灵活，可以只写参数名（如上），也可以加上参数类型；可以写到一行，也可以随意换行（或缩进）；也可以写明那个参数是输入，那个参数是输出</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> Demo(</span><br><span class="line">    <span class="keyword">input</span> <span class="keyword">reg</span> a,</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">wire</span>[<span class="number">0</span>:<span class="number">3</span>] b</span><br><span class="line">);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="03-赋值"><a href="#03-赋值" class="headerlink" title="03 赋值"></a>03 赋值</h2><p>wire类型的数据需要用assign来赋值。因为线是连通的，所以假设<code>assign a = b</code>，那么当<code>b</code>变化时，<code>a</code>会随之发生变化</p>
+<p>reg类型的数据需要在always语句块中进行赋值</p>
+<p>always用法：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @ (<span class="keyword">event</span>) <span class="keyword">begin</span></span><br><span class="line">	[multiple statements]</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>例如</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// module ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">always</span> @ (a) <span class="keyword">begin</span>  <span class="comment">// 此处空格非必须</span></span><br><span class="line">    b = a;  <span class="comment">// 不需要写assign，也不能写assign，因为b是reg类型的</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">// endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码的意思是，当a发生变化时，执行always语句块中的语句（<code>b = a</code>）</p>
+<p>其中<code>event</code>可以有<code>*</code>（代表所有事件）、<code>变量名</code>、<code>posedge</code>（上升沿）、<code>negedge</code>（下降沿）  （等）</p>
+<h2 id="04-testbench、延时"><a href="#04-testbench、延时" class="headerlink" title="04 testbench、延时"></a>04 testbench、延时</h2><p>Verilog可以编写testbench来对信号进行赋值</p>
+<p>一般方法为，再建立一个Verilog源代码文件，其中写一个module，在这个module中对编写好的待测module进行测试（赋值以便观察仿真结果等）</p>
+<p>例如，写了一个加法module（可以另存为Test.v等）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> Test (</span><br><span class="line">    <span class="keyword">input</span> a,</span><br><span class="line">    <span class="keyword">input</span> b,</span><br><span class="line">    <span class="keyword">output</span> c</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">assign</span> c = a + b;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>则可以编写测试文件（可以另存为Source.v等）</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">timescale</span> 1ns/1ps  </span><span class="comment">// 时延单位1ns，时延精度1ps</span></span><br><span class="line"><span class="keyword">module</span> source;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">reg</span> signal_a;</span><br><span class="line">  <span class="keyword">reg</span> signal_b;</span><br><span class="line">  <span class="keyword">wire</span> signal_c;</span><br><span class="line"> </span><br><span class="line">  add U0(</span><br><span class="line">     <span class="variable">.a</span>(signal_a),</span><br><span class="line">     <span class="variable">.b</span>(signal_b),</span><br><span class="line">     <span class="variable">.c</span>(signal_c)</span><br><span class="line">    );</span><br><span class="line">  <span class="keyword">initial</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      signal_a = <span class="number">0</span>;</span><br><span class="line">      signal_b = <span class="number">0</span>;</span><br><span class="line">      #<span class="number">10</span>;  <span class="comment">// 延时10毫秒</span></span><br><span class="line">      signal_a = <span class="number">0</span>;</span><br><span class="line">      signal_b = <span class="number">1</span>;</span><br><span class="line">      #<span class="number">10</span>;</span><br><span class="line">      signal_a = <span class="number">1</span>;</span><br><span class="line">      signal_b = <span class="number">0</span>;</span><br><span class="line">      #<span class="number">10</span>;</span><br><span class="line">      signal_a = <span class="number">1</span>;</span><br><span class="line">      signal_b = <span class="number">1</span>;</span><br><span class="line">      #<span class="number">10</span>;</span><br><span class="line">      <span class="built_in">$stop</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>赋值部分一般写到<code>initial ... begin</code>和<code>end</code>之间。</p>
+<p>其中延时为<code>#</code>加上要延时的时间</p>
+<h2 id="05-数字表示"><a href="#05-数字表示" class="headerlink" title="05 数字表示"></a>05 数字表示</h2><p>Verilog中数字很多时候使用“<code>位宽</code> <code>&#39;</code> <code>进制</code> <code>数值</code>”的方式表示，例如</p>
+<p><code>4&#39;b1001</code>代表二进制下的四位数<code>1001</code></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><center><font size="6px" face="Ink Free">The End, thanks!</font></center>
+
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/01/03/Other-Verilog-Note/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/128584160">https://letmefly.blog.csdn.net/article/details/128584160</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/01/06/LeetCode%202180.%E7%BB%9F%E8%AE%A1%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C%E4%B8%BA%E5%81%B6%E6%95%B0%E7%9A%84%E6%95%B4%E6%95%B0%E4%B8%AA%E6%95%B0/">← Next 2180.统计各位数字之和为偶数的整数个数</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/01/03/LeetCode%202042.%E6%A3%80%E6%9F%A5%E5%8F%A5%E5%AD%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E9%80%92%E5%A2%9E/">2042.检查句子中的数字是否递增 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Verilog%E5%B0%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">Verilog小总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E8%AF%AD%E8%A8%80%E9%A3%8E%E6%A0%BC%E3%80%81%E8%AF%AD%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">01 语言风格、语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-module%E6%A8%A1%E5%9D%97"><span class="toc-number">1.2.</span> <span class="toc-text">02 module模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.</span> <span class="toc-text">03 赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-testbench%E3%80%81%E5%BB%B6%E6%97%B6"><span class="toc-number">1.4.</span> <span class="toc-text">04 testbench、延时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E6%95%B0%E5%AD%97%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.5.</span> <span class="toc-text">05 数字表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.6.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

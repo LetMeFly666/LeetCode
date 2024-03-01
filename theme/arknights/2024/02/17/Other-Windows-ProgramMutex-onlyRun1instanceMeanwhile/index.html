@@ -1,116 +1,81 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Windows程序互斥锁 - 一个程序同时仅允许运行一个实例 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Windows程序互斥锁 - 一个程序同时仅允许运行一个实例</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-02-17T08:52:12.000Z" id="date"> 2024-02-17</time></div></span></div></div><hr><div id="post-content"><h1 id="Windows程序互斥锁-一个程序同时仅允许运行一个实例"><a href="#Windows程序互斥锁-一个程序同时仅允许运行一个实例" class="headerlink" title="Windows程序互斥锁 - 一个程序同时仅允许运行一个实例"></a>Windows程序互斥锁 - 一个程序同时仅允许运行一个实例</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>鉴于应用逻辑需要，有些Windows应用同时只能运行一个实例。例如：一个电脑只能同时运行一个微信（手速快了当我没说，不信你去试试）。</p>
+<p>怎么实现呢？大致有两种办法：系统自带的互斥锁 或 （手动实现或系统自带）文件锁。</p>
+<p>想要使用系统提供的锁（不论是程序锁还是文件锁），不同系统调用的API不同（需要适配系统）；想要手写文件锁，则十分麻烦（甚至很难做到完美）。</p>
+<p>接下来以Windows系统为例，创建一个“同时只能运行一个实例”的程序。<strong>若第二次打开这个程序，则向正在运行的程序发送消息并退出</strong>。</p>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><h3 id="推荐的方法：系统自带的锁功能"><a href="#推荐的方法：系统自带的锁功能" class="headerlink" title="推荐的方法：系统自带的锁功能"></a>推荐的方法：系统自带的锁功能</h3><p>Windows中程序锁函数为<code>CreateMutex</code>函数。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HANDLE mutexHandle = CreateMutex(<span class="literal">NULL</span>, TRUE, MUTEX_NAME);</span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>所有程序中，系统只允许同时存在一个名为<code>MUTEX_NAME</code>的锁。程序借此可判断自己是否为第一个实例，若是（得到了锁）则继续运行，否则找到正在运行的程序并向起发送消息。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MUTEX_NAME <span class="string">&quot;Local\\MySingleInstanceMutex&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WINDOW_CLASS_NAME <span class="string">&quot;MySingleInstanceAppWindowClass&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WINDOW_TITLE <span class="string">&quot;MySingleInstanceApp&quot;</span></span></span><br><span class="line"></span><br><span class="line">LRESULT CALLBACK <span class="title function_">WndProc</span><span class="params">(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (message) &#123;</span><br><span class="line">    <span class="keyword">case</span> WM_COPYDATA: &#123;</span><br><span class="line">        PCOPYDATASTRUCT pCDS = (PCOPYDATASTRUCT)lParam;</span><br><span class="line">        <span class="keyword">if</span> (pCDS-&gt;cbData &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">char</span>* messageText = (<span class="type">char</span>*)pCDS-&gt;lpData;</span><br><span class="line">            MessageBox(hWnd, messageText, <span class="string">&quot;Message Received&quot;</span>, MB_OK);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">case</span> WM_DESTROY:</span><br><span class="line">        PostQuitMessage(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> DefWindowProc(hWnd, message, wParam, lParam);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> WINAPI <span class="title function_">WinMain</span><span class="params">(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, <span class="type">int</span> nCmdShow)</span> &#123;</span><br><span class="line">    HANDLE mutexHandle = CreateMutex(<span class="literal">NULL</span>, TRUE, MUTEX_NAME);</span><br><span class="line">    <span class="keyword">if</span> (GetLastError() == ERROR_ALREADY_EXISTS) &#123;</span><br><span class="line">        <span class="comment">// 实例已运行，找到窗口并发送消息</span></span><br><span class="line">        HWND hWnd = FindWindow(WINDOW_CLASS_NAME, WINDOW_TITLE);</span><br><span class="line">        <span class="keyword">if</span> (hWnd) &#123;</span><br><span class="line">            COPYDATASTRUCT cds;</span><br><span class="line">            cds.dwData = <span class="number">1</span>; <span class="comment">// 可以使用不同的值来表示不同类型的消息</span></span><br><span class="line">            cds.cbData = <span class="built_in">strlen</span>(lpCmdLine) + <span class="number">1</span>;</span><br><span class="line">            cds.lpData = lpCmdLine;</span><br><span class="line">            SendMessage(hWnd, WM_COPYDATA, (WPARAM)<span class="literal">NULL</span>, (LPARAM)&amp;cds);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 退出程序</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注册窗口类</span></span><br><span class="line">    WNDCLASS wc = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    wc.lpfnWndProc = WndProc;</span><br><span class="line">    wc.hInstance = hInstance;</span><br><span class="line">    wc.lpszClassName = WINDOW_CLASS_NAME;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!RegisterClass(&amp;wc)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建窗口</span></span><br><span class="line">    HWND hWnd = CreateWindow(WINDOW_CLASS_NAME, WINDOW_TITLE, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, <span class="literal">NULL</span>, <span class="literal">NULL</span>, hInstance, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (!hWnd) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    ShowWindow(hWnd, nCmdShow);</span><br><span class="line">    UpdateWindow(hWnd);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 消息循环</span></span><br><span class="line">    MSG msg;</span><br><span class="line">    <span class="keyword">while</span> (GetMessage(&amp;msg, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>)) &#123;</span><br><span class="line">        TranslateMessage(&amp;msg);</span><br><span class="line">        DispatchMessage(&amp;msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ReleaseMutex(mutexHandle);</span><br><span class="line">    CloseHandle(mutexHandle);</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">int</span>) msg.wParam;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc tryLock.c -o tryLock</span><br></pre></td></tr></table></figure>
+
+<p>运行：双击或使用命令行（可传参）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tryLock.exe -t stop</span><br></pre></td></tr></table></figure>
+
+<p>首次运行可以看到一个简单的窗口：</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/78a2d16548894d419d77e855ce90e207.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/78a2d16548894d419d77e855ce90e207.png" alt="首次运行"></p>
+<p>再次运行时，可以看到第二个程序并没有启动，反而是第一个程序接受到了第二个程序传来的参数（消息）并弹出了弹窗：</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/fe4333f8a1414a78b045142af443c3ba.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/fe4333f8a1414a78b045142af443c3ba.png" alt="接收到了消息"></p>
+<p>这样，同时只运行一个实例的功能就实现了。结合上URL Scheme（详情可见<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">这篇博客</a>），便可以实现通过浏览器控制本地的程序了。</p>
+<p><small>向下载下来玩玩也可以<a target="_blank" rel="noopener" href="https://www.alipan.com/s/UrvvSK4dMYb">点击这里</a>下载。</small></p>
+<p>不传参仅限制单个实例同时运行的简单版本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    HANDLE m_hMutex = CreateMutex(<span class="literal">NULL</span>, TRUE, <span class="string">&quot;my_app_name&quot;</span>);</span><br><span class="line">    DWORD dwRet = GetLastError();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (m_hMutex) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ERROR_ALREADY_EXISTS == dwRet)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Another Instance Running!\n&quot;</span>);</span><br><span class="line">            CloseHandle(m_hMutex);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Creating Lock Failed!\n&quot;</span>);</span><br><span class="line">        CloseHandle(m_hMutex);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// CloseHandle(m_hMutex);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过文件（锁）实现-——-完美的程序中不推荐"><a href="#通过文件（锁）实现-——-完美的程序中不推荐" class="headerlink" title="通过文件（锁）实现 —— 完美的程序中不推荐"></a>通过文件（锁）实现 —— 完美的程序中不推荐</h3><p>这种方法的思路是：程序启动时创建一个文件，程序结束时删除这个文件。若程序启动时发现这个文件已经存在，则认为有实例正在运行，自己退出。</p>
+<p>若是使用系统提供的文件锁，和方法一中直接使用互斥锁没有过多区别，不如直接使用系统提供的互斥锁；</p>
+<p>若是手动创建文件，则很难实现原子操作。（一个程序以写文件的方式打开一个文件，这个文件没有正在进行写操作时，另一个文件也是可以写的）。并且意外产生的程序退出可能导致文件没被删除（用户强制关闭、系统断电关机等）。</p>
+<p>为了<strong>防止程序意外退出造成的文件未被删除</strong>，可以：</p>
+<blockquote>
+<p>程序启动时写文件并在文件中写入自己的pid，第二个程序读到这个文件时监测这个pid是否还在运行，若没在运行则认为是意外退出并写入自己的pid，否则向这个正在运行的实例传参。</p>
+</blockquote>
+<p>但是<code>判断锁文件是否存在</code>、<code>打开写文件的句柄</code>和<code>实际写入内容</code>不是原子的，快速启动两个程序可能会导致：</p>
+<blockquote>
+<p>两个程序判断锁文件是否存在时，还未存在；</p>
+<p>两个程序依次写入内容；</p>
+<p>两个程序同时运行。</p>
+</blockquote>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136139822">https://letmefly.blog.csdn.net/article/details/136139822</a></p>
+</blockquote>
+<center><font size="6px" face="Ink Free">The End, thanks!</font></center>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2024/02/18/LeetCode%200589.N%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/">← Next 589.N 叉树的前序遍历</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/02/17/LeetCode%200429.N%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/">429.N 叉树的层序遍历 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows%E7%A8%8B%E5%BA%8F%E4%BA%92%E6%96%A5%E9%94%81-%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%90%8C%E6%97%B6%E4%BB%85%E5%85%81%E8%AE%B8%E8%BF%90%E8%A1%8C%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">Windows程序互斥锁 - 一个程序同时仅允许运行一个实例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How"><span class="toc-number">1.2.</span> <span class="toc-text">How</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%9A%84%E9%94%81%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.1.</span> <span class="toc-text">推荐的方法：系统自带的锁功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E6%96%87%E4%BB%B6%EF%BC%88%E9%94%81%EF%BC%89%E5%AE%9E%E7%8E%B0-%E2%80%94%E2%80%94-%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="toc-number">1.2.2.</span> <span class="toc-text">通过文件（锁）实现 —— 完美的程序中不推荐</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.3.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

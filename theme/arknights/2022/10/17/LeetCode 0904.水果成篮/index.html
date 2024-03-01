@@ -1,116 +1,127 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>904.水果成篮 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>904.水果成篮</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-10-17T01:39:00.000Z" id="date"> 2022-10-17</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】两种方法小详解：904-水果成篮"><a href="#【LetMeFly】两种方法小详解：904-水果成篮" class="headerlink" title="【LetMeFly】两种方法小详解：904.水果成篮"></a>【LetMeFly】两种方法小详解：904.水果成篮</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">https://leetcode.cn/problems/fruit-into-baskets/</a></p>
+<p>你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 <code>fruits</code> 表示，其中 <code>fruits[i]</code> 是第 <code>i</code> 棵树上的水果 <strong>种类</strong> 。</p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>你想要尽可能多地收集水果。然而，农场的主人设定了一些严格的规矩，你必须按照要求采摘水果：</p>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<ul>
+    <li>你只有 <strong>两个</strong> 篮子，并且每个篮子只能装 <strong>单一类型</strong> 的水果。每个篮子能够装的水果总量没有限制。</li>
+    <li>你可以选择任意一棵树开始采摘，你必须从 <strong>每棵</strong> 树（包括开始采摘的树）上 <strong>恰好摘一个水果</strong> 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。</li>
+    <li>一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。</li>
+</ul>
+
+<p>给你一个整数数组 <code>fruits</code> ，返回你可以收集的水果的 <strong>最大</strong> 数目。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>fruits = [<em><strong>1,2,1</strong></em>]
+<strong>输出：</strong>3
+<strong>解释：</strong>可以采摘全部 3 棵树。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>fruits = [0,<em><strong>1,2,2</strong></em>]
+<strong>输出：</strong>3
+<strong>解释：</strong>可以采摘 [1,2,2] 这三棵树。
+如果从第一棵树开始采摘，则只能采摘 [0,1] 这两棵树。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>fruits = [1,<em><strong>2,3,2,2</strong></em>]
+<strong>输出：</strong>4
+<strong>解释：</strong>可以采摘 [2,3,2,2] 这四棵树。
+如果从第一棵树开始采摘，则只能采摘 [1,2] 这两棵树。
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre>
+<strong>输入：</strong>fruits = [3,3,3,<em><strong>1,2,1,1,2</strong></em>,3,3,4]
+<strong>输出：</strong>5
+<strong>解释：</strong>可以采摘 [1,2,1,1,2] 这五棵树。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= fruits.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>0 &lt;= fruits[i] &lt; fruits.length</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：先存为-…-，再统计"><a href="#方法一：先存为-…-，再统计" class="headerlink" title="方法一：先存为[&lt;5个3&gt;, &lt;6个2&gt;, …]，再统计"></a>方法一：先存为[&lt;5个3&gt;, &lt;6个2&gt;, …]，再统计</h2><p>这种方法实现起来没有方法二简单，并且其空间复杂度也比方法二高，但优势是使用了较少的STL，在力扣上提交的结果中执行时间小于方法二（方法一用时88ms击败87%，方法二用时140ms击败46%）。如果觉得方法一复杂，也可以直接跳到<a href="#LetMeFly_Method2">方法二</a>。</p>
+<p>这种方法的核心思想是“划分”，即：将相同的水果合并到一起。</p>
+<p>加入原始水果为<code>[3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, ...]</code>，那么我们就将原始水果存为<code>&lt;3, 5&gt;, &lt;2, 6&gt;</code></p>
+<p>这样预处理的时间复杂度是$O(n)$，其好处是：不用再往前逐个寻找某种水果是从下标几开始的。因为我们只需要关注两种水果，所以一旦遇到了第三种水果，我们可以立刻将“上上种水果”舍弃。</p>
+<p>之后我们就可以愉快地遍历了，记录一下第一种水果和第二种水果的种类，接着开始往后遍历，当水果种类等于第一种或者第二种时，不断往后遍历并将水果累加（比如<code>3, 2, 3, 2, 3, ...</code>），直到遇到了第三种水果为止，更新答案最大值，并更新“水果1”和“水果2”</p>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是水果个数</li>
+<li>空间复杂度$O(M)$，其中$M$是相邻不相同的水果种类数</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;  <span class="comment">// &lt;number, times&gt; 比如&lt;5, 3&gt;：5出现了3次</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">totalFruit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; fruits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = fruits.<span class="built_in">size</span>();</span><br><span class="line">		<span class="comment">// 存为[&lt;5个3&gt;, &lt;6个2&gt;, ...]</span></span><br><span class="line">        vector&lt;pii&gt; append;</span><br><span class="line">        <span class="type">int</span> lastNum = fruits[<span class="number">0</span>], cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == n || fruits[i] != fruits[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                append.<span class="built_in">push_back</span>(&#123;fruits[i - <span class="number">1</span>], cnt&#125;);</span><br><span class="line">                cnt = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (append.<span class="built_in">size</span>() == <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> append[<span class="number">0</span>].second;</span><br><span class="line">		<span class="comment">// 开始统计</span></span><br><span class="line">        <span class="type">int</span> firstTypeLoc = <span class="number">0</span>, secondTypeLoc = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> cntTimes = append[<span class="number">0</span>].second + append[<span class="number">1</span>].second;</span><br><span class="line">        <span class="type">int</span> ans = cntTimes;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> nowTypeLoc = <span class="number">2</span>; nowTypeLoc &lt; append.<span class="built_in">size</span>(); nowTypeLoc++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (nowTypeLoc &lt; append.<span class="built_in">size</span>() &amp;&amp; (append[nowTypeLoc].first == append[firstTypeLoc].first || append[nowTypeLoc].first == append[secondTypeLoc].first)) &#123;  <span class="comment">// 第三种水果和前两种水果之一相同</span></span><br><span class="line">                cntTimes += append[nowTypeLoc++].second;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, cntTimes);</span><br><span class="line">            <span class="keyword">if</span> (nowTypeLoc == append.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">// 更新水果1和水果2</span></span><br><span class="line">            firstTypeLoc = nowTypeLoc - <span class="number">1</span>;</span><br><span class="line">            secondTypeLoc = nowTypeLoc;</span><br><span class="line">            cntTimes = append[firstTypeLoc].second + append[secondTypeLoc].second;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="built_in">max</span>(ans, cntTimes);  <span class="comment">// 此行不可去掉</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a id="LetMeFly_Method2"></a></p>
+<h2 id="方法二：滑动窗口，哈希表助阵"><a href="#方法二：滑动窗口，哈希表助阵" class="headerlink" title="方法二：滑动窗口，哈希表助阵"></a>方法二：滑动窗口，哈希表助阵</h2><p>方法一的核心是“纵览全局，统筹大局”，将一个一个分散的水果化为了一堆一堆的水果，相同且连续的水果再多，都只是“一堆”</p>
+<p>但是其代价就是需要额外的空间来存放统计的结果。</p>
+<p>方法二中，我们使用滑动窗口，时时遍历，时时统计，不预先处理。</p>
+<p>使用一个“左指针”<code>left</code>和一个“右指针”<code>right</code>，在<code>[left, right]</code>中的水果是能够两筐放得下的水果。</p>
+<p>右指针不断右移（扩大窗口），如果水果种类数超过了三种，左指针就开始右移（缩小窗口），直到水果种类再次为2</p>
+<p>这样，左指针和右指针最多分别从前到后遍历一次，总时间复杂度是$O(n)$</p>
+<p>至于窗口中有哪些水果，可以用哈希表来存放。因为最多有两种合法水果，所以哈希表中最多同时出现三种键值，总空间复杂度是$O(1)$</p>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是水果个数</li>
+<li>空间复杂度$O(1)$，但是需要将水果个数为0的水果从哈希表中erase掉（虽是常数复杂度，但是时间开销挺大的）</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">totalFruit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; fruits)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = fruits.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; cnt;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> right = <span class="number">0</span>; right &lt; n; right++) &#123;</span><br><span class="line">            cnt[fruits[right]]++;</span><br><span class="line">            <span class="keyword">while</span> (cnt.<span class="built_in">size</span>() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::iterator it = cnt.<span class="built_in">find</span>(fruits[left]);</span><br><span class="line">                it-&gt;second--;</span><br><span class="line">                left++;</span><br><span class="line">                <span class="keyword">if</span> (!it-&gt;second) &#123;</span><br><span class="line">                    cnt.<span class="built_in">erase</span>(it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, right - left + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/17/LeetCode%200904.%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127358126">https://letmefly.blog.csdn.net/article/details/127358126</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/10/17/LeetCode%200406.%E6%A0%B9%E6%8D%AE%E8%BA%AB%E9%AB%98%E9%87%8D%E5%BB%BA%E9%98%9F%E5%88%97/">← Next 406.根据身高重建队列</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/10/16/LeetCode%200886.%E5%8F%AF%E8%83%BD%E7%9A%84%E4%BA%8C%E5%88%86%E6%B3%95/">886.可能的二分法 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E5%B0%8F%E8%AF%A6%E8%A7%A3%EF%BC%9A904-%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】两种方法小详解：904.水果成篮</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%85%88%E5%AD%98%E4%B8%BA-%E2%80%A6-%EF%BC%8C%E5%86%8D%E7%BB%9F%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：先存为[&lt;5个3&gt;, &lt;6个2&gt;, …]，再统计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%8C%E5%93%88%E5%B8%8C%E8%A1%A8%E5%8A%A9%E9%98%B5"><span class="toc-number">1.2.</span> <span class="toc-text">方法二：滑动窗口，哈希表助阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

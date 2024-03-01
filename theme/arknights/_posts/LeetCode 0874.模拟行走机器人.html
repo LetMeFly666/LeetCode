@@ -1,1 +1,132 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>874.模拟行走机器人：哈希表模拟 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>874.模拟行走机器人：哈希表模拟</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-07-19T01:01:26.000Z" id="date"> 2023-07-19</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】874-模拟行走机器人：哈希表模拟"><a href="#【LetMeFly】874-模拟行走机器人：哈希表模拟" class="headerlink" title="【LetMeFly】874.模拟行走机器人：哈希表模拟"></a>【LetMeFly】874.模拟行走机器人：哈希表模拟</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/walking-robot-simulation/">https://leetcode.cn/problems/walking-robot-simulation/</a></p>
+<p>机器人在一个无限大小的 XY 网格平面上行走，从点 <code>(0, 0)</code> 处开始出发，面向北方。该机器人可以接收以下三种类型的命令 <code>commands</code> ：</p>
+
+<ul>
+    <li><code>-2</code> ：向左转 <code>90</code> 度</li>
+    <li><code>-1</code> ：向右转 <code>90</code> 度</li>
+    <li><code>1 <= x <= 9</code> ：向前移动 <code>x</code> 个单位长度</li>
+</ul>
+
+<p>在网格上有一些格子被视为障碍物 <code>obstacles</code> 。第 <code>i</code> 个障碍物位于网格点  <code>obstacles[i] = (x<sub>i</sub>, y<sub>i</sub>)</code> 。</p>
+
+<p>机器人无法走到障碍物上，它将会停留在障碍物的前一个网格方块上，但仍然可以继续尝试进行该路线的其余部分。</p>
+
+<p>返回从原点到机器人所有经过的路径点（坐标为整数）的最大欧式距离的平方。（即，如果距离为 <code>5</code> ，则返回 <code>25</code> ）</p>
+
+<div class="d-google dictRoot saladict-panel isAnimate">
+<div>
+<div class="MachineTrans-Text">
+<div class="MachineTrans-Lines">
+<div class="MachineTrans-Lines-collapse MachineTrans-lang-en"> </div>
+</div>
+
+<div class="MachineTrans-Lines">
+<p class="MachineTrans-lang-zh-CN"><strong>注意：</strong></p>
+
+<ul>
+    <li class="MachineTrans-lang-zh-CN">北表示 <code>+Y</code> 方向。</li>
+    <li class="MachineTrans-lang-zh-CN">东表示 <code>+X</code> 方向。</li>
+    <li class="MachineTrans-lang-zh-CN">南表示 <code>-Y</code> 方向。</li>
+    <li class="MachineTrans-lang-zh-CN">西表示 <code>-X</code> 方向。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>commands = [4,-1,3], obstacles = []
+<strong>输出：</strong>25
+<strong>解释：
+</strong>机器人开始位于 (0, 0)：
+1. 向北移动 4 个单位，到达 (0, 4)
+2. 右转
+3. 向东移动 3 个单位，到达 (3, 4)
+距离原点最远的是 (3, 4) ，距离为 3<sup>2</sup> + 4<sup>2</sup> = 25</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>commands = [4,-1,4,-2,4], obstacles = [[2,4]]
+<strong>输出：</strong>65
+<strong>解释</strong>：机器人开始位于 (0, 0)：
+1. 向北移动 4 个单位，到达 (0, 4)
+2. 右转
+3. 向东移动 1 个单位，然后被位于 (2, 4) 的障碍物阻挡，机器人停在 (1, 4)
+4. 左转
+5. 向北走 4 个单位，到达 (1, 8)
+距离原点最远的是 (1, 8) ，距离为 1<sup>2</sup> + 8<sup>2</sup> = 65</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 <= commands.length <= 10<sup>4</sup></code></li>
+    <li><code>commands[i]</code> is one of the values in the list <code>[-2,-1,1,2,3,4,5,6,7,8,9]</code>.</li>
+    <li><code>0 <= obstacles.length <= 10<sup>4</sup></code></li>
+    <li><code>-3 * 10<sup>4</sup> <= x<sub>i</sub>, y<sub>i</sub> <= 3 * 10<sup>4</sup></code></li>
+    <li>答案保证小于 <code>2<sup>31</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：哈希表模拟"><a href="#方法一：哈希表模拟" class="headerlink" title="方法一：哈希表模拟"></a>方法一：哈希表模拟</h2><p>先来看看数据量：最多移动$10^4$次，每次最多移动$9$步，完全可以一步一步地模拟。</p>
+<p>因此，我们只需要建立一个<a href="https://blog.letmefly.xyz/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>，将所有的障碍物存入哈希表中；接下来模拟机器人的每一步，遇到障碍就停下，否则就执行命令并更新答案最大值。</p>
+<p><strong>细节处理：</strong></p>
+<p>若所选编程语言不支持直接将“障碍物”放入哈希表中，则可以将$障碍物横坐标 \times 60001 + 障碍物纵坐标$放入哈希表中。这是因为地图中$x$的范围是$60001$</p>
+<p>可以建立一个方向数组$directions$，使用一个下标$d$表示方向，横纵坐标分别加上$directions[d]$的$[0]$和$[1]$即为前进一步。</p>
+<ul>
+<li>时间复杂度$O(len(obstacles) + len(commands))$，其中每个command最多走9步，可以视为常数。</li>
+<li>空间复杂度$O(len(obstacles))$。</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> directions[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;;  <span class="comment">// ↑→↓←</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">robotSim</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; commands, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; obstacles)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; se;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; obstacle : obstacles) &#123;</span><br><span class="line">            se.<span class="built_in">insert</span>(obstacle[<span class="number">0</span>] * <span class="number">60001</span> + obstacle[<span class="number">1</span>]);  <span class="comment">// 30001不可，会无法通过最后一组数据，因为存在负数</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> nowDirection = <span class="number">0</span>, x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : commands) &#123;</span><br><span class="line">            <span class="keyword">if</span> (t == <span class="number">-2</span>) &#123;</span><br><span class="line">                nowDirection = (nowDirection + <span class="number">3</span>) % <span class="number">4</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (t == <span class="number">-1</span>) &#123;</span><br><span class="line">                nowDirection = (nowDirection + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; t; i++) &#123;</span><br><span class="line">                    <span class="type">int</span> tx = x + directions[nowDirection][<span class="number">0</span>], ty = y + directions[nowDirection][<span class="number">1</span>];</span><br><span class="line">                    <span class="keyword">if</span> (se.<span class="built_in">count</span>(tx * <span class="number">60001</span> + ty)) &#123;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    x = tx, y = ty;</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, x * x + y * y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import List</span></span><br><span class="line"></span><br><span class="line">directions = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, -<span class="number">1</span>], [-<span class="number">1</span>, <span class="number">0</span>]]  <span class="comment"># ↑→↓←</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">robotSim</span>(<span class="params">self, commands: <span class="type">List</span>[<span class="built_in">int</span>], obstacles: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        se = <span class="built_in">set</span>()</span><br><span class="line">        <span class="keyword">for</span> obstacle <span class="keyword">in</span> obstacles:</span><br><span class="line">            se.add(<span class="built_in">tuple</span>(obstacle))</span><br><span class="line">        </span><br><span class="line">        x, y, nowDirection = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> command <span class="keyword">in</span> commands:</span><br><span class="line">            <span class="keyword">if</span> command == -<span class="number">2</span>:</span><br><span class="line">                nowDirection = (nowDirection + <span class="number">3</span>) % <span class="number">4</span></span><br><span class="line">            <span class="keyword">elif</span> command == -<span class="number">1</span>:</span><br><span class="line">                nowDirection = (nowDirection + <span class="number">1</span>) % <span class="number">4</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(command):</span><br><span class="line">                    tx, ty = x + directions[nowDirection][<span class="number">0</span>], y + directions[nowDirection][<span class="number">1</span>]</span><br><span class="line">                    <span class="keyword">if</span> (tx, ty) <span class="keyword">in</span> se:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    x, y = tx, ty</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, x * x + y * y)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/07/19/LeetCode%200874.%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/131800691">https://letmefly.blog.csdn.net/article/details/131800691</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91874-%E6%A8%A1%E6%8B%9F%E8%A1%8C%E8%B5%B0%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】874.模拟行走机器人：哈希表模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：哈希表模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

@@ -1,1 +1,104 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FFmpeg（强大的音视频处理工具） - 一些基本实用方法 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>FFmpeg（强大的音视频处理工具） - 一些基本实用方法</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-07-03T07:30:06.000Z" id="date"> 2023-07-03</time></div></span></div></div><hr><div id="post-content"><h1 id="FFmpeg（强大的音视频处理工具）-一些基本实用方法"><a href="#FFmpeg（强大的音视频处理工具）-一些基本实用方法" class="headerlink" title="FFmpeg（强大的音视频处理工具） - 一些基本实用方法"></a>FFmpeg（强大的音视频处理工具） - 一些基本实用方法</h1><h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>官网：<a target="_blank" rel="noopener" href="https://ffmpeg.org/">ffmpeg.org</a></p>
+<p><a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html">下载页面</a> -&gt; Windows -&gt; <a target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/">Windows builds from gyan.dev</a>  或 <a target="_blank" rel="noopener" href="https://github.com/BtbN/FFmpeg-Builds/releases">Windows builds by BtbN</a></p>
+<p>推荐使用第二个<a target="_blank" rel="noopener" href="https://github.com/BtbN/FFmpeg-Builds/releases">Github@BtbN&#x2F;FFmpeg-Builds</a>，在最新的一个<code>release</code>中，搜索<code>win</code>，下载<code>ffmpeg-master-latest-win64-gpl.zip</code>或<code>ffmpeg-master-latest-win64-gpl-shared.zip</code>。</p>
+<p>解压<code>.zip</code>压缩包，将<code>bin</code>目录添加到<code>环境变量</code>，重启<code>cmd终端</code>，输入<code>ffmpeg -version</code>，看到<code>ffmpeg version n5.1-5-gaba74d7843-20220803 Copyright (c) 2000-2022 the FFmpeg developers</code>即说明安装配置成功。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>最简单的使用方式为：</p>
+<h3 id="格式转换"><a href="#格式转换" class="headerlink" title="格式转换"></a>格式转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 output.flv</span><br></pre></td></tr></table></figure>
+
+<h3 id="音视频裁剪"><a href="#音视频裁剪" class="headerlink" title="音视频裁剪"></a>音视频裁剪</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 20 -t 10 -i input.mp4 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>-ss</code>是开始时间，<code>-t</code>是持续时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 20 -to 30 -i input.mp4 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>-ss</code>是开始时间，<code>-to</code>是结束时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 0:0:20 -to 0:0:30 -i input.mp4 output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>20</code>代表20秒，<code>0:0:20</code>代表0时0分20秒。</p>
+<p>另外的，若<code>-to</code>和<code>-t</code>同时设置，则以<code>-t</code>为准。</p>
+<p><strong>特别提醒：</strong></p>
+<p>使用ffmpeg进行视频裁剪时，请务必将<code>-ss</code>参数放在<code>-i</code>前面！</p>
+<p>虽然先<code>-i</code>和先<code>-ss</code>都能正常裁剪，但是先<code>-i</code>的话，可能会比先<code>-ss</code>慢很多。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十来秒后才开始裁剪</span></span><br><span class="line">ffmpeg -i <span class="string">&quot;[DMG&amp;LoliHouse] BOCCHI THE ROCK! - 05 [WebRip 1080p HEVC-10bit AAC ASSx2].mkv&quot;</span> -ss 200 -t 5 output.mp4 -y</span><br><span class="line"><span class="comment"># 几乎立刻开始裁剪</span></span><br><span class="line">ffmpeg -ss 200 -t 5 -i <span class="string">&quot;[DMG&amp;LoliHouse] BOCCHI THE ROCK! - 05 [WebRip 1080p HEVC-10bit AAC ASSx2].mkv&quot;</span> output.mp4 -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="等长分割（批量分割）"><a href="#等长分割（批量分割）" class="headerlink" title="等长分割（批量分割）"></a>等长分割（批量分割）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp3 -vn -f segment -segment_time 7 output%03d.mp3</span><br></pre></td></tr></table></figure>
+
+<p>将input.mp3分割为数个7秒的小片段，并命名为output001.mp3、output002.mp3、…。</p>
+<p>其中：</p>
+<ul>
+<li><code>-acodec copy</code> instructs FFmpeg to copy the audio codec from the input file without re-encoding it, which means the output files will have the same audio quality.</li>
+<li><code>-vn</code> tells FFmpeg to extract only the audio stream from the input file and ignore the video stream, as this command does not produce any video output.</li>
+<li><code>-f segment</code> sets the output format to segmented files.</li>
+<li><code>-segment_time 7</code> 每段7秒</li>
+</ul>
+<p>🤫</p>
+<h3 id="给视频添加图片文字"><a href="#给视频添加图片文字" class="headerlink" title="给视频添加图片文字"></a>给视频添加图片文字</h3><p>所用到素材及结果详见：<a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/EQKti4XkgB3">阿里云盘分享</a></p>
+<h4 id="给视频添加图片"><a href="#给视频添加图片" class="headerlink" title="给视频添加图片"></a>给视频添加图片</h4><p>如果想要往某个视频上的某个位置添加一个图片（比如二维码），则可以使用以下命令将<code>0.png</code>添加到<code>0.mp4</code>的左上角<code>(10, 10)</code>的位置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -i 0.png -filter_complex <span class="string">&quot;overlay=10:10&quot;</span> output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>如果想要0.png仅在第5到10秒出现，则可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -i 0.png -filter_complex <span class="string">&quot;overlay=10:10:enable=&#x27;between(t,5,10)&quot;</span> output.mp4</span><br></pre></td></tr></table></figure>
+
+<h4 id="给视频添加文字"><a href="#给视频添加文字" class="headerlink" title="给视频添加文字"></a>给视频添加文字</h4><p>如果想在<code>0.mp4</code>的<code>(130, 320)</code>处添加大小为<code>70</code>的<code>黑</code>色<code>华文行楷</code>的<code>欢迎来到我的空间</code>，则可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -i 0.png -vf <span class="string">&quot;drawtext=text=&#x27;欢迎来到我的空间&#x27;:fontsize=70:fontcolor=black:x=130:y=320:fontfile=C\\:/Windows/Fonts/STXINGKA.TTF&quot;</span> output.mp4</span><br></pre></td></tr></table></figure>
+
+<h4 id="同时给视频添加图片和文字"><a href="#同时给视频添加图片和文字" class="headerlink" title="同时给视频添加图片和文字"></a>同时给视频添加图片和文字</h4><p>ffmpeg中<code>-vf</code>和<code>-filter_complex</code>不能同时用于同一个输出流。想要同时往视频中添加图片和文字，可以使用<code>-filter_complex</code>选项来指定所有过滤器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -i 0.png -filter_complex <span class="string">&quot;[0:v][1:v]overlay=180:450,drawtext=text=&#x27;欢迎来到我的空间&#x27;:fontsize=70:fontcolor=black:x=130:y=320:fontfile=C\\:/Windows/Fonts/STXINGKA.TTF[outv]&quot;</span> -map <span class="string">&quot;[outv]&quot;</span> output.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并视频和字幕"><a href="#合并视频和字幕" class="headerlink" title="合并视频和字幕"></a>合并视频和字幕</h3><p>假设当前目录下有<code>0.mp4</code>和<code>0.ass</code>，则可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -vf <span class="string">&quot;ass=0.ass&quot;</span> -c:a copy output.mp4</span><br></pre></td></tr></table></figure>
+
+<p>假设提示“找不到字体”，则可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 0.mp4 -vf <span class="string">&quot;ass=0.ass:fontsdir=/path/to/fonts/&quot;</span> -c:a copy  output.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用硬件加速（GPU）"><a href="#使用硬件加速（GPU）" class="headerlink" title="使用硬件加速（GPU）"></a>使用硬件加速（GPU）</h3><p>首先确定可用硬件列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -hwaccels</span><br></pre></td></tr></table></figure>
+
+<p>得到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg versioxxx</span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line">Hardware acceleration methods:</span><br><span class="line">cuda</span><br><span class="line">qsv</span><br><span class="line">d3d11va</span><br><span class="line">opencl</span><br><span class="line">vulkan</span><br></pre></td></tr></table></figure>
+
+<p>则说明可以使用<code>cuda</code>、<code>qsv</code>等进行硬件加速。</p>
+<p>接着只需要：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ffmpeg -hwaccel &lt;加速器&gt; -i 输入视频文件 输出视频文件</span></span><br><span class="line">ffmpeg -hwaccel cuda -i 0.mp4 1.flv</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FFmpeg%EF%BC%88%E5%BC%BA%E5%A4%A7%E7%9A%84%E9%9F%B3%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%89-%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">FFmpeg（强大的音视频处理工具） - 一些基本实用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.1.</span> <span class="toc-text">格式转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E8%A7%86%E9%A2%91%E8%A3%81%E5%89%AA"><span class="toc-number">1.2.2.</span> <span class="toc-text">音视频裁剪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E9%95%BF%E5%88%86%E5%89%B2%EF%BC%88%E6%89%B9%E9%87%8F%E5%88%86%E5%89%B2%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">等长分割（批量分割）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E8%A7%86%E9%A2%91%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E6%96%87%E5%AD%97"><span class="toc-number">1.2.4.</span> <span class="toc-text">给视频添加图片文字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%99%E8%A7%86%E9%A2%91%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">给视频添加图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%99%E8%A7%86%E9%A2%91%E6%B7%BB%E5%8A%A0%E6%96%87%E5%AD%97"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">给视频添加文字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%97%B6%E7%BB%99%E8%A7%86%E9%A2%91%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E5%92%8C%E6%96%87%E5%AD%97"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">同时给视频添加图片和文字</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E8%A7%86%E9%A2%91%E5%92%8C%E5%AD%97%E5%B9%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">合并视频和字幕</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%EF%BC%88GPU%EF%BC%89"><span class="toc-number">1.2.6.</span> <span class="toc-text">使用硬件加速（GPU）</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

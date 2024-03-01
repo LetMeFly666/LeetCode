@@ -1,1 +1,93 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>156.上下翻转二叉树 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>156.上下翻转二叉树</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-05-29T03:05:45.000Z" id="date"> 2022-05-29</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】156-上下翻转二叉树-一个小巧的办法"><a href="#【LetMeFly】156-上下翻转二叉树-一个小巧的办法" class="headerlink" title="【LetMeFly】156.上下翻转二叉树 - 一个小巧的办法"></a>【LetMeFly】156.上下翻转二叉树 - 一个小巧的办法</h1><p>给你一个二叉树的根节点 <code>root</code> ，请你将此二叉树上下翻转，并返回新的根节点。</p>
+<p>你可以按下面的步骤翻转一棵二叉树：</p>
+<ol>
+<li>原来的左子节点变成新的根节点</li>
+<li>原来的根节点变成新的右子节点</li>
+<li>原来的右子节点变成新的左子节点</li>
+</ol class='item-img' data-src='https://assets.leetcode.com/uploads/2020/08/29/main.jpg'><img src="https://assets.leetcode.com/uploads/2020/08/29/main.jpg">
+
+<p>上面的步骤逐层进行。题目数据保证每个右节点都有一个同级节点（即共享同一父节点的左节点）且不存在子节点。</p>
+<p><strong>示例 1:</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2020/08/29/updown.jpg'><img src="https://assets.leetcode.com/uploads/2020/08/29/updown.jpg">
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [1,2,3,4,5]</span><br><span class="line">输出：[4,5,2,null,null,3,1]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = []</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：root = [1]</span><br><span class="line">输出：[1]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示:</strong></p>
+<ul>
+<li>树中节点数目在范围 $[0, 10]$ 内</li>
+<li>$1 \leq Node.val \leq 10$</li>
+<li>树中的每个右节点都有一个同级节点（即共享同一父节点的左节点）</li>
+<li>树中的每个右节点都没有子节点</li>
+</ul>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>如果真地按照题目的描述从上到下进行反转，那么上方节点的左右子的变化会导致其原始下方节点信息的丢失。</p>
+<blockquote>
+<p>以例1为例，如果先反转节点<code>1、3、2</code>，那么节点<code>2</code>的左右子节点<code>4、5</code>的信息将会丢失。</p>
+</blockquote>
+<p>那么如果我们先反转最左子节点呢？我们很容易就能找到这棵树的最左子节点。但是，子节点不包含父节点的信息，因此仅仅通过子节点就找不到它的兄弟节点。</p>
+<blockquote>
+<p>以例1为例，我们能很容易找到这棵树的最左节点<code>4</code>（也就是反转后的根节点）。但是仅凭节点<code>4</code>我们找不到<code>4</code>的父节点<code>2</code>，也就无法找到<code>4</code>的兄弟节点<code>5</code>。</p>
+</blockquote>
+<p>对于这种情况，递归就是一个非常不错的选择了。</p>
+<h2 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h2><p>综合上述两种“思路”，思路1(从上到下反转)的最大问题就是反转会导致子节点信息的丢失，思路2(从下到上反转)的最大问题就是由子节点找不到父节点。</p>
+<p>因此我们可以定义一个反转函数<code>reverse</code>，假设父节点是<code>X</code>，左子和右子节点分别是<code>Y</code>和<code>Z</code>，那么递归函数的形式就是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">reverse</span><span class="params">(TreeNode* X, TreeNode* Y, TreeNode* Z)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">reverse</span>(左子，左子-&gt;left，左子-&gt;right);  <span class="comment">// 先反转下一层的</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 再反转这一层的</span></span><br><span class="line">    Y-&gt;left = Z, Y-&gt;right = X;</span><br><span class="line">    X-&gt;left = X-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (Z)</span><br><span class="line">        Z-&gt;left = Z-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>既然思路2中子节点缺乏的是父节点，那么我们就把<code>父、左子、右子</code>的信息都作为参数传递给这个函数，这样就能很轻松地知道左子节点的兄弟节点。</p>
+<p>同时，先反转下一层再反转这一层，也解决了思路1的痛点。</p>
+<p>但是，我们还需要知道最终反转完成后的根节点啊。一种简单的方法就是反转之前，先无脑遍历一遍，找到最左子节点，就是反转后的根节点。</p>
+<p>但是这样代码不优美(手动滑稽)，我们可以简单修改一下递归函数，就能在递归的同时返回新的根节点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TreeNode* <span class="title">reverse</span><span class="params">(TreeNode* X, TreeNode* Y, TreeNode* Z)</span> </span>&#123;</span><br><span class="line">    TreeNode* newRoot = <span class="built_in">reverse</span>(左子，左子-&gt;left，左子-&gt;right);  <span class="comment">// 先反转下一层的</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 再反转这一层的</span></span><br><span class="line">    Y-&gt;left = Z, Y-&gt;right = X;</span><br><span class="line">    X-&gt;left = X-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (Z)</span><br><span class="line">        Z-&gt;left = Z-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 返回新节点</span></span><br><span class="line">    <span class="keyword">return</span> newRoot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是节点个数</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">reverse</span><span class="params">(TreeNode* X, TreeNode* Y, TreeNode* Z)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!Y)</span><br><span class="line">            <span class="keyword">return</span> X;</span><br><span class="line">        TreeNode* ans = <span class="built_in">reverse</span>(Y, Y-&gt;left, Y-&gt;right);</span><br><span class="line">        Y-&gt;left = Z, Y-&gt;right = X;</span><br><span class="line">        X-&gt;left = X-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">if</span> (Z)  <span class="comment">// Z为空节点的话就没有左右节点了</span></span><br><span class="line">            Z-&gt;left = Z-&gt;right = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">upsideDownBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(root, root-&gt;left, root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/05/29/LeetCode%200156.%E4%B8%8A%E4%B8%8B%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/125028889">https://letmefly.blog.csdn.net/article/details/125028889</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91156-%E4%B8%8A%E4%B8%8B%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91-%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%B7%A7%E7%9A%84%E5%8A%9E%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】156.上下翻转二叉树 - 一个小巧的办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E9%80%92%E5%BD%92"><span class="toc-number">2.1.</span> <span class="toc-text">方法一：递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">2.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

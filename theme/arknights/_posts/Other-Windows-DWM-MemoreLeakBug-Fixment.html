@@ -1,1 +1,68 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高） | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-08-25T13:44:59.000Z" id="date"> 2023-08-25</time></div></span></div></div><hr><div id="post-content"><h1 id="Windows-DWM-桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）"><a href="#Windows-DWM-桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）" class="headerlink" title="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）"></a>Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候笔记本使用者使用者就感觉不对劲，有种强烈的延时感。打开任务管理器一看，好家伙，<code>桌面窗口管理器</code>（Desktop Window Manager）能占用好几个G。右键结束运行，电脑黑屏一下就恢复了。</p>
+<p>但有时候电脑长时间没动，回来的时候内存快干满了，巨卡。。。直到最后有一次电脑直接黑屏死机了，我忍无可忍，决定解决之，并记录了下来。</p>
+<p>其实本来是想写一个后台脚本，每隔一定时间监控正在运行的进程的，若DWM占用内存过高则kill之，但最后想想这样毕竟不是根治。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/">@NSJim</a>的博文帮了我很多：<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/130536410">一</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/130562802">二</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/125861398">三</a>。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>原因可见Intel官网：<a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/support/articles/000058381/graphics.html">dwm.exe（桌面窗口管理程序）使用更新于 27.20.100.8587 的驱动程序产生内存泄漏</a>，因此只要确保使用修复这个BUG的驱动即可。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>你也可以看完三个步骤后，按三一二的顺序进行。</p>
+<h3 id="一、卸载旧驱动"><a href="#一、卸载旧驱动" class="headerlink" title="一、卸载旧驱动"></a>一、卸载旧驱动</h3><p>卸载所有Intel核显驱动，可以使用软件<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/content/DDU-Guide-Tutorial">Display Driver Uninstaller(DDU)</a>，软件很小巧很干净。</p>
+<p>下载方式：访问<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/display-driver-uninstaller-ddu-">Release页</a>，选择一个版本（如<code>Display Driver Uninstaller (DDU) V18.0.6.6 Released.</code>），点击<code>Read More</code>，点击<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/forums/viewtopic.php?t=4666">Click here for DOWNLOAD &amp; SUPPORT.</a>，点击<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/DDU/download/DDU%20v18.0.6.6.exe">*** Download DDU “Portable &#x2F; self-extracting” ***</a></p>
+<p>运行自解压程序，解压到一个位置后，运行<code>Display Driver Uninstaller.exe</code>，右侧“设备种类&#x2F;设备供应商”选择“显卡&#x2F;Intel”，点击左侧“清除并重启”。重启后电脑分辨率可能会降低。</p>
+<p>至于为什么卸载旧驱动而不是直接安装新驱动，一个是BUG版旧驱动似乎没什么用了，一个是防止“不小心”回滚到BUG版。</p>
+<h3 id="二、安装新驱动"><a href="#二、安装新驱动" class="headerlink" title="二、安装新驱动"></a>二、安装新驱动</h3><p>在新<a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/download/19344/732078/intel-graphics-windows-dch-drivers.html">驱动安装页面</a>选择30开头的驱动，下载<code>igfx_win_xx.exe</code>，运行，同意许可，安装。</p>
+<h3 id="三、禁止Windows自动更新驱动"><a href="#三、禁止Windows自动更新驱动" class="headerlink" title="三、禁止Windows自动更新驱动"></a>三、禁止Windows自动更新驱动</h3><p>正当我以为万事大吉时，电脑右下角突然多出来了一个“Windows更新”的图标。点开一看，<code>Intel Graphxx 27.20.100.xxx</code>正等待重新启动。</p>
+<p>好家伙，反向更新驱动是吧？？？</p>
+<p>于是我又进行了第一、第二步的操作，并设置了禁止Windows自动更新驱动（不是禁止Windows自动更新）。</p>
+<h4 id="一、修改系统设置"><a href="#一、修改系统设置" class="headerlink" title="一、修改系统设置"></a>一、修改系统设置</h4><p><code>Windows设置 -&gt; 搜索“系统高级设置” -&gt; 硬件 -&gt; 设备安装设置(S) -&gt; 否 -&gt; 保存更改</code>。</p>
+<p>仅仅这样Windows还是会自动更新驱动。</p>
+<h4 id="二、修改策略组"><a href="#二、修改策略组" class="headerlink" title="二、修改策略组"></a>二、修改策略组</h4><p><code>Win + R 并回车 -&gt; gpedit.msc 并回车</code></p>
+<p>需要进行两个设置：</p>
+<ol>
+<li><code>计算机配置 - 管理模板 - 系统 - Internet通信管理 - Internet通信设置 -&gt; 双击 关闭Windows更新设备驱动程序搜索 -&gt; 选中“已启用” -&gt; 确定</code></li>
+<li><code>计算机配置 - 管理模板 - Windows组件 - Windows更新 -&gt; 双击 Windows更新不包括驱动程序 -&gt; 选中“已启用” -&gt; 确定</code></li>
+</ol>
+<h4 id="三、修改注册表"><a href="#三、修改注册表" class="headerlink" title="三、修改注册表"></a>三、修改注册表</h4><p>保险起见，可以：</p>
+<p><code>Win + R 并回车 -&gt; regedit 并回车 -&gt; 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching -&gt; 将 SearchOrderConfig 的值修改为0</code></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>挺繁琐的，但BUG修复了还是比较开心的。对了，设置成功的话，还能够在设置中“Windows系统更新”页面，看到红色的<code>*某些设置由你的组织来管理</code>。出现这个就比较放心系统再自动更新驱动了。</p>
+<p>啊咧，操作教程，竟然没图？</p>
+<blockquote>
+<p>文章原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">原文链接</a>哦~<br>同步发文于CSDN：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/132503580">https://letmefly.blog.csdn.net/article/details/132503580</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows-DWM-%E6%A1%8C%E9%9D%A2%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8FBUG%EF%BC%88%E6%A1%8C%E9%9D%A2%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.2.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8D%B8%E8%BD%BD%E6%97%A7%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">一、卸载旧驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%96%B0%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">二、安装新驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A6%81%E6%AD%A2Windows%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">三、禁止Windows自动更新驱动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">一、修改系统设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9%E7%AD%96%E7%95%A5%E7%BB%84"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">二、修改策略组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BF%AE%E6%94%B9%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">三、修改注册表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.4.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

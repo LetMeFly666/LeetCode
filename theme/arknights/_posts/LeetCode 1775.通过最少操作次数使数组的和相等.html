@@ -1,1 +1,110 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1775.通过最少操作次数使数组的和相等 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1775.通过最少操作次数使数组的和相等</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-12-07T02:29:21.000Z" id="date"> 2022-12-07</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1775-通过最少操作次数使数组的和相等"><a href="#【LetMeFly】1775-通过最少操作次数使数组的和相等" class="headerlink" title="【LetMeFly】1775.通过最少操作次数使数组的和相等"></a>【LetMeFly】1775.通过最少操作次数使数组的和相等</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/equal-sum-arrays-with-minimum-number-of-operations/">https://leetcode.cn/problems/equal-sum-arrays-with-minimum-number-of-operations/</a></p>
+<p>给你两个长度可能不等的整数数组 <code>nums1</code> 和 <code>nums2</code> 。两个数组中的所有值都在 <code>1</code> 到 <code>6</code> 之间（包含 <code>1</code> 和 <code>6</code>）。</p>
+
+<p>每次操作中，你可以选择 <strong>任意</strong> 数组中的任意一个整数，将它变成 <code>1</code> 到 <code>6</code> 之间 <strong>任意</strong> 的值（包含 <code>1</code> 和 <code><span style="">6</span></code>）。</p>
+
+<p>请你返回使 <code>nums1</code> 中所有数的和与 <code>nums2</code> 中所有数的和相等的最少操作次数。如果无法使两个数组的和相等，请返回 <code>-1</code> 。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><b>输入：</b>nums1 = [1,2,3,4,5,6], nums2 = [1,1,2,2,2,2]
+<b>输出：</b>3
+<b>解释：</b>你可以通过 3 次操作使 nums1 中所有数的和与 nums2 中所有数的和相等。以下数组下标都从 0 开始。
+- 将 nums2[0] 变为 6 。 nums1 = [1,2,3,4,5,6], nums2 = [<strong>6</strong>,1,2,2,2,2] 。
+- 将 nums1[5] 变为 1 。 nums1 = [1,2,3,4,5,<strong>1</strong>], nums2 = [6,1,2,2,2,2] 。
+- 将 nums1[2] 变为 2 。 nums1 = [1,2,<strong>2</strong>,4,5,1], nums2 = [6,1,2,2,2,2] 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><b>输入：</b>nums1 = [1,1,1,1,1,1,1], nums2 = [6]
+<b>输出：</b>-1
+<b>解释：</b>没有办法减少 nums1 的和或者增加 nums2 的和使二者相等。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><b>输入：</b>nums1 = [6,6], nums2 = [1]
+<b>输出：</b>3
+<b>解释：</b>你可以通过 3 次操作使 nums1 中所有数的和与 nums2 中所有数的和相等。以下数组下标都从 0 开始。
+- 将 nums1[0] 变为 2 。 nums1 = [<strong>2</strong>,6], nums2 = [1] 。
+- 将 nums1[1] 变为 2 。 nums1 = [2,<strong>2</strong>], nums2 = [1] 。
+- 将 nums2[0] 变为 4 。 nums1 = [2,2], nums2 = [<strong>4</strong>] 。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= nums1.length, nums2.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= nums1[i], nums2[i] &lt;= 6</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：贪心-计数"><a href="#方法一：贪心-计数" class="headerlink" title="方法一：贪心 + 计数"></a>方法一：贪心 + 计数</h2><!-- 
+这里取消了原本的普通文本代码段
+-->
+
+<p>两个数组中的元素的初始和可能不同。为了方便，我们假设第一个数组的元素和<strong>小于</strong>第二个数组（不是的话交换两个数组的地址即可）</p>
+<p>那么，我们的任务就是，将第一个数组中的元素变大，或者将第二个数组中的元素减小，使得两个数组中的元素和相等。</p>
+<p>因为数字的<strong>合法范围</strong>是$1$到$6$，因此，第一个数组中，我们尽量让小的元素优先变成$6$，这样所带来的“和的增加”最多。</p>
+<p>同理，第二个数组中，我们尽量让大的元素变成$1$，这样所带来的“和的减少”最多。</p>
+<p>因此，我们可以预处理一遍两个数组，计算出两个数组中“和的差值”，并统计两个数组中1到6的元素的个数</p>
+<p>然后，我们将第一个数组中的“1”变成“6”，同时将第二个数组中的“6”变成“1”，直到“没有元素可变”或“差值小于等于0”</p>
+<p>接着，我们将第一个数组中的“2”变成“6”，同时将第二个数组中的“5”变成“1”，直到“没有元素可变”或“差值小于等于0”</p>
+<p>……</p>
+<p>这样，我们每次修改元素，都是“尽最大努力”地减小了两个数组中的差值，这样就能保证每次更改能“尽大可能”地缩小差值</p>
+<p>这就是<strong>贪心</strong></p>
+<p>其实不难发现，将第一个数组中的“1”变成“6”和将第二个数组中的“6”变成“1”所带来的结果是等价的，因此，为了方便，我们可以直接将第二个数组中的“6”和第一个数组中的“1”统计到一起。</p>
+<ul>
+<li>时间复杂度$O(len(nums1) + len(nums2) + C)$，其中$C$是数组中元素的合法范围的大小，即$C&#x3D;6$</li>
+<li>空间复杂度$O(C)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minOperations</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> s1 = <span class="built_in">accumulate</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="type">int</span> s2 = <span class="built_in">accumulate</span>(nums2.<span class="built_in">begin</span>(), nums2.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (s1 &gt; s2)</span><br><span class="line">            <span class="built_in">swap</span>(nums1, nums2);</span><br><span class="line">        <span class="type">int</span> times[<span class="number">6</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums1)</span><br><span class="line">            times[t - <span class="number">1</span>]++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums2)</span><br><span class="line">            times[<span class="number">6</span> - t]++;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> loc = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> diff = <span class="built_in">abs</span>(s2 - s1);</span><br><span class="line">        <span class="keyword">while</span> (diff) &#123;</span><br><span class="line">            <span class="type">int</span> perChange = <span class="number">6</span> - loc - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (!perChange)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="type">int</span> maxChange = times[loc] * perChange;</span><br><span class="line">            <span class="type">int</span> realChange = <span class="built_in">min</span>(maxChange, diff);</span><br><span class="line">            diff -= realChange;</span><br><span class="line">            <span class="type">int</span> changeTimes = realChange / perChange + (realChange % perChange != <span class="number">0</span>);</span><br><span class="line">            ans += changeTimes;</span><br><span class="line">            loc++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> diff ? <span class="number">-1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/12/07/LeetCode%201775.%E9%80%9A%E8%BF%87%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0%E4%BD%BF%E6%95%B0%E7%BB%84%E7%9A%84%E5%92%8C%E7%9B%B8%E7%AD%89/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/128216782">https://letmefly.blog.csdn.net/article/details/128216782</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911775-%E9%80%9A%E8%BF%87%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0%E4%BD%BF%E6%95%B0%E7%BB%84%E7%9A%84%E5%92%8C%E7%9B%B8%E7%AD%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1775.通过最少操作次数使数组的和相等</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%B4%AA%E5%BF%83-%E8%AE%A1%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：贪心 + 计数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

@@ -1,1 +1,786 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-07-27T07:52:08.000Z" id="date"> 2023-07-27</time></div></span></div></div><hr><div id="post-content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ADB（Android Debug Bridge）可以做到很多手机上做不到的事情（例如卸载部分系统内置应用）</p>
+<ul>
+<li>ADB文档<a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/adb?hl=zh-cn">developer.android.com</a></li>
+</ul>
+<h1 id="基本功能"><a href="#基本功能" class="headerlink" title="基本功能"></a>基本功能</h1><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">查看已连接设备（USB连接状态下授权后可能会自动连接）</td>
+<td align="left"><code>adb devices</code></td>
+</tr>
+<tr>
+<td align="center">断开连接</td>
+<td align="left"><code>adb kill-server</code></td>
+</tr>
+<tr>
+<td align="center">进入shell（进入后无需再输<code>adb shell</code>命令）</td>
+<td align="left"><code>adb shell</code></td>
+</tr>
+<tr>
+<td align="center">adb卸载应用</td>
+<td align="left"><code>pm uninstall --user 0 包名</code></td>
+</tr>
+<tr>
+<td align="center">获取应用列表</td>
+<td align="left"><code>pm list packages</code></td>
+</tr>
+<tr>
+<td align="center">获取包含huawei的列表</td>
+<td align="left"><code>pm list packages | grep huawei</code></td>
+</tr>
+<tr>
+<td align="center">查看某应用信息</td>
+<td align="left"><code>dumpsys package</code></td>
+</tr>
+<tr>
+<td align="center">启动应用</td>
+<td align="left"><code>am start -n 包名/activity名</code></td>
+</tr>
+<tr>
+<td align="center">清除应用数据</td>
+<td align="left"><code>pm clear 包名</code></td>
+</tr>
+</tbody></table>
+<h1 id="拿到华为手机后可卸载"><a href="#拿到华为手机后可卸载" class="headerlink" title="拿到华为手机后可卸载"></a>拿到华为手机后可卸载</h1><p>“笔者推荐” + “笔者未卸载”的包名来自<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv21078097/">BiliBili</a>，其中由笔者筛选后得出。</p>
+<p>其他华为包名（可选）来自Youtube。</p>
+<h2 id="笔者推荐"><a href="#笔者推荐" class="headerlink" title="笔者推荐"></a>笔者推荐</h2><p>以下是<a target="_blank" rel="noopener" href="https://letmefly.xyz/">笔者</a>推荐的可以卸载的应用&#x2F;服务。</p>
+<p>使用方法： </p>
+<ul>
+<li>使用<code>adb shell pm uninstall --user 0 包名</code></li>
+<li>或在<code>adb shell</code>下使用<code>pm uninstall --user 0 包名</code></li>
+</ul>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm uninstall --user 0 com.huawei.hifolder   <span class="comment"># 精品推荐</span></span><br></pre></td></tr></table></figure>
+
+<p>可卸载表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="left">包名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">精品推荐</td>
+<td align="left">com.huawei.hifolder</td>
+</tr>
+<tr>
+<td align="left">教育中心</td>
+<td align="left">com.huawei.educenter</td>
+</tr>
+<tr>
+<td align="left">天际通APP</td>
+<td align="left">com.huawei.hiskytone</td>
+</tr>
+<tr>
+<td align="left">“天际通”服务</td>
+<td align="left">com.huawei.skytone</td>
+</tr>
+<tr>
+<td align="left">“游戏中心”App</td>
+<td align="left">com.huawei.gamebox</td>
+</tr>
+<tr>
+<td align="left">“GameKit”服务</td>
+<td align="left">com.huawei.game.kitserver</td>
+</tr>
+<tr>
+<td align="left">“应用助手”服务,其实就是”游戏助手,不玩游戏可删!</td>
+<td align="left">com.huawei.gameassistant</td>
+</tr>
+<tr>
+<td align="left">“智慧助手·今天”服务，负一屏的垃圾广告</td>
+<td align="left">com.huawei.intelligent</td>
+</tr>
+<tr>
+<td align="left">“华为钱包”App，我手机也没有NFC，平时用微信不用这个</td>
+<td align="left">com.huawei.wallet</td>
+</tr>
+<tr>
+<td align="left">“WalletSDK”服务,钱包 SDK 而已</td>
+<td align="left">com.huawei.wallet.sdk.walletsdk</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">com.huawei.wallet.facard</td>
+</tr>
+<tr>
+<td align="left">“会员中心”App</td>
+<td align="left">com.huawei.mycenter</td>
+</tr>
+<tr>
+<td align="left">“华为商城”App</td>
+<td align="left">com.vmall.client</td>
+</tr>
+<tr>
+<td align="left">“阅读”App</td>
+<td align="left">com.huawei.hwireader</td>
+</tr>
+<tr>
+<td align="left">“华为视频”App</td>
+<td align="left">com.huawei.himovie</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">com.huawei.himovie.partner1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">com.huawei.himovie.partner2</td>
+</tr>
+<tr>
+<td align="left">“华为视频”App - 腾讯视频模块</td>
+<td align="left">com.tencent.qqlivehuawei</td>
+</tr>
+<tr>
+<td align="left">“华为视频”App - 搜狐视频模块</td>
+<td align="left">com.sohu.sohuvideo.emplayer</td>
+</tr>
+<tr>
+<td align="left">“花瓣剪辑”</td>
+<td align="left">com.huawei.videoeditor</td>
+</tr>
+<tr>
+<td align="left">华为”地理围栏服务”,其实就是精准推送广告</td>
+<td align="left">com.huawei.spaceservice</td>
+</tr>
+<tr>
+<td align="left">华为”EasyGo SDK”,给折叠屏用的;</td>
+<td align="left">com.huawei.easygo</td>
+</tr>
+<tr>
+<td align="left">“华为地图服务”</td>
+<td align="left">com.huawei.featurelayer.sharedfeature.map</td>
+</tr>
+<tr>
+<td align="left">华为”息屏支付”</td>
+<td align="left">com.huawei.hwpanpayservice</td>
+</tr>
+<tr>
+<td align="left">“银联可信服务安全组件”,给华为钱包调用的安全组件</td>
+<td align="left">com.unionpay.tsmservice</td>
+</tr>
+<tr>
+<td align="left">华为”视频开发引擎”</td>
+<td align="left">com.huawei.multimedia.hivideoplayengine</td>
+</tr>
+<tr>
+<td align="left">“华为区块链”????,这… …删了吧!</td>
+<td align="left">com.huawei.hwblockchain</td>
+</tr>
+<tr>
+<td align="left">“K 歌特效”</td>
+<td align="left">com.huawei.android.karaoke</td>
+</tr>
+<tr>
+<td align="left">“畅连”App，卸载了某地图服务的话，畅连会一直弹“缺少必要组件”</td>
+<td align="left">com.huawei.meetime</td>
+</tr>
+<tr>
+<td align="left">“畅连服务”</td>
+<td align="left">com.huawei.hwvoipservice</td>
+</tr>
+</tbody></table>
+<h2 id="笔者未卸载"><a href="#笔者未卸载" class="headerlink" title="笔者未卸载"></a>笔者未卸载</h2><table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="left">包名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">“智能提醒”App</td>
+<td align="left">com.huawei.tips</td>
+</tr>
+<tr>
+<td align="left">“玩机技巧”App</td>
+<td align="left">com.huawei.android.tips</td>
+</tr>
+<tr>
+<td align="left">“运动健康”App</td>
+<td align="left">com.huawei.health</td>
+</tr>
+<tr>
+<td align="left">[HarmongOS]”运动健康”App</td>
+<td align="left">com.huawei.ohos.health</td>
+</tr>
+<tr>
+<td align="left">“手写笔应用专区”App</td>
+<td align="left">com.huawei.stylus.mpenzone</td>
+</tr>
+<tr>
+<td align="left">“手写笔悬浮窗”服务</td>
+<td align="left">com.huawei.stylus.floatmenu</td>
+</tr>
+<tr>
+<td align="left">“手机克隆”App</td>
+<td align="left">com.hicloud.android.clone</td>
+</tr>
+<tr>
+<td align="left">“镜子”App</td>
+<td align="left">com.huawei.mirror</td>
+</tr>
+<tr>
+<td align="left">“智能遥控”App</td>
+<td align="left">com.huawei.android.remotecontroller</td>
+</tr>
+<tr>
+<td align="left">“AR 测量”</td>
+<td align="left">com.huawei.ar.measure</td>
+</tr>
+<tr>
+<td align="left">“录音机”App</td>
+<td align="left">com.android.soundrecorder</td>
+</tr>
+<tr>
+<td align="left">“计算器”App</td>
+<td align="left">com.huawei.calculator</td>
+</tr>
+<tr>
+<td align="left">“天气”App</td>
+<td align="left">com.huawei.android.totemweather</td>
+</tr>
+<tr>
+<td align="left">“电子邮件”App</td>
+<td align="left">com.huawei.email</td>
+</tr>
+<tr>
+<td align="left">“生活服务”App</td>
+<td align="left">com.huawei.lives</td>
+</tr>
+<tr>
+<td align="left">“智慧生活”App</td>
+<td align="left">com.huawei.smarthome</td>
+</tr>
+<tr>
+<td align="left">[HarmongOS]”智慧生活”App</td>
+<td align="left">com.huawei.ohos.smarthome</td>
+</tr>
+<tr>
+<td align="left">“智慧生活基础服务”</td>
+<td align="left">com.huawei.hilink.framework</td>
+</tr>
+<tr>
+<td align="left">“备忘录”App</td>
+<td align="left">com.huawei.notepad</td>
+</tr>
+<tr>
+<td align="left">“Link Now”App</td>
+<td align="left">com.huawei.welinknow</td>
+</tr>
+<tr>
+<td align="left">“指南针”App</td>
+<td align="left">com.huawei.compass</td>
+</tr>
+<tr>
+<td align="left">“杂志锁屏”</td>
+<td align="left">com.huawei.magazine</td>
+</tr>
+<tr>
+<td align="left">“智能检测”</td>
+<td align="left">com.huawei.hwdetectrepair</td>
+</tr>
+<tr>
+<td align="left">“我的华为”App</td>
+<td align="left">com.huawei.phoneservice</td>
+</tr>
+<tr>
+<td align="left">“智慧搜索”</td>
+<td align="left">com.huawei.search</td>
+</tr>
+<tr>
+<td align="left">“融合搜索服务”</td>
+<td align="left">com.huawei.searchservice</td>
+</tr>
+<tr>
+<td align="left">[HarmongOS]”全局搜索数据服务”</td>
+<td align="left">com.huawei.ohos.search</td>
+</tr>
+<tr>
+<td align="left">“查找设备”App</td>
+<td align="left">com.huawei.android.findmyphone</td>
+</tr>
+<tr>
+<td align="left">“华为音乐”App</td>
+<td align="left">com.android.mediacenter</td>
+</tr>
+<tr>
+<td align="left">“旅行助手”</td>
+<td align="left">com.huawei.scenepack</td>
+</tr>
+<tr>
+<td align="left">“HiCard”卡片服务</td>
+<td align="left">com.huawei.hicard</td>
+</tr>
+<tr>
+<td align="left">“HiCar”汽车服务</td>
+<td align="left">com.huawei.hicar</td>
+</tr>
+<tr>
+<td align="left">“XRKit”</td>
+<td align="left">com.huawei.featurelayer.sharedfeature.xrkit</td>
+</tr>
+<tr>
+<td align="left">“AREngineServer”华为 AR 引擎服务</td>
+<td align="left">com.huawei.arengine.service</td>
+</tr>
+<tr>
+<td align="left">“音频产品管家”</td>
+<td align="left">com.huawei.audioaccessorymanager</td>
+</tr>
+<tr>
+<td align="left">“WAudios”,不知是啥!</td>
+<td align="left">com.huawei.waudio</td>
+</tr>
+<tr>
+<td align="left">“HwAudioKit”,不知是啥!</td>
+<td align="left">com.huawei.multimedia.audioengine</td>
+</tr>
+<tr>
+<td align="left">“SIM App Dialog”</td>
+<td align="left">com.android.simappdialog</td>
+</tr>
+<tr>
+<td align="left">“SIM 卡应用”App</td>
+<td align="left">com.android.stk</td>
+</tr>
+<tr>
+<td align="left">“主题”App,更换完主题就删除,用的时候在”华为应用商店”安装就行了;</td>
+<td align="left">com.huawei.android.thememanager</td>
+</tr>
+<tr>
+<td align="left">华为”浏览器”App,推荐 Edge 浏览器,别用”夸克”了,太”和谐”了!</td>
+<td align="left">com.huawei.browser</td>
+</tr>
+<tr>
+<td align="left">“华为云空间”</td>
+<td align="left">com.huawei.hidisk</td>
+</tr>
+<tr>
+<td align="left">“华为云空间服务”</td>
+<td align="left">com.huawei.hicloud</td>
+</tr>
+<tr>
+<td align="left">“隐私空间”</td>
+<td align="left">com.huawei.privatespace</td>
+</tr>
+<tr>
+<td align="left">“隐私空间”</td>
+<td align="left">com.huawei.securitymgr</td>
+</tr>
+<tr>
+<td align="left">华为”日历”App</td>
+<td align="left">com.huawei.calendar</td>
+</tr>
+<tr>
+<td align="left">“日历存储”</td>
+<td align="left">com.android.providers.calendar</td>
+</tr>
+<tr>
+<td align="left">华为”时钟”App</td>
+<td align="left">com.android.deskclock</td>
+</tr>
+<tr>
+<td align="left">“百度输入法”</td>
+<td align="left">com.baidu.input_huawei</td>
+</tr>
+<tr>
+<td align="left">“小艺建议”</td>
+<td align="left">com.huawei.ohos.suggestion</td>
+</tr>
+<tr>
+<td align="left">“华为智能建议”</td>
+<td align="left">com.huawei.pengine</td>
+</tr>
+<tr>
+<td align="left">华为”快应用中心”</td>
+<td align="left">com.huawei.fastapp</td>
+</tr>
+<tr>
+<td align="left">华为”备份”</td>
+<td align="left">com.huawei.localBackup</td>
+</tr>
+<tr>
+<td align="left">华为”支付保护中心”</td>
+<td align="left">com.huawei.trustspace</td>
+</tr>
+<tr>
+<td align="left">“Feature Framework”</td>
+<td align="left">com.huawei.featurelayer.featureframework</td>
+</tr>
+<tr>
+<td align="left">“华为智慧引擎”</td>
+<td align="left">com.huawei.hiai</td>
+</tr>
+<tr>
+<td align="left">华为”HUAWEI HiAI Base” 基础服务</td>
+<td align="left">com.huawei.hiaction</td>
+</tr>
+<tr>
+<td align="left">“华为智慧引擎”</td>
+<td align="left">com.huawei.recsys</td>
+</tr>
+<tr>
+<td align="left">华为”智慧语音”</td>
+<td align="left">com.huawei.vassistant</td>
+</tr>
+<tr>
+<td align="left">“扫名片”</td>
+<td align="left">com.huawei.contactscamcard</td>
+</tr>
+<tr>
+<td align="left">华为”智慧识屏”</td>
+<td align="left">com.huawei.hitouch</td>
+</tr>
+<tr>
+<td align="left">“华为 VR 服务”</td>
+<td align="left">com.huawei.vrservice</td>
+</tr>
+<tr>
+<td align="left">华为”手势服务”</td>
+<td align="left">com.huawei.motionservice</td>
+</tr>
+<tr>
+<td align="left">华为”智慧协同”</td>
+<td align="left">com.huawei.devicemanager</td>
+</tr>
+<tr>
+<td align="left">华为”无线投屏”</td>
+<td align="left">com.huawei.android.airsharing</td>
+</tr>
+<tr>
+<td align="left">华为”情景智能”</td>
+<td align="left">com.huawei.suggestion</td>
+</tr>
+<tr>
+<td align="left">华为”智慧视觉”</td>
+<td align="left">com.huawei.scanner</td>
+</tr>
+<tr>
+<td align="left">“华为分享”</td>
+<td align="left">com.huawei.pcassistant</td>
+</tr>
+<tr>
+<td align="left">“华为分享”</td>
+<td align="left">com.huawei.android.instantshare</td>
+</tr>
+<tr>
+<td align="left">“WLAN 直连”</td>
+<td align="left">com.huawei.android.wfdft</td>
+</tr>
+<tr>
+<td align="left">华为”悬浮导航”</td>
+<td align="left">com.huawei.android.FloatTasks</td>
+</tr>
+<tr>
+<td align="left">“华为打印”</td>
+<td align="left">com.huawei.printservice</td>
+</tr>
+<tr>
+<td align="left">华为”HwNearby”附近服务</td>
+<td align="left">com.huawei.nearby</td>
+</tr>
+<tr>
+<td align="left">华为”屏幕朗读”服务</td>
+<td align="left">com.bjbyhd.screenreader_huawei</td>
+</tr>
+<tr>
+<td align="left">“华为安全公共服务”</td>
+<td align="left">com.huawei.securityserver</td>
+</tr>
+<tr>
+<td align="left">华为”文件管理”,推荐 “MT管理器”</td>
+<td align="left">com.huawei.filemanager</td>
+</tr>
+<tr>
+<td align="left">华为”我的文件”</td>
+<td align="left">com.huawei.desktop.explorer</td>
+</tr>
+<tr>
+<td align="left">“下载管理”</td>
+<td align="left">com.android.providers.downloads</td>
+</tr>
+<tr>
+<td align="left">“下载管理” UI</td>
+<td align="left">com.android.providers.downloads.ui</td>
+</tr>
+<tr>
+<td align="left">华为”关键资产同步”</td>
+<td align="left">com.huawei.assetsync</td>
+</tr>
+<tr>
+<td align="left">华为”关键资产同步”服务</td>
+<td align="left">com.huawei.assetsyncservice</td>
+</tr>
+<tr>
+<td align="left">华为”联系人同步”</td>
+<td align="left">com.huawei.contacts.sync</td>
+</tr>
+<tr>
+<td align="left">华为”Air Link”</td>
+<td align="left">com.huawei.airlink</td>
+</tr>
+<tr>
+<td align="left">“华为 RCS 服务”,同华为手机的免费短信</td>
+<td align="left">com.huawei.rcsserviceapplication</td>
+</tr>
+<tr>
+<td align="left">华为”通过蓝牙导入”</td>
+<td align="left">com.huawei.bluetooth</td>
+</tr>
+<tr>
+<td align="left">华为”智能解锁”</td>
+<td align="left">com.huawei.trustagent</td>
+</tr>
+<tr>
+<td align="left">华为”蓝牙触控笔管理”</td>
+<td align="left">com.huawei.hwbluetoothpencilmanager</td>
+</tr>
+<tr>
+<td align="left">讯飞语音引擎</td>
+<td align="left">com.iflytek.speechsuite</td>
+</tr>
+<tr>
+<td align="left">[HarmongOS]华为”服务中心”</td>
+<td align="left">com.huawei.ohos.famanager</td>
+</tr>
+<tr>
+<td align="left">“共享存储备份”</td>
+<td align="left">com.android.sharedstoragebackup</td>
+</tr>
+<tr>
+<td align="left">华为”检测&#x2F;诊断”</td>
+<td align="left">com.huawei.hwdiagnosis</td>
+</tr>
+<tr>
+<td align="left">华为”超级终端”</td>
+<td align="left">com.huawei.controlcenter</td>
+</tr>
+<tr>
+<td align="left">华为”注册服务”</td>
+<td align="left">com.huawei.regservice</td>
+</tr>
+<tr>
+<td align="left">华为”可信认证跳过”</td>
+<td align="left">com.huawei.trustedthingsauth</td>
+</tr>
+<tr>
+<td align="left">华为”协同”</td>
+<td align="left">com.huawei.synergy</td>
+</tr>
+<tr>
+<td align="left">华为”联合认证”</td>
+<td align="left">com.huawei.coauthservice</td>
+</tr>
+</tbody></table>
+<h2 id="其他华为包名（可选）"><a href="#其他华为包名（可选）" class="headerlink" title="其他华为包名（可选）"></a>其他华为包名（可选）</h2><table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="left">包名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">华为视频</td>
+<td align="left">com.huawei.himovie</td>
+</tr>
+<tr>
+<td align="left">华为音乐</td>
+<td align="left">com.android.mediacenter</td>
+</tr>
+<tr>
+<td align="left">华为游戏中心</td>
+<td align="left">com.huawei.gamebox</td>
+</tr>
+<tr>
+<td align="left">华为阅读</td>
+<td align="left">com.huawei.hwireader</td>
+</tr>
+<tr>
+<td align="left">华为移动服务</td>
+<td align="left">com.huawei.hwid</td>
+</tr>
+<tr>
+<td align="left">华为健康</td>
+<td align="left">com.huawei.health</td>
+</tr>
+<tr>
+<td align="left">华为健康</td>
+<td align="left">com.huawei.ohos.health</td>
+</tr>
+<tr>
+<td align="left">浏览器</td>
+<td align="left">com.android.browser</td>
+</tr>
+<tr>
+<td align="left">华为商城</td>
+<td align="left">com.vmall.client</td>
+</tr>
+<tr>
+<td align="left">华为桌面</td>
+<td align="left">com.huawei.android.launcher</td>
+</tr>
+<tr>
+<td align="left">华为应用市场</td>
+<td align="left">com.huawei.appmarket</td>
+</tr>
+<tr>
+<td align="left">华为杂志锁屏</td>
+<td align="left">com.huawei.magazine</td>
+</tr>
+<tr>
+<td align="left">华为钱包</td>
+<td align="left">com.huawei.wallet</td>
+</tr>
+<tr>
+<td align="left">百度输入法华为版</td>
+<td align="left">com.baidu.input_huawei</td>
+</tr>
+<tr>
+<td align="left">天际通</td>
+<td align="left">com.huawei.hiskytone</td>
+</tr>
+<tr>
+<td align="left">天际通数据服务</td>
+<td align="left">com.huawei.skytone</td>
+</tr>
+<tr>
+<td align="left">查找我的手机</td>
+<td align="left">com.huawei.android.findmyphone</td>
+</tr>
+<tr>
+<td align="left">系统更新</td>
+<td align="left">com.huawei.android.hwouc</td>
+</tr>
+<tr>
+<td align="left">推送服务</td>
+<td align="left">com.huawei.android.pushagent</td>
+</tr>
+<tr>
+<td align="left">语音助手</td>
+<td align="left">com.huawei.vassistant</td>
+</tr>
+<tr>
+<td align="left">安装向导</td>
+<td align="left">com.huawei.hwstartupguide</td>
+</tr>
+<tr>
+<td align="left">会员服务</td>
+<td align="left">com.huawei.phoneservice</td>
+</tr>
+<tr>
+<td align="left">文件</td>
+<td align="left">com.android.documentsui</td>
+</tr>
+<tr>
+<td align="left">文件管理</td>
+<td align="left">com.huawei.hidisk</td>
+</tr>
+<tr>
+<td align="left">主题</td>
+<td align="left">com.huawei.android.thememanager</td>
+</tr>
+<tr>
+<td align="left">华为框架服务</td>
+<td align="left">com.huawei.android.hsf</td>
+</tr>
+<tr>
+<td align="left">下载管理器</td>
+<td align="left">com.android.providers.downloads</td>
+</tr>
+<tr>
+<td align="left">备份</td>
+<td align="left">com.huawei.localBackup</td>
+</tr>
+<tr>
+<td align="left">下载内容</td>
+<td align="left">com.android.providers.downloads.ui</td>
+</tr>
+<tr>
+<td align="left">手机管家</td>
+<td align="left">com.huawei.systemmanager</td>
+</tr>
+<tr>
+<td align="left">打包安装程序</td>
+<td align="left">com.android.packageinstaller</td>
+</tr>
+<tr>
+<td align="left">电子邮件</td>
+<td align="left">com.android.email</td>
+</tr>
+<tr>
+<td align="left">智能助手</td>
+<td align="left">com.huawei.intelligent</td>
+</tr>
+<tr>
+<td align="left">搜索</td>
+<td align="left">com.huawei.search</td>
+</tr>
+<tr>
+<td align="left">智慧识屏</td>
+<td align="left">com.huawei.hitouch</td>
+</tr>
+<tr>
+<td align="left">智慧视觉</td>
+<td align="left">com.huawei.scanner</td>
+</tr>
+<tr>
+<td align="left">服务中心</td>
+<td align="left">com.huawei.ohos.famanager</td>
+</tr>
+<tr>
+<td align="left">负一屏</td>
+<td align="left">com.huawei.intelligent</td>
+</tr>
+<tr>
+<td align="left">SIM卡应用</td>
+<td align="left">com.android.stk</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">原文链接</a>哦~<br>地址：<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">基本功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0%E5%8D%8E%E4%B8%BA%E6%89%8B%E6%9C%BA%E5%90%8E%E5%8F%AF%E5%8D%B8%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">拿到华为手机后可卸载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%80%85%E6%8E%A8%E8%8D%90"><span class="toc-number">3.1.</span> <span class="toc-text">笔者推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%94%E8%80%85%E6%9C%AA%E5%8D%B8%E8%BD%BD"><span class="toc-number">3.2.</span> <span class="toc-text">笔者未卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8D%8E%E4%B8%BA%E5%8C%85%E5%90%8D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">其他华为包名（可选）</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

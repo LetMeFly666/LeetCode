@@ -1,116 +1,95 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-03-17T13:38:06.000Z" id="date"> 2023-03-17</time></div></span></div></div><hr><div id="post-content"><h1 id="PWA-Progressive-web-apps-：Web技术实现类似原生应用-入门简介"><a href="#PWA-Progressive-web-apps-：Web技术实现类似原生应用-入门简介" class="headerlink" title="PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介"></a>PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在（使用Google浏览器）访问一些网站时，有时右上角会弹出“安装应用”的按钮。</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4e3c5c2f99c34fd8813e3d6bbbf73736.png" alt="安装应用"></p>
+<p>例如<a target="_blank" rel="noopener" href="https://v8.dev/">谷歌V8官网</a></p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/c8d4c53fdd81461c9bc167dabf58d73c.png" alt="V8官网"></p>
+<p>如果我们点击“安装”，则会在桌面生成一个“快捷方式”，并且当前页面也会弹出为独立的窗口。</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b559cb43b62344e7b9ba67200f598278.png" alt="独立窗口"></p>
+<p>我们双击桌面的快捷方式也能达到同样的效果。</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/d294e60bacdb4cc8b48893005d6f0328.png" alt="快捷方式"></p>
+<p><strong>这就像是我们打开了一个安装在本地的程序一样</strong>，并且能在“设置-&gt;应用和功能”中找到（Win10下可以<code>Win + R</code>，<code>ms-settings:appsfeatures</code>，<code>回车</code>）</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/4265e108066443cd8166e9e83768193c.png" alt="应用和功能"></p>
+<p>查看快捷方式的属性，可以发现其实质上是指向了<code>chrome_proxy.exe</code>，其目标为<code>&quot;C:\Program Files\Google\Chrome\Application\chrome_proxy.exe&quot;  --profile-directory=Default --app-id=omahloekemgldcjjnolkgifggmedapio</code></p>
+<p>实质上只是在具有专属边框的独立窗口中打开了这个网页而已。</p>
+<p>这样做有什么<strong>好处</strong>呢？</p>
+<p>首先相比于单独的程序而言，这个方法不需要真正地安装程序，其实质上可以理解为一个快捷方式。</p>
+<p>其次，相比于普通的网页而言，安装为“应用”的网页可以离线打开、方便缓存很多内容等。</p>
+<p>假如我做了一个纯前端的在线图片生成工具箱，那么我就可以将其打包成PWA应用，这样用户在“安装到本地后”，可以在几乎不占用额外硬盘空间的情况下（当然缓存当前前端页面及其资源还是要占用一丢丢的空间的），<strong>离线</strong>使用这个工具箱。</p>
+<p>有点介绍完了，怎么卸载呢？</p>
+<p>两种方法，一个是直接在Windows设置中卸载</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/ea9f07d95adf490d9e91a991588922ce.png" alt="卸载1"></p>
+<p>另一个是在打开应用后，点击右上方三个点，并选择卸载</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/756313c98c1d4ab287c04c6349df7348.png" alt="卸载2"></p>
+<p>记得清除数据</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1c98b0b090fb41b1b182d89f26f33888.png" alt="清除数据"></p>
+<p>前言讲完了，接下来是其简介，以及如何编写PWA应用：</p>
+<h2 id="简介（Answered-by-ChatGPT）"><a href="#简介（Answered-by-ChatGPT）" class="headerlink" title="简介（Answered by ChatGPT）"></a>简介（Answered by ChatGPT）</h2><p>PWA指的是Progressive Web App，是一种通过Web技术实现类似原生应用的用户体验的应用程序。</p>
+<p>与传统的Web应用程序不同，PWA可以离线访问，有着更快的加载速度、更流畅的交互体验，并且可以在桌面上以应用程序的形式运行。PWA利用了现代浏览器提供的一些API和技术，如Service Workers和Web App Manifests，实现了离线缓存、推送通知、添加到主屏幕等功能，使得用户可以像使用原生应用程序一样使用它们。</p>
+<p>PWA的优点包括：</p>
+<ol>
+<li>不需要下载安装：PWA不需要用户下载和安装，可以通过浏览器直接使用。</li>
+<li>快速加载：PWA可以利用Service Workers等技术，实现本地缓存和离线访问，使得加载速度更快。</li>
+<li>可以离线访问：PWA可以离线使用，用户不必依赖网络连接。</li>
+<li>可以添加到主屏幕：用户可以将PWA添加到主屏幕，以应用程序的形式进行访问。</li>
+<li>推送通知：PWA可以通过推送通知的方式向用户发送信息，增强用户体验。</li>
+</ol>
+<p>总的来说，PWA是一种融合了Web和原生应用程序的优点的新型应用程序，为用户提供了更好的体验，也为开发者提供了更便捷的开发方式。</p>
+<h2 id="如何编写PWA应用"><a href="#如何编写PWA应用" class="headerlink" title="如何编写PWA应用"></a>如何编写PWA应用</h2><p>当然还是看官方文档为妙：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/progressive-web-apps">谷歌官方文档</a>（点击后会跳转到<a target="_blank" rel="noopener" href="https://web.dev/progressive-web-apps/">这里</a>大陆可直接访问）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps">Mozilla文档</a></li>
+</ul>
+<p>最后贴上ChatGPT对“如何编写PWA应用”的总结：</p>
+<p>PWA（Progressive Web Apps）是一种使用 Web 技术编写的应用程序，可以像原生应用程序一样运行，并提供离线缓存、推送通知等功能。下面是编写 PWA 应用的一般步骤：</p>
+<ol>
+<li>确定应用程序的功能和设计，以及响应式布局、离线缓存等功能。</li>
+<li>使用 HTML、CSS 和 JavaScript 编写应用程序代码。建议使用模块化的代码结构和框架（如 React、Vue.js 等）。</li>
+<li>在代码中添加必要的 Web App Manifest 和 Service Worker。Web App Manifest 是一个 JSON 文件，包含应用程序的元数据，如名称、图标、颜色、起始页 URL 等。Service Worker 是一个 JavaScript 文件，用于缓存应用程序的静态资源并提供离线访问功能。</li>
+<li>部署应用程序到 Web 服务器上，并确保它是通过 HTTPS 协议访问的，以确保应用程序的安全性和信任度。</li>
+<li>在浏览器中访问应用程序，添加到主屏幕，并测试其功能和性能。</li>
+</ol>
+<p>总之，编写 PWA 应用需要了解 Web 技术和 PWA 的相关规范，同时使用现代的开发工具和框架可以帮助开发人员更加高效地开发 PWA 应用。</p>
+<h2 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h2><p>附上修改简化后的“W3开放网”的PWA的manifest.json</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;W3开放网&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;short_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;W3开放网&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/?source=pwa&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;display&quot;</span><span class="punctuation">:</span> <span class="string">&quot;standalone&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;scope&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;background_color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#fff&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;homepage&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://127.0.0.1:5500/&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;icons&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.w3dev.cn/images/48x48.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;48x48&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.w3dev.cn/images/96x96.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;96x96&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.w3dev.cn/images/144x144.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;144x144&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.w3dev.cn//images/192x192.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;192x192&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
-
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129629012">https://letmefly.blog.csdn.net/article/details/129629012</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/03/18/LeetCode%201616.%E5%88%86%E5%89%B2%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BE%97%E5%88%B0%E5%9B%9E%E6%96%87%E4%B8%B2/">← Next 1616.分割两个字符串得到回文串</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/03/17/LeetCode%202389.%E5%92%8C%E6%9C%89%E9%99%90%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E5%BA%8F%E5%88%97/">2389.和有限的最长子序列 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PWA-Progressive-web-apps-%EF%BC%9AWeb%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BC%E5%8E%9F%E7%94%9F%E5%BA%94%E7%94%A8-%E5%85%A5%E9%97%A8%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B%EF%BC%88Answered-by-ChatGPT%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">简介（Answered by ChatGPT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99PWA%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">如何编写PWA应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample"><span class="toc-number">1.4.</span> <span class="toc-text">Sample</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

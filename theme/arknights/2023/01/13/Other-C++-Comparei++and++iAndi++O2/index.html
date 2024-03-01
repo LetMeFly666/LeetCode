@@ -1,116 +1,178 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-01-13T08:11:42.000Z" id="date"> 2023-01-13</time></div></span></div></div><hr><div id="post-content"><h1 id="比较C-43-43-在for循环中的i-43-43-和-43-43-i以及i-43-43-的O2优化的效率：-43-43-i真的比i-43-43-快吗"><a href="#比较C-43-43-在for循环中的i-43-43-和-43-43-i以及i-43-43-的O2优化的效率：-43-43-i真的比i-43-43-快吗" class="headerlink" title="比较C&#43;&#43;在for循环中的i&#43;&#43;和&#43;&#43;i以及i&#43;&#43;的O2优化的效率：&#43;&#43;i真的比i&#43;&#43;快吗"></a>比较C&#43;&#43;在for循环中的i&#43;&#43;和&#43;&#43;i以及i&#43;&#43;的O2优化的效率：&#43;&#43;i真的比i&#43;&#43;快吗</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对<code>i++</code>和<code>++i</code>的争论褒贬不一，不知从何时起（大概是学C的时候老师就是这么教的）我的习惯是在for循环中使用<code>i++</code>而不是<code>++i</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)  <span class="comment">// 典</span></span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>但是看到一些博客说<code>++i</code>比<code>i++</code>的效率高。</p>
+<p>虽然现在的编译器的优化、机器的性能提升之类导致<code>i++</code>和<code>++i</code>的区别应该不会很大，但我还是决定做一个实验进行一下对比。</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ul>
+<li>操作系统：deepin 5.3.15-6apricot</li>
+<li>g++版本：gcc version 8.3.0 (Uos 8.3.0.3-3+rebuild)</li>
+<li>screen版本：Screen version 4.06.02 (GNU) 23-Oct-17</li>
+</ul>
+<h2 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h2><p>首先编写了两个简单的cpp文件，分别命名为<code>i++.cpp</code>和<code>++i.cpp</code></p>
+<p>其中<code>i++.cpp</code>为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> forTo 10000000000000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> perCout 1000000000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">clock_t</span> start = <span class="built_in">clock</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">0</span>; i &lt; forTo; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % perCout == <span class="number">0</span>) &#123;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; <span class="number">100.</span> * i / forTo &lt;&lt; <span class="string">&quot;%)&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;End..&quot;</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Time consume: &quot;</span> &lt;&lt; <span class="built_in">double</span>(<span class="built_in">clock</span>() - start) / CLOCKS_PER_SEC &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>而<code>++i.cpp</code>为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> forTo 10000000000000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> perCout 1000000000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">clock_t</span> start = <span class="built_in">clock</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">0</span>; i &lt; forTo; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i % perCout == <span class="number">0</span>) &#123;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; <span class="number">100.</span> * i / forTo &lt;&lt; <span class="string">&quot;%)&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;End..&quot;</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Time consume: &quot;</span> &lt;&lt; <span class="built_in">double</span>(<span class="built_in">clock</span>() - start) / CLOCKS_PER_SEC &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述两个文件的主要部分都是一个循环，一共循环10000000000000次，每循环1000000000次打印一次</p>
+<p>二者唯一的区别是第10行</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+     for (long long i = 0; i &lt; forTo; i++) &#123;</span></span><br><span class="line"><span class="deletion">-     for (long long i = 0; i &lt; forTo; ++i) &#123;</span></span><br></pre></td></tr></table></figure>
+
+<p>接着开启三个screen终端，在每个终端中分别编译源文件。三个终端的名称分别为<code>i++</code>、<code>++i</code>和<code>i++O2</code></p>
+<ul>
+<li>在终端<code>i++</code>中，使用指令<code>g++ -O0 i++.cpp -o i++</code>进行编译</li>
+<li>在终端<code>++i</code>中，使用指令<code>g++ -O0 ++i.cpp -o ++i</code>进行编译</li>
+<li>在终端<code>i++O2</code>中，使用指令<code>g++ -O2 i++.cpp -o i++O2</code>进行编译</li>
+</ul>
+<p>前两个终端不使用O2优化，第三个终端使用O2优化</p>
+<p>为了使实验尽可能地在相同的条件下运行，提前在三个终端中输入好运行指令：<code>./i++</code>、<code>./++i</code>、<code>./i++O2</code></p>
+<p>接着以尽快的速度（1秒内）在三个终端中分别键入回车，让三个程序在尽可能短的时间内“同时”启动运行并等待结果。</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f89b9d0db3a246adbf63a05ded0d60c0.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f89b9d0db3a246adbf63a05ded0d60c0.png" alt="init"></p>
+<p>经过一段时间后（约7h），我们得到了运行结果：</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1381ccfff3b845909873a2b56c6530b2.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1381ccfff3b845909873a2b56c6530b2.png" alt="result"></p>
+<p>结果显示：</p>
+<ol>
+<li>在for循环中使用<code>i++</code>计算10000000000000次，每1000000000次打印一次，所消耗的时间为23688.9秒</li>
+<li>在for循环中使用<code>++i</code>计算10000000000000次，每1000000000次打印一次，所消耗的时间为23806.2秒</li>
+<li>在for循环中使用<code>i++</code>计算10000000000000次，每1000000000次打印一次，并开启O2优化，所消耗的时间为8953.8秒</li>
+</ol>
+<p>这表明：</p>
+<ol>
+<li><code>i++</code>并且开O2优化的执行时间“远”小于<code>i++</code>或<code>++i</code>不开优化的执行时间</li>
+<li>不开启O2优化的情况下，<code>i++</code>和<code>++i</code>的效率相差不大，使用<code>++i</code>的耗时略长，使用<code>i++</code>的时间消耗约为<code>++i</code>的99.507%</li>
+</ol>
+<p><strong>进一步实验：</strong></p>
+<p>在上述实验中，虽说每隔1000000000次打印一次，但在循环中仍打印了10000次。这1万次的打印会消耗不少的时间，并且也可以引起一定的误差。</p>
+<p>因此，在实验二中，我们取消了循环中的打印，只保留循环结束后的时间打印。</p>
+<p>同样新建了两个简单的cpp文件：<code>i++NC.cpp</code>和<code>++iNC.cpp</code>。其中NC的意思是：Not Cout</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```cpp</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;time.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#define forTo 10000000000000</span><br><span class="line">#define perCout 1000000000</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    clock_t start = clock();</span><br><span class="line">    for (long long i = 0; i &lt; forTo; i++) &#123;</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line">    puts(&quot;End..&quot;);</span><br><span class="line">    cout &lt;&lt; &quot;Time consume: &quot; &lt;&lt; double(clock() - start) / CLOCKS_PER_SEC &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而<code>++iNC.cpp</code>为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> forTo 10000000000000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> perCout 1000000000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">clock_t</span> start = <span class="built_in">clock</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">long</span> <span class="type">long</span> i = <span class="number">0</span>; i &lt; forTo; ++i) &#123;</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;End..&quot;</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Time consume: &quot;</span> &lt;&lt; <span class="built_in">double</span>(<span class="built_in">clock</span>() - start) / CLOCKS_PER_SEC &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>二者的唯一区别仍为第10行</p>
+<p>接着使用类似实验一的方式在三个终端中对文件进行编译、执行</p>
+<p>编译命令分别为：</p>
+<ol>
+<li><code>g++ -O0 i++.cpp -o i++</code></li>
+<li><code>g++ -O0 ++i.cpp -o ++i</code></li>
+<li><code>g++ -O2 i++.cpp -o i++O2</code></li>
+</ol>
+<p>执行程序的命令分别为：</p>
+<ol>
+<li><code>./i++NC</code></li>
+<li><code>./++iNC</code></li>
+<li><code>./i++NCO2</code></li>
+</ol>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/bc6dbc770ce84d8e843c3c10fd08b3d3.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/bc6dbc770ce84d8e843c3c10fd08b3d3.png" alt="init2"></p>
+<p>接近同时（1秒内）启动三个程序，并观察运行结果</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b270b0c8bcfd4ef5814c578531a8c12d.jpeg'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b270b0c8bcfd4ef5814c578531a8c12d.jpeg" alt="result2"></p>
+<p>可以看到：</p>
+<ol>
+<li>在for循环中使用<code>i++</code>计算10000000000000次，所消耗的时间为16987秒</li>
+<li>在for循环中使用<code>++i</code>计算10000000000000次，所消耗的时间为16994.3秒</li>
+<li>在for循环中使用<code>i++</code>计算10000000000000次，并开启O2优化，所消耗的时间为2.2e-05秒</li>
+</ol>
+<p>这表明：</p>
+<ol>
+<li><code>i++</code>并且开O2优化的执行时间<strong>远</strong>小于<code>i++</code>或<code>++i</code>不开优化的执行时间</li>
+<li>不开启O2优化的情况下，<code>i++</code>和<code>++i</code>的效率相差不大，使用<code>++i</code>的耗时略长，使用<code>i++</code>的时间消耗约为<code>++i</code>的99.957%</li>
+</ol>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ol>
+<li>O2优化很多时候确实能够大大提高代码的执行效率</li>
+<li>（在for循环中使用）<code>i++</code>和<code>++i</code>的区别真的不大，按照自己喜欢的使用就好</li>
+</ol>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>附 本实验所有文件的MD5值：（使用命令：<code>md5sum 文件名</code>计算得到）</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件</th>
+<th align="center">MD5值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">++i</td>
+<td align="center">a0a4916914604260d15f915b69bd6680</td>
+</tr>
+<tr>
+<td align="center">++i.cpp</td>
+<td align="center">87f7bce79f6da8aab379d50855623b49</td>
+</tr>
+<tr>
+<td align="center">++iNC</td>
+<td align="center">8f3824486c3eda26ee7c687b48fddf17</td>
+</tr>
+<tr>
+<td align="center">++iNC.cpp</td>
+<td align="center">c83f8a7252ab83b7c1aacc1371464711</td>
+</tr>
+<tr>
+<td align="center">i++</td>
+<td align="center">d706151497301d37c17f2766231493c1</td>
+</tr>
+<tr>
+<td align="center">i++.cpp</td>
+<td align="center">ce237f15c3b2376f064c036985389d40</td>
+</tr>
+<tr>
+<td align="center">i++NC</td>
+<td align="center">f92ba414cd60df7d44a62bca23378d61</td>
+</tr>
+<tr>
+<td align="center">i++NC.cpp</td>
+<td align="center">163bc47ce3176b73306568ef542eb3a0</td>
+</tr>
+<tr>
+<td align="center">i++NCO2</td>
+<td align="center">7f2e8e8998361aab19e4c1decf29026a</td>
+</tr>
+<tr>
+<td align="center">i++O2</td>
+<td align="center">4f8cbacc480c8dbf5a62e433535bc9b1</td>
+</tr>
+</tbody></table>
+<center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/128675905">https://letmefly.blog.csdn.net/article/details/128675905</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/01/15/LeetCode%202293.%E6%9E%81%E5%A4%A7%E6%9E%81%E5%B0%8F%E6%B8%B8%E6%88%8F/">← Next 2293.极大极小游戏</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/01/13/LeetCode%202287.%E9%87%8D%E6%8E%92%E5%AD%97%E7%AC%A6%E5%BD%A2%E6%88%90%E7%9B%AE%E6%A0%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">2287.重排字符形成目标字符串 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83C-43-43-%E5%9C%A8for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84i-43-43-%E5%92%8C-43-43-i%E4%BB%A5%E5%8F%8Ai-43-43-%E7%9A%84O2%E4%BC%98%E5%8C%96%E7%9A%84%E6%95%88%E7%8E%87%EF%BC%9A-43-43-i%E7%9C%9F%E7%9A%84%E6%AF%94i-43-43-%E5%BF%AB%E5%90%97"><span class="toc-number">1.</span> <span class="toc-text">比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">实验步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">1.4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.5.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

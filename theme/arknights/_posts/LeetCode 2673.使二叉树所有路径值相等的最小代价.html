@@ -1,1 +1,166 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2673.使二叉树所有路径值相等的最小代价 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2673.使二叉树所有路径值相等的最小代价</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-02-28T13:23:07.000Z" id="date"> 2024-02-28</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2673-使二叉树所有路径值相等的最小代价：自顶向下的DFS-或-自底向上的递推"><a href="#【LetMeFly】2673-使二叉树所有路径值相等的最小代价：自顶向下的DFS-或-自底向上的递推" class="headerlink" title="【LetMeFly】2673.使二叉树所有路径值相等的最小代价：自顶向下的DFS 或 自底向上的递推"></a>【LetMeFly】2673.使二叉树所有路径值相等的最小代价：自顶向下的DFS 或 自底向上的递推</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-costs-of-paths-equal-in-a-binary-tree/">https://leetcode.cn/problems/make-costs-of-paths-equal-in-a-binary-tree/</a></p>
+<p>给你一个整数&nbsp;<code>n</code>&nbsp;表示一棵 <b>满二叉树</b>&nbsp;里面节点的数目，节点编号从 <code>1</code>&nbsp;到 <code>n</code>&nbsp;。根节点编号为 <code>1</code>&nbsp;，树中每个非叶子节点&nbsp;<code>i</code>&nbsp;都有两个孩子，分别是左孩子&nbsp;<code>2 * i</code>&nbsp;和右孩子&nbsp;<code>2 * i + 1</code>&nbsp;。</p>
+
+<p>树中每个节点都有一个值，用下标从<b>&nbsp;0</b>&nbsp;开始、长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>cost</code>&nbsp;表示，其中&nbsp;<code>cost[i]</code>&nbsp;是第&nbsp;<code>i + 1</code>&nbsp;个节点的值。每次操作，你可以将树中&nbsp;<strong>任意</strong>&nbsp;节点的值&nbsp;<strong>增加</strong>&nbsp;<code>1</code>&nbsp;。你可以执行操作 <strong>任意</strong> 次。</p>
+
+<p>你的目标是让根到每一个 <strong>叶子结点</strong>&nbsp;的路径值相等。请你返回 <strong>最少</strong>&nbsp;需要执行增加操作多少次。</p>
+
+<p><b>注意：</b></p>
+
+<ul>
+    <li><strong>满二叉树</strong>&nbsp;指的是一棵树，它满足树中除了叶子节点外每个节点都恰好有 2 个节点，且所有叶子节点距离根节点距离相同。</li>
+    <li><strong>路径值</strong> 指的是路径上所有节点的值之和。</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2023/04/04/binaryytreeedrawio-4.png'><img alt="" src="https://assets.leetcode.com/uploads/2023/04/04/binaryytreeedrawio-4.png" /></p>
+
+<pre>
+<b>输入：</b>n = 7, cost = [1,5,2,2,3,3,1]
+<b>输出：</b>6
+<b>解释：</b>我们执行以下的增加操作：
+- 将节点 4 的值增加一次。
+- 将节点 3 的值增加三次。
+- 将节点 7 的值增加两次。
+从根到叶子的每一条路径值都为 9 。
+总共增加次数为 1 + 3 + 2 = 6 。
+这是最小的答案。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2023/04/04/binaryytreee2drawio.png'><img alt="" src="https://assets.leetcode.com/uploads/2023/04/04/binaryytreee2drawio.png" style="width: 205px; height: 151px;" /></p>
+
+<pre>
+<b>输入：</b>n = 3, cost = [5,3,3]
+<b>输出：</b>0
+<b>解释：</b>两条路径已经有相等的路径值，所以不需要执行任何增加操作。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
+    <li><code>n + 1</code> 是&nbsp;<code>2</code>&nbsp;的幂</li>
+    <li><code>cost.length == n</code></li>
+    <li><code>1 &lt;= cost[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于某个节点，假设其左子树和右子树都已经“增加”过了（对于左子树，所有路径值相等，右子树同理），但是左子树根到叶路径之和（记为leftSum）和右子树的rightSum不等，我们应该怎么操作呢？</p>
+<details>
+<summary>举例说明点我</summary>
+
+<blockquote>
+<p>例如如下二叉树中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line"> 5   2</span><br><span class="line">2 3 3 1</span><br></pre></td></tr></table></figure>
+
+<p>的根节点<code>1</code>，假设其左子树已经由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 5</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+
+<p>变成了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 5</span><br><span class="line">3 3</span><br></pre></td></tr></table></figure>
+
+<p>，而右子树已经由</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 2</span><br><span class="line">3 1</span><br></pre></td></tr></table></figure>
+<p>变成了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 2</span><br><span class="line">3 3</span><br></pre></td></tr></table></figure>
+
+<p>那么我们应该如何进行下一步操作呢？</p>
+<p>对于根节点<code>1</code>：其左子树已经平衡，路径之和为<code>5 + 3 = 8</code>；其右子树已经平衡，路径之和为<code>2 + 3 = 5</code>。</p>
+<p>想要让左右子路径之和相等？当然只要<code>右子</code>的根节点<code>+3</code>即可。</p>
+</blockquote>
+<p>也就是说：</p>
+</details>
+
+<p>将<code>左右子树路径和之差</code>加到<code>路径和较小的子树</code>的根节点上。</p>
+<p>这是因为“加一操作”越靠近根，所能影响的路径数就越多。</p>
+<h2 id="方法一：自顶向下的DFS"><a href="#方法一：自顶向下的DFS" class="headerlink" title="方法一：自顶向下的DFS"></a>方法一：自顶向下的DFS</h2><p>首先要说明的是这种方法的空间复杂度不如方法二，但是比方法二更容易理解。</p>
+<p>我们只需要写一个函数<code>dfs(n)</code>返回节点<code>n</code>（根节点下标从<code>0</code>开始）为根到叶节点的路径之和：</p>
+<blockquote>
+<ol>
+<li><p><strong>递归</strong>左子树得到<code>leftSum</code>，递归右子树得到<code>rightSum</code></p>
+</li>
+<li><p>将<code>leftSum</code>和<code>rightSum</code>之差累加到答案中</p>
+</li>
+<li><p>返回<code>max(leftSum, rightSum) + cost[n]</code>作为该节点到叶节点的路径之和</p>
+</li>
+</ol>
+<p>终止条件：<code>n</code>超出数组范围</p>
+</blockquote>
+<ul>
+<li>时间复杂度$O(N)$，其中$N$为二叉树节点个数。</li>
+<li>空间复杂度$O(\log N)$，满二叉树的深度是$\log N$级别的。</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> n, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n &gt;= cost.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">               0</span></span><br><span class="line"><span class="comment">             1   2</span></span><br><span class="line"><span class="comment">            3 4 5 6</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="type">int</span> leftSum = <span class="built_in">dfs</span>(n * <span class="number">2</span> + <span class="number">1</span>, cost);</span><br><span class="line">        <span class="type">int</span> rightSum = <span class="built_in">dfs</span>(n * <span class="number">2</span> + <span class="number">2</span>, cost);</span><br><span class="line">        ans += <span class="built_in">max</span>(leftSum, rightSum) - <span class="built_in">min</span>(leftSum, rightSum);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(leftSum, rightSum) + cost[n];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minIncrements</span><span class="params">(<span class="type">int</span> n, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">0</span>, cost);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二：自底向上的递推"><a href="#方法二：自底向上的递推" class="headerlink" title="方法二：自底向上的递推"></a>方法二：自底向上的递推</h2><p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/2332f2c002254d3da8b63c8c8fad9ee0.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/2332f2c002254d3da8b63c8c8fad9ee0.png" alt="自底向上"></p>
+<!-- ![自底向上](https://pic.leetcode.cn/1709128858-vXQXHL-%E6%97%A0%E6%A0%87%E9%A2%98.png) -->
+
+<p>在自顶向下的方法一中，递归占用了$O(N)$的空间复杂度。因为往下计算的过程中还要存储当前节点的信息。</p>
+<p>因此我们可以倒过来，采用自底向上的方法：</p>
+<blockquote>
+<ol>
+<li><p>从最后一个非叶节点开始往根节点遍历</p>
+</li>
+<li><p>这个节点的两个子节点之差累加到答案</p>
+</li>
+<li><p>这个节点的两个子节点的最大值累加到这个节点（路径累加）</p>
+</li>
+</ol>
+</blockquote>
+<p>这样相当于是把值存放到$cost$数组中了。</p>
+<ul>
+<li>时间复杂度$O(N)$，其中$N$为二叉树节点个数。</li>
+<li>空间复杂度$O(1)$，但是我们修改了$cost$数组的值。若其值不能被修改，则空间复杂度为$O(N)$（大于方法一的$O(\log N)$，因为方法一底部的值向上传递后可以被丢弃）</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minIncrements</span><span class="params">(<span class="type">int</span> n, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = n / <span class="number">2</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            ans += <span class="built_in">abs</span>(cost[i * <span class="number">2</span> + <span class="number">1</span>] - cost[i * <span class="number">2</span> + <span class="number">2</span>]);</span><br><span class="line">            cost[i] += <span class="built_in">max</span>(cost[i * <span class="number">2</span> + <span class="number">1</span>], cost[i * <span class="number">2</span> + <span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import List</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minIncrements</span>(<span class="params">self, n: <span class="built_in">int</span>, cost: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n // <span class="number">2</span> - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            ans += <span class="built_in">abs</span>(cost[i * <span class="number">2</span> + <span class="number">1</span>] - cost[i * <span class="number">2</span> + <span class="number">2</span>])</span><br><span class="line">            cost[i] += <span class="built_in">max</span>(cost[i * <span class="number">2</span> + <span class="number">1</span>], cost[i * <span class="number">2</span> + <span class="number">2</span>])</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/02/28/LeetCode%202673.%E4%BD%BF%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%80%BC%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136357361">https://letmefly.blog.csdn.net/article/details/136357361</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912673-%E4%BD%BF%E4%BA%8C%E5%8F%89%E6%A0%91%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%80%BC%E7%9B%B8%E7%AD%89%E7%9A%84%E6%9C%80%E5%B0%8F%E4%BB%A3%E4%BB%B7%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84DFS-%E6%88%96-%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E9%80%92%E6%8E%A8"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2673.使二叉树所有路径值相等的最小代价：自顶向下的DFS 或 自底向上的递推</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84DFS"><span class="toc-number">1.2.</span> <span class="toc-text">方法一：自顶向下的DFS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E8%87%AA%E5%BA%95%E5%90%91%E4%B8%8A%E7%9A%84%E9%80%92%E6%8E%A8"><span class="toc-number">1.3.</span> <span class="toc-text">方法二：自底向上的递推</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

@@ -1,116 +1,103 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1262.可被三整除的最大和：时间O(n)空间O(1) | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1262.可被三整除的最大和：时间O(n)空间O(1)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-06-19T08:33:04.000Z" id="date"> 2023-06-19</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1262-可被三整除的最大和：时间O-n-空间O-1"><a href="#【LetMeFly】1262-可被三整除的最大和：时间O-n-空间O-1" class="headerlink" title="【LetMeFly】1262.可被三整除的最大和：时间O(n)空间O(1)"></a>【LetMeFly】1262.可被三整除的最大和：时间O(n)空间O(1)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/greatest-sum-divisible-by-three/">https://leetcode.cn/problems/greatest-sum-divisible-by-three/</a></p>
+<p>给你一个整数数组&nbsp;<code>nums</code>，请你找出并返回能被三整除的元素最大和。</p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<ol>
+</ol>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>nums = [3,6,5,1,8]
+<strong>输出：</strong>18
+<strong>解释：</strong>选出数字 3, 6, 1 和 8，它们的和是 18（可被 3 整除的最大和）。</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>nums = [4]
+<strong>输出：</strong>0
+<strong>解释：</strong>4 不能被 3 整除，所以无法选出数字，返回 0。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>nums = [1,2,3,4,4]
+<strong>输出：</strong>12
+<strong>解释：</strong>选出数字 1, 3, 4 以及 4，它们的和是 12（可被 3 整除的最大和）。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= nums.length &lt;= 4 * 10^4</code></li>
+    <li><code>1 &lt;= nums[i] &lt;= 10^4</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：数学-同余"><a href="#方法一：数学-同余" class="headerlink" title="方法一：数学 + 同余"></a>方法一：数学 + 同余</h2><p>一个数对3取模，只有0、1、2这三种情况。</p>
+<p>我们只需要对nums中所有数求和(cnt)并对3取模：</p>
+<ul>
+<li>如果取模结果为0，直接返回cnt</li>
+<li>如果取模结果为1，cnt减去一个最小的模3为1的数 或 减去两个最小的模3为2的数 并返回（若无充足的数可供减去，则返回0）</li>
+<li>如果取模结果为1，cnt减去一个最小的模3为2的数 或 减去两个最小的模3为1的数 并返回</li>
+</ul>
+<p>上述表达中，“两个最小的数”意思为最小的和第二小的两个数。</p>
+<p>那么，怎么确定模3为1的所有的数中，最小的一个或最小的两个呢？</p>
+<p>最简单的方法就是排序。但是排序需要消耗O(n)的时间和O(log n)的空间，<strong>时空消耗太大了</strong>。</p>
+<p>有没有什么时间O(n)空间O(1)的方法呢？当然有。</p>
+<p>我们只需要写一个类，类中有三个变量：min1、min2、num。</p>
+<p>其中min1代表最小的数，min2代表第二小的数，num代表min1和min2两个变量中有效变量的数量。</p>
+<p>每次遇到一个模3为1的数，我们只需要调用类中的更新函数，遍历结束后即可获得最小值和第二小值。</p>
+<ul>
+<li>时间复杂度$O(len(nums))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Min2</span> &#123;  <span class="comment">// 最小的两个数（范围1-10^4）</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> min1, min2;</span><br><span class="line">    <span class="type">int</span> num;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Min2</span>() &#123;</span><br><span class="line">        min1 = min2 = num = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!num) &#123;</span><br><span class="line">            min1 = n;</span><br><span class="line">            num = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">            min2 = n;</span><br><span class="line">            num = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (min1 &gt; min2) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(min1, min2);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &lt; min1) &#123;</span><br><span class="line">                min2 = min1;</span><br><span class="line">                min1 = n;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (n &lt; min2) &#123;</span><br><span class="line">                min2 = n;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMin2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMinNum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSumDivThree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        Min2 mod1, mod2;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : nums) &#123;</span><br><span class="line">            cnt += t;</span><br><span class="line">            <span class="keyword">if</span> (t % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                mod1.<span class="built_in">update</span>(t);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (t % <span class="number">3</span> == <span class="number">2</span>) &#123;</span><br><span class="line">                mod2.<span class="built_in">update</span>(t);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (cnt % <span class="number">3</span> == <span class="number">1</span>) &#123;  <span class="comment">// 减去一个模为1的或两个模为2的</span></span><br><span class="line">            <span class="keyword">if</span> (mod1.<span class="built_in">getMinNum</span>() &lt; <span class="number">1</span> &amp;&amp; mod2.<span class="built_in">getMinNum</span>() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (mod1.<span class="built_in">getMinNum</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod1.<span class="built_in">getMin1</span>());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (mod2.<span class="built_in">getMinNum</span>() &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod2.<span class="built_in">getMin1</span>() - mod2.<span class="built_in">getMin2</span>());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;  <span class="comment">// 减去一个模为2的或两个模为1的</span></span><br><span class="line">            <span class="keyword">if</span> (mod2.<span class="built_in">getMinNum</span>() &lt; <span class="number">1</span> &amp;&amp; mod1.<span class="built_in">getMinNum</span>() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (mod2.<span class="built_in">getMinNum</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod2.<span class="built_in">getMin1</span>());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (mod1.<span class="built_in">getMinNum</span>() &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod1.<span class="built_in">getMin1</span>() - mod1.<span class="built_in">getMin2</span>());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import List</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Min2</span>:</span><br><span class="line">    min1 = <span class="number">0</span></span><br><span class="line">    min2 = <span class="number">0</span></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.num:</span><br><span class="line">            self.min1 = n</span><br><span class="line">            self.num = <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> self.num == <span class="number">1</span>:</span><br><span class="line">            self.min2 = n</span><br><span class="line">            self.num = <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.min1 &gt; self.min2:</span><br><span class="line">                self.min1, self.min2 = self.min2, self.min1</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> n &lt; self.min1:</span><br><span class="line">                self.min2 = self.min1</span><br><span class="line">                self.min1 = n</span><br><span class="line">            <span class="keyword">elif</span> n &lt; self.min2:</span><br><span class="line">                self.min2 = n</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMin1</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.min1</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMin2</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.min2</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMinNum</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.num</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSumDivThree</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        mod1, mod2 = Min2(), Min2()</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> nums:</span><br><span class="line">            cnt += t</span><br><span class="line">            <span class="keyword">if</span> t % <span class="number">3</span> == <span class="number">1</span>:</span><br><span class="line">                mod1.update(t)</span><br><span class="line">            <span class="keyword">elif</span> t % <span class="number">3</span> == <span class="number">2</span>:</span><br><span class="line">                mod2.update(t)</span><br><span class="line">        <span class="keyword">if</span> cnt % <span class="number">3</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> cnt</span><br><span class="line">        <span class="keyword">elif</span> cnt % <span class="number">3</span> == <span class="number">1</span>:</span><br><span class="line">            ans = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> mod1.getMinNum():</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod1.getMin1())</span><br><span class="line">            <span class="keyword">if</span> mod2.getMinNum() &gt;= <span class="number">2</span>:</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod2.getMin1() - mod2.getMin2())</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ans = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> mod2.getMinNum():</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod2.getMin1())</span><br><span class="line">            <span class="keyword">if</span> mod1.getMinNum() &gt;= <span class="number">2</span>:</span><br><span class="line">                ans = <span class="built_in">max</span>(ans, cnt - mod1.getMin1() - mod1.getMin2())</span><br><span class="line">            <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/06/19/LeetCode%201262.%E5%8F%AF%E8%A2%AB%E4%B8%89%E6%95%B4%E9%99%A4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/131290984">https://letmefly.blog.csdn.net/article/details/131290984</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/06/23/LeetCode%202496.%E6%95%B0%E7%BB%84%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/">← Next 2496.数组中字符串的最大值</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/">1254.统计封闭岛屿的数目 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911262-%E5%8F%AF%E8%A2%AB%E4%B8%89%E6%95%B4%E9%99%A4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C%EF%BC%9A%E6%97%B6%E9%97%B4O-n-%E7%A9%BA%E9%97%B4O-1"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1262.可被三整除的最大和：时间O(n)空间O(1)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%95%B0%E5%AD%A6-%E5%90%8C%E4%BD%99"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：数学 + 同余</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

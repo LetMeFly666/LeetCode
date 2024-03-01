@@ -1,116 +1,103 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>870.优势洗牌 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>870.优势洗牌</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-10-08T05:18:20.000Z" id="date"> 2022-10-08</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心）-870-优势洗牌"><a href="#【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心）-870-优势洗牌" class="headerlink" title="【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌"></a>【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/advantage-shuffle/">https://leetcode.cn/problems/advantage-shuffle/</a></p>
+<p>给定两个大小相等的数组&nbsp;<code>nums1</code>&nbsp;和&nbsp;<code>nums2</code>，<code>nums1</code>&nbsp;相对于 <code>nums</code>&nbsp;的<em>优势</em>可以用满足&nbsp;<code>nums1[i] &gt; nums2[i]</code>&nbsp;的索引 <code>i</code>&nbsp;的数目来描述。</p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>返回 <font color="#c7254e" face="Menlo, Monaco, Consolas, Courier New, monospace" size="1"><span style="background-color: rgb(249, 242, 244);">nums1</span></font>&nbsp;的<strong>任意</strong>排列，使其相对于 <code>nums2</code>&nbsp;的优势最大化。</p>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums1 = [2,7,11,15], nums2 = [1,10,4,11]
+<strong>输出：</strong>[2,11,7,15]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums1 = [12,24,8,32], nums2 = [13,25,32,11]
+<strong>输出：</strong>[24,32,8,12]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= nums1.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>nums2.length == nums1.length</code></li>
+    <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：田忌赛马（贪心）"><a href="#方法一：田忌赛马（贪心）" class="headerlink" title="方法一：田忌赛马（贪心）"></a>方法一：田忌赛马（贪心）</h2><p>思路很简单，就是：</p>
+<blockquote>
+<p>从对手战力最弱的🐎开始，每次从 自己未出场 且 战力大于对手的这匹🐎 的🐎中，挑选战力最小的一匹。<br>若无🐎可敌，则<strong>开始摆烂</strong></p>
+</blockquote>
+<p>举个例子，假如自己的五匹马的战力为<code>12、24、8、32、6</code>，对手的五匹马的战力为<code>13、25、32、11、998</code></p>
+<p>从对手的战力最弱的🐎开始，先看对手战力为<code>11</code>的🐎，再看战力为<code>13</code>的🐎，再看<code>25</code>，再看<code>32</code>，最后看<code>998</code></p>
+<ol>
+<li>对于对手的<code>11</code>，自己的🐎中，未出场 且 战力大于<code>11</code>的有<code>12、24、32</code>，其中战力最小的是<code>12</code>，因此选派自己的<code>12</code>对抗对手的<code>11</code></li>
+<li>对于对手的<code>13</code>，自己的🐎中，未出场 且 战力大于<code>13</code>的有<code>24、32</code>，其中战力最小的是<code>24</code>，因此选派自己的<code>24</code>对抗对手的<code>13</code></li>
+<li>对于对手的<code>25</code>，自己的🐎中，未出场 且 战力大于<code>25</code>的有<code>32</code>，其中战力最小的是<code>32</code>，因此选派自己的<code>32</code>对抗对手的<code>25</code></li>
+<li>对于对手的<code>32</code>，自己的🐎中，没有 未出场 且 战力大于<code>32</code>的🐎，<strong>无🐎可敌，开始摆烂！</strong></li>
+</ol>
+<p>怎么摆烂呢？反正也赢不了了，那么就在自己未出场的🐎中随便上吧！上谁都无所谓，反正也赢不了。</p>
+<p>对面还有两匹马<code>32、998</code>没有对手，自己还有两匹马<code>8、6</code>没有出场。那就用自己的<code>8</code>对抗对手的<code>32</code>，自己的<code>6</code>对抗对手的<code>998</code>好了。</p>
+<p>因此，对于对手的出场顺序（数组2）<code>[13, 25, 32, 11, 998]</code>，我们的回敬（打乱的数组1）是：<code>[24, 32, 8, 12, 6]</code></p>
+<p>能胜三场，还行还行。</p>
+<p><strong>那么编程怎么实现呢？</strong></p>
+<p>其实不难发现，我们在挑选对手和自己的🐎时，在背后默默进行了排序操作。</p>
+<p>我们将对手的<code>[13, 25, 32, 11, 998]</code>默默排序成了<code>[11, 13, 25, 32, 998]</code>作为出场顺序；我们将自己的<code>[12, 24, 8, 32, 6]</code>默默排序成了<code>[6, 8, 12, 24, 32]</code>以方便选取“大于敌方且尽可能小”的🐎。</p>
+<p>但是需要注意的是，对手的马匹排序后，原始顺序不能丢失，因为我们默默地将对手马匹按战力排序了，对手可不会因为你的排序而改变自己的出场顺序。</p>
+<p>因此，在对对手的马匹进行排序前，不如先做个手脚：将对手的&lt;马匹战力, 出场编号&gt;进行绑定，依据战力排序，排序后出厂编号信息不会丢失。</p>
+<p>至于自己的🐎，用一个“指针”记录当前判断到了哪一匹，如果这一匹马的战力不大于当前遍历到的对手的🐎的战力，就指针后移，找到第一个大于对手战力的位置，就是自己“未出场 且 战力大于对手”的🐎中，战力最小的那匹。 （若自己这匹马战力不足，那么指针后移之前，记得将这匹马标记或者存起来，表示“指针扫过了但是未出场”，以到最后和敌方的“无敌之🐎”进行摆烂）</p>
+<ul>
+<li>时间复杂度$O(n\log n)$，其中$n$是马匹个数。排序的时间复杂度是$O(n\log n)$，选马的时间复杂度是$O(n)$</li>
+<li>空间复杂度$O(n)$。我们使用了额外的空间来记录对手马匹的“出场编号”信息（$O(n)$），且使用了额外空间记录了自己“指针扫过但因战力不足而未出场的🐎”（$O(n)$）；排序的空间复杂度是$O(\log n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;  <span class="comment">// &lt;战力, 出场编号&gt;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">advantageCount</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums1.<span class="built_in">size</span>();</span><br><span class="line">		<span class="comment">// 记录对手(nums2)出场顺序信息</span></span><br><span class="line">        <span class="function">vector&lt;pii&gt; <span class="title">tempNums2</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            tempNums2[i] = &#123;nums2[i], i&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">// 对对手、自己马匹排序</span></span><br><span class="line">        <span class="built_in">sort</span>(tempNums2.<span class="built_in">begin</span>(), tempNums2.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(n)</span></span>;  <span class="comment">// ans存放最终答案</span></span><br><span class="line">        <span class="type">int</span> loc1 = <span class="number">0</span>;  <span class="comment">// 自己的马匹的“指针”</span></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; unused;  <span class="comment">// 指针扫过但未出场的马，留着摆烂使用</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;  <span class="comment">// 遍历对手马</span></span><br><span class="line">            <span class="keyword">while</span> (loc1 &lt; n &amp;&amp; nums1[loc1] &lt;= tempNums2[i].first) &#123;  <span class="comment">// 自己的马战力不足</span></span><br><span class="line">                unused.<span class="built_in">push_back</span>(nums1[loc1]);  <span class="comment">// 放入“未使用数组”</span></span><br><span class="line">                loc1++;  <span class="comment">// 指针后移</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (loc1 == n) &#123;  <span class="comment">// 指针到数组尾部，扫描完毕，无高战力马可出场，开始摆烂，摆烂完退出循环</span></span><br><span class="line">                <span class="type">int</span> locUnused = <span class="number">0</span>;  <span class="comment">// 为了遍历“未使用数组”</span></span><br><span class="line">                <span class="keyword">while</span> (i &lt; n) &#123;  <span class="comment">// 为后面所有的“对手无敌马”分配自己的“摆烂马”</span></span><br><span class="line">                    ans[tempNums2[i++].second] = unused[locUnused++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;  <span class="comment">// 摆烂完退出循环</span></span><br><span class="line">            &#125;</span><br><span class="line">            ans[tempNums2[i].second] = nums1[loc1++];  <span class="comment">// 为对手的彼马分配自己的 未使用且战力更强 的战力尽可能小马</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/08/LeetCode%200870.%E4%BC%98%E5%8A%BF%E6%B4%97%E7%89%8C/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127207642">https://letmefly.blog.csdn.net/article/details/127207642</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/10/08/LeetCode%200368.%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86/">← Next 368.最大整除子集</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/10/07/LeetCode%201800.%E6%9C%80%E5%A4%A7%E5%8D%87%E5%BA%8F%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/">1800.最大升序子数组和 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91%E8%B6%A3%E8%A7%A3%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%EF%BC%9A%E8%83%BD%E8%B5%A2%E5%88%99%E8%B5%A2%EF%BC%8C%E5%90%A6%E5%88%99%E6%91%86%E7%83%82%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89-870-%E4%BC%98%E5%8A%BF%E6%B4%97%E7%89%8C"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%94%B0%E5%BF%8C%E8%B5%9B%E9%A9%AC%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：田忌赛马（贪心）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

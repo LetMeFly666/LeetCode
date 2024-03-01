@@ -1,116 +1,655 @@
-extends includes/layout.pug
-
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
-
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>日语学习笔记 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>日语学习笔记</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-11-24T06:02:17.000Z" id="date"> 2023-11-24</time></div></span></div></div><hr><div id="post-content"><h1 id="日语"><a href="#日语" class="headerlink" title="日语"></a>日语</h1><p>五十音图地址：<a target="_blank" rel="noopener" href="https://wsyt.letmefly.xyz/Project2/">WSYT.LetMeFly.XYZ</a></p>
+<p>xx型<br>联想：<br>0：我哥<br>1：哥哥<br>2：我哥哥<br>3：美滋滋的</p>
+<p>长音<br>あ+あ<br>い+い<br>う+う<br>え+え、い<br>お+お、う</p>
+<h2 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h2><table>
+<thead>
+<tr>
+<th align="left">单词</th>
+<th align="left">假名</th>
+<th align="left">声调</th>
+<th align="left">词义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">中国人</td>
+<td align="left">ちゅうごくじん</td>
+<td align="left">4</td>
+<td align="left">中国人</td>
+</tr>
+<tr>
+<td align="left">日本人</td>
+<td align="left">にほんじん</td>
+<td align="left">4</td>
+<td align="left">日本人</td>
+</tr>
+<tr>
+<td align="left">韓国人</td>
+<td align="left">かんこくじん</td>
+<td align="left">4</td>
+<td align="left">韩国人</td>
+</tr>
+<tr>
+<td align="left">アメリカ人</td>
+<td align="left">あめりかじん</td>
+<td align="left">4</td>
+<td align="left">美国人</td>
+</tr>
+<tr>
+<td align="left">フランス人</td>
+<td align="left">ふらんすじん</td>
+<td align="left">4</td>
+<td align="left">法国人</td>
+</tr>
+<tr>
+<td align="left">学生</td>
+<td align="left">がくせい</td>
+<td align="left">0</td>
+<td align="left">学生</td>
+</tr>
+<tr>
+<td align="left">留学生</td>
+<td align="left">りゅうがくせい</td>
+<td align="left">3</td>
+<td align="left">留学生</td>
+</tr>
+<tr>
+<td align="left">教授</td>
+<td align="left">きょうじゅ</td>
+<td align="left">0</td>
+<td align="left">教授</td>
+</tr>
+<tr>
+<td align="left">社員</td>
+<td align="left">しゃいん</td>
+<td align="left">1</td>
+<td align="left">职员</td>
+</tr>
+<tr>
+<td align="left">会社員</td>
+<td align="left">かいしゃいん</td>
+<td align="left">3</td>
+<td align="left">公司职员</td>
+</tr>
+<tr>
+<td align="left">店員</td>
+<td align="left">てんいん</td>
+<td align="left">0</td>
+<td align="left">店员</td>
+</tr>
+<tr>
+<td align="left">研修生</td>
+<td align="left">けんしゅうせい</td>
+<td align="left">3</td>
+<td align="left">进修生</td>
+</tr>
+<tr>
+<td align="left">きぎょう</td>
+<td align="left">きぎょう</td>
+<td align="left">1</td>
+<td align="left">企业</td>
+</tr>
+<tr>
+<td align="left">大学</td>
+<td align="left">だいがく</td>
+<td align="left">0</td>
+<td align="left">大学</td>
+</tr>
+<tr>
+<td align="left">父</td>
+<td align="left">ちち</td>
+<td align="left">1、2</td>
+<td align="left">父亲</td>
+</tr>
+<tr>
+<td align="left">課長</td>
+<td align="left">かちょう</td>
+<td align="left">0</td>
+<td align="left">科长</td>
+</tr>
+<tr>
+<td align="left">社長</td>
+<td align="left">しゃちょう</td>
+<td align="left">0</td>
+<td align="left">总经理</td>
+</tr>
+<tr>
+<td align="left">出迎え</td>
+<td align="left">でむかえ</td>
+<td align="left">0</td>
+<td align="left">迎接</td>
+</tr>
+<tr>
+<td align="left">あの人</td>
+<td align="left">あのひと</td>
+<td align="left">2</td>
+<td align="left">那个人</td>
+</tr>
+<tr>
+<td align="left">私</td>
+<td align="left">わたし</td>
+<td align="left">0</td>
+<td align="left">我</td>
+</tr>
+<tr>
+<td align="left">あなた</td>
+<td align="left">あなた</td>
+<td align="left">2</td>
+<td align="left">你</td>
+</tr>
+<tr>
+<td align="left">どうも</td>
+<td align="left">どうも</td>
+<td align="left">1</td>
+<td align="left">很，非常</td>
+</tr>
+<tr>
+<td align="left">はい</td>
+<td align="left">はい</td>
+<td align="left">1</td>
+<td align="left">是(应答)；是的</td>
+</tr>
+<tr>
+<td align="left">いいえ</td>
+<td align="left">いいえ</td>
+<td align="left">3</td>
+<td align="left">不，不是</td>
+</tr>
+<tr>
+<td align="left">あっ</td>
+<td align="left">あっ</td>
+<td align="left"></td>
+<td align="left">哎，哎呀</td>
+</tr>
+<tr>
+<td align="left">李</td>
+<td align="left">り</td>
+<td align="left"></td>
+<td align="left">李(外来姓常1型，日本姓常0型)</td>
+</tr>
+<tr>
+<td align="left">王</td>
+<td align="left">おう</td>
+<td align="left">1</td>
+<td align="left">王</td>
+</tr>
+<tr>
+<td align="left">張</td>
+<td align="left">ちょう</td>
+<td align="left">1</td>
+<td align="left">张</td>
+</tr>
+<tr>
+<td align="left">森</td>
+<td align="left">もり</td>
+<td align="left">0</td>
+<td align="left">森</td>
+</tr>
+<tr>
+<td align="left">林</td>
+<td align="left">はやし</td>
+<td align="left">0</td>
+<td align="left">林</td>
+</tr>
+<tr>
+<td align="left">小野</td>
+<td align="left">おの</td>
+<td align="left">0</td>
+<td align="left">小野</td>
+</tr>
+<tr>
+<td align="left">吉田</td>
+<td align="left">よしだ</td>
+<td align="left">0</td>
+<td align="left">吉田</td>
+</tr>
+<tr>
+<td align="left">田中</td>
+<td align="left">たなか</td>
+<td align="left">0</td>
+<td align="left">田中</td>
+</tr>
+<tr>
+<td align="left">中村</td>
+<td align="left">なかむら</td>
+<td align="left">0</td>
+<td align="left">中村</td>
+</tr>
+<tr>
+<td align="left">太郎</td>
+<td align="left">たろう</td>
+<td align="left">1</td>
+<td align="left">太郎</td>
+</tr>
+<tr>
+<td align="left">金</td>
+<td align="left">キム</td>
+<td align="left">1</td>
+<td align="left">金</td>
+</tr>
+<tr>
+<td align="left">デュポン</td>
+<td align="left">でゅぽん</td>
+<td align="left">1</td>
+<td align="left">迪蓬</td>
+</tr>
+<tr>
+<td align="left">スミス</td>
+<td align="left">すみす</td>
+<td align="left">1</td>
+<td align="left">史密斯</td>
+</tr>
+<tr>
+<td align="left">ジョンソン</td>
+<td align="left">じょんそん</td>
+<td align="left">1</td>
+<td align="left">约翰逊</td>
+</tr>
+<tr>
+<td align="left">中国</td>
+<td align="left">ちゅうごく</td>
+<td align="left">1</td>
+<td align="left">中国</td>
+</tr>
+<tr>
+<td align="left">東京大学</td>
+<td align="left">とうきょうだいがく</td>
+<td align="left">5</td>
+<td align="left">东京大学</td>
+</tr>
+<tr>
+<td align="left">北京大学</td>
+<td align="left">ぺきんだいがく</td>
+<td align="left">4</td>
+<td align="left">北京大学</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>不严谨版本（来自多邻国的日常积累）</p>
+<table>
+<thead>
+<tr>
+<th align="left">假名</th>
+<th align="left">词义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">いち</td>
+<td align="left">一</td>
+</tr>
+<tr>
+<td align="left">に</td>
+<td align="left">二</td>
+</tr>
+<tr>
+<td align="left">さん</td>
+<td align="left">三</td>
+</tr>
+<tr>
+<td align="left">よん&#x2F;し</td>
+<td align="left">四</td>
+</tr>
+<tr>
+<td align="left">ご</td>
+<td align="left">五</td>
+</tr>
+<tr>
+<td align="left">ろく</td>
+<td align="left">六</td>
+</tr>
+<tr>
+<td align="left">なな&#x2F;しち</td>
+<td align="left">七</td>
+</tr>
+<tr>
+<td align="left">はち</td>
+<td align="left">八</td>
+</tr>
+<tr>
+<td align="left">きゅう&#x2F;く</td>
+<td align="left">九</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">きる</td>
+<td align="left">穿</td>
+</tr>
+<tr>
+<td align="left">よむ</td>
+<td align="left">读</td>
+</tr>
+<tr>
+<td align="left">のむ</td>
+<td align="left">喝</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">やさい</td>
+<td align="left">蔬菜</td>
+</tr>
+<tr>
+<td align="left">すし</td>
+<td align="left">寿司</td>
+</tr>
+<tr>
+<td align="left">おちゃ</td>
+<td align="left">茶</td>
+</tr>
+<tr>
+<td align="left">おさけ</td>
+<td align="left">酒</td>
+</tr>
+<tr>
+<td align="left">てりやき</td>
+<td align="left">照烧</td>
+</tr>
+<tr>
+<td align="left">てんぷら</td>
+<td align="left">天妇罗</td>
+</tr>
+<tr>
+<td align="left">なっとう</td>
+<td align="left">纳豆</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">きたない</td>
+<td align="left">脏的</td>
+</tr>
+<tr>
+<td align="left">あまい</td>
+<td align="left">甜的</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">きっぶ</td>
+<td align="left">票</td>
+</tr>
+<tr>
+<td align="left">でんわ</td>
+<td align="left">电话</td>
+</tr>
+<tr>
+<td align="left">えんぴつ</td>
+<td align="left">铅笔</td>
+</tr>
+<tr>
+<td align="left">べんとう</td>
+<td align="left">便当</td>
+</tr>
+<tr>
+<td align="left">かばん</td>
+<td align="left">包</td>
+</tr>
+<tr>
+<td align="left">まんが</td>
+<td align="left">漫画</td>
+</tr>
+<tr>
+<td align="left">ちず</td>
+<td align="left">地图</td>
+</tr>
+<tr>
+<td align="left">かぜ</td>
+<td align="left">风</td>
+</tr>
+<tr>
+<td align="left">くだもの</td>
+<td align="left">水果</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">がっこう</td>
+<td align="left">学校</td>
+</tr>
+<tr>
+<td align="left">へや</td>
+<td align="left">部屋</td>
+</tr>
+<tr>
+<td align="left">いえ</td>
+<td align="left">家</td>
+</tr>
+<tr>
+<td align="left">ぎんこう</td>
+<td align="left">银行</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">そと</td>
+<td align="left">外面</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">すき</td>
+<td align="left">喜欢</td>
+</tr>
+<tr>
+<td align="left">ほしい</td>
+<td align="left">想要</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">ひる</td>
+<td align="left">白天</td>
+</tr>
+<tr>
+<td align="left">よる</td>
+<td align="left">晚上</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">おはよう</td>
+<td align="left">早（上好）</td>
+</tr>
+<tr>
+<td align="left">こんにちわ</td>
+<td align="left">你好</td>
+</tr>
+<tr>
+<td align="left">さようなら</td>
+<td align="left">再见</td>
+</tr>
+<tr>
+<td align="left">すみません</td>
+<td align="left">对不起，不好意思，请问</td>
+</tr>
+<tr>
+<td align="left">こんにちは</td>
+<td align="left">你好</td>
+</tr>
+<tr>
+<td align="left">ただいま</td>
+<td align="left">我回来了</td>
+</tr>
+<tr>
+<td align="left">おかえり</td>
+<td align="left">欢迎回来</td>
+</tr>
+<tr>
+<td align="left">いただきます</td>
+<td align="left">我开动了</td>
+</tr>
+<tr>
+<td align="left">ごちそうさまでした</td>
+<td align="left">我吃饱了</td>
+</tr>
+<tr>
+<td align="left">いらっしゃいませ</td>
+<td align="left">欢迎光临</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">せなか</td>
+<td align="left">背部</td>
+</tr>
+<tr>
+<td align="left">め</td>
+<td align="left">眼睛</td>
+</tr>
+<tr>
+<td align="left">みみ</td>
+<td align="left">耳朵</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">なつ</td>
+<td align="left">夏天</td>
+</tr>
+<tr>
+<td align="left">ふゆ</td>
+<td align="left">冬天</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">くもり</td>
+<td align="left">阴天</td>
+</tr>
+<tr>
+<td align="left">はれ</td>
+<td align="left">晴天</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">きょう</td>
+<td align="left">今天</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">とり</td>
+<td align="left">鸟</td>
+</tr>
+<tr>
+<td align="left">ねこ</td>
+<td align="left">猫</td>
+</tr>
+<tr>
+<td align="left">いぬ</td>
+<td align="left">狗</td>
+</tr>
+</tbody></table>
+<h2 id="小句"><a href="#小句" class="headerlink" title="小句"></a>小句</h2><table>
+<thead>
+<tr>
+<th align="center">句子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">はじめまして、わたしは田中といいます<br/>初次见面，我叫田中</td>
+</tr>
+<tr>
+<td align="center">わたしはりです<br/>我是李</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/11/25/LeetCode%201457.%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E4%BC%AA%E5%9B%9E%E6%96%87%E8%B7%AF%E5%BE%84/">← Next 1457.二叉树中的伪回文路径</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/11/24/LeetCode%202824.%E7%BB%9F%E8%AE%A1%E5%92%8C%E5%B0%8F%E4%BA%8E%E7%9B%AE%E6%A0%87%E7%9A%84%E4%B8%8B%E6%A0%87%E5%AF%B9%E6%95%B0%E7%9B%AE/">2824.统计和小于目标的下标对数目 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E8%AF%AD"><span class="toc-number">1.</span> <span class="toc-text">日语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%AF%8D"><span class="toc-number">1.1.</span> <span class="toc-text">单词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E5%8F%A5"><span class="toc-number">1.2.</span> <span class="toc-text">小句</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

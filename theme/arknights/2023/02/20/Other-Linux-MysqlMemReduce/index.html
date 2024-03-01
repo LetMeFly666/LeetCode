@@ -1,116 +1,67 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-02-20T00:56:33.000Z" id="date"> 2023-02-20</time></div></span></div></div><hr><div id="post-content"><h1 id="减小Mysql在Linux的内存占用"><a href="#减小Mysql在Linux的内存占用" class="headerlink" title="减小Mysql在Linux的内存占用"></a>减小Mysql在Linux的内存占用</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前在阿里云租的服务器上跑有一些东西，之前在上面通过FFmpeg进行OpenCV合成的视频的推流时，可能会由于内存占满而照成服务器无响应。</p>
+<p>分析了内存占用后，决定减小Mysql的内存占用（因为我服务器上的Mysql使用量不大，小站没有那么多的数据）</p>
+<h2 id="Linux查看系统占用前10"><a href="#Linux查看系统占用前10" class="headerlink" title="Linux查看系统占用前10"></a>Linux查看系统占用前10</h2><p>PS：下面指令可以查看Linux的内存占用前10：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|<span class="built_in">head</span> -1;ps aux|<span class="built_in">sort</span> -rn -k4|<span class="built_in">head</span> -10</span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>下面指令可以查看Linux的CPU占用前10</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux|<span class="built_in">head</span> -1;ps aux|<span class="built_in">sort</span> -rn -k3|<span class="built_in">head</span> -10</span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p><strong>解释：</strong></p>
+<figure class="highlight ps"><figcaption><span>aux|head -1;ps aux|sort -rn -k3|head -10```相当于```ps aux|head -1```和```ps aux|sort -rn -k3|head -10```分别执行</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**<span class="built_in">ps</span>**</span><br><span class="line"></span><br><span class="line">其中```ps```的参数```a```代表“所有进程(all with tty, including other users)”，```u```代表“user(user<span class="literal">-oriented</span> format)”，```x```代表“显示所有进程(processes without controlling ttys)”</span><br><span class="line"></span><br><span class="line">那么```ps aux```就显示了所有进程的资源占用信息：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">[<span class="type">Tisfy</span>@<span class="type">LetMeFly</span> ~]<span class="comment"># ps aux</span></span><br><span class="line">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT <span class="built_in">START</span>   TIME COMMAND</span><br><span class="line">root           <span class="number">1</span>  <span class="number">0.0</span>  <span class="number">0.3</span> <span class="number">250788</span>  <span class="number">6128</span> ?        Ss    <span class="number">2022</span>  <span class="number">10</span>:<span class="number">08</span> /usr/lib/systemd/systemd <span class="literal">--switched-root</span> <span class="literal">--system</span> <span class="literal">--d</span></span><br><span class="line">root           <span class="number">2</span>  <span class="number">0.0</span>  <span class="number">0.0</span>      <span class="number">0</span>     <span class="number">0</span> ?        S     <span class="number">2022</span>   <span class="number">0</span>:<span class="number">02</span> [<span class="type">kthreadd</span>]</span><br><span class="line">root           <span class="number">3</span>  <span class="number">0.0</span>  <span class="number">0.0</span>      <span class="number">0</span>     <span class="number">0</span> ?        I&lt;    <span class="number">2022</span>   <span class="number">0</span>:<span class="number">00</span> [<span class="type">rcu_gp</span>]</span><br><span class="line">root           <span class="number">4</span>  <span class="number">0.0</span>  <span class="number">0.0</span>      <span class="number">0</span>     <span class="number">0</span> ?        I&lt;    <span class="number">2022</span>   <span class="number">0</span>:<span class="number">00</span> [<span class="type">rcu_par_gp</span>]</span><br><span class="line">root           <span class="number">6</span>  <span class="number">0.0</span>  <span class="number">0.0</span>      <span class="number">0</span>     <span class="number">0</span> ?        I&lt;    <span class="number">2022</span>   <span class="number">0</span>:<span class="number">00</span> [<span class="type">kworker</span>/<span class="number">0</span>:<span class="number">0</span><span class="type">H</span>-<span class="type">kblockd</span>]</span><br><span class="line">(以下省略)</span><br></pre></td></tr></table></figure>
+
+<p><strong>head</strong></p>
+<figure class="highlight plaintext"><figcaption><span>-1```就是显示第一行的内容，也就是</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">同理，```head -10```就是显示前10行</span><br><span class="line"></span><br><span class="line">**sort**</span><br><span class="line"></span><br><span class="line">```sort```命令用于排序，```-r```是“从大到小排序(reverse the result of comparisons)”默认从小到大，```-n```是“根据数值排序(compare according to string numerical value)”，```-k```是“以第几列为依据进行排序(sort via a key; KEYDEF gives location and type)”（下标从1开始，没有-k0）</span><br><span class="line"></span><br><span class="line">## How to do</span><br><span class="line"></span><br><span class="line">我修改了Mysql的配置文件（文件路径：```/etc/my.conf```）</span><br><span class="line"></span><br><span class="line">可以修改或在下方添加这些参数。参数的具体意义可以在网上搜索</span><br><span class="line"></span><br><span class="line">```yml</span><br><span class="line">#</span><br><span class="line"># This group is read both both by the client and the server</span><br><span class="line"># use it for options that affect everything</span><br><span class="line">#</span><br><span class="line">[client-server]</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># include all files from the config directory</span><br><span class="line">#</span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">key_buffer_size = 8M</span><br><span class="line">table_open_cache = 4</span><br><span class="line">sort_buffer_size = 64K</span><br><span class="line">read_buffer_size = 256K</span><br><span class="line">read_rnd_buffer_size = 256K</span><br><span class="line">net_buffer_length = 2K</span><br><span class="line">thread_stack = 240K</span><br><span class="line">table_definition_cache = 400</span><br></pre></td></tr></table></figure>
+
+<p>PS，今日添加了table_definition_cache，内存占用大概降低了5%（2G × 5% ≈ 100M）</p>
+<blockquote>
+<p>若Mysql增删改查频率较高则不建议随意修改。</p>
+</blockquote>
+<p>2023.4.3更：有时重启一下MySQL服务也是个不错的选择</p>
+<h2 id="Linux查看内存占用"><a href="#Linux查看内存占用" class="headerlink" title="Linux查看内存占用"></a>Linux查看内存占用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>free -m</code>是以M形式显示（显示多少M），<code>free -g</code>是以G的形式显示（1.7G会显示为1G哈哈）</p>
+<p><strong>对于我的服务器</strong>，MySQL大约会使用300M，远程VSCode在有连接时大约会使用160M，无连接时大约会使用70M，django项目每个约70M，nginx大约会使用5M</p>
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129120029">https://letmefly.blog.csdn.net/article/details/129120029</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/">← Next BUCTOJ - 2023上半年ACM&amp;蓝桥杯每周训练题-1</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/02/20/LeetCode%202347.%E6%9C%80%E5%A5%BD%E7%9A%84%E6%89%91%E5%85%8B%E6%89%8B%E7%89%8C/">2347.最好的扑克手牌 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%8F%E5%B0%8FMysql%E5%9C%A8Linux%E7%9A%84%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">减小Mysql在Linux的内存占用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E5%8D%A0%E7%94%A8%E5%89%8D10"><span class="toc-number">1.2.</span> <span class="toc-text">Linux查看系统占用前10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">Linux查看内存占用</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

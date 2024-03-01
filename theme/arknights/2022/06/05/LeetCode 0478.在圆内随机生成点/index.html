@@ -1,116 +1,132 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>478.在圆内随机生成点 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>478.在圆内随机生成点</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-06-05T01:53:48.000Z" id="date"> 2022-06-05</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】通俗的话描述-478-在圆内随机生成点-の-两种方法"><a href="#【LetMeFly】通俗的话描述-478-在圆内随机生成点-の-两种方法" class="headerlink" title="【LetMeFly】通俗的话描述 478.在圆内随机生成点 の 两种方法"></a>【LetMeFly】通俗的话描述 478.在圆内随机生成点 の 两种方法</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-random-point-in-a-circle/">https://leetcode.cn/problems/generate-random-point-in-a-circle/</a></p>
+<p>给定圆的半径和圆心的位置，实现函数 <code>randPoint</code> ，在圆中产生均匀随机点。</p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>实现&nbsp;<code>Solution</code>&nbsp;类:</p>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<ul>
+    <li><code>Solution(double radius, double x_center, double y_center)</code>&nbsp;用圆的半径&nbsp;<code>radius</code>&nbsp;和圆心的位置<code> (x_center, y_center)</code> 初始化对象</li>
+    <li><code>randPoint()</code>&nbsp;返回圆内的一个随机点。圆周上的一点被认为在圆内。答案作为数组返回 <code>[x, y]</code> 。</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入: 
+</strong>["Solution","randPoint","randPoint","randPoint"]
+[[1.0, 0.0, 0.0], [], [], []]
+<strong>输出: </strong>[null, [-0.02493, -0.38077], [0.82314, 0.38945], [0.36572, 0.17248]]
+<strong>解释:</strong>
+Solution solution = new Solution(1.0, 0.0, 0.0);
+solution.randPoint ();//返回[-0.02493，-0.38077]
+solution.randPoint ();//返回[0.82314,0.38945]
+solution.randPoint ();//返回[0.36572,0.17248]</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>0 &lt;&nbsp;radius &lt;= 10<sup>8</sup></code></li>
+    <li><code>-10<sup>7</sup>&nbsp;&lt;= x_center, y_center &lt;= 10<sup>7</sup></code></li>
+    <li><code>randPoint</code> 最多被调用&nbsp;<code>3 * 10<sup>4</sup></code>&nbsp;次</li>
+</ul>
+
+<h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>给你一个⚪的圆心和半径，让你每次随机从⚪内取一点并返回其坐标。</p>
+<h1 id="自定义Rand函数"><a href="#自定义Rand函数" class="headerlink" title="自定义Rand函数"></a>自定义Rand函数</h1><p>因为此题可能会经常用到double范围内的随机数，因此可以自定义两个rand函数来方便调用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回double类型的[l, r]范围内的随机数 */</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">double</span>)<span class="number">1</span> * <span class="built_in">rand</span>() * (r - l) / RAND_MAX + l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 返回double类型的[0, r]范围内的随机数 */</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">rand</span>(<span class="number">0</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="很Rand的Rand"><a href="#很Rand的Rand" class="headerlink" title="很Rand的Rand"></a>很Rand的Rand</h1><p>我们还可以用<code>std::mt19937</code>来产生高性能的随机数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">mt19937 gen&#123;random_device&#123;&#125;()&#125;;</span><br><span class="line"><span class="function">uniform_real_distribution&lt;<span class="type">double</span>&gt; <span class="title">dis</span><span class="params">(l, r)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="type">double</span> x = <span class="built_in">dis</span>(gen);</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法一：矩形rand圆里接受（拒绝采样）"><a href="#方法一：矩形rand圆里接受（拒绝采样）" class="headerlink" title="方法一：矩形rand圆里接受（拒绝采样）"></a>方法一：矩形rand圆里接受（拒绝采样）</h2><p>圆形里面不是不好直接rand吗？因此我们可以先在圆的邻接矩阵中随机rand，看是否落到了圆里。</p>
+<p>引用一张 <a target="_blank" rel="noopener" href="https://leetcode.cn/u/leetcode-solution/">@LeetCode-Solution</a>的图片：</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/dc53089fba824bffbdc2c3c838de4020.jpeg#pic_center'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/dc53089fba824bffbdc2c3c838de4020.jpeg#pic_center" alt="⚪与矩形"></p>
+<p>我们随机rand x和y，这样rand出来的点就会落在矩形里。如果点落在了蓝色范围内，就返回这个点作为结果。否则落在红色区域内的话就继续rand。</p>
+<p>这个方法似乎有一个比较官方的名字，叫“拒绝采样”。（大概意思就是如果采用结果不在合法范围内就拒绝这个样本）</p>
+<ul>
+<li>时间复杂度$O(1)$，期望值是$O(1)$，因为期望每$\frac{4r^2}{\pi r^2}\approx\frac{1}{0.785}\approx1.274$ 次采样</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">double</span>)<span class="number">1</span> * <span class="built_in">rand</span>() * (r - l) / RAND_MAX + l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">rand</span>(<span class="number">0</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">double</span> radius;</span><br><span class="line">    <span class="type">double</span> x_center;</span><br><span class="line">    <span class="type">double</span> y_center;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Solution</span>(<span class="type">double</span> radius, <span class="type">double</span> x_center, <span class="type">double</span> y_center) &#123;</span><br><span class="line">        <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="keyword">this</span>-&gt;radius = radius;</span><br><span class="line">        <span class="keyword">this</span>-&gt;x_center = x_center;</span><br><span class="line">        <span class="keyword">this</span>-&gt;y_center = y_center;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">randPoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">double</span> x, y;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            x = <span class="built_in">rand</span>(-radius, radius);</span><br><span class="line">            y = <span class="built_in">rand</span>(-radius, radius);</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">sqrt</span>(x * x + y * y) &lt;= radius) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;x + x_center, y + y_center&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二：直接在圆里rand"><a href="#方法二：直接在圆里rand" class="headerlink" title="方法二：直接在圆里rand"></a>方法二：直接在圆里rand</h2><p>方法一虽然简单，但是有可能产生不在范围内的数据。因此这种方法就是直接生成圆内的点的。</p>
+<p>这让人很容易想到使用极坐标的方法来随机圆内的点。极坐标的方法是随机一个半径$r$，然后随机一个角度$degree$（$[0, 2\pi)$）。</p>
+<p>那么这个点就是$(x_center + r * cos(degree), y_center + r * sin(degree))$</p>
+<h3 id="易错误区"><a href="#易错误区" class="headerlink" title="易错误区"></a>易错误区</h3><p>半径$r$如何rand呢？直接<code>r = rand(0, radius)</code>在<code>[0, radius]</code>范围内线性随机取值？</p>
+<p>那么这样求出来的结果就不够随机。所有的点会更集中于圆心。</p>
+<p>我们来模拟一下这种随机方式：</p>
+<!-- **这样引用图片肯定不行！** -->
+
+<!-- ![图一-随机半径的圆](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/0-1.jpg#pic_center) -->
+
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/62a6b0d0848d467287d4cdc16ae4cfa8.jpeg#pic_center'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/62a6b0d0848d467287d4cdc16ae4cfa8.jpeg#pic_center" alt="图一-随机半径的圆"></p>
+<p>上图中我们模拟了线性随机rand半径（也就是说，每种长度的半径是等概率的。上图每个红色圆的半径呈等差数列）</p>
+<p>然后我们随机rand角度：</p>
+<!-- ![图二-随机半径 + 随机角度](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/1-1.jpg#pic_center) -->
+
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1bb9e130682941caa29cad959510dcea.jpeg#pic_center'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/1bb9e130682941caa29cad959510dcea.jpeg#pic_center" alt="图二-随机半径 + 随机角度"></p>
+<p>角度也是等可能rand的，上图蓝色线表示角度，每两条相邻蓝线之间的角度差值相同。</p>
+<p>这样，蓝线与红线相交的点就是采用这种方式随机出来的点。</p>
+<!-- ![图三-随机半径 + 随机角度](Files/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9/2-1.jpg#pic_center) -->
+
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/48057458b4724a9485660b6ed8989426.jpeg#pic_center'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/48057458b4724a9485660b6ed8989426.jpeg#pic_center" alt="图三-随机半径 + 随机角度"></p>
+<p>只看绿色的点（采用上述方式随机出来的点），不难发现半径越小密度越大（也就是说有更大概率点会落在距离圆心很近的位置）。</p>
+<p><strong>那么我们如何随机半径呢？</strong></p>
+<p>我们可以rand这个点所在同心圆的面积。</p>
+<p>也就是说，我们不直接rand半径，而是rand面积。</p>
+<p>再通过面积求得半径。这样随机出来的点才是真正随机的。</p>
+<p>但是具体证明需要用到“概率密度函数 PDF”和“累积分布函数 CDF”，这里蒟蒻就不证明了😶。有兴趣的同学可以参考<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-random-point-in-a-circle/solution/zai-yuan-nei-sui-ji-sheng-cheng-dian-by-qp342/">力扣官方题解</a>的方法二。</p>
+<ul>
+<li>时间复杂度$O(1)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">double</span>)<span class="number">1</span> * <span class="built_in">rand</span>() * (r - l) / RAND_MAX + l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">rand</span><span class="params">(<span class="type">double</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">rand</span>(<span class="number">0</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">double</span> radius;</span><br><span class="line">    <span class="type">double</span> x_center;</span><br><span class="line">    <span class="type">double</span> y_center;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Solution</span>(<span class="type">double</span> radius, <span class="type">double</span> x_center, <span class="type">double</span> y_center) &#123;</span><br><span class="line">        <span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="keyword">this</span>-&gt;radius = radius;</span><br><span class="line">        <span class="keyword">this</span>-&gt;x_center = x_center;</span><br><span class="line">        <span class="keyword">this</span>-&gt;y_center = y_center;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">randPoint</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">double</span> area = <span class="built_in">rand</span>(PI * radius * radius);  <span class="comment">// 随机面积</span></span><br><span class="line">        <span class="type">double</span> r = <span class="built_in">sqrt</span>(area / PI);  <span class="comment">// 根据面积求半径</span></span><br><span class="line">        <span class="type">double</span> degree = <span class="built_in">rand</span>(PI * <span class="number">2</span>);  <span class="comment">// 随机角度</span></span><br><span class="line">        <span class="keyword">return</span> &#123;x_center + r * <span class="built_in">cos</span>(degree), y_center + r * <span class="built_in">sin</span>(degree)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/06/05/LeetCode%200478.%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/125129132">https://letmefly.blog.csdn.net/article/details/125129132</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/06/25/LeetCode%20%E5%89%91%E6%8C%87%20Offer%20II%200091.%20%E7%B2%89%E5%88%B7%E6%88%BF%E5%AD%90/">← Next 剑指 Offer II 091.粉刷房子</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/05/30/LeetCode%201022.%E4%BB%8E%E6%A0%B9%E5%88%B0%E5%8F%B6%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E4%B9%8B%E5%92%8C/">1022.从根到叶的二进制数之和 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91%E9%80%9A%E4%BF%97%E7%9A%84%E8%AF%9D%E6%8F%8F%E8%BF%B0-478-%E5%9C%A8%E5%9C%86%E5%86%85%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E7%82%B9-%E3%81%AE-%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】通俗的话描述 478.在圆内随机生成点 の 两种方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%A4%A7%E6%84%8F"><span class="toc-number">2.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Rand%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">自定义Rand函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%88Rand%E7%9A%84Rand"><span class="toc-number">4.</span> <span class="toc-text">很Rand的Rand</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%9F%A9%E5%BD%A2rand%E5%9C%86%E9%87%8C%E6%8E%A5%E5%8F%97%EF%BC%88%E6%8B%92%E7%BB%9D%E9%87%87%E6%A0%B7%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">方法一：矩形rand圆里接受（拒绝采样）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">4.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E7%9B%B4%E6%8E%A5%E5%9C%A8%E5%9C%86%E9%87%8Crand"><span class="toc-number">4.2.</span> <span class="toc-text">方法二：直接在圆里rand</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%93%E9%94%99%E8%AF%AF%E5%8C%BA"><span class="toc-number">4.2.1.</span> <span class="toc-text">易错误区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

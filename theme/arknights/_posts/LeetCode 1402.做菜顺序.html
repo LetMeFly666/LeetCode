@@ -1,1 +1,105 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1402.做菜顺序 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1402.做菜顺序</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-10-22T07:48:30.000Z" id="date"> 2023-10-22</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1402-做菜顺序：排序-前缀（贪心）-按思路讲解"><a href="#【LetMeFly】1402-做菜顺序：排序-前缀（贪心）-按思路讲解" class="headerlink" title="【LetMeFly】1402.做菜顺序：排序 + 前缀（贪心） - 按思路讲解"></a>【LetMeFly】1402.做菜顺序：排序 + 前缀（贪心） - 按思路讲解</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reducing-dishes/">https://leetcode.cn/problems/reducing-dishes/</a></p>
+<p>一个厨师收集了他&nbsp;<code>n</code>&nbsp;道菜的满意程度&nbsp;<code>satisfaction</code>&nbsp;，这个厨师做出每道菜的时间都是 1 单位时间。</p>
+
+<p>一道菜的 「喜爱时间」系数定义为烹饪这道菜以及之前每道菜所花费的时间乘以这道菜的满意程度，也就是&nbsp;<code>time[i]</code>*<code>satisfaction[i]</code>&nbsp;。</p>
+
+<p>请你返回做完所有菜 「喜爱时间」总和的最大值为多少。</p>
+
+<p>你可以按&nbsp;<strong>任意</strong>&nbsp;顺序安排做菜的顺序，你也可以选择放弃做某些菜来获得更大的总和。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>satisfaction = [-1,-8,0,5,-9]
+<strong>输出：</strong>14
+<strong>解释：</strong>去掉第二道和最后一道菜，最大的喜爱时间系数和为 (-1*1 + 0*2 + 5*3 = 14) 。每道菜都需要花费 1 单位时间完成。</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>satisfaction = [4,3,2]
+<strong>输出：</strong>20
+<strong>解释：</strong>按照原来顺序相反的时间做菜 (2*1 + 3*2 + 4*3 = 20)
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>satisfaction = [-1,-4,-5]
+<strong>输出：</strong>0
+<strong>解释：</strong>大家都不喜欢这些菜，所以不做任何菜可以获得最大的喜爱时间系数。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>n == satisfaction.length</code></li>
+    <li><code>1 &lt;= n &lt;= 500</code></li>
+    <li><code>-1000 &lt;= satisfaction[i] &lt;= 1000</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：排序-前缀（贪心）"><a href="#方法一：排序-前缀（贪心）" class="headerlink" title="方法一：排序 + 前缀（贪心）"></a>方法一：排序 + 前缀（贪心）</h2><p>假设选了一个做菜序列$[a,b,c,d,\cdots]$，那么很容易想到这道题的关键：菜开始的越晚权重越大。因此本题的核心思路（贪心）是：<strong>satisfaction越高的菜越往后放</strong>。</p>
+<p>二话不说，先<strong>排个序</strong>吧。反正satisfaction为正的菜是一定要做的（只有好处没有坏处），所以就<strong>二分查找</strong>一下排序后第一个satisfaction为正的菜的位置positiveLocation，从positiveLocation到数组末尾的“正菜”先依次加入到做菜序列中。</p>
+<p>好了，“正菜”处理完了，那么“负菜”就一无是处了吗？当然不是。每往做菜序列前面增加一道菜品，后面每道菜的权重都会加一。也就是说，<strong>在现在的做菜序列基础上，每新加一道负菜，总分的变化是“正菜satisfaction之和 加上 负菜satisfaction之和”</strong>（含新增的负菜。</p>
+<p>那么到底怎么处理负菜呢？只需要统计一下“正菜satisfaction之和sumPositive”，以及加上这道负菜的话“负菜satisfaction之和sumNegative”，如果$abs(sumPositive) &gt;&#x3D; abs(sumNegative)$，那么就将这道菜加入到做菜序列之首，否则就不加。</p>
+<p>对于同为负数的两道菜，当然是优先选择较大的那个负数菜喽（能选$-1$不选$-2$）。</p>
+<ul>
+<li>时间复杂度$O(n\times \log n)$。排序的时间复杂度是$n\log n$，二分（只二分了一次）的时间复杂度为$\log n$，选菜的总时间复杂度不超过$O(n)$。其中$n&#x3D;len(satisfaction)$。</li>
+<li>空间复杂度$O(\log n)$。排序的空间复杂度为$O(\log n)$，其余部分空间复杂度都为$O(1)$。</li>
+</ul>
+<blockquote>
+<p>其实本题中也可以不使用二分查找来获取“第一个正菜”的位置，可以使用遍历（复杂的不变）或从数组末尾开始往前遍历（不一定从最小的正菜开始）。</p>
+<p>这里感谢<a target="_blank" rel="noopener" href="https://github.com/kahakaha">github@5hepp</a>以及<a target="_blank" rel="noopener" href="https://github.com/SWHsz">github@HuangSizhe</a>的建议~</p>
+</blockquote>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSatisfaction</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; satisfaction)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(satisfaction.<span class="built_in">begin</span>(), satisfaction.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> positiveLocation = <span class="built_in">upper_bound</span>(satisfaction.<span class="built_in">begin</span>(), satisfaction.<span class="built_in">end</span>(), <span class="number">0</span>) - satisfaction.<span class="built_in">begin</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>, sumPositive = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = positiveLocation; i &lt; satisfaction.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            ans += (i - positiveLocation + <span class="number">1</span>) * satisfaction[i];</span><br><span class="line">            sumPositive += satisfaction[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> sumNegative = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = positiveLocation - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            sumNegative += satisfaction[i];</span><br><span class="line">            <span class="keyword">if</span> (-sumNegative &gt; sumPositive) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans += sumPositive + sumNegative;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import List</span></span><br><span class="line"><span class="comment"># from bisect import bisect_right</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxSatisfaction</span>(<span class="params">self, satisfaction: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        satisfaction.sort()</span><br><span class="line">        positiveLocation = bisect_right(satisfaction, <span class="number">0</span>)</span><br><span class="line">        ans, sumPositive = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(positiveLocation, <span class="built_in">len</span>(satisfaction)):</span><br><span class="line">            ans += (i - positiveLocation + <span class="number">1</span>) * satisfaction[i]</span><br><span class="line">            sumPositive += satisfaction[i]</span><br><span class="line">        sumNegative = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(positiveLocation - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            sumNegative += satisfaction[i]</span><br><span class="line">            <span class="keyword">if</span> -sumNegative &gt; sumPositive:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            ans += sumPositive + sumNegative</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/10/22/LeetCode%201402.%E5%81%9A%E8%8F%9C%E9%A1%BA%E5%BA%8F/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/133974648">https://letmefly.blog.csdn.net/article/details/133974648</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911402-%E5%81%9A%E8%8F%9C%E9%A1%BA%E5%BA%8F%EF%BC%9A%E6%8E%92%E5%BA%8F-%E5%89%8D%E7%BC%80%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89-%E6%8C%89%E6%80%9D%E8%B7%AF%E8%AE%B2%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1402.做菜顺序：排序 + 前缀（贪心） - 按思路讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%8E%92%E5%BA%8F-%E5%89%8D%E7%BC%80%EF%BC%88%E8%B4%AA%E5%BF%83%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：排序 + 前缀（贪心）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

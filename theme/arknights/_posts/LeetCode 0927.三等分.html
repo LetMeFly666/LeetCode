@@ -1,1 +1,108 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>927.三等分 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>927.三等分</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-10-06T14:36:33.000Z" id="date"> 2022-10-06</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】927-三等分"><a href="#【LetMeFly】927-三等分" class="headerlink" title="【LetMeFly】927.三等分"></a>【LetMeFly】927.三等分</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/three-equal-parts/">https://leetcode.cn/problems/three-equal-parts/</a></p>
+<p>给定一个由 <code>0</code> 和 <code>1</code> 组成的数组<meta charset="UTF-8" />&nbsp;<code>arr</code>&nbsp;，将数组分成 &nbsp;<strong>3&nbsp;个非空的部分</strong> ，使得所有这些部分表示相同的二进制值。</p>
+
+<p>如果可以做到，请返回<strong>任何</strong>&nbsp;<code>[i, j]</code>，其中 <code>i+1 &lt; j</code>，这样一来：</p>
+
+<ul>
+    <li><code>arr[0], arr[1], ..., arr[i]</code>&nbsp;为第一部分；</li>
+    <li><code>arr[i + 1], arr[i + 2], ..., arr[j - 1]</code>&nbsp;为第二部分；</li>
+    <li><code>arr[j], arr[j + 1], ..., arr[arr.length - 1]</code>&nbsp;为第三部分。</li>
+    <li>这三个部分所表示的二进制值相等。</li>
+</ul>
+
+<p>如果无法做到，就返回&nbsp;<code>[-1, -1]</code>。</p>
+
+<p>注意，在考虑每个部分所表示的二进制时，应当将其看作一个整体。例如，<code>[1,1,0]</code>&nbsp;表示十进制中的&nbsp;<code>6</code>，而不会是&nbsp;<code>3</code>。此外，前导零也是<strong>被允许</strong>的，所以&nbsp;<code>[0,1,1]</code> 和&nbsp;<code>[1,1]</code>&nbsp;表示相同的值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>arr = [1,0,1,0,1]
+<strong>输出：</strong>[0,3]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>arr = [1,1,0,1,1]
+<strong>输出：</strong>[-1,-1]</pre>
+
+<p><strong>示例 3:</strong></p>
+
+<pre>
+<strong>输入：</strong>arr = [1,1,0,0,1]
+<strong>输出：</strong>[0,2]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+<meta charset="UTF-8" />
+
+<ul>
+    <li><code>3 &lt;= arr.length &lt;= 3 * 10<sup>4</sup></code></li>
+    <li><code>arr[i]</code>&nbsp;是&nbsp;<code>0</code>&nbsp;或&nbsp;<code>1</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：模拟"><a href="#方法一：模拟" class="headerlink" title="方法一：模拟"></a>方法一：模拟</h2><p>这题主要需要明白的是：</p>
+<ul>
+<li>每个数字后面的0的个数由第三个数字决定</li>
+</ul>
+<p>首先统计1的个数，若不能被3整除，则返回false。</p>
+<p>如果没有1，直接返回<code>&#123;0, 2&#125;</code></p>
+<p>到此为止，我们直到每个数中，有多少个1，以及最后一个1后面又多少个0</p>
+<p>这样就可以从前往后遍历，首先关注1，数够足够的1，就开始数0。如果0数量也数够了，那么就确定了第一个数的范围。</p>
+<p>同理，以同样的方法，能统计出第二个数字的范围。</p>
+<p>之和，再判断三个数是否等价（仅仅1的个数相同不能确定等价。要等价还需要从第一个1开始，到这个数结束为止，全部一一对应地相等）</p>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是数组长度</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">        寻找以begin开始，拥有numof1个1，结尾有end0个0  的二进制串的最后一位的下标</span></span><br><span class="line"><span class="comment">        若找不到，则返回-1</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findTheEndOfOneNum</span><span class="params">(<span class="type">int</span> begin, <span class="type">int</span> numof1, <span class="type">int</span> end0, vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (; begin &lt; arr.<span class="built_in">size</span>(); begin++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[begin])</span><br><span class="line">                cnt1++;</span><br><span class="line">            <span class="keyword">if</span> (cnt1 == numof1)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 一定能找到足够数量的1，因为1是计算过后平分的</span></span><br><span class="line">        <span class="keyword">if</span> (!end0)</span><br><span class="line">            <span class="keyword">return</span> begin;</span><br><span class="line">        <span class="type">int</span> cnt0 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (++begin &lt; arr.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[begin]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt0++;</span><br><span class="line">            <span class="keyword">if</span> (cnt0 == end0)</span><br><span class="line">                <span class="keyword">return</span> begin;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// FakeReturn</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 判断1总量相同、后缀0相同 的前提下， 两串数字是否等价 */</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">same</span><span class="params">(<span class="type">int</span> firstNumBegin, <span class="type">int</span> firstNumEnd, <span class="type">int</span> secondNumBegin, <span class="type">int</span> secondNumEnd, vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        function&lt;<span class="type">int</span>(<span class="type">int</span>)&gt; findFirst1 = [&amp;](<span class="type">int</span> beginLoc) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!arr[beginLoc])</span><br><span class="line">                beginLoc++;</span><br><span class="line">            <span class="keyword">return</span> beginLoc;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">int</span> firstNumFirst1 = <span class="built_in">findFirst1</span>(firstNumBegin);</span><br><span class="line">        <span class="type">int</span> secondNumFirst1 = <span class="built_in">findFirst1</span>(secondNumBegin);</span><br><span class="line">        <span class="keyword">if</span> (secondNumEnd - secondNumFirst1 != firstNumEnd - firstNumFirst1) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (firstNumFirst1 &lt;= firstNumEnd) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[firstNumFirst1] != arr[secondNumFirst1])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            firstNumFirst1++;</span><br><span class="line">            secondNumFirst1++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">threeEqualParts</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : arr) &#123;</span><br><span class="line">            cnt1 += t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (cnt1 % <span class="number">3</span>)</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (!cnt1)  <span class="comment">// 全0</span></span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">0</span>, <span class="number">2</span>&#125;;</span><br><span class="line">        <span class="type">int</span> per1 = cnt1 / <span class="number">3</span>;  <span class="comment">// 每个二进制下有多少个1</span></span><br><span class="line">        <span class="type">int</span> end0 = <span class="number">0</span>;  <span class="comment">// 每个二进制下最后有几个0取决于第三个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = arr.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                end0++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> firstNumEnd = <span class="built_in">findTheEndOfOneNum</span>(<span class="number">0</span>, per1, end0, arr);</span><br><span class="line">        <span class="keyword">if</span> (firstNumEnd == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="type">int</span> secondNumEnd = <span class="built_in">findTheEndOfOneNum</span>(firstNumEnd + <span class="number">1</span>, per1, end0, arr);</span><br><span class="line">        <span class="keyword">if</span> (secondNumEnd == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">same</span>(<span class="number">0</span>, firstNumEnd, firstNumEnd + <span class="number">1</span>, secondNumEnd, arr) &amp;&amp; <span class="built_in">same</span>(<span class="number">0</span>, firstNumEnd, secondNumEnd + <span class="number">1</span>, arr.<span class="built_in">size</span>() - <span class="number">1</span>, arr))</span><br><span class="line">            <span class="keyword">return</span> &#123;firstNumEnd, secondNumEnd + <span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/06/LeetCode%200927.%E4%B8%89%E7%AD%89%E5%88%86/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127189062">https://letmefly.blog.csdn.net/article/details/127189062</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91927-%E4%B8%89%E7%AD%89%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】927.三等分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

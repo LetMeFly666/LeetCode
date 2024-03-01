@@ -1,1 +1,78 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>抓包 - 简要总结 - Windows和Android抓包 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>抓包 - 简要总结 - Windows和Android抓包</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-08-25T14:26:42.000Z" id="date"> 2023-08-25</time></div></span></div></div><hr><div id="post-content"><h1 id="抓包-简要总结-Windows和Android抓包"><a href="#抓包-简要总结-Windows和Android抓包" class="headerlink" title="抓包 - 简要总结 - Windows和Android抓包"></a>抓包 - 简要总结 - Windows和Android抓包</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>小巧且强大的抓包工具“Fiddler”安装可参考我的另一篇博客：<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">抓包 - 经典抓包工具Fiddler的安装与初使用</a></p>
+<p>本文主要介绍如何使用Fiddler抓包Windows和安卓。</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>抓包Windows很简单，安装证书，开启HTTPS即可。但是也存在特殊情况：有些软件不走系统代理。</p>
+<ol>
+<li>例如QQ音乐客户端，需要手动设置系统代理为<code>127.0.0.1:8888</code></li>
+<li>UWP应用是运行在沙盒中的，默认不具有访问本地网络的权限，Fiddler的原理是设置一个本地中介服务器，运行时可能会导致UWP应用无法联网</li>
+<li>python使用requests时需要进行以下设置<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(</span><br><span class="line">     url=<span class="string">&#x27;https://letmefly.xyz/&#x27;</span>,</span><br><span class="line">     proxies = &#123;</span><br><span class="line">         <span class="string">&#x27;http&#x27;</span>: <span class="string">&#x27;http://127.0.0.1:8888&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;https&#x27;</span>: <span class="string">&#x27;http://127.0.0.1:8888&#x27;</span></span><br><span class="line">     &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="未root的Android"><a href="#未root的Android" class="headerlink" title="未root的Android"></a>未root的Android</h2><p>抓包安卓需要：</p>
+<ol>
+<li>在Fiddler的<code>Tools -&gt; Options -&gt; Connections</code>中打开<code>Allow remote computers to connect</code></li>
+<li>若电脑弹出防火墙提示，请点击允许Fiddler通过防火墙</li>
+<li>将手机和电脑连接至同一wifi下（手机连接电脑的热点也可以）</li>
+<li>手机中<code>长按连接的wifi -&gt; 修改网络 -&gt; 代理 -&gt; 手动</code>，服务器主机名填写电脑在局域网中的IP地址（可以使用<code>ipconfig</code>命令获取），端口填&#96;&#96;&#96;&#96;8888<code>，</code>保存&#96;&#96;&#96;</li>
+<li>手机访问<code>127.0.0.1:8888</code>下载证书，并点击安装。</li>
+</ol>
+<p>正常情况下，电脑就能抓到手机的HTTPS包了。</p>
+<p>但是Android7开始，系统不再信任用户安装的证书，而非root用户无法安装系统证书。这就导致一些APP（如QQ音乐&#x2F;抖音）拒绝进行“不安全连接”，从而导致这些应用无法联网。在安卓手机中安装抓包软件，直接在安卓中抓包也是一样的道理，不root的话似乎只有“魔改路由器”在路由器上抓包了。</p>
+<p>不得不吐槽一句，QQ音乐中，音乐相关界面会显示“证书不可信”，但是广告缺正常加载。。。。</p>
+<h2 id="root的安卓"><a href="#root的安卓" class="headerlink" title="root的安卓"></a>root的安卓</h2><p>在电脑上配置好<code>openssl</code>（如果电脑上有git的话，可以直接拿来用へへ），（<code>Tools -&gt; Options -&gt; HTTPS -&gt; Actions -&gt; Export Root Cerificate to Desktop</code>）导出Fiddler证书，使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -inform DER -<span class="keyword">in</span> C:\Users\LetMeFly\Desktop\FiddlerRoot.cer -out C:\Users\LetMeFly\Desktop\FiddlerRoot.pem</span><br><span class="line">openssl x509 -inform PEM -subject_hash_old -<span class="keyword">in</span> C:\Users\LetMeFly\Desktop\FiddlerRoot.pem</span><br></pre></td></tr></table></figure>
+
+<p>这时候大概率会计算出<code>e5c3944b</code>这个哈希值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ren C:\Users\LetMeFly\Desktop\FiddlerRoot.pem e5c3944b.0</span><br></pre></td></tr></table></figure>
+
+<p>使用ADB将证书添加到root的手机的<code>/system/etc/security/cacerts</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br><span class="line">adb push C:\Users\LetMe\Desktop\e5c3944b.0 /system/etc/security/cacerts</span><br></pre></td></tr></table></figure>
+
+<p>注意，可能需要首更改一下该目录的权限为可写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line"><span class="built_in">cd</span> /system/etc/security/</span><br><span class="line"><span class="built_in">chmod</span> 777 cacerts</span><br></pre></td></tr></table></figure>
+
+<p>将<code>cacerts</code>由原来的<code>drwxr-xr-x</code>修改为<code>drwxrwxrwx</code>。</p>
+<p>操作失败的小伙伴可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43278826/article/details/124291040">这篇博客</a>（这篇博客好像也不行，真遇到啥报错自己搜一下吧X-X）</p>
+<p>只需要<code>设置 -&gt; 安全性与位置信息 -&gt; 加密与凭据 -&gt; 信任的凭据 -&gt; 系统</code>中有<code>DO_NOT_TRUST_BC</code>并处于开启状态，就可以开心的抓包辣！</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>QQ音乐アイドル的“在听”时长有单日2W多分钟的，刚开始我也想抓包冲个榜，但是失败了。。。技术还不够，只抓到了“单日听歌时长”（音响力）的包。还偶然发现QQ音乐首次绑定手机送三天豪华绿钻。花费了几天基本无果，也没有什么冲榜的兴趣了。<a target="_blank" rel="noopener" href="https://hanyu.baidu.com/shici/detail?pid=54d154714ab7420c98ee632aee2c8340#:~:text=%E9%81%82">遂</a>总结并尘封之。</p>
+<p>好像，，本来就只手机端有效。（电脑端似乎只记当日时长，手机端记时长也记音响力）</p>
+<blockquote>
+<p>文章原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">原文链接</a>哦~<br>同步发文于CSDN：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/132504020">https://letmefly.blog.csdn.net/article/details/132504020</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%93%E5%8C%85-%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93-Windows%E5%92%8CAndroid%E6%8A%93%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">抓包 - 简要总结 - Windows和Android抓包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-number">1.2.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AAroot%E7%9A%84Android"><span class="toc-number">1.3.</span> <span class="toc-text">未root的Android</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#root%E7%9A%84%E5%AE%89%E5%8D%93"><span class="toc-number">1.4.</span> <span class="toc-text">root的安卓</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">小结</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

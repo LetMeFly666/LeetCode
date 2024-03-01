@@ -1,1 +1,1018 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-03-16T12:46:27.000Z" id="date"> 2023-03-16</time></div></span></div></div><hr><div id="post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间（大概是2023年2月23日）发现了浏览器可以打开Windows的“设置”中的“疑难解答”</p>
+<p>通过“复制链接”的方式很容易得到其实是在浏览器中访问了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ms-settings:troubleshoot</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>在Windows10中，使用组合键<code>Win + R</code>，在“运行”中输入<code>ms-settings:troubleshoot</code>并<code>回车</code>即可打开Windows设置中的“疑难解答”</p>
+<p>同样地，在浏览器（例如Google）的地址栏中输入<code>ms-settings:troubleshoot</code>并<code>回车</code>，浏览器会询问“是否打开”，点击打开即可</p>
+<p>同样地，也可以使用Python打开：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">&quot;start ms-settings:troubleshoot&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当然，C语言也可以</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    system(<span class="string">&quot;start ms-settings:troubleshoot&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在HTML网页中：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;location.href=&#x27;ms-settings:troubleshoot&#x27;&quot;</span>&gt;</span>疑难解答<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="More"><a href="#More" class="headerlink" title="More"></a>More</h2><p>其中<code>ms</code>肯定是<code>Microsoft</code>的缩写，<code>settings</code>就是设置，<code>troubleshoot</code>就是疑难解答。</p>
+<p>这样，就可以在自己的网页或程序中，打开对应的Windows设置了。</p>
+<p>有没有更多的相关设置呢？当然有！</p>
+<p>在找到了MS官方文档后，得到了很多类似的操作。</p>
+<p>文档：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/uwp/launch-resume/launch-settings-app">启动 Windows 设置应用</a></p>
+<p>其被归类到了<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/uwp/">UWP</a>中，把链接中的<code>zh-cn</code>修改为<code>en-us</code>即为原版纯英的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/uwp/">UWP教程</a></p>
+<p>以下数个表格来自上文提到的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/uwp/launch-resume/launch-settings-app">微软官方文档</a>，并将HTML格式转为了Markdown格式</p>
+<p><strong>帐户</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>访问工作单位或学校</td>
+<td>ms-settings:workplace</td>
+</tr>
+<tr>
+<td>电子邮件和应用帐户</td>
+<td>ms-settings:emailandaccounts</td>
+</tr>
+<tr>
+<td>家人和其他人</td>
+<td>ms-settings:otherusers</td>
+</tr>
+<tr>
+<td>设置展台</td>
+<td>ms-settings:assignedaccess</td>
+</tr>
+<tr>
+<td>登录选项</td>
+<td>ms-settings:signinoptions<br>ms-settings:signinoptions-dynamiclock</td>
+</tr>
+<tr>
+<td>同步设置</td>
+<td>ms-settings:sync<br>ms-settings：backup (Windows 11) 中弃用的“备份”页</td>
+</tr>
+<tr>
+<td>Windows Hello 设置</td>
+<td>ms-settings:signinoptions-launchfaceenrollment<br>ms-settings:signinoptions-launchfingerprintenrollment</td>
+</tr>
+<tr>
+<td>你的信息</td>
+<td>ms-settings:yourinfo</td>
+</tr>
+</tbody></table>
+<p><strong>应用</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">“设置”页面</th>
+<th align="center">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用和功能</td>
+<td align="center">ms-settings:appsfeatures</td>
+</tr>
+<tr>
+<td align="center">应用功能</td>
+<td align="center">ms-settings:appsfeatures-app<br><br> 若要使用 URI 访问此页面，请使用 URI <code>ms-settings:appsfeatures-app</code> 并传递应用的 _包系列名称_ 的可选参数。</td>
+</tr>
+<tr>
+<td align="center">网站应用</td>
+<td align="center">ms-settings:appsforwebsites</td>
+</tr>
+<tr>
+<td align="center">默认应用</td>
+<td align="center">ms-settings:defaultapps</td>
+</tr>
+<tr>
+<td align="center">管理可选功能</td>
+<td align="center">ms-settings:optionalfeatures</td>
+</tr>
+<tr>
+<td align="center">离线地图</td>
+<td align="center">ms-settings:maps<br>ms-settings:maps-downloadmaps (下载地图)</td>
+</tr>
+<tr>
+<td align="center">启动应用</td>
+<td align="center">ms-settings:startupapps</td>
+</tr>
+<tr>
+<td align="center">视频播放</td>
+<td align="center">ms-settings:videoplayback</td>
+</tr>
+</tbody></table>
+<p><strong>控制中心</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>控制中心</td>
+<td>ms-settings:controlcenter</td>
+</tr>
+</tbody></table>
+<p><strong>Cortana</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">“设置”页面</th>
+<th align="center">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">“跨设备的 Cortana”</td>
+<td align="center">ms-settings:cortana-notifications</td>
+</tr>
+<tr>
+<td align="center">更多详细信息</td>
+<td align="center">ms-settings:cortana-moredetails</td>
+</tr>
+<tr>
+<td align="center">权限和历史记录</td>
+<td align="center">ms-settings:cortana-permissions</td>
+</tr>
+<tr>
+<td align="center">搜索 Windows</td>
+<td align="center">ms-settings:cortana-windowssearch</td>
+</tr>
+<tr>
+<td align="center">与 Cortana 交谈</td>
+<td align="center">ms-settings:cortana-language<br>ms-settings:cortana<br>ms-settings:cortana-talktocortana</td>
+</tr>
+</tbody></table>
+<p><strong>设备</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动播放</td>
+<td>ms-settings:autoplay</td>
+</tr>
+<tr>
+<td>Bluetooth</td>
+<td>ms-settings:bluetooth</td>
+</tr>
+<tr>
+<td>连接的设备</td>
+<td>ms-settings:connecteddevices</td>
+</tr>
+<tr>
+<td>默认相机</td>
+<td>ms-settings：camera (<strong>行为在 Windows 10 版本 1809 及更高版本中弃用</strong>)</td>
+</tr>
+<tr>
+<td>相机设置</td>
+<td>ms-settings：camera (<strong>行为在 Windows 11、版本 22000 及更高版本中引入</strong>)</td>
+</tr>
+<tr>
+<td>鼠标和触摸板</td>
+<td>ms-settings:mousetouchpad（仅具有触摸板的设备可使用触摸板设置）</td>
+</tr>
+<tr>
+<td>触控笔和 Windows Ink</td>
+<td>ms-settings:pen</td>
+</tr>
+<tr>
+<td>打印机和扫描仪</td>
+<td>ms-settings:printers</td>
+</tr>
+<tr>
+<td>触摸</td>
+<td>ms-settings:devices-touch</td>
+</tr>
+<tr>
+<td>触摸板</td>
+<td>ms-settings:devices-touchpad（仅在存在触摸板硬件时可用）</td>
+</tr>
+<tr>
+<td>文本建议</td>
+<td>ms-settings:devicestyping-hwkbtextsuggestions</td>
+</tr>
+<tr>
+<td>Typing</td>
+<td>ms-settings:typing</td>
+</tr>
+<tr>
+<td>USB</td>
+<td>ms-settings:usb</td>
+</tr>
+<tr>
+<td>滚轮</td>
+<td>ms-settings:wheel（仅在“拨号”配对成功后可用）</td>
+</tr>
+<tr>
+<td>你的手机</td>
+<td>ms-settings:mobile-devices</td>
+</tr>
+</tbody></table>
+<p><strong>附加信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>附加信息</td>
+<td>ms-settings:extras（仅在通过某种方式（例如第三方）安装了“设置应用”后可用）</td>
+</tr>
+</tbody></table>
+<p><strong>家庭组</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>家庭组</td>
+<td>ms-settings:family-group</td>
+</tr>
+</tbody></table>
+<p><strong>游戏</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>游戏栏</td>
+<td>ms-settings:gaming-gamebar</td>
+</tr>
+<tr>
+<td>游戏 DVR</td>
+<td>ms-settings:gaming-gamedvr</td>
+</tr>
+<tr>
+<td>游戏模式</td>
+<td>ms-settings:gaming-gamemode</td>
+</tr>
+<tr>
+<td>全屏玩游戏</td>
+<td>ms-settings:quietmomentsgame</td>
+</tr>
+<tr>
+<td>TruePlay</td>
+<td>ms-settings:gaming-trueplay（从 Windows 10 版本 1809（10.0，内部版本 17763）起，Windows 中会删除此功能）</td>
+</tr>
+</tbody></table>
+<p><strong>主页</strong></p>
+<table>
+<thead>
+<tr>
+<th>“设置”页面</th>
+<th>URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>默认浏览器设置</td>
+<td>ms-settings:defaultbrowsersettings</td>
+</tr>
+</tbody></table>
+<p><strong>混合现实</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">音频和语音</td>
+<td align="left">ms-settings:holographic-audio</td>
+</tr>
+<tr>
+<td align="left">环境</td>
+<td align="left">ms-settings:privacy-holographic-environment</td>
+</tr>
+<tr>
+<td align="left">头戴显示设备显示</td>
+<td align="left">ms-settings:holographic-headset</td>
+</tr>
+<tr>
+<td align="left">卸载</td>
+<td align="left">ms-settings:holographic-management</td>
+</tr>
+<tr>
+<td align="left">启动和桌面</td>
+<td align="left">ms-settings:holographic-startupandesktop</td>
+</tr>
+</tbody></table>
+<p><strong>网络和 Internet</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">网络 &amp; Internet</td>
+<td align="left">ms-settings:network-status</td>
+</tr>
+<tr>
+<td align="left">高级设置</td>
+<td align="left">ms-settings:network-advancedsettings</td>
+</tr>
+<tr>
+<td align="left">飞行模式</td>
+<td align="left">ms-settings:network-airplanemodems-settings:proximity</td>
+</tr>
+<tr>
+<td align="left">手机网络和 SIM 卡</td>
+<td align="left">ms-settings:network-cellular</td>
+</tr>
+<tr>
+<td align="left">拨号</td>
+<td align="left">ms-settings:network-dialup</td>
+</tr>
+<tr>
+<td align="left">DirectAccess</td>
+<td align="left">ms-settings:network-directaccess（仅在启用 DirectAccess 后可用）</td>
+</tr>
+<tr>
+<td align="left">以太网</td>
+<td align="left">ms-settings:network-ethernet</td>
+</tr>
+<tr>
+<td align="left">管理已知网络</td>
+<td align="left">ms-settings:network-wifisettings</td>
+</tr>
+<tr>
+<td align="left">移动热点</td>
+<td align="left">ms-settings:network-mobilehotspot</td>
+</tr>
+<tr>
+<td align="left">代理</td>
+<td align="left">ms-settings:network-proxy</td>
+</tr>
+<tr>
+<td align="left">VPN</td>
+<td align="left">ms-settings:network-vpn</td>
+</tr>
+<tr>
+<td align="left">WLAN</td>
+<td align="left">ms-settings:network-wifi（仅当设备具有 WLAN 适配器时可用）</td>
+</tr>
+<tr>
+<td align="left">Wi-Fi 预配</td>
+<td align="left">ms-settings:wifi-provisioning</td>
+</tr>
+</tbody></table>
+<p><strong>个性化</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">背景</td>
+<td align="left">ms-settings:personalization-background</td>
+</tr>
+<tr>
+<td align="left">选择哪些文件夹显示在“开始”菜单上</td>
+<td align="left">ms-settings:personalization-start-places</td>
+</tr>
+<tr>
+<td align="left">颜色</td>
+<td align="left">ms-settings:personalization-colorsms-settings:colors</td>
+</tr>
+<tr>
+<td align="left">概览</td>
+<td align="left">ms-settings:personalization-glance（已在 Windows 10 版本 1809 及更高版本中弃用）</td>
+</tr>
+<tr>
+<td align="left">锁屏界面</td>
+<td align="left">ms-settings:lockscreen</td>
+</tr>
+<tr>
+<td align="left">导航栏</td>
+<td align="left">ms-settings:personalization-navbar（已在 Windows 10 版本 1809 及更高版本中弃用）</td>
+</tr>
+<tr>
+<td align="left">个性化（类别）</td>
+<td align="left">ms-settings:personalization</td>
+</tr>
+<tr>
+<td align="left">开始</td>
+<td align="left">ms-settings:personalization-start</td>
+</tr>
+<tr>
+<td align="left">任务栏</td>
+<td align="left">ms-settings:taskbar</td>
+</tr>
+<tr>
+<td align="left">触摸键盘</td>
+<td align="left">ms-settings:personalization-touchkeyboard</td>
+</tr>
+<tr>
+<td align="left">主题</td>
+<td align="left">ms-settings:themes</td>
+</tr>
+</tbody></table>
+<p><strong>电话</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">你的手机</td>
+<td align="left">ms-settings:mobile-devices<br>ms-settings:mobile-devices-addphone<br>ms-settings:mobile-devices-addphone-direct（打开“你的手机”应用）</td>
+</tr>
+<tr>
+<td align="left">设备使用情况</td>
+<td align="left">ms-settings:deviceusage</td>
+</tr>
+</tbody></table>
+<p><strong>隐私</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">外部设备应用</td>
+<td align="left">ms-settings:privacy-accessoryapps（已在 Windows 10 版本 1809 及更高版本中弃用）</td>
+</tr>
+<tr>
+<td align="left">帐户信息</td>
+<td align="left">ms-settings:privacy-accountinfo</td>
+</tr>
+<tr>
+<td align="left">活动历史记录</td>
+<td align="left">ms-settings:privacy-activityhistory</td>
+</tr>
+<tr>
+<td align="left">广告 ID</td>
+<td align="left">ms-settings:privacy-advertisingid（已在 Windows 10 版本 1809 及更高版本中弃用）</td>
+</tr>
+<tr>
+<td align="left">应用诊断</td>
+<td align="left">ms-settings:privacy-appdiagnostics</td>
+</tr>
+<tr>
+<td align="left">自动文件下载</td>
+<td align="left">ms-settings:privacy-automaticfiledownloads</td>
+</tr>
+<tr>
+<td align="left">后台应用</td>
+<td align="left">ms-settings：privacy-backgroundapps (在 Windows 11、21H2 及更高版本中弃用) <br>注意：在 Windows 11 中，后台应用权限是单独访问的。 若要查看权限，请转到 “应用-&gt;已安装的应用 ”，然后在新式应用中选择 “…” ，然后选择“ 高级选项”。 新式应用会显示高级页面，除非设置了组策略或用户的全局切换值 (Windows 10) 中已弃用的设置，否则将显示“后台应用权限”部分。 若要使用 URI 访问此页面，请使用 URI ms-settings:appsfeatures-app 并传递应用的 包系列名称 的可选参数。</td>
+</tr>
+<tr>
+<td align="left">后台空间感知</td>
+<td align="left">ms-settings:privacy-backgroundspatialperception</td>
+</tr>
+<tr>
+<td align="left">日历</td>
+<td align="left">ms-settings:privacy-calendar</td>
+</tr>
+<tr>
+<td align="left">呼叫历史记录</td>
+<td align="left">ms-settings:privacy-callhistory</td>
+</tr>
+<tr>
+<td align="left">照相机</td>
+<td align="left">ms-settings:privacy-webcam</td>
+</tr>
+<tr>
+<td align="left">联系人</td>
+<td align="left">ms-settings:privacy-contacts</td>
+</tr>
+<tr>
+<td align="left">Documents</td>
+<td align="left">ms-settings:privacy-documents</td>
+</tr>
+<tr>
+<td align="left">“下载”文件夹</td>
+<td align="left">ms-settings:privacy-downloadsfolder</td>
+</tr>
+<tr>
+<td align="left">电子邮件</td>
+<td align="left">ms-settings:privacy-email</td>
+</tr>
+<tr>
+<td align="left">眼球跟踪器</td>
+<td align="left">ms-settings:privacy-eyetracker（需要眼球跟踪器硬件）</td>
+</tr>
+<tr>
+<td align="left">反馈和诊断</td>
+<td align="left">ms-settings:privacy-feedback</td>
+</tr>
+<tr>
+<td align="left">文件系统</td>
+<td align="left">ms-settings:privacy-broadfilesystemaccess</td>
+</tr>
+<tr>
+<td align="left">常规</td>
+<td align="left">ms-settings:privacy 或 ms-settings:privacy-general</td>
+</tr>
+<tr>
+<td align="left">显卡</td>
+<td align="left">ms-settings:privacy-graphicscaptureprogrammatic<br>ms-settings:privacy-graphicscapturewithoutborder</td>
+</tr>
+<tr>
+<td align="left">&amp;</td>
+<td align="left">ms-settings:privacy-speechtyping</td>
+</tr>
+<tr>
+<td align="left">位置</td>
+<td align="left">ms-settings:privacy-location</td>
+</tr>
+<tr>
+<td align="left">Messaging</td>
+<td align="left">ms-settings:privacy-messaging</td>
+</tr>
+<tr>
+<td align="left">麦克风</td>
+<td align="left">ms-settings:privacy-microphone</td>
+</tr>
+<tr>
+<td align="left">移动</td>
+<td align="left">ms-settings:privacy-motion</td>
+</tr>
+<tr>
+<td align="left">音乐库</td>
+<td align="left">ms-settings:privacy-musiclibrary</td>
+</tr>
+<tr>
+<td align="left">通知</td>
+<td align="left">ms-settings:privacy-notifications</td>
+</tr>
+<tr>
+<td align="left">其他设备</td>
+<td align="left">ms-settings:privacy-customdevices</td>
+</tr>
+<tr>
+<td align="left">电话呼叫</td>
+<td align="left">ms-settings:privacy-phonecalls</td>
+</tr>
+<tr>
+<td align="left">图片</td>
+<td align="left">ms-settings:privacy-pictures</td>
+</tr>
+<tr>
+<td align="left">无线电收发器</td>
+<td align="left">ms-settings:privacy-radios</td>
+</tr>
+<tr>
+<td align="left">语音</td>
+<td align="left">ms-settings:privacy-speech</td>
+</tr>
+<tr>
+<td align="left">任务</td>
+<td align="left">ms-settings:privacy-tasks</td>
+</tr>
+<tr>
+<td align="left">视频</td>
+<td align="left">ms-settings:privacy-videos</td>
+</tr>
+<tr>
+<td align="left">语音激活</td>
+<td align="left">ms-settings:privacy-voiceactivation</td>
+</tr>
+</tbody></table>
+<p><strong>搜索</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">搜索</td>
+<td align="left">ms-settings:search</td>
+</tr>
+<tr>
+<td align="left">搜索更多详细信息</td>
+<td align="left">ms-settings:search-moredetails</td>
+</tr>
+<tr>
+<td align="left">搜索权限</td>
+<td align="left">ms-settings:search-permissions</td>
+</tr>
+</tbody></table>
+<p><strong>Surface Hub</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">帐户</td>
+<td align="left">ms-settings:surfacehub-accounts</td>
+</tr>
+<tr>
+<td align="left">会话清理</td>
+<td align="left">ms-settings:surfacehub-sessioncleanup</td>
+</tr>
+<tr>
+<td align="left">团队会议</td>
+<td align="left">ms-settings:surfacehub-calling</td>
+</tr>
+<tr>
+<td align="left">团队设备管理</td>
+<td align="left">ms-settings:surfacehub-devicemanagenent</td>
+</tr>
+<tr>
+<td align="left">欢迎屏幕</td>
+<td align="left">ms-settings:surfacehub-welcome</td>
+</tr>
+</tbody></table>
+<p><strong>系统</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">关于</td>
+<td align="left">ms-settings:about</td>
+</tr>
+<tr>
+<td align="left">高级显示设置</td>
+<td align="left">ms-settings:display-advanced（仅适用于支持高级显示选项的设备）</td>
+</tr>
+<tr>
+<td align="left">应用音量和设备首选项</td>
+<td align="left">ms-settings:apps-volume（已在 Windows 10 版本 1903 中添加）</td>
+</tr>
+<tr>
+<td align="left">节电模式</td>
+<td align="left">ms-settings:batterysaver（仅在具有电池的设备[如平板电脑]上可用）</td>
+</tr>
+<tr>
+<td align="left">“节电模式”设置</td>
+<td align="left">ms-settings:batterysaver-settings（仅在具有电池的设备[如平板电脑]上可用）</td>
+</tr>
+<tr>
+<td align="left">电池使用</td>
+<td align="left">ms-settings:batterysaver-usagedetails（仅在具有电池的设备[如平板电脑]上可用）</td>
+</tr>
+<tr>
+<td align="left">剪贴板</td>
+<td align="left">ms-settings:clipboard</td>
+</tr>
+<tr>
+<td align="left">显示</td>
+<td align="left">ms-settings:display</td>
+</tr>
+<tr>
+<td align="left">默认保存位置</td>
+<td align="left">ms-settings:savelocations</td>
+</tr>
+<tr>
+<td align="left">显示</td>
+<td align="left">ms-settings:screenrotation</td>
+</tr>
+<tr>
+<td align="left">复制我的屏幕</td>
+<td align="left">ms-settings:quietmomentspresentation</td>
+</tr>
+<tr>
+<td align="left">在这些时间内</td>
+<td align="left">ms-settings:quietmomentsscheduled</td>
+</tr>
+<tr>
+<td align="left">加密</td>
+<td align="left">ms-settings:deviceencryption</td>
+</tr>
+<tr>
+<td align="left">专注助手</td>
+<td align="left">ms-settings:quiethours</td>
+</tr>
+<tr>
+<td align="left">图形设置</td>
+<td align="left">ms-settings:display-advancedgraphics（仅适用于支持高级图形选项的设备）</td>
+</tr>
+<tr>
+<td align="left">图形默认设置</td>
+<td align="left">ms-settings:display-advancedgraphics-default</td>
+</tr>
+<tr>
+<td align="left">多任务</td>
+<td align="left">ms-settings:multitasking ms-settings:multitasking-sgupdate</td>
+</tr>
+<tr>
+<td align="left">夜灯设置</td>
+<td align="left">ms-settings:nightlight</td>
+</tr>
+<tr>
+<td align="left">投影到这台电脑</td>
+<td align="left">ms-settings:project</td>
+</tr>
+<tr>
+<td align="left">共享体验</td>
+<td align="left">ms-settings:crossdevice</td>
+</tr>
+<tr>
+<td align="left">平板模式</td>
+<td align="left">ms-settings:tabletmode（已在 Windows 11 中删除）</td>
+</tr>
+<tr>
+<td align="left">任务栏</td>
+<td align="left">ms-settings:taskbar</td>
+</tr>
+<tr>
+<td align="left">通知和操作</td>
+<td align="left">ms-settings:notifications</td>
+</tr>
+<tr>
+<td align="left">远程桌面</td>
+<td align="left">ms-settings:remotedesktop</td>
+</tr>
+<tr>
+<td align="left">电话</td>
+<td align="left">ms-settings:phone（已在 Windows 10 版本 1809 及更高版本中弃用）</td>
+</tr>
+<tr>
+<td align="left">电源和睡眠</td>
+<td align="left">ms-settings:powersleep</td>
+</tr>
+<tr>
+<td align="left">声音</td>
+<td align="left">ms-settings:sound</td>
+</tr>
+<tr>
+<td align="left">声音设备</td>
+<td align="left">ms-settings:sound-devices</td>
+</tr>
+<tr>
+<td align="left">存储</td>
+<td align="left">ms-settings:storagesense</td>
+</tr>
+<tr>
+<td align="left">存储感知</td>
+<td align="left">ms-settings:storagepolicies</td>
+</tr>
+<tr>
+<td align="left">有关存储的建议</td>
+<td align="left">ms-settings:storagerecommendations</td>
+</tr>
+<tr>
+<td align="left">磁盘 &amp; 卷</td>
+<td align="left">ms-settings：disksandvolumes</td>
+</tr>
+</tbody></table>
+<p><strong>时间和语言</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">日期和时间</td>
+<td align="left">ms-settings:dateandtime</td>
+</tr>
+<tr>
+<td align="left">日本输入法设置</td>
+<td align="left">ms-settings:regionlanguage-jpnime（在安装了 Microsoft 日本输入法编辑器的情况下可用）</td>
+</tr>
+<tr>
+<td align="left">区域</td>
+<td align="left">ms-settings:regionformatting</td>
+</tr>
+<tr>
+<td align="left">语言</td>
+<td align="left">ms-settings:keyboard<br>ms-settings:keyboard-advanced<br>ms-settings:regionlanguage<br>ms-settings:regionlanguage-bpmfime<br>ms-settings:regionlanguage-cangjieime<br>ms-settings:regionlanguage-chsime-wubi-udp<br>ms-settings:regionlanguage-quickime  <br>ms-settings:regionlanguage-korime</td>
+</tr>
+<tr>
+<td align="left">拼音输入法设置</td>
+<td align="left">ms-settings：regionlanguage-chsime-pinyin (如果 microsoft Pinyin 输入法编辑器安装) <br>ms-settings：regionlanguage-chsime-pinyin-domainlexicon<br>ms-settings:regionlanguage-chsime-pinyin-keyconfig<br>ms-settings:regionlanguage-chsime-pinyin-udp</td>
+</tr>
+<tr>
+<td align="left">语音</td>
+<td align="left">ms-settings:speech</td>
+</tr>
+<tr>
+<td align="left">五笔输入法设置</td>
+<td align="left">ms-settings:regionlanguage-chsime-wubi（在安装了 Microsoft 五笔输入法编辑器的情况下可用）</td>
+</tr>
+<tr>
+<td align="left">添加显示语言</td>
+<td align="left">ms-settings:regionlanguage-adddisplaylanguage</td>
+</tr>
+<tr>
+<td align="left">语言选项</td>
+<td align="left">ms-settings:regionlanguage-languageoptions</td>
+</tr>
+<tr>
+<td align="left">设置显示语言</td>
+<td align="left">ms-settings:regionlanguage-setdisplaylanguage</td>
+</tr>
+</tbody></table>
+<p><strong>更新和安全</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">激活</td>
+<td align="left">ms-settings:activation</td>
+</tr>
+<tr>
+<td align="left">备份</td>
+<td align="left">ms-settings：在 Windows 11 中删除了 backup (页;打开“同步)</td>
+</tr>
+<tr>
+<td align="left">传递优化</td>
+<td align="left">ms-settings:delivery-optimization  <br>ms-settings:delivery-optimization-activity  <br>ms-settings:delivery-optimization-advanced</td>
+</tr>
+<tr>
+<td align="left">查找我的设备</td>
+<td align="left">ms-settings:findmydevice</td>
+</tr>
+<tr>
+<td align="left">面向开发人员</td>
+<td align="left">ms-settings:developers</td>
+</tr>
+<tr>
+<td align="left">恢复</td>
+<td align="left">ms-settings:recovery</td>
+</tr>
+<tr>
+<td align="left">启动安全密钥注册</td>
+<td align="left">ms-settings:signinoptions-launchsecuritykeyenrollment</td>
+</tr>
+<tr>
+<td align="left">疑难解答</td>
+<td align="left">ms-settings:troubleshoot</td>
+</tr>
+<tr>
+<td align="left">Windows 安全性</td>
+<td align="left">ms-settings:windowsdefender</td>
+</tr>
+<tr>
+<td align="left">Windows 预览体验计划</td>
+<td align="left">ms-settings:windowsinsider（仅当用户在 WIP 中注册时显示）<br>ms-settings:windowsinsider-optin</td>
+</tr>
+<tr>
+<td align="left">Windows 更新</td>
+<td align="left">ms-settings:windowsupdate<br>ms-settings:windowsupdate-action</td>
+</tr>
+<tr>
+<td align="left">Windows 更新-活动小时数</td>
+<td align="left">ms-settings:windowsupdate-activehours</td>
+</tr>
+<tr>
+<td align="left">Windows 更新 - 高级选项</td>
+<td align="left">ms-settings:windowsupdate-options</td>
+</tr>
+<tr>
+<td align="left">Windows 更新-可选更新</td>
+<td align="left">ms-settings:windowsupdate-optionalupdates</td>
+</tr>
+<tr>
+<td align="left">Windows 更新 - 重启选项</td>
+<td align="left">ms-settings:windowsupdate-restartoptions</td>
+</tr>
+<tr>
+<td align="left">Windows 更新-按需查找器</td>
+<td align="left">ms-settings:windowsupdate-seekerondemand</td>
+</tr>
+<tr>
+<td align="left">Windows 更新 - 查看更新历史记录</td>
+<td align="left">ms-settings:windowsupdate-history</td>
+</tr>
+</tbody></table>
+<p><strong>用户帐户</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">“设置”页面</th>
+<th align="left">URI</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">设置</td>
+<td align="left">ms-settings:workplace-provisioning（仅在企业部署了预配包后可用）</td>
+</tr>
+<tr>
+<td align="left">修复令牌</td>
+<td align="left">ms-settings:workplace-repairtoken</td>
+</tr>
+<tr>
+<td align="left">设置</td>
+<td align="left">ms-settings:workplace-provisioning（仅在移动设备和企业部署了预配包后可用）</td>
+</tr>
+<tr>
+<td align="left">Windows Anywhere</td>
+<td align="left">ms-settings:windowsanywhere（设备必须支持 Windows Anywhere）</td>
+</tr>
+</tbody></table>
+<p>其中将HTML表格转为Markdown表格的Python脚本代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> pyperclip</span><br><span class="line"></span><br><span class="line">html_table = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&lt;table class=&quot;table table-sm&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;thead&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;“设置”页面&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;th&gt;URI&lt;/th&gt;</span></span><br><span class="line"><span class="string">&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;/thead&gt;</span></span><br><span class="line"><span class="string">&lt;tbody&gt;</span></span><br><span class="line"><span class="string">&lt;tr&gt;</span></span><br><span class="line"><span class="string">&lt;td&gt;修复令牌&lt;/td&gt;</span></span><br><span class="line"><span class="string">&lt;td&gt;ms-settings:workplace-repairtoken&lt;/td&gt;</span></span><br><span class="line"><span class="string">&lt;/tr&gt;</span></span><br><span class="line"><span class="string">&lt;/tbody&gt;</span></span><br><span class="line"><span class="string">&lt;/table&gt;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_table, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line"></span><br><span class="line">table = soup.find(<span class="string">&#x27;table&#x27;</span>)</span><br><span class="line">table_headers = [header.text <span class="keyword">for</span> header <span class="keyword">in</span> table.find_all(<span class="string">&#x27;th&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">rows = []</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> table.find_all(<span class="string">&#x27;tr&#x27;</span>)[<span class="number">1</span>:]:</span><br><span class="line">    rows.append([val.text.replace(<span class="string">&#x27;\n&#x27;</span>, <span class="string">&#x27;&#x27;</span>).replace(<span class="string">&#x27;\xa0&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> val <span class="keyword">in</span> row.find_all(<span class="string">&#x27;td&#x27;</span>)])</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(rows, columns=table_headers)</span><br><span class="line">markdown_table = df.to_markdown(index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(markdown_table)</span><br><span class="line">pyperclip.copy(markdown_table)</span><br></pre></td></tr></table></figure>
+
+<p>上述的代码无法正确处理标签<code>&lt;br&gt;</code>，转换完成后还需要手动添加<code>&lt;br&gt;</code>标签以达到换行的效果</p>
+<p><strong>注意：Windows11与之大不相同</strong></p>
+<p>例如：</p>
+<ul>
+<li><code>ms-settings:bluetooth</code>改为<code>ms-settings:bluetoothdevices</code></li>
+<li><code>ms-settings:camera</code>改为<code>ms-settings:privacy-webcam</code></li>
+<li><code>ms-settings:cellular</code>改为<code>ms-settings:network-cellular</code></li>
+<li><code>ms-settings:dateandtime</code>改为<code>ms-settings:dateandtime-language</code></li>
+<li><code>ms-settings:emailandaccounts</code>改为<code>ms-settings:emailandaccounts-accountssettings</code></li>
+<li><code>ms-settings:network-ethernet</code>改为<code>ms-settings:network-ethernetandproxy</code></li>
+<li><code>ms-settings:network-mobilehotspot</code>改为<code>ms-settings:network-mobilehotspotandtethering</code></li>
+<li><code>ms-settings:network-proxy</code>改为<code>ms-settings:network-proxyandvpn</code></li>
+<li><code>ms-settings:network-vpn</code>改为<code>ms-settings:network-vpn</code></li>
+<li><code>ms-settings:network-wifi</code>改为<code>ms-settings:network-wifi-legacy</code></li>
+<li><code>ms-settings:notifications</code>改为<code>ms-settings:notifications-and-actions</code></li>
+<li><code>ms-settings:powersleep</code>改为<code>ms-settings:powersleep-and-battery</code></li>
+<li><code>ms-settings:privacy</code>改为<code>ms-settings:privacy-general</code></li>
+<li><code>ms-settings:regionlanguage</code>改为<code>ms-settings:region</code></li>
+<li><code>ms-settings:storagesense</code>改为<code>ms-settings:system-storage</code></li>
+<li><code>ms-settings:tabletmode</code>改为<code>ms-settings:tabletmode</code></li>
+<li><code>ms-settings:windowsupdate</code>改为<code>ms-settings:windowsupdate-options</code></li>
+<li><code>ms-settings:personalization-background</code>改为<code>ms-settings:personalization-background</code></li>
+<li><code>ms-settings:personalization-colors</code>改为<code>ms-settings:personalization-colors</code></li>
+<li><code>ms-settings:personalization-lockscreen</code>改为<code>ms-settings:lockscreen</code></li>
+<li><code>ms-settings:personalization-start</code>改为<code>ms-settings:personalization-start</code></li>
+</ul>
+<p>上面列表中的21条“修改”来自ChatGPT。</p>
+<blockquote>
+<p>By the way, 今天有Google账号和ChatGPT等账号啦，2美元买的虚拟号，一条短信近7￥😭😂</p>
+</blockquote>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><p>其他的一些可以使用命令行直接打开的有：</p>
+<table>
+<thead>
+<tr>
+<th align="center">页面</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">环境变量</td>
+<td align="center">rundll32 sysdm.cpl,EditEnvironmentVariables</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/">原文链接</a>哦~<br><a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129601344">https://letmefly.blog.csdn.net/article/details/129601344</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">使用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More"><span class="toc-number">3.</span> <span class="toc-text">More</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">4.</span> <span class="toc-text">Other</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

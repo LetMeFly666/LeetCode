@@ -1,1 +1,175 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>图论笔记 - 极简极入门级 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>图论笔记 - 极简极入门级</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-10-27T06:14:21.000Z" id="date"> 2023-10-27</time></div></span></div></div><hr><div id="post-content"><h1 id="图论笔记-极简极入门级"><a href="#图论笔记-极简极入门级" class="headerlink" title="图论笔记 - 极简极入门级"></a>图论笔记 - 极简极入门级</h1><h2 id="图的概念"><a href="#图的概念" class="headerlink" title="图的概念"></a>图的概念</h2><ul>
+<li><strong>环(loop, selfloop)</strong> ：两个端点相同的边</li>
+<li><strong>棱(link)</strong> ：两个端点不同的边</li>
+<li><strong>孤立点(isolated vertex)</strong> ：不与任何顶点相邻的顶点</li>
+<li><strong>简单图(simple graph)</strong> ：无环，无重边的图</li>
+<li><strong>平凡图(trival graph)</strong> ：仅有一个顶点的图（可有多条环）</li>
+<li><strong>空图(empty graph)&#x2F;零图</strong> ：没有边的图（注意：任何一图都有$V\neq \emptyset$）</li>
+<li><strong>奇点(odd vertex)&#x2F;偶点(even vertex)</strong> ：度为奇&#x2F;偶的点</li>
+<li><strong>悬挂点(end vertex)&#x2F;叶点(leaf)</strong> ：度为1的顶点</li>
+<li><strong>悬挂边(end edge)</strong> ：悬挂点的关联边</li>
+<li><strong>邻域(neighborhood)</strong> ：点$u$相邻的点的集合称为点$u$的邻域，记作$N(u)$</li>
+<li><strong>独立集(independent set)</strong> ：若图$G$的顶点子集$V’(V’\subseteq V(G))$中任意两个顶点在图$G$中都互不相邻，则称$V’$为图$G$的独立集</li>
+<li>有向图的<strong>基础图</strong> ：将有向图每条边改为无向边得到的图</li>
+<li>无向图的<strong>定向图</strong> ：将无向图每条边改为有向边得到的图</li>
+<li><strong>完全图(Complete graph)</strong> ：任意两点之间都有边的图（$n$个顶点的完全图记为$K_n$）</li>
+<li><strong>二部图(偶图, bipartite graph)</strong> ：$G&#x3D;(X, Y; E)$，其中$X\cap Y&#x3D;\emptyset$且$V(G)&#x3D;X+Y$（将$G$分为$X$和$Y$两个独立集）</li>
+<li><strong>完全二部图</strong> ：$K_{m, n}$指$|X|&#x3D;m, |Y|&#x3D;n$的二部图</li>
+<li><strong>k-正则图(k-regular g.)</strong> ：每个顶点度都为$k$的_无向_简单图</li>
+<li><strong>线图</strong> &#x2F; <strong>边图</strong> ：以图的边为顶点所做的图</li>
+<li><strong>联图</strong> ： 不相交的图$G_1$和$G_2$，将$G_1$中的每个顶点分别和$G_2$中每个顶点相连得到的图</li>
+<li><strong>途径(walk)</strong> 例如$AaBcEdB$；<strong>迹(trail)</strong> 是边各不相同的途径；<strong>路(path)</strong> 是顶点各不相同的途径（顶点不同说明边也一定不同）<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">节点重复情况</th>
+<th align="center">边重复情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">途径(Walks)</td>
+<td align="center">允许</td>
+<td align="center">允许</td>
+</tr>
+<tr>
+<td align="center">迹(Trails)</td>
+<td align="center">允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">路(Paths)</td>
+<td align="center">不允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">回路(Circuits) ⇔ 闭迹</td>
+<td align="center">允许</td>
+<td align="center">不允许</td>
+</tr>
+<tr>
+<td align="center">圈(Cycle) ⇔ 起点终点相同的路</td>
+<td align="center">不允许(起点除外)</td>
+<td align="center">不允许</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>边割</strong> &#x2F; <strong>割集</strong> ： 连接$S$和$V\backslash S$的所有边（$S$非空）；<strong>关联边割</strong> ：$V&#x3D;{v}$（只有一个顶点）</li>
+<li><strong>强连通</strong> ：任意两点相互可达；<strong>单向连通</strong> ：任意两点有可达方式；<strong>弱连通</strong>： 有向图的基础图连通</li>
+<li><strong>关联矩阵(Incidence Matrix)</strong> ：“点”行“边”列的矩阵（点1有向外的边2则$mat[1][2]&#x3D;1$，若边2指向点1则$mat[1][2]&#x3D;-1$，其余为$0$）若边有权则增加一行代表权，若边有多个权则增加多行。两图同构$\Leftrightarrow$关联矩阵可通过行列变换转化</li>
+<li><strong>邻接矩阵(Adjacency Matrix)</strong> ：“点”行“点”列的矩阵（点1有指向点3的边则$mat[1][3]&#x3D;1$，其余为$0$）若边有权则值为权而不是$1$</li>
+<li><strong>弧表(Arc List)</strong> ：3（或2）行“边（+1）”列的矩<blockquote>
+<table>
+<thead>
+<tr>
+<th>起点</th>
+<th>1</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>4</th>
+<th>5</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>终点</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>权</td>
+<td>8</td>
+<td>9</td>
+<td>6</td>
+<td>4</td>
+<td>0</td>
+<td>3</td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody></table>
+</blockquote>
+</li>
+<li><strong>邻接表(Adjany Lists)</strong> ：“点”大小的指针数组，数组中每个指针是链表头节点，链表节点是从这个点出发的所有的边</li>
+<li><strong>割边(cut edge)</strong> ：$e$为图$G$的割边$\Leftrightarrow\omega(G - e) &#x3D; \omega(G) + 1$</li>
+<li><strong>偏心率</strong> &#x2F; <strong>离心率</strong> ：$e(v) &#x3D; max({d(u, v)|u\in V(G)})$</li>
+<li><strong>半径</strong> ：$r(G) &#x3D; min{e(v)|v\in V(G)}$</li>
+<li><strong>直径</strong> ：最大偏心率</li>
+<li><strong>中心点</strong> ：偏心率等于半径的点</li>
+<li><strong>中心</strong> ：中心点的集合</li>
+<li><strong>边割(cut edge)</strong> ：一端在$S$一端在$\overline{S}$的边的集合</li>
+<li><strong>键(bond)</strong> ：极小非空边割</li>
+<li><strong>余树</strong> ：图$G$生成树$T$的补图$\overline{T}$称为$G$的余树</li>
+<li><strong>竞赛图</strong> ：无向完全图的定向图</li>
+<li><strong>团</strong> ：$V$的子集$S$中任意两点在$G$中相邻，称$S$为图$G$的团</li>
+<li><strong>覆盖(covering)</strong> &#x2F; <strong>点覆盖(vertex cover)</strong> ：$V$的子集$K$，$G$中每条边都至少有一端点在$K$中</li>
+</ul>
+<ul>
+<li>TODO: 匹配</li>
+</ul>
+<p>记号：</p>
+<ul>
+<li>$\mathcal{v}&#x3D;|V(G)|$，$\varepsilon &#x3D;|E(G)|$（点的个数、边的个数）</li>
+<li>$\Delta(G)$：最大度；$\delta(G)$：最小度</li>
+<li>$d^-(v)$：点$v$的入度；$d^+(v)$：点$v$的出度</li>
+<li>$uv$一般指无向边，$&lt;u, v&gt;$一般指有向边     </li>
+<li>$G^C$图$G$的补图</li>
+<li>$&#x3D;$ ：恒等（完全相同。a和a’是同构不是恒等）；$\cong$：同构（非标号图一般称为同构）</li>
+<li>$\omega(G)$： $G$的分支数</li>
+<li>$W(G)$： <strong>赋权图</strong>的权（每条边的权的和）</li>
+<li>$e(v)$：点$v$的 偏心率&#x2F;离心率</li>
+<li>$r(G)$：图$G$的 半径</li>
+<li>$G[E\setminus E’]$: $G$的边导出子图（点可能变少）；$G-E’$：$G$的边去掉$E’$后的图（点不变）</li>
+<li>$\alpha(G)$：<strong>独立数(independent number)</strong> 最大独立集的元素个数； $\beta(G)$：<strong>覆盖数(covering number)</strong> 最小覆盖的元素个数。$\alpha + \beta &#x3D; v$</li>
+</ul>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><center><font size="6px" face="Ink Free">The End, thanks!</font></center>
+
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">原文链接</a>哦~</p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E8%AE%BA%E7%AC%94%E8%AE%B0-%E6%9E%81%E7%AE%80%E6%9E%81%E5%85%A5%E9%97%A8%E7%BA%A7"><span class="toc-number">1.</span> <span class="toc-text">图论笔记 - 极简极入门级</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">图的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.2.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

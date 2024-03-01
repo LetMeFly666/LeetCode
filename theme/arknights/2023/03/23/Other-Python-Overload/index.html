@@ -1,116 +1,87 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>不能函数重载的Python如何实现“伪重载” | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>不能函数重载的Python如何实现“伪重载”</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-03-23T12:19:21.000Z" id="date"> 2023-03-23</time></div></span></div></div><hr><div id="post-content"><h1 id="能函数重载的Python如何实现“伪重载”"><a href="#能函数重载的Python如何实现“伪重载”" class="headerlink" title="能函数重载的Python如何实现“伪重载”"></a>能函数重载的Python如何实现“伪重载”</h1><h2 id="认清现实吧！函数重载在Python中不存在"><a href="#认清现实吧！函数重载在Python中不存在" class="headerlink" title="认清现实吧！函数重载在Python中不存在"></a>认清现实吧！函数重载在Python中不存在</h2><p>首先，Python是一门解释型语言，其解释和执行都是动态的，一个名字可以随时代表其他任何意义，根本不存在重载机制。</p>
+<p>例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a</span>):         <span class="comment"># line1</span></span><br><span class="line">    <span class="keyword">return</span> a      <span class="comment"># line2</span></span><br><span class="line">                  <span class="comment"># line3</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a, b</span>):      <span class="comment"># line4</span></span><br><span class="line">    <span class="keyword">return</span> a + b  <span class="comment"># line5</span></span><br><span class="line">                  <span class="comment"># line6</span></span><br><span class="line">f(<span class="number">1</span>)  <span class="comment"># Error     # line7</span></span><br><span class="line">f(<span class="number">1</span>, <span class="number">2</span>)           <span class="comment"># line8</span></span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>Python解释器执行完line1和line2，得知<code>f</code>是一个函数，其功能是返回传入的唯一一个参数。</p>
+<p>然而，line4和line5会把前两行的<code>f</code>的意义覆盖掉，执行完line5，Python解释器认为<code>f</code>是一个<strong>只接受两个参数</strong>的函数，因为这个函数已经将之前对<code>f</code>的定义覆盖掉了。</p>
+<p>因此运行此代码并不会得到想要的<code>1</code>和<code>3</code>，而是会得到报错：<code>TypeError: f() missing 1 required positional argument: &#39;b&#39;</code></p>
+<h2 id="我好像在写代码的时候见到过Python的重载函数？"><a href="#我好像在写代码的时候见到过Python的重载函数？" class="headerlink" title="我好像在写代码的时候见到过Python的重载函数？"></a>我好像在写代码的时候见到过Python的重载函数？</h2><p>有没有一种错觉，觉得好像见到过Python的重载函数呢？</p>
+<p>先给大家看一段代码及其运行效果（之后再讲其原理）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> overload     <span class="comment">#line1</span></span><br><span class="line">                                <span class="comment">#line2</span></span><br><span class="line"><span class="meta">@overload                       </span><span class="comment">#line3</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:           <span class="comment">#line4</span></span><br><span class="line">    ...                         <span class="comment">#line5</span></span><br><span class="line">                                <span class="comment">#line6</span></span><br><span class="line"><span class="meta">@overload                       </span><span class="comment">#line7</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a: <span class="built_in">int</span>, b: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:   <span class="comment">#line8</span></span><br><span class="line">    ...                         <span class="comment">#line9</span></span><br><span class="line">                                <span class="comment">#line10</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">a: <span class="built_in">int</span>, *args</span>) -&gt; <span class="built_in">int</span>:    <span class="comment">#line11</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> args:              <span class="comment">#line12</span></span><br><span class="line">        a += i                  <span class="comment">#line13</span></span><br><span class="line">    <span class="keyword">return</span> a                    <span class="comment">#line14</span></span><br><span class="line">                                <span class="comment">#line15</span></span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">1</span>))                     <span class="comment">#line16</span></span><br><span class="line"><span class="built_in">print</span>(f(<span class="number">1</span>, <span class="number">2</span>))                  <span class="comment">#line17</span></span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>推荐将上述代码的line1到line15复制到VsCode中，line16和line17手动打上去</p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8c81362e197948928a92c249d710130b.gif'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8c81362e197948928a92c249d710130b.gif" alt="运行效果"></p>
+<p>可以发现，当我们在函数<code>f</code>中输入一个参数<code>1</code>时，编译器提示：<code>(a: int) -&gt; int</code></p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6e5fc3dd49634b629b17d61c8da70ae4.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/6e5fc3dd49634b629b17d61c8da70ae4.png" alt="一个参数"></p>
+<p>在函数<code>f</code>中输入两个参数<code>1</code>和<code>2</code>时，编译器提示：<code>(a: int, b: int) -&gt; int</code></p>
+<p class='item-img' data-src='https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/cc7098e6ac6a4f01891727fe4973e033.png'><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/cc7098e6ac6a4f01891727fe4973e033.png" alt="两个参数"></p>
+<p>执行上述代码，发现<code>f(1)</code>返回值为<code>1</code>，<code>f(1, 2)</code>返回值为<code>1 + 2</code>的值<code>3</code>，似乎实现了<code>加法函数</code>的重载</p>
+<h2 id="真实原理解析"><a href="#真实原理解析" class="headerlink" title="真实原理解析"></a>真实原理解析</h2><p>Python<code>typing</code>中的<code>overload</code>修饰器只接收函数的函数名、参数类型及函数的返回类型，并不管函数中具体是什么。</p>
+<p>这也就是为什么上述代码的line5和line9都是<code>...</code>。这里写什么都是不会实际执行的（来自我的观测，未经科学考证）</p>
+<p>实际上，真正的函数<code>f</code>只有line11这一个，这个函数接受可变数量的参数，并将所有接受的到的参数累加后返回。</p>
+<p>删掉line1到line10，从line11开始写，执行结果是一模一样的。<code>@overload</code>修饰器实际上只是对Python的<strong>注解</strong>的一种扩展</p>
+<p>至于VsCode等编辑器为什么会认可这种拓展，是约定俗成还是@overload修饰器有着更深层的秘密？我暂未探究。</p>
+<p>好了，懂得了上述原理，我们就可以实现一个“重载之加法器”：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> overload</span><br><span class="line"></span><br><span class="line"><span class="meta">@overload</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyAdd</span>(<span class="params">first: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@overload</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyAdd</span>(<span class="params">first: <span class="built_in">int</span>, second: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@overload</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyAdd</span>(<span class="params">first: <span class="built_in">int</span>, second: <span class="built_in">int</span>, third: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="meta">@overload</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyAdd</span>(<span class="params">first: <span class="built_in">int</span>, second: <span class="built_in">int</span>, third: <span class="built_in">int</span>, *more</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">MyAdd</span>(<span class="params">*args</span>):</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> args:</span><br><span class="line">        ans += i</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(MyAdd(<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(MyAdd(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(MyAdd(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(MyAdd(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(MyAdd(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当输入<code>MyAdd(1)</code>时编辑器会提示<code>(first: int) -&gt; int</code></li>
+<li>当输入<code>MyAdd(1, 2)</code>时编辑器会提示<code>(first: int, second: int) -&gt; int</code></li>
+<li>当输入<code>MyAdd(1, 2, 3)</code>时编辑器会提示<code>(first: int, second: int, third: int) -&gt; int</code></li>
+<li>当输入<code>MyAdd(1, 2, 3, 4)</code>或<code>MyAdd(更多参数)</code>时编辑器会提示<code>(first: int, second: int, third: int, *more: Any) -&gt; int</code></li>
+</ul>
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3</span><br><span class="line">6</span><br><span class="line">10</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<p>是不是很像重载了<code>MyAdd</code>函数？</p>
+<h2 id="弦外音"><a href="#弦外音" class="headerlink" title="弦外音"></a>弦外音</h2><p>当然，也可以使用<code>typing</code>的<code>singledispatch</code>等实现类似的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> singledispatch, wraps</span><br><span class="line"></span><br><span class="line"><span class="meta">@singledispatch</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">arg</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Unsupported type&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@f.register</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_</span>(<span class="params">arg: <span class="built_in">int</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Argument is an integer&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">@f.register</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_</span>(<span class="params">arg: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Argument is a string&quot;</span>)</span><br><span class="line"></span><br><span class="line">f(<span class="number">1</span>)</span><br><span class="line">f(<span class="string">&quot;1&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Argument is an integer</span><br><span class="line">Argument is a string</span><br></pre></td></tr></table></figure>
+
+<p>但是在输入参数的过程中，编译器给的提示都是<code>(*args: Any, **kwargs: Any) -&gt; None</code></p>
+<p>具体原理暂未深究。</p>
+<p>总之，使用<code>typing</code>中的<code>overload</code>修饰器，可以做到效果不错的“伪重载”。</p>
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/03/23/Other-Python-Overload/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129738983">https://letmefly.blog.csdn.net/article/details/129738983</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/03/25/LeetCode%201574.%E5%88%A0%E9%99%A4%E6%9C%80%E7%9F%AD%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E4%BD%BF%E5%89%A9%E4%BD%99%E6%95%B0%E7%BB%84%E6%9C%89%E5%BA%8F/">← Next 1574.删除最短的子数组使剩余数组有序</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/03/23/LeetCode%201630.%E7%AD%89%E5%B7%AE%E5%AD%90%E6%95%B0%E7%BB%84/">1630.等差子数组 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%BD%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E7%9A%84Python%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E2%80%9C%E4%BC%AA%E9%87%8D%E8%BD%BD%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">能函数重载的Python如何实现“伪重载”</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E6%B8%85%E7%8E%B0%E5%AE%9E%E5%90%A7%EF%BC%81%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E5%9C%A8Python%E4%B8%AD%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">1.1.</span> <span class="toc-text">认清现实吧！函数重载在Python中不存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E5%A5%BD%E5%83%8F%E5%9C%A8%E5%86%99%E4%BB%A3%E7%A0%81%E7%9A%84%E6%97%B6%E5%80%99%E8%A7%81%E5%88%B0%E8%BF%87Python%E7%9A%84%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">我好像在写代码的时候见到过Python的重载函数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">真实原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%A6%E5%A4%96%E9%9F%B3"><span class="toc-number">1.4.</span> <span class="toc-text">弦外音</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

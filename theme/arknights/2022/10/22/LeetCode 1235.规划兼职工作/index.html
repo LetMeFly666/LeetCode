@@ -1,116 +1,131 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1235.规划兼职工作 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1235.规划兼职工作</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-10-22T02:00:11.000Z" id="date"> 2022-10-22</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1235-规划兼职工作：-离散化：多次哈希-DPx1-二分查找-DP"><a href="#【LetMeFly】1235-规划兼职工作：-离散化：多次哈希-DPx1-二分查找-DP" class="headerlink" title="【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]"></a>【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-profit-in-job-scheduling/">https://leetcode.cn/problems/maximum-profit-in-job-scheduling/</a></p>
+<p>你打算利用空闲时间来做兼职工作赚些零花钱。</p>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>这里有&nbsp;<code>n</code>&nbsp;份兼职工作，每份工作预计从&nbsp;<code>startTime[i]</code>&nbsp;开始到&nbsp;<code>endTime[i]</code>&nbsp;结束，报酬为&nbsp;<code>profit[i]</code>。</p>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+<p>给你一份兼职工作表，包含开始时间&nbsp;<code>startTime</code>，结束时间&nbsp;<code>endTime</code>&nbsp;和预计报酬&nbsp;<code>profit</code>&nbsp;三个数组，请你计算并返回可以获得的最大报酬。</p>
+
+<p>注意，时间上出现重叠的 2 份工作不能同时进行。</p>
+
+<p>如果你选择的工作在时间&nbsp;<code>X</code>&nbsp;结束，那么你可以立刻进行在时间&nbsp;<code>X</code>&nbsp;开始的下一份工作。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong class='item-img' data-src='https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample1_1584.png'><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample1_1584.png" style="width: 300px;"></strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
+<strong>输出：</strong>120
+<strong>解释：
+</strong>我们选出第 1 份和第 4 份工作， 
+时间范围是 [1-3]+[3-6]，共获得报酬 120 = 50 + 70。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><strong class='item-img' data-src='https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample22_1584.png'><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample22_1584.png" style="height: 112px; width: 600px;"> </strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60]
+<strong>输出：</strong>150
+<strong>解释：
+</strong>我们选择第 1，4，5 份工作。 
+共获得报酬 150 = 20 + 70 + 60。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<p><strong class='item-img' data-src='https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample3_1584.png'><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/10/19/sample3_1584.png" style="height: 112px; width: 400px;"></strong></p>
+
+<pre><strong>输入：</strong>startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
+<strong>输出：</strong>6
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= startTime.length == endTime.length ==&nbsp;profit.length&nbsp;&lt;= 5 * 10^4</code></li>
+    <li><code>1 &lt;=&nbsp;startTime[i] &lt;&nbsp;endTime[i] &lt;= 10^9</code></li>
+    <li><code>1 &lt;=&nbsp;profit[i] &lt;= 10^4</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：离散化：多次哈希-DPx1"><a href="#方法一：离散化：多次哈希-DPx1" class="headerlink" title="方法一：离散化：多次哈希 + DPx1"></a>方法一：离散化：多次哈希 + DPx1</h2><p>我们将所有出现过的时间记录下来并排序，那么我们就只需要考虑“出现过的时间”这些特殊节点，最多一共$2n$个节点。</p>
+<p>假设一共有$n$个节点（$appearedTime.size() &#x3D; n$），我们建立一个长度为$n$的$dp$数组，其中$dp[i]$代表到时间$appearedTime[i]$为止的最大获利。</p>
+<p>$dp[i] &#x3D; \max{dp[i - 1], dp[第t份工作的开始时间在appearedTime中的下标] + profit[t]}$，其中$endTime[t] &#x3D; appearedTime[i]$</p>
+<p>什么意思呢？就是假如有一份工作在$appearedTime[i]$时刻结束，那么选择这份工作的话获利为$这份工作开始时的最大获利 + 这份工作的工资 &#x3D; dp[这份工作开始时间对应的index] + profit[这份工作]$</p>
+<p>以上所有需要用到的东西，均由哈希表映射即可。</p>
+<h3 id="如何处理出现过的时间节点"><a href="#如何处理出现过的时间节点" class="headerlink" title="如何处理出现过的时间节点"></a>如何处理出现过的时间节点</h3><p>首先将所有出现过的时间放入哈希表中，然后将哈希表中的所有时间取出来，再排个序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = startTime.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">// 插入哈希表</span></span><br><span class="line">unordered_set&lt;<span class="type">int</span>&gt; appearedTimeSet;  <span class="comment">// 所有的出现过的时间</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    appearedTimeSet.<span class="built_in">insert</span>(startTime[i]);</span><br><span class="line">    appearedTimeSet.<span class="built_in">insert</span>(endTime[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 存入数组并排序</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; appearedTime;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="type">int</span>&amp; t : appearedTimeSet) &#123;</span><br><span class="line">    appearedTime.<span class="built_in">push_back</span>(t);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">sort</span>(appearedTime.<span class="built_in">begin</span>(), appearedTime.<span class="built_in">end</span>());</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何由结束时间映射到这是第几份工作"><a href="#如何由结束时间映射到这是第几份工作" class="headerlink" title="如何由结束时间映射到这是第几份工作"></a>如何由结束时间映射到这是第几份工作</h3><p>将<code>&lt;工作结束时间, 这是第几份工作&gt;</code>插入哈希表，就可以通过<code>工作结束时间</code>获取所有的<code>在这个时间结束的工作</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = startTime.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">unordered_multimap&lt;<span class="type">int</span>, <span class="type">int</span>&gt; endBy;  <span class="comment">// &lt;在这个时间结束, 这个任务对应的编号&gt;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    endBy.<span class="built_in">insert</span>(&#123;endTime[i], i&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何由工作的开始时间映射到其在appearedTime中的index"><a href="#如何由工作的开始时间映射到其在appearedTime中的index" class="headerlink" title="如何由工作的开始时间映射到其在appearedTime中的index"></a>如何由工作的开始时间映射到其在appearedTime中的index</h3><p>遍历appearedTime中的时间，将<code>&lt;时间, 这个时间的index&gt;</code>插入哈希表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> nTime = appearedTime.<span class="built_in">size</span>();</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; time2loc;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nTime; i++) &#123;</span><br><span class="line">    time2loc[appearedTime[i]] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态规划部分怎么实现"><a href="#动态规划部分怎么实现" class="headerlink" title="动态规划部分怎么实现"></a>动态规划部分怎么实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(nTime)</span></span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; nTime; i++) &#123;</span><br><span class="line">    dp[i] = dp[i - <span class="number">1</span>];  <span class="comment">// 继承上一时刻的最大获利</span></span><br><span class="line">    <span class="keyword">auto</span> range = endBy.<span class="built_in">equal_range</span>(appearedTime[i]);  <span class="comment">// 结束时间等于appearedTime[i]的所有的工作 在哈希表中存在的范围</span></span><br><span class="line">    for_each(range.first, range.second, [&amp;](unordered_multimap&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::value_type&amp; x) &#123;  <span class="comment">// 对于在appearedTime[i]结束的每一份工作</span></span><br><span class="line">        <span class="comment">// x.second是这份工作的编号</span></span><br><span class="line">        <span class="comment">// startTime[x.second]是这份工作的开始时间</span></span><br><span class="line">        <span class="comment">// time2loc[startTime[x.second]]是这份工作的开始时间在appearedTime中对应的下标</span></span><br><span class="line">        <span class="comment">// dp[time2loc[startTime[x.second]]是这份工作开始时间的最大获利</span></span><br><span class="line">        <span class="comment">// profit[x.second]是这份工作的获利</span></span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i], dp[time2loc[startTime[x.second]]] + profit[x.second]);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// dp中的最后一个元素（所有出现过的时刻中的最后一个时刻）即为答案</span></span><br><span class="line"><span class="keyword">return</span> dp.<span class="built_in">back</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>时间复杂度$O(\n log n)$，其中$n$是工作数量，时间复杂度主要来自排序</li>
+<li>空间复杂度$O(n)$，使用了数次哈希表，每次的空间复杂度都是$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jobScheduling</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; startTime, vector&lt;<span class="type">int</span>&gt;&amp; endTime, vector&lt;<span class="type">int</span>&gt;&amp; profit)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; appearedTimeSet;  <span class="comment">// 所有的出现过的时间</span></span><br><span class="line">        unordered_multimap&lt;<span class="type">int</span>, <span class="type">int</span>&gt; endBy;  <span class="comment">// &lt;在这个时间结束, 这个任务对应的编号&gt;</span></span><br><span class="line">        <span class="type">int</span> n = startTime.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            appearedTimeSet.<span class="built_in">insert</span>(startTime[i]);</span><br><span class="line">            appearedTimeSet.<span class="built_in">insert</span>(endTime[i]);</span><br><span class="line">            endBy.<span class="built_in">insert</span>(&#123;endTime[i], i&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; appearedTime;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="type">int</span>&amp; t : appearedTimeSet) &#123;</span><br><span class="line">            appearedTime.<span class="built_in">push_back</span>(t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(appearedTime.<span class="built_in">begin</span>(), appearedTime.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> nTime = appearedTime.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; time2loc;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nTime; i++) &#123;</span><br><span class="line">            time2loc[appearedTime[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(nTime)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; nTime; i++) &#123;</span><br><span class="line">            dp[i] = dp[i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">auto</span> range = endBy.<span class="built_in">equal_range</span>(appearedTime[i]);</span><br><span class="line">            for_each(range.first, range.second, [&amp;](unordered_multimap&lt;<span class="type">int</span>, <span class="type">int</span>&gt;::value_type&amp; x) &#123;</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], dp[time2loc[startTime[x.second]]] + profit[x.second]);</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;i = %d, appearedTime[%d] = %d, dp[%d] = %d\n&quot;</span>, i, i, appearedTime[i], i, dp[i]);  <span class="comment">//************</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp.<span class="built_in">back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二：二分查找-DP"><a href="#方法二：二分查找-DP" class="headerlink" title="方法二：二分查找 + DP"></a>方法二：二分查找 + DP</h2><p>方法一中我们使用了数个哈希表将时间和工作映射了起来</p>
+<p>方法二学习自力扣官解：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-profit-in-job-scheduling/solution/gui-hua-jian-zhi-gong-zuo-by-leetcode-so-gu0e/">https://leetcode.cn/problems/maximum-profit-in-job-scheduling/solution/gui-hua-jian-zhi-gong-zuo-by-leetcode-so-gu0e/</a></p>
+<p>这种方法中，$dp[i]$代表前$i$份兼职工作可以获得的最大报酬。</p>
+<p>因此，$dp[i] &#x3D; \max{dp[i-1], dp[k] + profit[i - 1]}$，其中$k$表示结束时间不超过第$i-1$份工作的开始时间的工作数量</p>
+<p>这个$k$怎么来呢？当然是二分查找</p>
+<p>因此我们还需要对工作按照“结束时间”从小到大排个序。</p>
+<ul>
+<li>时间复杂度$O(\n log n)$，其中$n$是工作数量，时间复杂度主要来自排序</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">jobScheduling</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; startTime, vector&lt;<span class="type">int</span>&gt;&amp; endTime, vector&lt;<span class="type">int</span>&gt;&amp; profit)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = startTime.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">jobs</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            jobs[i] = &#123;startTime[i], endTime[i], profit[i]&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(jobs.<span class="built_in">begin</span>(), jobs.<span class="built_in">end</span>(), [&amp;](<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; a, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; b)&#123;</span><br><span class="line">            <span class="keyword">return</span> a[<span class="number">1</span>] &lt; b[<span class="number">1</span>];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> k = <span class="built_in">upper_bound</span>(jobs.<span class="built_in">begin</span>(), jobs.<span class="built_in">begin</span>() + i - <span class="number">1</span>, jobs[i - <span class="number">1</span>][<span class="number">0</span>], [&amp;](<span class="type">int</span> st, vector&lt;<span class="type">int</span>&gt;&amp; job) &#123;</span><br><span class="line">                <span class="keyword">return</span> st &lt; job[<span class="number">1</span>];</span><br><span class="line">            &#125;) - jobs.<span class="built_in">begin</span>();</span><br><span class="line">            dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>], dp[k] + jobs[i - <span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/10/22/LeetCode%201235.%E8%A7%84%E5%88%92%E5%85%BC%E8%81%8C%E5%B7%A5%E4%BD%9C/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127458533">https://letmefly.blog.csdn.net/article/details/127458533</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/10/22/LeetCode%200455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/">← Next 455.分发饼干</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/10/21/LeetCode%200452.%E7%94%A8%E6%9C%80%E5%B0%91%E6%95%B0%E9%87%8F%E7%9A%84%E7%AE%AD%E5%BC%95%E7%88%86%E6%B0%94%E7%90%83/">452.用最少数量的箭引爆气球 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911235-%E8%A7%84%E5%88%92%E5%85%BC%E8%81%8C%E5%B7%A5%E4%BD%9C%EF%BC%9A-%E7%A6%BB%E6%95%A3%E5%8C%96%EF%BC%9A%E5%A4%9A%E6%AC%A1%E5%93%88%E5%B8%8C-DPx1-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-DP"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1235.规划兼职工作：[离散化：多次哈希 + DPx1] | [二分查找 + DP]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E7%A6%BB%E6%95%A3%E5%8C%96%EF%BC%9A%E5%A4%9A%E6%AC%A1%E5%93%88%E5%B8%8C-DPx1"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：离散化：多次哈希 + DPx1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%87%BA%E7%8E%B0%E8%BF%87%E7%9A%84%E6%97%B6%E9%97%B4%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">如何处理出现过的时间节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%B1%E7%BB%93%E6%9D%9F%E6%97%B6%E9%97%B4%E6%98%A0%E5%B0%84%E5%88%B0%E8%BF%99%E6%98%AF%E7%AC%AC%E5%87%A0%E4%BB%BD%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">如何由结束时间映射到这是第几份工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%94%B1%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%BC%80%E5%A7%8B%E6%97%B6%E9%97%B4%E6%98%A0%E5%B0%84%E5%88%B0%E5%85%B6%E5%9C%A8appearedTime%E4%B8%AD%E7%9A%84index"><span class="toc-number">1.1.3.</span> <span class="toc-text">如何由工作的开始时间映射到其在appearedTime中的index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%83%A8%E5%88%86%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text">动态规划部分怎么实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.5.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-DP"><span class="toc-number">1.2.</span> <span class="toc-text">方法二：二分查找 + DP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

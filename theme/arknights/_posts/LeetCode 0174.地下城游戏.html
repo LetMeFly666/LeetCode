@@ -1,1 +1,155 @@
-extends ./post.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>174.地下城游戏 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>174.地下城游戏</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-08-06T01:38:31.000Z" id="date"> 2022-08-06</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】174-地下城游戏：原数组上修改"><a href="#【LetMeFly】174-地下城游戏：原数组上修改" class="headerlink" title="【LetMeFly】174.地下城游戏：原数组上修改"></a>【LetMeFly】174.地下城游戏：原数组上修改</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/dungeon-game/">https://leetcode.cn/problems/dungeon-game/</a></p>
+<style>
+
+table.dungeon, .dungeon th, .dungeon td {
+
+  border:3px solid black;
+
+}
+
+
+
+ .dungeon th, .dungeon td {
+
+    text-align: center;
+
+    height: 70px;
+
+    width: 70px;
+
+}
+
+</style>
+
+
+
+<p>一些恶魔抓住了公主（<strong>P</strong>）并将她关在了地下城的右下角。地下城是由&nbsp;M x N 个房间组成的二维网格。我们英勇的骑士（<strong>K</strong>）最初被安置在左上角的房间里，他必须穿过地下城并通过对抗恶魔来拯救公主。</p>
+
+
+
+<p>骑士的初始健康点数为一个正整数。如果他的健康点数在某一时刻降至 0 或以下，他会立即死亡。</p>
+
+
+
+<p>有些房间由恶魔守卫，因此骑士在进入这些房间时会失去健康点数（若房间里的值为<em>负整数</em>，则表示骑士将损失健康点数）；其他房间要么是空的（房间里的值为 <em>0</em>），要么包含增加骑士健康点数的魔法球（若房间里的值为<em>正整数</em>，则表示骑士将增加健康点数）。</p>
+
+
+
+<p>为了尽快到达公主，骑士决定每次只向右或向下移动一步。</p>
+
+
+
+<p>&nbsp;</p>
+
+
+
+<p><strong>编写一个函数来计算确保骑士能够拯救到公主所需的最低初始健康点数。</strong></p>
+
+
+
+<p>例如，考虑到如下布局的地下城，如果骑士遵循最佳路径 <code>右 -&gt; 右 -&gt; 下 -&gt; 下</code>，则骑士的初始健康点数至少为 <strong>7</strong>。</p>
+
+
+
+<table class="dungeon">
+<tr> 
+<td>-2 (K)</td> 
+<td>-3</td> 
+<td>3</td> 
+</tr> 
+<tr> 
+<td>-5</td> 
+<td>-10</td> 
+<td>1</td> 
+</tr> 
+<tr> 
+<td>10</td> 
+<td>30</td> 
+<td>-5 (P)</td> 
+</tr> 
+</table>
+
+<!---2K   -3  3
+
+-5   -10   1
+
+10 30   5P-->
+
+
+
+<p>&nbsp;</p>
+
+
+
+<p><strong>说明:</strong></p>
+
+
+
+<ul>
+
+<pre><code>&lt;li&gt;
+
+&lt;p&gt;骑士的健康点数没有上限。&lt;/p&gt;
+
+&lt;/li&gt;
+
+&lt;li&gt;任何房间都可能对骑士的健康点数造成威胁，也可能增加骑士的健康点数，包括骑士进入的左上角房间以及公主被监禁的右下角房间。&lt;/li&gt;
+</code></pre>
+</ul>
+
+    
+<h2 id="方法一：原数组上dp"><a href="#方法一：原数组上dp" class="headerlink" title="方法一：原数组上dp"></a>方法一：原数组上dp</h2><p>这道题需要从右下向左上进行dp。因为从左上方向右下方dp的话，“路径和最大”不一定“所需初始值最小”（可能路上有$-10000$和$20000$，虽然路径和最大，但是经过$-10000$的时候至少需要$10001$的血）</p>
+<p>从右下方向左上方dp，$dp[i][j]$表示从$(i, j)$到终点所需最小初始血量。</p>
+<p>那么，$dp[0][0]$即为从起点到终点所需最小初始血量，即为答案。</p>
+<p>从$dp[i][j]$可以到达$dp[i + 1][j]$或$dp[i][j + 1]$，具体要到哪个呢？当然是要到两个中最小的那个（$\min {dp[i + 1][j], dp[i][j + 1]}$）。</p>
+<p>同时，$dp[i][j]$这一点经过“掉血”或“回血”后至少还有$1$滴血，因此$dp[i][j] &#x3D; \max{1, \min {dp[i + 1][j], dp[i][j + 1]} - dungeon[i][j]}$</p>
+<p>初始值$dp[n - 1][m - 1]&#x3D;\max{1, 1 - dungeon[n - 1][m - 1]}$</p>
+<p>如果原始地图数组允许修改，那么我们可以直接在原始数组上dp，这样空间复杂度就降为了1。</p>
+<ul>
+<li>时间复杂度$O(n\times m)$，其中地图大小为$n\times m$</li>
+<li>空间复杂度$O(1)$。如果原始地图数组不允许修改，那么我们就需要额外开辟一个dp空间，空间复杂度就变成了$O(\times m)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">calculateMinimumHP</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = dungeon.<span class="built_in">size</span>(), m = dungeon[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        dungeon[n - <span class="number">1</span>][m - <span class="number">1</span>] = <span class="built_in">max</span>(<span class="number">1</span>, <span class="number">1</span> - dungeon[n - <span class="number">1</span>][m - <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i + <span class="number">1</span> &lt; n &amp;&amp; j + <span class="number">1</span> &lt; m) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, <span class="built_in">min</span>(dungeon[i + <span class="number">1</span>][j], dungeon[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i + <span class="number">1</span> &lt; n) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, dungeon[i + <span class="number">1</span>][j] - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j + <span class="number">1</span> &lt; m) &#123;</span><br><span class="line">                    dungeon[i][j] = <span class="built_in">max</span>(<span class="number">1</span>, dungeon[i][j + <span class="number">1</span>] - dungeon[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dungeon[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/08/06/LeetCode%200174.%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126190011">https://letmefly.blog.csdn.net/article/details/126190011</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91174-%E5%9C%B0%E4%B8%8B%E5%9F%8E%E6%B8%B8%E6%88%8F%EF%BC%9A%E5%8E%9F%E6%95%B0%E7%BB%84%E4%B8%8A%E4%BF%AE%E6%94%B9"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】174.地下城游戏：原数组上修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8E%9F%E6%95%B0%E7%BB%84%E4%B8%8Adp"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：原数组上dp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

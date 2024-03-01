@@ -1,116 +1,205 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>python - 下载自百度网盘的远古の - 高级知识总结2 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>python - 下载自百度网盘的远古の - 高级知识总结2</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-09-25T14:03:00.000Z" id="date"> 2023-09-25</time></div></span></div></div><hr><div id="post-content"><h1 id="Python提高"><a href="#Python提高" class="headerlink" title="Python提高"></a>Python提高</h1><h2 id="一、动态库加载"><a href="#一、动态库加载" class="headerlink" title="一、动态库加载"></a>一、动态库加载</h2><ol>
+<li><p>编译C语言代码(会生成xx.out 二进制可执行文件)</p>
+<ul>
+<li>gcc xx.c</li>
+</ul>
+</li>
+<li><p>运行编译后的文件</p>
+<ul>
+<li>.&#x2F;xx.out</li>
+</ul>
+</li>
+<li><p>把一个C语言文件编译成一个动态库的命令(平台下)</p>
+<ul>
+<li>gcc xx.c -shared -o -fPIC libxx.so</li>
+</ul>
+</li>
+<li><p>加载动态库</p>
+<ul>
+<li>lib &#x3D; ctypes.cdll.LoadLibrary(“.&#x2F;libxx.so”)</li>
+</ul>
+</li>
+<li><p>多线程执行任务</p>
+<ul>
+<li>Thread(target&#x3D;lib.文件封装的函数名).start()</li>
+</ul>
+</li>
+<li><p>代码示例</p>
+<p>​</p>
+<p>1&gt; C 代码 文件名: loop.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Dead_Loop</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-block content
-  -
-    const prev = page.prev
-    const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
-    const excerptConf = theme.post.excerpt
-    const reward = theme.post.reward
-    const encrypted = page.encrypt || page.password
-    const content = encrypted === undefined ? page.content : page.origin
-    const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
-  #post-bg
-    #post-title
-      h1= page.title
-      if (dateConf || updatedConf) && page.title
-        #post-info
-          - var first = true
-          if dateConf
-            span #{__('post.posted')}
-              div.control
-                time(datetime=page.date.toJSON())#date
-                  = ' ' + date(page.date, date_format)
-            - first = false
-          if updatedConf
-            if !first
-              br
-            span #{__('post.edited')}
-              div.control
-                time(datetime=page.updated.toJSON())#updated
-                  = ' ' + date(page.updated, date_format)
-            - first = false
-          if countWord
-            if !first
-              br
-            span #{__('post.countTotal')}
-              div.control #{countWord}
-            - first = false
-          if countTime
-            if !first
-              br
-            span #{__('post.timeTotal')}
-              div.control #{countTime} #{__('post.timeUnit')}
-            - first = false
-          if busuanzi
-            if !first
-              br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
-            - first = false
-    hr
-    #post-content
-      if excerptConf || encrypted
-        != page.content
-      else
-        != page.more
-      #paginator!= paginator()
-    #post-footer
-      if prev || next
-        - let fix = ""
-        if prev === undefined
-          - fix = "justify-content: flex-end"
-        if next === undefined
-          - fix = "justify-content: flex-start"
-        #pages(style=fix)
-          if prev !== undefined
-            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
-              a(href=url_for(prev.path))
-                |#{__('post.next')}
-                = ' ' + prev.title
-          if next !== undefined
-            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
-              a(href=url_for(next.path))
-                = next.title + ' '
-                |#{__('post.prev')}
-    if reward
-      details#reward
-        summary #{__('post.reward')}
-        each imgSrc, pay in reward
-          div
-            span #{pay}
-            br
-            img(src=url_for(imgSrc))
-    -
-      let count = (theme.valine.enable === true) +
-                  (theme.gitalk.enable === true) +
-                  (theme.waline.enable === true)
-    if page.comments && count
-      #comments
-        if count > 1
-          .selector
-            if theme.valine.enable === true
-              button.valine-sel
-            if theme.gitalk.enable === true
-              button.gitalk-sel
-            if theme.waline.enable === true
-              button.waline-sel
-        if theme.valine.enable === true
-          #valine
-        if theme.gitalk.enable === true
-          #gitalk
-        if theme.waline.enable === true
-          #waline
+<p>2&gt; 将loop.c编译成动态库 libloop.so</p>
+<p>3&gt; 文件名:thread_dynamic_load.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> Thread</span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> cdll</span><br><span class="line"></span><br><span class="line">lib = cdll.LoadLibrary(<span class="string">&quot;./libloop.so&quot;</span>)</span><br><span class="line">Thread(target=lib.Dead_Loop).start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结论</p>
+</li>
+</ol>
+<ul>
+<li>python是一门胶水语言,可以通过加载动态库的方式在一个项目中运行不同语言的程序</li>
+<li>通过动态库加载其他语言的方式可以解决多线程GIL使用C解释器运行无法并发的问题</li>
+</ul>
+<h2 id="二、拷贝"><a href="#二、拷贝" class="headerlink" title="二、拷贝"></a>二、拷贝</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">copy.copy() — 浅拷贝</span><br><span class="line">1、对可变类型对象进行浅拷贝, 只做顶层拷贝</span><br><span class="line">2、对不可变类型对象进行浅拷贝, 那么不拷贝</span><br><span class="line"></span><br><span class="line">copy.deepcopy() — 深拷贝</span><br><span class="line">1、对可变类型对象进行深拷贝, 除了顶层拷贝,还会对该对象的子元素进行深拷贝</span><br><span class="line">2、对不可变类型对象进行深拷贝(递归思维,以递归出口为最终 是否执行拷贝操作的依据)</span><br><span class="line">	 (1)如果该对象存在可变类型数据的子元素, 那么会顶层拷贝, 并且对其子元素进行深拷贝</span><br><span class="line">     (2)如果该对象不存在可变数据对象, 那么不拷贝</span><br></pre></td></tr></table></figure>
 
-block aside-block
-  - 
-    const encrypted = page.encrypt || page.password
-    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
-  if (tocContent.length > 0)
-    #toc-div(style=encrypted !== undefined?"display:none":"")
-      h1 #{__('post.index')}
-      |!{tocContent}
+
+
+<h2 id="三、私有化"><a href="#三、私有化" class="headerlink" title="三、私有化"></a>三、私有化</h2><ul>
+<li><p>xx:	    公有变量</p>
+</li>
+<li><p>_x:       单前置下划线,私有化属性或方法，from somemodule import *禁止导入,类对象和子类可以访问</p>
+<p>说明: 使用from somemodule import *的方式从一个包导入所有资源, _x不会被导入 但通过 from somemodule import _x的方式是可以导入的</p>
+</li>
+<li><p>__xx:     双前置下划线,避免与子类中的属性命名冲突，无法在外部直接访问(名字重整&lt;_类名__xx&gt;所以访问不到)</p>
+</li>
+<li><p>__xx__: 双前后下划线,用户名字空间的魔法对象或属性</p>
+</li>
+<li><p>xx__:  单后置下划线,用于避免与Python关键词的冲突</p>
+<p>​</p>
+</li>
+</ul>
+<h2 id="四、模块导入"><a href="#四、模块导入" class="headerlink" title="四、模块导入"></a>四、模块导入</h2><ul>
+<li><p>模块被导入后，<code>import module/from xx import yy</code>不能重新导入模块，重新导入需用<code>reload</code></p>
+<p>说明: python解释器在运行时,会将导入的包编译为.pyc的二进制文件;提升代码运行速度, 所以<code>程序在运行的过程中</code>如果包的内容有修改,即便再次导入,解释器发现对应的.pyc文件已经存在,并不会重新编译加载资源</p>
+<p>文件名 test1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_a = <span class="string">&quot;_a&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>文件名 test2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import test1</span></span><br><span class="line"><span class="keyword">from</span> test1 <span class="keyword">import</span> _a</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># print(test1._a)</span></span><br><span class="line"><span class="built_in">print</span>(_a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">from</span> test1 <span class="keyword">import</span> _a</span><br><span class="line">    <span class="built_in">print</span>(_a)</span><br><span class="line">    <span class="comment"># import test1</span></span><br><span class="line">    <span class="comment"># print(test1._a)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结论: 修改test1 中_a的值, 打印结果不会改变</strong></p>
+<p>​</p>
+<p>修改test2代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from imp import reload -- Python3.4版本以上源代码中的引用由imp自动变为importlib</span></span><br><span class="line"><span class="keyword">from</span> importlib <span class="keyword">import</span> reload</span><br><span class="line"><span class="keyword">import</span> test1</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(test1._a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    reload(test1)</span><br><span class="line">    <span class="built_in">print</span>(test1._a)</span><br></pre></td></tr></table></figure>
+
+<p><strong>结论: 使用reload重新加载, 修改test1 中_a的值, 打印结果发生改变</strong></p>
+</li>
+</ul>
+<h2 id="五、property属性"><a href="#五、property属性" class="headerlink" title="五、property属性"></a>五、property属性</h2><ol>
+<li><p>定义</p>
+<p>一种用起来像是使用的实例属性一样的特殊属性，可以对应于某个方法</p>
+</li>
+<li><p>property属性的两种方式</p>
+<ul>
+<li>装饰器    &#x3D;&gt; 在方法上应用装饰器</li>
+<li>类属性    &#x3D;&gt; 在类中定义值为property对象的类属性</li>
+</ul>
+</li>
+<li><p>装饰器方式</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 原价</span></span><br><span class="line">        self.original_price = <span class="number">100</span></span><br><span class="line">        <span class="comment"># 折扣</span></span><br><span class="line">        self.discount = <span class="number">0.8</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">price</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 实际价格 = 原价 * 折扣</span></span><br><span class="line">        new_price = self.original_price * self.discount</span><br><span class="line">        <span class="keyword">return</span> new_price</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新式类独有</span></span><br><span class="line"><span class="meta">    @price.setter</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">price</span>(<span class="params">self, value</span>):</span><br><span class="line">        self.original_price = value</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 新式类独有</span></span><br><span class="line"><span class="meta">    @price.deleter</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">price</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">del</span> self.original_price</span><br><span class="line"></span><br><span class="line">obj = Goods()</span><br><span class="line">obj.price         <span class="comment"># 获取商品价格</span></span><br><span class="line">obj.price = <span class="number">200</span>   <span class="comment"># 修改商品原价</span></span><br><span class="line"><span class="keyword">del</span> obj.price     <span class="comment"># 删除商品原价</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义时，在实例方法的基础上添加 @property 装饰器；并且仅有一个self参数</li>
+<li>调用时，无需括号</li>
+<li>经典类中的属性只有一种访问方式，其对应被 @property 修饰的方法</li>
+<li>新式类中的属性有三种访问方式，并分别对应了三个被@property、@方法名.setter、@方法名.deleter修饰的方法</li>
+<li>新式类中具有三种访问方式，我们可以根据它们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</li>
+<li>简单实例</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Pager</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, current_page</span>):</span><br><span class="line">        <span class="comment"># 用户当前请求的页码（第一页、第二页...）</span></span><br><span class="line">        self.current_page = current_page</span><br><span class="line">        <span class="comment"># 每页默认显示10条数据</span></span><br><span class="line">        self.per_items = <span class="number">10</span> </span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">start</span>(<span class="params">self</span>):</span><br><span class="line">        val = (self.current_page - <span class="number">1</span>) * self.per_items</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">end</span>(<span class="params">self</span>):</span><br><span class="line">        val = self.current_page * self.per_items</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line"><span class="comment"># ############### 调用 ###############</span></span><br><span class="line">p = Pager(<span class="number">1</span>)</span><br><span class="line">p.start  <span class="comment"># 就是起始值，即：m</span></span><br><span class="line">p.end  <span class="comment"># 就是结束值，即：n</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python的property属性的功能是：property属性内部进行一系列的逻辑计算，最终将计算结果返回。</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>类属性方式</li>
+</ol>
+<ul>
+<li>当使用类属性的方式创建property属性时，<code>经典类</code>和<code>新式类</code>无区别</li>
+<li>简单实例</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Goods</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 原价</span></span><br><span class="line">        self.original_price = <span class="number">100</span></span><br><span class="line">        <span class="comment"># 折扣</span></span><br><span class="line">        self.discount = <span class="number">0.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_price</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 实际价格 = 原价 * 折扣</span></span><br><span class="line">        new_price = self.original_price * self.discount</span><br><span class="line">        <span class="keyword">return</span> new_price</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_price</span>(<span class="params">self, value</span>):</span><br><span class="line">        self.original_price = value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">del_price</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">del</span> self.original_price</span><br><span class="line"></span><br><span class="line">    PRICE = <span class="built_in">property</span>(get_price, set_price, del_price, <span class="string">&#x27;价格属性描述...&#x27;</span>)</span><br><span class="line"></span><br><span class="line">obj = Goods()</span><br><span class="line">obj.PRICE         <span class="comment"># 获取商品价格</span></span><br><span class="line">obj.PRICE = <span class="number">200</span>   <span class="comment"># 修改商品原价</span></span><br><span class="line"><span class="keyword">del</span> obj.PRICE     <span class="comment"># 删除商品原价</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>property方法中有个四个参数<ul>
+<li>第一个参数是方法名，调用 对象.属性 时自动触发执行方法</li>
+<li>第二个参数是方法名，调用 对象.属性 ＝ XXX 时自动触发执行方法</li>
+<li>第三个参数是方法名，调用 del 对象.属性 时自动触发执行方法</li>
+<li>第四个参数是字符串，调用 对象.属性.<strong>doc</strong> ，此参数是该属性的描述信息</li>
+</ul>
+</li>
+<li>由于<code>类属性方式</code>创建property属性具有3种访问方式，我们可以根据它们几个属性的访问特点，分别将三个方法定义为对同一个属性：获取、修改、删除</li>
+</ul>
+<h2 id="六、魔法属性"><a href="#六、魔法属性" class="headerlink" title="六、魔法属性"></a>六、魔法属性</h2><ol>
+<li>__doc__   类的描述信息</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="string">&quot;&quot;&quot; 描述类信息，这是用于看片的神奇 &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Foo.__doc__)</span><br><span class="line"><span class="comment">#输出：类的描述信息</span></span><br></pre></td></tr></table></figure>
+
+<p>   ​</p>
+<ol start="2">
+<li><p>__module__    当前操作的对象在那个模块</p>
+</li>
+<li><p>__class__        当前操作的对象的类是什么</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> test <span class="keyword">import</span> Person</span><br><span class="line"></span><br><span class="line">obj = Person()</span><br><span class="line"><span class="built_in">print</span>(obj.__module__)  <span class="comment"># 输出 test 即：输出模块</span></span><br><span class="line"><span class="built_in">print</span>(obj.__class__)  <span class="comment"># 输出 test.Person 即：输出类</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>__del__            当对象在内存中被释放时，自动触发执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__del__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>__call__    对象后面加括号，触发执行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;__call__&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>​       obj &#x3D; Foo()  # 执行__init__<br>​       obj()  # 执行 __call__</p>
+<p>​    6.__dict__  	  类或对象中的所有属性	</p>
+<ol start="7">
+<li>__str__  	         如果一个类中定义了__str__方法，那么在打印 对象 时，默认输出该方法的返回值。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>:</span><br><span class="line">	<span class="keyword">def</span> <span class="title function_">__str__</span>(<span class="params">self</span>):</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&#x27;laowang&#x27;</span></span><br><span class="line"></span><br><span class="line">obj = Foo()</span><br><span class="line"><span class="built_in">print</span>(obj)</span><br><span class="line"><span class="comment"># 输出：laowang</span></span><br></pre></td></tr></table></figure>
+
+<p>   ​</p>
+<ol start="8">
+<li><p>__getitem__  	 __setitem__  	__delitem__  	   用于索引操作，如字典。以上分别表示获取、设置、删除数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;__getitem__&#x27;</span>, key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__setitem__</span>(<span class="params">self, key, value</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;__setitem__&#x27;</span>, key, value)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__delitem__</span>(<span class="params">self, key</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;__delitem__&#x27;</span>, key)</span><br></pre></td></tr></table></figure>
+
+
+<p>obj &#x3D; Foo()</p>
+<p>result &#x3D; obj[‘k1’]      # 自动触发执行 __getitem__<br>obj[‘k2’] &#x3D; ‘laowang’   # 自动触发执行 __setitem__<br>del obj[‘k1’]           # 自动触发执行 __delitem__</p>
+</li>
+<li><p>__getslice__  	 __setslice__  	__delslice__  	   该三个方法用于切片操作，如：列表</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__getslice__</span>(<span class="params">self, i, j</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__getslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__setslice__</span>(<span class="params">self, i, j, sequence</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__setslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__delslice__</span>(<span class="params">self, i, j</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__delslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">  obj = Foo()</span><br><span class="line"></span><br><span class="line">  obj[-<span class="number">1</span>:<span class="number">1</span>]                   <span class="comment"># 自动触发执行 __getslice__</span></span><br><span class="line">  obj[<span class="number">0</span>:<span class="number">1</span>] = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>]    <span class="comment"># 自动触发执行 __setslice__</span></span><br><span class="line">  <span class="keyword">del</span> obj[<span class="number">0</span>:<span class="number">2</span>]                <span class="comment"># 自动触发执行 __delslice__</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>于2020.2.11日下载自百度网盘（个人笔记.rar），共包含三个md文件，这是其一。</p>
+<p>无法追述到作者及来源，但所总结的内容确实较为优质，不忍心删除之，不想令其石沉大海。</p>
+<p>若原作者发现了此文，请与<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666">我</a>联系🌹</p>
+<p><a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/">本文地址</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie1/">← Next python - 下载自百度网盘的远古の - 高级知识总结1</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/09/24/LeetCode%200146.LRU%E7%BC%93%E5%AD%98/">146.LRU 缓存 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python%E6%8F%90%E9%AB%98"><span class="toc-number">1.</span> <span class="toc-text">Python提高</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8A%A8%E6%80%81%E5%BA%93%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.1.</span> <span class="toc-text">一、动态库加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.2.</span> <span class="toc-text">二、拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A7%81%E6%9C%89%E5%8C%96"><span class="toc-number">1.3.</span> <span class="toc-text">三、私有化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5"><span class="toc-number">1.4.</span> <span class="toc-text">四、模块导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81property%E5%B1%9E%E6%80%A7"><span class="toc-number">1.5.</span> <span class="toc-text">五、property属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%AD%94%E6%B3%95%E5%B1%9E%E6%80%A7"><span class="toc-number">1.6.</span> <span class="toc-text">六、魔法属性</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
