@@ -10,7 +10,7 @@
   var userColorSchemaAttributeName = 'data-user-color-scheme';
   var defaultColorSchemaAttributeName = 'data-default-color-scheme';
   var colorToggleButtonSelector = '#color-toggle-btn';
-  var gotoArknightsButtonSelector = '#color-toggle-btn';
+  var gotoArknightsButtonSelector = '#letmefly-goto-arknights';
   var colorToggleIconSelector = '#color-toggle-icon';
 
   function setLS(k, v) {
