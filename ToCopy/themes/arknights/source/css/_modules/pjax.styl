@@ -1,0 +1,73 @@
+.loading
+  --loadingbar var(--theme-loadingbar)
+
+.loading.fail
+  --loadingbar var(--theme-loadingbar-fail)
+
+.loading
+  opacity 0
+  transition opacity .3s
+  &.reset .loadingBar
+    transition unset
+  .loadingBar
+    z-index 100
+    position fixed
+    top 0
+    border-bottom 1px solid var(--loadingbar)
+    width 50%
+    transition transform .6s
+    &::before 
+      width 20px
+    &::after 
+      width 1px
+  .left 
+    left 0
+    transform-origin left
+    &::before 
+      box-shadow 10px 0 15px 1px var(--loadingbar)
+      right 0
+    &::after 
+      box-shadow .5px 0 8px 2px var(--loadingbar), .5px 0 2px 1px var(--loadingbar)
+      right 0
+  .right 
+    right 0
+    transform-origin right
+    &::before 
+      box-shadow -10px 0 15px 1px var(--loadingbar)
+      left 0
+    &::after 
+      box-shadow -.5px 0 8px 2px var(--loadingbar), -.5px 0 2px 1px var(--loadingbar)
+      left 0
+
+.loadingBar::before,
+.loadingBar::after 
+  content ''
+  display block
+  position absolute
+  top 0
+  height 1px
+
+.pjax-out
+  pointer-events none
+  position absolute!important
+  animation .6s pjax-animate-out
+.pjax-in
+  pointer-events none
+  position absolute!important
+  animation .6s pjax-animate-in
+
+:is(#paginator, .bottom-btn):is(.pjax-in, .pjax-out)
+  visibility hidden
+  pointer-events none
+
+@keyframes pjax-animate-in
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+@keyframes pjax-animate-out
+  0%
+    opacity 1
+  100%
+    opacity 0

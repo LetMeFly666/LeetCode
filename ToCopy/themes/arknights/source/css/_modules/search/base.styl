@@ -1,0 +1,133 @@
+@import 'single_page'
+
+#search-header
+  pointer-events all
+  position relative
+  input
+    padding unset
+    box-sizing border-box
+    color var(--theme-text-light)
+    position relative
+    &::placeholder
+      transition .3s
+    font-size 15px
+    height 40px
+    background-color unset
+    border unset
+    outline none
+    width 100%
+  .navItemTitle
+    overflow hidden
+    &:hover
+      margin unset
+    &::before, &::after
+      display block
+      content ''
+      position absolute
+
+#search-holder
+  @media (min-width: 1024px)
+    height 40px
+  @media (max-width: 1023px)
+    height 2.82em
+  display none
+
+.search #search-holder
+  display block
+  
+main:not(.up) .search #search-header
+  position absolute
+  top 40px
+  input
+    animation get-out .6s
+
+@media ( min-width 1024px )
+  .search-popup
+    background-color var(--theme-bg-trans0)
+  #search-header .navItemTitle
+    &::before
+      z-index -2
+    &::after
+      top 0
+      width 0
+      height 100%
+      transition .3s
+      z-index -1
+      background-color var(--theme-highlight)
+    &:hover
+      input::placeholder
+        transition .3s
+        color var(--theme-text-hover)
+      &::after
+        transition .3s
+        width 100%
+        background-color var(--theme-highlight)
+
+.search-popup
+  scrollbar-width thin
+  pointer-events all
+  z-index 20
+  transition transform .6s
+  overflow-wrap anywhere
+  position fixed
+  top 90px
+  height calc(100vh - 90px)
+  @media ( max-width 1023px )
+    width 428px
+    max-width 100%
+  width 32%
+  padding 0 0 0 1px
+  overflow-y auto
+#loading
+  font-family 'JetBrains Mono'
+  display flex
+  justify-content center
+  div
+    display inline-block
+  p
+    animation 2s loading infinite steps(4,jump-none)
+    overflow-wrap normal
+    overflow hidden
+    display table-caption
+
+@keyframes loading
+  0%
+    width calc(100% - 1.5em)
+  100%
+    width 100%
+
+#search-result
+  width 100%
+  .recent-post
+    font-family 'JetBrains Mono'
+    margin 0
+    padding 8px
+    border none
+    border-top 1px solid var(--theme-border-soft)
+    border-bottom 1px solid var(--theme-border-soft)
+    p
+      margin .5em
+      max-height 40px
+      white-space initial
+      overflow hidden
+    b
+      color var(--theme-text-light)
+    &:hover .search-keyword
+      color var(--theme-subcolor)
+      transition .3s
+      background-color unset
+    overflow hidden
+    .search-keyword
+      background-color var(--theme-highlight)
+      color var(--theme-text-light)
+    .search-result-title
+      font-size 1.1em
+#no-result p
+  text-align center
+
+@media ( min-width 1024px )
+  .blur
+    article,
+    aside,
+    #canvas-dust
+      filter blur(0.8px)

@@ -1,0 +1,85 @@
+@media ( max-width 1023px )
+  .moving
+    pointer-events none
+    .navBtn
+      pointer-events none
+    .search-header,
+    .search-popup
+      transition unset
+      pointer-events none
+    .navContent
+      overflow visible
+
+  .up
+    .search-popup
+      left 100vw
+    article
+      margin-top 50px
+    .closed
+      .navBtn
+        transform translateY(-.5em)
+      .navContent
+        overflow visible
+    #search-header
+      padding .5em 2em 0 5em
+      animation get-in-top .3s
+      position absolute
+      input
+        animation none
+    .search-popup
+      top 55px
+      height calc(100vh - 55px)
+      background-color var(--theme-bg-trans0)
+      transform translateX(100%)
+
+  #search-header
+    transition unset
+    top 0
+    width 100%
+    box-sizing border-box
+    .navItemTitle
+      border-color var(--theme-border-light)
+  
+  .down.moving header:not(.expanded) #search-header
+    animation get-out-top .3s
+
+  .search-popup
+    left 0
+    right 0
+    transform translateX(-100%)
+    &.open
+      transform translateX(0)
+
+@media ( max-width 768px )
+  .up header:not(.expanded) #search-header
+    left 100vw
+  .up article
+    margin-top 60px
+
+animate-up(distance)
+  @keyframes get-out-top
+    0%
+      padding .5em 2em 0 5em
+      left distance
+      transform translate(0, 0)
+      position absolute
+    100%
+      padding .5em 2em 0 5em
+      left distance
+      position absolute
+      transform translate(0, -100%)
+
+@media ( min-width 769px )
+  animate-up(calc(100vw - 238px))
+
+@media ( max-width 768px )
+  animate-up(100vw)
+
+@keyframes get-in-top
+  0%
+    padding .5em 2em 0 5em
+    transform translate(0, -100%)
+  100%
+    padding .5em 2em 0 5em
+    transform translate(0, 0)
+
