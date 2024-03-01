@@ -10,6 +10,7 @@
   var userColorSchemaAttributeName = 'data-user-color-scheme';
   var defaultColorSchemaAttributeName = 'data-default-color-scheme';
   var colorToggleButtonSelector = '#color-toggle-btn';
+  var gotoArknightsButtonSelector = '#color-toggle-btn';
   var colorToggleIconSelector = '#color-toggle-icon';
 
   function setLS(k, v) {
@@ -274,6 +275,16 @@
           icon.classList.replace(getIconClass(current), getIconClass(invertColorSchemaObj[current]));
         });
       }
+    }
+    button_toArknights = document.querySelector(gotoArknightsButtonSelector);
+    if (button) {
+      // 当用户点击切换按钮时，跳转到方舟主题
+      button.addEventListener('click', function() {
+        var href = location.href;
+        var url = new URL(href);
+        url.pathname = 'theme/arknights' + url.pathname;
+        location.href = url.href;
+      });
     }
   });
 })(window, document);
