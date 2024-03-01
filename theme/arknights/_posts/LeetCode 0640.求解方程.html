@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;solve-the-equation&#x2F; 求解一个给定的方程，将x以字符串 &quot;x&#x3D;#value&quot;&nbsp;的形式返回。该方程仅包含 &#39;+&#39; ， &#39;-&#39; 操作，变量&nbsp;x&nbsp;和其对应系数。  如果方程没有解，请返回&nbsp;&quot;No s">
+<meta property="og:type" content="website">
+<meta property="og:title" content="640.求解方程">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;solve-the-equation&#x2F; 求解一个给定的方程，将x以字符串 &quot;x&#x3D;#value&quot;&nbsp;的形式返回。该方程仅包含 &#39;+&#39; ， &#39;-&#39; 操作，变量&nbsp;x&nbsp;和其对应系数。  如果方程没有解，请返回&nbsp;&quot;No s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-10T02:54:55.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.723Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="字符串解析">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>640.求解方程 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="640.求解方程"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】640-求解方程：过几天就看不懂了的迷惑性代码，但是是详解"><a href="#【LetMeFly】640-求解方程：过几天就看不懂了的迷惑性代码，但是是详解" class="headerlink" title="【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解"></a>【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/solve-the-equation/">https://leetcode.cn/problems/solve-the-equation/</a></p>
+<p>求解一个给定的方程，将<code>x</code>以字符串 <code>"x=#value"</code>&nbsp;的形式返回。该方程仅包含 <code>'+'</code> ， <code>'-'</code> 操作，变量&nbsp;<code>x</code>&nbsp;和其对应系数。</p>
+
+<p>如果方程没有解，请返回&nbsp;<code>"No solution"</code>&nbsp;。如果方程有无限解，则返回 <code>“Infinite solutions”</code> 。</p>
+
+<p>如果方程中只有一个解，要保证返回值 <font color="#c7254e"><font face="Menlo, Monaco, Consolas, Courier New, monospace"><span style="font-size:12.6px"><span style="background-color:#f9f2f4">'x'</span></span></font></font>&nbsp;是一个整数。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入:</strong> equation = "x+5-3+x=6+x-2"
+<strong>输出:</strong> "x=2"
+</pre>
+
+<p><strong>示例 2:</strong></p>
+
+<pre>
+<strong>输入:</strong> equation = "x=x"
+<strong>输出:</strong> "Infinite solutions"
+</pre>
+
+<p><strong>示例 3:</strong></p>
+
+<pre>
+<strong>输入:</strong> equation = "2x=x"
+<strong>输出:</strong> "x=0"
+</pre>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+    <li><code>3 &lt;= equation.length &lt;= 1000</code></li>
+    <li><code>equation</code>&nbsp;只有一个&nbsp;<code>'='</code>.</li>
+    <li><code>equation</code>&nbsp;方程由整数组成，其绝对值在&nbsp;<code>[0, 100]</code>&nbsp;范围内，不含前导零和变量 <code>'x'</code> 。&nbsp;<span style="display:block"><span style="height:0px"><span style="position:absolute">​​​</span></span></span></li>
+</ul>
+
+
+    
+<h2 id="方法一：模拟"><a href="#方法一：模拟" class="headerlink" title="方法一：模拟"></a>方法一：模拟</h2><p><strong>自认为这道题代码写得太具有迷惑性了，推荐一波</strong><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/solve-the-equation/solution/qiu-jie-fang-cheng-by-leetcode-solution-knct/">官解</a>。如果不嫌弃，也可以看一看我的思路：</p>
+<p>首先确定等号的位置，这样我们就可以得知左边的表达式和右边的表达式的范围了。</p>
+<p>对于某个表达式，我们求出其中$x$的系数和常数分别为多少。</p>
+<p>那么具体怎么求呢？</p>
+<p>首先我们把表达式分割成一个一个的小单元“-2”、“+3”、“5”、“-x”、“-2x”、“x”、“3x”等，分割规则是：遇到下一个“加减号”或到表达式结尾。</p>
+<p>对于某个“小单元”，可以手写一个<code>atoi</code>函数求出这个小单元的值&#x2F;$x$的系数（如果最后一个字符是<code>x</code>就加到$x$的系数上，否则就加到常数上）（如果最后一个字符是<code>x</code>，那么调用<code>atoi</code>时就把长度减少一位，不把<code>x</code>这个字符传递给<code>atoi</code>函数）</p>
+<p>那么怎么写<code>atoi</code>函数呢？</p>
+<p>首先要讨论传递到这个函数中的字符串有哪几种情况：</p>
+<ul>
+<li><code>-2</code>（来自<code>-2</code>或<code>-2x</code>）</li>
+<li><code>+3</code>（来自<code>+3</code>或<code>+3x</code>）</li>
+<li><code>5</code>（来自<code>5</code>或<code>5x</code>）</li>
+<li><code>-</code>（来自<code>-x</code>）</li>
+<li><code> </code>（来自<code>x</code>）</li>
+</ul>
+<p>只要我们能处理好上述$5$种情况，那么对于本题来说，就是一个完美的<code>atoi</code>函数。（不能使用自带的<code>atoi</code>，否则<code>+</code>、<code>-</code>、<code> </code>都将被处理为$0$）</p>
+<p>最后回到初始问题，我们知道了左边$x$的系数、左边的常数、右边$x$的系数、右边的常数，如果“左边$x$系数等于右边并且左边常数不等于右边”那么就“无解”($x + 1 &#x3D; x + 2$)，如果“左边$x$系数等于右边并且左边并且左边常数等于右边”那么就“无数解”($x + 1 &#x3D; x + 1$)，否则方程的解为$x&#x3D;\frac{右边常数 - 左边常数}{左边x系数 - 右边x系数}$</p>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是字符串长度，每个字符最多遍历$3$次（判断等号位置、确定下一个加减号的位置、确定某个“小单元”的值）</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getEqualLocation</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s[i] == <span class="hljs-string">&#x27;=&#x27;</span>)<br>                <span class="hljs-keyword">return</span> i;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;  <span class="hljs-comment">// Fake Return</span><br>    &#125;<br><br>    <span class="hljs-type">int</span> __LetMeFly_atoi(string&amp; s, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> length) &#123;<br>        <span class="hljs-keyword">if</span> (length == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (length == <span class="hljs-number">1</span> &amp;&amp; s[left] == <span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (length == <span class="hljs-number">1</span> &amp;&amp; s[left] == <span class="hljs-string">&#x27;+&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (s[left] == <span class="hljs-string">&#x27;+&#x27;</span>)<br>            left++, length--;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[left] == <span class="hljs-string">&#x27;-&#x27;</span>)<br>            left++, length--, k = <span class="hljs-number">-1</span>;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (length--) &#123;<br>            ans *= <span class="hljs-number">10</span>;<br>            ans += s[left++] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans * k;<br>    &#125;<br><br>    <span class="hljs-function">pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; <span class="hljs-title">getXandConst</span><span class="hljs-params">(string&amp; s, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;  <span class="hljs-comment">// get [l, r) &#x27;s x and const</span><br>        pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-type">int</span> lastLoc = l;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nowLoc = l; nowLoc &lt;= r; nowLoc++) &#123;<br>            <span class="hljs-keyword">if</span> (nowLoc != l &amp;&amp; (nowLoc == r || s[nowLoc] == <span class="hljs-string">&#x27;+&#x27;</span> || s[nowLoc] == <span class="hljs-string">&#x27;-&#x27;</span>)) &#123;<br>                <span class="hljs-comment">// (lastLoc, nowLoc)</span><br>                (s[nowLoc - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;x&#x27;</span> ? ans.first : ans.second) += __LetMeFly_atoi(s, lastLoc, (s[nowLoc - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;x&#x27;</span> ? nowLoc - <span class="hljs-number">1</span> : nowLoc) - lastLoc);<br>                lastLoc = nowLoc;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">solveEquation</span><span class="hljs-params">(string&amp; equation)</span> </span>&#123;<br>        <span class="hljs-type">int</span> locEqual = <span class="hljs-built_in">getEqualLocation</span>(equation);<br>        <span class="hljs-keyword">auto</span> [leftX, leftConst] = <span class="hljs-built_in">getXandConst</span>(equation, <span class="hljs-number">0</span>, locEqual);<br>        <span class="hljs-keyword">auto</span> [rightX, rightConst] = <span class="hljs-built_in">getXandConst</span>(equation, locEqual + <span class="hljs-number">1</span>, equation.<span class="hljs-built_in">size</span>());<br>        <span class="hljs-keyword">if</span> (leftX == rightX) &#123;<br>            <span class="hljs-keyword">return</span> leftConst == rightConst ? <span class="hljs-string">&quot;Infinite solutions&quot;</span> : <span class="hljs-string">&quot;No solution&quot;</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;x=&quot;</span> + <span class="hljs-built_in">to_string</span>((rightConst - leftConst) / (leftX - rightX));<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/08/10/LeetCode%200640.%E6%B1%82%E8%A7%A3%E6%96%B9%E7%A8%8B/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126262898">https://letmefly.blog.csdn.net/article/details/126262898</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

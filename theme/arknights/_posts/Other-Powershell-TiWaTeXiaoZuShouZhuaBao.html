@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="昨日见到了@FLY的“提瓦特小助手”抽卡分析截图，觉得不错，今日搜了一下“提瓦特小助手”，关注了公众号，里面有教程文章：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;ChJwm-ENxrMZKax3YBOoZQ 大致原理是（通过抓包或登录）获取原神的Cookie，再通过此Cookie获取抽奖历史记录，最后存储在“提瓦特小助手”的云端，以便后期显示与分析。 其中介绍了电脑端抓包的方式。一种是">
+<meta property="og:type" content="website">
+<meta property="og:title" content="提瓦特小助手 - 原神抓包的一个不错的Powershell脚本">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Powershell-TiWaTeXiaoZuShouZhuaBao.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="昨日见到了@FLY的“提瓦特小助手”抽卡分析截图，觉得不错，今日搜了一下“提瓦特小助手”，关注了公众号，里面有教程文章：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;ChJwm-ENxrMZKax3YBOoZQ 大致原理是（通过抓包或登录）获取原神的Cookie，再通过此Cookie获取抽奖历史记录，最后存储在“提瓦特小助手”的云端，以便后期显示与分析。 其中介绍了电脑端抓包的方式。一种是">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-01T06:58:57.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.739Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Powershell">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="抓包">
+<meta property="article:tag" content="原神">
+<meta property="article:tag" content="Genshin">
+<meta property="article:tag" content="游戏辅助">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>提瓦特小助手 - 原神抓包的一个不错的Powershell脚本 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="提瓦特小助手 - 原神抓包的一个不错的Powershell脚本"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <p>昨日见到了<a title="冯凌云">@FLY</a>的“提瓦特小助手”抽卡分析截图，觉得不错，今日搜了一下“提瓦特小助手”，关注了公众号，里面有教程文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/ChJwm-ENxrMZKax3YBOoZQ">https://mp.weixin.qq.com/s/ChJwm-ENxrMZKax3YBOoZQ</a></p>
+<p>大致原理是（通过抓包或登录）获取原神的Cookie，再通过此Cookie获取抽奖历史记录，最后存储在“提瓦特小助手”的云端，以便后期显示与分析。</p>
+<p>其中介绍了电脑端抓包的方式。一种是安装抓包软件Fiddler手动找到原神抽卡记录的数据包，一种是直接执行脚本，下载一个应用程序，通过应用程序抓包并分析。</p>
+<p>命令很简单：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">iex</span>(<span class="hljs-built_in">irm</span> <span class="hljs-string">&#x27;https://lelaer.com/d.ps1&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>大概原理估计是从<code>https://lelaer.com/d.ps</code>下载<code>powershell</code>脚本并执行</p>
+<p>其中该脚本为：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$logLocation</span> = <span class="hljs-string">&quot;%userprofile%\AppData\LocalLow\miHoYo\Genshin Impact\output_log.txt&quot;</span>;<br><span class="hljs-variable">$logLocationChina</span> = <span class="hljs-string">&quot;%userprofile%\AppData\LocalLow\miHoYo\<span class="hljs-variable">$</span>([char]0x539f)<span class="hljs-variable">$</span>([char]0x795e)\output_log.txt&quot;</span>;<br><br><span class="hljs-variable">$reg</span> = <span class="hljs-variable">$args</span>[<span class="hljs-number">0</span>]<br><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x6b63)<span class="hljs-variable">$</span>([char]0x5728)<span class="hljs-variable">$</span>([char]0x83b7)<span class="hljs-variable">$</span>([char]0x53d6)<span class="hljs-variable">$</span>([char]0x62bd)<span class="hljs-variable">$</span>([char]0x5361)<span class="hljs-variable">$</span>([char]0x5206)<span class="hljs-variable">$</span>([char]0x6790)<span class="hljs-variable">$</span>([char]0x94fe)<span class="hljs-variable">$</span>([char]0x63a5)...&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Green<br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot; &quot;</span><br><span class="hljs-variable">$logLocation</span> = <span class="hljs-variable">$logLocationChina</span><br><br><span class="hljs-variable">$tmps</span> = <span class="hljs-variable">$env:TEMP</span> + <span class="hljs-string">&#x27;\pm.ps1&#x27;</span>;<br><span class="hljs-keyword">if</span> ([<span class="hljs-type">System.IO.File</span>]::Exists(<span class="hljs-variable">$tmps</span>)) &#123;<br>  <span class="hljs-built_in">ri</span> <span class="hljs-variable">$tmps</span><br>&#125;<br><br><span class="hljs-variable">$path</span> = [<span class="hljs-type">System.Environment</span>]::ExpandEnvironmentVariables(<span class="hljs-variable">$logLocation</span>);<br><span class="hljs-keyword">if</span> (<span class="hljs-operator">-Not</span> [<span class="hljs-type">System.IO.File</span>]::Exists(<span class="hljs-variable">$path</span>)) &#123;<br>    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x627e)<span class="hljs-variable">$</span>([char]0x4e0d)<span class="hljs-variable">$</span>([char]0x5230)<span class="hljs-variable">$</span>([char]0x539f)<span class="hljs-variable">$</span>([char]0x795e)<span class="hljs-variable">$</span>([char]0x65e5)<span class="hljs-variable">$</span>([char]0x5fd7)<span class="hljs-variable">$</span>([char]0x6587)<span class="hljs-variable">$</span>([char]0x4ef6)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x81f3)<span class="hljs-variable">$</span>([char]0x5c11)<span class="hljs-variable">$</span>([char]0x6253)<span class="hljs-variable">$</span>([char]0x5f00)<span class="hljs-variable">$</span>([char]0x7948)<span class="hljs-variable">$</span>([char]0x613f)<span class="hljs-variable">$</span>([char]0x5386)<span class="hljs-variable">$</span>([char]0x53f2)<span class="hljs-variable">$</span>([char]0x754c)<span class="hljs-variable">$</span>([char]0x9762)<span class="hljs-variable">$</span>([char]0x4e00)<span class="hljs-variable">$</span>([char]0x6b21)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Red<br>  <br>    <span class="hljs-keyword">if</span> (<span class="hljs-operator">-NOT</span> ([<span class="hljs-type">Security.Principal.WindowsPrincipal</span>][<span class="hljs-type">Security.Principal.WindowsIdentity</span>]::GetCurrent()).IsInRole([<span class="hljs-type">Security.Principal.WindowsBuiltInRole</span>] <span class="hljs-string">&quot;Administrator&quot;</span>)) &#123;  <br>        <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x662f)<span class="hljs-variable">$</span>([char]0x5426)<span class="hljs-variable">$</span>([char]0x4ee5)<span class="hljs-variable">$</span>([char]0x7ba1)<span class="hljs-variable">$</span>([char]0x7406)<span class="hljs-variable">$</span>([char]0x5458)<span class="hljs-variable">$</span>([char]0x8eab)<span class="hljs-variable">$</span>([char]0x4efd)<span class="hljs-variable">$</span>([char]0x6765)<span class="hljs-variable">$</span>([char]0x8fd0)<span class="hljs-variable">$</span>([char]0x884c)<span class="hljs-variable">$</span>([char]0x811a)<span class="hljs-variable">$</span>([char]0x672c)<span class="hljs-variable">$</span>([char]0x003f)<span class="hljs-variable">$</span>([char]0x6309)<span class="hljs-variable">$</span>([char]0x0045)<span class="hljs-variable">$</span>([char]0x006e)<span class="hljs-variable">$</span>([char]0x0074)<span class="hljs-variable">$</span>([char]0x0065)<span class="hljs-variable">$</span>([char]0x0072)<span class="hljs-variable">$</span>([char]0x952e)<span class="hljs-variable">$</span>([char]0x6765)<span class="hljs-variable">$</span>([char]0x7ee7)<span class="hljs-variable">$</span>([char]0x7eed)<span class="hljs-variable">$</span>([char]0x6216)<span class="hljs-variable">$</span>([char]0x6309)<span class="hljs-variable">$</span>([char]0x5176)<span class="hljs-variable">$</span>([char]0x4ed6)<span class="hljs-variable">$</span>([char]0x952e)<span class="hljs-variable">$</span>([char]0x6765)<span class="hljs-variable">$</span>([char]0x53d6)<span class="hljs-variable">$</span>([char]0x6d88)&quot;</span><br>        <span class="hljs-variable">$keyInput</span> = [<span class="hljs-type">Console</span>]::ReadKey(<span class="hljs-variable">$true</span>).Key<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$keyInput</span> <span class="hljs-operator">-ne</span> <span class="hljs-string">&quot;13&quot;</span>) &#123;<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        <span class="hljs-variable">$myinvocation</span>.mycommand.definition &gt; <span class="hljs-variable">$tmps</span><br><br>        <span class="hljs-built_in">Start-Process</span> powershell <span class="hljs-literal">-Verb</span> runAs <span class="hljs-literal">-ArgumentList</span> <span class="hljs-string">&quot;-noexit&quot;</span>, <span class="hljs-variable">$tmps</span>, <span class="hljs-variable">$reg</span><br>        <span class="hljs-keyword">break</span><br>    &#125;<br><br>    <span class="hljs-keyword">return</span><br>&#125;<br><br><span class="hljs-variable">$logs</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-literal">-Path</span> <span class="hljs-variable">$path</span><br><span class="hljs-variable">$m</span> = <span class="hljs-variable">$logs</span> <span class="hljs-operator">-match</span> <span class="hljs-string">&quot;(?m).:/.+(GenshinImpact_Data|YuanShen_Data)&quot;</span><br><span class="hljs-variable">$m</span>[<span class="hljs-number">0</span>] <span class="hljs-operator">-match</span> <span class="hljs-string">&quot;(.:/.+(GenshinImpact_Data|YuanShen_Data))&quot;</span> &gt;<span class="hljs-variable">$null</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-variable">$matches</span>.Length <span class="hljs-operator">-eq</span> <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x627e)<span class="hljs-variable">$</span>([char]0x4e0d)<span class="hljs-variable">$</span>([char]0x5230)<span class="hljs-variable">$</span>([char]0x539f)<span class="hljs-variable">$</span>([char]0x795e)<span class="hljs-variable">$</span>([char]0x65e5)<span class="hljs-variable">$</span>([char]0x5fd7)<span class="hljs-variable">$</span>([char]0x6587)<span class="hljs-variable">$</span>([char]0x4ef6)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x81f3)<span class="hljs-variable">$</span>([char]0x5c11)<span class="hljs-variable">$</span>([char]0x6253)<span class="hljs-variable">$</span>([char]0x5f00)<span class="hljs-variable">$</span>([char]0x7948)<span class="hljs-variable">$</span>([char]0x613f)<span class="hljs-variable">$</span>([char]0x5386)<span class="hljs-variable">$</span>([char]0x53f2)<span class="hljs-variable">$</span>([char]0x754c)<span class="hljs-variable">$</span>([char]0x9762)<span class="hljs-variable">$</span>([char]0x4e00)<span class="hljs-variable">$</span>([char]0x6b21)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Red<br>    <span class="hljs-keyword">return</span><br>&#125;<br><br><span class="hljs-variable">$gamedir</span> = <span class="hljs-variable">$matches</span>[<span class="hljs-number">1</span>]<br><span class="hljs-variable">$cachefile</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$gamedir</span>/webCaches/Cache/Cache_Data/data_2&quot;</span><br><span class="hljs-variable">$tmpfile</span> = <span class="hljs-string">&quot;<span class="hljs-variable">$env:TEMP</span>/ch_data_2&quot;</span><br><br><span class="hljs-built_in">Copy-Item</span> <span class="hljs-variable">$cachefile</span> <span class="hljs-literal">-Destination</span> <span class="hljs-variable">$tmpfile</span><br><br><span class="hljs-variable">$content</span> = <span class="hljs-built_in">Get-Content</span> <span class="hljs-literal">-Encoding</span> UTF8 <span class="hljs-literal">-Raw</span> <span class="hljs-variable">$tmpfile</span><br><span class="hljs-variable">$splitted</span> = <span class="hljs-variable">$content</span> <span class="hljs-operator">-split</span> <span class="hljs-string">&quot;1/0/&quot;</span><br><span class="hljs-variable">$found</span> = <span class="hljs-variable">$splitted</span> <span class="hljs-operator">-match</span> <span class="hljs-string">&quot;https.+webstatic.mihoyo.com/.+?game_biz=hk4e_(global|cn)&quot;</span><br><br><span class="hljs-variable">$found</span> = <span class="hljs-variable">$found</span>[<span class="hljs-variable">$found</span><span class="hljs-type">.Length</span> - <span class="hljs-number">1</span>] <span class="hljs-operator">-match</span> <span class="hljs-string">&quot;(https.+?game_biz=hk4e_(global|cn))&quot;</span><br><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-variable">$tmpfile</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-operator">-Not</span> <span class="hljs-variable">$found</span>) &#123;<br><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x627e)<span class="hljs-variable">$</span>([char]0x4e0d)<span class="hljs-variable">$</span>([char]0x5230)<span class="hljs-variable">$</span>([char]0x539f)<span class="hljs-variable">$</span>([char]0x795e)<span class="hljs-variable">$</span>([char]0x65e5)<span class="hljs-variable">$</span>([char]0x5fd7)<span class="hljs-variable">$</span>([char]0x6587)<span class="hljs-variable">$</span>([char]0x4ef6)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x81f3)<span class="hljs-variable">$</span>([char]0x5c11)<span class="hljs-variable">$</span>([char]0x6253)<span class="hljs-variable">$</span>([char]0x5f00)<span class="hljs-variable">$</span>([char]0x7948)<span class="hljs-variable">$</span>([char]0x613f)<span class="hljs-variable">$</span>([char]0x5386)<span class="hljs-variable">$</span>([char]0x53f2)<span class="hljs-variable">$</span>([char]0x754c)<span class="hljs-variable">$</span>([char]0x9762)<span class="hljs-variable">$</span>([char]0x4e00)<span class="hljs-variable">$</span>([char]0x6b21)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Red<br><span class="hljs-keyword">Try</span>&#123;<br><span class="hljs-variable">$tempPath</span> = mkdir <span class="hljs-string">&quot;c:\temp&quot;</span> <span class="hljs-literal">-Force</span><br>&#125;<br><span class="hljs-keyword">catch</span>&#123;<br><span class="hljs-variable">$tempPath</span> = mkdir <span class="hljs-string">&quot;d:\temp&quot;</span> <span class="hljs-literal">-Force</span><br>&#125;<br><br><span class="hljs-keyword">Try</span>&#123;<br><span class="hljs-built_in">Invoke-WebRequest</span> <span class="hljs-literal">-Uri</span> <span class="hljs-string">&quot;https://api.lelaer.com/gachalink.exe&quot;</span> <span class="hljs-literal">-OutFile</span> <span class="hljs-string">&quot;<span class="hljs-variable">$tempPath</span>\gachalink.exe&quot;</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-variable">$tempPath</span><br>&amp;<span class="hljs-string">&quot;<span class="hljs-variable">$tempPath</span>\gachalink.exe&quot;</span><br><span class="hljs-built_in">Start-Sleep</span> <span class="hljs-literal">-m</span> <span class="hljs-number">1000</span><br><span class="hljs-variable">$url</span> = <span class="hljs-built_in">get-clipboard</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-variable">$url</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x62bd)<span class="hljs-variable">$</span>([char]0x5361)<span class="hljs-variable">$</span>([char]0x5206)<span class="hljs-variable">$</span>([char]0x6790)<span class="hljs-variable">$</span>([char]0x5730)<span class="hljs-variable">$</span>([char]0x5740)<span class="hljs-variable">$</span>([char]0x83b7)<span class="hljs-variable">$</span>([char]0x53d6)<span class="hljs-variable">$</span>([char]0x6210)<span class="hljs-variable">$</span>([char]0x529f)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x590d)<span class="hljs-variable">$</span>([char]0x5236)<span class="hljs-variable">$</span>([char]0x5230)<span class="hljs-variable">$</span>([char]0x201c)<span class="hljs-variable">$</span>([char]0x63d0)<span class="hljs-variable">$</span>([char]0x74e6)<span class="hljs-variable">$</span>([char]0x7279)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x52a9)<span class="hljs-variable">$</span>([char]0x624b)<span class="hljs-variable">$</span>([char]0x201d)<span class="hljs-variable">$</span>([char]0x4f7f)<span class="hljs-variable">$</span>([char]0x7528)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Green<br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x63d0)<span class="hljs-variable">$</span>([char]0x74e6)<span class="hljs-variable">$</span>([char]0x7279)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x52a9)<span class="hljs-variable">$</span>([char]0x624b)<span class="hljs-variable">$</span>([char]0x795d)<span class="hljs-variable">$</span>([char]0x60a8)<span class="hljs-variable">$</span>([char]0x6c14)<span class="hljs-variable">$</span>([char]0x6ee1)<span class="hljs-variable">$</span>([char]0x6ee1)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x5341)<span class="hljs-variable">$</span>([char]0x8fde)<span class="hljs-variable">$</span>([char]0x51fa)<span class="hljs-variable">$</span>([char]0x91d1)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x4fdd)<span class="hljs-variable">$</span>([char]0x5e95)<span class="hljs-variable">$</span>([char]0x5fc5)<span class="hljs-variable">$</span>([char]0x4e2d)<span class="hljs-variable">$</span>([char]0xff01)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Yellow<br><span class="hljs-built_in">read-host</span><br>&#125;<span class="hljs-keyword">catch</span>&#123;<br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x62bd)<span class="hljs-variable">$</span>([char]0x5361)<span class="hljs-variable">$</span>([char]0x5730)<span class="hljs-variable">$</span>([char]0x5740)<span class="hljs-variable">$</span>([char]0x83b7)<span class="hljs-variable">$</span>([char]0x53d6)<span class="hljs-variable">$</span>([char]0x5931)<span class="hljs-variable">$</span>([char]0x8d25)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x624b)<span class="hljs-variable">$</span>([char]0x52a8)<span class="hljs-variable">$</span>([char]0x590d)<span class="hljs-variable">$</span>([char]0x5236) https://lelaer.com/gachalink.exe <span class="hljs-variable">$</span>([char]0x4e0b)<span class="hljs-variable">$</span>([char]0x8f7d)<span class="hljs-variable">$</span>([char]0x5e76)<span class="hljs-variable">$</span>([char]0x8fd0)<span class="hljs-variable">$</span>([char]0x884c)<span class="hljs-variable">$</span>([char]0x7a0b)<span class="hljs-variable">$</span>([char]0x5e8f)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Red<br><span class="hljs-built_in">read-host</span><br>&#125;<br><br>&#125;<span class="hljs-keyword">else</span>&#123;<br><span class="hljs-variable">$wishHistoryUrl</span> = <span class="hljs-variable">$matches</span>[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;#/log&quot;</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-variable">$wishHistoryUrl</span><br><span class="hljs-built_in">Set-Clipboard</span> <span class="hljs-literal">-Value</span> <span class="hljs-variable">$wishHistoryUrl</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot; &quot;</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x62bd)<span class="hljs-variable">$</span>([char]0x5361)<span class="hljs-variable">$</span>([char]0x5206)<span class="hljs-variable">$</span>([char]0x6790)<span class="hljs-variable">$</span>([char]0x5730)<span class="hljs-variable">$</span>([char]0x5740)<span class="hljs-variable">$</span>([char]0x83b7)<span class="hljs-variable">$</span>([char]0x53d6)<span class="hljs-variable">$</span>([char]0x6210)<span class="hljs-variable">$</span>([char]0x529f)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x8bf7)<span class="hljs-variable">$</span>([char]0x590d)<span class="hljs-variable">$</span>([char]0x5236)<span class="hljs-variable">$</span>([char]0x5230)<span class="hljs-variable">$</span>([char]0x201c)<span class="hljs-variable">$</span>([char]0x63d0)<span class="hljs-variable">$</span>([char]0x74e6)<span class="hljs-variable">$</span>([char]0x7279)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x52a9)<span class="hljs-variable">$</span>([char]0x624b)<span class="hljs-variable">$</span>([char]0x201d)<span class="hljs-variable">$</span>([char]0x4f7f)<span class="hljs-variable">$</span>([char]0x7528)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Green<br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>([char]0x63d0)<span class="hljs-variable">$</span>([char]0x74e6)<span class="hljs-variable">$</span>([char]0x7279)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x52a9)<span class="hljs-variable">$</span>([char]0x624b)<span class="hljs-variable">$</span>([char]0x795d)<span class="hljs-variable">$</span>([char]0x60a8)<span class="hljs-variable">$</span>([char]0x6c14)<span class="hljs-variable">$</span>([char]0x6ee1)<span class="hljs-variable">$</span>([char]0x6ee1)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x5341)<span class="hljs-variable">$</span>([char]0x8fde)<span class="hljs-variable">$</span>([char]0x51fa)<span class="hljs-variable">$</span>([char]0x91d1)<span class="hljs-variable">$</span>([char]0xff0c)<span class="hljs-variable">$</span>([char]0x5c0f)<span class="hljs-variable">$</span>([char]0x4fdd)<span class="hljs-variable">$</span>([char]0x5e95)<span class="hljs-variable">$</span>([char]0x5fc5)<span class="hljs-variable">$</span>([char]0x4e2d)<span class="hljs-variable">$</span>([char]0xff01)&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Yellow<br><br>&#125;<br><span class="hljs-built_in">read-host</span><br></code></pre></td></tr></table></figure>
+
+<p>我觉得脚本写的挺好的，这种直接通过一行命令下载脚本并执行的方式也很不错。</p>
+<p>特写此文以记之。</p>
+<p><strong>脚本来源：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.lelaer.com/about.php">提瓦特小助手官网</a></p>
+<p><strong>开发者很赞👍</strong></p>
+<blockquote>
+<p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

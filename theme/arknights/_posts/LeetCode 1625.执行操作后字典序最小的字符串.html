@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1625.执行操作后字典序最小的字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;lexicographically-smallest-string-after-applying-operations&#x2F; 给你一个字符串 s 以及两个整数 a 和 b 。其中，字符串 s 的长度为偶数，且仅由数字 0 到 9 组成。  你可以在 s 上按任意顺序多次执行">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1625.执行操作后字典序最小的字符串">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201625.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1625.执行操作后字典序最小的字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;lexicographically-smallest-string-after-applying-operations&#x2F; 给你一个字符串 s 以及两个整数 a 和 b 。其中，字符串 s 的长度为偶数，且仅由数字 0 到 9 组成。  你可以在 s 上按任意顺序多次执行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-19T07:01:56.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.727Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="模拟">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1625.执行操作后字典序最小的字符串 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1625.执行操作后字典序最小的字符串"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1625-执行操作后字典序最小的字符串"><a href="#【LetMeFly】1625-执行操作后字典序最小的字符串" class="headerlink" title="【LetMeFly】1625.执行操作后字典序最小的字符串"></a>【LetMeFly】1625.执行操作后字典序最小的字符串</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lexicographically-smallest-string-after-applying-operations/">https://leetcode.cn/problems/lexicographically-smallest-string-after-applying-operations/</a></p>
+<p>给你一个字符串 <code>s</code> 以及两个整数 <code>a</code> 和 <code>b</code> 。其中，字符串 <code>s</code> 的长度为偶数，且仅由数字 <code>0</code> 到 <code>9</code> 组成。</p>
+
+<p>你可以在 <code>s</code> 上按任意顺序多次执行下面两个操作之一：</p>
+
+<ul>
+    <li>累加：将  <code>a</code> 加到 <code>s</code> 中所有下标为奇数的元素上（<strong>下标从 0 开始</strong>）。数字一旦超过 <code>9</code> 就会变成 <code>0</code>，如此循环往复。例如，<code>s = "3456"</code> 且 <code>a = 5</code>，则执行此操作后 <code>s</code> 变成 <code>"3951"</code>。</li>
+    <li>轮转：将 <code>s</code> 向右轮转 <code>b</code> 位。例如，<code>s = "3456"</code> 且 <code>b = 1</code>，则执行此操作后 <code>s</code> 变成 <code>"6345"</code>。</li>
+</ul>
+
+<p>请你返回在 <code>s</code> 上执行上述操作任意次后可以得到的 <strong>字典序最小</strong> 的字符串。</p>
+
+<p>如果两个字符串长度相同，那么字符串 <code>a</code> 字典序比字符串 <code>b</code> 小可以这样定义：在 <code>a</code> 和 <code>b</code> 出现不同的第一个位置上，字符串 <code>a</code> 中的字符出现在字母表中的时间早于 <code>b</code> 中的对应字符。例如，<code>"0158”</code> 字典序比 <code>"0190"</code> 小，因为不同的第一个位置是在第三个字符，显然 <code>'5'</code> 出现在 <code>'9'</code> 之前。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>s = "5525", a = 9, b = 2
+<strong>输出：</strong>"2050"
+<strong>解释：</strong>执行操作如下：
+初态："5525"
+轮转："2555"
+累加："2454"
+累加："2353"
+轮转："5323"
+累加："5222"
+累加："5121"
+轮转："2151"
+累加："2050"​​​​​​​​​​​​
+无法获得字典序小于 "2050" 的字符串。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>s = "74", a = 5, b = 1
+<strong>输出：</strong>"24"
+<strong>解释：</strong>执行操作如下：
+初态："74"
+轮转："47"
+累加："42"
+轮转："24"​​​​​​​​​​​​
+无法获得字典序小于 "24" 的字符串。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>s = "0011", a = 4, b = 2
+<strong>输出：</strong>"0011"
+<strong>解释：</strong>无法获得字典序小于 "0011" 的字符串。
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre>
+<strong>输入：</strong>s = "43987654", a = 7, b = 3
+<strong>输出：</strong>"00553311"
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 <= s.length <= 100</code></li>
+    <li><code>s.length</code> 是偶数</li>
+    <li><code>s</code> 仅由数字 <code>0</code> 到 <code>9</code> 组成</li>
+    <li><code>1 <= a <= 9</code></li>
+    <li><code>1 <= b <= s.length - 1</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：模拟"><a href="#方法一：模拟" class="headerlink" title="方法一：模拟"></a>方法一：模拟</h2><p>我们只需要明白：</p>
+<ol>
+<li>因为轮转不可能产生无限多种字符串，所以<strong>轮转所产生的字符串是在不断循环地</strong></li>
+<li>因为我们只能同时改变偶数位置的字符，所以对于一个轮转后的字符串，<strong>我们要让下标为1的字符尽可能地小</strong></li>
+<li>因为字符串长度为偶数，所以<strong>如果轮转距离b是奇数，则奇数位置的字符下标也有机会到达偶数</strong>；反之奇数下标永远只能处于奇数的位置。</li>
+</ol>
+<p>这样，我们就能开开心心地模拟了。</p>
+<p>首先模拟所有的“轮转结果”（最多有len(s)种）</p>
+<p>对于每种轮转结果，我们让其下标1处的字符加上数个a后尽可能地小，然后让所有奇数下标的字符加上相同数量的a。如果b为奇数，则<strong>再</strong>让下标0处的字符加上数个a后尽可能小，并将所有偶数下标的字符加上相同数量的a。</p>
+<p>对于每种轮转结果，得到加最优a后的字符串后，在所有字符串中最小的一个即为答案。</p>
+<ul>
+<li>时间复杂度$O(len(s)^2\times C)$，其中$C&#x3D;10$。最多需要$len(s)$次轮转，对于每次轮转需要$len(s)\times C$的复杂度完成“加a”、比较等操作。最多加上10次a即可找到最优的加a次数。</li>
+<li>空间复杂度$O(len(s))$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">add2minStep</span><span class="hljs-params">(<span class="hljs-type">char</span> original, <span class="hljs-type">int</span> a)</span> </span>&#123;  <span class="hljs-comment">// 将original加数次a，使得original尽可能小，需要加几次</span><br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> step = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> m = original - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        <span class="hljs-type">int</span> n = original - <span class="hljs-string">&#x27;0&#x27;</span>;<br>        <span class="hljs-keyword">do</span> &#123;<br>            n = (n + a) % <span class="hljs-number">10</span>;<br>            step++;<br>            <span class="hljs-keyword">if</span> (n &lt; m) &#123;<br>                m = n;<br>                ans = step;<br>            &#125;<br>        &#125; <span class="hljs-keyword">while</span> (a * step % <span class="hljs-number">10</span>);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">change2loc2min</span><span class="hljs-params">(string&amp; s, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> l)</span> </span>&#123;  <span class="hljs-comment">// 将s的l、l + 1两个位置变得尽可能小并移动到最前</span><br>        string ans = s.<span class="hljs-built_in">substr</span>(l, s.<span class="hljs-built_in">size</span>() - l) + s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, l);<br>        <span class="hljs-keyword">if</span> (b % <span class="hljs-number">2</span>) &#123;<br>            <span class="hljs-type">int</span> m1 = <span class="hljs-built_in">add2minStep</span>(ans[<span class="hljs-number">0</span>], a);<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i += <span class="hljs-number">2</span>) &#123;<br>                ans[i] = (<span class="hljs-type">char</span>)((ans[i] - <span class="hljs-string">&#x27;0&#x27;</span> + a * m1) % <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;0&#x27;</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> m2 = <span class="hljs-built_in">add2minStep</span>(ans[<span class="hljs-number">1</span>], a);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i += <span class="hljs-number">2</span>) &#123;<br>            ans[i] = (<span class="hljs-type">char</span>)((ans[i] - <span class="hljs-string">&#x27;0&#x27;</span> + a * m2) % <span class="hljs-number">10</span> + <span class="hljs-string">&#x27;0&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">findLexSmallestString</span><span class="hljs-params">(string&amp; s, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>        string ans = s;<br>        <span class="hljs-type">int</span> totalRotate = b;<br>        <span class="hljs-keyword">do</span> &#123;<br>            <span class="hljs-comment">// string thisStr = change2loc2min(s, a, b, s.size() - totalRotate);  cout &lt;&lt; thisStr &lt;&lt; endl;  //**********</span><br>            ans = <span class="hljs-built_in">min</span>(ans, <span class="hljs-built_in">change2loc2min</span>(s, a, b, s.<span class="hljs-built_in">size</span>() - totalRotate));<br>            totalRotate = (totalRotate + b) % s.<span class="hljs-built_in">size</span>();<br>        &#125; <span class="hljs-keyword">while</span> (totalRotate != b);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/03/19/LeetCode%201625.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/129651164">https://letmefly.blog.csdn.net/article/details/129651164</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

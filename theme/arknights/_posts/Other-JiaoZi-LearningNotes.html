@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="教资考试流程笔试通过后有两年有效期，期间内通过面试就能拿证了。 中小学教资笔试分为三大部分（科目一、科目二、科目三），科目一（综合素质）和科目二（教育知识与能力）都一样且都要考，科目三（学科知识与教学能力）是报啥考啥（例如报的信息学就考计算机）。在有效期内，可以通过一次科目一科目二 和 数个不同科目的科目三，从而获取多个教师资格证。 题型介绍图例： graph TB classDef green">
+<meta property="og:type" content="website">
+<meta property="og:title" content="教资（教师资格证）学习笔记">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-JiaoZi-LearningNotes.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="教资考试流程笔试通过后有两年有效期，期间内通过面试就能拿证了。 中小学教资笔试分为三大部分（科目一、科目二、科目三），科目一（综合素质）和科目二（教育知识与能力）都一样且都要考，科目三（学科知识与教学能力）是报啥考啥（例如报的信息学就考计算机）。在有效期内，可以通过一次科目一科目二 和 数个不同科目的科目三，从而获取多个教师资格证。 题型介绍图例： graph TB classDef green">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-24T03:39:09.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.739Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="知识">
+<meta property="article:tag" content="教资">
+<meta property="article:tag" content="教师资格证">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>教资（教师资格证）学习笔记 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="教资（教师资格证）学习笔记"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="教资"><a href="#教资" class="headerlink" title="教资"></a>教资</h1><h2 id="考试流程"><a href="#考试流程" class="headerlink" title="考试流程"></a>考试流程</h2><p>笔试通过后有两年有效期，期间内通过面试就能拿证了。</p>
+<p>中小学教资笔试分为三大部分（科目一、科目二、科目三），科目一（综合素质）和科目二（教育知识与能力）都一样且都要考，科目三（学科知识与教学能力）是报啥考啥（例如报的信息学就考计算机）。在有效期内，可以通过一次科目一科目二 和 数个不同科目的科目三，从而获取多个教师资格证。</p>
+<h2 id="题型介绍"><a href="#题型介绍" class="headerlink" title="题型介绍"></a>题型介绍</h2><p><strong>图例：</strong></p>
+<pre><code class=" mermaid">graph TB
+classDef green fill:#008b4c
+a[&quot;绿色为必会题，复习性价比高&quot;]:::green
+b[&quot;橙色为随缘题，复习性价比低&quot;]
+style b fill:#ffba00
+</code></pre>
+
+<p><strong>科目一：综合素质</strong></p>
+<pre><code class=" mermaid">graph LR
+
+classDef green fill:#008b4c
+classDef orange fill:#ffba00
+classDef white fill:white
+
+KeMu1[综合素质] --&gt; KeGuanXuanZeTi[&quot;客观选择题（单选）29x2’=58’&quot;]
+    KeGuanXuanZeTi --&gt; ZhiYeLiNian[&quot;职业理念&quot;]:::green --&gt; number01[&quot;4题&quot;]:::white
+    KeGuanXuanZeTi --&gt; JiaoYuFaLvFaGui[&quot;教育法律法规&quot;]:::green --&gt; number02[&quot;8题&quot;]:::white
+    KeGuanXuanZeTi --&gt; ZhiYeDaoDe[&quot;职业道德&quot;]:::green --&gt; number03[&quot;4题&quot;]:::white
+    KeGuanXuanZeTi --&gt; WenHuaSuYang[&quot;文化素养&quot;]:::orange --&gt; number04[&quot;9题&quot;]:::white
+    KeGuanXuanZeTi --&gt; JiBenNengLi[&quot;基本能力&quot;]:::orange --&gt; number05[&quot;4题&quot;]:::white
+KeMu1 --&gt; CaiLiaoFenXiTi[&quot;材料分析题 3x14’=42’&quot;]:::green
+    CaiLiaoFenXiTi --&gt; ZhiYeLiNian2[&quot;职业理念&quot;]:::orange --&gt; number06[&quot;1题&quot;]:::white
+    CaiLiaoFenXiTi --&gt; ZhiYeDaoDe2[&quot;职业道德&quot;]:::orange --&gt; number07[&quot;1题&quot;]:::white
+    CaiLiaoFenXiTi --&gt; YueDuLiJie[&quot;阅读理解&quot;]:::orange --&gt; number08[&quot;1题&quot;]:::white
+KeMu1 --&gt; ZuoWen[&quot;作文 1x50’=50’&quot;]:::orange
+    ZuoWen --&gt; number09[&quot;1题&quot;]:::white --&gt; ZuoWenMoreInfo[&quot;最简单稳妥的写作方式：和教育挂钩&quot;]
+</code></pre>
+
+<p><strong>科目二：教育知识与能力</strong></p>
+<pre><code class=" mermaid">graph LR
+
+classDef green fill:#008b4c
+classDef orange fill:#ffba00
+classDef white fill:white
+classDef blue1 fill:#00a0f4
+classDef pink fill:pink
+classDef green1 fill:#008498
+
+KeMu2[&quot;教育知识与能力&quot;] --&gt; KeGuanXuanZeTi[&quot;客观选择题（单选）21x2’=42’&quot;]
+    KeGuanXuanZeTi --&gt; a0[&quot;教育基础知识和基本原理&quot;] --&gt; a1[&quot;5题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a2[&quot;中学课程&quot;] --&gt; a3[&quot;2题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a4[&quot;中学教学&quot;] --&gt; a5[&quot;3题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a6[&quot;中学生学习心理&quot;] --&gt; asf[&quot;2题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a434[&quot;中学生发展心理&quot;] --&gt; a66567[&quot;2题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a245[&quot;中学生心理辅导&quot;] --&gt; asfa1[&quot;1题&quot;]:::white
+    KeGuanXuanZeTi --&gt; a56[&quot;中学德育&quot;] --&gt; a23f[&quot;2题&quot;]:::white
+    KeGuanXuanZeTi --&gt; afds[&quot;中学班级管理与教师心理&quot;] --&gt; as3f[&quot;4题&quot;]:::white
+KeMu2 --&gt; BianXiTi[&quot;辨析题 4x8’=32’&quot;]
+    BianXiTi --&gt; ljw[&quot;教育基础知识和基本原理&quot;]:::blue1 --&gt; ba1[&quot;1题&quot;]:::white
+    BianXiTi --&gt; l32jw[&quot;中学教育&quot;]:::pink --&gt; asf11[&quot;1题&quot;]:::white
+    BianXiTi --&gt; jlf[&quot;中学生学习心理&quot;]:::green1 --&gt; a41a1[&quot;2题&quot;]:::white
+KeMu2 --&gt; JianDaTi[&quot;简答题 4x1’=42’&quot;]
+    JianDaTi --&gt; jwi13[&quot;教育基础知识和基本原理&quot;]:::blue1 --&gt; oa1[&quot;1题&quot;]:::white
+    JianDaTi --&gt; jw2i13[&quot;中学教育&quot;]:::pink --&gt; ha1[&quot;1题&quot;]:::white
+    JianDaTi --&gt; jw2i1[&quot;中学生发展心理&quot;] --&gt; gha1[&quot;1题&quot;]:::white
+    JianDaTi --&gt; ji13[&quot;中学生辅导心理&quot;] --&gt; ma1[&quot;1题&quot;]:::white
+KeMu2 --&gt; CaiLiaoFenXiTi[&quot;材料分析题 2x18’=36’&quot;]
+    CaiLiaoFenXiTi --&gt; j038h[&quot;中学生学习心理&quot;]:::green1 --&gt; pbga1[&quot;1题&quot;]:::white
+    CaiLiaoFenXiTi --&gt; j38h[&quot;中学生德育&quot;] --&gt; a1hd[&quot;1题&quot;]:::white
+</code></pre>
+
+<pre><code class=" mermaid">graph LR
+
+classDef white fill:white
+classDef blue1 fill:#00a0f4
+classDef pink fill:pink
+classDef green1 fill:#008498
+
+a[&quot;（科二）各模块分支权重&quot;]
+   a --&gt; b[&quot;中学生学习心理&quot;]:::green1 --&gt; c[&quot;25%&quot;]:::white
+   a --&gt; d[&quot;教育基础知识与基本原理&quot;]:::blue1 --&gt; p[&quot;19%&quot;]:::white
+   a --&gt; m[&quot;中学教育&quot;]:::pink --&gt; o[&quot;16%&quot;]:::white
+   a --&gt; f[&quot;中学德育&quot;] --&gt; i[&quot;15%&quot;]:::white
+   a --&gt; g[&quot;中学生发展心理&quot;] --&gt; u[&quot;9%&quot;]:::white
+   a --&gt; q[&quot;中学生心理辅导&quot;] --&gt; y[&quot;8%&quot;]:::white
+   a --&gt; w[&quot;中学班级管理与教师心理&quot;] --&gt; t[&quot;5%&quot;]:::white
+   a --&gt; e[&quot;中学课程&quot;] --&gt; r[&quot;3%&quot;]:::white
+</code></pre>
+
+<p><strong>科目三：学科知识与教学能力</strong></p>
+<pre><code class=" mermaid">graph LR
+
+classDef white fill:white
+
+a[&quot;学科知识与教学能力&quot;] --&gt; b[&quot;客观选择题（单选）30x2’=60’&quot;]
+a --&gt; c[&quot;简答题 1x20’=20’&quot;]
+a --&gt; d[&quot;教学情境分析题 1x30’=30’&quot;]
+a --&gt; e[&quot;教学设计题 1x40’=40’&quot;]
+</code></pre>
+
+<h2 id="科目一"><a href="#科目一" class="headerlink" title="科目一"></a>科目一</h2>
+<pre>
+<code class="mermaid">
+graph LR
+
+a["职业理念"] --> b["教育观"]
+a --> c["学生观"]
+a --> d["教师观"]
+
+click b href "#教育观" "教育观"
+click c href "#学生观" "学生观"
+click d href "#教师观" "教师观"
+</code>
+</pre>
+
+
+<h3 id="教育观"><a href="#教育观" class="headerlink" title="教育观"></a>教育观</h3>
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+
+jiaoyuguan["教育观"] --> a["素质教育的基本内涵（<b><span style='color: red'>必背</span></b>）"]
+    a --> a1["<small>素质教育是</small><b>以<span style='color: red'>提</span>高国民<span style='color: red'>素</span>质为根本宗旨</b><small>的教育</small>"]
+    a --> a2["<small>素质教育是</small><b>面向<span style='color: red'>全体</span>学生</b><small>的教育</small>"]
+    a --> a3["<small>素质教育是</small><b>促进学生<span style='color: red'>全面</span>发展</b><small>的教育</small>"]
+    a --> a4["<small>素质教育是</small><b>促进学生<span style='color: red'>个性</span>发展</b><small>的教育</small>"]
+    a --> a5["<small>素质教育是</small><b>以培养学生的<span style='color: red'>创</span>新精神和实践能力为重点</b><small>的教育</small>"]
+    a1 --> aa["提素个性创两全"]:::white
+    a2 --> aa
+    a3 --> aa
+    a4 --> aa
+    a5 --> aa
+jiaoyuguan --> b["新课<span style='color: red'>改</span>下的教学观"]
+    b --> b1["<small>教学从“</small><b>以教育者为中心</b><small>”向“</small><b><span style='color: red'>学</span>习者为中心</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b2["<small>教学从“</small><b>教会学生知识</b><small>”向“</small><b>教会学生学<span style='color: red'>习</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b3["<small>教学从“</small><b>重结论轻过程</b><small>”向“</small><b>重结论更重<span style='color: red'>过</span>程</b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b --> b4["<small>教学从“</small><b>关注学科</b><small>”向“</small><b>关注<span style='color: red'>人</span></b><small>”<span style='color: #4079a0'>转变</span></small>"]
+    b1 --> ba["学习过人/四个<span style='color: #4079a0'>转变</span>"]:::white
+    b2 --> ba
+    b3 --> ba
+    b4 --> ba
+</code>
+</pre>
+
+
+<p><strong>答题模板</strong>（学生观和教师观同样适用，记得审题，别答错了）</p>
+<blockquote>
+<p>材料中老师的教育行为是正确的（错误的），遵循了（违背了）素质教育观的相关要求，值得我们学习（希望老师们引以为戒）。</p>
+<p><strong>首先</strong>，素质教育观认为素质教育是面向全体学生的教育【观点】，人人都有受教育的权利，强调在教育中使每个人都得到发展。【一句话解释】材料中…。【引用材料】</p>
+<p><strong>其次</strong>，素质教育观认为素质教育是促进学生全面发展的教育【观点】，实现学生德、智、体、美、劳等方面的全面发展。【一句话解释】材料中…。【引用材料】</p>
+<p><strong>最后</strong>，素质教育观认为教学应从“以教育者为中心”转向“以学习者为中心”【观点】，鼓励学生参与教学，交给学生思维的方法。【一句话解释】材料中…。【引用材料】</p>
+<p>综上所述，作为老师，我们应该做到面向全体学生、促进学生的全面发展。</p>
+</blockquote>
+<h3 id="学生观"><a href="#学生观" class="headerlink" title="学生观"></a>学生观</h3>
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+classDef small fill:white, font-size:small, stroke:#f66, stroke-width:2px, stroke-dasharray: 5
+
+xueshengguan["学生观"] --> a["学生是<span style='color: red'>独</span>立意义的人"]
+    a --> a1["⭐学生具有个体独立性，不以教师的意志为转移"] --> bigEnd
+        a1 -.- a12["尊重学生"]:::small
+    a --> a2["⭐学生具有独立意义的主体，不以教师的意志为转移"] --> bigEnd
+        a2 -.- a22["学生是学习的主人，教师起主导地位"]:::small
+    a --> a3["学生是责权的主体"] --> bigEnd
+        a3 -.- a32["责权与利益相统一"]:::small
+xueshengguan --> b["学生是<span style='color: red'>独</span>特的人<small>(学生与学生不同，学生与成人不同)</small>"]
+    b --> b1["⭐学生是完整的人"] --> bigEnd
+    b --> b2["⭐每个学生都具有自身的独特性"] --> bigEnd
+        b2 -.- b22["因材施教"]:::small
+    b --> b3["⭐学生与成人之间存在着巨大的差异"] --> bigEnd
+        b3 -.- b32["老师要换位思考"]:::small
+xueshengguan --> c["学生是<span style='color: red'>发</span>展的人"]
+    c --> c1["学生的身心发展是有规律的"] --> bigEnd
+    c --> c2["⭐学生具有巨大的发展潜能"] --> bigEnd
+        c2 -.- c22["可塑性"]:::small
+    c --> c3["⭐学生是处于发展过程中的人"] --> bigEnd
+        c3 -.- c32["容错性、包容性"]:::small
+xueshengguan --> d["<span style='color: red'>全</span>面发展"]
+    d --> d1["德智体美劳全面发展"] --> bigEnd
+xueshengguan --> e["面向<span style='color: red'>全</span>体学生"]
+    e --> e1["公平公正对待每个学生，不能偏爱某个学生"] --> bigEnd
+
+bigEnd["两独一发 + 两全"]:::white
+</code>
+</pre>
+
+
+<h3 id="教师观"><a href="#教师观" class="headerlink" title="教师观"></a>教师观</h3>
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+classDef small fill:white, font-size:small, stroke:#f66, stroke-width:2px, stroke-dasharray: 5
+
+jiaoshiguan["教师观"] --> a["教师<span style='color: red'>角色</span>的转变"]
+    aend["建促放研(见醋放盐)"]:::white
+    a --> a1["⭐ 教师是学生的引导者和发展的<span style='color: red'>促</span>进者"] --> aend
+        a1 -.- a12("发现、探索、动手、做人"):::small
+    a --> a2["⭐ 教师是课程的<span style='color: red'>建</span>设者和开发者"] --> aend
+        a2 -.- a22["课本课程、开发课程"]:::small
+    a --> a3["⭐ 教师是教育教学的<span style='color: red'>研</span>究者"] --> aend
+        a3 -.- a32["研究问题、论文、课题等"]:::small
+    a --> a4["教师是社区型的开<span style='color: red'>放</span>教师"] --> aend
+        a4 -.- a42["从学校到社区（没考过）"]:::small
+jiaoshiguan --> b["教师<span style='color: red'>行为</span>的转变"]
+    bend["你它我她/赞助合反(赞助盒饭)"]:::white
+    b --> b1["在对待<span style='color: blue'>师生</span>关系上，新课程强调尊重、<span style='color: red'>赞</span>赏"] --> bend
+    b --> b2["在对待<span style='color: blue'>教学</span>上，新课程强调帮<span style='color: red'>助</span>、引导"] --> bend
+        b2 -.- b22["学习方法、价值观"]:::small
+    b --> b3["在对待自<span style='color: blue'>我</span>上，新课程强调<span style='color: red'>反</span>思"] --> bend
+        b3 -.- b32["教学前、中、后都要反思"]:::small
+    b --> b4["在对待与其<span style='color: blue'>他</span>教育者的关系上，新课程强调<span style='color: red'>合</span>作"] --> bend
+
+</code>
+</pre>
+
+
+<h3 id="职业道德"><a href="#职业道德" class="headerlink" title="职业道德"></a>职业道德</h3>
+<pre>
+<code class="mermaid">
+graph LR
+
+classDef white fill:white
+classDef whiteWithNoBoard fill:white, stroke-width: 0px
+classDef small fill:white, font-size:small, stroke:#f66, stroke-width:2px, stroke-dasharray: 5
+
+zhiyedaode["教师职业道德规范"] --> a["<span style='color: red'>爱</span>国守法"]
+    a-->a1["热爱祖国、热爱人民，拥护共产党和社会主义制度"]:::whiteWithNoBoard-->bigEnd
+    a-->a2["遵守法律法规，依法履行教师的职责和权利"]:::whiteWithNoBoard-->bigEnd
+    asmall["基本要求"]:::small-.-a
+zhiyedaode-->b["⭐ <span style='color: red'>爱</span>岗敬业"]
+    b-->b1["认真备课、上课、批改作业、辅导学生"]:::whiteWithNoBoard-->bigEnd
+    b-->b2["勤恳敬业、乐于奉献"]:::whiteWithNoBoard-->bigEnd
+    bsmall["本质要求"]:::small-.-b
+zhiyedaode-->c["⭐ 关<span style='color: red'>爱</span>学生"]
+    c-->c1["关爱全体学生、尊重学生人格、平等公正"]:::whiteWithNoBoard-->bigEnd
+    c-->c2["严慈相济、良师益友"]:::whiteWithNoBoard-->bigEnd
+    c-->c3["不体罚、不变相体罚、不讽刺、不挖苦、不歧视"]:::whiteWithNoBoard-->bigEnd
+    csmall["道德灵魂"]:::small-.-c
+zhiyedaode-->d["⭐ 教书育<span style='color: red'>人</span>"]
+    d-->d1["素质教育"]:::whiteWithNoBoard-->bigEnd
+    d-->d2["循循善诱、诲人不倦、因材施教"]:::whiteWithNoBoard-->bigEnd
+    d-->d3["培养学生的良好品行、激发创造力、全面发展"]:::whiteWithNoBoard-->bigEnd
+    d-->d4["不以分数作为评价学生的唯一标准"]:::whiteWithNoBoard-->bigEnd
+    dsmall["天职、核心"]:::small-.-d
+zhiyedaode-->e["⭐ 为<span style='color: red'>人</span>师表"]
+    e-->e1["以身作则——服装、言谈举止"]:::whiteWithNoBoard-->bigEnd
+    e-->e2["尊重理解加载"]:::whiteWithNoBoard-->bigEnd
+    e-->e3["与同事合作"]:::whiteWithNoBoard-->bigEnd
+    e-->e4["与金钱相关的<b>全部</b>Say No"]:::whiteWithNoBoard-->bigEnd
+    esmall["内在要求"]:::small-.-e
+zhiyedaode-->f["⭐ <span style='color: red'>终身</span>学习"]
+    f-->f1["不断学习、钻研业务、勇于创新"]:::whiteWithNoBoard-->bigEnd
+    f-->f2["提升自身能力（专业素养+教学水平）"]:::whiteWithNoBoard-->bigEnd
+    fsmall["不竭动力"]:::small-.-f
+
+bigEnd["三爱两人一终身"]:::white
+</code>
+</pre>
+
+
+<h2 id="科目二"><a href="#科目二" class="headerlink" title="科目二"></a>科目二</h2><ul>
+<li>打篮球属于教育</li>
+</ul>
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+    <script src="https://letmefly.xyz/Links/mermaid.min.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

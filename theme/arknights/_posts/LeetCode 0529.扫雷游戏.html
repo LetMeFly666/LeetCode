@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】529.扫雷游戏力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minesweeper&#x2F; 让我们一起来玩扫雷游戏！  给你一个大小为 m x n 二维字符矩阵&nbsp;board ，表示扫雷游戏的盘面，其中：       &#39;M&#39;&nbsp;代表一个 未挖出的 地雷，     &#39;E&#39;&nbsp;代表一个 未挖出的 空方块，     &#39;B&#39;&nbsp;代表">
+<meta property="og:type" content="website">
+<meta property="og:title" content="529.扫雷游戏">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200529.%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】529.扫雷游戏力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minesweeper&#x2F; 让我们一起来玩扫雷游戏！  给你一个大小为 m x n 二维字符矩阵&nbsp;board ，表示扫雷游戏的盘面，其中：       &#39;M&#39;&nbsp;代表一个 未挖出的 地雷，     &#39;E&#39;&nbsp;代表一个 未挖出的 空方块，     &#39;B&#39;&nbsp;代表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_2.png">
+<meta property="article:published_time" content="2022-11-23T03:17:50.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.719Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="矩阵">
+<meta property="article:tag" content="模拟">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png">
+  
+  
+  
+  <title>529.扫雷游戏 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="529.扫雷游戏"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】529-扫雷游戏"><a href="#【LetMeFly】529-扫雷游戏" class="headerlink" title="【LetMeFly】529.扫雷游戏"></a>【LetMeFly】529.扫雷游戏</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minesweeper/">https://leetcode.cn/problems/minesweeper/</a></p>
+<p>让我们一起来玩扫雷游戏！</p>
+
+<p>给你一个大小为 <code>m x n</code> 二维字符矩阵&nbsp;<code>board</code> ，表示扫雷游戏的盘面，其中：</p>
+
+<ul>
+    <li><code>'M'</code>&nbsp;代表一个 <strong>未挖出的</strong> 地雷，</li>
+    <li><code>'E'</code>&nbsp;代表一个<strong> 未挖出的 </strong>空方块，</li>
+    <li><code>'B'</code><strong>&nbsp;</strong>代表没有相邻（上，下，左，右，和所有4个对角线）地雷的<strong> 已挖出的 </strong>空白方块，</li>
+    <li><strong>数字</strong>（<code>'1'</code> 到 <code>'8'</code>）表示有多少地雷与这块<strong> 已挖出的</strong> 方块相邻，</li>
+    <li><code>'X'</code>&nbsp;则表示一个<strong> 已挖出的</strong> 地雷。</li>
+</ul>
+
+<p>给你一个整数数组 <code>click</code> ，其中 <code>click = [click<sub>r</sub>, click<sub>c</sub>]</code> 表示在所有<strong> 未挖出的 </strong>方块（<code>'M'</code> 或者 <code>'E'</code>）中的下一个点击位置（<code>click<sub>r</sub></code> 是行下标，<code>click<sub>c</sub></code> 是列下标）。</p>
+
+<p>根据以下规则，返回相应位置被点击后对应的盘面：</p>
+
+<ol>
+    <li>如果一个地雷（<code>'M'</code>）被挖出，游戏就结束了- 把它改为&nbsp;<code>'X'</code> 。</li>
+    <li>如果一个<strong> 没有相邻地雷 </strong>的空方块（<code>'E'</code>）被挖出，修改它为（<code>'B'</code>），并且所有和其相邻的<strong> 未挖出 </strong>方块都应该被递归地揭露。</li>
+    <li>如果一个<strong> 至少与一个地雷相邻</strong> 的空方块（<code>'E'</code>）被挖出，修改它为数字（<code>'1'</code> 到 <code>'8'</code> ），表示相邻地雷的数量。</li>
+    <li>如果在此次点击中，若无更多方块可被揭露，则返回盘面。</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+<img src="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_1.png" srcset="/img/loading.gif" lazyload style="width: 500px; max-width: 400px; height: 269px;" />
+<pre>
+<strong>输入：</strong>board = [["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]], click = [3,0]
+<strong>输出：</strong>[["B","1","E","1","B"],["B","1","M","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+<img src="https://assets.leetcode.com/uploads/2018/10/12/minesweeper_example_2.png" srcset="/img/loading.gif" lazyload style="width: 500px; max-width: 400px; height: 275px;" />
+<pre>
+<strong>输入：</strong>board = [["B","1","E","1","B"],["B","1","M","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]], click = [1,2]
+<strong>输出：</strong>[["B","1","E","1","B"],["B","1","X","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>m == board.length</code></li>
+    <li><code>n == board[i].length</code></li>
+    <li><code>1 &lt;= m, n &lt;= 50</code></li>
+    <li><code>board[i][j]</code> 为 <code>'M'</code>、<code>'E'</code>、<code>'B'</code> 或数字 <code>'1'</code> 到 <code>'8'</code> 中的一个</li>
+    <li><code>click.length == 2</code></li>
+    <li><code>0 &lt;= click<sub>r</sub> &lt; m</code></li>
+    <li><code>0 &lt;= click<sub>c</sub> &lt; n</code></li>
+    <li><code>board[click<sub>r</sub>][click<sub>c</sub>]</code> 为 <code>'M'</code> 或 <code>'E'</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：模拟-广搜"><a href="#方法一：模拟-广搜" class="headerlink" title="方法一：模拟 + 广搜"></a>方法一：模拟 + 广搜</h2><p>点击一个未点击过的地方，会有以下两大种情况：</p>
+<ol>
+<li>这个地方是地雷，直接将这个地方修改为<code>X</code>并返回</li>
+<li>这个地方不是地雷。那么就构建一个队列并将这个点入队。在队列不为空时不断取出队首的点：<ul>
+<li>如果该点四周地雷数量为0，那么就将这个点标记为<code>B</code>，并将四周没有处理过的点入队</li>
+<li>如果该点四周地雷数量不为0，那么就将这个点标记为四周地雷的数量</li>
+</ul>
+</li>
+</ol>
+<p>然后问题就解决了。</p>
+<p><strong>细节问题：</strong></p>
+<p>关于上文中“四周没有处理过的点”，我们可以用哈希表解决。因为棋盘的大小最大为$50\times50$，因此我们可以将横纵坐标压缩为一个数：$横坐标\times100+纵坐标$。这样，我们就可以使用哈希表<code>unordered_set&lt;int&gt;</code>来记录某个点是否已经处理过。</p>
+<ul>
+<li>时间复杂度$O(nm)$，其中$size(borad) &#x3D; n\times m$</li>
+<li>空间复杂度$O(nm)$，这实际上取决于点击位置相连的“四周地雷总数为0”的方块数量</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">nearby</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">char</span>&gt;&gt;&amp; board, vector&lt;<span class="hljs-type">int</span>&gt;&amp; click)</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">-1</span>; i &lt;= <span class="hljs-number">1</span>; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>; j &lt;= <span class="hljs-number">1</span>; j++) &#123;<br>                <span class="hljs-type">int</span> ti = click[<span class="hljs-number">0</span>] + i;<br>                <span class="hljs-type">int</span> tj = click[<span class="hljs-number">1</span>] + j;<br>                <span class="hljs-keyword">if</span> (ti &gt;= <span class="hljs-number">0</span> &amp;&amp; ti &lt; board.<span class="hljs-built_in">size</span>() &amp;&amp; tj &gt;= <span class="hljs-number">0</span> &amp;&amp; tj &lt; board[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>()) &#123;<br>                    ans += board[ti][tj] == <span class="hljs-string">&#x27;M&#x27;</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">char</span>&gt;&gt; <span class="hljs-built_in">updateBoard</span>(vector&lt;vector&lt;<span class="hljs-type">char</span>&gt;&gt;&amp; board, vector&lt;<span class="hljs-type">int</span>&gt;&amp; click) &#123;<br>        <span class="hljs-keyword">if</span> (board[click[<span class="hljs-number">0</span>]][click[<span class="hljs-number">1</span>]] == <span class="hljs-string">&#x27;M&#x27;</span>)<br>            board[click[<span class="hljs-number">0</span>]][click[<span class="hljs-number">1</span>]] = <span class="hljs-string">&#x27;X&#x27;</span>;<br>        <span class="hljs-keyword">else</span> &#123;<br>            queue&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; q;<br>            q.<span class="hljs-built_in">push</span>(click);<br>            unordered_set&lt;<span class="hljs-type">int</span>&gt; already;<br>            already.<span class="hljs-built_in">insert</span>(click[<span class="hljs-number">0</span>] * <span class="hljs-number">100</span> + click[<span class="hljs-number">1</span>]);<br>            <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>                vector&lt;<span class="hljs-type">int</span>&gt; thisPoint = q.<span class="hljs-built_in">front</span>();<br>                q.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-type">int</span> aroundMine = <span class="hljs-built_in">nearby</span>(board, thisPoint);<br>                <span class="hljs-keyword">if</span> (aroundMine)<br>                    board[thisPoint[<span class="hljs-number">0</span>]][thisPoint[<span class="hljs-number">1</span>]] = <span class="hljs-string">&#x27;0&#x27;</span> + aroundMine;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    board[thisPoint[<span class="hljs-number">0</span>]][thisPoint[<span class="hljs-number">1</span>]] = <span class="hljs-string">&#x27;B&#x27;</span>;<br>                    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">-1</span>; i &lt;= <span class="hljs-number">1</span>; i++) &#123;<br>                        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">-1</span>; j &lt;= <span class="hljs-number">1</span>; j++) &#123;<br>                            <span class="hljs-type">int</span> ti = thisPoint[<span class="hljs-number">0</span>] + i;<br>                            <span class="hljs-type">int</span> tj = thisPoint[<span class="hljs-number">1</span>] + j;<br>                            <span class="hljs-keyword">if</span> (ti &gt;= <span class="hljs-number">0</span> &amp;&amp; ti &lt; board.<span class="hljs-built_in">size</span>() &amp;&amp; tj &gt;= <span class="hljs-number">0</span> &amp;&amp; tj &lt; board[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>()) &#123;<br>                                <span class="hljs-keyword">if</span> (!already.<span class="hljs-built_in">count</span>(ti * <span class="hljs-number">100</span> + tj)) &#123;<br>                                    already.<span class="hljs-built_in">insert</span>(ti * <span class="hljs-number">100</span> + tj);<br>                                    q.<span class="hljs-built_in">push</span>(&#123;ti, tj&#125;);<br>                                &#125;<br>                            &#125;<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> board;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/11/23/LeetCode%200529.%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/127997191">https://letmefly.blog.csdn.net/article/details/127997191</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

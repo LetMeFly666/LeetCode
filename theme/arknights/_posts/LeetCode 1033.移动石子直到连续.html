@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1033.移动石子直到连续力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;moving-stones-until-consecutive&#x2F; 三枚石子放置在数轴上，位置分别为 a，b，c。  每一回合，你可以从两端之一拿起一枚石子（位置最大或最小），并将其放入两端之间的任一空闲位置。形式上，假设这三枚石子当前分别位于位置 x, y, z 且 x &lt; y &lt;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1033.移动石子直到连续">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201033.%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1033.移动石子直到连续力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;moving-stones-until-consecutive&#x2F; 三枚石子放置在数轴上，位置分别为 a，b，c。  每一回合，你可以从两端之一拿起一枚石子（位置最大或最小），并将其放入两端之间的任一空闲位置。形式上，假设这三枚石子当前分别位于位置 x, y, z 且 x &lt; y &lt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-30T02:15:41.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.723Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="脑筋急转弯">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="思维">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1033.移动石子直到连续 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1033.移动石子直到连续"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1033-移动石子直到连续"><a href="#【LetMeFly】1033-移动石子直到连续" class="headerlink" title="【LetMeFly】1033.移动石子直到连续"></a>【LetMeFly】1033.移动石子直到连续</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/moving-stones-until-consecutive/">https://leetcode.cn/problems/moving-stones-until-consecutive/</a></p>
+<p>三枚石子放置在数轴上，位置分别为 <code>a</code>，<code>b</code>，<code>c</code>。</p>
+
+<p>每一回合，你可以从两端之一拿起一枚石子（位置最大或最小），并将其放入两端之间的任一空闲位置。形式上，假设这三枚石子当前分别位于位置 <code>x, y, z</code> 且 <code>x < y < z</code>。那么就可以从位置 <code>x</code> 或者是位置 <code>z</code> 拿起一枚石子，并将该石子移动到某一整数位置 <code>k</code> 处，其中 <code>x < k < z</code> 且 <code>k != y</code>。</p>
+
+<p>当你无法进行任何移动时，即，这些石子的位置连续时，游戏结束。</p>
+
+<p>要使游戏结束，你可以执行的最小和最大移动次数分别是多少？ 以长度为 2 的数组形式返回答案：<code>answer = [minimum_moves, maximum_moves]</code></p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>a = 1, b = 2, c = 5
+<strong>输出：</strong>[1, 2]
+<strong>解释：</strong>将石子从 5 移动到 4 再移动到 3，或者我们可以直接将石子移动到 3。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>a = 4, b = 3, c = 2
+<strong>输出：</strong>[0, 0]
+<strong>解释：</strong>我们无法进行任何移动。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ol>
+    <li><code>1 <= a <= 100</code></li>
+    <li><code>1 <= b <= 100</code></li>
+    <li><code>1 <= c <= 100</code></li>
+    <li><code>a != b, b != c, c != a</code></li>
+</ol>
+
+
+    
+<h2 id="方法一：思维"><a href="#方法一：思维" class="headerlink" title="方法一：思维"></a>方法一：思维</h2><p>不失一般性，我们先对a、b、c排个序，使得$a&lt;b&lt;c$</p>
+<p>接着，我们判断最小距离：</p>
+<ul>
+<li>如果<strong>a、b、c相邻</strong>，那么移动所需最小距离就为0</li>
+<li>否则如果<strong>a、b相邻或b、c相邻</strong>，我们只需要将不相邻的那一个移动过来即可；如果<strong>a、b间隔为1或b、c间隔为1</strong>，我们只需要将另外一个移动到这两个中间的间隔处。总之，移动最小距离为1。</li>
+<li><strong>否则</strong>，我们移动两次，可以使a、b、c相邻</li>
+</ul>
+<p>接着，我们计算最大距离：</p>
+<p>在a、b、c不全部相邻时：</p>
+<ul>
+<li>若a、b不相邻，那么我们就把a往右移动一步</li>
+<li>否则，就把b往左移动一步</li>
+</ul>
+<p>总之，在没有把a、b、c移动到一起时，我们有办法每次只移动一步。因此最大总移动步数为$c-a+2$</p>
+<ul>
+<li>时间复杂度$O(1)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">numMovesStones</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b, <span class="hljs-type">int</span> c)</span> </span>&#123;<br>        <span class="hljs-comment">// sort(a, b, c)</span><br>        <span class="hljs-keyword">if</span> (a &gt; b) &#123;<br>            <span class="hljs-built_in">swap</span>(a, b);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (b &gt; c) &#123;<br>            <span class="hljs-built_in">swap</span>(b, c);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (a &gt; b) &#123;<br>            <span class="hljs-built_in">swap</span>(a, b);<br>        &#125;<br>        <span class="hljs-comment">// calculate</span><br>        <span class="hljs-keyword">if</span> (a + <span class="hljs-number">1</span> == b &amp;&amp; b + <span class="hljs-number">1</span> == c) &#123;  <span class="hljs-comment">// 直接相连</span><br>            <span class="hljs-keyword">return</span> &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (a + <span class="hljs-number">1</span> == b || b + <span class="hljs-number">1</span> == c || a + <span class="hljs-number">2</span> == b || b + <span class="hljs-number">2</span> == c) &#123;  <span class="hljs-comment">// 有两个相连 或 有两个间隔为2</span><br>            <span class="hljs-keyword">return</span> &#123;<span class="hljs-number">1</span>, c - a - <span class="hljs-number">2</span>&#125;;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;  <span class="hljs-comment">// 三个各不相连</span><br>            <span class="hljs-keyword">return</span> &#123;<span class="hljs-number">2</span>, c - a - <span class="hljs-number">2</span>&#125;;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">numMovesStones</span>(<span class="hljs-params">self, a: <span class="hljs-built_in">int</span>, b: <span class="hljs-built_in">int</span>, c: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        a, b, c = <span class="hljs-built_in">sorted</span>([a, b, c])<br>        <span class="hljs-keyword">if</span> a + <span class="hljs-number">1</span> == b <span class="hljs-keyword">and</span> b + <span class="hljs-number">1</span> == c:<br>            <span class="hljs-keyword">return</span> [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">elif</span> a + <span class="hljs-number">1</span> == b <span class="hljs-keyword">or</span> b + <span class="hljs-number">1</span> == c <span class="hljs-keyword">or</span> a + <span class="hljs-number">2</span> == b <span class="hljs-keyword">or</span> b + <span class="hljs-number">2</span> == c:<br>            <span class="hljs-keyword">return</span> [<span class="hljs-number">1</span>, c - a - <span class="hljs-number">2</span>]<br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> [<span class="hljs-number">2</span>, c - a - <span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/04/30/LeetCode%201033.%E7%A7%BB%E5%8A%A8%E7%9F%B3%E5%AD%90%E7%9B%B4%E5%88%B0%E8%BF%9E%E7%BB%AD/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/130446773">https://letmefly.blog.csdn.net/article/details/130446773</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

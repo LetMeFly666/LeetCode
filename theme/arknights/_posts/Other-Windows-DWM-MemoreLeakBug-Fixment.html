@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）前言有时候笔记本使用者使用者就感觉不对劲，有种强烈的延时感。打开任务管理器一看，好家伙，桌面窗口管理器（Desktop Window Manager）能占用好几个G。右键结束运行，电脑黑屏一下就恢复了。 但有时候电脑长时间没动，回来的时候内存快干满了，巨卡。。。直到最后有一次电脑直接黑屏死机了，我忍无可忍，决">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Windows-DWM-MemoreLeakBug-Fixment.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）前言有时候笔记本使用者使用者就感觉不对劲，有种强烈的延时感。打开任务管理器一看，好家伙，桌面窗口管理器（Desktop Window Manager）能占用好几个G。右键结束运行，电脑黑屏一下就恢复了。 但有时候电脑长时间没动，回来的时候内存快干满了，巨卡。。。直到最后有一次电脑直接黑屏死机了，我忍无可忍，决">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-25T13:44:59.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.739Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高） - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Windows-DWM-桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）"><a href="#Windows-DWM-桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）" class="headerlink" title="Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）"></a>Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候笔记本使用者使用者就感觉不对劲，有种强烈的延时感。打开任务管理器一看，好家伙，<code>桌面窗口管理器</code>（Desktop Window Manager）能占用好几个G。右键结束运行，电脑黑屏一下就恢复了。</p>
+<p>但有时候电脑长时间没动，回来的时候内存快干满了，巨卡。。。直到最后有一次电脑直接黑屏死机了，我忍无可忍，决定解决之，并记录了下来。</p>
+<p>其实本来是想写一个后台脚本，每隔一定时间监控正在运行的进程的，若DWM占用内存过高则kill之，但最后想想这样毕竟不是根治。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/">@NSJim</a>的博文帮了我很多：<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/130536410">一</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/130562802">二</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/NSJim/article/details/125861398">三</a>。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>原因可见Intel官网：<a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/support/articles/000058381/graphics.html">dwm.exe（桌面窗口管理程序）使用更新于 27.20.100.8587 的驱动程序产生内存泄漏</a>，因此只要确保使用修复这个BUG的驱动即可。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>你也可以看完三个步骤后，按三一二的顺序进行。</p>
+<h3 id="一、卸载旧驱动"><a href="#一、卸载旧驱动" class="headerlink" title="一、卸载旧驱动"></a>一、卸载旧驱动</h3><p>卸载所有Intel核显驱动，可以使用软件<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/content/DDU-Guide-Tutorial">Display Driver Uninstaller(DDU)</a>，软件很小巧很干净。</p>
+<p>下载方式：访问<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/display-driver-uninstaller-ddu-">Release页</a>，选择一个版本（如<code>Display Driver Uninstaller (DDU) V18.0.6.6 Released.</code>），点击<code>Read More</code>，点击<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/forums/viewtopic.php?t=4666">Click here for DOWNLOAD &amp; SUPPORT.</a>，点击<a target="_blank" rel="noopener" href="https://www.wagnardsoft.com/DDU/download/DDU%20v18.0.6.6.exe">*** Download DDU “Portable &#x2F; self-extracting” ***</a></p>
+<p>运行自解压程序，解压到一个位置后，运行<code>Display Driver Uninstaller.exe</code>，右侧“设备种类&#x2F;设备供应商”选择“显卡&#x2F;Intel”，点击左侧“清除并重启”。重启后电脑分辨率可能会降低。</p>
+<p>至于为什么卸载旧驱动而不是直接安装新驱动，一个是BUG版旧驱动似乎没什么用了，一个是防止“不小心”回滚到BUG版。</p>
+<h3 id="二、安装新驱动"><a href="#二、安装新驱动" class="headerlink" title="二、安装新驱动"></a>二、安装新驱动</h3><p>在新<a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/download/19344/732078/intel-graphics-windows-dch-drivers.html">驱动安装页面</a>选择30开头的驱动，下载<code>igfx_win_xx.exe</code>，运行，同意许可，安装。</p>
+<h3 id="三、禁止Windows自动更新驱动"><a href="#三、禁止Windows自动更新驱动" class="headerlink" title="三、禁止Windows自动更新驱动"></a>三、禁止Windows自动更新驱动</h3><p>正当我以为万事大吉时，电脑右下角突然多出来了一个“Windows更新”的图标。点开一看，<code>Intel Graphxx 27.20.100.xxx</code>正等待重新启动。</p>
+<p>好家伙，反向更新驱动是吧？？？</p>
+<p>于是我又进行了第一、第二步的操作，并设置了禁止Windows自动更新驱动（不是禁止Windows自动更新）。</p>
+<h4 id="一、修改系统设置"><a href="#一、修改系统设置" class="headerlink" title="一、修改系统设置"></a>一、修改系统设置</h4><p><code>Windows设置 -&gt; 搜索“系统高级设置” -&gt; 硬件 -&gt; 设备安装设置(S) -&gt; 否 -&gt; 保存更改</code>。</p>
+<p>仅仅这样Windows还是会自动更新驱动。</p>
+<h4 id="二、修改策略组"><a href="#二、修改策略组" class="headerlink" title="二、修改策略组"></a>二、修改策略组</h4><p><code>Win + R 并回车 -&gt; gpedit.msc 并回车</code></p>
+<p>需要进行两个设置：</p>
+<ol>
+<li><code>计算机配置 - 管理模板 - 系统 - Internet通信管理 - Internet通信设置 -&gt; 双击 关闭Windows更新设备驱动程序搜索 -&gt; 选中“已启用” -&gt; 确定</code></li>
+<li><code>计算机配置 - 管理模板 - Windows组件 - Windows更新 -&gt; 双击 Windows更新不包括驱动程序 -&gt; 选中“已启用” -&gt; 确定</code></li>
+</ol>
+<h4 id="三、修改注册表"><a href="#三、修改注册表" class="headerlink" title="三、修改注册表"></a>三、修改注册表</h4><p>保险起见，可以：</p>
+<p><code>Win + R 并回车 -&gt; regedit 并回车 -&gt; 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching -&gt; 将 SearchOrderConfig 的值修改为0</code></p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>挺繁琐的，但BUG修复了还是比较开心的。对了，设置成功的话，还能够在设置中“Windows系统更新”页面，看到红色的<code>*某些设置由你的组织来管理</code>。出现这个就比较放心系统再自动更新驱动了。</p>
+<p>啊咧，操作教程，竟然没图？</p>
+<blockquote>
+<p>文章原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">原文链接</a>哦~<br>同步发文于CSDN：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/132503580">https://letmefly.blog.csdn.net/article/details/132503580</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

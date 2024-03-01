@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本文前面约1000字非机翻，纯手工翻译 + 手工码字 原文地址：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2001.04107v2.pdf 蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer摘要Javascript（JS）引擎漏洞构成了影响数十亿web浏览器的严重的安全威胁。虽然模糊测试是很流行的寻找这类漏洞的技术，但是很少有研究使用最近神经网络语言模型（NNLM）的最近进展。在这篇文章中，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer">
+<meta property="og:url" content="https://blog.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="本文前面约1000字非机翻，纯手工翻译 + 手工码字 原文地址：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2001.04107v2.pdf 蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer摘要Javascript（JS）引擎漏洞构成了影响数十亿web浏览器的严重的安全威胁。虽然模糊测试是很流行的寻找这类漏洞的技术，但是很少有研究使用最近神经网络语言模型（NNLM）的最近进展。在这篇文章中，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-06T02:32:56.000Z">
+<meta property="article:modified_time" content="2024-03-01T02:22:40.739Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Fuzz">
+<meta property="article:tag" content="模糊测试">
+<meta property="article:tag" content="论文">
+<meta property="article:tag" content="Paper">
+<meta property="article:tag" content="论文翻译">
+<meta property="article:tag" content="Montage">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-06 10:32" pubdate>
+          2023年4月6日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          74 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>本文前面约1000字非机翻，纯手工翻译 + 手工码字</p>
+<p>原文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2001.04107v2.pdf">https://arxiv.org/pdf/2001.04107v2.pdf</a></p>
+<h1 id="蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer"><a href="#蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer" class="headerlink" title="蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer"></a>蒙太奇：一个神经网络语言模型引导的JS引擎Fuzzer</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>Javascript（JS）引擎漏洞构成了影响数十亿web浏览器的严重的安全威胁。虽然模糊测试是很流行的寻找这类漏洞的技术，但是很少有研究使用最近神经网络语言模型（NNLM）的最近进展。在这篇文章中，我们提出了Montage，第一个NNLM指导的寻找JS引擎漏洞的模糊测试工具。我们的技术的关键方法是将JS抽象语法树（AST）转为可以直接供NNLM训练的AST子树序列。我们证明了Montage可以生成有效的JS测试文件，并且表现得比这方面寻找漏洞的先前研究好。Montage在最新版本的JS引擎中找到了37个现实世界的BUG，其中包括了3个CVE，证明了它在寻找JS引擎漏洞上的有效性。</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>Web浏览器的内存安全已经变成了一个关键的攻击载体，因为它们已经成为了日常计算的一个重要组成部分。进行驱动下载攻击[48]的恶意网站通常利用浏览器的内存漏洞。目前，一个可被利用的浏览器内存漏洞可价值10万美元，如果它能与内核漏洞连接在一起实现远程iOS越狱，那么它将能够被卖到100万美元[59]。</p>
+<p>在浏览器的众多组件中，攻击者最喜欢JS引擎，因为它的图灵完备性使得攻击者能够设计复杂的漏洞。一个人可以很轻松地分配一系列堆块来实现堆喷射[49]（译者注：原文heap spraying，中文名词来自百度百科），在JS中编写一些函数来抽象出一些漏洞逻辑[26]，甚至可以绕过浏览器的缓解措施[35]。根据国家漏洞数据库（NVD）的报告，微软Edge和谷歌Chrome在2017年报出来的所有漏洞中，有43%的是JS引擎漏洞。</p>
+<p>尽管人们对JS引擎的安全性研究越来越重视，但是相比于寻找JS引擎的漏洞而言，有很少的学术研究是分析JS引擎脆弱性的[18, 24, 54]。LangFuzz[24]结合从JS种子文件中抽象出来的代码段生成JS测试文件，GramFuzz和IFuzzer[18, 54]或多或少地采用了类似的方法。但IFuzzer使用遗传基于执行目标JS引擎和产生输入所获得的反馈的遗传算法来进化指导模糊测试效果。</p>
+<p>然后，现在的方法都没有考虑生成测试样例用的代码段之间的关系，换句话说，只要JS语法允许，它们就只通过简单地组合代码段来生成测试输入代码。因此，它们不知道那种组合更能暴漏JS引擎的漏洞。能够触发JS引擎漏洞的JS测试文件之间有相似性吗？如果有，那么我们可不可以利用这种模式来引导模糊器找到这些漏洞？这是激发我们研究的关键问题。</p>
+<p>我们对JS引擎漏洞进行了初步的研究，并发现了两个模式。我们发现_一个新的安全问题经常出现在其他漏洞的补丁文件中_，我们分析了微软Edge使用的卡夫卡内核的50个CVE漏洞，发现分别有18%和14%的漏洞和GlobOpt.cpp和JavascriptArray.cpp相关。</p>
+<p>我们的第二个发现是，_能触发JS引擎安全漏洞的JS文件经常由已经在回归测试套件中的代码片段组成_。我们从卡夫卡回归测试套件中收集了2038个不同的JS文件，并收集了67个能够触发漏洞的JS文件，这两组文件是互不相交的。我们将每个JS文件的抽象语法树切分成深度为1的子树（命名为代码段），发现67个文件生成的Fragments的95.9%和2038个文件的Fragments重叠（见第3部分）。</p>
+<p>考虑到这两点，我们应该如何使用模糊测试来找到JS引擎的漏洞呢？对于这个待研究的问题，我们第一个在JS引擎上使用神经网络语言模型（NNLM）进行模糊测试的方法。我们的核心思想是使用NNLM生成的新代码段去替换给定的JS回归测试套件中JS文件的关键代码来实现变异。考虑到JS回归测试套件能触发调用漏洞补丁的函数，我们在这个回归测试中生成一个JS测试，同时期望在补丁中能引出一个新的潜在的漏洞，这就抓住了问题一。在组成新的代码时，我们还通过NNLM学习回归测试套件中的已有代码中，这就抓住了问题二。</p>
+<p>为了验证这一思路，我们设计并实现了Montage，一个用于寻找JS引擎漏洞的系统。系统开始时将JS回归测试套件中的抽象语法树转化为代码段序列，并成为NNLM的训练集。这样，NNLM就学习了代码段之间的关系，Montage通过使用模型生成的代码段替换一个给定的JS测试文件的一个代码段从而实现变异。</p>
+<p>先前研究主要集中在学习PDF组件[16]，字符[11, 32]，源码中的语法令牌[22, 40, 43]之间的关系，这些模型解决了完全不正确或缺失令牌[40, 53]，或重组PDF对象[16]的问题，他们的方法不能直接用于生成有效的JS测试，因为这需要对结构控制流和JS词法标记之间的语义数据依赖进行建模。刘等人[32]指出他们在从C代码的字符级训练实例中提取一般模式方面的局限性，从而产生了虚假的测试。</p>
+<p>和之前研究[11, 16]不同，Montage使用代码段序列作为构建块，每个代码段包含了抽象语法树节点中的关系。之后对模型进行训练，让模型能够学习抽象语法树代码段之间的关系，Montage在对给定的回归JS测试进行突变时使用该模型来组装单元子树。因此每个生成的JS测试都反映了回归测试套件中存在的语法和语义共性。</p>
+<p>我们评估了蒙太奇在ChakraCore 1.4.1中发现的bug，并将发现的bug数量与CodeAlchemist[20]、jsfunfuzz[38]和IFuzzer[54]进行了比较。我们执行了5个fuzzing活动;每一轮72小时。蒙太奇发现了133个漏洞，其中包括15个安全漏洞。在发现的安全漏洞中，Montage分别报告了9个、12个和12个CodeAlchemist、jsfunfuzz和IFuzzer没有发现的漏洞。这个结果表明蒙太奇能够发现最先进的JS模糊器无法发现的错误。</p>
+<p>我们衡量了蒙太奇语言模型与无语言模型的随机选择方法、马尔可夫链模型和字符&#x2F;令牌级循环神经网络语言模型的有效性。蒙太奇在发现独特bug方面优于其他方法。</p>
+<p>我们进一步测试了蒙太奇，以模糊最新版本的ChakraCore, JavaScriptCore, SpiderMonkey和V8。蒙太奇发现了37个独特的漏洞，其中包括3个安全漏洞。</p>
+<p>从ChakraCore中发现了34个bug。剩下的两个和一个bug分别来自JavaScriptCore和V8。在这三个安全漏洞中，蒙太奇发现一个来自JavaScriptCore，另外两个来自ChakraCore。这些结果证明了利用nnlm查找真实的JS引擎错误的有效性。</p>
+<h2 id="2-背景"><a href="#2-背景" class="headerlink" title="2 背景"></a>2 背景</h2><h3 id="2-1-语言模型"><a href="#2-1-语言模型" class="headerlink" title="2.1 语言模型"></a>2.1 语言模型</h3><p>语言模型是单词序列的概率分布。它对于自然语言处理(NLP)任务是必不可少的，例如语音识别、机器翻译和文本生成。传统上，语言模型估计一个单词序列在训练集中的出现历史的可能性。</p>
+<p>一个n-gram语言模型[8,30]基于前面n−1个单词的出现历史来近似这种概率。不幸的是，这种基于计数的语言模型天生就存在数据稀疏问题[8]，这导致它们产生糟糕的预测。问题的主要原因是缺乏具有代表性的培训实例。NNLMs通过将单词表示为分布式向量表示来解决数据稀疏性问题，这通常被称为单词嵌入，并将其用作神经网络的输入。</p>
+<p>Bengio等[3]引入了第一个NNLM，一种前馈神经网络(FNN)模型。FNN根据它前面的n−1个单词预测下一个单词，这被称为历史或上下文，其中n是表示单词序列大小的超参数[1,3,17]。在这个NNLM设置中，训练集中的所有单词都构成词汇V。V中的每个单词都映射到一个特征向量上。因此，一个上下文，一个词序列，就变成了与其对应的每个特征向量的拼接。然后对模型进行训练，以输出给定上下文中下一个单词的V中的单词的条件概率分布。</p>
+<p>**长短期记忆(LSTM)**。与FNN语言模型不同，循环神经网络(RNN)能够从任意长度的前一个单词的历史中预测下一个单词，因为RNN能够在长时间的单词历史中积累信息。LSTM模型是一种特殊的RNN;它被设计用来捕捉单词之间的长期依赖关系[14,23]。由于标准RNN存在梯度消失&#x2F;爆炸问题[4]，LSTM模型使用称为门的神经层来调节信息传播和内部内存，以在多个时间步长中更新其训练参数。</p>
+<h3 id="JS引擎模糊测试"><a href="#JS引擎模糊测试" class="headerlink" title="JS引擎模糊测试"></a>JS引擎模糊测试</h3><p>模糊测试是动态软件测试的一种形式，在这种测试中，被测程序使用测试输入重复运行，以发现程序中的错误。根据输入生成方法的不同，模糊可以分为两种类型:突变模糊和代模糊。突变模糊[7,44,57,58]改变给定的种子以生成新的测试输入，而分代模糊[19,20,24,38]基于输入模型(如语法)生成测试。</p>
+<p>由于JS代码是高度结构化的，随机生成的测试输入很可能会被JS引擎拒绝。因此，JS引擎模糊者通常采用分代方法。一个值得注意的例子是jsfunfuzz，一个开创性的JS引擎fuzzer[38,45]。它从在JS语法中定义的开始符号开始，并以随机方式选择下一个潜在的产品，直到没有剩余的非结束符号为止。CodeAlchemist[20]是另一代模糊器，它借助于称为代码块的构建块的组装约束来生成语义上有效的JS代码。</p>
+<p>大多数其他JS引擎模糊器同时使用突变和分代方法。LangFuzz [24]， GramFuzz[18]和IFuzzer[54]用JS语法解析JS种子，并构造一个代码片段池，其中一个代码片段是AST的子树。它们将池中的代码片段组合在一起以生成新的JS测试输入，但它们也会对给定的种子进行突变以生成测试输入。</p>
+<p>尽管TreeFuzz[41]的目的不是寻找安全漏洞，但它利用概率上下文无关语法(PCFG)从给定的种子生成测试套件。类似地，Skyfire[56]从给定的种子推断出一个概率上下文敏感语法(PCSG)，并使用它来生成一组分布良好的种子。这两种方法都应用概率语言模型来生成JS测试输入，但它们的设计过于通用，无法发现JS引擎中的安全漏洞。与以前的方法不同，Montage的灵感来自对cve的系统研究，即以前的JS引擎漏洞，并利用训练过的NNLM来学习JS回归测试套件之间的语法和语义共性。</p>
+<h2 id="3-动机"><a href="#3-动机" class="headerlink" title="3 动机"></a>3 动机</h2><p>我们能在触发安全漏洞的JS文件中找到相似之处吗?我们通过对ChakraCore[10]报告的cve和相应的概念证明(PoC)漏洞进行定量分析来回答这个问题。我们之所以选择ChakraCore，是因为它的GitHub存储库维护了记录良好的提交日志，描述了提交是否修补了特定的CVE。这有助于我们确定哪些安全漏洞与给定的PoC利用有关，以及哪些源行受到该漏洞的影响。相比之下，其他JS引擎并没有在代码提交和CVE之间提供精确的映射。</p>
+<p>请注意，收集PoC漏洞并不简单，因为CVE报告通常不携带任何PoC漏洞，因为存在被滥用的潜在风险。我们从exploitDB、漏洞博客和ChakraCore GitHub存储库中手动收集了cve及其PoC代码。我们总共获得了67个PoC漏洞，每个漏洞对应一个唯一的CVE。我们进一步确定了其中的50个，其中相应的漏洞通过一次提交就可以修复。这意味着我们可以将50个漏洞中的每一个映射到一组受影响的源文件。收集的漏洞中最早和最新的漏洞分别于2016年9月和2018年3月被修补。由于这些漏洞，总共有77个文件被修补。</p>
+<p>我们发现50个漏洞中有9个(18%)与GlobOpt.cpp文件有关，该文件主要实现了即时(JIT)编译步骤。他们中的7人(14%)也为JavascriptArray.cpp文件的补丁做出了贡献。注意，每个文件实现了ChakraCore的不同功能。换句话说，不同的JS引擎漏洞通常产生于实现相同功能的公共文件，比如JIT优化和JS数组。例如，CVE-2018-0776的补丁在通过被调用方中的函数arguments属性访问数组时强制对数组进行深度复制，从而避免了类型混淆漏洞。然而，补丁是不完整的，仍然留下其他方式，在数组的浅拷贝可能导致。CVE-2018-0933和CVE-2018-0934被分配给这些bug。注意，所有的补丁都修改了JavascriptArray.cpp文件中的BoxStackInstance函数。</p>
+<p>在77个补丁文件中，有26个(33.8%)文件由于报告的cve被至少打了两次补丁。这些例子表明，JS引擎的漏洞通常来自为其他错误修补的文件。考虑到这些补丁通常是通过回归测试来检查的，改变一个现有的JS测试可能会触发一个新的漏洞，其根本原因在于这个测试已经覆盖的修补文件。</p>
+<p><strong>发现1</strong>：JS引擎漏洞通常来自于针对不同错误修补的同一个文件。</p>
+<p>我们还测量了来自PoC漏洞的JS代码和从ChakraCore维护的回归测试套件中获得的2038个JS文件之间的语法相似性。请注意，回归测试套件由触发先前修补的错误的JS测试组成，并使用对抗性测试输入检查预期结果。特别是，我们收集了2016年8月发布的ChakraCore版本的回归测试文件，这比最早的漏洞修补日期提前了一个月。因此，回归测试文件不受任何研究漏洞的影响。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> v0 = &#123;&#125;;<br><span class="hljs-keyword">for</span> ( <span class="hljs-keyword">var</span> v1 = <span class="hljs-number">0</span>; v1 &lt; <span class="hljs-number">5</span>; v1 ++) &#123;<br>    v0 [ v1 ] = v1 + <span class="hljs-number">5</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>图1:规范化后的JS文件示例</p>
+<p>为了度量相似性，我们规范化了回归测试文件中的标识符以及PoC漏洞。具体来说，我们重命名了变量和函数的每个标识符，使其具有一个连续的数字和一个公共前缀作为它们的名称。然后我们将规范化的JS文件解析为抽象语法树。</p>
+<p>我们从每个AST中提取一组深度为1的单元子树。对于给定的AST，我们从每个内部节点中提取一个单元子树。因此，提取的单元子树的数量就成为AST内部节点的数量。我们称这样的单元子树为片段，如§5中正式定义的那样。注意，每个片段的根节点都是AST的内部节点。它也对应于另一个片段中的叶节点，除了具有原始AST根节点的片段。</p>
+<p>图2:从图1中的例子中分割AST（此处有图！！Figure2）</p>
+<p>图2说明了图1中列出的JS文件的碎片结果。图的上方显示了从Esprima JS解析器[21]获得的AST子树。这个子树对应于第3行。图的底部显示了这个子树的片段。</p>
+<p>我们还将触发CVE的每个PoC划分为片段，然后计算回归测试套件中存在多少个片段。图3描述了公共片段百分比超过每个百分比阈值的PoC文件的数量。我们发现来自10个PoC漏洞的所有片段(100%)已经存在于回归测试文件中。42个PoC漏洞中96%以上的片段存在回归测试，63个PoC漏洞中90%以上的片段存在回归测试。平均而言，在回归测试文件中发现了95.9%的PoC漏洞片段。</p>
+<p><strong>发现2</strong>：在回归测试套件和PoC漏洞之间，超过95%的代码段在语法上重叠在回归测试和PoC漏洞之间，超过95%的代码段在语法上重叠。</p>
+<p>这两个观察结果都表明，从现有的回归测试套件中组装代码片段很可能会触发一个新的安全漏洞，这是本研究的主要动机，如我们在§4中所述。</p>
+<h2 id="4-概况"><a href="#4-概况" class="headerlink" title="4 概况"></a>4 概况</h2><p>我们展示了蒙太奇，一个NNLM驱动的模糊器，它可以自动发现JS引擎中的错误。回想一下蒙太奇的整体设计是由两个观察结果驱动的:（1）安全漏洞通常来自于先前因不同原因打过补丁的文件，以及（2）触发安全相关漏洞的JS测试代码大量重用了现有回归测试集中发现的AST片段。</p>
+<p>我们提出了一种新的模糊技术来捕捉这些观察。我们训练一个NNLM来从回归测试集中捕获片段之间的语法和语义关系。当生成一个新的JS测试时，蒙太奇会改变给定JS回归测试的AST。它使用训练过的NNLM将AST的子树替换为新的子树。因此，每个生成的测试都源于一个给定的回归测试，该测试检查先前修补过的或有bug的逻辑，从而捕获第一个观察结果。同时，它通过在NNLM的指导下组装现有片段来调用不同执行上下文中的功能，NNLM解决了第二个问题。</p>
+<p>图3:普通片段百分比大于可变百分比的所有PoC文件的数量。（图3！！！）</p>
+<p>图4显示了蒙太奇的整体工作流程。阶段I从给定的回归测试套件准备训练实例。每个训练实例都是AST单元子树的序列，称为片段。阶段II训练NNLM学习片段之间的组成关系。这两个阶段是一次性的设置过程。阶段III通过利用训练好的模型生成JS测试。</p>
+<p>图4:蒙太奇的概况（图4！！！）</p>
+<p>阶段I从给定的JS回归测试文件训练集开始。它将每个JS文件解析为AST，并规范化AST中出现的标识符，以消除重复的函数和变量名。图1显示了一个规范化的JS文件示例。每个出现的变量名都被更改为一个通用名称，例如v0或v1。然后，阶段I从规范化的AST树中提取多个单元子树，每个子树称为一个片段。对于AST中的每个节点，蒙太奇递归地切片深度为1的单位子树。每个切片的子树都成为AST的一个片段。然后它发出这些片段的序列，这些片段是由规范化AST树中它们的根节点的预序遍历产生的。</p>
+<p>阶段II给出一组片段序列训练NNLM。根据给定的任意长度的片段序列，我们设计了NNLM来建议可能出现在该片段序列之后的下一个片段。这个框架是本文的一个关键贡献。请注意，以语言模型可以学习的方式对AST的固有结构关系建模并不简单。通过利用封装AST结构关系的片段，我们将给定的AST编码到片段序列中。考虑到大量的自然语言nnlm已经在单词序列上进行了训练，这种片段测序简化了现有流行的nnlm用于生成JS测试的应用。</p>
+<p>在这里，目标是训练NNLM学习片段之间的组成关系，以便从训练模型生成的JS测试代码反映给定训练集的语法和语义，这是JS引擎的回归测试集。阶段III通过利用训练好的模型和回归测试的AST生成一个新的JS测试。给定一组来自回归测试套件的AST，它随机选择一个种子AST。然后，它随机选择一个子树进行蒙太奇替换。在生成新的子树时，蒙太奇会考虑上下文，即在所选子树之前的所有片段的序列。蒙太奇迭代地从所选子树的根节点追加片段，同时考虑其上下文。</p>
+<p>因为当前的AST是从片段组装而来的，所以可以预期AST节点中的一些变量和函数标识符在没有适当声明的情况下使用。因此，Montage通过使用声明的标识符重命名引用错误来解决可能的引用错误。最后，Montage检查生成的测试，并在代码使目标JS引擎崩溃时报告错误。</p>
+<p><strong>其他模型指导的方法</strong>。以往的研究提出了语言模型，可以预测源代码中的词法代码标记。这种语言模型的框架在解决代码完成问题时已被广泛研究[40,53]。然而，可执行测试的生成比预测有限数量语义正确的词法标记的代码完成问题更具挑战性。据我们所知，由Singh等人[16]提出的PDF模糊器是第一个使用字符级RNN模型来生成PDF测试的系统。我们评估了基于片段的方法在寻找JS引擎错误方面是否比字符级RNN模型方法表现更好(参见§7.5)。</p>
+<h2 id="5-设计"><a href="#5-设计" class="headerlink" title="5 设计"></a>5 设计</h2><p>Montage的设计目标是生成能够触发JS引擎安全漏洞的JS测试输入，它（1）反映给定JS训练集的语法和语义模式，（2）不会触发引用错误。</p>
+<p>用训练代码的语义和句法模式来构建语言模型是一项技术挑战。我们通过AST子树抽象层次结构来解决这个问题，我们将其称为片段。然后，我们使语言模型能够学习片段之间的组合关系。</p>
+<p>我们提出了一种利用训练过的语言模型的新的代码生成算法。我们利用现有的JS代码来触发JS引擎缺陷。Montage通过将现有的JS代码中的一个AST子树替换为经过训练的语言模型生成的新子树来改变它。因此，Montage能够生成一个新的JS测试，语义上类似于触发先前报告的错误的回归测试用例。我们希望这个新的JS测试在不同的执行环境中触发一个新的错误。</p>
+<h3 id="5-1-第一阶段-构建片段序列训练数据"><a href="#5-1-第一阶段-构建片段序列训练数据" class="headerlink" title="5.1 第一阶段:构建片段序列训练数据"></a>5.1 第一阶段:构建片段序列训练数据</h3><p>第一阶段使用给定的训练集准备训练实例。它由解析和分段组成。</p>
+<h4 id="5-1-1-解析和规范化"><a href="#5-1-1-解析和规范化" class="headerlink" title="5.1.1 解析和规范化"></a>5.1.1 解析和规范化</h4><p>阶段I通过解析训练集中的每个JS文件来构建AST，并对解析后的AST进行规范化。由于训练集中包括来自不同开发人员的各种JS文件，标识符命名实践不一定一致。因此，训练文件在不同的JS文件中有不同的变量和函数名是很自然的。考虑两个JS文件，它们分别包含一个JS语句var b &#x3D; a + 1和var c &#x3D; d + 1。两者具有相同的AST结构和语义，但标识符不同。</p>
+<p>这种模式增加了语言模型需要学习的不必要词汇量，使模型评估变得昂贵，因为它需要更多的训练实例。为了使ast具有一致的标识符名称，我们重命名ast中的所有变量和函数标识符。</p>
+<p>具体来说，对于每个声明的变量标识符，我们按照它们在给定AST中出现的顺序分配一个连续的数字。然后，我们将每个变量名替换为一个结合了公共前缀和它的连续数字的新名称，例如v0和v1。我们还将相同的过程应用于函数标识符，例如f0和f1。我们故意将特定于语言的内置函数和引擎对象从归一化步骤中排除，因为归一化会影响原始AST的语义。对于一个作为JS代码动态计算给定字符串的eval函数，我们首先提取eval函数的参数字符串，当参数是常量字符串时，将其作为JS代码剥离。随后，我们将从eval参数中剥离出来的JS代码中的标识符规范化。</p>
+<p>由于我们的训练集来自于JS引擎的回归测试，集中的JS文件大量使用预定义的函数进行测试。因此，我们手动识别这些供应商提供的测试函数，并在规范化步骤中忽略它们。也就是说，我们将每个JS引擎供应商提供的通用测试函数视为内置函数，并将它们排除在标准化之外。</p>
+<h4 id="5-1-2-分段化"><a href="#5-1-2-分段化" class="headerlink" title="5.1.2 分段化"></a>5.1.2 分段化</h4><blockquote>
+<p>原创不易，转载请附上<a target="_blank" rel="noopener" href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">原文链接</a>哦~<br>原文链接：<a target="_blank" rel="noopener" href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
+      
+        <a href="/tags/Fuzz/">#Fuzz</a>
+      
+        <a href="/tags/%E6%A8%A1%E7%B3%8A%E6%B5%8B%E8%AF%95/">#模糊测试</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87/">#论文</a>
+      
+        <a href="/tags/Paper/">#Paper</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/">#论文翻译</a>
+      
+        <a href="/tags/Montage/">#Montage</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer</div>
+      <div>https://blog.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/07/CSDN%20-%20CSDN41%E9%A2%98%E8%A7%A3/" title="CSDN - CSDN41题解">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSDN - CSDN41题解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/05/Codeforces%20-%20Codeforces%20Round%20857%20(Div.%202)%20-%20B.%20Settlement%20of%20Guinea%20Pigs/" title="Codeforces - Codeforces Round 857 (Div. 2) - B. Settlement of Guinea Pigs">
+                        <span class="hidden-mobile">Codeforces - Codeforces Round 857 (Div. 2) - B. Settlement of Guinea Pigs</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
