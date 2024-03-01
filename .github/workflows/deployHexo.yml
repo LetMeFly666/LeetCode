@@ -144,8 +144,12 @@ jobs:
           ls -la
           cp -r .git ../hexoWorkspace/public
           cd ../hexoWorkspace/public
+          MESSAGE=$(git log -1 --format="%s")
+          HASH=$(git log -1 --format="%H")
+          ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
+          echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
           git add .
-          git commit -m "有必要保留这么多历史记录吗"
+          git commit --allow-empty -m "$DECODED_MESSAGE"
           git push
           cd ../../LeetCode
 
