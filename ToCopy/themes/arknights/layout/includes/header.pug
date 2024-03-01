@@ -1,0 +1,45 @@
+mixin expand_list(list)
+  each url, label in list
+    - var match = null
+    if typeof(url) === "string" && url.match(config.archive_dir)
+      - match = config.category_dir + ',' + config.tag_dir
+    li.navItem(matchdata=match)
+      if typeof(url) === "object"
+        .navSecond
+          span.navItemTitle= label
+          ol.navItemList
+            +expand_list(url)
+      else
+        a.navSecond(href= url_for(url))
+          span.navItemTitle= label
+
+header.closed
+  .navBtn
+    i.navBtnIcon
+      span.navBtnIconBar
+      span.navBtnIconBar
+      span.navBtnIconBar
+  nav
+    if searchConfig !== null
+      .navItem#search-header
+        span.navItemTitle
+          input(autocomplete="off" autocorrect="off" autocapitalize="none"
+            placeholder=__('search.blurHolder') spellcheck="false" maxlength="50"
+            type="text" id="search-input")
+      .navItem#search-holder
+      .search-popup(tabindex="0")
+        #search-result
+    ol.navContent
+      each url, label in theme.menu
+        - var match = null
+        if typeof(url) === "string" && url.match(config.archive_dir)
+          - match = config.category_dir + ',' + config.tag_dir
+        li.navItem(matchdata=match)
+          if typeof(url) === "object"
+            .navBlock
+              span.navItemTitle= label
+              ol.navItemList
+                +expand_list(url)
+          else
+            a.navBlock(href= url_for(url))
+              span.navItemTitle= label

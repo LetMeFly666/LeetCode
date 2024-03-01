@@ -1,0 +1,60 @@
+aside
+  #about
+    a(href=config.root)#logo
+      img(src= asideLogo, alt= "Logo")
+    h1#Dr
+      a(href= theme.aside.dr)= config.author
+    #description
+      p!= config.description
+    if theme.social
+      #social-links
+        each value, name in theme.social
+          a.social(href= value.split('||')[0].trim())
+            i(alt=name,class=value.split('||')[1].trim())
+  #aside-block
+    block aside-block
+    if page.title === undefined
+      section#total
+        a#total-archives(href= url_for("archives"))
+          span.total-title #{__('menu.archive.plural')} #{__('menu.total')}:
+          span.total-number= site.posts.length
+        #total-tags
+          span.total-title #{__('menu.tag.plural')}:
+          span.total-number= site.tags.length
+        #total-categories
+          span.total-title #{__('menu.category.plural')}:
+          span.total-number= site.categories.length
+        if theme.busuanzi.enable
+          br
+          #total-view
+            if theme.busuanzi.sitePV
+              span#busuanzi_container_site_pv(class='total-title') #{__('busuanzi.siteView')}
+                span#busuanzi_value_site_pv(class='total-number') #{__('busuanzi.loading')}
+              br
+            if theme.busuanzi.siteUV
+              span#busuanzi_container_site_uv(class='total-title') #{__('busuanzi.siteVisitor')}
+                span#busuanzi_value_site_uv(class='total-number') #{__('busuanzi.loading')}
+  footer(style= footerStyle)
+    if theme.aside.icp !== null
+      nobr
+        span.icp-title ICP
+        a(href='https://beian.miit.gov.cn/').icp-content= theme.aside.icp
+      br
+    if theme.aside.copyright !== null
+      each content, title in theme.aside.copyright
+        nobr
+          span.icp-title= title
+          if typeof content === 'string'
+            span.icp-content= content
+          else
+            each href, name in content
+              a(href=href).icp-content= name
+        br
+    nobr #{__('footer.publish')} 
+      a(href= 'http://hexo.io') Hexo
+    wbr
+    nobr  #{__('footer.theme')} 
+      a(href= 'https://github.com/Yue-plus/hexo-theme-arknights') Arknights
+    wbr
+    nobr  #{__('footer.by')} 
+      a(href= 'https://github.com/Yue-plus') Yue_plus

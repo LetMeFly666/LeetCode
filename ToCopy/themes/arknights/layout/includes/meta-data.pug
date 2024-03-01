@@ -1,0 +1,55 @@
+meta(charset='UTF-8')
+meta(name='viewport' content='width=device-width, initial-scale=1.0')
+title= pageTitle
+
+link(
+  rel="icon"
+  type=(theme.favicon.type ? theme.favicon.type : "image/x-icon")
+  href=(url_for(theme.favicon.href ? theme.favicon.href : "favicon.ico"))
+)
+
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for("font/Bender.ttf"))
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for("font/BenderLight.ttf"))
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for('font/JetBrainsMono-Regular.woff2'))
+link(rel="stylesheet", href=url_for("css/arknights.css"))
+style.
+  @font-face {
+    font-family: Bender;
+    src: local('Bender'), url("#{config.root}font/Bender.ttf"), url("#{config.root}font/Bender.otf");
+  }
+  @font-face {
+    font-family: BenderLight;
+    src: local('BenderLight'), url("#{config.root}font/BenderLight.ttf");
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), url('#{config.root}font/JetBrainsMono-Regular.woff2') format('woff2');
+  }
+
+script var config = !{configs}
+if theme.waline && theme.waline.enable === true
+  link(rel="stylesheet", href= url_for('//unpkg.com/@waline/client@v2/dist/waline.css'))
+link(type="text/css" rel="stylesheet" href=url_for("/lib/encrypt/hbe.style.css"))
+link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css")
+link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css")
+link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css")
+link(type="text/css" rel="stylesheet" href=url_for("/lib/fontawesome/css/all.min.css"))
+
+if theme.stylesheets && theme.stylesheets.length > 0
+  //- stylesheets list from _config.yml
+  each url in theme.stylesheets
+    link(rel='stylesheet', href=url)
+script
+  |if (window.localStorage.getItem('theme-mode') === 'light'
+  if theme.color === 'auto'
+    |  || window.matchMedia('(prefers-color-scheme:light)').matches
+  |)
+  |  document.documentElement.setAttribute('theme-mode', 'light')
+  |if (window.localStorage.getItem('theme-mode') === 'dark'
+  if theme.color === 'auto'
+    |  || window.matchMedia('(prefers-color-scheme:dark)').matches
+  |)
+  |  document.documentElement.setAttribute('theme-mode', 'dark')
+
+include ./generate-css.pug
+include ./js-data.pug

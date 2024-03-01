@@ -1,0 +1,116 @@
+extends includes/layout.pug
+
+block content
+  -
+    const prev = page.prev
+    const next = page.next
+    const dateConf = theme.post.date
+    const updatedConf = theme.post.updated
+    const excerptConf = theme.post.excerpt
+    const reward = theme.post.reward
+    const encrypted = page.encrypt || page.password
+    const content = encrypted === undefined ? page.content : page.origin
+    const tocContent = toc(content, theme.toc)
+    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
+    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
+    const busuanzi = theme.busuanzi.enable
+  #post-bg
+    #post-title
+      h1= page.title
+      if (dateConf || updatedConf) && page.title
+        #post-info
+          - var first = true
+          if dateConf
+            span #{__('post.posted')}
+              div.control
+                time(datetime=page.date.toJSON())#date
+                  = ' ' + date(page.date, date_format)
+            - first = false
+          if updatedConf
+            if !first
+              br
+            span #{__('post.edited')}
+              div.control
+                time(datetime=page.updated.toJSON())#updated
+                  = ' ' + date(page.updated, date_format)
+            - first = false
+          if countWord
+            if !first
+              br
+            span #{__('post.countTotal')}
+              div.control #{countWord}
+            - first = false
+          if countTime
+            if !first
+              br
+            span #{__('post.timeTotal')}
+              div.control #{countTime} #{__('post.timeUnit')}
+            - first = false
+          if busuanzi
+            if !first
+              br
+            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
+              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
+            - first = false
+    hr
+    #post-content
+      if excerptConf || encrypted
+        != page.content
+      else
+        != page.more
+      #paginator!= paginator()
+    #post-footer
+      if prev || next
+        - let fix = ""
+        if prev === undefined
+          - fix = "justify-content: flex-end"
+        if next === undefined
+          - fix = "justify-content: flex-start"
+        #pages(style=fix)
+          if prev !== undefined
+            .footer-link(style="width: 50%;text-align:right;border-right:1px #fe2 solid")
+              a(href=url_for(prev.path))
+                |#{__('post.next')}
+                = ' ' + prev.title
+          if next !== undefined
+            .footer-link(style="width: 50%;right:1px;border-left:1px #fe2 solid")
+              a(href=url_for(next.path))
+                = next.title + ' '
+                |#{__('post.prev')}
+    if reward
+      details#reward
+        summary #{__('post.reward')}
+        each imgSrc, pay in reward
+          div
+            span #{pay}
+            br
+            img(src=url_for(imgSrc))
+    -
+      let count = (theme.valine.enable === true) +
+                  (theme.gitalk.enable === true) +
+                  (theme.waline.enable === true)
+    if page.comments && count
+      #comments
+        if count > 1
+          .selector
+            if theme.valine.enable === true
+              button.valine-sel
+            if theme.gitalk.enable === true
+              button.gitalk-sel
+            if theme.waline.enable === true
+              button.waline-sel
+        if theme.valine.enable === true
+          #valine
+        if theme.gitalk.enable === true
+          #gitalk
+        if theme.waline.enable === true
+          #waline
+
+block aside-block
+  - 
+    const encrypted = page.encrypt || page.password
+    const tocContent = encrypted === undefined ? toc(page.content, theme.toc) : toc(page.origin, theme.toc)
+  if (tocContent.length > 0)
+    #toc-div(style=encrypted !== undefined?"display:none":"")
+      h1 #{__('post.index')}
+      |!{tocContent}

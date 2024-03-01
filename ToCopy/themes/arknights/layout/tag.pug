@@ -1,0 +1,39 @@
+extends includes/layout.pug
+
+block content
+  -
+    const categoriesList = list_categories({
+      order: 1
+      , show_count: theme.archives.categories_count
+    })
+  -
+    const tagsList = list_tags({
+      order: -1
+      , show_count: theme.archives.tags_count
+    })
+  -
+    const archivesList = list_archives({
+      type: 'yearly'
+      , order: -1
+      , show_count: false
+    })
+
+  #archive-flex
+    include includes/archive-aside.pug
+    #Archives
+      h1 #{__('menu.tag.name')}: #{page.tag}
+      #Archives-bg
+        - let year
+        - page.posts.each((article) => {
+          - let yearMonth = date(article.date, 'YYYY-MM')
+          if yearMonth !== year
+            - year = yearMonth
+            h2= year
+          .article-item
+            .control-archive
+              time= date(article.date, 'MM-DD')
+            a(href=url_for(article.path) target="_blank")
+              = article.title || __('post.noTitle')
+        - })
+        if config.per_page != 0
+          #paginator!= paginator()

@@ -1,0 +1,57 @@
+script(defer src=url_for("js/arknights.js"))
+
+if searchConfig !== null
+  script(defer src=url_for("js/search.js"))
+
+if theme.busuanzi && theme.busuanzi.enable === true
+  script(async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+
+if theme.valine && theme.valine.enable === true
+  script(async src='//unpkg.com/valine/dist/Valine.min.js')
+
+if theme.gitalk && theme.gitalk.enable === true
+  script(async src=url_for("js/gitalk.js"))
+
+if theme.mermaid && theme.mermaid.enable === true && theme.mermaid.version
+  script(defer type='module').
+    import mermaid from '#{"//unpkg.com/mermaid@" + theme.mermaid.version + "/dist/mermaid.esm.mjs"}';
+    window.mermaid = mermaid;
+    code.paintMermaid();
+
+if theme.waline && theme.waline.enable === true
+  script(async type='module').
+    import { init } from '//unpkg.com/@waline/client@v2/dist/waline.mjs';
+    window.waline = init;
+
+if theme.mathjax && theme.mathjax.enable === true
+  script(async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/" + theme.mathjax.version + "/MathJax.js")
+  script.
+    MathJax.Hub.Config({
+      menuSettings: {
+        zoom: "None"
+      },
+      showMathMenu: false,
+      jax: ["input/TeX","output/CommonHTML"],
+      extensions: ["tex2jax.js"],
+      TeX: {
+        extensions: ["AMSmath.js","AMSsymbols.js"],
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    });
+
+if theme.scripts && theme.scripts.length > 0
+  //- scripts list from config.yml
+  each url in theme.scripts
+    script(defer src=url)
+
+script(async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js")
+script(async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js")
+script(async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js")
+script(async src=url_for("/lib/encrypt/hbe.js"))
+include ./pjax.pug
