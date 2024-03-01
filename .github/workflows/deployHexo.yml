@@ -96,6 +96,9 @@ jobs:
           # mv -f ../staticFiles/* ../hexoWorkspace
           rsync -a ../staticFiles/* ../hexoWorkspace
           # echo tree ../hexoWorkspace/source/_posts
+
+          # sub theme: 明日方舟arknights
+          cp -r ../hexoWorkspace ../hexoWorkspace_arknights
       
       - name: Install dependencies
         run: |
@@ -115,6 +118,14 @@ jobs:
           hexo g
           # echo hexo d:
           # hexo d
+          cd ../LeetCode
+          
+          # sub theme: 明日方舟arknights
+          cd ../hexoWorkspace_arknights
+          sed -i 's/theme: landscape/theme: arknights/g' _config.yml
+          hexo g
+          mkdir ../hexoWorkspace/public/theme/
+          mv public ../hexoWorkspace/public/theme/arknights
           cd ../LeetCode
       
       - name: Push to github
