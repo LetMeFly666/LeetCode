@@ -81,7 +81,7 @@ class Code {
     document.querySelectorAll('.mermaid').forEach((item) => {
       this.mermaids.push(item.outerHTML)
     })
-    expand.setHTML()
+    expand_arknights.setHTML()
   }
 
   public resetMermaid = () => {

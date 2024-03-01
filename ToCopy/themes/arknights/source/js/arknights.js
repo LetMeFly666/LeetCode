@@ -171,7 +171,7 @@ class expands {
         };
     }
 }
-let expand = new expands();
+let expand_arknights = new expands();
 class Code {
     constructor() {
         this.mermaids = [];
@@ -249,7 +249,7 @@ class Code {
             document.querySelectorAll('.mermaid').forEach((item) => {
                 this.mermaids.push(item.outerHTML);
             });
-            expand.setHTML();
+            expand_arknights.setHTML();
         };
         this.resetMermaid = () => {
             if (typeof (mermaid) === 'undefined')
