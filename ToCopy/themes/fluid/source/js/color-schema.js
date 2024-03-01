@@ -277,9 +277,9 @@
       }
     }
     button_toArknights = document.querySelector(gotoArknightsButtonSelector);
-    if (button) {
+    if (button_toArknights) {
       // 当用户点击切换按钮时，跳转到方舟主题
-      button.addEventListener('click', function() {
+      button_toArknights.addEventListener('click', function() {
         var href = location.href;
         var url = new URL(href);
         url.pathname = 'theme/arknights' + url.pathname;
