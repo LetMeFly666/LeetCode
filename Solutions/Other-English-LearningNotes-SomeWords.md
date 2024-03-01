@@ -34,7 +34,7 @@ tags: [其他, 知识, 英语, Notes]
 |homesick|adj. 思乡的，患思乡病的<br/>n. 思乡病|
 |equilibrium|n. 平衡，安宁|
 |||
-|notably|adv. 特别，非常，尤其，极大程度上<details><summary>例句</summary>Population has <font color="#28bea0">notably</font> increased over the past three years.<br/>过去三年人口显著增加。</details>|
+|<font color="#28bea0" title="二次复习">notably</font>|adv. 特别，非常，尤其，极大程度上<details><summary>例句</summary>Population has <font color="#28bea0">notably</font> increased over the past three years.<br/>过去三年人口显著增加。</details>|
 |repetition|n. 重复，重复做的事|
 |||
 |elaborate|adj. 复杂的，精致的<br/>v. 详细说明，精心制作|
@@ -47,6 +47,8 @@ tags: [其他, 知识, 英语, Notes]
 |flicker|v. 闪烁，闪现，抖动<br/>闪烁，摇曳|
 |simplicity|n. 简单，简朴|
 |foe|n. 仇人，敌人|
+|||
+|sheepish|adj. 窘迫的，难为情的，不好意思的|
 
 <details>
 <summary>扇贝音频测试</summary>
