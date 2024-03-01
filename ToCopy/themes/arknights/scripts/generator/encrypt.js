@@ -49,7 +49,7 @@ hexo.extend.filter.register('after_post_render', (data) => {
     });
   }
 
-  if (data.tags) {
+  if (data.tags && data.tags.forEach) {  // 要不然一直报错
     data.tags.forEach((cTag) => {
       if (tagEncryptPairs.hasOwnProperty(cTag.name)) {
         tagUsed = password ? tagUsed : cTag.name;
