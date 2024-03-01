@@ -76,6 +76,15 @@ jobs:
           rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
           sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
           # cat ../hexoWorkspace/node_modules/marked/lib/*
+          
+          # 上次commit记录
+          MESSAGE=$(git log -1 --format="%s")
+          HASH=$(git log -1 --format="%H")
+          ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
+          echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
+          echo "$ENCODED_MESSAGE"
+          DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)  # can remove
+          echo "$DECODED_MESSAGE"
 
       - name: Copy config files from branch website_Static
         run: |
@@ -144,12 +153,8 @@ jobs:
           ls -la
           cp -r .git ../hexoWorkspace/public
           cd ../hexoWorkspace/public
-          MESSAGE=$(git log -1 --format="%s")
-          HASH=$(git log -1 --format="%H")
-          ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
-          echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
-          echo $ENCODED_MESSAGE
           DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
+          echo "$DECODED_MESSAGE"
           git add .
           git commit --allow-empty -m "$DECODED_MESSAGE"
           git push
