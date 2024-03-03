@@ -1,7 +1,7 @@
 ---
 title: 377.组合总和 Ⅳ
 date: 2022-10-10 20:18:40
-tags: [题解, LeetCode, 中等, 数组, 动态规划, dp]
+tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
 ---
 
 # 【LetMeFly】377.组合总和 Ⅳ

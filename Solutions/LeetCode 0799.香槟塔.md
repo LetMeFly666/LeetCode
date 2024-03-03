@@ -1,7 +1,7 @@
 ---
 title: 799.香槟塔
 date: 2022-11-20 11:18:13
-tags: [题解, LeetCode, 中等, 动态规划, dp]
+tags: [题解, LeetCode, 中等, 动态规划, DP]
 ---
 
 # 【LetMeFly】799.香槟塔
