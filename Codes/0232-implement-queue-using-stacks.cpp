@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-03-04 08:59:07
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-03-04 09:05:58
+ * @LastEditTime: 2024-03-04 09:12:25
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -10,7 +10,17 @@
 
 class MyQueue {
 private:
-    stack<int> st;
+    stack<int> input, output;
+
+    void preTreatment() {
+        if (output.size()) {
+            return;
+        }
+        while (input.size()) {
+            output.push(input.top());
+            input.pop();
+        }
+    }
 
 public:
     MyQueue() {
@@ -18,27 +28,24 @@ public:
     }
     
     void push(int x) {
-        stack<int> tempSt;
-        tempSt.push(x);
-        while (st.size()) {
-            tempSt.push(st.top());
-            st.pop();
-        }
-        swap(st, tempSt);
+        input.push(x);
     }
     
     int pop() {
-        int ans = st.top();
-        st.pop();
+        preTreatment();
+        int ans = output.top();
+        output.pop();
         return ans;
     }
     
     int peek() {
-        return st.top();
+        preTreatment();
+        return output.top();
     }
     
     bool empty() {
-        return st.empty();
+        preTreatment();
+        return output.empty();
     }
 };
 
