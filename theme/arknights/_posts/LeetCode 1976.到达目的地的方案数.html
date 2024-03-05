@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1976.到达目的地的方案数 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1976.到达目的地的方案数</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-03-05T07:05:03.000Z" id="date"> 2024-03-05</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1976-到达目的地的方案数：单源最短路的Dijkstra算法"><a href="#【LetMeFly】1976-到达目的地的方案数：单源最短路的Dijkstra算法" class="headerlink" title="【LetMeFly】1976.到达目的地的方案数：单源最短路的Dijkstra算法"></a>【LetMeFly】1976.到达目的地的方案数：单源最短路的Dijkstra算法</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/">https://leetcode.cn/problems/number-of-ways-to-arrive-at-destination/</a></p>
+<p>你在一个城市里，城市由 <code>n</code>&nbsp;个路口组成，路口编号为&nbsp;<code>0</code>&nbsp;到&nbsp;<code>n - 1</code>&nbsp;，某些路口之间有 <strong>双向</strong>&nbsp;道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。</p>
+
+<p>给你一个整数&nbsp;<code>n</code>&nbsp;和二维整数数组&nbsp;<code>roads</code>&nbsp;，其中&nbsp;<code>roads[i] = [u<sub>i</sub>, v<sub>i</sub>, time<sub>i</sub>]</code>&nbsp;表示在路口&nbsp;<code>u<sub>i</sub></code>&nbsp;和&nbsp;<code>v<sub>i</sub></code>&nbsp;之间有一条需要花费&nbsp;<code>time<sub>i</sub></code>&nbsp;时间才能通过的道路。你想知道花费 <strong>最少时间</strong>&nbsp;从路口&nbsp;<code>0</code>&nbsp;出发到达路口&nbsp;<code>n - 1</code>&nbsp;的方案数。</p>
+
+<p>请返回花费 <strong>最少时间</strong>&nbsp;到达目的地的 <strong>路径数目</strong>&nbsp;。由于答案可能很大，将结果对&nbsp;<code>10<sup>9</sup> + 7</code>&nbsp;<strong>取余</strong>&nbsp;后返回。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/07/17/graph2.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/07/17/graph2.png" style="width: 235px; height: 381px;">
+<pre><b>输入：</b>n = 7, roads = [[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
+<b>输出：</b>4
+<b>解释：</b>从路口 0 出发到路口 6 花费的最少时间是 7 分钟。
+四条花费 7 分钟的路径分别为：
+- 0 ➝ 6
+- 0 ➝ 4 ➝ 6
+- 0 ➝ 1 ➝ 2 ➝ 5 ➝ 6
+- 0 ➝ 1 ➝ 3 ➝ 5 ➝ 6
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><b>输入：</b>n = 2, roads = [[1,0,10]]
+<b>输出：</b>1
+<b>解释：</b>只有一条从路口 0 到路口 1 的路，花费 10 分钟。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 200</code></li>
+    <li><code>n - 1 &lt;= roads.length &lt;= n * (n - 1) / 2</code></li>
+    <li><code>roads[i].length == 3</code></li>
+    <li><code>0 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n - 1</code></li>
+    <li><code>1 &lt;= time<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
+    <li><code>u<sub>i </sub>!= v<sub>i</sub></code></li>
+    <li>任意两个路口之间至多有一条路。</li>
+    <li>从任意路口出发，你能够到达其他任意路口。</li>
+</ul>
+
+
+    
+<h2 id="方法一：单源最短路的Dijkstra算法"><a href="#方法一：单源最短路的Dijkstra算法" class="headerlink" title="方法一：单源最短路的Dijkstra算法"></a>方法一：单源最短路的Dijkstra算法</h2><p>“单源最短路”意思是从一个点出发到其他点的最短路径。单源最短路的Dijkstra算法也可以看<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y84y1N7Lm/">我之前做的视频</a>。</p>
+<blockquote>
+<p>总之Dijkstra算法就是，我们从起点开始:</p>
+<blockquote>
+<p>计算所有能_一步到达_的点中，哪个点距离起点最近。</p>
+<p>下一步就走到这个点，然后能_一步到达_的点就更新了。</p>
+</blockquote>
+<p>直到走完所有的点为止。</p>
+</blockquote>
+<p>对于这道题，我们在“往前走”的同时，记录一下走到这一步的“方案数”：</p>
+<ul>
+<li>若从当前点走到点<code>a</code>的距离 <strong>小于</strong> <code>a</code>原本到起点的距离，则说明发现了_新大“路”_（更近的路）。舍弃掉之前的方案数，将点<code>a</code>的方案数<strong>变为</strong>当前点的方案数，并更新最短距离，可以从点<code>a</code>开始往深处继续探索。</li>
+<li>若从当前点走到点<code>a</code>的距离 <strong>等于</strong> <code>a</code>原本到起点的距离，则说明又发现了一条_同为最近路_的路。将点<code>a</code>的方案数<strong>加上</strong>当前点的方案数。</li>
+<li>否则，已有更短路，不做考虑。</li>
+</ul>
+<p>最终返回终点的路径数即为答案。</p>
+<ul>
+<li>时间复杂度$O(m\log m)$</li>
+<li>空间复杂度$O(n+m)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> ll MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countPaths</span><span class="params">(<span class="type">int</span> n, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; roads)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;&gt; <span class="built_in">graph</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (vector&lt;<span class="type">int</span>&gt;&amp; road : roads) &#123;</span><br><span class="line">            graph[road[<span class="number">0</span>]].<span class="built_in">push_back</span>(&#123;road[<span class="number">1</span>], road[<span class="number">2</span>]&#125;);</span><br><span class="line">            graph[road[<span class="number">1</span>]].<span class="built_in">push_back</span>(&#123;road[<span class="number">0</span>], road[<span class="number">2</span>]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;ll&gt; <span class="title">way</span><span class="params">(n)</span></span>;</span><br><span class="line">        way[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="function">vector&lt;ll&gt; <span class="title">dis</span><span class="params">(n, <span class="number">1e18</span>)</span></span>;</span><br><span class="line">        dis[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        priority_queue&lt;pair&lt;ll, <span class="type">int</span>&gt;, vector&lt;pair&lt;ll, <span class="type">int</span>&gt;&gt;, greater&lt;pair&lt;ll, <span class="type">int</span>&gt;&gt;&gt; pq;</span><br><span class="line">        pq.<span class="built_in">push</span>(&#123;<span class="number">0</span>, <span class="number">0</span>&#125;);</span><br><span class="line">        <span class="keyword">while</span> (pq.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> [thisDistance, thisNode] = pq.<span class="built_in">top</span>();</span><br><span class="line">            pq.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span> (thisDistance &gt; dis[thisNode]) &#123;  <span class="comment">// 有更优解了</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> [nextNode, nextDistance] : graph[thisNode]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (thisDistance + nextDistance &lt; dis[nextNode]) &#123;</span><br><span class="line">                    dis[nextNode] = thisDistance + nextDistance;</span><br><span class="line">                    way[nextNode] = way[thisNode];</span><br><span class="line">                    pq.<span class="built_in">push</span>(&#123;dis[nextNode], nextNode&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (thisDistance + nextDistance == dis[nextNode]) &#123;</span><br><span class="line">                    way[nextNode] = (way[nextNode] + way[thisNode]) % MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> way.<span class="built_in">back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import List</span></span><br><span class="line"><span class="comment"># import heapq</span></span><br><span class="line"></span><br><span class="line">MOD = <span class="built_in">int</span>(<span class="number">1e9</span>) + <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">countPaths</span>(<span class="params">self, n: <span class="built_in">int</span>, roads: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">        <span class="keyword">for</span> x, y, d <span class="keyword">in</span> roads:</span><br><span class="line">            graph[x].append((y, d))</span><br><span class="line">            graph[y].append((x, d))</span><br><span class="line">        way = [<span class="number">0</span>] * n</span><br><span class="line">        way[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        dis = [<span class="built_in">int</span>(<span class="number">1e18</span>)] * n</span><br><span class="line">        dis[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        pq = [(<span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line">        <span class="keyword">while</span> pq:</span><br><span class="line">            thisDistance, thisNode = heapq.heappop(pq)</span><br><span class="line">            <span class="keyword">if</span> thisDistance &gt; dis[thisNode]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> nextNode, nextDistance <span class="keyword">in</span> graph[thisNode]:</span><br><span class="line">                <span class="keyword">if</span> nextDistance + thisDistance &lt; dis[nextNode]:</span><br><span class="line">                    dis[nextNode] = nextDistance + thisDistance</span><br><span class="line">                    way[nextNode] = way[thisNode]</span><br><span class="line">                    heapq.heappush(pq, (dis[nextNode], nextNode))</span><br><span class="line">                <span class="keyword">elif</span> nextDistance + thisDistance == dis[nextNode]:</span><br><span class="line">                    way[nextNode] = (way[nextNode] + way[thisNode]) % MOD</span><br><span class="line">        <span class="keyword">return</span> way[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/03/05/LeetCode%201976.%E5%88%B0%E8%BE%BE%E7%9B%AE%E7%9A%84%E5%9C%B0%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136481215">https://letmefly.blog.csdn.net/article/details/136481215</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911976-%E5%88%B0%E8%BE%BE%E7%9B%AE%E7%9A%84%E5%9C%B0%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%EF%BC%9A%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%9A%84Dijkstra%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1976.到达目的地的方案数：单源最短路的Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%9A%84Dijkstra%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：单源最短路的Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">萌</span><a class="icp-content" target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240082">萌ICP备20240082号</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
