@@ -63,9 +63,11 @@ nums[1]、nums[2]、nums[3]、nums[4] 和 nums[5] 的第 3 位的值为 1 。
     
 ## 方法一：基础位运算
 
+![位运算](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/direct/989ffc9cb4d145ecbb98da926a24d42d.png)
+
 想<span title="Accepted">AC</span>这道题，只需要懂得两个位运算操作：
 
-1. 计算$t$二进制下第$i+1$位**是否为**$1$：$(t >> i) & 1$
+1. 计算$t$二进制下第$i+1$位**是否为**$1$：$(t >> i) \& 1$
 2. 将$ans$二进制下的第$i+1$位**置为**$1$：$ans |= (1 << i)$
 
 因$0\leq nums[i] \le 2^{31}$，所以用变量$i$从$0$到$30$枚举每一位，统计所有数字中这一位为$1$的个数，若达到$k$则令答案的这一位为$1$。

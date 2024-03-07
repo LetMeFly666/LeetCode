@@ -49,6 +49,12 @@ tags: [其他, 知识, 英语, Notes]
 |foe|n. 仇人，敌人|
 |||
 |sheepish|adj. 窘迫的，难为情的，不好意思的|
+|||
+|lever|n. 撬棒，杠杆，手段，方法<br/>v. 撬动，用杠杆|
+|stirring|adj. (活动演出)激动人心的<br/>n. (感情想法)的开始<br/>v. 搅动，(使)微动，(使)唤起|
+|ditto|adv. 也一样<br/>n. 同前<details><summary>例句</summary>I shall act <font color="#28bea0">ditto</font>.<br/>我将同样办理。</details>|
+|||
+|substance|n. 物质,材料,重要性,实质|
 
 <details>
 <summary>扇贝音频测试</summary>
