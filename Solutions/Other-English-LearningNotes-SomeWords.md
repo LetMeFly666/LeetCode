@@ -55,6 +55,11 @@ tags: [其他, 知识, 英语, Notes]
 |ditto|adv. 也一样<br/>n. 同前<details><summary>例句</summary>I shall act <font color="#28bea0">ditto</font>.<br/>我将同样办理。</details>|
 |||
 |substance|n. 物质,材料,重要性,实质|
+|||
+|par|n. (高尔夫球的)标准杆数，票面价值，标准<br/>adj. 与票面价值相等的<details><summary>例句</summary>As a writer she was on a <font color="#28bea0">par</font> with the great novelists.<br/>她是与伟大小说家齐名的作家。<hr/>He is a statesman <font color="#28bea0">par</font> excellence.<br/>他是一名出色的政治家。</details>|
+|toll|n. 伤亡人数，代价，损失，通行费，敲钟<br/>v. 向...收费，收费，敲(钟)<details><summary>例句</summary>The death <font color="#28bea0">toll</font> from the bombing has risen to 100.<br/>爆炸造成的死亡人数已上升至100人。</details>|
+|||
+|concrete|adj. 具体的，有形的，混凝土的<br/>n. 水泥，混凝土|
 
 <details>
 <summary>扇贝音频测试</summary>
