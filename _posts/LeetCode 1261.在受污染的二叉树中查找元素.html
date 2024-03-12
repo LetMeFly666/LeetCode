@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1261.在受污染的二叉树中查找元素：深搜+哈希表力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;find-elements-in-a-contaminated-binary-tree&#x2F; 给出一个满足下述规则的二叉树：       root.val &#x3D;&#x3D; 0     如果 treeNode.val &#x3D;&#x3D; x 且&nbsp;treeNode.left !&#x3D;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1261.在受污染的二叉树中查找元素">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201261.%E5%9C%A8%E5%8F%97%E6%B1%A1%E6%9F%93%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1261.在受污染的二叉树中查找元素：深搜+哈希表力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;find-elements-in-a-contaminated-binary-tree&#x2F; 给出一个满足下述规则的二叉树：       root.val &#x3D;&#x3D; 0     如果 treeNode.val &#x3D;&#x3D; x 且&nbsp;treeNode.left !&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4-1.jpg">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4.jpg">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4-1-1.jpg">
+<meta property="article:published_time" content="2024-03-12T01:30:01.000Z">
+<meta property="article:modified_time" content="2024-03-12T01:44:07.788Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="dfs">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="set">
+<meta property="article:tag" content="二叉树">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4-1.jpg">
+  
+  
+  
+  <title>1261.在受污染的二叉树中查找元素 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1261.在受污染的二叉树中查找元素"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1261-在受污染的二叉树中查找元素：深搜-哈希表"><a href="#【LetMeFly】1261-在受污染的二叉树中查找元素：深搜-哈希表" class="headerlink" title="【LetMeFly】1261.在受污染的二叉树中查找元素：深搜+哈希表"></a>【LetMeFly】1261.在受污染的二叉树中查找元素：深搜+哈希表</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-elements-in-a-contaminated-binary-tree/">https://leetcode.cn/problems/find-elements-in-a-contaminated-binary-tree/</a></p>
+<p>给出一个满足下述规则的二叉树：</p>
+
+<ol>
+    <li><code>root.val == 0</code></li>
+    <li>如果 <code>treeNode.val == x</code> 且&nbsp;<code>treeNode.left != null</code>，那么&nbsp;<code>treeNode.left.val == 2 * x + 1</code></li>
+    <li>如果 <code>treeNode.val == x</code> 且 <code>treeNode.right != null</code>，那么&nbsp;<code>treeNode.right.val == 2 * x + 2</code></li>
+</ol>
+
+<p>现在这个二叉树受到「污染」，所有的&nbsp;<code>treeNode.val</code>&nbsp;都变成了&nbsp;<code>-1</code>。</p>
+
+<p>请你先还原二叉树，然后实现&nbsp;<code>FindElements</code>&nbsp;类：</p>
+
+<ul>
+    <li><code>FindElements(TreeNode* root)</code>&nbsp;用受污染的二叉树初始化对象，你需要先把它还原。</li>
+    <li><code>bool find(int target)</code>&nbsp;判断目标值&nbsp;<code>target</code>&nbsp;是否存在于还原后的二叉树中并返回结果。</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4-1.jpg" srcset="/img/loading.gif" lazyload style="height: 119px; width: 320px;"></strong></p>
+
+<pre><strong>输入：</strong>
+[&quot;FindElements&quot;,&quot;find&quot;,&quot;find&quot;]
+[[[-1,null,-1]],[1],[2]]
+<strong>输出：</strong>
+[null,false,true]
+<strong>解释：</strong>
+FindElements findElements = new FindElements([-1,null,-1]); 
+findElements.find(1); // return False 
+findElements.find(2); // return True </pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4.jpg" srcset="/img/loading.gif" lazyload style="height: 198px; width: 400px;"></strong></p>
+
+<pre><strong>输入：</strong>
+[&quot;FindElements&quot;,&quot;find&quot;,&quot;find&quot;,&quot;find&quot;]
+[[[-1,-1,-1,-1,-1]],[1],[3],[5]]
+<strong>输出：</strong>
+[null,true,true,false]
+<strong>解释：</strong>
+FindElements findElements = new FindElements([-1,-1,-1,-1,-1]);
+findElements.find(1); // return True
+findElements.find(3); // return True
+findElements.find(5); // return False</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/16/untitled-diagram-4-1-1.jpg" srcset="/img/loading.gif" lazyload style="height: 274px; width: 306px;"></strong></p>
+
+<pre><strong>输入：</strong>
+[&quot;FindElements&quot;,&quot;find&quot;,&quot;find&quot;,&quot;find&quot;,&quot;find&quot;]
+[[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]]
+<strong>输出：</strong>
+[null,true,false,false,true]
+<strong>解释：</strong>
+FindElements findElements = new FindElements([-1,null,-1,-1,null,-1]);
+findElements.find(2); // return True
+findElements.find(3); // return False
+findElements.find(4); // return False
+findElements.find(5); // return True
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>TreeNode.val == -1</code></li>
+    <li>二叉树的高度不超过&nbsp;<code>20</code></li>
+    <li>节点的总数在&nbsp;<code>[1,&nbsp;10^4]</code>&nbsp;之间</li>
+    <li>调用&nbsp;<code>find()</code>&nbsp;的总次数在&nbsp;<code>[1,&nbsp;10^4]</code>&nbsp;之间</li>
+    <li><code>0 &lt;= target &lt;= 10^6</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：：DFS-哈希表"><a href="#方法一：：DFS-哈希表" class="headerlink" title="方法一：：DFS+哈希表"></a>方法一：：DFS+哈希表</h2><p>这道题不是“根据值是否在二叉树中去还原二叉树”，而是“已知二叉树然后问值是否在二叉树中”。</p>
+<p>所以那不就好办了？遍历二叉树时使用哈希表记录哪些值出现过，对于每次查询直接返回这个值是否在哈希表中即可。</p>
+<p>等下，你说二叉树未知？二叉树形状、根节点的值、父子节点间值的关系 都给你了，深度优先搜索的时候顺便把值确定了不就好了么。</p>
+<ul>
+<li>时间复杂度$O(N^2)$</li>
+<li>空间复杂度$O(N\log N)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FindElements</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    unordered_set&lt;<span class="hljs-type">int</span>&gt; se;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root, <span class="hljs-type">int</span> val)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!root) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        root-&gt;val = val;<br>        se.<span class="hljs-built_in">insert</span>(val);<br>        <span class="hljs-built_in">dfs</span>(root-&gt;left, val * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>);<br>        <span class="hljs-built_in">dfs</span>(root-&gt;right, val * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>);<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">FindElements</span>(TreeNode* root) &#123;<br>        <span class="hljs-built_in">dfs</span>(root, <span class="hljs-number">0</span>);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> target)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> se.<span class="hljs-built_in">count</span>(target);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import Optional</span><br><br><span class="hljs-comment"># # Definition for a binary tree node.</span><br><span class="hljs-comment"># class TreeNode:</span><br><span class="hljs-comment">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="hljs-comment">#         self.val = val</span><br><span class="hljs-comment">#         self.left = left</span><br><span class="hljs-comment">#         self.right = right</span><br>    <br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FindElements</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">self, root: <span class="hljs-type">Optional</span>[TreeNode], val: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> root:<br>            <span class="hljs-keyword">return</span><br>        root.val = val<br>        self.se.add(val)<br>        self.dfs(root.left, val * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>)<br>        self.dfs(root.right, val * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, root: TreeNode</span>):<br>        self.se = <span class="hljs-built_in">set</span>()<br>        self.dfs(root, <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find</span>(<span class="hljs-params">self, target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        <span class="hljs-keyword">return</span> target <span class="hljs-keyword">in</span> self.se<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/03/12/LeetCode%201261.%E5%9C%A8%E5%8F%97%E6%B1%A1%E6%9F%93%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136642314">https://letmefly.blog.csdn.net/article/details/136642314</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
