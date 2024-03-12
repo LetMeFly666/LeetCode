@@ -89,6 +89,10 @@ Interpreter: /bin/bash
 
 </details>
 
+### Linux登录欢迎语motd
+
+使用```ssh```登录Linux时会显示Linux欢迎语，据不完全测试，修改```/etc/motd```为你想要显示的内容即可。（比如看板娘）
+
 ## About Windows
 
 ### Windows应用商店安装的应用
@@ -374,6 +378,25 @@ censys扫描全球所有IP并记录ip于域名直接的关系，并且扫描速�
 在```_config.yml```中令```url```的值为```/x.com/sub/path```。
 
 否则不这么配置的话很多链接会链接到```/x.com/```
+
+### ngxin获取cloudflare后的真实ip
+
+使用cloudflare获取网站流量后打到网站的ip都是cloudflare的。若是使用nginx分发的这些请求，则可以通过下面两步获取真实ip。
+
+1. 判断nginx是否支持real_ip功能（若无则此教程无效，似乎要重新编译nginx）：```nginx -V 2>&1 | grep -i http_realip_module```。若有（可能被标记为红色）则进入下一步。
+2. 编辑conf文件，在```http```下添加几行：
+    ```conf
+    http {
+        set_real_ip_from 173.245.48.0/20;
+        set_real_ip_from ......;
+
+        real_ip_header X-Forwarded-For;
+    }
+    ```
+
+    其中```set_real_ip_from```的数据可以由```https://www.cloudflare.com/ips-v4```和[v6版本](https://www.cloudflare.com/ips-v6)获得。
+
+参考链接：[dmesg.app](https://dmesg.app/cloudlare-real-ip.html)、[blog.gezi.men](https://blog.gezi.men/p/after-using-cloudflare-cdn-how-can-nginx-obtain-the-real-ip-address-of-website-visitors/)、[CSDN](https://blog.csdn.net/dragonballs/article/details/126345175)
 
 ## About API
 
