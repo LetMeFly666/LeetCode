@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-03-11 09:34:53
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-03-11 18:51:13
+-->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
 date: 2024-02-19 22:13:59
@@ -60,6 +66,8 @@ tags: [其他, 知识, 英语, Notes]
 |toll|n. 伤亡人数，代价，损失，通行费，敲钟<br/>v. 向...收费，收费，敲(钟)<details><summary>例句</summary>The death <font color="#28bea0">toll</font> from the bombing has risen to 100.<br/>爆炸造成的死亡人数已上升至100人。</details>|
 |||
 |concrete|adj. 具体的，有形的，混凝土的<br/>n. 水泥，混凝土|
+|||
+|rifle|n. 步枪<br/>快速搜寻，偷窃，盗取|
 
 <details>
 <summary>扇贝音频测试</summary>
