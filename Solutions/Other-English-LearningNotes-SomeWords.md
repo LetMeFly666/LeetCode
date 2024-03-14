@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-03-11 09:34:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-03-11 18:51:13
+ * @LastEditTime: 2024-03-13 20:58:20
 -->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
@@ -68,6 +68,8 @@ tags: [其他, 知识, 英语, Notes]
 |concrete|adj. 具体的，有形的，混凝土的<br/>n. 水泥，混凝土|
 |||
 |rifle|n. 步枪<br/>快速搜寻，偷窃，盗取|
+|||
+|hypothesis|n. 假设，假说，(凭空的)猜测<details><summary>负数</summary>hypothes<font color="#28bea0">e</font>s</details>|
 
 <details>
 <summary>扇贝音频测试</summary>
