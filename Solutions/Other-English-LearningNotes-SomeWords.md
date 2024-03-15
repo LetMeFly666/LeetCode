@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-03-11 09:34:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-03-13 20:58:20
+ * @LastEditTime: 2024-03-15 22:45:40
 -->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
@@ -70,6 +70,11 @@ tags: [其他, 知识, 英语, Notes]
 |rifle|n. 步枪<br/>快速搜寻，偷窃，盗取|
 |||
 |hypothesis|n. 假设，假说，(凭空的)猜测<details><summary>负数</summary>hypothes<font color="#28bea0">e</font>s</details>|
+|||
+|gulp|v. 狼吞虎咽，(因害怕或惊讶)倒吸气<br/>n. 屯饮的量，一大口，吸入，吞咽<details><summary>例句</summary>He <font color="#28bea0">gulped down</font> the rest of his food.<br/>他狼吞虎咽地吃完了剩下的食物。</details>|
+|ancestor|n. 祖宗，祖先|
+|influenza|n. 流行性感冒|
+|detrimental|adj. 损害的，有害的|
 
 <details>
 <summary>扇贝音频测试</summary>

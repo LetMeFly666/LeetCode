@@ -79,6 +79,7 @@ xx型
 
 |假名|词义|
 |:--|:--|
+|ゼロ|零|
 |いち|一|
 |に|二|
 |さん|三|
@@ -220,6 +221,9 @@ xx型
 |ごはん<font color="#28bea0">は</font>食べません。<br/>不吃米饭。<details><summary>关于<font color="#28bea0">は</font>的解释</summary>与问句相仿，否定句中通常使用<font color="#28bea0">は</font>而不是<font color="#28bea0">を</font>。</details>|
 |私<font color="#28bea0">は</font>食べません。<br/>我不吃。|
 |どれ<font color="#28bea0">を</font>飲みますか？<br/>喝哪个？|
+|田中さん、今は何時ですか？<br/>田中先生，现在是几点？<details><summary><font color="red">关于时间</font>（发音）</summary><font color="#28bea0">分</font>在不同数字后面发音不同。<br/>一、三、四、六、八后的发音是<font color="#28bea0">ぷん(pun)</font>，<br/>二、五、七、九后的发音是<font color="#28bea0">ふん(fun)</font>。<br/>数字常用发音也不同。<table style="width:100%"><thead><tr><td>数字/汉字计时</td><td>发音</td></tr></thead><tbody><tr><td>一時一分(1:01)</td><td>ichi-ji ip-pun</td></tr><tr><td>三時三分(3:03)</td><td>san-ji san-pun</td></tr><tr><td>四時四分(4:04)</td><td>yo-ji yon-pun</td></tr><tr><td>六時六分​(6:06)</td><td>roku-ji rop-pun</td></tr><tr><td>八時八分(8:08)</td><td>hachi-ji hap-pun</td></tr><tr><td>二時二分(2:02)</td><td>ni-ji ni-fun</td></tr><tr><td>五時五分(5:05)</td><td>go-ji go-fun</td></tr><tr><td>七時七分(7:07)</td><td>shichi-ji nana-fun</td></tr><tr><td>九時九分(9:09)</td><td>ku-ji kyū-fun</td></tr></tbody></table></details>|
+|今は二時ちょうどです。<br/>现在正好两点。|
+|今は四時五分です。<br/>现在是四点零五分。|
 
 
 
