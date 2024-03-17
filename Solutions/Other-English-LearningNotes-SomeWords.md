@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-03-16 09:11:40
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-03-17 18:14:07
+-->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
 date: 2024-02-19 22:13:59
@@ -69,6 +75,11 @@ tags: [其他, 知识, 英语, Notes]
 |ancestor|n. 祖宗，祖先|
 |influenza|n. 流行性感冒|
 |detrimental|adj. 损害的，有害的|
+|||
+|myriad|adj. 无数的，众多方面的<br/>n. 无数，大量|
+|spatial|adj. 空间的<details><summary>例句</summary>The task is designed to test <font color="#28bea0">spatial</font> awareness of kids.<br/>该任务的设计目的是测试儿童的空间意识。</details>|
+|dreary|adj. 令人沮丧的，沉闷的，枯燥无味的<br/>n. 可怕的人物|
+
 
 <details>
 <summary>扇贝音频测试</summary>
