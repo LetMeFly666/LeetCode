@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-non-zero-product-of-the-array-elements&#x2F; 给你一个正整数&nbsp;p&nbsp;。你有一个下标从 1&nbsp;开始的数组&nbsp;nums&nbsp;，这个数组包含范围&nbsp;[1, 2p - 1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1969.数组元素的最小非零乘积">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201969.%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E9%9D%9E%E9%9B%B6%E4%B9%98%E7%A7%AF.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-non-zero-product-of-the-array-elements&#x2F; 给你一个正整数&nbsp;p&nbsp;。你有一个下标从 1&nbsp;开始的数组&nbsp;nums&nbsp;，这个数组包含范围&nbsp;[1, 2p - 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-20T03:06:08.000Z">
+<meta property="article:modified_time" content="2024-03-20T04:06:01.318Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="递归">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="快速幂">
+<meta property="article:tag" content="二进制">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1969.数组元素的最小非零乘积 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1969.数组元素的最小非零乘积"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1969-数组元素的最小非零乘积：贪心-快速幂"><a href="#【LetMeFly】1969-数组元素的最小非零乘积：贪心-快速幂" class="headerlink" title="【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)"></a>【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-non-zero-product-of-the-array-elements/">https://leetcode.cn/problems/minimum-non-zero-product-of-the-array-elements/</a></p>
+<p>给你一个正整数&nbsp;<code>p</code>&nbsp;。你有一个下标从 <strong>1</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，这个数组包含范围&nbsp;<code>[1, 2<sup>p</sup> - 1]</code>&nbsp;内所有整数的二进制形式（两端都 <strong>包含</strong>）。你可以进行以下操作 <strong>任意</strong>&nbsp;次：</p>
+
+<ul>
+    <li>从 <code>nums</code>&nbsp;中选择两个元素&nbsp;<code>x</code>&nbsp;和&nbsp;<code>y</code>&nbsp; 。</li>
+    <li>选择 <code>x</code>&nbsp;中的一位与 <code>y</code>&nbsp;对应位置的位交换。对应位置指的是两个整数 <strong>相同位置</strong>&nbsp;的二进制位。</li>
+</ul>
+
+<p>比方说，如果&nbsp;<code>x = 11<em><strong>0</strong></em>1</code>&nbsp;且&nbsp;<code>y = 00<em><strong>1</strong></em>1</code>&nbsp;，交换右边数起第 <code>2</code>&nbsp;位后，我们得到&nbsp;<code>x = 11<em><strong>1</strong></em>1</code> 和&nbsp;<code>y = 00<em><strong>0</strong></em>1</code>&nbsp;。</p>
+
+<p>请你算出进行以上操作 <strong>任意次</strong>&nbsp;以后，<code>nums</code>&nbsp;能得到的 <strong>最小非零</strong>&nbsp;乘积。将乘积对<em>&nbsp;</em><code>10<sup>9</sup> + 7</code>&nbsp;<strong>取余</strong> 后返回。</p>
+
+<p><strong>注意：</strong>答案应为取余 <strong>之前</strong>&nbsp;的最小值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>p = 1
+<b>输出：</b>1
+<b>解释：</b>nums = [1] 。
+只有一个元素，所以乘积为该元素。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<b>输入：</b>p = 2
+<b>输出：</b>6
+<b>解释：</b>nums = [01, 10, 11] 。
+所有交换要么使乘积变为 0 ，要么乘积与初始乘积相同。
+所以，数组乘积 1 * 2 * 3 = 6 已经是最小值。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<b>输入：</b>p = 3
+<b>输出：</b>1512
+<b>解释：</b>nums = [001, 010, 011, 100, 101, 110, 111]
+- 第一次操作中，我们交换第二个和第五个元素最左边的数位。
+    - 结果数组为 [001, <em><strong>1</strong></em>10, 011, 100, <em><strong>0</strong></em>01, 110, 111] 。
+- 第二次操作中，我们交换第三个和第四个元素中间的数位。
+    - 结果数组为 [001, 110, 0<em><strong>0</strong></em>1, 1<em><strong>1</strong></em>0, 001, 110, 111] 。
+数组乘积 1 * 6 * 1 * 6 * 1 * 6 * 7 = 1512 是最小乘积。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= p &lt;= 60</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：贪心-快速幂"><a href="#方法一：贪心-快速幂" class="headerlink" title="方法一：贪心(快速幂)"></a>方法一：贪心(快速幂)</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>解决这道题需要明白两点：</p>
+<ol>
+<li>尽量把所有数变成<code>111...10</code>和<code>000...01</code>的形式；</li>
+<li>如何使用<code>快速幂</code>快速计算。</li>
+</ol>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>为什么要尽量变成<code>111...10</code>和<code>000...01</code>的形式？</p>
+<blockquote>
+<p>题目中的两个数<code>x = 1100</code>和<code>y = 0011</code>，<code>x * y = 1100 * 0010 + 1100 * 0001</code>。</p>
+<p>我们看从左往右的第三个<code>1</code>，它的“贡献”是<code>1100 * 0010</code>。</p>
+<p>而如果交换第三个<code>1</code>的位置使得<code>x = 1110</code>且<code>y = 0001</code>（<code>x * y = 1000 * 0001 + 0100 * 0001 + 0010 * 0001</code>），</p>
+<p>则第三个<code>1</code>的“贡献”是<code>0010 * 0001</code>。</p>
+<p>有没有发现，第三个<code>1</code>不论在<code>x</code>中还是在<code>y</code>中，其对<code>x * y</code>的贡献中总有“<code>0010</code>乘以<code>另一个数</code>”这一部分。</p>
+<p>那么能不能让另一个数尽可能小？可以。因最终结果要“非零”，因此另一个数最小为<code>1</code>。</p>
+</blockquote>
+<p>能变成多少个<code>111...10</code>和<code>000...01</code>的形式？</p>
+<blockquote>
+<p>从<code>1</code>到<code>2^p-1</code>的二进制数中，除了<code>2^p-1</code>（二进制下全部为<code>1</code>）外，其余数（偶数个）正好可以两两配对（使得每一位上总计1个<code>1</code>和1个<code>0</code>）。</p>
+<p>因此最终可以变成$2^p-1$乘以：$\frac{2^p-2}{2}$个$2^p-2$</p>
+</blockquote>
+<p>快速幂是什么？</p>
+<blockquote>
+<p>快速幂用于快速计算$a^b\mod p$的结果，其原理是将<code>b</code>看成二进制数。</p>
+<p>例如$a^6&#x3D;a^{110_{(2)}}&#x3D;a^{100_{(2)}}\times a^{10_{(2)}}$，而$a^{100_{(2)}}$又可以通过$a^{10_{(2)}}\times a$得到。</p>
+<p>这样便将$O(b)$的时间复杂度将为了$b$二进制长度的复杂度$O(\log b)$</p>
+<p>具体可参考<a target="_blank" rel="noopener" href="https://web.letmefly.xyz/Notes/ACM/Problems/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂小解</a>。</p>
+</blockquote>
+<h3 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h3><ul>
+<li>时间复杂度$O(p)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><span class="hljs-type">const</span> ll MOD = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function">ll <span class="hljs-title">Pow</span><span class="hljs-params">(ll a, ll b)</span> </span>&#123;<br>        a %= MOD;<br>        ll ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (b) &#123;<br>            <span class="hljs-keyword">if</span> (b &amp; <span class="hljs-number">1</span>) &#123;<br>                ans = ans * a % MOD;<br>            &#125;<br>            a = a * a % MOD;<br>            b &gt;&gt;= <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// (2 ^ p - 1) * ((2 ^ p - 2) ^ ((2 ^ p - 2) / 2))</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minNonZeroProduct</span><span class="hljs-params">(<span class="hljs-type">int</span> p)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> (((<span class="hljs-number">1LL</span> &lt;&lt; p) - <span class="hljs-number">1</span>) % MOD) * <span class="hljs-built_in">Pow</span>((<span class="hljs-number">1LL</span> &lt;&lt; p) - <span class="hljs-number">2</span>, ((<span class="hljs-number">1LL</span> &lt;&lt; p) - <span class="hljs-number">2</span>) / <span class="hljs-number">2</span>) % MOD;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">MOD = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span>) + <span class="hljs-number">7</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">minNonZeroProduct</span>(<span class="hljs-params">self, p: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">return</span> ((<span class="hljs-number">1</span> &lt;&lt; p) - <span class="hljs-number">1</span>) * <span class="hljs-built_in">pow</span>((<span class="hljs-number">1</span> &lt;&lt; p) - <span class="hljs-number">2</span>, ((<span class="hljs-number">1</span> &lt;&lt; p) - <span class="hljs-number">2</span>) // <span class="hljs-number">2</span>, MOD) % MOD  <span class="hljs-comment"># 记得是//而不是/</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/03/20/LeetCode%201969.%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E9%9D%9E%E9%9B%B6%E4%B9%98%E7%A7%AF/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136872322">https://letmefly.blog.csdn.net/article/details/136872322</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

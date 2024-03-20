@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1969.数组元素的最小非零乘积 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1969.数组元素的最小非零乘积</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-03-20T03:06:08.000Z" id="date"> 2024-03-20</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1969-数组元素的最小非零乘积：贪心-快速幂"><a href="#【LetMeFly】1969-数组元素的最小非零乘积：贪心-快速幂" class="headerlink" title="【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)"></a>【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-non-zero-product-of-the-array-elements/">https://leetcode.cn/problems/minimum-non-zero-product-of-the-array-elements/</a></p>
+<p>给你一个正整数&nbsp;<code>p</code>&nbsp;。你有一个下标从 <strong>1</strong>&nbsp;开始的数组&nbsp;<code>nums</code>&nbsp;，这个数组包含范围&nbsp;<code>[1, 2<sup>p</sup> - 1]</code>&nbsp;内所有整数的二进制形式（两端都 <strong>包含</strong>）。你可以进行以下操作 <strong>任意</strong>&nbsp;次：</p>
+
+<ul>
+    <li>从 <code>nums</code>&nbsp;中选择两个元素&nbsp;<code>x</code>&nbsp;和&nbsp;<code>y</code>&nbsp; 。</li>
+    <li>选择 <code>x</code>&nbsp;中的一位与 <code>y</code>&nbsp;对应位置的位交换。对应位置指的是两个整数 <strong>相同位置</strong>&nbsp;的二进制位。</li>
+</ul>
+
+<p>比方说，如果&nbsp;<code>x = 11<em><strong>0</strong></em>1</code>&nbsp;且&nbsp;<code>y = 00<em><strong>1</strong></em>1</code>&nbsp;，交换右边数起第 <code>2</code>&nbsp;位后，我们得到&nbsp;<code>x = 11<em><strong>1</strong></em>1</code> 和&nbsp;<code>y = 00<em><strong>0</strong></em>1</code>&nbsp;。</p>
+
+<p>请你算出进行以上操作 <strong>任意次</strong>&nbsp;以后，<code>nums</code>&nbsp;能得到的 <strong>最小非零</strong>&nbsp;乘积。将乘积对<em>&nbsp;</em><code>10<sup>9</sup> + 7</code>&nbsp;<strong>取余</strong> 后返回。</p>
+
+<p><strong>注意：</strong>答案应为取余 <strong>之前</strong>&nbsp;的最小值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>p = 1
+<b>输出：</b>1
+<b>解释：</b>nums = [1] 。
+只有一个元素，所以乘积为该元素。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<b>输入：</b>p = 2
+<b>输出：</b>6
+<b>解释：</b>nums = [01, 10, 11] 。
+所有交换要么使乘积变为 0 ，要么乘积与初始乘积相同。
+所以，数组乘积 1 * 2 * 3 = 6 已经是最小值。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<b>输入：</b>p = 3
+<b>输出：</b>1512
+<b>解释：</b>nums = [001, 010, 011, 100, 101, 110, 111]
+- 第一次操作中，我们交换第二个和第五个元素最左边的数位。
+    - 结果数组为 [001, <em><strong>1</strong></em>10, 011, 100, <em><strong>0</strong></em>01, 110, 111] 。
+- 第二次操作中，我们交换第三个和第四个元素中间的数位。
+    - 结果数组为 [001, 110, 0<em><strong>0</strong></em>1, 1<em><strong>1</strong></em>0, 001, 110, 111] 。
+数组乘积 1 * 6 * 1 * 6 * 1 * 6 * 7 = 1512 是最小乘积。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= p &lt;= 60</code></li>
+</ul>
+
+
+    
+<h2 id="方法一：贪心-快速幂"><a href="#方法一：贪心-快速幂" class="headerlink" title="方法一：贪心(快速幂)"></a>方法一：贪心(快速幂)</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>解决这道题需要明白两点：</p>
+<ol>
+<li>尽量把所有数变成<code>111...10</code>和<code>000...01</code>的形式；</li>
+<li>如何使用<code>快速幂</code>快速计算。</li>
+</ol>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>为什么要尽量变成<code>111...10</code>和<code>000...01</code>的形式？</p>
+<blockquote>
+<p>题目中的两个数<code>x = 1100</code>和<code>y = 0011</code>，<code>x * y = 1100 * 0010 + 1100 * 0001</code>。</p>
+<p>我们看从左往右的第三个<code>1</code>，它的“贡献”是<code>1100 * 0010</code>。</p>
+<p>而如果交换第三个<code>1</code>的位置使得<code>x = 1110</code>且<code>y = 0001</code>（<code>x * y = 1000 * 0001 + 0100 * 0001 + 0010 * 0001</code>），</p>
+<p>则第三个<code>1</code>的“贡献”是<code>0010 * 0001</code>。</p>
+<p>有没有发现，第三个<code>1</code>不论在<code>x</code>中还是在<code>y</code>中，其对<code>x * y</code>的贡献中总有“<code>0010</code>乘以<code>另一个数</code>”这一部分。</p>
+<p>那么能不能让另一个数尽可能小？可以。因最终结果要“非零”，因此另一个数最小为<code>1</code>。</p>
+</blockquote>
+<p>能变成多少个<code>111...10</code>和<code>000...01</code>的形式？</p>
+<blockquote>
+<p>从<code>1</code>到<code>2^p-1</code>的二进制数中，除了<code>2^p-1</code>（二进制下全部为<code>1</code>）外，其余数（偶数个）正好可以两两配对（使得每一位上总计1个<code>1</code>和1个<code>0</code>）。</p>
+<p>因此最终可以变成$2^p-1$乘以：$\frac{2^p-2}{2}$个$2^p-2$</p>
+</blockquote>
+<p>快速幂是什么？</p>
+<blockquote>
+<p>快速幂用于快速计算$a^b\mod p$的结果，其原理是将<code>b</code>看成二进制数。</p>
+<p>例如$a^6&#x3D;a^{110_{(2)}}&#x3D;a^{100_{(2)}}\times a^{10_{(2)}}$，而$a^{100_{(2)}}$又可以通过$a^{10_{(2)}}\times a$得到。</p>
+<p>这样便将$O(b)$的时间复杂度将为了$b$二进制长度的复杂度$O(\log b)$</p>
+<p>具体可参考<a target="_blank" rel="noopener" href="https://web.letmefly.xyz/Notes/ACM/Problems/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂小解</a>。</p>
+</blockquote>
+<h3 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h3><ul>
+<li>时间复杂度$O(p)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> ll MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">ll <span class="title">Pow</span><span class="params">(ll a, ll b)</span> </span>&#123;</span><br><span class="line">        a %= MOD;</span><br><span class="line">        ll ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (b) &#123;</span><br><span class="line">            <span class="keyword">if</span> (b &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                ans = ans * a % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">            a = a * a % MOD;</span><br><span class="line">            b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// (2 ^ p - 1) * ((2 ^ p - 2) ^ ((2 ^ p - 2) / 2))</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minNonZeroProduct</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (((<span class="number">1LL</span> &lt;&lt; p) - <span class="number">1</span>) % MOD) * <span class="built_in">Pow</span>((<span class="number">1LL</span> &lt;&lt; p) - <span class="number">2</span>, ((<span class="number">1LL</span> &lt;&lt; p) - <span class="number">2</span>) / <span class="number">2</span>) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MOD = <span class="built_in">int</span>(<span class="number">1e9</span>) + <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">minNonZeroProduct</span>(<span class="params">self, p: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> ((<span class="number">1</span> &lt;&lt; p) - <span class="number">1</span>) * <span class="built_in">pow</span>((<span class="number">1</span> &lt;&lt; p) - <span class="number">2</span>, ((<span class="number">1</span> &lt;&lt; p) - <span class="number">2</span>) // <span class="number">2</span>, MOD) % MOD  <span class="comment"># 记得是//而不是/</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/03/20/LeetCode%201969.%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E9%9D%9E%E9%9B%B6%E4%B9%98%E7%A7%AF/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/136872322">https://letmefly.blog.csdn.net/article/details/136872322</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2024/03/18/LeetCode%200303.%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E4%B8%8D%E5%8F%AF%E5%8F%98/">303.区域和检索 - 数组不可变 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911969-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E9%9D%9E%E9%9B%B6%E4%B9%98%E7%A7%AF%EF%BC%9A%E8%B4%AA%E5%BF%83-%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1969.数组元素的最小非零乘积：贪心(快速幂)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%B4%AA%E5%BF%83-%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：贪心(快速幂)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.1.2.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text">时空复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">萌</span><a class="icp-content" target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240082">萌ICP备20240082号</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
