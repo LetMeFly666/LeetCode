@@ -73,7 +73,9 @@ tags: [其他, 知识, 英语, Notes]
 |myriad|adj. 无数的，众多方面的<br/>n. 无数，大量|
 |spatial|adj. 空间的<details><summary>例句</summary>The task is designed to test <font color="#28bea0">spatial</font> awareness of kids.<br/>该任务的设计目的是测试儿童的空间意识。</details>|
 |dreary|adj. 令人沮丧的，沉闷的，枯燥无味的<br/>n. 可怕的人物|
-
+|||
+|reluctant|adj. 不情愿的，勉强的|
+|scarce|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
 
 <details>
 <summary>扇贝音频测试</summary>

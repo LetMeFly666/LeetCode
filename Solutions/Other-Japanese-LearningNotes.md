@@ -79,7 +79,7 @@ xx型
 
 |假名|词义|
 |:--|:--|
-|ゼロ|零|
+|ゼロ/れい|零|
 |いち|一|
 |に|二|
 |さん|三|
@@ -89,10 +89,14 @@ xx型
 |なな/しち|七|
 |はち|八|
 |きゅう/く|九|
+|じゅう|十|
 |||
 |きる|穿|
 |よむ|读|
 |のむ|喝|
+|行き(いき)|行|
+|ね|睡觉|
+|おき|起床|
 |飲み(のみ)|喝|
 |食べ(たべ)|吃|
 |遊び(あそび)|玩|
@@ -140,7 +144,10 @@ xx型
 |ほしい|想要|
 |||
 |ひる|白天|
-|よる|晚上|
+|夜(よる)|晚上|
+|午前(ごぜん)|上午|
+|朝(あさ)|早上|
+|あした|明天|
 |||
 |おはよう|早（上好）|
 |こんばんは|晚上好|
@@ -188,6 +195,8 @@ xx型
 |すずき(鈴木)|铃木|
 |や|野|
 |さい|菜|
+|はん|半|
+|後(ご)|后|
 |||
 |これ|这个|
 |それ|那个|
@@ -216,16 +225,26 @@ xx型
 |それは何ですか？<br/>那是什么？|
 |それは水です。<br/>那是水。|
 |それ<font color="#28bea0">を</font>ください。<br/>请给我那个。|
-|ごはん<font color="#28bea0">を</font>食べますか？<br/>吃饭吗？<details><summary>关于<font color="#28bea0">を</font>的解释</summary>在谈论接受动作行为的名词时<br/>例如吃/喝东西<br/>将<font color="#28bea0">を</font>加在名词后面。</details>|
+|ごはん<font color="#28bea0">を</font>食べますか？<br/>吃饭吗？<details><summary>关于<font color="#28bea0">を</font>的解释</summary>在谈论接受动作行为的名词时，<br/>例如吃/喝东西，<br/>将<font color="#28bea0">を</font>加在名词后面。</details>|
 |ごはん<font color="#28bea0">を</font>食べます。<br/>吃米饭。|
 |ごはん<font color="#28bea0">は</font>食べません。<br/>不吃米饭。<details><summary>关于<font color="#28bea0">は</font>的解释</summary>与问句相仿，否定句中通常使用<font color="#28bea0">は</font>而不是<font color="#28bea0">を</font>。</details>|
 |私<font color="#28bea0">は</font>食べません。<br/>我不吃。|
 |どれ<font color="#28bea0">を</font>飲みますか？<br/>喝哪个？|
 |田中さん、今は何時ですか？<br/>田中先生，现在是几点？<details><summary><font color="red">关于时间</font>（发音）</summary><font color="#28bea0">分</font>在不同数字后面发音不同。<br/>一、三、四、六、八后的发音是<font color="#28bea0">ぷん(pun)</font>，<br/>二、五、七、九后的发音是<font color="#28bea0">ふん(fun)</font>。<br/>数字常用发音也不同。<table style="width:100%"><thead><tr><td>数字/汉字计时</td><td>发音</td></tr></thead><tbody><tr><td>一時一分(1:01)</td><td>ichi-ji ip-pun</td></tr><tr><td>三時三分(3:03)</td><td>san-ji san-pun</td></tr><tr><td>四時四分(4:04)</td><td>yo-ji yon-pun</td></tr><tr><td>六時六分​(6:06)</td><td>roku-ji rop-pun</td></tr><tr><td>八時八分(8:08)</td><td>hachi-ji hap-pun</td></tr><tr><td>二時二分(2:02)</td><td>ni-ji ni-fun</td></tr><tr><td>五時五分(5:05)</td><td>go-ji go-fun</td></tr><tr><td>七時七分(7:07)</td><td>shichi-ji nana-fun</td></tr><tr><td>九時九分(9:09)</td><td>ku-ji kyū-fun</td></tr></tbody></table></details>|
-|今は二時ちょうどです。<br/>现在正好两点。|
+|今は二時<font color="#28bea0">ちょうど</font>です。<br/>现在<font color="#28bea0">正好</font>两点。|
 |今は四時五分です。<br/>现在是四点零五分。|
+|<font color="#ce82ff">朝</font>は何時におきますか？<br/><font color="#ce82ff">早上</font>几点起床？|
+|<font color="#ce82ff">午前</font>九時におきます。<br/><font color="#ce82ff">上午</font>九点起床。|
+|<font color="#ce82ff">午後</font>一時<font color="#28bea0">に</font>学校<font color="#28bea0">へ</font>行きます。<br/><font color="#ce82ff">下午</font>一点去学校。<details><summary>关于<font color="#28bea0">に</font>的解释</summary>想表达时间，就把<font color="#28bea0">に</font>放在时间后。</details><details><summary>关于<font color="#28bea0">へ</font>的解释</summary>可以将<font color="#28bea0">へ</font>放在地点后。<br/>这种情况下发音是<font color="#28bea0">e</font>不是<font color="#28bea0">he</font>。</details>|
+|十時<font color="#28bea0">ごろ</font>にねます。<br/>十点<font color="#28bea0">左右</font>去学校。|
+|へやはどこですか？<br/>房间在哪里？|
+|へやはあそこです。<br/>房间在那里。|
+|<font color="#28bea0">テーブル</font>は<font color="#28bea0">だいどころ</font>に<font color="#ce82ff">あります</font>。<br/><font color="#28bea0">桌子</font>在<font color="#28bea0">厨房</font>。|
+|家に<font color="#28bea0">まど</font>があります。<br/>家里有<font color="#28bea0">窗户</font>。|
+|ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
+|ねこはいません。<br/>没有猫。|
 
-
+<span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)哦~
 > [https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)
