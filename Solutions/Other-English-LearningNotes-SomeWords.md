@@ -76,6 +76,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |reluctant|adj. 不情愿的，勉强的|
 |scarce|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
+|||
+|lateral|adj. 侧面的，横向的，平级的|
+|hinder|v. 阻碍，妨碍<br/>adj. 后面的，后方的|
+|wrestle|v. 摔跤，斗争，搏斗，努力处理<br/>n. 摔跤（比赛），角力|
 
 <details>
 <summary>扇贝音频测试</summary>

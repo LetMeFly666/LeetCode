@@ -132,6 +132,10 @@ xx型
 |ちず|地图|
 |かぜ|风|
 |くだもの|水果|
+|テーブル|桌子|
+|プール|游泳池|
+|ふる|浴室|
+|にわ|院子|
 |||
 |がっこう|学校|
 |へや|部屋|
@@ -146,6 +150,7 @@ xx型
 |ひる|白天|
 |夜(よる)|晚上|
 |午前(ごぜん)|上午|
+|午後(ごご)|下午|
 |朝(あさ)|早上|
 |あした|明天|
 |||
@@ -176,7 +181,8 @@ xx型
 |||
 |とり|鸟|
 |ねこ|猫|
-|いぬ|狗|
+|犬(いぬ)|狗|
+|ペット|宠物|
 |||
 |もちろん|当然|
 |じゃあ|那么|
@@ -202,6 +208,10 @@ xx型
 |それ|那个|
 |あれ|那个|
 |どれ|哪个|
+|ここ|这里|
+|そこ|那里|
+|あそこ|那里|
+|どこ|哪里|
 
 ## 小句
 
@@ -230,7 +240,7 @@ xx型
 |ごはん<font color="#28bea0">は</font>食べません。<br/>不吃米饭。<details><summary>关于<font color="#28bea0">は</font>的解释</summary>与问句相仿，否定句中通常使用<font color="#28bea0">は</font>而不是<font color="#28bea0">を</font>。</details>|
 |私<font color="#28bea0">は</font>食べません。<br/>我不吃。|
 |どれ<font color="#28bea0">を</font>飲みますか？<br/>喝哪个？|
-|田中さん、今は何時ですか？<br/>田中先生，现在是几点？<details><summary><font color="red">关于时间</font>（发音）</summary><font color="#28bea0">分</font>在不同数字后面发音不同。<br/>一、三、四、六、八后的发音是<font color="#28bea0">ぷん(pun)</font>，<br/>二、五、七、九后的发音是<font color="#28bea0">ふん(fun)</font>。<br/>数字常用发音也不同。<table style="width:100%"><thead><tr><td>数字/汉字计时</td><td>发音</td></tr></thead><tbody><tr><td>一時一分(1:01)</td><td>ichi-ji ip-pun</td></tr><tr><td>三時三分(3:03)</td><td>san-ji san-pun</td></tr><tr><td>四時四分(4:04)</td><td>yo-ji yon-pun</td></tr><tr><td>六時六分​(6:06)</td><td>roku-ji rop-pun</td></tr><tr><td>八時八分(8:08)</td><td>hachi-ji hap-pun</td></tr><tr><td>二時二分(2:02)</td><td>ni-ji ni-fun</td></tr><tr><td>五時五分(5:05)</td><td>go-ji go-fun</td></tr><tr><td>七時七分(7:07)</td><td>shichi-ji nana-fun</td></tr><tr><td>九時九分(9:09)</td><td>ku-ji kyū-fun</td></tr></tbody></table></details>|
+|田中さん、今は何時ですか？<br/>田中先生，现在是几点？<details open="true"><summary><font color="red">关于时间</font>（发音）</summary><font color="#28bea0">分</font>在不同数字后面发音不同。<br/>一、三、四、六、八后的发音是<font color="#28bea0">ぷん(pun)</font>，<br/>二、五、七、九后的发音是<font color="#28bea0">ふん(fun)</font>。<br/>数字常用发音也不同。<table style="width:100%"><thead><tr><td>数字/汉字计时</td><td>发音</td></tr></thead><tbody><tr><td>一時一分(1:01)</td><td>ichi-ji ip-pun</td></tr><tr><td>三時三分(3:03)</td><td>san-ji san-pun</td></tr><tr><td>四時四分(4:04)</td><td>yo-ji yon-pun</td></tr><tr><td>六時六分​(6:06)</td><td>roku-ji rop-pun</td></tr><tr><td>八時八分(8:08)</td><td>hachi-ji hap-pun</td></tr><tr><td>二時二分(2:02)</td><td>ni-ji ni-fun</td></tr><tr><td>五時五分(5:05)</td><td>go-ji go-fun</td></tr><tr><td>七時七分(7:07)</td><td>shichi-ji nana-fun</td></tr><tr><td>九時九分(9:09)</td><td>ku-ji kyū-fun</td></tr></tbody></table></details>|
 |今は二時<font color="#28bea0">ちょうど</font>です。<br/>现在<font color="#28bea0">正好</font>两点。|
 |今は四時五分です。<br/>现在是四点零五分。|
 |<font color="#ce82ff">朝</font>は何時におきますか？<br/><font color="#ce82ff">早上</font>几点起床？|
@@ -240,8 +250,10 @@ xx型
 |へやはどこですか？<br/>房间在哪里？|
 |へやはあそこです。<br/>房间在那里。|
 |<font color="#28bea0">テーブル</font>は<font color="#28bea0">だいどころ</font>に<font color="#ce82ff">あります</font>。<br/><font color="#28bea0">桌子</font>在<font color="#28bea0">厨房</font>。|
-|家に<font color="#28bea0">まど</font>があります。<br/>家里有<font color="#28bea0">窗户</font>。|
+|家に<font color="#28bea0">まど</font><font color="#ce82ff">が</font>あります。<br/>家里有<font color="#28bea0">窗户</font>。|
+|家にまど<font color="#ce82ff">は</font>ありますか？<br/>家里有窗户吗？|
 |ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
+|<font color="#ce82ff">お</font>ふるはいますか？<br/>有猫吗？|
 |ねこはいません。<br/>没有猫。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
