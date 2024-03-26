@@ -93,6 +93,30 @@ Interpreter: /bin/bash
 
 使用```ssh```登录Linux时会显示Linux欢迎语，据不完全测试，修改```/etc/motd```为你想要显示的内容即可。（比如看板娘）
 
+### 删除一个文件夹中的100万个文件（除了几个特殊文件不删）
+
+假设当前文件夹下有100万个```toDel-*```文件和4个其他文件。这100万个文件是想要删除的，这4个文件是想要保留的。怎么做？```rm toDel-*```会提示```-bash: /usr/bin/rm: 参数列表过长```。
+
+怎么办？借助一个空文件夹使用```rsync```命令来进行吧：
+
+先创建一个空文件夹```mkdir ../tmp```，再创建一个文件```../toKeep.txt```用来写不想要被删除的文件列表。
+
+<details><summary>生成<code>../toKeep.txt</code>的方法之一</summary>
+
+可以先将所有文件名排序后导入到一个文件里：```ls -lf | sort > ../fileList.txt```，
+
+查看文件并将头尾要保留的文件导出到```../toKeep.txt```中：```cat ../fileList.txt | head -4 > ../toKeep.txt```、```cat ../fileList.txt | tail -2 >> ../toKeep.txt```。
+
+</details>
+
+最后，使用以下命令即可。
+
+```bash
+rsync -av --delete ../tmp/ ./ --exclude-from=../toKeep.txt
+```
+
+命令的含义是：删除```./```中不在```../tmp```中的文件，```../toKeep.txt```中的文件除外。
+
 ## About Windows
 
 ### Windows应用商店安装的应用
