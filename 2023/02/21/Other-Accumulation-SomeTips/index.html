@@ -26,16 +26,16 @@
 <meta property="og:description" content="日积月累 - 一些小知识这里准备放一些日积月累的小知识，排版等也可能会在后期不断调整归类。 About GithubCHANGELOG.md更新日志文件，格式可参考：https:&#x2F;&#x2F;www.bestyii.com&#x2F;topic&#x2F;75 About HTML空白字符这是一个空白字符：“ㅤ” WebView2（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2024-03-25T02:29:02.702Z">
+<meta property="article:modified_time" content="2024-03-26T14:24:58.504Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="中等">
 <meta property="article:tag" content="优先队列">
 <meta property="article:tag" content="双端队列">
 <meta property="article:tag" content="其他">
-<meta property="article:tag" content="Windows">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="DL">
 <meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="Windows">
 <meta property="article:tag" content="小杂">
 <meta property="article:tag" content="知识">
 <meta property="article:tag" content="Github">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.9k 字
+          9.4k 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          75 分钟
+          79 分钟
         
       </span>
     
@@ -329,6 +329,19 @@
 </details>
 
 <h3 id="Linux登录欢迎语motd"><a href="#Linux登录欢迎语motd" class="headerlink" title="Linux登录欢迎语motd"></a>Linux登录欢迎语motd</h3><p>使用<code>ssh</code>登录Linux时会显示Linux欢迎语，据不完全测试，修改<code>/etc/motd</code>为你想要显示的内容即可。（比如看板娘）</p>
+<h3 id="删除一个文件夹中的100万个文件（除了几个特殊文件不删）"><a href="#删除一个文件夹中的100万个文件（除了几个特殊文件不删）" class="headerlink" title="删除一个文件夹中的100万个文件（除了几个特殊文件不删）"></a>删除一个文件夹中的100万个文件（除了几个特殊文件不删）</h3><p>假设当前文件夹下有100万个<code>toDel-*</code>文件和4个其他文件。这100万个文件是想要删除的，这4个文件是想要保留的。怎么做？<code>rm toDel-*</code>会提示<code>-bash: /usr/bin/rm: 参数列表过长</code>。</p>
+<p>怎么办？借助一个空文件夹使用<code>rsync</code>命令来进行吧：</p>
+<p>先创建一个空文件夹<code>mkdir ../tmp</code>，再创建一个文件<code>../toKeep.txt</code>用来写不想要被删除的文件列表。</p>
+<details><summary>生成<code>../toKeep.txt</code>的方法之一</summary>
+
+<p>可以先将所有文件名排序后导入到一个文件里：<code>ls -lf | sort &gt; ../fileList.txt</code>，</p>
+<p>查看文件并将头尾要保留的文件导出到<code>../toKeep.txt</code>中：<code>cat ../fileList.txt | head -4 &gt; ../toKeep.txt</code>、<code>cat ../fileList.txt | tail -2 &gt;&gt; ../toKeep.txt</code>。</p>
+</details>
+
+<p>最后，使用以下命令即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --delete ../tmp/ ./ --exclude-from=../toKeep.txt<br></code></pre></td></tr></table></figure>
+
+<p>命令的含义是：删除<code>./</code>中不在<code>../tmp</code>中的文件，<code>../toKeep.txt</code>中的文件除外。</p>
 <h2 id="About-Windows"><a href="#About-Windows" class="headerlink" title="About Windows"></a>About Windows</h2><h3 id="Windows应用商店安装的应用"><a href="#Windows应用商店安装的应用" class="headerlink" title="Windows应用商店安装的应用"></a>Windows应用商店安装的应用</h3><p>Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">C:<span class="hljs-string">\Program</span> Files<span class="hljs-string">\WindowsApps</span><br></code></pre></td></tr></table></figure>
 
@@ -463,13 +476,13 @@
       
         <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
       
-        <a href="/tags/Windows/">#Windows</a>
-      
         <a href="/tags/AI/">#AI</a>
       
         <a href="/tags/DL/">#DL</a>
       
         <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+      
+        <a href="/tags/Windows/">#Windows</a>
       
         <a href="/tags/%E5%B0%8F%E6%9D%82/">#小杂</a>
       
