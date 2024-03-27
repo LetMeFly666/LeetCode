@@ -126,6 +126,12 @@ ffmpeg -i 0.mp4 -vf "ass=0.ass" -c:a copy output.mp4
 ffmpeg -i 0.mp4 -vf "ass=0.ass:fontsdir=/path/to/fonts/" -c:a copy  output.mp4
 ```
 
+### 提取视频中的一段音频并输出为mp3
+
+```bash
+ffmpeg -ss 5 -t 5 -i input.mkv -vn -acodec mp3 output.mp3
+```
+
 ### 使用硬件加速（GPU）
 
 首先确定可用硬件列表：

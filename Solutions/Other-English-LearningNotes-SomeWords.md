@@ -80,6 +80,8 @@ tags: [其他, 知识, 英语, Notes]
 |lateral|adj. 侧面的，横向的，平级的|
 |hinder|v. 阻碍，妨碍<br/>adj. 后面的，后方的|
 |wrestle|v. 摔跤，斗争，搏斗，努力处理<br/>n. 摔跤（比赛），角力|
+|||
+|strike|v. 打，打击，达到，罢工<br/>n. 打，击，罢工，挫折<details><summary>过去分词</summary>struck</details>|
 
 <details>
 <summary>扇贝音频测试</summary>
