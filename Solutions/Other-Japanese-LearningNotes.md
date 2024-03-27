@@ -255,6 +255,8 @@ xx型
 |ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
 |<font color="#ce82ff">お</font>ふるはいますか？<br/>有猫吗？|
 |ねこはいません。<br/>没有猫。|
+|だいどころ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>厨房。|
+|あそこ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>那里。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
