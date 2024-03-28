@@ -105,6 +105,7 @@ xx型
 |勉強(べんきょう)|学习|
 |||
 |話せ(はなせ)|会说|
+|住んで(すんで)|住|
 |||
 |野菜(やさい)|蔬菜|
 |すし|寿司|
@@ -191,12 +192,16 @@ xx型
 |||
 |ドイツ|德国|
 |イギリス|英国|
+|外国(がいこく)|外国|
+|東京(とうきょう)|东京|
+|大阪(おおさか)|大阪|
+|京都(きょうと)|京都|
 |||
 |な|名|
 |まえ|前|
-|||
 |えい|英|
-|||
+|ねん|年|
+|しょう|小|
 |すず(鈴)|铃|
 |すずき(鈴木)|铃木|
 |や|野|
@@ -212,6 +217,10 @@ xx型
 |そこ|那里|
 |あそこ|那里|
 |どこ|哪里|
+|||
+|りゅうがく|留学|
+|高校(こうこう)|高中|
+|中学|初中|
 
 ## 小句
 
@@ -253,10 +262,13 @@ xx型
 |家に<font color="#28bea0">まど</font><font color="#ce82ff">が</font>あります。<br/>家里有<font color="#28bea0">窗户</font>。|
 |家にまど<font color="#ce82ff">は</font>ありますか？<br/>家里有窗户吗？|
 |ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
-|<font color="#ce82ff">お</font>ふるはいますか？<br/>有猫吗？|
+|おふるはいますか？<br/>有浴室吗？|
 |ねこはいません。<br/>没有猫。|
 |だいどころ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>厨房。|
 |あそこ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>那里。|
+|何年生ですか？<br/>是几年级学生？|
+|東京に行きます。<br/>去东京。|
+|りさん<font color="#ce82ff">は</font>大阪<font color="#ce82ff">に</font>すんでいます。<br/>老李住在大阪。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

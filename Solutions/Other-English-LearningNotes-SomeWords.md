@@ -75,13 +75,21 @@ tags: [其他, 知识, 英语, Notes]
 |dreary|adj. 令人沮丧的，沉闷的，枯燥无味的<br/>n. 可怕的人物|
 |||
 |reluctant|adj. 不情愿的，勉强的|
-|scarce|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
+|<font color="#28bea0" title="二次复习">scarce</font>|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
 |||
 |lateral|adj. 侧面的，横向的，平级的|
 |hinder|v. 阻碍，妨碍<br/>adj. 后面的，后方的|
 |wrestle|v. 摔跤，斗争，搏斗，努力处理<br/>n. 摔跤（比赛），角力|
 |||
 |strike|v. 打，打击，达到，罢工<br/>n. 打，击，罢工，挫折<details><summary>过去分词</summary>struck</details>|
+|||
+|provisional|adj. 临时的，暂定的|
+|squat|v. 蹲<br/>n. 蹲坐<br/>adj. 矮而宽的，矮胖的<details><summary>过去分词</summary>squatted</details>|
+|adhere|v. 附着，黏附，坚持|
+|sprain|v. 扭伤（关节）<br/>n. 扭伤|
+|bargain|n. 物美价廉的东西，交易，买卖，协定<br/>v. 讨价还价，讲条件，谈判|
+|comparison|n. 比较，对照|
+|confrontation|n. 对抗，对峙，冲突|
 
 <details>
 <summary>扇贝音频测试</summary>
