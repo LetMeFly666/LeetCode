@@ -163,6 +163,8 @@ xx型
 |こんにちは|你好|
 |ただいま|我回来了|
 |おかえり|欢迎回来|
+|行ってきます|我出去啦|
+|行ってらっしゃい|路上小心|
 |いただきます|我开动了|
 |ごちそうさまでした|我吃饱了，多谢款待|
 |いらっしゃいませ|欢迎光临|
@@ -221,6 +223,20 @@ xx型
 |りゅうがく|留学|
 |高校(こうこう)|高中|
 |中学|初中|
+|||
+|お母さん(おかあさん)|母亲|
+|お父さん(おとうさん)|父亲|
+|妹「さん」(いもうと「さん」)|妹妹|
+|弟「さん」(おとうと「さん」)|弟弟|
+|お姉さん(おねえさん)|姐姐|
+|お兄さん(おにいさん)|哥哥|
+|姉妹(しまい)|姐妹|
+|兄弟(きょうだい)|兄弟|
+|かれ|他|
+|だれ|谁|
+|彼女(かのじょ)|她|
+|かれら|他们|
+|家族(かぞく)|家人|
 
 ## 小句
 
@@ -262,13 +278,16 @@ xx型
 |家に<font color="#28bea0">まど</font><font color="#ce82ff">が</font>あります。<br/>家里有<font color="#28bea0">窗户</font>。|
 |家にまど<font color="#ce82ff">は</font>ありますか？<br/>家里有窗户吗？|
 |ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
-|おふるはいますか？<br/>有浴室吗？|
+|おふるはいますか？<br/>有浴室吗？|  
 |ねこはいません。<br/>没有猫。|
 |だいどころ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>厨房。|
 |あそこ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>那里。|
 |何年生ですか？<br/>是几年级学生？|
 |東京に行きます。<br/>去东京。|
 |りさん<font color="#ce82ff">は</font>大阪<font color="#ce82ff">に</font>すんでいます。<br/>老李住在大阪。|
+|弟さんは何人ですか？<br/>有几个弟弟？|
+|私<font color="#ce82ff">には</font>しまいが四人います。<br/>我有四个姐妹。|
+|家族<font color="#ce82ff">は</font>中国<font color="#ce82ff">に</font>います。<br/>家人在中国。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

@@ -90,6 +90,8 @@ tags: [其他, 知识, 英语, Notes]
 |bargain|n. 物美价廉的东西，交易，买卖，协定<br/>v. 讨价还价，讲条件，谈判|
 |comparison|n. 比较，对照|
 |confrontation|n. 对抗，对峙，冲突|
+|||
+|sophisticated|adj. 老于世故的，见多识广的|
 
 <details>
 <summary>扇贝音频测试</summary>
