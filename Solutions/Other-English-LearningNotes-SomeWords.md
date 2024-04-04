@@ -92,6 +92,13 @@ tags: [其他, 知识, 英语, Notes]
 |confrontation|n. 对抗，对峙，冲突|
 |||
 |sophisticated|adj. 老于世故的，见多识广的|
+|||
+|slide|v. 滑行，下滑<br/>n. 滑梯，幻灯片<details><summary>过去分词</summary>slid</details>|
+|||
+|hypothesis|n. 假设，假说，猜测<details><summary>复数</summary>hypotheses</details>|
+|||
+|swing|v. 摇摆，旋转<br/>n. 摇摆，秋千<details><summary>复数</summary>swung</details>|
+|cater|v. 满足..的需要，承办酒席，考虑<summary>例句</summary>He has to <font color="#28bea0">cater</font> for his boss.<br/>他得迎合他的老板。</details>|
 
 <details>
 <summary>扇贝音频测试</summary>
