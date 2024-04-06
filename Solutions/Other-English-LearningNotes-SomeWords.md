@@ -97,8 +97,17 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |hypothesis|n. 假设，假说，猜测<details><summary>复数</summary>hypotheses</details>|
 |||
-|swing|v. 摇摆，旋转<br/>n. 摇摆，秋千<details><summary>复数</summary>swung</details>|
+|swing|v. 摇摆，旋转<br/>n. 摇摆，秋千<details><summary>过去分词</summary>swung</details>|
 |cater|v. 满足..的需要，承办酒席，考虑<summary>例句</summary>He has to <font color="#28bea0">cater</font> for his boss.<br/>他得迎合他的老板。</details>|
+|||
+|weave|v. 编织，组合<br/>n. 编法，织法<details><summary>过去分词</summary>wove</details>|
+|democratic|adj. 民主的，有民主精神的|
+|||
+|disposition|n. 倾向，性情，布置|
+|i.e.|abbr. 亦即<summary>例句</summary>Many people like you, <font color="#28bea0">i.e.</font> you are popular.<br/>很多人喜欢你，也就是说，你很受欢迎。</details>|
+|notic<font color="#28bea0">e</font>able|adj. 显著的，显而易见的|
+|inevitably|adv. 必然，不可避及地|
+|protocol|n. 协定书，外交礼节，条约草案<br/>v. 打(草稿)，(把...)记入议定书|
 
 <details>
 <summary>扇贝音频测试</summary>
