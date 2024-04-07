@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-04-07 09:16:57
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-04-07 16:39:10
+-->
 ---
 title: 日语学习笔记
 date: 2023-11-24 14:02:17
@@ -308,7 +314,7 @@ xx型
 |弟さんは何人ですか？<br/>有几个弟弟？|
 |へやに何人いますか？<br/>房间里有几人|
 |私<font color="#ce82ff">には</font>しまいが四人います。<br/>我有四个姐妹。|
-|家族は<font color="#ce82ff"どこに</font>いますか？<br/>家人在哪里？|
+|家族は<font color="#ce82ff">どこに</font>いますか？<br/>家人在哪里？|
 |家族<font color="#ce82ff">は</font>中国<font color="#ce82ff">に</font>います。<br/>家人在中国。|
 |いくつありますか？<br/>有几个？|
 |テーブルが一つあります。<br/>有一张桌子。|
