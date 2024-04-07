@@ -26,7 +26,7 @@
 <meta property="og:description" content="FFmpeg（强大的音视频处理工具） - 一些基本实用方法下载安装官网：ffmpeg.org 下载页面 -&gt; Windows -&gt; Windows builds from gyan.dev  或 Windows builds by BtbN 推荐使用第二个Github@BtbN&#x2F;FFmpeg-Builds，在最新的一个release中，搜索win，下载ffmpeg-maste">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-03T07:30:06.000Z">
-<meta property="article:modified_time" content="2024-04-06T14:25:32.756Z">
+<meta property="article:modified_time" content="2024-04-07T03:43:20.617Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="中等">
@@ -295,6 +295,19 @@
 <p>接着只需要：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ffmpeg -hwaccel &lt;加速器&gt; -i 输入视频文件 输出视频文件</span><br>ffmpeg -hwaccel cuda -i 0.mp4 1.flv<br></code></pre></td></tr></table></figure>
 
+<p>关于如何在<code>Linux</code>上编译安装支持<code>CUDA</code>的<code>FFmpeg</code>请查看<a href="https://blog.letmefly.xyz/2023/04/07/Other-FFmpeg-howToInstallCudableFFmpegOnLinux/">FFmpeg - 如何在Linux(Ubuntu)上安装支持CUDA的FFmpeg</a>。</p>
+<h3 id="使用一个视频的格式信息压制另一个视频"><a href="#使用一个视频的格式信息压制另一个视频" class="headerlink" title="使用一个视频的格式信息压制另一个视频"></a>使用一个视频的格式信息压制另一个视频</h3><p>首先获取已有视频的格式信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,bit_rate,width,height,avg_frame_rate -of default=noprint_wrappers=1 perfect.mkv<br></code></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">codec_name</span>=h264<br><span class="hljs-attr">width</span>=<span class="hljs-number">1920</span><br><span class="hljs-attr">height</span>=<span class="hljs-number">1080</span><br><span class="hljs-attr">avg_frame_rate</span>=<span class="hljs-number">24000</span>/<span class="hljs-number">1001</span><br><span class="hljs-attr">bit_rate</span>=<span class="hljs-number">2183643</span><br></code></pre></td></tr></table></figure>
+
+<p>接着按照此格式开始压制即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mkv -c:v libx264 -b:v 2M -s 1920x1080 -r 24 output.mkv<br></code></pre></td></tr></table></figure>
+
+<h3 id="格式转换时保留内挂字幕"><a href="#格式转换时保留内挂字幕" class="headerlink" title="格式转换时保留内挂字幕"></a>格式转换时保留内挂字幕</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i input.mkv -c:s copy output.mkv<br></code></pre></td></tr></table></figure>
+
+<p>其中<code>-c:s</code>是值字幕，<code>copy</code>是指复制，也可以修改成<code>-c:s ass</code>等。</p>
 <blockquote>
 <p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/</a></p>
 </blockquote>
