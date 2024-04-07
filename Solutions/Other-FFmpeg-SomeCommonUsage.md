@@ -163,5 +163,39 @@ vulkan
 ffmpeg -hwaccel cuda -i 0.mp4 1.flv
 ```
 
+关于如何在```Linux```上编译安装支持```CUDA```的```FFmpeg```请查看[FFmpeg - 如何在Linux(Ubuntu)上安装支持CUDA的FFmpeg](https://blog.letmefly.xyz/2023/04/07/Other-FFmpeg-howToInstallCudableFFmpegOnLinux/)。
+
+### 使用一个视频的格式信息压制另一个视频
+
+首先获取已有视频的格式信息：
+
+```bash
+ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,bit_rate,width,height,avg_frame_rate -of default=noprint_wrappers=1 perfect.mkv
+```
+
+得到：
+
+```
+codec_name=h264
+width=1920
+height=1080
+avg_frame_rate=24000/1001
+bit_rate=2183643
+```
+
+接着按照此格式开始压制即可：
+
+```bash
+ffmpeg -i input.mkv -c:v libx264 -b:v 2M -s 1920x1080 -r 24 output.mkv
+```
+
+### 格式转换时保留内挂字幕
+
+```bash
+ffmpeg -i input.mkv -c:s copy output.mkv
+```
+
+其中```-c:s```是值字幕，```copy```是指复制，也可以修改成```-c:s ass```等。
+
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/)哦~
 > [https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/](https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/)
