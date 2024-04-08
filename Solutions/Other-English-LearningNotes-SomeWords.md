@@ -108,6 +108,7 @@ tags: [其他, 知识, 英语, Notes]
 |notic<font color="#28bea0">e</font>able|adj. 显著的，显而易见的|
 |inevitably|adv. 必然，不可避及地|
 |protocol|n. 协定书，外交礼节，条约草案<br/>v. 打(草稿)，(把...)记入议定书|
+|explicitly|adv. 明确地，清楚明白地|
 
 <details>
 <summary>扇贝音频测试</summary>
