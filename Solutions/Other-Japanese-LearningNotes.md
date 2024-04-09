@@ -142,6 +142,9 @@ xx型
 |あつい|热的|
 |つめたい|凉的|
 |からい|辣的|
+|高い(たかい)|贵的|
+|やすい|便宜的|
+|嫌い(きらい)|讨厌的|
 |||
 |きっぷ|票|
 |でんわ|电话|
@@ -170,7 +173,7 @@ xx型
 |||
 |そと|外面|
 |||
-|すき|喜欢|
+|好き(すき)|喜欢|
 |ほしい|想要|
 |||
 |ひる|白天|
@@ -319,7 +322,7 @@ xx型
 |何年生ですか？<br/>是几年级学生？|
 |東京に行きます。<br/>去东京。|
 |りさん<font color="#ce82ff">は</font>大阪<font color="#ce82ff">に</font>すんでいます。<br/>老李住在大阪。|
-|弟さんは何人ですか？<br/>有几个弟弟？|
+|弟さんは何人ですか？<br/>有<b>几个</b>弟弟？|
 |へやに何人いますか？<br/>房间里有几人|
 |私<font color="#ce82ff">には</font>しまいが四人います。<br/>我有四个姐妹。|
 |家族は<font color="#ce82ff">どこに</font>いますか？<br/>家人在哪里？|
@@ -334,11 +337,12 @@ xx型
 |これはまずいです。<br/>这个很难吃。|
 |どのレストランがまずいですか？<br/>哪个餐馆很难吃？|
 |これはいくらですか？<br/>这个多少钱？|
-|百円です。<br/>(是)一百日元|
+|千百円です。<br/>(是)一千一百日元|
 |あまいパン。<br/>甜面包。|
 |パン<font color="#ce82ff">が</font>あついです。<br/>面包很热。|
 |日本<font color="#ce82ff">で</font>勉強します。<br/>在日本学习。|
 |しょくどうでパンを食べます。<br/>在食堂吃面包。|
+|おちゃ<font color="#ce82ff">が</font>好きです。<br/>（我）喜欢茶。<details><summary>喜欢的<font color="#ce82ff">が</font>与不喜欢的<font color="#ce82ff">は</font></summary>喜欢用<font color="#ce82ff">が</font>，喜欢xx<code>⇔</code>xx<font color="#ce82ff">が</font>好きです；<br/>不喜欢用<font color="#ce82ff">は(wa)</font>，不喜欢xx<code>⇔</code>xx<font color="#ce82ff">は</font>好きじゃないです。</details>|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
