@@ -93,7 +93,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |sophisticated|adj. 老于世故的，见多识广的|
 |||
-|slide|v. 滑行，下滑<br/>n. 滑梯，幻灯片<details><summary>过去分词</summary>slid</details>|
+|<font color="#28bea0" title="二次复习">slide</font>|v. 滑行，下滑<br/>n. 滑梯，幻灯片<details><summary>过去分词</summary>slid</details>|
 |||
 |hypothesis|n. 假设，假说，猜测<details><summary>复数</summary>hypotheses</details>|
 |||
@@ -109,6 +109,12 @@ tags: [其他, 知识, 英语, Notes]
 |inevitably|adv. 必然，不可避及地|
 |protocol|n. 协定书，外交礼节，条约草案<br/>v. 打(草稿)，(把...)记入议定书|
 |explicitly|adv. 明确地，清楚明白地|
+|||
+|foul|adj. 肮胀恶臭的，令人不快的，很坏的<br/>v. 对（对手）犯规，弄脏，（被）缠住<br/>adv. 碰撞地，争执不和地，犯规地|
+|merit|n. 价值，长处，优点<br/>v. 值得，应得|
+|ridicule|n. 嘲笑，奚落<br/>v. 嘲笑，奚落|
+|solely|adv. 只，仅，唯，单独地<details><summary>例句</summary>I did not sing <font color="#28bea0">solely</font> for money.</details>|
+|penalty|n. 处罚，判罚，刑罚，罚金|
 
 <details>
 <summary>扇贝音频测试</summary>
