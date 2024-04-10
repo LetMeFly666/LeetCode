@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1702.修改后的最大二进制字符串：脑筋急转弯（构造，贪心）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-binary-string-after-change&#x2F; 给你一个二进制字符串 binary ，它仅有 0 或者 1 组成。你可以使用下面的操作任意次对它进行修改：       操作 1 ：如果二进制串包含子字符串 &quot;00&quot; ，你可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1702.修改后的最大二进制字符串">
+<meta property="og:url" content="https://blog.letmefly.xyz/2024/04/10/LeetCode%201702.%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1702.修改后的最大二进制字符串：脑筋急转弯（构造，贪心）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-binary-string-after-change&#x2F; 给你一个二进制字符串 binary ，它仅有 0 或者 1 组成。你可以使用下面的操作任意次对它进行修改：       操作 1 ：如果二进制串包含子字符串 &quot;00&quot; ，你可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-10T05:01:22.000Z">
+<meta property="article:modified_time" content="2024-04-10T05:39:16.818Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="构造">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1702.修改后的最大二进制字符串 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1702.修改后的最大二进制字符串"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-10 13:01" pubdate>
+          2024年4月10日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          930 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">1702.修改后的最大二进制字符串</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】1702-修改后的最大二进制字符串：脑筋急转弯（构造，贪心）"><a href="#【LetMeFly】1702-修改后的最大二进制字符串：脑筋急转弯（构造，贪心）" class="headerlink" title="【LetMeFly】1702.修改后的最大二进制字符串：脑筋急转弯（构造，贪心）"></a>【LetMeFly】1702.修改后的最大二进制字符串：脑筋急转弯（构造，贪心）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-binary-string-after-change/">https://leetcode.cn/problems/maximum-binary-string-after-change/</a></p>
+<p>给你一个二进制字符串 <code>binary</code> ，它仅有 <code>0</code> 或者 <code>1</code> 组成。你可以使用下面的操作任意次对它进行修改：</p>
+
+<ul>
+    <li>操作 1 ：如果二进制串包含子字符串 <code>"00"</code> ，你可以用 <code>"10"</code> 将其替换。
+
+<pre><code class="hljs">&lt;ul&gt;
+    &lt;li&gt;比方说， &lt;code&gt;&quot;&lt;strong&gt;00&lt;/strong&gt;010&quot; -&gt; &quot;&lt;strong&gt;10&lt;/strong&gt;010&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;操作 2 ：如果二进制串包含子字符串 &lt;code&gt;&quot;10&quot;&lt;/code&gt; ，你可以用 &lt;code&gt;&quot;01&quot;&lt;/code&gt; 将其替换。
+&lt;ul&gt;
+    &lt;li&gt;比方说， &lt;code&gt;&quot;000&lt;strong&gt;10&lt;/strong&gt;&quot; -&gt; &quot;000&lt;strong&gt;01&lt;/strong&gt;&quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+</ul>
+
+<p>请你返回执行上述操作任意次以后能得到的 <strong>最大二进制字符串</strong> 。如果二进制字符串 <code>x</code> 对应的十进制数字大于二进制字符串 <code>y</code> 对应的十进制数字，那么我们称二进制字符串<em> </em><code>x</code><em> </em>大于二进制字符串<em> </em><code>y</code><em> </em>。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>binary = "000110"
+<b>输出：</b>"111011"
+<b>解释：</b>一个可行的转换为：
+"0001<strong>10</strong>" -> "0001<strong>01</strong>" 
+"<strong>00</strong>0101" -> "<strong>10</strong>0101" 
+"1<strong>00</strong>101" -> "1<strong>10</strong>101" 
+"110<strong>10</strong>1" -> "110<strong>01</strong>1" 
+"11<strong>00</strong>11" -> "11<strong>10</strong>11"
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<b>输入：</b>binary = "01"
+<b>输出：</b>"01"
+<b>解释：</b>"01" 没办法进行任何转换。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 <= binary.length <= 10<sup>5</sup></code></li>
+    <li><code>binary</code> 仅包含 <code>'0'</code> 和 <code>'1'</code> 。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：构造（贪心）"><a href="#解题方法：构造（贪心）" class="headerlink" title="解题方法：构造（贪心）"></a>解题方法：构造（贪心）</h2><h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>如果给定字符串中没有<code>0</code>，则不在本次讨论的范围之列，直接返回原字符串。</p>
+<p><strong>推论1：最终字符串中一定有0</strong></p>
+<p>仅有的两种变换分别是<code>00-&gt;10</code>和<code>10-&gt;01</code>，只能减少<code>0</code>的个数，但永远不可能将所有<code>0</code>消除。</p>
+<p><strong>推论2：最终字符串中一定只有一个0</strong></p>
+<p>以<code>10111011</code>为例，该字符串中有两个<code>0</code>，则可以进行以下变换<code>10111011-&gt;10011111-&gt;11011111</code>，具体变换过程如下：</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">10111011</span><br><span class="hljs-symbol">10110111 </span>---+<br><span class="hljs-symbol">10101111 </span>   +---后面的那个<span class="hljs-number">0</span>不断地通过<span class="hljs-number">10</span>-&gt;<span class="hljs-number">01</span>的变换最终和前面那个<span class="hljs-number">0</span>相邻<br><span class="hljs-symbol">10011111 </span>---+<br><span class="hljs-symbol">11011111 </span>-&gt; 相邻两个<span class="hljs-number">0</span>通过<span class="hljs-number">00</span>-&gt;<span class="hljs-number">10</span>的变换使得二进制字符串相比于初始值更大了<br></code></pre></td></tr></table></figure>
+
+<p>也就是说，假设最终字符串中有两个<code>0</code>，那么后面的那个<code>0</code>一定可以通过<code>10-&gt;01</code>的变换与前面的<code>0</code>相邻，相邻两个<code>0</code>再通过<code>00-&gt;10</code>变换，使得第一个<code>0</code>变成了<code>1</code>，字符串值更大了。</p>
+<p>若有多个<code>0</code>则同理，最终一定只剩下一个<code>0</code>，变成<code>111..11011..111</code>的形态。</p>
+<p>为什么不继续变化了呢？因为<code>11</code>、<code>01</code>都不可变，唯一可变的是<code>10-&gt;01</code>。但是这么变的话相当于“<code>0</code>往前移”了，字符串值更小，不可取。</p>
+<p><strong>如何判断最终字符串中0的位置？</strong></p>
+<p>由给定的两种变换<code>00-&gt;10</code>和<code>10-&gt;01</code>可以发现，<code>0</code>要么被消除（变换一）要么左移（变换二），单纯的左移会导致字符串变小，因此尽量将最前面的<code>0</code>“消除”。</p>
+<p>如何消除？通过变换一消除。通过推论2我们知道，只要存在两个<code>0</code>，则右边的<code>0</code>必定能千里迢迢地来到左边的<code>0</code>身边并与之进行变换一：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">111</span>..<span class="hljs-number">11011</span>..<span class="hljs-number">11011</span>..<span class="hljs-number">11</span><br><span class="hljs-attribute">111</span>..<span class="hljs-number">11001</span>..<span class="hljs-number">11111</span>..<span class="hljs-number">11</span><br><span class="hljs-attribute">111</span>..<span class="hljs-number">11101</span>..<span class="hljs-number">11111</span>..<span class="hljs-number">11</span><br></code></pre></td></tr></table></figure>
+
+<p>也就是说，第一个<code>0</code>的右边每存在一个<code>0</code>，就能让第一个<code>0</code>的位置“右移一位”。</p>
+<p>最终第一个<code>0</code>（也就是唯一的一个<code>0</code>）的位置，是原始字符串中第一个<code>0</code>的位置，再右移$0的总个数 - 1$位。</p>
+<h3 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h3><p>给定字符串，统计其中<code>0</code>的个数（记为<code>cnt0</code>）。</p>
+<p>若无<code>0</code>，则直接返回原始字符串；否则继续。</p>
+<p>找到字符串中第一个<code>0</code>的位置（记为<code>pos0</code>），构造一个只有<code>pos0 + cnt0 - 1</code>这个位置为<code>0</code>其余位置全部为<code>1</code>的字符串并返回。</p>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(len(binary))$</li>
+<li>空间复杂度$O(len(binary))$：空间复杂度来自字符串构造过程中的临时变量。</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">maximumBinaryString</span><span class="hljs-params">(string binary)</span> </span>&#123;<br>        <span class="hljs-type">int</span> cnt0 = <span class="hljs-built_in">count</span>(binary.<span class="hljs-built_in">begin</span>(), binary.<span class="hljs-built_in">end</span>(), <span class="hljs-string">&#x27;0&#x27;</span>);<br>        <span class="hljs-keyword">if</span> (!cnt0) &#123;<br>            <span class="hljs-keyword">return</span> binary;<br>        &#125;<br>        <span class="hljs-type">int</span> first0 = binary.<span class="hljs-built_in">find</span>(<span class="hljs-string">&#x27;0&#x27;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">string</span>(first0 + (cnt0 - <span class="hljs-number">1</span>), <span class="hljs-string">&#x27;1&#x27;</span>) + <span class="hljs-string">&#x27;0&#x27;</span> + <span class="hljs-built_in">string</span>(binary.<span class="hljs-built_in">size</span>() - (first0 + (cnt0 - <span class="hljs-number">1</span>)) - <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;1&#x27;</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maximumBinaryString</span>(<span class="hljs-params">self, binary: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        cnt0 = binary.count(<span class="hljs-string">&#x27;0&#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cnt0:<br>            <span class="hljs-keyword">return</span> binary<br>        first0 = binary.find(<span class="hljs-string">&#x27;0&#x27;</span>)<br>        pos0 = first0 + (cnt0 - <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;1&#x27;</span> * pos0 + <span class="hljs-string">&#x27;0&#x27;</span> + <span class="hljs-string">&#x27;1&#x27;</span> * (<span class="hljs-built_in">len</span>(binary) - pos0 - <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/04/10/LeetCode%201702.%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/137593422">https://letmefly.blog.csdn.net/article/details/137593422</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/">#中等</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
+      
+        <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1702.修改后的最大二进制字符串</div>
+      <div>https://blog.letmefly.xyz/2024/04/10/LeetCode 1702.修改后的最大二进制字符串/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/09/LeetCode%202529.%E6%AD%A3%E6%95%B4%E6%95%B0%E5%92%8C%E8%B4%9F%E6%95%B4%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E8%AE%A1%E6%95%B0/" title="2529.正整数和负整数的最大计数">
+                        <span class="hidden-mobile">2529.正整数和负整数的最大计数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
