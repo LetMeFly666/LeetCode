@@ -115,6 +115,13 @@ tags: [其他, 知识, 英语, Notes]
 |ridicule|n. 嘲笑，奚落<br/>v. 嘲笑，奚落|
 |solely|adv. 只，仅，唯，单独地<details><summary>例句</summary>I did not sing <font color="#28bea0">solely</font> for money.</details>|
 |penalty|n. 处罚，判罚，刑罚，罚金|
+|||
+|conscientious|adj. 认真的，勤勤恳恳的，负责的，尽责的，凭良心的|
+|immoral|adj. 不道德的，邪恶的，放荡的，淫荡的|
+|||
+|scarce|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
+|counterpart|n. 职位(/作用)相当的人，对应的食物，副本|
+|assortment|n. 各种各样|
 
 <details>
 <summary>扇贝音频测试</summary>
