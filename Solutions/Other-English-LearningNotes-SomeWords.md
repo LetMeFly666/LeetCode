@@ -122,6 +122,8 @@ tags: [其他, 知识, 英语, Notes]
 |scarce|adj. 缺乏的，罕见的<br/>adv. 几乎没有|
 |counterpart|n. 职位(/作用)相当的人，对应的食物，副本|
 |assortment|n. 各种各样|
+|||
+|lapse|n. 疏忽，小错，（两件事发生的）间隔时间，行为失检<br/>v. 失效，期满终止，衰退|
 
 <details>
 <summary>扇贝音频测试</summary>
