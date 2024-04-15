@@ -124,6 +124,9 @@ tags: [其他, 知识, 英语, Notes]
 |assortment|n. 各种各样|
 |||
 |lapse|n. 疏忽，小错，（两件事发生的）间隔时间，行为失检<br/>v. 失效，期满终止，衰退|
+|||
+|herald|v. 是（某事）的前兆，预示，宣布（好或重要的事）<br/>n. 预兆，信使，传令官|
+|temptation|n. 诱惑，诱惑物|
 
 <details>
 <summary>扇贝音频测试</summary>
