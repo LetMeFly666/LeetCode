@@ -127,6 +127,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |herald|v. 是（某事）的前兆，预示，宣布（好或重要的事）<br/>n. 预兆，信使，传令官|
 |temptation|n. 诱惑，诱惑物|
+|||
+|refine|v. 精炼，提炼，改善|
+|conjunction|n. 连接，连词|
+|bulk|n. 大批，(大)量，(大)体积<br/>a bulk of goods.|
 
 <details>
 <summary>扇贝音频测试</summary>

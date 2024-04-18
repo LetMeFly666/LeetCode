@@ -374,12 +374,15 @@ xx型
 |昨日は魚を食べましたか？<br/>昨天吃鱼了吗？<details><summary>关于过去式</summary>将<font color="#ce82ff">ます</font>换成<font color="#ce82ff">ました</font><br/>将<font color="#ce82ff">ません</font>换成<font color="#ce82ff">ませんでした</font></details>|
 |一昨日は朝ごはんを食べませんでした。<br/>前天没吃早饭。|
 |昨日は何も食べませんでした。<br/>昨天什么也没吃。|
+|友達と学校に行きました。<br/>和朋友去学校了。|
+|日曜日は友達と勉強します。<br/>星期天和朋友学习。|
 |何をしますか？<br/>做什么？|
 |何もしません。<br/>什么都不做。|
 |六時間。<br/>六个小时。|
 |ぱんを買います。<br/>买面包。|
 |日本に来ますか？<br/>来日本吗？|
 |三十一時間休みます。<br/>休息三十一小时。|
+|かれとは話しません。<br/>不和他说话。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
