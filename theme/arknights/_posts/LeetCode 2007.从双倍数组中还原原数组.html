@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2007.从双倍数组中还原原数组 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.2.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2007.从双倍数组中还原原数组</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-04-18T05:18:32.000Z" id="date"> 2024-04-18</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2007-从双倍数组中还原原数组：哈希表——从nlogn到n"><a href="#【LetMeFly】2007-从双倍数组中还原原数组：哈希表——从nlogn到n" class="headerlink" title="【LetMeFly】2007.从双倍数组中还原原数组：哈希表——从nlogn到n"></a>【LetMeFly】2007.从双倍数组中还原原数组：哈希表——从nlogn到n</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-original-array-from-doubled-array/">https://leetcode.cn/problems/find-original-array-from-doubled-array/</a></p>
+<p>一个整数数组&nbsp;<code>original</code>&nbsp;可以转变成一个 <strong>双倍</strong>&nbsp;数组&nbsp;<code>changed</code>&nbsp;，转变方式为将 <code>original</code>&nbsp;中每个元素 <strong>值乘以 2 </strong>加入数组中，然后将所有元素 <strong>随机打乱</strong>&nbsp;。</p>
+
+<p>给你一个数组&nbsp;<code>changed</code>&nbsp;，如果&nbsp;<code>change</code>&nbsp;是&nbsp;<strong>双倍</strong>&nbsp;数组，那么请你返回&nbsp;<code>original</code>数组，否则请返回空数组。<code>original</code>&nbsp;的元素可以以&nbsp;<strong>任意</strong>&nbsp;顺序返回。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><b>输入：</b>changed = [1,3,4,2,6,8]
+<b>输出：</b>[1,3,4]
+<b>解释：</b>一个可能的 original 数组为 [1,3,4] :
+- 将 1 乘以 2 ，得到 1 * 2 = 2 。
+- 将 3 乘以 2 ，得到 3 * 2 = 6 。
+- 将 4 乘以 2 ，得到 4 * 2 = 8 。
+其他可能的原数组方案为 [4,3,1] 或者 [3,1,4] 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><b>输入：</b>changed = [6,3,0,1]
+<b>输出：</b>[]
+<b>解释：</b>changed 不是一个双倍数组。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><b>输入：</b>changed = [1]
+<b>输出：</b>[]
+<b>解释：</b>changed 不是一个双倍数组。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= changed.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>0 &lt;= changed[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+
+    
+<h2 id="方法一：哈希表-排序"><a href="#方法一：哈希表-排序" class="headerlink" title="方法一：哈希表 + 排序"></a>方法一：哈希表 + 排序</h2><p>使用哈希表记录每个元素出现（剩余）的次数。对原始数组排个序，接着遍历原始数组：</p>
+<ul>
+<li>如果这个元素已经被“消耗”了，则跳过；</li>
+<li>否则，“移除”这个元素。这个元素的二倍必须在哈希表中：<ul>
+<li>若在，则找到“一对”，记入答案数组中，并将二倍元素移除；</li>
+<li>否则，无法还原，返回空数组。</li>
+</ul>
+</li>
+</ul>
+<p>为什么要排序？因为排序后遍历结果保证是从小到大，一个元素要么已经被“消耗”（则其为二倍元素），要么（其为一倍元素）必须消耗一个二倍元素。</p>
+<ul>
+<li>时间复杂度$O(n\log n)$，其中$n&#x3D;len(changed)$。<strong>时间复杂度的瓶颈在于排序</strong></li>
+<li>空间复杂度$O(n)$，或者说$O(C)$，其中$C&#x3D;range(changed)&#x3D;10^5$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findOriginalArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; changed)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(changed.<span class="built_in">begin</span>(), changed.<span class="built_in">end</span>());</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">200000</span> + <span class="number">1</span>)</span></span>;  <span class="comment">// 手动unordered_map  // 2倍防越界</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : changed) &#123;</span><br><span class="line">            a[t]++;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : changed) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!a[t]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            a[t]--;</span><br><span class="line">            <span class="keyword">if</span> (!a[t * <span class="number">2</span>]) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            a[t * <span class="number">2</span>]--;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(t);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>为什么使用数组模拟哈希表？因为内置的<code>unordered_map</code>没试，<code>unordered_multiset</code><a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode/blob/master/Codes/2007-find-original-array-from-doubled-array.cpp#L58">非常慢</a>会超时。</p>
+<h2 id="方法二：哈希表-反推"><a href="#方法二：哈希表-反推" class="headerlink" title="方法二：哈希表 + 反推"></a>方法二：哈希表 + 反推</h2><p>方法一时间复杂度的瓶颈是排序，排序是为了在遍历过程中判断一个元素是“一倍元素”还是“二倍元素”。</p>
+<p>有没有办法不排序呢？当然有，那就是遍历过程中，“遇到1&#x2F;2元素则先跳过”：</p>
+<blockquote>
+<p>遍历到元素$t$，如果$\frac{t}{2}$还存在，就先跳过$t$，遍历到$\frac{t}{2}$时再处理$t$。</p>
+</blockquote>
+<p>这样就需要一个计数器记录还剩下多少元素（防止两个$t$和一个$\frac{t}{2}$的情况），以及特判$0$的情况（因为$\frac{0}{2}&#x3D;0$不能跳过）。</p>
+<p>完了吗？没完，还需要加个<code>while循环</code>：</p>
+<blockquote>
+<p>给定一组样例<code>[2,4,2,1]</code>，如果按照上述思路则会：跳过$2$、跳过$4$、跳过$2$，处理$1$，最终剩下一个$2$和$4$，本应是一对确误判有所剩余。</p>
+<p>这是因为对于$4$本来应该在遍历到$2$时处理，结果遍历到$2$时一看有$1$跳过了。</p>
+<p>因此遇到$\frac{t}{2}$不存在的$t$时，应当在$t$有剩余时，不断“反推”，令$t&#x3D;2t$并继续“抵消”，直到$t$无剩余。</p>
+<p>这样对于<code>[2,4,2,1]</code>：</p>
+<blockquote>
+<p>处理到$1$时$t&#x3D;1$，$\frac{t}{2}&#x3D;0.5$不存在，因此抵消$t$和$2t$（配对成功一个$1$和$2$）</p>
+<p>令$t&#x3D;2t&#x3D;2$，抵消$2$和$4$（配对成功一个$2$和$4$）</p>
+<p>令$t &#x3D; 2t &#x3D; 4$，发现$4$已经不存在了，结束</p>
+</blockquote>
+<p>最终得到原始数组<code>[1, 2]</code></p>
+</blockquote>
+<p>完了吗？没完，单单$2t$不存在了还不能结束循环，要判断$4t$是否存在：</p>
+<blockquote>
+<p>给定样例<code>[4,8,2,1]</code>，处理到$4$、$8$、$2$时都会跳过，而处理到$1$时：</p>
+<blockquote>
+<p>$t&#x3D;1$发现$1$和$2$</p>
+<p>$t&#x3D;2t&#x3D;2$发现$2$不存在了，循环结束</p>
+</blockquote>
+<p>则会剩下一个本应是一对的$4$和$8$。</p>
+<p>因此，在<code>while循环</code>中，不能单单地令$t&#x3D;2t$做这一步的反推。</p>
+<p>当$2t$已经不存在时，应该令$t&#x3D;4t$。</p>
+<p>若$4t$也不存在，再结束<code>while循环</code>。</p>
+</blockquote>
+<p>至此，算法达成。</p>
+<ul>
+<li>时间复杂度$O(n)$</li>
+<li>空间复杂度$O(n)$，或者说$O(C)$，其中$C&#x3D;range(changed)&#x3D;10^5$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><p>降低了时间复杂度，代价是代码变得很长且很容易有没考虑周全的地方。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findOriginalArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; changed)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">400001</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : changed) &#123;</span><br><span class="line">            a[t]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> remain = changed.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">0</span>] % <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        remain -= a[<span class="number">0</span>];</span><br><span class="line">        ans.<span class="built_in">resize</span>(a[<span class="number">0</span>] / <span class="number">2</span>);</span><br><span class="line">        a[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : changed) &#123;</span><br><span class="line">            <span class="keyword">if</span> (t % <span class="number">2</span> == <span class="number">0</span> &amp;&amp; a[t / <span class="number">2</span>]) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (a[t]) &#123;</span><br><span class="line">                <span class="type">int</span> thisCnt = a[t];</span><br><span class="line">                a[t] = <span class="number">0</span>;</span><br><span class="line">                remain -= thisCnt;</span><br><span class="line">                <span class="keyword">if</span> (a[t * <span class="number">2</span>] &lt; thisCnt) &#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">                a[t * <span class="number">2</span>] -= thisCnt;</span><br><span class="line">                remain -= thisCnt;</span><br><span class="line">                ans.<span class="built_in">insert</span>(ans.<span class="built_in">end</span>(), thisCnt, t);</span><br><span class="line">                <span class="keyword">if</span> (a[t * <span class="number">2</span>]) &#123;</span><br><span class="line">                    t *= <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    t *= <span class="number">4</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> remain ? <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;() : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/04/18/LeetCode%202007.%E4%BB%8E%E5%8F%8C%E5%80%8D%E6%95%B0%E7%BB%84%E4%B8%AD%E8%BF%98%E5%8E%9F%E5%8E%9F%E6%95%B0%E7%BB%84/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/137924488">https://letmefly.blog.csdn.net/article/details/137924488</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912007-%E4%BB%8E%E5%8F%8C%E5%80%8D%E6%95%B0%E7%BB%84%E4%B8%AD%E8%BF%98%E5%8E%9F%E5%8E%9F%E6%95%B0%E7%BB%84%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8%E2%80%94%E2%80%94%E4%BB%8Enlogn%E5%88%B0n"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2007.从双倍数组中还原原数组：哈希表——从nlogn到n</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8-%E6%8E%92%E5%BA%8F"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：哈希表 + 排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8-%E5%8F%8D%E6%8E%A8"><span class="toc-number">1.2.</span> <span class="toc-text">方法二：哈希表 + 反推</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
