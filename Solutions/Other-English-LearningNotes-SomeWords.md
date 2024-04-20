@@ -131,6 +131,8 @@ tags: [其他, 知识, 英语, Notes]
 |refine|v. 精炼，提炼，改善|
 |conjunction|n. 连接，连词|
 |bulk|n. 大批，(大)量，(大)体积<br/>a bulk of goods.|
+|||
+|burdensome|adj. 令人烦恼的，负担沉重的，难以承担的，繁重的|
 
 <details>
 <summary>扇贝音频测试</summary>
