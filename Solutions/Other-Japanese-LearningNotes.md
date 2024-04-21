@@ -52,7 +52,7 @@ xx型
 |いいえ|いいえ|3|不，不是|
 |あっ|あっ||哎，哎呀|
 |李|り||李(外来姓常1型，日本姓常0型)|
-|王|おう|1|王|
+|王|おう/ワン|1|王|
 |張|ちょう|1|张|
 |森|もり|0|森|
 |林|はやし|0|林|
@@ -187,8 +187,9 @@ xx型
 |午前(ごぜん)|上午|
 |午後(ごご)|下午|
 |朝(あさ)|早上|
-|あした|明天|
 |あさって|后天|
+|あした|明天|
+|今日(きょう)|今天|
 |昨日(きのう)|昨天|
 |一昨日(おととい)|前天|
 |時間(じかん)|时间|
@@ -210,7 +211,6 @@ xx型
 |||
 |おはよう|早（上好）|
 |こんばんは|晚上好|
-|こんにちわ|你好|
 |さようなら|再见|
 |すみません|对不起，不好意思，请问|
 |こんにちは|你好|
@@ -232,8 +232,6 @@ xx型
 |||
 |くもり|阴天|
 |はれ|晴天|
-|||
-|今日(きょう)|今天|
 |||
 |とり|鸟|
 |ねこ|猫|
@@ -343,17 +341,17 @@ xx型
 |<font color="#ce82ff">朝</font>は何時におきますか？<br/><font color="#ce82ff">早上</font>几点起床？|
 |<font color="#ce82ff">午前</font>九時におきます。<br/><font color="#ce82ff">上午</font>九点起床。|
 |<font color="#ce82ff">午後</font>一時<font color="#28bea0">に</font>学校<font color="#28bea0">へ</font>行きます。<br/><font color="#ce82ff">下午</font>一点去学校。<details><summary>关于<font color="#28bea0">に</font>的解释</summary>想表达时间，就把<font color="#28bea0">に</font>放在时间后。</details><details><summary>关于<font color="#28bea0">へ</font>的解释</summary>可以将<font color="#28bea0">へ</font>放在地点后。<br/>这种情况下发音是<font color="#28bea0">e</font>不是<font color="#28bea0">he</font>。</details>|
-|十時<font color="#28bea0">ごろ</font>にねます。<br/>十点<font color="#28bea0">左右</font>去学校。|
+|十時<font color="#28bea0">ごろ</font>にねます。<br/>十点<font color="#28bea0">左右</font>睡觉。|
 |へやはどこですか？<br/>房间在哪里？|
 |へやはあそこです。<br/>房间在那里。|
 |<font color="#28bea0">テーブル</font>は<font color="#28bea0">だいどころ</font>に<font color="#ce82ff">あります</font>。<br/><font color="#28bea0">桌子</font>在<font color="#28bea0">厨房</font>。|
 |家に<font color="#28bea0">まど</font><font color="#ce82ff">が</font>あります。<br/>家里有<font color="#28bea0">窗户</font>。|
 |家にまど<font color="#ce82ff">は</font>ありますか？<br/>家里有窗户吗？|
 |ねこは<font color="#ce82ff">います</font>か？<br/>有猫吗？<details><summary>关于<font color="#ce82ff">あります</font>和<font color="#ce82ff">います</font>的解释</summary>表示有xxx时，可以使用动词<font color="#ce82ff">あります</font>。<br/>但表示动物时（如猫）要用<font color="#ce82ff">います</font>。</details>|
-|おふるはいますか？<br/>有浴室吗？|  
+|おふるはありますか？<br/>有浴室吗？|  
 |ねこはいません。<br/>没有猫。|
-|だいどころ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>厨房。|
-|あそこ<font color="#ce82ff">に</font>あります。。<br/><font color="#ce82ff">在</font>那里。|
+|だいどころ<font color="#ce82ff">に</font>あります。<br/><font color="#ce82ff">在</font>厨房。|
+|あそこ<font color="#ce82ff">に</font>あります。<br/><font color="#ce82ff">在</font>那里。|
 |何年生ですか？<br/>是几年级学生？|
 |東京に行きます。<br/>去东京。|
 |りさん<font color="#ce82ff">は</font>大阪<font color="#ce82ff">に</font>すんでいます。<br/>老李住在大阪。|
