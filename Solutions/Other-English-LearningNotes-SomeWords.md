@@ -133,6 +133,12 @@ tags: [其他, 知识, 英语, Notes]
 |bulk|n. 大批，(大)量，(大)体积<br/>a bulk of goods.|
 |||
 |burdensome|adj. 令人烦恼的，负担沉重的，难以承担的，繁重的|
+|||
+|meek|adj. 柔顺的，懦弱的<br/>n. 温顺的人，谦恭的人<br/>多用于形容男性|
+|reptile|n. 爬行动物|
+|||
+|specimen|n. 样本，标本，具有...特性的人，...的典型|
+|volcano|n. 火山|
 
 <details>
 <summary>扇贝音频测试</summary>
