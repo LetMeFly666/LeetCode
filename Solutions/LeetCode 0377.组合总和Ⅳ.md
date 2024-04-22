@@ -73,10 +73,6 @@ tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
 #### C++
 
 ```cpp
-#ifdef _WIN32
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int combinationSum4(vector<int>& nums, int target) {
@@ -84,6 +80,8 @@ public:
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
             for (int& num : nums) {
+                // 不判断“((long long)dp[i] + dp[i - num] <= INT_MAX)”的话，需要将dp改成unsigned int
+                // 题目说答案保证符合32位整数，但中间运算过程不保证。例如dp[target-1]可能会超int，甚至可能会超long long。使用unsigned让它随便溢出吧，反正会溢出的话一定不是答案
                 if (num <= i && ((long long)dp[i] + dp[i - num] <= INT_MAX)) {
                     dp[i] += dp[i - num];
                 }
@@ -92,6 +90,22 @@ public:
         return dp[target];
     }
 };
+```
+
+#### Python
+
+```python
+# from typing import List
+
+class Solution:
+    def combinationSum4(self, nums: List[int], target: int) -> int:
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        for i in range(1, target + 1):
+            for num in nums:
+                if num <= i:
+                    dp[i] += dp[i - num]
+        return dp[target]
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/10/LeetCode%200377.%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%E2%85%A3/)哦~

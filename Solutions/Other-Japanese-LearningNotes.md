@@ -393,6 +393,8 @@ xx型
 |日本に来ますか？<br/>来日本吗？|
 |三十一時間休みます。<br/>休息三十一小时。|
 |かれとは話しません。<br/>不和他说话。|
+|いつパーテイーをしますか？<br/>什么时候开派对？|
+|いつしますか？<br/>什么时候做？|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

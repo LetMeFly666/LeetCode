@@ -139,6 +139,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |specimen|n. 样本，标本，具有...特性的人，...的典型|
 |volcano|n. 火山|
+|||
+|intonation|n. 语调，声调，音准<details><summary>例句</summary>In English, some questions have a rising <font color="#28bea0">intonation</font>.<br/>英语中有些疑问句使用升调。</details>|
+|extravagance|n. 奢侈，铺张浪费，挥霍，奢侈品|
+|memo|n. 备忘录|
 
 <details>
 <summary>扇贝音频测试</summary>
