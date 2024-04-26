@@ -279,7 +279,7 @@ xx型
 |どの|哪个|
 |||
 |いくら|多少钱|
-|たつさん|很多|
+|たくさん|很多|
 |円(えん)|日元|
 |||
 |りゅうがく|留学|
@@ -316,6 +316,7 @@ xx型
 |左(ひだり)|左边|
 |右(みぎ)|右边|
 |上(うえ)|上面|
+|下(した)|下面|
 |前(まえ)|前面|
 |後ろ(うしろ)|后面|
 |隣(となり)|旁边|
@@ -411,6 +412,7 @@ xx型
 |いつしますか？<br/>什么时候做？|
 |昨日は朝から夜まで会社にいます。<br/>昨天从早上到晚上在公司。<details><summary>从xx到xx</summary>从xx<code>⇔</code>xxから<br/>到xx<code>⇔</code>xxまで</details>|
 |たくさん食べました。<br/>吃了很多。|
+|部屋の中<font color="#ce82ff">に</font>犬がいます。<br/>房间里面有狗。<details><summary>关于方位<font color="#ce82ff">に</font>和<font color="#ce82ff">で</font></summary>动词前加<font color="#ce82ff">に</font>表示东西的位置；<br/>加<font color="#ce82ff">で</font>表示动作发生的地点。</details>|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
