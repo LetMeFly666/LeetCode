@@ -143,6 +143,16 @@ tags: [其他, 知识, 英语, Notes]
 |intonation|n. 语调，声调，音准<details><summary>例句</summary>In English, some questions have a rising <font color="#28bea0">intonation</font>.<br/>英语中有些疑问句使用升调。</details>|
 |extravagance|n. 奢侈，铺张浪费，挥霍，奢侈品|
 |memo|n. 备忘录|
+|||
+|scrub|v.擦洗，刷洗，取消（原有安排）<br/>n. 灌木丛，矮树丛|
+|incredulous|adj. 不肯相信的，不能相信的，表示怀疑的|
+|streak|n. 条纹，条痕<br/>v. 在...上画条纹|
+|||
+|alas|int. （表示悲伤或遗憾）哎呀|
+|vibrate|v. 使颤动，使震动|
+|specimen|n. 样本，标本，具有...特征的人，...的典型|
+|compensate|v. 补偿，弥补，赔偿，赔款|
+|furnace|n. 火炉，熔炉|
 
 <details>
 <summary>扇贝音频测试</summary>
