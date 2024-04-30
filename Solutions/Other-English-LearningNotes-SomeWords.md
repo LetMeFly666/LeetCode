@@ -153,6 +153,9 @@ tags: [其他, 知识, 英语, Notes]
 |specimen|n. 样本，标本，具有...特征的人，...的典型|
 |compensate|v. 补偿，弥补，赔偿，赔款|
 |furnace|n. 火炉，熔炉|
+|||
+|expedite|v. 加快，加速|
+|underwriter|n. 保险商，核保人|
 
 <details>
 <summary>扇贝音频测试</summary>
