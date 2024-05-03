@@ -156,6 +156,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |expedite|v. 加快，加速|
 |underwriter|n. 保险商，核保人|
+|||
+|compatible|adj. 可共用的，兼容的，可共存的，关系好的，和睦相处的|
 
 <details>
 <summary>扇贝音频测试</summary>
