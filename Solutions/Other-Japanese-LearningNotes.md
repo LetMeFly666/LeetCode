@@ -159,6 +159,7 @@ xx型
 |長い(ながい)|长的|
 |短い(みじかい)|短的|
 |いい|好的（不错的）|
+|古い(ふるい)|旧的|
 |||
 |きっぷ|票|
 |でんわ|电话|
@@ -424,6 +425,7 @@ xx型
 |かれとは話しません。<br/>不和他说话。|
 |いつパーテイーをしますか？<br/>什么时候开派对？|
 |いつしますか？<br/>什么时候做？|
+|先生はいつ来ましたか？<br/>老师什么时候来的？|
 |昨日は朝から夜まで会社にいます。<br/>昨天从早上到晚上在公司。<details><summary>从xx到xx</summary>从xx<code>⇔</code>xxから<br/>到xx<code>⇔</code>xxまで</details>|
 |たくさん食べました。<br/>吃了很多。|
 |部屋の中<font color="#ce82ff">に</font>犬がいます。<br/>房间里面有狗。<details><summary>关于方位<font color="#ce82ff">に</font>和<font color="#ce82ff">で</font></summary>动词前加<font color="#ce82ff">に</font>表示东西的位置；<br/>加<font color="#ce82ff">で</font>表示动作发生的地点。</details>|
