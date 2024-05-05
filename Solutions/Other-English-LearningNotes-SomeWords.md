@@ -158,6 +158,12 @@ tags: [其他, 知识, 英语, Notes]
 |underwriter|n. 保险商，核保人|
 |||
 |compatible|adj. 可共用的，兼容的，可共存的，关系好的，和睦相处的|
+|||
+|dazzle|v. 使眼花，使目眩，使惊奇<br/>n. 耀眼的光，令人惊叹的事物<details><summary>例句</summary>He was <font color="#28bea0">dazzled</font> by the warmth of her smile.<br/>她那温柔的微笑使他神魂颠倒。</details>|
+|reminiscent|adj. 使回忆起，回忆过去的，怀旧的，缅怀往事的<br/>n. 回忆者|
+|concise|adj. 简明的，简洁的|
+|inclined|adj. 想（做某事），有...倾向，很可能<br/>v. “incline”的过去式和过去分词<details><summary>例句</summary>The teacher was <font color="#28bea0">inclined</font> to trust him.<br/>老师愿意相信他。</details>|
+|shampoo|n. 洗头水，洗发液，香波，洗涤剂<br/>v. 洗头发|
 
 <details>
 <summary>扇贝音频测试</summary>
