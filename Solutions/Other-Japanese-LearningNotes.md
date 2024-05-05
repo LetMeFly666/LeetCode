@@ -432,6 +432,9 @@ xx型
 |前と後ろには妹たちがいます。<br/>我妹妹们在前面和后面。|
 |写真をとります。<br/>拍照片。|
 |写真が四枚あります。<br/>有四张照片。|
+|本が本棚に一冊あります。<br/>书架上有一本书。|
+|ワンさんと二人で散歩します。<br/>和小王两个人散步。|
+|たくさん<font color="#ce82ff">の</font>写真。<br/>很多照片。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
