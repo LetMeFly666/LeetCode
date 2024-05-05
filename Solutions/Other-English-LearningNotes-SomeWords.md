@@ -164,6 +164,9 @@ tags: [其他, 知识, 英语, Notes]
 |concise|adj. 简明的，简洁的|
 |inclined|adj. 想（做某事），有...倾向，很可能<br/>v. “incline”的过去式和过去分词<details><summary>例句</summary>The teacher was <font color="#28bea0">inclined</font> to trust him.<br/>老师愿意相信他。</details>|
 |shampoo|n. 洗头水，洗发液，香波，洗涤剂<br/>v. 洗头发|
+|||
+|steer|v. 引导，控制，操纵，驾驶<br/>n. 建议，劝告，忠告，阉公牛|
+|tremendous|adj. 巨大的，惊人的，极好的|
 
 <details>
 <summary>扇贝音频测试</summary>
