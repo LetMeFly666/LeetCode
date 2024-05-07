@@ -167,6 +167,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |steer|v. 引导，控制，操纵，驾驶<br/>n. 建议，劝告，忠告，阉公牛|
 |tremendous|adj. 巨大的，惊人的，极好的|
+|||
+|propagate|v. 传播，宣传，(使)繁殖，繁衍|
+|tropic|n. 热带<br/>adj. 【生】向性的，热带（地区）的|
 
 <details>
 <summary>扇贝音频测试</summary>
