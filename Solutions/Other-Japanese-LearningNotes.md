@@ -125,6 +125,7 @@ xx型
 |歌い(うたい)|唱|
 |描き(かき)|画（动词）|
 |します|做|
+|乗り(のり)|乘坐|
 |歩き(あるき)|步行|
 |旅行(りょこう)|旅行|
 |走り(はしり)|跑步|
@@ -194,6 +195,8 @@ xx型
 |え|画（名词）|
 |音楽(おんがく)|音乐|
 |歌(うた)|歌|
+|電車(でんしゃ)|电车|
+|車(くるま)|汽车|
 |||
 |プール|游泳池|
 |ふる|浴室|
@@ -350,6 +353,7 @@ xx型
 |中(なか)|里面|
 |||
 |いつも|总是|
+|時々(ときどき)|有时|
 
 ## 小句
 
@@ -453,7 +457,9 @@ xx型
 |映画は見ますか？<br/>看电影吗？|
 |映画は<font color="#ce82ff">あまり</font>見<font color="#ce82ff">ません</font>。<br/>不怎么看电影。<details><summary>不怎么做某事</summary><code>事情</code>は<font color="#ce82ff">あまり</font><code>动作</code><font color="#ce82ff">ません</font></details>|
 |旅行は<font color="#ce82ff">あまり</font>し<font color="#ce82ff">ません</font>。<br/>不怎么旅行。|
-|何のえを描きますか？<br/>画什么画？|
+|彼女はあまり走りません。<br/>她不怎么跑步。|
+|何<font color="#ce82ff">の</font>えを描きますか？<br/>画什么画？|
+|車に乗ります。<br/>坐车。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

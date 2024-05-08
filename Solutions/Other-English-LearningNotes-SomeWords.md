@@ -170,6 +170,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |propagate|v. 传播，宣传，(使)繁殖，繁衍|
 |tropic|n. 热带<br/>adj. 【生】向性的，热带（地区）的|
+|||
+|sabotage|v. 蓄意破坏，故意毁坏；妨碍，捣乱，阻挠<br/>n. 蓄意毁坏；刻意阻碍|
+|garment|n. （一件）衣服|
 
 <details>
 <summary>扇贝音频测试</summary>
