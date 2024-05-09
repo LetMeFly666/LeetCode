@@ -117,5 +117,34 @@ public:
 };
 ```
 
+#### Python
+
+```python
+from typing import List
+
+
+class Solution:
+    def minimumRefill(self, plants: List[int], capacityA: int, capacityB: int) -> int:
+        ans = 0
+        nowA, nowB = capacityA, capacityB
+        l, r = 0, len(plants) - 1
+        while l <= r:
+            if l == r:
+                if max(nowA, nowB) < plants[l]:
+                    ans += 1
+                break
+            if nowA < plants[l]:
+                ans += 1
+                nowA = capacityA
+            nowA -= plants[l]
+            if nowB < plants[r]:
+                ans += 1
+                nowB = capacityB
+            nowB -= plants[r]
+            l += 1
+            r -= 1
+        return ans
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/05/LeetCode%202105.%E7%BB%99%E6%A4%8D%E7%89%A9%E6%B5%87%E6%B0%B4II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126709258](https://letmefly.blog.csdn.net/article/details/126709258)
