@@ -470,7 +470,10 @@ xx型
 |彼女はあまり走りません。<br/>她不怎么跑步。|
 |何<font color="#ce82ff">の</font>えを描きますか？<br/>画什么画？|
 |車に乗ります。<br/>坐车。|
+|車を使います。<br/>使用车。|
+|タクシーには乗りません。<br/>不坐出租车。|
 |ここは家から近いです。<br/>这里离家很近。|
+|田中さんは電車で会社へ行きます。<br/>田中先生坐电车去公司。<details><summary><font color="#ce82ff">で</font>表示出行方式</summary><font color="#ce82ff">で</font>出现在交通工具后面<br/>但后面的动词不是<font color="#ce82ff">乗ります</font>，<br/>而是<font color="#ce82ff">行きます</font>(去)或<font color="#ce82ff">来ます</font>(来)。</details>|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

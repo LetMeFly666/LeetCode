@@ -154,7 +154,7 @@ tags: [其他, 知识, 英语, Notes]
 |compensate|v. 补偿，弥补，赔偿，赔款|
 |furnace|n. 火炉，熔炉|
 |||
-|expedite|v. 加快，加速|
+|expedite|<font color="#28bea0" title="二次复习">v. 加快，加速</font>|
 |underwriter|n. 保险商，核保人|
 |||
 |compatible|adj. 可共用的，兼容的，可共存的，关系好的，和睦相处的|
@@ -172,11 +172,18 @@ tags: [其他, 知识, 英语, Notes]
 |tropic|n. 热带<br/>adj. 【生】向性的，热带（地区）的|
 |||
 |sabotage|v. 蓄意破坏，故意毁坏；妨碍，捣乱，阻挠<br/>n. 蓄意毁坏；刻意阻碍|
-|garment|n. （一件）衣服|
+|garment|n. （一件）衣服<details><summary>例句</summary>This shop sells <font color="#28bea0">garment</font>s of all kinds.<br/>这家商店销售各式各样的衣服。</details>|
 |||
 |swell|v. (身体部位)肿胀，膨胀，(数量)增多，充满(某种感情)<br/>n. 增加，增多，海面的起伏，波浪|
 |pant|v. 气喘，喘息，气喘吁吁地，渴望<br/>n. 气喘，喘息|
 |penetrate|v. 穿透，渗透|
+|||
+|barrel|n. 桶，一通(的量)，枪管，笔杆<details><summary>词组样例</summary>beer barrel<br/>啤酒桶</details>|
+|mug|n. (圆筒形有柄)大杯，傻瓜（非正式），脸（非正式）<br/>v. 抢劫，做鬼脸<details><summary>词组样例</summary>beer mug<br/>啤酒杯</details>|
+|skyscraper|n. 摩天大楼|
+|grumble|v. 嘟囔，发牢骚，咕哝，发轰隆声<br/>n. 嘟囔，牢骚，咕哝声，隆隆声|
+|cone|v. 使成锥形，把...卷于锥状体上，(探照灯)集中探照(敌机)<br/>(实心活空心的)圆锥体/圆锥形物，锥形桶|
+|remnant|n. 残余部分，剩余部分，(织物的)零头，布头<br/>adj. 剩余的|
 
 <details>
 <summary>扇贝音频测试</summary>
