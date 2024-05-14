@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2024-05-13 16:04:57
+LastEditTime: 2024-05-13 16:12:44
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -107,7 +107,6 @@ solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
 with open(solutionName, "x", encoding="utf-8") as f:
     f.write(solution)
 
-exit(0)
 # 认领issue
 os.system(f'git checkout -b {num}')
 issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of {num}" -b "By newSolution.py using GH"').read()
