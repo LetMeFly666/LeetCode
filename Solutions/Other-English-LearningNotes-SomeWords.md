@@ -187,6 +187,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |varnish|n. 清漆<br/>v. 给...涂清漆，上清漆，涂指甲油|
 |foliage|n. (植物的)叶，枝叶|
+|||
+|parachute|n. 降落伞<br/>v. 跳伞，空投|
+|stripe|n. 条纹，臂章|
 
 <details>
 <summary>扇贝音频测试</summary>
