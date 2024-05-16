@@ -150,6 +150,12 @@ jobs:
           mv public ../hexoWorkspace/public/theme/arknights
           cd ../LeetCode
       
+      - name: Modify sitemap
+        run: |
+          echo "https://blog.letmefly.xyz/theme/arknights/sitemap.txt" > ../hexoWorkspace/public/sitemap.txt
+          sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
+          cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
+      
       - name: Push to github
         run: |
           git checkout website
