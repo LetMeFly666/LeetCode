@@ -8,6 +8,12 @@ tags: [其他, 知识, 日语, Notes]
 
 五十音图地址：[WSYT.LetMeFly.XYZ](https://wsyt.letmefly.xyz/Project2/)
 
+## 声调
+
++ 声调只有高音和低音
++ 出现降音（低音到高音）后就不会再升回去
++ 第几个音出现降音就是几型（若一直没降就是0型）：$あ\overline{な}た$是2型
+
 xx型
 联想：
 0：我哥

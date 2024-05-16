@@ -58,5 +58,11 @@ Learn FL，找数据集
 + 图：选层 放大
 + 1. ViT选层、2. 放大、3. cos计算（信用）
 
+## 2024.5.14-2024.5.19
+
+暂时停止在[原有](https://github.com/LetMeFly666/FLDefinder/commit/c830b55950ba84a8dd657bbd4ecfa247c6c3e8a5)基础上继续更改，[开始](https://github.com/LetMeFly666/FLDefinder/commit/fd9f0fa1c57a6f9194e49d14c3fd0ac00779f3a4)寻找现有的联邦学习ViT Backdoor的代码并在此基础上进行更改。
+
+小目标：跑通某个现有代码，达到应有的准确率。
+
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
 > [https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)

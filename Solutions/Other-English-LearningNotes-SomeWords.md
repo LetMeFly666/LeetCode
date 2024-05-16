@@ -190,6 +190,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |parachute|n. 降落伞<br/>v. 跳伞，空投|
 |stripe|n. 条纹，臂章|
+|||
+|villain|n. 恶棍，反面人物，罪魁祸首|
+|suspense|n. 悬念，焦虑，（对即将发生的事情等）担心，兴奋|
 
 <details>
 <summary>扇贝音频测试</summary>

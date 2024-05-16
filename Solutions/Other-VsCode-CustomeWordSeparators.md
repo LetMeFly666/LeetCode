@@ -24,6 +24,8 @@ tags: [VsCode, 简单]
 
 ![中英文符号的不同](https://cdn.letmefly.xyz/img/blog/VsCodeCustomeWordSeparators/DifferenceIn_EngAndCN_Character.gif)
 
+<!-- ![中英文符号的不同](https://img-blog.csdnimg.cn/img_convert/616da6f47774ede03149f2934fc8fda2.gif) -->
+
 甚至，我们可以写一段很长的，不包含英文字符的中文：
 
 ```
@@ -33,6 +35,8 @@ tags: [VsCode, 简单]
 在这段中文的任一位置双击鼠标左键，得到的结果都会是一样的。
 
 ![很长的中文也是一个单词](https://cdn.letmefly.xyz/img/blog/VsCodeCustomeWordSeparators/LongLongPureChinese_Is_1word.gif)
+
+<!-- ![很长的中文也是一个单词](https://img-blog.csdnimg.cn/img_convert/b1252f0b0bcb9e9243d68a88960acf59.gif) -->
 
 **有没有办法让VsCode更智能一点呢？比如认识中文符号**
 
@@ -44,6 +48,8 @@ tags: [VsCode, 简单]
 
 ![打开VsCode配置文件](https://cdn.letmefly.xyz/img/blog/VsCodeCustomeWordSeparators/OpenVsCode_Settings.gif)
 
+<!-- ![打开VsCode配置文件](https://img-blog.csdnimg.cn/img_convert/8bfd3726ed0f05783fc3a4cf03eef497.gif) -->
+
 添加如下一行，并保存：
 
 ```json
@@ -52,6 +58,8 @@ tags: [VsCode, 简单]
 
 ![在Settings.json中添加一行代码.jpg](https://cdn.letmefly.xyz/img/blog/VsCodeCustomeWordSeparators/Add1LineInSettings.json.jpg)
 
+<!-- ![在Settings.json中添加一行代码.jpg](https://img-blog.csdnimg.cn/img_convert/74f422ee6f67153ece5e8f7dc6c64f94.jpeg) -->
+
 任务完成！
 
 这段代码的意思是，单词的分隔符为：````~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?“”（），。？、```。
@@ -59,6 +67,8 @@ tags: [VsCode, 简单]
 除了常见的英文分隔符外，后面的```“”（），。？、```是一些中文常见的符号。这样，VsCode在遇到中文括号```（```等时，就会视为单词的分隔符了。这样，刚才那长长的一段话就会变为“看起来不那么笨的样子了”：
 
 ![很长的中文不再是一个单词了](https://cdn.letmefly.xyz/img/blog/VsCodeCustomeWordSeparators/LongLongPureChinese_Is_NOT_1word.gif)
+
+<!-- ![很长的中文不再是一个单词了](https://img-blog.csdnimg.cn/img_convert/cc370551a2429a8183638ffa1446e917.gif) -->
 
 ## End
 
