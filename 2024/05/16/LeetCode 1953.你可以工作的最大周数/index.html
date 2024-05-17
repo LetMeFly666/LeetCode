@@ -26,7 +26,7 @@
 <meta property="og:description" content="【LetMeFly】1953.你可以工作的最大周数：贪心（两个变量一次遍历秒了）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-number-of-weeks-for-which-you-can-work&#x2F; 给你&nbsp;n 个项目，编号从 0 到 n - 1 。同时给你一个整数数组 milestones ，其中每个 milestones[i] 表示第 i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-16T12:21:29.000Z">
-<meta property="article:modified_time" content="2024-05-16T12:40:15.643Z">
+<meta property="article:modified_time" content="2024-05-17T09:21:15.897Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="中等">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          2k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          15 分钟
+          17 分钟
         
       </span>
     
@@ -350,14 +350,15 @@
 <p>那么不就两种情况么？</p>
 <ol>
 <li>“最多的工作”特别特别多（假设为A），那么只能“A、x、A、y、A、…、A”，最多工作$2\times A+1$周</li>
-<li>“最多的工作”也不是很多（$A\times 2\leq 总工作量$），那么能在相邻工作不同的前提下安排完所有的工作<!-- > 怎么安排？任务量从大到小排序（假设为$A\times3+B\times4+C\times3+D$，则排序为$B\times 4、A\times 3、C\times 3、D$）
->
-> 接着对于每种工作，**在剩余的位置中间隔安排**就好了。
->
-> 1. 位置为：$\_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ $
-> 2. 空位中间隔安排$B$：$B\ \_\ B\ \_\ B\ \_\ B\_\ \_\ \_\ \_\ $
-> 3. 空位中间隔安排$A$：$B\ A\ B\ \_\ B\ A\ B\_\ A\ \_\ \_\ $
-> 4. 空位中间隔安排$C$：$B\ A\ B\ \_\ B\ A\ B\_\ A\ \_\ \_\ $ --></li>
+<li>“最多的工作”也不是很多（$A\times 2\leq 总工作量$），那么能在相邻工作不同的前提下安排完所有的工作<blockquote>
+<p>怎么安排？假设任务为$A\times3+B\times4+C\times3+D$，则里面任务最多的是$B$。</p>
+<p>将B一个间隔一个地放置，直至序列末尾（B肯定不够用，没关系，那就使用另外任意一个或多个任务“接力”，直到放到末尾为止）</p>
+<p>初始为：$_\ _\ _\ _\ _\ _\ _\ _\ _\ _\ _\ $</p>
+<p>间隔放，用完所有的B用A：$B\ _\ B\ _\ B\ _\ B\ _\ A\ _\ A\ $</p>
+<p>若A还有剩余，则在剩下的空位中从前往后依次放置：$B\ A\ B\ _\ B\ _\ B\ _\ A\ _\ A\ $（这里因为A的数量很少，所以前面和后面的A一定不会相遇）</p>
+<p>剩下所有没被安排的任务，随意放喽，一定不会相邻了：$B\ A\ B\ C\ B\ C\ B\ C\ A\ D\ A\ $</p>
+</blockquote>
+</li>
 </ol>
 <p>因此只需要统计一下总共多少工时、最大工时是多少即可。</p>
 <ul>
@@ -449,9 +450,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/9999/12/31/README/" title="README">
+                      <a href="/2024/05/17/LeetCode%200826.%E5%AE%89%E6%8E%92%E5%B7%A5%E4%BD%9C%E4%BB%A5%E8%BE%BE%E5%88%B0%E6%9C%80%E5%A4%A7%E6%94%B6%E7%9B%8A/" title="826.安排工作以达到最大收益">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">README</span>
+                        <span class="hidden-mobile">826.安排工作以达到最大收益</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
