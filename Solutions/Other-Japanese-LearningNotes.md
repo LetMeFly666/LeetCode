@@ -488,6 +488,8 @@ xx型
 |遠くないです。<br/>不远。<details><summary>形容词的否定——不远</summary>说不远、不近、不慢的时候，<br/>要把形容词词尾的<font color="#ce82ff">い</font>变成<font color="#ce82ff">くない</font>。</details>|
 |家から学校まで三十分<font color="#ce82ff">かかり</font>ます。<br/>从家到学校<font color="#ce82ff">要</font>三十分钟。|
 |家から学校まで三分<font color="#ce82ff">くらい</font>かかります。<br/>从家到学校要三分钟<font color="#ce82ff">左右</font>。|
+|東京までは一万円くらいかかります。<br/>到东京要一万日元左右。|
+|鈴木さんは二時間くらい勉強しました。<br/>铃木先生学习了两小时。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

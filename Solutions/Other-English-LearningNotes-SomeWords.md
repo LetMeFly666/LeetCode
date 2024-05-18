@@ -193,6 +193,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |villain|n. 恶棍，反面人物，罪魁祸首|
 |suspense|n. 悬念，焦虑，（对即将发生的事情等）担心，兴奋|
+|||
+|congestion|n. 充血，淤血，(交通)拥塞，塞车|
+|thrust|v. 猛推，刺，塞，冲，挤<br/>n. 刺，插，重点，猛推|
 
 <details>
 <summary>扇贝音频测试</summary>
