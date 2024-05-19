@@ -196,6 +196,12 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |congestion|n. 充血，淤血，(交通)拥塞，塞车|
 |thrust|v. 猛推，刺，塞，冲，挤<br/>n. 刺，插，重点，猛推|
+|||
+|proportional|adj. 相称的，成比例的，均衡的<br/>n. 【数】比例项|
+|bundle|n. 捆，束<br/>v. 捆，匆匆送走，附赠|
+|kindle|v. 开始燃烧，点燃，激起(兴趣、感情等)|
+|charcoal|n. 木炭，炭笔|
+|hearth|n. 壁炉炉床，壁炉前的地面|
 
 <details>
 <summary>扇贝音频测试</summary>
