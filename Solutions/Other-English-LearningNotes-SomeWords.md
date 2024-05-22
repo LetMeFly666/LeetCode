@@ -202,6 +202,11 @@ tags: [其他, 知识, 英语, Notes]
 |kindle|v. 开始燃烧，点燃，激起(兴趣、感情等)|
 |charcoal|n. 木炭，炭笔|
 |hearth|n. 壁炉炉床，壁炉前的地面|
+|||
+|soot|n. (煤)烟灰，烟垢<br/>v. 用煤灰覆盖|
+|fabrication|n. 制作，制备，加工，虚构|
+|humidity|n. 湿度，湿气，湿热|
+|polymer|n. 聚合体，聚合物|
 
 <details>
 <summary>扇贝音频测试</summary>
