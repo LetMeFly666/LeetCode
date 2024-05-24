@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2024-05-14 23:51:51
+LastEditTime: 2024-05-24 21:29:17
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -39,9 +39,10 @@ with open(nameProblem, "r", encoding="utf-8") as f:
 
 def genSolutionPart(num):
     suffix2markdowncode = {
-        'cpp': ('cpp', 'C++'),
+        'cpp': ('cpp', 'C++'),  # markdown、汉语名
         'py': ('python', 'Python'),
         'c': ('c', 'C语言'),
+        'java': ('java', 'Java')
     }
     today4code = []
     for file in os.listdir('Codes'):
