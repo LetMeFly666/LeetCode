@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly
-LastEditTime: 2024-05-24 21:29:17
+LastEditTime: 2024-05-25 12:44:23
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -42,7 +42,8 @@ def genSolutionPart(num):
         'cpp': ('cpp', 'C++'),  # markdown、汉语名
         'py': ('python', 'Python'),
         'c': ('c', 'C语言'),
-        'java': ('java', 'Java')
+        'java': ('java', 'Java'),
+        'go': ('go', 'Go')
     }
     today4code = []
     for file in os.listdir('Codes'):

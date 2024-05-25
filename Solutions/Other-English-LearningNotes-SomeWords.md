@@ -207,6 +207,8 @@ tags: [其他, 知识, 英语, Notes]
 |fabrication|n. 制作，制备，加工，虚构|
 |humidity|n. 湿度，湿气，湿热|
 |polymer|n. 聚合体，聚合物|
+|||
+|shear|v. 剪切，切断，给(羊)剪(羊毛)，剪(头发)<br/>n. 剪，切，剪刀，[物]切变|
 
 <details>
 <summary>扇贝音频测试</summary>
