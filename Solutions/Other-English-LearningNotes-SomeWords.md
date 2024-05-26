@@ -209,6 +209,9 @@ tags: [其他, 知识, 英语, Notes]
 |polymer|n. 聚合体，聚合物|
 |||
 |shear|v. 剪切，切断，给(羊)剪(羊毛)，剪(头发)<br/>n. 剪，切，剪刀，[物]切变|
+|||
+|oscillation|n. 振荡，振动，摆动<details><summary>例句</summary>Her <font color="#28bea0">oscillations</font> in mood are maddening.<br/>她喜怒无常能把人气疯。</details>|
+|hanger|n. 衣架，挂钩，挂东西的人|
 
 <details>
 <summary>扇贝音频测试</summary>
