@@ -214,6 +214,10 @@ tags: [其他, 知识, 英语, Notes]
 |hanger|n. 衣架，挂钩，挂东西的人|
 |||
 |orchard|n. 果园|
+|||
+|mineral|n. 矿物，矿物质|
+|turbine|n. 涡轮机，汽轮机|
+|sink|v. (使)下沉，沉没，降低，挖，掘，把...埋入，使受挫，使陷入麻烦<br/>n. 洗碗槽，洗脸盆<details><summary>过去式</summary>sank</details>|
 
 <details>
 <summary>扇贝音频测试</summary>
