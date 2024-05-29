@@ -114,7 +114,7 @@ tags: [其他, 知识, 英语, Notes]
 |merit|n. 价值，长处，优点<br/>v. 值得，应得|
 |ridicule|n. 嘲笑，奚落<br/>v. 嘲笑，奚落|
 |solely|adv. 只，仅，唯，单独地<details><summary>例句</summary>I did not sing <font color="#28bea0">solely</font> for money.</details>|
-|penalty|n. 处罚，判罚，刑罚，罚金|
+|<font color="#28bea0" title="二次复习">penalty</font>|n. 处罚，判罚，刑罚，罚金|
 |||
 |conscientious|adj. 认真的，勤勤恳恳的，负责的，尽责的，凭良心的|
 |immoral|adj. 不道德的，邪恶的，放荡的，淫荡的|
@@ -218,6 +218,10 @@ tags: [其他, 知识, 英语, Notes]
 |mineral|n. 矿物，矿物质|
 |turbine|n. 涡轮机，汽轮机|
 |sink|v. (使)下沉，沉没，降低，挖，掘，把...埋入，使受挫，使陷入麻烦<br/>n. 洗碗槽，洗脸盆<details><summary>过去式</summary>sank</details>|
+|||
+|ambassador|b. 大使|
+|villa|n. 别墅，豪宅|
+|fig|n. 【植】无花果，【植】无花果树<br/>abbr. (=figure)图，图表|
 
 <details>
 <summary>扇贝音频测试</summary>
