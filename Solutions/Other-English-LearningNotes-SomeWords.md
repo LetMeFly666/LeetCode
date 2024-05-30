@@ -222,6 +222,10 @@ tags: [其他, 知识, 英语, Notes]
 |ambassador|b. 大使|
 |villa|n. 别墅，豪宅|
 |fig|n. 【植】无花果，【植】无花果树<br/>abbr. (=figure)图，图表|
+|||
+|rebate|n. 折扣，退还款<br/>v. 退还(部分付款)，扣除|
+|reservoir|n. 水库，蓄水池，储藏所，仓库，储藏，积蓄，宝库<br/>v. 储藏，蓄积，在...开凿蓄水池|
+|jettison|v. 放弃，拜托，除掉<br/>n. 抛弃，(紧急情况下)抛弃货物|
 
 <details>
 <summary>扇贝音频测试</summary>
