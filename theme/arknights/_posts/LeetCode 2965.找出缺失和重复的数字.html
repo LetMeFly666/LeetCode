@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2965.找出缺失和重复的数字 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.2.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2965.找出缺失和重复的数字</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-05-31T08:37:37.000Z" id="date"> 2024-05-31</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2965-找出缺失和重复的数字：小数据？我选择暴力（附优化方法清单：O-1-空间方法×3）"><a href="#【LetMeFly】2965-找出缺失和重复的数字：小数据？我选择暴力（附优化方法清单：O-1-空间方法×3）" class="headerlink" title="【LetMeFly】2965.找出缺失和重复的数字：小数据？我选择暴力（附优化方法清单：O(1)空间方法×3）"></a>【LetMeFly】2965.找出缺失和重复的数字：小数据？我选择暴力（附优化方法清单：O(1)空间方法×3）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-missing-and-repeated-values/">https://leetcode.cn/problems/find-missing-and-repeated-values/</a></p>
+<p>给你一个下标从<strong> 0 </strong>开始的二维整数矩阵 <code><font face="monospace">grid</font></code>，大小为 <code>n * n</code> ，其中的值在 <code>[1, n<sup>2</sup>]</code> 范围内。除了 <code>a</code> 出现 <strong>两次</strong>，<code>b</code> <strong>缺失</strong> 之外，每个整数都<strong> 恰好出现一次</strong> 。</p>
+
+<p>任务是找出重复的数字<code>a</code> 和缺失的数字 <code>b</code> 。</p>
+
+<p>返回一个下标从 0 开始、长度为 <code>2</code> 的整数数组 <code>ans</code> ，其中 <code>ans[0]</code> 等于 <code>a</code> ，<code>ans[1]</code> 等于 <code>b</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>grid = [[1,3],[2,2]]
+<strong>输出：</strong>[2,4]
+<strong>解释：</strong>数字 2 重复，数字 4 缺失，所以答案是 [2,4] 。
+</pre>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>grid = [[9,1,7],[8,9,2],[3,4,6]]
+<strong>输出：</strong>[9,5]
+<strong>解释：</strong>数字 9 重复，数字 5 缺失，所以答案是 [9,5] 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 &lt;= n == grid.length == grid[i].length &lt;= 50</code></li>
+    <li><code>1 &lt;= grid[i][j] &lt;= n * n</code></li>
+    <li>对于所有满足<code>1 &lt;= x &lt;= n * n</code> 的 <code>x</code> ，恰好存在一个 <code>x</code> 与矩阵中的任何成员都不相等。</li>
+    <li>对于所有满足<code>1 &lt;= x &lt;= n * n</code> 的 <code>x</code> ，恰好存在一个 <code>x</code> 与矩阵中的两个成员相等。</li>
+    <li>除上述的两个之外，对于所有满足<code>1 &lt;= x &lt;= n * n</code> 的 <code>x</code> ，都恰好存在一对 <code>i, j</code> 满足 <code>0 &lt;= i, j &lt;= n - 1</code> 且 <code>grid[i][j] == x</code> 。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：计数（模拟）"><a href="#解题方法：计数（模拟）" class="headerlink" title="解题方法：计数（模拟）"></a>解题方法：计数（模拟）</h2><p>开辟一个$n^2+1$的数组，用来记录每个数分别出现了多少次。</p>
+<p>遍历原始数组即可完成计数数组，遍历计数数组即可得到答案。</p>
+<ul>
+<li>时间复杂度$O(n^2)$</li>
+<li>空间复杂度$O(n^2)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findMissingAndRepeatedValues</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">times</span><span class="params">(grid.size() * grid.size() + <span class="number">1</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (vector&lt;<span class="type">int</span>&gt;&amp; line : grid) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> t : line) &#123;</span><br><span class="line">                times[t]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; times.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (times[i] == <span class="number">2</span>) &#123;</span><br><span class="line">                ans[<span class="number">0</span>] = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (times[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                ans[<span class="number">1</span>] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间击败92.71%的提交，空间击败90.28%的提交。</p>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><p>本题时间复杂度不可优化，说啥也得至少遍历一遍原始数组。如何优化空间复杂度呢？大致分为三种：</p>
+<p>优化方法一：空间的原地使用：</p>
+<blockquote>
+<p>例如$t$出现过就将数组中第$t$个元素置为负数，若某次将某元素置为负数时发现已经是负数了，则说明这个数出现了两次。到最后也没被置为负数的位置说明对应的数没有出现。</p>
+</blockquote>
+<p>优化方法二：数学方法：</p>
+<blockquote>
+<p>$\sum_{i&#x3D;1}^{n^2}i-\sum grid&#x3D;b-a$，一个方程不足以解出两个变量，因此可以再加一个方程。</p>
+<p>例如$\sum_{i&#x3D;1}^{n^2}i^2-\sum_{i\in grid} i^2&#x3D;b^2-a^2$，联立两方程即可得到$a$和$b$的值。</p>
+</blockquote>
+<p>优化方法三：位运算：</p>
+<blockquote>
+<p>根据异或的性质，异或一个数偶数次相当于没有异或。因此假设异或grid中的每个元素再异或从1到$n^2$得到结果$t$，则$t&#x3D;a\oplus b$（相当于$a$一共异或了3次而$b$一共异或了1次）。</p>
+<p>到这里很多同学都看出了这题本质和<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number-iii/">260. 只出现一次的数字 III</a>相同。</p>
+<p>如何拆分$a$和$b$？依据两个原则分别异或即可。假设$t$二进制下第一个$1$是第$2$位，则<strong>所有数</strong>依据第$2$位是否为$1$分为两种。每组中所有元素相互异或，最终的两个结果就是$a$和$b$。</p>
+<blockquote>
+<p>这里“所有数”是指$1$到$n^2$的所有数以及原始数组中的所有数。</p>
+<p>为什么这样能将$a$和$b$分开？因为根据异或结果$t$可得，$a$和$b$二进制下第$2$位绝对不同，因此$a$和$b$会被分到两个不同的组中。每个组中除了$a$或$b$都出现偶数次，因此两组的异或结果就是$a$和$b$。</p>
+</blockquote>
+</blockquote>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/05/31/LeetCode%202965.%E6%89%BE%E5%87%BA%E7%BC%BA%E5%A4%B1%E5%92%8C%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/139357662">https://letmefly.blog.csdn.net/article/details/139357662</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912965-%E6%89%BE%E5%87%BA%E7%BC%BA%E5%A4%B1%E5%92%8C%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97%EF%BC%9A%E5%B0%8F%E6%95%B0%E6%8D%AE%EF%BC%9F%E6%88%91%E9%80%89%E6%8B%A9%E6%9A%B4%E5%8A%9B%EF%BC%88%E9%99%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E6%B8%85%E5%8D%95%EF%BC%9AO-1-%E7%A9%BA%E9%97%B4%E6%96%B9%E6%B3%95%C3%973%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2965.找出缺失和重复的数字：小数据？我选择暴力（附优化方法清单：O(1)空间方法×3）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E8%AE%A1%E6%95%B0%EF%BC%88%E6%A8%A1%E6%8B%9F%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：计数（模拟）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">其他方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.3.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
