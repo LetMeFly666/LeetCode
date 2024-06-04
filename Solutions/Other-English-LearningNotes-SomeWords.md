@@ -213,7 +213,7 @@ tags: [其他, 知识, 英语, Notes]
 |oscillation|n. 振荡，振动，摆动<details><summary>例句</summary>Her <font color="#28bea0">oscillations</font> in mood are maddening.<br/>她喜怒无常能把人气疯。</details>|
 |hanger|n. 衣架，挂钩，挂东西的人|
 |||
-|orchard|n. 果园|
+|<font color="#28bea0" title="二次复习">orchard</font>|n. 果园|
 |||
 |mineral|n. 矿物，矿物质|
 |turbine|n. 涡轮机，汽轮机|
@@ -226,6 +226,15 @@ tags: [其他, 知识, 英语, Notes]
 |rebate|n. 折扣，退还款<br/>v. 退还(部分付款)，扣除|
 |reservoir|n. 水库，蓄水池，储藏所，仓库，储藏，积蓄，宝库<br/>v. 储藏，蓄积，在...开凿蓄水池|
 |jettison|v. 放弃，拜托，除掉<br/>n. 抛弃，(紧急情况下)抛弃货物|
+|||
+|replenish|v. 补充 ，重新装满|
+|spectrum|n. 光谱，声谱，频谱，范围，幅度，系列，层次|
+|||
+|livestock|n. 家畜, 牲畜|
+|||
+|stencil|n. (印刷用)模板，(模板印的)文字<br/>v. 用模板印(文字/图案)|
+|pluck|v. 摘，拔(去)，拨(弦)，解救v. 胆识，胆量，内脏，快而猛的拉，勇气|
+|daybreak|n. 黎明，破晓|
 
 <details>
 <summary>扇贝音频测试</summary>
