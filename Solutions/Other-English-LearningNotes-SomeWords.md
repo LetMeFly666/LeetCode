@@ -220,7 +220,7 @@ tags: [其他, 知识, 英语, Notes]
 |sink|v. (使)下沉，沉没，降低，挖，掘，把...埋入，使受挫，使陷入麻烦<br/>n. 洗碗槽，洗脸盆<details><summary>过去式</summary>sank</details>|
 |||
 |ambassador|b. 大使|
-|villa|n. 别墅，豪宅|
+|<font color="#28bea0" title="二次复习">villa</font>|n. 别墅，豪宅|
 |fig|n. 【植】无花果，【植】无花果树<br/>abbr. (=figure)图，图表|
 |||
 |rebate|n. 折扣，退还款<br/>v. 退还(部分付款)，扣除|
@@ -235,6 +235,17 @@ tags: [其他, 知识, 英语, Notes]
 |stencil|n. (印刷用)模板，(模板印的)文字<br/>v. 用模板印(文字/图案)|
 |pluck|v. 摘，拔(去)，拨(弦)，解救v. 胆识，胆量，内脏，快而猛的拉，勇气|
 |daybreak|n. 黎明，破晓|
+|||
+|adorn|v. 装饰，装扮|
+|||
+|reef|n. 礁，礁脉，帆的可收缩部<br/>v. 收帆，卷起缩帆部，叠起缩帆部|
+|weld|v. 焊接，熔接，使紧密结合<br/>n. 焊接点，焊接处|
+|hydrogen|n. 氢，氢气|
+|smash|n. 打碎，破碎(声)，走红的作品<br/>v. 打碎，猛撞，猛击，击溃，粉碎|
+|materialize|v. 实现，发生，成为现实，突然显现|
+|serene|adj. 平静的，宁静的，安详的<br/>v. 宁静，<诗>使(海,脸色等)平静，使(天空)明朗<br/>n. 平静(的海)，<诗,古>晴朗(天空)|
+|hazard|n. 危险，危害<br/>冒失地提出，冒险猜测，冒...的风险，使处于危险|
+
 
 <details>
 <summary>扇贝音频测试</summary>
