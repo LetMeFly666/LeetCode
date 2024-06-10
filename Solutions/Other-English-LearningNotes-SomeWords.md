@@ -191,7 +191,7 @@ tags: [其他, 知识, 英语, Notes]
 |parachute|n. 降落伞<br/>v. 跳伞，空投|
 |stripe|n. 条纹，臂章|
 |||
-|villain|n. 恶棍，反面人物，罪魁祸首|
+|<font color="#28bea0" title="二次复习">villain</font>|n. 恶棍，反面人物，罪魁祸首|
 |suspense|n. 悬念，焦虑，（对即将发生的事情等）担心，兴奋|
 |||
 |congestion|n. 充血，淤血，(交通)拥塞，塞车|
@@ -245,7 +245,14 @@ tags: [其他, 知识, 英语, Notes]
 |materialize|v. 实现，发生，成为现实，突然显现|
 |serene|adj. 平静的，宁静的，安详的<br/>v. 宁静，<诗>使(海,脸色等)平静，使(天空)明朗<br/>n. 平静(的海)，<诗,古>晴朗(天空)|
 |hazard|n. 危险，危害<br/>冒失地提出，冒险猜测，冒...的风险，使处于危险|
-
+|||
+|soot|n. (煤)烟灰，烟垢<br/>v. 用煤炭覆盖|
+|parade|v. 游行，队列进行，炫耀，展示<br/>n. (庆祝)游行，队列，阅兵进行，炫耀，展示|
+|||
+|enchant|v. 使着迷，使陶醉，对...施魔法/念咒语|
+|mathematician|n. 数学家|
+|inn|n. 客栈，(乡村可夜宿的)小酒店<br/>v. 住旅馆|
+|flux|n. 不断的变动，不停的变化，通量，流动|
 
 <details>
 <summary>扇贝音频测试</summary>
