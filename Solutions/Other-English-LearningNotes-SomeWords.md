@@ -253,6 +253,9 @@ tags: [其他, 知识, 英语, Notes]
 |mathematician|n. 数学家|
 |inn|n. 客栈，(乡村可夜宿的)小酒店<br/>v. 住旅馆|
 |flux|n. 不断的变动，不停的变化，通量，流动|
+|||
+|maize|n. 玉米|
+|vine|n. 藤，藤蔓，藤本植物|
 
 <details>
 <summary>扇贝音频测试</summary>
