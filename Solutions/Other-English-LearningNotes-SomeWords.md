@@ -256,6 +256,12 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |maize|n. 玉米|
 |vine|n. 藤，藤蔓，藤本植物|
+|||
+|bind|v. 绑，使结合，约束，装订<br/>n. 捆绑(物)，窘境，困境<details><summary>过去式</summary>bound</details>|
+|prolong|v. 延长<details><summary>例句</summary>The meeting may be <font color="#28bea0">prolonged</font> into the evening.<br/>会议可能要延长到夜里。</details>|
+|brace|v. 绷紧，顶住，使防备，加固，振作精神，做好准备<br/>n. 支柱，支架，背带，大括号，(野鸟的)一双/对<details><summary>例句</summary>The fresh air of the September morning <font color="#28bea0">braced</font> him.<br/>九月早晨的清新空气令他振奋。</details>|
+|halve|v. (使)减半，把...对半分|
+|cassette|n. 暗盒，磁带盒，盒式磁带，卡式磁带<br/>v. 用磁带录制|
 
 <details>
 <summary>扇贝音频测试</summary>
