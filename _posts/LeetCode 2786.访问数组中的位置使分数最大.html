@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】2786.访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;visit-array-positions-to-maximize-score&#x2F; 给你一个下标从 0&nbsp;开始的整数数组&nbsp;nums&nbsp;和一个正整数&nbsp;x&nbsp;。  你 一开始&nbsp;在数组的位置">
+<meta property="og:type" content="website">
+<meta property="og:title" content="2786.访问数组中的位置使分数最大">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%202786.%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BD%BF%E5%88%86%E6%95%B0%E6%9C%80%E5%A4%A7.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】2786.访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;visit-array-positions-to-maximize-score&#x2F; 给你一个下标从 0&nbsp;开始的整数数组&nbsp;nums&nbsp;和一个正整数&nbsp;x&nbsp;。  你 一开始&nbsp;在数组的位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-14T11:15:32.000Z">
+<meta property="article:modified_time" content="2024-06-14T11:32:58.620Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>2786.访问数组中的位置使分数最大 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2786.访问数组中的位置使分数最大"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】2786-访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）"><a href="#【LetMeFly】2786-访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）" class="headerlink" title="【LetMeFly】2786.访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）"></a>【LetMeFly】2786.访问数组中的位置使分数最大：奇偶分开记录（逻辑还算清晰的题解）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/visit-array-positions-to-maximize-score/">https://leetcode.cn/problems/visit-array-positions-to-maximize-score/</a></p>
+<p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;和一个正整数&nbsp;<code>x</code>&nbsp;。</p>
+
+<p>你 <strong>一开始</strong>&nbsp;在数组的位置 <code>0</code>&nbsp;处，你可以按照下述规则访问数组中的其他位置：</p>
+
+<ul>
+    <li>如果你当前在位置&nbsp;<code>i</code>&nbsp;，那么你可以移动到满足&nbsp;<code>i &lt; j</code>&nbsp;的&nbsp;<strong>任意</strong>&nbsp;位置&nbsp;<code>j</code>&nbsp;。</li>
+    <li>对于你访问的位置 <code>i</code>&nbsp;，你可以获得分数&nbsp;<code>nums[i]</code>&nbsp;。</li>
+    <li>如果你从位置 <code>i</code>&nbsp;移动到位置 <code>j</code>&nbsp;且&nbsp;<code>nums[i]</code> 和&nbsp;<code>nums[j]</code>&nbsp;的 <strong>奇偶性</strong>&nbsp;不同，那么你将失去分数&nbsp;<code>x</code>&nbsp;。</li>
+</ul>
+
+<p>请你返回你能得到的 <strong>最大</strong>&nbsp;得分之和。</p>
+
+<p><strong>注意</strong>&nbsp;，你一开始的分数为&nbsp;<code>nums[0]</code>&nbsp;。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><b>输入：</b>nums = [2,3,6,1,9,2], x = 5
+<b>输出：</b>13
+<b>解释：</b>我们可以按顺序访问数组中的位置：0 -&gt; 2 -&gt; 3 -&gt; 4 。
+对应位置的值为 2 ，6 ，1 和 9 。因为 6 和 1 的奇偶性不同，所以下标从 2 -&gt; 3 让你失去 x = 5 分。
+总得分为：2 + 6 + 1 + 9 - 5 = 13 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><b>输入：</b>nums = [2,4,6,8], x = 3
+<b>输出：</b>20
+<b>解释：</b>数组中的所有元素奇偶性都一样，所以我们可以将每个元素都访问一次，而且不会失去任何分数。
+总得分为：2 + 4 + 6 + 8 = 20 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= nums[i], x &lt;= 10<sup>6</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：两个变量分别记录上一个位置是奇数和偶数时的最大值"><a href="#解题方法：两个变量分别记录上一个位置是奇数和偶数时的最大值" class="headerlink" title="解题方法：两个变量分别记录上一个位置是奇数和偶数时的最大值"></a>解题方法：两个变量分别记录上一个位置是奇数和偶数时的最大值</h2><p>每个数都大于0，并且奇偶性相同的数之间跳跃没有额外的费用（不用-x）。因此<strong>奇偶性相同的数不会间隔地跳</strong>：</p>
+<blockquote>
+<p>以奇数为例，假设有三个奇数$a$、$b$、$c$，则由奇数跳到$c$的话，一定是从$b$跳过去的，不可能是从$a$直接跳到$c$。因为$a-&gt;c$不如$a-&gt;b-&gt;c$。</p>
+</blockquote>
+<p>因此，我们只需要使用两个变量$odd$和$even$，分别记录上一个数为奇数或偶数时的分数最大值。遍历整数数组时有如下公式：</p>
+<blockquote>
+<ul>
+<li>若当前元素$t$为奇数，则从奇数跳过来的话分数为$odd+t$，从偶数跳过来的话分数为$even+t-x$，因此最大分数为$\max(odd+t, even+t-x)$</li>
+<li>若当前元素$t$为偶数，则从奇数跳过来的话分数为$odd+t-x$，从偶数跳过来的话分数为$even+t$，因此最大分数为$\max(odd+t-x, even+t)$</li>
+</ul>
+</blockquote>
+<p>特别的，起点必须为第一个数。假设第一个数为奇数，则偶数的默认值为$-x$。这是因为：</p>
+<blockquote>
+<p>第一个数为奇数的话，第一次跳到偶数的时候，实质上必定是由奇数跳过去的。而计算公式中的$even+t$是由偶数跳过去的，相当于少扣了$x$分。</p>
+</blockquote>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(len(nums))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ll <span class="hljs-title">maxScore</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> x)</span> </span>&#123;<br>        ll odd = nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> ? <span class="hljs-number">0</span> : -x, even = nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> ? -x : <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t : nums) &#123;<br>            <span class="hljs-keyword">if</span> (t % <span class="hljs-number">2</span>) &#123;<br>                odd = <span class="hljs-built_in">max</span>(odd + t, even + t - x);<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                even = <span class="hljs-built_in">max</span>(odd + t - x, even + t);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(odd, even);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span><span class="hljs-params">(a <span class="hljs-type">int64</span>, b <span class="hljs-type">int64</span>)</span></span> <span class="hljs-type">int64</span> &#123;<br>    <span class="hljs-keyword">if</span> a &gt; b &#123;<br>        <span class="hljs-keyword">return</span> a<br>    &#125;<br>    <span class="hljs-keyword">return</span> b<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">maxScore</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>, x <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int64</span> &#123;<br>    odd, even := <span class="hljs-type">int64</span>(<span class="hljs-number">0</span>), <span class="hljs-type">int64</span>(<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">if</span> nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> &#123;<br>        odd = -<span class="hljs-type">int64</span>(x)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        even = -<span class="hljs-type">int64</span>(x)<br>    &#125;<br>    <span class="hljs-keyword">for</span> _, t := <span class="hljs-keyword">range</span> nums &#123;<br>        <span class="hljs-keyword">if</span> t % <span class="hljs-number">2</span> != <span class="hljs-number">0</span> &#123;<br>            odd = max(odd + <span class="hljs-type">int64</span>(t), even + <span class="hljs-type">int64</span>(t) - <span class="hljs-type">int64</span>(x))<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            even =  max(odd + <span class="hljs-type">int64</span>(t) - <span class="hljs-type">int64</span>(x), even + <span class="hljs-type">int64</span>(t))<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max(odd, even)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">maxScore</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">long</span> <span class="hljs-variable">odd</span> <span class="hljs-operator">=</span> nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> != <span class="hljs-number">0</span> ? <span class="hljs-number">0</span> : -x, even = nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> != <span class="hljs-number">0</span> ? -x : <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t : nums) &#123;<br>            <span class="hljs-keyword">if</span> (t % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>) &#123;<br>                odd = Math.max(odd + t, even + t - x);<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                even = Math.max(odd + t - x, even + t);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> Math.max(odd, even);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxScore</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], x: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        odd, even = <span class="hljs-number">0</span> <span class="hljs-keyword">if</span> nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> <span class="hljs-keyword">else</span> -x, -x <span class="hljs-keyword">if</span> nums[<span class="hljs-number">0</span>] % <span class="hljs-number">2</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> nums:<br>            <span class="hljs-keyword">if</span> t % <span class="hljs-number">2</span>:<br>                odd = <span class="hljs-built_in">max</span>(odd + t, even + t - x)<br>            <span class="hljs-keyword">else</span>:<br>                even = <span class="hljs-built_in">max</span>(odd + t - x, even + t)<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(even, odd)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/06/14/LeetCode%202786.%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%BD%BF%E5%88%86%E6%95%B0%E6%9C%80%E5%A4%A7/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/139688753">https://letmefly.blog.csdn.net/article/details/139688753</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
