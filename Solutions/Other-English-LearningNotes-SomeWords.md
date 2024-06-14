@@ -98,13 +98,13 @@ tags: [其他, 知识, 英语, Notes]
 |hypothesis|n. 假设，假说，猜测<details><summary>复数</summary>hypotheses</details>|
 |||
 |swing|v. 摇摆，旋转<br/>n. 摇摆，秋千<details><summary>过去分词</summary>swung</details>|
-|cater|v. 满足..的需要，承办酒席，考虑<summary>例句</summary>He has to <font color="#28bea0">cater</font> for his boss.<br/>他得迎合他的老板。</details>|
+|cater|v. 满足..的需要，承办酒席，考虑<details><summary>例句</summary>He has to <font color="#28bea0">cater</font> for his boss.<br/>他得迎合他的老板。</details>|
 |||
 |weave|v. 编织，组合<br/>n. 编法，织法<details><summary>过去分词</summary>wove</details>|
 |democratic|adj. 民主的，有民主精神的|
 |||
 |disposition|n. 倾向，性情，布置|
-|i.e.|abbr. 亦即<summary>例句</summary>Many people like you, <font color="#28bea0">i.e.</font> you are popular.<br/>很多人喜欢你，也就是说，你很受欢迎。</details>|
+|i.e.|abbr. 亦即<details><summary>例句</summary>Many people like you, <font color="#28bea0">i.e.</font> you are popular.<br/>很多人喜欢你，也就是说，你很受欢迎。</details>|
 |notic<font color="#28bea0">e</font>able|adj. 显著的，显而易见的|
 |inevitably|adv. 必然，不可避及地|
 |protocol|n. 协定书，外交礼节，条约草案<br/>v. 打(草稿)，(把...)记入议定书|
@@ -262,6 +262,11 @@ tags: [其他, 知识, 英语, Notes]
 |brace|v. 绷紧，顶住，使防备，加固，振作精神，做好准备<br/>n. 支柱，支架，背带，大括号，(野鸟的)一双/对<details><summary>例句</summary>The fresh air of the September morning <font color="#28bea0">braced</font> him.<br/>九月早晨的清新空气令他振奋。</details>|
 |halve|v. (使)减半，把...对半分|
 |cassette|n. 暗盒，磁带盒，盒式磁带，卡式磁带<br/>v. 用磁带录制|
+|||
+|peep|v. 偷看，微露出，部分出现，发出吱吱声<br/>n. 偷偷一瞥，说话，出声音，啾啾声|
+|radiate|v. 发光，发热，流露，焕发，呈辐射状散发|
+|hop|n. 单脚跳行，(动物的)跳跃，(乘飞机)短途旅行，啤酒花，(非正式)舞会<br/>v. 单脚跳，跳跃，换来换去，登上(交通工具)，快速去...|
+|viscous|adj. 粘稠的，粘滞的|
 
 <details>
 <summary>扇贝音频测试</summary>

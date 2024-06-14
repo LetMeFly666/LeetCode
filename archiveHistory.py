@@ -2,13 +2,41 @@
 Author: LetMeFly
 Date: 2024-06-11 21:59:50
 LastEditors: LetMeFly
-LastEditTime: 2024-06-11 22:50:32
+LastEditTime: 2024-06-12 22:42:22
 '''
 """
 写一个Python脚本，实现以下功能：
 在一个Git仓库中，将每次commit打包成Zip文件。
 文件命名格式为对应commit的{日期}{时间}{commitHash}.zip，例如20240622-220603-54a2e7fe41081489e8913436daa7bee5ae878d26.zip
 """
+import os
+import subprocess
+import git
+from datetime import datetime
+
+repoPath = 'repo'
+archiveDir = 'archived'
+repo = git.Repo(repoPath)
+
+
+def make1diff(thisCommit: git.Commit, previousCommit: git.Commit) -> None:
+    print(thisCommit.message)
+    commitDatetime = datetime.fromtimestamp(thisCommit.committed_date)
+    datetimeStr = commitDatetime.strftime('%Y%m%d-%H%M%S')
+    patchName = f'{archiveDir}/{datetimeStr}-{thisCommit.hexsha}.patch'
+    with open(patchName, 'w') as diff_f:
+        subprocess.run(['git', 'diff', thisCommit.hexsha, previousCommit.hexsha], stdout=diff_f, cwd=repoPath)
+
+
+
+commits = list(repo.iter_commits())
+print(commits)
+os.makedirs(archiveDir, exist_ok=True)
+for i in range(1, len(commits)):
+    make1diff(commits[i], commits[i - 1])
+
+exit(0)
+
 import os
 import git
 from datetime import datetime
