@@ -277,6 +277,9 @@ tags: [其他, 知识, 英语, Notes]
 |panic|n. 惊恐，恐慌，人心惶惶的局面<br/>v. (使)惊慌，惊慌失措<details><summary>过去式</summary>panicked</details>|
 |tale|n. (尤指充满惊险的)故事，历险记，(精彩但不一定完全真实的)讲述|
 |malaria|n. 疟疾|
+|||
+|syllable|n. 音节<br/>v. 把...分成音节，一个音节一个音节清楚地发音|
+|elusive|adj. 难找的，难以解释的，难懂的，难以达到的，难以实现的|
 
 <details>
 <summary>扇贝音频测试</summary>
