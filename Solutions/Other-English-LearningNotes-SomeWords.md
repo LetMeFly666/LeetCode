@@ -274,12 +274,22 @@ tags: [其他, 知识, 英语, Notes]
 |seam|n. 线缝，接缝，骨缝，皱纹，伤疤，矿层，煤层<br/>v. 缝合，使留下伤疤，使生皱纹，产生裂缝|
 |mattress|n. 床垫，褥子|
 |assault|n. 攻击，袭击，突击<br/>v. 袭击，使(感官)难受|
-|panic|n. 惊恐，恐慌，人心惶惶的局面<br/>v. (使)惊慌，惊慌失措<details><summary>过去式</summary>panicked</details>|
+|<font color="#28bea0" title="二次复习">panic</font>|n. 惊恐，恐慌，人心惶惶的局面<br/>v. (使)惊慌，惊慌失措<details><summary>过去式</summary>panicked</details>|
 |tale|n. (尤指充满惊险的)故事，历险记，(精彩但不一定完全真实的)讲述|
 |malaria|n. 疟疾|
 |||
 |syllable|n. 音节<br/>v. 把...分成音节，一个音节一个音节清楚地发音|
 |elusive|adj. 难找的，难以解释的，难懂的，难以达到的，难以实现的|
+|||
+|heave|v. 举，抛，拉，(吃力地)发出声音，(强烈有节奏地)起伏<br/>n. 举，拖、拉、抛，起伏|
+|rack|n. 架子，支架，挂物架，行李架，喂草架，痛苦，折磨，齿条，齿轨，(猪羊等带前肋的)颈脊肉<br/>v. 使痛苦不堪，使受折磨，把...放在架子上，用齿条传动|
+|shun|v. 避开，避免，回避|
+|mishap|n. 小事故，晦气|
+|Mediterranean|n. 地中海, 地中海地区的居民, 地中海沿岸的高加索人<br/>adj. 地中海的|
+|casualty|n. 伤者，死者；受害者；牺牲品|
+|meticulously|adv. 仔细地，周密地|
+|||
+|reed|n. 芦苇，簧舌，簧片|
 
 <details>
 <summary>扇贝音频测试</summary>
