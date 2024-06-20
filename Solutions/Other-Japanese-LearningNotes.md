@@ -636,6 +636,7 @@ xx型
 |本当ですか？<br/>真的吗？|
 |よく料理します。<br/>经常做饭。|
 |カレーを半分ください。<br/>请给我一半咖喱。|
+|ご飯を茶碗半分ください。<br/>请给我半碗饭。<br/>半分要放到茶碗的后面。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

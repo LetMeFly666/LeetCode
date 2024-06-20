@@ -290,6 +290,9 @@ tags: [其他, 知识, 英语, Notes]
 |meticulously|adv. 仔细地，周密地|
 |||
 |reed|n. 芦苇，簧舌，簧片|
+|||
+|haphazard|adj. 没有条理的，无秩序的|
+|peril|n. 危险，冒险，险情<br/>v. 危及，置...于险境|
 
 <details>
 <summary>扇贝音频测试</summary>
