@@ -71,5 +71,9 @@ Learn FL，找数据集
 
 小目标：跑通某个现有代码，达到应有的准确率。
 
+## 2024.6.3-2024.6.27
+
+全力写本子。。
+
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
 > [https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)
