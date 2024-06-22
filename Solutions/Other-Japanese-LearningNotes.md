@@ -629,7 +629,7 @@ xx型
 |お弁当は<font color="#ce82ff">けっこう</font>高いです。<br/>便当<font color="#ce82ff">挺</font>贵。|
 |おさらを３枚ください。<br/>请给我三个盘子。|
 |甘い果物はいかがですか？<br/>来点甜水果怎么样？|
-|これにします。<br/>决定要这个。|
+|これ<font color="#ce82ff">にし</font>ます。<br/>决定要这个。|
 |飲み物は紅茶にします。<br/>饮料决定要红茶。|
 |お腹がすきました。<br/>肚子饿了。|
 |スプーン<font color="#ce82ff">で</font>食べます。<br/>用勺子吃。<details><summary>用什么餐具吃</summary>餐具后面加上<font color="#ce82ff">で</font>。</details>|
