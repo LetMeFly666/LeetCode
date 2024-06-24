@@ -19,7 +19,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |portrait|n. 肖像，画像<br/>adj. 竖向的，纵向打印格式的|
 |fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>v. 用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行</details>|
-|telescope|v. (使)叠套缩短, 精简<br/>n. 望远镜|
+|telescope|v. (使)叠套缩短，精简<br/>n. 望远镜|
 |aggravation|n. 加重，恶化|
 |flee|v. 迅速离开，逃避，逃跑<br/><details><summary>例句</summary>The frightened people <font color="#28bea0">fled</font> from the fire.<br/>人们惊恐万状地逃离了火灾现场。</details>|
 |necessitate|<font color="red">v.</font> 使成为必要<br/><details><summary>例句</summary>The team's lack of money necessitated a change of plan.<br/>这个团队经费短缺，让他们必须改变计划。</details>|
@@ -303,6 +303,13 @@ tags: [其他, 知识, 英语, Notes]
 |prick|v. 戳，扎，刺<br/>n. 蠢货，笨蛋|
 |slumber|n. 睡眠，睡觉<br/>睡，睡觉|
 |tuck|n. 收藏，把(衣服/纸张の边缘)塞进，把...藏入<br/>n. 打褶，去赘皮手术, 减肥手术, 零食（尤指儿童在学校吃的糖果等）|
+|||
+|blunt|adj. 钝的，率直的<br/>v. 把...弄钝，减弱|
+|scaly|adj. 带鳞片的，脱皮的|
+|||
+|roundabout|adj. 迂回的，间接的，兜圈子的<br/>n. 环岛，(游乐园)旋转平台|
+|irresistible|adj. 不可遏止的，无法抵制的，极诱人的，忍不住想要的|
+|den|n. 兽穴，书房，兽窝，窝点<br/>v. 穴居，进窝(冬眠)，把…赶入洞中|
 
 <details>
 <summary>扇贝音频测试</summary>

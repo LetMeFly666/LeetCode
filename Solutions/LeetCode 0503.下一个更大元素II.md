@@ -79,5 +79,69 @@ public:
 };
 ```
 
+#### Python
+
+```python
+from typing import List
+
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        ans = [-1] * len(nums)
+        st = []
+        for i in range(len(nums) * 2):
+            th = i % len(nums)
+            while st and nums[st[-1]] < nums[th]:
+                ans[st.pop()] = nums[th]
+            st.append(th)
+        return ans
+```
+
+#### Java
+
+```java
+// import java.util.Arrays;
+// import java.util.Deque;
+// import java.util.LinkedList;
+
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        int[] ans = new int[nums.length];
+        Arrays.fill(ans, -1);
+        Deque<Integer> st = new LinkedList<Integer>();
+        for (int i = 0; i < nums.length * 2; i++) {
+            int th = i % nums.length;
+            while (st.size() > 0 && nums[st.peek()] < nums[th]) {
+                ans[st.pop()] = nums[th];
+            }
+            st.push(th);
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+// package main
+
+func nextGreaterElements(nums []int) []int {
+    ans := make([]int, len(nums))
+    for i := range ans {
+        ans[i] = -1
+    }
+    st := []int{}
+    for i := 0; i < len(nums) * 2; i++ {
+        th := i % len(nums)
+        for len(st) > 0 && nums[st[len(st) - 1]] < nums[th] {
+            ans[st[len(st) - 1]] = nums[th]
+            st = st[:len(st) - 1]
+        }
+        st = append(st, th)
+    }
+    return ans
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/06/LeetCode%200503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0II/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127712170](https://letmefly.blog.csdn.net/article/details/127712170)
