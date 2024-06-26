@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-05-20 10:41:24
+ * @LastEditTime: 2024-06-26 22:28:54
 -->
 # LetLeet Blog
 
@@ -602,6 +602,7 @@
 |2706.购买两块巧克力|简单|<a href="https://leetcode.cn/problems/buy-two-chocolates/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/29/LeetCode%202706.%E8%B4%AD%E4%B9%B0%E4%B8%A4%E5%9D%97%E5%B7%A7%E5%85%8B%E5%8A%9B/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135295305" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/buy-two-chocolates/solutions/2584324/letmefly-2706gou-mai-liang-kuai-qiao-ke-vw4ai/" target="_blank">LeetCode题解</a>|
 |2731.移动机器人|中等|<a href="https://leetcode.cn/problems/movement-of-robots/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/10/10/LeetCode%202731.%E7%A7%BB%E5%8A%A8%E6%9C%BA%E5%99%A8%E4%BA%BA/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133758255" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/movement-of-robots/solutions/2476843/letmefly-2731yi-dong-ji-qi-ren-nao-jin-j-vwf2/" target="_blank">LeetCode题解</a>|
 |2739.总行驶距离|简单|<a href="https://leetcode.cn/problems/total-distance-traveled/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/04/25/LeetCode%202739.%E6%80%BB%E8%A1%8C%E9%A9%B6%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/138181110" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/total-distance-traveled/solutions/2755036/letmefly-2739zong-xing-shi-ju-chi-bu-mo-pqvgr/" target="_blank">LeetCode题解</a>|
+|2741.特别的排列|中等|<a href="https://leetcode.cn/problems/special-permutations/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/06/26/LeetCode%202741.%E7%89%B9%E5%88%AB%E7%9A%84%E6%8E%92%E5%88%97/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/140000372" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/special-permutations/solutions/2823238/letmefly-2741te-bie-de-pai-lie-zhuang-ya-qs1k/" target="_blank">LeetCode题解</a>|
 |2744.最大字符串配对数目|简单|<a href="https://leetcode.cn/problems/find-maximum-number-of-string-pairs/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/01/17/LeetCode%202744.%E6%9C%80%E5%A4%A7%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%85%8D%E5%AF%B9%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135662583" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-maximum-number-of-string-pairs/solutions/2608691/letmefly-2744zui-da-zi-fu-chuan-pei-dui-lnd3n/" target="_blank">LeetCode题解</a>|
 |2748.美丽下标对的数目|简单|<a href="https://leetcode.cn/problems/number-of-beautiful-pairs/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/06/20/LeetCode%202748.%E7%BE%8E%E4%B8%BD%E4%B8%8B%E6%A0%87%E5%AF%B9%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/139842524" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-beautiful-pairs/solutions/2816858/2748mei-li-xia-biao-dui-de-shu-mu-mo-ni-c3paz/" target="_blank">LeetCode题解</a>|
 |2760.最长奇偶子数组|简单|<a href="https://leetcode.cn/problems/longest-even-odd-subarray-with-threshold/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/11/16/LeetCode%202760.%E6%9C%80%E9%95%BF%E5%A5%87%E5%81%B6%E5%AD%90%E6%95%B0%E7%BB%84/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/134449952" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/longest-even-odd-subarray-with-threshold/solutions/2529749/letmefly-2760zui-chang-qi-ou-zi-shu-zu-m-f5ob/" target="_blank">LeetCode题解</a>|
@@ -793,6 +794,7 @@
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
+- [ ] [2732. 找到矩阵中的好子集](https://leetcode.cn/problems/find-a-good-subset-of-the-matrix/)（加```VE1ECg==```班没写）
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/FLDefinder/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - hexo我是一刻也待不下去了
