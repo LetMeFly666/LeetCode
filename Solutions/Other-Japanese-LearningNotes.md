@@ -658,13 +658,16 @@ xx型
 |ご飯を茶碗半分ください。<br/>请给我半碗饭。<br/>半分要放到茶碗的后面。|
 |このお店<font color="#ce82ff">までは</font><font color="#28bea0">どう</font>いきますか？<br/>到这个商店怎么走？|
 |公園を通ります。<br/>穿过公园。|
-|銀行を出ます。<br/>走出银行。|
-|銀行に入ります。<br/>进入银行。|
+|銀行<font color="#ce82ff">を</font>出ます。<br/>走出银行。|
+|銀行<font color="#ce82ff">に</font>入ります。<br/>进入银行。|
 |どこで降りますか。<br/>在哪儿下车。|
 |南へ進みましょう。<br/>向南方前进吧。|
 |まっすぐ北に行きましょう。<br/>径直去北方吧。|
+|北はあっちですか？<br/>北方在那边吗？|
 |あちらのコンビニは<font color="#ce82ff">小さい</font>です。<br/>那边的便利店很小。<br/>あちらに<font color="#ce82ff">小さな</font>コンビニがあります。<br/>那边有家小便利店。<details><summary>大和小</summary>当<font color="#ce82ff">小さい</font>和<font color="#ce82ff">大きい</font>放在名词之前时，<br/>要把它们变成<font color="#ce82ff">小さな</font>和<font color="#ce82ff">大きな</font>。</details>|
 |そっちのかどを左にまがります。<br/>那边的拐角向左转。|
+|そっちにまがります。<br/>**向**那边转。|
+|公園を歩きます。<br/>在公园步行。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

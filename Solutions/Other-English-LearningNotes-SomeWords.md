@@ -314,6 +314,13 @@ tags: [其他, 知识, 英语, Notes]
 |hull|n. 船体，船身<br>v. 剥去(豌豆、大豆等的)外壳，摘掉(草莓的)花萼|
 |skirmish|n. 小冲突，小规模战斗<br/>发生小规模战斗(或冲突/争执)|
 |frontier|n. 边境，边界，边疆，边缘，知识前沿，新领域<br/>adj. 边疆的，边境的，开拓的|
+|||
+|solitude|n. 独处，独居|
+|discreet|adj. (言行)谨慎的，考虑周到的|
+|forbid|v. 禁止，阻止<details><summary>过去分词</summary>forbade</details>|
+|furrow|n. 沟，犁沟，车辙，(脸上)皱纹<br/>v. 犁，(使)皱(眉)|
+|scold|v. 骂，责备，数落，奚落<br/>n. 唠唠叨叨骂人的人/妇女|
+|salability|n. 可售出性，畅销|
 
 <details>
 <summary>扇贝音频测试</summary>
