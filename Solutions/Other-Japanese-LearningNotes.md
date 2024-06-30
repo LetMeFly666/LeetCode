@@ -656,7 +656,7 @@ xx型
 |よく料理します。<br/>经常做饭。|
 |カレーを半分ください。<br/>请给我一半咖喱。|
 |ご飯を茶碗半分ください。<br/>请给我半碗饭。<br/>半分要放到茶碗的后面。|
-|このお店<font color="#ce82ff">までは</font><font color="#28bea0">どう</font>いきますか？<br/>到这个商店怎么走？|
+|このお店<font color="#ce82ff">までは</font><font color="#28bea0">どう</font>行きますか？<br/>到这个商店怎么走？|
 |公園を通ります。<br/>穿过公园。|
 |銀行<font color="#ce82ff">を</font>出ます。<br/>走出银行。|
 |銀行<font color="#ce82ff">に</font>入ります。<br/>进入银行。|
@@ -668,6 +668,9 @@ xx型
 |そっちのかどを左にまがります。<br/>那边的拐角向左转。|
 |そっちにまがります。<br/>**向**那边转。|
 |公園を歩きます。<br/>在公园步行。|
+|週末はあっちこっちに行きます。<br/>周末到处去。|
+|お仕事は？<br/>您的工作是？|
+|何のスポーツが好きですか？<br/>喜欢什么运动？|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 

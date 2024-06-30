@@ -321,6 +321,12 @@ tags: [其他, 知识, 英语, Notes]
 |furrow|n. 沟，犁沟，车辙，(脸上)皱纹<br/>v. 犁，(使)皱(眉)|
 |scold|v. 骂，责备，数落，奚落<br/>n. 唠唠叨叨骂人的人/妇女|
 |salability|n. 可售出性，畅销|
+|||
+|vigorous|adj. 充满活力的，精力充沛的，强健的|
+|miracle|n. 奇迹|
+|||
+|arithmetic|n. 算术|
+|coherent|adj. 条理清楚的，连贯的，前后一致的，协调的，有黏性的，聚合在一起的|
 
 <details>
 <summary>扇贝音频测试</summary>
