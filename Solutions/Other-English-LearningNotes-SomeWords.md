@@ -327,6 +327,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |arithmetic|n. 算术|
 |coherent|adj. 条理清楚的，连贯的，前后一致的，协调的，有黏性的，聚合在一起的|
+|||
+|gallop|v. 奔驰，奔跑，骑马奔驰<br/>n. 奔驰，飞快，骑马奔驰，高速度|
+|delicacy|n. 微妙，棘手，佳肴，柔软(性)|
+|pantry|n. 视频贮藏室，视频贮藏柜|
 
 <details>
 <summary>扇贝音频测试</summary>
