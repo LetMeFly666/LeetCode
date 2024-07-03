@@ -75,5 +75,24 @@ Learn FL，找数据集
 
 全力写本子。
 
+## 2024.7.1-2024.7.10
+
++ 7.1-7.2(上午)：再熟悉一下FL(攻防)基本知识
++ 7.2(下午)-7.3：定下最终思路
++ 7.4-7.8：代码实现/实验结果跑完
++ 7.9-7.10：初稿写完
+
+### 思路一
+
+经典特征层提取。
+
+根据[Better Together](https://dl.acm.org/doi/abs/10.1145/3564625.3564658)，此类实验主要有三个指标：
+
+1. 鲁棒性
+2. 保真度
+3. 效率
+
+特征层提取的话，对于鲁棒性，**未完待续**
+
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
 > [https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)
