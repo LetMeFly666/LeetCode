@@ -336,6 +336,10 @@ tags: [其他, 知识, 英语, Notes]
 |doom|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
 |||
 |bestow|v. 授予，献给|
+|||
+|ominous|adj. 不详的，恶兆的，不吉利的|
+|lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
+|moonlighting|n. 兼职(尤指夜间)<br/>v. 兼职(moonlight的现在分词)|
 
 <details>
 <summary>扇贝音频测试</summary>
