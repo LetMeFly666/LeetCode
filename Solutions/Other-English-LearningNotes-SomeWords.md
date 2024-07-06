@@ -340,6 +340,8 @@ tags: [其他, 知识, 英语, Notes]
 |ominous|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
 |moonlighting|n. 兼职(尤指夜间)<br/>v. 兼职(moonlight的现在分词)|
+|||
+|delegate|v. 选派(某人做某事)，授权，委派<br/>n. 代表，会议代表|
 
 <details>
 <summary>扇贝音频测试</summary>
