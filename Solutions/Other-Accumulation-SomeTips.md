@@ -93,6 +93,12 @@ Interpreter: /bin/bash
 
 使用```ssh```登录Linux时会显示Linux欢迎语，据不完全测试，修改```/etc/motd```为你想要显示的内容即可。（比如看板娘）
 
+### Linux列出所有中文字体
+
+```bash
+fc-list :lang=zh
+```
+
 ### 删除一个文件夹中的100万个文件（除了几个特殊文件不删）
 
 假设当前文件夹下有100万个```toDel-*```文件和4个其他文件。这100万个文件是想要删除的，这4个文件是想要保留的。怎么做？```rm toDel-*```会提示```-bash: /usr/bin/rm: 参数列表过长```。
@@ -537,6 +543,63 @@ Word中经常需要插入一些公式，但是很多时候需要在公式的最�
 以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
 
 讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
+
+## About Latex
+
+### Ubuntu上安装Latex（免安装版）
+
+我想使用`sudo aptitude install texlive-full`命令安装`xelatex`但是失败了。于是想到了直接下载可执行文件并添加到环境变量的方法。
+
+首先下载TeX Live 安装脚本，然后解压并安装。
+
+```bash
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -xzf install-tl-unx.tar.gz
+cd install-tl-20240705  # 这里20240705要替换成你下载到的版本
+sudo ./install-tl
+```
+
+根据提示直接安装（不用修改配置）就行。
+
+<details><summary>最终输出(提示)</summary>
+
+```
+ ----------------------------------------------------------------------
+ The following environment variables contain the string "tex"
+ (case-independent).  If you're doing anything but adding personal
+ directories to the system paths, they may well cause trouble somewhere
+ while running TeX.  If you encounter problems, try unsetting them.
+ 
+ Please ignore spurious matches unrelated to TeX. (To omit this check,
+ set the environment variable TEXLIVE_INSTALL_ENV_NOCHECK.)
+
+    TEXLIVE_INSTALL_NO_DISKCHECK=1
+ ----------------------------------------------------------------------
+欢迎进入 TeX Live 的世界！
+See /usr/local/texlive/2024/index.html for links to documentation.
+
+The TeX Live web site (https://tug.org/texlive/) provides all updates
+and corrections. TeX Live is a joint project of the TeX user groups
+around the world; please consider supporting it by joining the group
+best for you. The list of groups is available on the web
+at https://tug.org/usergroups.html.
+
+Add /usr/local/texlive/2024/texmf-dist/doc/man to MANPATH.
+Add /usr/local/texlive/2024/texmf-dist/doc/info to INFOPATH.
+Most importantly, add /usr/local/texlive/2024/bin/x86_64-linux
+to your PATH for current and future sessions.
+```
+
+</details>
+
+根据它的提示将三个内容分别添加到三个环境变量中，并重启终端即可。
+
+```bash
+# bash的话可以：vim ~/.bashrc
+export PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
+```
 
 # End
 
