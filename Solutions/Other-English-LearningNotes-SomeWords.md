@@ -312,7 +312,7 @@ tags: [其他, 知识, 英语, Notes]
 |den|n. 兽穴，书房，兽窝，窝点<br/>v. 穴居，进窝(冬眠)，把…赶入洞中|
 |||
 |hull|n. 船体，船身<br>v. 剥去(豌豆、大豆等的)外壳，摘掉(草莓的)花萼|
-|skirmish|n. 小冲突，小规模战斗<br/>发生小规模战斗(或冲突/争执)|
+|<font color="#28bea0" title="二次复习">skirmish</font>|n. 小冲突，小规模战斗<br/>发生小规模战斗(或冲突/争执)|
 |frontier|n. 边境，边界，边疆，边缘，知识前沿，新领域<br/>adj. 边疆的，边境的，开拓的|
 |||
 |solitude|n. 独处，独居|
@@ -342,6 +342,10 @@ tags: [其他, 知识, 英语, Notes]
 |moonlighting|n. 兼职(尤指夜间)<br/>v. 兼职(moonlight的现在分词)|
 |||
 |delegate|v. 选派(某人做某事)，授权，委派<br/>n. 代表，会议代表|
+|||
+|mosque|n. 清真寺|
+|substantiate|v. 证实，证明|
+|auxiliary|adj. 辅助的，备用的<br/>n. 助动词，辅助人员|
 
 <details>
 <summary>扇贝音频测试</summary>
