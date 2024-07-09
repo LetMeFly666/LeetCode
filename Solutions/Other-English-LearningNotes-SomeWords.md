@@ -335,7 +335,7 @@ tags: [其他, 知识, 英语, Notes]
 |fumble|v. 失球，笨手笨脚地做(某事)，笨拙地找(某物)，笨嘴拙舌地说话<br/>n. 笨拙的手部动作，乱摸，掉球|
 |doom|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
 |||
-|bestow|v. 授予，献给|
+|<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
 |||
 |ominous|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
@@ -344,8 +344,19 @@ tags: [其他, 知识, 英语, Notes]
 |delegate|v. 选派(某人做某事)，授权，委派<br/>n. 代表，会议代表|
 |||
 |mosque|n. 清真寺|
-|substantiate|v. 证实，证明|
+|<font color="#28bea0" title="二次复习">substantiate</font>|v. 证实，证明|
 |auxiliary|adj. 辅助的，备用的<br/>n. 助动词，辅助人员|
+|||
+|circus|n. 马戏团，马戏表演，引人注意的事情，热闹场面，圆形广场，竞技场|
+|formality|n. 例行公事，正式手续，遵守礼节|
+|distillation|n. 蒸馏法，【化】蒸馏，蒸馏作用，蒸馏物|
+|nightingale|n. 夜莺|
+|||
+|sentimental|adj. 情感的(而非理性的)，(失之过度或不恰当地)伤感的，多愁善感的|
+|impractical|adj. 不明智的，不现实的，手不灵巧的，不善于规划/组织的|
+|nuisance|n. 麻烦事，讨厌的人/东西，妨害行为|
+|dung|n. (尤指大型动物的)粪<br/>v. 给(地)施肥[上粪]|
+|hustle|v. 推搡，猛推，催促(某人做决定)，(非法)兜售<br/>n. 忙碌喧嚣|
 
 <details>
 <summary>扇贝音频测试</summary>
