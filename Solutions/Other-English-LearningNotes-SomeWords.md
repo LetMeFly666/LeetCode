@@ -337,7 +337,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
 |||
-|ominous|adj. 不详的，恶兆的，不吉利的|
+|<font color="#28bea0" title="二次复习">ominous</font>|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
 |moonlighting|n. 兼职(尤指夜间)<br/>v. 兼职(moonlight的现在分词)|
 |||
@@ -362,6 +362,11 @@ tags: [其他, 知识, 英语, Notes]
 |deflect|v. (使)转向，(使)偏斜|
 |frugal|adj. (对金钱/食物等)节约的，简单廉价的|
 |pyramid|n. 锥体，(古埃及的)金字塔，棱锥体，金字塔形的物体<br/>v. (使成)成金字塔形状|
+|||
+|hare|n. 野兔<br/>v. 飞奔，疾走|
+|thrift|n. 节俭，节约，海石竹(海边野生植物)|
+|agonize|v. 苦苦思索，焦虑不已|
+|incoterms|n. 国际贸易术语|
 
 <details>
 <summary>扇贝音频测试</summary>
