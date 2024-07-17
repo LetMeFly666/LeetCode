@@ -367,6 +367,8 @@ tags: [其他, 知识, 英语, Notes]
 |thrift|n. 节俭，节约，海石竹(海边野生植物)|
 |agonize|v. 苦苦思索，焦虑不已|
 |incoterms|n. 国际贸易术语|
+|||
+|pledge|n. 保证，誓言，抵押，抵押品<br/>v. 保证，发誓，抵押，典当|
 
 <details>
 <summary>扇贝音频测试</summary>
