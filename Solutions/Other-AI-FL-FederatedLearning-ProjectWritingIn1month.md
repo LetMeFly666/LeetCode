@@ -94,5 +94,26 @@ Learn FL，找数据集
 
 特征层提取的话，对于鲁棒性，**未完待续**
 
+## 2024.7.1-2024.7.15
+
+IEEE UIC2024的[ViT-MGI](https://github.com/LetMeFly666/ViT-MGI)初稿已定，几乎不会怎么改了。
+
+## 2024.7.18 - 2024.7.22(周一)
+
+扩刊idea。主要有以下两个方面：
+
+1. 深入一下ViT，有无能更加针对ViT的工作？
+2. 读一些最新攻防，高级攻击如何防？
+
+以上以2为主。
+
+周一找赞哥讨论。
+
+## 2024.7.23 - 2024.7.29(周一)
+
+更具体一点的idea。
+
+周一找赞哥讨论。
+
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)哦~
 > [https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/](https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/)
