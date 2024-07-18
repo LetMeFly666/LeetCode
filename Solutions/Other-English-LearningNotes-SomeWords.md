@@ -368,7 +368,14 @@ tags: [其他, 知识, 英语, Notes]
 |agonize|v. 苦苦思索，焦虑不已|
 |incoterms|n. 国际贸易术语|
 |||
+|jewelry|n. 珠宝，首饰，珠宝饰品|
+|confine|v. 限制，监禁|
+|||
 |pledge|n. 保证，誓言，抵押，抵押品<br/>v. 保证，发誓，抵押，典当|
+|||
+|ardent|adj. 热烈的，激情的|
+|earthly|adj. 人间的，尘世的，世俗的，可能的|
+|blacksmith|n. 铁匠(尤指打马蹄铁者)|
 
 <details>
 <summary>扇贝音频测试</summary>
