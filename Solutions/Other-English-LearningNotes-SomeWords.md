@@ -376,6 +376,12 @@ tags: [其他, 知识, 英语, Notes]
 |ardent|adj. 热烈的，激情的|
 |earthly|adj. 人间的，尘世的，世俗的，可能的|
 |blacksmith|n. 铁匠(尤指打马蹄铁者)|
+|||
+|incense|v. (祭供等用的)香，熏香<br/>v. 用香薰，向...敬香，激怒，使激怒|
+|||
+|peripheral|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
+|||
+|burglar|n. 窃贼|
 
 <details>
 <summary>扇贝音频测试</summary>
