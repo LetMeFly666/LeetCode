@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-06-26 22:28:54
+ * @LastEditTime: 2024-07-23 11:10:44
 -->
 # LetLeet Blog
 
@@ -772,7 +772,8 @@
 |python - 下载自百度网盘的远古の - 知识点备忘录|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-beiwanglu/">本平台博客</a>|无|
 |python - 下载自百度网盘的远古の - 高级知识总结1|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie1/">本平台博客</a>|无|
 |python - 下载自百度网盘的远古の - 高级知识总结2|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/">本平台博客</a>|无|
-|Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://blog.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
+|Python - random.seed初探 - 为什么固定随机种子了每次结果还不一样|<a href="https://blog.letmefly.xyz/2024/07/23/Other-Python-RandomSeed-whyDifferentWhileSeed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
+|Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://blog.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/140630443">CSDN博客</a>|
 |Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://blog.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
 |Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看|<a href="https://blog.letmefly.xyz/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131493348">CSDN博客</a>|
 |Python - 函数参数中的*和**|<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|

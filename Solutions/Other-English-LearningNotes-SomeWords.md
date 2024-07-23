@@ -386,6 +386,13 @@ tags: [其他, 知识, 英语, Notes]
 |pickpocket|n. 扒手，小偷|
 |insolvent|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
 |rigor|n. 【美】同rigour，严格，严厉，艰辛，严酷，严密，严谨|
+|||
+|beforehand|adv. 预先，事先|
+|pulley|n. 轮滑，滑车<br/>adj. 研磨成粉的|
+|stereo|n. 立体声音响<br/>adj. 立体声的|
+|crate|n. 大木箱，塑料分格箱，一箱(的量)<br/>v. 把...装入大木箱|
+|metallurgy|n. 冶金学，炼金术|
+|pneumatic|adj. 气动的，充气的|
 
 <details>
 <summary>扇贝音频测试</summary>
