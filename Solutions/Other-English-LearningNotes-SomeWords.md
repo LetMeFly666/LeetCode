@@ -382,6 +382,10 @@ tags: [其他, 知识, 英语, Notes]
 |peripheral|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
 |||
 |burglar|n. 窃贼|
+|||
+|pickpocket|n. 扒手，小偷|
+|insolvent|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
+|rigor|n. 【美】同rigour，严格，严厉，艰辛，严酷，严密，严谨|
 
 <details>
 <summary>扇贝音频测试</summary>
