@@ -8,6 +8,8 @@ tags: [其他, 知识, 英语, Notes]
 
 ## 单词
 
+<p class="wordCounts">单词收录总数</p>
+
 |单词|词义|
 |:--|:--|
 |flute|n. 长笛<br/> v. 吹长笛|
@@ -391,15 +393,52 @@ tags: [其他, 知识, 英语, Notes]
 |pulley|n. 轮滑，滑车<br/>adj. 研磨成粉的|
 |stereo|n. 立体声音响<br/>adj. 立体声的|
 |crate|n. 大木箱，塑料分格箱，一箱(的量)<br/>v. 把...装入大木箱|
-|metallurgy|n. 冶金学，炼金术|
-|pneumatic|adj. 气动的，充气的|
+|metallurgy|n. 冶金学，冶金术|
+|<font color="#28bea0" title="二次复习">pneumatic</font>|adj. 气动的，充气的|
 |||
 |cheeky|adj. 厚脸皮的，鲁莽的，放肆的|
+|eradicate|v. 根除|
+|ordinarily|adv. 普通地，平常地，正常地，一般情况下|
+|gorilla|n. 大猩猩|
+|bewilder|v. (使)迷惑，(使)糊涂|
+|bumpy|adj. 不平的，多凸块的，颠簸的|
+
+<p class="wordCounts">单词收录总数</p>
 
 <details>
 <summary>扇贝音频测试</summary>
 <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/0b64324d07fbeb886df8091532978174.67ef702e136e3a29a0778b1e9b3c8ffa.mp3"></audio>
 </details>
+
+<script name="countWords">
+    function countWords() {
+        // 返回当前页面的单词总数 - 当前仅支持 https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/ 及其 arknights
+        const tables = document.querySelectorAll('table');
+        if (tables.length != 1) {
+            return -1;
+        }
+        const table = tables[0];
+        var ans = 0;
+        const trs = table.querySelector('tbody').querySelectorAll('tr');
+        for (var i = 0; i < trs.length; i++) {
+            const word = trs[i].querySelector('td').innerText;
+            if (word) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    function countWords_changeHTML() {
+        const wordCount = countWords();
+        const toChange = document.querySelectorAll('.wordCounts');
+        for (var i = 0; i < toChange.length; i++) {
+            toChange[i].innerHTML = `收录单词总数：${wordCount}`
+        }
+    }
+
+    countWords_changeHTML();
+</script>
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)哦~
 > [https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)

@@ -765,6 +765,7 @@ xx型
 |毎年アメリカへ旅行に行きます。<br/>每年去美国旅行。|
 |私たちは毎年、2020時間寝ます。<br/>我们每年睡2020个小时。|
 |結婚おめでとう。<br/>新婚快乐。|
+|散歩に出かけます。<br/>外出去散步。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
