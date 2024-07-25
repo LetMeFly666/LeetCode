@@ -26,7 +26,7 @@
 <meta property="og:description" content="FL一点名词解释后门攻击成功的指标：  干净数据准确率（Clean Data Accuracy, CDA）：不带trigger的干净样本被成功预测的概率 攻击成功率（Attack Success Rate, ASR）：带trigger的样本被预测为攻击者指定类的概率  2024.1.4(15:00)-2024.1.6(14:30)任务 Learn FL，找数据集 数据集 其中LEAF提供了几个联邦">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-06T04:32:45.000Z">
-<meta property="article:modified_time" content="2024-07-23T05:04:50.648Z">
+<meta property="article:modified_time" content="2024-07-25T05:06:01.456Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="AI">
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.8k 字
         
       </span>
     
@@ -244,7 +244,7 @@
         
         
         
-          13 分钟
+          24 分钟
         
       </span>
     
@@ -368,7 +368,159 @@
 <li>了解大模型，什么样才算大模型，大模型一般怎么训(冻结调参?)，如何与视觉挂钩(甚至是ViT)，能否联邦学习</li>
 <li>确定两个视觉相关大模型(能训得出来那种比较小的大模型)，确定两个数据集，确定具体怎么训</li>
 </ol>
-<blockquote>
+<p><strong>参数量：</strong> 没有明确定义，通常具有数十亿规模参数甚至更多。当然也有较小的几千万参数的“大模型”。</p>
+<p><strong>能否联邦学习：</strong> 能，ViT就FL了。</p>
+<p><strong>大模型选择：</strong></p>
+<ol>
+<li>ViT也能算得上大模型，尤其是<code>ViT-Large</code>和<code>ViT-Huge</code>。<ul>
+<li><code>ViT-Base (ViT-B/16)</code>：8600万参数</li>
+<li><code>ViT-Large (ViT-L/16)</code>：3.07亿参数</li>
+<li><code>ViT-Huge (ViT-H/14)</code>：6.32亿参数</li>
+</ul>
+</li>
+<li>Swin Transformer：是一种分层视觉Transformer模型，在图像分类、目标检测和图像分割等任务上表现出色。<ul>
+<li><code>Swin-Tiny</code>：2900万参数</li>
+<li><code>Swin-Small</code>：5000万参数</li>
+<li><code>Swin-Base</code>：8800万参数</li>
+<li><code>Swin-Large</code>：1.97亿参数</li>
+</ul>
+</li>
+<li>ResNet-152：是一种深层卷积神经网络，在多个视觉任务中表现优异。<ul>
+<li>6000万参数</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>Vision Transformer (ViT)</th>
+<th>Swin Transformer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>架构</td>
+<td>直接使用Transformer架构处理patch</td>
+<td>分层设计，使用窗口注意力和移动窗口机制</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>强大表示能力，简化设计</td>
+<td>计算效率高，适合多任务和高分辨率图像</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>计算资源要求高，处理高分辨率图像复杂</td>
+<td>结构复杂，需要精细设计和调优</td>
+</tr>
+<tr>
+<td>图像分类性能</td>
+<td>大规模数据上表现优异</td>
+<td>各种数据规模上表现良好</td>
+</tr>
+<tr>
+<td>目标检测和图像分割</td>
+<td>可能表现不如专门设计的模型</td>
+<td>表现出色</td>
+</tr>
+<tr>
+<td>计算复杂度</td>
+<td>高，尤其是高分辨率图像</td>
+<td>较低，适合高分辨率图像处理</td>
+</tr>
+</tbody></table>
+<p><strong>数据集选择：</strong></p>
+<table>
+<thead>
+<tr>
+<th>数据集名称</th>
+<th>数据量</th>
+<th>标签数</th>
+<th>特点</th>
+<th>主要应用模型</th>
+<th>数据集类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ImageNet-1k</td>
+<td>120万</td>
+<td>1,000</td>
+<td>大规模图像分类基准，常用于模型预训练和评估</td>
+<td>ViT, Swin Transformer, DeiT</td>
+<td>自然图像分类</td>
+</tr>
+<tr>
+<td>ImageNet-21k</td>
+<td>1400万</td>
+<td>21,000</td>
+<td>包含更多类别，适合大规模预训练</td>
+<td>ViT, Swin Transformer</td>
+<td>自然图像分类</td>
+</tr>
+<tr>
+<td>CIFAR-10</td>
+<td>60,000</td>
+<td>10</td>
+<td>小规模数据集，常用于快速验证模型性能</td>
+<td>ViT, DeiT</td>
+<td>小型自然图像分类</td>
+</tr>
+<tr>
+<td>CIFAR-100</td>
+<td>60,000</td>
+<td>100</td>
+<td>与CIFAR-10类似，但分类更细致</td>
+<td>ViT, DeiT</td>
+<td>小型自然图像分类</td>
+</tr>
+<tr>
+<td>Tiny ImageNet</td>
+<td>100,000</td>
+<td>200</td>
+<td>中等规模数据集，适用于模型性能验证</td>
+<td>ViT, DeiT</td>
+<td>自然图像分类</td>
+</tr>
+<tr>
+<td>COCO</td>
+<td>330,000</td>
+<td>80</td>
+<td>多任务数据集，广泛用于目标检测和图像分割</td>
+<td>Swin Transformer, SegFormer</td>
+<td>目标检测、图像分割、物体识别</td>
+</tr>
+<tr>
+<td>ADE20K</td>
+<td>25,000</td>
+<td>150</td>
+<td>用于语义分割任务的标准数据集</td>
+<td>Swin Transformer, SegFormer</td>
+<td>语义分割</td>
+</tr>
+<tr>
+<td>Cityscapes</td>
+<td>5,000</td>
+<td>30</td>
+<td>专用于城市街景图像分割，评估模型在真实场景的表现</td>
+<td>Swin Transformer, SegFormer</td>
+<td>城市街景图像分割</td>
+</tr>
+<tr>
+<td>Pascal VOC</td>
+<td>9,000</td>
+<td>20</td>
+<td>经典的目标检测和分类数据集，应用广泛</td>
+<td>Swin Transformer, SegFormer</td>
+<td>目标检测和分类</td>
+</tr>
+</tbody></table>
+<h2 id="2024-7-23-晚上-2024-7-24-暂定晚上"><a href="#2024-7-23-晚上-2024-7-24-暂定晚上" class="headerlink" title="2024.7.23(晚上) - 2024.7.24(暂定晚上)"></a>2024.7.23(晚上) - 2024.7.24(暂定晚上)</h2><p>前面的调研不中。</p>
+<ul>
+<li>大模型的具体步骤</li>
+<li>视觉大模型的具体步骤</li>
+</ul>
+<p>可以找找近两年论文里图像分类的大模型都用的啥，具体是怎么微调的。</p>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><blockquote>
 <p>原创不易，转载请附上<a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/</a></p>
 </blockquote>
 
