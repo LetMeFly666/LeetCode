@@ -393,6 +393,8 @@ tags: [其他, 知识, 英语, Notes]
 |crate|n. 大木箱，塑料分格箱，一箱(的量)<br/>v. 把...装入大木箱|
 |metallurgy|n. 冶金学，炼金术|
 |pneumatic|adj. 气动的，充气的|
+|||
+|cheeky|adj. 厚脸皮的，鲁莽的，放肆的|
 
 <details>
 <summary>扇贝音频测试</summary>
