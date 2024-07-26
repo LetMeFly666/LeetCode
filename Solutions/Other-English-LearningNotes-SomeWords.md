@@ -402,6 +402,13 @@ tags: [其他, 知识, 英语, Notes]
 |gorilla|n. 大猩猩|
 |bewilder|v. (使)迷惑，(使)糊涂|
 |bumpy|adj. 不平的，多凸块的，颠簸的|
+|||
+|fulfil|v. 实现，完成，满足|
+|tonnage|n. 吨位，吨数|
+|lattice|n. 格栅(用作篱笆等)，斜条结构，斜格图案|
+|fishery|n. 渔场|
+|vague|adj. 模糊的，不明确的，含糊其词的|
+|rheumatism|n. 风湿(病)|
 
 <p class="wordCounts">单词收录总数</p>
 
