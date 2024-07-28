@@ -409,6 +409,15 @@ tags: [其他, 知识, 英语, Notes]
 |fishery|n. 渔场|
 |vague|adj. 模糊的，不明确的，含糊其词的|
 |rheumatism|n. 风湿(病)|
+|||
+|inclination|n. 倾向，意向，趋向，倾斜度，轻微的向下动作|
+|conspicuous|adj. 易见的，明显的，惹人注意的|
+|||
+|amateur|adj. 业余爱好者的<br/>n. 业余爱好者，外行|
+|rigorous|adj. 谨慎的，细致的，严格的，严厉的|
+|arbitrary|adj. 任意的，武断的，随心所欲的，专横的，反复无常的|
+|headquarters|n. 总部，总店，指挥部|
+|chamber|n. 议会，议院，房间，室|
 
 <p class="wordCounts">单词收录总数</p>
 
