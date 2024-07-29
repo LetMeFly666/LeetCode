@@ -375,7 +375,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |pledge|n. 保证，誓言，抵押，抵押品<br/>v. 保证，发誓，抵押，典当|
 |||
-|ardent|adj. 热烈的，激情的|
+|<font color="#28bea0" title="二次复习">ardent</font>|adj. 热烈的，激情的|
 |earthly|adj. 人间的，尘世的，世俗的，可能的|
 |blacksmith|n. 铁匠(尤指打马蹄铁者)|
 |||
@@ -418,6 +418,10 @@ tags: [其他, 知识, 英语, Notes]
 |arbitrary|adj. 任意的，武断的，随心所欲的，专横的，反复无常的|
 |headquarters|n. 总部，总店，指挥部|
 |chamber|n. 议会，议院，房间，室|
+|||
+|cunning|adj. 狡猾的，奸诈的，诡诈的，灵巧的<br/>n. 狡猾，诡诈，狡黠|
+|tyranny|n. 暴政，苛政，专制|
+|foreman|n. 工头，领班，陪审团团长|
 
 <p class="wordCounts">单词收录总数</p>
 
