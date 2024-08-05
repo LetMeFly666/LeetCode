@@ -45,7 +45,7 @@ tags: [题解, LeetCode, 简单, 树, 二叉树, 模拟]
     
 ## 方法一：模拟
 
-判断$root.val$是否等于$root.left.val + root.right.val。
+判断$root.val$是否等于$root.left.val + root.right.val$。
 
 + 时间复杂度$O(1)$
 + 空间复杂度$O(1)$

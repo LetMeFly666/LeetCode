@@ -20,7 +20,7 @@ tags: [其他, 知识, 英语, Notes]
 |delinquency|n. 违法行为，不良行为|
 |||
 |portrait|n. 肖像，画像<br/>adj. 竖向的，纵向打印格式的|
-|fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>v. 用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行</details>|
+|fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>v. 用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行。</details>|
 |telescope|v. (使)叠套缩短，精简<br/>n. 望远镜|
 |aggravation|n. 加重，恶化|
 |flee|v. 迅速离开，逃避，逃跑<br/><details><summary>例句</summary>The frightened people <font color="#28bea0">fled</font> from the fire.<br/>人们惊恐万状地逃离了火灾现场。</details>|
@@ -272,7 +272,7 @@ tags: [其他, 知识, 英语, Notes]
 |viscous|adj. 粘稠的，粘滞的|
 |||
 |swarm|n. 一大群(蜜蜂等昆虫)，一大批(同向移动的人)<br/>v. 成群地来回移动，成群地飞来飞去|
-|pore|n. 孔隙，(皮肤上的)毛孔，(植物的)气孔<br/>v. 注视，用心阅读，细心研究，默想|
+|<font color="#28bea0" title="二次复习">pore</font>|n. 孔隙，(皮肤上的)毛孔，(植物的)气孔<br/>v. 注视，用心阅读，细心研究，默想|
 |seam|n. 线缝，接缝，骨缝，皱纹，伤疤，矿层，煤层<br/>v. 缝合，使留下伤疤，使生皱纹，产生裂缝|
 |mattress|n. 床垫，褥子|
 |assault|n. 攻击，袭击，突击<br/>v. 袭击，使(感官)难受|
@@ -314,7 +314,7 @@ tags: [其他, 知识, 英语, Notes]
 |den|n. 兽穴，书房，兽窝，窝点<br/>v. 穴居，进窝(冬眠)，把…赶入洞中|
 |||
 |hull|n. 船体，船身<br>v. 剥去(豌豆、大豆等的)外壳，摘掉(草莓的)花萼|
-|<font color="#28bea0" title="二次复习">skirmish</font>|n. 小冲突，小规模战斗<br/>发生小规模战斗(或冲突/争执)|
+|<font color="#77BBDD" title="三次复习 | 颜色为MyGo!!!!!高松灯代表色">skirmish</font>|n. 小冲突，小规模战斗<br/>发生小规模战斗(或冲突/争执)|
 |frontier|n. 边境，边界，边疆，边缘，知识前沿，新领域<br/>adj. 边疆的，边境的，开拓的|
 |||
 |solitude|n. 独处，独居|
@@ -339,7 +339,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
 |||
-|<font color="#28bea0" title="二次复习">ominous</font>|adj. 不详的，恶兆的，不吉利的|
+|<font color="#28bea0" title="三次复习">ominous</font>|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
 |moonlighting|n. 兼职(尤指夜间)<br/>v. 兼职(moonlight的现在分词)|
 |||
@@ -422,6 +422,28 @@ tags: [其他, 知识, 英语, Notes]
 |cunning|adj. 狡猾的，奸诈的，诡诈的，灵巧的<br/>n. 狡猾，诡诈，狡黠|
 |tyranny|n. 暴政，苛政，专制|
 |foreman|n. 工头，领班，陪审团团长|
+|||
+|Moslem|n. 穆斯林<br/>adj. 穆斯林的，伊斯兰教的|
+|pacific|adj. 平静的，和平的，爱和平的，太平洋的<br/>n. 太平洋|
+|integral|adj. 构成完整整体所必须的，不可或缺的，完整的，整体的|
+|censorship|n. 审查，审查制度，检查|
+|deprive|v. 剥夺，免职(特指圣职)|
+|decide<font color="#77DD77" title="decidedly这里还有个d">d</font>ly|adv. 显然，肯定，确实，果断地|
+|speculator|n. 投机商，投机倒把者|
+|pictor<font color="#77DD77" title="pictorial这里还有个i">i</font>al|adj. 用图片的，有插图的，滑片的，画图的<br/>n. 画报，画页，图画邮票|
+|||
+|hasten|v. 促进，急忙进行，赶紧说/做，使加快<details><summary>例句</summary>I hastened to assure the visitors that there was no danger at all.<br/>我赶忙向参观者保证根本没有危险。</details>|
+|||
+|siren|n. 汽笛，警报器，海妖，妖艳而危险的女人<br/>adj. 迷人的|
+|father-in-law|岳父/公公|
+|||
+|relinquish|v. (不情愿地)放弃|
+|adhesive|n. 黏合剂，黏着剂<br/>adj. 黏合的，黏稠的，有附着力的|
+|exalt|v. 提拔，表扬，褒扬，高度赞扬|
+|exalted|adj. 地位高的，高队的，显赫的，兴奋的<br/>v. exalt的过去分词和过去式|
+|gratify|v. 使高兴，使满意，满足(愿望/需求 等)|
+|||
+|portray|v. 描绘，描写，描画，将..描写成|
 
 <p class="wordCounts">单词收录总数</p>
 
