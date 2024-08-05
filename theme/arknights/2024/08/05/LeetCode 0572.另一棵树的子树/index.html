@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>572.另一棵树的子树 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>572.另一棵树的子树</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2024-08-05T14:32:37.000Z" id="date"> 2024-08-05</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】572-另一棵树的子树：深搜-广搜（n-2做法就能过，也有复杂度耕地的算法）"><a href="#【LetMeFly】572-另一棵树的子树：深搜-广搜（n-2做法就能过，也有复杂度耕地的算法）" class="headerlink" title="【LetMeFly】572.另一棵树的子树：深搜+广搜（n^2做法就能过，也有复杂度耕地的算法）"></a>【LetMeFly】572.另一棵树的子树：深搜+广搜（n^2做法就能过，也有复杂度耕地的算法）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subtree-of-another-tree/">https://leetcode.cn/problems/subtree-of-another-tree/</a></p>
+<div class="original__bRMd">
+<div>
+<p>给你两棵二叉树 <code>root</code> 和 <code>subRoot</code> 。检验 <code>root</code> 中是否包含和 <code>subRoot</code> 具有相同结构和节点值的子树。如果存在，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+
+<p>二叉树 <code>tree</code> 的一棵子树包括 <code>tree</code> 的某个节点和这个节点的所有后代节点。<code>tree</code> 也可以看做它自身的一棵子树。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg'><img alt="" src="https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg" style="width: 532px; height: 400px;" />
+<pre>
+<strong>输入：</strong>root = [3,4,5,1,2], subRoot = [4,1,2]
+<strong>输出：</strong>true
+</pre>
+
+<p><strong>示例 2：</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/04/28/subtree2-tree.jpg'><img alt="" src="https://assets.leetcode.com/uploads/2021/04/28/subtree2-tree.jpg" style="width: 502px; height: 458px;" />
+<pre>
+<strong>输入：</strong>root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
+<strong>输出：</strong>false
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>root</code> 树上的节点数量范围是 <code>[1, 2000]</code></li>
+    <li><code>subRoot</code> 树上的节点数量范围是 <code>[1, 1000]</code></li>
+    <li><code>-10<sup>4</sup> <= root.val <= 10<sup>4</sup></code></li>
+    <li><code>-10<sup>4</sup> <= subRoot.val <= 10<sup>4</sup></code></li>
+</ul>
+</div>
+</div>
+
+
+    
+<h2 id="解题方法：深搜-广搜（硬匹配）"><a href="#解题方法：深搜-广搜（硬匹配）" class="headerlink" title="解题方法：深搜+广搜（硬匹配）"></a>解题方法：深搜+广搜（硬匹配）</h2><p>如何判断两个树是否相同呢？</p>
+<blockquote>
+<p>我们可以写一个函数<code>isSame(rootA, rootB)</code>来判断以rootA为根的树是否和以rootB为根的树相同。</p>
+<p>首先如果rootA和rootB中有一个为空，那么他们都要为空才能相等；</p>
+<p>否则（都不为空），rootA的值必须和rootB的值相等，并且他们的左子树相等（可递归判断），右子树也相等，两棵树才能相同。</p>
+</blockquote>
+<p>因此，我们可以遍历以root为根的这棵树的每一个节点（深搜和广搜都可，本题解中C++代码以广搜为例，Python代码以深搜为例），判断以每个节点为根的树是否和以subRoot为根的树相同。一旦存在相同的子树，则立即返回true。</p>
+<ul>
+<li>时间复杂度$O(size(root)\times size(subRoot))$</li>
+<li>空间复杂度$O(size(root))$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isSame</span><span class="params">(TreeNode* a, TreeNode* b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!a || !b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a == b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a-&gt;val == b-&gt;val &amp;&amp; <span class="built_in">isSame</span>(a-&gt;left, b-&gt;left) &amp;&amp; <span class="built_in">isSame</span>(a-&gt;right, b-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isSubtree</span><span class="params">(TreeNode* root, TreeNode* subRoot)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (q.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            TreeNode* thisNode = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isSame</span>(thisNode, subRoot)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (thisNode-&gt;left) &#123;</span><br><span class="line">                q.<span class="built_in">push</span>(thisNode-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (thisNode-&gt;right) &#123;</span><br><span class="line">                q.<span class="built_in">push</span>(thisNode-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from typing import Optional</span></span><br><span class="line"><span class="comment"># # Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSame</span>(<span class="params">self, a: <span class="type">Optional</span>[TreeNode], b: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> a <span class="keyword">or</span> <span class="keyword">not</span> b:</span><br><span class="line">            <span class="keyword">return</span> a == b</span><br><span class="line">        <span class="keyword">return</span> a.val == b.val <span class="keyword">and</span> <span class="variable language_">self</span>.isSame(a.left, b.left) <span class="keyword">and</span> <span class="variable language_">self</span>.isSame(a.right, b.right)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isSubtree</span>(<span class="params">self, root: <span class="type">Optional</span>[TreeNode], subRoot: <span class="type">Optional</span>[TreeNode]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.isSame(root, subRoot):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.isSubtree(root.left, subRoot) <span class="keyword">or</span> <span class="variable language_">self</span>.isSubtree(root.right, subRoot)</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题方法拓展"><a href="#解题方法拓展" class="headerlink" title="解题方法拓展"></a>解题方法拓展</h2><p>假设两棵树的节点个数分别为m和n。</p>
+<p>上述解题方法中，如果二叉树退化成链，且树中元素几乎全为1，则要比较接近$mn$次。</p>
+<p>有没有什么能提升效率的方法呢？其实我们在深搜以root为根的树的时候可以统计一下每个节点距其子树最远叶子节点的距离，只有高度相同的树才有可能相同。这样，每个节点不会被比较多次，我们就将时间复杂度降低到了$O(m)$。（如果$n\gt m$则不会比完全以subRoot为根节点的树的节点）</p>
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/08/05/LeetCode%200572.%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/140939018">https://letmefly.blog.csdn.net/article/details/140939018</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2024/07/29/LeetCode%200682.%E6%A3%92%E7%90%83%E6%AF%94%E8%B5%9B/">682.棒球比赛 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91572-%E5%8F%A6%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E5%AD%90%E6%A0%91%EF%BC%9A%E6%B7%B1%E6%90%9C-%E5%B9%BF%E6%90%9C%EF%BC%88n-2%E5%81%9A%E6%B3%95%E5%B0%B1%E8%83%BD%E8%BF%87%EF%BC%8C%E4%B9%9F%E6%9C%89%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%80%95%E5%9C%B0%E7%9A%84%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】572.另一棵树的子树：深搜+广搜（n^2做法就能过，也有复杂度耕地的算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%B7%B1%E6%90%9C-%E5%B9%BF%E6%90%9C%EF%BC%88%E7%A1%AC%E5%8C%B9%E9%85%8D%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：深搜+广搜（硬匹配）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%E6%8B%93%E5%B1%95"><span class="toc-number">1.2.</span> <span class="toc-text">解题方法拓展</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
