@@ -335,7 +335,7 @@ tags: [其他, 知识, 英语, Notes]
 |pantry|n. 视频贮藏室，视频贮藏柜|
 |||
 |fumble|v. 失球，笨手笨脚地做(某事)，笨拙地找(某物)，笨嘴拙舌地说话<br/>n. 笨拙的手部动作，乱摸，掉球|
-|doom|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
+|<font color="#28bea0" title="二次复习">doom</font>|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
 |||
 |<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
 |||
@@ -347,7 +347,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |mosque|n. 清真寺|
 |<font color="#28bea0" title="二次复习">substantiate</font>|v. 证实，证明|
-|auxiliary|adj. 辅助的，备用的<br/>n. 助动词，辅助人员|
+|<font color="#28bea0" title="二次复习">auxiliary</font>|adj. 辅助的，备用的<br/>n. 助动词，辅助人员|
 |||
 |circus|n. 马戏团，马戏表演，引人注意的事情，热闹场面，圆形广场，竞技场|
 |formality|n. 例行公事，正式手续，遵守礼节|
@@ -381,12 +381,12 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |incense|v. (祭供等用的)香，熏香<br/>v. 用香薰，向...敬香，激怒，使激怒|
 |||
-|peripheral|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
+|<font color="#28bea0" title="二次复习">peripheral</font>|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
 |||
 |burglar|n. 窃贼|
 |||
 |pickpocket|n. 扒手，小偷|
-|insolvent|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
+|<font color="#28bea0" title="二次复习">insolvent</font>|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
 |rigor|n. 【美】同rigour，严格，严厉，艰辛，严酷，严密，严谨|
 |||
 |beforehand|adv. 预先，事先|
@@ -444,6 +444,23 @@ tags: [其他, 知识, 英语, Notes]
 |gratify|v. 使高兴，使满意，满足(愿望/需求 等)|
 |||
 |portray|v. 描绘，描写，描画，将..描写成|
+|||
+|spectacle|n. 精彩表演，壮观景象，出人意料的情况，(复数)眼镜|
+|utensil|n. 器具，用具|
+|sham|n. 伪装，假象，假情假意，伪善<br/>adj. 虚假的，假装的<br/>v. 假装，冒充|
+|rebuke|v. 指责，批评|
+|disillusion|v. 使醒悟，使觉醒，使幻想破灭|
+|||
+|periodical|n. (学术)期刊<br/>adj. 周期的，定期的|
+|ambient|adj. 周围环境的，产生轻松氛围的|
+|sneer|n. 嘲笑，讥讽，冷笑<br/>v. 嘲笑，讥讽，冷笑|
+|curb|v. 抑制<br/>n. 起控制（或限制）作用的事物, （由条石砌成的）路缘|
+|||
+|preach|v. 传道，布道，宣讲，告诫，说教，竭力劝说|
+|amiable|adj. 和蔼可亲的，亲切友好的|
+|plump|adj. 丰满的，丰腴的，胖乎乎的，饱满的<br/>v. (拍打坐垫等)使蓬松，猛地摔下，重重的坐下<br/>n. 突然前冲，种种坠落|
+|miscarriage|n. 流产|
+|sullen|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
 
 <p class="wordCounts">单词收录总数</p>
 
