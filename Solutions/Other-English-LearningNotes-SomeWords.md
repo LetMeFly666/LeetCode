@@ -461,6 +461,8 @@ tags: [其他, 知识, 英语, Notes]
 |plump|adj. 丰满的，丰腴的，胖乎乎的，饱满的<br/>v. (拍打坐垫等)使蓬松，猛地摔下，重重的坐下<br/>n. 突然前冲，种种坠落|
 |miscarriage|n. 流产|
 |sullen|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
+|||
+|carpenter|n. 木匠，木工<br/>v. 以木工手艺造/修(家具/器物)|
 
 <p class="wordCounts">单词收录总数</p>
 
