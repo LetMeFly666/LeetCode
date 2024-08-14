@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-07-23 11:10:44
+ * @LastEditTime: 2024-08-14 11:14:39
 -->
 # LetLeet Blog
 
@@ -765,6 +765,7 @@
 |Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
+|Vjudge使用小指南 - Virtual Judge - 一个Online Judge(OJ)平台 - 支持大量第三方题库|<a href="https://blog.letmefly.xyz/2024/08/14/Other-OJ-Vjudge-how2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/141185238">CSDN博客</a>|
 |抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
 |物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
