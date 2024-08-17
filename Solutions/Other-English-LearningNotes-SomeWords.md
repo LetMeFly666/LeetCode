@@ -473,6 +473,13 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |scoff|v. 嘲笑，讥讽，狼吞虎咽|
 |elliptical|adj. 椭圆的，省略的，隐晦的|
+|||
+|sturdy|adj. 结实的，坚固的；强壮的；健壮的；坚决的，顽强的|
+|||
+|cardinal|n. 基数，枢机主教，纯数，红衣风头鸟<br/>adj. 最重要的，基本的，鲜红的|
+|||
+|chimney|n. 烟囱，烟道，(屋顶上的)烟囱管，狭缝|
+|damp|adj. 潮湿的<br/>v. 使潮湿|
 
 <p class="wordCounts">单词收录总数</p>
 
