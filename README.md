@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-08-14 11:14:39
+ * @LastEditTime: 2024-08-16 22:24:49
 -->
 # LetLeet Blog
 
@@ -16,7 +16,8 @@
   </tr>
   <tr>
     <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/4.jpg" height="80" width="82"></td>
-    <td><img src="https://img.shields.io/github/stars/LetMeFly666/LeetCode.svg?style=social"></td>
+    <!-- <td><img src="https://img.shields.io/github/stars/LetMeFly666/LeetCode.svg?style=social"></td> -->
+    <td><img src="https://unv-shield.librian.net/api/unv_shield?repo=LetMeFly666/LeetCode"></td>
     <td><img src="https://cors.tisfy.eu.org/https://img1.github.io/tmp/6.jpg" height="82" width="82"></td>
   </tr>
    <tr>
@@ -662,6 +663,7 @@
 |3115.质数的最大距离|中等|<a href="https://leetcode.cn/problems/maximum-prime-difference/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/07/02/LeetCode%203115.%E8%B4%A8%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/140121329" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-prime-difference/solutions/2828631/letmefly-3115zhi-shu-de-zui-da-ju-chi-zh-1yvd/" target="_blank">LeetCode题解</a>|
 |3131.找出与数组相加的整数I|简单|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-i/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/08/LeetCode%203131.%E6%89%BE%E5%87%BA%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9B%B8%E5%8A%A0%E7%9A%84%E6%95%B4%E6%95%B0I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141037760" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-i/solutions/2873708/letmefly-3131zhao-chu-yu-shu-zu-xiang-ji-mfd3/" target="_blank">LeetCode题解</a>|
 |3132.找出与数组相加的整数II|中等|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-ii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/09/LeetCode%203132.%E6%89%BE%E5%87%BA%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9B%B8%E5%8A%A0%E7%9A%84%E6%95%B4%E6%95%B0II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141072842" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-ii/solutions/2874942/letmefly-3132zhao-chu-yu-shu-zu-xiang-ji-eljs/" target="_blank">LeetCode题解</a>|
+|3137.K周期字符串需要的最少操作次数|中等|<a href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-word-k-periodic/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/17/LeetCode%203137.K%E5%91%A8%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141284611" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-word-k-periodic/solutions/2883701/letmefly-3137k-zhou-qi-zi-fu-chuan-xu-ya-uma3/" target="_blank">LeetCode题解</a>|
 |3148.矩阵中的最大得分|中等|<a href="https://leetcode.cn/problems/maximum-difference-score-in-a-grid/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/16/LeetCode%203148.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141234633" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-difference-score-in-a-grid/solutions/2882113/letmefly-3148ju-zhen-zhong-de-zui-da-de-dy4t8/" target="_blank">LeetCode题解</a>|
 |3151.特殊数组I|简单|<a href="https://leetcode.cn/problems/special-array-i/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/14/LeetCode%203151.%E7%89%B9%E6%AE%8A%E6%95%B0%E7%BB%84I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141176978" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/special-array-i/solutions/2879502/letmefly-3151te-shu-shu-zu-i-by-tisfy-uzx5/" target="_blank">LeetCode题解</a>|
 |3152.特殊数组II|中等|<a href="https://leetcode.cn/problems/special-array-ii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/14/LeetCode%203152.%E7%89%B9%E6%AE%8A%E6%95%B0%E7%BB%84II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141203073" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/special-array-ii/solutions/2880854/letmefly-3152te-shu-shu-zu-iiqian-zhui-h-i7f4/" target="_blank">LeetCode题解</a>|
