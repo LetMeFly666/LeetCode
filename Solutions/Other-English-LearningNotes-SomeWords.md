@@ -480,6 +480,27 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |chimney|n. 烟囱，烟道，(屋顶上的)烟囱管，狭缝|
 |damp|adj. 潮湿的<br/>v. 使潮湿|
+|||
+|penicillin|n. 青霉素，盘尼西林|
+|sanitary|adj. 卫生的，环境卫生的，公共卫生的，清洁的<br/>n. (有卫生设备的)公共厕所|
+|dove|n. 格子，温和派政客|
+|genius|n. 天才，天赋，天才人物，天资|
+|ingenious|adj. 精致的，心灵手巧的，机灵的，有独创性的|
+|vaccinate|v. 给...接种疫苗|
+|pony|n. 矮马，小型马，25英镑<br/>v. 用注解书学习，清偿<br/>adj. 小(型)的|
+|||
+|redound|v. 有益于|
+|blot|v. 吸干，擦干，弄脏，污损，使蒙耻，使模糊，弄暗<br/>n. 墨渍，污渍，污点，耻辱，有损整体美的东西|
+|||
+|crimson|adj. 深红的，(因害羞或生气)脸通红的<br/>v. 染成(变成)深红色，(脸)变通红<br/>n. 深红，深红色颜料|
+|prism|n. 棱柱，棱镜|
+|bearish|adj. 熊市的，(证券市场)看跌的|
+|conceited|adj. 自负的，骄傲自大的|
+|||
+|meditation|n. 冥想，沉思，深思，沉思录|
+|||
+|proprietorship|n. 所有权，〔商〕独资，〔经〕所有制|
+|acquisition|n. (技能/习惯/品质·的)习得，培养，收购，资产获得，获得物|
 
 <p class="wordCounts">单词收录总数</p>
 

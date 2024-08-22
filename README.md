@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-08-16 22:24:49
+ * @LastEditTime: 2024-08-22 18:28:48
 -->
 # LetLeet Blog
 
@@ -664,6 +664,7 @@
 |3115.质数的最大距离|中等|<a href="https://leetcode.cn/problems/maximum-prime-difference/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/07/02/LeetCode%203115.%E8%B4%A8%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/140121329" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-prime-difference/solutions/2828631/letmefly-3115zhi-shu-de-zui-da-ju-chi-zh-1yvd/" target="_blank">LeetCode题解</a>|
 |3131.找出与数组相加的整数I|简单|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-i/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/08/LeetCode%203131.%E6%89%BE%E5%87%BA%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9B%B8%E5%8A%A0%E7%9A%84%E6%95%B4%E6%95%B0I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141037760" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-i/solutions/2873708/letmefly-3131zhao-chu-yu-shu-zu-xiang-ji-mfd3/" target="_blank">LeetCode题解</a>|
 |3132.找出与数组相加的整数II|中等|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-ii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/09/LeetCode%203132.%E6%89%BE%E5%87%BA%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9B%B8%E5%8A%A0%E7%9A%84%E6%95%B4%E6%95%B0II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141072842" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-integer-added-to-array-ii/solutions/2874942/letmefly-3132zhao-chu-yu-shu-zu-xiang-ji-eljs/" target="_blank">LeetCode题解</a>|
+|3133.数组最后一个元素的最小值|中等|<a href="https://leetcode.cn/problems/minimum-array-end/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/22/LeetCode%203133.%E6%95%B0%E7%BB%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141440484" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-array-end/solutions/2889869/letmefly-3133shu-zu-zui-hou-yi-ge-yuan-s-nh55/" target="_blank">LeetCode题解</a>|
 |3137.K周期字符串需要的最少操作次数|中等|<a href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-word-k-periodic/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/17/LeetCode%203137.K%E5%91%A8%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141284611" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-number-of-operations-to-make-word-k-periodic/solutions/2883701/letmefly-3137k-zhou-qi-zi-fu-chuan-xu-ya-uma3/" target="_blank">LeetCode题解</a>|
 |3148.矩阵中的最大得分|中等|<a href="https://leetcode.cn/problems/maximum-difference-score-in-a-grid/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/16/LeetCode%203148.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141234633" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-difference-score-in-a-grid/solutions/2882113/letmefly-3148ju-zhen-zhong-de-zui-da-de-dy4t8/" target="_blank">LeetCode题解</a>|
 |3151.特殊数组I|简单|<a href="https://leetcode.cn/problems/special-array-i/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/08/14/LeetCode%203151.%E7%89%B9%E6%AE%8A%E6%95%B0%E7%BB%84I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/141176978" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/special-array-i/solutions/2879502/letmefly-3151te-shu-shu-zu-i-by-tisfy-uzx5/" target="_blank">LeetCode题解</a>|
@@ -831,6 +832,7 @@
 - [ ] [2732. 找到矩阵中的好子集](https://leetcode.cn/problems/find-a-good-subset-of-the-matrix/)（加```VE1ECg==```班没写）
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/FLDefinder/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
+- [ ] arknights主题不支持mermaid的渲染
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
