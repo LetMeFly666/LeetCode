@@ -501,6 +501,12 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |proprietorship|n. 所有权，〔商〕独资，〔经〕所有制|
 |acquisition|n. (技能/习惯/品质·的)习得，培养，收购，资产获得，获得物|
+|||
+|leopard|n. 豹|
+|majesty|n. 威严，庄严，王权，雄伟壮观|
+|remainder|n. 其他人员，剩余物，剩余时间，差数，余数|
+|||
+|fleece|n. 羊毛，(一只羊一次剪下的)毛，羊毛状织物，绒头织物短上衣<br/>v. 敲诈，敲竹杠|
 
 <p class="wordCounts">单词收录总数</p>
 
