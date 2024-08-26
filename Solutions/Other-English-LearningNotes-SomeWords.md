@@ -439,7 +439,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |relinquish|v. (不情愿地)放弃|
 |adhesive|n. 黏合剂，黏着剂<br/>adj. 黏合的，黏稠的，有附着力的|
-|exalt|v. 提拔，表扬，褒扬，高度赞扬|
+|<font color="#28bea0" title="二次复习">exalt</font>|v. 提拔，表扬，褒扬，高度赞扬|
 |exalted|adj. 地位高的，高队的，显赫的，兴奋的<br/>v. exalt的过去分词和过去式|
 |gratify|v. 使高兴，使满意，满足(愿望/需求 等)|
 |||
@@ -472,7 +472,7 @@ tags: [其他, 知识, 英语, Notes]
 |aspirin|n. 阿司匹林(消炎药)|
 |||
 |scoff|v. 嘲笑，讥讽，狼吞虎咽|
-|elliptical|adj. 椭圆的，省略的，隐晦的|
+|<font color="#28bea0" title="二次复习">elliptical</font>|adj. 椭圆的，省略的，隐晦的|
 |||
 |sturdy|adj. 结实的，坚固的；强壮的；健壮的；坚决的，顽强的|
 |||
@@ -507,6 +507,12 @@ tags: [其他, 知识, 英语, Notes]
 |remainder|n. 其他人员，剩余物，剩余时间，差数，余数|
 |||
 |fleece|n. 羊毛，(一只羊一次剪下的)毛，羊毛状织物，绒头织物短上衣<br/>v. 敲诈，敲竹杠|
+|||
+|rivalry|n. 竞争，竞赛，较量|
+|westerner|n. 西方人，（尤指）欧美人，（加拿大或美国）西部人|
+|pedlar|n. 流动小贩|
+|proformar|adj. 预计的<br/>n. 估价单|
+|fortuity|n. 偶然性，偶然事件，偶然机会|
 
 <p class="wordCounts">单词收录总数</p>
 
