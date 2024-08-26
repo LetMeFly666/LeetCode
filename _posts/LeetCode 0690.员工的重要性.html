@@ -1,0 +1,445 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】690.员工的重要性：哈希表+广度优先搜索力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;employee-importance&#x2F; 你有一个保存员工信息的数据结构，它包含了员工唯一的 id ，重要度和直系下属的 id 。  给定一个员工数组&nbsp;employees，其中：       employees[i].id 是第&nbsp;i&nbsp;个">
+<meta property="og:type" content="website">
+<meta property="og:title" content="690.员工的重要性">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200690.%E5%91%98%E5%B7%A5%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】690.员工的重要性：哈希表+广度优先搜索力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;employee-importance&#x2F; 你有一个保存员工信息的数据结构，它包含了员工唯一的 id ，重要度和直系下属的 id 。  给定一个员工数组&nbsp;employees，其中：       employees[i].id 是第&nbsp;i&nbsp;个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.leetcode.cn/1716170448-dKZffb-image.png">
+<meta property="og:image" content="https://pic.leetcode.cn/1716170929-dkWpra-image.png">
+<meta property="article:published_time" content="2024-08-26T16:14:33.000Z">
+<meta property="article:modified_time" content="2024-08-26T16:24:37.805Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="广度优先搜索">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="set">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.leetcode.cn/1716170448-dKZffb-image.png">
+  
+  
+  
+  <title>690.员工的重要性 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="690.员工的重要性"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】690-员工的重要性：哈希表-广度优先搜索"><a href="#【LetMeFly】690-员工的重要性：哈希表-广度优先搜索" class="headerlink" title="【LetMeFly】690.员工的重要性：哈希表+广度优先搜索"></a>【LetMeFly】690.员工的重要性：哈希表+广度优先搜索</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/employee-importance/">https://leetcode.cn/problems/employee-importance/</a></p>
+<p>你有一个保存员工信息的数据结构，它包含了员工唯一的 id ，重要度和直系下属的 id 。</p>
+
+<p>给定一个员工数组&nbsp;<code>employees</code>，其中：</p>
+
+<ul>
+    <li><code>employees[i].id</code> 是第&nbsp;<code>i</code>&nbsp;个员工的 ID。</li>
+    <li><code>employees[i].importance</code>&nbsp;是第&nbsp;<code>i</code>&nbsp;个员工的重要度。</li>
+    <li><code>employees[i].subordinates</code> 是第 <code>i</code> 名员工的直接下属的 ID 列表。</li>
+</ul>
+
+<p>给定一个整数&nbsp;<code>id</code>&nbsp;表示一个员工的 ID，返回这个员工和他所有下属的重要度的 <strong>总和</strong>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong><img alt="" src="https://pic.leetcode.cn/1716170448-dKZffb-image.png" srcset="/img/loading.gif" lazyload style="width: 400px; height: 258px;" /></strong></p>
+
+<pre>
+<strong>输入：</strong>employees = [[1,5,[2,3]],[2,3,[]],[3,3,[]]], id = 1
+<strong>输出：</strong>11
+<strong>解释：</strong>
+员工 1 自身的重要度是 5 ，他有两个直系下属 2 和 3 ，而且 2 和 3 的重要度均为 3 。因此员工 1 的总重要度是 5 + 3 + 3 = 11 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 2：</strong></p>
+
+<p><strong><img alt="" src="https://pic.leetcode.cn/1716170929-dkWpra-image.png" srcset="/img/loading.gif" lazyload style="width: 362px; height: 361px;" /></strong></p>
+
+<pre>
+<strong>输入：</strong>employees = [[1,2,[5]],[5,-3,[]]], id = 5
+<strong>输出：</strong>-3
+<strong>解释：</strong>员工 5 的重要度为 -3 并且没有直接下属。
+因此，员工 5 的总重要度为 -3。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= employees.length &lt;= 2000</code></li>
+    <li><code>1 &lt;= employees[i].id &lt;= 2000</code></li>
+    <li>所有的&nbsp;<code>employees[i].id</code>&nbsp;<strong>互不相同</strong>。</li>
+    <li><code>-100 &lt;= employees[i].importance &lt;= 100</code></li>
+    <li>一名员工最多有一名直接领导，并可能有多名下属。</li>
+    <li><code>employees[i].subordinates</code>&nbsp;中的 ID 都有效。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：哈希表-广度优先搜索"><a href="#解题方法：哈希表-广度优先搜索" class="headerlink" title="解题方法：哈希表+广度优先搜索"></a>解题方法：哈希表+广度优先搜索</h2><p>因为要多次依据员工id获取员工信息，因此可以二话不说建立一个哈希表。</p>
+<p>接着只需要一个广度优先搜索，从id这个员工开始，出队时累加重要程度并将所有子员工入队，直至队列为空。</p>
+<ul>
+<li>时间复杂度$O(len(employees))$</li>
+<li>空间复杂度$O(len(employees))$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-comment"># # Definition for Employee.</span><br><span class="hljs-comment"># class Employee:</span><br><span class="hljs-comment">#     def __init__(self, id: int, importance: int, subordinates: List[int]):</span><br><span class="hljs-comment">#         self.id = id</span><br><span class="hljs-comment">#         self.importance = importance</span><br><span class="hljs-comment">#         self.subordinates = subordinates</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getImportance</span>(<span class="hljs-params">self, employees: <span class="hljs-type">List</span>[<span class="hljs-string">&#x27;Employee&#x27;</span>], <span class="hljs-built_in">id</span>: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        table = <span class="hljs-built_in">dict</span>()<br>        <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> employees:<br>            table[e.<span class="hljs-built_in">id</span>] = e<br>        ans = <span class="hljs-number">0</span><br>        q:<span class="hljs-type">List</span>[<span class="hljs-string">&#x27;Employee&#x27;</span>] = [table[<span class="hljs-built_in">id</span>]]<br>        <span class="hljs-keyword">while</span> q:<br>            this = q.pop()<br>            ans += this.importance<br>            <span class="hljs-keyword">for</span> <span class="hljs-built_in">next</span> <span class="hljs-keyword">in</span> this.subordinates:<br>                q.append(table[<span class="hljs-built_in">next</span>])<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// // Definition for Employee.</span><br><span class="hljs-comment">// class Employee &#123;</span><br><span class="hljs-comment">// public:</span><br><span class="hljs-comment">//     int id;</span><br><span class="hljs-comment">//     int importance;</span><br><span class="hljs-comment">//     vector&lt;int&gt; subordinates;</span><br><span class="hljs-comment">// &#125;;</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getImportance</span><span class="hljs-params">(vector&lt;Employee*&gt; employees, <span class="hljs-type">int</span> id)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, Employee*&gt; table;<br>        <span class="hljs-keyword">for</span> (Employee* thisEmployee : employees) &#123;<br>            table[thisEmployee-&gt;id] = thisEmployee;<br>        &#125;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        queue&lt;Employee*&gt; q;<br>        q.<span class="hljs-built_in">push</span>(table[id]);<br>        <span class="hljs-keyword">while</span> (q.<span class="hljs-built_in">size</span>()) &#123;<br>            Employee* thisEmployee = q.<span class="hljs-built_in">front</span>();<br>            q.<span class="hljs-built_in">pop</span>();<br>            ans += thisEmployee-&gt;importance;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nextEmployeeId : thisEmployee-&gt;subordinates) &#123;<br>                q.<span class="hljs-built_in">push</span>(table[nextEmployeeId]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Map;<br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-keyword">import</span> java.util.Queue;<br><span class="hljs-keyword">import</span> java.util.LinkedList;<br><br><span class="hljs-comment">// // Definition for Employee.</span><br><span class="hljs-comment">// class Employee &#123;</span><br><span class="hljs-comment">//     public int id;</span><br><span class="hljs-comment">//     public int importance;</span><br><span class="hljs-comment">//     public List&lt;Integer&gt; subordinates;</span><br><span class="hljs-comment">// &#125;;</span><br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getImportance</span><span class="hljs-params">(List&lt;Employee&gt; employees, <span class="hljs-type">int</span> id)</span> &#123;<br>        Map&lt;Integer, Employee&gt; table = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;Integer, Employee&gt;();<br>        <span class="hljs-keyword">for</span> (Employee thisEmployee : employees) &#123;<br>            table.put(thisEmployee.id, thisEmployee);<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        Queue&lt;Employee&gt; q = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;Employee&gt;();<br>        q.add(table.get(id));<br>        <span class="hljs-keyword">while</span> (!q.isEmpty()) &#123;<br>            <span class="hljs-type">Employee</span> <span class="hljs-variable">thisEmployee</span> <span class="hljs-operator">=</span> q.poll();<br>            ans += thisEmployee.importance;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nextId : thisEmployee.subordinates) &#123;<br>                q.add(table.get(nextId));<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;container/list&quot;</span>  <span class="hljs-comment">// 其实是一个列表</span><br><br><span class="hljs-comment">// // Definition for Employee.</span><br><span class="hljs-comment">// type Employee struct &#123;</span><br><span class="hljs-comment">//     Id int</span><br><span class="hljs-comment">//     Importance int</span><br><span class="hljs-comment">//     Subordinates []int</span><br><span class="hljs-comment">// &#125;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getImportance</span><span class="hljs-params">(employees []*Employee, id <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    table := <span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]*Employee&#123;&#125;;<br>    <span class="hljs-keyword">for</span> _, thisEmployee := <span class="hljs-keyword">range</span> employees &#123;<br>        table[thisEmployee.Id] = thisEmployee;<br>    &#125;<br>    ans := <span class="hljs-number">0</span><br>    q := list.New()<br>    q.PushBack(table[id])<br>    <span class="hljs-keyword">for</span> q.Len() &gt; <span class="hljs-number">0</span> &#123;<br>        thisEmployee := q.Front()<br>        q.Remove(thisEmployee)<br>        ans += thisEmployee.Value.(*Employee).Importance<br>        <span class="hljs-keyword">for</span> _, nextId := <span class="hljs-keyword">range</span> thisEmployee.Value.(*Employee).Subordinates &#123;<br>            q.PushBack(table[nextId])<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>不得不说，这题员工的重要程度还有负数，也忒损了。</p>
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/08/27/LeetCode%200690.%E5%91%98%E5%B7%A5%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/141576521">https://letmefly.blog.csdn.net/article/details/141576521</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
