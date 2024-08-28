@@ -56,7 +56,6 @@ shell脚本文件开头的```#!```，也叫```Sha-bang```（```Sharp bang```的�
 
 位于文件开头，指定解释器（若无对应解释器则使用默认shell执行）
 
-
 <details>
 <summary>代码示例</summary>
 
@@ -122,6 +121,66 @@ rsync -av --delete ../tmp/ ./ --exclude-from=../toKeep.txt
 ```
 
 命令的含义是：删除```./```中不在```../tmp```中的文件，```../toKeep.txt```中的文件除外。
+
+### Linux拷贝文件并显示进度
+
+```bash
+rsync -a --info=progress2 源文件路径 目标路径
+```
+
+或
+
+```bash
+rsync -ah --progress 源文件路径 目标路径
+```
+
+### 一行命令在远程Linux服务器上执行命令
+
+其实在ssh登录命令后面加上要执行的命令就可以了。
+
+```bash
+ssh 用户名@服务器地址 '命令'
+```
+
+例如我在Linux服务器上有一个具有执行权限的`timer.sh`，其中内容是：
+
+```bash
+#!/bin/bash
+
+# 获取时间参数
+DURATION=$1
+
+# 检查是否提供了参数
+if [ -z "$DURATION" ]; then
+    echo "Usage: $0 <duration_in_seconds>"
+    exit 1
+fi
+
+# 初始化变量
+INTERVAL=0.1
+TOTAL_STEPS=$(echo "$DURATION / $INTERVAL" | bc)
+STEP=0
+
+# 显示进度条
+while [ $STEP -le $TOTAL_STEPS ]; do
+    PERCENT=$(echo "($STEP * 100) / $TOTAL_STEPS" | bc)
+    BAR=$(printf "%-${TOTAL_STEPS}s" "#" | tr ' ' '#')
+    echo -ne "\r[${BAR:0:$(($PERCENT / 2))}] $PERCENT%"
+
+    STEP=$(($STEP + 1))
+    sleep $INTERVAL
+done
+
+echo -e "\nTime's up!"
+```
+
+那么我就可以执行以下命令：
+
+```bash
+ssh lzy@3090.narc.letmefly.xyz 'cd ~/ltf && ./timer.sh 5'
+```
+
+然后你就可以看到一个进度条，5秒后进度达到100%。
 
 ## About Windows
 
@@ -372,6 +431,18 @@ Python的```selenium```可以控制浏览器对网站进行模拟操作，但需
     正常执行
     ```
 2. selenium4.0之后移除了find_element(s)_by_xx的方法（[#2](https://github.com/LetMeFly666/YuketangAutoPlayer/issues/2)），需要使用find_element(s)_by方法。
+
+
+### Python 依赖分析工具
+
+写了一个Python项目准备发布，那不得写一个`requirements.txt`来告诉使用者都需要安装哪些第三方库？
+
+手动添加是一种方法。另外一种方法就是使用依赖分析工具`pipreqs`。
+
+```bash
+pip install pipreqs
+pipreqs /path/to/your/project
+```
 
 ## About C++
 
