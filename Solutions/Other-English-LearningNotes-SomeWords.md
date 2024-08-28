@@ -381,12 +381,12 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |incense|v. (祭供等用的)香，熏香<br/>v. 用香薰，向...敬香，激怒，使激怒|
 |||
-|<font color="#28bea0" title="二次复习">peripheral</font>|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
+|<font color="#28bea0" title="三次复习">peripheral</font>|adj. 次要的，附带的，外围的，周边的，边缘的<br/>n. 外围设备|
 |||
 |burglar|n. 窃贼|
 |||
 |pickpocket|n. 扒手，小偷|
-|<font color="#28bea0" title="二次复习">insolvent</font>|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
+|<font color="#28bea0" title="三次复习">insolvent</font>|adj. adj. 无力偿债的，破产的<br/> n. 物理偿债者|
 |rigor|n. 【美】同rigour，严格，严厉，艰辛，严酷，严密，严谨|
 |||
 |beforehand|adv. 预先，事先|
@@ -401,7 +401,7 @@ tags: [其他, 知识, 英语, Notes]
 |ordinarily|adv. 普通地，平常地，正常地，一般情况下|
 |gorilla|n. 大猩猩|
 |bewilder|v. (使)迷惑，(使)糊涂|
-|bumpy|adj. 不平的，多凸块的，颠簸的|
+|<font color="#28bea0" title="二次复习">bumpy</font>|adj. 不平的，多凸块的，颠簸的|
 |||
 |fulfil|v. 实现，完成，满足|
 |tonnage|n. 吨位，吨数|
@@ -511,8 +511,23 @@ tags: [其他, 知识, 英语, Notes]
 |rivalry|n. 竞争，竞赛，较量|
 |westerner|n. 西方人，（尤指）欧美人，（加拿大或美国）西部人|
 |pedlar|n. 流动小贩|
-|proformar|adj. 预计的<br/>n. 估价单|
+|proforma|adj. 预计的<br/>n. 估价单|
 |fortuity|n. 偶然性，偶然事件，偶然机会|
+|||
+|mortal|adj. 不能永生的，终将死亡的，导致死亡的，致命的<br/>n. 凡人，普通人|
+|fracture|n. 骨折，断裂，破裂<br/>v. (使)断裂，折断，破裂|
+|renaissance|n. 再生，复兴，文艺复兴，文艺复兴时期<br/>adj. 文艺复兴(时期)的|
+|||
+|brittle|adj. 硬但易碎的，脆性的，脆弱的，尖利的<br/>n. 薄片脆糖<br/> v. 变脆|
+|catalyst|n. 催化剂，刺激因素，促使因素，(Catalyst)一个全球性的非营利组织(帮助建立适合女性工作的工作场所)|
+|destine|v. 命定，注定，指定|
+|flake|n. 小薄片，碎片<br/>v. (成小薄片)脱落，剥落，(切)成薄片|
+|preliminary|adj. 预备的，初步的<br/>n. 准备工作，初步行动|
+|exasperate|v. 激怒，使烦恼，使恼怒<br/>adj. 被激怒的，【生】具硬突起的|
+|wicked|adj. 邪恶的，缺德的，淘气的，调皮的<br/>n. 恶人，邪恶的人|
+|cloak|n. 披风，斗篷，遮盖物<br/>v. 遮盖，掩盖|
+|expedience|n. 方便，私立，权宜之计，不得已而做的事情|
+|handicap|v. 生理/智力/交际功能 缺陷，残疾，不利因素，障碍，让步赛<br/>v. 妨碍，阻碍|
 
 <p class="wordCounts">单词收录总数</p>
 
