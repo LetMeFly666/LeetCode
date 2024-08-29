@@ -460,7 +460,7 @@ tags: [其他, 知识, 英语, Notes]
 |amiable|adj. 和蔼可亲的，亲切友好的|
 |plump|adj. 丰满的，丰腴的，胖乎乎的，饱满的<br/>v. (拍打坐垫等)使蓬松，猛地摔下，重重的坐下<br/>n. 突然前冲，种种坠落|
 |miscarriage|n. 流产|
-|sullen|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
+|<font color="#28bea0" title="二次复习">sullen</font>|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
 |||
 |carpenter|n. 木匠，木工<br/>v. 以木工手艺造/修(家具/器物)|
 |||
@@ -528,6 +528,16 @@ tags: [其他, 知识, 英语, Notes]
 |cloak|n. 披风，斗篷，遮盖物<br/>v. 遮盖，掩盖|
 |expedience|n. 方便，私立，权宜之计，不得已而做的事情|
 |handicap|v. 生理/智力/交际功能 缺陷，残疾，不利因素，障碍，让步赛<br/>v. 妨碍，阻碍|
+|||
+|knit|v. 编织，针织，机织，织平针<br/>编织的衣服，针织衫|
+|whisker|n. (猫/鼠 等的)须，络腮胡子|
+|tortoise|n. 乌龟，龟，〈比喻〉行动缓慢的人|
+|turtle|n. 海龟（turtle主要指水里的龟，tortoise主要指陆地龟）|
+|saw|v. 锯，拉锯似地来回移动(某物)<br/>n. 锯，谚语，格言<br/>v. (“see”的过去式)看见，观看，看待，理解，确保|
+|sympathize|v. 同情，赞同，支持|
+|detriment|n. 危害|
+|patriotic|adj. 爱国的|
+|leaflet|n. 宣传册，传单<br/>v. 散发 传单/小册子|
 
 <p class="wordCounts">单词收录总数</p>
 
