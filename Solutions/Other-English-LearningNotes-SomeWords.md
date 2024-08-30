@@ -486,7 +486,7 @@ tags: [其他, 知识, 英语, Notes]
 |dove|n. 格子，温和派政客|
 |genius|n. 天才，天赋，天才人物，天资|
 |ingenious|adj. 精致的，心灵手巧的，机灵的，有独创性的|
-|vaccinate|v. 给...接种疫苗|
+|<font color="#28bea0" title="二次复习">vaccinate</font>|v. 给...接种疫苗|
 |pony|n. 矮马，小型马，25英镑<br/>v. 用注解书学习，清偿<br/>adj. 小(型)的|
 |||
 |redound|v. 有益于|
@@ -538,6 +538,11 @@ tags: [其他, 知识, 英语, Notes]
 |detriment|n. 危害|
 |patriotic|adj. 爱国的|
 |leaflet|n. 宣传册，传单<br/>v. 散发 传单/小册子|
+|||
+|kindergarten|n. 幼儿园|
+|nestle|v. 依偎，舒适地坐/卧，报，安置<details><summary>例句</summary>My mother put her arms around me and I <font color="#28bea0">nestled</font> my head against her shoulder.<br/>母亲用双臂环抱着我，我把头靠在她的肩膀上。</details>|
+|sickle|n. 镰刀|
+|district|n. 区|
 
 <p class="wordCounts">单词收录总数</p>
 
