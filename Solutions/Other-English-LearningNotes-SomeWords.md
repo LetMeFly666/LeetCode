@@ -490,7 +490,7 @@ tags: [其他, 知识, 英语, Notes]
 |pony|n. 矮马，小型马，25英镑<br/>v. 用注解书学习，清偿<br/>adj. 小(型)的|
 |||
 |redound|v. 有益于|
-|blot|v. 吸干，擦干，弄脏，污损，使蒙耻，使模糊，弄暗<br/>n. 墨渍，污渍，污点，耻辱，有损整体美的东西|
+|<font color="#28bea0" title="二次复习">blot</font>|v. 吸干，擦干，弄脏，污损，使蒙耻，使模糊，弄暗<br/>n. 墨渍，污渍，污点，耻辱，有损整体美的东西|
 |||
 |crimson|adj. 深红的，(因害羞或生气)脸通红的<br/>v. 染成(变成)深红色，(脸)变通红<br/>n. 深红，深红色颜料|
 |prism|n. 棱柱，棱镜|
@@ -543,6 +543,9 @@ tags: [其他, 知识, 英语, Notes]
 |nestle|v. 依偎，舒适地坐/卧，报，安置<details><summary>例句</summary>My mother put her arms around me and I <font color="#28bea0">nestled</font> my head against her shoulder.<br/>母亲用双臂环抱着我，我把头靠在她的肩膀上。</details>|
 |sickle|n. 镰刀|
 |district|n. 区|
+|||
+|Swiss|adj. 瑞士的，瑞士人的<br/>n. 瑞士人|
+|Earl|n. 伯爵<br/>n. [人名]厄尔|
 
 <p class="wordCounts">单词收录总数</p>
 
