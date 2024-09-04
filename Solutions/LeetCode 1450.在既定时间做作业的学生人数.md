@@ -89,5 +89,47 @@ public:
 };
 ```
 
+#### Python
+
+```python
+from typing import List
+
+class Solution:
+    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+        return sum(startTime[i] <= queryTime <= endTime[i] for i in range(len(startTime)))
+```
+
+#### Java
+
+```java
+class Solution {
+    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        int ans = 0;
+        for (int i = 0; i < startTime.length; i++) {
+            if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+package main
+
+func busyStudent(startTime []int, endTime []int, queryTime int) int {
+    ans := 0
+    for i := range startTime {
+        if startTime[i] <= queryTime && queryTime <= endTime[i] {
+            ans++
+        }
+    }
+    return ans
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/19/LeetCode%201450.%E5%9C%A8%E6%97%A2%E5%AE%9A%E6%97%B6%E9%97%B4%E5%81%9A%E4%BD%9C%E4%B8%9A%E7%9A%84%E5%AD%A6%E7%94%9F%E4%BA%BA%E6%95%B0/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126417256](https://letmefly.blog.csdn.net/article/details/126417256)
