@@ -554,6 +554,10 @@ tags: [其他, 知识, 英语, Notes]
 |lime|n. 酸橙，石灰|
 |poultry|n. 家禽，禽肉|
 |abbreviation|n. 缩写，【数学】约分，【音乐】略号，〔数〕约分|
+|||
+|glitter|n. 闪烁，流露<br/>v. 闪烁，流露|
+|rooster|n. 公鸡|
+|cartridge|n. 墨盒，枪弹，子弹，胶片盒|
 
 <p class="wordCounts">单词收录总数</p>
 
