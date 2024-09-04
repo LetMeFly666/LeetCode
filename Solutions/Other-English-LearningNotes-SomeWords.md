@@ -546,6 +546,14 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |Swiss|adj. 瑞士的，瑞士人的<br/>n. 瑞士人|
 |Earl|n. 伯爵<br/>n. [人名]厄尔|
+|||
+|manifesto|n. 宣言<br/>v. 〈罕〉发表宣言/声明|
+|errand|n. 差使，差事|
+|symmetric|adj. 对称的|
+|||
+|lime|n. 酸橙，石灰|
+|poultry|n. 家禽，禽肉|
+|abbreviation|n. 缩写，【数学】约分，【音乐】略号，〔数〕约分|
 
 <p class="wordCounts">单词收录总数</p>
 
