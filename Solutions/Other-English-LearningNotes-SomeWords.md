@@ -558,6 +558,11 @@ tags: [其他, 知识, 英语, Notes]
 |glitter|n. 闪烁，流露<br/>v. 闪烁，流露|
 |rooster|n. 公鸡|
 |cartridge|n. 墨盒，枪弹，子弹，胶片盒|
+|||
+|deceased|n. 死者，已故者<br/>adj. 死去了的，已死的，亡故的|
+|moth|n. 飞蛾，蛾子|
+|rescind|v. 撤销，废除，取消|
+|recourse|n. 求助，依靠，依赖|
 
 <p class="wordCounts">单词收录总数</p>
 
