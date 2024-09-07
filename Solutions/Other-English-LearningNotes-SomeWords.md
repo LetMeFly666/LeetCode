@@ -563,6 +563,9 @@ tags: [其他, 知识, 英语, Notes]
 |moth|n. 飞蛾，蛾子|
 |rescind|v. 撤销，废除，取消|
 |recourse|n. 求助，依靠，依赖|
+|||
+|reactionary|adj. 反动的，保守的，【化】反应的<br/>n. 反动分子，反对政治(或社会)变革者|
+|bandit|n. 强盗，土匪|
 
 <p class="wordCounts">单词收录总数</p>
 
