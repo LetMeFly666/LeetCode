@@ -573,6 +573,11 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |badge|n. 徽章，奖章，标记，标识，警徽，象征|
 |earmark|v. 指定(款项等)的用途，预先安排(要做的事)，确定(未来发生的事情)<br/>n. 标记，特征，(美)联邦预算重点特殊专款|
+|||
+|perpendicular|n. 垂直线，垂直的位置<br/>adj. 垂直的，呈直角的|
+|eccentricity|n. 怪癖，古怪行为，反常|
+|entreat|v. 恳求，乞求|
+|obstinate|adj. 执拗的，顽固的；棘手的，难以对付的|
 
 <p class="wordCounts">单词收录总数</p>
 

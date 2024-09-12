@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-09-03 10:11:25
+ * @LastEditTime: 2024-09-12 18:57:11
 -->
 # LetLeet Blog
 
@@ -580,6 +580,7 @@
 |2559.统计范围内的元音字符串数|中等|<a href="https://leetcode.cn/problems/count-vowel-strings-in-ranges/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/06/02/LeetCode%202559.%E7%BB%9F%E8%AE%A1%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131014779" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-vowel-strings-in-ranges/solutions/2294361/letmefly-2559tong-ji-fan-wei-nei-de-yuan-mq4f/" target="_blank">LeetCode题解</a>|
 |2562.找出数组的串联值|简单|<a href="https://leetcode.cn/problems/find-the-array-concatenation-value/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/10/12/LeetCode%202562.%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%B2%E8%81%94%E5%80%BC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133797249" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-array-concatenation-value/solutions/2479676/letmefly-2562zhao-chu-shu-zu-de-chuan-li-5atk/" target="_blank">LeetCode题解</a>|
 |2575.找出字符串的可整除数组|中等|<a href="https://leetcode.cn/problems/find-the-divisibility-array-of-a-string/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/03/07/LeetCode%202575.%E6%89%BE%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8F%AF%E6%95%B4%E9%99%A4%E6%95%B0%E7%BB%84/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136544808" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-divisibility-array-of-a-string/solutions/2673564/letmefly-2575zhao-chu-zi-fu-chuan-de-ke-rbnfy/" target="_blank">LeetCode题解</a>|
+|2576.求出最多标记下标|中等|<a href="https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/09/12/LeetCode%202576.%E6%B1%82%E5%87%BA%E6%9C%80%E5%A4%9A%E6%A0%87%E8%AE%B0%E4%B8%8B%E6%A0%87/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142188013" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices/solutions/2915060/letmefly-2576qiu-chu-zui-duo-biao-ji-xia-t2gd/" target="_blank">LeetCode题解</a>|
 |2578.最小和分割|简单|<a href="https://leetcode.cn/problems/split-with-minimum-sum/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/10/09/LeetCode%202578.%E6%9C%80%E5%B0%8F%E5%92%8C%E5%88%86%E5%89%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133694187" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/split-with-minimum-sum/solutions/2473429/letmefly-2578zui-xiao-he-fen-ge-tan-xin-pxbyl/" target="_blank">LeetCode题解</a>|
 |2580.统计将重叠区间合并成组的方案数|中等|<a href="https://leetcode.cn/problems/count-ways-to-group-overlapping-ranges/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/03/27/LeetCode%202580.%E7%BB%9F%E8%AE%A1%E5%B0%86%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%88%90%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/137074790" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-ways-to-group-overlapping-ranges/solutions/2710530/letmefly-2580tong-ji-fang-an-shu-pai-xu-fe5u3/" target="_blank">LeetCode题解</a>|
 |2581.统计可能的树根数目|困难|<a href="https://leetcode.cn/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/02/29/LeetCode%202581.%E7%BB%9F%E8%AE%A1%E5%8F%AF%E8%83%BD%E7%9A%84%E6%A0%91%E6%A0%B9%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136372137" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-number-of-possible-root-nodes/" target="_blank">LeetCode题解</a>|
@@ -759,6 +760,7 @@
 |循环队列的纯C语言实现|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
 |日记 - 记录一次发现HDMI在反向供电的经历|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-HDMIReversePower">本平台博客</a>|无|
 |日记 - 记录一次实验室(后几排)网络架构探究|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-LaboratoryNetworkArchitecture">本平台博客</a>|无|
+|日记 - pyautogui自动脚本的使用心得|<a href="https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention">本平台博客</a>|无|
 |分布式操作系统笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/12/16/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |Docker学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/07/Other-Docker-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133633479">CSDN博客</a>|
 |英语学习笔记（自用） - 英语易忘单词等|<a href="https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/">本平台博客</a>|无|
@@ -814,7 +816,7 @@
 |Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP|<a href="https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1">本平台博客</a>|无|
 |VsCode容器开发 - VsCode连接远程服务器上的docker|<a href="https://blog.letmefly.xyz/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135743708">CSDN博客</a>|
 |VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
-| VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
+|VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
 |Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
