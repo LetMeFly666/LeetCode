@@ -18,4 +18,4 @@ pyautogui很方便，但经常执行不成功。注意以下设置：
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>
 
-> 原文链接[https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention](tps://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention)
+> 原文链接[https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention](https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention)
