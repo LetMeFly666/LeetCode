@@ -584,6 +584,10 @@ tags: [其他, 知识, 英语, Notes]
 |scotch|v. 使……结束，扑灭，镇压<br/>adj. (大写Scotch)苏格兰的<br/>n. (大写Scotch)苏格兰威士忌|
 |aforesaid|adj. 前述的，上述的|
 |prosecution|n. 诉讼，原告，实施，从事|
+|||
+|en route|adv. (法)在途中，在路上|
+|monastery|修道院，庙宇|
+|sift|v. 筛，筛查，精挑细选|
 
 <p class="wordCounts">单词收录总数</p>
 

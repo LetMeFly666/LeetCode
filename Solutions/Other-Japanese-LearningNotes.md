@@ -147,6 +147,7 @@ xx型
 |読み(よみ)|看|
 |書き(かき)|写|
 |買い(かい)|买|
+|払い(はらい)|付|
 |聞き(きき)|听|
 |読み(よみ)|阅读|
 |歌い(うたい)|唱|
@@ -383,6 +384,8 @@ xx型
 |服(ふく)|衣服|
 |洋服(ようふく)|衣服|
 |ネクタイ|领带|
+|スーツ|西服|
+|ハンカチ|手帕|
 |帽子(ぼうし)|帽子|
 |傘(かさ)|伞|
 |||
@@ -654,6 +657,7 @@ xx型
 |いかが|怎么样|
 |全部(ぜんぶ)|全部|
 |とても|非常|
+|もっと|更|
 |本当(ほんとう)|真的|
 |他に(ほかに)|其他|
 |りっぱ|出色|
@@ -923,6 +927,10 @@ xx型
 |次の角を左に曲がります。<br/>在下个拐角向左转。|
 |小さな村に住んで<ruby>居<rt>い</rt></ruby>ます。<br/>住在小村子里。|
 |この村には誰<font color="#ce82ff">も</font>いません。<br/>这个村子里谁也不在。<details><summary><font color="#ce82ff">も</font>表示完全否定的语气</summary>在<b>谁</b>、<b>什么</b>这样的疑问词后加上<font color="#ce82ff">も</font><br/>表示完全否定的语气。<br/>词尾的动词也要用否定形式<font color="#ce82ff">ません</font>。<br/>表示<b>哪里</b>也时要把<font color="#ce82ff">に</font>放在<font color="#ce82ff">どこ</font>和<font color="#ce82ff">も</font>之间：<br/><font color="#ce82ff">誰も</font>、<font color="#ce82ff">何も</font>、<font color="#ce82ff">どこにも</font></details>|
+|スカート<font color="#ce82ff">より</font>ズボン<font color="#ce82ff">のほうが</font>好きです。<br/>和裙子相比更喜欢裤子。<details><summary>比较级</summary>有时可以不要xxより。</details>|
+|今日は私が払います。<br/>今天我付。|
+|もっと水が欲しいです。<br/>想要更多水。|
+|シャツを着て、ネクタイを締めてください。<br/>请穿衬衫、系领带。|
 
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
