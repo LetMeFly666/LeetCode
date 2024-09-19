@@ -578,6 +578,12 @@ tags: [其他, 知识, 英语, Notes]
 |eccentricity|n. 怪癖，古怪行为，反常|
 |entreat|v. 恳求，乞求|
 |obstinate|adj. 执拗的，顽固的；棘手的，难以对付的|
+|||
+|jeopardize|v. 危害，危及，冒...的危险，损害|
+|abridge|v. 剥夺，缩短，省略，节省|
+|scotch|v. 使……结束，扑灭，镇压<br/>adj. (大写Scotch)苏格兰的<br/>n. (大写Scotch)苏格兰威士忌|
+|aforesaid|adj. 前述的，上述的|
+|prosecution|n. 诉讼，原告，实施，从事|
 
 <p class="wordCounts">单词收录总数</p>
 
