@@ -588,6 +588,9 @@ tags: [其他, 知识, 英语, Notes]
 |en route|adv. (法)在途中，在路上|
 |monastery|修道院，庙宇|
 |sift|v. 筛，筛查，精挑细选|
+|||
+|premises|n. (企业的)房屋，经营场地|
+|inlet|n. 水湾，小港，注入口|
 
 <p class="wordCounts">单词收录总数</p>
 
