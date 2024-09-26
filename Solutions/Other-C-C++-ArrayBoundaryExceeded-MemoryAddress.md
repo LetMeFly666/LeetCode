@@ -425,12 +425,36 @@ i = 128(same): 0x407040 - 0x407240 | 0x407240 - 0x407440 | 1
 
 **在全局变量中连续开辟两个大小相同的数组，当数组大小SIZE满足以下条件时，两个数组的内存地址连续：**
 
+<!-- 之前latex公式自动转义了 -->
+
+<!-- https://blog.kevinchu.top/2023/09/12/hexo-supports-latex/ -->
+
+<span>
 $$
 \begin{cases}
   &SIZE\in\{1,2,4\} \text{ if } SIZE<8 \\
   &SIZE\in\{8k|k为整数\} \text{ if } 8\leq SIZE\leq 128
 \end{cases}
 $$
+</span>
+
+<!-- $$
+\left\{
+\begin{array}{rcl}
+  &SIZE\in\{1,2,4\} &\text{ if } SIZE<8 \\
+  &SIZE\in\{8k|k为整数\} &\text{ if } 8\leq SIZE\leq 128
+\end{array}
+\right.
+$$
+
+$$ f(x)=\left\{
+\begin{aligned}
+x & = & \cos(t) \\
+y & = & \sin(t) \\
+z & = & \frac xy
+\end{aligned}
+\right.
+$$ -->
 
 换一台机器（同为Win10）的执行结果也是一样的。
 
