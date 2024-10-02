@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-09-13 00:17:00
+ * @LastEditTime: 2024-10-02 23:18:42
 -->
 # LetLeet Blog
 
@@ -465,6 +465,7 @@
 |1824.最少侧跳次数|中等|<a href="https://leetcode.cn/problems/minimum-sideway-jumps/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/01/21/LeetCode%201824.%E6%9C%80%E5%B0%91%E4%BE%A7%E8%B7%B3%E6%AC%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/128745707" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-sideway-jumps/solutions/2071687/letmefly-1824zui-shao-ce-tiao-ci-shu-by-00cbq/" target="_blank">LeetCode题解</a>|
 |1827.最少操作使数组递增|简单|<a href="https://leetcode.cn/problems/minimum-operations-to-make-the-array-increasing/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/12/11/LeetCode%201827.%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E4%BD%BF%E6%95%B0%E7%BB%84%E9%80%92%E5%A2%9E/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/128273168" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-operations-to-make-the-array-increasing/solutions/2015884/letmefly-1827zui-shao-cao-zuo-shi-shu-zu-nso0/" target="_blank">LeetCode题解</a>|
 |1832.判断句子是否为全字母句|简单|<a href="https://leetcode.cn/problems/check-if-the-sentence-is-pangram/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/12/13/LeetCode%201832.%E5%88%A4%E6%96%AD%E5%8F%A5%E5%AD%90%E6%98%AF%E5%90%A6%E4%B8%BA%E5%85%A8%E5%AD%97%E6%AF%8D%E5%8F%A5/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/128304160" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/check-if-the-sentence-is-pangram/solutions/2018952/letmefly-1832pan-duan-ju-zi-shi-fou-wei-fd4l0/" target="_blank">LeetCode题解</a>|
+|1845.座位预约管理系统|中等|<a href="https://leetcode.cn/problems/seat-reservation-manager/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/10/02/LeetCode%201845.%E5%BA%A7%E4%BD%8D%E9%A2%84%E7%BA%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142686842" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/seat-reservation-manager/solutions/2937537/letmefly-1845zuo-wei-yu-yue-guan-li-xi-t-qqxe/" target="_blank">LeetCode题解</a>|
 |1870.准时到达的列车最小时速|中等|<a href="https://leetcode.cn/problems/minimum-speed-to-arrive-on-time/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/10/02/LeetCode%201870.%E5%87%86%E6%97%B6%E5%88%B0%E8%BE%BE%E7%9A%84%E5%88%97%E8%BD%A6%E6%9C%80%E5%B0%8F%E6%97%B6%E9%80%9F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142680612" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-speed-to-arrive-on-time/solutions/2937033/letmefly-1870zhun-shi-dao-da-de-lie-che-liv8g/" target="_blank">LeetCode题解</a>|
 |1901.寻找峰值II|中等|<a href="https://leetcode.cn/problems/find-a-peak-element-ii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/19/LeetCode%201901.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BCII/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135083347" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-a-peak-element-ii/solutions/2572012/letmefly-1901xun-zhao-feng-zhi-iier-fen-19tmj/" target="_blank">LeetCode题解</a>|
 |1911.最大子序列交替和|中等|<a href="https://leetcode.cn/problems/maximum-alternating-subsequence-sum/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/07/11/LeetCode%201911.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E4%BA%A4%E6%9B%BF%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131652316" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-alternating-subsequence-sum/solutions/2339029/letmefly-1911zui-da-zi-xu-lie-jiao-ti-he-fyzq/" target="_blank">LeetCode题解</a>|
@@ -849,6 +850,7 @@
 - [ ] mermaid不渲染red标签
 - [ ] ```Other-JiaoZi-LearningNotes.md```教资md中删除补丁raw和endraw
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
+- [ ] [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
@@ -868,6 +870,7 @@
 - [x] [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 - [x] [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
+- [x] [1845. 座位预约管理系统 ](https://leetcode.cn/problems/seat-reservation-manager/)
 - [x] 将域名修改为blog.letmefly.xyz，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
 
