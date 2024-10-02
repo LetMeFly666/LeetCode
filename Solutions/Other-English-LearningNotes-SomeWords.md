@@ -519,7 +519,7 @@ tags: [其他, 知识, 英语, Notes]
 |renaissance|n. 再生，复兴，文艺复兴，文艺复兴时期<br/>adj. 文艺复兴(时期)的|
 |||
 |brittle|adj. 硬但易碎的，脆性的，脆弱的，尖利的<br/>n. 薄片脆糖<br/> v. 变脆|
-|catalyst|n. 催化剂，刺激因素，促使因素，(Catalyst)一个全球性的非营利组织(帮助建立适合女性工作的工作场所)|
+|<font color="#28bea0" title="二次复习">catalyst</font>|n. 催化剂，刺激因素，促使因素，(Catalyst)一个全球性的非营利组织(帮助建立适合女性工作的工作场所)|
 |destine|v. 命定，注定，指定|
 |flake|n. 小薄片，碎片<br/>v. (成小薄片)脱落，剥落，(切)成薄片|
 |preliminary|adj. 预备的，初步的<br/>n. 准备工作，初步行动|
@@ -597,6 +597,10 @@ tags: [其他, 知识, 英语, Notes]
 |shovel|n. 铲，铲斗，一铲的量<br/>v. 铲，铲起|
 |deceitful|adj. 不诚实的，骗人的|
 |theatrical|adj. 戏剧的，剧场的，(举止)夸张的|
+|||
+|rebellion|n. 叛乱，反叛，叛逆，谋反，(对权威的)反抗，不服从|
+|filthy|adj. 肮脏的，污秽的，下流的，淫秽的<br/>adv. 极其肮脏地，富得流油地|
+|Arabian|adj. 阿拉伯的<br/>n. 阿拉伯人|
 
 <p class="wordCounts">单词收录总数</p>
 
