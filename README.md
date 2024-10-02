@@ -1,4 +1,4 @@
-完整版博客地址：[github@LetMeFly666/LeetCode](https://github.com/LetMeFly666/LeetCode)
+# 完整版博客地址：[github@LetMeFly666/LeetCode](https://github.com/LetMeFly666/LeetCode)
 
 # GitCode 开搜：开源开发者的个人知识库
 
