@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-10-02 23:18:42
+ * @LastEditTime: 2024-10-03 13:51:55
 -->
 # LetLeet Blog
 
@@ -493,6 +493,7 @@
 |2048.下一个更大的数值平衡数|中等|<a href="https://leetcode.cn/problems/next-greater-numerically-balanced-number/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/09/LeetCode%202048.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E7%9A%84%E6%95%B0%E5%80%BC%E5%B9%B3%E8%A1%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/134900679" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/next-greater-numerically-balanced-number/solutions/2560353/letmefly-2048xia-yi-ge-geng-da-de-shu-zh-7p4t/" target="_blank">LeetCode题解</a>|
 |2050.并行课程III|困难|<a href="https://leetcode.cn/problems/parallel-courses-iii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/07/28/LeetCode%202050.%E5%B9%B6%E8%A1%8C%E8%AF%BE%E7%A8%8BIII/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131973511" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/parallel-courses-iii/solutions/2362142/letmefly-2050bing-xing-ke-cheng-iiidfs-b-9tuc/" target="_blank">LeetCode题解</a>|
 |2065.最大化一张图中的路径价值|困难|<a href="https://leetcode.cn/problems/maximum-path-quality-of-a-graph/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/07/01/LeetCode%202065.%E6%9C%80%E5%A4%A7%E5%8C%96%E4%B8%80%E5%BC%A0%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%B7%AF%E5%BE%84%E4%BB%B7%E5%80%BC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/140101479" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-path-quality-of-a-graph/solutions/2827788/letmefly-2065zui-da-hua-yi-zhang-tu-zhon-vvkl/" target="_blank">LeetCode题解</a>|
+|2073.买票需要的时间|简单|<a href="https://leetcode.cn/problems/time-needed-to-buy-tickets/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/10/03/LeetCode%202073.%E4%B9%B0%E7%A5%A8%E9%9C%80%E8%A6%81%E7%9A%84%E6%97%B6%E9%97%B4/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142691600" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/time-needed-to-buy-tickets/solutions/2937796/letmefly-2073mai-piao-xu-yao-de-shi-jian-i1pt/" target="_blank">LeetCode题解</a>|
 |2079.给植物浇水|中等|<a href="https://leetcode.cn/problems/watering-plants/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/05/08/LeetCode%202079.%E7%BB%99%E6%A4%8D%E7%89%A9%E6%B5%87%E6%B0%B4/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/138581691" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/watering-plants/solutions/2770202/letmefly-2079gei-zhi-wu-jiao-shui-onmo-n-gm33/" target="_blank">LeetCode题解</a>|
 |2085.统计出现过一次的公共字符串|简单|<a href="https://leetcode.cn/problems/count-common-words-with-one-occurrence/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/01/12/LeetCode%202085.%E7%BB%9F%E8%AE%A1%E5%87%BA%E7%8E%B0%E8%BF%87%E4%B8%80%E6%AC%A1%E7%9A%84%E5%85%AC%E5%85%B1%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135560255" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-common-words-with-one-occurrence/solutions/2601942/letmefly-2085tong-ji-chu-xian-guo-yi-ci-cdg6x/" target="_blank">LeetCode题解</a>|
 |2100.适合打劫银行的日子|中等|<a href="https://leetcode.cn/problems/find-good-days-to-rob-the-bank/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/09/26/LeetCode%202100.%E9%80%82%E5%90%88%E6%89%93%E5%8A%AB%E9%93%B6%E8%A1%8C%E7%9A%84%E6%97%A5%E5%AD%90/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133324938" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-good-days-to-rob-the-bank/solutions/2460364/letmefly-2100gua-he-da-jie-yin-xing-de-r-aqwp/" target="_blank">LeetCode题解</a>|
@@ -851,7 +852,6 @@
 - [ ] mermaid不渲染red标签
 - [ ] ```Other-JiaoZi-LearningNotes.md```教资md中删除补丁raw和endraw
 - [ ] 还有[65. 有效数字](https://leetcode.cn/problems/valid-number/)
-- [ ] [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets/)
 - [ ] [926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
 - [ ] [1145. 二叉树着色游戏](https://leetcode.cn/problems/binary-tree-coloring-game/)
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
@@ -872,6 +872,7 @@
 - [x] [162. 寻找峰值](https://leetcode.cn/problems/find-peak-element/)
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] [1845. 座位预约管理系统 ](https://leetcode.cn/problems/seat-reservation-manager/)
+- [x] [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets/)
 - [x] 将域名修改为blog.letmefly.xyz，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
 
