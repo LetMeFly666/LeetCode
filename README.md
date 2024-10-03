@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly
- * @LastEditTime: 2024-10-03 13:51:55
+ * @LastEditTime: 2024-10-03 14:28:49
 -->
 # LetLeet Blog
 
@@ -858,7 +858,7 @@
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
 - [ ] [2732. 找到矩阵中的好子集](https://leetcode.cn/problems/find-a-good-subset-of-the-matrix/)（加```VE1ECg==```班没写）
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
-- [ ] 有空玩下[这个](https://github.com/LetMeFly666/FLDefinder/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
+- [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！

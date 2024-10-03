@@ -601,6 +601,11 @@ tags: [其他, 知识, 英语, Notes]
 |rebellion|n. 叛乱，反叛，叛逆，谋反，(对权威的)反抗，不服从|
 |filthy|adj. 肮脏的，污秽的，下流的，淫秽的<br/>adv. 极其肮脏地，富得流油地|
 |Arabian|adj. 阿拉伯的<br/>n. 阿拉伯人|
+|||
+|colony|n. 殖民地，聚居(地)|
+|synonym|n. 同义词|
+|buffet|v. (尤指风/雨/浪)猛烈袭击，打击，伤害<br/>n. 自助餐，(火车)饮食柜台，(车站)快餐部|
+|arbitrator|n. 仲裁人，公断人|
 
 <p class="wordCounts">单词收录总数</p>
 
