@@ -1,10 +1,16 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-10-03 13:49:37
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2024-10-03 14:19:03
+-->
 # 完整版博客地址：[github@LetMeFly666/LeetCode](https://github.com/LetMeFly666/LeetCode)
 
 此[仓库](https://gitcode.com/Tisfy/gitcode_knowledge)/[分支](https://github.com/LetMeFly666/LeetCode/tree/From_GitCode_CSDN)开始于`2024-10-02`，之后每次在CSDN上发布博文，我应该都会点一下“同步到GitCode”。
 
 然后每篇博文都会以`.md`后缀的`html`格式同步到这里了。目前发现并不会有二进制文件（图片会采用地址形式）。
 
-以下是原始`README`。
+以下是原始`README`：
 
 ---
 
