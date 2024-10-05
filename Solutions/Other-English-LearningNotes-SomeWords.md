@@ -173,7 +173,7 @@ tags: [其他, 知识, 英语, Notes]
 |propagate|v. 传播，宣传，(使)繁殖，繁衍|
 |tropic|n. 热带<br/>adj. 【生】向性的，热带（地区）的|
 |||
-|sabotage|v. 蓄意破坏，故意毁坏；妨碍，捣乱，阻挠<br/>n. 蓄意毁坏；刻意阻碍|
+|sabotage|v. 蓄意破坏，故意毁坏，妨碍，捣乱，阻挠<br/>n. 蓄意毁坏；刻意阻碍|
 |garment|n. （一件）衣服<details><summary>例句</summary>This shop sells <font color="#28bea0">garment</font>s of all kinds.<br/>这家商店销售各式各样的衣服。</details>|
 |||
 |swell|v. (身体部位)肿胀，膨胀，(数量)增多，充满(某种感情)<br/>n. 增加，增多，海面的起伏，波浪|
@@ -561,7 +561,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |deceased|n. 死者，已故者<br/>adj. 死去了的，已死的，亡故的|
 |moth|n. 飞蛾，蛾子|
-|rescind|v. 撤销，废除，取消|
+|<font color="#28bea0" title="二次复习">rescind</font>|v. 撤销，废除，取消|
 |recourse|n. 求助，依靠，依赖|
 |||
 |reactionary|adj. 反动的，保守的，【化】反应的<br/>n. 反动分子，反对政治(或社会)变革者|
@@ -606,8 +606,20 @@ tags: [其他, 知识, 英语, Notes]
 |synonym|n. 同义词|
 |buffet|v. (尤指风/雨/浪)猛烈袭击，打击，伤害<br/>n. 自助餐，(火车)饮食柜台，(车站)快餐部|
 |arbitrator|n. 仲裁人，公断人|
+|||
+|scarf|n. 围巾，头巾，披巾<br/>v. 用围巾围|
+|baby-sit|v. (代人临时)照看小孩，当临时保姆|
+|canon|n. 教规，规则，标准，原则|
+|||
+|rapture|n. 狂喜，欢天喜地，兴高采烈|
+|exquisite|adj. 优美的，精致的，赏心悦目的，精湛的，有很高造诣的，灵敏的，敏锐的，剧烈的，尖锐的<br/>n. 过分讲究穿戴的人|
+|diplomacy|n. 外交，外交手腕，策略，外交技巧|
+|symmetry|n. 对称，相似，相等|
+
 
 <p class="wordCounts">单词收录总数</p>
+
+<p>[单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-English-LearningNotes-SomeWords.md)</p>
 
 <details>
 <summary>扇贝音频测试</summary>
