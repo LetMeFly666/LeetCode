@@ -448,7 +448,7 @@ tags: [其他, 知识, 英语, Notes]
 |spectacle|n. 精彩表演，壮观景象，出人意料的情况，(复数)眼镜|
 |utensil|n. 器具，用具|
 |sham|n. 伪装，假象，假情假意，伪善<br/>adj. 虚假的，假装的<br/>v. 假装，冒充|
-|rebuke|v. 指责，批评|
+|<font color="#28bea0" title="二次复习">rebuke</font>|v. 指责，批评|
 |disillusion|v. 使醒悟，使觉醒，使幻想破灭|
 |||
 |periodical|n. (学术)期刊<br/>adj. 周期的，定期的|
@@ -615,7 +615,18 @@ tags: [其他, 知识, 英语, Notes]
 |exquisite|adj. 优美的，精致的，赏心悦目的，精湛的，有很高造诣的，灵敏的，敏锐的，剧烈的，尖锐的<br/>n. 过分讲究穿戴的人|
 |diplomacy|n. 外交，外交手腕，策略，外交技巧|
 |symmetry|n. 对称，相似，相等|
-
+|||
+|panther|n. 黑豹|
+|slang|n. 俚语<br/>v. 谩骂|
+|codify|v. 把...编成法典|
+|terminology|n. 术语|
+|jot|v. 匆匆记下<br/>n. 一划，一点儿|
+|bygone|adj. 很久以前的，以往的<br/>n. 过去的事，往事|
+|||
+|lathe|n. 车床<br/>v. 用车床加工|
+|throng|n. 聚集的人群，一大群人<br/>v. 群聚，拥塞，拥向|
+|subjunctive|n. 虚拟语气，虚拟式<br/>adj. 虚拟语气的|
+|constituent|n. 组成部分，成分，选区居民，选民，委托人<br/>adj. 组成的，构成的，任命的，选举的|
 
 <p class="wordCounts">单词收录总数</p>
 
