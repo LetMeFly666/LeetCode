@@ -627,6 +627,13 @@ tags: [其他, 知识, 英语, Notes]
 |throng|n. 聚集的人群，一大群人<br/>v. 群聚，拥塞，拥向|
 |subjunctive|n. 虚拟语气，虚拟式<br/>adj. 虚拟语气的|
 |constituent|n. 组成部分，成分，选区居民，选民，委托人<br/>adj. 组成的，构成的，任命的，选举的|
+|||
+|criticize|v. 批评，指责，批判|
+|hallmark|n. 特点，特征<br/>v. 给...打金银纯度印记|
+|perseverance|n. 毅力，韧性，不屈不挠的精神|
+|mischief|n. 恶作剧，淘气，伤害，顽皮|
+|signpost|v. 在...设置路标，预兆<br/>n. 路标，征兆，预兆|
+|torpedo|n. 鱼雷<br/>v. 用鱼雷破坏，毁坏，摧毁|
 
 <p class="wordCounts">单词收录总数</p>
 
