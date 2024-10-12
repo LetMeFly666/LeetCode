@@ -591,7 +591,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |premises|n. (企业的)房屋，经营场地|
 |inlet|n. 水湾，小港，注入口||||
-|drench|v. 使湿透<br/>n. 弄湿，雨淋，浸渍液，(制革时浸泡熟皮的)脱灰水|
+|<font color="#28bea0" title="二次复习">drench</font>|v. 使湿透<br/>n. 弄湿，雨淋，浸渍液，(制革时浸泡熟皮的)脱灰水|
 |||
 |inundate|v. 淹没，使不胜负荷，使应接不暇，泛滥|
 |thrash|v. 抽打，痛打，猛烈扭动，彻底击败|
@@ -635,6 +635,19 @@ tags: [其他, 知识, 英语, Notes]
 |mischief|n. 恶作剧，淘气，伤害，顽皮|
 |signpost|v. 在...设置路标，预兆<br/>n. 路标，征兆，预兆|
 |torpedo|n. 鱼雷<br/>v. 用鱼雷破坏，毁坏，摧毁|
+|||
+|odour|n. 气味，意味，迹象，名声|
+|ramble|n. 漫步，散步，杂乱无章的长篇大论<br/>v. 漫谈，闲聊，漫步，蔓生|
+|nausea|n. 恶心，反胃，作呕|
+|celery|n. 芹菜，(调味用)|
+|jug|n. (有柄有嘴的)壶/罐，一壶/罐(的量)|
+|zealous|adj. 热情的，热烈的，充满激情的|
+|regime|n. 组织方法，管理体制，政权，政体|
+|cosmopolitan|adj. 世界各国的，各国人民的|
+|||
+|haughty|adj. 傲慢的，高傲自大的|
+|ginger|n. 姜，姜黄色<br/>adj. 姜黄色的|
+|drunkard|n. 酒鬼|
 
 <p class="wordCounts">单词收录总数</p>
 
