@@ -648,6 +648,10 @@ tags: [其他, 知识, 英语, Notes]
 |haughty|adj. 傲慢的，高傲自大的|
 |ginger|n. 姜，姜黄色<br/>adj. 姜黄色的|
 |drunkard|n. 酒鬼|
+|||
+|pawn|n. 抵押物，(国际象棋)卒，走卒，被利用的人<br/>v. 典当，质押|
+|litre|n. 升|
+|nucleus|n. 核，原子核，细胞核，核心，中心|
 
 <p class="wordCounts">单词收录总数</p>
 
