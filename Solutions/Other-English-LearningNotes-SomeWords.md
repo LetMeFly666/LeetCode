@@ -652,10 +652,21 @@ tags: [其他, 知识, 英语, Notes]
 |pawn|n. 抵押物，(国际象棋)卒，走卒，被利用的人<br/>v. 典当，质押|
 |litre|n. 升|
 |nucleus|n. 核，原子核，细胞核，核心，中心|
+|||
+|sly||
+|collar|n. 衣领，领子，箍，(动物，尤指狗的)颈圈<br/>v. 抓住，捉住，揪住，逮住|
+|pneumonia|n. 肺炎|
+|||
+|heed|n. 注意<br/>v. 注意|
+|conversant|adj. 通晓的，熟悉的|
+|sermon|n. 布道，冗长的说教|
+|reimburse|v. 补偿，偿还，报销|
+|del credere|phrase. 保付|
+|countermeasure|n. 对策，对抗手段，反措施|
 
 <p class="wordCounts">单词收录总数</p>
 
-<p>[单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-English-LearningNotes-SomeWords.md)</p>
+[单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-English-LearningNotes-SomeWords.md)
 
 <details>
 <summary>扇贝音频测试</summary>
