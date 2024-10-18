@@ -620,7 +620,7 @@ tags: [其他, 知识, 英语, Notes]
 |panther|n. 黑豹|
 |slang|n. 俚语<br/>v. 谩骂|
 |codify|v. 把...编成法典|
-|terminology|n. 术语|
+|<font color="#28bea0" title="二次复习">terminology</font>|n. 术语|
 |jot|v. 匆匆记下<br/>n. 一划，一点儿|
 |bygone|adj. 很久以前的，以往的<br/>n. 过去的事，往事|
 |||
@@ -653,7 +653,7 @@ tags: [其他, 知识, 英语, Notes]
 |litre|n. 升|
 |nucleus|n. 核，原子核，细胞核，核心，中心|
 |||
-|sly||
+|sly|adj. 诡诈的，狡诈的，诡秘的(表示自己知道别人不知道的秘密)|
 |collar|n. 衣领，领子，箍，(动物，尤指狗的)颈圈<br/>v. 抓住，捉住，揪住，逮住|
 |pneumonia|n. 肺炎|
 |||
@@ -663,6 +663,11 @@ tags: [其他, 知识, 英语, Notes]
 |reimburse|v. 补偿，偿还，报销|
 |del credere|phrase. 保付|
 |countermeasure|n. 对策，对抗手段，反措施|
+|||
+|mariner|n. 水手|
+|alienation|n. 疏远，转让，【哲】异化，离间|
+|annex|v. 附加，附带，并吞，抢占，获得<br/>n. 附件，附属品，附属建筑|
+|wade|v. 跋涉，趟水|
 
 <p class="wordCounts">单词收录总数</p>
 
