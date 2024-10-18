@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="总 OWA相关 分析维度相关  现在更多的还只是一个提纲，仍有很多具体细节有待调研。 一、OWA相关1. 基本概述 定义和用途：OWA是什么、以及它在Exchange Server或Microsoft 365中的作用、outlook和exchagne的关系。 历史背景：OWA的发展历程、版本更新、不同版本OWA与Windows Server兼容性的问题、版本号命名方式。 服务器一些概念：Windo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OWA(Outlook Web App) - 详细总结调研 - 特征相关">
+<meta property="og:url" content="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="总 OWA相关 分析维度相关  现在更多的还只是一个提纲，仍有很多具体细节有待调研。 一、OWA相关1. 基本概述 定义和用途：OWA是什么、以及它在Exchange Server或Microsoft 365中的作用、outlook和exchagne的关系。 历史背景：OWA的发展历程、版本更新、不同版本OWA与Windows Server兼容性的问题、版本号命名方式。 服务器一些概念：Windo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-18T02:18:25.000Z">
+<meta property="article:modified_time" content="2024-10-18T16:05:10.112Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="抓包">
+<meta property="article:tag" content="流量监测">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>OWA(Outlook Web App) - 详细总结调研 - 特征相关 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="OWA(Outlook Web App) - 详细总结调研 - 特征相关"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-10-18 10:18" pubdate>
+          2024年10月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OWA(Outlook Web App) - 详细总结调研 - 特征相关</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="总"><a href="#总" class="headerlink" title="总"></a>总</h1><ol>
+<li><a href="#%E4%B8%80owa%E7%9B%B8%E5%85%B3">OWA相关</a></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%9E%90%E7%BB%B4%E5%BA%A6%E7%9B%B8%E5%85%B3">分析维度相关</a></li>
+</ol>
+<p>现在更多的还只是一个提纲，仍有很多具体细节有待调研。</p>
+<h2 id="一、OWA相关"><a href="#一、OWA相关" class="headerlink" title="一、OWA相关"></a>一、OWA相关</h2><h3 id="1-基本概述"><a href="#1-基本概述" class="headerlink" title="1. 基本概述"></a>1. 基本概述</h3><ul>
+<li><code>定义和用途</code>：OWA是什么、以及它在Exchange Server或Microsoft 365中的作用、outlook和exchagne的关系。</li>
+<li><code>历史背景</code>：OWA的发展历程、版本更新、不同版本OWA与Windows Server兼容性的问题、版本号命名方式。</li>
+<li><code>服务器一些概念</code>：Windows Server中有关域、林、AD等的概念。</li>
+<li><code>所需依赖</code>：安装OWA之前系统中所必须包含的依赖。</li>
+<li><code>如何搭建</code>：搭建的总体流程、具体流程、所需文件地址、注意事项和踩坑记录。</li>
+<li><code>主要功能</code>：OWA的关键功能、如邮件管理、日历、联系人、任务、文件共享等（更多的准备放在<code>4. 功能详解</code>）。</li>
+</ul>
+<h3 id="2-架构和技术基础"><a href="#2-架构和技术基础" class="headerlink" title="2. 架构和技术基础"></a>2. 架构和技术基础</h3><ul>
+<li><code>后台架构</code>：OWA的架构、包括服务器端组件（如Exchange Server）与前端交互机制、服务器的各种“角色”介绍及其功能和作用、系统启动后为何需要启动那么多的相关服务才能保证OWA正常运行、Exchange每个相关服务的作用、为什么OWA那么占内存。</li>
+<li><code>技术栈</code>：详细介绍OWA所使用的技术例如ASP.NET&#x2F;HTML5&#x2F;JavaScript等。</li>
+<li><code>协议支持</code>：OWA支持的邮件传输协议如SMTP&#x2F;IMAP&#x2F;POP3&#x2F;HTTPS等、之前调研的用户在邮件交流过程中的(网络包)具体流程。</li>
+</ul>
+<h3 id="3-部署方式"><a href="#3-部署方式" class="headerlink" title="3. 部署方式"></a>3. 部署方式</h3><ul>
+<li><code>本地部署</code>：OWA在企业内部的部署方案及配置步骤（类似基本概述）。</li>
+<li><code>云端部署（Microsoft 365）</code>：在云端使用OWA的架构及优势。</li>
+<li><code>混合部署</code>：本地和云混合环境下的OWA实现及配置要点。</li>
+</ul>
+<h3 id="4-功能详解"><a href="#4-功能详解" class="headerlink" title="4. 功能详解"></a>4. 功能详解</h3><ul>
+<li><code>邮件管理</code>：详细描述OWA的邮件管理功能（如分类、过滤、搜索、归档、邮件规则等）。</li>
+<li><code>日历与任务</code>：OWA如何帮助用户管理日历事件和任务。</li>
+<li><code>附件和文件管理</code>：文件的上传、共享、查看等功能。</li>
+<li><code>联系人管理</code>：如何创建、编辑、删除和同步联系人。</li>
+<li><code>移动端支持</code>：OWA在移动设备上的表现及专有应用。</li>
+</ul>
+<h3 id="5-安全性"><a href="#5-安全性" class="headerlink" title="5. 安全性"></a>5. 安全性</h3><ul>
+<li><code>身份验证</code>：包括多重身份验证（MFA）、基于角色的访问控制（RBAC）。</li>
+<li><code>数据加密</code>：传输中的数据加密和静态数据加密。</li>
+<li><code>安全协议</code>：HTTPS&#x2F;SSL证书的应用、支持OAuth 2.0等安全协议。</li>
+<li><code>恶意软件和垃圾邮件过滤</code>：防止邮件中恶意链接和病毒传播的机制。</li>
+<li><code>账户保护机制</code>：账户锁定、密码策略及异常活动检测等。</li>
+<li><code>CA</code>：搭建后的自建CA是什么以及为何不被浏览器信任</li>
+</ul>
+<h3 id="6-性能与优化"><a href="#6-性能与优化" class="headerlink" title="6. 性能与优化"></a>6. 性能与优化</h3><ul>
+<li><code>性能监控与调优</code>：如何监控OWA的性能及提高其效率（如缓存机制、负载均衡）、为何占据大内存及内存占用是否可以减少。</li>
+<li><code>带宽优化</code>：如何在高并发环境下优化OWA的带宽使用。</li>
+<li><code>客户端兼容性</code>：对各类浏览器和操作系统的兼容性分析。</li>
+</ul>
+<h3 id="7-用户体验及界面"><a href="#7-用户体验及界面" class="headerlink" title="7. 用户体验及界面"></a>7. 用户体验及界面</h3><ul>
+<li><code>自定义功能</code>：如何为不同用户或组织自定义OWA的界面和功能。</li>
+<li><code>插件与扩展支持</code>：OWA可用的第三方插件及自定义扩展的开发与应用、OWA对Powershell的支持。</li>
+<li><code>界面设计与用户交互</code>：OWA的用户界面设计理念、易用性研究及可访问性优化。</li>
+<li><code>主题定制问题</code>：为何搭建起来的OWA界面和官网的不一样（有点像Win10和Win11的区别）</li>
+</ul>
+<h3 id="8-管理与维护"><a href="#8-管理与维护" class="headerlink" title="8. 管理与维护"></a>8. 管理与维护</h3><ul>
+<li><code>管理员界面</code>：介绍如何使用管理中心对OWA进行日常维护和管理（<code>/ecp</code>）。</li>
+<li><code>日志与审计</code>：OWA的日志记录功能及审计功能的设置与使用。</li>
+<li><code>备份与恢复</code>：数据丢失时的恢复机制及如何进行备份管理。</li>
+</ul>
+<h3 id="9-故障排查"><a href="#9-故障排查" class="headerlink" title="9. 故障排查"></a>9. 故障排查</h3><ul>
+<li><code>常见问题及解决方案</code>：如登录问题、连接问题、附件上传错误等。</li>
+<li><code>性能问题排查</code>：如何排查网络延迟、响应速度慢等性能问题。</li>
+<li><code>日志分析</code>：通过日志分析解决OWA中出现的异常问题。</li>
+<li><code>进入邮箱缓慢</code>：一段时间未登录后首次登录加载时间很长的问题（是因为机械磁盘还是因为缓存问题）</li>
+</ul>
+<h3 id="10-合规性与法规支持"><a href="#10-合规性与法规支持" class="headerlink" title="10. 合规性与法规支持"></a>10. 合规性与法规支持</h3><p>这个简要调研调研</p>
+<ul>
+<li><code>GDPR与数据隐私</code>：OWA如何支持欧洲的GDPR规定、数据隐私和合规性方面的功能。</li>
+<li><code>邮件存档与保留策略</code>：企业如何通过OWA满足邮件存档需求和法律法规要求。</li>
+</ul>
+<h3 id="11-未来发展与趋势"><a href="#11-未来发展与趋势" class="headerlink" title="11. 未来发展与趋势"></a>11. 未来发展与趋势</h3><p>这个简要调研调研</p>
+<ul>
+<li><code>微软计划</code>：展望微软对OWA的未来发展计划。</li>
+<li><code>新功能展望</code>：预计未来可能出现的功能升级和创新。</li>
+<li><code>OWA与其他竞争对手对比</code>：OWA与Gmail、Zoho Mail等邮件系统的对比分析。</li>
+</ul>
+<h2 id="二、分析维度相关"><a href="#二、分析维度相关" class="headerlink" title="二、分析维度相关"></a>二、分析维度相关</h2><h3 id="1-协议特征"><a href="#1-协议特征" class="headerlink" title="1. 协议特征"></a>1. 协议特征</h3><ul>
+<li><code>HTTPS流量</code>：OWA默认使用HTTPS协议进行加密通信。可以通过识别特定端口（通常是443端口）的HTTPS流量，进一步缩小流量的范围。</li>
+<li><code>HTTP/2协议支持</code>：OWA作为现代Web应用程序，会使用HTTP&#x2F;2协议，识别此协议的使用可以作为特征之一。</li>
+<li><code>TLS加密握手</code>：通过分析TLS握手过程中的信息（如服务器证书、加密套件），可以判断是否是OWA相关的加密流量。微软相关的服务器证书或TLS特征可能会显现OWA服务的痕迹。</li>
+</ul>
+<h3 id="2-域名与IP地址"><a href="#2-域名与IP地址" class="headerlink" title="2. 域名与IP地址"></a>2. 域名与IP地址</h3><ul>
+<li><code>域名解析</code>：通过DNS流量分析，OWA的流量类型有两种类型：微软outlook相关流量以及美J&#x2F;企业自建服务的相关流量。微软官方owa的域名有 <code>outlook.office365.com</code>、<code>outlook.live.com</code>以及可能更多域名；美J相关域名可能需要再调查一下。若能抓取DNS请求中的域名解析信息，则应该能快速过滤出与OWA相关的流量。</li>
+<li><code>服务器IP地址</code>：这个有点类似德桐的工作，OWA可能与特定的IP范围相关，可以在识别过程中积累IP地址“数据库”。微软会定期公布Office 365的IP范围，美J相关可能就需要日常过程中不错过任何一次机会去积累了。</li>
+</ul>
+<h3 id="3-流量特征"><a href="#3-流量特征" class="headerlink" title="3. 流量特征"></a>3. 流量特征</h3><ul>
+<li><code>流量模式</code>：OWA使用的是交互式Web界面，流量会表现出周期性或规律性的数据请求和响应。例如，用户与OWA的交互操作会生成多个短时的HTTP&#x2F;HTTPS请求，这些请求通常是小数据包的GET&#x2F;POST操作，而不是持续的大量下载&#x2F;上传流量（附件下载除外，但一般不会通过邮件发送过大的附件吧）。</li>
+<li><code>特定的URI模式</code>：如果能解析到URL，则可以分析HTTP请求的URI，可以发现与OWA服务相关的路径或查询参数模式。例如，URL中可能会包含 <code>/owa/</code>，<code>/ecp/</code>（Exchange Control Panel，这个就是owa的管理平台的地址）等关键词。</li>
+<li><code>会话保持机制</code>：OWA依赖于会话保持和认证机制，因此可以观察与cookie、会话ID、token等相关的特征流量。分析请求中的Set-Cookie或Authorization头信息，可能会发现特定的OWA会话管理模式（前提最终是能获取到流量包中的这些相关信息）。</li>
+<li><code>时序特征的识别</code>：访问OWA服务时，首先是大量的小数据包，之后在未有任何操作的情况下也会有类似的心跳包<code>/owa/ev.owa2</code>、<code>/owa/service.svc</code>、<code>/owa/ping.owa</code>等。在界面不关闭的状态下突然收到邮件是会直接在网页端提示的。</li>
+</ul>
+<h3 id="4-应用层标识"><a href="#4-应用层标识" class="headerlink" title="4. 应用层标识"></a>4. 应用层标识</h3><p>这一部分暂未去核实。</p>
+<ul>
+<li><code>User-Agent字段</code>：OWA用户的浏览器发起的请求可能会携带特定的User-Agent字符串，反映出客户端的版本信息。特定的User-Agent（如与Microsoft Exchange相关的版本）可以作为识别特征。</li>
+<li><code>自定义Headers</code>：微软Exchange和OWA的HTTP请求中可能会有定制的HTTP头字段，如 <code>X-OWA-Version</code>， <code>X-EWS-Authorization</code> 等，这些都是微软产品特有的标识，可以作为流量的识别依据。</li>
+<li><code>认证机制</code>：OWA通常使用基于OAuth或Basic Authentication的认证机制，可以通过对这些请求中的认证头信息（如Bearer Token或Base64编码的字符串）进行分析。</li>
+</ul>
+<h3 id="5-包大小与通信模式"><a href="#5-包大小与通信模式" class="headerlink" title="5. 包大小与通信模式"></a>5. 包大小与通信模式</h3><ul>
+<li><code>小数据包频率</code>：OWA用户操作界面中每次点击操作往往产生较小的数据包（如邮箱同步、邮件检查等），可以统计特定主机的流量中，是否存在大量的小数据包。这些流量与典型的视频流、文件传输等流量有显著不同。</li>
+<li><code>异步请求的频率</code>：OWA的Web界面会依赖于大量的异步请求（AJAX），流量表现为多个短时的、频繁的请求与响应，可以通过时间间隔与包大小的分析进行识别。</li>
+</ul>
+<h3 id="6-流量统计与时序分析"><a href="#6-流量统计与时序分析" class="headerlink" title="6. 流量统计与时序分析"></a>6. 流量统计与时序分析</h3><ul>
+<li><code>流量时序图</code>：通过对某个时间窗口内的流量进行时序分析，可以看出OWA流量是否存在明显的周期性（如定时的邮件同步、日历检查）。这种特征在办公时间内尤为显著。</li>
+<li><code>流量峰值</code>：通过分析流量峰值和流量波动情况，识别出与OWA使用相关的流量特征。邮件操作通常伴随着短时间内的请求&#x2F;响应峰值，随后恢复到较低的流量水平。</li>
+</ul>
+<h3 id="7-流量加密模式"><a href="#7-流量加密模式" class="headerlink" title="7. 流量加密模式"></a>7. 流量加密模式</h3><ul>
+<li><code>SSL指纹识别</code>：虽然OWA使用HTTPS加密，但可以通过分析SSL&#x2F;TLS指纹（如证书链、协议版本、加密套件等）来推测流量是否与微软的服务相关。微软的Exchange服务器可能会有特定的加密参数选择和特定的证书颁发机构（CA）。</li>
+<li><code>分析HTTPS SNI字段</code>：在TLS握手阶段，服务器名称指示（SNI）字段可能暴露出服务端域名，如 <code>outlook.office365.com</code>、<code>*mail*.mil</code>。虽然后续数据被加密，但SNI未加密，可以帮助识别OWA相关的流量。</li>
+</ul>
+<blockquote>
+<p>文章原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">原文链接</a>哦~</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
+      
+        <a href="/tags/%E6%8A%93%E5%8C%85/">#抓包</a>
+      
+        <a href="/tags/%E6%B5%81%E9%87%8F%E7%9B%91%E6%B5%8B/">#流量监测</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OWA(Outlook Web App) - 详细总结调研 - 特征相关</div>
+      <div>https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年10月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/10/18/LeetCode%203191.%E4%BD%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E7%BB%84%E5%85%A8%E9%83%A8%E7%AD%89%E4%BA%8E1%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0I/" title="3191.使二进制数组全部等于 1 的最少操作次数 I">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">3191.使二进制数组全部等于 1 的最少操作次数 I</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/10/16/LeetCode%203194.%E6%9C%80%E5%B0%8F%E5%85%83%E7%B4%A0%E5%92%8C%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%B0%8F%E5%B9%B3%E5%9D%87%E5%80%BC/" title="3194.最小元素和最大元素的最小平均值">
+                        <span class="hidden-mobile">3194.最小元素和最大元素的最小平均值</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
