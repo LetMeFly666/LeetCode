@@ -996,6 +996,8 @@ xx型
 |今日は遅いですね。<br/>今天很晚了呢。|
 |7ページを読んでください。<br/>请读第7页。|
 
+[单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
+
 <span style="background-color:#ffbd2a; color: white">TODO:</span> 实词用<font color="#28bea0">-</font>色助词用<font color="#ce82ff">-</font>色。
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes)哦~
