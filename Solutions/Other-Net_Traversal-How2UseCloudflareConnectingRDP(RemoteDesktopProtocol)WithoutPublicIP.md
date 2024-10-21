@@ -21,7 +21,7 @@ tags: [其他, 内网穿透, 远程桌面, RDP]
 
 1. 进入Cloudflare零信任控制台（`控制台主页` -> `ZeroTrust` -> `Networks` -> `Tunnels`）
 
-    ![进入Cloudflare零信任控制台，并点击Create Tunnel](https://cors.letmefly.xyz/ht tps://i-blog.csdnimg.cn/direct/35682e0aa2a34253b55e605aadfe9232.png)
+    ![进入Cloudflare零信任控制台，并点击Create Tunnel](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/35682e0aa2a34253b55e605aadfe9232.png)
 
 2. 新建Tunnel（`Create Tunnel` -> `Select Cloudflared` -> `起个名字` -> `Save tunnel`）
 

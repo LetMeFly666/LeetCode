@@ -625,7 +625,7 @@ tags: [其他, 知识, 英语, Notes]
 |bygone|adj. 很久以前的，以往的<br/>n. 过去的事，往事|
 |||
 |lathe|n. 车床<br/>v. 用车床加工|
-|throng|n. 聚集的人群，一大群人<br/>v. 群聚，拥塞，拥向|
+|<font color="#28bea0" title="二次复习">throng</font>|n. 聚集的人群，一大群人<br/>v. 群聚，拥塞，拥向|
 |subjunctive|n. 虚拟语气，虚拟式<br/>adj. 虚拟语气的|
 |constituent|n. 组成部分，成分，选区居民，选民，委托人<br/>adj. 组成的，构成的，任命的，选举的|
 |||
@@ -680,6 +680,10 @@ tags: [其他, 知识, 英语, Notes]
 |parliament|n. 议会，国会，英国议会(包括下议院和上议院)|
 |tan|n. 棕褐色的皮肤<br/>v. 把皮肤晒得黝黑<br/>adj. 晒黑的，棕褐色的<details><summary>例句</summary>The sun <font color="#28bea0">tans</font> her skin, which makes her look even healthier.<br/>太阳晒黑了她的皮肤，让她看起来更加健康了。</details>|
 |stern|adj. 严厉的，苛刻的，严峻的，坚定的，不动摇的<br/>n. 船尾|
+|||
+|rememb<font color="#28bea0">ra</font>nce|n. 记忆，纪念，回忆，纪念品|
+|Boxing Day|phrase. 节礼日（圣诞节后的第一个工作日，英国和其他一些国家定为假日）|
+|maiden|n. 少女，处女，未婚女子<br/>adj. 首次的，初次的|
 
 <p class="wordCounts">单词收录总数</p>
 
