@@ -668,6 +668,14 @@ tags: [其他, 知识, 英语, Notes]
 |alienation|n. 疏远，转让，【哲】异化，离间|
 |annex|v. 附加，附带，并吞，抢占，获得<br/>n. 附件，附属品，附属建筑|
 |wade|v. 跋涉，趟水|
+|||
+|perturbed|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
+|garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
+|woodpecker|n. 啄木鸟|
+|cosmetics|n. 化妆品|
+|violet|n. 紫罗兰，紫罗兰色，蓝紫色<br/>adj. 紫罗兰色的|
+|stow|v. 妥善放置，把…收好|
+|presently|adv. 一会儿，不久，现在，目前<br/>Tisfy: 当下这个意思与currently类似|
 
 <p class="wordCounts">单词收录总数</p>
 
