@@ -8,6 +8,8 @@ tags: [其他, 知识, 英语, Notes]
 
 ## 单词
 
+<button onclick="reverseTable()">倒叙显示</button>
+
 <p class="wordCounts">单词收录总数</p>
 
 |单词|词义|
@@ -65,7 +67,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |rifle|n. 步枪<br/>快速搜寻，偷窃，盗取|
 |||
-|hypothesis|n. 假设，假说，(凭空的)猜测<details><summary>负数</summary>hypothes<font color="#28bea0">e</font>s</details>|
+|hypothesis|n. 假设，假说，(凭空的)猜测<details><summary>复数</summary>hypothes<font color="#28bea0">e</font>s</details>|
 |||
 |gulp|v. 狼吞虎咽，(因害怕或惊讶)倒吸气<br/>n. 屯饮的量，一大口，吸入，吞咽<details><summary>例句</summary>He <font color="#28bea0">gulped down</font> the rest of his food.<br/>他狼吞虎咽地吃完了剩下的食物。</details>|
 |ancestor|n. 祖宗，祖先|
@@ -638,9 +640,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |odour|n. 气味，意味，迹象，名声|
 |ramble|n. 漫步，散步，杂乱无章的长篇大论<br/>v. 漫谈，闲聊，漫步，蔓生|
-|nausea|n. 恶心，反胃，作呕|
+|<font color="#28bea0" title="二次复习">nausea</font>|n. 恶心，反胃，作呕|
 |celery|n. 芹菜，(调味用)|
-|jug|n. (有柄有嘴的)壶/罐，一壶/罐(的量)|
+|<font color="#28bea0" title="二次复习">jug</font>|n. (有柄有嘴的)壶/罐，一壶/罐(的量)|
 |zealous|adj. 热情的，热烈的，充满激情的|
 |regime|n. 组织方法，管理体制，政权，政体|
 |cosmopolitan|adj. 世界各国的，各国人民的|
@@ -684,8 +686,21 @@ tags: [其他, 知识, 英语, Notes]
 |rememb<font color="#28bea0">ra</font>nce|n. 记忆，纪念，回忆，纪念品|
 |Boxing Day|phrase. 节礼日（圣诞节后的第一个工作日，英国和其他一些国家定为假日）|
 |maiden|n. 少女，处女，未婚女子<br/>adj. 首次的，初次的|
+|||
+|ultraviolet|adj. 紫外线的，利用紫外线的|
+|vex|v. 使恼火，使懊恼，使忧虑|
+|razor|n. 剃须刀，刮脸刀|
+|ox|n. （阉割的）公牛，去势公牛，饲养的牛<details><summary>复数</summary>oxen</details>|
+|||
+|reiterate|v. 反复地说，重申|
+|recompense|v. 给...以补偿，赔偿<br/>n. 报酬，赔偿，补偿|
+|dagger|n. 匕首，短剑<br/>v. 用剑刺，用剑号标明|
+|stowage|n. (船或飞机)装载空间|
+|martyr|n. 烈士，殉道者，乞怜者（向人诉苦以博取同情），长期受折磨者<br/>v. 处死|
 
 <p class="wordCounts">单词收录总数</p>
+
+<button onclick="reverseTable()">倒叙显示</button>
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-English-LearningNotes-SomeWords.md)
 
@@ -722,6 +737,20 @@ tags: [其他, 知识, 英语, Notes]
     }
 
     countWords_changeHTML();
+</script>
+
+<script name="reverseTable">
+    function reverseTable() {
+        const tables = document.querySelectorAll('table');
+        if (tables.length != 1) {
+            console.log('tables.length = ' + tables.length);
+            return -1;
+        }
+        const table = tables[0];
+        const content = table.getElementsByTagName('tbody')[0];
+        const rows = Array.from(content.rows);
+        rows.reverse().forEach(row => table.appendChild(row));  // TODO: 二次翻转
+    }
 </script>
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)哦~
