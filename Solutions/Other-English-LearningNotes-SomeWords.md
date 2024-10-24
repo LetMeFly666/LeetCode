@@ -697,6 +697,15 @@ tags: [其他, 知识, 英语, Notes]
 |dagger|n. 匕首，短剑<br/>v. 用剑刺，用剑号标明|
 |stowage|n. (船或飞机)装载空间|
 |martyr|n. 烈士，殉道者，乞怜者（向人诉苦以博取同情），长期受折磨者<br/>v. 处死|
+|||
+|dread|v. 害怕，担心，〔古语〕敬畏，预感到<br/>n. 恐惧，忧虑，令人惧怕的事物|
+|undue|adj. 不适当的，过分的，过度的|
+|cohesion|n. 团结，凝聚力|
+|pedestrian|n. 行人，步行者<br/>adj. 行人的，缺乏想象力的，乏味的|
+|expedient|adj. 权宜之计的，应急的，不得已而为之的<br/>n. 权宜之计，应急办法|
+|opal|n. 蛋白石，猫眼石<br/>adj. 乳白的|
+|aristocrat|n. （一个）贵族|
+|auditorium|n. 礼堂，观众席，会堂|
 
 <p class="wordCounts">单词收录总数</p>
 
