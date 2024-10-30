@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>3181.执行操作可获得的最大总奖励 II | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>3181.执行操作可获得的最大总奖励 II</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2024-10-30T02:35:36.000Z" id="date"> 2024-10-30</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】3181-执行操作可获得的最大总奖励-II：动态规划-位运算优化"><a href="#【LetMeFly】3181-执行操作可获得的最大总奖励-II：动态规划-位运算优化" class="headerlink" title="【LetMeFly】3181.执行操作可获得的最大总奖励 II：动态规划+位运算优化"></a>【LetMeFly】3181.执行操作可获得的最大总奖励 II：动态规划+位运算优化</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-total-reward-using-operations-ii/">https://leetcode.cn/problems/maximum-total-reward-using-operations-ii/</a></p>
+<p>给你一个整数数组 <code>rewardValues</code>，长度为 <code>n</code>，代表奖励的值。</p>
+
+<p>最初，你的总奖励 <code>x</code> 为 0，所有下标都是<strong> 未标记 </strong>的。你可以执行以下操作 <strong>任意次 </strong>：</p>
+
+<ul>
+    <li>从区间 <code>[0, n - 1]</code> 中选择一个 <strong>未标记 </strong>的下标 <code>i</code>。</li>
+    <li>如果 <code>rewardValues[i]</code> <strong>大于</strong> 你当前的总奖励 <code>x</code>，则将 <code>rewardValues[i]</code> 加到 <code>x</code> 上（即 <code>x = x + rewardValues[i]</code>），并<strong> 标记</strong> 下标 <code>i</code>。</li>
+</ul>
+
+<p>以整数形式返回执行最优操作能够获得的<strong> 最大</strong><em> </em>总奖励。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">rewardValues = [1,1,3,3]</span></p>
+
+<p><strong>输出：</strong><span class="example-io">4</span></p>
+
+<p><strong>解释：</strong></p>
+
+<p>依次标记下标 0 和 2，总奖励为 4，这是可获得的最大值。</p>
+</div>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">rewardValues = [1,6,4,3,2]</span></p>
+
+<p><strong>输出：</strong><span class="example-io">11</span></p>
+
+<p><strong>解释：</strong></p>
+
+<p>依次标记下标 0、2 和 1。总奖励为 11，这是可获得的最大值。</p>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= rewardValues.length &lt;= 5 * 10<sup>4</sup></code></li>
+    <li><code>1 &lt;= rewardValues[i] &lt;= 5 * 10<sup>4</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：动态规划"><a href="#解题方法：动态规划" class="headerlink" title="解题方法：动态规划"></a>解题方法：动态规划</h2><p>在<a href="https://blog.letmefly.xyz/2024/10/28/LeetCode%203180.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E6%80%BB%E5%A5%96%E5%8A%B1I/">【LetMeFly】3180.执行操作可获得的最大总奖励 I：动态规划</a>中，我们已经知道了$O(mn)$时间复杂度的算法：</p>
+<blockquote>
+<p>使用$dp[i]$代表奖励$i$能否获得，对于奖励数组中的一个奖励$x$有转移公式$dp[i] |&#x3D; dp[i - x]$，其中$0\leq i - x \lt x$。</p>
+</blockquote>
+<p>本题增加了数据量，$\max(mn)&#x3D;50000\times 50000&#x3D;2500000000&#x3D;2.5e9$，难以在$1$秒内完成计算，因此需要一些“并行计算”来降低一些时间复杂度：</p>
+<blockquote>
+<p>不难发现，对于一个奖励$x$我们需要从$0$遍历到$x-1$，导致了$O(m)$的时间复杂度。</p>
+<p>但实际上，$dp$数组的每一个元素都是一个布尔类型的数据，我要是把这些数据拼接起来（比如原来的一个bool类型的数据变成一个整数的某一位）是不是时空复杂度直接能除以一个整数位数&#x2F;计算机字长呢？</p>
+<p>现在我们将$dp$由布尔类型的数组变成一个很多位的大整数或<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode/blob/master/Codes/3181-maximum-total-reward-using-operations-ii-tryBitset.cpp">bitset</a>，对于$0\leq i\lt x$，$dp[i + x] |&#x3D; dp[i]$就变成了$dp |&#x3D; (dp低x位左移x位后的结果)$，因此问题就变成了如何获取$dp$这个大整数的低$x$位左移$x$位的结果。常见方法如：</p>
+<ol>
+<li>方法一（对于大整数）：首先获得一个低$x$位全为$1$的掩码$mask$（$mask &#x3D; (1 &lt;&lt; x) - 1$），然后取出$dp$的低$x$位（$dp &amp; mask$），将这个结果左移$x$位（$(dp &amp; mask) &lt;&lt; x$）</li>
+<li>方法二（对于bitset）：先将$dp$左移$len(dp)-x$位再右移$len(dp)-x$位，则除了低$x$位以外都变成了$0$，再将其左移$x$位即可（$dp&lt;&lt;(len(dp)-x)&gt;&gt;(len(dp)-x)&lt;&lt;x$，等价于$dp&lt;&lt;(len(dp)-x)&gt;&gt;(len(dp)-2x)$）</li>
+</ol>
+</blockquote>
+<ul>
+<li>时间复杂度$O(n\log n+nm&#x2F;w)$，其中$w$是整数位数或计算机字长，一般为$64$（或$32$），$\max(mn)&#x3D;50000\times 50000&#x2F;64&#x3D;39,062,500\approx 3.9e7$</li>
+<li>空间复杂度$O(\log n+m&#x2F;w)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxTotalReward</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; rewardValues)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(rewardValues.<span class="built_in">begin</span>(), rewardValues.<span class="built_in">end</span>());</span><br><span class="line">        bitset&lt;100000&gt; dp = <span class="number">1</span>;  <span class="comment">// 2 * (50000)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x : rewardValues) &#123;</span><br><span class="line">            <span class="comment">// [0, x - 1]</span></span><br><span class="line">            <span class="comment">// dp |= dp &lt;&lt; (100000 - x) &gt;&gt; (100000 - x) &lt;&lt; x;</span></span><br><span class="line">            dp |= dp &lt;&lt; (<span class="number">100000</span> - x) &gt;&gt; (<span class="number">100000</span>- <span class="number">2</span> * x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans = rewardValues.<span class="built_in">back</span>() * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (!dp.<span class="built_in">test</span>(ans)) &#123;</span><br><span class="line">            ans--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxTotalReward</span>(<span class="params">self, rewardValues: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        rewardValues.sort()</span><br><span class="line">        dp = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> rewardValues:</span><br><span class="line">            dp |= (dp &amp; ((<span class="number">1</span> &lt;&lt; x) - <span class="number">1</span>)) &lt;&lt; x</span><br><span class="line">        <span class="keyword">return</span> dp.bit_length() - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/10/30/LeetCode%203181.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E6%80%BB%E5%A5%96%E5%8A%B1II/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/143360617">https://letmefly.blog.csdn.net/article/details/143360617</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← 下一篇 README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2024/10/29/LeetCode%203211.%E7%94%9F%E6%88%90%E4%B8%8D%E5%90%AB%E7%9B%B8%E9%82%BB%E9%9B%B6%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2/">3211.生成不含相邻零的二进制字符串 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%913181-%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E6%80%BB%E5%A5%96%E5%8A%B1-II%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】3181.执行操作可获得的最大总奖励 II：动态规划+位运算优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">Python</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
