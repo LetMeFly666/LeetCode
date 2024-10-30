@@ -67,6 +67,8 @@ tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
 + 时间复杂度$O(n\log n + nm)$，其中$n=len(rewardValues), m = \max(rewardValues)$
 + 空间复杂度$O(\log n + m)$
 
+时空复杂度上如果想除以一个系统位数，可以考虑[【LetMeFly】3181.执行操作可获得的最大总奖励 II：动态规划+位运算优化](https://blog.letmefly.xyz/2024/10/30/LeetCode%203181.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%8F%AF%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E6%80%BB%E5%A5%96%E5%8A%B1II/)的位运算优化
+
 ### AC代码
 
 #### C++
