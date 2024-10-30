@@ -68,7 +68,7 @@ tags: [题解, LeetCode, 困难, 位运算, 数组, 动态规划, DP, bitset]
 >
 > 但实际上，$dp$数组的每一个元素都是一个布尔类型的数据，我要是把这些数据拼接起来（比如原来的一个bool类型的数据变成一个整数的某一位）是不是时空复杂度直接能除以一个整数位数/计算机字长呢？
 >
-> 现在我们将$dp$由布尔类型的数组变成一个很多位的大整数或[bitset](https://github.com/LetMeFly666/LeetCode/blob/master/Codes/3181-maximum-total-reward-using-operations-ii-tryBitset.cpp)，对于$0\leq i\lt x$，$dp[i + x] |= dp[i]$就变成了$dp |= (dp低x位左移x位后的结果)$，因此问题就变成了如何获取$dp$这个大整数的低$x$位左移$x$位的结果。常见方法如：
+> 现在我们将$dp$由布尔类型的数组变成一个很多位的大整数或[bitset](https://github.com/LetMeFly666/LeetCode/blob/07c3776fc5e2cb33a4b27b19ebb2b519d464e9ac/Codes/3181-maximum-total-reward-using-operations-ii-tryBitset.cpp)，对于$0\leq i\lt x$，$dp[i + x] |= dp[i]$就变成了$dp |= (dp低x位左移x位后的结果)$，因此问题就变成了如何获取$dp$这个大整数的低$x$位左移$x$位的结果。常见方法如：
 >
 > 1. 方法一（对于大整数）：首先获得一个低$x$位全为$1$的掩码$mask$（$mask = (1 << x) - 1$），然后取出$dp$的低$x$位（$dp \& mask$），将这个结果左移$x$位（$(dp \& mask) << x$）
 > 2. 方法二（对于bitset）：先将$dp$左移$len(dp)-x$位再右移$len(dp)-x$位，则除了低$x$位以外都变成了$0$，再将其左移$x$位即可（$dp<<(len(dp)-x)>>(len(dp)-x)<<x$，等价于$dp<<(len(dp)-x)>>(len(dp)-2x)$）
