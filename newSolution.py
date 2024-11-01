@@ -1,8 +1,8 @@
 '''
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
-LastEditors: LetMeFly
-LastEditTime: 2024-10-03 13:50:56
+LastEditors: LetMeFly.xyz
+LastEditTime: 2024-11-01 12:57:48
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -80,15 +80,18 @@ def genSolutionPart(num):
 
 ### AC代码
 """
-    for file in today4code:
-        fileType = os.path.splitext(file)[-1]
-        if fileType.startswith('.'):
-            fileType = fileType[1:]
-        markdowncode = suffix2markdowncode[fileType]
-        with open(file, 'r', encoding='utf-8') as f:
-            data = f.read()
-        # data = removePrefix(data, fileType)  # TODO: 移除前面注释以及其他头部文件
-        result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
+    for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
+        for file in today4code:
+            fileType = os.path.splitext(file)[-1]
+            if fileType.startswith('.'):
+                fileType = fileType[1:]
+            if fileType != thisFileType:
+                continue
+            markdowncode = suffix2markdowncode[fileType]
+            with open(file, 'r', encoding='utf-8') as f:
+                data = f.read()
+            # data = removePrefix(data, fileType)  # TODO: 移除前面注释以及其他头部文件
+            result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
 

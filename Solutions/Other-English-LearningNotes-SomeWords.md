@@ -674,7 +674,7 @@ tags: [其他, 知识, 英语, Notes]
 |perturbed|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
 |garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
 |woodpecker|n. 啄木鸟|
-|cosmetics|n. 化妆品|
+|<font color="#28bea0" title="二次复习">cosmetics</font>|n. 化妆品|
 |violet|n. 紫罗兰，紫罗兰色，蓝紫色<br/>adj. 紫罗兰色的|
 |stow|v. 妥善放置，把…收好|
 |presently|adv. 一会儿，不久，现在，目前<br/>Tisfy: 当下这个意思与currently类似|
@@ -714,7 +714,6 @@ tags: [其他, 知识, 英语, Notes]
 |affectionate|adj. 表示关爱的<details><summary>例句</summary>That mother gave an affectionate hug to her newborn child.<br/>那位母亲深情地拥抱了她刚出生的孩子。</details>|
 |<font color="#28bea0" title="二次复习">auspice</font>|n. 吉兆，赞助，主办|
 |||
-|不只：|在人大学的单词|
 |heartfelt|adj. 衷心的，真诚的<details><summary>例句</summary>We offer our deepest and heartfelt sympathy on their losses.<br/>我们对他们的损失表示最深切的同情。</details>|
 |snobbery|n. 自命不凡，势力|
 |shilling|n. 先令(英国旧货币单位)|
@@ -732,6 +731,15 @@ tags: [其他, 知识, 英语, Notes]
 |reckon|v. 认为，想，估计，计算|
 |||
 |aeroplane|n. 飞机(=airplane)|
+|||
+|昨日的15个(x.x)的单词|之一|
+|malaise|n. 不舒服，心神不安|
+|||
+|stationery|n. 文具，信笺/信封|
+|banquet|n. 宴会，盛宴|
+|fleet|adj. 快速的<br/>n. 舰队<details><summary>例句</summary>A fleet of ambulances took the injured to the hospital.<br/>救护车队把伤者送往医院。</details>|
+|fleshy|adj. 多肉的，肥胖的，肉质的|
+|remedy|n. 解决方法，药品，治疗方法<br/>v. 补救，矫正|
 
 <p class="wordCounts">单词收录总数</p>
 
