@@ -260,6 +260,12 @@ F:\CWD>"C:\BatDir\test.bat"
 
 重启计算机或重启资源管理器即可生效。
 
+### UPX加壳减小可执行文件体积
+
+UPX官网[upx.github.io](https://upx.github.io/)，主要目的是将可执行文件和共享库（通常是二进制文件）压缩为更小的尺寸，从而减少磁盘占用空间和下载时间。
+
+Pyinstaller打包可执行文件时若系统变量里有upx，则打包出来的体积也会小一些。
+
 ## About Phone
 
 ### Phone APP 如视VR

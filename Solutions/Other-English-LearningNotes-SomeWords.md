@@ -712,13 +712,26 @@ tags: [其他, 知识, 英语, Notes]
 |Egyptian|adj. 埃及的，埃及人的<br/>n. 埃及人|
 |peasantry|n. (统称)(一个地区或国家的)农民|
 |affectionate|adj. 表示关爱的<details><summary>例句</summary>That mother gave an affectionate hug to her newborn child.<br/>那位母亲深情地拥抱了她刚出生的孩子。</details>|
-|auspice|n. 吉兆，赞助，主办|
+|<font color="#28bea0" title="二次复习">auspice</font>|n. 吉兆，赞助，主办|
 |||
-|占坑|在人大学的单词|
+|不只：|在人大学的单词|
+|heartfelt|adj. 衷心的，真诚的<details><summary>例句</summary>We offer our deepest and heartfelt sympathy on their losses.<br/>我们对他们的损失表示最深切的同情。</details>|
+|snobbery|n. 自命不凡，势力|
+|shilling|n. 先令(英国旧货币单位)|
+|lobster|n. 大虾，龙虾，龙虾肉，傻子|
+|warehousing|n. 仓储，仓储业|
+|benevolent|adj. 慈善的，行善的，乐善好施的，用于慈善机构名称|
+|cavern|n. 大洞穴，大山洞<br/>v. 挖空，置...于山洞中|
 |||
 |redeem|v. 赎回，救赎，兑换，兑现|
 |canvass|v. 游说，劝说，兜售，(大范围的)调查<br/>n. 游说，讨论，民意调查|
 |uproar|n. 喧嚣，骚动|
+|||
+|tort|v. 快走，疾走，小跑<br/>n. 小跑，疾走|
+|consign|v. 托运，运送，把...置于(尤指不好的境地)，弃置|
+|reckon|v. 认为，想，估计，计算|
+|||
+|aeroplane|n. 飞机(=airplane)|
 
 <p class="wordCounts">单词收录总数</p>
 
