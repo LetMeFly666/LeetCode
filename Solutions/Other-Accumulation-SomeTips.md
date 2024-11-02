@@ -266,6 +266,10 @@ UPX官网[upx.github.io](https://upx.github.io/)，主要目的是将可执行�
 
 Pyinstaller打包可执行文件时若系统变量里有upx，则打包出来的体积也会小一些。
 
+### Win10右下角托盘区时间显示到秒
+
+`Win + R` -> `regedit` -> `回车`，定位到`计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`并新建`DWORD (32位)值(D)`，将值修改为`1`，重启`explorer.exe`。
+
 ## About Phone
 
 ### Phone APP 如视VR
