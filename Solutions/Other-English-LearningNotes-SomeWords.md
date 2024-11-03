@@ -740,6 +740,10 @@ tags: [其他, 知识, 英语, Notes]
 |fleet|adj. 快速的<br/>n. 舰队<details><summary>例句</summary>A fleet of ambulances took the injured to the hospital.<br/>救护车队把伤者送往医院。</details>|
 |fleshy|adj. 多肉的，肥胖的，肉质的|
 |remedy|n. 解决方法，药品，治疗方法<br/>v. 补救，矫正|
+|||
+|commandment|n. 诫条，诫命，诫律|
+|constable|n. (通常指小城镇的)警员|
+|expiry|n. 到期<details><summary>例句</summary>Today is the expiry date of my visa.<br/>今天是我签证到期的日子。</details>|
 
 <p class="wordCounts">单词收录总数</p>
 
