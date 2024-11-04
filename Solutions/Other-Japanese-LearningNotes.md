@@ -1027,6 +1027,7 @@ xx型
 |その質問は明日答えます。<br/>那个问题明天回答。|
 |8ページからコピーしてください。<br/>请从第8页开始复印。|
 |一番高いダイヤモンドを見せてください。<br/>请给我看最贵的钻石。|
+|スポーツは教室の中でやらないでほしです。<br/>不想要你在教室里做运动。|
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
 
