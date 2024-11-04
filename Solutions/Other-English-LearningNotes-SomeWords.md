@@ -623,7 +623,7 @@ tags: [其他, 知识, 英语, Notes]
 |slang|n. 俚语<br/>v. 谩骂|
 |codify|v. 把...编成法典|
 |<font color="#28bea0" title="二次复习">terminology</font>|n. 术语|
-|jot|v. 匆匆记下<br/>n. 一划，一点儿|
+|<font color="#28bea0" title="二次复习">jot</font>|v. 匆匆记下<br/>n. 一划，一点儿|
 |bygone|adj. 很久以前的，以往的<br/>n. 过去的事，往事|
 |||
 |lathe|n. 车床<br/>v. 用车床加工|
@@ -744,6 +744,9 @@ tags: [其他, 知识, 英语, Notes]
 |commandment|n. 诫条，诫命，诫律|
 |constable|n. (通常指小城镇的)警员|
 |expiry|n. 到期<details><summary>例句</summary>Today is the expiry date of my visa.<br/>今天是我签证到期的日子。</details>|
+|||
+|toe|n. 脚趾，（袜、鞋等的）足尖部，鞋头，有…脚趾的<br/>v. 用脚趾踩，装[修补]鞋尖[袜尖等]，用脚尖踢，用棒尖打（球）|
+|feudalism|n. 封建主义，封建制度|
 
 <p class="wordCounts">单词收录总数</p>
 
