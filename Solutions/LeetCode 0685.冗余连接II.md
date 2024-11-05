@@ -51,6 +51,8 @@ tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 并查�
 
 <!-- https://pic.leetcode.cn/1730637887-jNpXet-bingchaji.jpg -->
 
+<!-- https://i-blog.csdnimg.cn/direct/68615b3c832f4091971363bb939b8dda.jpeg -->
+
 ### 解题思路
 
 这题和[684.冗余连接](https://blog.letmefly.xyz/2024/11/02/LeetCode%200684.%E5%86%97%E4%BD%99%E8%BF%9E%E6%8E%A5/)的区别是：
