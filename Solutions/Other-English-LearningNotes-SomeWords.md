@@ -747,6 +747,19 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |toe|n. 脚趾，（袜、鞋等的）足尖部，鞋头，有…脚趾的<br/>v. 用脚趾踩，装[修补]鞋尖[袜尖等]，用脚尖踢，用棒尖打（球）|
 |feudalism|n. 封建主义，封建制度|
+|||
+|punctual|adj. 按时的，准时的，守时的|
+|bristle|n. 刚毛，短而硬的毛发，刷子毛<br/>v. (对某人的言行)大为恼怒，被激怒|
+|rinse|v. （用清水）冲洗，洗涮，漂洗<br/>n. 漂洗，冲洗，染发剂，漱口液|
+|grove|n. 小树林，果树园|
+|gale|n. 大风，飓风|
+|bread-earner|n. 养家糊口的人|
+|pail|n. 桶，一桶的量，〈美口〉容器|
+|||
+|toothpaste|n. 牙膏|
+|promissory|adj. 表示允诺的，约定的，【商】约定支付的<details><summary>例句</summary>Roger signed a promissory note pledging to pay Fiona $50,000.<br/>罗格签了一张期票，承诺付给菲奥娜5万美元。</details>|
+|consul|n. 领事|
+|ballpoint pen|phrase. 圆珠笔|
 
 <p class="wordCounts">单词收录总数</p>
 
