@@ -660,7 +660,7 @@ tags: [其他, 知识, 英语, Notes]
 |pneumonia|n. 肺炎|
 |||
 |heed|n. 注意<br/>v. 注意|
-|conversant|adj. 通晓的，熟悉的|
+|<font color="#28bea0" title="二次复习">conversant</font>|adj. 通晓的，熟悉的|
 |sermon|n. 布道，冗长的说教|
 |reimburse|v. 补偿，偿还，报销|
 |del credere|phrase. 保付|
@@ -709,7 +709,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |beneficiary|n. 受益者，受惠人，遗产继承人<br/>adj. (封建制度下)受封的，采邑的，臣服的|
 |hedgehog|n. 刺猬|
-|Egyptian|adj. 埃及的，埃及人的<br/>n. 埃及人|
+|<font color="#28bea0" title="二次复习">Egyptian</font>|adj. 埃及的，埃及人的<br/>n. 埃及人|
 |peasantry|n. (统称)(一个地区或国家的)农民|
 |affectionate|adj. 表示关爱的<details><summary>例句</summary>That mother gave an affectionate hug to her newborn child.<br/>那位母亲深情地拥抱了她刚出生的孩子。</details>|
 |<font color="#28bea0" title="二次复习">auspice</font>|n. 吉兆，赞助，主办|
@@ -760,6 +760,23 @@ tags: [其他, 知识, 英语, Notes]
 |promissory|adj. 表示允诺的，约定的，【商】约定支付的<details><summary>例句</summary>Roger signed a promissory note pledging to pay Fiona $50,000.<br/>罗格签了一张期票，承诺付给菲奥娜5万美元。</details>|
 |consul|n. 领事|
 |ballpoint pen|phrase. 圆珠笔|
+|||
+|manifest|v. 表明，清楚显示，显现，使人注意到<br/>adj. 明显的，显而易见的<br/>n. (船或飞机的)货单，旅客名单|
+|||
+|nostril|n. 鼻孔|
+|pit|n. 洞，坑，矿井，麻子，深渊，绝境，(桃/杏/枣)核，正厅后座<br/>v. 使…表面有斑点，在…上打洞，去掉…的果核，变得坑坑洼洼|
+|racket|n. 喧哗，吵闹(声)，诈骗，勒索，球拍<br/>v. 吵闹，用球拍打|
+|||
+|quilt|n. 被子，被褥<br/>v. 绗(被)，绗缝(衣服)，用垫料填塞后缝拢，将(钞票等)缝进衣服里|
+|outlandish|adj. 稀奇古怪的，异国风味的|
+|elasticity|n. 弹性，弹力|
+|columnist|n. 专栏作家|
+|cuckoo|n. 布谷鸟，杜鹃(鸟)<br/>adj. 愚蠢的，疯狂的|
+|trot|v. 快步，疾走，小跑<br/>n. 小跑，疾走|
+|angular|adj. 骨瘦嶙峋的，骨瘦如柴的，有棱角的，有尖角的|
+|materialism|n. 唯物主义，唯物论，实利主义，物质主义|
+|deposition|n. 沉积作用，沉积物，罢免，废黜(chù)，证词，证言|
+|bullion|n. 大量的金/银，金/银条|
 
 <p class="wordCounts">单词收录总数</p>
 
@@ -812,7 +829,7 @@ tags: [其他, 知识, 英语, Notes]
         const table = tables[0];
         const content = table.getElementsByTagName('tbody')[0];
         const rows = Array.from(content.rows);
-        rows.reverse().forEach(row => table.appendChild(row));  // TODO: 二次翻转
+        rows.reverse().forEach(row => content.appendChild(row));
     }
 </script>
 
