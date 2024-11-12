@@ -539,8 +539,9 @@ xx型
 |げんき|很好|
 |||
 |せなか|背部|
-|め|眼睛|
+|目(め)|眼睛|
 |みみ|耳朵|
+|鼻(はな)|鼻子|
 |お腹(おなか)|腹部|
 |頭(あたま)|头|
 |あし|腿|
@@ -551,6 +552,8 @@ xx型
 |元気(げんき)|(身体)很好|
 |病気(びょうき)|疾病|
 |風邪(かぜ)|感冒|
+|||
+|ふと|胖的|
 |||
 |夏(なつ)|夏天|
 |冬(ふゆ)|冬天|
@@ -725,6 +728,7 @@ xx型
 |<span title="看超炮的时候学到的汉字">有難う</span>(ありがとう)|谢谢|
 |答え(こたえ)|回答|
 |ので|因为|
+|すぎ|多|
 |||
 |牛肉(ぎゅうにく)|牛肉|
 |豚肉(ぶたにく)|猪肉|
@@ -1046,6 +1050,9 @@ xx型
 |煙草は体に悪いです。<br/>烟对身体不好。|
 |たくさんスポーツ<font color="#28bea0">した</font>ほうがいいです。<br/><details><summary>最好XX</summary>日语用<font color="#ce82ff">ほうがいい</font>表示最好干某事，<br/><font color="#ce82ff">ほうがいい</font>前用动词<font color="#ce82ff">た形</font>。<br/>词形变化和<font color="#ce82ff">て形</font>一样，<br/>把<font color="#ce82ff">て</font>/<font color="#ce82ff">で</font>变成<font color="#ce82ff">た</font>/<font color="#ce82ff">だ</font>就可以了。</details>|
 |昨日彼女は学校を休んだと思います。<br/>觉得她昨天没上学。|
+|犬は鼻がいいです。<br/>狗鼻子很灵。|
+|また食べすぎました。<br/>又吃多了。|
+|田中さんはふとっていますか？<br/>田中先生胖吗？|
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
 
