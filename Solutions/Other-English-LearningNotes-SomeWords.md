@@ -671,7 +671,7 @@ tags: [其他, 知识, 英语, Notes]
 |annex|v. 附加，附带，并吞，抢占，获得<br/>n. 附件，附属品，附属建筑|
 |wade|v. 跋涉，趟水|
 |||
-|perturbed|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
+|<font color="#28bea0" title="二次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
 |garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
 |woodpecker|n. 啄木鸟|
 |<font color="#28bea0" title="二次复习">cosmetics</font>|n. 化妆品|
@@ -777,6 +777,11 @@ tags: [其他, 知识, 英语, Notes]
 |materialism|n. 唯物主义，唯物论，实利主义，物质主义|
 |deposition|n. 沉积作用，沉积物，罢免，废黜(chù)，证词，证言|
 |bullion|n. 大量的金/银，金/银条|
+|||
+|herewith|adv. 随同此信/书/文件<details><summary>例句</summary>I enclose herewith a copy of the report for your information.<br/>我随函附上这份报告供您参考。</details>|
+|prophet|n. 预言者，(宗教里的)先知，提倡者|
+|panoramic|adj. 全景的|
+|craziness|n. 疯狂|
 
 <p class="wordCounts">单词收录总数</p>
 
