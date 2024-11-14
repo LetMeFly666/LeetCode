@@ -727,13 +727,13 @@ tags: [其他, 知识, 英语, Notes]
 |uproar|n. 喧嚣，骚动|
 |||
 |tort|v. 快走，疾走，小跑<br/>n. 小跑，疾走|
-|consign|v. 托运，运送，把...置于(尤指不好的境地)，弃置|
+|<font color="#28bea0" title="二次复习">consign</font>|v. 托运，运送，把...置于(尤指不好的境地)，弃置|
 |reckon|v. 认为，想，估计，计算|
 |||
 |aeroplane|n. 飞机(=airplane)|
 |||
 |昨日的15个(x.x)的单词|之一|
-|malaise|n. 不舒服，心神不安|
+|<font color="#28bea0" title="二次复习">malaise</font>|n. 不舒服，心神不安|
 |||
 |stationery|n. 文具，信笺/信封|
 |banquet|n. 宴会，盛宴|
@@ -782,6 +782,11 @@ tags: [其他, 知识, 英语, Notes]
 |prophet|n. 预言者，(宗教里的)先知，提倡者|
 |panoramic|adj. 全景的|
 |craziness|n. 疯狂|
+|||
+|modulate|v. 调整，调节(音量)，变调|
+|sportsmanship|n. 运动员风范，体育精神|
+|abasement|n. 身份低微，屈尊，降低|
+|||
 
 <p class="wordCounts">单词收录总数</p>
 
