@@ -787,6 +787,11 @@ tags: [其他, 知识, 英语, Notes]
 |sportsmanship|n. 运动员风范，体育精神|
 |abasement|n. 身份低微，屈尊，降低|
 |||
+|swan|n. 天鹅<br/>v. 悠游，悠然闲逛|
+|confide|v. (向某人)吐露(秘密/隐私)|
+|analogue|adj. 模拟的，指针式的<br/>n. 相似物，类似事情|
+|kangaroo|n. 袋鼠|
+|adverbial|adj. 副词的，状语的<br/>n. 副词类|
 
 <p class="wordCounts">单词收录总数</p>
 

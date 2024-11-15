@@ -1057,6 +1057,7 @@ xx型
 |また食べすぎました。<br/>又吃多了。|
 |田中さんはふとっていますか？<br/>田中先生胖吗？|
 |まだ歯を磨いていないです。<br/>还没刷牙。|
+|日本で日本語を勉強したほうがいいです。<br/>在日本学习日语更好。|
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
 
