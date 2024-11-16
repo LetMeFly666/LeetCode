@@ -29,6 +29,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS]
 
 <p><strong>说明：</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2024/05/26/tree1.png" style="width: 360px; height: 158px;" />
+<!-- https://i-blog.csdnimg.cn/direct/f637ce94d9264ecd9c0d72aa9cc468f2.png -->
 <p>树的所有节点都是好节点。</p>
 </div>
 
@@ -41,6 +42,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS]
 
 <p><strong>说明：</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2024/06/03/screenshot-2024-06-03-193552.png" style="width: 360px; height: 303px;" />
+<!-- https://i-blog.csdnimg.cn/direct/1a453ab4036c40f48aba3e7a15ac0d46.png -->
 <p>树中有 6 个好节点。上图中已将这些节点着色。</p>
 </div>
 
@@ -53,6 +55,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS]
 
 <p><strong>解释：</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2024/08/08/rob.jpg" style="width: 450px; height: 277px;" />
+<!-- https://i-blog.csdnimg.cn/direct/8afb73f409e0450ba25b304e87d3b6c3.png -->
 <p>除了节点 9 以外其他所有节点都是好节点。</p>
 </div>
 
@@ -243,3 +246,5 @@ func countGoodNodes(edges [][]int) (ans int) {
 > 同步发文于CSDN和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/11/14/LeetCode%203249.%E7%BB%9F%E8%AE%A1%E5%A5%BD%E8%8A%82%E7%82%B9%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 >
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/143768804](https://letmefly.blog.csdn.net/article/details/143768804)
+
+[BTW](https://github.com/LetMeFly666/LeetCode/blob/9376adcddda7fd0568d879a6bf2ae8fa5e39ffbb/zaixianrenyuan#L1): 力扣昨天(2024.11.14)上午可以显示在线人员数量了（正在做这道题的人数）

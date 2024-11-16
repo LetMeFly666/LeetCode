@@ -792,6 +792,14 @@ tags: [其他, 知识, 英语, Notes]
 |analogue|adj. 模拟的，指针式的<br/>n. 相似物，类似事情|
 |kangaroo|n. 袋鼠|
 |adverbial|adj. 副词的，状语的<br/>n. 副词类|
+|||
+|omit|v. 省略，遗漏|
+|scorch|v. 烫坏，烤焦，(使)枯黄，枯萎|
+|lemonade|n. 柠檬味汽水，柠檬饮料，一杯/瓶柠檬饮料|
+|pertinent|adj. 相关的，切题的，中肯的，恰当的|
+|||
+|shrine|n. 神庙，神龛，圣地|
+|engrave|v. 在...上雕刻(文字/图案)|
 
 <p class="wordCounts">单词收录总数</p>
 
