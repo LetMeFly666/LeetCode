@@ -22,7 +22,7 @@ git clone --branch 要clone的分支 --single-branch 仓库地址
 git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 ```
 
-### 一些命令
+### 一些命令（学Git）
 
 #### 版本回退
 
@@ -37,9 +37,35 @@ git reset --hard HEAD^
 
 其中`--hard`会回退到上个版本的已提交状态，`--soft`会回退到上个版本的未提交状态，`--mixed`会回退到上个版本已添加但未提交的状态。
 
-#### git reflog
+#### 查看日志/commit记录
 
-引用日志。
+**git log**查看commit记录
+
+```bash
+git log
+```
+
+会显示历史commit信息，每个commit会显示Author、Date、Message、Merge等很多信息（很多行）。
+
+```bash
+git log --pretty=oneline
+```
+
+一个commit只显示一行，会显示（其他分支和）commit信息。
+
+```bash
+git log --graph --pretty=oneline --abbrev-commit
+# 例如：
+# *   156bd3741c9 (HEAD -> master, origin/master) Merge pull request #625 from LetMeFly666/825
+# |\
+# | * 017b500caee (origin/825) update: 添加问题“825.适龄的朋友”的代码和题解
+# |/
+# *   c1c305688b4 Merge pull request #623 from LetMeFly666/3240
+```
+
+以图的形式显示分支及合并记录。
+
+**git reflog**查看引用日志。
 
 假如我使用了`git reset`回到了历史版本，我如何回来呢？可以`git reflog`查看回退前的commit id，然后`git reset --hard COMMIT_ID`。
 
@@ -60,6 +86,17 @@ git reset HEAD filename
 ```
 
 会把filename文件的更改从暂存区回退到工作区。
+
+#### 切换分支
+
++ 创建并切换分支：`git checkout -b NEW_BRANCH`或`git switch -c NEW_BRANCH`
++ 切换分支：`git checkout BRANCH`或`git switch NEW_BRANCH`
+
+本来切换分支也是`git checkout`，但是由于`checkout`和丢弃工作区文件太像了，所以新版本git支持了switch命令
+
+#### 分支合并
+
+TODO: https://liaoxuefeng.com/books/git/branch/policy/index.html#0
 
 ## About HTML
 
@@ -307,7 +344,7 @@ Pyinstaller打包可执行文件时若系统变量里有upx，则打包出来的
 
 ### Win10右下角托盘区时间显示到秒
 
-`Win + R` -> `regedit` -> `回车`，定位到`计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`并新建`DWORD (32位)值(D)`，将值修改为`1`，重启`explorer.exe`。
+`Win + R` -> `regedit` -> `回车`，定位到`计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`并新建`DWORD (32位)值(D)`，名为`ShowSecondsInSystemClock`值为`1`，重启`explorer.exe`。
 
 ## About Phone
 
