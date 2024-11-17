@@ -22,6 +22,45 @@ git clone --branch 要clone的分支 --single-branch 仓库地址
 git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 ```
 
+### 一些命令
+
+#### 版本回退
+
++ 当前版本：`HEAD`
++ 上个版本：`HEAD^`
++ 上上个版本：`HEAD^^`
++ 上100个版本：`HEAD~100`
+
+```bash
+git reset --hard HEAD^
+```
+
+其中`--hard`会回退到上个版本的已提交状态，`--soft`会回退到上个版本的未提交状态，`--mixed`会回退到上个版本已添加但未提交的状态。
+
+#### git reflog
+
+引用日志。
+
+假如我使用了`git reset`回到了历史版本，我如何回来呢？可以`git reflog`查看回退前的commit id，然后`git reset --hard COMMIT_ID`。
+
+#### 丢弃工作区/暂存区更改
+
+**丢弃工作区更改：**
+
+```bash
+git checkout -- filename
+```
+
+丢弃filename在工作区的更改。如果暂存区有此文件的版本则回到暂存区的版本，否则回到版本库的版本。
+
+**丢弃暂存区更改：**
+
+```bash
+git reset HEAD filename
+```
+
+会把filename文件的更改从暂存区回退到工作区。
+
 ## About HTML
 
 ### 空白字符
