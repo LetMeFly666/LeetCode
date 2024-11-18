@@ -805,6 +805,9 @@ tags: [其他, 知识, 英语, Notes]
 |plateau|n. 高原，稳定期，停滞期<br/>v. 达到平稳阶段，处于停滞状态|
 |ferryboat|n. 渡船|
 |mince|v. 用绞肉机绞(事物，尤指肉)，装模作样地小步快走<br/>n. 肉末(优质牛肉)|
+|||
+|hinterland|n. 内地，腹地，内地贸易区|
+|courtesy|n. 礼貌，谦恭，客气话<br/>adj. 免费乘坐/使用的，处于礼节的|
 
 <p class="wordCounts">单词收录总数</p>
 
