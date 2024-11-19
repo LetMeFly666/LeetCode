@@ -808,6 +808,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |hinterland|n. 内地，腹地，内地贸易区|
 |courtesy|n. 礼貌，谦恭，客气话<br/>adj. 免费乘坐/使用的，处于礼节的|
+|||
+|matinee|n. (戏剧/电影的)午后场|
+|peacock|n. 雄孔雀<br/>v. 炫耀，招摇过市|
 
 <p class="wordCounts">单词收录总数</p>
 
