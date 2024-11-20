@@ -16,6 +16,8 @@ tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
 
 <p><img src="https://assets.leetcode.com/uploads/2021/05/03/smoother-grid.jpg" style="height: 493px; width: 493px;" /></p>
 
+<!-- https://i-blog.csdnimg.cn/direct/c0079440db3d44c182a1a7505fa91db1.png -->
+
 <p>给你一个表示图像灰度的 <code>m x n</code> 整数矩阵 <code>img</code> ，返回对图像的每个单元格平滑处理后的图像&nbsp;。</p>
 
 <p>&nbsp;</p>
@@ -23,6 +25,7 @@ tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
 <p><strong>示例 1:</strong></p>
 
 <p><img src="https://assets.leetcode.com/uploads/2021/05/03/smooth-grid.jpg" /></p>
+<!-- ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/0535b69bc6c343f3a2e3caa5c747939c.png) -->
 
 <pre>
 <strong>输入:</strong>img = [[1,1,1],[1,0,1],[1,1,1]]
@@ -35,6 +38,7 @@ tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
 
 <p><strong>示例 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2021/05/03/smooth2-grid.jpg" />
+<!-- ![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/48d226238db34b39bbf7712fe4791185.png) -->
 <pre>
 <strong>输入:</strong> img = [[100,200,100],[200,50,200],[100,200,100]]
 <strong>输出:</strong> [[137,141,137],[141,138,141],[137,141,137]]
