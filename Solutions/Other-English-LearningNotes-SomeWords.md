@@ -811,6 +811,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |matinee|n. (戏剧/电影的)午后场|
 |peacock|n. 雄孔雀<br/>v. 炫耀，招摇过市|
+|||
+|pier|n. 码头，突堤，桥墩，桥柱|
 
 <p class="wordCounts">单词收录总数</p>
 

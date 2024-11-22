@@ -552,6 +552,16 @@ push_heap(v.begin(), v.end());  // 将v的最后一个元素（v.back()）插入
 sort_heap(v.begin(), v.end()); // 将堆排序，排序后将失去堆的特性；非堆调用此函数将会报错；大根堆会变成从小到大的排序
 ```
 
+### C++使得编译器支持第三方库（以MinGW为例）
+
+假如我想使用EasyX库编写带有图形界面的程序，那么我应该如何编译呢？
+
+可以把`EasyX`解压出来的`.h`头文件放到`{MinGW安装位置}\x86_64-w64-mingw32\include`，库文件放到`{MinGW安装位置}\x86_64-w64-mingw32\lib`目录。
+
+这样就能直接`#include <graphics.h>`了。编译时候需要加上参数`-leasyx`，这是因为添加了`libeasyx.a`。
+
+如果我把库文件放到其他目录下，则还需要加上`-L目录名`（绝对路径或编译执行路径的相对路径）。
+
 ## About Website
 
 ### ip扫描工具censys
