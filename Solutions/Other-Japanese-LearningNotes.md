@@ -323,6 +323,7 @@ xx型
 |よい|好|
 |||
 |きっぷ|票|
+|チケット|票|
 |電話(でんわ)|电话|
 |えんぴつ|铅笔|
 |べんとう|便当|
@@ -606,7 +607,7 @@ xx型
 |や|野|
 |さい|菜|
 |はん|半|
-|後(ご)|后|
+|後(ご/あと)|后|
 |||
 |これ|这个|
 |それ|那个|
@@ -742,6 +743,7 @@ xx型
 |なり|成为|
 |こと|xx过|
 |つもり|打算|
+|段々(だんだん)|越来越|
 |||
 |牛肉(ぎゅうにく)|牛肉|
 |豚肉(ぶたにく)|猪肉|
@@ -1073,6 +1075,11 @@ xx型
 |外国に行ったことがありますか？<br/>去过外国吗？|
 |明日映画を見るつもりです。<br/>明天打算去看电影。|
 |このアニメを<font color="#28bea0">見たこと</font>があります。<br/>看过这个动漫。|
+|段々暖かく<font color="#ce82ff">なり</font>ました。<br/>越来越暖和了。|
+|その<ruby>後<rt>go</rt></ruby>、映画館に行きました。<br/>那之后去了电影院。|
+|映画のチケットは<ruby>後<rt>ato</rt></ruby>。<br/>电影票之后再买。|
+|行き<font color="#ce82ff">たくない</font>です。<br/>不想去。<details><summary>(自己)想做某事</summary>想要对方做某事：动词<font color="#ce82ff">て</font>形加上<font color="#ce82ff">ほしい</font><br/>自己想要做某事：动词<font color="#ce82ff">ます</font>形加上<font color="#ce82ff">たい</font><br/>自己**不**想做某事：把<font color="#ce82ff">たい</font>换成<font color="#ce82ff">たくない</font></details>|
+|友たちと映画を見たり、公園へ行ったりします。<br/>和朋友看看电影，逛逛公园|
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
 

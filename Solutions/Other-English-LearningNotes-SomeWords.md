@@ -732,7 +732,6 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |aeroplane|n. 飞机(=airplane)|
 |||
-|昨日的15个(x.x)的单词|之一|
 |<font color="#28bea0" title="二次复习">malaise</font>|n. 不舒服，心神不安|
 |||
 |stationery|n. 文具，信笺/信封|
@@ -813,6 +812,14 @@ tags: [其他, 知识, 英语, Notes]
 |peacock|n. 雄孔雀<br/>v. 炫耀，招摇过市|
 |||
 |pier|n. 码头，突堤，桥墩，桥柱|
+|||
+|serpent|n. 蛇|
+|sardine|n. 沙丁鱼|
+|||
+|airliner|n. 班机，大型客机|
+|hydraulic|adj. 水力的，水压的，液压驱动的|
+|curtail|v. 缩短，限制，减缩|
+|colonel|n. (陆军/海军陆战队/美国空军)上校|
 
 <p class="wordCounts">单词收录总数</p>
 
