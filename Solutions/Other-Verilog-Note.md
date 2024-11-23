@@ -6,6 +6,8 @@ tags: [Verilog, 简单, Notes]
 
 # Verilog小总结
 
+> 硬件描述语言/硬件编程
+
 ## 01 语言风格、语法
 
 Verilog语法和C语言较像，每句结尾同样需要分号。

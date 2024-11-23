@@ -1,0 +1,59 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-11-22 23:47:13
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-11-22 23:47:13
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态粉色渐变文字</title>
+    <style>
+        .LetMeFly_ToCute {
+            font-size: 24px;
+            font-weight: bold;
+            /* 确保背景渐变是从右到左的 */
+            background: linear-gradient(to left, #FFB6C1, #FFC0CB, #FFD1DC, #FFE4E1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* 替代 color: transparent; 以确保更好的兼容性 */
+            animation: pinkGradientMove 5s linear infinite;
+        }
+
+        @keyframes pinkGradientMove {
+            0% {
+                /* 这里不需要改变 background-position，因为我们想要的是颜色渐变本身的移动效果 */
+                /* 但为了保持动画的兼容性，我们可以设置一个不影响渐变的属性，比如 opacity（虽然在这个例子中它不会改变任何东西） */
+                opacity: 1;
+            }
+            100% {
+                /* 同样地，这里也不需要改变任何影响背景渐变的属性 */
+                /* 但我们可以确保动画结束时回到初始状态，以避免任何潜在的渲染问题 */
+                opacity: 1;
+            }
+        }
+
+        /* 注意：实际上，由于我们想要的是颜色渐变在文字上的滚动效果，
+         * 我们并不需要改变 background-position。渐变本身就会因为动画的无限循环和线性时间函数
+         * 而在视觉上产生移动的效果（尽管这实际上是一个误解，因为真正的渐变并不会“移动”，
+         * 而是动画的重复播放造成了颜色变化的视觉效果）。
+         *
+         * 然而，如果你想要一个更明显的“移动”效果，你可以尝试使用多个背景层，并通过动画改变它们的位置，
+         * 但这通常会更复杂，并且可能不是你所需要的简单颜色渐变效果。
+         *
+         * 在这个例子中，我们保持动画简单，只利用渐变的循环播放来创造动态效果。
+         */
+
+        /* 为了确保动画在所有浏览器中都能正常工作，可以添加一些浏览器前缀 */
+        @-webkit-keyframes pinkGradientMove {
+            0%, 100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="LetMeFly_ToCute">仅以此篇，献给某可爱的人。</p>
+</body>
+</html>

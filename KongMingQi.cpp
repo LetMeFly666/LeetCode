@@ -1,11 +1,12 @@
 
 ///////////////////////////////////////////////////
 // 程序名称：黑神话 孔明棋
-// 编译环境：Mictosoft Visual Studio 2022, EasyX_20200315(beta)
+// 编译环境：MinGW, EasyX_20200315(beta)
 // 作　　者：luoyh <2864292458@qq.com>
 // 公 众 号：C语言研究
 // 版 本 号：Version 1.0.0
 // 最后修改：2024-11-18
+// Modified By: LetMeFly.xyz
 //
 #include<Let/graphics.h>
 #include<conio.h>
