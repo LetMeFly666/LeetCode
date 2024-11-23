@@ -1,10 +1,10 @@
 ---
-title: Python - 从0开始学Python
+title: Python - 从0开始学Python(Python3)
 date: 2024-11-22 23:03:48
 tags: [其他, Python]
 ---
 
-# Python - 从0开始学Python
+# Python - 从0开始学Python(Python3)
 
 Python作为一门“胶水语言”，(很多领域的人都)值得一学。
 
@@ -14,6 +14,9 @@ Python作为一门“胶水语言”，(很多领域的人都)值得一学。
 <!-- 颜色过于突兀了，设置渐变，彩虹色，后面文字到前面文字过渡 -->
 <!-- 需要会动的粉色渐变，颜色从后往前移动 -->
 <!-- 这个颜色挺好看的，但是不会动 -->
+
+<!-- 我有这么一段HTML`<p class="LetMeFly_ToCute">仅以此篇，献给某可爱的人。</p>`，请写一个JS函数，2秒内点击这个p标签8次及以上的话，打开一个新页面。 -->
+<!-- 写到一个文件里 -->
 
 ## Day1 - Python安装、Python原理、Python一些基础概念、Python基础数据类型、Python函数的简单调用
 
@@ -66,9 +69,11 @@ a = a + b  # Line 3
 print(a)   # Line 4
 ```
 
-其中`a`和`b`就是变量，`print`是函数，
+其中`a`和`b`就是变量，`print`是函数，第4行的`a`是函数`print`的参数。
 
 ### Python基础数据类型
+
+## Dayn - 操作符重载
 
 # End
 
@@ -93,6 +98,38 @@ print(a)   # Line 4
         }
     }
 </style>
+
+<script name="LetMeFly_ToCute">
+    document.addEventListener('DOMContentLoaded', function() {
+        const pElement = document.querySelector('.LetMeFly_ToCute');
+        let clickCount = 0;
+        const targetClicks = 5;
+        const timeLimit = 1000; // 1秒
+        let startTime = Date.now();
+
+        // 添加点击事件监听器
+        function handleClick() {
+            const currentTime = Date.now();
+            if (currentTime - startTime <= timeLimit) {
+                clickCount++;
+                if (clickCount == targetClicks) {
+                    openNewPage();
+                    clickCount = 0;
+                }
+            } else {
+                // 如果时间超过限制，重置计数器和开始时间
+                clickCount = 1; // 重置计数器
+                startTime = currentTime; // 重置开始时间
+            }
+        }
+
+        pElement.addEventListener('click', handleClick);
+
+        function openNewPage() {
+            window.open('https://letmefly.xyz/He0/shykeke/WeCan/', '_blank');
+        }
+    });
+</script>
 
 <center><font size="6px" face="Ink Free">The End, thanks!</font></center>
 

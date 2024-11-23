@@ -1,8 +1,10 @@
 '''
 Author: LetMeFly
 Date: 2023-08-26 18:06:23
-LastEditors: LetMeFly
-LastEditTime: 2024-04-04 23:20:45
+LastEditors: LetMeFly.xyz
+LastEditTime: 2024-11-23 21:49:36
+Description: https://aistudio.baidu.com/projectdetail/6678917
+Description: 后面被实验室的3090(虽然也不是很先进)碾压了
 '''
 datasets_prefix = '/root/paddlejob/workspace/train_data/datasets/'
 # 数据集文件具体路径请在编辑项目状态下通过左侧导航「数据集」中文件路径拷贝按钮获取
