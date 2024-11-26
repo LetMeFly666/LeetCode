@@ -823,6 +823,14 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |walnut|n. 核桃，胡桃，胡桃木，胡桃色|
 |smack|v. 用巴掌打，掴，啪的一声使劲放(或扔、甩等)，使劲碰(或撞)<br/>n. 打巴掌，(打出的)一拳，啪的一声；海洛因<br/>adv. 恰好，直接，不偏不倚地，猛地|
+|||
+|cafeteria|n. 自助餐厅|
+|||
+|antonym|n. 反义词|
+|tare|n. 野豌豆，包装重量<br/>v. 称皮重<br/>tare weight: 皮重|
+|Portuguese|adj. 葡萄牙的<br/>n. 葡萄牙人，葡萄牙语|
+|gratis|adj. 免费的<br/>adv. 免费地，无偿的|
+|limousine|n. 豪华轿车，大型高级轿车，(往返机场接送旅客的)中型客车|
 
 <p class="wordCounts">单词收录总数</p>
 
