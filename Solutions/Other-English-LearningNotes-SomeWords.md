@@ -831,6 +831,11 @@ tags: [其他, 知识, 英语, Notes]
 |Portuguese|adj. 葡萄牙的<br/>n. 葡萄牙人，葡萄牙语|
 |gratis|adj. 免费的<br/>adv. 免费地，无偿的|
 |limousine|n. 豪华轿车，大型高级轿车，(往返机场接送旅客的)中型客车|
+|||
+|versatile|adj. 多才多艺的，多方面的，多用途的|
+|demolition|n. 拆除，破坏，损坏|
+|veto|v. 行使否决权，拒绝认可，禁止，拒不接受<br/>n. 否决权，拒绝认可，禁止|
+|superstition|n. 迷信，迷信观念|
 
 <p class="wordCounts">单词收录总数</p>
 
