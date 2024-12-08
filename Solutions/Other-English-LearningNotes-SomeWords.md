@@ -818,7 +818,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |airliner|n. 班机，大型客机|
 |hydraulic|adj. 水力的，水压的，液压驱动的|
-|curtail|v. 缩短，限制，减缩|
+|<font color="#28bea0" title="二次复习">curtail</font>|v. 缩短，限制，减缩|
 |colonel|n. (陆军/海军陆战队/美国空军)上校|
 |||
 |walnut|n. 核桃，胡桃，胡桃木，胡桃色|
@@ -836,6 +836,13 @@ tags: [其他, 知识, 英语, Notes]
 |demolition|n. 拆除，破坏，损坏|
 |veto|v. 行使否决权，拒绝认可，禁止，拒不接受<br/>n. 否决权，拒绝认可，禁止|
 |superstition|n. 迷信，迷信观念|
+|||
+|shriek|v. 尖叫，尖声说<br/>n. 尖叫|
+|defray|v. 支付|
+|miraculous|adj. 奇迹般的，不可思议的，不平凡的|
+|zebra|n. 斑马，如斑蝶<br/>adj. 有斑马般斑纹的，有条纹的|
+|surmise|v. 〈正式〉猜测，估计，认为<br/>n. 〈正式〉推测，臆测，揣度，猜度|
+|hindrance|n. 妨碍，障碍，形成阻碍的人/物|
 
 <p class="wordCounts">单词收录总数</p>
 
