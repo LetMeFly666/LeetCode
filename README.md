@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-11-22 23:06:07
+ * @LastEditTime: 2024-12-09 13:43:26
 -->
 # LetLeet Blog
 
@@ -799,6 +799,7 @@
 |AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
 |日积月累 - 一些小知识 - 杂乱 - 啥都有|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy/">本平台博客</a>|无|
 |日积月累 - 一些小知识|<a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
+|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing) - 开题报告-针对视觉大模型联邦学习训练过程中的攻击防御安全及效率问题研究|<a href="https://blog.letmefly.xyz/2024/12/07/Other-AI-FL-FederatedLearning-KaiTiBaoGao/">本平台博客</a>|无|
 |人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)|<a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">本平台博客</a>|无|
 |人工智能 - 跟李沐学AI|<a href="https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.letmefly.xyz/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|

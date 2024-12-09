@@ -843,6 +843,9 @@ tags: [其他, 知识, 英语, Notes]
 |zebra|n. 斑马，如斑蝶<br/>adj. 有斑马般斑纹的，有条纹的|
 |surmise|v. 〈正式〉猜测，估计，认为<br/>n. 〈正式〉推测，臆测，揣度，猜度|
 |hindrance|n. 妨碍，障碍，形成阻碍的人/物|
+|||
+|idleness|n. 懒惰，懒怠，闲置，失业|
+|vowel|n. 元音，元音字母<br/>adj. 母音的<br/>v. v. 加母音(符号)于|
 
 <p class="wordCounts">单词收录总数</p>
 
