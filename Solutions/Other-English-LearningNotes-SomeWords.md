@@ -846,6 +846,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |idleness|n. 懒惰，懒怠，闲置，失业|
 |vowel|n. 元音，元音字母<br/>adj. 母音的<br/>v. v. 加母音(符号)于|
+|||
+|thereon|adv. 以...为依据，由...而产生，在其上|
+|reverence|n. 尊敬，尊重，尊崇<br/>v. 尊敬，尊重，尊崇|
 
 <p class="wordCounts">单词收录总数</p>
 
