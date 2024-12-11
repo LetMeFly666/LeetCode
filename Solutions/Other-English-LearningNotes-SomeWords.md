@@ -849,6 +849,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |thereon|adv. 以...为依据，由...而产生，在其上|
 |reverence|n. 尊敬，尊重，尊崇<br/>v. 尊敬，尊重，尊崇|
+|||
+|hitchhike|v. 搭便车(旅行)|
+|memoir|n. 自传，(尤指名人的)回忆录，传说，地方志|
 
 <p class="wordCounts">单词收录总数</p>
 

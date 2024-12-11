@@ -1,111 +1,88 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-12-06 21:03:42
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-11 22:50:35
+-->
 PS F:\OtherApps\Program\Git\Store\Store20_LeetCode> git pull origin master
-remote: Enumerating objects: 35, done.
-remote: Counting objects: 100% (35/35), done.
-remote: Compressing objects: 100% (17/17), done.
-remote: Total 26 (delta 9), reused 25 (delta 9), pack-reused 0 (from 0)
-Unpacking objects: 100% (26/26), 19.92 KiB | 4.00 KiB/s, done.
-From github.com:LetMeFly666/LeetCode
- * branch                master     -> FETCH_HEAD
-   9e41c9485..6cb55b4a4  master     -> origin/master
-Updating 9e41c9485..6cb55b4a4
+remote: Enumerating objects: 47, done.
+remote: Counting objects: 100% (47/47), done.
+remote: Compressing objects: 100% (25/25), done.                                                                                                                            347\232\204\346\243\213\345\255\220\346\225\260\346\250\241\346\213\237-144303138.md"
+remote: Total 47 (delta 20), reused 45 (delta 19), pack-reused 0 (from 0)
+Unpacking objects: 100% (47/47), 27.96 KiB | 10.00 KiB/s, done.                                                                                                             3-144123453.md"
+From ssh.github.com:LetMeFly666/LeetCode
+ * branch                    master     -> FETCH_HEAD
+   cd0c22da603..9392e7b5778  master     -> origin/master
+Updating cd0c22da603..9392e7b5778
 Fast-forward
- ...-the-count-of-numbers-which-are-not-special.cpp | 104 +++++++     
- Codes/3238-find-the-number-of-winning-players.cpp  |  58 ++++        
- Codes/3238-find-the-number-of-winning-players.go   |  26 ++
- Codes/3238-find-the-number-of-winning-players.java |  24 ++
- Codes/3238-find-the-number-of-winning-players.py   |  14 +
- KongMingQi.cpp                                     |   3 +-
- README.md                                          |   4 +-
- Solutions/LeetCode 3238.求出胜利玩家的数目.md      | 176 ++++++++++++
- Solutions/Other-English-LearningNotes-SomeWords.md |   9 +-
- Solutions/Other-Japanese-LearningNotes.md          |   9 +-
- Solutions/Other-Python-LearnPythonFrom0.md         | 100 +++++++     
- Solutions/Other-Verilog-Note.md                    |   2 +
- history.del.html                                   |  67 +++++
- history.del.ipynb                                  | 238 ++++++++++++++++
- history.del.js                                     |  68 +++++
- history.del2.js                                    |  42 +++
- history.stillNeedREADME.del-视频压制.py            | 305 +++++++++++++++++++++
- tryGo/JSFUZZ.bash                                  |  19 --
- tryGo/chat-6yggde35y.bash                          | 118 --------
- temp-PythonTeaching.md => tryGo/temp-ZuiJin.md     |   0
- tryGo/temp.2.html                                  |  37 +++
- tryGo/temp.cssJianBian.html                        |  40 +++
- tryGo/tryEasyX.cpp                                 |  17 --
- 24 files changed, 1381 insertions(+), 158 deletions(-)
- create mode 100644 Codes/3233-find-the-count-of-numbers-which-are-not-special.cpp
- create mode 100644 Codes/3238-find-the-number-of-winning-players.cpp
- create mode 100644 Codes/3238-find-the-number-of-winning-players.go
- create mode 100644 Codes/3238-find-the-number-of-winning-players.java
- create mode 100644 Codes/3238-find-the-number-of-winning-players.py
- create mode 100644 Solutions/LeetCode 3238.求出胜利玩家的数目.md
- create mode 100644 Solutions/Other-Python-LearnPythonFrom0.md
- create mode 100644 history.del.html
- create mode 100644 history.del.ipynb
- create mode 100644 history.del.js
- create mode 100644 history.del2.js
- create mode 100644 history.stillNeedREADME.del-视频压制.py
- delete mode 100644 tryGo/JSFUZZ.bash
- delete mode 100644 tryGo/chat-6yggde35y.bash
- rename temp-PythonTeaching.md => tryGo/temp-ZuiJin.md (100%)
- create mode 100644 tryGo/temp.2.html
- create mode 100644 tryGo/temp.cssJianBian.html
- delete mode 100644 tryGo/tryEasyX.cpp
- create mode 100644 tryGo/tt.3.html
-PS F:\OtherApps\Program\Git\Store\Store20_LeetCode> cls^C
+ Codes/0935-knight-dialer.cpp                       |  46 ++++
+ Codes/0935-knight-dialer.go                        |  41 ++++
+ Codes/0935-knight-dialer.java                      |  42 ++++
+ Codes/0935-knight-dialer.py                        |  31 +++ 
+ ...rmine-color-of-a-chessboard-square_20241209.cpp |  16 ++  
+ ...ermine-color-of-a-chessboard-square_20241209.go |  11 +   
+ ...mine-color-of-a-chessboard-square_20241209.java |  11 +   
+ ...ermine-color-of-a-chessboard-square_20241209.py |   9 +   
+ README.md                                          |   4 +-  
+ ...243\253\346\213\250\345\217\267\345\231\250.md" | 250 +++++++++++++++++++++
+ ...255\220\347\232\204\351\242\234\350\211\262.md" |  28 +++
+ .../Other-AI-FL-FederatedLearning-KaiTiBaoGao.md   | 197 ++++++++++++++++
+ Solutions/Other-CloudflareWorkers-How2use.md       | 172 ++++++++++++++
+ Solutions/Other-English-LearningNotes-SomeWords.md |  15 +-
+ Solutions/Other-Japanese-LearningNotes.md          |  20 +-
+ api/img/handler.js                                 |  23 ++
+ api/img/url.js                                     |   9 +
+ api/main.js                                        |  37 +++
+ .../.cache/wrangler/wrangler-account.json          |   6 +
+ api/node_modules/.mf/cf.json                       |   1 +
+ api/wrangler.toml                                  |   3 +
+ tryGoPy/temp-Count-uic.js                          |  31 +++
+ 22 files changed, 998 insertions(+), 5 deletions(-)
+ create mode 100644 Codes/0935-knight-dialer.cpp
+ create mode 100644 Codes/0935-knight-dialer.go
+ create mode 100644 Codes/0935-knight-dialer.java
+ create mode 100644 Codes/0935-knight-dialer.py
+ create mode 100644 Codes/1812-determine-color-of-a-chessboard-square_20241209.cpp
+ create mode 100644 Codes/1812-determine-color-of-a-chessboard-square_20241209.go
+ create mode 100644 Codes/1812-determine-color-of-a-chessboard-square_20241209.java
+ create mode 100644 Codes/1812-determine-color-of-a-chessboard-square_20241209.py
+ create mode 100644 "Solutions/LeetCode 0935.\351\252\221\345\243\253\346\213\250\345\217\267\345\231\250.md"
+ create mode 100644 Solutions/Other-AI-FL-FederatedLearning-KaiTiBaoGao.md
+ create mode 100644 Solutions/Other-CloudflareWorkers-How2use.md
+ create mode 100644 api/img/handler.js
+ create mode 100644 api/img/url.js
+ create mode 100644 api/main.js
+ create mode 100644 api/node_modules/.cache/wrangler/wrangler-account.json
+ create mode 100644 api/node_modules/.mf/cf.json
+ create mode 100644 api/wrangler.toml
+ create mode 100644 tryGoPy/temp-Count-uic.js
+
+
 PS F:\OtherApps\Program\Git\Store\Store20_LeetCode> git pull origin master
-remote: Enumerating objects: 30, done.
-remote: Counting objects: 100% (30/30), done.
-remote: Compressing objects: 100% (18/18), done.
-remote: Total 30 (delta 12), reused 29 (delta 12), pack-reused 0 (from 0)
-Unpacking objects: 100% (30/30), 46.26 KiB | 19.00 KiB/s, done.
-From github.com:LetMeFly666/LeetCode
- * branch                master     -> FETCH_HEAD
-   6cb55b4a4..37a4490d3  master     -> origin/master
-Updating 6cb55b4a4..37a4490d3
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 18 (delta 5), reused 18 (delta 5), pack-reused 0 (from 0)
+Unpacking objects: 100% (18/18), 4.65 KiB | 3.00 KiB/s, done.
+From ssh.github.com:LetMeFly666/LeetCode
+ * branch                    master     -> FETCH_HEAD
+   9392e7b5778..5416d7f90ab  master     -> origin/master
+Updating 9392e7b5778..5416d7f90ab
 Fast-forward
- .gitignore                                         |    1 +
- ...allest-range-covering-elements-from-k-lists.cpp |  174 +++
- KongMingQi.cpp                                     | 1287 --------------------
- README.md                                          |    1 +
- Solutions/LeetCode 0632.最小区间.md                |  109 ++
- Solutions/Other-English-LearningNotes-SomeWords.md |    3 +
- Solutions/Other-Japanese-LearningNotes.md          |    1 +
- Solutions/Other-Python-LearnPythonFrom0.md         |   50 +-
- history.del.html                                   |   67 -
- history.del.ipynb                                  |  238 ----
- history.del.js                                     |   68 --
- history.del2.js                                    |   42 -
- history.stillNeedREADME.del-视频压制.py            |  305 -----
- tryGo/.gitkeep                                     |    2 -
- tryGo/temp.2.html                                  |   37 -
- tryGo/temp.cssJianBian.html                        |   40 -
- tryGo/tt.3.html                                    |   59 -
- tryGoPy/.gitkeep                                   |    2 +
- {tryGo => tryGoPy}/OUT.md                          |   16 +-
- tryGoPy/py1/README.md                              |   13 +
- tryGoPy/py1/a.py                                   |    8 +
- tryGoPy/py1/b.py                                   |   10 +
- tryGo/temp-ZuiJin.md => tryGoPy/最近.md            |    0
- {tryGo => tryGoPy}/本周周报.md                     |   34 +-
- 24 files changed, 394 insertions(+), 2173 deletions(-)
- create mode 100644 Codes/0632-smallest-range-covering-elements-from-k-lists.cpp
- delete mode 100644 KongMingQi.cpp
- create mode 100644 Solutions/LeetCode 0632.最小区间.md
- delete mode 100644 history.del.html
- delete mode 100644 history.del.ipynb
- delete mode 100644 history.del.js
- delete mode 100644 history.del2.js
- delete mode 100644 history.stillNeedREADME.del-视频压制.py
- delete mode 100644 tryGo/.gitkeep
- delete mode 100644 tryGo/temp.2.html
- delete mode 100644 tryGo/temp.cssJianBian.html
- delete mode 100644 tryGo/tt.3.html
- create mode 100644 tryGoPy/.gitkeep
- rename {tryGo => tryGoPy}/OUT.md (86%)
- create mode 100644 tryGoPy/py1/README.md
- create mode 100644 tryGoPy/py1/a.py
- create mode 100644 tryGoPy/py1/b.py
- rename tryGo/temp-ZuiJin.md => tryGoPy/最近.md (100%)
- rename {tryGo => tryGoPy}/本周周报.md (92%)
-PS F:\OtherApps\Program\Git\Store\Store20_LeetCode> 
+ Solutions/Other-CloudflareWorkers-How2use.md | 68 ++++++++++++++++++++++++++++
+ api/.gitignore                               |  1 +
+ api/github/public/README.md                  | 21 +++++++++
+ api/github/public/demo.html                  | 15 ++++++
+ api/github/public/handler.js                 | 26 +++++++++++
+ api/github/public/url.js                     |  5 ++
+ api/github/public/utils/calculateWidth.js    | 17 +++++++
+ api/img/handler.js                           |  6 +++
+ api/img/url.js                               |  6 +++
+ api/main.js                                  |  9 ++--
+ 10 files changed, 171 insertions(+), 3 deletions(-)
+ create mode 100644 api/.gitignore
+ create mode 100644 api/github/public/README.md
+ create mode 100644 api/github/public/demo.html
+ create mode 100644 api/github/public/handler.js
+ create mode 100644 api/github/public/url.js
+ create mode 100644 api/github/public/utils/calculateWidth.js
