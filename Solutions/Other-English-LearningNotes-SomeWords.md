@@ -210,6 +210,7 @@ tags: [其他, 知识, 英语, Notes]
 |soot|n. (煤)烟灰，烟垢<br/>v. 用煤灰覆盖|
 |fabrication|n. 制作，制备，加工，虚构|
 |humidity|n. 湿度，湿气，湿热|
+|humid|adj. 温暖潮湿的，湿热的|
 |polymer|n. 聚合体，聚合物|
 |||
 |shear|v. 剪切，切断，给(羊)剪(羊毛)，剪(头发)<br/>n. 剪，切，剪刀，[物]切变|
@@ -589,7 +590,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |en route|adv. (法)在途中，在路上|
 |monastery|修道院，庙宇|
-|sift|v. 筛，筛查，精挑细选|
+|<font color="#28bea0" title="二次复习">sift</font>|v. 筛，筛查，精挑细选|
 |||
 |premises|n. (企业的)房屋，经营场地|
 |inlet|n. 水湾，小港，注入口||||
@@ -632,7 +633,7 @@ tags: [其他, 知识, 英语, Notes]
 |constituent|n. 组成部分，成分，选区居民，选民，委托人<br/>adj. 组成的，构成的，任命的，选举的|
 |||
 |criticize|v. 批评，指责，批判|
-|hallmark|n. 特点，特征<br/>v. 给...打金银纯度印记|
+|<font color="#28bea0" title="二次复习">hallmark</font>|n. 特点，特征<br/>v. 给...打金银纯度印记|
 |perseverance|n. 毅力，韧性，不屈不挠的精神|
 |mischief|n. 恶作剧，淘气，伤害，顽皮|
 |signpost|v. 在...设置路标，预兆<br/>n. 路标，征兆，预兆|
@@ -829,7 +830,7 @@ tags: [其他, 知识, 英语, Notes]
 |antonym|n. 反义词|
 |tare|n. 野豌豆，包装重量<br/>v. 称皮重<br/>tare weight: 皮重|
 |Portuguese|adj. 葡萄牙的<br/>n. 葡萄牙人，葡萄牙语|
-|gratis|adj. 免费的<br/>adv. 免费地，无偿的|
+|<font color="#28bea0" title="二次复习">gratis</font>|adj. 免费的<br/>adv. 免费地，无偿的|
 |limousine|n. 豪华轿车，大型高级轿车，(往返机场接送旅客的)中型客车|
 |||
 |versatile|adj. 多才多艺的，多方面的，多用途的|
@@ -852,6 +853,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |hitchhike|v. 搭便车(旅行)|
 |memoir|n. 自传，(尤指名人的)回忆录，传说，地方志|
+|||
+|clown|n. 丑角，小丑，蠢货，笨蛋<br/>v. 做出蠢相，扮小丑|
+|triangular|adj. 三角形的，涉及三方的|
+|Marxist|adj. 马克思主义的<br/>n. 马克思主义者|
 
 <p class="wordCounts">单词收录总数</p>
 
