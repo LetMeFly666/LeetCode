@@ -32,10 +32,109 @@ git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 + 上100个版本：`HEAD~100`
 
 ```bash
-git reset --hard HEAD^
+git reset --hard/--soft/--mixed HEAD^
 ```
 
-其中`--hard`会回退到上个版本的已提交状态，`--soft`会回退到上个版本的未提交状态，`--mixed`会回退到上个版本已添加但未提交的状态。
+<font color="red">下面先别看了，写的不对</font>
+
+其中`--hard`会强制变成上个版本（工作区暂存区清空），`--soft`会将相对上一个版本的变化放到暂存区，`--mixed`(默认选项)会将相对上一个版本的变化放到工作区。
+
+举个例子：
+
+> 创建一个空的git目录，添加文件1并commit，添加文件2并commit，添加文件3并放到暂存区(git add)。
+>
+> ```bash
+> mkdir LetGit
+> cd LetGit
+> git init
+> 
+> echo 1 > 1
+> git add 1
+> git commit -m "1"
+> 
+> echo 2 > 2
+> git add 2
+> git commit -m "2"
+> 
+> echo 3 > 3
+> git add 3
+> # 文件3不做commit 
+> 
+> git log
+> # commit 0236bc83d4ad4bfc91d3235c732ef7f940d4e5cd (HEAD -> master)
+> # Author: LetMeFly666 <814114971@qq.com>
+> # Date:   Thu Dec 12 22:04:28 2024 +0800
+> # 
+> #     2
+> # 
+> # commit 9878b30ab7cae61d9211962d9ac0aec8e7da434a
+> # Author: LetMeFly666 <814114971@qq.com>
+> # Date:   Thu Dec 12 22:04:28 2024 +0800
+> # 
+> #     1
+> # 
+> 
+> git status
+> # On branch master
+> # Changes to be committed:
+> #   (use "git restore --staged <file>..." to unstage)
+> #         new file:   3
+> 
+> ```
+>
+> 这时候，分别**在此基础上**进行下述三种操作：
+>
+> > ```bash
+> > git reset --hard HEAD^
+> > ```
+> >  
+> > 则已经被commit的2和刚被add到暂存区的3都会被丢弃！（其实丢弃的是`HEAD^`之后的“更改”。）
+> >  
+> > ```bash
+> > git status
+> > # On branch master
+> > # nothing to commit, working tree clean
+> > ```
+> 
+> 亦或者：
+>
+> > ```bash
+> > git reset --soft HEAD^
+> > ```
+> >  
+> > 则已经被commit的2和刚被add到暂存区的3都会被放到暂存区
+> >  
+> > ```bash
+> > git status
+> > # On branch master
+> > # Changes to be committed:
+> > #   (use "git restore --staged <file>..." to unstage)
+> > #         new file:   2
+> > #         new file:   3
+> > ```
+> 
+> 使用`git reset --hard 0236b`、`echo 3 > 3`、`git add 3`命令来恢复到实验开始时的状态，使用`--mixed`进行测试：
+>
+> > ```bash
+> > git reset --mixed HEAD^
+> > ```
+> >  
+> > 则已经被commit的2和刚被add到暂存区的3都会被放到工作区
+> >  
+> > ```bash
+> > git status
+> > # On branch master
+> > # Untracked files:
+> > #   (use "git add <file>..." to include in what will be committed)
+> > #         2
+> > #         3
+> > # 
+> > # nothing added to commit but untracked files present (use "git add" to track)
+> > ```
+> 
+> 注意Windows系统中`cmd`中的`^`大概是连接符的意思，可以使用`git reset --hard "HEAD^"`或`git reset --hard HEAD"^"`或`git reset --hard HEAD^^`来表示`HEAD^`。
+> 
+> 请注意，如果有未跟踪的内容（例如`echo 4 > 4`但是不`git add`），那么无论`git reset`时传递哪个参数，文件`4`都会原封不动地躺在工作区（这是因为历史记录中也没有文件`4`） TODO: 历史记录中存在文件4
 
 #### 查看日志/commit记录
 
