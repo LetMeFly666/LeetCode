@@ -596,7 +596,7 @@ tags: [其他, 知识, 英语, Notes]
 |inlet|n. 水湾，小港，注入口||||
 |<font color="#28bea0" title="二次复习">drench</font>|v. 使湿透<br/>n. 弄湿，雨淋，浸渍液，(制革时浸泡熟皮的)脱灰水|
 |||
-|inundate|v. 淹没，使不胜负荷，使应接不暇，泛滥|
+|<font color="#28bea0" title="二次复习">inundate</font>|v. 淹没，使不胜负荷，使应接不暇，泛滥|
 |thrash|v. 抽打，痛打，猛烈扭动，彻底击败|
 |shovel|n. 铲，铲斗，一铲的量<br/>v. 铲，铲起|
 |deceitful|adj. 不诚实的，骗人的|
@@ -857,6 +857,12 @@ tags: [其他, 知识, 英语, Notes]
 |clown|n. 丑角，小丑，蠢货，笨蛋<br/>v. 做出蠢相，扮小丑|
 |triangular|adj. 三角形的，涉及三方的|
 |Marxist|adj. 马克思主义的<br/>n. 马克思主义者|
+|||
+|dart|v. 急冲，突进，投掷(标枪等)，放射<br/>n. 标枪，箭，刺，镳|
+|disgrace|n. 耻辱，丢脸，不光彩<br/>v. 使丢脸，使蒙羞，使名誉扫地|
+|monopolize|v. 垄断，独占，包办，占去(某人的大部分注意力/时间)|
+|exasperation|n. 愤怒，激化，加剧|
+|layday|n. 约定装卸日(航运合同中的一个名词)|
 
 <p class="wordCounts">单词收录总数</p>
 
