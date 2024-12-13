@@ -47,9 +47,46 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <li>上上个版本：<code>HEAD^^</code></li>
 <li>上100个版本：<code>HEAD~100</code></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard/--soft/--mixed HEAD^</span><br></pre></td></tr></table></figure>
 
-<p>其中<code>--hard</code>会回退到上个版本的已提交状态，<code>--soft</code>会回退到上个版本的未提交状态，<code>--mixed</code>会回退到上个版本已添加但未提交的状态。</p>
+<p>其中：</p>
+<ul>
+<li><code>--hard</code>会强制变成上个版本（工作区暂存区清空）</li>
+<li><code>--soft</code>会将相对上一个版本的变化保留到暂存区和工作区（已经add到暂存区过的变化还在暂存区 未add的变化还在工作区）</li>
+<li><code>--mixed</code>(默认选项)会将相对上一个版本的变化全部放到工作区。</li>
+</ul>
+<p>另一个解释版本：</p>
+<ul>
+<li><code>--hard</code>：完全回退提交，丢弃暂存区和文件的所有修改。</li>
+<li><code>--soft</code>：回退提交，但保留文件和暂存区的修改。</li>
+<li><code>--mixed</code>：回退提交，丢弃暂存区的修改，但保留文件的修改。</li>
+</ul>
+<p>举个例子：</p>
+<blockquote>
+<p>创建一个空的git目录，添加文件1并commit，添加文件2并commit，添加文件3并放到暂存区(git add)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> LetGit</span><br><span class="line"><span class="built_in">cd</span> LetGit</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 1 &gt; 1</span><br><span class="line">git add 1</span><br><span class="line">git commit -m <span class="string">&quot;1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 2 &gt; 2</span><br><span class="line">git add 2</span><br><span class="line">git commit -m <span class="string">&quot;2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> 3 &gt; 3</span><br><span class="line">git add 3</span><br><span class="line"><span class="comment"># 文件3不做commit </span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line"><span class="comment"># commit 0236bc83d4ad4bfc91d3235c732ef7f940d4e5cd (HEAD -&gt; master)</span></span><br><span class="line"><span class="comment"># Author: LetMeFly666 &lt;814114971@qq.com&gt;</span></span><br><span class="line"><span class="comment"># Date:   Thu Dec 12 22:04:28 2024 +0800</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment">#     2</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># commit 9878b30ab7cae61d9211962d9ac0aec8e7da434a</span></span><br><span class="line"><span class="comment"># Author: LetMeFly666 &lt;814114971@qq.com&gt;</span></span><br><span class="line"><span class="comment"># Date:   Thu Dec 12 22:04:28 2024 +0800</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment">#     1</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment"># Changes to be committed:</span></span><br><span class="line"><span class="comment">#   (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span></span><br><span class="line"><span class="comment">#         new file:   3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这时候，分别<strong>在此基础上</strong>进行下述三种操作：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+<p>则已经被commit的2和刚被add到暂存区的3都会被丢弃！（其实丢弃的是<code>HEAD^</code>之后的“更改”。）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment"># nothing to commit, working tree clean</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>亦或者：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+<p>则已经被commit的2和刚被add到暂存区的3都会被放到暂存区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment"># Changes to be committed:</span></span><br><span class="line"><span class="comment">#   (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)</span></span><br><span class="line"><span class="comment">#         new file:   2</span></span><br><span class="line"><span class="comment">#         new file:   3</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>使用<code>git reset --hard 0236b</code>、<code>echo 3 &gt; 3</code>、<code>git add 3</code>命令来恢复到实验开始时的状态，使用<code>--mixed</code>进行测试：</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --mixed HEAD^</span><br></pre></td></tr></table></figure>
+<p>则已经被commit的2和刚被add到暂存区的3都会被放到工作区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="comment"># On branch master</span></span><br><span class="line"><span class="comment"># Untracked files:</span></span><br><span class="line"><span class="comment">#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span></span><br><span class="line"><span class="comment">#         2</span></span><br><span class="line"><span class="comment">#         3</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>注意Windows系统中<code>cmd</code>中的<code>^</code>大概是连接符的意思，可以使用<code>git reset --hard &quot;HEAD^&quot;</code>或<code>git reset --hard HEAD&quot;^&quot;</code>或<code>git reset --hard HEAD^^</code>来表示<code>HEAD^</code>。</p>
+<p>如果有<strong>从</strong>未跟踪的内容（例如<code>echo 4 &gt; 4</code>但是不<code>git add</code>），那么无论<code>git reset</code>时传递哪个参数，文件<code>4</code>都会原封不动地躺在工作区（这是因为历史记录中也没有文件<code>4</code>）</p>
+</blockquote>
 <h4 id="查看日志-commit记录"><a href="#查看日志-commit记录" class="headerlink" title="查看日志&#x2F;commit记录"></a>查看日志&#x2F;commit记录</h4><p><strong>git log</strong>查看commit记录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 
