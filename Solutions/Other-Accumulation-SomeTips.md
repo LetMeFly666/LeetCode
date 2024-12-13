@@ -35,9 +35,17 @@ git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 git reset --hard/--soft/--mixed HEAD^
 ```
 
-<font color="red">下面先别看了，写的不对</font>
+其中：
 
-其中`--hard`会强制变成上个版本（工作区暂存区清空），`--soft`会将相对上一个版本的变化放到暂存区，`--mixed`(默认选项)会将相对上一个版本的变化放到工作区。
++ `--hard`会强制变成上个版本（工作区暂存区清空）
++ `--soft`会将相对上一个版本的变化保留到暂存区和工作区（已经add到暂存区过的变化还在暂存区 未add的变化还在工作区）
++ `--mixed`(默认选项)会将相对上一个版本的变化全部放到工作区。
+
+另一个解释版本：
+
++ `--hard`：完全回退提交，丢弃暂存区和文件的所有修改。
++ `--soft`：回退提交，但保留文件和暂存区的修改。
++ `--mixed`：回退提交，丢弃暂存区的修改，但保留文件的修改。
 
 举个例子：
 
@@ -134,7 +142,7 @@ git reset --hard/--soft/--mixed HEAD^
 > 
 > 注意Windows系统中`cmd`中的`^`大概是连接符的意思，可以使用`git reset --hard "HEAD^"`或`git reset --hard HEAD"^"`或`git reset --hard HEAD^^`来表示`HEAD^`。
 > 
-> 请注意，如果有未跟踪的内容（例如`echo 4 > 4`但是不`git add`），那么无论`git reset`时传递哪个参数，文件`4`都会原封不动地躺在工作区（这是因为历史记录中也没有文件`4`） TODO: 历史记录中存在文件4
+> 如果有**从**未跟踪的内容（例如`echo 4 > 4`但是不`git add`），那么无论`git reset`时传递哪个参数，文件`4`都会原封不动地躺在工作区（这是因为历史记录中也没有文件`4`）
 
 #### 查看日志/commit记录
 
