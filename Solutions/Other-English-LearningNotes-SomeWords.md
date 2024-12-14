@@ -863,6 +863,9 @@ tags: [其他, 知识, 英语, Notes]
 |monopolize|v. 垄断，独占，包办，占去(某人的大部分注意力/时间)|
 |exasperation|n. 愤怒，激化，加剧|
 |layday|n. 约定装卸日(航运合同中的一个名词)|
+|||
+|dissolve|v. 溶解，解散，解除|
+|thrifty|adj. 节俭的，节约的|
 
 <p class="wordCounts">单词收录总数</p>
 
