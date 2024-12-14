@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2024-12-13T01:49:03.303Z">
+<meta property="article:modified_time" content="2024-12-14T10:06:49.166Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="小杂">
@@ -463,6 +463,20 @@
 <p>手动添加是一种方法。另外一种方法就是使用依赖分析工具<code>pipreqs</code>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install pipreqs<br>pipreqs /path/to/your/project<br></code></pre></td></tr></table></figure>
 
+<h3 id="Python-asyncio"><a href="#Python-asyncio" class="headerlink" title="Python asyncio"></a>Python asyncio</h3><p>async是Python 3.5引入的一种用于处理一步编程的特性，通过协程来实现，能够一定程度上避免阻塞。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> asyncio<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">first</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;first begin&quot;</span>)<br>    <span class="hljs-keyword">await</span> asyncio.sleep(<span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;first end&quot;</span>)<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">second</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;second begin&quot;</span>)<br>    <span class="hljs-keyword">await</span> asyncio.sleep(<span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;second end&quot;</span>)<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-keyword">await</span> asyncio.gather(first(), second())<br><br>asyncio.run(main())<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>程序会先执行<code>first</code>函数中的<code>print(&quot;first begin&quot;)</code>，执行到<code>asyncio.sleep(1)</code>时这个操作会暂停协程1秒，在等待期间时间循环可以切换到其他协程继续执行。</li>
+<li>此时<code>second</code>函数中的<code>print(&quot;second begin&quot;)</code>会被执行，然后执行<code>asyncio.sleep(2)</code>暂停2秒，且在此期间事件循环可以执行其他任务。</li>
+<li><code>first</code>函数的1秒等待完成后，执行<code>print(&quot;first end&quot;)</code>，协程执行完毕。</li>
+<li><code>second</code>函数的2秒等待完成后，执行<code>print(&quot;second end&quot;)</code>，协程执行完毕。</li>
+<li>两个协程都执行完毕，程序结束。</li>
+</ol>
+<p>运行结果：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">first</span> <span class="hljs-keyword">begin</span><br><span class="hljs-keyword">second</span> <span class="hljs-keyword">begin</span><br><span class="hljs-keyword">first</span> <span class="hljs-keyword">end</span><br><span class="hljs-keyword">second</span> <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>但是，只有</p>
 <h2 id="About-C"><a href="#About-C" class="headerlink" title="About C++"></a>About C++</h2><h3 id="C-原地建堆make-heap"><a href="#C-原地建堆make-heap" class="headerlink" title="C++原地建堆make_heap"></a>C++原地建堆make_heap</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; v = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>&#125;;<br><span class="hljs-built_in">make_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());<br><span class="hljs-built_in">pop_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">// 堆顶元素（v[0]）放入数组v的末尾，其余元素调整为建堆</span><br>v.<span class="hljs-built_in">pop_back</span>();  <span class="hljs-comment">// pop_heap并没有将元素弹出v数组</span><br>v.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">2</span>);<br><span class="hljs-built_in">push_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">// 将v的最后一个元素（v.back()）插入到堆中</span><br><span class="hljs-built_in">sort_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 将堆排序，排序后将失去堆的特性；非堆调用此函数将会报错；大根堆会变成从小到大的排序</span><br></code></pre></td></tr></table></figure>
 
 <h3 id="C-使得编译器支持第三方库（以MinGW为例）"><a href="#C-使得编译器支持第三方库（以MinGW为例）" class="headerlink" title="C++使得编译器支持第三方库（以MinGW为例）"></a>C++使得编译器支持第三方库（以MinGW为例）</h3><p>假如我想使用EasyX库编写带有图形界面的程序，那么我应该如何编译呢？</p>
@@ -470,7 +484,7 @@
 <p>这样就能直接<code>#include &lt;graphics.h&gt;</code>了。编译时候需要加上参数<code>-leasyx</code>，这是因为添加了<code>libeasyx.a</code>。</p>
 <p>如果我把库文件放到其他目录下，则还需要加上<code>-L目录名</code>（绝对路径或编译执行路径的相对路径）。</p>
 <h2 id="About-Website"><a href="#About-Website" class="headerlink" title="About Website"></a>About Website</h2><h3 id="ip扫描工具censys"><a href="#ip扫描工具censys" class="headerlink" title="ip扫描工具censys"></a>ip扫描工具censys</h3><p>很多网站为了防止DDos等都使用CDN等将自己的真实ip隐藏起来。但是如果直接访问真实ip的话，还是有可能会返回SSL证书（例如浏览器提示的“证书无效&#x2F;不匹配”</p>
-<p>censys扫描全球所有IP并记录ip于域名直接的关系，并且扫描速度快得惊人<code>(&gt;_&lt;)</code></p>
+<p>censys扫描全球所有IP并记录ip与域名直接的关系，并且扫描速度快得惊人<code>(&gt;_&lt;)</code></p>
 <p>网址：censys.io</p>
 <h3 id="域名收集工具-SSL证书查询工具crt-sh"><a href="#域名收集工具-SSL证书查询工具crt-sh" class="headerlink" title="域名收集工具&#x2F;SSL证书查询工具crt.sh"></a>域名收集工具&#x2F;SSL证书查询工具crt.sh</h3><p>网址：crt.sh，传说所有的SSL证书都能在上面查到（好像是）</p>
 <p>并且，输入一个域名，它的所有子域名甚至都能被查到（似乎前提是开了https）。</p>
