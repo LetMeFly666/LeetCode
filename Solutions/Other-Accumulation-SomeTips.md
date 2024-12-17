@@ -541,22 +541,6 @@ json.dumps(json.loads): {
 }
 ```
 
-### Python sortedcontainers.SortedSet
-
-Python有序集合，类似C++的set
-
-但缺点是需要手动安装，非Python自带
-
-```bash
-pip install sortedcontainers
-```
-
-```python
-from sortedcontainers import SortedSet
-se = SortedSet()
-# 增删改查未完待续
-```
-
 ### Python enumerate
 
 python的enumerate可以将可迭代的“iterable”，打包成```(index, value)```的tuple：
@@ -597,6 +581,22 @@ heapq.heappush(pq, 2)
 heapq.heappush(pq, 1)
 heapq.heappush(pq, 3)
 heapq.heappop(pq)  # 1
+```
+
+### Python sortedcontainers.SortedSet
+
+Python有序集合，类似C++的set
+
+但缺点是需要手动安装，非Python自带
+
+```bash
+pip install sortedcontainers
+```
+
+```python
+from sortedcontainers import SortedSet
+se = SortedSet()
+# 增删改查未完待续
 ```
 
 ### Python有序集合SortedList
@@ -683,9 +683,7 @@ first end
 second end
 ```
 
-但是，只有
-
-
+但是，只有手动让出控制权的操作才会避免阻塞循环事件，例如`asyncio.sleep()`、`asyncio.open()`、`asyncio.connect()`等。普通的文件读写、网络请求仍然会阻塞进程。
 
 ## About C++
 
@@ -710,6 +708,95 @@ sort_heap(v.begin(), v.end()); // 将堆排序，排序后将失去堆的特性�
 这样就能直接`#include <graphics.h>`了。编译时候需要加上参数`-leasyx`，这是因为添加了`libeasyx.a`。
 
 如果我把库文件放到其他目录下，则还需要加上`-L目录名`（绝对路径或编译执行路径的相对路径）。
+
+
+## About Java
+
+### Java 有序集合 TreeSet
+
+类似C++的set。
+
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // 创建
+        TreeSet<Integer> se = new TreeSet<>();
+        // 添加元素
+        se.add(20);
+        se.add(10);
+        se.add(10);  // 重复元素不会被添加
+        // 打印
+        System.out.println(se);  // [10, 20]
+        // 查找
+        se.contains(10);  // true
+        se.floor(10);  // ≤10的最大元素 （若无则返回null）  // 10
+        se.ceiling(10);  // ≥10的最大元素 （若无则返回null）  // 10
+        se.higher(10);  // >10的最小元素 （若无则返回null）  // 20
+        se.lower(10);  // <10的最大元素 （若无则返回null）  // null
+    }
+}
+```
+
+### Java 数组操作 Arrays
+
+包含一些对数组的“排序”、“填充”、“判等”等操作。
+
+```java
+public class ArrayExample {
+    public static void main(String[] args) {
+        int[] intList = {1, 4, 2};
+        Integer[] integerList = {3, -6, 4};
+        // 排序
+        Arrays.sort(intList);
+        Arrays.sort(integerList, (a, b) -> Math.abs(a) - Math.abs(b));  // int[]不支持sort的自定义Comparator
+        // 填充
+        Arrays.fill(intList, 1);  // 填充为[1, 2, 3]
+        // 相等
+        Arrays.equals(intList, new int[1]);
+    }
+}
+```
+
+## About Golang
+
+### Golang数组(array)和切片(slice)
+
+数组定长切片变长，数组是值类型(数组赋值给另一个数组会复制整个数组)切片是引用类型(切片赋值给另一个切片时两切片会指向同一个底层数组)。
+
+```go
+package main
+
+import "fmt"
+import "reflect"
+
+func main() {
+    // 创建
+    var array [5]int
+    array[0] = 1
+    fmt.Println(array)  // [1 0 0 0 0]
+    slice := []int{1, 2, 3}
+    slice2 := make([]int, 5)
+    subSlice := slice[1:2]
+    fmt.Println(slice)  // [1 2 3]
+    fmt.Println(slice2)  // [0 0 0 0 0]
+    fmt.Println(subSlice)  // [2]
+    // 赋值
+    array2 := array
+    array2[2] = 100
+    fmt.Println(array)  // [1 0 0 0 0]
+    slice3 := slice
+    slice3[1] = 100
+    fmt.Println(slice3)  // [1 100 3]
+    // 转换
+    sFromA := array[:]
+    fmt.Printf("%s(%s): %v\n", reflect.TypeOf(sFromA), reflect.TypeOf(sFromA).Kind(), sFromA);  // []int(slice): [1 0 0 0 0]
+    var aFromS [3]int
+    copy(aFromS[:], slice)
+    fmt.Printf("%T(%s): %v\n", aFromS, reflect.TypeOf(aFromS).Kind(), aFromS);  // [3]int(array): [1 100 3]
+}
+```
 
 ## About Website
 

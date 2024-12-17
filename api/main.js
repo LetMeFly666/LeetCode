@@ -2,22 +2,26 @@
  * @Author: LetMeFly
  * @Date: 2024-12-09 14:18:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-10 23:15:48
+ * @LastEditTime: 2024-12-16 12:45:28
  */
 // main.js
 
 import { imgRoutes } from './img/url.js';  // 导入 img 模块的路由
-import {github_public} from './github/public/url.js'
+import { github_public } from './github/public/url.js'
+import { calendarRoutes } from './calendar/url.js'
 
 // 路由表
 const routes = {
     '/img': imgRoutes,  // 将 /img 路由映射到 img 模块
-    '/github/public': github_public,
+    '/github/public': github_public,  // Github一个仓库是否为public
+    '/calendar': calendarRoutes,  // 日历
+    
 };
 
 // 请求事件监听
-addEventListener('fetch', event => {
-    const url = new URL(event.request.url);
+export default {
+    async fetch(request) {
+    const url = new URL(request.url);
     const path = url.pathname;  // 获取请求路径
 
 
@@ -30,11 +34,11 @@ addEventListener('fetch', event => {
         const nowPath = '/' + (path.replace(modulePath, '').split('/')[1] || '');
         const routeHandler = moduleRoutes[nowPath];  // 查找对应的处理函数
         if (routeHandler) {
-            event.respondWith(routeHandler(event.request));  // 如果找到了匹配的处理函数，执行它
+            return routeHandler(request);  // 如果找到了匹配的处理函数，执行它
         } else {
-            event.respondWith(new Response('Not Found', { status: 404 }));  // 找不到对应路由
+            return new Response('Not Found', { status: 404 });  // 找不到对应路由
         }
     } else {
-        event.respondWith(new Response('Not Found', { status: 404 }));  // 找不到模块
+        return new Response('Not Found', { status: 404 });  // 找不到模块
     }
-});
+}}

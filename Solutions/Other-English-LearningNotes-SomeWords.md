@@ -869,6 +869,10 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |bosom|n. 女人的胸部/乳房，女衣胸部/胸襟<br/>v. 搂抱，怀有，把…秘藏心中，隐匿<br/>adj. 知心的，亲密的|
 |treasurer|n. 会计，出纳员|
+|||
+|amendment|n. 修改，(美国的)宪法修正案|
+|denomination|n. (尤指钱的)面值，宗教派别|
+|butchery|n. 残杀，杀戮，屠宰工作|
 
 <p class="wordCounts">单词收录总数</p>
 
