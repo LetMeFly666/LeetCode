@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2024-12-19T14:51:45.042Z">
+<meta property="article:modified_time" content="2024-12-19T15:09:10.621Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="中等">
 <meta property="article:tag" content="优先队列">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          19k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          154 分钟
+          158 分钟
         
       </span>
     
@@ -381,6 +381,21 @@
 </ul>
 <p>本来切换分支也是<code>git checkout</code>，但是由于<code>checkout</code>和丢弃工作区文件太像了，所以新版本git支持了switch命令</p>
 <h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><p>TODO: <a target="_blank" rel="noopener" href="https://liaoxuefeng.com/books/git/branch/policy/index.html#0">https://liaoxuefeng.com/books/git/branch/policy/index.html#0</a></p>
+<h3 id="CRLF和LF换行符处理"><a href="#CRLF和LF换行符处理" class="headerlink" title="CRLF和LF换行符处理"></a>CRLF和LF换行符处理</h3><p>在Linux和Mac中文件的换行符都是<code>LF</code>而在Windows中默认是<code>CRLF</code>。虽然文件看起来没有什么差别，但是在git的时候会发现其实每一行都变了。因此git可以通过配置<code>core.autocrlf</code>来进行一些自定义。</p>
+<p><code>core.autocrlf</code>有三个选项：</p>
+<ul>
+<li><code>true</code>: 提交时会将文件的CRLF转为LF，检出时会将LF转为CRLF。（适合Windows用户）</li>
+<li><code>input</code>: 提交时会将文件的CRLF转为LF，检出时不进行转换。（适合Linux&#x2F;Mac用户）</li>
+<li><code>input</code>: 提交和检出时都不进行任何转换。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global core.autocrlf [input | <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>]<br></code></pre></td></tr></table></figure>
+
+<p>如果想批量将文件中的CRLF转为LF，则可以在Git bash中使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&quot;*.md&quot;</span> -<span class="hljs-built_in">exec</span> dos2unix &#123;&#125; \;<br></code></pre></td></tr></table></figure>
+
+<p>批量转为<code>CRLF</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find . -<span class="hljs-built_in">type</span> f -name <span class="hljs-string">&quot;*.md&quot;</span> -<span class="hljs-built_in">exec</span> unix2dos &#123;&#125; \;<br></code></pre></td></tr></table></figure>
+
 <h2 id="About-HTML"><a href="#About-HTML" class="headerlink" title="About HTML"></a>About HTML</h2><h3 id="空白字符"><a href="#空白字符" class="headerlink" title="空白字符"></a>空白字符</h3><p>这是一个空白字符：“ㅤ”</p>
 <h3 id="WebView2"><a href="#WebView2" class="headerlink" title="WebView2"></a>WebView2</h3><p>（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电脑上安装有WebView2，则程序可以直接借助WebView2实现网页的浏览。</p>
 <p>见到一个B站UP主打包WebView2的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Aa411j7XV/">视频</a>。</p>
