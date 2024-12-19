@@ -19,7 +19,7 @@ tags: [题解, LeetCode, 困难, 贪心, 几何, 数组, 数学]
 <blockquote>
 <p>输入：<code>points = [[1,1],[1,4],[3,2],[2,1]], direction = "LL"</code></p>
 
-<p>输入：<code>[0,2,1,3]</code></p>
+<p>输出：<code>[0,2,1,3]</code></p>
 
 <p>解释：[0,2,1,3] 是符合"LL"的方案之一。在 [0,2,1,3] 方案中，0-&gt;2-&gt;1 是左转方向， 2-&gt;1-&gt;3 也是左转方向 <img alt="图片.gif" src="https://pic.leetcode-cn.com/c01c1efc423b916267c2a3a170266c925c368d62afa047c267cc1020970e55d9-%E5%9B%BE%E7%89%87.gif" style="max-height:300px" /></p>
 </blockquote>
@@ -29,7 +29,7 @@ tags: [题解, LeetCode, 困难, 贪心, 几何, 数组, 数学]
 <blockquote>
 <p>输入：<code>points = [[1,3],[2,4],[3,3],[2,1]], direction = "LR"</code></p>
 
-<p>输入：<code>[0,3,1,2]</code></p>
+<p>输出：<code>[0,3,1,2]</code></p>
 
 <p>解释：[0,3,1,2] 是符合"LR"的方案之一。在 [0,3,1,2] 方案中，0-&gt;3-&gt;1 是左转方向， 3-&gt;1-&gt;2 是右转方向</p>
 </blockquote>
