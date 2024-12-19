@@ -321,7 +321,7 @@ tags: [其他, 知识, 英语, Notes]
 |frontier|n. 边境，边界，边疆，边缘，知识前沿，新领域<br/>adj. 边疆的，边境的，开拓的|
 |||
 |solitude|n. 独处，独居|
-|discreet|adj. (言行)谨慎的，考虑周到的|
+|d<font color="#28bea0" title="二次复习">iscreet</font>|adj. (言行)谨慎的，考虑周到的|
 |forbid|v. 禁止，阻止<details><summary>过去分词</summary>forbade</details>|
 |furrow|n. 沟，犁沟，车辙，(脸上)皱纹<br/>v. 犁，(使)皱(眉)|
 |scold|v. 骂，责备，数落，奚落<br/>n. 唠唠叨叨骂人的人/妇女|
@@ -713,7 +713,7 @@ tags: [其他, 知识, 英语, Notes]
 |<font color="#28bea0" title="二次复习">Egyptian</font>|adj. 埃及的，埃及人的<br/>n. 埃及人|
 |peasantry|n. (统称)(一个地区或国家的)农民|
 |affectionate|adj. 表示关爱的<details><summary>例句</summary>That mother gave an affectionate hug to her newborn child.<br/>那位母亲深情地拥抱了她刚出生的孩子。</details>|
-|<font color="#28bea0" title="二次复习">auspice</font>|n. 吉兆，赞助，主办|
+|<font color="#28bea0" title="三次复习">auspice</font>|n. 吉兆，赞助，主办|
 |||
 |heartfelt|adj. 衷心的，真诚的<details><summary>例句</summary>We offer our deepest and heartfelt sympathy on their losses.<br/>我们对他们的损失表示最深切的同情。</details>|
 |snobbery|n. 自命不凡，势力|
@@ -772,7 +772,7 @@ tags: [其他, 知识, 英语, Notes]
 |elasticity|n. 弹性，弹力|
 |columnist|n. 专栏作家|
 |cuckoo|n. 布谷鸟，杜鹃(鸟)<br/>adj. 愚蠢的，疯狂的|
-|trot|v. 快步，疾走，小跑<br/>n. 小跑，疾走|
+|<font color="#28bea0" title="二次复习">trot</font>|v. 快步，疾走，小跑<br/>n. 小跑，疾走|
 |angular|adj. 骨瘦嶙峋的，骨瘦如柴的，有棱角的，有尖角的|
 |materialism|n. 唯物主义，唯物论，实利主义，物质主义|
 |deposition|n. 沉积作用，沉积物，罢免，废黜(chù)，证词，证言|
@@ -873,6 +873,19 @@ tags: [其他, 知识, 英语, Notes]
 |amendment|n. 修改，(美国的)宪法修正案|
 |denomination|n. (尤指钱的)面值，宗教派别|
 |butchery|n. 残杀，杀戮，屠宰工作|
+|||
+|secretariat|n. 秘书处，书记处|
+|sheriff|n. 县(郡)治安官|
+|inasmuch|adv. 由于，〈古〉只要<details><summary>例句</summary>Inasmuch as you are an adult, you must be responsible for your own behavior.<br/>因为你是一个成年人，你必须对自己的行为负责。</details>|
+|countenance|n. 面容，脸色，面部表情<br/>v. 支持，赞成，同意|
+|||
+|subdue|v. 制伏，征服，抑制，克制|
+|gravel|n. 砂砾，砾石，石子|
+|vouch|v. 担保，保证，确定，断言|
+|ranch|n. 牧场|
+|discreet|adj. (言行)谨慎的，考虑周到的|
+|||
+|ferocious|adj. 凶猛的，强烈的，严重的|
 
 <p class="wordCounts">单词收录总数</p>
 

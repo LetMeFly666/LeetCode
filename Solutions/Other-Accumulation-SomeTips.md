@@ -205,6 +205,32 @@ git reset HEAD filename
 
 TODO: https://liaoxuefeng.com/books/git/branch/policy/index.html#0
 
+### CRLF和LF换行符处理
+
+在Linux和Mac中文件的换行符都是`LF`而在Windows中默认是`CRLF`。虽然文件看起来没有什么差别，但是在git的时候会发现其实每一行都变了。因此git可以通过配置`core.autocrlf`来进行一些自定义。
+
+`core.autocrlf`有三个选项：
+
++ `true`: 提交时会将文件的CRLF转为LF，检出时会将LF转为CRLF。（适合Windows用户）
++ `input`: 提交时会将文件的CRLF转为LF，检出时不进行转换。（适合Linux/Mac用户）
++ `input`: 提交和检出时都不进行任何转换。
+
+```bash
+git config --global core.autocrlf [input | true | false]
+```
+
+如果想批量将文件中的CRLF转为LF，则可以在Git bash中使用命令：
+
+```bash
+find . -type f -name "*.md" -exec dos2unix {} \;
+```
+
+批量转为`CRLF`：
+
+```bash
+find . -type f -name "*.md" -exec unix2dos {} \;
+```
+
 ## About HTML
 
 ### 空白字符

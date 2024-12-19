@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-09 14:18:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-16 12:45:28
+ * @LastEditTime: 2024-12-17 23:15:19
  */
 // main.js
 
@@ -32,13 +32,14 @@ export default {
         // 获取模块的路由表
         const moduleRoutes = routes[modulePath];
         const nowPath = '/' + (path.replace(modulePath, '').split('/')[1] || '');
+        console.log(nowPath); 
         const routeHandler = moduleRoutes[nowPath];  // 查找对应的处理函数
         if (routeHandler) {
             return routeHandler(request);  // 如果找到了匹配的处理函数，执行它
         } else {
-            return new Response('Not Found', { status: 404 });  // 找不到对应路由
+            return new Response('Route Not Found', { status: 404 });  // 找不到对应路由
         }
     } else {
-        return new Response('Not Found', { status: 404 });  // 找不到模块
+        return new Response('Module Not Found', { status: 404 });  // 找不到模块
     }
 }}
