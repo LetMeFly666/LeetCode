@@ -890,6 +890,8 @@ tags: [其他, 知识, 英语, Notes]
 |abrogation|n. 废除，取消|
 |endorsement|n. 认可，(名人/要人在广告中对某产品的)宣传|
 |reciprocal|adj. 互惠的，相应的<br/>n. 反身代词，相互组词，倒数，乘法逆运算，互相关联的事物|
+|||
+|coffin|n. 棺材，棺椁，棺木|
 
 <p class="wordCounts">单词收录总数</p>
 
