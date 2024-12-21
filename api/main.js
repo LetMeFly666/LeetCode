@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-09 14:18:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-17 23:15:19
+ * @LastEditTime: 2024-12-20 22:06:28
  */
 // main.js
 
@@ -15,12 +15,12 @@ const routes = {
     '/img': imgRoutes,  // 将 /img 路由映射到 img 模块
     '/github/public': github_public,  // Github一个仓库是否为public
     '/calendar': calendarRoutes,  // 日历
-    
 };
 
 // 请求事件监听
 export default {
-    async fetch(request) {
+    async fetch(request, env) {
+    console.log(env.CALENDAR_DB);
     const url = new URL(request.url);
     const path = url.pathname;  // 获取请求路径
 

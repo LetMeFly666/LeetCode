@@ -2,8 +2,9 @@
  * @Author: LetMeFly
  * @Date: 2024-12-18 09:58:02
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-18 10:12:08
+ * @LastEditTime: 2024-12-20 22:35:16
  */
+// console.log(CALENDAR_DB);
 // 依据passKey获取userid
 export async function getUserIdFromPassKey(passKey) {
     const query = `
@@ -16,7 +17,7 @@ export async function getUserIdFromPassKey(passKey) {
     `;
 
     try {
-        const result = await db.prepare(query).bind(passKey).first();
+        const result = await CALENDAR_DB.prepare(query).bind(passKey).first();
         return result ? result.userid : null;
     } catch (error) {
         console.error('Error fetching user ID:', error);

@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:10:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-18 12:34:14
+ * @LastEditTime: 2024-12-20 22:30:18
 -->
 # 目的
 
@@ -18,11 +18,14 @@
 
 ```
 
-# 结果
+# 后端接口
+
+[接口文档](back/README.md)
 
 # TODO
 
 + [ ] 删除标签时，前端提醒“所有任务的xx标签将会被移除”
+- [ ] 后端 - 标签相关api - 创建、删除
 
 # End
 
@@ -334,9 +337,15 @@ Calendar_TaskTag表中包含：taskId、TagId。一个任务可能对应着多�
 
 <hr/>
 
-<hr/>
+cloudfalre workers如何读取绑定的D1数据库
 
 <hr/>
+
+我绑定的数据库名为CALENDAR_DB，但是缺报错`X [ERROR] Error fetching user ID: ReferenceError: CALENDAR_DB is not defined`
+
+<hr/>
+
+是不是因为我没有初始化本地数据库
 
 <hr/>
 

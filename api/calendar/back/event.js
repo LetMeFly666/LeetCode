@@ -2,9 +2,10 @@
  * @Author: LetMeFly
  * @Date: 2024-12-17 23:11:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-18 12:25:02
+ * @LastEditTime: 2024-12-20 22:16:14
  */
 import { getUserIdFromPassKey } from "./user";
+import { getCookie } from "./cookie";
 
 // 创建事件
 export async function createEvent(request) {
@@ -22,7 +23,7 @@ export async function createEvent(request) {
     `;
     const taskValues = [title, description, startTime, during, userid];
     try {
-        const taskResult = await db.prepare(insertTaskQuery).bind(...taskValues).run();
+        const taskResult = await CALENDAR_DB.prepare(insertTaskQuery).bind(...taskValues).run();
         const taskId = taskResult.lastInsertRowid;
         if (tags && tags.length > 0) {
             const insertTagQuery = `
@@ -30,7 +31,7 @@ export async function createEvent(request) {
                 VALUES ${tags.map(() => '(?, ?)').join(', ')};
             `;
             const tagValues = tags.flatMap(tagId => [taskId, tagId]);
-            await db.prepare(insertTagQuery).bind(...tagValues).run();
+            await CALENDAR_DB.prepare(insertTagQuery).bind(...tagValues).run();
             return new Response(JSON.stringify({ success: "ok", taskId }), { status: 200 });
         }
     } catch (error) {
