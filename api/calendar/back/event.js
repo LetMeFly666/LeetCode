@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-17 23:11:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-21 22:33:10
+ * @LastEditTime: 2024-12-21 22:56:09
  */
 import { getUserIdFromPassKey } from "./user";
 import { getCookie } from "./cookie";
@@ -23,8 +23,7 @@ export async function createEvent(request, env) {
         VALUES (?, ?, ?, ?, ?);
     `;
     const taskValues = [title, description, startTime, during, userid];
-    // try {
-    if (true) {
+    try {
         const taskResult = await CALENDAR_DB.prepare(insertTaskQuery).bind(...taskValues).run();
         const taskId = taskResult.meta.last_row_id;  // 这里GPT说的不对，最后从devtools里找到了
         if (tags && tags.length > 0) {
@@ -36,8 +35,7 @@ export async function createEvent(request, env) {
             await CALENDAR_DB.prepare(insertTagQuery).bind(...tagValues).run();
             return new Response(JSON.stringify({ success: "ok", taskId }), { status: 200 });
         }
-    } else {
-    // } catch (error) {
+    } catch (error) {
         return new Response('Failed to create task', { status: 500 });
     }
 }
@@ -52,7 +50,7 @@ export async function getEvents(request, env) {
     }
     const tasks = await CALENDAR_DB.prepare(`
         SELECT * FROM Calendar_Tasks WHERE userid = ?
-    `).bind(passKey).all();
+    `).bind(userid).all();
     return new Response(JSON.stringify(tasks.results), { headers: {'Content-Type': 'application/json'} });
 }
 
