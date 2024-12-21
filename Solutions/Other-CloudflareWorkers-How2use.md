@@ -118,6 +118,8 @@ Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允�
     X [ERROR] The Workers runtime failed to start. There is likely additional logging output above.
     ```
 
+    如果想在本地开发时直接使用生产环境中的D1数据库(Cloudflare D1)，则需要`wrangler dev --remote`
+
 6. 部署到Cloudflare
 
     ```bash

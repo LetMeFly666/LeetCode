@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:10:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-20 22:30:18
+ * @LastEditTime: 2024-12-21 21:49:23
 -->
 # 目的
 
@@ -24,8 +24,10 @@
 
 # TODO
 
-+ [ ] 删除标签时，前端提醒“所有任务的xx标签将会被移除”
+- [ ] 删除标签时，前端提醒“所有任务的xx标签将会被移除”
 - [ ] 后端 - 标签相关api - 创建、删除
+- [ ] 标签数据库添加一列 - 创建者
+- [ ] 后端 - 事件创建 - 时间覆盖重叠问题
 
 # End
 
@@ -346,6 +348,163 @@ cloudfalre workers如何读取绑定的D1数据库
 <hr/>
 
 是不是因为我没有初始化本地数据库
+
+<hr/>
+
+我想直接应用生产环境的数据库。
+请问我在本地都需要进行哪些操作
+
+<hr/>
+
+wrangler deploy后，线上环境可以正常执行了。
+
+但是wrangler dev后，本地环境报错没有数据表。
+
+<hr/>
+
+配置了`preview_database_id = "40bf17b1-b598-4ad2-aad0-860f2b282cee"`后:
+
+```
+wrangler.toml changed...
+Your worker has access to the following bindings:
+- D1 Databases:
+  - CALENDAR_DB: 40bf17b1-b598-4ad2-aad0-860f2b282cee, Preview: (40bf17b1-b598-4ad2-aad0-860f2b282cee) (local)
+⎔ Reloading local server...
+```
+
+为什么Preview后面会显示一个(local)？
+
+并且我访问`localhost:8787/`还是报错：
+
+```
+[wrangler:err] Error: D1_ERROR: no such table: Calendar_Tasks: SQLITE_ERROR
+    at D1DatabaseSessionAlwaysPrimary._sendOrThrow (cloudflare-internal:d1-api:129:19)
+    at async D1PreparedStatement.all (cloudflare-internal:d1-api:311:46)
+    at async Object.fetch (file:///F:/OtherApps/Program/Git/Store/Store20_LeetCode/api/main.js:24:20)
+    at async jsonError (file:///F:/OtherApps/Program/Node/node-v16.13.1-win-x64/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+    at async drainBody (file:///F:/OtherApps/Program/Node/node-v16.13.1-win-x64/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+[wrangler:err] Cause: Error: no such table: Calendar_Tasks: SQLITE_ERROR
+    at D1DatabaseSessionAlwaysPrimary._sendOrThrow (cloudflare-internal:d1-api:130:24)
+    at async D1PreparedStatement.all (cloudflare-internal:d1-api:311:46)
+    at async Object.fetch (file:///F:/OtherApps/Program/Git/Store/Store20_LeetCode/api/main.js:24:20)
+    at async jsonError (file:///F:/OtherApps/Program/Node/node-v16.13.1-win-x64/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+    at async drainBody (file:///F:/OtherApps/Program/Node/node-v16.13.1-win-x64/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10)
+[wrangler:inf] GET /calendar/events 500 Internal Server Error (61ms)
+```
+
+<hr/>
+
+如果我执行：
+
+```
+export async function getEvents(request, env) {
+    const result = await env.CALENDAR_DB.prepare('SELECT * FROM Calendar_Tasks').all();
+    return new Response(JSON.stringify(result.results), {
+        headers: { 'Content-Type': 'application/json' },
+    });
+}
+```
+
+则能正常运行。
+
+如果我执行：
+
+```
+async function test(CALENDAR_DB) {
+    const result = await CALENDAR_DB.prepare('SELECT * FROM Calendar_Tasks').all();
+    return new Response(JSON.stringify(result.results), {
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+}
+
+export async function getEvents(request, env) {
+    const CALENDAR_DB = env.CALENDAR_DB;
+    return await getUserIdFromPassKey(CLANDER_DB);
+}
+```
+
+就会报错：`X [ERROR] Uncaught (in promise) ReferenceError: CLANDER_DB is not defined`
+
+<hr/>
+
+```
+export function getCookie(request, name) {
+    const cookieHeader = request.headers.get("Cookie")
+    const cookies = cookieHeader ? cookieHeader.split(';') : []
+    for (let cookie of cookies) {
+        const [key, value] = cookie.trim().split('=')
+        console.log(key, value);
+        console.log(`key = ${key}, name = ${name}, key === name: ${key === name}`)
+        if (key === name) {
+            return value
+        }
+    }
+    return null
+}
+```
+
+运行结果：
+
+```
+passKey 2156456454
+key = passKey, name = passkey, key === name: false
+```
+
+<hr/>
+
+```
+const insertTaskQuery = `
+    INSERT INTO Calendar_Tasks (title, description, startTime, during, userid)
+    VALUES (?, ?, ?, ?, ?);
+`;
+const taskValues = [title, description, startTime, during, userid];
+const taskResult = await CALENDAR_DB.prepare(insertTaskQuery).bind(...taskValues).run();
+```
+
+执行完这行insert语句后，如何知道我insert的那一行的自增id？
+
+能否从taskResult中获得？
+
+<hr/>
+
+我使用的是cloudflare的D1数据库，我应该如何获取？
+
+已知：我的自增id是taskId
+
+<hr/>
+
+```
+const insertTaskQuery = `
+    INSERT INTO Calendar_Tasks (title, description, startTime, during, userid)
+    VALUES (?, ?, ?, ?, ?);
+`;
+const taskValues = [title, description, startTime, during, userid];
+const taskResult = await CALENDAR_DB.prepare(insertTaskQuery).bind(...taskValues).run();
+console.log(taskResult);
+const taskId = taskResult.lastInsertRowid;
+console.log("Inserted taskId:", taskId);
+```
+
+运行结果：
+
+```
+Object {
+  success: true,
+  meta: Object,
+  results: Array(0)
+}
+Inserted taskId: undefined
+```
+
+<hr/>
+
+
+<hr/>
+
+
+<hr/>
+
 
 <hr/>
 

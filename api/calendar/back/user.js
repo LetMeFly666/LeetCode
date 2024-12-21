@@ -2,11 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2024-12-18 09:58:02
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-20 22:35:16
+ * @LastEditTime: 2024-12-21 20:51:51
  */
 // console.log(CALENDAR_DB);
 // 依据passKey获取userid
-export async function getUserIdFromPassKey(passKey) {
+export async function getUserIdFromPassKey(passKey, CALENDAR_DB) {
     const query = `
         SELECT u.userid
         FROM USER_LoginInfo li
