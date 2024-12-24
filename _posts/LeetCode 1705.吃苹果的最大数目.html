@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1705.吃苹果的最大数目：贪心(优先队列) - 清晰题解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-number-of-eaten-apples&#x2F; 有一棵特殊的苹果树，一连 n 天，每天都可以长出若干个苹果。在第 i 天，树上会长出 apples[i] 个苹果，这些苹果将会在 days[i] 天后（也就是说，第 i + days[i">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1705.吃苹果的最大数目">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201705.%E5%90%83%E8%8B%B9%E6%9E%9C%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1705.吃苹果的最大数目：贪心(优先队列) - 清晰题解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-number-of-eaten-apples&#x2F; 有一棵特殊的苹果树，一连 n 天，每天都可以长出若干个苹果。在第 i 天，树上会长出 apples[i] 个苹果，这些苹果将会在 days[i] 天后（也就是说，第 i + days[i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-24T15:48:02.000Z">
+<meta property="article:modified_time" content="2024-12-24T16:12:20.093Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="堆（优先队列）">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1705.吃苹果的最大数目 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1705.吃苹果的最大数目"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1705-吃苹果的最大数目：贪心-优先队列-清晰题解"><a href="#【LetMeFly】1705-吃苹果的最大数目：贪心-优先队列-清晰题解" class="headerlink" title="【LetMeFly】1705.吃苹果的最大数目：贪心(优先队列) - 清晰题解"></a>【LetMeFly】1705.吃苹果的最大数目：贪心(优先队列) - 清晰题解</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-number-of-eaten-apples/">https://leetcode.cn/problems/maximum-number-of-eaten-apples/</a></p>
+<p>有一棵特殊的苹果树，一连 <code>n</code> 天，每天都可以长出若干个苹果。在第 <code>i</code> 天，树上会长出 <code>apples[i]</code> 个苹果，这些苹果将会在 <code>days[i]</code> 天后（也就是说，第 <code>i + days[i]</code> 天时）腐烂，变得无法食用。也可能有那么几天，树上不会长出新的苹果，此时用 <code>apples[i] == 0</code> 且 <code>days[i] == 0</code> 表示。</p>
+
+<p>你打算每天 <strong>最多</strong> 吃一个苹果来保证营养均衡。注意，你可以在这 <code>n</code> 天之后继续吃苹果。</p>
+
+<p>给你两个长度为 <code>n</code> 的整数数组 <code>days</code> 和 <code>apples</code> ，返回你可以吃掉的苹果的最大数目<em>。</em></p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>apples = [1,2,3,5,2], days = [3,2,1,4,2]
+<strong>输出：</strong>7
+<strong>解释：</strong>你可以吃掉 7 个苹果：
+- 第一天，你吃掉第一天长出来的苹果。
+- 第二天，你吃掉一个第二天长出来的苹果。
+- 第三天，你吃掉一个第二天长出来的苹果。过了这一天，第三天长出来的苹果就已经腐烂了。
+- 第四天到第七天，你吃的都是第四天长出来的苹果。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>apples = [3,0,0,0,0,2], days = [3,0,0,0,0,2]
+<strong>输出：</strong>5
+<strong>解释：</strong>你可以吃掉 5 个苹果：
+- 第一天到第三天，你吃的都是第一天长出来的苹果。
+- 第四天和第五天不吃苹果。
+- 第六天和第七天，你吃的都是第六天长出来的苹果。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>apples.length == n</code></li>
+    <li><code>days.length == n</code></li>
+    <li><code>1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
+    <li><code>0 &lt;= apples[i], days[i] &lt;= 2 * 10<sup>4</sup></code></li>
+    <li>只有在 <code>apples[i] = 0</code> 时，<code>days[i] = 0</code> 才成立</li>
+</ul>
+
+
+    
+<h2 id="解题方法：贪心"><a href="#解题方法：贪心" class="headerlink" title="解题方法：贪心"></a>解题方法：贪心</h2><p>思路很简单：</p>
+<blockquote>
+<p>有一些苹果，你先吃哪个？答案是先吃腐烂最早的。</p>
+</blockquote>
+<p>因此可以使用优先队列，从第0天开始模拟到第$n-1$天：</p>
+<blockquote>
+<p>每天将当天新苹果入队；腐烂较早的最优先；</p>
+<p>当<code>队列不空</code>且<code>今天还没吃到苹果</code>时不断出队，若已腐烂则丢弃，若未腐烂则吃一个并将剩下的苹果入队。</p>
+</blockquote>
+<p>遍历完$0$到$n-1$天，不再有新苹果了，但队列中可能有旧苹果。</p>
+<p>这次和之前有所不同，不再一天一天吃，而是几天几天连续算：</p>
+<blockquote>
+<p>假设当前是第$day$天，队首苹果有$appleNum$个且将在$rotDay$腐烂，则能连续吃$max(0, min(rotDay - day, appleNum))$天。</p>
+</blockquote>
+<p>为什么$0$到$n-1$天要一天一天地吃，而从第$n$天开始可以连续吃同一批苹果？</p>
+<blockquote>
+<p>因为从第$n$天开始不会产生新苹果了，我们不再关心苹果的“产生日期”，只要没过保质期就能吃。</p>
+<p>但是前$n$天可不一样，例如第$0$天产$2$个$1000$天保质期的苹果，第$1$天产$1$个保质期$1$天的苹果，那么就不能照着第$0$天的$2$个连续吃完，而应该第$0$和$3$天吃第$0$天产的，第$1$天吃第$1$天产的。</p>
+<p>本质上来说就是前$n$天每天都有新苹果产生，可能导致队首苹果不再是腐烂最早的苹果。</p>
+</blockquote>
+<ul>
+<li>时间复杂度$O(n\log n)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2024-12-24 10:56:16</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2024-12-24 18:41:09</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// 不能只按照腐烂截止时间</span><br><span class="hljs-comment">// 例如不能为了吃截止时间为6的4,5而空出第3天</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">[1,2,3,5,2]</span><br><span class="hljs-comment">[3,2,1,4,2]</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"></span><br><span class="hljs-comment">&lt;0-3, 1&gt;, &lt;1-3, 2&gt;, &lt;2-3, 1&gt;, &lt;3-7, 5&gt;, &lt;4-6, 2&gt;</span><br><span class="hljs-comment">    0        1, 2                3, 6     4, 5</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">// 前n天应该 边遍历边入队</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">eatenApples</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; apples, vector&lt;<span class="hljs-type">int</span>&gt;&amp; days)</span> </span>&#123;<br>        priority_queue&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;, vector&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&gt;, greater&lt;&gt;&gt; pq;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>, day = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (; day &lt; apples.<span class="hljs-built_in">size</span>(); day++) &#123;<br>            <span class="hljs-keyword">if</span> (apples[day]) &#123;<br>                pq.<span class="hljs-built_in">push</span>(&#123;day + days[day], apples[day]&#125;);<br>            &#125;<br>            <span class="hljs-keyword">while</span> (pq.<span class="hljs-built_in">size</span>()) &#123;<br>                <span class="hljs-keyword">auto</span> [rotDay, appleNum] = pq.<span class="hljs-built_in">top</span>();<br>                pq.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-keyword">if</span> (rotDay &lt;= day) &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                ans++;<br>                appleNum--;<br>                <span class="hljs-keyword">if</span> (appleNum) &#123;<br>                    pq.<span class="hljs-built_in">push</span>(&#123;rotDay, appleNum&#125;);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (pq.<span class="hljs-built_in">size</span>()) &#123;<br>            <span class="hljs-keyword">auto</span> [rotDay, appleNum] = pq.<span class="hljs-built_in">top</span>();<br>            pq.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-type">int</span> eat = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">min</span>(rotDay - day, appleNum));<br>            ans += eat;<br>            day += eat;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2024-12-24 18:46:52</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2024-12-24 18:56:55</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">import</span> heapq<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">eatenApples</span>(<span class="hljs-params">self, apples: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], days: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        pq = []<br>        ans = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> day <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(apples)):<br>            <span class="hljs-keyword">if</span> apples[day]:<br>                heapq.heappush(pq, (day + days[day], apples[day]))<br>            <span class="hljs-keyword">while</span> pq:<br>                rotDay, appleNum = heapq.heappop(pq)<br>                <span class="hljs-keyword">if</span> rotDay &lt;= day:<br>                    <span class="hljs-keyword">continue</span><br>                ans += <span class="hljs-number">1</span><br>                appleNum -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">if</span> appleNum:<br>                    heapq.heappush(pq, (rotDay, appleNum))<br>                <span class="hljs-keyword">break</span><br>        day += <span class="hljs-number">1</span>  <span class="hljs-comment"># 注意这里和C不一样，python执行完day是能取到的右值</span><br>        <span class="hljs-keyword">while</span> pq:<br>            rotDay, appleNum = heapq.heappop(pq)<br>            eat = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">min</span>(rotDay - day, appleNum))<br>            ans += eat<br>            day += eat<br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2024-12-24 18:58:06</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2024-12-24 19:07:07</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> java.util.PriorityQueue;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">eatenApples</span><span class="hljs-params">(<span class="hljs-type">int</span>[] apples, <span class="hljs-type">int</span>[] days)</span> &#123;<br>        PriorityQueue&lt;<span class="hljs-type">int</span>[]&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;<span class="hljs-type">int</span>[]&gt;((a, b) -&gt; a[<span class="hljs-number">0</span>] - b[<span class="hljs-number">0</span>]);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, day = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (; day &lt; apples.length; day++) &#123;<br>            <span class="hljs-keyword">if</span> (apples[day] &gt; <span class="hljs-number">0</span>) &#123;<br>                pq.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;day + days[day], apples[day]&#125;);<br>            &#125;<br>            <span class="hljs-keyword">while</span> (pq.size() &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-type">int</span>[] temp = pq.poll();<br>                <span class="hljs-type">int</span> <span class="hljs-variable">rotDay</span> <span class="hljs-operator">=</span> temp[<span class="hljs-number">0</span>], appleNum = temp[<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span> (rotDay &lt;= day) &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                ans++;<br>                appleNum--;<br>                <span class="hljs-keyword">if</span> (appleNum &gt; <span class="hljs-number">0</span>) &#123;<br>                    pq.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;rotDay, appleNum&#125;);<br>                &#125;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (!pq.isEmpty()) &#123;<br>            <span class="hljs-type">int</span>[] temp = pq.poll();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">rotDay</span> <span class="hljs-operator">=</span> temp[<span class="hljs-number">0</span>], appleNum = temp[<span class="hljs-number">1</span>];<br>            <span class="hljs-type">int</span> <span class="hljs-variable">eat</span> <span class="hljs-operator">=</span> Math.max(<span class="hljs-number">0</span>, Math.min(rotDay - day, appleNum));<br>            ans += eat;<br>            day += eat;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2024-12-24 19:07:32</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2024-12-24 23:43:52</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;container/heap&quot;</span><br><br><span class="hljs-keyword">type</span> pair <span class="hljs-keyword">struct</span>&#123; rotDay, appleNum <span class="hljs-type">int</span>&#125;<br><span class="hljs-keyword">type</span> PQ []pair<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PQ)</span></span> Len() <span class="hljs-type">int</span>           &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(pq) &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PQ)</span></span> Less(i, j <span class="hljs-type">int</span>) <span class="hljs-type">bool</span> &#123; <span class="hljs-keyword">return</span> pq[i].rotDay &lt; pq[j].rotDay &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PQ)</span></span> Swap(i, j <span class="hljs-type">int</span>)      &#123; pq[i], pq[j] = pq[j], pq[i] &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq *PQ)</span></span> Push(v any)        &#123; *pq = <span class="hljs-built_in">append</span>(*pq, v.(pair)) &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq *PQ)</span></span> Pop() any          &#123; v := (*pq)[<span class="hljs-built_in">len</span>(*pq) - <span class="hljs-number">1</span>]; *pq = (*pq)[:<span class="hljs-built_in">len</span>(*pq) - <span class="hljs-number">1</span>]; <span class="hljs-keyword">return</span> v &#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">min_eatenApples</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123; <span class="hljs-keyword">if</span> a &lt; b &#123; <span class="hljs-keyword">return</span> a&#125;; <span class="hljs-keyword">return</span> b&#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max_eatenApples</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123; <span class="hljs-keyword">if</span> a &gt; b &#123; <span class="hljs-keyword">return</span> a&#125;; <span class="hljs-keyword">return</span> b&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">eatenApples</span><span class="hljs-params">(apples []<span class="hljs-type">int</span>, days []<span class="hljs-type">int</span>)</span></span> (ans <span class="hljs-type">int</span>) &#123;<br>    <span class="hljs-keyword">var</span> pq PQ<br>    <span class="hljs-keyword">for</span> day := <span class="hljs-keyword">range</span> apples &#123;<br>        <span class="hljs-keyword">if</span> apples[day] &gt; <span class="hljs-number">0</span> &#123;<br>            heap.Push(&amp;pq, pair&#123;day + days[day], apples[day]&#125;)<br>        &#125;<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(pq) &gt; <span class="hljs-number">0</span> &#123;<br>            v := heap.Pop(&amp;pq).(pair)<br>            rotDay, appleNum := v.rotDay, v.appleNum<br>            <span class="hljs-keyword">if</span> rotDay &lt;= day &#123;<br>                <span class="hljs-keyword">continue</span><br>            &#125;<br>            ans++<br>            appleNum--<br>            <span class="hljs-keyword">if</span> appleNum &gt; <span class="hljs-number">0</span> &#123;<br>                heap.Push(&amp;pq, pair&#123;rotDay, appleNum&#125;)<br>            &#125;<br>            <span class="hljs-keyword">break</span><br>        &#125;<br>    &#125;<br>    day := <span class="hljs-built_in">len</span>(apples)<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(pq) &gt; <span class="hljs-number">0</span> &#123;<br>        v := heap.Pop(&amp;pq).(pair)<br>        rotDay, appleNum := v.rotDay, v.appleNum<br>        eat := max_eatenApples(<span class="hljs-number">0</span>, min_eatenApples(rotDay - day, appleNum))<br>        ans += eat<br>        day += eat<br>    &#125;<br>    <span class="hljs-keyword">return</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Golang的堆是一个接口，需要实现Len、Less、Swap、Push、Pop方法。</p>
+<p>可参考<a target="_blank" rel="noopener" href="https://chatgpt.com/share/676ad777-6298-8001-9cbb-5cc63a731723">与ChatGPT的对话</a></p>
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/12/24/LeetCode%201705.%E5%90%83%E8%8B%B9%E6%9E%9C%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/144705583">https://letmefly.blog.csdn.net/article/details/144705583</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
