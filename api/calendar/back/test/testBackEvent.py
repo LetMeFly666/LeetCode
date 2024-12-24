@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2024-12-20 22:07:11
 LastEditors: LetMeFly.xyz
-LastEditTime: 2024-12-21 22:34:00
+LastEditTime: 2024-12-23 23:48:24
 '''
 import requests
 import json
@@ -10,7 +10,7 @@ from Secret import passKey
 
 # 基本的URL和API
 BASE_URL = 'https://api.letmefly.xyz/calendar'
-BASE_URL = 'http://127.0.0.1:8787/calendar'
+# BASE_URL = 'http://127.0.0.1:8787/calendar'
 
 # 用于模拟请求的headers，包含cookie
 headers = {

@@ -2,10 +2,10 @@
  * @Author: LetMeFly
  * @Date: 2024-12-17 23:11:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-21 22:56:09
+ * @LastEditTime: 2024-12-24 09:49:52
  */
-import { getUserIdFromPassKey } from "./user";
-import { getCookie } from "./cookie";
+import { getUserIdFromPassKey } from "./utils/user";
+import { getCookie } from "./utils/cookie";
 
 // 创建事件
 export async function createEvent(request, env) {
@@ -27,14 +27,14 @@ export async function createEvent(request, env) {
         const taskResult = await CALENDAR_DB.prepare(insertTaskQuery).bind(...taskValues).run();
         const taskId = taskResult.meta.last_row_id;  // 这里GPT说的不对，最后从devtools里找到了
         if (tags && tags.length > 0) {
-            const insertTagQuery = `
+            const insertTaskTagQuery = `
                 INSERT INTO Calendar_TaskTag (taskID, tagId)
                 VALUES ${tags.map(() => '(?, ?)').join(', ')};
             `;
             const tagValues = tags.flatMap(tagId => [taskId, tagId]);
-            await CALENDAR_DB.prepare(insertTagQuery).bind(...tagValues).run();
-            return new Response(JSON.stringify({ success: "ok", taskId }), { status: 200 });
+            await CALENDAR_DB.prepare(insertTaskTagQuery).bind(...tagValues).run();
         }
+        return new Response(JSON.stringify({ success: "ok", taskId }), { status: 200 });
     } catch (error) {
         return new Response('Failed to create task', { status: 500 });
     }
@@ -67,7 +67,6 @@ export async function deleteEvent(request, env) {
         DELETE FROM Calendar_Tasks
         WHERE taskId = ? AND userid = ?
     `).bind(taskId, userid).run();
-    console.log(deleteResult);
     if (deleteResult.meta.changes === 0) {
         return new Response('Access Denied!', { status: 404 });
     } else {

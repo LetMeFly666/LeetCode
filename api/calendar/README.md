@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:10:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-21 22:52:58
+ * @LastEditTime: 2024-12-24 09:46:53
 -->
 # 目的
 
@@ -25,9 +25,11 @@
 # TODO
 
 - [ ] 删除标签时，前端提醒“所有任务的xx标签将会被移除”
-- [ ] 后端 - 标签相关api - 创建、删除
-- [ ] 标签数据库添加一列 - 创建者
+- [ ] 后端，标签修改 - 不能删了再重新创建，要不然关联的键会出问题
+- [ ] 前端，事件修改 - 这个可以全部删了重建
 - [ ] 后端 - 事件创建 - 时间覆盖重叠问题
+- [x] 后端 - 标签相关api - 创建、删除、查询
+- [x] 标签数据库添加一列 - 创建者
 
 # End
 
@@ -499,14 +501,86 @@ Inserted taskId: undefined
 
 <hr/>
 
-
-
-<hr/>
-
+数据表`Calendar_Tags`新增一列`creater`，其中`creater`是数据表`Users.userid`的外键。
 
 <hr/>
 
+fk_creater  是什么意思
 
+<hr/>
+
+如果我在创建数据表的时候直接指定这一列并设置外键，那么这个外键约束有名称吗
+
+<hr/>
+
+为什么报错了：
+
+> ALTER TABLE Calendar_Tags ADD CONSTRAINT fk_creater FOREIGN KEY (creater) REFERENCES Users(userid) ON DELETE SET CASCADE;
+near "CONSTRAINT": syntax error at offset 30: SQLITE_ERROR
+
+<hr/>
+
+我之前的数据表为：
+
+```
+CREATE TABLE Calendar_Tags (
+    tagId INTEGER PRIMARY KEY AUTOINCREMENT,
+    tagName VARCHAR(255) NOT NULL,
+    tagColor VARCHAR(7) NOT NULL
+);
+```
+
+<hr/>
+
+我还有一个数据表：
+
+```
+CREATE TABLE Calendar_TaskTag (
+    taskId INTEGER NOT NULL,
+    tagId INTEGER NOT NULL,
+    PRIMARY KEY (taskId, tagId),
+    FOREIGN KEY (taskId) REFERENCES Calendar_Tasks(taskId),
+    FOREIGN KEY (tagId) REFERENCES Calendar_Tags(tagId)
+);
+```
+
+如果我删除数据表`Calendar_Tags`的话，数据表`Calendar_TaskTag`是否会出现问题？
+
+<hr/>
+
+创造者的英文单词怎么拼？
+
+<hr/>
+
+SQLite修改列名 Calendar_Tags.creater改为reator
+
+<hr/>
+
+我有一个SQLite表：
+
+```
+CREATE TABLE Calendar_TaskTag (
+    taskId INTEGER NOT NULL,
+    tagId INTEGER NOT NULL,
+    PRIMARY KEY (taskId, tagId),
+    FOREIGN KEY (taskId) REFERENCES Calendar_Tasks(taskId),
+    FOREIGN KEY (tagId) REFERENCES Calendar_Tags(tagId)
+);
+```
+
+我想将表修改为：
+
+当tagId或taskId被删除时，自动删除这一行。
+
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
+<hr/>
 <hr/>
 
 </details>
