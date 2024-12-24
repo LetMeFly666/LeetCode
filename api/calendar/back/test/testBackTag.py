@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2024-12-23 23:48:30
 LastEditors: LetMeFly.xyz
-LastEditTime: 2024-12-24 09:41:11
+LastEditTime: 2024-12-24 10:25:38
 '''
 import requests
 import json
@@ -37,8 +37,20 @@ def deleteTag(tagId):
     response = requests.delete(url, headers=headers, data=json.dumps(data))
     print('Delete Tag Response:', response.status_code, response.text)
 
+
+def alterTag():
+    url = f'{BASE_URL}/tags'
+    data = {
+        'tagId': 4,
+        'tagName': 'afterChange',
+        'tagColor': '#ffffff'
+    }
+    response = requests.put(url, headers=headers, data=json.dumps(data))
+    print('Alter Tag Response:', response.status_code, response.text)
+
 if __name__ == '__main__':
     pass
     # createTag()
     # getTags()
     # deleteTag(3)
+    alterTag()

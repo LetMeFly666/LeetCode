@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-23 18:19:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 09:51:30
+ * @LastEditTime: 2024-12-24 10:27:27
  */
 import { getCookie } from "./utils/cookie";
 import { getUserIdFromPassKey } from "./utils/user";
@@ -62,4 +62,25 @@ export async function deleteTag(request, env) {
     } else {
         return new Response(JSON.stringify({status: 0, message: `Tag ${tagId} deleted successfully.`}), {status: 200})
     }
+}
+
+// 修改标签
+export async function alterTag(request, env) {
+    const CALENDAR_DB = env.CALENDAR_DB;
+    const passKey = getCookie(request, 'passKey');
+    const userid = await getUserIdFromPassKey(passKey, CALENDAR_DB);
+    if (!userid) {
+        return new Response(JSON.stringify({status: 1, message: "Invalid passKey."}), {status: 401});
+    }
+    const { tagId, tagName, tagColor } = await request.json();
+    const alterResult = await CALENDAR_DB.prepare(`
+        UPDATE Calendar_Tags
+        SET tagName = ?, tagColor = ?
+        WHERE tagId = ? AND creator = ?
+    `).bind(tagName, tagColor, tagId, userid).run();
+    if (alterResult.meta.changes === 0) {
+        return new Response(JSON.stringify({status: 2, message: "Access Denied!"}), {status: 500});
+    } else {
+        return new Response(JSON.stringify({status: 0, message: `Tag ${tagId} altered successfully.`}), {status: 200})
+    }    
 }

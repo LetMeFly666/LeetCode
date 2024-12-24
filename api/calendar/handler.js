@@ -2,11 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:34:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-23 23:03:08
+ * @LastEditTime: 2024-12-24 10:07:45
  */
 import { indexHTML } from "./front/html"
 import { createEvent, getEvents, deleteEvent } from "./back/event";
-import { createTag, getTags, deleteTag } from "./back/tags";
+import { createTag, getTags, deleteTag, alterTag } from "./back/tags";
 
 // 返回主页HTML
 export async function index() {
@@ -32,5 +32,7 @@ export async function tags(request, env) {
         return await getTags(request, env);
     } else if (request.method == 'DELETE') {
         return await deleteTag(request, env);
+    } else if (request.method == 'PUT') {
+        return await alterTag(request, env);
     }
 }

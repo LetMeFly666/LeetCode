@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-20 22:12:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 09:53:20
+ * @LastEditTime: 2024-12-24 10:36:36
 -->
 # calendar后端
 
@@ -195,7 +195,7 @@ Access Denied!
 
 **请求示例**
 
-TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L7-L25) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L42)
+更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L7-L25) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L42)
 
 ### 查询标签 GET {BASE_URL}/tags
 
@@ -236,7 +236,7 @@ None。
 
 **请求示例**
 
-TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L7-L16) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L27-L30) + [代码段3](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L43)
+更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L7-L16) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L27-L30) + [代码段3](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L43)
 
 ### 删除标签 DELETE {BASE_URL}/tags
 
@@ -259,7 +259,10 @@ TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/-------
 删除成功(200)：
 
 ```json
-{"status":0,"message":"Tag ${tagId} deleted successfully."}
+{
+    "status": 0,
+    "message": "Tag ${tagId} deleted successfully."
+}
 ```
 
 用户身份不合法(401)：
@@ -282,4 +285,53 @@ TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/-------
 
 **请求示例**
 
-TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L7-L16) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L32-L38) + [代码段3](https://github.com/LetMeFly666/LeetCode/blob/-------------/api/calendar/back/test/testBackEvent.py#L44)
+更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L7-L16) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L32-L38) + [代码段3](https://github.com/LetMeFly666/LeetCode/blob/520209ac6050207e4d3424872ef63fbf8fb89d86/api/calendar/back/test/testBackTag.py#L44)
+
+### 修改标签 PUT {BASE_URL}/tags
+
+**请求头**
+
++ Cookie: passKey=用户登录凭证
+
+**请求体**
+
+```json
+{
+    "tagId": 2,
+    "tagName": "学习2",
+    "tagColor": "#ffffff"
+}
+```
+
+**返回值**
+
+修改成功(200)：
+
+```json
+{
+    "status": 0,
+    "message": "Tag ${tagId} altered successfully."
+}
+```
+
+用户身份不合法(401)：
+
+```json
+{
+    "status": 1,
+    "message": "Invalid passKey."
+}
+```
+
+修改失败(404) - tagId不存在或该tag非操作者所有：
+
+```json
+{
+    "status": 2,
+    "message": "Access Denied!"
+}
+```
+
+**请求示例**
+
+TODO: 更新：[代码段1](https://github.com/LetMeFly666/LeetCode/blob/------/api/calendar/back/test/testBackTag.py#L7-L16) + [代码段2](https://github.com/LetMeFly666/LeetCode/blob/------/api/calendar/back/test/testBackTag.py#L32-L38) + [代码段3](https://github.com/LetMeFly666/LeetCode/blob/------/api/calendar/back/test/testBackTag.py#L44)
