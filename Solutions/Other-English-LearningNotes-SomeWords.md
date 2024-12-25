@@ -899,6 +899,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |condemn|v. 谴责，指责，宣判，判处(某人刑罚)|
 |storey|n. 楼层|
+|||
+|undertaking|n. 重大/艰巨の任务/事业，企业，承诺，保证，许诺|
+|gorge|n. 峡谷<br/>v. 贪婪地吃，狼吞虎咽|
 
 <p class="wordCounts">单词收录总数</p>
 
