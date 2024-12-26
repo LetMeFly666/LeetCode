@@ -1,0 +1,160 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2024-12-26 23:00:56
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-26 23:01:00
+ */
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局字体样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    height: 100%;  /* 确保页面填满整个屏幕 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+/* 日历容器 */
+.calendar-container {
+    width: 100%;
+    height: 100vh;  /* 填满整个屏幕 */
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 日历头部 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 18px;
+}
+
+.calendar-header button {
+    background-color: #0056b3;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.calendar-header button:hover {
+    background-color: #004085;
+}
+
+/* 日历主体区域：显示每一天和每小时 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: 50px repeat(7, 1fr);  /* 时间列 + 7天列 */
+    grid-template-rows: repeat(24, 40px); /* 每小时的行 */
+    gap: 1px;
+    background-color: #ddd;
+    overflow: auto;
+    flex-grow: 1;  /* 填充剩余的可用空间 */
+}
+
+/* 时间列 */
+.calendar-grid .time-column {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    border-right: 1px solid #ccc;
+}
+
+/* 日历天数列（7天） */
+.calendar-grid .day-column {
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    position: relative;
+}
+
+/* 每一小时的格子 */
+.calendar-grid .hour-slot {
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.calendar-grid .hour-slot:hover {
+    background-color: #f8f8f8;
+}
+
+/* 拖拽选择区域的样式 */
+.calendar-grid .drag-selection {
+    position: absolute;
+    background-color: rgba(0, 123, 255, 0.3);
+    border: 1px dashed #007BFF;
+    z-index: 10;
+}
+
+/* 事件样式 */
+.event {
+    position: absolute;
+    background-color: rgba(0, 123, 255, 0.6);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 事件模态框 */
+.event-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 100;
+}
+
+/* 模态框内容 */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 输入框等 */
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
