@@ -2,15 +2,20 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:34:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 10:07:45
+ * @LastEditTime: 2024-12-26 08:32:48
  */
-import { indexHTML } from "./front/html"
+import { indexHTMLFunc, files } from "./front/fileRouter"
 import { createEvent, getEvents, deleteEvent } from "./back/event";
 import { createTag, getTags, deleteTag, alterTag } from "./back/tags";
 
 // 返回主页HTML
-export async function index() {
-    return await indexHTML();
+export async function index(request) {
+    return await indexHTMLFunc(request);
+}
+
+// 返回前端所需文件 cs js html等
+export async function front(request) {
+    return await files(request);
 }
 
 // 事件处理函数
