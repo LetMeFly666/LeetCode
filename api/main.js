@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-09 14:18:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-21 21:17:14
+ * @LastEditTime: 2024-12-26 08:34:46
  */
 // main.js
 
@@ -32,12 +32,14 @@ export default {
 
     // 查找是否有匹配的模块
     const modulePath = Object.keys(routes).find(route => path.startsWith(route));
+    request.modulePath = modulePath;
 
     if (modulePath) {
         // 获取模块的路由表
         const moduleRoutes = routes[modulePath];
         const nowPath = '/' + (path.replace(modulePath, '').split('/')[1] || '');
-        // console.log(nowPath);
+        request.modulePath_sub = nowPath;
+        // console.log(nowPath);  // 例如/front
         const routeHandler = moduleRoutes[nowPath];  // 查找对应的处理函数
         if (routeHandler) {
             return await routeHandler(request, env);  // 如果找到了匹配的处理函数，执行它
