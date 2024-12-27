@@ -834,13 +834,13 @@ tags: [其他, 知识, 英语, Notes]
 |limousine|n. 豪华轿车，大型高级轿车，(往返机场接送旅客的)中型客车|
 |||
 |versatile|adj. 多才多艺的，多方面的，多用途的|
-|demolition|n. 拆除，破坏，损坏|
+|<font color="#28bea0" title="二次复习">demolition</font>|n. 拆除，破坏，损坏|
 |veto|v. 行使否决权，拒绝认可，禁止，拒不接受<br/>n. 否决权，拒绝认可，禁止|
 |superstition|n. 迷信，迷信观念|
 |||
 |shriek|v. 尖叫，尖声说<br/>n. 尖叫|
 |defray|v. 支付|
-|miraculous|adj. 奇迹般的，不可思议的，不平凡的|
+|<font color="#28bea0" title="二次复习">miraculous</font>|adj. 奇迹般的，不可思议的，不平凡的|
 |zebra|n. 斑马，如斑蝶<br/>adj. 有斑马般斑纹的，有条纹的|
 |surmise|v. 〈正式〉猜测，估计，认为<br/>n. 〈正式〉推测，臆测，揣度，猜度|
 |hindrance|n. 妨碍，障碍，形成阻碍的人/物|
@@ -902,6 +902,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |undertaking|n. 重大/艰巨の任务/事业，企业，承诺，保证，许诺|
 |gorge|n. 峡谷<br/>v. 贪婪地吃，狼吞虎咽|
+|||
+|warranty|n. 保证，担保，保修单，保用期，保修期|
+|outrageous|adj. 骇人的，无法容忍的，反常的，令人惊讶的|
 
 <p class="wordCounts">单词收录总数</p>
 

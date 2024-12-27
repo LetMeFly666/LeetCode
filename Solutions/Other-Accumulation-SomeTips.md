@@ -231,6 +231,43 @@ find . -type f -name "*.md" -exec dos2unix {} \;
 find . -type f -name "*.md" -exec unix2dos {} \;
 ```
 
+如果经常报错[`fatal: LF would be replaced by CRLF in xx`](https://github.com/LetMeFly666/LeetCode/pull/671)，则可以将`core.safecrlf`设置为`false`。
+
+### 批量删除空的远端分支
+
+今天在执行`git remote -v`的时候发现，我有一百多个空的远端分支：
+
+```bash
+git branch -a
+  api
+* master
+  website
+  website_Static
+  remotes/origin/1186
+  remotes/origin/1261
+  remotes/origin/1338
+  remotes/origin/1379
+  remotes/origin/1535
+  remotes/origin/1600
+  remotes/origin/1673
+  remotes/origin/1702
+  remotes/origin/1705
+  remotes/origin/1738
+  remotes/origin/1847
+  remotes/origin/1953
+  remotes/origin/1958
+  remotes/origin/1976
+  ...
+```
+
+这些`^remotes/origin/\d{3,4}$`的远端分支实际上早已被merge到master后删除。我想批量删除这些空的远端分支，发现了一条命令：
+
+```bash
+git remote prune origin
+```
+
+执行起来[嘎嘎爽](TODO: tryGoPy/git remote prune)。
+
 ## About HTML
 
 ### 空白字符
