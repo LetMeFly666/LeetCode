@@ -1,0 +1,166 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2024-12-26 22:09:31
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-26 22:09:37
+ */
+/* 通用样式 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    margin: 0;
+}
+
+/* 日历容器 */
+.calendar-container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 日历头部：上一周、下一周按钮及当前日期范围 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.calendar-header button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background-color: #0056b3;
+}
+
+/* 日历网格布局 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7列，每列一个星期的日期 */
+    grid-template-rows: repeat(25, 40px); /* 24小时 + 1行标题 */
+    grid-gap: 1px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    height: 500px; /* 控制日历高度 */
+    overflow-y: auto;
+    padding: 0;
+}
+
+/* 每一列的样式（即每个星期天的日期） */
+.calendar-grid .day {
+    background-color: #f9f9f9;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* 每一小时的格子样式 */
+.calendar-grid .hour-slot {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 日历的时间范围，从7点开始显示 */
+.calendar-grid .time-label {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #333;
+    background-color: #e9e9e9;
+    font-weight: bold;
+}
+
+/* 事件框样式（可以拖动的事件） */
+.event {
+    background-color: #ffcc00;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    user-select: none;
+    position: absolute;
+    color: #333;
+    z-index: 10;
+}
+
+/* 事件的标签颜色 */
+.event-tag {
+    font-size: 0.75rem;
+    background-color: #2f80ed;
+    color: white;
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin-right: 5px;
+}
+
+/* 拖拽时事件的样式 */
+.event.dragging {
+    opacity: 0.7;
+    border: 2px dashed #2f80ed;
+}
+
+/* 模态框样式：创建/修改事件 */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: none;
+}
+
+.modal input, .modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.modal button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: #218838;
+}

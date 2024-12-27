@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-25 23:31:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-25 23:43:30
+ * @LastEditTime: 2024-12-26 23:10:25
  */
 /* 以下为前端各个页面的源码 */
 // index.html
@@ -13,7 +13,7 @@ export const indexHTML = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>日历</title>
-    <link rel="stylesheet" href="front/styles.css"> <!-- 外部样式 -->
+    <link rel="stylesheet" href="./front/styles.css"> <!-- 外部样式 -->
     <script src="https://letmefly.xyz/Links/Common.js"></script>
 </head>
 <body>
@@ -29,7 +29,66 @@ export const indexHTML = `
 
         <!-- 日历主体区域：显示每一天和每小时 -->
         <div class="calendar-grid" id="calendarGrid">
-            <!-- 日历天数列（动态生成） -->
+            <div class="calendar-time">
+                <!-- 这里显示时间段 -->
+                <div class="time-slot">00:00</div>
+                <div class="time-slot">01:00</div>
+                <div class="time-slot">02:00</div>
+                <div class="time-slot">03:00</div>
+                <div class="time-slot">04:00</div>
+                <div class="time-slot">05:00</div>
+                <div class="time-slot">06:00</div>
+                <div class="time-slot">07:00</div>
+                <div class="time-slot">08:00</div>
+                <div class="time-slot">09:00</div>
+                <div class="time-slot">10:00</div>
+                <div class="time-slot">11:00</div>
+                <div class="time-slot">12:00</div>
+                <div class="time-slot">13:00</div>
+                <div class="time-slot">14:00</div>
+                <div class="time-slot">15:00</div>
+                <div class="time-slot">16:00</div>
+                <div class="time-slot">17:00</div>
+                <div class="time-slot">18:00</div>
+                <div class="time-slot">19:00</div>
+                <div class="time-slot">20:00</div>
+                <div class="time-slot">21:00</div>
+                <div class="time-slot">22:00</div>
+                <div class="time-slot">23:00</div>
+            </div>
+
+            <div class="calendar-days">
+                <!-- 这里会动态填充每天的日期和拖拽区域 -->
+                <div class="day-column" data-day="2024-12-15">
+                    <div class="day-header">周一</div>
+                    <!-- 每天的小时块 -->
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-16">
+                    <div class="day-header">周二</div>
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-17">
+                    <div class="day-header">周三</div>
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-18">
+                    <div class="day-header">周四</div>
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-19">
+                    <div class="day-header">周五</div>
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-20">
+                    <div class="day-header">周六</div>
+                    <div class="time-block"></div>
+                </div>
+                <div class="day-column" data-day="2024-12-21">
+                    <div class="day-header">周日</div>
+                    <div class="time-block"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -39,42 +98,50 @@ export const indexHTML = `
             <h3 id="eventModalTitle">创建事件</h3>
             <form id="eventForm">
                 <label for="eventTitle">事件标题:</label>
-                <input type="text" id="eventTitle" name="title" placeholder="请输入事件标题" required>
-
-                <label for="eventDescription">事件描述:</label>
-                <textarea id="eventDescription" name="description" placeholder="请输入事件描述"></textarea>
-
-                <label for="eventStartTime">开始时间:</label>
-                <input type="datetime-local" id="eventStartTime" name="startTime" required>
-
-                <label for="eventDuration">持续时长 (分钟):</label>
-                <input type="number" id="eventDuration" name="duration" placeholder="持续时长" required>
-
-                <label for="eventTags">标签:</label>
-                <select id="eventTags" name="tags" multiple>
-                    <!-- 动态加载标签选项 -->
-                </select>
-
-                <button type="submit" id="saveEventBtn">保存</button>
-                <button type="button" id="closeModalBtn">关闭</button>
+                <input type="text" id="eventTitle" name="eventTitle">
+                <label for="eventStart">开始时间:</label>
+                <input type="datetime-local" id="eventStart" name="eventStart">
+                <label for="eventEnd">结束时间:</label>
+                <input type="datetime-local" id="eventEnd" name="eventEnd">
+                <button type="submit">保存</button>
             </form>
         </div>
     </div>
-
-    <script src="front/scripts.js"></script> <!-- 外部JS -->
 </body>
 </html>
+
 `;
 
 export const stylesCSS = `
-/* 日历容器样式 */
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局字体样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    height: 100%;  /* 确保页面填满整个屏幕 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+/* 日历容器 */
 .calendar-container {
-    max-width: 1200px;
-    margin: 20px auto;
+    width: 100%;
+    height: 100vh;  /* 填满整个屏幕 */
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
-    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;  /* 防止滚动条外泄 */
 }
 
 /* 日历头部 */
@@ -82,63 +149,96 @@ export const stylesCSS = `
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.calendar-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #333;
+    padding: 15px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 18px;
 }
 
 .calendar-header button {
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: #fff;
+    background-color: #0056b3;
     border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .calendar-header button:hover {
-    background-color: #45a049;
+    background-color: #004085;
+}
+
+#weekLabel {
+    font-weight: bold;
+    text-align: center;
 }
 
 /* 日历主体区域 */
 .calendar-grid {
+    display: grid;
+    grid-template-columns: 50px repeat(7, 1fr); /* 7天，每天占一个1fr单位，左侧时间栏占50px */
+    grid-template-rows: repeat(24, 1fr); /* 24小时 */
+    height: calc(100vh - 70px);  /* 减去头部高度 */
+    overflow: auto;
+}
+
+/* 时间列 */
+.calendar-time {
     display: flex;
-    justify-content: space-between;
-    overflow-x: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-right: 1px solid #ddd;
 }
 
-/* 每一天的列 */
-.day-column {
-    width: calc(100% / 7);
-    border-left: 1px solid #ddd;
-    overflow-y: auto;
-}
-
-/* 日期标签 */
-.date-label {
+.time-slot {
+    padding: 10px 0;
     text-align: center;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-/* 每个小时的时间条目 */
-.hour-row {
-    text-align: center;
-    padding: 10px;
+    background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
-    cursor: pointer;
+    font-size: 14px;
+    color: #555;
 }
 
-.hour-row:hover {
-    background-color: #f1f1f1;
+/* 每日的单元格 */
+.calendar-grid > div {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    position: relative;
 }
+
+/* 每个日格 */
+.calendar-grid .day-cell {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px;
+}
+
+/* 事件的样式 */
+.event {
+    background-color: #ff9800;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 12px;
+}
+
+/* 当拖拽创建事件时的样式 */
+.event-dragging {
+    opacity: 0.7;
+    background-color: #ff5722;
+}
+
+
 `;
+
 export const scriptsJS = `
 // 当前日期（返回YYYY-MM-DD格式）
 function getCurrentDate() {

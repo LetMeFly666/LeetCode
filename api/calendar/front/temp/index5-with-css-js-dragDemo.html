@@ -1,0 +1,82 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2024-12-26 23:27:51
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-26 23:30:52
+-->
+<style>
+    .cell.selected {
+        background-color: rgba(0, 120, 255, 0.3);
+        /* Example for selected cell */
+        border: 1px solid rgba(0, 120, 255, 1);
+    }
+</style>
+<script>
+    let isSelecting = false;
+    let startCell = null;
+    let endCell = null;
+
+    const cells = document.querySelectorAll('.cell');
+
+    cells.forEach(cell => {
+        cell.addEventListener('mousedown', (e) => {
+            isSelecting = true;
+            startCell = e.target;  // Record starting cell
+            startCell.classList.add('selected');  // Mark as selected
+        });
+
+        cell.addEventListener('mousemove', (e) => {
+            if (isSelecting) {
+                endCell = e.target;  // Update the end cell as mouse moves
+                // Highlight the cells between startCell and endCell
+                highlightCells(startCell, endCell);
+            }
+        });
+
+        cell.addEventListener('mouseup', () => {
+            isSelecting = false;
+            // Finalize selection (maybe store it or trigger some action)
+        });
+    });
+
+    function highlightCells(start, end) {
+        let startIndex = Array.from(cells).indexOf(start);
+        let endIndex = Array.from(cells).indexOf(end);
+
+        let [minIndex, maxIndex] = startIndex < endIndex ? [startIndex, endIndex] : [endIndex, startIndex];
+
+        // Clear previous selection
+        cells.forEach(cell => cell.classList.remove('selected'));
+
+        // Mark all cells between start and end as selected
+        for (let i = minIndex; i <= maxIndex; i++) {
+            cells[i].classList.add('selected');
+        }
+    }
+
+</script>
+<table id="calendar">
+    <thead>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- 24 rows, each for 0:00 to 23:00 -->
+        <tr>
+            <td class="cell">5</td>
+            <td class="cell">5</td>
+            <td class="cell">5</td>
+            <td class="cell">4</td>
+            <td class="cell">4</td>
+            <td class="cell">5</td>
+        </tr>
+        <!-- Repeat for all 24 time rows -->
+    </tbody>
+</table>

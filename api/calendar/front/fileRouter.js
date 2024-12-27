@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:56:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-25 23:42:52
+ * @LastEditTime: 2024-12-26 22:49:37
  */
 import { indexHTML, stylesCSS, scriptsJS } from './files'
 
@@ -22,8 +22,10 @@ const fileRoutePath = {
     'scripts.js': scriptsJS,
 }
 
-const fileType = {  // html -> { "Content-Type": "text/html" }
-    
+const fileTypeDict = {  // html -> { "Content-Type": "text/html" }
+    'html': { "Content-Type": "text/html" },
+    'css': { "Content-Type": "text/css" },
+    'js': { "Content-Type": "application/javascrip" }
 }
 
 export async function files(request) {
@@ -33,5 +35,7 @@ export async function files(request) {
     if (!(filePath in fileRoutePath)) {
         return new Response('', {status: 404});
     }
-    return new Response(fileRoutePath[filePath]);
+    const fileType = filePath.split('.').pop();
+    console.log(fileType);
+    return new Response(fileRoutePath[filePath], { headers: fileTypeDict[fileType] || {} });
 }

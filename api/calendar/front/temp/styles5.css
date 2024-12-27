@@ -1,0 +1,205 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2024-12-26 22:36:08
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-26 22:36:11
+ */
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 全局字体样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* 日历容器 */
+.calendar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 日历头部 */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 18px;
+}
+
+.calendar-header button {
+    background-color: #0056b3;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.calendar-header button:hover {
+    background-color: #004085;
+}
+
+#weekLabel {
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* 日历主体区域 */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 每周七列 */
+    grid-template-rows: repeat(25, 40px); /* 每小时40px */
+    gap: 1px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    height: 600px; /* 可以根据需求调整 */
+}
+
+/* 日历单元格样式 */
+.calendar-grid .day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.calendar-grid .day:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid .day .hour {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.calendar-grid .day .hour:hover {
+    background-color: #dcdfe3;
+}
+
+/* 时间列（小时）样式 */
+.calendar-grid .hour-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 5px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+}
+
+/* 日历单元格中的事件 */
+.event {
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.event:hover {
+    background-color: #218838;
+}
+
+/* 事件模态框样式 */
+.event-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-modal .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-modal .modal-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event-modal .modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-modal label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.event-modal input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.event-modal button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event-modal button:hover {
+    background-color: #0056b3;
+}
+
+/* 事件模态框关闭按钮 */
+.event-modal .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.event-modal .close-btn:hover {
+    color: #007BFF;
+}
