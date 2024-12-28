@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Github - 如何提交一个带有“verified”标识的commit前言(Why)今天在Github上浏览某项目的commit记录的时候发现，有的commit记录带有verified绿色标识，有的带有橘色的Unverified标识，还有的什么都不显示。  既然我是根正苗红的作者(bushi)，为何不想要一个verified标呢？相关探究随之而来。 What这是Github的“提交签名验证”机制">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Github - 如何提交一个带有“verified”标识的commit">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Github-How2Make1VerifiedCommit.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Github - 如何提交一个带有“verified”标识的commit前言(Why)今天在Github上浏览某项目的commit记录的时候发现，有的commit记录带有verified绿色标识，有的带有橘色的Unverified标识，还有的什么都不显示。  既然我是根正苗红的作者(bushi)，为何不想要一个verified标呢？相关探究随之而来。 What这是Github的“提交签名验证”机制">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/3837fcd7967946978991bd06d7315762.png">
+<meta property="article:published_time" content="2024-12-28T14:09:55.000Z">
+<meta property="article:modified_time" content="2024-12-28T14:49:15.049Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/3837fcd7967946978991bd06d7315762.png">
+  
+  
+  
+  <title>Github - 如何提交一个带有“verified”标识的commit - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Github - 如何提交一个带有“verified”标识的commit"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Github-如何提交一个带有“verified”标识的commit"><a href="#Github-如何提交一个带有“verified”标识的commit" class="headerlink" title="Github - 如何提交一个带有“verified”标识的commit"></a>Github - 如何提交一个带有“verified”标识的commit</h1><h2 id="前言-Why"><a href="#前言-Why" class="headerlink" title="前言(Why)"></a>前言(Why)</h2><p>今天在Github上浏览某项目的commit记录的时候发现，有的commit记录带有<font color="#1a7f7c">verified</font>绿色标识，有的带有橘色的<font color="#9a6700">Unverified</font>标识，还有的什么都不显示。</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/3837fcd7967946978991bd06d7315762.png" srcset="/img/loading.gif" lazyload alt="verified &amp; Unverified"></p>
+<p>既然我是根正苗红的作者(bushi)，为何不想要一个verified标呢？相关探究随之而来。</p>
+<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>这是Github的<a target="_blank" rel="noopener" href="https://docs.github.com/zh/authentication/managing-commit-signature-verification/about-commit-signature-verification">“提交签名验证”机制</a>，可以确保改提交未本人所为。</p>
+<blockquote>
+<p>当提交签名在被推送到 GitHub 时经过验证，一个验证记录会与该提交一并存储。 该记录无法编辑且会一直存在，这样一来，即便签名密钥被轮换、撤销，或者参与者离开了组织，签名也能始终保持已验证状态。</p>
+<p>验证记录包含一个时间戳，用于标记验证完成的时间。 此持久记录可确保已验证状态的一致性，为存储库内的参与提供稳定的历史记录。 可以通过将鼠标悬停在 GitHub 上的“Verified”徽章上，或者通过<a target="_blank" rel="noopener" href="https://docs.github.com/zh/rest/commits/commits">REST API</a>访问提交（其中包含一个 verified_at 字段）来查看此时间戳。</p>
+</blockquote>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><p>因为SSH密钥对还可以当<span title="验证身份用">Authentication Key</span>，所以这里介绍如何使用SSH密钥对对一次commit签名（<del>其实是因为我<strong>暂时</strong>不太了解GPG Key</del>）。</p>
+<p>假设你已经在默认位置生成过ssh密钥对，则只需在你想提交时签名的仓库执行以下命令（如果你想对所有未进行过相关配置的仓库生效，只需要在<code>git config</code>后面加一个<code>--global</code>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config commit.gpgsign <span class="hljs-literal">true</span>           <span class="hljs-comment"># 设置commit时使用gpg签名</span><br>git config gpg.format ssh                <span class="hljs-comment"># 设置使用ssh密钥进行签名</span><br>git config user.signingkey &lt;ssh公钥路径&gt;  <span class="hljs-comment"># 配置ssh公钥路径</span><br></code></pre></td></tr></table></figure>
+
+<p>然后将ssh公钥上传到github上。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/settings/keys">Github - SSH and GPG keys</a> -&gt; <code>New SSH Key</code> -&gt; <code>Key type</code>选择<code>Signing Key</code> -&gt; 输入SSH公钥并保存。</p>
+<p>在本地进行一次commit并push到Github，顺利的话，在Commit历史记录中就能看到Verified标了。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+<blockquote>
+<p>原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/144796175">https://letmefly.blog.csdn.net/article/details/144796175</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
