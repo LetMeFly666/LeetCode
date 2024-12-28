@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-25 15:43:41
+ * @LastEditTime: 2024-12-28 22:15:10
 -->
 # LetLeet Blog
 
@@ -843,6 +843,7 @@
 |模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
 |原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
 |使用GH（命令行）在本地提出Github上的issue、PR，合并PR|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133935823">CSDN博客</a>|
+|Github - 如何提交一个带有“verified”标识的commit|<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144796175">CSDN博客</a>|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|

@@ -905,6 +905,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |warranty|n. 保证，担保，保修单，保用期，保修期|
 |outrageous|adj. 骇人的，无法容忍的，反常的，令人惊讶的|
+|||
+|scrap|n. 碎片，小块，丝毫，废料，口角<br/>v. 废弃，取消|
+|insignificant|ajd. 无关紧要的，不重要的|
 
 <p class="wordCounts">单词收录总数</p>
 
