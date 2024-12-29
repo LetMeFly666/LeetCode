@@ -908,6 +908,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |scrap|n. 碎片，小块，丝毫，废料，口角<br/>v. 废弃，取消|
 |insignificant|ajd. 无关紧要的，不重要的|
+|||
+|contestant|n. 比赛者，竞争者|
 
 <p class="wordCounts">单词收录总数</p>
 
