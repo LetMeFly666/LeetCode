@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-28 22:15:10
+ * @LastEditTime: 2024-12-30 13:24:58
 -->
 # LetLeet Blog
 
@@ -378,6 +378,7 @@
 |1338.数组大小减半|中等|<a href="https://leetcode.cn/problems/reduce-array-size-to-the-half/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/15/LeetCode%201338.%E6%95%B0%E7%BB%84%E5%A4%A7%E5%B0%8F%E5%87%8F%E5%8D%8A/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144487651" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/reduce-array-size-to-the-half/solutions/3020818/letmefly-1338shu-zu-da-xiao-jian-ban-tan-4985/" target="_blank">LeetCode题解</a>|
 |1349.参加考试的最大学生数|困难|<a href="https://leetcode.cn/problems/maximum-students-taking-exam/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/26/LeetCode%201349.%E5%8F%82%E5%8A%A0%E8%80%83%E8%AF%95%E7%9A%84%E6%9C%80%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135217045" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-students-taking-exam/solutions/2580213/letmefly-1349can-jia-kao-shi-de-zui-da-x-g7io/" target="_blank">LeetCode题解</a>|
 |1366.通过投票对团队排名|中等|<a href="https://leetcode.cn/problems/rank-teams-by-votes/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/30/LeetCode%201366.%E9%80%9A%E8%BF%87%E6%8A%95%E7%A5%A8%E5%AF%B9%E5%9B%A2%E9%98%9F%E6%8E%92%E5%90%8D/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144814103" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/rank-teams-by-votes/solutions/3033962/letmefly-1366tong-guo-tou-piao-dui-tuan-ssklk/" target="_blank">LeetCode题解</a>|
+|1367.二叉树中的链表|中等|<a href="https://leetcode.cn/problems/linked-list-in-binary-tree/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/30/LeetCode%201367.%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E9%93%BE%E8%A1%A8/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144826418" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/linked-list-in-binary-tree/solutions/3034359/letmefly-1367er-cha-shu-zhong-de-lian-bi-7zmc/" target="_blank">LeetCode题解</a>|
 |1373.二叉搜索子树的最大键值和|困难|<a href="https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/05/20/LeetCode%201373.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E5%AD%90%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E9%94%AE%E5%80%BC%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/130779067" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/solutions/2276880/letmefly-1373er-cha-sou-suo-zi-shu-de-zu-kldz/" target="_blank">LeetCode题解</a>|
 |1374.生成每种字符都是奇数个的字符串|简单|<a href="https://leetcode.cn/problems/generate-a-string-with-characters-that-have-odd-counts/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/08/01/LeetCode%201374.%E7%94%9F%E6%88%90%E6%AF%8F%E7%A7%8D%E5%AD%97%E7%AC%A6%E9%83%BD%E6%98%AF%E5%A5%87%E6%95%B0%E4%B8%AA%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126093645" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/generate-a-string-with-characters-that-have-odd-counts/solution/letmefly-1374sheng-cheng-mei-chong-zi-fu-352y/" target="_blank">LeetCode题解</a>|
 |1375.二进制字符串前缀一致的次数|中等|<a href="https://leetcode.cn/problems/number-of-times-binary-string-is-prefix-aligned/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/06/14/LeetCode%201375.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E7%BC%80%E4%B8%80%E8%87%B4%E7%9A%84%E6%AC%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131213418" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-times-binary-string-is-prefix-aligned/solutions/2309139/letmefly-1375er-jin-zhi-zi-fu-chuan-qian-odu7/" target="_blank">LeetCode题解</a>|
@@ -927,6 +928,7 @@
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
+- [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
