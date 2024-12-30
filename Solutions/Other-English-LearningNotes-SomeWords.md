@@ -910,6 +910,9 @@ tags: [其他, 知识, 英语, Notes]
 |insignificant|ajd. 无关紧要的，不重要的|
 |||
 |contestant|n. 比赛者，竞争者|
+|||
+|indignation|n. 慷慨，愤怒，义愤，气愤|
+|deform|v. 改变...的外形，损毁...的形状，使成畸形|
 
 <p class="wordCounts">单词收录总数</p>
 

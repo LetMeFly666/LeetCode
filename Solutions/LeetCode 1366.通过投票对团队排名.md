@@ -177,6 +177,42 @@ class Solution {
 }
 ```
 
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2024-12-30 09:20:50
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2024-12-30 13:20:36
+ */
+package main
+import "sort"
+
+func rankTeams(votes []string) string {
+    counts := make(map[byte][]int)
+    for _, c := range votes[0] {
+        counts[byte(c)] = make([]int, len(votes[0]))
+    }
+    for _, vote := range votes {
+        for i, v := range vote {
+            counts[byte(v)][i]++
+        }
+    }
+    ans := []byte(votes[0])
+    sort.Slice(ans, func(a, b int) bool {
+        countA, countB := counts[ans[a]], counts[ans[b]]
+        for i := range ans {
+            if countA[i] != countB[i] {
+                return countA[i] > countB[i]
+            }
+        }
+        return ans[a] < ans[b]
+    })
+    return string(ans)
+}
+```
+
 > 同步发文于CSDN和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/12/30/LeetCode%201366.%E9%80%9A%E8%BF%87%E6%8A%95%E7%A5%A8%E5%AF%B9%E5%9B%A2%E9%98%9F%E6%8E%92%E5%90%8D/)哦~
 >
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/144814103](https://letmefly.blog.csdn.net/article/details/144814103)
