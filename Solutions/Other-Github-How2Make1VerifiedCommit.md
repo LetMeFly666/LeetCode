@@ -42,6 +42,8 @@ git config user.signingkey <ssh公钥路径>  # 配置ssh公钥路径
 
 ## End
 
+但是注意，git版本大于等于2.41才支持上述配置。
+
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/)哦~
