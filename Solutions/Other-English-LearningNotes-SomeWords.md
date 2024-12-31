@@ -849,7 +849,7 @@ tags: [其他, 知识, 英语, Notes]
 |vowel|n. 元音，元音字母<br/>adj. 母音的<br/>v. v. 加母音(符号)于|
 |||
 |thereon|adv. 以...为依据，由...而产生，在其上|
-|reverence|n. 尊敬，尊重，尊崇<br/>v. 尊敬，尊重，尊崇|
+|<font color="#28bea0" title="二次复习">reverence</font>|n. 尊敬，尊重，尊崇<br/>v. 尊敬，尊重，尊崇|
 |||
 |hitchhike|v. 搭便车(旅行)|
 |memoir|n. 自传，(尤指名人的)回忆录，传说，地方志|
@@ -913,6 +913,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |indignation|n. 慷慨，愤怒，义愤，气愤|
 |deform|v. 改变...的外形，损毁...的形状，使成畸形|
+|||
+|denominate|v. 以...(某种货币)为单位，将...命名为，称...为|
 
 <p class="wordCounts">单词收录总数</p>
 
