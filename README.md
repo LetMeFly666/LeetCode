@@ -1,8 +1,8 @@
 <!--
  * @Author: LetMeFly
  * @Date: 2024-10-03 13:49:37
- * @LastEditors: LetMeFly
- * @LastEditTime: 2024-10-03 14:22:04
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-01-01 17:26:35
 -->
 # 完整版博客地址：[github@LetMeFly666/LeetCode](https://github.com/LetMeFly666/LeetCode)
 
@@ -14,6 +14,13 @@
 
 + GitCode：`git push`
 + Github：`git push Let main:From_GitCode_CSDN`
+
+理想状态：
+
++ 本地：本地要保持所有commit都被Github@Tisfy的SSH签名可以验证。一旦pull到本地时发现未验证的新commit则立刻重新签名并覆盖GitCode的原有commit，并推送到Github。~~理想状态下~~，本地只会从GitCode拉取代码而不会从Github拉取代码。
++ GitCode：由被授权的CSDN在发布博文时产生新的Commit（签名非预期）。
++ Github：备份用，只被动新增不主动新增commit。
+
 
 以下是原始`README`：
 
