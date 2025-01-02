@@ -26,7 +26,7 @@
 <meta property="og:description" content="日积月累 - 一些小知识 - 杂乱 - 啥都有这里准备放一些日积月累的小知识，但是相比于日积月累 - 一些小知识而言，本文更加随意（杂乱）。 Github 在issue中引用代码的代码段方法：在Github的代码页，点击其中一行的数字，按住shift，再点击零一行的数字，会发现这几行有了背景色。点一下上面那行左边的“三个点的按钮”，点击Reference in new issue，即可在新的iss">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-19T12:13:39.000Z">
-<meta property="article:modified_time" content="2025-01-02T09:17:40.051Z">
+<meta property="article:modified_time" content="2025-01-02T09:56:33.489Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="中等">
 <meta property="article:tag" content="其他">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          3.6k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          123 分钟
+          31 分钟
         
       </span>
     
@@ -311,8 +311,27 @@
 
 <p>看完觉得主要就是测评了一些大模型在回答司法问题时的“幻觉问题”。</p>
 <p><strong>实验部分：</strong></p>
+<style>
+    /* 为 details 添加边框 */
+    details {
+        border: 2px solid #3b82f6; /* 边框颜色和宽度 */
+        border-radius: 8px; /* 圆角 */
+        padding: 10px; /* 内边距 */
+        margin: 10px 0; /* 外边距 */
+    }
+    /* 为 summary 添加样式 */
+    summary {
+        font-weight: bold; /* 加粗字体 */
+        cursor: pointer; /* 鼠标悬停时显示手型 */
+        padding: 5px; /* 内边距 */
+        background-color: #eff6ff; /* 背景颜色 */
+        border-radius: 4px; /* 圆角 */
+    }
+</style>
+
 <details><summary><a target="_blank" rel="noopener" href="https://chat.deepseek.com/a/chat/s/41cd4665-98f6-4443-8dd9-186cbb36c251">Chat with DeepSeek</a><span title="手动调整了格式。。。">.</span></summary>
 
+<iframe id="chatWithDeepseek" style="border: none;" scrolling="no" srcdoc='
 <html>
 <head>
 <style>
@@ -329,7 +348,7 @@ margin-right: 0;
 }
 /* 气泡框的三角形箭头 */
 .bubble::after {
-content: '';
+content: "";
 position: absolute;
 right: -10px; /* 箭头位置 */
 top: 50%; /* 垂直居中 */
@@ -340,6 +359,7 @@ border-top: 10px solid transparent; /* 上边框透明 */
 border-bottom: 10px solid transparent; /* 下边框透明 */
 border-left: 10px solid #eff6ff; /* 左边框颜色 */
 }
+body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
 /* latex源码不显示 */
 annotation {
 display: none;
@@ -1859,9 +1879,28 @@ reliability analysis）。</p>
 </div>
 </body>
 </html>
+' width='100%'></iframe>
+
+<script>
+    const iframe = document.getElementById('chatWithDeepseek');
+
+    iframe.onload = function() {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        // 创建 ResizeObserver 监听内容高度变化
+        const resizeObserver = new ResizeObserver(entries => {
+            const contentHeight = entries[0].target.scrollHeight;
+            iframe.style.height = contentHeight + 20 + 'px';
+        });
+
+        // 监听 iframe 内容的 body 元素
+        resizeObserver.observe(iframeDoc.body);
+    };
+</script>
 
 </details>
 
+<p>我比较关心：</p>
 <ol>
 <li>请详细解释零样本和三样本。</li>
 <li>作者是怎么比较模型回答和已知正确答案的。（1. 在基于参考的查询中，作者如何判断一个回答是否正确，难道要手动判断这几十万次回答吗？2. 在无参考的查询中，作者是如何让ChatGPT帮忙判断回答是否一致的。GPT能判断正确吗？这里会不会引入不信任度的问题？）</li>
@@ -1874,7 +1913,7 @@ reliability analysis）。</p>
 <li>数据处理问题，几十万次查询总不能手动比结果，文章中好像也没说明白到底是怎么统计的。实际做实验的话，关于作者、法院、存在性是否正确等问题，需要一一想办法进行匹配。主要是本文未开源。</li>
 <li>需要想好都统计哪些指标，以及这些指标的规则细节（例如若大模型弃权回答不应算作幻觉）</li>
 </ol>
-<p>一句话：数据处理上估计比较头疼，但应该还在可完成的范围。数据来源（数据集）上得找一下。要测试哪些指标，什么情况具体如何衡量，都需要仔细想好并设计。成本上如果进行80W次对话这种量级，初步预估可能需要个1W左右的成本。</p>
+<p>一句话：数据处理上估计比较头疼，但应该还在可完成的范围。数据来源（数据集）上得找一下。要测试哪些指标，什么情况具体如何衡量，都需要仔细想好并设计。成本上如果进行80W次对话这种量级，初步预估可能需要个1W人民币左右的成本。</p>
 <p><strong>总结：</strong> (第一遍粗略阅读的总结，请<a target="_blank" rel="noopener" href="https://web.letmefly.xyz/He0/shykeke/">我的小读者</a>按批判的眼光看待)</p>
 <p>这篇文章测试了4个模型，使用了零样本和三样本两种模型回答方式，统计了幻觉率、存在性、法院层级等很多指标(例如统计每种模型在非贪婪温度下的幻觉率)，帮助作者系统地分析了LLMs在不同任务和设置下的幻觉现象，并揭示了其在实际应用中的潜力和挑战。</p>
 <p>模型如下：</p>
