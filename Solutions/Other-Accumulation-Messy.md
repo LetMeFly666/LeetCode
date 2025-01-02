@@ -88,8 +88,27 @@ q.pop();
 
 **实验部分：**
 
+<style>
+    /* 为 details 添加边框 */
+    details {
+        border: 2px solid #3b82f6; /* 边框颜色和宽度 */
+        border-radius: 8px; /* 圆角 */
+        padding: 10px; /* 内边距 */
+        margin: 10px 0; /* 外边距 */
+    }
+    /* 为 summary 添加样式 */
+    summary {
+        font-weight: bold; /* 加粗字体 */
+        cursor: pointer; /* 鼠标悬停时显示手型 */
+        padding: 5px; /* 内边距 */
+        background-color: #eff6ff; /* 背景颜色 */
+        border-radius: 4px; /* 圆角 */
+    }
+</style>
+
 <details><summary><a href="https://chat.deepseek.com/a/chat/s/41cd4665-98f6-4443-8dd9-186cbb36c251">Chat with DeepSeek</a><span title="手动调整了格式。。。">.</span></summary>
 
+<iframe id="chatWithDeepseek" style="border: none;" scrolling="no" srcdoc='
 <html>
 <head>
 <style>
@@ -106,7 +125,7 @@ margin-right: 0;
 }
 /* 气泡框的三角形箭头 */
 .bubble::after {
-content: '';
+content: "";
 position: absolute;
 right: -10px; /* 箭头位置 */
 top: 50%; /* 垂直居中 */
@@ -117,6 +136,7 @@ border-top: 10px solid transparent; /* 上边框透明 */
 border-bottom: 10px solid transparent; /* 下边框透明 */
 border-left: 10px solid #eff6ff; /* 左边框颜色 */
 }
+body { width: 100%; margin: 0; padding: 0; overflow-x: hidden; }
 /* latex源码不显示 */
 annotation {
 display: none;
@@ -1636,8 +1656,28 @@ reliability analysis）。</p>
 </div>
 </body>
 </html>
+' width='100%'></iframe>
+
+<script>
+    const iframe = document.getElementById('chatWithDeepseek');
+
+    iframe.onload = function() {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+        // 创建 ResizeObserver 监听内容高度变化
+        const resizeObserver = new ResizeObserver(entries => {
+            const contentHeight = entries[0].target.scrollHeight;
+            iframe.style.height = contentHeight + 20 + 'px';
+        });
+
+        // 监听 iframe 内容的 body 元素
+        resizeObserver.observe(iframeDoc.body);
+    };
+</script>
 
 </details>
+
+我比较关心：
 
 1. 请详细解释零样本和三样本。
 2. 作者是怎么比较模型回答和已知正确答案的。（1. 在基于参考的查询中，作者如何判断一个回答是否正确，难道要手动判断这几十万次回答吗？2. 在无参考的查询中，作者是如何让ChatGPT帮忙判断回答是否一致的。GPT能判断正确吗？这里会不会引入不信任度的问题？）
@@ -1651,7 +1691,7 @@ reliability analysis）。</p>
 3. 数据处理问题，几十万次查询总不能手动比结果，文章中好像也没说明白到底是怎么统计的。实际做实验的话，关于作者、法院、存在性是否正确等问题，需要一一想办法进行匹配。主要是本文未开源。
 4. 需要想好都统计哪些指标，以及这些指标的规则细节（例如若大模型弃权回答不应算作幻觉）
 
-一句话：数据处理上估计比较头疼，但应该还在可完成的范围。数据来源（数据集）上得找一下。要测试哪些指标，什么情况具体如何衡量，都需要仔细想好并设计。成本上如果进行80W次对话这种量级，初步预估可能需要个1W左右的成本。
+一句话：数据处理上估计比较头疼，但应该还在可完成的范围。数据来源（数据集）上得找一下。要测试哪些指标，什么情况具体如何衡量，都需要仔细想好并设计。成本上如果进行80W次对话这种量级，初步预估可能需要个1W人民币左右的成本。
 
 **总结：** (第一遍粗略阅读的总结，请[我的小读者](https://web.letmefly.xyz/He0/shykeke/)按批判的眼光看待)
 
