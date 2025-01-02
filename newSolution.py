@@ -253,6 +253,7 @@ def syncGitcodeCSDN():
                 break
         print(notVerified)
         re_assign(notVerified)
+    re_assign_main()
     os.system('git push --force')  # resign gitcode
     os.system('git push Let main:From_GitCode_CSDN')
     os.chdir(nowCWD)
