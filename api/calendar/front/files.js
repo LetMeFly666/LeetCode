@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-25 23:31:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-02 23:02:32
+ * @LastEditTime: 2025-01-03 21:58:21
  */
 /* 以下为前端各个页面的源码 */
 // index.html
@@ -42,7 +42,7 @@ export const indexHTML = `
 `;
 
 export const stylesCSS = `
-/* styles.css */
+/* style.css */
 body {
     font-family: Arial, sans-serif;
 }

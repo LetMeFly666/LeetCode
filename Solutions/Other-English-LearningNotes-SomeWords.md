@@ -916,6 +916,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |denominate|v. 以...(某种货币)为单位，将...命名为，称...为|
 |||
+|whaling|n. 捕鲸|
+|xerox|v. 打印，复印|
 
 <p class="wordCounts">单词收录总数</p>
 
