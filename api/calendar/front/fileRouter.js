@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:56:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-26 22:49:37
+ * @LastEditTime: 2025-01-02 22:00:52
  */
 import { indexHTML, stylesCSS, scriptsJS } from './files'
 
@@ -18,8 +18,8 @@ export async function indexHTMLFunc(request) {
 }
 
 const fileRoutePath = {
-    'styles.css': stylesCSS,
-    'scripts.js': scriptsJS,
+    'style.css': stylesCSS,
+    'script.js': scriptsJS,
 }
 
 const fileTypeDict = {  // html -> { "Content-Type": "text/html" }
@@ -36,6 +36,6 @@ export async function files(request) {
         return new Response('', {status: 404});
     }
     const fileType = filePath.split('.').pop();
-    console.log(fileType);
+    // console.log(fileType);  // 例如css
     return new Response(fileRoutePath[filePath], { headers: fileTypeDict[fileType] || {} });
 }

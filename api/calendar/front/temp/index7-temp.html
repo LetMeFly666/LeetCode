@@ -1,20 +1,61 @@
-/*
+<!--
  * @Author: LetMeFly
- * @Date: 2024-12-25 23:31:55
+ * @Date: 2025-01-02 23:05:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-02 23:02:32
- */
-/* 以下为前端各个页面的源码 */
-// index.html
-export const indexHTML = `
+ * @LastEditTime: 2025-01-02 23:05:23
+-->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let Calendar</title>
-    <link rel="stylesheet" href="./front/style.css">
-    <script src="https://letmefly.xyz/Links/Common.js" async></script>
+    <title>Mac Calendar</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    user-select: none; /* 禁用整个页面的文本选择 */
+}
+
+.calendar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td {
+    height: 50px;
+    position: relative;
+}
+
+.time-slot {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 123, 255, 0.3);
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* 隐藏子元素 */
+td div {
+    display: none;
+}
+    </style>
 </head>
 <body>
     <div class="calendar">
@@ -36,56 +77,8 @@ export const indexHTML = `
             </tbody>
         </table>
     </div>
-    <script src="./front/script.js"></script>
-</body>
-</html>
-`;
-
-export const stylesCSS = `
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-}
-
-.calendar {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    user-select: none;
-    table-layout: fixed;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-td {
-    height: 50px;
-    position: relative;
-}
-
-.time-slot {
-    /*position: absolute;
-    width: 100%;*/
-    background-color: rgba(0, 123, 255, 0.3);
-    cursor: pointer;
-    z-index: 1;
-}
-`;
-
-export const scriptsJS = `
-// script.js
+    <script >
+        // script.js
 document.addEventListener('DOMContentLoaded', function() {
     const tableBody = document.querySelector('#calendarTable tbody');
     const hours = 24; // 24小时制
@@ -93,7 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // 生成时间行
     for (let i = 0; i < hours; i++) {
         const row = document.createElement('tr');
-        row.innerHTML = \`<td>\${i}:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>\`;
+        const timeCell = document.createElement('td');
+        timeCell.textContent = `${i}:00`;
+        row.appendChild(timeCell);
+
+        for (let j = 0; j < 7; j++) {
+            const cell = document.createElement('td');
+            for (let k = 0; k < 4; k++) {
+                const div = document.createElement('div');
+                div.dataset.time = `${i}:${k * 15}`; // 记录时间
+                cell.appendChild(div);
+            }
+            row.appendChild(cell);
+        }
         tableBody.appendChild(row);
     }
 
@@ -106,7 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.tagName === 'TD' && e.target.cellIndex !== 0) {
             isDragging = true;
             startCell = e.target;
-            highlightCells(startCell, startCell);
+            startCell.classList.add('time-slot');
+            e.preventDefault(); // 防止文本选择
         }
     });
 
@@ -114,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isDragging && e.target.tagName === 'TD' && e.target.cellIndex !== 0) {
             endCell = e.target;
             highlightCells(startCell, endCell);
+            e.preventDefault(); // 防止文本选择
         }
     });
 
@@ -128,20 +135,26 @@ document.addEventListener('DOMContentLoaded', function() {
         const startRow = start.parentElement.rowIndex;
         const startCol = start.cellIndex;
         const endRow = end.parentElement.rowIndex;
+        const endCol = end.cellIndex;
 
         const minRow = Math.min(startRow, endRow);
         const maxRow = Math.max(startRow, endRow);
-        const Col = startCol;
+        const minCol = Math.min(startCol, endCol);
+        const maxCol = Math.max(startCol, endCol);
 
         // 清除之前的高亮
         const allCells = tableBody.querySelectorAll('td');
         allCells.forEach(cell => cell.classList.remove('time-slot'));
 
         // 高亮选中的区域
-        for (let i = minRow - 1; i <= maxRow - 1; i++) {  // 表头还有一行
-            const cell = tableBody.rows[i].cells[Col];
-            cell.classList.add('time-slot');
+        for (let i = minRow; i <= maxRow; i++) {
+            for (let j = minCol; j <= maxCol; j++) {
+                const cell = tableBody.rows[i].cells[j];
+                cell.classList.add('time-slot');
+            }
         }
     }
 });
-`;
+    </script>
+</body>
+</html>
