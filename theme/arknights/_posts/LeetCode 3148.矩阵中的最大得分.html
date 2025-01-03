@@ -75,18 +75,18 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p><strong>提示：</strong></p>
 
 <ul>
-    <li><code>m == grid.length</code></li>
-    <li><code>n == grid[i].length</code></li>
-    <li><code>2 &lt;= m, n &lt;= 1000</code></li>
-    <li><code>4 &lt;= m * n &lt;= 10<sup>5</sup></code></li>
-    <li><code>1 &lt;= grid[i][j] &lt;= 10<sup>5</sup></code></li>
+	<li><code>m == grid.length</code></li>
+	<li><code>n == grid[i].length</code></li>
+	<li><code>2 &lt;= m, n &lt;= 1000</code></li>
+	<li><code>4 &lt;= m * n &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= grid[i][j] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
 
     
 <h2 id="解题方法：动态规划"><a href="#解题方法：动态规划" class="headerlink" title="解题方法：动态规划"></a>解题方法：动态规划</h2><p>从a移动到b，再从b移动到c，等价于直接从a移动到c。</p>
 <p>因此要求的，就是对所有的a到c中，c-a的最大值。</p>
-<p>怎么求？很简单，在遍历原始数组的时候将每个值修改为_这个元素、这个元素左上方(包含)所有元素的最小值_。</p>
+<p>怎么求？很简单，在遍历原始数组的时候将每个值修改为<em>这个元素、这个元素左上方(包含)所有元素的最小值</em>。</p>
 <p>这样，对应下标为(i, j)的元素，其左上方的最小值就是min(grid[i - 1][j], grid[i][j - 1])。</p>
 <p>使用grid[i][j]减去这个“最小值”，即为从任意一点移动到(i, j)所得的最大得分（只能往右或下移动）。</p>
 <p>所有的最大得分中，最大的那个即为所求。</p>

@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2021/07/17/graph2.png">
 <meta property="article:published_time" content="2024-03-05T07:05:03.000Z">
-<meta property="article:modified_time" content="2025-01-02T09:56:33.477Z">
+<meta property="article:modified_time" content="2025-01-03T05:57:10.960Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="中等">
@@ -323,14 +323,14 @@
 <p><strong>提示：</strong></p>
 
 <ul>
-    <li><code>1 &lt;= n &lt;= 200</code></li>
-    <li><code>n - 1 &lt;= roads.length &lt;= n * (n - 1) / 2</code></li>
-    <li><code>roads[i].length == 3</code></li>
-    <li><code>0 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n - 1</code></li>
-    <li><code>1 &lt;= time<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
-    <li><code>u<sub>i </sub>!= v<sub>i</sub></code></li>
-    <li>任意两个路口之间至多有一条路。</li>
-    <li>从任意路口出发，你能够到达其他任意路口。</li>
+	<li><code>1 &lt;= n &lt;= 200</code></li>
+	<li><code>n - 1 &lt;= roads.length &lt;= n * (n - 1) / 2</code></li>
+	<li><code>roads[i].length == 3</code></li>
+	<li><code>0 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n - 1</code></li>
+	<li><code>1 &lt;= time<sub>i</sub> &lt;= 10<sup>9</sup></code></li>
+	<li><code>u<sub>i </sub>!= v<sub>i</sub></code></li>
+	<li>任意两个路口之间至多有一条路。</li>
+	<li>从任意路口出发，你能够到达其他任意路口。</li>
 </ul>
 
 
@@ -339,15 +339,15 @@
 <blockquote>
 <p>总之Dijkstra算法就是，我们从起点开始:</p>
 <blockquote>
-<p>计算所有能_一步到达_的点中，哪个点距离起点最近。</p>
-<p>下一步就走到这个点，然后能_一步到达_的点就更新了。</p>
+<p>计算所有能<em>一步到达</em>的点中，哪个点距离起点最近。</p>
+<p>下一步就走到这个点，然后能<em>一步到达</em>的点就更新了。</p>
 </blockquote>
 <p>直到走完所有的点为止。</p>
 </blockquote>
 <p>对于这道题，我们在“往前走”的同时，记录一下走到这一步的“方案数”：</p>
 <ul>
-<li>若从当前点走到点<code>a</code>的距离 <strong>小于</strong> <code>a</code>原本到起点的距离，则说明发现了_新大“路”_（更近的路）。舍弃掉之前的方案数，将点<code>a</code>的方案数<strong>变为</strong>当前点的方案数，并更新最短距离，可以从点<code>a</code>开始往深处继续探索。</li>
-<li>若从当前点走到点<code>a</code>的距离 <strong>等于</strong> <code>a</code>原本到起点的距离，则说明又发现了一条_同为最近路_的路。将点<code>a</code>的方案数<strong>加上</strong>当前点的方案数。</li>
+<li>若从当前点走到点<code>a</code>的距离 <strong>小于</strong> <code>a</code>原本到起点的距离，则说明发现了<em>新大“路”</em>（更近的路）。舍弃掉之前的方案数，将点<code>a</code>的方案数<strong>变为</strong>当前点的方案数，并更新最短距离，可以从点<code>a</code>开始往深处继续探索。</li>
+<li>若从当前点走到点<code>a</code>的距离 <strong>等于</strong> <code>a</code>原本到起点的距离，则说明又发现了一条<em>同为最近路</em>的路。将点<code>a</code>的方案数<strong>加上</strong>当前点的方案数。</li>
 <li>否则，已有更短路，不做考虑。</li>
 </ul>
 <p>最终返回终点的路径数即为答案。</p>

@@ -60,8 +60,8 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p><strong>提示：</strong></p>
 
 <ul>
-    <li><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li>
-    <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
+	<li><code>1 &lt;= nums1.length, nums2.length &lt;= 1000</code></li>
+	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 1000</code></li>
 </ul>
 
 <p>&nbsp;</p>
@@ -69,9 +69,9 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p><strong><strong>进阶</strong>：</strong></p>
 
 <ul>
-    <li>如果给定的数组已经排好序呢？你将如何优化你的算法？</li>
-    <li>如果&nbsp;<code>nums1</code><em>&nbsp;</em>的大小比&nbsp;<code>nums2</code> 小，哪种方法更优？</li>
-    <li>如果&nbsp;<code>nums2</code><em>&nbsp;</em>的元素存储在磁盘上，内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</li>
+	<li>如果给定的数组已经排好序呢？你将如何优化你的算法？</li>
+	<li>如果&nbsp;<code>nums1</code><em>&nbsp;</em>的大小比&nbsp;<code>nums2</code> 小，哪种方法更优？</li>
+	<li>如果&nbsp;<code>nums2</code><em>&nbsp;</em>的元素存储在磁盘上，内存是有限的，并且你不能一次加载所有的元素到内存中，你该怎么办？</li>
 </ul>
 
 
@@ -87,7 +87,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">intersect</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; ma;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums1) &#123;</span><br><span class="line">            ma[t]++;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>&amp; t : nums2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ma[t] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(t);</span><br><span class="line">                ma[t]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h2><p>首先对两个数组分别排序，然后使用两个“指针”，分别指向第一个数组和第二个数组的 第一个元素。</p>
-<p>当两个指针都在_有效范围_（不越界）内时，比较两个指针所指元素。</p>
+<p>当两个指针都在<em>有效范围</em>（不越界）内时，比较两个指针所指元素。</p>
 <ul>
 <li>若两元素相等，则将此元素添加到答案数组中，并将两个指针分别后移一位</li>
 <li>若两元素不等，则将指向较小元素的指针后移一位</li>

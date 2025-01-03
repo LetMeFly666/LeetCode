@@ -91,7 +91,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </li>
 <li><p>__xx:     双前置下划线,避免与子类中的属性命名冲突，无法在外部直接访问(名字重整&lt;_类名__xx&gt;所以访问不到)</p>
 </li>
-<li><p>__xx__: 双前后下划线,用户名字空间的魔法对象或属性</p>
+<li><p>_<em>xx</em>_: 双前后下划线,用户名字空间的魔法对象或属性</p>
 </li>
 <li><p>xx__:  单后置下划线,用于避免与Python关键词的冲突</p>
 <p>​</p>
@@ -192,7 +192,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p>obj &#x3D; Foo()</p>
 <p>result &#x3D; obj[‘k1’]      # 自动触发执行 __getitem__<br>obj[‘k2’] &#x3D; ‘laowang’   # 自动触发执行 __setitem__<br>del obj[‘k1’]           # 自动触发执行 __delitem__</p>
 </li>
-<li><p>__getslice__  	 __setslice__  	__delslice__  	   该三个方法用于切片操作，如：列表</p>
+<li><p>__getslice__  	 <em>_setslice</em>_  	__delslice__  	   该三个方法用于切片操作，如：列表</p>
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__getslice__</span>(<span class="params">self, i, j</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__getslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__setslice__</span>(<span class="params">self, i, j, sequence</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__setslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">def</span> <span class="title function_">__delslice__</span>(<span class="params">self, i, j</span>):</span><br><span class="line">          <span class="built_in">print</span>(<span class="string">&#x27;__delslice__&#x27;</span>, i, j)</span><br><span class="line"></span><br><span class="line">  obj = Foo()</span><br><span class="line"></span><br><span class="line">  obj[-<span class="number">1</span>:<span class="number">1</span>]                   <span class="comment"># 自动触发执行 __getslice__</span></span><br><span class="line">  obj[<span class="number">0</span>:<span class="number">1</span>] = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>,<span class="number">44</span>]    <span class="comment"># 自动触发执行 __setslice__</span></span><br><span class="line">  <span class="keyword">del</span> obj[<span class="number">0</span>:<span class="number">2</span>]                <span class="comment"># 自动触发执行 __delslice__</span></span><br></pre></td></tr></table></figure>

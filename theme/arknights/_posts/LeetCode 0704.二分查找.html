@@ -60,9 +60,9 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p><strong>提示：</strong></p>
 
 <ol>
-    <li>你可以假设 <code>nums</code>&nbsp;中的所有元素是不重复的。</li>
-    <li><code>n</code>&nbsp;将在&nbsp;<code>[1, 10000]</code>之间。</li>
-    <li><code>nums</code>&nbsp;的每个元素都将在&nbsp;<code>[-9999, 9999]</code>之间。</li>
+	<li>你可以假设 <code>nums</code>&nbsp;中的所有元素是不重复的。</li>
+	<li><code>n</code>&nbsp;将在&nbsp;<code>[1, 10000]</code>之间。</li>
+	<li><code>nums</code>&nbsp;的每个元素都将在&nbsp;<code>[-9999, 9999]</code>之间。</li>
 </ol>
 
 
@@ -78,13 +78,11 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p>数组$nums$的有效范围是$[0, n - 1]$，则初始值令$l &#x3D; 0, r &#x3D; n$（左闭右开）。</p>
 <p>在循环过程中，保证区间不空，则需要$r &gt; l$（因为如果$l$等于$r$，则因左闭右开区间已经空了）</p>
 <p>若$nums[mid] &gt; target$，则$mid$已经被排除了，下次的区间中不应包含$mid$，因此令$r &#x3D; mid$（右边是开区间，取不到）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (l &lt; r) &#123;  <span class="comment">// [l, r)不空</span></span><br><span class="line">    <span class="type">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt; target) r = mid;  <span class="comment">// 新区间[l, mid)</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt; target) l = mid + <span class="number">1</span>;  <span class="comment">// 新区间[mid + 1, r)</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (l &lt; r) &#123;  <span class="comment">// [l, r)不空</span></span><br><span class="line">    <span class="type">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt; target) r = mid;  <span class="comment">// 新区间[l, mid)</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt; target) l = mid + <span class="number">1</span>;  <span class="comment">// 新区间[mid + 1, r)</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
 <p>同理，若以闭区间的方法来写：</p>
 <blockquote>
 <p>初始值$l &#x3D; 0, r &#x3D; n - 1$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (l &lt;= r) &#123;  <span class="comment">// [l, r]不空</span></span><br><span class="line">    <span class="type">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt; target) r = mid - <span class="number">1</span>;  <span class="comment">// 新区间[l, mid - 1]</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt; target) l = mid + <span class="number">1</span>;  <span class="comment">// 新区间[mid + 1, r]</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (l &lt;= r) &#123;  <span class="comment">// [l, r]不空</span></span><br><span class="line">    <span class="type">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &gt; target) r = mid - <span class="number">1</span>;  <span class="comment">// 新区间[l, mid - 1]</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] &lt; target) l = mid + <span class="number">1</span>;  <span class="comment">// 新区间[mid + 1, r]</span></span><br><span class="line">    <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></blockquote>
 <ul>
 <li>时间复杂度$O(\log len(nums))$</li>
 <li>空间复杂度$O(1)$</li>

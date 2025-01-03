@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.letmefly.xyz/images%5Cepoll.jpg">
 <meta property="article:published_time" content="2023-09-25T14:03:00.000Z">
-<meta property="article:modified_time" content="2025-01-02T09:56:33.491Z">
+<meta property="article:modified_time" content="2025-01-03T05:57:10.974Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="Notes">
 <meta property="article:tag" content="其他">
@@ -389,7 +389,7 @@
 <ul>
 <li><p>q &#x3D; Queue()&#x2F;Queue(-x) 		- - 定义一个进程间通信队列, 可接受的消息无上限(直达内存的尽头)</p>
 <ul>
-<li>q &#x3D; Queue(x)			- - 定义一个进程间通信,最大可接受x条消息</li>
+<li>q &#x3D; Queue(x)            - - 定义一个进程间通信,最大可接受x条消息</li>
 </ul>
 </li>
 <li><p>Queue.qsize()：返回当前队列包含的消息数量；</p>
@@ -444,8 +444,8 @@
 </tr>
 </tbody></table>
 <p>​</p>
-<h2 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用 :"></a>作用 :</h3><p>​	批量创建进程,进程任务的分配和空闲资源进程的回收,充分利用进程资源和资源的管理</p>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行 :"></a>运行 :</h3><p>​	初始化Pool时，可以指定一个最大进程数，当有新的请求提交到Pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到指定的最大值，那么该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务</p>
+<h2 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用 :"></a>作用 :</h3><p>​    批量创建进程,进程任务的分配和空闲资源进程的回收,充分利用进程资源和资源的管理</p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行 :"></a>运行 :</h3><p>​    初始化Pool时，可以指定一个最大进程数，当有新的请求提交到Pool中时，如果池还没有满，那么就会创建一个新的进程用来执行该请求；但如果池中的进程数已经达到指定的最大值，那么该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务</p>
 <p>案例分析:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Pool<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">work</span>(<span class="hljs-params">msg</span>):<br>    start_time = time.time()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;&#125;开始执行,进程号 &#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(msg, os.getpid()))<br>    time.sleep(random.random() * <span class="hljs-number">2</span>)<br>    end_time = time.time()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&#123;&#125;结束执行,运行时间&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(msg, end_time-start_time))<br>    <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>  p = Pool(<span class="hljs-number">3</span>)<br>  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>      p.apply_async(work,args=(i,))<br><br>  time.sleep(<span class="hljs-number">1</span>)<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;------start--------&quot;</span>)<br>	<span class="hljs-comment"># 关闭Pool，使其不再接受新的任务；  </span><br>  p.close()<br>  p.join()<br>  <span class="hljs-comment"># 主进程阻塞，等待子进程的退出， 必须在close或terminate之后使用；</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;--------end--------&quot;</span>)<br>  <br>  <span class="hljs-comment"># 说明:</span><br>   	<span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">   	    这里主进程不会主动等待进程池任务执行,如果主进程执行完毕,进程池任务立即结束</span><br><span class="hljs-string">   	    进程池在定义的时候没有指定最大进程数,系统会按当前运行计算机的cpu核心数决定进程池内运行的最大进程数,如计算机为双核,则进程池内最大进程数为2</span><br><span class="hljs-string">   	&quot;&quot;&quot;</span><span class="hljs-string">&quot;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
