@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-25 23:31:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-03 21:58:21
+ * @LastEditTime: 2025-01-03 23:47:53
  */
 /* 以下为前端各个页面的源码 */
 // index.html
@@ -18,17 +18,22 @@ export const indexHTML = `
 </head>
 <body>
     <div class="calendar">
+        <div class="header">
+            <button id="prevWeek">&lt;</button>
+            <span id="weekRange"></span>
+            <button id="nextWeek">&gt;</button>
+        </div>
         <table id="calendarTable">
             <thead>
-                <tr>
+                <tr id="dateRow">
                     <th>Time</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    <th>Sun</th>
+                    <th>Mon<br/><span></span></th>
+                    <th>Tue<br/><span></span></th>
+                    <th>Wed<br/><span></span></th>
+                    <th>Thu<br/><span></span></th>
+                    <th>Fri<br/><span></span></th>
+                    <th>Sat<br/><span></span></th>
+                    <th>Sun<br/><span></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -36,13 +41,40 @@ export const indexHTML = `
             </tbody>
         </table>
     </div>
+    <!-- 弹出框 -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>创建事件</h2>
+            <form id="eventForm">
+                <label for="eventTitle">标题:</label>
+                <input type="text" id="eventTitle" name="title" required><br><br>
+
+                <label for="eventDescription">描述:</label>
+                <textarea id="eventDescription" name="description"></textarea><br><br>
+
+                <label for="eventStartTime">开始时间:</label>
+                <input type="datetime-local" id="eventStartTime" name="startTime" required><br><br>
+
+                <label for="eventEndTime">结束时间:</label>
+                <input type="datetime-local" id="eventEndTime" name="endTime" required><br><br>
+
+                <label>标签:</label>
+                <div id="tagsContainer">
+                    正在加载...
+                </div><br><br>
+
+                <button type="submit">创建</button>
+            </form>
+        </div>
+    </div>
     <script src="./front/script.js"></script>
 </body>
 </html>
 `;
 
 export const stylesCSS = `
-/* style.css */
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
 }
@@ -51,6 +83,30 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header button {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header button:hover {
+    background-color: #ddd;
+}
+
+#weekRange {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 table {
@@ -70,39 +126,148 @@ th {
     background-color: #f4f4f4;
 }
 
+th.today {
+    background-color: antiquewhite;
+}
+
 td {
     height: 50px;
     position: relative;
 }
 
 .time-slot {
-    /*position: absolute;
-    width: 100%;*/
     background-color: rgba(0, 123, 255, 0.3);
     cursor: pointer;
     z-index: 1;
+}
+
+/* 弹出框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+#tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#tagsContainer label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 `;
 
 export const scriptsJS = `
 // script.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    /* 初始化日期 */
     const tableBody = document.querySelector('#calendarTable tbody');
-    const hours = 24; // 24小时制
+    const dateRow = document.querySelector('#dateRow');
+    const weekRange = document.querySelector('#weekRange');
+    const prevWeekButton = document.querySelector('#prevWeek');
+    const nextWeekButton = document.querySelector('#nextWeek');
+
+    let currentDate = new Date(); // 当前日期
 
     // 生成时间行
+    const hours = 24; // 24小时制
     for (let i = 0; i < hours; i++) {
         const row = document.createElement('tr');
-        row.innerHTML = \`<td>\${i}:00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>\`;
+        row.innerHTML = '<td>' + i + ':00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>';
         tableBody.appendChild(row);
     }
 
+    // 更新日期行和周范围显示
+    function updateDates() {
+        const startOfWeek = getStartOfWeek(currentDate);
+        const oneDay_ths = dateRow.querySelectorAll('th');
+
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(startOfWeek);
+            date.setDate(startOfWeek.getDate() + i);
+            oneDay_ths[i + 1].querySelector('span').innerHTML = date.toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' });
+        }
+
+        // 更新周范围显示
+        const endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(startOfWeek.getDate() + 6);
+        weekRange.textContent = startOfWeek.toLocaleDateString('zh-CN') + '-' + endOfWeek.toLocaleDateString('zh-CN');
+
+        // 如果显示周是当前周，则高亮今天
+        if (currentDate.toDateString() == getStartOfWeek(new Date()).toDateString()) {
+            console.log('this week');
+            const day = (new Date()).getDay();
+            const index = day ? day : 7;  // 周日的下标是7
+            oneDay_ths[index].classList.add('today');
+        } else {
+            oneDay_ths.forEach(th => th.classList.remove('today'));
+        }
+    }
+
+    /**
+     * 获取当前周的周一
+     * @param {Date} date - 当前日期
+     * @returns {Date} - 周一日期
+     */
+    function getStartOfWeek(date) {
+        const day = date.getDay();
+        const diff = date.getDate() - day + (day === 0 ? -6 : 1);  // 如果当前是周日，则减去6天
+        return new Date(date.setDate(diff));
+    }
+
+    // 切换到上一周
+    prevWeekButton.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateDates();
+    });
+
+    // 切换到下一周
+    nextWeekButton.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateDates();
+    });
+
+    // 初始化日期
+    updateDates();
+
+    /* 定义拖拽高亮 */
+    // 高亮单元格逻辑（保持不变）
     let isDragging = false;
     let startCell = null;
     let endCell = null;
 
-    // 添加事件监听器
-    tableBody.addEventListener('mousedown', function(e) {
+    tableBody.addEventListener('mousedown', function (e) {
         if (e.target.tagName === 'TD' && e.target.cellIndex !== 0) {
             isDragging = true;
             startCell = e.target;
@@ -110,20 +275,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    tableBody.addEventListener('mouseover', function(e) {
+    tableBody.addEventListener('mouseover', function (e) {
         if (isDragging && e.target.tagName === 'TD' && e.target.cellIndex !== 0) {
             endCell = e.target;
             highlightCells(startCell, endCell);
         }
     });
 
-    tableBody.addEventListener('mouseup', function() {
+    tableBody.addEventListener('mouseup', function () {
+        if (isDragging && startCell && endCell) {
+            const startTime = calculateTimeFromCell(startCell);
+            const endTime = calculateTimeFromCell(endCell);
+            showModal(startTime, endTime);
+        }
         isDragging = false;
         startCell = null;
         endCell = null;
     });
 
-    // 高亮单元格
     function highlightCells(start, end) {
         const startRow = start.parentElement.rowIndex;
         const startCol = start.cellIndex;
@@ -143,5 +312,93 @@ document.addEventListener('DOMContentLoaded', function() {
             cell.classList.add('time-slot');
         }
     }
+
+    /* 事件创建 */
+    // 获取弹出框相关元素
+    const modal = document.getElementById('eventModal');
+    const closeBtn = document.querySelector('.close');
+    const eventForm = document.getElementById('eventForm');
+    // 显示弹出框
+    function showModal(startTime, endTime) {
+        document.getElementById('eventStartTime').value = startTime;
+        document.getElementById('eventEndTime').value = endTime;
+        modal.style.display = 'block';
+    }
+    // 隐藏弹出框
+    function hideModal() {
+        modal.style.display = 'none';
+    }
+    // 点击关闭按钮隐藏弹出框
+    closeBtn.addEventListener('click', hideModal);
+    // 点击模态框外部隐藏弹出框
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+    // 根据单元格计算时间
+    function calculateTimeFromCell(cell) {
+        const rowIndex = cell.parentElement.rowIndex - 1; // 减去表头行
+        const colIndex = cell.cellIndex - 1; // 减去时间列
+        const startOfWeek = getStartOfWeek(currentDate);
+        const date = new Date(startOfWeek);
+        date.setDate(startOfWeek.getDate() + colIndex);
+        date.setHours(rowIndex, 0, 0, 0);
+        return date.toISOString().slice(0, 16); // 转换为datetime-local格式
+    }
+    // 获取标签
+    function loadTags() {
+        console.log('loading tags');
+        // const tagsUrl = 'back/tags.json';  // 记得修改为真正的相对路径
+        const tagsUrl = './tags';
+        fetch(tagsUrl, {
+            credentials: 'include' // 包含Cookie
+        })
+        .then(response => response.json())
+        .then(data => {
+            const tagsContainer = document.getElementById('tagsContainer');
+            tagsContainer.innerHTML = data.map(tag => '\
+                <label>\
+                    <input type="checkbox" name="tags" value="' + tag.tagId + '">\
+                    <span style="background-color: ' + tag.tagColor + '">' + tag.tagName + '</span>\
+                </label>\
+            ').join('');
+        })
+        .catch(error => console.error('Error loading tags:', error));
+    }
+    setTimeout(() => {
+        loadTags();
+    }, 10);
+    // 提交表单
+    eventForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = {
+            title: document.getElementById('eventTitle').value,
+            description: document.getElementById('eventDescription').value,
+            startTime: document.getElementById('eventStartTime').value + ':00',
+            during: (new Date(document.getElementById('eventEndTime').value) - new Date(document.getElementById('eventStartTime').value)) / 60000, // 转换为分钟
+            tags: Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(input => parseInt(input.value))
+        };
+        // const eventUrl = 'back/event';  // 记得修改为真正
+        const eventUrl = './events';
+        fetch(eventUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include', // 包含Cookie
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === 'ok') {
+                alert('事件创建成功！');
+                hideModal();
+            } else {
+                alert('事件创建失败！');
+            }
+        })
+        .catch(error => console.error('Error creating event:', error));
+    });
 });
 `;

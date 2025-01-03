@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-01-03 21:58:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-03 22:36:03
+ * @LastEditTime: 2025-01-03 23:47:41
  */
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /**
      * 获取当前周的周一
-     * @param {Date} date
-     * @returns {Date}
+     * @param {Date} date - 当前日期
+     * @returns {Date} - 周一日期
      */
     function getStartOfWeek(date) {
         const day = date.getDay();
@@ -98,6 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     tableBody.addEventListener('mouseup', function () {
+        if (isDragging && startCell && endCell) {
+            const startTime = calculateTimeFromCell(startCell);
+            const endTime = calculateTimeFromCell(endCell);
+            showModal(startTime, endTime);
+        }
         isDragging = false;
         startCell = null;
         endCell = null;
@@ -122,4 +127,92 @@ document.addEventListener('DOMContentLoaded', function () {
             cell.classList.add('time-slot');
         }
     }
+
+    /* 事件创建 */
+    // 获取弹出框相关元素
+    const modal = document.getElementById('eventModal');
+    const closeBtn = document.querySelector('.close');
+    const eventForm = document.getElementById('eventForm');
+    // 显示弹出框
+    function showModal(startTime, endTime) {
+        document.getElementById('eventStartTime').value = startTime;
+        document.getElementById('eventEndTime').value = endTime;
+        modal.style.display = 'block';
+    }
+    // 隐藏弹出框
+    function hideModal() {
+        modal.style.display = 'none';
+    }
+    // 点击关闭按钮隐藏弹出框
+    closeBtn.addEventListener('click', hideModal);
+    // 点击模态框外部隐藏弹出框
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+    // 根据单元格计算时间
+    function calculateTimeFromCell(cell) {
+        const rowIndex = cell.parentElement.rowIndex - 1; // 减去表头行
+        const colIndex = cell.cellIndex - 1; // 减去时间列
+        const startOfWeek = getStartOfWeek(currentDate);
+        const date = new Date(startOfWeek);
+        date.setDate(startOfWeek.getDate() + colIndex);
+        date.setHours(rowIndex, 0, 0, 0);
+        return date.toISOString().slice(0, 16); // 转换为datetime-local格式
+    }
+    // 获取标签
+    function loadTags() {
+        console.log('loading tags');
+        // const tagsUrl = 'back/tags.json';  // 记得修改为真正的相对路径
+        const tagsUrl = './tags';
+        fetch(tagsUrl, {
+            credentials: 'include' // 包含Cookie
+        })
+        .then(response => response.json())
+        .then(data => {
+            const tagsContainer = document.getElementById('tagsContainer');
+            tagsContainer.innerHTML = data.map(tag => '\
+                <label>\
+                    <input type="checkbox" name="tags" value="' + tag.tagId + '">\
+                    <span style="background-color: ' + tag.tagColor + '">' + tag.tagName + '</span>\
+                </label>\
+            ').join('');
+        })
+        .catch(error => console.error('Error loading tags:', error));
+    }
+    setTimeout(() => {
+        loadTags();
+    }, 10);
+    // 提交表单
+    eventForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = {
+            title: document.getElementById('eventTitle').value,
+            description: document.getElementById('eventDescription').value,
+            startTime: document.getElementById('eventStartTime').value + ':00',
+            during: (new Date(document.getElementById('eventEndTime').value) - new Date(document.getElementById('eventStartTime').value)) / 60000, // 转换为分钟
+            tags: Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(input => parseInt(input.value))
+        };
+        // const eventUrl = 'back/event';  // 记得修改为真正
+        const eventUrl = './events';
+        fetch(eventUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include', // 包含Cookie
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === 'ok') {
+                alert('事件创建成功！');
+                hideModal();
+            } else {
+                alert('事件创建失败！');
+            }
+        })
+        .catch(error => console.error('Error creating event:', error));
+    });
 });

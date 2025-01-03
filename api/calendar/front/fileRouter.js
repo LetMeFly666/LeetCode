@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:56:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-02 22:00:52
+ * @LastEditTime: 2025-01-03 23:15:49
  */
 import { indexHTML, stylesCSS, scriptsJS } from './files'
 
@@ -37,5 +37,6 @@ export async function files(request) {
     }
     const fileType = filePath.split('.').pop();
     // console.log(fileType);  // 例如css
-    return new Response(fileRoutePath[filePath], { headers: fileTypeDict[fileType] || {} });
+    const headers = fileTypeDict[fileType] || {};
+    return new Response(fileRoutePath[filePath], { headers });
 }

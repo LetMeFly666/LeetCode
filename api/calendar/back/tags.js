@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-23 18:19:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 10:27:27
+ * @LastEditTime: 2025-01-03 23:23:42
  */
 import { getCookie } from "./utils/cookie";
 import { getUserIdFromPassKey } from "./utils/user";
@@ -60,7 +60,8 @@ export async function deleteTag(request, env) {
     if (deleteResult.meta.changes === 0) {
         return new Response(JSON.stringify({status: 2, message: "Access Denied!"}), {status: 404});
     } else {
-        return new Response(JSON.stringify({status: 0, message: `Tag ${tagId} deleted successfully.`}), {status: 200})
+        return new Response(JSON.stringify({status: 0, message: `Tag ${tagId} deleted successfully.`}), {status: 200});
+        // return new Response(JSON.stringify({status: 0, message: `Tag ${tagId} deleted successfully.`}), {status: 200, headers: {'Access-Control-Allow-Origin': '*'}});  // 开发用
     }
 }
 
