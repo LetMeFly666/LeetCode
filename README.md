@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-30 13:24:58
+ * @LastEditTime: 2025-01-04 15:21:28
 -->
 # LetLeet Blog
 
@@ -848,6 +848,7 @@
 |FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
 |模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
 |原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
+|Git - 记录一次由于少输入了一个参数导致的更改丢失|<a href="https://blog.letmefly.xyz/2025/01/04/Other-Git-record1gitFileLost/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144929924">CSDN博客</a>|
 |使用GH（命令行）在本地提出Github上的issue、PR，合并PR|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133935823">CSDN博客</a>|
 |Github - 如何提交一个带有“verified”标识的commit|<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144796175">CSDN博客</a>|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
