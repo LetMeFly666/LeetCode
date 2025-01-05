@@ -1,7 +1,7 @@
 ---
 title: Github - 如何提交一个带有“verified”标识的commit/如何验证一次commit的签名
 date: 2024-12-28 22:09:55
-tags: [其他, Github]
+tags: [其他, Github, Git]
 ---
 
 # Github - 如何提交一个带有“verified”标识的commit/如何验证一次commit的签名
