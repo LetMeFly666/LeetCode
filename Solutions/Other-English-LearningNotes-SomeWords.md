@@ -875,7 +875,7 @@ tags: [其他, 知识, 英语, Notes]
 |butchery|n. 残杀，杀戮，屠宰工作|
 |||
 |secretariat|n. 秘书处，书记处|
-|sheriff|n. 县(郡)治安官|
+|<font color="#28bea0" title="二次复习">sheriff</font>|n. 县(郡)治安官|
 |inasmuch|adv. 由于，〈古〉只要<details><summary>例句</summary>Inasmuch as you are an adult, you must be responsible for your own behavior.<br/>因为你是一个成年人，你必须对自己的行为负责。</details>|
 |countenance|n. 面容，脸色，面部表情<br/>v. 支持，赞成，同意|
 |||
@@ -927,6 +927,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |snore|n. 鼾声<br/>v. 打鼾|
 |lark|n. 云雀，百灵鸟，玩乐，嬉戏<br/>v. 捉云雀，嬉戏，骑马越野，愚弄|
+|||
 
 <p class="wordCounts">单词收录总数</p>
 
