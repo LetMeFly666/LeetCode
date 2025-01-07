@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-17 23:11:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 09:49:52
+ * @LastEditTime: 2025-01-07 23:42:57
  */
 import { getUserIdFromPassKey } from "./utils/user";
 import { getCookie } from "./utils/cookie";
@@ -49,7 +49,19 @@ export async function getEvents(request, env) {
         return new Response('Invalid passKey', { status: 401 })
     }
     const tasks = await CALENDAR_DB.prepare(`
-        SELECT * FROM Calendar_Tasks WHERE userid = ?
+        SELECT
+            Calendar_Tasks.*,
+            GROUP_CONCAT(Calendar_TaskTag.tagId) as tagIds
+        FROM
+            Calendar_Tasks
+        LEFT JOIN
+            Calendar_TaskTag
+        ON
+            Calendar_Tasks.taskId = Calendar_TaskTag.taskId
+        WHERE
+            Calendar_Tasks.userid = ?
+        GROUP BY
+            Calendar_Tasks.taskId
     `).bind(userid).all();
     return new Response(JSON.stringify(tasks.results), { headers: {'Content-Type': 'application/json'} });
 }

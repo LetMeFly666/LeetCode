@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:10:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-05 13:38:33
+ * @LastEditTime: 2025-01-07 23:43:43
 -->
 # 目的
 
@@ -27,6 +27,9 @@
 # TODO
 
 - [ ] 删除标签时，前端提醒“所有任务的xx标签将会被移除”
+- [ ] 前端，创建完一个事件后创建另一个事件时内容不清空
+- [ ] 前端，默认显示时间是UTC时间而不是本地时间
+- [ ] 后端，taskTag数据库中删除一条记录时，这个taskId的所有taskTag记录都会被删除
 - [ ] 前端，事件修改 - 这个可以全部删了重建
 - [ ] 后端 - 事件创建 - 时间覆盖重叠问题
 - [ ] fix: 前端 - 拖拽后默认时间不正确
@@ -878,13 +881,61 @@ html表格，设置所有列等宽。
 创建事件时，可以输入事件标题、事件描述，默认依据用户的拖拽范围给定一个起止时间，用户也可以调整起止时间。
 
 <hr/>
+
+我有一个Calendar_Tasks数据表，里面有task信息和userid信息；
+我有一个Calendar_TaskTag数据表，里面有taskId和tagId的对应信息。
+
+我想通过userid查询出这个user的所有任务，以及每个任务对应的tagId。我应该如何查询？
+
+```
+```
+
 <hr/>
+
+解释left join
+
 <hr/>
+
+这样查询的效率如何
+
 <hr/>
+
+left join的时间复杂度是多少？
+
 <hr/>
+
+这样左表中的信息是不是会一个tag重复一次
+
 <hr/>
+
+GROUP_CONCAT这个好，请详细解释之
+
 <hr/>
+
+如果task表列比较多的话，可否Select task.*
+
 <hr/>
+
+这样会每个userid都关联一次，我可用做到只管理指定userid的task吗？
+
+我尝试如下代码报错了：
+
+```
+SELECT
+    Calendar_Tasks.*,
+    GROUP_CONCAT(Calendar_TaskTag.tagId) as tagIds
+FROM
+    Calendar_Tasks
+LEFT JOIN
+    Calendar_TaskTag
+ON
+    Calendar_Tasks.taskId = Calendar_TaskTag.taskId
+GROUP BY
+    Calendar_Tasks.taskId
+WHERE
+    Calendar_Tasks.userid = 1
+```
+
 <hr/>
 <hr/>
 <hr/>
