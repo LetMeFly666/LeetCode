@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-20 22:12:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-24 10:43:09
+ * @LastEditTime: 2025-01-07 23:47:31
 -->
 # calendar后端
 
@@ -85,15 +85,17 @@ None。 TODO: 起止时间
         "description": "Let Calendar开发",
         "startTime": "2024-12-17T10:00:00",
         "during": 60,
-        "userid": 1
+        "userid": 1,
+        "tagIds": null
     },
     {
-        "taskId": 13,
-        "title": "开发",
-        "description": "LetCalendar开发",
-        "startTime": "2024-12-20T10:00:00",
-        "during": 60,
-        "userid": 1
+        "taskId": 18,
+        "title": "聊天",
+        "description": "哄对象不生气[trumble]",
+        "startTime": "2025-01-07T12:20:00",
+        "during": 180,
+        "userid": 1,
+        "tagIds": "5,7"
     }
 ]
 ```
