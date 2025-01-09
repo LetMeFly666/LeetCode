@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-25 23:31:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-09 16:12:11
+ * @LastEditTime: 2025-01-09 17:00:20
  */
 /* 以下为前端各个页面的源码 */
 // index.html
@@ -140,7 +140,7 @@ tr:last-child td.today {
 }
 
 td {
-    height: 50px;
+    height: 20px;
     position: relative;
 }
 
@@ -216,7 +216,9 @@ td {
 export const scriptsJS = `
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
-    const globalDict = {};
+    const globalDict = {
+        events: [{"taskId":1,"title":"开发","description":"Let Calendar开发","startTime":"2024-12-17T10:00:00","during":60,"userid":1,"tagIds":null}],
+    };
     /************************** 初始化日期 **************************/
     const tableBody = document.querySelector('#calendarTable tbody');
     const dateRow = document.querySelector('#dateRow');
@@ -441,6 +443,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.success === 'ok') {
                 alert('事件创建成功！');
+                formData['taskId'] = data.taskId;
+                globalDict.events.push(formData);
+                renderEvent();
                 hideModal();
             } else {
                 alert('事件创建失败！');
@@ -508,9 +513,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 添加悬浮提示
             eventBlock.setAttribute('title',
-                'Title: ' + event.title + '\n' + 
-                'Description: ' + event.description + '\n' +
-                'Start Time: ' + localStartTime.toLocaleString() + '\n' +
+                'Title: ' + event.title + '\\n' + 
+                'Description: ' + event.description + '\\n' +
+                'Start Time: ' + localStartTime.toLocaleString() + '\\n' +
                 'End Time: ' + endTime.toLocaleString()
             );
 
@@ -566,14 +571,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // 加载并显示事件
     function showEvent() {
         console.log('loading events');
-        const tagsUrl = 'back/events.json';  // 记得修改为真正的相对路径
-        // const tagsUrl = './events';
+        // const tagsUrl = 'back/events.json';  // 记得修改为真正的相对路径
+        const tagsUrl = './events';
         fetch(tagsUrl, {
             credentials: 'include' // 包含Cookie
         })
         .then(response => response.json())
         .then(data => {
-            globalDict['events'] = data;
+            globalDict.events = data;
             renderEvent();
         })
         .catch(error => console.error('Error loading events:', error));
