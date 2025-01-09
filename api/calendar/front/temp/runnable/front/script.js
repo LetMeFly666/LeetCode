@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-01-03 21:58:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-09 16:04:13
+ * @LastEditTime: 2025-01-09 16:11:29
  */
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
@@ -297,12 +297,12 @@ document.addEventListener('DOMContentLoaded', function () {
             eventBlock.textContent = event.title;
 
             // 添加悬浮提示
-            eventBlock.setAttribute('title', `
-                Title: ${event.title}\n
-                Description: ${event.description}\n
-                Start Time: ${localStartTime.toLocaleString()}\n
-                End Time: ${endTime.toLocaleString()}
-            `);
+            eventBlock.setAttribute('title',
+                'Title: ' + event.title + '\n' + 
+                'Description: ' + event.description + '\n' +
+                'Start Time: ' + localStartTime.toLocaleString() + '\n' +
+                'End Time: ' + endTime.toLocaleString()
+            );
 
             // 计算事件块的起始位置和高度
             let top = 0;
@@ -335,15 +335,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (endCell) {
                         const endBlock = eventBlock.cloneNode(true);
                         endBlock.style.top = '0';
-                        endBlock.style.height = `${(endMinute / 60) * 100}%`;
+                        endBlock.style.height = (endMinute / 60) * 100 + '%';
                         endCell.appendChild(endBlock);
                     }
                 }
             }
 
             // 设置事件块的样式
-            eventBlock.style.top = `${top}%`;
-            eventBlock.style.height = `${height}%`;
+            eventBlock.style.top = top + '%';
+            eventBlock.style.height = height + '%';
 
             // 将事件块添加到起始单元格
             const startCell = rows[startRow].cells[colIndex];
