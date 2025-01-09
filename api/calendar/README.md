@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-15 16:10:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-09 14:45:37
+ * @LastEditTime: 2025-01-09 16:05:47
 -->
 # 目的
 
@@ -33,7 +33,7 @@
 - [ ] fix: 后端，taskTag数据库中删除一条记录时，这个taskId的所有taskTag记录都会被删除
 - [ ] 前端，事件修改 - 这个可以全部删了重建
 - [ ] 后端 - 事件创建 - 时间覆盖重叠问题
-- [ ] fix: 前端 - 切换周时，选中高亮不消失
+- [x] fix: 前端 - 切换周时，选中高亮不消失(修改为了只要关掉事件创建框拖拽导致的高亮就消失)
 - [x] fix: 前端 - 拖拽后默认时间不正确(默认显示时间是UTC时间而不是本地时间)
 - [x] fix: 前端 - 单次点击无法触发事件创建
 - [x] 后端，标签修改 - 不能删了再重新创建，要不然关联的键会出问题
@@ -966,8 +966,62 @@ css设置具有today这个class的tr中的td：
 左边框和右边框为其他颜色，最后一个tr的td的下边框也为这个颜色
 
 <hr/>
+
+我想在页面加载时，将所有属于本周的的event渲染到日历上。
+
+只需要将对应单元格高亮（如果时间不是整数则高亮单元格对应百分比的部分），并将title显示在单元格内（可换行，显示不全可使用省略号）
+
+鼠标悬浮在对应事件上时，显示具体信息（description、起止时间等）。
+
+events数据示例如下：
+
+```json
+[{"taskId":1,"title":"开发","description":"Let Calendar开发","startTime":"2024-12-17T10:00:00","during":60,"userid":1,"tagIds":null},{"taskId":13,"title":"开发","description":"LetCalendar开发","startTime":"2024-12-20T10:00:00","during":60,"userid":1,"tagIds":"1"}]
+```
+
+当前代码框架为：
+
+```javascript
+/**
+     * 将事件数据渲染到日历上
+     * @param {JSON} events - 事件列表
+     */
+    function renderEvent(events) {
+        
+    }
+    // 加载并显示事件
+    function showEvent() {
+        console.log('loading events');
+        const tagsUrl = 'back/events.json';  // 记得修改为真正的相对路径
+        // const tagsUrl = './events';
+        fetch(tagsUrl, {
+            credentials: 'include' // 包含Cookie
+        })
+        .then(response => response.json())
+        .then(data => {
+            renderEvent(data);
+        })
+        .catch(error => console.error('Error loading events:', error));
+    }
+    setTimeout(() => {
+        showEvent();
+    }, 10);
+```
+
 <hr/>
+
+太棒了！但是请进行如下修改：
+
+1. 如果一个事件无法填满单元格，则起始部分从单元格下方开始填充（而不是上方填充下方空白）
+2. 填充加一个边框，注意跨单元格的问题，一个事件只加一个外边框
+3. 一个事件可能并不是这周的事件，那么请不予显示
+
 <hr/>
+
+请进行如下修改：
+
+1. events中的数据是UTC时间，请先将其转为UTC+8后再渲染
+
 <hr/>
 <hr/>
 <hr/>
