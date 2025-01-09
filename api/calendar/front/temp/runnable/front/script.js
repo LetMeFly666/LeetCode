@@ -2,12 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2025-01-03 21:58:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-09 17:04:55
+ * @LastEditTime: 2025-01-09 18:45:53
  */
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
     const globalDict = {
         events: [{"taskId":1,"title":"开发","description":"Let Calendar开发","startTime":"2024-12-17T10:00:00","during":60,"userid":1,"tagIds":null}],
+        tags: [{"tagId":1,"tagName":"开发","tagColor":"#cde7ee","creator":1}],
+        tagMap: {1: 0},  // tagId->index
     };
     /************************** 初始化日期 **************************/
     const tableBody = document.querySelector('#calendarTable tbody');
@@ -84,9 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateDates();
         renderEvent();
     });
-
-    // 初始化日期
-    updateDates();
 
     /*************************** 定义拖拽高亮 ***************************/
     // 高亮单元格逻辑（保持不变）
@@ -186,11 +185,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return date.toISOString().slice(0, 16);  // 转换为datetime-local格式
     }
     // 获取标签
-    function loadTags() {
+    async function loadTags() {
         console.log('loading tags');
         // const tagsUrl = 'back/tags.json';  // 记得修改为真正的相对路径
         const tagsUrl = './tags';
-        fetch(tagsUrl, {
+        await fetch(tagsUrl, {
             credentials: 'include' // 包含Cookie
         })
         .then(response => response.json())
@@ -202,12 +201,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span style="background-color: ' + tag.tagColor + '">' + tag.tagName + '</span>\
                 </label>\
             ').join('');
+            globalDict.tags = data;
+            globalDict.tagMap = {};
+            for (let i = 0; i < data.length; i++) {
+                globalDict.tagMap[data[i].tagId] = i;
+            }
         })
         .catch(error => console.error('Error loading tags:', error));
     }
-    setTimeout(() => {
-        loadTags();
-    }, 10);
     // 提交表单
     eventForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * @param {JSON} events - 事件列表
      */
     function renderEvent() {
-        const events = globalDict['events'];
+        const events = globalDict.events;
         const tableBody = document.querySelector('#calendarTable tbody');
         const rows = tableBody.querySelectorAll('tr');
 
@@ -309,6 +310,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 'End Time: ' + endTime.toLocaleString()
             );
 
+            if (event.tagIds.length) {
+                /*
+                    if ([]) {
+                        console.log(1)
+                    }
+                    结果是1
+                 */
+                console.log('event.tagIds:', event.tagIds);
+                console.log(globalDict.tags);
+                console.log(globalDict.tagMap);
+                console.log(event.tagIds[0]);
+                console.log(globalDict.tagMap[event.tagIds[0]]);
+                console.log(globalDict.tags[globalDict.tagMap[event.tagIds[0]]]);
+                console.log();
+                console.log();
+                eventBlock.style['background-color'] = globalDict.tags[globalDict.tagMap[event.tagIds[0]]].tagColor + '4C';  // 30%
+                eventBlock.style['border'] = globalDict.tags[globalDict.tagMap[event.tagIds[0]]].tagColor + '80';  // 50%
+            }
+
             // 计算事件块的起始位置和高度
             let top = 0;
             let height = 0;
@@ -359,22 +379,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 加载并显示事件
-    function showEvent() {
+    async function getEvents() {
         console.log('loading events');
         // const tagsUrl = 'back/events.json';  // 记得修改为真正的相对路径
         const tagsUrl = './events';
-        fetch(tagsUrl, {
+        await fetch(tagsUrl, {
             credentials: 'include' // 包含Cookie
         })
         .then(response => response.json())
         .then(data => {
+            test = [{tagIds: null}, {tagIds: "1,2"}, {tagIds: "0"}];  // TODO: delete this after some commit
+            test.forEach(event => {
+                if (event.tagIds) {
+                    event.tagIds = event.tagIds.split(',').map(Number);
+                } else {
+                    event.tagIds = [];
+                }
+            });
+            console.log(test);
             globalDict.events = data;
-            renderEvent();
+            globalDict.events.forEach(event => {
+                if (event.tagIds) {
+                    event.tagIds = event.tagIds.split(',').map(Number);
+                } else {
+                    event.tagIds = [];
+                }
+            });
+            
         })
         .catch(error => console.error('Error loading events:', error));
     }
 
+    async function init() {
+        updateDates();
+        await Promise.all([loadTags(), getEvents()]);
+        renderEvent();
+    }
+
     setTimeout(() => {
-        showEvent();
+        init();
     }, 10);
 });
