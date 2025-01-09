@@ -928,6 +928,7 @@ tags: [其他, 知识, 英语, Notes]
 |snore|n. 鼾声<br/>v. 打鼾|
 |lark|n. 云雀，百灵鸟，玩乐，嬉戏<br/>v. 捉云雀，嬉戏，骑马越野，愚弄|
 |||
+|tuberculosis|n. 结核病|
 
 <p class="wordCounts">单词收录总数</p>
 
