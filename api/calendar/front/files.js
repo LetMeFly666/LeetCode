@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-25 23:31:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-03 23:47:53
+ * @LastEditTime: 2025-01-09 14:47:29
  */
 /* 以下为前端各个页面的源码 */
 // index.html
@@ -73,8 +73,7 @@ export const indexHTML = `
 </html>
 `;
 
-export const stylesCSS = `
-/* styles.css */
+export const stylesCSS = `/* styles.css */
 body {
     font-family: Arial, sans-serif;
 }
@@ -128,6 +127,15 @@ th {
 
 th.today {
     background-color: antiquewhite;
+}
+
+tr td.today {
+    border-left: 2px solid antiquewhite;
+    border-right: 2px solid antiquewhite;
+}
+
+tr:last-child td.today {
+    border-bottom: 2px solid antiquewhite;
 }
 
 td {
@@ -191,7 +199,8 @@ td {
 export const scriptsJS = `
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
-    /* 初始化日期 */
+    const globalDict = {};
+    /************************** 初始化日期 **************************/
     const tableBody = document.querySelector('#calendarTable tbody');
     const dateRow = document.querySelector('#dateRow');
     const weekRange = document.querySelector('#weekRange');
@@ -212,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateDates() {
         const startOfWeek = getStartOfWeek(currentDate);
         const oneDay_ths = dateRow.querySelectorAll('th');
+        const hours_trs = tableBody.querySelectorAll('tr');
 
         for (let i = 0; i < 7; i++) {
             const date = new Date(startOfWeek);
@@ -230,8 +240,14 @@ document.addEventListener('DOMContentLoaded', function () {
             const day = (new Date()).getDay();
             const index = day ? day : 7;  // 周日的下标是7
             oneDay_ths[index].classList.add('today');
+            hours_trs.forEach(tr => {
+                tr.querySelectorAll('td')[index].classList.add('today');
+            });
         } else {
             oneDay_ths.forEach(th => th.classList.remove('today'));
+            hours_trs.forEach(tr => {
+                tr.querySelectorAll('td').forEach(td => td.classList.remove('today'));
+            });
         }
     }
 
@@ -261,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 初始化日期
     updateDates();
 
-    /* 定义拖拽高亮 */
+    /*************************** 定义拖拽高亮 ***************************/
     // 高亮单元格逻辑（保持不变）
     let isDragging = false;
     let startCell = null;
@@ -271,6 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.tagName === 'TD' && e.target.cellIndex !== 0) {
             isDragging = true;
             startCell = e.target;
+            endCell = e.target;
             highlightCells(startCell, startCell);
         }
     });
@@ -285,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tableBody.addEventListener('mouseup', function () {
         if (isDragging && startCell && endCell) {
             const startTime = calculateTimeFromCell(startCell);
-            const endTime = calculateTimeFromCell(endCell);
+            const endTime = calculateTimeFromCell(endCell, 1);  // 结束时间为下一个单元格
             showModal(startTime, endTime);
         }
         isDragging = false;
@@ -312,13 +329,19 @@ document.addEventListener('DOMContentLoaded', function () {
             cell.classList.add('time-slot');
         }
     }
+    
 
-    /* 事件创建 */
+    /*************************** 事件创建 ***************************/
     // 获取弹出框相关元素
     const modal = document.getElementById('eventModal');
     const closeBtn = document.querySelector('.close');
     const eventForm = document.getElementById('eventForm');
     // 显示弹出框
+    /**
+     * 显示事件创建框
+     * @param {string} startTime - 开始时间，如2023-10-05T22:30:00
+     * @param {string} endTime   - 结束时间
+     */
     function showModal(startTime, endTime) {
         document.getElementById('eventStartTime').value = startTime;
         document.getElementById('eventEndTime').value = endTime;
@@ -337,14 +360,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     // 根据单元格计算时间
-    function calculateTimeFromCell(cell) {
-        const rowIndex = cell.parentElement.rowIndex - 1; // 减去表头行
-        const colIndex = cell.cellIndex - 1; // 减去时间列
+    function calculateTimeFromCell(cell, hourDiff=0) {
+        const rowIndex = cell.parentElement.rowIndex - 1;  // 减去表头行
+        const colIndex = cell.cellIndex - 1;  // 减去时间列
         const startOfWeek = getStartOfWeek(currentDate);
         const date = new Date(startOfWeek);
         date.setDate(startOfWeek.getDate() + colIndex);
-        date.setHours(rowIndex, 0, 0, 0);
-        return date.toISOString().slice(0, 16); // 转换为datetime-local格式
+        date.setHours(rowIndex + 8 + hourDiff, 0, 0, 0);  // 转为UTC+8
+        return date.toISOString().slice(0, 16);  // 转换为datetime-local格式
     }
     // 获取标签
     function loadTags() {
@@ -375,7 +398,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = {
             title: document.getElementById('eventTitle').value,
             description: document.getElementById('eventDescription').value,
-            startTime: document.getElementById('eventStartTime').value + ':00',
+            // startTime: new Date(new Date(document.getElementById('eventStartTime').value).getTime() - 8 * 3600 * 1000).toISOString().slice(0, 16) + ':00',
+            startTime: new Date(document.getElementById('eventStartTime').value).toISOString().slice(0, 16) + ':00',
             during: (new Date(document.getElementById('eventEndTime').value) - new Date(document.getElementById('eventStartTime').value)) / 60000, // 转换为分钟
             tags: Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(input => parseInt(input.value))
         };
