@@ -1,12 +1,15 @@
 ---
-title: 3297.统计重新排列后包含另一个字符串的子字符串数目 I
+title: 3297.统计重新排列后包含另一个字符串的子字符串数目 I/II(3298)
 date: 2025-01-09 13:11:29
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 滑动窗口]
 ---
 
-# 【LetMeFly】3297.统计重新排列后包含另一个字符串的子字符串数目 I：滑动窗口
+# 【LetMeFly】3297.统计重新排列后包含另一个字符串的子字符串数目 I/II(3298)：滑动窗口
 
-力扣题目链接：[https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/](https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/)
+力扣题目链接：
+
++ [https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/](https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/)
++ [https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-ii/](https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-ii/)
 
 <p>给你两个字符串&nbsp;<code>word1</code> 和&nbsp;<code>word2</code>&nbsp;。</p>
 
