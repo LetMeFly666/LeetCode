@@ -931,6 +931,15 @@ tags: [其他, 知识, 英语, Notes]
 |tuberculosis|n. 结核病|
 |||
 |granite|n. 花岗岩，花岗石|
+|||
+|clamp|n. 夹具，夹子，夹钳<br/>v. 夹紧，夹住，固定，紧紧抓住，压制|
+|hind|adj. (四足动物的腿、蹄)后面的<br/>n. 雌鹿(尤指雌赤鹿)|
+|countermand|v./n. (下反对命令)取消(前一命令)，调回，改变定货|
+|continental|adj. 大洲的，大陆的，欧洲大陆的<br/>n. (欧洲)大陆人|
+|||
+|attributive|adj. (用于所修饰的名词前)定语的<br/>n. 定语|
+|||
+|puppet|n. 木偶，傀儡，受他人操纵的人|
 
 <p class="wordCounts">单词收录总数</p>
 
