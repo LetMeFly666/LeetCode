@@ -819,7 +819,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |airliner|n. 班机，大型客机|
 |hydraulic|adj. 水力的，水压的，液压驱动的|
-|<font color="#28bea0" title="二次复习">curtail</font>|v. 缩短，限制，减缩|
+|<font color="#28bea0" title="三次复习">curtail</font>|v. 缩短，限制，减缩|
 |colonel|n. (陆军/海军陆战队/美国空军)上校|
 |||
 |walnut|n. 核桃，胡桃，胡桃木，胡桃色|
@@ -940,6 +940,10 @@ tags: [其他, 知识, 英语, Notes]
 |attributive|adj. (用于所修饰的名词前)定语的<br/>n. 定语|
 |||
 |puppet|n. 木偶，傀儡，受他人操纵的人|
+|||
+|eel|n. 鳗鱼，鳗鲡，鳗鱼肉|
+|leeway|n. 自由活动的空间|
+|pertinence|n. 相关性|
 
 <p class="wordCounts">单词收录总数</p>
 
