@@ -842,7 +842,7 @@ tags: [其他, 知识, 英语, Notes]
 |defray|v. 支付|
 |<font color="#28bea0" title="二次复习">miraculous</font>|adj. 奇迹般的，不可思议的，不平凡的|
 |zebra|n. 斑马，如斑蝶<br/>adj. 有斑马般斑纹的，有条纹的|
-|surmise|v. 〈正式〉猜测，估计，认为<br/>n. 〈正式〉推测，臆测，揣度，猜度|
+|<font color="#28bea0" title="二次复习">surmise</font>|v. 〈正式〉猜测，估计，认为<br/>n. 〈正式〉推测，臆测，揣度，猜度|
 |hindrance|n. 妨碍，障碍，形成阻碍的人/物|
 |||
 |idleness|n. 懒惰，懒怠，闲置，失业|
@@ -944,6 +944,8 @@ tags: [其他, 知识, 英语, Notes]
 |eel|n. 鳗鱼，鳗鲡，鳗鱼肉|
 |leeway|n. 自由活动的空间|
 |pertinence|n. 相关性|
+|||
+|tumult|n. 骚动，骚乱，心烦意乱，混乱|
 
 <p class="wordCounts">单词收录总数</p>
 
