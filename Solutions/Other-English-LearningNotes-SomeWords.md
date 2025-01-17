@@ -946,6 +946,9 @@ tags: [其他, 知识, 英语, Notes]
 |pertinence|n. 相关性|
 |||
 |tumult|n. 骚动，骚乱，心烦意乱，混乱|
+|||
+|creditworthy|adj. 可信赖偿还欠款的，信誉好的，信用可靠的，借贷安全的|
+|declaration|n. 公告，宣言，宣称，生命(书)|
 
 <p class="wordCounts">单词收录总数</p>
 
