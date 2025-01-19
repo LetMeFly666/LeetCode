@@ -859,7 +859,7 @@ tags: [其他, 知识, 英语, Notes]
 |Marxist|adj. 马克思主义的<br/>n. 马克思主义者|
 |||
 |dart|v. 急冲，突进，投掷(标枪等)，放射<br/>n. 标枪，箭，刺，镳|
-|disgrace|n. 耻辱，丢脸，不光彩<br/>v. 使丢脸，使蒙羞，使名誉扫地|
+|<font color="#28bea0" title="二次复习">disgrace</font>|n. 耻辱，丢脸，不光彩<br/>v. 使丢脸，使蒙羞，使名誉扫地|
 |monopolize|v. 垄断，独占，包办，占去(某人的大部分注意力/时间)|
 |exasperation|n. 愤怒，激化，加剧|
 |layday|n. 约定装卸日(航运合同中的一个名词)|
@@ -919,7 +919,7 @@ tags: [其他, 知识, 英语, Notes]
 |whaling|n. 捕鲸|
 |xerox|v. 打印，复印|
 |||
-|derrick|n.  钻塔，转臂起重机，(船上的)吊杆式起重机|
+|<font color="#28bea0" title="二次复习">derrick</font>|n.  钻塔，转臂起重机，(船上的)吊杆式起重机|
 |||
 |torment|n. 痛苦，折磨，苦难之源<br/>v. 折磨，使痛苦|
 |procurement|n. (政府/机构的)采购|
