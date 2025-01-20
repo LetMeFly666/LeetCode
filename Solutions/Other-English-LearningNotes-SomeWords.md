@@ -922,7 +922,7 @@ tags: [其他, 知识, 英语, Notes]
 |<font color="#28bea0" title="二次复习">derrick</font>|n.  钻塔，转臂起重机，(船上的)吊杆式起重机|
 |||
 |torment|n. 痛苦，折磨，苦难之源<br/>v. 折磨，使痛苦|
-|procurement|n. (政府/机构的)采购|
+|<font color="#28bea0" title="二次复习">procurement</font>|n. (政府/机构的)采购|
 |righteous|ajd. 公正的，正直的，正当的，公平合理的|
 |||
 |snore|n. 鼾声<br/>v. 打鼾|
