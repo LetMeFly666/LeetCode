@@ -951,6 +951,13 @@ tags: [其他, 知识, 英语, Notes]
 |declaration|n. 公告，宣言，宣称，生命(书)|
 |||
 |slander|n. 中伤，诽谤，诋毁<br/>v. 中伤，诽谤，诋毁|
+|||
+|disparity|n. 差异|
+|||
+|scorching|adj. 酷热的，猛烈的，激烈的，有力的<br/>adv. 〈口〉灼热地，热得灼人<br/>v. scorch的现在分词|
+|wagon|n. (铁路)货车车厢，四轮在中马车(/牛车)<br/>v. 用 运货马车/货车/手推车 运送【较少用作动词】|
+|||
+|bazaar|n. 集市，义卖会|
 
 <p class="wordCounts">单词收录总数</p>
 
