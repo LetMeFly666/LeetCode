@@ -949,6 +949,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |creditworthy|adj. 可信赖偿还欠款的，信誉好的，信用可靠的，借贷安全的|
 |declaration|n. 公告，宣言，宣称，生命(书)|
+|||
+|slander|n. 中伤，诽谤，诋毁<br/>v. 中伤，诽谤，诋毁|
 
 <p class="wordCounts">单词收录总数</p>
 
