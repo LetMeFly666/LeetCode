@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2944.购买水果需要的最少金币数：动态规划（O(n^2)复杂度，非最优算法） | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2944.购买水果需要的最少金币数：动态规划（O(n^2)复杂度，非最优算法）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-01-24T06:22:52.000Z" id="date"> 2025-01-24</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2944-购买水果需要的最少金币数：动态规划（O-n-2-复杂度，非最优算法）"><a href="#【LetMeFly】2944-购买水果需要的最少金币数：动态规划（O-n-2-复杂度，非最优算法）" class="headerlink" title="【LetMeFly】2944.购买水果需要的最少金币数：动态规划（O(n^2)复杂度，非最优算法）"></a>【LetMeFly】2944.购买水果需要的最少金币数：动态规划（O(n^2)复杂度，非最优算法）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-coins-for-fruits/">https://leetcode.cn/problems/minimum-number-of-coins-for-fruits/</a></p>
+<p>给你一个 <strong>下标从 1 开始的</strong> 整数数组&nbsp;<code>prices</code>&nbsp;，其中&nbsp;<code>prices[i]</code>&nbsp;表示你购买第 <code>i</code>&nbsp;个水果需要花费的金币数目。</p>
+
+<p>水果超市有如下促销活动：</p>
+
+<ul>
+	<li>如果你花费 <code>prices[i]</code>&nbsp;购买了下标为&nbsp;<code>i</code>&nbsp;的水果，那么你可以免费获得下标范围在&nbsp;<code>[i + 1, i + i]</code>&nbsp;的水果。</li>
+</ul>
+
+<p><strong>注意</strong>&nbsp;，即使你&nbsp;<strong>可以</strong>&nbsp;免费获得水果&nbsp;<code>j</code>&nbsp;，你仍然可以花费&nbsp;<code>prices[j]</code>&nbsp;个金币去购买它以获得它的奖励。</p>
+
+<p>请你返回获得所有水果所需要的 <strong>最少</strong>&nbsp;金币数。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">prices = [3,1,2]</span></p>
+
+<p><strong>输出：</strong><span class="example-io">4</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>用&nbsp;<code>prices[0] = 3</code>&nbsp;个金币购买第 1 个水果，你可以免费获得第 2 个水果。</li>
+	<li>用&nbsp;<code>prices[1] = 1</code>&nbsp;个金币购买第 2 个水果，你可以免费获得第 3 个水果。</li>
+	<li>免费获得第 3 个水果。</li>
+</ul>
+
+<p>请注意，即使您可以免费获得第 2 个水果作为购买第 1 个水果的奖励，但您购买它是为了获得其奖励，这是更优化的。</p>
+</div>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">prices = [1,10,1,1]</span></p>
+
+<p><strong>输出：</strong><span class="example-io">2</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>用&nbsp;<code>prices[0] = 1</code> 个金币购买第 1 个水果，你可以免费获得第 2 个水果。</li>
+	<li>免费获得第 2 个水果。</li>
+	<li>用&nbsp;<code>prices[2] = 1</code> 个金币购买第 3 个水果，你可以免费获得第 4 个水果。</li>
+	<li>免费获得第 4 个水果。</li>
+</ul>
+</div>
+
+<p><strong class="example">示例 3：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><span class="example-io">prices = [26,18,6,12,49,7,45,45]</span></p>
+
+<p><strong>输出：</strong><span class="example-io">39</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>用&nbsp;<code>prices[0] = 26</code> 个金币购买第 1 个水果，你可以免费获得第 2 个水果。</li>
+	<li>免费获得第 2 个水果。</li>
+	<li>用&nbsp;<code>prices[2] = 6</code> 个金币购买第 3 个水果，你可以免费获得第 4，5，6（接下来的三个）水果。</li>
+	<li>免费获得第 4 个水果。</li>
+	<li>免费获得第 5&nbsp;个水果。</li>
+	<li>用&nbsp;<code>prices[5] = 7</code>&nbsp;个金币购买第 6 个水果，你可以免费获得第 7 和 第 8 个水果。</li>
+	<li>免费获得第 7&nbsp;个水果。</li>
+	<li>免费获得第 8&nbsp;个水果。</li>
+</ul>
+
+<p>请注意，即使您可以免费获得第 6 个水果作为购买第 3 个水果的奖励，但您购买它是为了获得其奖励，这是更优化的。</p>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= prices.length &lt;= 1000</code></li>
+	<li><code>1 &lt;= prices[i] &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：动态规划"><a href="#解题方法：动态规划" class="headerlink" title="解题方法：动态规划"></a>解题方法：动态规划</h2><p>创建<code>buy</code>数组和<code>notBuy</code>数组，其中：</p>
+<ol>
+<li><code>buy[i]</code>代表<strong>购买</strong>下标为<code>i</code>的水果话，获得<code>[0, i]</code>的水果所需的最小花费</li>
+<li><code>notBuy[i]</code>代表<strong>不购买</strong>下标为<code>i</code>的水果话，获得<code>[0, i]</code>的水果所需的最小花费</li>
+</ol>
+<p>因此很容易想到状态转移方程：</p>
+<ol>
+<li>购买下标为<code>i</code>的水果的话，可以在购买和不购买<code>i - 1</code>这两种方案中，选择最优的那个：$buy[i] &#x3D; \min(buy[i - 1], notBuy[i - 1]) + prices[i]$</li>
+<li>不购买下标为<code>i</code>的水果的话，可以在购买了下标为$[ \lfloor\frac{i}2\rfloor, i)$的水果的基础上，免费获得下标为<code>i</code>的水果：$notBuy[i]&#x3D;\min\limits_{j&#x3D;\lfloor\frac{i}2\rfloor}^{i-1}{buy[j]}$</li>
+</ol>
+<p>最终，<code>buy[n - 1]</code>和<code>notBuy[n - 1]</code>中最小的那个即为所求。</p>
+<h2 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h2><p><strong>初始值怎么确定？</strong></p>
+<blockquote>
+<p>初始值<code>buy[0] = notBuy[0] = prices[0]</code>，因为第一个水果无法通过购买其他水果获赠得到，所以第一个水果必须购买。</p>
+</blockquote>
+<p><strong>为什么$buy[i] &#x3D; \min(buy[i - 1], notBuy[i - 1]) + prices[i]$，而不是$buy[i] &#x3D; notBuy[i - 1] + prices[i]$？</strong></p>
+<blockquote>
+<p>读者问题的核心在于是否有必要使用<code>min</code>操作判断<code>buy[i - 1]</code>和<code>notBuy[i - 1]</code>二者中的最小值。</p>
+<p>直觉告诉我们，似乎不买<code>i - 1</code>会比买<code>i - 1</code>省钱，似乎<code>notBuy[i - 1]</code>一定会小于<code>buy[i - 1]</code>。</p>
+<p>其实不然，因为我们要获得所有的水果，所以不买水果<code>3</code>的话，就一定要买水果<code>2</code>从而获赠水果<code>3</code>。但是水果<code>2</code>可能十分贵，不如购买水果<code>1</code>和<code>3</code>而令水果<code>2</code>作为赠品。</p>
+</blockquote>
+<h2 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h2><ul>
+<li>时间复杂度$O(n^2)$，其中$n&#x3D;len(prices)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Author: LetMeFly</span></span><br><span class="line"><span class="comment"> * @Date: 2025-01-24 13:02:37</span></span><br><span class="line"><span class="comment"> * @LastEditors: LetMeFly.xyz</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2025-01-24 14:05:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minimumCoins</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">buy</span><span class="params">(prices.size())</span>, <span class="title">notBuy</span><span class="params">(prices.size())</span></span>;</span><br><span class="line">        buy[<span class="number">0</span>] = notBuy[<span class="number">0</span>] = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            buy[i] = <span class="built_in">min</span>(notBuy[i - <span class="number">1</span>], buy[i - <span class="number">1</span>]) + prices[i];  <span class="comment">// 不买3的话必须买2，因此buy[2]不一定大于notBuy[2]</span></span><br><span class="line">            notBuy[i] = <span class="number">1000000000</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i / <span class="number">2</span>; j &lt; i; j++) &#123;</span><br><span class="line">                notBuy[i] = <span class="built_in">min</span>(notBuy[i], buy[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">min</span>(buy.<span class="built_in">back</span>(), notBuy.<span class="built_in">back</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/01/24/LeetCode%202944.%E8%B4%AD%E4%B9%B0%E6%B0%B4%E6%9E%9C%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E9%87%91%E5%B8%81%E6%95%B0/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/145340613">https://letmefly.blog.csdn.net/article/details/145340613</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2025/01/20/LeetCode%202239.%E6%89%BE%E5%88%B0%E6%9C%80%E6%8E%A5%E8%BF%910%E7%9A%84%E6%95%B0%E5%AD%97/">2239.找到最接近 0 的数字：遍历 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912944-%E8%B4%AD%E4%B9%B0%E6%B0%B4%E6%9E%9C%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E9%87%91%E5%B8%81%E6%95%B0%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%88O-n-2-%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E9%9D%9E%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2944.购买水果需要的最少金币数：动态规划（O(n^2)复杂度，非最优算法）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94"><span class="toc-number">1.2.</span> <span class="toc-text">疑难解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">时空复杂度分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
