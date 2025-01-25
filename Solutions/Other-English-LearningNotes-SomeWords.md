@@ -958,6 +958,10 @@ tags: [其他, 知识, 英语, Notes]
 |wagon|n. (铁路)货车车厢，四轮在中马车(/牛车)<br/>v. 用 运货马车/货车/手推车 运送【较少用作动词】|
 |||
 |bazaar|n. 集市，义卖会|
+|||
+|pronoun|n. 代词(代替名词或名词词组的单词)|
+|straighten|v. (使)变直/变正，挺直身体|
+|first-rate|adj. 一流的，最佳的|
 
 <p class="wordCounts">单词收录总数</p>
 
