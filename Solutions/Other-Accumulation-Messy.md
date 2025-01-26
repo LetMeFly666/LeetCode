@@ -1717,6 +1717,15 @@ reliability analysis）。</p>
 + Google’s PaLM 2 (text-bison-001, [Anil et al. 2023](https://doi.org/10.48550/arXiv.2305.10403))
 + Meta’s Llama 2 (Llama-2-13b-chat-hf, [Touvron et al. 2023](https://doi.org/10.48550/arXiv.2307.09288))
 
+## GoLang
+
+### Go的值类型和引用类型
+
+Go中`a := b`，若`b`是值类型则会发生值拷贝，修改`a`不会修改`b`；但若`b`是引用类型，则赋值操作会传递引用，修改`a`也会导致`b`同步变化。
+
++ 常见值类型：基本类型（int、string、...）、数组、结构体
++ 常见引用类型：切片、映射、通道、函数、指针
+
 # End
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>

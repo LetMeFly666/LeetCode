@@ -962,6 +962,9 @@ tags: [其他, 知识, 英语, Notes]
 |pronoun|n. 代词(代替名词或名词词组的单词)|
 |straighten|v. (使)变直/变正，挺直身体|
 |first-rate|adj. 一流的，最佳的|
+|||
+|immature|adj. 不够老练的，未长成的，发育未全的|
+|fling|v. 猛投，猛掷，迅猛移动，愤怒地说<br/>n. 一时的快乐<details><summary>过去分词</summary>flung</details>|
 
 <p class="wordCounts">单词收录总数</p>
 
