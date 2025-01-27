@@ -943,7 +943,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |eel|n. 鳗鱼，鳗鲡，鳗鱼肉|
 |leeway|n. 自由活动的空间|
-|pertinence|n. 相关性|
+|<font color="#28bea0" title="二次复习">pertinence</font>|n. 相关性|
 |||
 |tumult|n. 骚动，骚乱，心烦意乱，混乱|
 |||
