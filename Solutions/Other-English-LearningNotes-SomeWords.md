@@ -965,6 +965,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |immature|adj. 不够老练的，未长成的，发育未全的|
 |fling|v. 猛投，猛掷，迅猛移动，愤怒地说<br/>n. 一时的快乐<details><summary>过去分词</summary>flung</details>|
+|||
+|plaster|n. 灰泥，灰浆，创可贴<br/>v. 抹灰泥，粉刷，粘贴，贴满|
+|counter-offer|n. 还价，还盘|
 
 <p class="wordCounts">单词收录总数</p>
 
