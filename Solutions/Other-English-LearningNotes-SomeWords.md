@@ -968,6 +968,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |plaster|n. 灰泥，灰浆，创可贴<br/>v. 抹灰泥，粉刷，粘贴，贴满|
 |counter-offer|n. 还价，还盘|
+|||
+|motionless|adj. 静止不动(的)，呆若木鸡(的)|
+|crane|v. 伸长脖子以看更清，探头看，起吊<br/>n. 鹤，起重机，吊车，类似起重机的装置|
 
 <p class="wordCounts">单词收录总数</p>
 

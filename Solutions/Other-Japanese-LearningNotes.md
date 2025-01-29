@@ -1187,6 +1187,13 @@ xx型
 |こんなものがあります。<br/>有这样的东西。|
 |犬や猫は魚が大好きです。<br/>狗和猫最喜欢鱼。|
 |動物園では、サルやキリンを見ました。<br/>在动物园看了猴子和长颈鹿。|
+|風の薬はどこで買いますか？<br/>在哪里买感冒药|
+|この山にサルが本当にいますか？教えてください。<br/>这个山里真的有猴子吗？请告诉我。|
+|<br/>|
+|<br/>|
+|<br/>|
+|<br/>|
+|<br/>|
 |<br/>|
 
 [单词添加时间](https://github.com/LetMeFly666/LeetCode/blame/master/Solutions/Other-Japanese-LearningNotes.md)
