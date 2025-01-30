@@ -1,10 +1,10 @@
 ---
-title: 350.两个数组的交集 II
+title: 350.两个数组的交集 II：哈希表/双指针
 date: 2022-10-02 09:58:00
-tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, 双指针, 二分查找, 排序]
+tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, map, set, 双指针, 二分查找, 排序]
 ---
 
-# 【LetMeFly】350.两个数组的交集 II：哈希/双指针
+# 【LetMeFly】350.两个数组的交集 II：哈希表/双指针
 
 力扣题目链接：[https://leetcode.cn/problems/intersection-of-two-arrays-ii/](https://leetcode.cn/problems/intersection-of-two-arrays-ii/)
 
@@ -46,7 +46,7 @@ tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, 双指针, 二分查
 
 
     
-## 方法一：哈希
+## 方法一：哈希表
 
 类似于[LeetCode 349. 两个数组的交集](https://blog.letmefly.xyz/2022/10/02/LeetCode%200349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/)，这道题同样可以使用哈希表来解决。
 
@@ -61,9 +61,15 @@ tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, 双指针, 二分查
 
 ### AC代码
 
-#### C++
+#### C++（使用map）
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2022-10-02 09:04:56
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2022-10-02 09:07:45
+ */
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
@@ -81,6 +87,114 @@ public:
         return ans;
     }
 };
+```
+
+#### C++（使用set）
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-01-30 08:10:44
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-01-30 08:17:11
+ */
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        unordered_multiset<int> se(nums1.begin(), nums1.end());
+        vector<int> ans;
+        for (int t : nums2) {
+            unordered_multiset<int>::iterator it = se.find(t);
+            if (it != se.end()) {
+                ans.push_back(t);
+                se.erase(it);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-01-30 08:18:20
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-01-30 08:20:54
+'''
+from typing import List
+from collections import Counter
+
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        cnt = Counter(nums1)
+        ans = []
+        for t in nums2:
+            if cnt[t]:
+                ans.append(t)
+                cnt[t] -= 1
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-01-30 08:21:39
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-01-30 08:25:09
+ */
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> ma = new HashMap<>();
+        for (int t : nums1) {
+            ma.merge(t, 1, Integer::sum);
+        }
+        List<Integer> temp = new ArrayList<>();
+        for (int t : nums2) {
+            int c = ma.getOrDefault(t, 0);
+            if (c > 0) {
+                temp.add(t);
+                ma.put(t, c - 1);
+            }
+        }
+        return temp.stream().mapToInt(i -> i).toArray();
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-01-30 08:26:09
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-01-30 08:27:29
+ */
+package main
+
+func intersect(nums1 []int, nums2 []int) (ans []int) {
+    ma := map[int]int{}
+    for _, t := range nums1 {
+        ma[t]++
+    }
+    for _, t := range nums2 {
+        if ma[t] > 0 {
+            ans = append(ans, t)
+            ma[t]--
+        }
+    }
+    return
+}
 ```
 
 ## 方法二：双指针

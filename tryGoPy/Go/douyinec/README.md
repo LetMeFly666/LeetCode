@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-01-17 11:32:22
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-21 22:12:57
+ * @LastEditTime: 2025-01-29 13:06:32
 -->
 俺的开发小日志
 
@@ -33,6 +33,8 @@ TODO: 给CloudWeGo提PR，不sleep 1 秒。
 可行吗？试试吧。像个办法看进程启动了还是异常退出了。
 
 不行就不PR了。
+
+TODO: https://www.cloudwego.io/zh/docs/kitex/getting-started/tutorial/#%E6%8B%89%E5%8F%96%E4%BE%9D%E8%B5%96  的上面的代码段，build.sh后面有一个tab，导致渲染出来的注释不对齐
 
 ## 自定义RPC函数
 
