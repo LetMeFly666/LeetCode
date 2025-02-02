@@ -1726,6 +1726,34 @@ Go中`a := b`，若`b`是值类型则会发生值拷贝，修改`a`不会修改`
 + 常见值类型：基本类型（int、string、...）、数组、结构体
 + 常见引用类型：切片、映射、通道、函数、指针
 
+## sth. about 漯河日报（特指网站） - 发现By [我](https://letmefly.xyz/)和[shy](https://web.letmefly.xyz/He0/shykeke/)
+
+由一本书引发了漯河日报的[一篇文章](http://rb.lhrb.com.cn/html/2018-06/28/content_25454.htm)，然后开始了一点点对于日报官网的探究。
+
+[`2018年12月21日`](http://rb.lhrb.com.cn/html/2018-12/21/node_2.htm)及其之前，页脚备案信息“都”是：
+
+```
+鄂ICP备05006816号
+Copyright@1984-2006 China water transport. All Rights Reserved.
+中国水运报刊社 版权所有 建议分辨率1024*768 IE6.0下浏览
+```
+
+[`2018年12月24日`](http://rb.lhrb.com.cn/html/2018-12/24/node_2.htm)及其之后（截至[`2018年12月31日13:55:55`](http://rb.lhrb.com.cn/html/2025-01/27/node_2.htm)），页脚备案信息变成了：
+
+```
+豫ICP备05015908号
+互联网新闻信息服务许可证编号41120181101
+Copyright© 2002-2018 漯河日报社版权所有 未经书面特别授权，请勿转载或建立镜像 建议分辨率1024*768 IE6.0下浏览
+```
+
+猜测可能是18年年底之前漯河日报没有“互联网新闻信息服务许可”，所以先用了中国水运报刊社的资格。
+
+### 小槽点
+
+1. 只支持`HTTP`而不支持`HTTPS`不是很安全。
+2. 下方页脚未及时更新，估计是之前全部生成的静态页面而不是动态获取的。这样的话文件在服务器上有很大的“相同内容的冗余”，但还好。
+3. 日报地址格式为`http://rb.lhrb.com.cn/html/YYYY-mm/dd/node_2.htm`，emm，不能简化一点么。并且将`node_2`修改为`node_1`后还能访问只是部分乱码了。
+
 # End
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
