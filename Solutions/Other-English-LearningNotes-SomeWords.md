@@ -978,6 +978,8 @@ tags: [其他, 知识, 英语, Notes]
 |marshal|v. 集结，收集，安排，控制人群<br/>n. 空军元帅，司仪，典礼官|
 |||
 |creamy|adj. 像奶油的，光滑细腻的，含乳脂的，奶油色的|
+|||
+|quench|v. 解渴，止渴，扑灭，熄灭|
 
 <p class="wordCounts">单词收录总数</p>
 
