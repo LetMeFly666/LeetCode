@@ -980,6 +980,9 @@ tags: [其他, 知识, 英语, Notes]
 |creamy|adj. 像奶油的，光滑细腻的，含乳脂的，奶油色的|
 |||
 |quench|v. 解渴，止渴，扑灭，熄灭|
+|||
+|clumsy|ajd. 笨拙的，笨重的，不得体的|
+|labor-intensive|ajd. 劳动密集型的|
 
 <p class="wordCounts">单词收录总数</p>
 
