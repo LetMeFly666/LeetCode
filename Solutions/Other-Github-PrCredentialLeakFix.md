@@ -8,8 +8,16 @@ tags: [其他, Git, Github]
 
 ## 前言
 
+<span id="imgInline">
+<style>
+#imgInline img {
+    display: inline; /* 强制设置为内联显示 */
+}
+</style>
+
 和好朋友一起开发一个字节跳动青训营[抖音电商后端(now ![仓库是否公开图](https://api.letmefly.xyz/github/public/?user=LetMeFly666&repo=douyinec))](https://github.com/LetMeFly666/douyinec)的项目，某大佬不小心把本地一密码commit上去并提了PR。
 
+</span>
 
 PR一旦发出则无法被删除，且其包含的commit也能被所有能看到这个仓库的人看到。虽然是本地一密码，泄露了也不是很严重，但最好还是隐藏一下这个信息。
 
@@ -59,6 +67,8 @@ git push --force
 gh pr close 30 -c "历史已重写"
 git push origin --delete <分支名>
 ```
+
+另：若Github网页版有“Restore branch”按钮，在网页上先恢复分支再pull到本地也是可以的。
 
 ### 删除“密码泄露sha”的出现位置
 
