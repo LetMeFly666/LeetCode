@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】47.全排列 II：内置函数 &#x2F; 回溯（长篇小论）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;permutations-ii&#x2F; 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。  &nbsp;  示例 1：   输入：nums &#x3D; [1,1,2] 输出： [[1,1,2],  [1,2,1],  [2,1,1]">
+<meta property="og:type" content="website">
+<meta property="og:title" content="47.全排列 II：内置函数 &#x2F; 回溯（长篇小论）">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200047.%E5%85%A8%E6%8E%92%E5%88%97II.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】47.全排列 II：内置函数 &#x2F; 回溯（长篇小论）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;permutations-ii&#x2F; 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。  &nbsp;  示例 1：   输入：nums &#x3D; [1,1,2] 输出： [[1,1,2],  [1,2,1],  [2,1,1]">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-06T06:28:35.000Z">
+<meta property="article:modified_time" content="2025-02-06T06:54:43.598Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="回溯">
+<meta property="article:tag" content="递归">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="全排列">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>47.全排列 II：内置函数 / 回溯（长篇小论） - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="47.全排列 II：内置函数 / 回溯（长篇小论）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】47-全排列-II：内置函数-回溯（长篇小论）"><a href="#【LetMeFly】47-全排列-II：内置函数-回溯（长篇小论）" class="headerlink" title="【LetMeFly】47.全排列 II：内置函数 &#x2F; 回溯（长篇小论）"></a>【LetMeFly】47.全排列 II：内置函数 &#x2F; 回溯（长篇小论）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations-ii/">https://leetcode.cn/problems/permutations-ii/</a></p>
+<p>给定一个可包含重复数字的序列 <code>nums</code> ，<em><strong>按任意顺序</strong></em> 返回所有不重复的全排列。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [1,1,2]
+<strong>输出：</strong>
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [1,2,3]
+<strong>输出：</strong>[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 8</code></li>
+	<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法一：使用内置函数"><a href="#解题方法一：使用内置函数" class="headerlink" title="解题方法一：使用内置函数"></a>解题方法一：使用内置函数</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>C++和Python都有全排列的内置函数，C++直接不生成重复的，Python去个重即可。</p>
+<p>直接使用库函数不香么？</p>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(n!)$，其中$n&#x3D;len(nums)$</li>
+<li>空间复杂度：C++$O(\log n)$，Python$O(n!)$</li>
+</ul>
+<p>其中C++单次调用<code>next_permutation</code>时间复杂度最坏$O(n)$，$n$个数的全排列最多$n!$种，$O(n\times n!) &#x3D; O((n + 1)\times n!) &#x3D; O((n + 1)!) &#x3D; O(n!)$。</p>
+<p>C++单次调用<code>next_permutation</code>的空间复杂度为$O(1)$，返回值不计入力扣空间复杂度。<a target="_blank" rel="noopener" href="https://cplusplus.com/reference/algorithm/next_permutation/">1</a>, <a target="_blank" rel="noopener" href="https://cpp-lang.net/docs/std/algo/ordinary/next_permutation/">2</a></p>
+<p>Python需要set等额外的中间变量来存放所有结果。</p>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-06 13:52:38</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-06 13:53:41</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">permuteUnique</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">do</span> &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(nums);<br>        &#125; <span class="hljs-keyword">while</span> (<span class="hljs-built_in">next_permutation</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>()));<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-02-06 13:55:07</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-02-06 13:56:30</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> permutations<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">permuteUnique</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">list</span>(<span class="hljs-built_in">set</span>(permutations(nums)))<br></code></pre></td></tr></table></figure>
+
+<h2 id="解题方法二：回溯"><a href="#解题方法二：回溯" class="headerlink" title="解题方法二：回溯"></a>解题方法二：回溯</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>首先将<code>nums</code>数组排个序，使用一个数组记录哪个元素被选过，然后开始深搜回溯。</p>
+<p>首先如果已选元素个数达到了$n$个，则说明生成了一种全排列方案，加入答案数组并返回。</p>
+<p>否则开始遍历<code>nums</code>数组：</p>
+<ul>
+<li>如果当前元素被选过，或者当前元素和上一个元素相同且上一个元素没被选，则<code>continue</code>。（防止重复选择或重复方案）</li>
+<li>否则，选择当前元素并标记，递归，递归结束后移除当前元素并取消标记</li>
+</ul>
+<h3 id="时空复杂度分析-1"><a href="#时空复杂度分析-1" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(n!)$，其中$n&#x3D;len(nums)$</li>
+<li>空间复杂度：C++$O(n)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-06 13:57:12</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-06 14:03:17</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _WIN32</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;_[1,2]toVector.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> n, vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; ans, vector&lt;<span class="hljs-type">int</span>&gt;&amp; now, vector&lt;<span class="hljs-type">bool</span>&gt;&amp; visited, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n == nums.<span class="hljs-built_in">size</span>()) &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(now);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (visited[i] || i &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>] &amp;&amp; !visited[i - <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            now.<span class="hljs-built_in">push_back</span>(nums[i]);<br>            visited[i] = <span class="hljs-literal">true</span>;<br>            <span class="hljs-built_in">dfs</span>(n + <span class="hljs-number">1</span>, ans, now, visited, nums);<br>            visited[i] = <span class="hljs-literal">false</span>;<br>            now.<span class="hljs-built_in">pop_back</span>();<br>        &#125;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">permuteUnique</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; ans;<br>        vector&lt;<span class="hljs-type">int</span>&gt; now;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">bool</span>&gt; <span class="hljs-title">visited</span><span class="hljs-params">(nums.size())</span></span>;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>, ans, now, visited, nums);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-02-06 13:57:31</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-02-06 14:07:13</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">if</span> n == <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.nums):<br>            <span class="hljs-variable language_">self</span>.ans.append([i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.now])<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.nums)):<br>            <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.visited[i] <span class="hljs-keyword">or</span> i <span class="hljs-keyword">and</span> <span class="hljs-variable language_">self</span>.nums[i] == <span class="hljs-variable language_">self</span>.nums[i - <span class="hljs-number">1</span>] <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.visited[i - <span class="hljs-number">1</span>]:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-variable language_">self</span>.now.append(<span class="hljs-variable language_">self</span>.nums[i])<br>            <span class="hljs-variable language_">self</span>.visited[i] = <span class="hljs-literal">True</span><br>            <span class="hljs-variable language_">self</span>.dfs(n + <span class="hljs-number">1</span>)<br>            <span class="hljs-variable language_">self</span>.visited[i] = <span class="hljs-literal">False</span><br>            <span class="hljs-variable language_">self</span>.now.pop()<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">permuteUnique</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]:<br>        <span class="hljs-variable language_">self</span>.nums = <span class="hljs-built_in">sorted</span>(nums)<br>        <span class="hljs-variable language_">self</span>.ans: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]] = []<br>        <span class="hljs-variable language_">self</span>.now: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>] = []<br>        <span class="hljs-variable language_">self</span>.visited = [<span class="hljs-literal">False</span>] * <span class="hljs-built_in">len</span>(nums)<br>        <span class="hljs-variable language_">self</span>.dfs(<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.ans<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-06 13:57:34</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-06 14:13:00</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> java.util.Arrays;<br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> List&lt;List&lt;Integer&gt;&gt; ans = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">private</span> List&lt;Integer&gt; now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] nums;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span>[] visited;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-keyword">if</span> (n == nums.length) &#123;<br>            ans.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;(now));<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (visited[i] || i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>] &amp;&amp; !visited[i - <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            now.add(nums[i]);<br>            visited[i] = <span class="hljs-literal">true</span>;<br>            dfs(n + <span class="hljs-number">1</span>);<br>            visited[i] = <span class="hljs-literal">false</span>;<br>            now.remove(now.size() - <span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="hljs-title function_">permuteUnique</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        Arrays.sort(nums);<br>        <span class="hljs-built_in">this</span>.nums = nums;<br>        visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[nums.length];<br>        dfs(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-06 13:57:39</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-06 14:22:26</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;sort&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dfs_P2</span><span class="hljs-params">(n <span class="hljs-type">int</span>, ans *[][]<span class="hljs-type">int</span>, now []<span class="hljs-type">int</span>, visited []<span class="hljs-type">bool</span>, nums []<span class="hljs-type">int</span>)</span></span> &#123;<br>    <span class="hljs-keyword">if</span> n == <span class="hljs-built_in">len</span>(nums) &#123;<br>        *ans = <span class="hljs-built_in">append</span>(*ans, <span class="hljs-built_in">append</span>(<span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>), now...))<br>        <span class="hljs-keyword">return</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> nums &#123;<br>        <span class="hljs-keyword">if</span> visited[i] || i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>] &amp;&amp; !visited[i - <span class="hljs-number">1</span>] &#123;<br>            <span class="hljs-keyword">continue</span><br>        &#125;<br>        now = <span class="hljs-built_in">append</span>(now, nums[i])<br>        visited[i] = <span class="hljs-literal">true</span><br>        dfs_P2(n + <span class="hljs-number">1</span>, ans, now, visited, nums)<br>        visited[i] = <span class="hljs-literal">false</span><br>        now = now[:<span class="hljs-built_in">len</span>(now) - <span class="hljs-number">1</span>]<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">permuteUnique</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> (ans [][]<span class="hljs-type">int</span>) &#123;<br>    sort.Ints(nums)<br>    <span class="hljs-keyword">var</span> now []<span class="hljs-type">int</span><br>    visited := <span class="hljs-built_in">make</span>([]<span class="hljs-type">bool</span>, <span class="hljs-built_in">len</span>(nums))<br>    dfs_P2(<span class="hljs-number">0</span>, &amp;ans, now, visited, nums)<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>同步发文于CSDN和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/02/06/LeetCode%200047.%E5%85%A8%E6%8E%92%E5%88%97II/">原文链接</a>哦~</p>
+<p>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/145473834">https://letmefly.blog.csdn.net/article/details/145473834</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
