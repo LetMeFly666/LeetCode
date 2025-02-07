@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-01-17 11:32:22
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-01-29 13:06:32
+ * @LastEditTime: 2025-02-07 11:40:33
 -->
 俺的开发小日志
 
@@ -28,13 +28,13 @@ git config --local alias.pushLet "push Let main:master"
 
 后续想要push到远端的时候直接`git pushLet`就好。
 
-TODO: 给CloudWeGo提PR，不sleep 1 秒。
+TODOED: 给CloudWeGo提PR，不sleep 1 秒。
 
 可行吗？试试吧。像个办法看进程启动了还是异常退出了。
 
 不行就不PR了。
 
-TODO: https://www.cloudwego.io/zh/docs/kitex/getting-started/tutorial/#%E6%8B%89%E5%8F%96%E4%BE%9D%E8%B5%96  的上面的代码段，build.sh后面有一个tab，导致渲染出来的注释不对齐
+TODOED: https://www.cloudwego.io/zh/docs/kitex/getting-started/tutorial/#%E6%8B%89%E5%8F%96%E4%BE%9D%E8%B5%96  的上面的代码段，build.sh后面有一个tab，导致渲染出来的注释不对齐
 
 ## 自定义RPC函数
 

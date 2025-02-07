@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-02-06 13:28:57
+LastEditTime: 2025-02-07 20:46:46
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -99,6 +99,8 @@ def genSolutionPart(num):
 solution = problem + genSolutionPart(num) +"""
 > 同步发文于CSDN和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接]({0})哦~
 >
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+>
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/--------------------------](https://letmefly.blog.csdn.net/article/details/--------------------------)
 """.format(solutionURLll)
 
@@ -116,7 +118,7 @@ with open(solutionName, "x", encoding="utf-8") as f:
 
 # 认领issue
 os.system(f'git checkout -b {num}')
-issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of {num}" -b "By newSolution.py using GH"').read()
+issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of {num}" -b "By newSolution.py using GH" -l "题解" -a "@me"').read()
 print(issueCreateResult)
 issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 
@@ -200,7 +202,7 @@ with open("README.md", "w", encoding="utf-8") as f:
 os.system('git add .')
 os.system(f'git commit -s -m "update: 添加问题“{num}.{title}”的代码和题解"')
 os.system(f'git push --set-upstream origin {num}')
-cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By newSolution.py using GH | close: #{issueNum}" -l "题解"'
+cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By newSolution.py using GH | close: #{issueNum}" -l "题解" -a "@me"'
 prResult = os.popen(cmd).read()
 print(prResult)
 prNumber = int(prResult.split('/')[-1])

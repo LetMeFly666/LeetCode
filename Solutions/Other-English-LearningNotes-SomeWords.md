@@ -983,6 +983,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |clumsy|ajd. 笨拙的，笨重的，不得体的|
 |labor-intensive|ajd. 劳动密集型的|
+|||
+|aural|adj. 听觉的，听的|
 
 <p class="wordCounts">单词收录总数</p>
 
