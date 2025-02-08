@@ -985,6 +985,11 @@ tags: [其他, 知识, 英语, Notes]
 |labor-intensive|ajd. 劳动密集型的|
 |||
 |aural|adj. 听觉的，听的|
+|||
+|intangible|adj. 难以形容(或理解)的，不易度量的<br/>n. 不可捉摸的东西|
+|sculptor|n. 雕刻家，雕塑家|
+|ashore|adv. 在岸上，上岸|
+|tramp|n. 流浪汉，沉重的脚步声，长途跋涉<br/>v. 脚步沉重地行走，跋涉，踏|
 
 <p class="wordCounts">单词收录总数</p>
 
