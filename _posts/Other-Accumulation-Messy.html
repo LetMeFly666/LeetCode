@@ -26,7 +26,7 @@
 <meta property="og:description" content="日积月累 - 一些小知识 - 杂乱 - 啥都有这里准备放一些日积月累的小知识，但是相比于日积月累 - 一些小知识而言，本文更加随意（杂乱）。 Github 在issue中引用代码的代码段方法：在Github的代码页，点击其中一行的数字，按住shift，再点击零一行的数字，会发现这几行有了背景色。点一下上面那行左边的“三个点的按钮”，点击Reference in new issue，即可在新的iss">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-19T12:13:39.000Z">
-<meta property="article:modified_time" content="2025-02-08T02:20:02.908Z">
+<meta property="article:modified_time" content="2025-02-09T01:32:35.655Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="小杂">
@@ -1881,6 +1881,31 @@ reliability analysis）。</p>
 <li>常见值类型：基本类型（int、string、…）、数组、结构体</li>
 <li>常见引用类型：切片、映射、通道、函数、指针</li>
 </ul>
+<h3 id="Kitex使用日记"><a href="#Kitex使用日记" class="headerlink" title="Kitex使用日记"></a>Kitex使用日记</h3><p>From: <a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode/blob/b51c7e73c9798b0fd397ab2e131ba33868e47ad3/tryGoPy/Go/douyinec/README.md">Github@LetMeFly666&#x2F;LeetCode&#x2F;tryGoPy&#x2F;Go&#x2F;douyinec&#x2F;README.md</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> git@cloudwego/kitex-examples.git<br><span class="hljs-built_in">cd</span> kitex-example<br>go run .  <span class="hljs-comment"># 这里我本来使用的Go 1.19.5不支持go.mod里的toolchain，所以升级为了当前最新版go1.23.5</span><br><span class="hljs-comment"># 令起终端</span><br>go run ./client<br></code></pre></td></tr></table></figure>
+
+<h4 id="开了个私有仓库来记录kitex学习过程中的修改"><a href="#开了个私有仓库来记录kitex学习过程中的修改" class="headerlink" title="开了个私有仓库来记录kitex学习过程中的修改"></a>开了个私有仓库来记录kitex学习过程中的修改</h4><p><a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/kitex-examples/">Github@LetMeFly666&#x2F;kitex-examples</a></p>
+<p>起了个别名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --<span class="hljs-built_in">local</span> alias.pushLet <span class="hljs-string">&quot;push Let main:master&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>后续想要push到远端的时候直接<code>git pushLet</code>就好。</p>
+<p>TODOED: 给CloudWeGo提PR，不sleep 1 秒。</p>
+<p>可行吗？试试吧。像个办法看进程启动了还是异常退出了。</p>
+<p>不行就不PR了。</p>
+<p>TODOED: <a target="_blank" rel="noopener" href="https://www.cloudwego.io/zh/docs/kitex/getting-started/tutorial/#%E6%8B%89%E5%8F%96%E4%BE%9D%E8%B5%96">https://www.cloudwego.io/zh/docs/kitex/getting-started/tutorial/#%E6%8B%89%E5%8F%96%E4%BE%9D%E8%B5%96</a>  的上面的代码段，build.sh后面有一个tab，导致渲染出来的注释不对齐</p>
+<h4 id="自定义RPC函数"><a href="#自定义RPC函数" class="headerlink" title="自定义RPC函数"></a>自定义RPC函数</h4><ol>
+<li><p>修改<code>.thrift</code>文件</p>
+</li>
+<li><p>使用<code>kitex</code>生成新代码文件</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kitex -module <span class="hljs-string">&quot;github.com/cloudwego/kitex-examples&quot;</span> -service a.b.c hello.thrift<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>更新<code>go</code>文件</p>
+<ol>
+<li>更新<code>./handler.go</code>，实现自定义的RPC函数</li>
+<li>更新<code>./client/main.go</code>，调用这个远程函数</li>
+</ol>
+</li>
+</ol>
 <h2 id="sth-about-漯河日报（特指网站）-发现By-我和shy"><a href="#sth-about-漯河日报（特指网站）-发现By-我和shy" class="headerlink" title="sth. about 漯河日报（特指网站） - 发现By 我和shy"></a>sth. about 漯河日报（特指网站） - 发现By <a target="_blank" rel="noopener" href="https://letmefly.xyz/">我</a>和<a target="_blank" rel="noopener" href="https://web.letmefly.xyz/He0/shykeke/">shy</a></h2><p>由一本书引发了漯河日报的<a target="_blank" rel="noopener" href="http://rb.lhrb.com.cn/html/2018-06/28/content_25454.htm">一篇文章</a>，然后开始了一点点对于日报官网的探究。</p>
 <p><a target="_blank" rel="noopener" href="http://rb.lhrb.com.cn/html/2018-12/21/node_2.htm"><code>2018年12月21日</code></a>及其之前，页脚备案信息“都”是：</p>
 <figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">鄂ICP备<span class="hljs-number">05006816</span>号<br>Copyright@<span class="hljs-number">1984-2006</span> China water transport. All Rights Reserved.<br>中国水运报刊社 版权所有 建议分辨率<span class="hljs-number">1024*768</span> IE6.<span class="hljs-number">0</span>下浏览<br></code></pre></td></tr></table></figure>
