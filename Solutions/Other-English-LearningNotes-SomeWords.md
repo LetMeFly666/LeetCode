@@ -990,6 +990,8 @@ tags: [其他, 知识, 英语, Notes]
 |sculptor|n. 雕刻家，雕塑家|
 |ashore|adv. 在岸上，上岸|
 |tramp|n. 流浪汉，沉重的脚步声，长途跋涉<br/>v. 脚步沉重地行走，跋涉，踏|
+|||
+|fathom| n. 英寻(测量水深单位，合6英尺或1.8米)<br/>v. 理解，彻底了解，弄清真相|
 
 <p class="wordCounts">单词收录总数</p>
 

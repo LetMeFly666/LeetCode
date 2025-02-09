@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-02-07 20:46:46
+LastEditTime: 2025-02-09 09:27:12
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -31,7 +31,9 @@ title = ""
 for i in range(2, len(argv)):
     title += argv[i]
 
-solutionURLll = "https://blog.letmefly.xyz/{0}/LeetCode%20{1:04d}.{2}/".format(time.strftime("%Y/%m/%d", time.localtime()), num, quote(title, "utf-8"))
+timeURL = time.strftime("%Y/%m/%d", time.localtime())
+solutionURLll = "https://blog.letmefly.xyz/{0}/LeetCode%20{1:04d}.{2}/".format(timeURL, num, quote(title, "utf-8"))
+solutionURLll_humanable = "https://blog.letmefly.xyz/{0}/LeetCode {1:04d}.{2}/".format(timeURL, num, title)
 print(solutionURLll)
 
 with open(nameProblem, "r", encoding="utf-8") as f:
@@ -97,12 +99,12 @@ def genSolutionPart(num):
 
 
 solution = problem + genSolutionPart(num) +"""
-> 同步发文于CSDN和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接]({0})哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接]({0})哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
 >
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/--------------------------](https://letmefly.blog.csdn.net/article/details/--------------------------)
-""".format(solutionURLll)
+> Tisfy：[{1}]({0})
+""".format(solutionURLll, solutionURLll_humanable)
 
 def refreshPublistTime(solution: str) -> str:
     splited = solution.split("\n")
@@ -132,7 +134,7 @@ with open(solutionName, "r", encoding="utf-8") as f:
     solution = f.read()
 
 solution = solution.replace("--------------------------", csdnid)
-solution = solution.replace("--------------------------", csdnid)
+# solution = solution.replace("--------------------------", csdnid)
 
 with open(solutionName, "w", encoding="utf-8") as f:
     f.write(solution)

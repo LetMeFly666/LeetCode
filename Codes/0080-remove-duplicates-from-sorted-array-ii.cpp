@@ -2,13 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2022-06-19 09:51:38
  * @LastEditors: LetMeFly
- * @LastEditTime: 2022-06-19 10:31:22
+ * @LastEditTime: 2025-02-09 08:53:04
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
-// TODO: 写题解
+// 写题解 - 2022年的题解计划于2025年完成了。
 
 #ifdef SecondTry  // 典型错误，数组的修改导致误认为前面已有两个相同的了
 class Solution {
