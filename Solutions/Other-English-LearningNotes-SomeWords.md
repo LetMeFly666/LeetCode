@@ -830,7 +830,7 @@ tags: [其他, 知识, 英语, Notes]
 |antonym|n. 反义词|
 |tare|n. 野豌豆，包装重量<br/>v. 称皮重<br/>tare weight: 皮重|
 |Portuguese|adj. 葡萄牙的<br/>n. 葡萄牙人，葡萄牙语|
-|<font color="#28bea0" title="二次复习">gratis</font>|adj. 免费的<br/>adv. 免费地，无偿的|
+|<font color="#28bea0" title="三次复习">gratis</font>|adj. 免费的<br/>adv. 免费地，无偿的|
 |limousine|n. 豪华轿车，大型高级轿车，(往返机场接送旅客的)中型客车|
 |||
 |versatile|adj. 多才多艺的，多方面的，多用途的|
@@ -992,6 +992,9 @@ tags: [其他, 知识, 英语, Notes]
 |tramp|n. 流浪汉，沉重的脚步声，长途跋涉<br/>v. 脚步沉重地行走，跋涉，踏|
 |||
 |fathom| n. 英寻(测量水深单位，合6英尺或1.8米)<br/>v. 理解，彻底了解，弄清真相|
+|||
+|bushel|n. 蒲式耳(英制容量单位，约35L)<br/>n. 大量，很多(引申含义，非正式文学，如a bushel of)|
+|grasshopper|n. 蝗虫，蚂蚱，蚱蜢|
 
 <p class="wordCounts">单词收录总数</p>
 

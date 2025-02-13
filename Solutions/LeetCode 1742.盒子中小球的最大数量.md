@@ -1,10 +1,10 @@
 ---
-title: 1742.盒子中小球的最大数量
+title: 1742.盒子中小球的最大数量：哈希表（附Python一行版）
 date: 2022-11-23 09:36:43
 tags: [题解, LeetCode, 简单, 哈希表, 哈希, 数学, 计数]
 ---
 
-# 【LetMeFly】1742.盒子中小球的最大数量
+# 【LetMeFly】1742.盒子中小球的最大数量：哈希表（附Python一行版）
 
 力扣题目链接：[https://leetcode.cn/problems/maximum-number-of-balls-in-a-box/](https://leetcode.cn/problems/maximum-number-of-balls-in-a-box/)
 
@@ -91,6 +91,12 @@ while (n) {
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2022-11-23 09:29:13
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2022-11-23 09:32:11
+ */
 class Solution {
 public:
     int countBalls(int lowLimit, int highLimit) {
@@ -113,11 +119,47 @@ public:
 };
 ```
 
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 16:19:00
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 16:20:31
+ */
+class Solution {
+private:
+    inline int get(int n) {
+        int ans = 0;
+        while (n) {
+            ans += n % 10;
+            n /= 10;
+        }
+        return ans;
+    }
+public:
+    int countBalls(int l, int h) {
+        int cnt[46] = {0};
+        for (; l <= h; l++) {
+            cnt[get(l)]++;
+        }
+        return *max_element(cnt, cnt + 46);
+    }
+};
+```
+
 #### Python
 
 极简Python版本
 
 ```python
+'''
+Author: LetMeFly
+Date: 2022-11-23 09:38:55
+LastEditors: LetMeFly
+LastEditTime: 2022-11-23 09:40:21
+'''
 class Solution:
     def countBalls(self, lowLimit: int, highLimit: int) -> int:
         return max(Counter(sum(map(int, str(i))) for i in range(lowLimit, highLimit + 1)).values())
@@ -127,6 +169,92 @@ class Solution:
 
 ```python
 from collections import Counter
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-02-13 16:25:12
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-02-13 16:25:13
+'''
+from collections import Counter
+
+class Solution:
+    def countBalls(self, l: int, r: int) -> int:
+        return max(Counter(sum(ord(c) - 48 for c in str(i)) for i in range(l, r + 1)).values())
+```
+
+似乎还没有1坤年前写的好。。。
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 16:22:18
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 16:27:51
+ */
+class Solution {
+    private int get(int n) {
+        int ans = 0;
+        while (n > 0) {
+            ans += n % 10;
+            n /= 10;
+        }
+        return ans;
+    }
+    public int countBalls(int l, int r) {
+        int[] cnt = new int[46];
+        int ans = 0;
+        for (; l <= r; l++) {
+            int thisCnt = get(l);
+            cnt[thisCnt]++;
+            ans = Math.max(ans, cnt[thisCnt]);
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 16:22:21
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 16:31:13
+ */
+package main
+
+func get_MNB1B(n int) (ans int) {
+    for n > 0 {
+        ans += n % 10
+        n /= 10
+    }
+    return
+}
+
+func min_MNB1B(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func countBalls(l int, h int) (ans int) {
+    cnt := make([]int, 46)
+    for ; l <= h; l++ {
+        thisCnt := get_MNB1B(l)
+        cnt[thisCnt]++
+        ans = max(ans, cnt[thisCnt])
+    }
+    return
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/23/LeetCode%201742.%E7%9B%92%E5%AD%90%E4%B8%AD%E5%B0%8F%E7%90%83%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E9%87%8F/)哦~

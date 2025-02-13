@@ -1,10 +1,10 @@
 ---
-title: 1760.袋子里最少数目的球
+title: 1760.袋子里最少数目的球：二分查找
 date: 2022-12-20 22:56:47
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
 ---
 
-# 【LetMeFly】1760.袋子里最少数目的球
+# 【LetMeFly】1760.袋子里最少数目的球：二分查找
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/](https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/)
 
@@ -88,9 +88,15 @@ tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
 
 ### AC代码
 
-#### C++
+#### C++(单函数版)
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2022-12-20 22:52:45
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2022-12-20 22:55:05
+ */
 class Solution {
 public:
     int minimumSize(vector<int>& nums, int maxOperations) {
@@ -109,6 +115,144 @@ public:
         return r;
     }
 };
+```
+
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 13:37:46
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 13:42:15
+ */
+class Solution {
+private:
+    bool check(vector<int>& v, int m, int n) {
+        for (int t : v) {
+            m -= (t - 1) / n;
+        }
+        return m >= 0;
+    }
+public:
+    int minimumSize(vector<int>& nums, int maxOperations) {
+        int l = 1, r = *max_element(nums.begin(), nums.end());
+        while (l < r) {
+            int m = (l + r) >> 1;
+            if (check(nums, maxOperations, m)) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return r;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-02-13 13:42:57
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-02-13 13:44:17
+'''
+from typing import List
+
+class Solution:
+    def check(self, op: int, m: int) -> bool:
+        for t in self.nums:
+            op -= (t - 1) // m
+        return op >= 0
+    
+    def minimumSize(self, nums: List[int], maxOperations: int) -> int:
+        self.nums = nums
+        l, r = 1, max(nums)
+        while l < r:
+            m = (l + r) >> 1
+            if self.check(maxOperations, m):
+                r = m
+            else:
+                l = m + 1
+        return r
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 13:43:06
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 13:48:29
+ */
+class Solution {
+    private int[] nums;
+
+    private boolean check(int op, int m) {
+        for (int t : nums) {
+            op -= (t - 1) / m;
+        }
+        return op >= 0;
+    }
+
+    private int max() {
+        int ans = nums[0];
+        for (int t : nums) {
+            ans = Math.max(ans, t);
+        }
+        return ans;
+    }
+    public int minimumSize(int[] nums, int maxOperations) {
+        this.nums = nums;
+        int l = 1, r = max();
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(maxOperations, mid)) {
+                r = mid;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return r;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-13 13:43:12
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-13 13:51:10
+ */
+package main
+
+import "slices"
+
+func check_MLBI1B(nums []int, op, m int) bool {
+    for _, t := range nums {
+        op -= (t - 1) / m
+    }
+    return op >= 0
+}
+
+func minimumSize(nums []int, maxOperations int) int {
+    l, r := 1, slices.Max(nums)
+    for l < r {
+        m := (l + r) >> 1
+        if check_MLBI1B(nums, maxOperations, m) {
+            r = m
+        } else {
+            l = m + 1
+        }
+    }
+    return r
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/20/LeetCode%201760.%E8%A2%8B%E5%AD%90%E9%87%8C%E6%9C%80%E5%B0%91%E6%95%B0%E7%9B%AE%E7%9A%84%E7%90%83/)哦~
