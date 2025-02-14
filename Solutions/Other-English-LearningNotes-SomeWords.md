@@ -995,6 +995,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |bushel|n. 蒲式耳(英制容量单位，约35L)<br/>n. 大量，很多(引申含义，非正式文学，如a bushel of)|
 |grasshopper|n. 蝗虫，蚂蚱，蚱蜢|
+|||
+|massacre|n. 屠杀，残杀，(运动/比赛の)惨败<br/>v. 屠杀，杀戮，使(运动/比赛中)惨败|
 
 <p class="wordCounts">单词收录总数</p>
 
