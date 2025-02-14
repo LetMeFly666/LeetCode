@@ -18,7 +18,7 @@ tags: [题解, LeetCode, 简单, 哈希表, 链表, 双指针, 快慢指针, 为
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png" /></p>
+<p><img alt="" src="https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png" /></p>
 
 <pre>
 <strong>输入：</strong>head = [3,2,0,-4], pos = 1

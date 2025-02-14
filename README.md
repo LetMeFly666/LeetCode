@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-02-06 11:16:47
+ * @LastEditTime: 2025-02-14 18:02:29
 -->
 # LetLeet Blog
 
@@ -882,6 +882,8 @@
 |使用GH（命令行）在本地提出Github上的issue、PR，合并PR|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133935823">CSDN博客</a>|
 |Github - 如何提交一个带有“verified”标识的commit|<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144796175">CSDN博客</a>|
 |Github - 记录一次对“不小心包含了密码的PR”的修复|<a href="https://blog.letmefly.xyz/2025/02/06/Other-Github-PrCredentialLeakFix/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145469338">CSDN博客</a>|
+|Github - 记录一次向字节跳动CloudWeGo文档贡献的commit|<a href="https://blog.letmefly.xyz/2025/02/14/Other-Github-Record1Contribution2BytedanceCloudwegoDocs/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/145639175)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/02/14/Other-Github-Record1Contribution2BytedanceCloudwegoDocs/)哦~
+">CSDN博客</a>|
 |HTML - 使用Python快速生成HTML的UI|<a href="https://blog.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
 |HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
 |如何将网站某页面全部修改为黑白色|<a href="https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
