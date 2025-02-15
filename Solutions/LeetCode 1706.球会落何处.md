@@ -25,7 +25,8 @@ tags: [题解, LeetCode, 中等, 数组, 矩阵, 模拟]
 
 <p><strong>示例 1：</strong></p>
 
-<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" style="width: 500px; height: 385px;" /></strong></p>
+<!-- <p><strong><img alt="" src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/img_convert/3a42336477eff34f6b5fd4d5c563a488.jpeg" style="width: 500px; height: 385px;" /></strong></p> -->
+<p><strong><img alt="" src="https://cors.letmefly.xyz/https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" style="width: 500px; height: 385px;" /></strong></p>
 
 <pre>
 <strong>输入：</strong>grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]

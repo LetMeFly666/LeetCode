@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-02-14 18:02:29
+ * @LastEditTime: 2025-02-15 12:49:39
 -->
 # LetLeet Blog
 
@@ -906,6 +906,7 @@
 |OWA(Outlook Web App) - 详细总结调研 - 特征相关|<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">本平台博客</a>|**暂**无|
 |抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
+|密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录|<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN博客</a>|
 |物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
 |PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
