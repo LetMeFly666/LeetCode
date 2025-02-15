@@ -84,7 +84,7 @@ tags: [其他, Github, Git, 开源项目贡献, PR]
 |[phohenecker/switch-cuda#3(issue)](https://github.com/phohenecker/switch-cuda/issues/3)|2024.5.7|Bug-zsh环境下无法运行（带解决方案）|Opening|
 |[cloudwego/cloudwego.github.io#1241(issue)](https://github.com/cloudwego/cloudwego.github.io/issues/1241)<br/>[cloudwego/cloudwego.github.io#1242(pr)](https://github.com/cloudwego/cloudwego.github.io/pull/1242)|2025.2.14|文档格式小改|Merged|
 
-TODO: issue统计机器人，依据https://github.com/issues?q=author%3ALetMeFly666甚至API查询并总结一个user在Github的贡献历史。支持@机器人然后总结。
+Github贡献👆
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/145639175)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/02/14/Other-Github-Record1Contribution2BytedanceCloudwegoDocs/)哦~
 >

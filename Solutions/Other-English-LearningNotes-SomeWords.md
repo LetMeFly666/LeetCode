@@ -997,6 +997,9 @@ tags: [其他, 知识, 英语, Notes]
 |grasshopper|n. 蝗虫，蚂蚱，蚱蜢|
 |||
 |massacre|n. 屠杀，残杀，(运动/比赛の)惨败<br/>v. 屠杀，杀戮，使(运动/比赛中)惨败|
+|||
+|sonnet|n. 十四行诗，商籁体|
+|headlong|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
 
 <p class="wordCounts">单词收录总数</p>
 
