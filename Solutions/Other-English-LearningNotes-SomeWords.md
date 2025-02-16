@@ -1000,6 +1000,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |sonnet|n. 十四行诗，商籁体|
 |headlong|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
+|||
+|shadowy|ajd. 昏暗的，阴影中的，朦胧的，神秘的|
 
 <p class="wordCounts">单词收录总数</p>
 
