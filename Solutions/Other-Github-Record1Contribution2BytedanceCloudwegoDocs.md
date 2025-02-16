@@ -32,7 +32,7 @@ tags: [其他, Github, Git, 开源项目贡献, PR]
 
 ![成功[贡献](https://web.archive.org/web/20250214102955/https://github.com/cloudwego/cloudwego.github.io)了](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/d6a2cb573acd4deca58a7ffc6dba1fec.png)
 
-## 附一些Github的谜之缩写
+## 附一些Github的谜之缩写（黑话）
 
 本次PR和issue全程参考其他已merge的PR或issue进行，其间看到了Approve时留下的message`LGTM`，搜了一下后发现了一些Github的谜之缩写。
 
