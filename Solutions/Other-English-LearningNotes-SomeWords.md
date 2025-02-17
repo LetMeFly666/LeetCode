@@ -1002,6 +1002,9 @@ tags: [其他, 知识, 英语, Notes]
 |headlong|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
 |||
 |shadowy|ajd. 昏暗的，阴影中的，朦胧的，神秘的|
+|||
+|superb|adj. 极佳的，卓越的，质量极高的|
+|romanticism|n. 浪漫主义|
 
 <p class="wordCounts">单词收录总数</p>
 
