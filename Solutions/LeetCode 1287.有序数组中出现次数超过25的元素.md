@@ -128,8 +128,8 @@ func findSpecialInteger(arr []int) int {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/145683090)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/02/17/LeetCode%201287.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%8725%25%E7%9A%84%E5%85%83%E7%B4%A0/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/145683090)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/02/17/LeetCode%201287.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%8725%E7%9A%84%E5%85%83%E7%B4%A0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
 >
-> Tisfy：[https://blog.letmefly.xyz/2025/02/17/LeetCode 1287.有序数组中出现次数超过25%的元素/](https://blog.letmefly.xyz/2025/02/17/LeetCode%201287.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%8725%25%E7%9A%84%E5%85%83%E7%B4%A0/)
+> Tisfy：[https://blog.letmefly.xyz/2025/02/17/LeetCode 1287.有序数组中出现次数超过25的元素](https://blog.letmefly.xyz/2025/02/17/LeetCode%201287.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%8725%E7%9A%84%E5%85%83%E7%B4%A0/)
