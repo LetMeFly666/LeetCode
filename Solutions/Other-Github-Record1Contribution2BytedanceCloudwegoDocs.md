@@ -83,6 +83,7 @@ tags: [其他, Github, Git, 开源项目贡献, PR]
 |[Afool4U/xingchenjiaoyu#1(issue)](https://github.com/Afool4U/xingchenjiaoyu/issues/1)|2023.11.15|双引号写反了|Completed|
 |[phohenecker/switch-cuda#3(issue)](https://github.com/phohenecker/switch-cuda/issues/3)|2024.5.7|Bug-zsh环境下无法运行（带解决方案）|Opening|
 |[cloudwego/cloudwego.github.io#1241(issue)](https://github.com/cloudwego/cloudwego.github.io/issues/1241)<br/>[cloudwego/cloudwego.github.io#1242(pr)](https://github.com/cloudwego/cloudwego.github.io/pull/1242)|2025.2.14|文档格式小改|Merged|
+|[cloudwego/cloudwego.github.io#1244(issue)](https://github.com/cloudwego/cloudwego.github.io/issues/1244)<br/>[cloudwego/cloudwego.github.io#1245(pr)](https://github.com/cloudwego/cloudwego.github.io/pull/1245)|2025.2.17|文档格式小改|Merged|
 
 Github贡献👆
 
