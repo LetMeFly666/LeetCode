@@ -1800,6 +1800,14 @@ Copyright© 2002-2018 漯河日报社版权所有 未经书面特别授权，请
 2. 下方页脚未及时更新，估计是之前全部生成的静态页面而不是动态获取的。这样的话文件在服务器上有很大的“相同内容的冗余”，但还好。
 3. 日报地址格式为`http://rb.lhrb.com.cn/html/YYYY-mm/dd/node_2.htm`，emm，不能简化一点么。并且将`node_2`修改为`node_1`后还能访问只是部分乱码了。
 
+## Github在commit中引用pr后删除commit
+
+提一个pr，例如(#1)，在一个commit中包含` #1 `这一信息并push到github，那么`#1`这个pr上就会出现对这次commit的引用。
+
+先commit并push到github，再创建#1这个pr，则pr中不会出现对包含#1的commit的引用。
+
+提pr后引用pr的commit被强制覆盖删除后，这个commit仍然会出现在pr的“时间线”上。
+
 # End
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
