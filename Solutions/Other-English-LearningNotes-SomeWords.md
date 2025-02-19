@@ -1005,6 +1005,9 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |superb|adj. 极佳的，卓越的，质量极高的|
 |romanticism|n. 浪漫主义|
+|||
+|spade|n. 铁锹，铲子，(扑克的)黑桃|
+|captain|n. 船长，机长，列车长，首领，陆军上尉，海军上校<br/>担任...的队长/船长，率领，指挥|
 
 <p class="wordCounts">单词收录总数</p>
 
