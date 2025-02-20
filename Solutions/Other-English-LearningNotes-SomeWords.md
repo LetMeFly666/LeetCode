@@ -713,7 +713,7 @@ tags: [其他, 知识, 英语, Notes]
 |<font color="#28bea0" title="二次复习">Egyptian</font>|adj. 埃及的，埃及人的<br/>n. 埃及人|
 |peasantry|n. (统称)(一个地区或国家的)农民|
 |affectionate|adj. 表示关爱的<details><summary>例句</summary>That mother gave an affectionate hug to her newborn child.<br/>那位母亲深情地拥抱了她刚出生的孩子。</details>|
-|<font color="#28bea0" title="三次复习">auspice</font>|n. 吉兆，赞助，主办|
+|<font color="#28bea0" title="四次复习">auspice</font>|n. 吉兆，赞助，主办|
 |||
 |heartfelt|adj. 衷心的，真诚的<details><summary>例句</summary>We offer our deepest and heartfelt sympathy on their losses.<br/>我们对他们的损失表示最深切的同情。</details>|
 |snobbery|n. 自命不凡，势力|
