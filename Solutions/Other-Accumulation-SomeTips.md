@@ -516,6 +516,25 @@ Pyinstaller打包可执行文件时若系统变量里有upx，则打包出来的
 
 `Win + R` -> `regedit` -> `回车`，定位到`计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`并新建`DWORD (32位)值(D)`，名为`ShowSecondsInSystemClock`值为`1`，重启`explorer.exe`。
 
+### PowerShell修改文件日期
+
+```powershell
+ls 'dirName' | foreach-object { $_.LastWriteTime = '06/23/2023 15:39:11'; $_.CreationTime = '05/13/2023 12:03:14'; $_.LastAccessTime = '06/23/2023 15:39:11' }
+```
+
+### PowerShell生成uuid
+
+```bash
+Powershell -Command "[guid]::NewGuid()"
+```
+
+```
+Guid
+----
+f35b2f66-3e03-4c9d-80b5-d72059a8735d
+```
+
+
 ## About Phone
 
 ### Phone APP 如视VR
@@ -706,6 +725,23 @@ Python的```selenium```可以控制浏览器对网站进行模拟操作，但需
 ```bash
 pip install pipreqs
 pipreqs /path/to/your/project
+```
+
+### 静态类型检查工具mypy
+
+根据你声明的类型自动检查你变量的实际类型是否相符。
+
+```bash
+pip3 install mypy
+mypy 待检查.py
+```
+
+```python
+def add(a:int, b:int) -> int:
+    return a + b
+
+add(1, 2) 
+add("123", "qwe")   # type: ignore
 ```
 
 ### Python asyncio
