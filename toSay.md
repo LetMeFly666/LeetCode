@@ -1,1 +1,5 @@
 今天发现字节跳动豆包刷题支持在线调试了
+并且好像豆包插件支持免费调用满血DeepSeek了
+
+
+计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\microsoft-edge
