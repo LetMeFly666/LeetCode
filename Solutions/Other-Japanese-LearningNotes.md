@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2025-02-23 23:32:26
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-25 18:23:12
+-->
 ---
 title: 日语学习笔记
 date: 2023-11-24 14:02:17
@@ -1224,7 +1230,7 @@ xx型
 |早く寝るつもりです。<br/>打算早点睡。|
 |一番行きたいところは東京です。<br/>最想去的地方是东京。|
 |果物は食べる前に洗ってください。<br/>水果吃之前请洗一洗。|
-|３歳の弟は一人で服を着ることができます。<br/>我3岁的弟弟会一个人穿衣服。|
+|３歳の弟は一人で服を着ることができます。<br/>我3岁的弟弟会一个人穿衣服。<details><summary>动词形态变化</summary>动词有三类：一类动词、二类动词、三类动词<br/>二类动词以<font color="#ce82ff">る</font>结尾，且<font color="#ce82ff">る</font>之前的发言在<font color="#ce82ff">い</font>段或<font color="#ce82ff">え</font>段<br/>如：見る、食べる<br/>二类动词词形变化相对简单，把<font color="#ce82ff">ます</font>换成xx就是xx形了<br/><font color="#ce82ff">ます</font>换成<font color="#ce82ff">る</font>是基本形，换成<font color="#ce82ff">て</font>是て形，<font color="#ce82ff">た</font>た形，<font color="#ce82ff">ない</font>ない形<br/><center><table><tr><th>基本形</th><th>其他形态</th></tr><tr><td rowspan="5">着る</td><td>基本形：着る<br />このセーターは着る前によく洗ってください。</td></tr><tr><td>ます形：着ます<br />あしたは新しい服を着ますか？</td></tr><tr><td>て形：着て<br />かわいい服を着てほしいです。</td></tr><tr><td>た形：着た<br />私は黄色いシャツを着たことがありません。</td></tr><tr><td>ない：着ない<br />彼は冬でもコートを着ないです。</td></tr></table></center></details>|
 |２歳の子供はまだ一人で服を着ることができません。<br/>2岁的孩子还不会一个人穿衣服。|
 |このセーターは着る前によく洗ってください。<br/>这件毛衣穿之前请好好洗一洗。|
 |一人で寝だことはありますか？<br/>有过一个人睡的时候吗？|

@@ -1,10 +1,10 @@
 ---
-title: 1656.设计有序流
+title: 1656.设计有序流：阅读理解
 date: 2022-08-16 08:46:16
 tags: [题解, LeetCode, 简单, 设计, 数组, 哈希表, 数据流]
 ---
 
-# 【LetMeFly】1656.设计有序流
+# 【LetMeFly】1656.设计有序流：阅读理解
 
 力扣题目链接：[https://leetcode.cn/problems/design-an-ordered-stream/](https://leetcode.cn/problems/design-an-ordered-stream/)
 
@@ -79,6 +79,12 @@ os.insert(4, "ddddd"); // 插入 (4, "ddddd")，返回 ["ddddd", "eeeee"]
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2022-08-16 08:40:19
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2022-08-16 08:42:36
+ */
 class OrderedStream {
 private:
     vector<string> v;
@@ -97,6 +103,110 @@ public:
         return ans;
     }
 };
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-02-24 09:09:17
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-02-24 09:11:29
+'''
+from typing import List
+
+class OrderedStream:
+
+    def __init__(self, n: int):
+        self.n = n
+        self.ptr = 1
+        self.v = [None] * (n + 1)
+
+    def insert(self, idKey: int, value: str) -> List[str]:
+        self.v[idKey] = value
+        if idKey != self.ptr:
+            return []
+        ans = []
+        while self.ptr <= self.n and self.v[self.ptr]:
+            ans.append(self.v[self.ptr])
+            self.ptr += 1
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-24 09:09:20
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-24 09:25:19
+ */
+import java.util.List;
+import java.util.ArrayList;
+
+class OrderedStream {
+    private int n;
+    private int ptr;
+    private final String[] v;
+
+    public OrderedStream(int n) {
+        this.n = n;
+        ptr = 1;
+        v = new String[n + 1];
+    }
+    
+    public List<String> insert(int idKey, String value) {
+        v[idKey] = value;
+        if (idKey != ptr) {
+            return new ArrayList<>();
+        }
+        List<String> ans = new ArrayList<>();
+        while (ptr <= n && v[ptr] != null) {
+            ans.add(v[ptr]);
+            ptr++;
+        }
+        return ans;
+    }
+}
+```
+
+#### Golang：也可使用指针直接引用切片
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-02-24 09:09:22
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-02-24 09:35:40
+ */
+package main
+
+type OrderedStream struct {
+    n,
+    ptr int
+    v []string
+}
+
+
+func Constructor(n int) OrderedStream {
+    return OrderedStream{
+        n: n,
+        ptr: 1,
+        v: make([]string, n + 1),
+    }
+}
+
+
+func (this *OrderedStream) Insert(idKey int, value string) []string {
+    this.v[idKey] = value
+    start := this.ptr
+    for this.ptr <= this.n && len(this.v[this.ptr]) > 0 {
+        this.ptr++
+    }
+    return this.v[start:this.ptr]
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/16/LeetCode%201656.%E8%AE%BE%E8%AE%A1%E6%9C%89%E5%BA%8F%E6%B5%81/)哦~

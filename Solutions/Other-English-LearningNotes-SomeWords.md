@@ -1010,6 +1010,12 @@ tags: [其他, 知识, 英语, Notes]
 |captain|n. 船长，机长，列车长，首领，陆军上尉，海军上校<br/>担任...的队长/船长，率领，指挥|
 |||
 |exonerate|v. 宣布(某人)无罪，免除责任|
+|||
+|hostel|n. 廉价旅社，招待所|
+|crooked|adj. 不直的，弯曲的，扭曲的，不诚实的|
+|||
+|astound|v. 使震惊|
+|radi<font color="red">a</font>nt|adj. 辐射的，放射的，喜气洋洋的，荣光焕发的，灿烂的，光芒四射的|
 
 <p class="wordCounts">单词收录总数</p>
 
