@@ -14,8 +14,9 @@ tags: [题解, LeetCode, 困难, 设计, 链表, 跳表, 算法]
 
 <p>例如，一个跳表包含 <code>[30, 40, 50, 60, 70, 90]</code> ，然后增加 <code>80</code>、<code>45</code> 到跳表中，以下图的方式操作：</p>
 
-<p><img alt="" src="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif" style="width: 500px; height: 173px;" /></p>
+<p><img alt="" src="https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist.gif" style="width: 500px; height: 173px;" /></p>
 
+<!-- <p><img alt="" src="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif" style="width: 500px; height: 173px;" /></p> -->
 <!-- https://i-blog.csdnimg.cn/img_convert/b8474d69c822f6bdd0563ce459e03fc7.gif -->
 
 <p>跳表中有很多层，每一层是一个短的链表。在第一层的作用下，增加、删除和搜索操作的时间复杂度不超过 <code>O(n)</code>。跳表的每一个操作的平均时间复杂度是 <code>O(log(n))</code>，空间复杂度是 <code>O(n)</code>。</p>
