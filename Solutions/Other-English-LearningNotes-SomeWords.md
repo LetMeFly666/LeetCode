@@ -999,7 +999,7 @@ tags: [其他, 知识, 英语, Notes]
 |massacre|n. 屠杀，残杀，(运动/比赛の)惨败<br/>v. 屠杀，杀戮，使(运动/比赛中)惨败|
 |||
 |sonnet|n. 十四行诗，商籁体|
-|headlong|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
+|<font color="#28bea0" title="二次复习">headlong</font>|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
 |||
 |shadowy|ajd. 昏暗的，阴影中的，朦胧的，神秘的|
 |||
@@ -1016,6 +1016,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |astound|v. 使震惊|
 |radi<font color="red">a</font>nt|adj. 辐射的，放射的，喜气洋洋的，荣光焕发的，灿烂的，光芒四射的|
+|||
 
 <p class="wordCounts">单词收录总数</p>
 
