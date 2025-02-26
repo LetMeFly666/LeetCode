@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1206.设计跳表：算法详解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;design-skiplist&#x2F; 不使用任何库函数，设计一个 跳表 。  跳表 是在 O(log(n)) 时间内完成增加、删除、搜索操作的数据结构。跳表相比于树堆与红黑树，其功能与性能相当，并且跳表的代码长度相较下更短，其设计思想与链表相似。  例如，一个跳表包含 [30, 40">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1206.设计跳表：算法详解">
+<meta property="og:url" content="https://blog.letmefly.xyz/2025/02/26/LeetCode%201206.%E8%AE%BE%E8%AE%A1%E8%B7%B3%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1206.设计跳表：算法详解力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;design-skiplist&#x2F; 不使用任何库函数，设计一个 跳表 。  跳表 是在 O(log(n)) 时间内完成增加、删除、搜索操作的数据结构。跳表相比于树堆与红黑树，其功能与性能相当，并且跳表的代码长度相较下更短，其设计思想与链表相似。  例如，一个跳表包含 [30, 40">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif">
+<meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist.png">
+<meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist-find60.jpg">
+<meta property="article:published_time" content="2025-02-26T02:16:23.000Z">
+<meta property="article:modified_time" content="2025-02-26T03:26:28.694Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="链表">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="跳表">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif">
+  
+  
+  
+  <title>1206.设计跳表：算法详解 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1206.设计跳表：算法详解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-26 10:16" pubdate>
+          2025年2月26日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">1206.设计跳表：算法详解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】1206-设计跳表：算法详解"><a href="#【LetMeFly】1206-设计跳表：算法详解" class="headerlink" title="【LetMeFly】1206.设计跳表：算法详解"></a>【LetMeFly】1206.设计跳表：算法详解</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-skiplist/">https://leetcode.cn/problems/design-skiplist/</a></p>
+<p>不使用任何库函数，设计一个 <strong>跳表</strong> 。</p>
+
+<p><strong>跳表</strong> 是在 <code>O(log(n))</code> 时间内完成增加、删除、搜索操作的数据结构。跳表相比于树堆与红黑树，其功能与性能相当，并且跳表的代码长度相较下更短，其设计思想与链表相似。</p>
+
+<p>例如，一个跳表包含 <code>[30, 40, 50, 60, 70, 90]</code> ，然后增加 <code>80</code>、<code>45</code> 到跳表中，以下图的方式操作：</p>
+
+<p><img alt="" src="https://pic.leetcode.cn/1702370216-mKQcTt-1506_skiplist.gif" srcset="/img/loading.gif" lazyload style="width: 500px; height: 173px;" /></p>
+
+<!-- https://i-blog.csdnimg.cn/img_convert/b8474d69c822f6bdd0563ce459e03fc7.gif -->
+
+<p>跳表中有很多层，每一层是一个短的链表。在第一层的作用下，增加、删除和搜索操作的时间复杂度不超过 <code>O(n)</code>。跳表的每一个操作的平均时间复杂度是 <code>O(log(n))</code>，空间复杂度是 <code>O(n)</code>。</p>
+
+<p>了解更多 :&nbsp;<a href="https://oi-wiki.org/ds/skiplist/" target="_blank">https://oi-wiki.org/ds/skiplist/</a></p>
+
+<p>在本题中，你的设计应该要包含这些函数：</p>
+
+<ul>
+	<li><code>bool search(int target)</code> : 返回target是否存在于跳表中。</li>
+	<li><code>void add(int num)</code>:&nbsp;插入一个元素到跳表。</li>
+	<li><code>bool erase(int num)</code>: 在跳表中删除一个值，如果&nbsp;<code>num</code>&nbsp;不存在，直接返回false. 如果存在多个&nbsp;<code>num</code>&nbsp;，删除其中任意一个即可。</li>
+</ul>
+
+<p>注意，跳表中可能存在多个相同的值，你的代码需要处理这种情况。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1:</strong></p>
+
+<pre>
+<b>输入</b>
+["Skiplist", "add", "add", "add", "search", "add", "search", "erase", "erase", "search"]
+[[], [1], [2], [3], [0], [4], [1], [0], [1], [1]]
+<strong>输出</strong>
+[null, null, null, null, false, null, true, false, true, false]
+
+<strong>解释</strong>
+Skiplist skiplist = new Skiplist();
+skiplist.add(1);
+skiplist.add(2);
+skiplist.add(3);
+skiplist.search(0);   // 返回 false
+skiplist.add(4);
+skiplist.search(1);   // 返回 true
+skiplist.erase(0);    // 返回 false，0 不在跳表中
+skiplist.erase(1);    // 返回 true
+skiplist.search(1);   // 返回 false，1 已被擦除
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+	<li><code>0 &lt;= num, target &lt;= 2 * 10<sup>4</sup></code></li>
+	<li>调用<code>search</code>, <code>add</code>, &nbsp;<code>erase</code>操作次数不大于&nbsp;<code>5 * 10<sup>4</sup></code>&nbsp;</li>
+</ul>
+
+
+    
+<h2 id="设计跳表"><a href="#设计跳表" class="headerlink" title="设计跳表"></a>设计跳表</h2><p><img src="https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist.png" srcset="/img/loading.gif" lazyload alt="跳表-静态.png"></p>
+<!-- ![跳表-静态.png](https://pic.leetcode.cn/1740540118-lgzwaB-000.png) -->
+<!-- ![跳表-静态.png](https://i-blog.csdnimg.cn/img_convert/4d58d8acb36c5073044c17cc275ed9c8.png) -->
+
+<p>链表查询复杂度是$O(n)$，因为要从头到尾遍历。怎么解决这个问题？多几层链表(最下层level1是全链表)，上层链表元素少，先查上层（查一次就能<strong>跳</strong>过level1好多元素），再查下层，最终查到level1。</p>
+<h3 id="节点设计"><a href="#节点设计" class="headerlink" title="节点设计"></a>节点设计</h3><p>对于一个节点（例如$50$），我们可以只创建一个$50$节点，并分别保留这个节点在level1到level3的下一个节点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">SkiplistNode</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> value;<br>    vector&lt;SkiplistNode*&gt; next;<br><br>    <span class="hljs-built_in">SkiplistNode</span>(<span class="hljs-type">int</span> val, <span class="hljs-type">int</span> level): <span class="hljs-built_in">value</span>(val), <span class="hljs-built_in">next</span>(level) &#123;&#125;  <span class="hljs-comment">// 一个节点一旦生成，level就是固定的</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Skiplist</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    SkiplistNode* head;  <span class="hljs-comment">// 为了方便，统一添加头节点</span><br>    <span class="hljs-type">int</span> level;  <span class="hljs-comment">// 当前跳表层数，可依据实际数据范围确定</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Skiplist</span>() &#123;<br>        head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(<span class="hljs-number">-1</span>, MAX_LEVEL);  <span class="hljs-comment">// 每层一旦出现，就一定需要head节点</span><br>        level = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-type">int</span> target)</span> </span>&#123;&#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;&#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">erase</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ul>
+<li>每一层的查询依据是：找到最后一个严格小于$target$的节点；</li>
+<li>上层到下层的依据是：同一个节点直接下移一层。</li>
+</ul>
+<p><img src="https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist-find60.jpg" srcset="/img/loading.gif" lazyload alt="跳表-查60.jpg"></p>
+<!-- ![跳表-查60.jpg](https://pic.leetcode.cn/1740540201-IOeEAR-111.jpg) -->
+<!-- ![跳表-查60.jpg](https://i-blog.csdnimg.cn/img_convert/e34976dd6cfafcad3f9f42fb7a9df2bd.jpeg) -->
+
+<p>例如上图要查询元素$60$：</p>
+<ol>
+<li>先从最上层(level4)开始查询，$30$是最后一个小于$60$的元素，在$30$停止，跳到level3的$30$</li>
+<li>level3从$30$开始向右查询，$50$是最后一个小于$60$的元素，直接跳到$50$（可以发现最下层的$40$和$45$d都被跳过了），跳到level2的$50$</li>
+<li>level2从$50$开始向右查询，最后一个小于$60$的节点就是$50$，停止并跳到level1的$50$</li>
+<li>level1从$50$开始向右查询，最后一个小于$60$的节点就是$50$，停止。</li>
+</ol>
+<p>最终停止的节点是level1的$50$。</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>最终一定停止在level1</li>
+<li>每一层都是在最后一个严格小于target的节点停止并移动到下层(如有)</li>
+<li>所查询节点就是最终停止到的节点的右边相邻节点</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-type">int</span> target)</span> </span>&#123;<br>	SkiplistNode* p = head;  <span class="hljs-comment">// 从头节点开始</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;  <span class="hljs-comment">// 从上层到下层</span><br>        <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; target) &#123;  <span class="hljs-comment">// 每一层找到最后一个严格小于target的节点</span><br>            p = p-&gt;next[i];<br>        &#125;<br>    &#125;<br>    p = p-&gt;next[<span class="hljs-number">0</span>];  <span class="hljs-comment">// 最终停止到了level1的50，50在level1的next就是待查找的60</span><br>    <span class="hljs-keyword">return</span> p &amp;&amp; p-&gt;value == target;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>新增一个节点，这个节点都要在哪些层出现呢？直接<code>rand</code>呗。每个节点都要在最下层出现，可以定义一个全局概率$P$，表示这个节点有$P$的概率在上一层再出现一次。</p>
+<p>对于本题，要求复杂度$\log_2 n$所以可取$P&#x3D;\frac12$；最多50000次操作，$\log_2 50000\approx 15.6$，因此可取最大层数$15$。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">randLevel</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (ans &lt; MAX_LEVEL &amp;&amp; <span class="hljs-built_in">rand</span>() &lt; p) &#123;<br>        ans++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>对于新增节点$num$，假设随机出来确定它要在$level_1$到$level_{newLevel}$层出现，那么就可以创建一个大小为$newLevel$的$update$数组，其中$update[i]&#x3D;p$代表$level_{i+1}$层$p$元素的$next$需要修改为指向新节点。</p>
+<p>确定$update$数组的方法和查询类似，每层找到最后一个严格小于$num$的节点即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>    <span class="hljs-type">int</span> newLevel = <span class="hljs-built_in">randLevel</span>();<br>    <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(newLevel, head)</span></span>;  <span class="hljs-comment">// 默认值为head</span><br>    SkiplistNode* p = head;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>        <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; num) &#123;  <span class="hljs-comment">// 每层找最后一个严格小于num的节点</span><br>            p = p-&gt;next[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span> (i &lt; newLevel) &#123;  <span class="hljs-comment">// 只有低newLevel层需要插入p节点</span><br>            update[i] = p;<br>        &#125;<br>    &#125;<br><br>    level = <span class="hljs-built_in">max</span>(level, newLevel);  <span class="hljs-comment">// 更新跳表最大层数</span><br>    SkiplistNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(num, newLevel);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; newLevel; i++) &#123;  <span class="hljs-comment">// 低newLevel层每层插入新节点</span><br>        newNode-&gt;next[i] = update[i]-&gt;next[i];<br>        update[i]-&gt;next[i] = newNode;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>删除和新增类似，找到每层需要更新next的节点，更新next并更新层数。</p>
+<p>与插入不同的是，在开始遍历前不知道$num$一共有几层，所以我们可以初始化$update$大小为当前跳表的总层数。在真正删除节点时从最下层往最上层删除，一旦update[i]的next不是目标节点了就直接break。</p>
+<p>注意，若$num$本身就不再跳表中就不要误删其他元素了。</p>
+<p>删除完目标节点后，从上到下遍历确定是否有空层（head的next直接为null）需要删除即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">erase</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>    <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(level)</span></span>;  <span class="hljs-comment">// 其实并不需要初始值</span><br>    SkiplistNode* p = head;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>        <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; num) &#123;  <span class="hljs-comment">// 每层找最后一个严格小于num的节点</span><br>            p = p-&gt;next[i];<br>        &#125;<br>        update[i] = p;<br>    &#125;<br>    <br>    p = p-&gt;next[<span class="hljs-number">0</span>];  <span class="hljs-comment">// 目标节点</span><br>    <span class="hljs-keyword">if</span> (!p || p-&gt;value != num) &#123;  <span class="hljs-comment">// num在跳表中根本不存在</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; level; i++) &#123;  <span class="hljs-comment">// 从下往上开始删除目标节点</span><br>        <span class="hljs-keyword">if</span> (update[i]-&gt;next[i] != p) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        update[i]-&gt;next[i] = p-&gt;next[i];<br>    &#125;<br>    <span class="hljs-keyword">delete</span> p;<br><br>    <span class="hljs-keyword">while</span> (level &gt; <span class="hljs-number">0</span> &amp;&amp; !head-&gt;next[level - <span class="hljs-number">1</span>]) &#123;  <span class="hljs-comment">// “移除”空层</span><br>        level--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h2><ul>
+<li>时间复杂度：单次操作$O(\log n)$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAX_LEVEL = <span class="hljs-number">15</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">double</span> p = <span class="hljs-number">0.5</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SkiplistNode</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> value;<br>    vector&lt;SkiplistNode*&gt; next;<br><br>    <span class="hljs-built_in">SkiplistNode</span>(<span class="hljs-type">int</span> val, <span class="hljs-type">int</span> level): <span class="hljs-built_in">value</span>(val), <span class="hljs-built_in">next</span>(level) &#123;&#125;  <span class="hljs-comment">// 一个节点一旦生成，level就是固定的</span><br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Skiplist</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    SkiplistNode* head;<br>    <span class="hljs-type">int</span> level;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">randLevel</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (ans &lt; MAX_LEVEL &amp;&amp; <span class="hljs-built_in">rand</span>() &lt; p) &#123;<br>            ans++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Skiplist</span>() &#123;<br>        head = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(<span class="hljs-number">-1</span>, MAX_LEVEL);  <span class="hljs-comment">// 每层一旦出现，就一定需要head节点</span><br>        level = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-type">int</span> target)</span> </span>&#123;<br>        SkiplistNode* p = head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; target) &#123;<br>                p = p-&gt;next[i];<br>            &#125;<br>        &#125;<br>        p = p-&gt;next[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">return</span> p &amp;&amp; p-&gt;value == target;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-type">int</span> newLevel = <span class="hljs-built_in">randLevel</span>();<br>        <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(newLevel, head)</span></span>;<br>        SkiplistNode* p = head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; num) &#123;<br>                p = p-&gt;next[i];<br>            &#125;<br>            <span class="hljs-keyword">if</span> (i &lt; newLevel) &#123;<br>                update[i] = p;<br>            &#125;<br>        &#125;<br><br>        level = <span class="hljs-built_in">max</span>(level, newLevel);<br>        SkiplistNode* newNode = <span class="hljs-keyword">new</span> <span class="hljs-built_in">SkiplistNode</span>(num, newLevel);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; newLevel; i++) &#123;<br>            newNode-&gt;next[i] = update[i]-&gt;next[i];<br>            update[i]-&gt;next[i] = newNode;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">erase</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;SkiplistNode*&gt; <span class="hljs-title">update</span><span class="hljs-params">(level)</span></span>;<br>        SkiplistNode* p = head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = level - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">while</span> (p-&gt;next[i] &amp;&amp; p-&gt;next[i]-&gt;value &lt; num) &#123;<br>                p = p-&gt;next[i];<br>            &#125;<br>            update[i] = p;<br>        &#125;<br>        <br>        p = p-&gt;next[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">if</span> (!p || p-&gt;value != num) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; level; i++) &#123;<br>            <span class="hljs-keyword">if</span> (update[i]-&gt;next[i] != p) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            update[i]-&gt;next[i] = p-&gt;next[i];<br>        &#125;<br>        <span class="hljs-keyword">delete</span> p;<br><br>        <span class="hljs-keyword">while</span> (level &gt; <span class="hljs-number">0</span> &amp;&amp; !head-&gt;next[level - <span class="hljs-number">1</span>]) &#123;<br>            level--;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your Skiplist object will be instantiated and called as such:</span><br><span class="hljs-comment"> * Skiplist* obj = new Skiplist();</span><br><span class="hljs-comment"> * bool param_1 = obj-&gt;search(target);</span><br><span class="hljs-comment"> * obj-&gt;add(num);</span><br><span class="hljs-comment"> * bool param_3 = obj-&gt;erase(num);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>, <span class="hljs-type">Any</span><br><span class="hljs-keyword">import</span> random<br><br><br>MAX_LEVEL = <span class="hljs-number">15</span><br>P = <span class="hljs-number">0.5</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">SkiplistNode</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, v: <span class="hljs-built_in">int</span>, level: <span class="hljs-built_in">int</span></span>):<br>        <span class="hljs-variable language_">self</span>.value = v<br>        <span class="hljs-variable language_">self</span>.<span class="hljs-built_in">next</span>: <span class="hljs-type">List</span>[SkiplistNode] = [<span class="hljs-literal">None</span>] * level<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Skiplist</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-variable language_">self</span>.head = SkiplistNode(-<span class="hljs-number">1</span>, MAX_LEVEL)<br>        <span class="hljs-variable language_">self</span>.level = <span class="hljs-number">0</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__randLevel</span>(<span class="hljs-params">self</span>):<br>        ans = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> ans &lt; MAX_LEVEL <span class="hljs-keyword">and</span> random.random() &lt; P:<br>            ans += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">search</span>(<span class="hljs-params">self, target: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        p = <span class="hljs-variable language_">self</span>.head<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.level - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">while</span> p.<span class="hljs-built_in">next</span>[i] <span class="hljs-keyword">and</span> p.<span class="hljs-built_in">next</span>[i].value &lt; target:<br>                p = p.<span class="hljs-built_in">next</span>[i]<br>        p = p.<span class="hljs-built_in">next</span>[<span class="hljs-number">0</span>]<br>        <span class="hljs-comment"># return p and p.value == target  # 不可！p为None的化这一行会return None而不是False！</span><br>        <span class="hljs-keyword">return</span> p <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">and</span> p.value == target<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        newLevel = <span class="hljs-variable language_">self</span>.__randLevel()<br>        update = [<span class="hljs-variable language_">self</span>.head] * newLevel<br>        p = <span class="hljs-variable language_">self</span>.head<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.level - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">while</span> p.<span class="hljs-built_in">next</span>[i] <span class="hljs-keyword">and</span> p.<span class="hljs-built_in">next</span>[i].value &lt; num:<br>                p = p.<span class="hljs-built_in">next</span>[i]<br>            <span class="hljs-keyword">if</span> i &lt; newLevel:<br>                update[i] = p<br>        <br>        <span class="hljs-variable language_">self</span>.level = <span class="hljs-built_in">max</span>(<span class="hljs-variable language_">self</span>.level, newLevel)<br>        newNode = SkiplistNode(num, newLevel)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(newLevel):<br>            newNode.<span class="hljs-built_in">next</span>[i] = update[i].<span class="hljs-built_in">next</span>[i]<br>            update[i].<span class="hljs-built_in">next</span>[i] = newNode<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">erase</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        update: <span class="hljs-type">List</span>[SkiplistNode | <span class="hljs-type">Any</span>] = [<span class="hljs-literal">None</span>] * <span class="hljs-variable language_">self</span>.level<br>        p = <span class="hljs-variable language_">self</span>.head<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.level - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>            <span class="hljs-keyword">while</span> p.<span class="hljs-built_in">next</span>[i] <span class="hljs-keyword">and</span> p.<span class="hljs-built_in">next</span>[i].value &lt; num:<br>                p = p.<span class="hljs-built_in">next</span>[i]<br>            update[i] = p<br>        <br>        p = p.<span class="hljs-built_in">next</span>[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> p <span class="hljs-keyword">or</span> p.value != num:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-variable language_">self</span>.level):<br>            <span class="hljs-keyword">if</span> update[i].<span class="hljs-built_in">next</span>[i] != p:<br>                <span class="hljs-keyword">break</span><br>            update[i].<span class="hljs-built_in">next</span>[i] = p.<span class="hljs-built_in">next</span>[i]<br>        <span class="hljs-keyword">while</span> <span class="hljs-variable language_">self</span>.level &gt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.head.<span class="hljs-built_in">next</span>[<span class="hljs-variable language_">self</span>.level - <span class="hljs-number">1</span>]:<br>            <span class="hljs-variable language_">self</span>.level -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br><br><br><span class="hljs-comment"># Your Skiplist object will be instantiated and called as such:</span><br><span class="hljs-comment"># obj = Skiplist()</span><br><span class="hljs-comment"># param_1 = obj.search(target)</span><br><span class="hljs-comment"># obj.add(num)</span><br><span class="hljs-comment"># param_3 = obj.erase(num)</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/145873636">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/02/26/LeetCode%201206.%E8%AE%BE%E8%AE%A1%E8%B7%B3%E8%A1%A8/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
+      
+        <a href="/tags/%E5%9B%B0%E9%9A%BE/">#困难</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
+      
+        <a href="/tags/%E8%B7%B3%E8%A1%A8/">#跳表</a>
+      
+        <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>1206.设计跳表：算法详解</div>
+      <div>https://blog.letmefly.xyz/2025/02/26/LeetCode 1206.设计跳表/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/25/LeetCode%202502.%E8%AE%BE%E8%AE%A1%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E5%99%A8/" title="2502.设计内存分配器：暴力模拟">
+                        <span class="hidden-mobile">2502.设计内存分配器：暴力模拟</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
