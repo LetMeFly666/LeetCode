@@ -1015,8 +1015,13 @@ tags: [其他, 知识, 英语, Notes]
 |crooked|adj. 不直的，弯曲的，扭曲的，不诚实的|
 |||
 |astound|v. 使震惊|
-|radi<font color="red">a</font>nt|adj. 辐射的，放射的，喜气洋洋的，荣光焕发的，灿烂的，光芒四射的|
+|radi<font color="red">a</font>nt<font display="none" title="检索用">radiant</font>|adj. 辐射的，放射的，喜气洋洋的，荣光焕发的，灿烂的，光芒四射的|
 |||
+|vicinity|n. 周围地区，邻近地区，附近|
+|extravagant|adj. 奢侈的，铺张浪费的，过于昂贵的，不切实际的|
+|vouge|n. 流行的，时髦的，风尚，风行<br/>adj. 时髦的|
+|fission|n. (核)裂变，分裂，细胞分裂，(化学键)断裂，裂变|
+|introductory|adj. 序言的，引导的，介绍的，入门的|
 
 <p class="wordCounts">单词收录总数</p>
 
