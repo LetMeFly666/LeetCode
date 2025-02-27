@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-02-20 13:05:37
+LastEditTime: 2025-02-27 09:47:35
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 '''
@@ -206,7 +206,7 @@ cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "
 prResult = os.popen(cmd).read()
 print(prResult)
 prNumber = int(prResult.split('/')[-1])
-os.system(f'gh pr merge {prNumber} -m -d')
+os.system(f'gh pr merge {prNumber} -r -d')
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py
 def syncGitcodeCSDN():
     nowCWD = os.getcwd()
