@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Tisfy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】2353.设计食物评分系统：哈希表 + 有序集合力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;design-a-food-rating-system&#x2F; 设计一个支持下述操作的食物评分系统：   	修改 系统中列出的某种食物的评分。 	返回系统中某一类烹饪方式下评分最高的食物。   实现 FoodRatings 类：   	FoodRatings(Str">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2353.设计食物评分系统：哈希表 + 有序集合">
+<meta property="og:url" content="https://blog.letmefly.xyz/2025/02/28/LeetCode%202353.%E8%AE%BE%E8%AE%A1%E9%A3%9F%E7%89%A9%E8%AF%84%E5%88%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】2353.设计食物评分系统：哈希表 + 有序集合力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;design-a-food-rating-system&#x2F; 设计一个支持下述操作的食物评分系统：   	修改 系统中列出的某种食物的评分。 	返回系统中某一类烹饪方式下评分最高的食物。   实现 FoodRatings 类：   	FoodRatings(Str">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-28T05:33:16.000Z">
+<meta property="article:modified_time" content="2025-02-28T05:50:00.410Z">
+<meta property="article:author" content="Tisfy">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="堆（优先队列）">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="map">
+<meta property="article:tag" content="set">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="有序集合">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>2353.设计食物评分系统：哈希表 + 有序集合 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="2353.设计食物评分系统：哈希表 + 有序集合"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-28 13:33" pubdate>
+          2025年2月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2353.设计食物评分系统：哈希表 + 有序集合</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】2353-设计食物评分系统：哈希表-有序集合"><a href="#【LetMeFly】2353-设计食物评分系统：哈希表-有序集合" class="headerlink" title="【LetMeFly】2353.设计食物评分系统：哈希表 + 有序集合"></a>【LetMeFly】2353.设计食物评分系统：哈希表 + 有序集合</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-a-food-rating-system/">https://leetcode.cn/problems/design-a-food-rating-system/</a></p>
+<p>设计一个支持下述操作的食物评分系统：</p>
+
+<ul>
+	<li><strong>修改</strong> 系统中列出的某种食物的评分。</li>
+	<li>返回系统中某一类烹饪方式下评分最高的食物。</li>
+</ul>
+
+<p>实现 <code>FoodRatings</code> 类：</p>
+
+<ul>
+	<li><code>FoodRatings(String[] foods, String[] cuisines, int[] ratings)</code> 初始化系统。食物由 <code>foods</code>、<code>cuisines</code> 和 <code>ratings</code> 描述，长度均为 <code>n</code> 。
+
+<pre><code class="hljs">&lt;ul&gt;
+	&lt;li&gt;&lt;code&gt;foods[i]&lt;/code&gt; 是第 &lt;code&gt;i&lt;/code&gt; 种食物的名字。&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;cuisines[i]&lt;/code&gt; 是第 &lt;code&gt;i&lt;/code&gt; 种食物的烹饪方式。&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;ratings[i]&lt;/code&gt; 是第 &lt;code&gt;i&lt;/code&gt; 种食物的最初评分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;void changeRating(String food, int newRating)&lt;/code&gt; 修改名字为 &lt;code&gt;food&lt;/code&gt; 的食物的评分。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;String highestRated(String cuisine)&lt;/code&gt; 返回指定烹饪方式 &lt;code&gt;cuisine&lt;/code&gt; 下评分最高的食物的名字。如果存在并列，返回 &lt;strong&gt;字典序较小&lt;/strong&gt; 的名字。&lt;/li&gt;
+</code></pre>
+</ul>
+
+<p>注意，字符串 <code>x</code> 的字典序比字符串 <code>y</code> 更小的前提是：<code>x</code> 在字典中出现的位置在 <code>y</code> 之前，也就是说，要么 <code>x</code> 是 <code>y</code> 的前缀，或者在满足&nbsp;<code>x[i] != y[i]</code> 的第一个位置 <code>i</code> 处，<code>x[i]</code> 在字母表中出现的位置在 <code>y[i]</code> 之前。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例：</strong></p>
+
+<pre><strong>输入</strong>
+["FoodRatings", "highestRated", "highestRated", "changeRating", "highestRated", "changeRating", "highestRated"]
+[[["kimchi", "miso", "sushi", "moussaka", "ramen", "bulgogi"], ["korean", "japanese", "japanese", "greek", "japanese", "korean"], [9, 12, 8, 15, 14, 7]], ["korean"], ["japanese"], ["sushi", 16], ["japanese"], ["ramen", 16], ["japanese"]]
+<strong>输出</strong>
+[null, "kimchi", "ramen", null, "sushi", null, "ramen"]
+
+<strong>解释</strong>
+FoodRatings foodRatings = new FoodRatings(["kimchi", "miso", "sushi", "moussaka", "ramen", "bulgogi"], ["korean", "japanese", "japanese", "greek", "japanese", "korean"], [9, 12, 8, 15, 14, 7]);
+foodRatings.highestRated("korean"); // 返回 "kimchi"
+                                    // "kimchi" 是分数最高的韩式料理，评分为 9 。
+foodRatings.highestRated("japanese"); // 返回 "ramen"
+                                      // "ramen" 是分数最高的日式料理，评分为 14 。
+foodRatings.changeRating("sushi", 16); // "sushi" 现在评分变更为 16 。
+foodRatings.highestRated("japanese"); // 返回 "sushi"
+                                      // "sushi" 是分数最高的日式料理，评分为 16 。
+foodRatings.changeRating("ramen", 16); // "ramen" 现在评分变更为 16 。
+foodRatings.highestRated("japanese"); // 返回 "ramen"
+                                      // "sushi" 和 "ramen" 的评分都是 16 。
+                                      // 但是，"ramen" 的字典序比 "sushi" 更小。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>
+	<li><code>n == foods.length == cuisines.length == ratings.length</code></li>
+	<li><code>1 &lt;= foods[i].length, cuisines[i].length &lt;= 10</code></li>
+	<li><code>foods[i]</code>、<code>cuisines[i]</code> 由小写英文字母组成</li>
+	<li><code>1 &lt;= ratings[i] &lt;= 10<sup>8</sup></code></li>
+	<li><code>foods</code> 中的所有字符串 <strong>互不相同</strong></li>
+	<li>在对&nbsp;<code>changeRating</code> 的所有调用中，<code>food</code> 是系统中食物的名字。</li>
+	<li>在对&nbsp;<code>highestRated</code> 的所有调用中，<code>cuisine</code> 是系统中 <strong>至少一种</strong> 食物的烹饪方式。</li>
+	<li>最多调用 <code>changeRating</code> 和 <code>highestRated</code> <strong>总计</strong> <code>2 * 10<sup>4</sup></code> 次</li>
+</ul>
+
+
+    
+<h2 id="解题方法：设计"><a href="#解题方法：设计" class="headerlink" title="解题方法：设计"></a>解题方法：设计</h2><p>哈希表可以通过一个值快速找到拎一个值，有序集合可以快速插入删除一些值并保持集合中元素的有序性。</p>
+<ul>
+<li>创建一个哈希表，由food查询cuisine和rating；</li>
+<li>创建一个哈希表，由cuisine查询所有使用这个cuisine的<code>(food, rating)</code>集合，集合的排序方式是rating大优先然后字典序小优先。</li>
+</ul>
+<p>修改评分时，先由food查询出cuisine和rating，再由cuisine查询出使用这个cuisine的<code>(food, rating)</code>集合，删除旧的<code>(food, rating)</code>对，插入新的<code>(food, rating)</code>对。</p>
+<p>查询时，由cuisine查询出使用这个cuisine的<code>(food, rating)</code>集合，因为是有序的，所以集合中的第一个元素对就是我们所求。</p>
+<ul>
+<li>时间复杂度：初始化$O(n\log n)$，单次操作$O(\log n)$，其中$n$是食物数量</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-28 11:12:40</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-28 11:29:56</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FoodRatings</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    unordered_map&lt;string, pair&lt;string, <span class="hljs-type">int</span>&gt;&gt; food2cuisineScore;        <span class="hljs-comment">// food-&gt;(cuisine, score)</span><br>    unordered_map&lt;string, set&lt;pair&lt;<span class="hljs-type">int</span>, string&gt;&gt;&gt; cuisine2rscoreFood;  <span class="hljs-comment">// cuisine-&gt;[(-score, food), ...]</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">FoodRatings</span>(vector&lt;string&gt;&amp; foods, vector&lt;string&gt;&amp; cuisines, vector&lt;<span class="hljs-type">int</span>&gt;&amp; ratings) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; foods.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            food2cuisineScore[foods[i]] = &#123;cuisines[i], ratings[i]&#125;;<br>            cuisine2rscoreFood[cuisines[i]].<span class="hljs-built_in">insert</span>(&#123;-ratings[i], foods[i]&#125;);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">changeRating</span><span class="hljs-params">(string food, <span class="hljs-type">int</span> newRating)</span> </span>&#123;<br>        <span class="hljs-keyword">auto</span> [cuisine, score] = food2cuisineScore[food];<br>        food2cuisineScore[food] = &#123;cuisine, newRating&#125;;<br>        cuisine2rscoreFood[cuisine].<span class="hljs-built_in">erase</span>(&#123;-score, food&#125;);<br>        cuisine2rscoreFood[cuisine].<span class="hljs-built_in">insert</span>(&#123;-newRating, food&#125;);<br>    &#125;<br>    <br>    <span class="hljs-function">string <span class="hljs-title">highestRated</span><span class="hljs-params">(string cuisine)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> (*cuisine2rscoreFood[cuisine].<span class="hljs-built_in">begin</span>()).second;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your FoodRatings object will be instantiated and called as such:</span><br><span class="hljs-comment"> * FoodRatings* obj = new FoodRatings(foods, cuisines, ratings);</span><br><span class="hljs-comment"> * obj-&gt;changeRating(food,newRating);</span><br><span class="hljs-comment"> * string param_2 = obj-&gt;highestRated(cuisine);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-02-28 11:30:57</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-02-28 12:28:00</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">from</span> sortedcontainers <span class="hljs-keyword">import</span> SortedList<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FoodRatings</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, foods: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>], cuisines: <span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>], ratings: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>):<br>        <span class="hljs-variable language_">self</span>.f2cs = <span class="hljs-built_in">dict</span>()<br>        <span class="hljs-variable language_">self</span>.c2rf = defaultdict(SortedList)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(foods)):<br>            <span class="hljs-variable language_">self</span>.f2cs[foods[i]] = (cuisines[i], ratings[i])<br>            <span class="hljs-variable language_">self</span>.c2rf[cuisines[i]].add((-ratings[i], foods[i]))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">changeRating</span>(<span class="hljs-params">self, food: <span class="hljs-built_in">str</span>, newRating: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        cuisine, rating = <span class="hljs-variable language_">self</span>.f2cs[food]<br>        <span class="hljs-variable language_">self</span>.f2cs[food] = (cuisine, newRating)<br>        <span class="hljs-variable language_">self</span>.c2rf[cuisine].discard((-rating, food))<br>        <span class="hljs-variable language_">self</span>.c2rf[cuisine].add((-newRating, food))<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">highestRated</span>(<span class="hljs-params">self, cuisine: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.c2rf[cuisine][<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]<br><br><br><span class="hljs-comment"># Your FoodRatings object will be instantiated and called as such:</span><br><span class="hljs-comment"># obj = FoodRatings(foods, cuisines, ratings)</span><br><span class="hljs-comment"># obj.changeRating(food,newRating)</span><br><span class="hljs-comment"># param_2 = obj.highestRated(cuisine)</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-02-28 12:31:05</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-02-28 12:58:08</span><br><span class="hljs-comment"> * @Say: Java是真复杂</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Map;<br><span class="hljs-keyword">import</span> java.util.TreeSet;<br><br><br><span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Pair</span>&lt;K <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Comparable</span>&lt;K&gt;, V <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Comparable</span>&lt;V&gt;&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Comparable</span>&lt;Pair&lt;K, V&gt;&gt; &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> K key;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> V value;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Pair</span><span class="hljs-params">(K key, V value)</span> &#123;<br>        <span class="hljs-built_in">this</span>.key = key;<br>        <span class="hljs-built_in">this</span>.value = value;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> K <span class="hljs-title function_">first</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> key;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> V <span class="hljs-title function_">second</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compareTo</span><span class="hljs-params">(Pair&lt;K, V&gt; other)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">keyCompare</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.key.compareTo(other.key);<br>        <span class="hljs-keyword">if</span> (keyCompare != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> keyCompare;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.value.compareTo(other.value);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Pair&#123;&quot;</span> + <span class="hljs-string">&quot;key=&quot;</span> + key + <span class="hljs-string">&quot;, value=&quot;</span> + value + <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>    &#125;<br>&#125;<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FoodRatings</span> &#123;<br>    <span class="hljs-keyword">private</span> Map&lt;String, Pair&lt;String, Integer&gt;&gt; f2cr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-keyword">private</span> Map&lt;String, TreeSet&lt;Pair&lt;Integer, String&gt;&gt;&gt; c2rf = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">FoodRatings</span><span class="hljs-params">(String[] foods, String[] cuisines, <span class="hljs-type">int</span>[] ratings)</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; foods.length; i++) &#123;<br>            f2cr.put(foods[i], <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(cuisines[i], ratings[i]));<br>            c2rf.computeIfAbsent(cuisines[i], k -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">TreeSet</span>&lt;&gt;());<br>            c2rf.get(cuisines[i]).add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(-ratings[i], foods[i]));<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">changeRating</span><span class="hljs-params">(String food, <span class="hljs-type">int</span> newRating)</span> &#123;<br>        Pair&lt;String, Integer&gt; temp = f2cr.get(food);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">cuisine</span> <span class="hljs-operator">=</span> temp.first();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rating</span> <span class="hljs-operator">=</span> temp.second();<br>        f2cr.put(food, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(cuisine, newRating));<br><br>        TreeSet&lt;Pair&lt;Integer, String&gt;&gt; list = c2rf.get(cuisine);<br>        list.remove(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(-rating, food));<br>        list.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Pair</span>&lt;&gt;(-newRating, food));<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">highestRated</span><span class="hljs-params">(String cuisine)</span> &#123;<br>        <span class="hljs-keyword">return</span> c2rf.get(cuisine).first().second();<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your FoodRatings object will be instantiated and called as such:</span><br><span class="hljs-comment"> * FoodRatings obj = new FoodRatings(foods, cuisines, ratings);</span><br><span class="hljs-comment"> * obj.changeRating(food,newRating);</span><br><span class="hljs-comment"> * String param_2 = obj.highestRated(cuisine);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/145926792">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/02/28/LeetCode%202353.%E8%AE%BE%E8%AE%A1%E9%A3%9F%E7%89%A9%E8%AF%84%E5%88%86%E7%B3%BB%E7%BB%9F/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/">#中等</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E5%A0%86%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/">#堆（优先队列）</a>
+      
+        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
+      
+        <a href="/tags/map/">#map</a>
+      
+        <a href="/tags/set/">#set</a>
+      
+        <a href="/tags/%E8%AE%BE%E8%AE%A1/">#设计</a>
+      
+        <a href="/tags/%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/">#有序集合</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>2353.设计食物评分系统：哈希表 + 有序集合</div>
+      <div>https://blog.letmefly.xyz/2025/02/28/LeetCode 2353.设计食物评分系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Tisfy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/27/LeetCode%202296.%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" title="2296.设计一个文本编辑器：对顶栈-主要是要细心下标问题（ASCII字符通俗语言描述）">
+                        <span class="hidden-mobile">2296.设计一个文本编辑器：对顶栈-主要是要细心下标问题（ASCII字符通俗语言描述）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
