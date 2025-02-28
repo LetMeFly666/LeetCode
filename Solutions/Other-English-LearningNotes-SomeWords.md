@@ -475,7 +475,7 @@ tags: [其他, 知识, 英语, Notes]
 |aspirin|n. 阿司匹林(消炎药)|
 |||
 |scoff|v. 嘲笑，讥讽，狼吞虎咽|
-|<font color="#28bea0" title="二次复习">elliptical</font>|adj. 椭圆的，省略的，隐晦的|
+|<font color="#28bea0" title="三次复习">elliptical</font>|adj. 椭圆的，省略的，隐晦的|
 |||
 |sturdy|adj. 结实的，坚固的；强壮的；健壮的；坚决的，顽强的|
 |||
@@ -1022,6 +1022,8 @@ tags: [其他, 知识, 英语, Notes]
 |vouge|n. 流行的，时髦的，风尚，风行<br/>adj. 时髦的|
 |fission|n. (核)裂变，分裂，细胞分裂，(化学键)断裂，裂变|
 |introductory|adj. 序言的，引导的，介绍的，入门的|
+|||
+|duly|adv. 适时地，适当地，恰当地，按时地|
 
 <p class="wordCounts">单词收录总数</p>
 
