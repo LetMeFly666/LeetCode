@@ -26,7 +26,7 @@
 <meta property="og:description" content="面经 - 计网+数据库计算机网络附本科计网考试时的复习笔记，里面有很多ASCII图。 TCP&#x2F;IP网络模型应用层：HTTP、FTP、Telnet、DNS、SMTP等 传输层：TCP(Transmission Control Protocol)、UDP 网络层：IP 网络接口层：网卡层次（封装上MAC地址） 三次握手三次握手目的是保证双方都有发送和接收的能力 网络传输交换机的端口不具备Ma">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-18T03:44:54.000Z">
-<meta property="article:modified_time" content="2025-03-01T09:05:13.252Z">
+<meta property="article:modified_time" content="2025-03-02T05:05:30.294Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="面经">
@@ -332,6 +332,26 @@
 <li>在MySQL5.6引入了<strong>索引下推优化</strong>(index condition pushdown, ICP)，可以在联合索引遍历国策红肿对联合索引中包含的字段做判断，直接过滤掉不满足条件的记录，减少回表次数。</li>
 </ul>
 <p>下推其实就是将部分上层(服务层)负责的事情交给了下层(引擎层)去处理。</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务必须遵守4个特性（ACID）：</p>
+<ol>
+<li>原子性(Atomicity)：一个事务要么全部完成要么一点都不完成</li>
+<li>一致性(Consistency)：事务操作前后数据完整性（如A给B转账前后AB总金额不变）</li>
+<li>隔离性(Isolation)：多事务并发执行不会相互干扰</li>
+<li>持久性(Durability)：事务结束后对数据的修改是永久的，系统故障也不会丢失</li>
+</ol>
+<p>InnoBD实现ACID：</p>
+<ol>
+<li>持久性：通过redo log(重做日志)来保证</li>
+<li>原子性：通过undo log(回滚日志)来保证</li>
+<li>隔离性：通过MVCC(多版本并发控制)来保证</li>
+<li>一致性：通过持久性+原子性+隔离性来保证</li>
+</ol>
+<p>并行执行会带来的问题：</p>
+<ol>
+<li>脏读(dirty read)：一个事务读到另一个未提交事务修改过的数据</li>
+<li>不可重复度(non-repeatable read)：同一事务内多次读取前后结果不一致</li>
+<li>幻读(phantom read)：同一事务内多次查询同一范围数据返回行数不一致</li>
+</ol>
 <h1 id="小杂"><a href="#小杂" class="headerlink" title="小杂"></a>小杂</h1><h3 id="B端C端"><a href="#B端C端" class="headerlink" title="B端C端"></a>B端C端</h3><p>似乎不是Browser和Client，而是Comsumer和Business（客户端&#x2F;后台管理）</p>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><blockquote>
 <p>原创不易，转载请经作者同意后附上<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">原文链接</a>哦~</p>
