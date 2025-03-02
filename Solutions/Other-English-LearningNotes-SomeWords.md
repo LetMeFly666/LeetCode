@@ -1024,6 +1024,10 @@ tags: [其他, 知识, 英语, Notes]
 |introductory|adj. 序言的，引导的，介绍的，入门的|
 |||
 |duly|adv. 适时地，适当地，恰当地，按时地|
+|||
+|ironical|adj. 反语的，讽刺的，令人啼笑皆非的|
+|peruse|v. 细读，研读|
+|mercury|n. 水星，(m小写)水银，汞|
 
 <p class="wordCounts">单词收录总数</p>
 
