@@ -1028,6 +1028,9 @@ tags: [其他, 知识, 英语, Notes]
 |ironical|adj. 反语的，讽刺的，令人啼笑皆非的|
 |peruse|v. 细读，研读|
 |mercury|n. 水星，(m小写)水银，汞|
+|||
+|platinum|n. 铂，白金|
+|neutrality|n. 中立，中立状态|
 
 <p class="wordCounts">单词收录总数</p>
 

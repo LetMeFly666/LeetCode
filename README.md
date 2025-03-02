@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-02-28 21:27:08
+ * @LastEditTime: 2025-03-02 13:00:37
 -->
 # LetLeet Blog
 
@@ -33,7 +33,116 @@
 
 在线博客：[blog.letmefly.xyz](https://blog.letmefly.xyz/)
 
+## 技术思考
+
+|名称|博客|CSDN博客地址|
+|:--|:--|:--|
+|记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.letmefly.xyz/2022/11/05/Other-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
+|AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
+|日积月累 - 一些小知识 - 杂乱 - 啥都有|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy/">本平台博客</a>|无|
+|日积月累 - 一些小知识|<a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
+|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing) - 开题报告-针对视觉大模型联邦学习训练过程中的攻击防御安全及效率问题研究|<a href="https://blog.letmefly.xyz/2024/12/07/Other-AI-FL-FederatedLearning-KaiTiBaoGao/">本平台博客</a>|无|
+|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)|<a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">本平台博客</a>|无|
+|人工智能 - 跟李沐学AI|<a href="https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
+|人工智能 - 强化学习 - 探索和利用|<a href="https://blog.letmefly.xyz/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
+|安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
+|App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
+|有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
+|C(C++)数组越界但能正常运行？关于数组越界和变量内存地址的一点研究|<a href="https://blog.letmefly.xyz/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135256408">CSDN博客</a>|
+|C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
+|C语言：在控制台输出香菱和火圈|<a href="https://blog.letmefly.xyz/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
+|比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
+|汉语 - 生僻字积累|<a href="https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/">本平台博客</a>|无|
+|Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Chrome-EnableParallelDownloading">本平台博客</a>|无|
+|云计算 - 百度AIStudio使用小结|<a href="https://blog.letmefly.xyz/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132535648">CSDN博客</a>|
+|Cloudflare workers - 如何使用（起步篇）|<a href="https://blog.letmefly.xyz/2024/12/09/Other-CloudflareWorkers-How2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144488128">CSDN博客</a>|
+|循环队列的纯C语言实现|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
+|日记 - 记录一次发现HDMI在反向供电的经历|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-HDMIReversePower">本平台博客</a>|无|
+|日记 - 记录一次实验室(后几排)网络架构探究|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-LaboratoryNetworkArchitecture">本平台博客</a>|无|
+|日记 - pyautogui自动脚本的使用心得|<a href="https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention">本平台博客</a>|无|
+|日记 - Windows远程桌面(RDP, Remote Desktop Protocol)跳坑指北|<a href="https://blog.letmefly.xyz/2024/09/13/Other-DiaryWindowsRDP_RemoteDesktopProtocol_Connection">本平台博客</a>|无|
+|分布式操作系统笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/12/16/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
+|Docker学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/07/Other-Docker-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133633479">CSDN博客</a>|
+|英语学习笔记（自用） - 英语易忘单词等|<a href="https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/">本平台博客</a>|无|
+|离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
+|FFmpeg - 如何在Linux上安装支持CUDA的FFmpeg|<a href="https://blog.letmefly.xyz/2023/04/07/Other-FFmpeg-howToInstallCudableFFmpegOnLinux/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/137449955">CSDN博客</a>|
+|FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
+|模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
+|原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
+|Git - 记录一次由于少输入了一个参数导致的更改丢失|<a href="https://blog.letmefly.xyz/2025/01/04/Other-Git-record1gitFileLost/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144929924">CSDN博客</a>|
+|使用GH（命令行）在本地提出Github上的issue、PR，合并PR|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133935823">CSDN博客</a>|
+|Github - 如何提交一个带有“verified”标识的commit|<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144796175">CSDN博客</a>|
+|Github - 记录一次对“不小心包含了密码的PR”的修复|<a href="https://blog.letmefly.xyz/2025/02/06/Other-Github-PrCredentialLeakFix/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145469338">CSDN博客</a>|
+|Github - 记录一次向字节跳动CloudWeGo文档贡献的commit|<a href="https://blog.letmefly.xyz/2025/02/14/Other-Github-Record1Contribution2BytedanceCloudwegoDocs/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145639175">CSDN博客</a>|
+|HTML - 使用Python快速生成HTML的UI|<a href="https://blog.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
+|HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
+|如何将网站某页面全部修改为黑白色|<a href="https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
+|HTML - HTML中使用JS下载文本文件|<a href="https://blog.letmefly.xyz/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131572006">CSDN博客</a>|
+|HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线|<a href="https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/">本平台博客</a>|无|
+|HTML - Javascript - 原生的JS HTTP请求：实用主义的一篇文章|<a href="https://blog.letmefly.xyz/2023/08/06/Other-HTML-Javascript-NaiveHTTPRequestByJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132134252">CSDN博客</a>|
+|HTML - Javascript - JS可变参数函数|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
+|HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
+|HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
+|日语学习笔记|<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">本平台博客</a>|无|
+|教资（教师资格证）学习笔记|<a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
+|力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
+|Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
+|Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
+|图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
+|码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
+|内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
+|面经 - 当前只有计网|<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">本平台博客</a>|无|
+|Vjudge使用小指南 - Virtual Judge - 一个Online Judge(OJ)平台 - 支持大量第三方题库|<a href="https://blog.letmefly.xyz/2024/08/14/Other-OJ-Vjudge-how2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/141185238">CSDN博客</a>|
+|OWA(Outlook Web App) - 详细总结调研 - 特征相关|<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">本平台博客</a>|**暂**无|
+|抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
+|抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
+|密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录|<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN博客</a>|
+|物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
+|提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
+|PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
+|Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://blog.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
+|Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索|<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129164772">CSDN博客</a>|
+|Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）|<a href="https://blog.letmefly.xyz/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129972641">CSDN博客</a>|
+|Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目|<a href="https://blog.letmefly.xyz/2023/04/19/Other-Python-Django-Merge2DjangoProject/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130248202">CSDN博客</a>|
+|Python生成列表的简洁代码|<a href="https://blog.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
+|Python - Jupyter - 远程连接Jupyter内核|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Python-Jupyter-RemoteKoreConnection/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130303588">CSDN博客</a>|
+|Python - 从0开始学Python|<a href="https://blog.letmefly.xyz/2024/11/22/Other-Python-LearnPythonFrom0/">本平台博客</a>|无|
+|不能函数重载的Python如何实现“伪重载”|<a href="https://blog.letmefly.xyz/2023/03/23/Other-Python-Overload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129738983">CSDN博客</a>|
+|Python - 记录一下pydebugger的BUG|<a href="https://blog.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG">本平台博客</a>|无|
+|python - 下载自百度网盘的远古の - 知识点备忘录|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-beiwanglu/">本平台博客</a>|无|
+|python - 下载自百度网盘的远古の - 高级知识总结1|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie1/">本平台博客</a>|无|
+|python - 下载自百度网盘的远古の - 高级知识总结2|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/">本平台博客</a>|无|
+|Python - random.seed初探 - 为什么固定随机种子了每次结果还不一样|<a href="https://blog.letmefly.xyz/2024/07/23/Other-Python-RandomSeed-whyDifferentWhileSeed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
+|Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://blog.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/140630443">CSDN博客</a>|
+|Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://blog.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
+|Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看|<a href="https://blog.letmefly.xyz/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131493348">CSDN博客</a>|
+|Python - 函数参数中的*和**|<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
+|Python - with语句 - 写一个支持with方法调用的类|<a href="https://blog.letmefly.xyz/2024/05/08/Other-Python-WithStatement-write1classSupportingWith/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138576722">CSDN博客</a>|
+|QT - 实例 - 可点击的进度条、无窗口应用|<a href="https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/">本平台博客</a>|无|
+|北邮暑期课 - R语言数据分析|<a href="https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
+|SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
+|Verilog学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
+|Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP|<a href="https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1">本平台博客</a>|无|
+|VsCode容器开发 - VsCode连接远程服务器上的docker|<a href="https://blog.letmefly.xyz/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135743708">CSDN博客</a>|
+|VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
+|VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
+|VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
+|WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
+|建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
+|Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
+|Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
+|Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
+|Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
+|Windows(奇思妙想) - 通过ssh打开带有图形界面的程序 - 一种通过计划任务的曲折实现方式|<a href="https://blog.letmefly.xyz/2025/02/21/Other-Windows-OpenUIbySSH">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145786262">CSDN博客</a>|
+|Windows程序互斥锁 - 一个程序同时仅允许运行一个实例|<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136139822">CSDN博客</a>|
+|Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203">CSDN博客</a>|
+|Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
+|Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
+|Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
+
 ## 现有题解
+
+### LeetCode
 
 |题目名称|困难程度|题目地址|题解地址|CSDN题解|LeetCode题解|
 |:--|:--|:--|:--|:--|:--|
@@ -95,6 +204,7 @@
 |0129.求根节点到叶节点数字之和|中等|<a href="https://leetcode.cn/problems/sum-root-to-leaf-numbers/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/22/LeetCode%200129.%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125928616" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/sum-root-to-leaf-numbers/solution/letmefly-129qiu-gen-jie-dian-dao-xie-jie-u64a/" target="_blank">LeetCode题解</a>|
 |0130.被围绕的区域|中等|<a href="https://leetcode.cn/problems/surrounded-regions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/22/LeetCode%200130.%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%8C%BA%E5%9F%9F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125929415" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/surrounded-regions/solution/by-tisfy-fkqv/" target="_blank">LeetCode题解</a>|
 |0131.分割回文串|中等|<a href="https://leetcode.cn/problems/palindrome-partitioning/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/23/LeetCode%200131.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125946017" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/palindrome-partitioning/solution/letmefly-131fen-ge-hui-wen-chuan-bao-li-07cg8/" target="_blank">LeetCode题解</a>|
+|0132.分割回文串II|困难|<a href="https://leetcode.cn/problems/palindrome-partitioning-ii/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/02/LeetCode%200132.%E5%88%86%E5%89%B2%E5%9B%9E%E6%96%87%E4%B8%B2II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145961943" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/palindrome-partitioning-ii/solutions/3591810/letmefly-132fen-ge-hui-wen-chuan-iidong-jt069/" target="_blank">LeetCode题解</a>|
 |0133.克隆图|中等|<a href="https://leetcode.cn/problems/clone-graph/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/24/LeetCode%200133.%E5%85%8B%E9%9A%86%E5%9B%BE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125960776" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/clone-graph/solution/by-tisfy-sm4z/" target="_blank">LeetCode题解</a>|
 |0135.分发糖果|困难|<a href="https://leetcode.cn/problems/candy/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/25/LeetCode%200135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125977968" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/candy/solution/letmefly-tu-jie-135fen-fa-tang-guo-by-ti-vtt2/" target="_blank">LeetCode题解</a>|
 |0136.只出现一次的数字|简单|<a href="https://leetcode.cn/problems/single-number/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/07/25/LeetCode%200136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/125978508" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/single-number/solution/letmefly-136zhi-chu-xian-yi-ci-de-shu-zi-yfn7/" target="_blank">LeetCode题解</a>|
@@ -854,113 +964,6 @@
 |———|———|———|
 |<a href="https://buctcoder.com/contest.php?cid=2963">2023上半年ACM&蓝桥杯每周训练题-1 - 题解 </a>|<a href="https://blog.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/129327761">CSDN题解</a>|
 |<a href="https://buctcoder.com/contest.php?cid=3176">北京化工大学第十八届程序设计竞赛 - 题解 </a>|<a href="https://blog.letmefly.xyz/2023/05/10/BUCT-BUCT2023XiaoSai-2022-2023-2/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/131293300">CSDN题解</a>|
-
-### 其他
-
-|名称|博客|CSDN博客地址|
-|:--|:--|:--|
-|记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.letmefly.xyz/2022/11/05/Other-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
-|AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
-|日积月累 - 一些小知识 - 杂乱 - 啥都有|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy/">本平台博客</a>|无|
-|日积月累 - 一些小知识|<a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
-|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing) - 开题报告-针对视觉大模型联邦学习训练过程中的攻击防御安全及效率问题研究|<a href="https://blog.letmefly.xyz/2024/12/07/Other-AI-FL-FederatedLearning-KaiTiBaoGao/">本平台博客</a>|无|
-|人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)|<a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">本平台博客</a>|无|
-|人工智能 - 跟李沐学AI|<a href="https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
-|人工智能 - 强化学习 - 探索和利用|<a href="https://blog.letmefly.xyz/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
-|安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
-|App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
-|有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
-|C(C++)数组越界但能正常运行？关于数组越界和变量内存地址的一点研究|<a href="https://blog.letmefly.xyz/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135256408">CSDN博客</a>|
-|C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
-|C语言：在控制台输出香菱和火圈|<a href="https://blog.letmefly.xyz/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
-|比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
-|汉语 - 生僻字积累|<a href="https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/">本平台博客</a>|无|
-|Chrome：谷歌浏览器开启多线程下载（并行下载）parallel downloading|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Chrome-EnableParallelDownloading">本平台博客</a>|无|
-|云计算 - 百度AIStudio使用小结|<a href="https://blog.letmefly.xyz/2023/08/13/Other-CloudComputing-AIStudioOfBaidu-SmallSummary/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132535648">CSDN博客</a>|
-|Cloudflare workers - 如何使用（起步篇）|<a href="https://blog.letmefly.xyz/2024/12/09/Other-CloudflareWorkers-How2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144488128">CSDN博客</a>|
-|循环队列的纯C语言实现|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Datastruct-XunHuanDuiLie/">本平台博客</a>|无|
-|日记 - 记录一次发现HDMI在反向供电的经历|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-HDMIReversePower">本平台博客</a>|无|
-|日记 - 记录一次实验室(后几排)网络架构探究|<a href="https://blog.letmefly.xyz/2024/09/03/Other-Diary-LaboratoryNetworkArchitecture">本平台博客</a>|无|
-|日记 - pyautogui自动脚本的使用心得|<a href="https://blog.letmefly.xyz/2024/09/08/Other-Diary-PyautoguiUsage-Attention">本平台博客</a>|无|
-|日记 - Windows远程桌面(RDP, Remote Desktop Protocol)跳坑指北|<a href="https://blog.letmefly.xyz/2024/09/13/Other-DiaryWindowsRDP_RemoteDesktopProtocol_Connection">本平台博客</a>|无|
-|分布式操作系统笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/12/16/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
-|Docker学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/07/Other-Docker-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133633479">CSDN博客</a>|
-|英语学习笔记（自用） - 英语易忘单词等|<a href="https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/">本平台博客</a>|无|
-|离别：哪些是在家而不是在学校很方便的事情|<a href="https://blog.letmefly.xyz/2023/02/17/Other-Farewell-WhatIsEasilyDoneAtHomeButNotSchool/">本平台博客</a>|无|
-|FFmpeg - 如何在Linux上安装支持CUDA的FFmpeg|<a href="https://blog.letmefly.xyz/2023/04/07/Other-FFmpeg-howToInstallCudableFFmpegOnLinux/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/137449955">CSDN博客</a>|
-|FFmpeg（强大的音视频处理工具） - 一些基本实用方法|<a href="https://blog.letmefly.xyz/2023/07/03/Other-FFmpeg-SomeCommonUsage/">本平台博客</a>|无|
-|模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer|<a href="https://leetcode.letmefly.xyz/2023/04/06/Other-Fuzz-Montage-JSEngineFuzzer-Translation/">本平台博客</a>|无|
-|原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具|<a href="https://blog.letmefly.xyz/2023/02/05/Other-Genshin-WeiXiTianLi-HelperByC++OpenCV/">本平台博客</a>|无|
-|Git - 记录一次由于少输入了一个参数导致的更改丢失|<a href="https://blog.letmefly.xyz/2025/01/04/Other-Git-record1gitFileLost/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144929924">CSDN博客</a>|
-|使用GH（命令行）在本地提出Github上的issue、PR，合并PR|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Github-CreatingIssuePrMergingPrByCMD-GH/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/133935823">CSDN博客</a>|
-|Github - 如何提交一个带有“verified”标识的commit|<a href="https://blog.letmefly.xyz/2024/12/28/Other-Github-How2Make1VerifiedCommit/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144796175">CSDN博客</a>|
-|Github - 记录一次对“不小心包含了密码的PR”的修复|<a href="https://blog.letmefly.xyz/2025/02/06/Other-Github-PrCredentialLeakFix/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145469338">CSDN博客</a>|
-|Github - 记录一次向字节跳动CloudWeGo文档贡献的commit|<a href="https://blog.letmefly.xyz/2025/02/14/Other-Github-Record1Contribution2BytedanceCloudwegoDocs/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145639175">CSDN博客</a>|
-|HTML - 使用Python快速生成HTML的UI|<a href="https://blog.letmefly.xyz/2023/04/04/Other-HTML-AutoGenerateHTMLByPython/">本平台博客</a>|无|
-|HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-ChangePermanentRedirect301ByGoogle/">本平台博客</a>|无|
-|如何将网站某页面全部修改为黑白色|<a href="https://blog.letmefly.xyz/2022/12/01/Other-HTML-ChangeWeb2Gray/">本平台博客</a>|无|
-|HTML - HTML中使用JS下载文本文件|<a href="https://blog.letmefly.xyz/2023/07/06/Other-HTML-DownloadTextFileByTagAAndJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131572006">CSDN博客</a>|
-|HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线|<a href="https://blog.letmefly.xyz/2023/07/27/Other-HTML-Hexo-RemoveTheEscapeOfUnderline/">本平台博客</a>|无|
-|HTML - Javascript - 原生的JS HTTP请求：实用主义的一篇文章|<a href="https://blog.letmefly.xyz/2023/08/06/Other-HTML-Javascript-NaiveHTTPRequestByJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132134252">CSDN博客</a>|
-|HTML - Javascript - JS可变参数函数|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
-|HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
-|HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
-|日语学习笔记|<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">本平台博客</a>|无|
-|教资（教师资格证）学习笔记|<a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
-|力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
-|Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
-|Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
-|图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
-|码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
-|内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
-|面经 - 当前只有计网|<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">本平台博客</a>|无|
-|Vjudge使用小指南 - Virtual Judge - 一个Online Judge(OJ)平台 - 支持大量第三方题库|<a href="https://blog.letmefly.xyz/2024/08/14/Other-OJ-Vjudge-how2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/141185238">CSDN博客</a>|
-|OWA(Outlook Web App) - 详细总结调研 - 特征相关|<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">本平台博客</a>|**暂**无|
-|抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
-|抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
-|密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录|<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN博客</a>|
-|物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
-|提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
-|PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
-|Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2|<a href="https://blog.letmefly.xyz/2022/12/04/Other-Python-BeautifulSoup4lxml-h2ParseError/">本平台博客</a>|无|
-|Python - cache修饰器：将已经计算过的结果保留下来，可用于记忆化搜索|<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-CacheDecorator/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129164772">CSDN博客</a>|
-|Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）|<a href="https://blog.letmefly.xyz/2023/04/05/Other-Python-Copy-DeepCopyAndShallowCopy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129972641">CSDN博客</a>|
-|Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目|<a href="https://blog.letmefly.xyz/2023/04/19/Other-Python-Django-Merge2DjangoProject/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130248202">CSDN博客</a>|
-|Python生成列表的简洁代码|<a href="https://blog.letmefly.xyz/2022/11/19/Other-Python-GenerateListWithShortCode/">本平台博客</a>|无|
-|Python - Jupyter - 远程连接Jupyter内核|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Python-Jupyter-RemoteKoreConnection/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130303588">CSDN博客</a>|
-|Python - 从0开始学Python|<a href="https://blog.letmefly.xyz/2024/11/22/Other-Python-LearnPythonFrom0/">本平台博客</a>|无|
-|不能函数重载的Python如何实现“伪重载”|<a href="https://blog.letmefly.xyz/2023/03/23/Other-Python-Overload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129738983">CSDN博客</a>|
-|Python - 记录一下pydebugger的BUG|<a href="https://blog.letmefly.xyz/2023/04/05/Other-Python-PydebuggerBUG">本平台博客</a>|无|
-|python - 下载自百度网盘的远古の - 知识点备忘录|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-beiwanglu/">本平台博客</a>|无|
-|python - 下载自百度网盘的远古の - 高级知识总结1|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie1/">本平台博客</a>|无|
-|python - 下载自百度网盘的远古の - 高级知识总结2|<a href="https://blog.letmefly.xyz/2023/09/25/Other-Python-PythonNotesFromBaiduDisk-gaojizongjie2/">本平台博客</a>|无|
-|Python - random.seed初探 - 为什么固定随机种子了每次结果还不一样|<a href="https://blog.letmefly.xyz/2024/07/23/Other-Python-RandomSeed-whyDifferentWhileSeed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127724471">CSDN博客</a>|
-|Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究|<a href="https://blog.letmefly.xyz/2022/11/07/Other-Python-ResearchForPycache/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/140630443">CSDN博客</a>|
-|Python爬虫无需鉴权下载北化在线平台的“课程资源”|<a href="https://blog.letmefly.xyz/2022/12/04/Other-Python-Spider-BUCT-onlinePlatform-KeChengZiYuan/">本平台博客</a>|无|
-|Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看|<a href="https://blog.letmefly.xyz/2023/07/01/Other-Python-Spider-YuketangRainClassroomVideoDownload/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131493348">CSDN博客</a>|
-|Python - 函数参数中的*和**|<a href="https://blog.letmefly.xyz/2023/02/22/Other-Python-StarAndStarStarInFunctionParameter/">本平台博客</a>|无|
-|Python - with语句 - 写一个支持with方法调用的类|<a href="https://blog.letmefly.xyz/2024/05/08/Other-Python-WithStatement-write1classSupportingWith/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138576722">CSDN博客</a>|
-|QT - 实例 - 可点击的进度条、无窗口应用|<a href="https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/">本平台博客</a>|无|
-|北邮暑期课 - R语言数据分析|<a href="https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
-|SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
-|Verilog学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
-|Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP|<a href="https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1">本平台博客</a>|无|
-|VsCode容器开发 - VsCode连接远程服务器上的docker|<a href="https://blog.letmefly.xyz/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135743708">CSDN博客</a>|
-|VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
-|VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
-|VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
-|WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
-|建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
-|Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
-|Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
-|Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
-|Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
-|Windows(奇思妙想) - 通过ssh打开带有图形界面的程序 - 一种通过计划任务的曲折实现方式|<a href="https://blog.letmefly.xyz/2025/02/21/Other-Windows-OpenUIbySSH">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145786262">CSDN博客</a>|
-|Windows程序互斥锁 - 一个程序同时仅允许运行一个实例|<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136139822">CSDN博客</a>|
-|Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203">CSDN博客</a>|
-|Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
-|Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
-|Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
 
 ## About Posting New Articles
 
