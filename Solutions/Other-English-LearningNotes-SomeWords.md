@@ -945,7 +945,7 @@ tags: [其他, 知识, 英语, Notes]
 |leeway|n. 自由活动的空间|
 |<font color="#28bea0" title="二次复习">pertinence</font>|n. 相关性|
 |||
-|tumult|n. 骚动，骚乱，心烦意乱，混乱|
+|<font color="#28bea0" title="二次复习">tumult</font>|n. 骚动，骚乱，心烦意乱，混乱|
 |||
 |creditworthy|adj. 可信赖偿还欠款的，信誉好的，信用可靠的，借贷安全的|
 |declaration|n. 公告，宣言，宣称，生命(书)|
@@ -1031,6 +1031,7 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |platinum|n. 铂，白金|
 |neutrality|n. 中立，中立状态|
+|muffle|v. 压抑(声音)，使(声音)降低，使听不清，蒙住(以保暖)<br/>n. 低沉的声音，消声器，包裹物(头巾/围巾)<summary>例句</summary>The double-glazed windows of the house are used to <font color="#28bea0">muffle</font> the noise.<br/>这所房子装有的双层玻璃窗被用来减弱噪声的干扰。</details>|
 
 <p class="wordCounts">单词收录总数</p>
 
