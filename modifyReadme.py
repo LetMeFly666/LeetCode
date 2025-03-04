@@ -2,9 +2,10 @@
 Author: LetMeFly
 Date: 2025-03-03 16:57:21
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-03 17:29:10
+LastEditTime: 2025-03-04 17:07:20
 What's more: 这个文件之后也会合并到newSolution.py
 '''
+from typing import Dict, List
 """
 Descriptions:
     读README.md，读Solutions文件夹，依据Solutions文件夹中的文章更新README.md中的对应位置
@@ -27,7 +28,54 @@ Descriptions:
             1. CSDN博客地址：csdn_url
 """
 def regenerateReadme():
-    originalData
+    data: Dict[str, Dict[str, str]] = {
+        # 'Other-Windows-UWP-launchSttingsApp': {
+        #     'title': 'Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings',
+        #     'csdn': 'https://letmefly.blog.csdn.net/article/details/129601344',
+        #     'leetcode': '',   # 力扣题解地址
+        #     'problem': '',    # 比赛/问题地址
+        #     'type': 'think',  # 或leetcode或otherplatform
+        # }
+    }
+
+    """
+    Description:
+        提取readme中以header为表头（第一行）的表格body的每一行
+    
+    Input:
+        readme按行分割形成的列表
+        表头
+    
+    Output:
+        body（一行一个）
+    """
+    def _getLinesByHeader(readmeSplited: List[str], header: str) -> List[str]:
+        pass
+
+    """
+    Description:
+        将README中信息读到data中
+    
+    Input:
+        data: 空字典
+    
+    Output:
+        data: README->data
+    """
+    def getdataFromReadme(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
+        with open('README.md', 'r', encoding='utf-8') as f:
+            readme = f.read()
+        readSplited = readme.split()
+
+    def getdataFromFile(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
+        pass
+
+    def rewrite(data: Dict[str, Dict[str, str]]):
+        pass
+
+    data = getdataFromReadme(data)
+    data = getdataFromFile(data)
+    rewrite(data)
 
 
 if __name__ == '__main__':

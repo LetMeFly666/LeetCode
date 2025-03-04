@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-03 09:44:34
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-04 10:37:42
+LastEditTime: 2025-03-04 16:49:14
 '''
 from mitmproxy import http
 import logging
@@ -30,9 +30,11 @@ logger_text.addHandler(filehandler_text)
 
 
 def request(flow: http.HTTPFlow) -> None:
-    # # 修改请求
+    # 修改请求
     # if "letmefly.xyz" in flow.request.pretty_url:
-    #     flow.request.headers["User-Agent"] = "Modified-Agent"
+    if "web.letmefly.xyz" in flow.request.pretty_url and 'text/html' in flow.response.headers.get('content-type', ''):
+        # flow.request.headers["User-Agent"] = "Modified-Agent"
+        flow.request.text  # 暂时未知
     pass
 
 def response(flow: http.HTTPFlow) -> None:
