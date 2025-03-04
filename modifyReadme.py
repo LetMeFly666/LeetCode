@@ -27,7 +27,7 @@ Descriptions:
             1. CSDN博客地址：csdn_url
 """
 def regenerateReadme():
-    pass
+    originalData
 
 
 if __name__ == '__main__':
