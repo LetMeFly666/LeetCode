@@ -1032,6 +1032,8 @@ tags: [其他, 知识, 英语, Notes]
 |platinum|n. 铂，白金|
 |neutrality|n. 中立，中立状态|
 |muffle|v. 压抑(声音)，使(声音)降低，使听不清，蒙住(以保暖)<br/>n. 低沉的声音，消声器，包裹物(头巾/围巾)<summary>例句</summary>The double-glazed windows of the house are used to <font color="#28bea0">muffle</font> the noise.<br/>这所房子装有的双层玻璃窗被用来减弱噪声的干扰。</details>|
+|democrat|n. 民主党人，民主主义者|
+|bureaucratic|adj. 官僚的，官僚主义的|
 
 <p class="wordCounts">单词收录总数</p>
 
