@@ -26,7 +26,7 @@
 <meta property="og:description" content="面经 - 计网+数据库计算机网络附本科计网考试时的复习笔记，里面有很多ASCII图。 TCP&#x2F;IP网络模型应用层：HTTP、FTP、Telnet、DNS、SMTP等 传输层：TCP(Transmission Control Protocol)、UDP 网络层：IP 网络接口层：网卡层次（封装上MAC地址） 三次握手三次握手目的是保证双方都有发送和接收的能力 网络传输交换机的端口不具备Ma">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-18T03:44:54.000Z">
-<meta property="article:modified_time" content="2025-03-03T06:07:20.141Z">
+<meta property="article:modified_time" content="2025-03-04T03:03:24.772Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="面经">
@@ -389,6 +389,11 @@
 <li>可重复读：事务启动时创建一个read view</li>
 <li>读提交：每个select都会创建一个read view，这样就能读到其他事务已提交的数据了</li>
 </ol>
+<h4 id="幻读被解决了吗"><a href="#幻读被解决了吗" class="headerlink" title="幻读被解决了吗"></a>幻读被解决了吗</h4><p>MySQL可重复读隔离级别下，幻读现象的发生与<strong>快照读</strong>和<strong>当前读</strong>密切相关。</p>
+<blockquote>
+<p>只有普通查询<code>select</code>是快照读，但<code>update</code>、<code>insert</code>、<code>delete</code>、<code>select ... for update</code>都是当前读。</p>
+<p>当前读会直接读取数据库中最新已提交的数据，不依赖之前的read view。需要通过<strong>记录锁</strong>(对一条记录加锁)和<strong>间隙锁</strong>(gap locks, 对一个范围加锁)避免幻读。它们存在时范围内的数据修改会被阻塞。</p>
+</blockquote>
 <h1 id="小杂"><a href="#小杂" class="headerlink" title="小杂"></a>小杂</h1><h3 id="B端C端"><a href="#B端C端" class="headerlink" title="B端C端"></a>B端C端</h3><p>似乎不是Browser和Client，而是Comsumer和Business（客户端&#x2F;后台管理）</p>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><blockquote>
 <p>原创不易，转载请经作者同意后附上<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">原文链接</a>哦~</p>
