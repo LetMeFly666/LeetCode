@@ -163,5 +163,123 @@ public:
 };
 ```
 
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-03-03 18:17:09
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-03-03 21:01:10
+ */
+typedef unsigned long long ull;
+
+class Solution {
+public:
+    int widthOfBinaryTree(TreeNode* root) {
+        ull ans = 1;
+        queue<pair<TreeNode*, ull>> q;
+        q.push({root, 0});
+        while (q.size()) {
+            cout << q.size() << endl;
+            ull m = -1, M = 0;  // 0是最小值，-1是最大值（2^{64}-1）
+            for (int i = q.size(); i > 0; i--) {
+                auto [node, num] = q.front();
+                cout << node->val << ',' << num << endl;
+                q.pop();
+                m = min(m, num);
+                M = max(M, num);
+                if (node->left) {
+                    q.push({node->left, num * 2 + 1});
+                }
+                if (node->right) {
+                    q.push({node->right, num * 2 + 2});
+                }
+            }
+            // printf("ans = max(%lld, %lld) = %lld\n", ans, M - m + 1, max(ans, M - m + 1));
+            ans = max(ans, M - m + 1);
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-03-05 22:11:08
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-03-05 22:14:01
+'''
+from typing import Optional
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        ans = 1
+        q = [(root, 0)]
+        while q:
+            nextQ = []
+            ans = max(ans, q[-1][1] - q[0][1] + 1)
+            for node, num in q:
+                if node.left:
+                    nextQ.append((node.left, num * 2 + 1))
+                if node.right:
+                    nextQ.append((node.right, num * 2 + 2))
+            q = nextQ
+        return ans
+```
+
+#### Golang
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-03-05 22:36:39
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-03-05 22:42:05
+ */
+package main
+
+// type TreeNode struct {
+//     Val int
+//     Left *TreeNode
+//     Right *TreeNode
+// }
+
+type pair_MWOBT struct {
+    node *TreeNode
+    num int
+}
+
+func widthOfBinaryTree(root *TreeNode) (ans int) {
+    q := []pair_MWOBT{{root, 0}}
+    for len(q) > 0 {
+        nextQ := []pair_MWOBT{}
+        ans = max(ans, q[len(q) - 1].num - q[0].num + 1)
+        for _, pair := range q {
+            if pair.node.Left != nil {
+                nextQ = append(nextQ, pair_MWOBT{pair.node.Left, pair.num * 2 + 1})
+            }
+            if pair.node.Right != nil {
+                nextQ = append(nextQ, pair_MWOBT{pair.node.Right, pair.num * 2 + 2})
+            }
+        }
+        q = nextQ
+    }
+    return ans
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/27/LeetCode%200662.%E4%BA%8C%E5%8F%89%E6%A0%91%E6%9C%80%E5%A4%A7%E5%AE%BD%E5%BA%A6/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126558271](https://letmefly.blog.csdn.net/article/details/126558271)

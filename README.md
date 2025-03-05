@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-04 22:40:44
+ * @LastEditTime: 2025-03-05 23:22:07
 -->
 # LetLeet Blog
 
@@ -258,6 +258,7 @@
 |0264.丑数II|中等|<a href="https://leetcode.cn/problems/ugly-number-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/09/13/LeetCode%200264.%E4%B8%91%E6%95%B0II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126840084" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/ugly-number-ii/solution/letmefly-264chou-shu-ii-by-tisfy-ppsm/" target="_blank">LeetCode题解</a>|
 |0274.H指数|中等|<a href="https://leetcode.cn/problems/h-index/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/10/29/LeetCode%200274.H%E6%8C%87%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/134099234" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/h-index/solutions/2502833/letmefly-274h-zhi-shu-pai-xu-by-tisfy-qmfq/" target="_blank">LeetCode题解</a>|
 |0275.H指数II|中等|<a href="https://leetcode.cn/problems/h-index-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/09/14/LeetCode%200275.H%E6%8C%87%E6%95%B0II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126851266" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/h-index-ii/solution/letmefly-275h-zhi-shu-ii-by-tisfy-c85w/" target="_blank">LeetCode题解</a>|
+|0283.移动零|简单|<a href="https://leetcode.cn/problems/move-zeroes/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/05/LeetCode%200283.%E7%A7%BB%E5%8A%A8%E9%9B%B6/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/146055908" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/move-zeroes/solutions/3598445/letmefly-283yi-dong-ling-san-chong-xiao-y3rt6/" target="_blank">LeetCode题解</a>|
 |0289.生命游戏|中等|<a href="https://leetcode.cn/problems/game-of-life/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/09/16/LeetCode%200289.%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126883144" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/game-of-life/solution/letmefly-289sheng-ming-you-xi-by-tisfy-ta7d/" target="_blank">LeetCode题解</a>|
 |0290.单词规律|简单|<a href="https://leetcode.cn/problems/word-pattern/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/09/16/LeetCode%200290.%E5%8D%95%E8%AF%8D%E8%A7%84%E5%BE%8B/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/126884583" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/word-pattern/solution/letmefly-290dan-ci-gui-lu-by-tisfy-2sw1/" target="_blank">LeetCode题解</a>|
 |0292.Nim游戏|简单|<a href="https://leetcode.cn/problems/nim-game/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/02/04/LeetCode%200292.Nim%E6%B8%B8%E6%88%8F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136024724" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/nim-game/solutions/2631098/letmefly-292nim-you-xi-nao-jin-ji-zhuan-z34go/" target="_blank">LeetCode题解</a>|
@@ -989,7 +990,8 @@
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
-- [ ] 当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。
+- [ ] 当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。(testing)
+- [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - hexo我是一刻也待不下去了
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
