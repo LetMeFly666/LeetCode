@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-05 23:22:07
+ * @LastEditTime: 2025-03-06 00:24:15
 -->
 # LetLeet Blog
 
@@ -990,9 +990,10 @@
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
-- [ ] 当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。(testing)
 - [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
+- [ ] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。
 - hexo我是一刻也待不下去了
+- [x] 写新题解时，当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
 - [x] 想让hexo支持个latex咋就这么难捏？虽然之前有时表现得不尽人意，但总体还好。但是今日写了一篇物理博客，凡是带中文字符的公式都无法渲染诶。
