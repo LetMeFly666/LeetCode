@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-03 16:57:37
+LastEditTime: 2025-03-05 22:09:22
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -207,12 +207,28 @@ cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "
 prResult = os.popen(cmd).read()
 print(prResult)
 prNumber = int(prResult.split('/')[-1])
-# os.system(f'gh pr merge {prNumber} -r -d')
-os.system(f'git switch master')
-os.system(f'git merge {num}')  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
-os.system(f'git push')
-os.system(f'git branch -d {num}')
-os.system(f'git push --delete origin {num}')
+input('enter when ready to merge:')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
+# os.system(f'gh pr merge {prNumber} -r -d')  # rebase没有verified的标，且sha也不一样
+def get_commit_diff():
+    # 获取题解分支比master多出的提交次数
+    try:
+        count = int(subprocess.check_output(
+            ['git', 'rev-list', '--count', f'master..{num}'],
+            stderr=subprocess.DEVNULL  # 屏蔽错误输出
+        ).decode().strip())
+    except subprocess.CalledProcessError:
+        print("无法获取提交差异，请确认分支存在")
+        return 1
+    return count
+commitCount = get_commit_diff()
+if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
+    os.system(f'git switch master')
+    os.system(f'git merge {num}')
+    os.system(f'git push')
+    os.system(f'git branch -d {num}')
+    os.system(f'git push --delete origin {num}')
+else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
+    os.system(f'gh pr merge -s -d  -t "update: 添加问题“{num}.{title}”的代码和题解" -b "Signed-off-by: LetMeFly666 <814114971@qq.com>"')
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py
 def syncGitcodeCSDN():
     nowCWD = os.getcwd()
