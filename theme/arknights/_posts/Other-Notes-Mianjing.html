@@ -198,8 +198,116 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p>只有普通查询<code>select</code>是快照读，但<code>update</code>、<code>insert</code>、<code>delete</code>、<code>select ... for update</code>都是当前读。</p>
 <p>当前读会直接读取数据库中最新已提交的数据，不依赖之前的read view。需要通过<strong>记录锁</strong>(对一条记录加锁)和<strong>间隙锁</strong>(gap locks, 对一个范围加锁)避免幻读。它们存在时范围内的数据修改会被阻塞。</p>
 </blockquote>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><h4 id="全局锁"><a href="#全局锁" class="headerlink" title="全局锁"></a>全局锁</h4><p>只要执行下面操作，整个数据库就进入只读状态了。其他进程对数据的增删改、对数据表结构的更改都会被阻塞。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush tables <span class="keyword">with</span> read lock;</span><br></pre></td></tr></table></figure>
+
+<p>可通过<code>unlock tables;</code>释放全局锁，当前会话断开全局锁也会自动释放。</p>
+<p>全局锁主要应用于全库逻辑备份。否则容易出现备份数据和预期不一致：</p>
+<blockquote>
+<p>先备份了money表，用户花钱买了商品，又备份了商品表。</p>
+<p>结果备份到的数据money没减商品少了。</p>
+</blockquote>
+<p>但是容易阻塞其他进程。如果数据引擎支持可重复读的隔离级别，则可以在备份前开启事务，生成read view，整个备份过程中都使用这个read view。由于MVCC的支持，备份期间依然可以对数据进行更新操作。如<code>mysqldump</code>加上<code>-single-transaction</code>(MyISAM不支持)。</p>
+<h4 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h4><p>MySQL的表级锁分为：</p>
+<ol>
+<li>表锁</li>
+<li>元数据锁(MDL)</li>
+<li>意向锁</li>
+<li>AUTO-INC锁</li>
+</ol>
+<h5 id="表锁"><a href="#表锁" class="headerlink" title="表锁"></a>表锁</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLES t1 READ, t2 WRITE;</span><br><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+
+<p>上述操作第一行会给表t1加读锁，其他进程可以读t1但不能写t1；会给表t2加写锁，其他进程无法读写t2。</p>
+<p>如果进程通过上述<code>LOCK TABLES</code>的方式显示锁定<code>t1</code>、<code>t2</code>，则<strong>本线程无法访问其他表</strong>。（如果是<code>SELECT ... FOR UPDATE</code>隐式获取的锁，则可访问其他表）</p>
+<h5 id="元数据锁"><a href="#元数据锁" class="headerlink" title="元数据锁"></a>元数据锁</h5><p>进行数据操作时会自动为该表加上MDL(事务执行期间一直存在)，不需要我们显式声明。</p>
+<ul>
+<li>对一张表CRUD时加的是MDL读锁</li>
+<li>对一张表做结构更改操作时加的是MDL写锁</li>
+</ul>
+<p>MDL是为了保证用户在进行CRUD操作时无其他线程对这个表的结构做了变更。</p>
+<p>队列中<strong>写锁获取优先级高于读锁</strong>，一旦出现MDL写锁等待，则会阻塞后续该表的所有CRUD操作。</p>
+<h5 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h5><p>意向锁是为了快速判断表里是否又被加锁记录，不用遍历表中所有值去判断。</p>
+<ul>
+<li>使用InnoDB引擎的表里对某些记录加共享锁之前需要先在表级别加一个<strong>意向共享锁</strong></li>
+<li>加独占锁之前要先加一个表级<strong>意向独占锁</strong></li>
+</ul>
+<p>意向共享锁和意向独占锁是表级锁，不会和行级的共享锁和独占锁冲突，且意向锁之间也不会发生冲突，只会和共享表锁(lock tables … read)和独占表锁(lock tables … write)发生冲突。</p>
+<p>若无意向锁，则在加独占表锁时需要遍历表中所有记录查看是否存在独占锁，效率会很慢。</p>
+<h5 id="AUTO-INC锁"><a href="#AUTO-INC锁" class="headerlink" title="AUTO-INC锁"></a>AUTO-INC锁</h5><p>表里主键通常是自增的，“插入数据时不指定主键值令数据库自动给主键赋递增值”主要是通过AUTO-INC锁实现的。AUTO-INC锁是一个特殊表锁，不是一个事务提交后才释放，而是执行完插入语句后就释放。</p>
+<p>AUTO-INC是表级锁，MySQL5.1.22开始InnoDB提供了一种轻量级锁实现自增，可通过系统变量<code>innodb_autoinc_lock_mode</code>来控制选用AUTO-INC锁还是轻量级别的锁：</p>
+<ul>
+<li><p><code>innodb_autoinc_lock_mode</code>为<code>0</code>时采用AUTO-INC锁，语句执行结束才释放锁</p>
+</li>
+<li><p><code>innodb_autoinc_lock_mode</code>为<code>2</code>时采用轻量级锁，申请自增主键后就释放锁(而不是等待语句执行完)</p>
+</li>
+<li><p><code>innodb_autoinc_lock_mode</code>为<code>1</code>时：</p>
+<ul>
+<li>普通<code>insert</code>语句自增锁申请之后就马上释放</li>
+<li>类似<code>insert ... select</code>这种批量插入数据的语句，自增锁还是要等语句结束后才被释放</li>
+</ul>
+</li>
+</ul>
+<p><code>innodb_autoinc_lock_mode = 2</code>是性能最高的方式，但是搭配日志格式是statement的binlog一起使用时，在主从复制场景中会发生数据不一致的问题：</p>
+<blockquote>
+<p>考虑以下场景，Session A向表t中插入4行数据，Session B创建了一个结构相同的表t2，两个Session同时执行向表t2中插入数据：</p>
+<table>
+<thead>
+<tr>
+<th>Session A</th>
+<th>Session B</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>insert into t values(null, 1,1);</td>
+<td></td>
+</tr>
+<tr>
+<td>insert into t values(null, 2,2);</td>
+<td></td>
+</tr>
+<tr>
+<td>insert into t values(null, 3,3);</td>
+<td></td>
+</tr>
+<tr>
+<td>insert into t values(null, 4,4);</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>create table t2 like t;</td>
+</tr>
+<tr>
+<td>insert into t2 values(null, 5,5);</td>
+<td>insert into t2(c,d) select c,d from t;</td>
+</tr>
+</tbody></table>
+<p>若<code>innodb_autoinc_lock_mode</code>为<code>2</code>(申请完自增主键就释放锁)，则可能会：</p>
+<ul>
+<li>Session B先插入了两条记录<code>(1, 1, 1)</code>、<code>(2, 2, 2)</code></li>
+<li>Session A申请自增id得到3，插入<code>(3, 5, 5)</code></li>
+<li>Session B继续执行并插入<code>(4, 3, 3)</code>、<code>(5, 4, 4)</code></li>
+</ul>
+<p>也就是说Session B执行的insert语句生成的id不连续。</p>
+<p>若<code>binlog_format = statement</code>，那么binlog面对t2表只会记录连个Session的insert语句。主从复制时，从库执行binlog中的语句时是顺序执行的，无论binlog中先记录的哪个insert语句，从库中1-4的id都是连续的，就发生了主从不一致。</p>
+<p>解决方案是binlog的日志格式设置为log，这样binlog中会直接记录主库分配的自增值，从库会和主库保持一致。<code>innodb_autoinc_lock_mode = 2</code>且<code>binlog_format = row</code>时既能提升并发性，又不会出现数据不一致问题。</p>
+</blockquote>
+<h4 id="行级锁"><a href="#行级锁" class="headerlink" title="行级锁"></a>行级锁</h4><p>MySQL的行级锁分为：</p>
+<ol>
+<li>记录锁(record lock)：仅对一条记录加锁</li>
+<li>间隙锁(gap lock)：锁定一个范围（左右开区间）</li>
+<li>临键锁(next-key lock)：记录锁+间隙锁，锁定一个范围</li>
+</ol>
+<h5 id="记录锁"><a href="#记录锁" class="headerlink" title="记录锁"></a>记录锁</h5><p>锁住一条记录，有共享锁(S锁)和独占锁(X锁)之分。读读兼容，读写不兼容，写写不兼容。</p>
+<p>对一条记录加X锁则其他事务就无法修改这条记录了。</p>
+<h5 id="间隙锁"><a href="#间隙锁" class="headerlink" title="间隙锁"></a>间隙锁</h5><p>只存在于可重复读的隔离级别，目的是为了解决可重复读级别下的幻读现象。</p>
+<p>假设表中有一个范围id为(3, 5)的间隙锁，那么其他事务就无法插入id为4的记录了。</p>
+<p>间隙锁虽然也存在X型间隙锁和S型间隙锁，但并没有什么区别。间隙锁是兼容的，两个事务可以同时持有包含相同间隙，不存在互斥关系。因为间隙锁的存在目的是为了防止插入幻影记录。</p>
+<h5 id="临键锁"><a href="#临键锁" class="headerlink" title="临键锁"></a>临键锁</h5><p>记录锁+间隙锁的组合，例如可以锁定<code>(3, 5]</code>的范围。其中包含的记录锁可能导致阻塞。</p>
+<h5 id="插入意向锁"><a href="#插入意向锁" class="headerlink" title="插入意向锁"></a>插入意向锁</h5><p>事务执行插入操作时若插入位置被其他事务加了间隙锁，插入就会阻塞。在此期间会生成一个插入意向锁，表明有事务想在某个区间插入新纪录。</p>
+<p>插入意向锁虽然名字有“意向锁”，但实为行级锁。</p>
 <h1 id="小杂"><a href="#小杂" class="headerlink" title="小杂"></a>小杂</h1><h3 id="B端C端"><a href="#B端C端" class="headerlink" title="B端C端"></a>B端C端</h3><p>似乎不是Browser和Client，而是Comsumer和Business（客户端&#x2F;后台管理）</p>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><blockquote>
 <p>原创不易，转载请经作者同意后附上<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">原文链接</a>哦~</p>
 </blockquote>
-<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E7%BB%8F-%E8%AE%A1%E7%BD%91-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">面经 - 计网+数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">1.1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP&#x2F;IP网络模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93"><span class="toc-number">1.1.3.</span> <span class="toc-text">网络传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.</span> <span class="toc-text">浏览器缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">强制缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">协商缓存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-1-1%E3%80%81HTTP-2%E3%80%81HTTP-3"><span class="toc-number">1.1.5.</span> <span class="toc-text">HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-1"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">HTTP&#x2F;1.1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-2"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">HTTP&#x2F;2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-3"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">HTTP&#x2F;3</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E3%80%81%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">聚簇索引、非聚簇索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%E3%80%81%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E3%80%81%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E3%80%81%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">主键索引、唯一索引、普通索引、前缀索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95%E3%80%81%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">单列索引、联合索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">索引下推</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVCC%E7%9A%84Read-View"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">MVCC的Read View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB%E8%A2%AB%E8%A7%A3%E5%86%B3%E4%BA%86%E5%90%97"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">幻读被解决了吗</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%9D%82"><span class="toc-number">2.</span> <span class="toc-text">小杂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%AB%AFC%E7%AB%AF"><span class="toc-number">2.0.1.</span> <span class="toc-text">B端C端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#End"><span class="toc-number">3.</span> <span class="toc-text">End</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Tisfy</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E7%BB%8F-%E8%AE%A1%E7%BD%91-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">面经 - 计网+数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">1.1.</span> <span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP&#x2F;IP网络模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93"><span class="toc-number">1.1.3.</span> <span class="toc-text">网络传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.</span> <span class="toc-text">浏览器缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">强制缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">协商缓存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-1-1%E3%80%81HTTP-2%E3%80%81HTTP-3"><span class="toc-number">1.1.5.</span> <span class="toc-text">HTTP&#x2F;1.1、HTTP&#x2F;2、HTTP&#x2F;3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-1"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">HTTP&#x2F;1.1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-2"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">HTTP&#x2F;2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-3"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">HTTP&#x2F;3</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E3%80%81%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">聚簇索引、非聚簇索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E9%94%AE%E7%B4%A2%E5%BC%95%E3%80%81%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E3%80%81%E6%99%AE%E9%80%9A%E7%B4%A2%E5%BC%95%E3%80%81%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">主键索引、唯一索引、普通索引、前缀索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%88%97%E7%B4%A2%E5%BC%95%E3%80%81%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">单列索引、联合索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">索引下推</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVCC%E7%9A%84Read-View"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">MVCC的Read View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BB%E8%AF%BB%E8%A2%AB%E8%A7%A3%E5%86%B3%E4%BA%86%E5%90%97"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">幻读被解决了吗</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E9%94%81"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">全局锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%BA%A7%E9%94%81"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">表级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E9%94%81"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">表锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E9%94%81"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">元数据锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">1.2.3.2.3.</span> <span class="toc-text">意向锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AUTO-INC%E9%94%81"><span class="toc-number">1.2.3.2.4.</span> <span class="toc-text">AUTO-INC锁</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%8C%E7%BA%A7%E9%94%81"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">行级锁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E9%94%81"><span class="toc-number">1.2.3.3.1.</span> <span class="toc-text">记录锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%B4%E9%9A%99%E9%94%81"><span class="toc-number">1.2.3.3.2.</span> <span class="toc-text">间隙锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%B4%E9%94%AE%E9%94%81"><span class="toc-number">1.2.3.3.3.</span> <span class="toc-text">临键锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%84%8F%E5%90%91%E9%94%81"><span class="toc-number">1.2.3.3.4.</span> <span class="toc-text">插入意向锁</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%9D%82"><span class="toc-number">2.</span> <span class="toc-text">小杂</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%AB%AFC%E7%AB%AF"><span class="toc-number">2.0.1.</span> <span class="toc-text">B端C端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#End"><span class="toc-number">3.</span> <span class="toc-text">End</span></a></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
