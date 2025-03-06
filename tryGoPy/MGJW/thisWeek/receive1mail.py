@@ -2,17 +2,18 @@
 Author: LetMeFly
 Date: 2025-03-05 11:15:50
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-05 12:10:38
+LastEditTime: 2025-03-05 16:27:14
 '''
 import imaplib
 import email
 from email.header import decode_header
+from password import sender_password
 
 # 邮件配置
-imap_server = 'imap.qq.com'  # IMAP服务器地址
-imap_port = 993  # IMAP服务器端口
-email_address = 'your_email@example.com'  # 邮箱地址
-email_password = 'your_password'  # 邮箱密码
+imap_server = 'imap.qq.com'
+imap_port = 993
+email_address = 'tf.li@foxmail.com'
+email_password = sender_password
 
 # 连接到IMAP服务器
 try:

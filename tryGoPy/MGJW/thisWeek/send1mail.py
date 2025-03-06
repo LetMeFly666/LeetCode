@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-05 10:09:12
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-05 16:24:47
+LastEditTime: 2025-03-05 16:58:00
 '''
 import smtplib
 from email.mime.text import MIMEText
@@ -17,8 +17,8 @@ sender_password = sender_password
 receiver_email = 'tf.li@qq.com'
 
 # 创建邮件内容
-subject = '这是一封正常邮件'
-body = '今天中午吃饭吗'
+subject = '今日指令'
+body = '一切正常，和昨天一样'
 msg = MIMEMultipart()
 msg['From'] = sender_email
 msg['To'] = receiver_email

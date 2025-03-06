@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-06 00:24:15
+ * @LastEditTime: 2025-03-06 17:14:21
 -->
 # LetLeet Blog
 
@@ -768,6 +768,7 @@
 |2582.递枕头|简单|<a href="https://leetcode.cn/problems/pass-the-pillow/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/09/26/LeetCode%202582.%E9%80%92%E6%9E%95%E5%A4%B4/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133294825" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/pass-the-pillow/solutions/2459194/letmefly-2582di-zhen-tou-qing-xi-de-hua-ienu5/" target="_blank">LeetCode题解</a>|
 |2583.二叉树中的第K大层和|中等|<a href="https://leetcode.cn/problems/kth-largest-sum-in-a-binary-tree/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/02/23/LeetCode%202583.%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E7%9A%84%E7%AC%ACK%E5%A4%A7%E5%B1%82%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136252010" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/kth-largest-sum-in-a-binary-tree/solutions/2650889/letmefly-2583er-cha-shu-zhong-de-di-k-da-81qd/" target="_blank">LeetCode题解</a>|
 |2586.统计范围内的元音字符串数|简单|<a href="https://leetcode.cn/problems/count-the-number-of-vowel-strings-in-range/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/11/07/LeetCode%202586.%E7%BB%9F%E8%AE%A1%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/134277884" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-the-number-of-vowel-strings-in-range/solutions/2517194/letmefly-2586tong-ji-fan-wei-nei-de-yuan-wehz/" target="_blank">LeetCode题解</a>|
+|2588.统计美丽子数组数目|中等|<a href="https://leetcode.cn/problems/count-the-number-of-beautiful-subarrays/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/06/LeetCode%202588.%E7%BB%9F%E8%AE%A1%E7%BE%8E%E4%B8%BD%E5%AD%90%E6%95%B0%E7%BB%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/146075194" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-the-number-of-beautiful-subarrays/solutions/3599452/letmefly-2588tong-ji-mei-li-zi-shu-zu-sh-e35x/" target="_blank">LeetCode题解</a>|
 |2591.将钱分给最多的儿童|简单|<a href="https://leetcode.cn/problems/distribute-money-to-maximum-children/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/09/22/LeetCode%202591.%E5%B0%86%E9%92%B1%E5%88%86%E7%BB%99%E6%9C%80%E5%A4%9A%E7%9A%84%E5%84%BF%E7%AB%A5/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/133167460" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/distribute-money-to-maximum-children/solutions/2454112/letmefly-2591jiang-qian-fen-gei-zui-duo-2k1tq/" target="_blank">LeetCode题解</a>|
 |2595.奇偶位数|简单|<a href="https://leetcode.cn/problems/number-of-even-and-odd-bits/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/02/20/LeetCode%202595.%E5%A5%87%E5%81%B6%E4%BD%8D%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145750497" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-even-and-odd-bits/solutions/3082203/letmefly-2595qi-ou-wei-shu-wei-yun-suan-at39v/" target="_blank">LeetCode题解</a>|
 |2596.检查骑士巡视方案|中等|<a href="https://leetcode.cn/problems/check-knight-tour-configuration/solutions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/09/13/LeetCode%202596.%E6%A3%80%E6%9F%A5%E9%AA%91%E5%A3%AB%E5%B7%A1%E8%A7%86%E6%96%B9%E6%A1%88/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/132847346" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/check-knight-tour-configuration/solutions/2440047/letmefly-2596jian-cha-qi-shi-xun-shi-fan-2q5j/" target="_blank">LeetCode题解</a>|
@@ -990,8 +991,8 @@
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
-- [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [ ] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。
+- [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。(testing)
 - hexo我是一刻也待不下去了
 - [x] 写新题解时，当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。
 - [x] hexo代码中默认Tab是8空格长！
