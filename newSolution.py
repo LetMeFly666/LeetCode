@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-05 22:09:22
+LastEditTime: 2025-03-06 15:59:50
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -37,9 +37,16 @@ solutionURLll = "https://blog.letmefly.xyz/{0}/LeetCode%20{1:04d}.{2}/".format(t
 solutionURLll_humanable = "https://blog.letmefly.xyz/{0}/LeetCode {1:04d}.{2}/".format(timeURL, num, title)
 print(solutionURLll)
 
+# 认领issue
+os.system(f'git checkout -b {num}')
+issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of {num}" -b "By newSolution.py using GH" -l "题解" -a "@me"').read()
+print(issueCreateResult)
+issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
+
+input('代码写完后按回车生成题解模板：')
+
 with open(nameProblem, "r", encoding="utf-8") as f:
     problem = f.read()
-
 
 def genSolutionPart(num):
     suffix2markdowncode = {
@@ -116,12 +123,6 @@ print(solution)
 solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
 with open(solutionName, "x", encoding="utf-8") as f:
     f.write(solution)
-
-# 认领issue
-os.system(f'git checkout -b {num}')
-issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of {num}" -b "By newSolution.py using GH" -l "题解" -a "@me"').read()
-print(issueCreateResult)
-issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 
 print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
 
