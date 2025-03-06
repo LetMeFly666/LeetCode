@@ -35,8 +35,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      
+      - name: Check for .noDeploy
+        id: deploy-check
+        run: |
+          if [ -f .noDeploy ]; then
+            echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+          fi
 
       - name: Use Node.js ${{ matrix.node_version }}
+        if: env.SKIP_DEPLOY != 'true'
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
@@ -58,6 +66,7 @@ jobs:
       #     python debug.py
       
       - name: Config environment
+        if: env.SKIP_DEPLOY != 'true'
         env:
           GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
         run: |
@@ -70,6 +79,7 @@ jobs:
           git config --global user.email $GIT_EMAIL
       
       - name: Install hexo and init
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           npm install -g hexo-cli --save
           hexo init ../hexoWorkspace
@@ -89,6 +99,7 @@ jobs:
           echo "HASH=$HASH" >> $GITHUB_ENV
 
       - name: Copy config files from branch website_Static
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           cp -r Solutions ../Articles
 
@@ -112,6 +123,7 @@ jobs:
           cp -r ../hexoWorkspace ../hexoWorkspace_arknights
       
       - name: Install dependencies
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           cd ../hexoWorkspace
           # npm install hexo-deployer-git --save
@@ -128,6 +140,7 @@ jobs:
           cd ../LeetCode
       
       - name: Generate hexo fluid
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           cd ../hexoWorkspace
           echo hexo g:
@@ -137,6 +150,7 @@ jobs:
           cd ../LeetCode
       
       - name: Generate hexo arknights
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           cd ../hexoWorkspace_arknights
           sed -i 's/theme: fluid/theme: arknights/g' _config.yml
@@ -151,6 +165,7 @@ jobs:
           cd ../LeetCode
       
       - name: Modify sitemap
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           echo "" > ../hexoWorkspace/public/sitemap.txt  # 主站优先
           sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
@@ -158,6 +173,7 @@ jobs:
           # echo "https://blog.letmefly.xyz/theme/arknights/sitemap.txt" >> ../hexoWorkspace/public/sitemap.txt
       
       - name: Push to github
+        if: env.SKIP_DEPLOY != 'true'
         run: |
           git checkout website
           ls -la
