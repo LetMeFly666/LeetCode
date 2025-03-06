@@ -185,6 +185,89 @@ public:
 };
 ```
 
+#### C++
+
+```cpp
+struct NodeLRU {
+    int val, key;
+    NodeLRU* next, *prev;
+    NodeLRU(int key, int val) {
+        this->key = key;
+        this->val = val;
+        next = prev = nullptr;
+    };
+};
+
+class LRUCache {
+private:
+    NodeLRU* head, *tail;
+    int capacity;
+    int n;
+    unordered_map<int, NodeLRU*> cache;
+
+    void remove(NodeLRU* node) {  // 没修改node
+        node->prev->next = node->next;
+        node->next->prev = node->prev;
+    }
+
+    void add(NodeLRU* node) {
+        tail->prev->next = node;
+        node->prev = tail->prev;
+        node->next = tail;
+        tail->prev = node;
+    }
+
+    void debugList() {
+        NodeLRU* p = head->next;
+        cout << "Debug: ";
+        while (p != tail) {
+            cout << p->val << " ";
+            p = p->next;
+        }
+        cout << endl;
+    }
+public:
+    LRUCache(int capacity): capacity(capacity) {
+        n = 0;
+        head = new NodeLRU(0, 0);
+        tail = new NodeLRU(0, 0);
+        head->next = tail;
+        tail->prev = head;
+    }
+    
+    int get(int key) {
+        if (!cache.count(key)) {
+            return -1;
+        }
+        NodeLRU* node = cache[key];
+        remove(node);
+        add(node);
+        // debugList();
+        return node->val;
+    }
+    
+    void put(int key, int value) {
+        NodeLRU* node;
+        if (cache.count(key)) {
+            node = cache[key];
+            node->val = value;
+            remove(node);
+        } else {
+            n++;
+            node = new NodeLRU(key, value);
+            cache[key] = node;
+            if (n > capacity) {
+                n = capacity;
+                cache.erase(head->next->key);
+                remove(head->next);
+            }
+        }
+        add(node);
+        // debugList();
+    }
+};
+```
+
 #### Python
 
 ```python
