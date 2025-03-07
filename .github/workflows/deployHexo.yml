@@ -31,17 +31,31 @@ jobs:
       #   run: |
       #     tree .. -d -a
 
-      - name: Checkout this repo  # TODO: 保留website分支的所有历史 负担越来越重了
+      - name: Checkout this repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       
       - name: Check for .noDeploy
         id: deploy-check
         run: |
           if [ -f .noDeploy ]; then
             echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_DEPLOY=false" >> $GITHUB_ENV
           fi
+      
+      - name: Fetch and checkout each branch (shallow)
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          # branches=$(git branch -r | grep -v '\->' | grep 'origin/feature/' | sed 's/origin\///')  # 只拉取以feature开头的分支
+          git branch -r | grep -v '\->' | sed 's/origin\///' | while read -r branch; do
+            echo "Fetching branch $branch..."
+            git fetch origin "$branch" --depth=1  # 只拉取该分支的最新提交
+            git checkout -b "$branch" "origin/$branch"  # 强制创建/切换分支
+            echo "Checked out branch $branch at commit $(git rev-parse HEAD)"
+          done
+          git switch master
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
