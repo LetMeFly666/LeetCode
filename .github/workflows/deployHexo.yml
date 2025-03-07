@@ -48,12 +48,15 @@ jobs:
       - name: Fetch and checkout each branch (shallow)
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          # branches=$(git branch -r | grep -v '\->' | grep 'origin/feature/' | sed 's/origin\///')  # 只拉取以feature开头的分支
-          git branch -r | grep -v '\->' | sed 's/origin\///' | while read -r branch; do
-            echo "Fetching branch $branch..."
-            git fetch origin "$branch" --depth=1  # 只拉取该分支的最新提交
-            git checkout -B "$branch" "origin/$branch"  # 强制创建/切换分支
-            echo "Checked out branch $branch at commit $(git rev-parse HEAD)"
+          git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+          for branch in $(git branch -r | grep -v '\->'); do
+            local_branch="${branch#origin/}"
+            if ! git show-ref --quiet "refs/heads/$local_branch"; then
+              echo "Setting branch $local_branch"
+              git switch -c $local_branch origin
+            else
+              echo "Branch $local_branch already exists, skipping..."
+            fi
           done
           git switch master
 
