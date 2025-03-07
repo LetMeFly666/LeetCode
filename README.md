@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-06 17:14:21
+ * @LastEditTime: 2025-03-07 15:33:06
 -->
 # LetLeet Blog
 
@@ -37,7 +37,6 @@
 
 |名称|博客|CSDN博客地址|
 |:--|:--|:--|
-|记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.letmefly.xyz/2022/11/05/Other-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
 |AboutMyself - 个人吐槽 - 微信的密码找回机制|<a href="https://blog.letmefly.xyz/2023/10/13/Other-AboutMyself-Bullshit-WechatPasswordFindback">本平台博客</a>|无|
 |日积月累 - 一些小知识 - 杂乱 - 啥都有|<a href="https://blog.letmefly.xyz/2023/10/19/Other-Accumulation-Messy/">本平台博客</a>|无|
 |日积月累 - 一些小知识|<a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips/">本平台博客</a>|无|
@@ -83,7 +82,7 @@
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
 |HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
-|日语学习笔记|<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">本平台博客</a>|无|
+|日语学习笔记（自用）|<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">本平台博客</a>|无|
 |教资（教师资格证）学习笔记|<a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
@@ -129,6 +128,7 @@
 |VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
 |WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
+|记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.letmefly.xyz/2022/11/05/Other-Windows-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
 |Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
 |Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
@@ -991,9 +991,9 @@
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
-- [ ] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。
 - [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。(testing)
 - hexo我是一刻也待不下去了
+- [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
 - [x] 写新题解时，当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。
 - [x] hexo代码中默认Tab是8空格长！
 - [x] hexo不支持“- [ ] xxx”、“- [x] xxx”这种代办列表格式
