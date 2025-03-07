@@ -2,36 +2,39 @@
  * @Author: LetMeFly
  * @Date: 2025-03-07 23:32:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-07 23:39:31
+ * @LastEditTime: 2025-03-07 23:49:07
+ * @Description: AC,6771ms击败5.56%,567.46MB击败5.56%
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
 class Solution {
+private:
+    bool isok(vector<int>& v, int k) {
+        for (int i = 0; i < v.size(); i++) {
+            for (int j = i + 1; j < v.size(); j++) {
+                if (abs(v[i] - v[j]) == k) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 public:
     int beautifulSubsets(vector<int>& nums, int k) {
         sort(nums.begin(), nums.end());
         int ans = 0;
-        for (int l = 0, r = 0; l < nums.size(); l++) {
-            while (r + 1 < nums.size() && nums[r + 1] - nums[l] <= k) {
-                r++;
+        int n = nums.size(), end = 1 << n;
+        for (int i = 1; i < end; i++) {
+            vector<int> v;
+            for (int j = 0; j < n; j++) {
+                if (i >> j & 1) {
+                    v.push_back(nums[j]);
+                }
             }
-            printf("l = %d, r = %d, 1 << (r - l) = %d\n", l, r, 1 << (r - l));  //*****
-            ans += 1 << (r - l);
+            ans += isok(v, k);
         }
         return ans;
     }
 };
-
-/*
-[2,4,6]
-2
-
-4
-
-l = 0, r = 1, 1 << (r - l) = 2  2、2 4
-l = 1, r = 2, 1 << (r - l) = 2  4、4 6
-l = 2, r = 2, 1 << (r - l) = 1  6
-
-*/
