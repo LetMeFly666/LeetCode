@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-03 09:44:34
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-06 17:17:01
+LastEditTime: 2025-03-06 17:32:18
 '''
 from mitmproxy import http
 from urllib.parse import parse_qs, urlencode
@@ -65,7 +65,7 @@ class AddSignatureAddon:
                 # 修改content__html字段
                 if "content__html" in parsed_data and parsed_data["content__html"]:
                     original_content = parsed_data["content__html"][0]
-                    new_content = original_content + "*******签名*******"
+                    new_content = original_content + "*******计划有变*******"
                     parsed_data["content__html"][0] = new_content
 
                     # 重新编码并更新请求内容

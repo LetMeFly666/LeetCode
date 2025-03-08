@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-08 09:26:31
+LastEditTime: 2025-03-08 09:54:43
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -202,7 +202,7 @@ with open("README.md", "w", encoding="utf-8") as f:
 
 # commit push pr merge delete-branch
 os.system('git add .')
-os.system(f'git commit -s -m "update: 添加问题“{num}.{title}”的代码和题解"')
+os.system(f'git commit -s -m "update: 添加问题“{num}.{title}”的代码和题解(#{issueNum + 1})"')
 os.system(f'git push --set-upstream origin {num}')
 cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By newSolution.py using GH | close: #{issueNum}" -l "题解" -a "@me"'
 prResult = os.popen(cmd).read()
