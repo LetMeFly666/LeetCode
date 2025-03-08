@@ -1,3 +1,9 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-03-06 22:59:39
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-03-08 09:48:28
+ */
 <!--
  * @Author: LetMeFly
  * @Date: 2025-03-06 10:26:12
@@ -69,3 +75,7 @@ sendmailname: tisfy@foxmail.com
 现在我已经配置好了python的mitmproxy，我想实现以下内容：
 
 当主机上有向`https://mail.qq.com/cgi-bin/compose_send?sid=xxxxx`的请求时，修改表单中的`content__html`字段，在原有内容的基础上加上*******签名*******
+
+---
+
+很棒！
