@@ -1,7 +1,14 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-03-08 17:34:00
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-03-08 21:15:37
+ */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
 #endif
 
+// WA!!!! ....... 难顶
 typedef long long ll;
 class Solution {
 public:
@@ -27,11 +34,14 @@ public:
         ll ans = 0;
         int left = 0, fullTo = flowers[0];  // [0, ..., left]都填满了fullTo朵花
         for (; canFullFrom < flowers.size(); canFullFrom++) {
-            while (newFlowers >= (left + 1) * (flowers[left + 1] - fullTo)) {
+            while (left + 1 < canFullFrom && newFlowers >= (left + 1) * (flowers[left + 1] - fullTo)) {
                 newFlowers -= (left + 1) * (flowers[left + 1] - fullTo);
                 left++;
                 fullTo = flowers[left];
             }
+            int stillFull = min(newFlowers / canFullFrom, (ll)target - fullTo - 1);
+            fullTo += stillFull;
+            newFlowers -= stillFull * canFullFrom;
             ans = max(ans, (ll)(fullTo * partial + (flowers.size() - canFullFrom) * full));  // 力扣上这个为啥是max(ll, ull)啊
             if (flowers[canFullFrom] >= target) {
                 break;
@@ -44,6 +54,24 @@ public:
 
 #ifdef _WIN32
 /*
+[5,19,1,1,6,10,18,12,20,10,11]
+6
+20
+3
+11
+
+47
+*/
+/*
+[1,1]
+2
+2
+1
+2
+
+3
+*/
+/*
 [1,3,1,1]
 7
 6
@@ -51,6 +79,15 @@ public:
 1
 
 14
+*/
+/*
+[1,98]
+5
+99
+12
+1
+
+17
 */
 int main() {
     string s;
