@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-03 09:44:34
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-08 11:35:26
+LastEditTime: 2025-03-08 15:49:50
 '''
 from mitmproxy import http
 from urllib.parse import parse_qs, urlencode
@@ -19,35 +19,6 @@ filehandler_url = logging.FileHandler('url.log')
 filehandler_url.setFormatter(formatter_url)
 logger.addHandler(filehandler_url)
 logger.info('url log init')
-
-
-# logger_text = logging.getLogger('logger_text')
-# formatter_text = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# for handler in logger_text.handlers[:]:
-#     if isinstance(handler, logging.StreamHandler):
-#         logger_text.removeHandler(handler)
-# logger_text.setLevel(logging.DEBUG)
-# filehandler_text = logging.FileHandler('text.log')
-# filehandler_text.setFormatter(formatter_text)
-# logger_text.addHandler(filehandler_text)
-
-
-# def request(flow: http.HTTPFlow) -> None:
-#     # 修改请求
-#     # if "letmefly.xyz" in flow.request.pretty_url:
-#     if "web.letmefly.xyz" in flow.request.pretty_url and 'text/html' in flow.response.headers.get('content-type', ''):
-#         # flow.request.headers["User-Agent"] = "Modified-Agent"
-#         flow.request.text  # 暂时未知
-#     pass
-
-# def response(flow: http.HTTPFlow) -> None:
-#     # 修改响应
-#     logger.info(flow.request.pretty_url)
-#     if "web.letmefly.xyz" in flow.request.pretty_url and 'text/html' in flow.response.headers.get('content-type', ''):
-#     # if flow.request.pretty_url == 'https://web.letmefly.xyz/':
-#         logger.info('replace HTML to LMTH')
-#         # logger_text.info(flow.response.text)
-#         flow.response.text = flow.response.text.replace("HTML", "LMTH")
 
 # https://chat.deepseek.com/a/chat/s/354e2ce6-8c46-41f3-b32b-944407aaf2f1
 class AddSignatureAddon:
@@ -89,24 +60,6 @@ class AddSignatureAddon:
                 html_content = flow.response.content.decode("gb18030")
             except UnicodeDecodeError:
                 logger.info('解码失败：可能不是GB18030编码')
-            # soup = BeautifulSoup(html_content, "lxml")
-            # content_div = soup.find("div", {"id": "mailContentContainer"})
-            # logger.info(f'{content_div}')
-            # if not content_div:
-            #     return
-            # text_nodes = content_div.find_all(text=True, recursive=True)
-            # for node in text_nodes:
-            #     # 匹配签名模式（支持动态内容）
-            #     match = re.search(r'\*{7}(.*?)\*{7}', node.string)
-            #     if match:
-            #         signature = match.group(1)
-            #         print(f"提取到签名：{signature}")
-            #         clean_text = re.sub(r'\*{7}.*?\*{7}', '', node.string)
-            #         node.replace_with(clean_text)
-            # # 不知道为啥，BS解析后直接把头部的编码给改了
-            # meta_tag = soup.find("meta", attrs={"http-equiv": "Content-Type"})
-            # if meta_tag:
-            #     meta_tag["content"] = "text/html; charset=gb18030"
             match = re.search(r'\*{7}(.*?)\*{7}', html_content)
             if match:
                 signature = match.group(1)
