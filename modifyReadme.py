@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-03 16:57:21
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-08 22:58:39
+LastEditTime: 2025-03-08 23:19:40
 What's more: 这个文件之后也会合并到newSolution.py
 '''
 from typing import Dict, List, Tuple
@@ -33,10 +33,11 @@ def regenerateReadme():
         # 'Other-Windows-UWP-launchSttingsApp': {
         #     'title': 'Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings',
         #     'csdn': '129601344',  # https://letmefly.blog.csdn.net/article/details/129601344
-        #     'leetcode': '',       # 力扣题解地址
-        #     'problem': '',        # 比赛/问题地址
+        #     'leetcode': 'https://leetcode.cn/problems/add-two-numbers/solutions/2327003/letmefly-2liang-shu-xiang-jia-by-tisfy-55xq/',  # 力扣题解地址
+        #     'problem': 'add-two-numbers',  # 比赛/问题地址 - https://leetcode.cn/problems/add-two-numbers/solutions/
         #     'type': 'think',      # 或leetcode或otherplatform
         #     'date': '20250308',
+        #     'hard': '中等',
         # }
     }
     THINKING_HEADER = '|名称|博客|CSDN博客地址|'
@@ -70,10 +71,6 @@ def regenerateReadme():
             if line == header:
                 isnow = True
         return ans[1:], ans[0]
-    
-    """
-    依据文章地址这一串获取文章日期
-    """
 
     """
     Description:
@@ -82,8 +79,8 @@ def regenerateReadme():
     def _setThinkingData(dataThinking: List[str], data: Dict[str, Dict[str, str]]) -> None:
         for line in dataThinking:
             lineSplited = line.split('|')
-            datePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
-            match = re.search(datePattern, lineSplited[2])
+            dateArticlePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
+            match = re.search(dateArticlePattern, lineSplited[2])
             date = match.group(1)
             date = ''.join(date.split('/'))
             articleId = match.group(2)
@@ -109,26 +106,35 @@ def regenerateReadme():
         for line in dataLeetcode:
             lineSplited = line.split('|')
             print(lineSplited)
-
-            break
-
-            datePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
-            match = re.search(datePattern, lineSplited[2])
+            dateArticlePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
+            match = re.search(dateArticlePattern, lineSplited[4])
             date = match.group(1)
             date = ''.join(date.split('/'))
             articleId = match.group(2)
             title = lineSplited[1]
-            csdndata = lineSplited[3]
+            hard = lineSplited[2]
+            csdndata = lineSplited[5]
             csdnId = csdndata.split('details/')[1].split('"')[0] if 'details/' in csdndata else ''
-            # print(lineSplited)
-            # print(articleId)
-            # print(title)
-            # print(csdnId)
-            # print(date)
+            leetcodeData = lineSplited[6]
+            leetcode = leetcodeData.split('<a href="')[1].split('"')[0]
+            problemData = lineSplited[3]
+            problem = problemData.split('/problems/')[1].split('/')[0]
+            # WORKING HERE
+            print(articleId)
+            print(title)
+            print(csdnId)
+            print(leetcode)
+            print(problem)
+            print(date)
+            print(hard)
             data[articleId] = {
                 'title': title,
                 'csdn': csdnId,
-                'type': 'think',
+                'leetcode': leetcode,
+                'problem': problem,
+                'type': 'leetcode',
+                'date': date,
+                'hard': hard,
             }
 
     """
