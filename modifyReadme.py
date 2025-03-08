@@ -2,10 +2,11 @@
 Author: LetMeFly
 Date: 2025-03-03 16:57:21
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-04 17:07:20
+LastEditTime: 2025-03-08 22:58:39
 What's more: 这个文件之后也会合并到newSolution.py
 '''
-from typing import Dict, List
+from typing import Dict, List, Tuple
+import re
 """
 Descriptions:
     读README.md，读Solutions文件夹，依据Solutions文件夹中的文章更新README.md中的对应位置
@@ -31,12 +32,19 @@ def regenerateReadme():
     data: Dict[str, Dict[str, str]] = {
         # 'Other-Windows-UWP-launchSttingsApp': {
         #     'title': 'Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings',
-        #     'csdn': 'https://letmefly.blog.csdn.net/article/details/129601344',
-        #     'leetcode': '',   # 力扣题解地址
-        #     'problem': '',    # 比赛/问题地址
-        #     'type': 'think',  # 或leetcode或otherplatform
+        #     'csdn': '129601344',  # https://letmefly.blog.csdn.net/article/details/129601344
+        #     'leetcode': '',       # 力扣题解地址
+        #     'problem': '',        # 比赛/问题地址
+        #     'type': 'think',      # 或leetcode或otherplatform
+        #     'date': '20250308',
         # }
     }
+    THINKING_HEADER = '|名称|博客|CSDN博客地址|'
+    LEETCODE_HEADER = '|题目名称|困难程度|题目地址|题解地址|CSDN题解|LeetCode题解|'
+    OTHERSOL_HEADER = '|题目|题解|CSDN题解|'
+    THINKING_afterHeader = ''  # thinking header的下一行
+    LEETCODE_afterHeader = ''
+    OTHERSOL_afterHeader = ''
 
     """
     Description:
@@ -48,9 +56,80 @@ def regenerateReadme():
     
     Output:
         body（一行一个）
+        表头的下一行
     """
-    def _getLinesByHeader(readmeSplited: List[str], header: str) -> List[str]:
-        pass
+    def _getLinesByHeader(readmeSplited: List[str], header: str) -> Tuple[List[str], str]:
+        ans = []
+        isnow = False
+        for line in readmeSplited:
+            line = line.strip()
+            if isnow and not line:
+                break
+            if isnow:
+                ans.append(line)
+            if line == header:
+                isnow = True
+        return ans[1:], ans[0]
+    
+    """
+    依据文章地址这一串获取文章日期
+    """
+
+    """
+    Description:
+        依据技术思考的博客信息设置data内容
+    """
+    def _setThinkingData(dataThinking: List[str], data: Dict[str, Dict[str, str]]) -> None:
+        for line in dataThinking:
+            lineSplited = line.split('|')
+            datePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
+            match = re.search(datePattern, lineSplited[2])
+            date = match.group(1)
+            date = ''.join(date.split('/'))
+            articleId = match.group(2)
+            title = lineSplited[1]
+            csdndata = lineSplited[3]
+            csdnId = csdndata.split('details/')[1].split('"')[0] if 'details/' in csdndata else ''
+            # print(lineSplited)
+            # print(articleId)
+            # print(title)
+            # print(csdnId)
+            # print(date)
+            data[articleId] = {
+                'title': title,
+                'csdn': csdnId,
+                'type': 'think',
+            }
+    
+    """
+    Description:
+        依据力扣题解的博客信息设置data内容
+    """
+    def _setLeetcodeData(dataLeetcode: List[str], data: Dict[str, Dict[str, str]]) -> None:
+        for line in dataLeetcode:
+            lineSplited = line.split('|')
+            print(lineSplited)
+
+            break
+
+            datePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
+            match = re.search(datePattern, lineSplited[2])
+            date = match.group(1)
+            date = ''.join(date.split('/'))
+            articleId = match.group(2)
+            title = lineSplited[1]
+            csdndata = lineSplited[3]
+            csdnId = csdndata.split('details/')[1].split('"')[0] if 'details/' in csdndata else ''
+            # print(lineSplited)
+            # print(articleId)
+            # print(title)
+            # print(csdnId)
+            # print(date)
+            data[articleId] = {
+                'title': title,
+                'csdn': csdnId,
+                'type': 'think',
+            }
 
     """
     Description:
@@ -65,7 +144,13 @@ def regenerateReadme():
     def getdataFromReadme(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
         with open('README.md', 'r', encoding='utf-8') as f:
             readme = f.read()
-        readSplited = readme.split()
+        readmeSplited = readme.split('\n')
+        dataThinking, THINKING_afterHeader = _getLinesByHeader(readmeSplited, THINKING_HEADER)
+        _setThinkingData(dataThinking, data)
+        dataLeetcode, LEETCODE_afterHeader = _getLinesByHeader(readmeSplited, LEETCODE_HEADER)
+        _setLeetcodeData(dataLeetcode, data)
+        dataOtherSol, OTHERSOL_afterHeader = _getLinesByHeader(readmeSplited, OTHERSOL_HEADER)
+        # print(data)
 
     def getdataFromFile(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
         pass
