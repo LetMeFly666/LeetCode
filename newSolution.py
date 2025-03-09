@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-08 21:26:40
+LastEditTime: 2025-03-09 14:25:55
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -188,8 +188,9 @@ def readmeNewLine(readme: str) -> str:
             if tempUrl[len(tempUrl) - 1] != '/':
                 tempUrl += "/"
             splitedUrl = tempUrl.split("/")
-            del splitedUrl[len(splitedUrl) - 3]
             del splitedUrl[len(splitedUrl) - 2]
+            del splitedUrl[len(splitedUrl) - 2]
+            del splitedUrl[len(splitedUrl) - 2]  # solutions
             return "/".join(splitedUrl)
         return """|{0:04d}.{1}|{2}|<a href="{3}" target="_blank">题目地址</a>|<a href="{4}" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/{5}" target="_blank">CSDN题解</a>|<a href="{6}" target="_blank">LeetCode题解</a>|""".format(num, title, getHard(), getProblemUrl(), solutionURLll, csdnid, solutionURLlc)
     splited.insert(i, generateNewLine())
@@ -202,7 +203,14 @@ with open("README.md", "w", encoding="utf-8") as f:
 
 # commit push pr merge delete-branch
 os.system('git add .')
-os.system(f'git commit -s -m "update: 添加问题“{num}.{title}”的代码和题解(#{issueNum + 1})"')
+commitMsg = 'update: 添加问题“{num}.{title}”的代码和题解(#{issueNum + 1})'
+if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
+    with open('.commitmsg', 'r', encoding='utf-8') as f:
+        commitMsgFromfile = f.read()
+    if not commitMsgFromfile.startswith('\n'):
+        commitMsgFromfile = '\n' + commitMsgFromfile
+    commitMsg += commitMsgFromfile
+os.system(f'git commit -s -m "{commitMsg}"')
 os.system(f'git push --set-upstream origin {num}')
 cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By newSolution.py using GH | close: #{issueNum}" -l "题解" -a "@me"'
 prResult = os.popen(cmd).read()

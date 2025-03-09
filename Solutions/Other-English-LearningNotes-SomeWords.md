@@ -1040,6 +1040,8 @@ tags: [其他, 知识, 英语, Notes]
 |||
 |herb|n. 草药，草本植物|
 |liable|adj. 有义务的，有责任的，有...倾向的|
+|||
+|lettuce|n. 生菜|
 
 <p class="wordCounts">单词收录总数</p>
 
