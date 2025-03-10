@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-03-03 16:57:21
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-08 23:19:40
+LastEditTime: 2025-03-09 18:56:40
 What's more: 这个文件之后也会合并到newSolution.py
 '''
 from typing import Dict, List, Tuple
@@ -34,8 +34,8 @@ def regenerateReadme():
         #     'title': 'Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings',
         #     'csdn': '129601344',  # https://letmefly.blog.csdn.net/article/details/129601344
         #     'leetcode': 'https://leetcode.cn/problems/add-two-numbers/solutions/2327003/letmefly-2liang-shu-xiang-jia-by-tisfy-55xq/',  # 力扣题解地址
-        #     'problem': 'add-two-numbers',  # 比赛/问题地址 - https://leetcode.cn/problems/add-two-numbers/solutions/
-        #     'type': 'think',      # 或leetcode或otherplatform
+        #     'problem': 'https://leetcode.cn/problems/add-two-numbers/',  # 比赛/问题地址
+        #     'type': 'thinking',      # 或leetcode或othersol
         #     'date': '20250308',
         #     'hard': '中等',
         # }
@@ -95,7 +95,7 @@ def regenerateReadme():
             data[articleId] = {
                 'title': title,
                 'csdn': csdnId,
-                'type': 'think',
+                'type': 'thinking',
             }
     
     """
@@ -105,7 +105,6 @@ def regenerateReadme():
     def _setLeetcodeData(dataLeetcode: List[str], data: Dict[str, Dict[str, str]]) -> None:
         for line in dataLeetcode:
             lineSplited = line.split('|')
-            print(lineSplited)
             dateArticlePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
             match = re.search(dateArticlePattern, lineSplited[4])
             date = match.group(1)
@@ -118,15 +117,14 @@ def regenerateReadme():
             leetcodeData = lineSplited[6]
             leetcode = leetcodeData.split('<a href="')[1].split('"')[0]
             problemData = lineSplited[3]
-            problem = problemData.split('/problems/')[1].split('/')[0]
-            # WORKING HERE
-            print(articleId)
-            print(title)
-            print(csdnId)
-            print(leetcode)
-            print(problem)
-            print(date)
-            print(hard)
+            problem = 'https://leetcode.cn/problems/' + problemData.split('/problems/')[1].split('/')[0] + '/'
+            # print(articleId)
+            # print(title)
+            # print(csdnId)
+            # print(leetcode)
+            # print(problem)
+            # print(date)
+            # print(hard)
             data[articleId] = {
                 'title': title,
                 'csdn': csdnId,
@@ -136,6 +134,96 @@ def regenerateReadme():
                 'date': date,
                 'hard': hard,
             }
+    
+    """
+    Description:
+        依据其他题解的博客信息设置data内容
+    """
+    def _setOthersolData(dataOthersol: List[str], data: Dict[str, Dict[str, str]]) -> None:
+        for line in dataOthersol:
+            lineSplited = line.split('|')
+            if lineSplited[1] == '———':  # 注意是“———”而不是“---”
+                continue
+            dateArticlePattern = r'(\d{4}/\d{2}/\d{2})/([^/]+)/'
+            match = re.search(dateArticlePattern, lineSplited[2])
+            date = match.group(1)
+            date = ''.join(date.split('/'))
+            articleId = match.group(2)
+            title = lineSplited[1].split('>')[1].split('<')[0]
+            csdndata = lineSplited[3]
+            csdnId = csdndata.split('details/')[1].split('"')[0] if 'details/' in csdndata else ''
+            problem = lineSplited[1].split('href="')[1].split('"')[0]
+            # print(title)
+            # print(csdnId)
+            # print(problem)
+            # print(articleId)
+            # print(date)
+            data[articleId] = {
+                'title': title,
+                'csdn': csdnId,
+                'problem': problem,
+                'type': 'othersol',
+                'date': date,
+            }
+    
+    """
+    Description:
+        根据data中的一条“thinking”文章信息(article)生成这一行的str
+    """
+    def __generateArticleLine_Thinking(articleId: str, article: Dict[str, str]) -> str:
+        pass
+
+    """
+    Description:
+        根据data中的一条“leetcode”文章信息(article)生成这一行的str
+    """
+    def __generateArticleLine_Leetcode(articleId: str, article: Dict[str, str]) -> str:
+        pass
+
+    """
+    Description:
+        根据data中的一条“othersol”文章信息(article)生成这一行的str
+    """
+    def __generateArticleLine_Othersol(articleId: str, article: Dict[str, str]) -> str:
+        pass
+    
+    """
+    Description:
+        生成三个文章列表
+    
+    Input:
+        data
+    
+    Output:
+        List[str], List[str], List[str]，分别代表thinking、leetcode、othersol三种文章的新文章列表
+    """
+    def _genNewArticleList(data: Dict[str, Dict[str, str]]) -> Tuple[List[str], List[str], List[str]]:
+        thinkingSplited: List[str] = [THINKING_HEADER, THINKING_afterHeader]
+        leetcodeSplited: List[str] = [LEETCODE_HEADER, LEETCODE_afterHeader]
+        othersolSplited: List[str] = [OTHERSOL_HEADER, OTHERSOL_afterHeader]
+        for articleId, article in data.items():
+            if article['type'] == 'thinking':
+                thinkingSplited.append(__generateArticleLine_Thinking(articleId, article))
+            elif article['type'] == 'leetcode':
+                leetcodeSplited.append(__generateArticleLine_Leetcode(articleId, article))
+            else:
+                othersolSplited.append(__generateArticleLine_Othersol(articleId, article))
+        thinkingSplited[2:].sort()
+        return thinkingSplited, leetcodeSplited, othersolSplited
+
+    """
+    Description:
+        依据表头那一行，使用更新后的文章列表替换掉原有README中的更新列表
+    
+    Input:
+        readmeSplited
+        newList - 例如新生成的leetcode题解文章列表
+    
+    Modified:
+        原地修改readmeSplited数组
+    """
+    def _replaceArticleList(readmeSplited: List[str], newList: List[str]):
+        pass
 
     """
     Description:
@@ -146,27 +234,46 @@ def regenerateReadme():
     
     Output:
         data: README->data
+        readmeSplited
     """
-    def getdataFromReadme(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
+    def getdataFromReadme(data: Dict[str, Dict[str, str]]) -> Tuple[Dict[str, Dict[str, str]], List[str]]:
         with open('README.md', 'r', encoding='utf-8') as f:
-            readme = f.read()
-        readmeSplited = readme.split('\n')
+            readmeSplited = f.readlines()
+        nonlocal THINKING_afterHeader
+        nonlocal LEETCODE_afterHeader
+        nonlocal OTHERSOL_afterHeader
         dataThinking, THINKING_afterHeader = _getLinesByHeader(readmeSplited, THINKING_HEADER)
         _setThinkingData(dataThinking, data)
         dataLeetcode, LEETCODE_afterHeader = _getLinesByHeader(readmeSplited, LEETCODE_HEADER)
         _setLeetcodeData(dataLeetcode, data)
-        dataOtherSol, OTHERSOL_afterHeader = _getLinesByHeader(readmeSplited, OTHERSOL_HEADER)
+        dataOthersol, OTHERSOL_afterHeader = _getLinesByHeader(readmeSplited, OTHERSOL_HEADER)
+        _setOthersolData(dataOthersol, data)
         # print(data)
+        return data, readmeSplited
 
+    """
+    Description:
+        从博客文件中读取信息并更新data
+    """
     def getdataFromFile(data: Dict[str, Dict[str, str]]) -> Dict[str, Dict[str, str]]:
+        return data
         pass
 
-    def rewrite(data: Dict[str, Dict[str, str]]):
-        pass
+    """
+    Description:
+        依据data更新readme文章列表并写入文件
+    """
+    def rewrite(data: Dict[str, Dict[str, str]], readmeSplited: List[str]) -> None:
+        thinkingSplited, leetcodeSplited, othersolSplited = _genNewArticleList(data)
+        _replaceArticleList(readmeSplited, thinkingSplited)
+        _replaceArticleList(readmeSplited, leetcodeSplited)
+        _replaceArticleList(readmeSplited, othersolSplited)
+        with open('README.md', 'w', encoding='utf-8') as f:
+            f.writelines(readmeSplited)
 
-    data = getdataFromReadme(data)
+    data, readmeSplited = getdataFromReadme(data)
     data = getdataFromFile(data)
-    rewrite(data)
+    rewrite(data, readmeSplited)
 
 
 if __name__ == '__main__':
