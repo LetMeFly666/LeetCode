@@ -1042,6 +1042,8 @@ tags: [其他, 知识, 英语, Notes]
 |liable|adj. 有义务的，有责任的，有...倾向的|
 |||
 |lettuce|n. 生菜|
+|||
+|bourgeois|adj. 中产阶级的，追求物质享受的，世俗的，资产阶级的|
 
 <p class="wordCounts">单词收录总数</p>
 
