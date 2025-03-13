@@ -2,6 +2,7 @@
 title: 3176.求出最长好子序列 I
 date: 2024-09-07 09:26:20
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3176.求出最长好子序列 I：动态规划（DP）

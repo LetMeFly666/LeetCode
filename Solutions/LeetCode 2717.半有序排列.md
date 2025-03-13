@@ -2,6 +2,7 @@
 title: 2717.半有序排列
 date: 2024-12-11 23:24:28
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2717.半有序排列：一次遍历后计算

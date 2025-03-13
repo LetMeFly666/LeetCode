@@ -2,6 +2,7 @@
 title: 2264.字符串中最大的 3 位相同数字
 date: 2025-01-08 15:48:37
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2264.字符串中最大的 3 位相同数字：遍历

@@ -2,6 +2,7 @@
 title: 80.删除有序数组中的重复项 II：双指针 - C++/Java5 行版
 date: 2025-02-09 09:08:46
 tags: [题解, LeetCode, 中等, 数组, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】80.删除有序数组中的重复项 II：双指针 - C++/Java5 行版

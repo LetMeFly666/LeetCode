@@ -2,6 +2,7 @@
 title: 2132.用邮票贴满网格图
 date: 2023-12-14 19:27:08
 tags: [题解, LeetCode, 困难, 贪心, 数组, 矩阵, 前缀和, 差分]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2132.用邮票贴满网格图：二维前缀和 + 二维差分

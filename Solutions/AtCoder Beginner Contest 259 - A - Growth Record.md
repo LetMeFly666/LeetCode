@@ -2,6 +2,7 @@
 title: AtCoder Beginner Contest 259 - A - Growth Record
 date: 2022-07-09 21:46:19
 tags: [题解, AtCoder, 简单, 模拟, 数列]
+categories: [题解, AtCoder]
 ---
 
 Time Limit: 2 sec / Memory Limit: 1024 MB

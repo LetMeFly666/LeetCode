@@ -2,6 +2,7 @@
 title: 2684.矩阵中移动的最大次数
 date: 2024-03-16 09:51:19
 tags: [题解, LeetCode, 中等, 数组, 动态规划, 矩阵, 广度优先搜索, BFS, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2684.矩阵中移动的最大次数：一列一列处理，只记能到哪行(BFS)

@@ -2,6 +2,7 @@
 title: PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门
 date: 2023-03-17 21:38:06
 tags: [其他, PWA, Notes, Web, Web App]
+categories: [技术思考]
 ---
 
 # PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门简介

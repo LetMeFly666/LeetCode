@@ -2,6 +2,7 @@
 title: 55.跳跃游戏
 date: 2022-05-28 18:28:43
 tags: [题解, LeetCode, 中等, 数组, 贪心, 跳跃到终点, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】55.跳跃游戏

@@ -2,6 +2,7 @@
 title: 1678.设计 Goal 解析器
 date: 2022-11-06 08:09:40
 tags: [题解, LeetCode, 简单, 字符串, 遍历, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1678.设计 Goal 解析器

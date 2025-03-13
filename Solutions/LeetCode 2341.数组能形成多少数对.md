@@ -2,6 +2,7 @@
 title: 2341.数组能形成多少数对
 date: 2023-02-16 09:55:01
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2341.数组能形成多少数对

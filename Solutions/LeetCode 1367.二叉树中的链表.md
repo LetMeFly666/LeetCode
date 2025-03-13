@@ -2,6 +2,7 @@
 title: 1367.二叉树中的链表
 date: 2024-12-30 14:20:50
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 链表, 二叉树, 树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1367.二叉树中的链表：深度优先搜索(DFS) - 一步一步实现

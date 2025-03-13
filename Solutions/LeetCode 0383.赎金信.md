@@ -2,6 +2,7 @@
 title: 383.赎金信
 date: 2024-01-07 12:37:04
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】383.赎金信：计数

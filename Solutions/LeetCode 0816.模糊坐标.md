@@ -2,6 +2,7 @@
 title: 816.模糊坐标
 date: 2022-11-07 10:34:56
 tags: [题解, LeetCode, 中等, 字符串, 回溯, 模拟, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】816.模糊坐标

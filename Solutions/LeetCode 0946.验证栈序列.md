@@ -2,6 +2,7 @@
 title: 946.验证栈序列
 date: 2022-08-31 09:02:57
 tags: [题解, LeetCode, 中等, 栈, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】946.验证栈序列

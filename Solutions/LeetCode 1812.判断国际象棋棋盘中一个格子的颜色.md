@@ -2,6 +2,7 @@
 title: 1812.判断国际象棋棋盘中一个格子的颜色
 date: 2022-12-08 09:23:33
 tags: [题解, LeetCode, 简单, 数学, 字符串, 取模]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1812.判断国际象棋棋盘中一个格子的颜色

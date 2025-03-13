@@ -2,6 +2,7 @@
 title: Windows - UWP - 为UWP应用创建桌面快捷方式
 date: 2023-08-12 22:18:02
 tags: [其他, Windows, UWP]
+categories: [技术思考]
 ---
 
 # Windows - UWP - 为UWP应用创建桌面快捷方式

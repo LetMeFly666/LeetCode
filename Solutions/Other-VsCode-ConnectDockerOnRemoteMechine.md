@@ -2,6 +2,7 @@
 title: VsCode容器开发 - VsCode连接远程服务器上的docker
 date: 2024-01-22 10:45:09
 tags: [VsCode, 简单, Docker]
+categories: [技术思考]
 ---
 
 # VsCode容器开发 - VsCode连接远程服务器上的docker

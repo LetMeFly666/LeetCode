@@ -2,6 +2,7 @@
 title: 190.颠倒二进制位
 date: 2022-08-14 13:11:10
 tags: [题解, LeetCode, 简单, 位运算, 分治]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】190.颠倒二进制位

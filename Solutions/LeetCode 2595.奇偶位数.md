@@ -2,6 +2,7 @@
 title: 2595.奇偶位数：位运算
 date: 2025-02-20 12:11:36
 tags: [题解, LeetCode, 简单, 位运算]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2595.奇偶位数：位运算

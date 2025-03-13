@@ -2,6 +2,7 @@
 title: 667.优美的排列 II
 date: 2022-09-08 10:22:16
 tags: [题解, LeetCode, 中等, 数组, 数学, 思维, 构造]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】667.优美的排列 II

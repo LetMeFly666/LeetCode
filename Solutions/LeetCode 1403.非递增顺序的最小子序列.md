@@ -2,6 +2,7 @@
 title: 1403.非递增顺序的最小子序列
 date: 2022-08-04 10:47:16
 tags: [题解, LeetCode, 简单, 贪心, 数组, 排序, 子问题, 最x子xx]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1403.非递增顺序的最小子序列

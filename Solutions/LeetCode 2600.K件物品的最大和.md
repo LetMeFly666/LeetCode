@@ -2,6 +2,7 @@
 title: 2600.K 件物品的最大和
 date: 2023-07-05 07:44:40
 tags: [题解, LeetCode, 简单, 贪心, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2600.K 件物品的最大和

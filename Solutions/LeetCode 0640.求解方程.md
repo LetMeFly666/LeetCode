@@ -2,6 +2,7 @@
 title: 640.求解方程
 date: 2022-08-10 10:54:55
 tags: [题解, LeetCode, 中等, 数学, 字符串, 模拟, 字符串解析]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】640.求解方程：过几天就看不懂了的迷惑性代码，但是是详解

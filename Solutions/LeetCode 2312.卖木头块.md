@@ -2,6 +2,7 @@
 title: 2312.卖木头块
 date: 2024-03-15 18:17:58
 tags: [题解, LeetCode, 困难, 记忆化搜索, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2312.卖木头块：动态规划(DP)

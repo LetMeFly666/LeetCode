@@ -2,6 +2,7 @@
 title: 2050.并行课程 III：DFS
 date: 2023-07-28 09:24:33
 tags: [题解, LeetCode, 困难, 图, 拓扑排序, 数组, 动态规划, 记忆化搜索, 搜索, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2050.并行课程 III：DFS

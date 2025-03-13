@@ -2,6 +2,7 @@
 title: python - 下载自百度网盘的远古の - 知识点备忘录
 date: 2023-09-25 22:03:00
 tags: [其他, Python, Notes]
+categories: [技术思考]
 ---
 
 ###    多值参数的传递

@@ -2,6 +2,7 @@
 title: 1653.使字符串平衡的最少删除次数
 date: 2023-03-06 12:06:42
 tags: [题解, LeetCode, 中等, 栈, 字符串, 动态规划, 模拟, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1653.使字符串平衡的最少删除次数

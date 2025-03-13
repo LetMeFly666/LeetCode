@@ -2,6 +2,7 @@
 title: 1021.删除最外层的括号
 date: 2022-05-28 10:38:16
 tags: [题解, LeetCode, 简单, 括号匹配, 模拟, 字符串, 栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1021.删除最外层的括号

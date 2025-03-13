@@ -2,6 +2,7 @@
 title: 1624.两个相同字符之间的最长子字符串
 date: 2022-09-17 08:38:54
 tags: [题解, LeetCode, 简单, 哈希表, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1624.两个相同字符之间的最长子字符串

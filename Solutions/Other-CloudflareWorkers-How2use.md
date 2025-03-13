@@ -2,6 +2,7 @@
 title: Cloudflare workers - 如何使用（起步篇）
 date: 2024-12-09 13:45:04
 tags: [其他, Cloudflare]
+categories: [技术思考]
 ---
 
 # Cloudflare workers - 如何使用（起步篇）

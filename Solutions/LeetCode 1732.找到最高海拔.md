@@ -2,6 +2,7 @@
 title: 1732.找到最高海拔
 date: 2022-11-19 08:33:19
 tags: [题解, LeetCode, 简单, 数组, 前缀和, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1732.找到最高海拔

@@ -2,6 +2,7 @@
 title: 1705.吃苹果的最大数目
 date: 2024-12-24 23:48:02
 tags: [题解, LeetCode, 中等, 贪心, 数组, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1705.吃苹果的最大数目：贪心(优先队列) - 清晰题解

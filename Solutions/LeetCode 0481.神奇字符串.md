@@ -2,6 +2,7 @@
 title: 481.神奇字符串
 date: 2022-10-28 08:58:59
 tags: [题解, LeetCode, 中等, 双指针, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】481.神奇字符串

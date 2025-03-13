@@ -2,6 +2,7 @@
 title: 157.用Read4读取N个字符
 date: 2022-05-29 13:56:48
 tags: [题解, LeetCode, 简单, 字符串, 交互, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】157.用Read4读取N个字符

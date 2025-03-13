@@ -2,6 +2,7 @@
 title: 2469.温度转换
 date: 2023-03-21 12:26:34
 tags: [题解, LeetCode, 简单, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2469.温度转换

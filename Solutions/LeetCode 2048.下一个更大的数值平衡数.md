@@ -2,6 +2,7 @@
 title: 2048.下一个更大的数值平衡数
 date: 2023-12-09 20:50:36
 tags: [题解, LeetCode, 中等, 数学, 回溯, 枚举, 打表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2048.下一个更大的数值平衡数

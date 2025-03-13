@@ -2,6 +2,7 @@
 title: 1775.通过最少操作次数使数组的和相等
 date: 2022-12-07 10:29:21
 tags: [题解, LeetCode, 中等, 贪心, 数组, 哈希表, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1775.通过最少操作次数使数组的和相等

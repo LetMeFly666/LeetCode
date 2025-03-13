@@ -2,6 +2,7 @@
 title: 860.柠檬水找零：附C++一行代码版
 date: 2023-07-22 09:29:05
 tags: [题解, LeetCode, 简单, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】860.柠檬水找零：附C++一行代码版

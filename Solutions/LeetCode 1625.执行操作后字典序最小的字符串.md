@@ -2,6 +2,7 @@
 title: 1625.执行操作后字典序最小的字符串
 date: 2023-03-19 15:01:56
 tags: [题解, LeetCode, 中等, 广度优先搜索, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1625.执行操作后字典序最小的字符串

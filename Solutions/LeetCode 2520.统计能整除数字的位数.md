@@ -2,6 +2,7 @@
 title: 2520.统计能整除数字的位数
 date: 2023-10-26 10:24:09
 tags: [题解, LeetCode, 简单, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2520.统计能整除数字的位数：模拟

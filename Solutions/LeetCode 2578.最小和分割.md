@@ -2,6 +2,7 @@
 title: 2578.最小和分割
 date: 2023-10-09 09:13:42
 tags: [题解, LeetCode, 简单, 贪心, 数学, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2578.最小和分割：贪心（数学）

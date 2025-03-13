@@ -2,6 +2,7 @@
 title: 模糊测试 - 论文翻译 - Montage： A Neural Network Language Model-Guided JavaScript Engine Fuzzer
 date: 2023-04-06 10:32:56
 tags: [其他, Fuzz, 模糊测试, 论文, Paper, 论文翻译, Montage]
+categories: [技术思考]
 ---
 
 本文前面约1000字非机翻，纯手工翻译 + 手工码字

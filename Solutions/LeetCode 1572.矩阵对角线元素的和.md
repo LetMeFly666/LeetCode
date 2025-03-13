@@ -2,6 +2,7 @@
 title: 1572.矩阵对角线元素的和
 date: 2023-08-11 08:01:54
 tags: [题解, LeetCode, 简单, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1572.矩阵对角线元素的和

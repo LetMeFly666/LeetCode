@@ -2,6 +2,7 @@
 title: 2656.K 个元素的最大和
 date: 2023-11-15 20:30:04
 tags: [题解, LeetCode, 简单, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2656.K 个元素的最大和：一次遍历（附Python一行版代码）

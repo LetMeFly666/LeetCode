@@ -2,6 +2,7 @@
 title: 1487.保证文件名唯一
 date: 2023-03-03 11:12:16
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1487.保证文件名唯一

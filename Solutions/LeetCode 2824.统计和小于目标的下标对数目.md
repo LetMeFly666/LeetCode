@@ -2,6 +2,7 @@
 title: 2824.统计和小于目标的下标对数目
 date: 2023-11-24 10:00:30
 tags: [题解, LeetCode, 简单, 数组, 双指针, 排序, 二分, 二分查找]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2824.统计和小于目标的下标对数目

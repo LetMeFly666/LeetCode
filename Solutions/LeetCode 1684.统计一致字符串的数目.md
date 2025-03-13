@@ -2,6 +2,7 @@
 title: 1684.统计一致字符串的数目
 date: 2022-11-08 08:58:41
 tags: [题解, LeetCode, 简单, 位运算, 数组, 哈希表, 字符串, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1684.统计一致字符串的数目

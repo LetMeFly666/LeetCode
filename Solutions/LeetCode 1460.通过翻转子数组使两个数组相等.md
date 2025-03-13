@@ -2,6 +2,7 @@
 title: 1460.通过翻转子数组使两个数组相等
 date: 2022-08-24 10:28:38
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1460.通过翻转子数组使两个数组相等

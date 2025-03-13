@@ -2,6 +2,7 @@
 title: 2342.数位和相等数对的最大和
 date: 2023-11-18 11:19:07
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 排序, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2342.数位和相等数对的最大和：哈希表

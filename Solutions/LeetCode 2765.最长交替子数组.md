@@ -2,6 +2,7 @@
 title: 2765.最长交替子数组
 date: 2024-01-23 22:05:37
 tags: [题解, LeetCode, 简单, 数组, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2765.最长交替子数组：O(n)的做法（两次遍历）

@@ -2,6 +2,7 @@
 title: 1423.可获得的最大点数
 date: 2023-12-03 14:01:12
 tags: [题解, LeetCode, 中等, 数组, 前缀和, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1423.可获得的最大点数：滑动窗口

@@ -2,6 +2,7 @@
 title: 2583.二叉树中的第 K 大层和
 date: 2024-02-23 10:21:43
 tags: [题解, LeetCode, 中等, 树, 广度优先搜索, BFS, 层序遍历, 层次遍历, 二叉树, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2583.二叉树中的第 K 大层和：层序遍历 + 排序

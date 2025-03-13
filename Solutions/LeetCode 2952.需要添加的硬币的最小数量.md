@@ -2,6 +2,7 @@
 title: 2952.需要添加的硬币的最小数量
 date: 2024-03-30 22:33:10
 tags: [题解, LeetCode, 中等, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2952.需要添加的硬币的最小数量：贪心（排序）

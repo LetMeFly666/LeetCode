@@ -2,6 +2,7 @@
 title: 1619.删除某些元素后的数组均值
 date: 2022-09-14 13:37:08
 tags: [题解, LeetCode, 简单, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1619.删除某些元素后的数组均值

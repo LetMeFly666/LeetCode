@@ -2,6 +2,7 @@
 title: 2414.最长的字母序连续子字符串的长度
 date: 2024-09-19 17:58:36
 tags: [题解, LeetCode, 中等, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2414.最长的字母序连续子字符串的长度：一次遍历

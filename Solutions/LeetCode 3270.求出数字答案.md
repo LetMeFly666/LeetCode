@@ -2,6 +2,7 @@
 title: 3270.求出数字答案
 date: 2025-01-13 23:53:51
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3270.求出数字答案：每位分别计算 或 for循环

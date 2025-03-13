@@ -2,6 +2,7 @@
 title: 2027.转换字符串的最少操作次数
 date: 2022-12-27 11:08:36
 tags: [题解, LeetCode, 简单, 贪心, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2027.转换字符串的最少操作次数

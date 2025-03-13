@@ -2,6 +2,7 @@
 title: 1144.递减元素使数组呈锯齿状
 date: 2023-02-27 09:40:26
 tags: [题解, LeetCode, 中等, 贪心, 数组, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1144.递减元素使数组呈锯齿状

@@ -2,6 +2,7 @@
 title: 2274.不含特殊楼层的最大连续楼层数
 date: 2025-01-06 20:45:47
 tags: [题解, LeetCode, 中等, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2274.不含特殊楼层的最大连续楼层数：排序

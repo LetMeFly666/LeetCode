@@ -2,6 +2,7 @@
 title: 2807.在链表中插入最大公约数
 date: 2024-01-06 11:35:29
 tags: [题解, LeetCode, 中等, 数组, 链表, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2807.在链表中插入最大公约数

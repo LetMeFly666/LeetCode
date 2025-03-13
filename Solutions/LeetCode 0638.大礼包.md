@@ -2,6 +2,7 @@
 title: 638.大礼包
 date: 2024-11-03 15:14:25
 tags: [题解, LeetCode, 中等, 位运算, 记忆化搜索, 数组, 动态规划, 回溯, 状态压缩, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】638.大礼包：记忆化搜索（无脑尝试每种可能就好了）DFS

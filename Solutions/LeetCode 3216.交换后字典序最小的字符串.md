@@ -2,6 +2,7 @@
 title: 3216.交换后字典序最小的字符串
 date: 2024-10-30 12:49:17
 tags: [题解, LeetCode, 简单, 贪心, 字符串, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3216.交换后字典序最小的字符串：贪心(模拟)

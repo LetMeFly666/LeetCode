@@ -2,6 +2,7 @@
 title: 2581.统计可能的树根数目
 date: 2024-02-29 14:48:27
 tags: [题解, LeetCode, 困难, 树, 深度优先搜索, DFS, 哈希表, 动态规划, DP, 树形DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2581.统计可能的树根数目：换根DP(树形DP)

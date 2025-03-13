@@ -2,6 +2,7 @@
 title: 3153.所有数对中数位差之和
 date: 2024-08-30 23:50:44
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 数学, 计数, 排列组合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3153.所有数对中数位差之和：计数

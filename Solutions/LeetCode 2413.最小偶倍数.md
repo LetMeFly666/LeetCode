@@ -2,6 +2,7 @@
 title: 2413.最小偶倍数
 date: 2023-04-21 12:44:21
 tags: [题解, LeetCode, 简单, 数学, 数论]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2413.最小偶倍数

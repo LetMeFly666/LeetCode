@@ -2,6 +2,7 @@
 title: HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址
 date: 2023-04-05 15:50:44
 tags: [其他, HTML, 301, 重定向, nginx, Google]
+categories: [技术思考]
 ---
 
 # HTML - 网站永久重定向301修改了之后，Google浏览器如何重新定位到新地址

@@ -2,6 +2,7 @@
 title: 2670.找出不同元素数目差数组
 date: 2024-01-31 11:16:42
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2670.找出不同元素数目差数组：哈希表（预处理）

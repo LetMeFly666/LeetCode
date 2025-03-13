@@ -2,6 +2,7 @@
 title: 1155.掷骰子等于目标和的方法数：动态规划
 date: 2023-10-24 14:29:25
 tags: [题解, LeetCode, 中等, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1155.掷骰子等于目标和的方法数：动态规划

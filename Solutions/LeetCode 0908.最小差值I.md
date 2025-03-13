@@ -2,6 +2,7 @@
 title: 908.最小差值 I
 date: 2024-10-21 14:48:02
 tags: [题解, LeetCode, 简单, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】908.最小差值 I：思维（遍历）

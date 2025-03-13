@@ -2,6 +2,7 @@
 title: 795.区间子数组个数
 date: 2022-11-24 16:42:55
 tags: [题解, LeetCode, 中等, 数组, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】795.区间子数组个数

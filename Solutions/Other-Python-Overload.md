@@ -2,6 +2,7 @@
 title: 不能函数重载的Python如何实现“伪重载”
 date: 2023-03-23 20:19:21
 tags: [其他, Python, 中等, overload, 函数重载, 重载]
+categories: [技术思考]
 ---
 
 # 能函数重载的Python如何实现“伪重载”

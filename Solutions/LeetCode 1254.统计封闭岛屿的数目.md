@@ -2,6 +2,7 @@
 title: 1254.统计封闭岛屿的数目
 date: 2023-06-18 13:53:56
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 数组, 矩阵, 图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1254.统计封闭岛屿的数目

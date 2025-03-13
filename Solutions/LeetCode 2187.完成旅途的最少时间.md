@@ -2,6 +2,7 @@
 title: 2187.完成旅途的最少时间
 date: 2024-10-05 23:40:25
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2187.完成旅途的最少时间：二分查找

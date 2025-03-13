@@ -2,6 +2,7 @@
 title: 2734.执行子串操作后的字典序最小字符串
 date: 2024-06-27 23:07:00
 tags: [题解, LeetCode, 中等, 贪心, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2734.执行子串操作后的字典序最小字符串：贪心

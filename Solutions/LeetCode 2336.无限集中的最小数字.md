@@ -2,6 +2,7 @@
 title: 2336.无限集中的最小数字
 date: 2023-11-29 12:24:24
 tags: [题解, LeetCode, 中等, 设计, 哈希表, 堆（优先队列）, 有序集合, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2336.无限集中的最小数字：有序集合

@@ -2,6 +2,7 @@
 title: 1094.拼车
 date: 2023-12-02 14:22:27
 tags: [题解, LeetCode, 中等, 数组, 前缀和, 排序, 模拟, 堆（优先队列）, 优先队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1094.拼车：优先队列

@@ -2,6 +2,7 @@
 title: Windows(奇思妙想) - 通过ssh打开带有图形界面的程序 - 一种通过计划任务的曲折实现方式
 date: 2025-02-21 21:38:08
 tags: [其他, Windows, SSH, 奇思妙想]
+categories: [技术思考]
 index_img: https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/8fca3be9af1443b9897f432edf83b7bf.png
 ---
 

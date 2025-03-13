@@ -2,6 +2,7 @@
 title: 2353.设计食物评分系统：哈希表 + 有序集合
 date: 2025-02-28 13:33:16
 tags: [题解, LeetCode, 中等, 设计, 哈希表, map, set, 有序集合, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2353.设计食物评分系统：哈希表 + 有序集合

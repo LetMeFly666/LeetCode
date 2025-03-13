@@ -2,6 +2,7 @@
 title: 2079.给植物浇水
 date: 2024-05-08 18:14:11
 tags: [题解, LeetCode, 中等, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2079.给植物浇水：O(n)模拟

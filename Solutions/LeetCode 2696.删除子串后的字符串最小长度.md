@@ -2,6 +2,7 @@
 title: 2696.删除子串后的字符串最小长度
 date: 2024-01-10 19:13:56
 tags: [题解, LeetCode, 简单, 栈, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2696.删除子串后的字符串最小长度：栈

@@ -2,6 +2,7 @@
 title: 3115.质数的最大距离
 date: 2024-07-02 10:57:52
 tags: [题解, LeetCode, 中等, 数组, 数学, 数论]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3115.质数的最大距离：质数判断

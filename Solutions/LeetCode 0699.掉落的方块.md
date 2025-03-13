@@ -2,6 +2,7 @@
 title: 699.掉落的方块
 date: 2022-05-26 09:10:06
 tags: [题解, LeetCode, 困难, 暴力, 有序集合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】两种方法解决 699.掉落的方块

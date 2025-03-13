@@ -2,6 +2,7 @@
 title: 231.2 的幂
 date: 2022-09-08 15:46:16
 tags: [题解, LeetCode, 简单, 位运算, 递归, 数学, 补码]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】231.2 的幂

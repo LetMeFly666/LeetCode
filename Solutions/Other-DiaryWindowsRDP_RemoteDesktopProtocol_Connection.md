@@ -2,6 +2,7 @@
 title: 日记 - Windows远程桌面(RDP, Remote Desktop Protocol)跳坑指北
 date: 2024-09-13 00:14:12
 tags: [日记, Windows]
+categories: [技术思考]
 ---
 
 # 日记 - Windows远程桌面(RDP, Remote Desktop Protocol)跳坑指北

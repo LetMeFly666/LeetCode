@@ -2,6 +2,7 @@
 title: Python生成列表的简洁代码
 date: 2022-11-19 15:38:49
 tags: [其他, Python, 中等, List, Research]
+categories: [技术思考]
 ---
 
 [CSDN@Afool4U](https://blog.csdn.net/ik666) 前天发布了文章“（可能是最方便的方法）如何在Python中定义一个多维列表”，地址：[https://blog.csdn.net/ik666/article/details/127912220](https://blog.csdn.net/ik666/article/details/127912220)

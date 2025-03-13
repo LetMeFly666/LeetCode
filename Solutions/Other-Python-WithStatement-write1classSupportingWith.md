@@ -2,6 +2,7 @@
 title: Python - with语句 - 写一个支持with方法调用的类
 date: 2024-05-08 16:14:49
 tags: [其他, Python, 中等]
+categories: [技术思考]
 ---
 
 # Python - with语句 - 写一个支持with方法调用的类

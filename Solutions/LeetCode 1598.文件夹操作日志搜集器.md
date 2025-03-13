@@ -2,6 +2,7 @@
 title: 1598.文件夹操作日志搜集器
 date: 2022-09-09 13:27:39
 tags: [题解, LeetCode, 简单, 栈, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1598.文件夹操作日志搜集器：模拟 + 记录深度

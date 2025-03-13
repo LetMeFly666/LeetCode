@@ -2,6 +2,7 @@
 title: 1138.字母板上的路径
 date: 2023-02-12 10:05:08
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1138.字母板上的路径

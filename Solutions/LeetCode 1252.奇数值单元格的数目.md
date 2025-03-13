@@ -2,6 +2,7 @@
 title: 1252.奇数值单元格的数目
 date: 2022-07-12 10:28:21
 tags: [题解, LeetCode, 简单, 数组, 数学, 模拟, 奇偶, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1252.奇数值单元格的数目：低时间复杂度

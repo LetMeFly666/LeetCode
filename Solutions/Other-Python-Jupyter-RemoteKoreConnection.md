@@ -2,6 +2,7 @@
 title: Python - Jupyter - 远程连接Jupyter内核
 date: 2023-04-22 12:55:06
 tags: [其他, Python, Jupyter, Linux, 远程连接, 端口]
+categories: [技术思考]
 ---
 
 # Python - Jupyter - 远程连接Jupyter内核

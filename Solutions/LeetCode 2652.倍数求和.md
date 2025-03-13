@@ -2,6 +2,7 @@
 title: 2652.倍数求和
 date: 2023-10-17 09:29:53
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2652.倍数求和：O(1)做法 - 容斥原理

@@ -2,6 +2,7 @@
 title: 1884.鸡蛋掉落-两枚鸡蛋
 date: 2024-10-13 23:58:53
 tags: [题解, LeetCode, 中等, 数学, 动态规划, DP, 趣]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1884.鸡蛋掉落-两枚鸡蛋：动态规划

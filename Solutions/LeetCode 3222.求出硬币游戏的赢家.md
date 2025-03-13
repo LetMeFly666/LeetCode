@@ -2,6 +2,7 @@
 title: 3222.求出硬币游戏的赢家
 date: 2024-11-05 09:57:57
 tags: [题解, LeetCode, 简单, 数学, 博弈, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3222.求出硬币游戏的赢家：伪博弈真思维O(1)

@@ -2,6 +2,7 @@
 title: 2903.找出满足差值条件的下标 I
 date: 2024-05-25 12:57:50
 tags: [题解, LeetCode, 简单, 数组, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2903.找出满足差值条件的下标 I：暴力模拟

@@ -2,6 +2,7 @@
 title: 2418.按身高排序
 date: 2023-04-25 20:41:34
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 字符串, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2418.按身高排序

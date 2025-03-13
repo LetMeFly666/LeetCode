@@ -2,6 +2,7 @@
 title: 91.解码方法
 date: 2022-06-27 16:44:37
 tags: [题解, LeetCode, 中等, 字符串, 动态规划]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】91.解码方法 - 动态规划+原地滚动(比较高效的算法)

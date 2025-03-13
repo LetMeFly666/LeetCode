@@ -2,6 +2,7 @@
 title: 1749.任意子数组和的绝对值的最大值
 date: 2023-08-08 08:00:50
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1749.任意子数组和的绝对值的最大值

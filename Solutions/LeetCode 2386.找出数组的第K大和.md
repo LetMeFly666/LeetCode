@@ -2,6 +2,7 @@
 title: 2386.找出数组的第 K 大和
 date: 2024-03-09 18:35:02
 tags: [题解, LeetCode, 困难, 数组, 排序, 堆（优先队列）, 堆, 优先队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2386.找出数组的第 K 大和：逆向思维（小根堆）

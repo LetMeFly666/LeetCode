@@ -2,6 +2,7 @@
 title: Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？
 date: 2024-01-31 17:45:31
 tags: [其他, Windows, FireWall]
+categories: [技术思考]
 description: 无效搜索：windows防火墙开放了端口 局域网还是无法访问 | windows开启防火墙的某个端口 | （已解决）同一局域网下关闭了windows防火墙，外部仍然无法访问本机的java服务 | windows开放防火墙端口之后，为何在外部链接不成功呢【系统内部开通0.0.0.0监听且防火墙开通才能访问】
 ---
 

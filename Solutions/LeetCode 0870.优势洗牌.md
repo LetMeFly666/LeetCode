@@ -2,6 +2,7 @@
 title: 870.优势洗牌
 date: 2022-10-08 13:18:20
 tags: [题解, LeetCode, 中等, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】趣解田忌赛马：能赢则赢，否则摆烂（贪心） - 870.优势洗牌

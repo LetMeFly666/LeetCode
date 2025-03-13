@@ -2,6 +2,7 @@
 title: 3162.优质数对的总数 I
 date: 2024-10-10 13:08:51
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 暴力]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3162.优质数对的总数 I：暴力模拟

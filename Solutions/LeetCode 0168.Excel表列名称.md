@@ -2,6 +2,7 @@
 title: 168.Excel表列名称
 date: 2022-08-04 11:23:59
 tags: [题解, LeetCode, 简单, 数学, 字符串, 模拟, 进制]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】168.Excel表列名称

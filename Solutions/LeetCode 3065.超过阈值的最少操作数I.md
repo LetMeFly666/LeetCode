@@ -2,6 +2,7 @@
 title: 3065.超过阈值的最少操作数 I
 date: 2025-01-14 12:34:16
 tags: [题解, LeetCode, 简单, 数组, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3065.超过阈值的最少操作数 I：遍历统计

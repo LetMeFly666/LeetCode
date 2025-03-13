@@ -2,6 +2,7 @@
 title: 3127.构造相同颜色的正方形
 date: 2024-08-31 18:31:25
 tags: [题解, LeetCode, 简单, 数组, 枚举, 矩阵, 打表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3127.构造相同颜色的正方形：打表瘾犯了

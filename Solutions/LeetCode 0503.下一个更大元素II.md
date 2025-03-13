@@ -2,6 +2,7 @@
 title: 503.下一个更大元素 II
 date: 2022-11-06 08:41:39
 tags: [题解, LeetCode, 中等, 栈, 数组, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】503.下一个更大元素 II

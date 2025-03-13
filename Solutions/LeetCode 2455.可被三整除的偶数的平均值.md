@@ -2,6 +2,7 @@
 title: 2455.可被三整除的偶数的平均值
 date: 2023-05-29 10:27:01
 tags: [题解, LeetCode, 简单, 数组, 数学, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2455.可被三整除的偶数的平均值

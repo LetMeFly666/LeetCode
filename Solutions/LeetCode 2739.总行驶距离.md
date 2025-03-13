@@ -2,6 +2,7 @@
 title: 2739.总行驶距离
 date: 2024-04-25 09:42:51
 tags: [题解, LeetCode, 简单, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2739.总行驶距离：不模拟直接算（很好算的）——相当于“满5返1”的活动

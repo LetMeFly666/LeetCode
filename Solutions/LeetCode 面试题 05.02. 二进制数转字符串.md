@@ -2,6 +2,7 @@
 title: 面试题05.02.二进制数转字符串
 date: 2023-03-02 09:41:33
 tags: [题解, LeetCode, 中等, 二进制, 进制转换, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】面试题 05.02.二进制数转字符串

@@ -2,6 +2,7 @@
 title: HTML - HTML中使用JS下载文本文件
 date: 2023-07-06 11:07:29
 tags: [其他, HTML, Javascript, JS, 文件, 文件下载]
+categories: [技术思考]
 ---
 
 # HTML - HTML中使用JS下载文本文件

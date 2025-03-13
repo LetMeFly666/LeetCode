@@ -2,6 +2,7 @@
 title: Windows - Windows10绕过登录（修改）密码登录：未验证
 date: 2023-07-05 16:47:37
 tags: [其他, Windows]
+categories: [技术思考]
 ---
 
 ## 前言

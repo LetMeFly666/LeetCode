@@ -2,6 +2,7 @@
 title: 342.4的幂
 date: 2022-09-29 12:47:26
 tags: [题解, LeetCode, 简单, 位运算, 递归, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】342.4的幂

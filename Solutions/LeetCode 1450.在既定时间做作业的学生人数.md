@@ -2,6 +2,7 @@
 title: 1450.在既定时间做作业的学生人数
 date: 2022-08-19 08:30:46
 tags: [题解, LeetCode, 简单, 数组, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1450.在既定时间做作业的学生人数

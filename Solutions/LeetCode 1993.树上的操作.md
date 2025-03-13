@@ -2,6 +2,7 @@
 title: 1993.树上的操作
 date: 2023-09-23 09:56:02
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, 设计, 哈希表, 模拟, 大模拟, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1993.树上的操作：大模拟

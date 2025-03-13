@@ -2,6 +2,7 @@
 title: 2496.数组中字符串的最大值
 date: 2023-06-23 07:58:37
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2496.数组中字符串的最大值

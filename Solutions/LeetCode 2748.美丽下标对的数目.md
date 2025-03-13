@@ -2,6 +2,7 @@
 title: 2748.美丽下标对的数目
 date: 2024-06-20 16:05:33
 tags: [题解, LeetCode, 简单, 数组, 数学, 数论]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2748.美丽下标对的数目：模拟

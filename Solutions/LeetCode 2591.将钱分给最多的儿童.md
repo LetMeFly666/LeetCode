@@ -2,6 +2,7 @@
 title: 2591.将钱分给最多的儿童
 date: 2023-09-22 13:19:10
 tags: [题解, LeetCode, 简单, 贪心, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2591.将钱分给最多的儿童

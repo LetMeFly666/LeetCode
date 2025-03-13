@@ -2,6 +2,7 @@
 title: 1154.一年中的第几天
 date: 2023-12-31 12:30:00
 tags: [题解, LeetCode, 简单, 数学, 字符串, 日期处理]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1154.一年中的第几天：2023年最后一道每日一题

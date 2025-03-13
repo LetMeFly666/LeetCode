@@ -2,6 +2,7 @@
 title: 997.找到小镇的法官
 date: 2024-09-22 23:36:30
 tags: [题解, LeetCode, 简单, 图, 数组, 哈希表, 计数, 图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】997.找到小镇的法官：计数

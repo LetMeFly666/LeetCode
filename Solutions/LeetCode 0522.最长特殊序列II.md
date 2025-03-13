@@ -2,6 +2,7 @@
 title: 522.最长特殊序列 II
 date: 2024-06-17 22:57:04
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 双指针, 字符串, 排序, 子序列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】522.最长特殊序列 II：两句话讲明思路(子序列判断)

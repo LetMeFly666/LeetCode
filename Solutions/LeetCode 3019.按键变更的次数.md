@@ -2,6 +2,7 @@
 title: 3019.按键变更的次数
 date: 2025-01-07 13:14:51
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3019.按键变更的次数：遍历（转小写）

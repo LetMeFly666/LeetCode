@@ -2,6 +2,7 @@
 title: 2270.分割数组的方案数
 date: 2025-01-13 22:40:27
 tags: [题解, LeetCode, 中等, 数组, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2270.分割数组的方案数：前缀和

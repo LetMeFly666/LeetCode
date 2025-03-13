@@ -2,6 +2,7 @@
 title: 3218.切蛋糕的最小总开销 I
 date: 2024-12-25 20:58:03
 tags: [题解, LeetCode, 中等, 贪心, 数组, 动态规划, 排序, 深度优先搜索, DFS, 记忆化搜索]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3218.切蛋糕的最小总开销 I：记忆化搜索(深度优先搜索DFS)

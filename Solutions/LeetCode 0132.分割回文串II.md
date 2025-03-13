@@ -2,6 +2,7 @@
 title: 132.分割回文串 II：动态规划
 date: 2025-03-02 12:45:23
 tags: [题解, LeetCode, 困难, 字符串, 动态规划, DP, 回文, 回文串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】132.分割回文串 II：动态规划

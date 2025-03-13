@@ -2,6 +2,7 @@
 title: 2028.找出缺失的观测数据
 date: 2024-05-27 21:57:59
 tags: [题解, LeetCode, 中等, 数组, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2028.找出缺失的观测数据：a个骰子和为b？

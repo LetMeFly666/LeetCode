@@ -2,6 +2,7 @@
 title: 871.最低加油次数
 date: 2022-07-02 17:34:26
 tags: [题解, LeetCode, 困难, 贪心, 数组, 动态规划, 堆（优先队列）, 优先队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】871.最低加油次数 - 类似于POJ2431丛林探险

@@ -2,6 +2,7 @@
 title: 2042.检查句子中的数字是否递增
 date: 2023-01-03 19:19:59
 tags: [题解, LeetCode, 简单, 字符串, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2042.检查句子中的数字是否递增

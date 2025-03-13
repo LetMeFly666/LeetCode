@@ -2,6 +2,7 @@
 title: FFmpeg - 如何在Linux(Ubuntu)上安装支持CUDA的FFmpeg
 date: 2024-04-07 09:20:14
 tags: [其他, 中等, FFmpeg, 音频, 视频]
+categories: [技术思考]
 ---
 
 # FFmpeg - 如何在Linux(Ubuntu)上安装支持CUDA的FFmpeg

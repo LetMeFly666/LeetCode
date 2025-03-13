@@ -2,6 +2,7 @@
 title: 2808.使循环数组所有元素相等的最少秒数
 date: 2024-01-30 11:51:50
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2808.使循环数组所有元素相等的最少秒数

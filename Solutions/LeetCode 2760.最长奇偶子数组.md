@@ -2,6 +2,7 @@
 title: 2760.最长奇偶子数组
 date: 2023-11-16 19:59:46
 tags: [题解, LeetCode, 简单, 数组, 滑动窗口, 模拟, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2760.最长奇偶子数组：模拟（使用一个变量记录状态）

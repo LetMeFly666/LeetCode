@@ -2,6 +2,7 @@
 title: 2276.统计区间中的整数数目
 date: 2023-12-16 19:05:54
 tags: [题解, LeetCode, 困难, 设计, 有序集合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2276.统计区间中的整数数目

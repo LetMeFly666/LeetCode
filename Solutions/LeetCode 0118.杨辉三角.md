@@ -2,6 +2,7 @@
 title: 118.杨辉三角
 date: 2022-07-17 10:20:45
 tags: [题解, LeetCode, 简单, 数组, 动态规划, 杨辉三角]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】118.杨辉三角

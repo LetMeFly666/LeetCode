@@ -2,6 +2,7 @@
 title: 3266.K 次乘运算后的最终数组 II
 date: 2024-12-14 17:45:56
 tags: [题解, LeetCode, 困难, 数组, 模拟, 堆（优先队列）, 快速幂]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3266.K 次乘运算后的最终数组 II：堆（快速幂）

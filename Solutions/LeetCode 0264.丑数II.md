@@ -2,6 +2,7 @@
 title: 264.丑数 II
 date: 2022-09-13 19:18:53
 tags: [题解, LeetCode, 中等, 哈希表, 数学, 动态规划, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】264.丑数 II

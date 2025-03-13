@@ -2,6 +2,7 @@
 title: 934.最短的桥
 date: 2022-10-25 10:50:25
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 数组, 矩阵, 图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】934.最短的桥

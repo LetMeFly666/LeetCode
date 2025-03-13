@@ -2,6 +2,7 @@
 title: 1592.重新排列单词间的空格
 date: 2022-09-07 20:03:41
 tags: [题解, LeetCode, 简单, 字符串, 构造, 计算, 分配]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1592.重新排列单词间的空格

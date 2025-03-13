@@ -2,6 +2,7 @@
 title: 994.腐烂的橘子
 date: 2024-05-13 14:26:46
 tags: [题解, LeetCode, 中等, 广度优先搜索, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】994.腐烂的橘子：广度优先搜索(BFS)

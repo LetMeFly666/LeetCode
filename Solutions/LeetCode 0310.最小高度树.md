@@ -2,6 +2,7 @@
 title: 310.最小高度树
 date: 2024-03-17 21:04:25
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 图, 树, 拓扑排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】310.最小高度树：拓扑排序秒了

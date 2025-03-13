@@ -2,6 +2,7 @@
 title: 2859.计算 K 置位下标对应元素的和
 date: 2024-01-25 08:59:34
 tags: [题解, LeetCode, 简单, 位运算, 数组, 遍历, 模拟, 二进制, 位运算]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2859.计算 K 置位下标对应元素的和：遍历（附Python一行代码版）

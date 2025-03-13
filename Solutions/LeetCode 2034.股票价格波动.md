@@ -2,6 +2,7 @@
 title: 2034.股票价格波动
 date: 2023-10-08 12:36:36
 tags: [题解, LeetCode, 中等, 设计, 哈希表, 数据流, 有序集合, 堆（优先队列）, set, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2034.股票价格波动：哈希表 + 有序集合

@@ -2,6 +2,7 @@
 title: 1003.检查替换后的词是否有效
 date: 2023-05-03 09:48:23
 tags: [题解, LeetCode, 中等, 栈, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1003.检查替换后的词是否有效

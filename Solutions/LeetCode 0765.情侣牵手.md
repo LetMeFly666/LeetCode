@@ -2,6 +2,7 @@
 title: 765.情侣牵手
 date: 2023-11-11 22:54:27
 tags: [题解, LeetCode, 困难, 贪心, 深度优先搜索, 广度优先搜索, BFS, 并查集, 图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】765.情侣牵手：广度优先搜索BFS

@@ -2,6 +2,7 @@
 title: 410.分割数组的最大值
 date: 2024-01-21 13:35:04
 tags: [题解, LeetCode, 困难, 贪心, 数组, 二分查找, 二分, 动态规划, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】410.分割数组的最大值：二分

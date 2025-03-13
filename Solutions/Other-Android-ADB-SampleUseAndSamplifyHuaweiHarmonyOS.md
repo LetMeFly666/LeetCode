@@ -2,6 +2,7 @@
 title: 安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统
 date: 2023-07-27 15:52:08
 tags: [其他, 安卓, Android, ADB, 华为, 鸿蒙, HarmonyOS]
+categories: [技术思考]
 ---
 
 # 前言

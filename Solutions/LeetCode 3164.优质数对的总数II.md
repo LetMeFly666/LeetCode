@@ -2,6 +2,7 @@
 title: 3164.优质数对的总数 II
 date: 2024-10-11 23:09:55
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 因数, 质数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3164.优质数对的总数 II：哈希表+因式分解

@@ -2,6 +2,7 @@
 title: 1739.放置盒子
 date: 2022-12-25 17:23:55
 tags: [题解, LeetCode, 困难, 贪心, 数学, 二分查找, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1739.放置盒子

@@ -2,6 +2,7 @@
 title: 125.验证回文串
 date: 2022-07-20 12:39:15
 tags: [题解, LeetCode, 简单, 双指针, 字符串, 回文串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】125.验证回文串

@@ -2,6 +2,7 @@
 title: WebDAV(or SMB) - 本地编辑远程服务器中文件 - 简单使用(Windows为例)
 date: 2024-12-25 15:39:55
 tags: [其他, WebDAV]
+categories: [技术思考]
 ---
 
 # WebDAV(or SMB) - 本地编辑远程服务器中文件 - 简单使用(Windows为例)

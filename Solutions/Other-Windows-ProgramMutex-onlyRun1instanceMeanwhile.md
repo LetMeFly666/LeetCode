@@ -2,6 +2,7 @@
 title: Windows程序互斥锁 - 一个程序同时仅允许运行一个实例
 date: 2024-02-17 16:52:12
 tags: [Windows, 简单, 互斥, 锁, 并发]
+categories: [技术思考]
 ---
 
 # Windows程序互斥锁 - 一个程序同时仅允许运行一个实例

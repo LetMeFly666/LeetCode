@@ -2,6 +2,7 @@
 title: 2828.判别首字母缩略词
 date: 2023-12-20 14:05:28
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2828.判别首字母缩略词

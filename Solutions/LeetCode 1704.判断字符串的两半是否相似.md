@@ -2,6 +2,7 @@
 title: 1704.判断字符串的两半是否相似
 date: 2022-11-11 09:01:33
 tags: [题解, LeetCode, 简单, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1704.判断字符串的两半是否相似：小难懂的代码

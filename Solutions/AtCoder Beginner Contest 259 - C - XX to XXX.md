@@ -2,6 +2,7 @@
 title: AtCoder Beginner Contest 259 - C - XX to XXX
 date: 2022-07-09 22:59:26
 tags: [题解, AtCoder, 中等, 字符串, 字符串变换, 双指针]
+categories: [题解, AtCoder]
 ---
 
 Time Limit: 2 sec / Memory Limit: 1024 MB

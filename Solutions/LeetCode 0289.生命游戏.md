@@ -2,6 +2,7 @@
 title: 289.生命游戏
 date: 2022-09-16 08:16:56
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 模拟, 原地]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】289.生命游戏

@@ -2,6 +2,7 @@
 title: 2744.最大字符串配对数目
 date: 2024-01-17 22:37:15
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, map, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2744.最大字符串配对数目：哈希表

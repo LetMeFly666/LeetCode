@@ -2,6 +2,7 @@
 title: 3101.交替子数组计数
 date: 2024-07-06 10:54:38
 tags: [题解, LeetCode, 中等, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3101.交替子数组计数：等差数列求和（较详题解）

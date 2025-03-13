@@ -2,6 +2,7 @@
 title: 88.合并两个有序数组：O(m + 1) + O(1)的做法
 date: 2023-08-13 08:47:32
 tags: [题解, LeetCode, 简单, 数组, 双指针, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】88.合并两个有序数组：O(m + 1) + O(1)的做法

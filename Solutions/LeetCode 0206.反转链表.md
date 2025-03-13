@@ -2,6 +2,7 @@
 title: 206.反转链表
 date: 2022-08-21 10:35:55
 tags: [题解, LeetCode, 简单, 递归, 链表, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】206.反转链表

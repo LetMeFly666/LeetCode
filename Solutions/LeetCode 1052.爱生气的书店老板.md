@@ -2,6 +2,7 @@
 title: 1052.爱生气的书店老板
 date: 2024-04-23 21:15:30
 tags: [题解, LeetCode, 中等, 数组, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1052.爱生气的书店老板：滑动窗口

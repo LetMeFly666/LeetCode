@@ -2,6 +2,7 @@
 title: 2951.找出峰值
 date: 2024-05-28 22:21:51
 tags: [题解, LeetCode, 简单, 数组, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2951.找出峰值：模拟（遍历）

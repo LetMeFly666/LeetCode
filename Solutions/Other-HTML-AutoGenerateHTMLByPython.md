@@ -2,6 +2,7 @@
 title: HTML - 使用Python快速生成HTML的UI
 date: 2023-04-04 19:43:13
 tags: [其他, HTML, Python, 前端]
+categories: [技术思考]
 ---
 
 # HTML - 使用Python快速生成HTML的UI

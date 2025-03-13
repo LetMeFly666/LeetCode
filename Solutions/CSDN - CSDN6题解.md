@@ -2,6 +2,7 @@
 title: CSDN - CSDN6题解
 date: 2022-09-23 16:32:53
 tags: [题解, CSDN]
+categories: [题解, CSDN周赛]
 ---
 
 >  CSDN编程竞赛报名地址：https://edu.csdn.net/contest/detail/16

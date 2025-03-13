@@ -2,6 +2,7 @@
 title: 47.全排列 II：内置函数 / 回溯（长篇小论）
 date: 2025-02-06 14:28:35
 tags: [题解, LeetCode, 中等, 数组, 回溯, 递归, 深度优先搜索, DFS, 全排列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】47.全排列 II：内置函数 / 回溯（长篇小论）

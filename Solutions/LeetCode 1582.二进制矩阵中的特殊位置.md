@@ -2,6 +2,7 @@
 title: 1582.二进制矩阵中的特殊位置
 date: 2022-09-04 14:59:22
 tags: [题解, LeetCode, 简单, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1582.二进制矩阵中的特殊位置

@@ -2,6 +2,7 @@
 title: 2611.老鼠和奶酪：排序 + 贪心
 date: 2023-06-07 13:16:40
 tags: [题解, LeetCode, 中等, 贪心, 数组, 排序, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2611.老鼠和奶酪：排序 + 贪心

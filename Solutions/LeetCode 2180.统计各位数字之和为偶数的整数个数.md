@@ -2,6 +2,7 @@
 title: 2180.统计各位数字之和为偶数的整数个数
 date: 2023-01-06 19:04:54
 tags: [题解, LeetCode, 简单, 数学, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2180.统计各位数字之和为偶数的整数个数

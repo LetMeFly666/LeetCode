@@ -2,6 +2,7 @@
 title: VsCode美化 - VsCode自定义 - VsCode自定义背景图：添加二次元老婆图到VsCode
 date: 2023-08-10 18:28:12
 tags: [VsCode, 简单, 美化, 二次元]
+categories: [技术思考]
 ---
 
 # VsCode美化 - VsCode自定义 - VsCode自定义背景图：添加二次元老婆图到VsCode

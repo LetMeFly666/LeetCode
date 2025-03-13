@@ -2,6 +2,7 @@
 title: 67.二进制求和
 date: 2022-07-14 21:36:50
 tags: [题解, LeetCode, 简单, 位运算, 数学, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】67.二进制求和

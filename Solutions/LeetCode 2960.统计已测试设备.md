@@ -2,6 +2,7 @@
 title: 2960.统计已测试设备
 date: 2024-05-10 16:21:27
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2960.统计已测试设备：看测试了多少次

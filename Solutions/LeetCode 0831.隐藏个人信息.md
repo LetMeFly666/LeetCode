@@ -2,6 +2,7 @@
 title: 831.隐藏个人信息
 date: 2023-04-01 09:49:53
 tags: [题解, LeetCode, 中等, 字符串, 模拟, 字符串解析]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】831.隐藏个人信息

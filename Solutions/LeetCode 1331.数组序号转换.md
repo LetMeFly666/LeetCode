@@ -2,6 +2,7 @@
 title: 1331.数组序号转换
 date: 2022-07-28 10:48:43
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序, sort]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1331.数组序号转换

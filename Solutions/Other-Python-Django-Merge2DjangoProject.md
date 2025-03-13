@@ -2,6 +2,7 @@
 title: Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目
 date: 2023-04-19 16:52:59
 tags: [其他, Python, Django]
+categories: [技术思考]
 ---
 
 # Python - Django - 合并两个django项目，将一个项目作为另一个项目的子项目

@@ -2,6 +2,7 @@
 title: 1792.最大平均通过率
 date: 2023-02-19 21:45:44
 tags: [题解, LeetCode, 中等, 贪心, 数组, 堆（优先队列）, 优先队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1792.最大平均通过率

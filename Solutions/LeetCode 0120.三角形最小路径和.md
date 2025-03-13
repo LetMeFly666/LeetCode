@@ -2,6 +2,7 @@
 title: 120.三角形最小路径和
 date: 2022-07-18 16:23:53
 tags: [题解, LeetCode, 中等, 数组, 动态规划]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】120.三角形最小路径和

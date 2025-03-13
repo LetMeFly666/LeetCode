@@ -2,6 +2,7 @@
 title: 904.水果成篮
 date: 2022-10-17 09:39:00
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】两种方法小详解：904.水果成篮

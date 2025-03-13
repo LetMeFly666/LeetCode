@@ -2,6 +2,7 @@
 title: 1657.确定两个字符串是否接近
 date: 2023-11-30 20:41:54
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 排序, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1657.确定两个字符串是否接近：思维题

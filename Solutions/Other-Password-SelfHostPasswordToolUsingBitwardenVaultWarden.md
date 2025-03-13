@@ -2,6 +2,7 @@
 title: 密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录
 date: 2025-02-15 12:42:16
 tags: [其他, 密码, 服务器]
+categories: [技术思考]
 ---
 
 # 密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录

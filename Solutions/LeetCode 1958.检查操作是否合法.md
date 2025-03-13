@@ -2,6 +2,7 @@
 title: 1958.检查操作是否合法
 date: 2024-07-07 17:19:36
 tags: [题解, LeetCode, 中等, 数组, 枚举, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1958.检查操作是否合法：8个方向分别遍历

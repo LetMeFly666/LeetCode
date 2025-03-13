@@ -2,6 +2,7 @@
 title: 275.H 指数 II
 date: 2022-09-14 13:50:58
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】275.H 指数 II

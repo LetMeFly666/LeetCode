@@ -2,6 +2,7 @@
 title: 1408.数组中的字符串匹配
 date: 2022-08-06 08:52:25
 tags: [题解, LeetCode, 简单, 字符串, 字符串匹配, 暴力, find]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1408.数组中的字符串匹配

@@ -2,6 +2,7 @@
 title: 面试题 17.09.第 k 个数
 date: 2022-09-28 12:28:28
 tags: [题解, LeetCode, 中等, 哈希表, 数学, 动态规划, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】面试题 17.09.第 k 个数

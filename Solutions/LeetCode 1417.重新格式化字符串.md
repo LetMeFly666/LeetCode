@@ -2,6 +2,7 @@
 title: 1417.重新格式化字符串
 date: 2022-08-11 09:58:00
 tags: [题解, LeetCode, 简单, 字符串, 构造]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1417.重新格式化字符串

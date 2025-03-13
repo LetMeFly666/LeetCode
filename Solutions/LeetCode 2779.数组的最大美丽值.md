@@ -2,6 +2,7 @@
 title: 2779.数组的最大美丽值
 date: 2024-06-15 19:17:40
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 排序, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2779.数组的最大美丽值：排序 + 滑动窗口

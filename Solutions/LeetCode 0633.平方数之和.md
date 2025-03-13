@@ -2,6 +2,7 @@
 title: 633.平方数之和
 date: 2024-11-04 22:18:00
 tags: [题解, LeetCode, 中等, 数学, 双指针, 二分查找]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】633.平方数之和：模拟

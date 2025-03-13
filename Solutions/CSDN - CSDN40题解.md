@@ -2,6 +2,7 @@
 title: CSDN - CSDN40题解
 date: 2023-03-29 15:16:11
 tags: [题解, CSDN]
+categories: [题解, CSDN周赛]
 ---
 
 [TOC]

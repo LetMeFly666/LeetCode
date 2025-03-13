@@ -2,6 +2,7 @@
 title: 1200.最小绝对差
 date: 2022-07-04 22:15:25
 tags: [题解, LeetCode, 简单, 数组, 排序, 最小值]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1200.最小绝对差

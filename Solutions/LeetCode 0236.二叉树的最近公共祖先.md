@@ -2,6 +2,7 @@
 title: 236.二叉树的最近公共祖先
 date: 2022-09-09 14:42:04
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树, 位运算]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】236.二叉树的最近公共祖先：深度优先搜索（巧用位运算）

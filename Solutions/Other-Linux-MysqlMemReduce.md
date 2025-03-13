@@ -2,6 +2,7 @@
 title: Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况
 date: 2023-02-20 08:56:33
 tags: [其他, Linux, MySQL, 内存]
+categories: [技术思考]
 ---
 
 # 减小Mysql在Linux的内存占用

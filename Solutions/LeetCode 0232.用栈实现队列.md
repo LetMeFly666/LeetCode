@@ -2,6 +2,7 @@
 title: 232.用队实现队列
 date: 2024-03-04 09:20:00
 tags: [题解, LeetCode, 简单, 栈, 设计, 队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】232.用栈实现队列：基础数据结构的学习

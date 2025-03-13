@@ -2,6 +2,7 @@
 title: 228.汇总区间
 date: 2022-09-07 20:24:44
 tags: [题解, LeetCode, 简单, 数组, 构造]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】228.汇总区间

@@ -2,6 +2,7 @@
 title: 2844.生成特殊数字的最少操作
 date: 2024-07-25 17:07:41
 tags: [题解, LeetCode, 中等, 贪心, 数学, 字符串, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2844.生成特殊数字的最少操作：模拟（分析）

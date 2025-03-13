@@ -2,6 +2,7 @@
 title: 521.最长特殊序列 Ⅰ
 date: 2024-06-16 18:23:30
 tags: [题解, LeetCode, 简单, 字符串, 脑筋急转弯]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】521.最长特殊序列 Ⅰ：脑筋急转弯

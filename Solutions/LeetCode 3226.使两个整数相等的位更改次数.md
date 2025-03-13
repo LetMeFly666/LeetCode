@@ -2,6 +2,7 @@
 title: 3226.使两个整数相等的位更改次数
 date: 2024-11-02 11:09:29
 tags: [题解, LeetCode, 简单, 位运算]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3226.使两个整数相等的位更改次数：位运算（接近O(1)的做法）

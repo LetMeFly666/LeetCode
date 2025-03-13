@@ -2,6 +2,7 @@
 title: 788.旋转数字
 date: 2022-09-25 20:03:35
 tags: [题解, LeetCode, 中等, 数学, 动态规划, 暴力, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】788.旋转数字

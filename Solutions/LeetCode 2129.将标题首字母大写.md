@@ -2,6 +2,7 @@
 title: 2129.将标题首字母大写
 date: 2024-03-11 09:25:32
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2129.将标题首字母大写：模拟（一个变量记录是否该大写）

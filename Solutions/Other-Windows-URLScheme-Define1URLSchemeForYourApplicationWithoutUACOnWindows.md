@@ -2,6 +2,7 @@
 title: Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme
 date: 2024-02-08 22:15:06
 tags: [其他, Windows, URL Scheme]
+categories: [技术思考]
 ---
 
 # Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme

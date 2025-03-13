@@ -2,6 +2,7 @@
 title: 1470.重新排列数组
 date: 2022-08-29 08:48:08
 tags: [题解, LeetCode, 简单, 数组, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1470.重新排列数组：考研扣两分的做法

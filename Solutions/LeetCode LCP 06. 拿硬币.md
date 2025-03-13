@@ -2,6 +2,7 @@
 title: LCP 06.拿硬币
 date: 2023-09-20 10:44:31
 tags: [题解, LeetCode, 简单, 数组, 数学, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】LCP 06.拿硬币

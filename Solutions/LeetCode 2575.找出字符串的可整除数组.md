@@ -2,6 +2,7 @@
 title: 2575.找出字符串的可整除数组
 date: 2024-03-07 20:05:33
 tags: [题解, LeetCode, 中等, 数组, 数学, 字符串, 同余]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2575.找出字符串的可整除数组：同余问题

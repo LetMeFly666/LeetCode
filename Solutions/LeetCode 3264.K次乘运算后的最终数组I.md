@@ -2,6 +2,7 @@
 title: 3264.K 次乘运算后的最终数组 I
 date: 2024-12-13 09:43:07
 tags: [题解, LeetCode, 简单, 数组, 数学, 模拟, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3264.K 次乘运算后的最终数组 I：模拟

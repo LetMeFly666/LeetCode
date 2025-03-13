@@ -2,6 +2,7 @@
 title: 746.使用最小花费爬楼梯
 date: 2023-12-17 16:55:19
 tags: [题解, LeetCode, 简单, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】746.使用最小花费爬楼梯：动态规划（原地）——不用什么从递归到递推

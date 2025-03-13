@@ -2,6 +2,7 @@
 title: 2974.最小数字游戏
 date: 2024-07-12 00:25:46
 tags: [题解, LeetCode, 简单, 数组, 排序, 模拟, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2974.最小数字游戏：排序+交换奇偶位

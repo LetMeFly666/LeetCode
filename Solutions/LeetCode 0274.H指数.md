@@ -2,6 +2,7 @@
 title: 274.H 指数
 date: 2023-10-29 07:15:20
 tags: [题解, LeetCode, 中等, 数组, 计数排序, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】274.H 指数：排序

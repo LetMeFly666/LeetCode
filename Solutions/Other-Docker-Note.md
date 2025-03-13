@@ -2,6 +2,7 @@
 title: Docker学习笔记 - 极简极入门级
 date: 2023-10-07 10:05:23
 tags: [Docker, 简单, Notes]
+categories: [技术思考]
 ---
 
 # Docker学习笔记 - 极简极入门级

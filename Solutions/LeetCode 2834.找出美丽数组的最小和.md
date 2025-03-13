@@ -2,6 +2,7 @@
 title: 2834.找出美丽数组的最小和
 date: 2024-03-08 16:18:01
 tags: [题解, LeetCode, 中等, 贪心, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2834.找出美丽数组的最小和：数学（等差数列求和）——O(1)的做法

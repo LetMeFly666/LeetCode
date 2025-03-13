@@ -2,6 +2,7 @@
 title: 1673.找出最具竞争力的子序列
 date: 2024-05-24 21:38:41
 tags: [题解, LeetCode, 中等, 栈, 贪心, 数组, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1673.找出最具竞争力的子序列：单调栈（贪心）

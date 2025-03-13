@@ -2,6 +2,7 @@
 title: 589.N 叉树的前序遍历
 date: 2024-02-18 12:00:39
 tags: [题解, LeetCode, 简单, 栈, 树, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】589.N 叉树的前序遍历：深度优先搜索(DFS)

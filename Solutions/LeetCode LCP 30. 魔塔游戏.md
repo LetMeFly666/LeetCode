@@ -2,6 +2,7 @@
 title: LCP 30.魔塔游戏
 date: 2024-02-06 10:44:13
 tags: [题解, LeetCode, 中等, 贪心, 数组, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】LCP 30.魔塔游戏：贪心（优先队列）

@@ -2,6 +2,7 @@
 title: 2241.设计一个 ATM 机器
 date: 2025-01-05 21:09:12
 tags: [题解, LeetCode, 中等, 贪心, 设计, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2241.设计一个 ATM 机器：模拟

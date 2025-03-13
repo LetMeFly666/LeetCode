@@ -2,6 +2,7 @@
 title: 722.删除注释
 date: 2023-08-03 08:15:53
 tags: [题解, LeetCode, 中等, 数组, 字符串, 大模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】722.删除注释

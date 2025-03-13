@@ -2,6 +2,7 @@
 title: 2559.统计范围内的元音字符串数：前缀和
 date: 2023-06-02 21:49:55
 tags: [题解, LeetCode, 中等, 数组, 字符串, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2559.统计范围内的元音字符串数

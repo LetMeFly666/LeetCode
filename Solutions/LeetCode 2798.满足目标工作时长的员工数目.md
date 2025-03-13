@@ -2,6 +2,7 @@
 title: 2798.满足目标工作时长的员工数目
 date: 2024-04-30 17:21:58
 tags: [题解, LeetCode, 简单, 数组, 遍历, 模拟, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2798.满足目标工作时长的员工数目：Do_What_It_Let

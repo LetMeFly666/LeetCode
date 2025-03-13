@@ -2,6 +2,7 @@
 title: 3254.长度为 K 的子数组的能量值 I
 date: 2024-11-06 17:26:30
 tags: [题解, LeetCode, 中等, 数组, 滑动窗口, 暴力, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3254.长度为 K 的子数组的能量值 I：等II再用O(n)的方法，先暴力模拟了再说

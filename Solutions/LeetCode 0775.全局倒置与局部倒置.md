@@ -2,6 +2,7 @@
 title: 775.全局倒置与局部倒置
 date: 2022-11-16 08:16:54
 tags: [题解, LeetCode, 中等, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】775.全局倒置与局部倒置

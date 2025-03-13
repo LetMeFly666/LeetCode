@@ -2,6 +2,7 @@
 title: 3242.设计相邻元素求和服务
 date: 2024-11-11 23:54:29
 tags: [题解, LeetCode, 简单, 设计, 数组, 哈希表, 哈希, map, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3242.设计相邻元素求和服务：哈希表

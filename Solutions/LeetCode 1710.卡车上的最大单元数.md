@@ -2,6 +2,7 @@
 title: 1710.卡车上的最大单元数
 date: 2022-11-15 09:06:20
 tags: [题解, LeetCode, 简单, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1710.卡车上的最大单元数

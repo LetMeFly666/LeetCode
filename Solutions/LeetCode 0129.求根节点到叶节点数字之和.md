@@ -2,6 +2,7 @@
 title: 129.求根节点到叶节点数字之和
 date: 2022-07-22 11:14:34
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉树, BFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】129.求根节点到叶节点数字之和

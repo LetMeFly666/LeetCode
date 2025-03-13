@@ -2,6 +2,7 @@
 title: 1328.破坏回文串：贪心
 date: 2025-03-05 16:11:50
 tags: [题解, LeetCode, 中等, 贪心, 字符串, 回文, 回文串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1328.破坏回文串：贪心

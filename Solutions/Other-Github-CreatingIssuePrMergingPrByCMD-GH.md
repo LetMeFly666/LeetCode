@@ -2,6 +2,7 @@
 title: 使用GH（命令行）在本地提出Github上的issue、PR，合并PR
 date: 2023-10-19 21:55:44
 tags: [其他, Github, Git]
+categories: [技术思考]
 ---
 
 # 使用GH（命令行）在本地提出Github上的issue、PR，合并PR

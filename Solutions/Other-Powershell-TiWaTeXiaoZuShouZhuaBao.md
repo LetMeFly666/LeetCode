@@ -2,6 +2,7 @@
 title: 提瓦特小助手 - 原神抓包的一个不错的Powershell脚本
 date: 2022-12-01 14:58:57
 tags: [其他, Powershell, 中等, 抓包, 原神, Genshin, 游戏辅助]
+categories: [技术思考]
 ---
 
 昨日见到了<a title="冯凌云">@FLY</a>的“提瓦特小助手”抽卡分析截图，觉得不错，今日搜了一下“提瓦特小助手”，关注了公众号，里面有教程文章：<a href="https://mp.weixin.qq.com/s/ChJwm-ENxrMZKax3YBOoZQ">https://mp.weixin.qq.com/s/ChJwm-ENxrMZKax3YBOoZQ</a>

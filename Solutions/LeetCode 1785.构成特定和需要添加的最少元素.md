@@ -2,6 +2,7 @@
 title: 1785.构成特定和需要添加的最少元素
 date: 2022-12-16 19:13:43
 tags: [题解, LeetCode, 中等, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1785.构成特定和需要添加的最少元素

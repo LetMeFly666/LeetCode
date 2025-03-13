@@ -2,6 +2,7 @@
 title: 2511.最多可以摧毁的敌人城堡数目
 date: 2023-09-02 09:43:34
 tags: [题解, LeetCode, 简单, 数组, 双指针, 遍历, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2511.最多可以摧毁的敌人城堡数目

@@ -2,6 +2,7 @@
 title: 2582.递枕头
 date: 2023-09-26 08:49:31
 tags: [题解, LeetCode, 简单, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2582.递枕头：清晰的话讲述 O(1)的时间算法

@@ -2,6 +2,7 @@
 title: 1206.设计跳表：算法详解
 date: 2025-02-26 10:16:23
 tags: [题解, LeetCode, 困难, 设计, 链表, 跳表, 算法]
+categories: [题解, LeetCode]
 index_img: https://cdn.letmefly.xyz/img/blog/_LeetCode/skiplist.gif
 ---
 

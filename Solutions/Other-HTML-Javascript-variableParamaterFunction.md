@@ -2,6 +2,7 @@
 title: HTML - Javascript - JS可变参数函数
 date: 2023-04-05 21:00:13
 tags: [其他, HTML, Javascript, JS]
+categories: [技术思考]
 ---
 
 # HTML - Javascript - JS可变参数函数

@@ -2,6 +2,7 @@
 title: Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP
 date: 2023-08-25 21:17:27
 tags: [其他, VPN]
+categories: [技术思考]
 LetMeFly_SelfUse: true
 ---
 

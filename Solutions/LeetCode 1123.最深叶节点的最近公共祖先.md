@@ -2,6 +2,7 @@
 title: 1123.最深叶节点的最近公共祖先
 date: 2023-09-06 22:56:17
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 广度优先搜索, 哈希表, 二叉树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1123.最深叶节点的最近公共祖先

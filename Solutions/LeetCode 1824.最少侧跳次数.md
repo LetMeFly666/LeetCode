@@ -2,6 +2,7 @@
 title: 1824.最少侧跳次数
 date: 2023-01-21 10:46:55
 tags: [题解, LeetCode, 中等, 贪心, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1824.最少侧跳次数

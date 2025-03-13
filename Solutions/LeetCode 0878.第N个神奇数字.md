@@ -2,6 +2,7 @@
 title: 878.第 N 个神奇数字
 date: 2022-11-22 10:43:26
 tags: [题解, LeetCode, 困难, 数学, 二分查找, 二分, 最小公倍数, lcm]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】878.第 N 个神奇数字

@@ -2,6 +2,7 @@
 title: 剑指 Offer II 041.滑动窗口的平均值
 date: 2022-07-16 13:41:54
 tags: [题解, LeetCode, 简单, 设计, 队列, 数组, 数据流, 滑动窗口, 类, 静态数组模拟队列, 定长队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】低空间消耗解决：剑指 Offer II 041.滑动窗口的平均值

@@ -2,6 +2,7 @@
 title: 2178.拆分成最多数目的正偶数之和
 date: 2023-07-06 07:47:08
 tags: [题解, LeetCode, 中等, 贪心, 数学, 回溯, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2178.拆分成最多数目的正偶数之和

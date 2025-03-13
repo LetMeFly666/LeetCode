@@ -2,6 +2,7 @@
 title: 2385.感染二叉树需要的总时间
 date: 2024-04-24 23:41:12
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, 二叉树, DFS, BFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2385.感染二叉树需要的总时间：两次搜索（深搜 + 广搜）

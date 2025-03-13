@@ -2,6 +2,7 @@
 title: 1807.替换字符串中的括号内容
 date: 2023-01-12 22:22:24
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 字符串, 字符串解析]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1807.替换字符串中的括号内容

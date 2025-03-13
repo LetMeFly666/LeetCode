@@ -2,6 +2,7 @@
 title: 1616.分割两个字符串得到回文串
 date: 2023-03-18 13:19:01
 tags: [题解, LeetCode, 中等, 贪心, 双指针, 字符串, 回文串, 回文]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1616.分割两个字符串得到回文串

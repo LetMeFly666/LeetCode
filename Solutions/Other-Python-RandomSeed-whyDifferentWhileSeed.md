@@ -2,6 +2,7 @@
 title: Python - random.seed初探 - 为什么固定随机种子了每次结果还不一样
 date: 2024-07-23 11:06:47
 tags: [其他, Python, 中等, Notes]
+categories: [技术思考]
 ---
 
 # Python - random.seed初探 - 为什么固定随机种子了每次结果还不一样

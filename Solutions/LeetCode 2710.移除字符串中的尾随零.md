@@ -2,6 +2,7 @@
 title: 2710.移除字符串中的尾随零
 date: 2024-06-29 17:19:37
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2710.移除字符串中的尾随零：模拟

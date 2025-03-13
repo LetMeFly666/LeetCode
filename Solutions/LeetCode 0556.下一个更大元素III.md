@@ -2,6 +2,7 @@
 title: 556.下一个更大元素 III
 date: 2022-07-03 11:03:09
 tags: [题解, LeetCode, 中等, 数学, 双指针, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】4步讲完：556.下一个更大元素 III

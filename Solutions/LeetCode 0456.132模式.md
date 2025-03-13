@@ -2,6 +2,7 @@
 title: 456.132 模式
 date: 2022-10-22 13:02:08
 tags: [题解, LeetCode, 中等, 栈, 数组, 二分查找, 有序集合, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】456.132 模式

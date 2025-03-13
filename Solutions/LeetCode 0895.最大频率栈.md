@@ -2,6 +2,7 @@
 title: 895.最大频率栈
 date: 2022-11-30 22:57:12
 tags: [题解, LeetCode, 困难, 栈, 设计, 哈希表, 有序集合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】895.最大频率栈

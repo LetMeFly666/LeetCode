@@ -2,6 +2,7 @@
 title: 891.子序列宽度之和
 date: 2022-11-18 09:39:55
 tags: [题解, LeetCode, 困难, 数组, 数学, 排序, 贡献]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】891.子序列宽度之和

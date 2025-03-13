@@ -2,6 +2,7 @@
 title: 771.宝石与石头
 date: 2023-07-24 08:48:00
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 统计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】771.宝石与石头

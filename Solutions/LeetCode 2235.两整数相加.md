@@ -2,6 +2,7 @@
 title: 2235.两整数相加：19种语言解法（力扣全解法）
 date: 2023-08-19 09:05:57
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2235.两整数相加：19种语言解法（力扣全解法）

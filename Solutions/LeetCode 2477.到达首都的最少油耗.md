@@ -2,6 +2,7 @@
 title: 2477.到达首都的最少油耗
 date: 2023-12-05 19:44:50
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 广度优先搜索, 图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2477.到达首都的最少油耗：深度优先搜索(DFS)

@@ -2,6 +2,7 @@
 title: 881.救生艇
 date: 2024-06-10 21:00:04
 tags: [题解, LeetCode, 中等, 贪心, 数组, 双指针, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】881.救生艇：排序+双指针（大人掌船，能捎就捎）

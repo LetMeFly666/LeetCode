@@ -2,6 +2,7 @@
 title: 3200.三角形的最大高度
 date: 2024-10-15 23:57:56
 tags: [题解, LeetCode, 简单, 数组, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3200.三角形的最大高度：枚举

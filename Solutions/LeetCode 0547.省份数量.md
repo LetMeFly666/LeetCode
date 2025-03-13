@@ -2,6 +2,7 @@
 title: 547.省份数量
 date: 2022-12-13 16:55:44
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 并查集, 图, 图的连通分量, BFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】547.省份数量

@@ -2,6 +2,7 @@
 title: 2399.检查相同字母间的距离
 date: 2023-04-09 09:50:02
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2399.检查相同字母间的距离

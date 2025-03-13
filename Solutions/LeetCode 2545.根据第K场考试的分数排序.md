@@ -2,6 +2,7 @@
 title: 2545.根据第 K 场考试的分数排序
 date: 2024-12-21 20:32:59
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2545.根据第 K 场考试的分数排序：考察编程语言的排序

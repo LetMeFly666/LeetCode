@@ -2,6 +2,7 @@
 title: 1366.通过投票对团队排名
 date: 2024-12-30 02:20:37
 tags: [题解, LeetCode, 中等, 数组, 哈希表, map, 字符串, 计数, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1366.通过投票对团队排名：自定义排序

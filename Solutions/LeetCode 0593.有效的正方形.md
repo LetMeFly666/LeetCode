@@ -2,6 +2,7 @@
 title: 593.有效的正方形
 date: 2022-07-29 11:41:43
 tags: [题解, LeetCode, 中等, 几何, 数学, 模拟, 正方形判断, 重载]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】593.有效的正方形

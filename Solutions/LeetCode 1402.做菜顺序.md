@@ -2,6 +2,7 @@
 title: 1402.做菜顺序
 date: 2023-10-22 15:48:30
 tags: [题解, LeetCode, 困难, 贪心, 数组, 动态规划, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1402.做菜顺序：排序 + 前缀（贪心） - 按思路讲解

@@ -2,6 +2,7 @@
 title: 970.强整数
 date: 2023-05-02 10:20:42
 tags: [题解, LeetCode, 中等, 哈希表, set, 数学, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】970.强整数

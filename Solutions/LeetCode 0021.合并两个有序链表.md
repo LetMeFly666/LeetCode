@@ -2,6 +2,7 @@
 title: 21.合并两个有序链表
 date: 2023-08-05 07:57:28
 tags: [题解, LeetCode, 简单, 递归, 链表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】21.合并两个有序链表

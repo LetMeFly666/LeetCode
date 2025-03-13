@@ -2,6 +2,7 @@
 title: 2337.移动片段得到字符串：双指针
 date: 2023-08-22 09:45:39
 tags: [题解, LeetCode, 中等, 双指针, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2337.移动片段得到字符串：双指针

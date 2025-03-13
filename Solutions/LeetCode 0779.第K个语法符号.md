@@ -2,6 +2,7 @@
 title: 779.第K个语法符号
 date: 2022-10-20 08:11:30
 tags: [题解, LeetCode, 中等, 位运算, 递归, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】779.第K个语法符号：递归，追根溯源

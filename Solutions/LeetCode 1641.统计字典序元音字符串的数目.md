@@ -2,6 +2,7 @@
 title: 1641.统计字典序元音字符串的数目
 date: 2023-03-29 10:31:06
 tags: [题解, LeetCode, 中等, 动态规划, DP, 数学, 排列组合, 组合, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1641.统计字典序元音字符串的数目

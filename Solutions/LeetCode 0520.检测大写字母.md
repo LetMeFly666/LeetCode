@@ -2,6 +2,7 @@
 title: 520.检测大写字母
 date: 2024-06-23 19:09:56
 tags: [题解, LeetCode, 简单, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】520.检测大写字母：计数

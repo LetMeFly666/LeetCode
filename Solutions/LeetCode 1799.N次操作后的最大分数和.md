@@ -2,6 +2,7 @@
 title: 1799.N 次操作后的最大分数和
 date: 2022-12-22 15:34:21
 tags: [题解, LeetCode, 困难, 位运算, 数组, 数学, 动态规划, 回溯, 状态压缩, 数论, 二进制枚举, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1799.N 次操作后的最大分数和

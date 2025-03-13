@@ -2,6 +2,7 @@
 title: 2485.找出中枢整数
 date: 2023-06-26 09:43:37
 tags: [题解, LeetCode, 简单, 数学, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2485.找出中枢整数

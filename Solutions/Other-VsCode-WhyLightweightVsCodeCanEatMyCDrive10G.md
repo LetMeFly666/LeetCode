@@ -2,6 +2,7 @@
 title: VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身
 date: 2022-07-30 15:23:21
 tags: [其他, VsCode, Windows, 磁盘清理]
+categories: [技术思考]
 ---
 
 VsCode是一款**轻量级**代码编辑器

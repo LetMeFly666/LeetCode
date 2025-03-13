@@ -2,6 +2,7 @@
 title: 617.合并二叉树
 date: 2023-08-14 08:02:44
 tags: [题解, LeetCode, 简单, 树, 深度优先搜索, 广度优先搜索, 二叉树, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】617.合并二叉树

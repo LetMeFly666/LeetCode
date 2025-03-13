@@ -2,6 +2,7 @@
 title: 1726.同积元组
 date: 2023-10-19 10:21:24
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1726.同积元组：哈希表（组合数学）

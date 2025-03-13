@@ -2,6 +2,7 @@
 title: 建站 - 如何访问Cloudflare的workers.dev
 date: 2023-04-29 14:40:30
 tags: [其他, Website, 建站, Cloudflare, Workers, DNS, DNS污染]
+categories: [技术思考]
 ---
 
 # 建站 - 如何访问Cloudflare的workers.dev

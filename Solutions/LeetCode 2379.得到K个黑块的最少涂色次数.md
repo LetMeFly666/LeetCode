@@ -2,6 +2,7 @@
 title: 2379.得到 K 个黑块的最少涂色次数
 date: 2023-03-09 09:11:20
 tags: [题解, LeetCode, 简单, 字符串, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2379.得到 K 个黑块的最少涂色次数

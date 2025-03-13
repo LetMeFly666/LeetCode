@@ -2,6 +2,7 @@
 title: 1753.移除石子的最大得分
 date: 2022-12-21 22:49:26
 tags: [题解, LeetCode, 中等, 贪心, 数学, 堆（优先队列）, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1753.移除石子的最大得分

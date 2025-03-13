@@ -2,6 +2,7 @@
 title: 2073.买票需要的时间
 date: 2024-10-03 13:58:00
 tags: [题解, LeetCode, 简单, 队列, 数组, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2073.买票需要的时间：硬卷O(n)——一次遍历

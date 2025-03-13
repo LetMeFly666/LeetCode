@@ -2,6 +2,7 @@
 title: 749.隔离病毒
 date: 2022-07-18 11:11:24
 tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 数组, 矩阵, 模拟, 大模拟, BFS, 多重BFS, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】749.隔离病毒 - 大模拟

@@ -2,6 +2,7 @@
 title: 3083.字符串及其反转中是否存在同一子字符串
 date: 2024-12-26 15:48:45
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3083.字符串及其反转中是否存在同一子字符串：哈希表

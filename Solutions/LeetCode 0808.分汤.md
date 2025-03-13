@@ -2,6 +2,7 @@
 title: 808.分汤
 date: 2022-11-21 21:36:18
 tags: [题解, LeetCode, 中等, 数学, 动态规划, 概率与统计, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】808.分汤：好题！

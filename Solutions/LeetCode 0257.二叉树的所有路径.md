@@ -2,6 +2,7 @@
 title: 257.二叉树的所有路径
 date: 2022-09-12 09:56:37
 tags: [题解, LeetCode, 简单, 树, 深度优先搜索, 字符串, 回溯, 二叉树, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】257.二叉树的所有路径

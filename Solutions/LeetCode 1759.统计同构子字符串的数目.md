@@ -2,6 +2,7 @@
 title: 1759.统计同构子字符串的数目
 date: 2022-12-26 16:37:49
 tags: [题解, LeetCode, 中等, 数学, 字符串, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1759.统计同构子字符串的数目

@@ -2,6 +2,7 @@
 title: 1600.王位继承顺序
 date: 2024-04-07 17:08:41
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 设计, 哈希表, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1600.王位继承顺序：深度优先搜索(DFS)

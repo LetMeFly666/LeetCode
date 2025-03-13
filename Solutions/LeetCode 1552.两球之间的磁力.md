@@ -2,6 +2,7 @@
 title: 1552.两球之间的磁力：二分查找
 date: 2025-02-14 11:07:39
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1552.两球之间的磁力：二分查找

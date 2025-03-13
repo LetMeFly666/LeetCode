@@ -2,6 +2,7 @@
 title: Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用
 date: 2023-08-13 10:03:09
 tags: [其他, Windows, UWP]
+categories: [技术思考]
 description: microsoft store无法安装、0x80070005
 ---
 

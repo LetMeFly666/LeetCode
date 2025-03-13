@@ -2,6 +2,7 @@
 title: 2432.处理用时最长的那个任务的员工
 date: 2023-05-05 20:08:29
 tags: [题解, LeetCode, 简单, 数组, 遍历, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2432.处理用时最长的那个任务的员工

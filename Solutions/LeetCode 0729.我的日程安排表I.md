@@ -2,6 +2,7 @@
 title: 729.我的日程安排表 I
 date: 2025-01-02 16:33:43
 tags: [题解, LeetCode, 中等, 设计, 线段树, 数组, 二分查找, 有序集合, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】729.我的日程安排表 I：既然是I，那就暴力模拟

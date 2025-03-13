@@ -2,6 +2,7 @@
 title: 2938.区分黑球与白球
 date: 2024-06-06 22:51:23
 tags: [题解, LeetCode, 中等, 贪心, 双指针, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2938.区分黑球与白球：黑球要与后面每个白球交换一次

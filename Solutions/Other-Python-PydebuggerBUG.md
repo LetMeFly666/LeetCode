@@ -2,6 +2,7 @@
 title: Python - 记录一下pydebugger的BUG
 date: 2023-04-05 20:33:43
 tags: [其他, Python, BUG]
+categories: [技术思考]
 ---
 
 # Python - 记录一下pydebugger的BUG

@@ -2,6 +2,7 @@
 title: Python爬虫下载雨课堂视频资源 到本地后自主可控地倍速观看
 date: 2023-07-01 18:06:40
 tags: [其他, Python, 中等, 爬虫, 雨课堂, RainClassroom]
+categories: [技术思考]
 ---
 
 [我](https://letmefly.xyz)写了一个项目，在此分享一下。

@@ -2,6 +2,7 @@
 title: 2258.逃离火灾
 date: 2023-11-09 22:46:55
 tags: [题解, LeetCode, 困难, 广度优先搜索, BFS, 数组, 二分查找, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2258.逃离火灾: 广度优先搜索BFS

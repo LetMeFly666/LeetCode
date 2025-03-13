@@ -2,6 +2,7 @@
 title: 1222.可以攻击国王的皇后
 date: 2023-09-14 10:11:35
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 模拟, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1222.可以攻击国王的皇后

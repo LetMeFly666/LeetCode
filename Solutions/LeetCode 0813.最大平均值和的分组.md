@@ -2,6 +2,7 @@
 title: 813.最大平均值和的分组
 date: 2022-11-28 20:57:56
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】813.最大平均值和的分组

@@ -2,6 +2,7 @@
 title: 155.最小栈
 date: 2022-08-03 16:47:17
 tags: [题解, LeetCode, 简单, 栈, 设计, 思维, 构造, 哈希, 辅助栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】155.最小栈

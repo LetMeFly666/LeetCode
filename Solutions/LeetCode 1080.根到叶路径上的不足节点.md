@@ -2,6 +2,7 @@
 title: 1080.根到叶路径上的不足节点
 date: 2023-05-22 09:52:31
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1080.根到叶路径上的不足节点

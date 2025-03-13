@@ -2,6 +2,7 @@
 title: 剑指 Offer II 091.粉刷房子
 date: 2022-06-25 10:51:08
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】剑指 Offer II 091.粉刷房子 - 原地修改

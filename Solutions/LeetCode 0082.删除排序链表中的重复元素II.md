@@ -2,6 +2,7 @@
 title: 82.删除排序链表中的重复元素 II
 date: 2024-01-15 21:42:35
 tags: [题解, LeetCode, 中等, 链表, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】82.删除排序链表中的重复元素 II：模拟

@@ -2,6 +2,7 @@
 title: 874.模拟行走机器人：哈希表模拟
 date: 2023-07-19 09:01:26
 tags: [题解, LeetCode, 中等, 数组, 模拟, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】874.模拟行走机器人：哈希表模拟

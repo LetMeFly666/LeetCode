@@ -2,6 +2,7 @@
 title: 1422.分割字符串的最大得分
 date: 2022-08-14 10:21:06
 tags: [题解, LeetCode, 简单, 字符串, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1422.分割字符串的最大得分

@@ -2,6 +2,7 @@
 title: 记录一下今日见到的.appinstaller格式的小巧文件
 date: 2022-11-05 16:10:00
 tags: [其他, .appinstaller, 简单, Windows]
+categories: [技术思考]
 ---
 
 今日下载了一个名为“Files.stable.appinstaller”的文件，只有几k，可以直接双击运行，但在Win沙盒中无法识别

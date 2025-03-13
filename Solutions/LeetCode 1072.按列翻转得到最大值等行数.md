@@ -2,6 +2,7 @@
 title: 1072.按列翻转得到最大值等行数：不错的思维题！
 date: 2023-05-15 10:56:59
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 矩阵, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1072.按列翻转得到最大值等行数

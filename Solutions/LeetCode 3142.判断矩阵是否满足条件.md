@@ -2,6 +2,7 @@
 title: 3142.判断矩阵是否满足条件
 date: 2024-08-29 23:54:40
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3142.判断矩阵是否满足条件：模拟(遍历)

@@ -2,6 +2,7 @@
 title: 1079.活字印刷
 date: 2023-05-19 19:53:14
 tags: [题解, LeetCode, 中等, 字符串, 回溯, DFS, 深度优先搜索]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1079.活字印刷

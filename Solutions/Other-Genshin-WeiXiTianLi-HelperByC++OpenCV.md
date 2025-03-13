@@ -2,6 +2,7 @@
 title: 原神 - 维系天理 - 一个大佬用C++OpenCV写的原神地图辅助工具
 date: 2023-02-05 15:15:59
 tags: [其他, 中等, OpenCV, 原神, Genshin, 游戏辅助]
+categories: [技术思考]
 ---
 
 今日看到了[GengGode](https://github.com/GengGode)大佬用OpenCV写的原神地图辅助，感觉很棒，记录一下

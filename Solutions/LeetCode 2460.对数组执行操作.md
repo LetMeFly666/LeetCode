@@ -2,6 +2,7 @@
 title: 2460.对数组执行操作
 date: 2023-06-05 12:58:37
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2460.对数组执行操作

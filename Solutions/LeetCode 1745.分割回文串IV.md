@@ -2,6 +2,7 @@
 title: 1745.分割回文串 IV：动态规划（用III或II能直接秒）
 date: 2025-03-04 10:50:58
 tags: [题解, LeetCode, 困难, 字符串, 回文, 回文串, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1745.分割回文串 IV：动态规划（用III或II能直接秒）

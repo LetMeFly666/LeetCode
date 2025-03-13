@@ -2,6 +2,7 @@
 title: 2706.购买两块巧克力
 date: 2023-12-29 16:58:52
 tags: [题解, LeetCode, 简单, 数组, 排序, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2706.购买两块巧克力：一次遍历（O(n) + O(1)）

@@ -2,6 +2,7 @@
 title: 554.砖墙
 date: 2023-03-14 13:34:51
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】554.砖墙

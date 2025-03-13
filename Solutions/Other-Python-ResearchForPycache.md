@@ -2,6 +2,7 @@
 title: Python的__pycache__到底缓存什么？能缓存历史运行结果吗？—— 对PyCache的一点研究
 date: 2022-11-07 09:23:13
 tags: [其他, Python, 中等, __pycache__, Research]
+categories: [技术思考]
 ---
 
 为了研究__pycache__的作用，特做实验如下：

@@ -2,6 +2,7 @@
 title: 1779.找到最近的有相同 X 或 Y 坐标的点
 date: 2022-12-01 14:06:42
 tags: [题解, LeetCode, 简单, 数组, 最值, 遍历, 曼哈顿距离]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1779.找到最近的有相同 X 或 Y 坐标的点

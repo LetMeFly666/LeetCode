@@ -2,6 +2,7 @@
 title: 日记 - pyautogui自动脚本的使用心得
 date: 2024-09-08 09:57:49
 tags: [日记, 网络]
+categories: [技术思考]
 ---
 
 # 日记 - pyautogui自动脚本的使用心得

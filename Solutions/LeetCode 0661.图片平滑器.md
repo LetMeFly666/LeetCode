@@ -2,6 +2,7 @@
 title: 661.图片平滑器
 date: 2024-11-18 21:36:49
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】661.图片平滑器：模拟

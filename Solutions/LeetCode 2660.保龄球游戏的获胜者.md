@@ -2,6 +2,7 @@
 title: 2660.保龄球游戏的获胜者
 date: 2023-12-27 15:08:27
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2660.保龄球游戏的获胜者：模拟

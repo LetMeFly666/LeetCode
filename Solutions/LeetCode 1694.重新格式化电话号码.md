@@ -2,6 +2,7 @@
 title: 1694.重新格式化电话号码
 date: 2022-10-01 09:08:24
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1694.重新格式化电话号码

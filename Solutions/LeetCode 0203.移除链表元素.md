@@ -2,6 +2,7 @@
 title: 203.移除链表元素
 date: 2022-08-19 08:41:38
 tags: [题解, LeetCode, 简单, 递归, 链表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】203.移除链表元素：添加临时头节点以便操作

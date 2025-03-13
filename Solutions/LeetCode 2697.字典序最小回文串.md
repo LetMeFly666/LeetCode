@@ -2,6 +2,7 @@
 title: 2697.字典序最小回文串
 date: 2023-12-13 09:31:33
 tags: [题解, LeetCode, 简单, 双指针, 字符串, 回文, 回文串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2697.字典序最小回文串

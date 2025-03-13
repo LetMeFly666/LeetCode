@@ -2,6 +2,7 @@
 title: 355.设计推特
 date: 2022-10-04 09:16:05
 tags: [题解, LeetCode, 中等, 设计, 哈希表, 哈希, 链表, 堆（优先队列）, 类, 设计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】355.设计推特

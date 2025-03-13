@@ -2,6 +2,7 @@
 title: 263.丑数
 date: 2022-09-13 08:37:19
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】263.丑数

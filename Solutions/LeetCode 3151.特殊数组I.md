@@ -2,6 +2,7 @@
 title: 3151.特殊数组 I
 date: 2024-08-14 00:04:40
 tags: [题解, LeetCode, 简单, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3151.特殊数组 I

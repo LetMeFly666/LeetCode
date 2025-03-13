@@ -2,6 +2,7 @@
 title: 1448.统计二叉树中好节点的数目
 date: 2023-08-25 11:12:00
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, 二叉树, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1448.统计二叉树中好节点的数目

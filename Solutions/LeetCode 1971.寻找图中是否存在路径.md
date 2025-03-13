@@ -2,6 +2,7 @@
 title: 1971.寻找图中是否存在路径
 date: 2022-12-19 20:12:54
 tags: [题解, LeetCode, 简单, 深度优先搜索, 广度优先搜索, 图, BFS, 连通图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1971.寻找图中是否存在路径

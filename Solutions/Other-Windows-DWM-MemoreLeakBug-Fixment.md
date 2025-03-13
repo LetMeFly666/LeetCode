@@ -2,6 +2,7 @@
 title: Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）
 date: 2023-08-25 21:44:59
 tags: [其他, Windows]
+categories: [技术思考]
 ---
 
 # Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）

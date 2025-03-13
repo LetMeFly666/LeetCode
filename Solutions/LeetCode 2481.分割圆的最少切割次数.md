@@ -2,6 +2,7 @@
 title: 2481.分割圆的最少切割次数
 date: 2023-06-17 09:58:16
 tags: [题解, LeetCode, 简单, 几何, 数学, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2481.分割圆的最少切割次数

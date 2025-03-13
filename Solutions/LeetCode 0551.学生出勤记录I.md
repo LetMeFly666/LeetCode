@@ -2,6 +2,7 @@
 title: 551.学生出勤记录 I
 date: 2024-08-18 23:42:50
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】551.学生出勤记录 I：模拟

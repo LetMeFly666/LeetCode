@@ -2,6 +2,7 @@
 title: 1706.球会落何处：模拟 - 很有意思的一道题
 date: 2025-02-15 11:31:41
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1706.球会落何处：模拟 - 很有意思的一道题

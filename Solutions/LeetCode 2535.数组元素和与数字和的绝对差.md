@@ -2,6 +2,7 @@
 title: 2535.数组元素和与数字和的绝对差
 date: 2024-09-26 18:14:41
 tags: [题解, LeetCode, 简单, 数组, 数学, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2535.数组元素和与数字和的绝对差：模拟

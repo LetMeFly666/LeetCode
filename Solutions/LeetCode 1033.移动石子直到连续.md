@@ -2,6 +2,7 @@
 title: 1033.移动石子直到连续
 date: 2023-04-30 10:15:41
 tags: [题解, LeetCode, 中等, 脑筋急转弯, 数学, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1033.移动石子直到连续

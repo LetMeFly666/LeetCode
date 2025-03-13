@@ -2,6 +2,7 @@
 title: 130.被围绕的区域
 date: 2022-07-22 11:43:53
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵, BFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】130.被围绕的区域 - BFS：标记没有被围绕的区域

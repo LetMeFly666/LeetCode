@@ -2,6 +2,7 @@
 title: 2502.设计内存分配器：暴力模拟
 date: 2025-02-25 18:37:22
 tags: [题解, LeetCode, 中等, 设计, 数组, 哈希表, 模拟, 暴力]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2502.设计内存分配器：暴力模拟

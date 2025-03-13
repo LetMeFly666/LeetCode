@@ -2,6 +2,7 @@
 title: 529.扫雷游戏
 date: 2022-11-23 11:17:50
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】529.扫雷游戏

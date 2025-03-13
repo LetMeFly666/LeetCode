@@ -2,6 +2,7 @@
 title: 690.员工的重要性
 date: 2024-08-27 00:14:33
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, BFS, 数组, 数据结构, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】690.员工的重要性：哈希表+广度优先搜索

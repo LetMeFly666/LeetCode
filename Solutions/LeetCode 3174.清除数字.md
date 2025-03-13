@@ -2,6 +2,7 @@
 title: 3174.清除数字
 date: 2024-09-05 19:46:13
 tags: [题解, LeetCode, 简单, 栈, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3174.清除数字：一个不用栈的方法

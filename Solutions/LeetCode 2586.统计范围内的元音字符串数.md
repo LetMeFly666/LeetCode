@@ -2,6 +2,7 @@
 title: 2586.统计范围内的元音字符串数
 date: 2023-11-07 22:28:39
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2586.统计范围内的元音字符串数：模拟

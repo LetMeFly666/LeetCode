@@ -2,6 +2,7 @@
 title: 3159.查询数组中元素的出现位置
 date: 2024-12-27 12:26:15
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3159.查询数组中元素的出现位置：存x下标

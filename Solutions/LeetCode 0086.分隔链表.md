@@ -2,6 +2,7 @@
 title: 86.分隔链表
 date: 2022-06-26 10:30:54
 tags: [题解, LeetCode, 中等, 链表, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】86.分隔链表

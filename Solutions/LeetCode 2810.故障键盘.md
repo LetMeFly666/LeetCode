@@ -2,6 +2,7 @@
 title: 2810.故障键盘
 date: 2024-04-01 18:13:37
 tags: [题解, LeetCode, 简单, 字符串, 模拟, 队列, 双端队列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2810.故障键盘：双端队列模拟

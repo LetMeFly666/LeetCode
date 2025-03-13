@@ -2,6 +2,7 @@
 title: 2303.计算应缴税款总额
 date: 2023-01-23 10:06:42
 tags: [题解, LeetCode, 简单, 数组, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2303.计算应缴税款总额

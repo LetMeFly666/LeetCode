@@ -2,6 +2,7 @@
 title: 2304.网格中的最小路径代价
 date: 2023-11-22 19:55:00
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2304.网格中的最小路径代价：DP

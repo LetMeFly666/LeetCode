@@ -2,6 +2,7 @@
 title: 2806.取整购买后的账户余额
 date: 2024-06-12 11:11:09
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2806.取整购买后的账户余额：四舍五入

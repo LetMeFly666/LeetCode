@@ -2,6 +2,7 @@
 title: 2288.价格减免
 date: 2024-06-18 19:22:49
 tags: [题解, LeetCode, 中等, 字符串, 模拟, 字符串解析]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2288.价格减免：模拟

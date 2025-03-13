@@ -2,6 +2,7 @@
 title: 2240.买钢笔和铅笔的方案数
 date: 2023-09-01 09:37:06
 tags: [题解, LeetCode, 中等, 数学, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2240.买钢笔和铅笔的方案数

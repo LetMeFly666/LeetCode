@@ -2,6 +2,7 @@
 title: 2374.边积分最高的节点
 date: 2024-09-22 11:02:57
 tags: [题解, LeetCode, 中等, 图, 哈希表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2374.边积分最高的节点：模拟

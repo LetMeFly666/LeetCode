@@ -2,6 +2,7 @@
 title: 1253.重构 2 行二进制矩阵
 date: 2023-06-29 08:25:55
 tags: [题解, LeetCode, 中等, 贪心, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1253.重构 2 行二进制矩阵

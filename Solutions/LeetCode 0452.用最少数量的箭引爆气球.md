@@ -2,6 +2,7 @@
 title: 452.用最少数量的箭引爆气球
 date: 2022-10-21 21:23:54
 tags: [题解, LeetCode, 中等, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】452.用最少数量的箭引爆气球

@@ -2,6 +2,7 @@
 title: 1027.最长等差数列
 date: 2023-04-22 09:50:37
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 二分查找, 动态规划, 等差数列]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1027.最长等差数列

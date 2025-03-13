@@ -2,6 +2,7 @@
 title: 2287.重排字符形成目标字符串
 date: 2023-01-13 15:49:33
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2287.重排字符形成目标字符串

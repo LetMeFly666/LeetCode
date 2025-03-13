@@ -2,6 +2,7 @@
 title: 1374.生成每种字符都是奇数个的字符串
 date: 2022-08-01 08:20:21
 tags: [题解, LeetCode, 简单, 字符串, 思维, 构造]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1374.生成每种字符都是奇数个的字符串

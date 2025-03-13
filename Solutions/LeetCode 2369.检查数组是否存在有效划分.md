@@ -2,6 +2,7 @@
 title: 2369.检查数组是否存在有效划分
 date: 2024-03-01 20:07:17
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2369.检查数组是否存在有效划分：动态规划(DP)

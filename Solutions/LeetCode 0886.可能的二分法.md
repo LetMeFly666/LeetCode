@@ -2,6 +2,7 @@
 title: 886.可能的二分法
 date: 2022-10-16 10:12:17
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 图, 哈希表, 哈希, 二分图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】886.可能的二分法：图搜索

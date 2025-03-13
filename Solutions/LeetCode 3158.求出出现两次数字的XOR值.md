@@ -2,6 +2,7 @@
 title: 3158.求出出现两次数字的 XOR 值
 date: 2024-10-12 14:36:28
 tags: [题解, LeetCode, 简单, 位运算, 数组, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3158.求出出现两次数字的 XOR 值：化整数为哈希，一次遍历O(1)空间解决

@@ -2,6 +2,7 @@
 title: 2037.使每位学生都有座位的最少移动次数
 date: 2022-12-31 09:54:04
 tags: [题解, LeetCode, 简单, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2037.使每位学生都有座位的最少移动次数

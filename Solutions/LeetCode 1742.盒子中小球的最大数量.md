@@ -2,6 +2,7 @@
 title: 1742.盒子中小球的最大数量：哈希表（附Python一行版）
 date: 2022-11-23 09:36:43
 tags: [题解, LeetCode, 简单, 哈希表, 哈希, 数学, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1742.盒子中小球的最大数量：哈希表（附Python一行版）

@@ -2,6 +2,7 @@
 title: 1620.网络信号最好的坐标
 date: 2022-11-02 09:52:15
 tags: [题解, LeetCode, 中等, 数组, 枚举, 暴力]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1620.网络信号最好的坐标

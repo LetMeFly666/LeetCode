@@ -2,6 +2,7 @@
 title: 2487.从链表中移除节点
 date: 2024-01-03 10:23:16
 tags: [题解, LeetCode, 中等, 栈, 递归, 链表, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2487.从链表中移除节点：单调栈

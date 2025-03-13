@@ -2,6 +2,7 @@
 title: 328.奇偶链表
 date: 2022-09-24 08:28:40
 tags: [题解, LeetCode, 中等, 链表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】328.奇偶链表

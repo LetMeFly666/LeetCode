@@ -2,6 +2,7 @@
 title: 2012.数组美丽值求和：前缀和
 date: 2025-03-11 14:14:27
 tags: [题解, LeetCode, 中等, 数组, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2012.数组美丽值求和：前缀和

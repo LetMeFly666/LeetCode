@@ -2,6 +2,7 @@
 title: 2236.判断根结点是否等于子结点之和
 date: 2023-08-20 09:11:19
 tags: [题解, LeetCode, 简单, 树, 二叉树, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2236.判断根结点是否等于子结点之和

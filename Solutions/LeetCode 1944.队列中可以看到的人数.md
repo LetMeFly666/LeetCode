@@ -2,6 +2,7 @@
 title: 1944.队列中可以看到的人数
 date: 2024-01-05 19:04:29
 tags: [题解, LeetCode, 困难, 栈, 数组, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1944.队列中可以看到的人数：（一步步图解）单调栈

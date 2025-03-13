@@ -2,6 +2,7 @@
 title: 128.最长连续序列
 date: 2022-07-21 22:45:29
 tags: [题解, LeetCode, 中等, 并查集, 数组, 哈希表, set, 思维, 构造, 子问题, 最x子xx]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】128.最长连续序列

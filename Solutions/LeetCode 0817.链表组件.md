@@ -2,6 +2,7 @@
 title: 817.链表组件
 date: 2022-10-12 10:41:44
 tags: [题解, LeetCode, 中等, 哈希表, 哈希, 链表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】817.链表组件

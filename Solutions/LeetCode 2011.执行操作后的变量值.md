@@ -2,6 +2,7 @@
 title: 2011.执行操作后的变量值
 date: 2022-12-23 19:19:38
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2011.执行操作后的变量值

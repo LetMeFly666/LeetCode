@@ -2,6 +2,7 @@
 title: 921.使括号有效的最少添加
 date: 2022-10-04 07:59:39
 tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】921.使括号有效的最少添加

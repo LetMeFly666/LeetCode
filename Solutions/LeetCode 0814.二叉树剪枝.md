@@ -2,6 +2,7 @@
 title: 814.二叉树剪枝
 date: 2022-07-21 18:54:39
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉树, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】814.二叉树剪枝

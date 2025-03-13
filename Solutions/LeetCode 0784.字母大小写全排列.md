@@ -2,6 +2,7 @@
 title: 784.字母大小写全排列
 date: 2022-10-30 08:46:42
 tags: [题解, LeetCode, 中等, 位运算, 字符串, 回溯, 状态压缩, 二进制枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】784.字母大小写全排列：二进制枚举

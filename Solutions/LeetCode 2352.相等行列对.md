@@ -2,6 +2,7 @@
 title: 2352.相等行列对：手动哈希
 date: 2023-06-06 10:17:07
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 手动哈希, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2352.相等行列对：手动哈希

@@ -2,6 +2,7 @@
 title: 2609.最长平衡子字符串
 date: 2023-11-08 18:55:20
 tags: [题解, LeetCode, 简单, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2609.最长平衡子字符串

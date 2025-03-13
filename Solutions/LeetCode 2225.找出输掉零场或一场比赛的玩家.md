@@ -2,6 +2,7 @@
 title: 2225.找出输掉零场或一场比赛的玩家
 date: 2024-05-22 20:25:16
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 计数, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2225.找出输掉零场或一场比赛的玩家：哈希表计数

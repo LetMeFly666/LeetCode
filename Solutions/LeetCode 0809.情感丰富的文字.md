@@ -2,6 +2,7 @@
 title: 809.情感丰富的文字
 date: 2022-11-25 11:15:22
 tags: [题解, LeetCode, 中等, 数组, 双指针, 字符串, 阅读理解, 连续]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】809.情感丰富的文字

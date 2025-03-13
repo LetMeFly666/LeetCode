@@ -2,6 +2,7 @@
 title: 1375.二进制字符串前缀一致的次数
 date: 2023-06-14 18:03:58
 tags: [题解, LeetCode, 中等, 数组, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1375.二进制字符串前缀一致的次数

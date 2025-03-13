@@ -2,6 +2,7 @@
 title: 849.到最近的人的最大距离
 date: 2023-08-22 09:07:48
 tags: [题解, LeetCode, 中等, 数组, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】849.到最近的人的最大距离

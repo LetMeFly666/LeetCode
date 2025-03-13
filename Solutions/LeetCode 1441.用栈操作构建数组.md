@@ -2,6 +2,7 @@
 title: 1441.用栈操作构建数组
 date: 2022-10-15 10:00:04
 tags: [题解, LeetCode, 简单, 栈, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1441.用栈操作构建数组

@@ -2,6 +2,7 @@
 title: 632.最小区间
 date: 2024-11-24 18:36:13
 tags: [题解, LeetCode, 困难, 贪心, 数组, 哈希表, 排序, 滑动窗口, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】632.最小区间：优先队列

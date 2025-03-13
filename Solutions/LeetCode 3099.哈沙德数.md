@@ -2,6 +2,7 @@
 title: 3099.哈沙德数
 date: 2024-07-03 19:31:51
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3099.哈沙德数：计算一个数十进制下各位之和

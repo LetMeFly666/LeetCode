@@ -2,6 +2,7 @@
 title: 1781.所有子字符串美丽值之和
 date: 2022-12-12 11:42:31
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 计数, 前缀和, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1781.所有子字符串美丽值之和

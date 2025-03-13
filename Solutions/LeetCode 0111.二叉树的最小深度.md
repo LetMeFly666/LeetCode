@@ -2,6 +2,7 @@
 title: 111.二叉树的最小深度
 date: 2022-07-11 11:42:42
 tags: [题解, LeetCode, 简单, 树, 深度优先搜索, 广度优先搜索, 二叉树, DFS, 树的深度]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】111.二叉树的最小深度：DFS + 遇到叶节点更新最小深度

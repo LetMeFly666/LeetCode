@@ -2,6 +2,7 @@
 title: 2576.求出最多标记下标
 date: 2024-09-12 21:42:46
 tags: [题解, LeetCode, 中等, 贪心, 数组, 双指针, 二分查找, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2576.求出最多标记下标：排序+双指针

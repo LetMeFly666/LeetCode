@@ -2,6 +2,7 @@
 title: 3258.统计满足 K 约束的子字符串数量 I
 date: 2024-11-12 18:35:49
 tags: [题解, LeetCode, 简单, 字符串, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3258.统计满足 K 约束的子字符串数量 I：滑动窗口（硬卷O(n)）

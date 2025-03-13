@@ -2,6 +2,7 @@
 title: 1615.最大网络秩
 date: 2023-03-15 10:00:10
 tags: [题解, LeetCode, 中等, 图, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1615.最大网络秩

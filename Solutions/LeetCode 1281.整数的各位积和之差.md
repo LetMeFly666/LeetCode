@@ -2,6 +2,7 @@
 title: 1281.整数的各位积和之差
 date: 2023-08-09 08:12:03
 tags: [题解, LeetCode, 简单, 数学, 各位和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1281.整数的各位积和之差

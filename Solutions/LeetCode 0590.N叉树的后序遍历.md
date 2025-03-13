@@ -2,6 +2,7 @@
 title: 590.N 叉树的后序遍历
 date: 2024-02-19 12:27:50
 tags: [题解, LeetCode, 简单, 栈, 树, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】590.N 叉树的后序遍历：深度优先搜索(DFS)

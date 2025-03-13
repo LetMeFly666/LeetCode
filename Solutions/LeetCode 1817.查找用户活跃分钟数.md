@@ -2,6 +2,7 @@
 title: 1817.查找用户活跃分钟数
 date: 2023-01-20 09:25:42
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1817.查找用户活跃分钟数

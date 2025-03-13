@@ -2,6 +2,7 @@
 title: 3096.得到更多分数的最少关卡数目
 date: 2024-07-19 16:19:00
 tags: [题解, LeetCode, 中等, 数组, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3096.得到更多分数的最少关卡数目：前缀和

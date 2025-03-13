@@ -2,6 +2,7 @@
 title: 2293.极大极小游戏
 date: 2023-01-15 08:42:11
 tags: [题解, LeetCode, 简单, 数组, 模拟, 递归]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2293.极大极小游戏

@@ -2,6 +2,7 @@
 title: 剑指 Offer II 115.重建序列
 date: 2022-07-23 10:27:08
 tags: [题解, LeetCode, 中等, 图, 拓扑排序, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】图解：剑指 Offer II 115.重建序列 - 拓扑排序

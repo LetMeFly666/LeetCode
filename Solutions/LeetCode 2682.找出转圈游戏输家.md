@@ -2,6 +2,7 @@
 title: 2682.找出转圈游戏输家
 date: 2023-08-16 08:43:57
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2682.找出转圈游戏输家

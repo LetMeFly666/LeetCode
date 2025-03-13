@@ -2,6 +2,7 @@
 title: 2335.装满杯子需要的最短总时长
 date: 2023-02-11 10:01:25
 tags: [题解, LeetCode, 简单, 贪心, 数组, 堆（优先队列）, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2335.装满杯子需要的最短总时长

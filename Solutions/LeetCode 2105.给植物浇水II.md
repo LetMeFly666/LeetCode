@@ -2,6 +2,7 @@
 title: 2105.给植物浇水 II
 date: 2022-09-05 17:04:58
 tags: [题解, LeetCode, 中等, 数组, 双指针, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2105.给植物浇水 II

@@ -2,6 +2,7 @@
 title: 1041.困于环中的机器人
 date: 2023-04-11 11:00:14
 tags: [题解, LeetCode, 中等, 数学, 字符串, 模拟, 坐标]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1041.困于环中的机器人

@@ -2,6 +2,7 @@
 title: 2525.根据规则将箱子分类
 date: 2023-10-20 12:16:14
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2525.根据规则将箱子分类：优雅解法？

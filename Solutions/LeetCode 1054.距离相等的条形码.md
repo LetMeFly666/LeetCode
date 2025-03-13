@@ -2,6 +2,7 @@
 title: 1054.距离相等的条形码
 date: 2023-05-14 09:37:40
 tags: [题解, LeetCode, 中等, 贪心, 数组, 哈希表, 哈希, map, 计数, 排序, 堆（优先队列）, 思维, 构造]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1054.距离相等的条形码

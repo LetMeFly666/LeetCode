@@ -2,6 +2,7 @@
 title: 2549.统计桌面上的不同数字
 date: 2024-03-23 11:17:45
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 数学, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2549.统计桌面上的不同数字：数学O(1) / 模拟O(n^3)

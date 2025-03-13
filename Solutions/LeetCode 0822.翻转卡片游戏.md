@@ -2,6 +2,7 @@
 title: 822.翻转卡片游戏：双O(n)的做法
 date: 2023-08-02 08:00:00
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】822.翻转卡片游戏：双O(n)的做法

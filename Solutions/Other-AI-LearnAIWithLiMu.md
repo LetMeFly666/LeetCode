@@ -2,6 +2,7 @@
 title: 人工智能 - 跟李沐学AI
 date: 2023-03-15 16:05:24
 tags: [其他, AI, DL, 人工智能, 深度学习, Notes]
+categories: [技术思考]
 ---
 
 # 跟李沐学AI

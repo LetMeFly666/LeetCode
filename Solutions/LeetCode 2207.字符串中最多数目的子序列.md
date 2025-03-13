@@ -2,6 +2,7 @@
 title: 2207.字符串中最多数目的子序列
 date: 2024-09-24 18:56:50
 tags: [题解, LeetCode, 中等, 贪心, 字符串, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2207.字符串中最多数目的子序列：计数

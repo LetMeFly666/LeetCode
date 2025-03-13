@@ -2,6 +2,7 @@
 title: 299.猜数字游戏
 date: 2024-03-10 11:56:34
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】299.猜数字游戏：计数

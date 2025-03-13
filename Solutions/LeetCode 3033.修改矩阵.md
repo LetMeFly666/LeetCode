@@ -2,6 +2,7 @@
 title: 3033.修改矩阵
 date: 2024-07-05 21:57:21
 tags: [题解, LeetCode, 简单, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3033.修改矩阵：原地修改

@@ -2,6 +2,7 @@
 title: 1784.检查二进制字符串字段
 date: 2022-10-03 10:54:43
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1784.检查二进制字符串字段

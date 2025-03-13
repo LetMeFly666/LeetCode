@@ -2,6 +2,7 @@
 title: 1419.数青蛙
 date: 2023-05-06 09:54:31
 tags: [题解, LeetCode, 中等, 字符串, 计数, 模拟, 哈希表, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1419.数青蛙

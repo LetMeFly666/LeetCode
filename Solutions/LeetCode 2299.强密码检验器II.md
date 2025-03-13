@@ -2,6 +2,7 @@
 title: 2299.强密码检验器 II
 date: 2023-01-19 22:42:37
 tags: [题解, LeetCode, 简单, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2299.强密码检验器 II

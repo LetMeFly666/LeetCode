@@ -2,6 +2,7 @@
 title: 1037.有效的回旋镖
 date: 2022-07-14 21:56:29
 tags: [题解, LeetCode, 简单, 几何, 数组, 数学, 共线, 斜率, 坐标]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1037.有效的回旋镖：斜率 - 一行解决

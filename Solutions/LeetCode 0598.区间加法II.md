@@ -2,6 +2,7 @@
 title: 598.区间加法 II：最小值
 date: 2025-02-02 11:11:35
 tags: [题解, LeetCode, 简单, 数组, 数学, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】598.区间加法 II：最小值

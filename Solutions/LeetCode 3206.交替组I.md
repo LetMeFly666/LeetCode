@@ -2,6 +2,7 @@
 title: 3206.交替组 I
 date: 2024-11-26 23:43:43
 tags: [题解, LeetCode, 简单, 数组, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3206.交替组 I：遍历

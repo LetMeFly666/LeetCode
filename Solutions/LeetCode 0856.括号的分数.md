@@ -2,6 +2,7 @@
 title: 856.括号的分数
 date: 2022-10-09 09:36:56
 tags: [题解, LeetCode, 中等, 栈, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】856.括号的分数

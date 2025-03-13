@@ -2,6 +2,7 @@
 title: 1465.切割后面积最大的蛋糕
 date: 2023-10-27 12:31:13
 tags: [题解, LeetCode, 中等, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1465.切割后面积最大的蛋糕：纵横分别处理

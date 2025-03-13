@@ -2,6 +2,7 @@
 title: 1637.两点之间不包含任何点的最宽垂直面积
 date: 2023-03-30 09:20:49
 tags: [题解, LeetCode, 中等, 数组, 排序, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1637.两点之间不包含任何点的最宽垂直面积

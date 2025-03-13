@@ -2,6 +2,7 @@
 title: QT - 实例 - 可点击的进度条、无窗口应用
 date: 2023-08-02 09:50:11
 tags: [其他, QT, 实例, QT实例]
+categories: [技术思考]
 descriptions: QT无窗口应用  QT可点击的进度条
 ---
 

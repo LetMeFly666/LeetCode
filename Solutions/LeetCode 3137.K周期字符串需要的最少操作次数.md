@@ -2,6 +2,7 @@
 title: 3137.K 周期字符串需要的最少操作次数
 date: 2024-08-17 17:32:05
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3137.K 周期字符串需要的最少操作次数：哈希表计数

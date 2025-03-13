@@ -2,6 +2,7 @@
 title: 792.匹配子序列的单词数
 date: 2022-11-17 09:37:28
 tags: [题解, LeetCode, 中等, 字典树, 哈希表, 字符串, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】792.匹配子序列的单词数

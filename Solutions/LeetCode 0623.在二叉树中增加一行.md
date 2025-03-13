@@ -2,6 +2,7 @@
 title: 623.在二叉树中增加一行
 date: 2022-08-05 15:41:28
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, 二叉树, BFS, DFS, 层次遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】623.在二叉树中增加一行：DFS / BFS

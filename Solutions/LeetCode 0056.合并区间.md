@@ -2,6 +2,7 @@
 title: 56.合并区间
 date: 2023-08-27 09:15:41
 tags: [题解, LeetCode, 中等, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】56.合并区间

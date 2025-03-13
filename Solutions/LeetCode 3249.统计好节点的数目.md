@@ -2,6 +2,7 @@
 title: 3249.统计好节点的数目
 date: 2024-11-14 13:26:33
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3249.统计好节点的数目：深度优先搜索(DFS)

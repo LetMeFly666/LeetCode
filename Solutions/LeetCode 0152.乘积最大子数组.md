@@ -2,6 +2,7 @@
 title: 152.乘积最大子数组
 date: 2022-08-01 08:53:42
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP, 原地滚动, 最x子xx, 子问题]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】152.乘积最大子数组：dp + 原地滚动

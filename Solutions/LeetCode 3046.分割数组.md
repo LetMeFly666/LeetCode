@@ -2,6 +2,7 @@
 title: 3046.分割数组
 date: 2024-12-28 14:59:34
 tags: [题解, LeetCode, 简单, 数组, 哈希表, map, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3046.分割数组：计数

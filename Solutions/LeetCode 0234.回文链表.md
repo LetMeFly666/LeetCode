@@ -2,6 +2,7 @@
 title: 234.回文链表
 date: 2022-09-08 16:25:07
 tags: [题解, LeetCode, 简单, 栈, 递归, 链表, 双指针, 回文]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】234.回文链表

@@ -2,6 +2,7 @@
 title: 646.最长数对链
 date: 2022-09-03 21:03:16
 tags: [题解, LeetCode, 中等, 贪心, 数组, 动态规划, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】646.最长数对链

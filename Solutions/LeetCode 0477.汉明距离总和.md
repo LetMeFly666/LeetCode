@@ -2,6 +2,7 @@
 title: 477.汉明距离总和
 date: 2022-10-26 20:36:57
 tags: [题解, LeetCode, 中等, 位运算, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】477.汉明距离总和

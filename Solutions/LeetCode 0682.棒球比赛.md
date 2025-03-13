@@ -2,6 +2,7 @@
 title: 682.棒球比赛
 date: 2024-07-29 22:56:25
 tags: [题解, LeetCode, 简单, 栈, 数组, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】682.棒球比赛：模拟

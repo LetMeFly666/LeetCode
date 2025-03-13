@@ -2,6 +2,7 @@
 title: 2389.和有限的最长子序列
 date: 2023-03-17 13:06:47
 tags: [题解, LeetCode, 简单, 贪心, 数组, 二分查找, 二分, 前缀和, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2389.和有限的最长子序列

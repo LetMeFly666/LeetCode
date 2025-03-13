@@ -2,6 +2,7 @@
 title: 2645.构造有效字符串的最少插入数
 date: 2024-01-11 15:43:48
 tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串, 动态规划]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2645.构造有效字符串的最少插入数：O(n) + O(1)

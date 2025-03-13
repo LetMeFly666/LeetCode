@@ -2,6 +2,7 @@
 title: 教资（教师资格证）学习笔记
 date: 2023-06-24 11:39:09
 tags: [其他, 知识, 教资, 教师资格证]
+categories: [技术思考]
 mermaid: true
 ---
 

@@ -2,6 +2,7 @@
 title: 292.Nim 游戏
 date: 2024-02-04 13:38:44
 tags: [题解, LeetCode, 简单, 脑筋急转弯, 数学, 博弈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】292.Nim 游戏：脑筋急转弯

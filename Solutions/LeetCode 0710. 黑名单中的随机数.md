@@ -2,6 +2,7 @@
 title: 710.黑名单中的随机数
 date: 2022-06-26 08:00:19
 tags: [题解, LeetCode, 困难, Rand, 哈希表, 数学, 二分查找, 排序, 随机]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】710.黑名单中的随机数 - 预处理实现O(1)取值

@@ -2,6 +2,7 @@
 title: 429.N 叉树的层序遍历
 date: 2024-02-17 10:47:59
 tags: [题解, LeetCode, 中等, 树, 广度优先搜索, BFS, 层序遍历, 层次遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】429.N 叉树的层序遍历：广度优先搜索(BFS)

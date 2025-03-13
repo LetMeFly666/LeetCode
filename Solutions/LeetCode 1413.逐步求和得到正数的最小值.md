@@ -2,6 +2,7 @@
 title: 1413.逐步求和得到正数的最小值
 date: 2022-08-09 09:44:59
 tags: [题解, LeetCode, 简单, 数组, 前缀和, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1413.逐步求和得到正数的最小值

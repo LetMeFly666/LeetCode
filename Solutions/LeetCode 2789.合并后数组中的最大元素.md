@@ -2,6 +2,7 @@
 title: 2789.合并后数组中的最大元素
 date: 2024-03-14 08:58:14
 tags: [题解, LeetCode, 中等, 贪心, 数组, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2789.合并后数组中的最大元素：贪心（倒序）

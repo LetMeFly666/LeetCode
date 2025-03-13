@@ -2,6 +2,7 @@
 title: 478.在圆内随机生成点
 date: 2022-06-05 09:53:48
 tags: [题解, LeetCode, 中等, 几何, 数学, 拒绝采样, 随机, Rand]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】通俗的话描述 478.在圆内随机生成点 の 两种方法

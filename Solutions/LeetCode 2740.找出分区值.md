@@ -2,6 +2,7 @@
 title: 2740.找出分区值
 date: 2024-07-26 15:29:02
 tags: [题解, LeetCode, 中等, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2740.找出分区值：排序

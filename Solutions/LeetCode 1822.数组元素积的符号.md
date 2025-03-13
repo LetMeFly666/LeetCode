@@ -2,6 +2,7 @@
 title: 1822.数组元素积的符号
 date: 2022-10-27 08:15:30
 tags: [题解, LeetCode, 简单, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1822.数组元素积的符号

@@ -2,6 +2,7 @@
 title: 1608.特殊数组的特征值
 date: 2022-09-12 09:32:58
 tags: [题解, LeetCode, 简单, 数组, 二分查找, 排序, 暴力, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1608.特殊数组的特征值

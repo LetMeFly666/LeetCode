@@ -2,6 +2,7 @@
 title: 1599.经营摩天轮的最大利润
 date: 2023-03-05 13:36:19
 tags: [题解, LeetCode, 中等, 数组, 模拟, 贪心]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1599.经营摩天轮的最大利润

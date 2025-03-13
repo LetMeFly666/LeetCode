@@ -2,6 +2,7 @@
 title: 52.N皇后II
 date: 2022-05-27 10:50:29
 tags: [题解, LeetCode, 困难, N皇后, 回溯]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】52.N皇后II

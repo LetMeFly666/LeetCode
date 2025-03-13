@@ -2,6 +2,7 @@
 title: 9.回文数
 date: 2022-10-31 09:33:09
 tags: [题解, LeetCode, 简单, 数学, 回文]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】9.回文数

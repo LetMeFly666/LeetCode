@@ -2,6 +2,7 @@
 title: 2171.拿出最少数目的魔法豆
 date: 2024-01-18 19:29:06
 tags: [题解, LeetCode, 中等, 数组, 前缀和, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2171.拿出最少数目的魔法豆：排序 + 枚举

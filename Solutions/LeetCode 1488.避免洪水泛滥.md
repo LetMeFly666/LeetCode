@@ -2,6 +2,7 @@
 title: 1488.避免洪水泛滥
 date: 2023-10-13 14:15:52
 tags: [题解, LeetCode, 中等, 贪心, 数组, 哈希表, 哈希, 有序集合, set, map, 二分查找, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1488.避免洪水泛滥：哈希（贪心）

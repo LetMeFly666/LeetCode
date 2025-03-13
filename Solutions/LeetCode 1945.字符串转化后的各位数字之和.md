@@ -2,6 +2,7 @@
 title: 1945.字符串转化后的各位数字之和
 date: 2022-12-15 21:11:27
 tags: [题解, LeetCode, 简单, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1945.字符串转化后的各位数字之和

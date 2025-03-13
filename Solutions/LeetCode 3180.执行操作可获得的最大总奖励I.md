@@ -2,6 +2,7 @@
 title: 3180.执行操作可获得的最大总奖励 I
 date: 2024-10-28 21:39:26
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3180.执行操作可获得的最大总奖励 I：动态规划

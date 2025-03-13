@@ -2,6 +2,7 @@
 title: 1911.最大子序列交替和
 date: 2023-07-11 08:36:19
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1911.最大子序列交替和

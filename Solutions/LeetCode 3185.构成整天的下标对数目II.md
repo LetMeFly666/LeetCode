@@ -2,6 +2,7 @@
 title: 3185.构成整天的下标对数目 II
 date: 2024-10-23 23:02:55
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, map, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3185.构成整天的下标对数目 II：哈希表

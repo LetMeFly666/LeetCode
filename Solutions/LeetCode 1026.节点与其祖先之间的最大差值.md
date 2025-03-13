@@ -2,6 +2,7 @@
 title: 1026.节点与其祖先之间的最大差值
 date: 2023-04-18 12:09:06
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1026.节点与其祖先之间的最大差值

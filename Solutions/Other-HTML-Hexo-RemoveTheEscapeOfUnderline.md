@@ -2,6 +2,7 @@
 title: HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）
 date: 2023-07-27 17:19:21
 tags: [其他, HTML, MathJax, Latex, Hexo, sed]
+categories: [技术思考]
 ---
 
 # HTML - Hexo - 取消Hexo下划线转义：因为公式中可能会用到大量下划线（Hexo公式）

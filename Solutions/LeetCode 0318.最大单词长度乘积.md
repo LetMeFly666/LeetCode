@@ -2,6 +2,7 @@
 title: 318.最大单词长度乘积
 date: 2023-11-06 20:01:05
 tags: [题解, LeetCode, 中等, 位运算, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】318.最大单词长度乘积

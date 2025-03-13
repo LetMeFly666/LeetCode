@@ -2,6 +2,7 @@
 title: 2451.差值数组不同的字符串
 date: 2023-05-25 08:26:56
 tags: [题解, LeetCode, 简单, 哈希表, map, 计数, 数学, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2451.差值数组不同的字符串

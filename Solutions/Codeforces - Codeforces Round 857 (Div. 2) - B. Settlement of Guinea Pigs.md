@@ -2,6 +2,7 @@
 title: Codeforces - Codeforces Round 857 (Div. 2) - B. Settlement of Guinea Pigs
 date: 2023-04-05 21:20:13
 tags: [题解, Codeforces, 中等, 思维]
+categories: [题解, Codeforces]
 ---
 
 

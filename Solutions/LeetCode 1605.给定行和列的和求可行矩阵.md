@@ -2,6 +2,7 @@
 title: 1605.给定行和列的和求可行矩阵
 date: 2023-03-14 12:54:05
 tags: [题解, LeetCode, 中等, 贪心, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1605.给定行和列的和求可行矩阵

@@ -2,6 +2,7 @@
 title: 2300.咒语和药水的成功对数
 date: 2023-11-10 14:18:05
 tags: [题解, LeetCode, 中等, 数组, 双指针, 二分查找, 二分, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2300.咒语和药水的成功对数：二分查找

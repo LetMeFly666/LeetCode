@@ -2,6 +2,7 @@
 title: 864.获取所有钥匙的最短路径
 date: 2022-11-10 10:09:32
 tags: [题解, LeetCode, 困难, 位运算, 广度优先搜索, BFS, 状态压缩]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】864.获取所有钥匙的最短路径：广搜 + 状压

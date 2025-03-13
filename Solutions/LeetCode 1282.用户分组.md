@@ -2,6 +2,7 @@
 title: 1282.用户分组
 date: 2022-08-12 09:48:35
 tags: [题解, LeetCode, 中等, 数组, 哈希表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1282.用户分组

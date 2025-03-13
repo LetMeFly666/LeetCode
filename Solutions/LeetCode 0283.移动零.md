@@ -2,6 +2,7 @@
 title: 283.移动零：三种小方法实现
 date: 2025-03-05 22:48:59
 tags: [题解, LeetCode, 简单, 数组, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】283.移动零：三种小方法实现

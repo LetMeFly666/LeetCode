@@ -2,6 +2,7 @@
 title: 2671.频率跟踪器
 date: 2024-03-21 22:28:49
 tags: [题解, LeetCode, 中等, 设计, 哈希表, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2671.频率跟踪器：俩计数哈希表

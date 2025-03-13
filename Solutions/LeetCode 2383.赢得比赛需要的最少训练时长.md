@@ -2,6 +2,7 @@
 title: 2383.赢得比赛需要的最少训练时长
 date: 2023-03-13 12:07:12
 tags: [题解, LeetCode, 简单, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2383.赢得比赛需要的最少训练时长

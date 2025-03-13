@@ -2,6 +2,7 @@
 title: 1773.统计匹配检索规则的物品数量
 date: 2022-10-29 09:04:28
 tags: [题解, LeetCode, 简单, 数组, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1773.统计匹配检索规则的物品数量(5行核心代码)

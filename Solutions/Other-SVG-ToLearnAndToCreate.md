@@ -2,6 +2,7 @@
 title: SVG(可缩放矢量图形) - toLearn 和 创建
 date: 2023-07-06 10:15:01
 tags: [其他, SVG, 可缩放矢量图形]
+categories: [技术思考]
 ---
 
 # SVG(可缩放矢量图形) - toLearn 和 创建

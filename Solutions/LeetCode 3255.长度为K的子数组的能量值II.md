@@ -2,6 +2,7 @@
 title: 3255.长度为 K 的子数组的能量值 II
 date: 2024-11-07 12:35:10
 tags: [题解, LeetCode, 中等, 数组, 滑动窗口, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3255.长度为 K 的子数组的能量值 II：和官解思路不同的O(n)做法（附思考过程）

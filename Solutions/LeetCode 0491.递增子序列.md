@@ -2,6 +2,7 @@
 title: 491.递增子序列
 date: 2022-11-02 10:55:59
 tags: [题解, LeetCode, 中等, 位运算, 数组, 哈希表, 回溯, 二进制枚举, 状态压缩, 深度优先搜索, DFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】491.递增子序列：两大方法三小方法

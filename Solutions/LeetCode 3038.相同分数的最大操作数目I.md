@@ -2,6 +2,7 @@
 title: 3038.相同分数的最大操作数目 I
 date: 2024-06-07 20:49:43
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3038.相同分数的最大操作数目 I

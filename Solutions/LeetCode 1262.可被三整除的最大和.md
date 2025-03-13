@@ -2,6 +2,7 @@
 title: 1262.可被三整除的最大和：时间O(n)空间O(1)
 date: 2023-06-19 16:33:04
 tags: [题解, LeetCode, 中等, 贪心, 数组, 动态规划, 数学, 取模, 同余]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1262.可被三整除的最大和：时间O(n)空间O(1)

@@ -2,6 +2,7 @@
 title: 3011.判断一个数组是否可以变为有序
 date: 2024-07-13 00:33:50
 tags: [题解, LeetCode, 中等, 位运算, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3011.判断一个数组是否可以变为有序：分组循环

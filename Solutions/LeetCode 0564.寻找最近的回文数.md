@@ -2,6 +2,7 @@
 title: 564.寻找最近的回文数
 date: 2022-03-03 14:53:21
 tags: [题解, LeetCode, 困难, 贪心, 字符串]
+categories: [题解, LeetCode]
 ---
 
 力扣题目链接：[https://leetcode-cn.com/problems/find-the-closest-palindrome/](https://leetcode-cn.com/problems/find-the-closest-palindrome/)

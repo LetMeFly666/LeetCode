@@ -2,6 +2,7 @@
 title: Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）
 date: 2023-04-05 16:22:30
 tags: [其他, Python, Copy, Deep copy, Shallow Copy]
+categories: [技术思考]
 ---
 
 # Python - 拷贝 - 浅拷贝（Shallow Copy）和深拷贝（Deep Copy）

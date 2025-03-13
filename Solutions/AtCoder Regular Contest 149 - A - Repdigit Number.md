@@ -2,6 +2,7 @@
 title: AtCoder Regular Contest 149 - A - Repdigit Number
 date: 2022-10-03 09:14:30
 tags: [题解, AtCoder, 中等, 取模, 数学]
+categories: [题解, AtCoder]
 ---
 
 Time Limit: 2 sec / Memory Limit: 1024 MB

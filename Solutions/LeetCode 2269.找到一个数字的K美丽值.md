@@ -2,6 +2,7 @@
 title: 2269.找到一个数字的 K 美丽值：字符串数字转换(模拟)
 date: 2025-03-10 12:51:23
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2269.找到一个数字的 K 美丽值：字符串数字转换(模拟)

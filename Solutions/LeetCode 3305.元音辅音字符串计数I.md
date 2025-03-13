@@ -2,6 +2,7 @@
 title: 3305.元音辅音字符串计数 I：今天I先模拟，明天II再开滑
 date: 2025-03-12 10:05:15
 tags: [题解, LeetCode, 中等, 哈希表, 字符串, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3305.元音辅音字符串计数 I：今天I先模拟，明天II再开滑

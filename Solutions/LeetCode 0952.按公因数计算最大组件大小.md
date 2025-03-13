@@ -2,6 +2,7 @@
 title: 952.按公因数计算最大组件大小
 date: 2022-07-30 11:17:22
 tags: [题解, LeetCode, 困难, 并查集, 数组, 数学, 广度优先搜索, BFS]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】952.按公因数计算最大组件大小：建图 / 并查集

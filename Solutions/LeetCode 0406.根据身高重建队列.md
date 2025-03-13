@@ -2,6 +2,7 @@
 title: 406.根据身高重建队列
 date: 2022-10-17 10:24:51
 tags: [题解, LeetCode, 中等, 贪心, 树状数组, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】406.根据身高重建队列

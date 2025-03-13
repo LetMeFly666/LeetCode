@@ -2,6 +2,7 @@
 title: 1796.字符串中第二大的数字
 date: 2022-12-03 12:24:32
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1796.字符串中第二大的数字

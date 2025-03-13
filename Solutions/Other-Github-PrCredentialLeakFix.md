@@ -2,6 +2,7 @@
 title: Github - 记录一次对“不小心包含了密码的PR”的修复
 date: 2025-02-06 11:09:47
 tags: [其他, Git, Github]
+categories: [技术思考]
 ---
 
 # Github - 记录一次对“不小心包含了密码的PR”的修复

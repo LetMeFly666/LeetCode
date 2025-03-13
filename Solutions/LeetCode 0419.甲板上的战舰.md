@@ -2,6 +2,7 @@
 title: 419.甲板上的战舰
 date: 2024-06-11 12:27:23
 tags: [题解, LeetCode, 中等, 深度优先搜索, 数组, 矩阵]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】419.甲板上的战舰：统计战舰头（左上角）——附Py一行版

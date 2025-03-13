@@ -2,6 +2,7 @@
 title: 2423.删除字符使频率相同
 date: 2023-04-29 14:12:40
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 计数, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2423.删除字符使频率相同

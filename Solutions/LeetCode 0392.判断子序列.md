@@ -2,6 +2,7 @@
 title: 392.判断子序列
 date: 2022-10-12 11:06:11
 tags: [题解, LeetCode, 简单, 双指针, 字符串, 动态规划]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】392.判断子序列

@@ -2,6 +2,7 @@
 title: 999.可以被一步捕获的棋子数
 date: 2024-12-07 00:25:18
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】999.可以被一步捕获的棋子数：模拟

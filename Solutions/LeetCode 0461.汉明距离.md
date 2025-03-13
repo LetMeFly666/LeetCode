@@ -2,6 +2,7 @@
 title: 461.汉明距离
 date: 2022-10-25 11:03:19
 tags: [题解, LeetCode, 简单, 位运算]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】461.汉明距离

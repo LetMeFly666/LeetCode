@@ -2,6 +2,7 @@
 title: 1768.交替合并字符串
 date: 2022-10-23 09:05:32
 tags: [题解, LeetCode, 简单, 双指针, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1768.交替合并字符串

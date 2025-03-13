@@ -2,6 +2,7 @@
 title: 1800.最大升序子数组和
 date: 2022-10-07 13:47:34
 tags: [题解, LeetCode, 简单, 数组, 子问题]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1800.最大升序子数组和

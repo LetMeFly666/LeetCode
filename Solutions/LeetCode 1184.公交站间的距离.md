@@ -2,6 +2,7 @@
 title: 1184.公交站间的距离
 date: 2022-07-24 15:31:08
 tags: [题解, LeetCode, 简单, 数组, 模拟, 一圈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1184.公交站间的距离

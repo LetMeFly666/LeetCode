@@ -2,6 +2,7 @@
 title: 2266.统计打字方案数：排列组合
 date: 2025-01-19 14:57:48
 tags: [题解, LeetCode, 中等, 哈希表, 数学, 字符串, 动态规划, DP, 排列组合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2266.统计打字方案数：排列组合

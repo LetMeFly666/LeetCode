@@ -2,6 +2,7 @@
 title: 827.最大人工岛
 date: 2022-09-18 08:39:20
 tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 并查集, 数组, 矩阵, BFS, 图, 连通块, 哈希]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】827.最大人工岛

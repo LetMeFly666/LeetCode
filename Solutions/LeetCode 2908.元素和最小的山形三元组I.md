@@ -2,6 +2,7 @@
 title: 2908.元素和最小的山形三元组 I
 date: 2024-03-29 17:06:53
 tags: [题解, LeetCode, 简单, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2908.元素和最小的山形三元组 I：贪心（两次遍历）——双O(n)复杂度

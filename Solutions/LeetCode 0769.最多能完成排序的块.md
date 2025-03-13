@@ -2,6 +2,7 @@
 title: 769.最多能完成排序的块
 date: 2022-10-13 09:15:29
 tags: [题解, LeetCode, 中等, 栈, 贪心, 数组, 排序, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】769.最多能完成排序的块

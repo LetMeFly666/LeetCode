@@ -2,6 +2,7 @@
 title: 62.不同路径
 date: 2022-11-26 23:12:32
 tags: [题解, LeetCode, 中等, 数学, 动态规划, 组合数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】62.不同路径：两种方法解决

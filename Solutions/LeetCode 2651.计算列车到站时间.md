@@ -2,6 +2,7 @@
 title: 2651.计算列车到站时间
 date: 2023-09-08 09:27:14
 tags: [题解, LeetCode, 简单, 数学, 取模]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2651.计算列车到站时间

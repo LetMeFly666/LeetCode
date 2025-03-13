@@ -2,6 +2,7 @@
 title: 1760.袋子里最少数目的球：二分查找
 date: 2022-12-20 22:56:47
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1760.袋子里最少数目的球：二分查找

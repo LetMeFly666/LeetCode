@@ -2,6 +2,7 @@
 title: 3112.访问消失节点的最少时间
 date: 2024-07-18 18:27:51
 tags: [题解, LeetCode, 中等, 图, 数组, 最短路, 堆（优先队列）]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3112.访问消失节点的最少时间：单源最短路的Dijkstra算法

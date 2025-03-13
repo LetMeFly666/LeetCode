@@ -2,6 +2,7 @@
 title: 421.数组中两个数的最大异或值
 date: 2022-10-19 17:58:27
 tags: [题解, LeetCode, 中等, 位运算, 字典树, 数组, 哈希表, 哈希]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】421.数组中两个数的最大异或值

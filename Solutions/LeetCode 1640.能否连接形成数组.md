@@ -2,6 +2,7 @@
 title: 1640.能否连接形成数组
 date: 2022-09-22 08:28:29
 tags: [题解, LeetCode, 简单, 数组, 哈希表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1640.能否连接形成数组

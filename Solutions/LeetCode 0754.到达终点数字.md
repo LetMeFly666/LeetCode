@@ -2,6 +2,7 @@
 title: 754.到达终点数字
 date: 2022-11-04 10:05:03
 tags: [题解, LeetCode, 中等, 数学, 二分查找]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】754.到达终点数字

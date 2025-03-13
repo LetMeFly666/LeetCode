@@ -2,6 +2,7 @@
 title: 3285.找到稳定山的下标
 date: 2024-12-19 22:43:34
 tags: [题解, LeetCode, 简单, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3285.找到稳定山的下标：遍历

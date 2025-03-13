@@ -2,6 +2,7 @@
 title: 205.同构字符串
 date: 2022-08-19 09:01:38
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 哈希]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】205.同构字符串

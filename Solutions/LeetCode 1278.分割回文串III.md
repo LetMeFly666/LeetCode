@@ -2,6 +2,7 @@
 title: 1278.分割回文串 III：动态规划
 date: 2025-03-03 13:54:09
 tags: [题解, LeetCode, 困难, 字符串, 回文, 回文串, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1278.分割回文串 III：动态规划

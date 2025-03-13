@@ -2,6 +2,7 @@
 title: 2404.出现最频繁的偶数元素
 date: 2023-04-13 18:16:53
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, map, 计数, 排序, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2404.出现最频繁的偶数元素

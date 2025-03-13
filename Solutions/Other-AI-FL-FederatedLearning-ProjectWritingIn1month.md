@@ -2,6 +2,7 @@
 title: 人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)
 date: 2024-01-06 12:32:45
 tags: [其他, AI, DL, 人工智能, 深度学习, 联邦学习]
+categories: [技术思考]
 ---
 
 # FL

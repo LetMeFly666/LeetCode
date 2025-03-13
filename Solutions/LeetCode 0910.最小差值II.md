@@ -2,6 +2,7 @@
 title: 910.最小差值 II
 date: 2024-10-21 23:16:09
 tags: [题解, LeetCode, 中等, 贪心, 数组, 数学, 排序, 枚举, 思维]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】910.最小差值 II：贪心（排序）-小数大数分界线枚举（思考过程详解）

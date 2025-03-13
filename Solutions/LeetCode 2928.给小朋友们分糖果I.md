@@ -2,6 +2,7 @@
 title: 2928.给小朋友们分糖果 I
 date: 2024-06-01 11:52:03
 tags: [题解, LeetCode, 简单, 数学, 组合数学, 枚举, 模拟, 暴力]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2928.给小朋友们分糖果 I：Java提交的运行时间超过了61%的用户

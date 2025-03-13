@@ -2,6 +2,7 @@
 title: 2923.找到冠军 I
 date: 2024-04-12 13:53:33
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2923.找到冠军 I：O(n^2)和O(n)的做法

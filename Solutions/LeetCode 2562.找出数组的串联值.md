@@ -2,6 +2,7 @@
 title: 2562.找出数组的串联值
 date: 2023-10-12 18:50:12
 tags: [题解, LeetCode, 简单, 数组, 双指针, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2562.找出数组的串联值：模拟（双指针）

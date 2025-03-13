@@ -2,6 +2,7 @@
 title: 1805.字符串中不同整数的数目
 date: 2022-12-06 11:48:15
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1805.字符串中不同整数的数目

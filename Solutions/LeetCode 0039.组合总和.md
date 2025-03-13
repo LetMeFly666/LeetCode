@@ -2,6 +2,7 @@
 title: 39.组合总和
 date: 2024-04-20 11:06:37
 tags: [题解, LeetCode, 中等, 数组, 回溯]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】39.组合总和：回溯 + 剪枝

@@ -2,6 +2,7 @@
 title: 1845.座位预约管理系统
 date: 2024-10-02 23:19:06
 tags: [题解, LeetCode, 中等, 设计, 堆（优先队列）, 优先队列, 堆]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1845.座位预约管理系统：优先队列

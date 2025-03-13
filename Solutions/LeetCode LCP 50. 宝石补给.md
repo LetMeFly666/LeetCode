@@ -2,6 +2,7 @@
 title: LCP 50.宝石补给
 date: 2023-09-14 10:11:35
 tags: [题解, LeetCode, 简单, 数组, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】LCP 50.宝石补给

@@ -2,6 +2,7 @@
 title: 50.Pow(x, n)
 date: 2022-05-25 19:48:49
 tags: [题解, LeetCode, 中等, 快速幂]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】50.Pow(x, n)

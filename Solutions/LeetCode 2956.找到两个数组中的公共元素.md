@@ -2,6 +2,7 @@
 title: 2956.找到两个数组中的公共元素
 date: 2024-07-16 23:37:41
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2956.找到两个数组中的公共元素：哈希表

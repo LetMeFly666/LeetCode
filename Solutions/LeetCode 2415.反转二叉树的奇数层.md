@@ -2,6 +2,7 @@
 title: 2415.反转二叉树的奇数层
 date: 2023-12-15 16:09:22
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 广度优先搜索, 二叉树, 完全二叉树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2415.反转二叉树的奇数层：深度优先搜索(DFS)

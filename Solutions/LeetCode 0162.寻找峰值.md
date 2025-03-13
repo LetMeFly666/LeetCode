@@ -2,6 +2,7 @@
 title: 162.寻找峰值
 date: 2023-12-18 14:27:17
 tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】162.寻找峰值：二分查找

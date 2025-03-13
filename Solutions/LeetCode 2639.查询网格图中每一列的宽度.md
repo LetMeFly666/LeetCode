@@ -2,6 +2,7 @@
 title: 2639.查询网格图中每一列的宽度
 date: 2024-04-27 11:10:24
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2639.查询网格图中每一列的宽度：模拟（遍历）

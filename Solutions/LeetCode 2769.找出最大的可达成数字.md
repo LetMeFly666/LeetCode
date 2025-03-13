@@ -2,6 +2,7 @@
 title: 2769.找出最大的可达成数字
 date: 2024-05-21 20:36:44
 tags: [题解, LeetCode, 简单, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2769.找出最大的可达成数字：数学——一个猪脑可以不过载的题

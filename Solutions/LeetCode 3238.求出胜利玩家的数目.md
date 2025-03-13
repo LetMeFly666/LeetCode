@@ -2,6 +2,7 @@
 title: 3238.求出胜利玩家的数目
 date: 2024-11-23 17:07:13
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 计数]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3238.求出胜利玩家的数目：哈希表计数

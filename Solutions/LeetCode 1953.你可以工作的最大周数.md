@@ -2,6 +2,7 @@
 title: 1953.你可以工作的最大周数
 date: 2024-05-16 20:21:29
 tags: [题解, LeetCode, 中等, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1953.你可以工作的最大周数：贪心（两个变量一次遍历秒了）

@@ -2,6 +2,7 @@
 title: 2678.老人的数目
 date: 2023-10-23 13:22:31
 tags: [题解, LeetCode, 简单, 数组, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2678.老人的数目

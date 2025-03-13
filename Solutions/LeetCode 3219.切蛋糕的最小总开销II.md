@@ -2,6 +2,7 @@
 title: 3219.切蛋糕的最小总开销 II
 date: 2024-12-31 14:21:50
 tags: [题解, LeetCode, 困难, 贪心, 数组, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3219.切蛋糕的最小总开销 II：贪心——先切贵的

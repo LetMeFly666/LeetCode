@@ -2,6 +2,7 @@
 title: 2409.统计共同度过的日子数
 date: 2023-04-17 10:17:49
 tags: [题解, LeetCode, 简单, 数学, 字符串, 日期处理, 区间交集]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2409.统计共同度过的日子数

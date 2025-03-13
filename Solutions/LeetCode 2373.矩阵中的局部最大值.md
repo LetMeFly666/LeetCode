@@ -2,6 +2,7 @@
 title: 2373.矩阵中的局部最大值
 date: 2023-03-01 09:27:30
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2373.矩阵中的局部最大值

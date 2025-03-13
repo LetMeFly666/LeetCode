@@ -2,6 +2,7 @@
 title: 2500.删除每行中的最大值
 date: 2023-07-27 08:33:17
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2500.删除每行中的最大值

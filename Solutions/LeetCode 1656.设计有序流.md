@@ -2,6 +2,7 @@
 title: 1656.设计有序流：阅读理解
 date: 2022-08-16 08:46:16
 tags: [题解, LeetCode, 简单, 设计, 数组, 哈希表, 数据流]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1656.设计有序流：阅读理解

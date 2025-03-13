@@ -2,6 +2,7 @@
 title: 1276.不浪费原料的汉堡制作方案
 date: 2023-12-25 12:13:13
 tags: [题解, LeetCode, 中等, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1276.不浪费原料的汉堡制作方案：鸡兔同笼解方程

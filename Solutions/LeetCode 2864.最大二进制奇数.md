@@ -2,6 +2,7 @@
 title: 2864.最大二进制奇数
 date: 2024-03-13 08:42:22
 tags: [题解, LeetCode, 简单, 贪心, 数学, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2864.最大二进制奇数：贪心（C++/Python的两行构造）

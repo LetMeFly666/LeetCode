@@ -2,6 +2,7 @@
 title: 2512.奖励最顶尖的 K 名学生
 date: 2023-10-11 09:55:48
 tags: [题解, LeetCode, 中等, 数组, 哈希表, 哈希, set, map, 字符串, 排序, 堆（优先队列）, 设计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2512.奖励最顶尖的 K 名学生：哈希表设计

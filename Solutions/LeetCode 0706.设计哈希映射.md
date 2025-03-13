@@ -2,6 +2,7 @@
 title: 706.设计哈希映射
 date: 2024-04-15 17:16:03
 tags: [题解, LeetCode, 简单, 设计, 数组, 哈希表, 链表, 哈希函数, 哈希, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】706.设计哈希映射：使用数组实现好了

@@ -2,6 +2,7 @@
 title: 2427.公因子的数目
 date: 2023-04-05 12:55:40
 tags: [题解, LeetCode, 简单, 数学, 枚举, 数论, 枚举, 最大公约数, gcd, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2427.公因子的数目

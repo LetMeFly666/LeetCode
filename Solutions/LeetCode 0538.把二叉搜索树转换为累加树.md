@@ -2,6 +2,7 @@
 title: 538.把二叉搜索树转换为累加树
 date: 2022-12-04 16:41:06
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉搜索树, 二叉树, DFS, 中序遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】538.把二叉搜索树转换为累加树

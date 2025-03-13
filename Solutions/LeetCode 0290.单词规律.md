@@ -2,6 +2,7 @@
 title: 290.单词规律
 date: 2022-09-16 09:41:48
 tags: [题解, LeetCode, 简单, 哈希表, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】290.单词规律

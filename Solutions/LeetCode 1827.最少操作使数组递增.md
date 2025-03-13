@@ -2,6 +2,7 @@
 title: 1827.最少操作使数组递增
 date: 2022-12-11 11:33:27
 tags: [题解, LeetCode, 简单, 贪心, 数组, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1827.最少操作使数组递增

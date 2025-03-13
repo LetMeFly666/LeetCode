@@ -2,6 +2,7 @@
 title: 121.买卖股票的最佳时机
 date: 2022-07-19 11:03:37
 tags: [题解, LeetCode, 简单, 数组, 动态规划, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】121.买卖股票的最佳时机 - 从后往前模拟

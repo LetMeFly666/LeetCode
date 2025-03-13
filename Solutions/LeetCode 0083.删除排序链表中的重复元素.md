@@ -2,6 +2,7 @@
 title: 83.删除排序链表中的重复元素
 date: 2024-01-14 11:10:17
 tags: [题解, LeetCode, 简单, 链表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】83.删除排序链表中的重复元素：模拟

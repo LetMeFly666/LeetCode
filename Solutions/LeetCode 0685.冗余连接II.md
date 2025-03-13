@@ -2,6 +2,7 @@
 title: 685.冗余连接 II
 date: 2024-11-03 17:35:40
 tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 并查集, 图, 树, 连通图]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】685.冗余连接 II：并查集（和I有何不同分析）——详细题解(附图)

@@ -2,6 +2,7 @@
 title: 2544.交替数字和
 date: 2023-07-12 08:49:22
 tags: [题解, LeetCode, 简单, 数学, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2544.交替数字和

@@ -2,6 +2,7 @@
 title: 402.移掉 K 位数字
 date: 2022-10-15 11:08:33
 tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】402.移掉 K 位数字

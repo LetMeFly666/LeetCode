@@ -2,6 +2,7 @@
 title: 684.冗余连接
 date: 2024-11-02 22:51:23
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 并查集, 图, 拓扑排序, 树]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】684.冗余连接：拓扑排序+哈希表（O(n)） 或 并查集（O(nlog n)-O(nα(n))）

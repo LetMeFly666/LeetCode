@@ -2,6 +2,7 @@
 title: 2106.摘水果
 date: 2023-05-04 10:31:22
 tags: [题解, LeetCode, 困难, 数组, 二分查找, 前缀和, 滑动窗口, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2106.摘水果

@@ -2,6 +2,7 @@
 title: 2441.与对应负数同时存在的最大正整数
 date: 2023-05-13 13:20:19
 tags: [题解, LeetCode, 简单, 数组, 哈希表, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2441.与对应负数同时存在的最大正整数

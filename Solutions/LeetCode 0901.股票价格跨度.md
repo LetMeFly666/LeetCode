@@ -2,6 +2,7 @@
 title: 901.股票价格跨度
 date: 2022-10-21 20:12:24
 tags: [题解, LeetCode, 中等, 栈, 设计, 数据流, 单调栈]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】901.股票价格跨度

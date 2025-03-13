@@ -2,6 +2,7 @@
 title: 2239.找到最接近 0 的数字：遍历
 date: 2025-01-20 16:02:06
 tags: [题解, LeetCode, 简单, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2239.找到最接近 0 的数字：遍历

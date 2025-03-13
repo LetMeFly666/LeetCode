@@ -2,6 +2,7 @@
 title: 927.三等分
 date: 2022-10-06 22:36:33
 tags: [题解, LeetCode, 困难, 数组, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】927.三等分

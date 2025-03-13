@@ -2,6 +2,7 @@
 title: 1022.从根到叶的二进制数之和
 date: 2022-05-30 10:52:40
 tags: [题解, LeetCode, 简单, 二叉树, 树, 交互, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1022.从根到叶的二进制数之和

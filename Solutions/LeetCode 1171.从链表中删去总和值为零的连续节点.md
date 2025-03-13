@@ -2,6 +2,7 @@
 title: 1171.从链表中删去总和值为零的连续节点
 date: 2023-06-11 14:55:02
 tags: [题解, LeetCode, 中等, 哈希表, 哈希, map, 链表, 前缀和]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1171.从链表中删去总和值为零的连续节点

@@ -2,6 +2,7 @@
 title: 2596.检查骑士巡视方案
 date: 2023-09-13 10:27:36
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 数组, 矩阵, 模拟, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2596.检查骑士巡视方案

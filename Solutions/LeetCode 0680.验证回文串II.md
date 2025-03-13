@@ -2,6 +2,7 @@
 title: 680.验证回文串 II：两侧向中间，不同就试删
 date: 2025-02-03 09:06:49
 tags: [题解, LeetCode, 简单, 双指针, 字符串, 回文, 回文串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】680.验证回文串 II：两侧向中间，不同就试删

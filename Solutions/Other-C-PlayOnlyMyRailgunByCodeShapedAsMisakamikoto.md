@@ -2,6 +2,7 @@
 title: C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun
 date: 2023-08-02 21:44:08
 tags: [C, 控制台, 输出控制, 音乐播放, 趣, 整活]
+categories: [技术思考]
 ---
 
 # C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun

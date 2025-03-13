@@ -2,6 +2,7 @@
 title: 2367.算术三元组的数目
 date: 2023-03-31 09:26:17
 tags: [题解, LeetCode, 简单, 数组, 哈希表, 哈希, set, 双指针, 三指针, 暴力, 枚举]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2367.算术三元组的数目

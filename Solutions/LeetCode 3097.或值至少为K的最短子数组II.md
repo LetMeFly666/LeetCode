@@ -2,6 +2,7 @@
 title: 3097.或值至少为 K 的最短子数组 II：滑动窗口
 date: 2025-01-17 12:49:46
 tags: [题解, LeetCode, 中等, 位运算, 数组, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3097.或值至少为 K 的最短子数组 II：滑动窗口

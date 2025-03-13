@@ -2,6 +2,7 @@
 title: 2351.第一个出现两次的字母
 date: 2023-01-01 09:30:09
 tags: [题解, LeetCode, 简单, 数组, 计数, 统计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2351.第一个出现两次的字母

@@ -2,6 +2,7 @@
 title: 云计算 - 百度AIStudio使用小结
 date: 2023-08-28 11:38:16
 tags: [其他, 云计算, AI Studio, PaddlePaddle]
+categories: [技术思考]
 description: Cloud Computing, 飞桨
 ---
 

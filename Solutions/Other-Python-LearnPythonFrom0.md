@@ -2,6 +2,7 @@
 title: Python - 从0开始学Python(Python3)
 date: 2024-11-22 23:03:48
 tags: [其他, Python]
+categories: [技术思考]
 ---
 
 # Python - 从0开始学Python(Python3)

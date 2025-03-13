@@ -2,6 +2,7 @@
 title: 474.一和零
 date: 2022-10-27 08:43:16
 tags: [题解, LeetCode, 中等, 数组, 字符串, 动态规划, DP]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】474.一和零

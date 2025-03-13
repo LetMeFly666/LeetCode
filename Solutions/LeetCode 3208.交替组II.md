@@ -2,6 +2,7 @@
 title: 3208.交替组 II
 date: 2024-11-28 23:43:47
 tags: [题解, LeetCode, 中等, 数组, 滑动窗口]
+categories: [题解, LeetCode]
 index_img: https://assets.leetcode.com/uploads/2024/06/19/screenshot-2024-05-28-183519.png
 ---
 

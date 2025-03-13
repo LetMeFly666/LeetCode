@@ -2,6 +2,7 @@
 title: 2741.特别的排列
 date: 2024-06-26 22:31:45
 tags: [题解, LeetCode, 中等, 位运算, 数组, 状态压缩, DP, 动态规划]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2741.特别的排列：状压DP

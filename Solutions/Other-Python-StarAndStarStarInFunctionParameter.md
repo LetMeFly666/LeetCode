@@ -2,6 +2,7 @@
 title: Python - 函数参数中的*和**
 date: 2023-02-22 15:34:14
 tags: [其他, Python, 简单, Notes]
+categories: [技术思考]
 ---
 
 # Python - 函数参数中的*和**

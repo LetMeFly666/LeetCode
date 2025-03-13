@@ -2,6 +2,7 @@
 title: Linux - SSH - SSH免密登录（假设已生成过rsa key pair）
 date: 2023-04-22 11:03:11
 tags: [其他, Linux, SSH, SSH免密登录]
+categories: [技术思考]
 ---
 
 # Linux - SSH - SSH免密登录（假设已生成过rsa key pair）

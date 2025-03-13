@@ -2,6 +2,7 @@
 title: HTML - Javascript - 原生的JS HTTP请求：实用主义的一篇文章
 date: 2023-08-06 18:58:51
 tags: [其他, HTML, Javascript, JS, HTTPRequest]
+categories: [技术思考]
 ---
 
 # HTML - Javascript - 原生的JS HTTP请求：实用主义的一篇文章

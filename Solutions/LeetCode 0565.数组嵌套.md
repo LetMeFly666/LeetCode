@@ -2,6 +2,7 @@
 title: 565.数组嵌套
 date: 2022-07-17 09:37:58
 tags: [题解, LeetCode, 中等, 深度优先搜索, 数组, 图, 图遍历, 最大环]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化

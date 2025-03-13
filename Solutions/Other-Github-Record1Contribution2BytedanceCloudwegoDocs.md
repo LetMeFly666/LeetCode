@@ -2,6 +2,7 @@
 title: Github - 记录一次向字节跳动CloudWeGo文档贡献的commit
 date: 2025-02-14 17:52:28
 tags: [其他, Github, Git, 开源项目贡献, PR]
+categories: [技术思考]
 ---
 
 # Github - 记录一次向字节跳动CloudWeGo文档贡献的commit

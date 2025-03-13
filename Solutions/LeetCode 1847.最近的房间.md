@@ -2,6 +2,7 @@
 title: 1847.最近的房间
 date: 2024-12-17 09:07:38
 tags: [题解, LeetCode, 困难, 数组, 二分查找, 排序, 有序集合]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1847.最近的房间：有序集合

@@ -2,6 +2,7 @@
 title: Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings
 date: 2023-03-16 20:46:27
 tags: [其他, Windows, UWP]
+categories: [技术思考]
 ---
 
 ## 前言

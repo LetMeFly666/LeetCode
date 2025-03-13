@@ -2,6 +2,7 @@
 title: 915.分割数组
 date: 2022-10-24 19:11:26
 tags: [题解, LeetCode, 中等, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】915.分割数组

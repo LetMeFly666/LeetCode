@@ -2,6 +2,7 @@
 title: 1954.收集足够苹果的最小花园周长
 date: 2023-12-24 16:41:52
 tags: [题解, LeetCode, 中等, 数学, 二分查找]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1954.收集足够苹果的最小花园周长：数学O(1)的做法

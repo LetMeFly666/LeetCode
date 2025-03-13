@@ -2,6 +2,7 @@
 title: 575.分糖果
 date: 2024-06-02 09:58:56
 tags: [题解, LeetCode, 简单, 数组, 哈希表]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】575.分糖果：min(type, size/2)

@@ -2,6 +2,7 @@
 title: 1766.互质树
 date: 2024-04-11 15:24:55
 tags: [题解, LeetCode, 困难, 树, 深度优先搜索, DFS, 广度优先搜索, 数学, 设计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1766.互质树：设计（深度优先搜索）

@@ -2,6 +2,7 @@
 title: 485.最大连续 1 的个数
 date: 2022-11-01 21:33:59
 tags: [题解, LeetCode, 简单, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】485.最大连续 1 的个数

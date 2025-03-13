@@ -2,6 +2,7 @@
 title: 2490.回环句：判断空格前后字母是否相同
 date: 2023-06-30 07:28:55
 tags: [题解, LeetCode, 简单, 字符串]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2490.回环句：判断空格前后字母是否相同

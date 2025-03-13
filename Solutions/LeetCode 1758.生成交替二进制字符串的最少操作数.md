@@ -2,6 +2,7 @@
 title: 1758.生成交替二进制字符串的最少操作数
 date: 2022-11-29 23:00:13
 tags: [题解, LeetCode, 简单, 字符串, 模拟, 遍历]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1758.生成交替二进制字符串的最少操作数

@@ -2,6 +2,7 @@
 title: 825.适龄的朋友
 date: 2024-11-17 18:11:16
 tags: [题解, LeetCode, 中等, 数组, 双指针, 二分查找, 排序]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】825.适龄的朋友：双指针(排序nlog n) 或 桶排序(n + C^2)

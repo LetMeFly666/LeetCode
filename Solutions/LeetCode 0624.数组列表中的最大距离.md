@@ -2,6 +2,7 @@
 title: 624.数组列表中的最大距离：只关心最小最大值
 date: 2025-02-19 17:55:07
 tags: [题解, LeetCode, 中等, 贪心, 数组]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】624.数组列表中的最大距离：只关心最小最大值

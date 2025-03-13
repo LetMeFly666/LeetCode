@@ -2,6 +2,7 @@
 title: 676.实现一个魔法字典
 date: 2022-07-11 11:23:30
 tags: [题解, LeetCode, 中等, 设计, 字典树, 哈希表, 字符串, set]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】676.实现一个魔法字典：易实现但效率不是那么高的方法

@@ -2,6 +2,7 @@
 title: 1652.拆炸弹
 date: 2024-05-05 14:09:15
 tags: [题解, LeetCode, 简单, 数组, 滑动窗口]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1652.拆炸弹：滑动窗口——当个简单的中等题做

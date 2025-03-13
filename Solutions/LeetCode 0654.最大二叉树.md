@@ -2,6 +2,7 @@
 title: 654.最大二叉树：654.最大二叉树（视频做了近2h😭）
 date: 2022-08-20 10:40:15
 tags: [题解, LeetCode, 中等, 栈, 树, 数组, 分治, 二叉树, 单调栈, 递归, 暴力]
+categories: [题解, LeetCode]
 index_img: https://i-blog.csdnimg.cn/blog_migrate/cover/d9a6a5aa3087e0f11e29eb82e472e61b.jpeg
 ---
 

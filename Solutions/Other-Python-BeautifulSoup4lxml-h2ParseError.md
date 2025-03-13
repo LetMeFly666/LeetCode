@@ -2,6 +2,7 @@
 title: Python BeautifulSoup4或lxml 无法解析嵌套了p标签的h2
 date: 2022-12-04 15:20:28
 tags: [其他, Python, 中等, BeautifulSoup, lxml, HTML]
+categories: [技术思考]
 ---
 
 今天在使用python的beautiful进行Web分析时发现，BeautifulSoup无法解析嵌套了p标签的h2

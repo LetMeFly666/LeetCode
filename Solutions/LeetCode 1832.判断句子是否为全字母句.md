@@ -2,6 +2,7 @@
 title: 1832.判断句子是否为全字母句
 date: 2022-12-13 16:31:55
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 统计]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1832.判断句子是否为全字母句

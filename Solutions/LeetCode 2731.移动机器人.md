@@ -2,6 +2,7 @@
 title: 2731.移动机器人
 date: 2023-10-10 23:06:15
 tags: [题解, LeetCode, 中等, 脑筋急转弯, 数组, 前缀和, 排序, 思维, 数学]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2731.移动机器人

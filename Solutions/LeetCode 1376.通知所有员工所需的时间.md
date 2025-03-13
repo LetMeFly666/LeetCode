@@ -2,6 +2,7 @@
 title: 1376.通知所有员工所需的时间
 date: 2023-05-01 21:09:26
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, DFS, 哈希表, map]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1376.通知所有员工所需的时间

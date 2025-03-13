@@ -2,6 +2,7 @@
 title: 1662.检查两个字符串数组是否相等
 date: 2022-11-01 21:07:19
 tags: [题解, LeetCode, 简单, 数组, 字符串, 双指针]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】1662.检查两个字符串数组是否相等

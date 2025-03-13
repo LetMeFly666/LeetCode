@@ -2,6 +2,7 @@
 title: 2924.找到冠军 II
 date: 2024-04-13 09:34:56
 tags: [题解, LeetCode, 中等, 图, 遍历, 拓扑排序, 脑筋急转弯]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】2924.找到冠军 II：脑筋急转弯——只关心入度

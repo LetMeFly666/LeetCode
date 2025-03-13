@@ -2,6 +2,7 @@
 title: 3248.矩阵中的蛇
 date: 2024-11-21 23:12:45
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】3248.矩阵中的蛇：模拟

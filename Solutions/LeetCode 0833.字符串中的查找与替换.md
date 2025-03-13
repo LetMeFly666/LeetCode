@@ -2,6 +2,7 @@
 title: 833.字符串中的查找与替换
 date: 2023-08-15 08:18:06
 tags: [题解, LeetCode, 中等, 数组, 字符串, 字符串匹配, 排序, 模拟, 大模拟]
+categories: [题解, LeetCode]
 ---
 
 # 【LetMeFly】833.字符串中的查找与替换
