@@ -2,7 +2,7 @@
 title: 日语学习笔记（自用）
 date: 2023-11-24 14:02:17
 tags: [其他, 知识, 日语, Notes]
-categories: [技术思考]
+categories: [自用]
 ---
 
 # 日语

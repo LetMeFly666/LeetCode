@@ -2,7 +2,7 @@
 title: 汉语 - 生僻字积累
 date: 2023-09-01 22:10:07
 tags: [其他, 汉语]
-categories: [技术思考]
+categories: [自用]
 ---
 
 #  汉语 - 生僻字积累
