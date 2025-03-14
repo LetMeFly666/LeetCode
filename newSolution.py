@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-14 09:49:25
+LastEditTime: 2025-03-14 10:25:26
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -10,6 +10,7 @@ What's more: 代码结构写的很混乱 - 想单文件实现所有操作
 import os
 import re
 import sys
+import json
 import time
 import datetime
 import subprocess
@@ -215,7 +216,17 @@ with open("README.md", "w", encoding="utf-8") as f:
 
 # commit push pr merge delete-branch
 os.system('git add .')
-commitMsg = f'update: 添加问题“{num}.{title}”的代码和题解(#{issueNum + 1})'
+def getPrOrIssueMaxNum(prOrIssue: str) -> int:  # (#811)
+    print(f'max {prOrIssue} number:', end=' ')
+    sys.stdout.flush()
+    cmd = ['gh', prOrIssue, 'list', '--state', 'all', '--limit', '1', '--json', 'number']
+    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    data = json.loads(result.stdout)
+    print(data)
+    return data[0]['number']
+lastNum = max(getPrOrIssueMaxNum('pr'), getPrOrIssueMaxNum('issue'))
+print(lastNum)
+commitMsg = f'update: 添加问题“{num}.{title}”的代码和题解(#{lastNum + 1})'
 if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     with open('.commitmsg', 'r', encoding='utf-8') as f:
         commitMsgFromfile = f.read()
