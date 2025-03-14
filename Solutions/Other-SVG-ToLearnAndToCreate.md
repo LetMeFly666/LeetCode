@@ -23,9 +23,11 @@ SVG矢量图有着不失真、体积小等优势。
 
 在线SVG编辑器：
 
-+ [Pixso](https://pixso.cn/designskills/svg-online-editor/)
++ [Pixso](https://pixso.cn/designskills/svg-online-editor/)（文字不可复制）
 + [菜鸟工具](https://c.runoob.com/more/svgeditor/)
 + [zuohaotu.com](http://www.zuohaotu.com/svg/)
+
+其实直接在PPT里画图然后导出SVG也行。
 
 ## 实战 - Windows登录界面轻松访问图标的制作
 

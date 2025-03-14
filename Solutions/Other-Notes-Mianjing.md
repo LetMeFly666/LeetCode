@@ -3,6 +3,7 @@ title: 面经/八股 - 计网+数据库
 date: 2025-02-18 11:44:54
 tags: [其他, 面经, 计网, 计算机网络, 数据库, MySQL, Notes]
 categories: [技术思考]
+mermaid: true
 ---
 
 # 面经/八股 - 计网+数据库
@@ -113,6 +114,121 @@ HTTP/3使用基于UDP的QUIC协议，通过应用层保证传输的可靠。只�
     基于TCP的HTTP协议通过四元组(源IP，源端口，目的ID，目的端口)确定一条TCP连接。网络切换时需要重新握手和挥手以及TCP慢启动，导致明显卡顿。
 
     QUIC通过连接ID标记通信的两个端点，只要仍有上下文信息哪怕IP改变也能“无缝”使用原连接。
+
+### TCP拥塞控制
+
+拥塞控制是在网络出现拥塞时减小数据发送量从而避免网络整体吞吐量随输入负荷的增大而下降。
+
+拥塞控制主要包括：慢开始(slow-start)、拥塞避免(congestion avoidance)、快重传(fast retransmit)和快恢复(fast recovery)。
+
+若不考虑接收方的窗口大小，则在传递过程中有两个值需要维护：拥塞窗口cwnd、慢启动门限ssthresh(slow start threshold)。
+
+拥塞窗口cwnd是指单次发送数据量为`cwnd`，慢启动门限是确定何时转为拥塞避免(和确定快恢复的窗口大小)的。
+
+#### 慢开始
+
+慢开始并不是慢慢地增长cwnd开始，而是指一开始向网络中注入的报文较少(慢慢地注入)。
+
+初始cwnd为1，ssthresh是一个初始值（具体值不一定）。**若未出现拥塞**，则发送几个包就会收到几个ACK。
+
+每收到几个ACK就将cwnd加几，直到加到ssthresh为止。
+
+> 例如：假设ssthresh是12，则有：
+>
+> + 最初cwnd = 1，一次发送1个最大报文段MSS，接收方收到1个报文段，并返回1个报文段的ACK。发送方收到1个ACK，cwnd += 1
+> + cwnd变为2，一次发送2个报文段，接收方返回2个报文段的ACK。发送方收到2个ACK，cwnd += 2
+> + cwnd变为4，一次发送4个报文段，收到4个ACK，cwnd += 4
+> + cwnd变为8，一次发送8个报文段，收到8个ACK，cwnd = min(cwnd + 8, ssthresh) = min(16, 12) = 12
+> + cwnd变为12，达到ssthresh，不能再指数级增长，开始进入到拥塞控制阶段
+
+#### 拥塞控制
+
+拥塞窗口一直指数级增长迟早有一天要*因为过多而塞满*。当cwnd达到ssthresh后就不再指数级增长，而是每次窗口大小加一（ACK数除以cwnd）。
+
+同样先考虑**若未出现拥塞**的现象，继续慢开始的结尾（cwnd = ssthresh）：
+
+> 此时cwnd = ssthresh = 12：
+>
+> + cwnd为12，一次发送12个报文，收到12个ACK，窗口增加$\frac{12}{12}=1$
+> + cwnd为13，一次发送13个报文，收到13个ACK，窗口增加1
+> + cwnd为14...
+> + cwnd为15...
+> + ...
+
+若未出现拥塞，则会一直处于拥塞控制阶段。
+
+#### 若出现了拥塞怎么办
+
+若出现了**超时重传**，则发送方认为网络出现了拥塞，将会采用一个激进的办法：直接将cwnd调整为1，并将ssthresh调整为出现超时重传时的一半。
+
+继续前面案例，假设拥塞控制阶段当cwnd为32时出现了某个数据包的超时重传，则直接将cwnd调整为1并将ssthresh调整为$\frac{32}{2}=16$。
+
+因$cwnd\lt ssthresh$，故将使用慢开始算法指数级增加拥塞窗口的大小。
+
+真是一夜回到解放前。
+
+#### 快重传和快恢复
+
+有时单个数据包的丢失并非由于发生了网络拥塞所致。直接将窗口调整为1并开始慢启动算法会降低传输效率。
+
+由于一次可能发送多个报文段，所以在连续**3**次收到某个报文的重复确认，就**立即重传**对应报文(快重传)，并将cwnd和ssthresh都设置为当前窗口的一半（cwnd从ssthresh开始而不是从1开始）。
+
+<!-- <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" author="LetMeFly.xyz" description="绘制了一半发现没箭头">
+ <g>
+  <title>Layer 1</title>
+  <line stroke-width="3" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="580.7318" x2="384" y1="77.51316" x1="384" stroke="#000" fill="none"/>
+  <line stroke-width="3" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="580.7318" x2="717.48615" y1="77.51316" x1="717.48615" stroke="#000" fill="none"/>
+  <text font-weight="bold" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_12" y="61.5" x="349" stroke-width="0" fill="#00b0f0">发送方</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_13" y="39.5" x="406" stroke-width="0" stroke="#000" fill="#000000"/>
+  <text style="cursor: move;" font-weight="bold" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_14" y="61.5" x="678.18384" stroke-width="0" fill="#38ffb5">接收方</text>
+  <line stroke-width="2" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="124.5" x2="715" y1="94.5" x1="384" stroke="#000" fill="none"/>
+ </g>
+</svg> -->
+
+放一张俺绘制了很久的图：
+
+![TCP-快重传发生示例图](https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg)
+
+> 如上图所示展示了仅仅丢了一个包导致的快重传和快恢复现象。
+> 
+> + 发送方发送了M1和M2，接收方收到了M1和M2并回复了两个ACK，发送方收到了M1和M2的两个ACK并发送了M3，结果M3丢失了但是发送方并不知情。
+> + 发送方继续发送M4、M5、M6，接收方收到M4后发现没有M3，会回复一个收到M2的ACK；接收方收到M5和M6时会分别回复一个收到M2的ACK。
+> + 发送方连续3次收到接收方针对M2的ACK，认为M3丢失，立刻重传M3（快重传），并启用**快恢复**算法。
+> + 接收方收到重传的M3，则M1至M6全部收到，回复收到M6的ACK。
+> + 发送方依据快恢复算法继续动态调整cwnd大小，之后一起顺利进行。
+
+那么，快速恢复算法到底是怎样设置cwnd和ssthresh的呢？前面也说了，就是将cwnd和ssthresh都设置为快重传发生时的一半。由于cwnd已经达到了ssthresh，所以不会慢开始而会直接拥塞避免。
+
+也有一些实现是将cwnd设置为快重传发生时cwnd的一半＋3。
+
+#### 细节答疑
+
++ 在前面的讲解中，我们把发送完cwnd个数据包并收到所有ACK这整个过程称为“一轮”。但在实际的发送过程中，发送方可以连续发送cwnd个报文并且无需等待所有ACK后才进入下一轮，而是可以根据收到的ACK动态调整cwnd。
+
++ 整个拥塞控制算法都是以最大报文段MSS的个数为讨论问题的单位，而不是字节。
+
++ 拥塞控制算法有如下假定条件：
+
+    + 数据是单方向传送，而另一个方向只传送确认；
+    + 接收方总是有足够大的缓存空间，因而发送发发送窗口的大小由网络的拥塞程度来决定。
+
+故再作一图以记之
+
+```mermaid
+graph LR
+    Begin[开始<br/>cwnd=1<br/>ssthresh]-->R{发送是否顺利}
+    R-->|正常收到ACK| Y{cwnd < ssthresh}
+    Y-->|Yes| YY["cwnd = min(cwnd * 2, ssthresh)"]
+    Y-->|No| YN["cwnd += 1"]
+    R-->|未顺利收到ACK| N{未收到种类}
+    N-->|超时重传| NY["ssthresh = cwnd / 2<br/>cwnd = 1<br/>一夜回到解放前"]
+    N-->|连续收到3次相同ACK| NN["快重传快恢复<br/>ssthresh = cwnd / 2<br/>cwnd = cwnd / 2"]
+
+    YY-.->R
+    YN-.->R
+    NY-.->R
+    NN-.->R
+```
 
 ## 数据库
 
