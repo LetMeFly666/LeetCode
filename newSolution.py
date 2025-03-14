@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-12 10:40:29
+LastEditTime: 2025-03-14 09:49:25
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -126,6 +126,7 @@ solution = problem + genSolutionPart(num) +"""
 def refreshPublistTime(solution: str) -> str:
     splited = solution.split("\n")
     splited[2] = "date: " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    splited.insert(4, 'categories: [题解, LeetCode]')
     return "\n".join(splited)
 
 solution = refreshPublistTime(solution)
