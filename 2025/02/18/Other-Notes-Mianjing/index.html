@@ -25,8 +25,9 @@
 <meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
 <meta property="og:description" content="面经&#x2F;八股 - 计网+数据库计算机网络附本科计网考试时的复习笔记，里面有很多ASCII图。 TCP&#x2F;IP网络模型应用层：HTTP、FTP、Telnet、DNS、SMTP等 传输层：TCP(Transmission Control Protocol)、UDP 网络层：IP 网络接口层：网卡层次（封装上MAC地址） 三次握手三次握手目的是保证双方都有发送和接收的能力 网络传输交换机">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg">
 <meta property="article:published_time" content="2025-02-18T03:44:54.000Z">
-<meta property="article:modified_time" content="2025-03-14T01:55:33.464Z">
+<meta property="article:modified_time" content="2025-03-15T02:54:08.760Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="Notes">
 <meta property="article:tag" content="其他">
@@ -36,6 +37,7 @@
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg">
   
   
   
@@ -234,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.8k 字
+          10k 字
         
       </span>
     
@@ -245,7 +247,7 @@
         
         
         
-          66 分钟
+          86 分钟
         
       </span>
     
@@ -349,6 +351,96 @@
 <p>  QUIC通过连接ID标记通信的两个端点，只要仍有上下文信息哪怕IP改变也能“无缝”使用原连接。</p>
 </li>
 </ul>
+<h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><p>拥塞控制是在网络出现拥塞时减小数据发送量从而避免网络整体吞吐量随输入负荷的增大而下降。</p>
+<p>拥塞控制主要包括：慢开始(slow-start)、拥塞避免(congestion avoidance)、快重传(fast retransmit)和快恢复(fast recovery)。</p>
+<p>若不考虑接收方的窗口大小，则在传递过程中有两个值需要维护：拥塞窗口cwnd、慢启动门限ssthresh(slow start threshold)。</p>
+<p>拥塞窗口cwnd是指单次发送数据量为<code>cwnd</code>，慢启动门限是确定何时转为拥塞避免(和确定快恢复的窗口大小)的。</p>
+<h4 id="慢开始"><a href="#慢开始" class="headerlink" title="慢开始"></a>慢开始</h4><p>慢开始并不是慢慢地增长cwnd开始，而是指一开始向网络中注入的报文较少(慢慢地注入)。</p>
+<p>初始cwnd为1，ssthresh是一个初始值（具体值不一定）。<strong>若未出现拥塞</strong>，则发送几个包就会收到几个ACK。</p>
+<p>每收到几个ACK就将cwnd加几，直到加到ssthresh为止。</p>
+<blockquote>
+<p>例如：假设ssthresh是12，则有：</p>
+<ul>
+<li>最初cwnd &#x3D; 1，一次发送1个最大报文段MSS，接收方收到1个报文段，并返回1个报文段的ACK。发送方收到1个ACK，cwnd +&#x3D; 1</li>
+<li>cwnd变为2，一次发送2个报文段，接收方返回2个报文段的ACK。发送方收到2个ACK，cwnd +&#x3D; 2</li>
+<li>cwnd变为4，一次发送4个报文段，收到4个ACK，cwnd +&#x3D; 4</li>
+<li>cwnd变为8，一次发送8个报文段，收到8个ACK，cwnd &#x3D; min(cwnd + 8, ssthresh) &#x3D; min(16, 12) &#x3D; 12</li>
+<li>cwnd变为12，达到ssthresh，不能再指数级增长，开始进入到拥塞控制阶段</li>
+</ul>
+</blockquote>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>拥塞窗口一直指数级增长迟早有一天要<em>因为过多而塞满</em>。当cwnd达到ssthresh后就不再指数级增长，而是每次窗口大小加一（ACK数除以cwnd）。</p>
+<p>同样先考虑<strong>若未出现拥塞</strong>的现象，继续慢开始的结尾（cwnd &#x3D; ssthresh）：</p>
+<blockquote>
+<p>此时cwnd &#x3D; ssthresh &#x3D; 12：</p>
+<ul>
+<li>cwnd为12，一次发送12个报文，收到12个ACK，窗口增加$\frac{12}{12}&#x3D;1$</li>
+<li>cwnd为13，一次发送13个报文，收到13个ACK，窗口增加1</li>
+<li>cwnd为14…</li>
+<li>cwnd为15…</li>
+<li>…</li>
+</ul>
+</blockquote>
+<p>若未出现拥塞，则会一直处于拥塞控制阶段。</p>
+<h4 id="若出现了拥塞怎么办"><a href="#若出现了拥塞怎么办" class="headerlink" title="若出现了拥塞怎么办"></a>若出现了拥塞怎么办</h4><p>若出现了<strong>超时重传</strong>，则发送方认为网络出现了拥塞，将会采用一个激进的办法：直接将cwnd调整为1，并将ssthresh调整为出现超时重传时的一半。</p>
+<p>继续前面案例，假设拥塞控制阶段当cwnd为32时出现了某个数据包的超时重传，则直接将cwnd调整为1并将ssthresh调整为$\frac{32}{2}&#x3D;16$。</p>
+<p>因$cwnd\lt ssthresh$，故将使用慢开始算法指数级增加拥塞窗口的大小。</p>
+<p>真是一夜回到解放前。</p>
+<h4 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h4><p>有时单个数据包的丢失并非由于发生了网络拥塞所致。直接将窗口调整为1并开始慢启动算法会降低传输效率。</p>
+<p>由于一次可能发送多个报文段，所以在连续<strong>3</strong>次收到某个报文的重复确认，就<strong>立即重传</strong>对应报文(快重传)，并将cwnd和ssthresh都设置为当前窗口的一半（cwnd从ssthresh开始而不是从1开始）。</p>
+<!-- <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" author="LetMeFly.xyz" description="绘制了一半发现没箭头">
+ <g>
+  <title>Layer 1</title>
+  <line stroke-width="3" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="580.7318" x2="384" y1="77.51316" x1="384" stroke="#000" fill="none"/>
+  <line stroke-width="3" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="580.7318" x2="717.48615" y1="77.51316" x1="717.48615" stroke="#000" fill="none"/>
+  <text font-weight="bold" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_12" y="61.5" x="349" stroke-width="0" fill="#00b0f0">发送方</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_13" y="39.5" x="406" stroke-width="0" stroke="#000" fill="#000000"/>
+  <text style="cursor: move;" font-weight="bold" stroke="#000" xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_14" y="61.5" x="678.18384" stroke-width="0" fill="#38ffb5">接收方</text>
+  <line stroke-width="2" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="124.5" x2="715" y1="94.5" x1="384" stroke="#000" fill="none"/>
+ </g>
+</svg> -->
+
+<p>放一张俺绘制了很久的图：</p>
+<p><img src="https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg" srcset="/img/loading.gif" lazyload alt="TCP-快重传发生示例图"></p>
+<blockquote>
+<p>如上图所示展示了仅仅丢了一个包导致的快重传和快恢复现象。</p>
+<ul>
+<li>发送方发送了M1和M2，接收方收到了M1和M2并回复了两个ACK，发送方收到了M1和M2的两个ACK并发送了M3，结果M3丢失了但是发送方并不知情。</li>
+<li>发送方继续发送M4、M5、M6，接收方收到M4后发现没有M3，会回复一个收到M2的ACK；接收方收到M5和M6时会分别回复一个收到M2的ACK。</li>
+<li>发送方连续3次收到接收方针对M2的ACK，认为M3丢失，立刻重传M3（快重传），并启用<strong>快恢复</strong>算法。</li>
+<li>接收方收到重传的M3，则M1至M6全部收到，回复收到M6的ACK。</li>
+<li>发送方依据快恢复算法继续动态调整cwnd大小，之后一起顺利进行。</li>
+</ul>
+</blockquote>
+<p>那么，快速恢复算法到底是怎样设置cwnd和ssthresh的呢？前面也说了，就是将cwnd和ssthresh都设置为快重传发生时的一半。由于cwnd已经达到了ssthresh，所以不会慢开始而会直接拥塞避免。</p>
+<p>也有一些实现是将cwnd设置为快重传发生时cwnd的一半＋3。</p>
+<h4 id="细节答疑"><a href="#细节答疑" class="headerlink" title="细节答疑"></a>细节答疑</h4><ul>
+<li><p>在前面的讲解中，我们把发送完cwnd个数据包并收到所有ACK这整个过程称为“一轮”。但在实际的发送过程中，发送方可以连续发送cwnd个报文并且无需等待所有ACK后才进入下一轮，而是可以根据收到的ACK动态调整cwnd。</p>
+</li>
+<li><p>整个拥塞控制算法都是以最大报文段MSS的个数为讨论问题的单位，而不是字节。</p>
+</li>
+<li><p>拥塞控制算法有如下假定条件：</p>
+<ul>
+<li>数据是单方向传送，而另一个方向只传送确认；</li>
+<li>接收方总是有足够大的缓存空间，因而发送发发送窗口的大小由网络的拥塞程度来决定。</li>
+</ul>
+</li>
+</ul>
+<p>故再作一图以记之</p>
+<pre><code class=" mermaid">graph LR
+    Begin[开始&lt;br/&gt;cwnd=1&lt;br/&gt;ssthresh]--&gt;R&#123;发送是否顺利&#125;
+    R--&gt;|正常收到ACK| Y&#123;cwnd &lt; ssthresh&#125;
+    Y--&gt;|Yes| YY[&quot;cwnd = min(cwnd * 2, ssthresh)&quot;]
+    Y--&gt;|No| YN[&quot;cwnd += 1&quot;]
+    R--&gt;|未顺利收到ACK| N&#123;未收到种类&#125;
+    N--&gt;|超时重传| NY[&quot;ssthresh = cwnd / 2&lt;br/&gt;cwnd = 1&lt;br/&gt;一夜回到解放前&quot;]
+    N--&gt;|连续收到3次相同ACK| NN[&quot;快重传快恢复&lt;br/&gt;ssthresh = cwnd / 2&lt;br/&gt;cwnd = cwnd / 2&quot;]
+
+    YY-.-&gt;R
+    YN-.-&gt;R
+    NY-.-&gt;R
+    NN-.-&gt;R
+</code></pre>
+
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ul>
 <li>按<strong>数据结构</strong>分类：B+tree索引、Hash索引、Full-text索引</li>
 <li>按<strong>物理存储</strong>分类：聚簇索引(主键索引)、二级索引(辅助索引)</li>
@@ -787,6 +879,8 @@
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
   </script>
   <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+    <script src="https://letmefly.xyz/Links/mermaid.min.js"></script>
   
 </div>
 
