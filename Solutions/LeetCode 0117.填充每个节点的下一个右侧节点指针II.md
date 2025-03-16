@@ -3,6 +3,7 @@ title: 117.填充每个节点的下一个右侧节点指针 II
 date: 2022-07-17 10:03:42
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, 链表, 二叉树, 层次遍历, 层序遍历]
 categories: [题解, LeetCode]
+img_index: https://assets.leetcode.com/uploads/2019/02/15/117_sample.png
 ---
 
 # 【LetMeFly】117.填充每个节点的下一个右侧节点指针 II
@@ -36,7 +37,7 @@ struct Node {
 
 <p><strong>示例：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/02/15/117_sample.png" style="height: 218px; width: 640px;" /></p>
+<p><img alt="" src="https://assets.leetcode.com/uploads/2019/02/15/117_sample.png" style="height: 218px; width: 640px;" /></p>
 
 <pre>
 <strong>输入</strong>：root = [1,2,3,4,5,null,7]

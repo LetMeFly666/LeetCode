@@ -1847,6 +1847,18 @@ Office PLUS支持**微信登录**和手机号登录（太入乡随俗了吧！�
 
 5. 重复2、3、4步，达到预设代数（例如100代）后结束。
 
+## Chrome历史记录
+
+今天发现DeepSeek网页端左侧对话栏只能显示一定的聊天记录，但是如果还记得历史某对话的对话地址就还能正常访问。
+
+这就说明对话是一直保存着的，只是你可能会找不到对话“入口”而已。
+
+Chrome历史记录保存有效期大约是3个月（网搜），想导出一下我的DS对话历史记录，就开始了一些小探索。
+
+方法一：使用插件[History Plus](https://chromewebstore.google.com/detail/history-plus/kloodnjmhgicecceindgbfpjencnhajh)可以方便地管理和导出
+
+方法二：History历史数据库其实存放在`%userprofile%\AppData\Local\Google\Chrome\User Data\Default\History`，是一个SQLite数据库。读取时记得关闭Chrome浏览器，因为sqlite是单线程的，Chrome在读的时候你再取读会报错“database is locked”。如果Chrome在读或许你也可以复制一份到其他位置，主要是没有密码是明文的。
+
 # End
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>

@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-09 12:41:32
+ * @LastEditTime: 2025-03-15 21:07:16
 -->
 # LetLeet Blog
 
@@ -680,6 +680,7 @@
 |2266.统计打字方案数|中等|<a href="https://leetcode.cn/problems/count-number-of-texts/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/19/LeetCode%202266.%E7%BB%9F%E8%AE%A1%E6%89%93%E5%AD%97%E6%96%B9%E6%A1%88%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145243054" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-number-of-texts/solutions/3051683/letmefly-2266tong-ji-da-zi-fang-an-shu-p-pe23/" target="_blank">LeetCode题解</a>|
 |2269.找到一个数字的K美丽值|简单|<a href="https://leetcode.cn/problems/find-the-k-beauty-of-a-number/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/10/LeetCode%202269.%E6%89%BE%E5%88%B0%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E7%9A%84K%E7%BE%8E%E4%B8%BD%E5%80%BC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/146151402" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-k-beauty-of-a-number/solutions/3604532/letmefly-2269zhao-dao-yi-ge-shu-zi-de-k-uykzu/" target="_blank">LeetCode题解</a>|
 |2270.分割数组的方案数|中等|<a href="https://leetcode.cn/problems/number-of-ways-to-split-array/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/13/LeetCode%202270.%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145125736" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-ways-to-split-array/solutions/3046554/letmefly-2270fen-ge-shu-zu-de-fang-an-sh-xsev/" target="_blank">LeetCode题解</a>|
+|2272.最大波动的子字符串|困难|<a href="https://leetcode.cn/problems/substring-with-largest-variance/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/16/LeetCode%202272.%E6%9C%80%E5%A4%A7%E6%B3%A2%E5%8A%A8%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/146292731" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/substring-with-largest-variance/solutions/3613881/letmefly-2272zui-da-bo-dong-de-zi-zi-fu-tvg03/" target="_blank">LeetCode题解</a>|
 |2274.不含特殊楼层的最大连续楼层数|中等|<a href="https://leetcode.cn/problems/maximum-consecutive-floors-without-special-floors/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/06/LeetCode%202274.%E4%B8%8D%E5%90%AB%E7%89%B9%E6%AE%8A%E6%A5%BC%E5%B1%82%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E6%A5%BC%E5%B1%82%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144972086" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-consecutive-floors-without-special-floors/solutions/3040396/letmefly-2274bu-han-te-shu-lou-ceng-de-z-321m/" target="_blank">LeetCode题解</a>|
 |2275.按位与结果大于零的最长组合|中等|<a href="https://leetcode.cn/problems/largest-combination-with-bitwise-and-greater-than-zero/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/14/LeetCode%202275.%E6%8C%89%E4%BD%8D%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%A4%A7%E4%BA%8E%E9%9B%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%84%E5%90%88/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145144347" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/largest-combination-with-bitwise-and-greater-than-zero/solutions/3047299/letmefly-2275an-wei-yu-jie-guo-da-yu-lin-qou3/" target="_blank">LeetCode题解</a>|
 |2276.统计区间中的整数数目|困难|<a href="https://leetcode.cn/problems/count-integers-in-intervals/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/16/LeetCode%202276.%E7%BB%9F%E8%AE%A1%E5%8C%BA%E9%97%B4%E4%B8%AD%E7%9A%84%E6%95%B4%E6%95%B0%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135036679" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-integers-in-intervals/solutions/2568803/letmefly-2276tong-ji-qu-jian-zhong-de-zh-y3i6/" target="_blank">LeetCode题解</a>|
@@ -999,8 +1000,9 @@
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
-- [ ] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。(testing)
+- [ ] Hexo的`$1\_2$`会被直接渲染成`$1_2$`，然后前端mathjs就会将$1\_2$解析成$1_2$。如[This](https://github.com/LetMeFly666/LeetCode/blob/7a007400b54908796c58576cb587c5f0a99550b8/Solutions/Other-Notes-Mianjing.md?plain=1#L358)。
 - hexo我是一刻也待不下去了
+- [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
 - [x] 写新题解时，当commit记录不只一条时使用sqush的方式合并，当commit记录只有一条时使用fast-forward。总之master线性且一次题解只会生成一个commit记录，多余的过程都会留在pr里。
 - [x] hexo代码中默认Tab是8空格长！

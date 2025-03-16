@@ -220,7 +220,7 @@ graph LR
     R-->|正常收到ACK| Y{cwnd < ssthresh}
     Y-->|Yes| YY["cwnd = min(cwnd * 2, ssthresh)"]
     Y-->|No| YN["cwnd += 1"]
-    R-->|未顺利收到ACK| N{未收到种类}
+    R-->|未顺利收到ACK| N{异常原因}
     N-->|超时重传| NY["ssthresh = cwnd / 2<br/>cwnd = 1<br/>一夜回到解放前"]
     N-->|连续收到3次相同ACK| NN["快重传快恢复<br/>ssthresh = cwnd / 2<br/>cwnd = cwnd / 2"]
 
@@ -257,7 +257,7 @@ MySQL5.5后默认使用InnoDB作为存储引擎。**建表**时聚簇索引：
 
 + 主键索引：通常建表时创建，一张表只有一个，不允许有空值
 + 唯一索引：建立在UNIQUE字段上，一张表可以有多个，允许有空值
-+ 普通索引：建立在普通字段上的索引，不要求字段未UNIQUE
++ 普通索引：建立在普通字段上的索引，不要求字段为UNIQUE
 + 前缀索引：对字符类型字段的前几个字符建立的索引，可建在字段类型为char、varchar、binary、varbinary的列上
 
 #### 单列索引、联合索引
