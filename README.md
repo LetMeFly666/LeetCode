@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-15 21:07:16
+ * @LastEditTime: 2025-03-16 23:49:57
 -->
 # LetLeet Blog
 
@@ -978,6 +978,8 @@
 |———|———|———|
 |<a href="https://buctcoder.com/contest.php?cid=2963">2023上半年ACM&蓝桥杯每周训练题-1 - 题解 </a>|<a href="https://blog.letmefly.xyz/2023/02/21/BUCT-BUCT2023LanQiaoWeekly1/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/129327761">CSDN题解</a>|
 |<a href="https://buctcoder.com/contest.php?cid=3176">北京化工大学第十八届程序设计竞赛 - 题解 </a>|<a href="https://blog.letmefly.xyz/2023/05/10/BUCT-BUCT2023XiaoSai-2022-2023-2/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/131293300">CSDN题解</a>|
+|———|———|———|
+|牛客-某公司笔试题-20250316-全解析|<a href="https://blog.letmefly.xyz/2025/03/16/Nowcoder-NingMengWeiQu-20250316-YiMian/">本平台题解</a>|<a href="https://letmefly.blog.csdn.net/article/details/146304076">CSDN题解</a>|
 
 ## About Posting New Articles
 
