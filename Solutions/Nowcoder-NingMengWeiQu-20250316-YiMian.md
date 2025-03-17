@@ -166,6 +166,8 @@ public:
 > 
 > ![0031力扣官方题解动图](https://assets.leetcode.cn/solution-static/31/31.gif)
 >
+> <!-- https://i-blog.csdnimg.cn/img_convert/cfe8dab382d906ee772abc57b9ab951e.gif -->
+>
 > 首先找到最后一个“后面有比他大的数”的数（假设下标为$i$），接着找$i$后面最后一个大于它的数（假设下标为$j$），交换元素$i$、$j$
 >
 > 这样，对于交换的两个数，就满足了“最小数尽可能靠右”、“最大数尽可能小”。
@@ -563,7 +565,7 @@ int main() {
 
 ## End
 
-**考完之后**搜考题的时候搜到了一个(帖子)[https://www.nowcoder.com/discuss/497532413803773952]，竟然是原题！
+**考完之后**搜考题的时候搜到了一个[帖子](https://www.nowcoder.com/discuss/497532413803773952)，竟然是原题！
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/146304076)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/03/16/Nowcoder-NingMengWeiQu-20250316-YiMian/)哦~
 >

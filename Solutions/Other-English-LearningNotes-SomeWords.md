@@ -1047,6 +1047,8 @@ categories: [自用]
 |bourgeois|adj. 中产阶级的，追求物质享受的，世俗的，资产阶级的|
 |||
 |magistrate|n. 地方执法官|
+|||
+|fertilizer|n. 肥料，促进发展者|
 
 <p class="wordCounts">单词收录总数</p>
 
