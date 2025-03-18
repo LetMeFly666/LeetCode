@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-14 10:25:26
+LastEditTime: 2025-03-17 12:53:54
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -239,7 +239,9 @@ cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "
 prResult = os.popen(cmd).read()
 print(prResult)
 prNumber = int(prResult.split('/')[-1])
+os.system('gh pr edit --add-label "under merge"')
 input('enter when ready to merge:')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
+os.system('gh pr edit --remove-label "under merge"')
 # os.system(f'gh pr merge {prNumber} -r -d')  # rebase没有verified的标，且sha也不一样
 def get_commit_diff():
     # 获取题解分支比master多出的提交次数

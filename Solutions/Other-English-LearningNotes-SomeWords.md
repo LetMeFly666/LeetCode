@@ -1049,6 +1049,9 @@ categories: [自用]
 |magistrate|n. 地方执法官|
 |||
 |fertilizer|n. 肥料，促进发展者|
+|||
+|prudence|n. 谨慎，节俭，精明|
+|dramatist|n. 剧作家，编剧|
 
 <p class="wordCounts">单词收录总数</p>
 
