@@ -1052,6 +1052,8 @@ categories: [自用]
 |||
 |prudence|n. 谨慎，节俭，精明|
 |dramatist|n. 剧作家，编剧|
+|||
+|dike|n. 提防，渠，岩脉，女同性恋者<br/>v. 筑堤防护，开沟排水|
 
 <p class="wordCounts">单词收录总数</p>
 
