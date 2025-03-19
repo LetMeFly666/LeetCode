@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg">
 <meta property="article:published_time" content="2025-02-18T03:44:54.000Z">
-<meta property="article:modified_time" content="2025-03-18T16:46:30.781Z">
+<meta property="article:modified_time" content="2025-03-19T12:23:16.223Z">
 <meta property="article:author" content="Tisfy">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="面经">
@@ -409,7 +409,7 @@
 <h4 id="索引下推"><a href="#索引下推" class="headerlink" title="索引下推"></a>索引下推</h4><p>对于联合索引<code>(a, b)</code>，执行语句<code>select * from table where a &gt; 1 and b = 2</code>的时候，只有<code>a</code>字段能用到索引。在B+树中搜索到<code>a &gt; 1</code>的范围后，还需要看<code>b = 2</code>是否满足。</p>
 <ul>
 <li>在MySQL5.6之前，只能从主键值一个个回表，到主键索引上找出数据行并判断是否满足<code>b = 2</code>。</li>
-<li>在MySQL5.6引入了<strong>索引下推优化</strong>(index condition pushdown, ICP)，可以在联合索引遍历国策红肿对联合索引中包含的字段做判断，直接过滤掉不满足条件的记录，减少回表次数。</li>
+<li>在MySQL5.6引入了<strong>索引下推优化</strong>(index condition pushdown, ICP)，可以在联合索引遍历过程中对联合索引中包含的字段做判断，直接过滤掉不满足条件的记录，减少回表次数。</li>
 </ul>
 <p>下推其实就是将部分上层(服务层)负责的事情交给了下层(引擎层)去处理。</p>
 <h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>事务必须遵守4个特性（ACID）：</p>
