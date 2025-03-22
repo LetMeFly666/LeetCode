@@ -1,7 +1,7 @@
 ---
 title: 牛客-某公司笔试题-20250316-全解析
 date: 2025-03-16 23:44:51
-tags: [题解, Nowcoder]
+tags: [题解, Nowcoder, 字符串, 贪心, 前缀和, 进制转换, 模拟]
 categories: [题解, 牛客]
 ---
 
@@ -18,6 +18,8 @@ categories: [题解, 牛客]
 ## 一：单词规律(模式匹配)
 
 题目地址：[LeetCode - 290.单词规律](https://leetcode.cn/problems/word-pattern/)
+
+标签：[字符串](https://blog.letmefly.xyz/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/)
 
 ### 题目描述
 
@@ -127,6 +129,8 @@ public:
 ## 二：下一个更大元素
 
 类似题目：[LeetCode - 556.下一个更大元素III](https://leetcode.cn/problems/next-greater-element-iii/)
+
+标签：[贪心](https://blog.letmefly.xyz/tags/%E8%B4%AA%E5%BF%83/)
 
 ### 题目描述
 
@@ -257,6 +261,8 @@ public:
 ## 三：找两个和为目标值且不重叠的子数组
 
 题目地址：[LeetCode - 1477.找两个和为目标值且不重叠的子数组](https://leetcode.cn/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/)
+
+标签：[前缀和](https://blog.letmefly.xyz/tags/%E5%89%8D%E7%BC%80%E5%92%8C/)
 
 ### 题目描述
 
@@ -389,6 +395,8 @@ public:
 ## 四：Protocol Buffers序列化和反序列化模拟
 
 题目地址：暂未找到
+
+标签：[进制转换](https://blog.letmefly.xyz/tags/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/)、[模拟](https://blog.letmefly.xyz/tags/%E6%A8%A1%E6%8B%9F/)
 
 ### 题目描述
 
