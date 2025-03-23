@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-23 09:37:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-23 10:32:35
+ * @LastEditTime: 2025-03-23 10:39:28
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -84,7 +84,12 @@ public:
     bool canBeValid(string s, string locked) {
         int l = 0, r = 0;
         for (int i = 0; i < s.size(); i++) {
-            if (locked[i]) {
+            if (locked[i] == '0') {
+                l--, r++;
+                if (l < 0) {
+                    l = 1;
+                }
+            } else {  // ()
                 if (s[i] == '(') {
                     l++, r++;
                 } else {
@@ -93,13 +98,8 @@ public:
                         return false;
                     }
                     if (l < 0) {
-                        l = r % 2 ? 1 : 0;
+                        l = 1;
                     }
-                }
-            } else {  // *
-                l--, r++;
-                if (l < 0) {
-                    l = r % 2 ? 1 : 0;
                 }
             }
         }
