@@ -8,14 +8,14 @@ class Solution {
     public boolean canBeValid(String s, String locked) {
         int l = 0, r = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (locked[i] == '0') {
+            if (locked.charAt(i) == '0') {
                 l--;
                 r++;
                 if (l < 0) {
                     l = 1;
                 }
             } else {
-                if (s[i] == '(') {
+                if (s.charAt(i) == '(') {
                     l++;
                     r++;
                 } else {
