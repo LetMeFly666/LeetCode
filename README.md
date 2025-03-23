@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-22 23:03:04
+ * @LastEditTime: 2025-03-23 20:33:07
 -->
 # LetLeet Blog
 
@@ -90,6 +90,7 @@
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
+|借助mitmproxy通过电子邮件隐式传输信息|<a href="https://blog.letmefly.xyz/2025/03/23/Other-Network-HowToSendHiddenMsgThroughEmailWithMitmproxy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146461437">CSDN博客</a>|
 |面经 - 当前只有计网|<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">本平台博客</a>|无|
 |Vjudge使用小指南 - Virtual Judge - 一个Online Judge(OJ)平台 - 支持大量第三方题库|<a href="https://blog.letmefly.xyz/2024/08/14/Other-OJ-Vjudge-how2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/141185238">CSDN博客</a>|
 |OWA(Outlook Web App) - 详细总结调研 - 特征相关|<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">本平台博客</a>|**暂**无|
