@@ -1061,6 +1061,9 @@ categories: [自用]
 |Islam|n. 伊斯兰教，伊斯兰教徒|
 |capita|n. (牲口)头数|
 |indebtedness|n. 负债，债务，受惠，蒙恩|
+|||
+|rascal|n. 无赖，坏蛋，淘气鬼，不诚实的人|
+|lioness|n. 母狮|
 
 <p class="wordCounts">单词收录总数</p>
 

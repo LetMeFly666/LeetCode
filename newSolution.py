@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-03-17 12:53:54
+LastEditTime: 2025-03-23 10:41:28
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -51,6 +51,7 @@ lastSHA = get_latest_commit_sha()
 
 # 认领issue
 os.system(f'git checkout -b {num}')
+os.system(f'git push --set-upstream origin {num}')  # (#832)
 issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH" -l "题解" -a "@me"').read()
 print(issueCreateResult)
 issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
