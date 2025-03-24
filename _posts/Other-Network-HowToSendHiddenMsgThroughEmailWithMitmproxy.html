@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="借助mitmproxy通过电子邮件隐式传输信息前言这其实是我上上周的组会周报。 要实现的效果： 假设邮件发送方的电脑不能连接外网只能通过自建OWA等服务向内网邮箱发送邮件，但接收方除了可以通过内网访问邮件服务接收邮件外还能连接外网。在邮件收发双方各自植入一个mitmproxy脚本，发送方脚本在发送方电脑上扫描到秘密信息想要传递出来，接收方脚本获取到秘密信息后将信息解密并悄悄传输到外网。 整个过程需">
+<meta property="og:type" content="website">
+<meta property="og:title" content="借助mitmproxy通过电子邮件隐式传输信息">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Network-HowToSendHiddenMsgThroughEmailWithMitmproxy.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="借助mitmproxy通过电子邮件隐式传输信息前言这其实是我上上周的组会周报。 要实现的效果： 假设邮件发送方的电脑不能连接外网只能通过自建OWA等服务向内网邮箱发送邮件，但接收方除了可以通过内网访问邮件服务接收邮件外还能连接外网。在邮件收发双方各自植入一个mitmproxy脚本，发送方脚本在发送方电脑上扫描到秘密信息想要传递出来，接收方脚本获取到秘密信息后将信息解密并悄悄传输到外网。 整个过程需">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/da1213d9daee496d985dceb63d8d03b9.jpeg">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f12b9331cfd9410f97c11dcb5af45f36.jpeg">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/c9bc55cbd8ca40eda5e544b11d32b262.jpeg">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/9cfd3e3e48c641f4a12a7a82cd53c44f.png">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/05238e8a521644abacb6decabde5dc7b.png">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/308711a1afdb43548e07ece916e7cc62.png">
+<meta property="article:published_time" content="2025-03-23T12:29:17.000Z">
+<meta property="article:modified_time" content="2025-03-24T10:11:07.377Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="抓包">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/da1213d9daee496d985dceb63d8d03b9.jpeg">
+  
+  
+  
+  <title>借助mitmproxy通过电子邮件隐式传输信息 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="借助mitmproxy通过电子邮件隐式传输信息"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="借助mitmproxy通过电子邮件隐式传输信息"><a href="#借助mitmproxy通过电子邮件隐式传输信息" class="headerlink" title="借助mitmproxy通过电子邮件隐式传输信息"></a>借助mitmproxy通过电子邮件隐式传输信息</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这其实是我上上周的组会周报。</p>
+<p><strong>要实现的效果：</strong></p>
+<p>假设邮件发送方的电脑不能连接外网只能通过自建OWA等服务向内网邮箱发送邮件，但接收方除了可以通过内网访问邮件服务接收邮件外还能连接外网。在邮件收发双方各自植入一个mitmproxy脚本，发送方脚本在发送方电脑上扫描到秘密信息想要传递出来，接收方脚本获取到秘密信息后将信息解密并悄悄传输到外网。</p>
+<p>整个过程需要保证：收发双方在浏览器中无法察觉邮件被篡改了。</p>
+<p><strong>应用场景(讲故事)：</strong></p>
+<p>AB两公司都是以安全为主业的公司，B公司为了测试A公司的安全保密程度是否可靠，向A公司发起了挑战，以成功将A公司的核心电脑上的一些信息传输出来为目标。</p>
+<p>A公司接受了这一挑战，为了防止A公司核心电脑上的内容遭到泄露，A公司将核心电脑修改为只能连接内网，A公司认为，由于B公司无法访问A公司内网，所以这样就会尽可能地安全。</p>
+<p>但是A公司的核心电脑在某些时候仍然需要被使用，因为疫情等原因A公司有员工使用非核心电脑在家远程办公。A公司的主管有时需要使用核心电脑通过内网和非核心成员进行沟通。</p>
+<p>B公司决定利用这一特性，想要通过A公司将邮件通过内网发送给能连接外网的非核心电脑这一特性来将核心电脑的信息传输出来。</p>
+<p>假设B公司已经利用已有漏洞在A公司的电脑上植入了一些脚本，这些脚本可以进行如下操作：</p>
+<ol>
+<li>对于A公司不能联网的核心电脑，脚本读取核心电脑上的一些信息。并在核心电脑上静默安装可信任证书，使用mitmproxy工具，在核心电脑使用邮件客户端（实际上走的HTTPS协议）发送消息时，将想要传输的消息编码加密并以一定的格式附加到邮件的末尾。</li>
+<li>对于A公司能联网的非核心电脑，脚本同样通过mitmproxy，在非核心成员通过网页读取邮件时，读取邮件中附加的内容并解码，将邮件内容还原。之后由于非核心电脑能够连接公网，脚本可以直接往B公司预留接口发送加密后的信息，至此A公司只能连接内网的核心电脑上的一部分信息也被隐式地传输了出来。</li>
+</ol>
+<p>这样，核心电脑和非核心电脑所能看到的都是正常的邮件，A公司很难察觉。因此，B公司胜利，成功证明了以安全为主业的A公司仍然存在安全保障不周的漏洞。</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="改包"><a href="#改包" class="headerlink" title="改包"></a>改包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install mitmproxy<br>mitmproxy --mode transparent  <span class="hljs-comment"># 禁止python透过防火墙的话，可能需要管理员权限下运行</span><br><span class="hljs-comment"># 也可以指定只捕获本机数据包：mitmproxy -s main.py --listen-host localhost，这样的话在我笔记本上实测不需要管理员权限</span><br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问<code>http://mitm.it</code>下载证书并安装：</p>
+<ul>
+<li>双击P12文件，启动导入向导。</li>
+<li>选择证书存储位置(这将决定谁将信任该证书——仅当前Windows用户OR机器上的所有人)点击下一步。</li>
+<li>再次点击下一步。</li>
+<li>将密码留空并点击下一步。</li>
+<li>选择“将所有证书放入以下存储”，然后点击浏览，并选择“受信任的根证书颁发机构”。</li>
+<li>点击确定和下一步。</li>
+<li>点击完成。</li>
+<li>在警告对话框中点击是以确认。</li>
+</ul>
+<p>这一步中，若是向“当前用户”安装证书，则不需要管理员权限。</p>
+<p>当然也可以使用命令行添加证书（未实操）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">certutil -addstore root 0.crt<br></code></pre></td></tr></table></figure>
+
+<p>若想编写脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> mitmproxy <span class="hljs-keyword">import</span> http<br><span class="hljs-keyword">import</span> logging<br><br>logger_url = logging.getLogger(<span class="hljs-string">&#x27;logger_url&#x27;</span>)<br>formatter_url = logging.Formatter(<span class="hljs-string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;</span>)<br><span class="hljs-keyword">for</span> handler <span class="hljs-keyword">in</span> logger_url.handlers[:]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(handler, logging.StreamHandler):<br>        logger_url.removeHandler(handler)<br>logger_url.setLevel(logging.DEBUG)<br>filehandler_url = logging.FileHandler(<span class="hljs-string">&#x27;url.log&#x27;</span>)<br>filehandler_url.setFormatter(formatter_url)<br>logger_url.addHandler(filehandler_url)<br><br><br>logger_text = logging.getLogger(<span class="hljs-string">&#x27;logger_text&#x27;</span>)<br>formatter_text = logging.Formatter(<span class="hljs-string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;</span>)<br><span class="hljs-keyword">for</span> handler <span class="hljs-keyword">in</span> logger_text.handlers[:]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(handler, logging.StreamHandler):<br>        logger_text.removeHandler(handler)<br>logger_text.setLevel(logging.DEBUG)<br>filehandler_text = logging.FileHandler(<span class="hljs-string">&#x27;text.log&#x27;</span>)<br>filehandler_text.setFormatter(formatter_text)<br>logger_text.addHandler(filehandler_text)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-comment"># # 修改请求</span><br>    <span class="hljs-comment"># if &quot;letmefly.xyz&quot; in flow.request.pretty_url:</span><br>    <span class="hljs-comment">#     flow.request.headers[&quot;User-Agent&quot;] = &quot;Modified-Agent&quot;</span><br>    <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">response</span>(<span class="hljs-params">flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-comment"># 修改响应</span><br>    logger_url.info(flow.request.pretty_url)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;web.letmefly.xyz&quot;</span> <span class="hljs-keyword">in</span> flow.request.pretty_url <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;text/html&#x27;</span> <span class="hljs-keyword">in</span> flow.response.headers.get(<span class="hljs-string">&#x27;content-type&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>):<br>    <span class="hljs-comment"># if flow.request.pretty_url == &#x27;https://web.letmefly.xyz/&#x27;:</span><br>        logger_url.info(<span class="hljs-string">&#x27;replace HTML to LMTH&#x27;</span>)<br>        <span class="hljs-comment"># logger_text.info(flow.response.text)</span><br>        flow.response.text = flow.response.text.replace(<span class="hljs-string">&quot;HTML&quot;</span>, <span class="hljs-string">&quot;LMTH&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>设置代理服务器为<code>localhost:8080</code>，然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mitmproxy -s modifyPackage.py --listen-host localhost<br></code></pre></td></tr></table></figure>
+
+<p>结果发现：请求替换成功！</p>
+<p>代理前：</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/da1213d9daee496d985dceb63d8d03b9.jpeg" srcset="/img/loading.gif" lazyload alt="代理前"></p>
+<!-- ![代理前](../../binaryFiles/pics/20250308/beforeChange.jpg) -->
+
+<p>代理后：</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f12b9331cfd9410f97c11dcb5af45f36.jpeg" srcset="/img/loading.gif" lazyload alt="代理后"></p>
+<!-- ![代理后](../../binaryFiles/pics/20250308/afterchange.jpg) -->
+
+<p>由于具有主机操作权限，所以主机信任mitm颁发的证书，浏览器也没有任何“不安全警告”，页面就这么悄无声息地被替换了。</p>
+<h3 id="邮件发送"><a href="#邮件发送" class="headerlink" title="邮件发送"></a>邮件发送</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> smtplib<br><span class="hljs-keyword">from</span> email.mime.text <span class="hljs-keyword">import</span> MIMEText<br><span class="hljs-keyword">from</span> email.mime.multipart <span class="hljs-keyword">import</span> MIMEMultipart<br><span class="hljs-keyword">from</span> password <span class="hljs-keyword">import</span> sender_password<br><br><span class="hljs-comment"># 邮件配置</span><br>smtp_server = <span class="hljs-string">&#x27;smtp.qq.com&#x27;</span><br>smtp_port = <span class="hljs-number">587</span><br>sender_email = <span class="hljs-string">&#x27;LetMeFly666@qq.com&#x27;</span><br>sender_password = sender_password<br>receiver_email = <span class="hljs-string">&#x27;Tisfy@qq.com&#x27;</span><br><br><span class="hljs-comment"># 创建邮件内容</span><br>subject = <span class="hljs-string">&#x27;这是一封正常邮件&#x27;</span><br>body = <span class="hljs-string">&#x27;今天中午吃饭吗&#x27;</span><br>msg = MIMEMultipart()<br>msg[<span class="hljs-string">&#x27;From&#x27;</span>] = sender_email<br>msg[<span class="hljs-string">&#x27;To&#x27;</span>] = receiver_email<br>msg[<span class="hljs-string">&#x27;Subject&#x27;</span>] = subject<br>msg.attach(MIMEText(body, <span class="hljs-string">&#x27;plain&#x27;</span>))<br><br><span class="hljs-comment"># 发送邮件</span><br><span class="hljs-keyword">try</span>:<br>    server = smtplib.SMTP(smtp_server, smtp_port)<br>    server.starttls()<br>    server.login(sender_email, sender_password)<br>    server.sendmail(sender_email, receiver_email, msg.as_string())<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;邮件发送成功&quot;</span>)<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;邮件发送失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><span class="hljs-keyword">finally</span>:<br>    server.quit()<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/c9bc55cbd8ca40eda5e544b11d32b262.jpeg" srcset="/img/loading.gif" lazyload alt="发送成功"></p>
+<!-- ![发送成功](../../binaryFiles/pics/20250308/sendok.jpg) -->
+
+<h3 id="邮件接收"><a href="#邮件接收" class="headerlink" title="邮件接收"></a>邮件接收</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> imaplib<br><span class="hljs-keyword">import</span> email<br><span class="hljs-keyword">from</span> email.header <span class="hljs-keyword">import</span> decode_header<br><span class="hljs-keyword">from</span> password <span class="hljs-keyword">import</span> sender_password<br><br><span class="hljs-comment"># 邮件配置</span><br>imap_server = <span class="hljs-string">&#x27;imap.qq.com&#x27;</span><br>imap_port = <span class="hljs-number">993</span><br>email_address = <span class="hljs-string">&#x27;tf.li@foxmail.com&#x27;</span><br>email_password = sender_password<br><br><span class="hljs-comment"># 连接到IMAP服务器</span><br><span class="hljs-keyword">try</span>:<br>    mail = imaplib.IMAP4_SSL(imap_server, imap_port)<br>    mail.login(email_address, email_password)<br>    mail.select(<span class="hljs-string">&#x27;inbox&#x27;</span>)  <span class="hljs-comment"># 选择收件箱</span><br><br>    <span class="hljs-comment"># 搜索邮件</span><br>    status, messages = mail.search(<span class="hljs-literal">None</span>, <span class="hljs-string">&#x27;ALL&#x27;</span>)  <span class="hljs-comment"># 获取所有邮件</span><br>    <span class="hljs-keyword">if</span> status != <span class="hljs-string">&#x27;OK&#x27;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;没有找到邮件&quot;</span>)<br>        exit()<br><br>    <span class="hljs-comment"># 获取邮件列表</span><br>    mail_ids = messages[<span class="hljs-number">0</span>].split()<br>    latest_mail_id = mail_ids[-<span class="hljs-number">1</span>]  <span class="hljs-comment"># 获取最新的一封邮件</span><br><br>    <span class="hljs-comment"># 获取邮件内容</span><br>    status, msg_data = mail.fetch(latest_mail_id, <span class="hljs-string">&#x27;(RFC822)&#x27;</span>)<br>    <span class="hljs-keyword">if</span> status != <span class="hljs-string">&#x27;OK&#x27;</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;无法获取邮件内容&quot;</span>)<br>        exit()<br><br>    <span class="hljs-comment"># 解析邮件内容</span><br>    <span class="hljs-keyword">for</span> response_part <span class="hljs-keyword">in</span> msg_data:<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(response_part, <span class="hljs-built_in">tuple</span>):<br>            msg = email.message_from_bytes(response_part[<span class="hljs-number">1</span>])<br>            subject, encoding = decode_header(msg[<span class="hljs-string">&#x27;Subject&#x27;</span>])[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(subject, <span class="hljs-built_in">bytes</span>):<br>                subject = subject.decode(encoding <span class="hljs-keyword">if</span> encoding <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>            from_ = msg.get(<span class="hljs-string">&#x27;From&#x27;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;主题: <span class="hljs-subst">&#123;subject&#125;</span>&quot;</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;发件人: <span class="hljs-subst">&#123;from_&#125;</span>&quot;</span>)<br><br>            <span class="hljs-comment"># 获取邮件正文</span><br>            <span class="hljs-keyword">if</span> msg.is_multipart():<br>                <span class="hljs-keyword">for</span> part <span class="hljs-keyword">in</span> msg.walk():<br>                    content_type = part.get_content_type()<br>                    content_disposition = <span class="hljs-built_in">str</span>(part.get(<span class="hljs-string">&quot;Content-Disposition&quot;</span>))<br>                    <span class="hljs-keyword">if</span> content_type == <span class="hljs-string">&#x27;text/plain&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;attachment&#x27;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> content_disposition:<br>                        body = part.get_payload(decode=<span class="hljs-literal">True</span>).decode()<br>                        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正文: <span class="hljs-subst">&#123;body&#125;</span>&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                body = msg.get_payload(decode=<span class="hljs-literal">True</span>).decode()<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正文: <span class="hljs-subst">&#123;body&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;接收邮件失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><span class="hljs-keyword">finally</span>:<br>    mail.logout()<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[!CAUTION]</p>
+<p>在邮件接收还未认证的时候，忽然想到mitmproxy是不是只能抓HTTP(s)不能抓SMTP之类的</p>
+<p>发了个邮件果然没抓到。。。</p>
+</blockquote>
+<h3 id="客户端发送邮件抓包"><a href="#客户端发送邮件抓包" class="headerlink" title="客户端发送邮件抓包"></a>客户端发送邮件抓包</h3><p>那就不模拟了，直接使用客户端发吧，这样也更真实一点。</p>
+<p>以QQ邮件为例，发送邮件时会向<code>https://mail.qq.com/cgi-bin/compose_send?sid=xxxxx</code>发送一个POST请求，表单数据包括：</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs nix"><span class="hljs-params">mailtype:</span> <br><span class="hljs-params">dockey:</span> <br><span class="hljs-params">bigattachcontent:</span> <br><span class="hljs-params">xxxxxxxxxxx:</span> xxxxxxxxx<br><span class="hljs-params">sid:</span> xxxxx<br><span class="hljs-params">bigattachcnt:</span> <br><span class="hljs-params">exstore:</span> <br><span class="hljs-params">from_s:</span> cnew<br><span class="hljs-params">swap:</span> <br><span class="hljs-params">signtype:</span> <br><span class="hljs-params">newwin:</span> <br><span class="hljs-params">verifykey:</span> <br><span class="hljs-params">stationeryCount:</span> <br><span class="hljs-params">to:</span> <span class="hljs-string">&quot;Let&quot;</span><span class="hljs-operator">&lt;</span>Tisfy@qq.com<span class="hljs-operator">&gt;</span><br><span class="hljs-params">swap3:</span> <br><span class="hljs-params">cc:</span> <br><span class="hljs-params">subject:</span> 今日指令<br><span class="hljs-params">content__html:</span> 一切正常，和昨天一样<br><span class="hljs-params">sendmailname:</span> tisfy@foxmail.com<br><span class="hljs-params">savesendbox:</span> <span class="hljs-number">1</span><br><span class="hljs-params">swap2:</span> <br><span class="hljs-params">transattach:</span> <br><span class="hljs-params">SrcMailCharset:</span> <br><span class="hljs-params">xqqstyle:</span> <br><span class="hljs-params">mailbgmusic:</span> <br><span class="hljs-params">actiontype:</span> send<br><span class="hljs-params">priority:</span> <br><span class="hljs-params">sendname:</span> LetMeFly<br><span class="hljs-params">acctid:</span> <span class="hljs-number">0</span> <br><span class="hljs-params">ReAndFw:</span> <br><span class="hljs-params">separatedcopy:</span> <span class="hljs-literal">false</span><br><span class="hljs-params">fmailid:</span> xxxx-xxxxxx<br><span class="hljs-params">ReAndFwMailid:</span> <br><span class="hljs-params">cattachelist:</span> <br><span class="hljs-params">upfilelist:</span> <br><span class="hljs-params">rsturl:</span> <br><span class="hljs-params">fileidlist:</span> <br><span class="hljs-params">t:</span> backgroundsend<br><span class="hljs-params">verifycode:</span> <br><span class="hljs-params">verifycode_cn:</span> <br><span class="hljs-params">s:</span> comm<br><span class="hljs-params">from:</span> <br><span class="hljs-params">hitaddrbook:</span> <span class="hljs-number">0</span><br><span class="hljs-params">selfdefinestation:</span> <span class="hljs-operator">-</span><span class="hljs-number">1</span><br><span class="hljs-params">backurl:</span> <br><span class="hljs-params">noatcp:</span> <br><span class="hljs-params">domaincheck:</span> <span class="hljs-number">0</span><br><span class="hljs-params">cgitm:</span> <span class="hljs-number">1741223758403</span><br><span class="hljs-params">clitm:</span> <span class="hljs-number">1741223762955</span><br><span class="hljs-params">comtm:</span> <span class="hljs-number">1741223962691</span><br><span class="hljs-params">logattcnt:</span> <span class="hljs-number">0</span><br><span class="hljs-params">logattsize:</span> <span class="hljs-number">0</span><br><span class="hljs-params">logattmethod:</span> <br><span class="hljs-params">timezone:</span> <span class="hljs-number">28800</span><br><span class="hljs-params">timezone_dst:</span> <span class="hljs-number">0</span><br><span class="hljs-params">resp_charset:</span> UTF8<br><span class="hljs-params">bgsend:</span> <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>消息内容在<code>content__html</code>字段中。又觉得可行了起来。</p>
+<h3 id="客户端接收邮件抓包"><a href="#客户端接收邮件抓包" class="headerlink" title="客户端接收邮件抓包"></a>客户端接收邮件抓包</h3><p>当用户读取具体邮件时，会请求：<code>https://mail.qq.com/cgi-bin/readmail?folderid=1&amp;folderkey=1&amp;t=readmail&amp;mailid=xxxx~xxx&amp;mode=pre&amp;maxage=3600&amp;base=11.08&amp;ver=13964&amp;sid=xxxx</code>。</p>
+<p>请求头之类的不重要，我们只要匹配这个url就行。</p>
+<p>可以看到，响应体里就是一个HTML，简化后如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=gb18030&quot;</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>今日指令 - QQ邮箱<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 此处省略一堆script、style、meta --&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">context</span>=<span class="hljs-string">&quot;邮件ID&quot;</span> <span class="hljs-attr">module</span>=<span class="hljs-string">&quot;qmReadMail&quot;</span> <span class="hljs-attr">md</span>=<span class="hljs-string">&quot;md&quot;</span> <span class="hljs-attr">mu</span>=<span class="hljs-string">&quot;mu&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;mailcontainer&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;qqmail_mailcontainer&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;mainmail&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:relative;z-index:1;margin-bottom:12px;&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;contentDiv&quot;</span> <span class="hljs-attr">onmouseover</span>=<span class="hljs-string">&quot;getTop().stopPropagation(event);&quot;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&quot;getTop().preSwapLink(event, &#x27;html&#x27;, &#x27;ZC0006_StHNHHSMYOYuV2cAGA~jBf3&#x27;);&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position:relative;font-size:14px;height:auto;padding:15px 15px 10px 15px;z-index:1;zoom:1;line-height:1.7;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;body&quot;</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;qm_con_body&quot;</span>&gt;</span><br>                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;mailContentContainer&quot;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&quot;getTop().previewContentImage(event, &#x27;&#x27;)&quot;</span> <span class="hljs-attr">onMousemove</span>=<span class="hljs-string">&quot;getTop().contentImgMouseOver(event, &#x27;&#x27;)&quot;</span> <span class="hljs-attr">onMouseout</span>=<span class="hljs-string">&quot;getTop().contentImgMouseOut(event, &#x27;&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qmbox qm_con_body_content qqmail_webmail_only&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;opacity: 0&quot;</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;mailcontent_image_operator&quot;</span> <span class="hljs-attr">onMouseover</span>=<span class="hljs-string">&quot;getTop().contentOperatorMouseOver(event)&quot;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&quot;getTop().handleOperatorClick(event)&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: fixed; left: 0; top: 0;&quot;</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;operator-item&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;图片翻译&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;operator-item-translate&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;translate&quot;</span>&gt;</span><br>                                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-inner&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;translate&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;operator-item&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;文字提取&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;operator-item-extract&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;extract&quot;</span>&gt;</span><br>                                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-inner&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;extract&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;operator-item&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;导出表格&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;operator-item-form&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;form&quot;</span>&gt;</span><br>                                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-inner&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;form&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;operator-item&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;下载图片&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;operator-item-download&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;download&quot;</span>&gt;</span><br>                                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item-inner&quot;</span> <span class="hljs-attr">operate</span>=<span class="hljs-string">&quot;download&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">                                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;DOMContentLoaded&#x27;</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                                    <span class="hljs-title function_">getTop</span>().<span class="hljs-title function_">handleScanContentImage</span>(<span class="hljs-string">&#x27;ZC0006_StHNHHSMYOYuV2cAGA~jBf3&#x27;</span>);</span><br><span class="language-javascript">                                &#125;)</span><br><span class="language-javascript">                            </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">                                <span class="hljs-comment">/* 邮件内部图片支持调起预览。 */</span></span><br><span class="language-css">                                <span class="hljs-selector-tag">img</span><span class="hljs-selector-attr">[image-inside-content=<span class="hljs-string">&#x27;1&#x27;</span>]</span> &#123;</span><br><span class="language-css">                                    <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="language-css">                                &#125;</span><br><span class="language-css">                            </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>                            一切正常，和昨天一样<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span><br><span class="language-css">                                <span class="hljs-selector-class">.qmbox</span> style, <span class="hljs-selector-class">.qmbox</span> script, <span class="hljs-selector-class">.qmbox</span> head, <span class="hljs-selector-class">.qmbox</span> link, <span class="hljs-selector-class">.qmbox</span> meta &#123;</span><br><span class="language-css">                                    <span class="hljs-attribute">display</span>: none <span class="hljs-meta">!important</span>;</span><br><span class="language-css">                                &#125;</span><br><span class="language-css">                            </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>                    <span class="hljs-comment">&lt;!-- --&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">                        <span class="hljs-selector-id">#mailContentContainer</span> <span class="hljs-selector-class">.txt</span> &#123;</span><br><span class="language-css">                            <span class="hljs-attribute">height</span>: auto;</span><br><span class="language-css">                        &#125;</span><br><span class="language-css">                    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 此处省略一堆script --&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>发送的邮件主体就出现在简化后的HTML的第38行。</p>
+<p>在研究期间还看到了一个有点意思的图，mark一下：</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/9cfd3e3e48c641f4a12a7a82cd53c44f.png" srcset="/img/loading.gif" lazyload alt="stream"></p>
+<!-- ![stream](../../binaryFiles/pics/20250308/stream.png) -->
+
+<h3 id="消息验证-发送邮件时后台篡改"><a href="#消息验证-发送邮件时后台篡改" class="headerlink" title="消息验证 - 发送邮件时后台篡改"></a>消息验证 - 发送邮件时后台篡改</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> mitmproxy <span class="hljs-keyword">import</span> http<br><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> parse_qs, urlencode<br><span class="hljs-keyword">import</span> logging<br><br>logger_url = logging.getLogger(<span class="hljs-string">&#x27;logger_url&#x27;</span>)<br>formatter_url = logging.Formatter(<span class="hljs-string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;</span>)<br><span class="hljs-keyword">for</span> handler <span class="hljs-keyword">in</span> logger_url.handlers[:]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(handler, logging.StreamHandler):<br>        logger_url.removeHandler(handler)<br>logger_url.setLevel(logging.DEBUG)<br>filehandler_url = logging.FileHandler(<span class="hljs-string">&#x27;url.log&#x27;</span>)<br>filehandler_url.setFormatter(formatter_url)<br>logger_url.addHandler(filehandler_url)<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AddSignatureAddon</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">self, flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-comment"># 检查目标路径和请求方法</span><br>        <span class="hljs-keyword">if</span> flow.request.method == <span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;/cgi-bin/compose_send&quot;</span> <span class="hljs-keyword">in</span> flow.request.url:<br>            <span class="hljs-comment"># 确保Content-Type正确</span><br>            content_type = flow.request.headers.get(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span> <span class="hljs-keyword">in</span> content_type:<br>                <span class="hljs-comment"># 解析原始表单数据</span><br>                <span class="hljs-keyword">try</span>:<br>                    parsed_data = parse_qs(flow.request.content.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>                <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                    logger_url(<span class="hljs-string">f&quot;解析表单数据失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>                    <span class="hljs-keyword">return</span><br><br>                <span class="hljs-comment"># 修改content__html字段</span><br>                <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;content__html&quot;</span> <span class="hljs-keyword">in</span> parsed_data <span class="hljs-keyword">and</span> parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>]:<br>                    original_content = parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>][<span class="hljs-number">0</span>]<br>                    new_content = original_content + <span class="hljs-string">&quot;*******计划有变*******&quot;</span><br>                    parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>][<span class="hljs-number">0</span>] = new_content<br><br>                    <span class="hljs-comment"># 重新编码并更新请求内容</span><br>                    updated_content = urlencode(parsed_data, doseq=<span class="hljs-literal">True</span>).encode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>                    flow.request.content = updated_content<br>                    logger_url(<span class="hljs-string">&quot;成功添加签名！&quot;</span>)<br>                <span class="hljs-keyword">else</span>:<br>                    logger_url(<span class="hljs-string">&quot;未找到content__html字段&quot;</span>)<br><br>addons = [AddSignatureAddon()]<br></code></pre></td></tr></table></figure>
+
+<p>设置代理服务器为<code>localhost:8080</code>，然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mitmproxy -s modifyPackage.py --listen-host localhost<br></code></pre></td></tr></table></figure>
+
+<p>发送邮件，可以看到网页端没有任何异常，浏览器控制台也一切正常。</p>
+<p>但是实际发出的邮件就不一样了，多了一段<code>*******签名*******</code></p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/05238e8a521644abacb6decabde5dc7b.png" srcset="/img/loading.gif" lazyload alt="实际邮件"></p>
+<!-- ![实际邮件](../../binaryFiles/pics/20250308/realEmail.png) -->
+
+<h3 id="消息验证-收到邮件时后台篡改"><a href="#消息验证-收到邮件时后台篡改" class="headerlink" title="消息验证 - 收到邮件时后台篡改"></a>消息验证 - 收到邮件时后台篡改</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">response</span>(<span class="hljs-params">self, flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-keyword">if</span> flow.request.method == <span class="hljs-string">&#x27;GET&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;/cgi-bin/readmail&#x27;</span> <span class="hljs-keyword">in</span> flow.request.url:<br><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;text/html&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> flow.response.headers.get(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;&quot;</span>):<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-comment"># 解析HTML</span><br>        soup = BeautifulSoup(flow.response.content, <span class="hljs-string">&quot;lxml&quot;</span>)<br>        content_div = soup.find(<span class="hljs-string">&quot;div&quot;</span>, &#123;<span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;mailContentContainer&quot;</span>&#125;)<br>        logger.info(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;content_div&#125;</span>&#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> content_div:<br>            <span class="hljs-keyword">return</span><br><br>        <span class="hljs-comment"># 提取所有文本节点</span><br>        text_nodes = content_div.find_all(text=<span class="hljs-literal">True</span>, recursive=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> text_nodes:<br>            <span class="hljs-comment"># 匹配签名模式（支持动态内容）</span><br>            <span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;\*&#123;7&#125;(.*?)\*&#123;7&#125;&#x27;</span>, node.string)<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>                signature = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;提取到签名：<span class="hljs-subst">&#123;signature&#125;</span>&quot;</span>)<br>                clean_text = re.sub(<span class="hljs-string">r&#x27;\*&#123;7&#125;.*?\*&#123;7&#125;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, node.string)<br>                node.replace_with(clean_text)<br><br>        <span class="hljs-comment"># 更新响应内容</span><br>        flow.response.content = <span class="hljs-built_in">str</span>(soup).encode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>        flow.response.headers[<span class="hljs-string">&quot;Content-Length&quot;</span>] = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">len</span>(flow.response.content))<br></code></pre></td></tr></table></figure>
+
+<p>等下，篡改失败了？</p>
+<p>仔细一看，response中有这么一段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=gb18030&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>logging的日志也显示乱码。</p>
+<p>通过解码后能正常解析并修改原文内容了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">response</span>(<span class="hljs-params">self, flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>    <span class="hljs-keyword">if</span> flow.request.method == <span class="hljs-string">&#x27;GET&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;/cgi-bin/readmail&#x27;</span> <span class="hljs-keyword">in</span> flow.request.url:<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;text/html&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> flow.response.headers.get(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;&quot;</span>):<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">try</span>:<br>            html_content = flow.response.content.decode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br>        <span class="hljs-keyword">except</span> UnicodeDecodeError:<br>            logger.info(<span class="hljs-string">&#x27;解码失败：可能不是GB18030编码&#x27;</span>)<br>        soup = BeautifulSoup(html_content, <span class="hljs-string">&quot;lxml&quot;</span>)<br>        content_div = soup.find(<span class="hljs-string">&quot;div&quot;</span>, &#123;<span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;mailContentContainer&quot;</span>&#125;)<br>        logger.info(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;content_div&#125;</span>&#x27;</span>)<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> content_div:<br>            <span class="hljs-keyword">return</span><br><br>        <span class="hljs-comment"># 提取所有文本节点</span><br>        text_nodes = content_div.find_all(text=<span class="hljs-literal">True</span>, recursive=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> text_nodes:<br>            <span class="hljs-comment"># 匹配签名模式（支持动态内容）</span><br>            <span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;\*&#123;7&#125;(.*?)\*&#123;7&#125;&#x27;</span>, node.string)<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>                signature = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;提取到签名：<span class="hljs-subst">&#123;signature&#125;</span>&quot;</span>)<br>                clean_text = re.sub(<span class="hljs-string">r&#x27;\*&#123;7&#125;.*?\*&#123;7&#125;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, node.string)<br>                node.replace_with(clean_text)<br><br>        <span class="hljs-comment"># 更新响应内容</span><br>        flow.response.content = <span class="hljs-built_in">str</span>(soup).encode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br>        flow.response.headers[<span class="hljs-string">&quot;Content-Length&quot;</span>] = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">len</span>(flow.response.content))<br></code></pre></td></tr></table></figure>
+
+<p>但是通过抓包可以发现，通过beautifulsoup解析html并重新编码html，产生内容还是会稍有不同：</p>
+<ol>
+<li><p>header：原始编码为<code>gb18030</code>，但decode并由BS解析后就变成了<code>utf-8</code></p>
+<p> 原来：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=gb18030&quot;</span>/&gt;</span><br>````<br><br>解析后：<br><br>```html<br><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;text/html; charset=utf-8&quot;</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;Content-Type&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>有些细节和原来内容不完全一致</p>
+<p> 例如1.中的顺序，原来是先<code>http-equiv</code>后<code>content</code>，结果变成了先<code>content</code>后<code>http-equiv</code></p>
+<p> 还有的<code>&amp;nbsp;</code>会被直接由空格代替。</p>
+</li>
+</ol>
+<p>解决方法有二：</p>
+<ol>
+<li>令BS树的编码方式为gb18030</li>
+<li>不BS树，直接用正则解析</li>
+</ol>
+<p>使用方法一：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">meta_tag = soup.find(<span class="hljs-string">&quot;meta&quot;</span>, attrs=&#123;<span class="hljs-string">&quot;http-equiv&quot;</span>: <span class="hljs-string">&quot;Content-Type&quot;</span>&#125;)<br><span class="hljs-keyword">if</span> meta_tag:<br>    meta_tag[<span class="hljs-string">&quot;content&quot;</span>] = <span class="hljs-string">&quot;text/html; charset=gb18030&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>抓包发现meta content的内容正常了，但邮件直接全部不显示。</p>
+<p>肉眼可见BS对原文内容进行了很多修改，于是决定使用方案二</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    html_content = flow.response.content.decode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br><span class="hljs-keyword">except</span> UnicodeDecodeError:<br>    logger.info(<span class="hljs-string">&#x27;解码失败：可能不是GB18030编码&#x27;</span>)<br><span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;\*&#123;7&#125;(.*?)\*&#123;7&#125;&#x27;</span>, html_content)<br><span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>    signature = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)<br>    logger.info(<span class="hljs-string">f&quot;提取到签名：<span class="hljs-subst">&#123;signature&#125;</span>&quot;</span>)<br>    html_content = re.sub(<span class="hljs-string">r&#x27;\*&#123;7&#125;.*?\*&#123;7&#125;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, html_content)<br>flow.response.content = html_content.encode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br>flow.response.headers[<span class="hljs-string">&quot;Content-Length&quot;</span>] = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">len</span>(flow.response.content))<br></code></pre></td></tr></table></figure>
+
+<p>然后功能实现了</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/308711a1afdb43548e07ece916e7cc62.png" srcset="/img/loading.gif" lazyload alt="没有隐藏信息"></p>
+<!-- ![没有隐藏信息](../../binaryFiles/pics/20250308/noHiddenMessage.png) -->
+
+<h3 id="展示工作"><a href="#展示工作" class="headerlink" title="展示工作"></a>展示工作</h3><p>所有所需功能已经实现，接下来就是演示了。</p>
+<p>发送端：一个小黑框，接收想要隐蔽传递的信息</p>
+<p>接收端：一个小黑框，显示接收到的隐藏信息</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs markdown">今日指令<br><br>今日跑步挑战：今天每人跑步10000米，保持健康，突破自我！<br>（记录时间：，完成情况：）<br><br>今日阅读任务：今天每人阅读50页书，提升知识储备，开阔视野。<br>（书名：，进度：）<br><br>今日饮水目标：今天每人饮水2000毫升，保持身体水分平衡。<br>（完成杯数：，剩余目标：）<br><br>今日学习时间：今天每人学习2小时，专注于技能提升或兴趣培养。<br>（学习内容：，完成情况：）<br><br>今日冥想练习：今天每人冥想15分钟，放松身心，提升专注力。<br>（冥想主题：，感受：）<br><br>今日写作任务：今天每人写作500字，记录生活或创作故事。<br>（写作主题：，完成字数：）<br><br>今日蔬果摄入：今天每人摄入5份蔬果，保持均衡饮食。<br>（蔬果种类：，完成份数：）<br><br>今日早睡目标：今天每人晚上10点前入睡，保证充足睡眠。<br>（实际入睡时间：，睡眠质量：）<br><br>今日感恩记录：今天每人记录3件值得感恩的事，培养积极心态。<br>（感恩事项：1.<span class="hljs-strong">____</span> 2.<span class="hljs-strong">____</span> 3.<span class="hljs-strong">____</span>）<br><br>今日运动打卡：今天每人完成30分钟运动，形式不限（跑步、瑜伽、健身等）。<br>（运动类型：，完成时长：）<br></code></pre></td></tr></table></figure>
+
+<h3 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h3><p>改包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> mitmproxy <span class="hljs-keyword">import</span> http<br><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> parse_qs, urlencode<br><span class="hljs-keyword">import</span> logging<br><span class="hljs-keyword">import</span> re<br><br>logger = logging.getLogger(<span class="hljs-string">&#x27;logger_url&#x27;</span>)<br>formatter_url = logging.Formatter(<span class="hljs-string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;</span>)<br><span class="hljs-keyword">for</span> handler <span class="hljs-keyword">in</span> logger.handlers[:]:<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(handler, logging.StreamHandler):<br>        logger.removeHandler(handler)<br>logger.setLevel(logging.DEBUG)<br>filehandler_url = logging.FileHandler(<span class="hljs-string">&#x27;url.log&#x27;</span>)<br>filehandler_url.setFormatter(formatter_url)<br>logger.addHandler(filehandler_url)<br>logger.info(<span class="hljs-string">&#x27;url log init&#x27;</span>)<br><br><br><span class="hljs-comment"># logger_text = logging.getLogger(&#x27;logger_text&#x27;)</span><br><span class="hljs-comment"># formatter_text = logging.Formatter(&#x27;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#x27;)</span><br><span class="hljs-comment"># for handler in logger_text.handlers[:]:</span><br><span class="hljs-comment">#     if isinstance(handler, logging.StreamHandler):</span><br><span class="hljs-comment">#         logger_text.removeHandler(handler)</span><br><span class="hljs-comment"># logger_text.setLevel(logging.DEBUG)</span><br><span class="hljs-comment"># filehandler_text = logging.FileHandler(&#x27;text.log&#x27;)</span><br><span class="hljs-comment"># filehandler_text.setFormatter(formatter_text)</span><br><span class="hljs-comment"># logger_text.addHandler(filehandler_text)</span><br><br><br><span class="hljs-comment"># def request(flow: http.HTTPFlow) -&gt; None:</span><br><span class="hljs-comment">#     # 修改请求</span><br><span class="hljs-comment">#     # if &quot;letmefly.xyz&quot; in flow.request.pretty_url:</span><br><span class="hljs-comment">#     if &quot;web.letmefly.xyz&quot; in flow.request.pretty_url and &#x27;text/html&#x27; in flow.response.headers.get(&#x27;content-type&#x27;, &#x27;&#x27;):</span><br><span class="hljs-comment">#         # flow.request.headers[&quot;User-Agent&quot;] = &quot;Modified-Agent&quot;</span><br><span class="hljs-comment">#         flow.request.text  # 暂时未知</span><br><span class="hljs-comment">#     pass</span><br><br><span class="hljs-comment"># def response(flow: http.HTTPFlow) -&gt; None:</span><br><span class="hljs-comment">#     # 修改响应</span><br><span class="hljs-comment">#     logger.info(flow.request.pretty_url)</span><br><span class="hljs-comment">#     if &quot;web.letmefly.xyz&quot; in flow.request.pretty_url and &#x27;text/html&#x27; in flow.response.headers.get(&#x27;content-type&#x27;, &#x27;&#x27;):</span><br><span class="hljs-comment">#     # if flow.request.pretty_url == &#x27;https://web.letmefly.xyz/&#x27;:</span><br><span class="hljs-comment">#         logger.info(&#x27;replace HTML to LMTH&#x27;)</span><br><span class="hljs-comment">#         # logger_text.info(flow.response.text)</span><br><span class="hljs-comment">#         flow.response.text = flow.response.text.replace(&quot;HTML&quot;, &quot;LMTH&quot;)</span><br><br><span class="hljs-comment"># https://chat.deepseek.com/a/chat/s/354e2ce6-8c46-41f3-b32b-944407aaf2f1</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AddSignatureAddon</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">request</span>(<span class="hljs-params">self, flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">if</span> flow.request.method == <span class="hljs-string">&quot;POST&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;/cgi-bin/compose_send&quot;</span> <span class="hljs-keyword">in</span> flow.request.url:<br>            content_type = flow.request.headers.get(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;&quot;</span>)<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;application/x-www-form-urlencoded&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> content_type:<br>                <span class="hljs-keyword">return</span><br>            <span class="hljs-comment"># 解析原始表单数据</span><br>            <span class="hljs-keyword">try</span>:<br>                parsed_data = parse_qs(flow.request.content.decode(<span class="hljs-string">&quot;utf-8&quot;</span>))<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                logger.info(<span class="hljs-string">f&quot;解析表单数据失败: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br>                <span class="hljs-keyword">return</span><br><br>            <span class="hljs-comment"># 修改content__html字段</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;content__html&quot;</span> <span class="hljs-keyword">in</span> parsed_data <span class="hljs-keyword">and</span> parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>]:<br>                original_content = parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>][<span class="hljs-number">0</span>]<br>                <span class="hljs-keyword">try</span>:<br>                    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;letsender&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>                        hiddenMsg = f.read()<br>                <span class="hljs-keyword">except</span>:<br>                    hiddenMsg = <span class="hljs-string">&#x27;计划有变&#x27;</span><br>                new_content = original_content + <span class="hljs-string">f&quot;*******<span class="hljs-subst">&#123;hiddenMsg&#125;</span>*******&quot;</span><br>                parsed_data[<span class="hljs-string">&quot;content__html&quot;</span>][<span class="hljs-number">0</span>] = new_content<br><br>                <span class="hljs-comment"># 重新编码并更新请求内容</span><br>                updated_content = urlencode(parsed_data, doseq=<span class="hljs-literal">True</span>).encode(<span class="hljs-string">&quot;utf-8&quot;</span>)<br>                flow.request.content = updated_content<br>                logger.info(<span class="hljs-string">&quot;成功添加签名！&quot;</span>)<br>            <span class="hljs-keyword">else</span>:<br>                logger.info(<span class="hljs-string">&quot;未找到content__html字段&quot;</span>)<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">response</span>(<span class="hljs-params">self, flow: http.HTTPFlow</span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-keyword">if</span> flow.request.method == <span class="hljs-string">&#x27;GET&#x27;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&#x27;/cgi-bin/readmail&#x27;</span> <span class="hljs-keyword">in</span> flow.request.url:<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;text/html&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> flow.response.headers.get(<span class="hljs-string">&quot;Content-Type&quot;</span>, <span class="hljs-string">&quot;&quot;</span>):<br>                <span class="hljs-keyword">return</span><br>            <span class="hljs-keyword">try</span>:<br>                html_content = flow.response.content.decode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br>            <span class="hljs-keyword">except</span> UnicodeDecodeError:<br>                logger.info(<span class="hljs-string">&#x27;解码失败：可能不是GB18030编码&#x27;</span>)<br>            <span class="hljs-comment"># soup = BeautifulSoup(html_content, &quot;lxml&quot;)</span><br>            <span class="hljs-comment"># content_div = soup.find(&quot;div&quot;, &#123;&quot;id&quot;: &quot;mailContentContainer&quot;&#125;)</span><br>            <span class="hljs-comment"># logger.info(f&#x27;&#123;content_div&#125;&#x27;)</span><br>            <span class="hljs-comment"># if not content_div:</span><br>            <span class="hljs-comment">#     return</span><br>            <span class="hljs-comment"># text_nodes = content_div.find_all(text=True, recursive=True)</span><br>            <span class="hljs-comment"># for node in text_nodes:</span><br>            <span class="hljs-comment">#     # 匹配签名模式（支持动态内容）</span><br>            <span class="hljs-comment">#     match = re.search(r&#x27;\*&#123;7&#125;(.*?)\*&#123;7&#125;&#x27;, node.string)</span><br>            <span class="hljs-comment">#     if match:</span><br>            <span class="hljs-comment">#         signature = match.group(1)</span><br>            <span class="hljs-comment">#         print(f&quot;提取到签名：&#123;signature&#125;&quot;)</span><br>            <span class="hljs-comment">#         clean_text = re.sub(r&#x27;\*&#123;7&#125;.*?\*&#123;7&#125;&#x27;, &#x27;&#x27;, node.string)</span><br>            <span class="hljs-comment">#         node.replace_with(clean_text)</span><br>            <span class="hljs-comment"># # 不知道为啥，BS解析后直接把头部的编码给改了</span><br>            <span class="hljs-comment"># meta_tag = soup.find(&quot;meta&quot;, attrs=&#123;&quot;http-equiv&quot;: &quot;Content-Type&quot;&#125;)</span><br>            <span class="hljs-comment"># if meta_tag:</span><br>            <span class="hljs-comment">#     meta_tag[&quot;content&quot;] = &quot;text/html; charset=gb18030&quot;</span><br>            <span class="hljs-keyword">match</span> = re.search(<span class="hljs-string">r&#x27;\*&#123;7&#125;(.*?)\*&#123;7&#125;&#x27;</span>, html_content)<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">match</span>:<br>                signature = <span class="hljs-keyword">match</span>.group(<span class="hljs-number">1</span>)<br>                logger.info(<span class="hljs-string">f&quot;提取到签名：<span class="hljs-subst">&#123;signature&#125;</span>&quot;</span>)<br>                <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;letreceiver&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>                    f.write(signature)<br>                html_content = re.sub(<span class="hljs-string">r&#x27;\*&#123;7&#125;.*?\*&#123;7&#125;&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, html_content)<br>            flow.response.content = html_content.encode(<span class="hljs-string">&quot;gb18030&quot;</span>)<br>            flow.response.headers[<span class="hljs-string">&quot;Content-Length&quot;</span>] = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">len</span>(flow.response.content))<br><br>addons = [AddSignatureAddon()]<br></code></pre></td></tr></table></figure>
+
+<p>发送方demo：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    data = <span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;想隐蔽传输的信息：&#x27;</span>)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;letsender&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        f.write(data)<br></code></pre></td></tr></table></figure>
+
+<p>接收方demo：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">from</span> watchdog.observers <span class="hljs-keyword">import</span> Observer<br><span class="hljs-keyword">from</span> watchdog.events <span class="hljs-keyword">import</span> FileSystemEventHandler<br><span class="hljs-keyword">import</span> os<br><br>FILE_PATH = <span class="hljs-string">&#x27;letreceiver&#x27;</span><br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(FILE_PATH):<br>    os.system(<span class="hljs-string">f&#x27;echo &gt; <span class="hljs-subst">&#123;FILE_PATH&#125;</span>&#x27;</span>)<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FileChangeHandler</span>(<span class="hljs-title class_ inherited__">FileSystemEventHandler</span>):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_modified</span>(<span class="hljs-params">self, event</span>):<br>        <span class="hljs-keyword">if</span> event.src_path.endswith(FILE_PATH):<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;File <span class="hljs-subst">&#123;FILE_PATH&#125;</span> has been modified. Reading new content...&quot;</span>)<br>            <span class="hljs-variable language_">self</span>.read_file_content()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">read_file_content</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">try</span>:<br>            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(FILE_PATH, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>                content = file.read()<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;New content:&quot;</span>)<br>                <span class="hljs-built_in">print</span>(content)<br>        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Error reading file: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    <span class="hljs-comment"># 创建事件处理器和观察者</span><br>    event_handler = FileChangeHandler()<br>    observer = Observer()<br>    observer.schedule(event_handler, path=<span class="hljs-string">&#x27;.&#x27;</span>, recursive=<span class="hljs-literal">False</span>)<br><br>    <span class="hljs-comment"># 启动观察者</span><br>    observer.start()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Started watching <span class="hljs-subst">&#123;FILE_PATH&#125;</span> for changes...&quot;</span>)<br><br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            time.sleep(<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">except</span> KeyboardInterrupt:<br>        observer.stop()<br><br>    observer.join()<br></code></pre></td></tr></table></figure>
+
+<h3 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h3><p>当然也可以通过AES加密</p>
+<p>首先随机生成个AES密钥：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Random <span class="hljs-keyword">import</span> get_random_bytes<br><br><span class="hljs-comment"># 生成256位（32字节）AES密钥</span><br>key = get_random_bytes(<span class="hljs-number">32</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;AES Key:&quot;</span>, key.<span class="hljs-built_in">hex</span>())<br></code></pre></td></tr></table></figure>
+
+<p>这里我们约定密钥为：<code>e3a9a39b3c95c109257aeb8c09cb8ad331779647c54de1a40a66d308f8e4a882</code>。</p>
+<p>当然，在实际执行的时候，密钥可不能公布出来。</p>
+<p>然后开始使用密钥加密解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">from</span> Crypto.Util.Padding <span class="hljs-keyword">import</span> pad, unpad<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">encrypt_aes</span>(<span class="hljs-params">plaintext: <span class="hljs-built_in">str</span>, key: <span class="hljs-built_in">bytes</span></span>) -&gt; <span class="hljs-built_in">bytes</span>:<br>    cipher = AES.new(key, AES.MODE_CBC)  <span class="hljs-comment"># 使用CBC模式</span><br>    ct_bytes = cipher.encrypt(pad(plaintext.encode(), AES.block_size))<br>    <span class="hljs-keyword">return</span> cipher.iv + ct_bytes  <span class="hljs-comment"># 返回IV + 密文</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt_aes</span>(<span class="hljs-params">ciphertext: <span class="hljs-built_in">bytes</span>, key: <span class="hljs-built_in">bytes</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    iv = ciphertext[:AES.block_size]<br>    ct = ciphertext[AES.block_size:]  <span class="hljs-comment"># 密文</span><br>    cipher = AES.new(key, AES.MODE_CBC, iv)<br>    pt = unpad(cipher.decrypt(ct), AES.block_size)<br>    <span class="hljs-keyword">return</span> pt.decode()<br><br>msg = <span class="hljs-string">&#x27;其实今天要进攻&#x27;</span><br>key = <span class="hljs-built_in">bytes</span>.fromhex(<span class="hljs-string">&#x27;e3a9a39b3c95c109257aeb8c09cb8ad331779647c54de1a40a66d308f8e4a882&#x27;</span>)  <span class="hljs-comment"># 演示用，实际可别公布</span><br>encrypted = encrypt_aes(msg, key)<br><span class="hljs-built_in">print</span>(encrypted.<span class="hljs-built_in">hex</span>())<br>decrypt = decrypt_aes(encrypted, key)<br><span class="hljs-built_in">print</span>(decrypt)<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">PS <span class="hljs-name">F</span>:\OtherApps\Program\Git\Store\Store20_LeetCode\tryGoPy\MGJW\thisWeek&gt; python main.py<br>a41c71290d5ebc864b0feef9537a407d8b55504148bc0755b079cd4d1005cc7b80e9a98ec1df78a858a9ca8020208fc4<br>其实今天要进攻<br>PS <span class="hljs-name">F</span>:\OtherApps\Program\Git\Store\Store20_LeetCode\tryGoPy\MGJW\thisWeek&gt; python main.py<br><span class="hljs-number">668</span>c2d139c5729d432f403fa9bfad77fdb9c38cc0ae2f8dd66deff7141b656a46b36a3d2d82b8da07ee2a1e9c1179ee7<br>其实今天要进攻<br>PS <span class="hljs-name">F</span>:\OtherApps\Program\Git\Store\Store20_LeetCode\tryGoPy\MGJW\thisWeek&gt; python main.py<br><span class="hljs-number">0</span>a6b612c98f3d602f6185adf560d5467f3f4ca1505d6f913552a4d9de459f95cdeb25c3195410e50d3ffd40297e164e0<br>其实今天要进攻<br>PS <span class="hljs-name">F</span>:\OtherApps\Program\Git\Store\Store20_LeetCode\tryGoPy\MGJW\thisWeek&gt; python main.py<br><span class="hljs-number">75e3</span>cd8c45bd2223021b90deeec8352ca9bdd4f9bf816f03064099139541fa37b33a2b79e7d3a749c51ef7d4ec2a1dc1<br>其实今天要进攻<br>PS <span class="hljs-name">F</span>:\OtherApps\Program\Git\Store\Store20_LeetCode\tryGoPy\MGJW\thisWeek&gt; python main.py<br>a5d65efb6037ca9ff21d0aef20a03d1289cc6feb0f1616ebe49c4458c686a6a7da405fdeab7a2a706190783d3f9b7bd9<br>其实今天要进攻<br></code></pre></td></tr></table></figure>
+
+<p>不难发现，每次加密出来的结果都不一样，这就避免了“统计每个字符频率”等破解方法。</p>
+<p>之后就是收发双方以此为依据进行数据加密与解密了。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/146461437">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/03/23/Other-Network-HowToSendHiddenMsgThroughEmailWithMitmproxy/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
