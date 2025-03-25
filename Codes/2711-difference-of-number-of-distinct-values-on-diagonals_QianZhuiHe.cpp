@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-25 19:44:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-25 19:51:17
+ * @LastEditTime: 2025-03-25 21:04:00
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -19,10 +19,13 @@ public:
             int d = 0;
             for (; i + d < n && j + d < m; d++) {
                 ans[i + d][j + d] = se.size();
-                se.insert(ans[i + d][j + d]);
+                se.insert(grid[i + d][j + d]);
             }
             se.clear();
-            for (d--; )
+            for (d--; d >= 0; d--) {
+                ans[i + d][j + d] = abs(int(ans[i + d][j + d] - se.size()));
+                se.insert(grid[i + d][j + d]);
+            }
         }
         return ans;
     }
