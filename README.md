@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-23 20:33:07
+ * @LastEditTime: 2025-03-25 23:40:35
 -->
 # LetLeet Blog
 
@@ -126,6 +126,7 @@
 |VsCode容器开发 - VsCode连接远程服务器上的docker|<a href="https://blog.letmefly.xyz/2024/01/22/Other-VsCode-ConnectDockerOnRemoteMechine/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135743708">CSDN博客</a>|
 |VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
 |VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
+|VsCode启用右括号自动跳过(自动重写)|<a href="https://blog.letmefly.xyz/2025/03/25/Other-VsCode-StartAutoClosingOvertype/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146515937">CSDN博客</a>|
 |VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
 |WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|

@@ -496,6 +496,10 @@ MySQL的行级锁分为：
 
 似乎不是Browser和Client，而是Comsumer和Business（客户端/后台管理）
 
+### 排序算法
+
+四种不稳定的排序算法：快排 希尔 选择 堆排
+
 # End
 
 > 原创不易，转载请经作者同意后附上[原文链接](https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/)哦~
