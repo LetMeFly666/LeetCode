@@ -10,7 +10,7 @@ class Solution {
         int[][] ans = new int[n][m];
         for (int k = 0; k < m + n - 1; k++) {
             int i = k < m ? 0 : k - m + 1;
-            int j = k < m ? m : 0;
+            int j = k < m ? k : 0;
             long se = 0;
             int d = 0;
             for (; i + d < n && j + d < m; d++) {
