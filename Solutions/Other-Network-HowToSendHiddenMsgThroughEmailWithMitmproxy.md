@@ -3,6 +3,7 @@ title: 借助mitmproxy通过电子邮件隐式传输信息
 date: 2025-03-23 20:29:17
 tags: [其他, 抓包]
 categories: [技术思考]
+index_img: https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/c9bc55cbd8ca40eda5e544b11d32b262.jpeg
 ---
 
 # 借助mitmproxy通过电子邮件隐式传输信息

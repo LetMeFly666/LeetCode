@@ -1064,6 +1064,9 @@ categories: [自用]
 |||
 |rascal|n. 无赖，坏蛋，淘气鬼，不诚实的人|
 |lioness|n. 母狮|
+|||
+|malady|n. 疾病，严重问题，痼疾|
+|outturn|n. 产量，(计算机)输出信息|
 
 <p class="wordCounts">单词收录总数</p>
 
