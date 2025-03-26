@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-26 13:08:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-26 13:18:27
+ * @LastEditTime: 2025-03-26 13:31:49
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -35,12 +35,21 @@ Arnhem
 class Solution {
 public:
     int minimumSum(int n, int k) {
-        int firstCanChooseTo = min(n, max(2, (k - 1) / 2));
-        int ans = firstCanChooseTo * (firstCanChooseTo + 1) / 2;
-        n -= firstCanChooseTo;
-        if (n) {
-            ans += n * (k + k + n - 1) / 2;  // k, k+1, k+2, ... 共n个
+        int to;
+        if (k % 2) {
+            to = min(n, k / 2);
+        } else {
+            if (k == 2) {
+                to = 1;
+            } else if (k == 4) {
+                to = 2;
+            } else {
+                to = k / 2 - 1;
+            }
         }
+        int ans = to * (1 + to) / 2;
+        n -= to;
+        ans += n * (k + k + n - 1) / 2;
         return ans;
     }
 };
