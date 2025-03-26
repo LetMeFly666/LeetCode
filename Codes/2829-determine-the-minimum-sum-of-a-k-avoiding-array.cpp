@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-26 13:08:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-26 13:32:55
+ * @LastEditTime: 2025-03-26 13:43:41
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -15,47 +15,41 @@
 2 6
 1 2
 
-7 7
-1 2 3 7 8 9 10
+∞ 1
+1
 
-7 8
-1 2 3 8 9 10 11
+∞ 2
+1 2
 
-3 4
-1 2 4
+∞ 3
+1 3
 
-6 6
-1 2 6 7
+∞ 4
+1 2
 
-奇数：1, 2, k/2, k, k+1, k+2, ...
-偶数：1, 2一定可选, 最多选到k/2-1，  然后开始k, k+1, k+2
+∞ 5
+1 2
 
-3 6
-1 2 6 -> 9
+∞ 6
+1 2 3
 
-实际上可以  1, 2, 3
+∞ 7
+1 2 3
 
-啊这！读题读错了
+∞ 8
+1 2 3 4
 
-是元素对的和不能为k，而不是任意子数组的和不能为k
+∞ 9
+1 2 3 4
+
+小于k的数最多从1加到k/2(下取整)
+之后就可以从k开始k, k+1, k+2, ...了
 */
 class Solution {
 public:
     int minimumSum(int n, int k) {
-        int to;
-        if (k % 2) {
-            to = k / 2;
-        } else {
-            if (k == 2) {
-                to = 1;
-            } else if (k == 4) {
-                to = 2;
-            } else {
-                to = k / 2 - 1;
-            }
-        }
-        to = min(to, n);
-        int ans = to * (1 + to) / 2;
+        int to = min(n, k / 2);
+        int ans = to * (to + 1) / 2;
         n -= to;
         ans += n * (k + k + n - 1) / 2;
         return ans;
