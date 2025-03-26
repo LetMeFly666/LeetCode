@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-26 13:08:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-26 13:31:49
+ * @LastEditTime: 2025-03-26 13:32:55
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -30,14 +30,21 @@
 奇数：1, 2, k/2, k, k+1, k+2, ...
 偶数：1, 2一定可选, 最多选到k/2-1，  然后开始k, k+1, k+2
 
-Arnhem
+3 6
+1 2 6 -> 9
+
+实际上可以  1, 2, 3
+
+啊这！读题读错了
+
+是元素对的和不能为k，而不是任意子数组的和不能为k
 */
 class Solution {
 public:
     int minimumSum(int n, int k) {
         int to;
         if (k % 2) {
-            to = min(n, k / 2);
+            to = k / 2;
         } else {
             if (k == 2) {
                 to = 1;
@@ -47,6 +54,7 @@ public:
                 to = k / 2 - 1;
             }
         }
+        to = min(to, n);
         int ans = to * (1 + to) / 2;
         n -= to;
         ans += n * (k + k + n - 1) / 2;
