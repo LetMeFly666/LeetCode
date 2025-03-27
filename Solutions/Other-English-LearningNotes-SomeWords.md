@@ -1067,6 +1067,10 @@ categories: [自用]
 |||
 |malady|n. 疾病，严重问题，痼疾|
 |outturn|n. 产量，(计算机)输出信息|
+|||
+|mansion|n. 大厦，豪宅，楼宇|
+
+上面mansion单词的积累其实来自昨天(2025.3.27)
 
 <p class="wordCounts">单词收录总数</p>
 
