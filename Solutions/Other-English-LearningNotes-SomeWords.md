@@ -1069,8 +1069,9 @@ categories: [自用]
 |outturn|n. 产量，(计算机)输出信息|
 |||
 |mansion|n. 大厦，豪宅，楼宇|
-
-上面mansion单词的积累其实来自昨天(2025.3.27)
+|||
+|detract|v. 破坏，损害，转移，使分心<details><summary>例句</summary>Too much make-up will <font color="#28bea0">detract</font> from her beauty.<br/>画太浓的妆有损她的美丽。</details>|
+|esteem|n. 尊重，敬重，好评<br/>v. 尊重，敬重，认为，把...看作|
 
 <p class="wordCounts">单词收录总数</p>
 
