@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-29 10:47:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-29 11:38:10
+ * @LastEditTime: 2025-03-29 11:43:03
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -46,18 +46,13 @@ public:
         int cnt = 1;
         vector<int> visited(edges.size());
         for (int i = 0; i < edges.size(); i++) {
-            int begin = cnt;
-            printf("begin: %d\n", begin);  // *******
-            while (edges[i] != -1 && !visited[i]) {
-                visited[i] = cnt++;
-                printf("visited[%d] = %d, next: %d\n", i, visited[i], edges[i]);  // ************
-                i = edges[i];
+            int begin = cnt, x = i;
+            while (edges[x] != -1 && !visited[x]) {
+                visited[x] = cnt++;
+                i = edges[x];
             }
-            if (edges[i] != -1 && visited[i] >= begin) {
-                printf("i = %d, edges[%d] = %d\n", i, i, edges[i]);  // ****
-                // printf("cnt - begin = %d - %d = %d\n", cnt, begin, cnt - begin);  // *******
-                printf("cnt - edges[i] = %d - %d = %d\n", cnt, edges[i], cnt - edges[i]);  // *******
-                ans = max(ans, cnt - visited[i]);
+            if (edges[x] != -1 && visited[x] >= begin) {
+                ans = max(ans, cnt - visited[x]);
             }
         }
         return ans;
