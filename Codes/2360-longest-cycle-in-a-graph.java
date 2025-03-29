@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-29 14:10:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-29 14:12:28
+ * @LastEditTime: 2025-03-29 14:15:56
  */
 class Solution {
     public int longestCycle(int[] edges) {
@@ -12,7 +12,7 @@ class Solution {
         for (int i = 0; i < edges.length; i++) {
             int begin = cnt;
             int x = i;
-            while (edges[x] != -1 && visited[x] != 0) {
+            while (edges[x] != -1 && visited[x] == 0) {
                 visited[x] = cnt++;
                 x = edges[x];
             }
