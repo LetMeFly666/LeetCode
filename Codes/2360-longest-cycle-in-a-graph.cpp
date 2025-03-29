@@ -2,7 +2,8 @@
  * @Author: LetMeFly
  * @Date: 2025-03-29 10:47:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-29 11:43:03
+ * @LastEditTime: 2025-03-29 11:47:35
+ * @Description: AC,93.64%,86.13%
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -49,7 +50,7 @@ public:
             int begin = cnt, x = i;
             while (edges[x] != -1 && !visited[x]) {
                 visited[x] = cnt++;
-                i = edges[x];
+                x = edges[x];
             }
             if (edges[x] != -1 && visited[x] >= begin) {
                 ans = max(ans, cnt - visited[x]);
