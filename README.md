@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-25 23:40:35
+ * @LastEditTime: 2025-03-28 23:17:56
 -->
 # LetLeet Blog
 
@@ -1015,7 +1015,7 @@
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
-- [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
+- [ ] 研究DQT的[代码](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)为何RE
 - [ ] Hexo的`$1\_2$`会被直接渲染成`$1_2$`，然后前端mathjs就会将$1\_2$解析成$1_2$。如[This](https://github.com/LetMeFly666/LeetCode/blob/7a007400b54908796c58576cb587c5f0a99550b8/Solutions/Other-Notes-Mianjing.md?plain=1#L358)。
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
