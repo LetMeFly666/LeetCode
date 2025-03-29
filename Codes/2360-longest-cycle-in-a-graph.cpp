@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-29 10:47:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-29 10:52:32
+ * @LastEditTime: 2025-03-29 11:04:37
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -12,15 +12,16 @@ class Solution {
 public:
     int longestCycle(vector<int>& edges) {
         int ans = -1;
+        int cnt = 0;
+        vector<int> visited(edges.size());
         for (int i = 0; i < edges.size(); i++) {
-            int index = i, next = edges[i], cnt = -1;
-            while (next >= 0) {
-                index = next;
-                next = edges[index];
-                edges[index] = --cnt;
+            int begin = cnt;
+            while (edges[i] != -1 && !visited[i]) {
+                visited[i] = cnt++;
+                i = edges[i];
             }
-            if (next != -1) {
-                ans = max(ans, next - edges[index]);
+            if (edges[i] != -1) {
+                ans = max(ans, visited[i] - begin);
             }
         }
         return ans;
