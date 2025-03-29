@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-03-29 10:47:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-29 11:16:44
+ * @LastEditTime: 2025-03-29 11:25:28
  */
 #ifdef _WIN32
 #include "_[1,2]toVector.h"
@@ -19,6 +19,13 @@
         ↓        |
         2 -------+
 */
+/*
+ 0  1 2 3
+[2,-1,3,1]
+
+0-->2-->3-->1
+
+*/
 class Solution {
 public:
     int longestCycle(vector<int>& edges) {
@@ -33,10 +40,25 @@ public:
                 i = edges[i];
             }
             if (edges[i] != -1) {
+                printf("i = %d, edges[%d] = %d\n", i, i, edges[i]);  // ****
                 // printf("cnt - begin = %d - %d = %d\n", cnt, begin, cnt - begin);  // *******
+                printf("cnt - edges[i] = %d - %d = %d\n", cnt, edges[i], cnt - edges[i]);  // *******
                 ans = max(ans, cnt - edges[i]);
             }
         }
         return ans;
     }
 };
+
+
+#ifdef _WIN32
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<int> v = stringToVector(s);
+        Solution sol;
+        cout << sol.longestCycle(v) << endl;
+    }
+    return 0;
+}
+#endif
