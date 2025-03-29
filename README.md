@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-25 23:40:35
+ * @LastEditTime: 2025-03-28 23:17:56
 -->
 # LetLeet Blog
 
@@ -711,6 +711,7 @@
 |2352.相等行列对|中等|<a href="https://leetcode.cn/problems/equal-row-and-column-pairs/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/06/06/LeetCode%202352.%E7%9B%B8%E7%AD%89%E8%A1%8C%E5%88%97%E5%AF%B9/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131062292" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/equal-row-and-column-pairs/solutions/2298633/letmefly-2352xiang-deng-xing-lie-dui-sho-1hqy/" target="_blank">LeetCode题解</a>|
 |2353.设计食物评分系统|中等|<a href="https://leetcode.cn/problems/design-a-food-rating-system/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/02/28/LeetCode%202353.%E8%AE%BE%E8%AE%A1%E9%A3%9F%E7%89%A9%E8%AF%84%E5%88%86%E7%B3%BB%E7%BB%9F/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145926792" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/design-a-food-rating-system/solutions/3588914/letmefly-2353she-ji-shi-wu-ping-fen-xi-t-5gyt/" target="_blank">LeetCode题解</a>|
 |2357.使数组中所有元素都等于零|简单|<a href="https://leetcode.cn/problems/make-array-zero-by-subtracting-equal-amounts/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/02/24/LeetCode%202357.%E4%BD%BF%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E9%83%BD%E7%AD%89%E4%BA%8E%E9%9B%B6/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/129193781" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/make-array-zero-by-subtracting-equal-amounts/solutions/2130112/letmefly-2357shi-shu-zu-zhong-suo-you-yu-2p0w/" target="_blank">LeetCode题解</a>|
+|2360.图中的最长环|困难|<a href="https://leetcode.cn/problems/longest-cycle-in-a-graph/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/03/29/LeetCode%202360.%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E9%95%BF%E7%8E%AF/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/146687134" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/longest-cycle-in-a-graph/solutions/3632508/letmefly-2360tu-zhong-de-zui-chang-huan-y5puj/" target="_blank">LeetCode题解</a>|
 |2363.合并相似的物品|简单|<a href="https://leetcode.cn/problems/merge-similar-items/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/02/28/LeetCode%202363.%E5%90%88%E5%B9%B6%E7%9B%B8%E4%BC%BC%E7%9A%84%E7%89%A9%E5%93%81/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/129257424" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/merge-similar-items/solutions/2137951/letmefly-2363he-bing-xiang-si-de-wu-pin-gzust/" target="_blank">LeetCode题解</a>|
 |2367.算术三元组的数目|简单|<a href="https://leetcode.cn/problems/number-of-arithmetic-triplets/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/03/31/LeetCode%202367.%E7%AE%97%E6%9C%AF%E4%B8%89%E5%85%83%E7%BB%84%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/129872479" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-arithmetic-triplets/solutions/2200543/letmefly-2367suan-zhu-san-yuan-zu-de-shu-oiyn/" target="_blank">LeetCode题解</a>|
 |2368.受限条件下可到达节点的数目|中等|<a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/03/02/LeetCode%202368.%E5%8F%97%E9%99%90%E6%9D%A1%E4%BB%B6%E4%B8%8B%E5%8F%AF%E5%88%B0%E8%BE%BE%E8%8A%82%E7%82%B9%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/136418048" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/reachable-nodes-with-restrictions/solutions/2663321/letmefly-2368shou-xian-tiao-jian-xia-ke-5ezsg/" target="_blank">LeetCode题解</a>|
@@ -1015,7 +1016,7 @@
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
-- [ ] 研究DQT的[代](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)[码](1366-rank-teams-by-votes_DQT-RE_version.modifing.cpp)为何RE
+- [ ] 研究DQT的[代码](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)为何RE
 - [ ] Hexo的`$1\_2$`会被直接渲染成`$1_2$`，然后前端mathjs就会将$1\_2$解析成$1_2$。如[This](https://github.com/LetMeFly666/LeetCode/blob/7a007400b54908796c58576cb587c5f0a99550b8/Solutions/Other-Notes-Mianjing.md?plain=1#L358)。
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。

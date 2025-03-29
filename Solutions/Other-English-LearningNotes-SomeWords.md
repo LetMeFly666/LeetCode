@@ -625,7 +625,7 @@ categories: [自用]
 |slang|n. 俚语<br/>v. 谩骂|
 |codify|v. 把...编成法典|
 |<font color="#28bea0" title="二次复习">terminology</font>|n. 术语|
-|<font color="#28bea0" title="二次复习">jot</font>|v. 匆匆记下<br/>n. 一划，一点儿|
+|<font color="#28bea0" title="三次复习">jot</font>|v. 匆匆记下<br/>n. 一划，一点儿|
 |bygone|adj. 很久以前的，以往的<br/>n. 过去的事，往事|
 |||
 |lathe|n. 车床<br/>v. 用车床加工|
@@ -1072,6 +1072,8 @@ categories: [自用]
 |||
 |detract|v. 破坏，损害，转移，使分心<details><summary>例句</summary>Too much make-up will <font color="#28bea0">detract</font> from her beauty.<br/>画太浓的妆有损她的美丽。</details>|
 |esteem|n. 尊重，敬重，好评<br/>v. 尊重，敬重，认为，把...看作|
+|||
+|piston|n. 活塞|
 
 <p class="wordCounts">单词收录总数</p>
 
