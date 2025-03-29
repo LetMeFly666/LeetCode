@@ -15,7 +15,7 @@ func longestCycle(edges []int) int {
         for edges[i] != -1 && visited[i] == 0 {
             visited[i] = cnt
             cnt++
-            i = visited[i]
+            i = edges[i]
         }
         if edges[i] != -1 && visited[i] >= begin {
             ans = max(ans, cnt - visited[i])
