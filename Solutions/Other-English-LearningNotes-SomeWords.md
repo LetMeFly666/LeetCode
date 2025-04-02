@@ -1076,6 +1076,8 @@ categories: [自用]
 |piston|n. 活塞|
 |||
 |postponement|n. 延期，推迟|
+|||
+|subsidiary|adj. 辅助的，次要的，附属的，隶属的<br/>n. 附属公司，子公司|
 
 <p class="wordCounts">单词收录总数</p>
 
