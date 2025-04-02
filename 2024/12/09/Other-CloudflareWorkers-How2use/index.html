@@ -18,15 +18,15 @@
   <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Cloudflare workers - 如何使用（起步篇）Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允许你在 Cloudflare 的边缘网络上运行代码，而无需管理传统的服务器基础设施。它能在全球范围内的 Cloudflare 数据中心上执行代码，以提供快速、低延迟的服务。 创建Cloudflare workers应用 安装wrangler  确">
+    <meta name="description" content="Cloudflare workers - 如何使用（起步篇）Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允许你在 Cloudflare 的边缘网络上运行代码，而无需管理传统的服务器基础设施。它能在全球范围内的 Cloudflare 数据中心上执行代码，以提供快速、低延迟的服务。 安装wrangler并登录 安装wrangler  确保机器上安装了No">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cloudflare workers - 如何使用（起步篇）">
 <meta property="og:url" content="https://blog.letmefly.xyz/2024/12/09/Other-CloudflareWorkers-How2use/index.html">
 <meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
-<meta property="og:description" content="Cloudflare workers - 如何使用（起步篇）Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允许你在 Cloudflare 的边缘网络上运行代码，而无需管理传统的服务器基础设施。它能在全球范围内的 Cloudflare 数据中心上执行代码，以提供快速、低延迟的服务。 创建Cloudflare workers应用 安装wrangler  确">
+<meta property="og:description" content="Cloudflare workers - 如何使用（起步篇）Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允许你在 Cloudflare 的边缘网络上运行代码，而无需管理传统的服务器基础设施。它能在全球范围内的 Cloudflare 数据中心上执行代码，以提供快速、低延迟的服务。 安装wrangler并登录 安装wrangler  确保机器上安装了No">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-09T05:45:04.000Z">
-<meta property="article:modified_time" content="2025-03-31T09:25:10.527Z">
+<meta property="article:modified_time" content="2025-04-02T15:54:53.671Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="Cloudflare">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.1k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -284,7 +284,7 @@
               <div class="markdown-body">
                 
                 <h1 id="Cloudflare-workers-如何使用（起步篇）"><a href="#Cloudflare-workers-如何使用（起步篇）" class="headerlink" title="Cloudflare workers - 如何使用（起步篇）"></a>Cloudflare workers - 如何使用（起步篇）</h1><p>Cloudflare Workers 是一种基于 JavaScript 的无服务器计算平台，允许你在 Cloudflare 的边缘网络上运行代码，而无需管理传统的服务器基础设施。它能在全球范围内的 Cloudflare 数据中心上执行代码，以提供快速、低延迟的服务。</p>
-<h2 id="创建Cloudflare-workers应用"><a href="#创建Cloudflare-workers应用" class="headerlink" title="创建Cloudflare workers应用"></a>创建Cloudflare workers应用</h2><ol>
+<h2 id="安装wrangler并登录"><a href="#安装wrangler并登录" class="headerlink" title="安装wrangler并登录"></a>安装wrangler并登录</h2><ol>
 <li><p>安装<code>wrangler</code></p>
 <ol>
 <li><p>确保机器上安装了<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">Node.js</a></p>
@@ -313,6 +313,8 @@
  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Set-ExecutionPolicy</span> Restricted <span class="hljs-literal">-Scope</span> CurrentUser<br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
+</ol>
+<h2 id="创建Cloudflare-workers应用"><a href="#创建Cloudflare-workers应用" class="headerlink" title="创建Cloudflare workers应用"></a>创建Cloudflare workers应用</h2><h3 id="方式一-创建（v3及之前可用）"><a href="#方式一-创建（v3及之前可用）" class="headerlink" title="方式一 - 创建（v3及之前可用）"></a>方式一 - 创建（v3及之前可用）</h3><ol>
 <li><p>创建Worker项目</p>
 <p> 创建一个名为<code>api</code>的项目：</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wrangler generate api<br></code></pre></td></tr></table></figure>
@@ -325,8 +327,9 @@
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;fetch&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> &#123;<br>    event.<span class="hljs-title function_">respondWith</span>(<span class="hljs-title function_">handleRequest</span>(event.<span class="hljs-property">request</span>))<br>&#125;)<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleRequest</span>(<span class="hljs-params">request</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Response</span>(<span class="hljs-string">&#x27;Hello, world!&#x27;</span>, &#123;<br>        <span class="hljs-attr">headers</span>: &#123; <span class="hljs-string">&#x27;content-type&#x27;</span>: <span class="hljs-string">&#x27;text/plain&#x27;</span> &#125;,<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p> 编辑<code>wrangler.toml</code>，添加如下一行（设置入口点为<code>index.js</code>）</p>
- <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">main</span> = <span class="hljs-string">&quot;index.js&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
+ <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-attr">main</span> = <span class="hljs-string">&quot;index.js&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><h2 id="测试开发部署"><a href="#测试开发部署" class="headerlink" title="测试开发部署"></a>测试开发部署</h2><ol start="3">
 <li><p>开发和测试</p>
 <p> 使用以下命令在本地开发和测试：</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> api<br>wrangler dev<br></code></pre></td></tr></table></figure>
