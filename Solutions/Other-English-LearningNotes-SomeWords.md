@@ -1074,6 +1074,8 @@ categories: [自用]
 |esteem|n. 尊重，敬重，好评<br/>v. 尊重，敬重，认为，把...看作|
 |||
 |piston|n. 活塞|
+|||
+|postponement|n. 延期，推迟|
 
 <p class="wordCounts">单词收录总数</p>
 
