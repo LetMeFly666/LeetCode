@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-02 23:51:19
+LastEditTime: 2025-04-03 23:58:30
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -228,8 +228,6 @@ def getPrOrIssueMaxNum(prOrIssue: str) -> int:  # (#811)
 lastNum = max(getPrOrIssueMaxNum('pr'), getPrOrIssueMaxNum('issue'))
 print(lastNum)
 commitMsg = f'update: 添加问题“{num}.{title}”的代码和题解(#{lastNum + 1})'
-commitMsg = f'day1: Always Day 1'  # TODO: revert
-commitMsg += f'\n\nupdate: 添加问题“{num}.{title}”的代码和题解(#{lastNum + 1})'
 if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     with open('.commitmsg', 'r', encoding='utf-8') as f:
         commitMsgFromfile = f.read()
