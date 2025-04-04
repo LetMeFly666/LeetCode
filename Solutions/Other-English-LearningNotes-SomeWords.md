@@ -1081,6 +1081,8 @@ categories: [自用]
 |||
 |insofar|adv. 到如此程度<details><summary>例句</summary>I'll help you <font color="#28bea0">insofar</font> as I can.<br/>我将尽力帮助你。</details>|
 |mitten|n. 连指手套|
+|||
+|luxurious|adj. 奢侈的，十分舒适的|
 
 <p class="wordCounts">单词收录总数</p>
 

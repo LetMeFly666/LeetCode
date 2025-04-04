@@ -80,6 +80,12 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2023-09-06 22:43:49
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2023-09-06 22:49:44
+ */
 typedef pair<TreeNode*, int> pti;
 class Solution {
 private:
@@ -109,31 +115,124 @@ public:
 #### Python
 
 ```python
-# from typing import Optional
+'''
+Author: LetMeFly
+Date: 2025-04-05 00:49:25
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-04-05 00:58:30
+'''
+from typing import Tuple, Optional
 
-# # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 class Solution:
-    def dfs(self, root: Optional[TreeNode]):
+    def dfs(self, root: Optional[TreeNode]) -> Tuple[Optional[TreeNode], int]:
         if not root:
-            return [None, 0]
+            return (root, 0)
         left = self.dfs(root.left)
         right = self.dfs(root.right)
-        if left[1] == right[1]:
-            return [root, left[1] + 1]
+        if left[1] > right[1]:
+            return (left[0], left[1] + 1)
         elif left[1] < right[1]:
-            return [right[0], right[1] + 1]
-        else:
-            return [left[0], left[1] + 1]
-    
+            return (right[0], right[1] + 1)
+        return (root, left[1] + 1)
+        
     def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         return self.dfs(root)[0]
+```
 
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-04-05 00:59:21
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-04-05 01:03:59
+ */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    private Pair<TreeNode, Integer> dfs(TreeNode root) {
+        if (root == null) {
+            return new Pair<>(root, 0);
+        }
+        Pair<TreeNode, Integer> left = dfs(root.left);
+        Pair<TreeNode, Integer> right = dfs(root.right);
+        if (left.getValue() > right.getValue()) {
+            return new Pair<>(left.getKey(), left.getValue() + 1);
+        } else if (left.getValue() < right.getValue()) {
+            return new Pair<>(right.getKey(), right.getValue() + 1);
+        }
+        return new Pair<>(root, left.getValue() + 1);
+    }
+
+    public TreeNode lcaDeepestLeaves(TreeNode root) {
+        return dfs(root).getKey();
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-04-05 01:05:07
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-04-05 01:11:09
+ */
+package main
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+type pair struct{
+    node *TreeNode
+    depth int
+}
+
+func dfs(root* TreeNode) pair {
+    if root == nil {
+        return pair{root, 0}
+    }
+    left := dfs(root.Left)
+    right := dfs(root.Right)
+    if left.depth > right.depth {
+        return pair{left.node, left.depth + 1}
+    } else if left.depth < right.depth {
+        return pair{right.node, right.depth + 1}
+    }
+    return pair{root, left.depth + 1}
+}
+
+func lcaDeepestLeaves(root *TreeNode) *TreeNode {
+    return dfs(root).node
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/09/06/LeetCode%201123.%E6%9C%80%E6%B7%B1%E5%8F%B6%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/)哦~
