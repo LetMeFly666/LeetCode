@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-03 23:58:30
+LastEditTime: 2025-04-06 16:58:18
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -52,7 +52,15 @@ lastSHA = get_latest_commit_sha()
 # 认领issue
 os.system(f'git checkout -b {num}')
 os.system(f'git push --set-upstream origin {num}')  # (#832)
-issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH" -l "题解" -a "@me"').read()
+def getPlatform():
+    platform = sys.platform
+    if platform == 'win32':
+        return 'Windows'
+    elif platform == 'darwin':
+        return 'MacOS'
+    else:
+        return 'Linux(or others)'
+issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} " -l "题解" -a "@me"').read()
 print(issueCreateResult)
 issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 
@@ -236,7 +244,7 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
 os.system(f'git push --set-upstream origin {num}')
-cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH | close: #{issueNum}" -l "题解" -a "@me"'
+cmd = f'gh pr create -t "添加问题“{num}.{title}”的代码和题解" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}" -l "题解" -a "@me"'
 prResult = os.popen(cmd).read()
 print(prResult)
 prNumber = int(prResult.split('/')[-1])
