@@ -1083,6 +1083,9 @@ categories: [自用]
 |mitten|n. 连指手套|
 |||
 |luxurious|adj. 奢侈的，十分舒适的|
+|||
+|humanitarian|n. 人道主义，慈善家<br/>adj. 人道主义的，慈善的|
+|brook|v. 小河<br/>v. 〈正式〉忍受|
 
 <p class="wordCounts">单词收录总数</p>
 
