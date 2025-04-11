@@ -1086,6 +1086,10 @@ categories: [自用]
 |||
 |humanitarian|n. 人道主义，慈善家<br/>adj. 人道主义的，慈善的|
 |brook|v. 小河<br/>v. 〈正式〉忍受|
+|||
+|hurrah|n. 欢呼声，激动，纷争<br/>int. 万岁<br/>|
+|elemental|adj. 狂暴的，猛烈的，似自然力的，基本的<br/>n. (古希腊)四元素的精灵，基本原理|
+|clearance|n. 清除，清理，许可，批准，间距，间隙，票据交换，清算|
 
 <p class="wordCounts">单词收录总数</p>
 
