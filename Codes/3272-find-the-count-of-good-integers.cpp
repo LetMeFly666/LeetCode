@@ -30,7 +30,7 @@ private:
 public:
     ll countGoodIntegers(int n, int k) {
         if (n == 1) {
-            return 1;
+            return 9 / k;
         }
         int half = n / 2;
         ll ans = 0;
