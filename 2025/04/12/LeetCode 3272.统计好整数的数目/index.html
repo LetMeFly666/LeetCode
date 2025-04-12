@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】3272.统计好整数的数目：枚举+排列组合+哈希表力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;find-the-count-of-good-integers&#x2F; 给你两个 正&nbsp;整数&nbsp;n 和&nbsp;k&nbsp;。  如果一个整数&nbsp;x&nbsp;满足以下条件，那么它被称为 k&nbsp;回文&nbsp;整数&nbsp;。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3272.统计好整数的数目：枚举+排列组合+哈希表">
+<meta property="og:url" content="https://blog.letmefly.xyz/2025/04/12/LeetCode%203272.%E7%BB%9F%E8%AE%A1%E5%A5%BD%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】3272.统计好整数的数目：枚举+排列组合+哈希表力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;find-the-count-of-good-integers&#x2F; 给你两个 正&nbsp;整数&nbsp;n 和&nbsp;k&nbsp;。  如果一个整数&nbsp;x&nbsp;满足以下条件，那么它被称为 k&nbsp;回文&nbsp;整数&nbsp;。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-12T04:31:12.000Z">
+<meta property="article:modified_time" content="2025-04-12T05:08:20.742Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="组合数学">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="回文串">
+<meta property="article:tag" content="字符串解析">
+<meta property="article:tag" content="枚举">
+<meta property="article:tag" content="排列组合">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>3272.统计好整数的数目：枚举+排列组合+哈希表 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3272.统计好整数的数目：枚举+排列组合+哈希表"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-04-12 12:31" pubdate>
+          2025年4月12日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">3272.统计好整数的数目：枚举+排列组合+哈希表</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】3272-统计好整数的数目：枚举-排列组合-哈希表"><a href="#【LetMeFly】3272-统计好整数的数目：枚举-排列组合-哈希表" class="headerlink" title="【LetMeFly】3272.统计好整数的数目：枚举+排列组合+哈希表"></a>【LetMeFly】3272.统计好整数的数目：枚举+排列组合+哈希表</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-count-of-good-integers/">https://leetcode.cn/problems/find-the-count-of-good-integers/</a></p>
+<p>给你两个 <strong>正</strong>&nbsp;整数&nbsp;<code>n</code> 和&nbsp;<code>k</code>&nbsp;。</p>
+
+<p>如果一个整数&nbsp;<code>x</code>&nbsp;满足以下条件，那么它被称为 <strong>k</strong><strong>&nbsp;回文</strong>&nbsp;整数&nbsp;。</p>
+
+<ul>
+	<li><code>x</code>&nbsp;是一个&nbsp;<span data-keyword="palindrome-integer">回文整数 。</span></li>
+	<li><code>x</code>&nbsp;能被 <code>k</code>&nbsp;整除。</li>
+</ul>
+
+<p>如果一个整数的数位重新排列后能得到一个 <strong>k 回文整数</strong>&nbsp;，那么我们称这个整数为&nbsp;<strong>好 </strong>整数。比方说，<code>k = 2</code>&nbsp;，那么&nbsp;2020 可以重新排列得到 2002 ，2002 是一个 k 回文串，所以 2020 是一个好整数。而 1010 无法重新排列数位得到一个 k 回文整数。</p>
+
+<p>请你返回 <code>n</code>&nbsp;个数位的整数中，有多少个 <strong>好</strong>&nbsp;整数。</p>
+
+<p><b>注意</b>&nbsp;，任何整数在重新排列数位之前或者之后 <strong>都不能</strong> 有前导 0 。比方说 1010 不能重排列得到&nbsp;101 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>n = 3, k = 5</span></p>
+
+<p><span class="example-io"><b>输出：</b>27</span></p>
+
+<p><b>解释：</b></p>
+
+<p>部分好整数如下：</p>
+
+<ul>
+	<li>551 ，因为它可以重排列得到 515 。</li>
+	<li>525 ，因为它已经是一个 k 回文整数。</li>
+</ul>
+</div>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>n = 1, k = 4</span></p>
+
+<p><span class="example-io"><b>输出：</b>2</span></p>
+
+<p><strong>解释：</strong></p>
+
+<p>两个好整数分别是 4 和 8 。</p>
+</div>
+
+<p><strong class="example">示例 3：</strong></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>n = 5, k = 6</span></p>
+
+<p><span class="example-io"><b>输出：</b>2468</span></p>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n &lt;= 10</code></li>
+	<li><code>1 &lt;= k &lt;= 9</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：枚举-排列组合-哈希表"><a href="#解题方法：枚举-排列组合-哈希表" class="headerlink" title="解题方法：枚举+排列组合+哈希表"></a>解题方法：枚举+排列组合+哈希表</h2><p>我们可以枚举所有长度为$n$的数字回文字符串。对于一个回文串，如果其对应整数能够被$k$整除，则这个字符串的所有排列都能被$k$整除。</p>
+<p>问题就转化为了以下三个：</p>
+<ol>
+<li><p>如何枚举所有长度为$n$的数字回文串？</p>
+<blockquote>
+<p>我们可以枚举字符串的前半部分，然后反转得到后半部分并拼接，就得到了回文字符串。</p>
+<p>具体的，我们可以从$[10^{\lfloor\frac{n-1}2\rfloor}, 10^{\lfloor\frac{n-1}2\rfloor+1})$枚举前半字符串，若$n$为奇数则包含中间位置元素。</p>
+</blockquote>
+</li>
+<li><p>一个“k回文整数字符串”有多少个排列？多少个字符串重新排列后能得到这个字符串？</p>
+<blockquote>
+<p>我们分别统计字符串中每个数字出现了多少次，假设字符串长度为$n$。</p>
+<p>首先计算第一位有多少种可能，第一位不能为$0$，因此方案数为$n-times[0]$；</p>
+<p>接着计算其他位，其他的$n-1$个数字可以随便排列，其他位的方案数为$(n-1)!$。</p>
+<p>由于其中可能存在重复元素，例如$121$中有两个$1$，这两个$1$谁在前谁在后无法区分，只能有一种方案，所以要除以$2!$。</p>
+<p>总的方案数为：$\frac{(n-times[0])\times (n-1)!}{\Pi_{i&#x3D;0}^{9}times[i]}$。</p>
+</blockquote>
+</li>
+<li><p>如何保证每个排列不会被重复统计？</p>
+<blockquote>
+<p>假设我已经统计过$1221$的所有全排列了，那么我遇到$2112$时就不能再统计$2112$的所有全排列了，因为$1221$和$2112$的全排列时相同的。</p>
+<p>如何做到？其实我们只需要使用一个哈希表，记录字符串$s$排序后的字符串是否出现过就好了。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(10^{m}\times n\log n)$，其中$m&#x3D;\lfloor\frac{n-1}2\rfloor$</li>
+<li>空间复杂度$O(10^m\times n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-04-12 07:51:15</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-04-12 09:25:01</span><br><span class="hljs-comment"> * @Description: AC,21.21%,93.94%</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> defined(_WIN32) || defined(__APPLE__)</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;_[1,2]toVector.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">1 -&gt; 1-9</span><br><span class="hljs-comment">2 -&gt; 1-9</span><br><span class="hljs-comment">3 -&gt; 10-&gt;99</span><br><span class="hljs-comment">4 -&gt; 10-&gt;99</span><br><span class="hljs-comment">5 -&gt; 100-&gt;999</span><br><span class="hljs-comment">6 -&gt; 100-&gt;999</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">n -&gt; [10^((n-1)/2-1), 10^((n-1)/2)-1)</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> k;<br>    unordered_set&lt;string&gt; visited;<br>    vector&lt;<span class="hljs-type">int</span>&gt; factor;<br>    <span class="hljs-type">int</span> times[<span class="hljs-number">10</span>];<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">initFactor</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        factor.<span class="hljs-built_in">resize</span>(n + <span class="hljs-number">1</span>);<br>        factor[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            factor[i] = factor[i - <span class="hljs-number">1</span>] * i;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">ifVisited</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">if</span> (visited.<span class="hljs-built_in">count</span>(s)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        visited.<span class="hljs-built_in">insert</span>(s);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isOk</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        ll val = <span class="hljs-built_in">stoll</span>(s);<br>        <span class="hljs-comment">// printf(&quot;%s: %d\n&quot;, s.c_str(), val % k == 0);  // *****</span><br>        <span class="hljs-keyword">return</span> val % k == <span class="hljs-number">0</span>;<br>    &#125;;<br><br>    <span class="hljs-function">ll <span class="hljs-title">calc</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        <span class="hljs-built_in">memset</span>(times, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(times));<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : s) &#123;<br>            times[c - <span class="hljs-string">&#x27;0&#x27;</span>]++;<br>        &#125;<br>        ll ans = (s.<span class="hljs-built_in">size</span>() - times[<span class="hljs-number">0</span>]) * factor[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            ans /= factor[times[i]];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">ll <span class="hljs-title">countGoodIntegers</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-built_in">initFactor</span>(n);<br>        <span class="hljs-keyword">this</span>-&gt;k = k;<br>        ll ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> start = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, (n - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>), end = start * <span class="hljs-number">10</span>; start &lt; end; start++) &#123;<br>            string prefix = <span class="hljs-built_in">to_string</span>(start), suffix = prefix.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>, prefix.<span class="hljs-built_in">size</span>() - n % <span class="hljs-number">2</span>);<br>            <span class="hljs-built_in">reverse</span>(suffix.<span class="hljs-built_in">begin</span>(), suffix.<span class="hljs-built_in">end</span>());<br>            string thisNum = prefix + suffix;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">isOk</span>(thisNum) &amp;&amp; !ifVisited(thisNum)) &#123;  <span class="hljs-comment">// 注意ifVisited会将thisNum加入哈希表的话记得先判断isOk再判断ifVisited</span><br>                <span class="hljs-comment">// printf(&quot;ans: %lld, calc(%s): %lld, ans = ans + calc(%s) = %lld\n&quot;, ans, thisNum.c_str(), calc(thisNum), thisNum.c_str(), ans + calc(thisNum));  // ****</span><br>                ans += <span class="hljs-built_in">calc</span>(thisNum);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-04-12 09:44:25</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-04-12 10:52:36</span><br><span class="hljs-string">Description: 中间终中断了下</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">isOk</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(s) % <span class="hljs-variable language_">self</span>.k == <span class="hljs-number">0</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">ifVisited</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">bool</span>:<br>        s = <span class="hljs-string">&#x27;&#x27;</span>.join(<span class="hljs-built_in">sorted</span>(s))<br>        <span class="hljs-keyword">if</span> s <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.visited:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-variable language_">self</span>.visited.add(s)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">calc</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        times = Counter(s)<br>        ans = (<span class="hljs-built_in">len</span>(s) - times[<span class="hljs-string">&#x27;0&#x27;</span>]) * <span class="hljs-variable language_">self</span>.factor[<span class="hljs-built_in">len</span>(s) - <span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">for</span> _, val <span class="hljs-keyword">in</span> times.items():<br>            ans //= <span class="hljs-variable language_">self</span>.factor[val]<br>        <span class="hljs-keyword">return</span> ans<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">countGoodIntegers</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span>, k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-variable language_">self</span>.k = k<br>        <span class="hljs-variable language_">self</span>.factor = [<span class="hljs-number">1</span>] * (n + <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>            <span class="hljs-variable language_">self</span>.factor[i] = <span class="hljs-variable language_">self</span>.factor[i - <span class="hljs-number">1</span>] * i<br>        <span class="hljs-variable language_">self</span>.visited = <span class="hljs-built_in">set</span>()<br>        base = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, (n - <span class="hljs-number">1</span>) // <span class="hljs-number">2</span>)<br>        ans = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(base, base * <span class="hljs-number">10</span>):<br>            prefix = <span class="hljs-built_in">str</span>(i)<br>            s = prefix + prefix[::-<span class="hljs-number">1</span>][n % <span class="hljs-number">2</span>:]<br>            <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.isOk(s) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-variable language_">self</span>.ifVisited(s):<br>                ans += <span class="hljs-variable language_">self</span>.calc(s)<br>        <span class="hljs-keyword">return</span> ans<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-04-12 10:53:42</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-04-12 11:13:08</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> java.util.Set;<br><span class="hljs-keyword">import</span> java.util.HashSet;<br><span class="hljs-comment">// import java.lang.StringBuilder;  // 默认自动导入 无需手动导入</span><br><span class="hljs-keyword">import</span> java.util.Arrays;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> k;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] factor;<br>    <span class="hljs-keyword">private</span> Set&lt;String&gt; visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isOk</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-keyword">return</span> Long.parseLong(s) % k == <span class="hljs-number">0</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">ifVisited</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">char</span>[] array = s.toCharArray();<br>        Arrays.sort(array);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">sorted</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(array);<br>        <span class="hljs-keyword">return</span> !visited.add(sorted);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">long</span> <span class="hljs-title function_">calc</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-type">int</span>[] times = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : s.toCharArray()) &#123;<br>            times[c - <span class="hljs-string">&#x27;0&#x27;</span>]++;<br>        &#125;<br>        <span class="hljs-type">long</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> (s.length() - times[<span class="hljs-number">0</span>]) * factor[s.length() - <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            ans /= factor[times[i]];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">countGoodIntegers</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> k)</span> &#123;<br>        <span class="hljs-built_in">this</span>.k = k;<br>        factor = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>];<br>        factor[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            factor[i] = factor[i - <span class="hljs-number">1</span>] * i;<br>        &#125;<br>        <span class="hljs-type">long</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">from</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>)Math.pow(<span class="hljs-number">10</span>, (n - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>), to = from * <span class="hljs-number">10</span>; from &lt; to; from++) &#123;<br>            <span class="hljs-type">String</span> <span class="hljs-variable">prefix</span> <span class="hljs-operator">=</span> String.valueOf(from);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">suffix</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(prefix).reverse().substring(n % <span class="hljs-number">2</span>);<br>            <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> prefix + suffix;<br>            <span class="hljs-keyword">if</span> (isOk(s) &amp;&amp; !ifVisited(s)) &#123;<br>                ans += calc(s);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">API:</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">java 子字符串</span><br><span class="hljs-comment">反转字符串</span><br><span class="hljs-comment">整数转字符串</span><br><span class="hljs-comment">字符串拼接</span><br><span class="hljs-comment">字符串转整数</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-04-12 11:14:05</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-04-12 11:40:36</span><br><span class="hljs-comment"> * @Description: AC,25.00%,75.00%,一遍过</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;math&quot;</span><br>    <span class="hljs-string">&quot;strconv&quot;</span><br>    <span class="hljs-string">&quot;sort&quot;</span><br>    <span class="hljs-string">&quot;strings&quot;</span><br>)<br><br><span class="hljs-keyword">type</span> solution3273 <span class="hljs-keyword">struct</span>&#123;<br>    n, k <span class="hljs-type">int</span><br>    factor []<span class="hljs-type">int</span><br>    visited <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">bool</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init3273</span><span class="hljs-params">(n <span class="hljs-type">int</span>, k <span class="hljs-type">int</span>)</span></span> *solution3273 &#123;<br>    ans := &amp;solution3273&#123;<br>        n: n,<br>        k: k,<br>        factor: <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, n + <span class="hljs-number">1</span>),<br>        visited : <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">bool</span>&#123;&#125;,<br>    &#125;<br>    ans.factor[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt;= n; i++ &#123;<br>        ans.factor[i] = ans.factor[i - <span class="hljs-number">1</span>] * i<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t* solution3273)</span></span> isOk(s <span class="hljs-type">string</span>) <span class="hljs-type">bool</span> &#123;<br>    val, _ := strconv.Atoi(s)<br>    <span class="hljs-keyword">return</span> val % t.k == <span class="hljs-number">0</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t* solution3273)</span></span> ifVisited(s <span class="hljs-type">string</span>) <span class="hljs-type">bool</span> &#123;<br>    array := strings.Split(s, <span class="hljs-string">&quot;&quot;</span>)<br>    sort.Strings(array)<br>    s = strings.Join(array, <span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">if</span> t.visited[s] &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    &#125;<br>    t.visited[s] = <span class="hljs-literal">true</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t* solution3273)</span></span> calc(s <span class="hljs-type">string</span>) (ans <span class="hljs-type">int64</span>) &#123;<br>    times := [<span class="hljs-number">10</span>]<span class="hljs-type">int</span>&#123;&#125;<br>    <span class="hljs-keyword">for</span> i, _ := <span class="hljs-keyword">range</span> s &#123;<br>        times[s[i] - <span class="hljs-string">&#x27;0&#x27;</span>]++<br>    &#125;<br>    ans = <span class="hljs-type">int64</span>(t.n - times[<span class="hljs-number">0</span>]) * <span class="hljs-type">int64</span>(t.factor[t.n - <span class="hljs-number">1</span>])<br>    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> times &#123;<br>        ans /= <span class="hljs-type">int64</span>(t.factor[v])<br>    &#125;<br>    <span class="hljs-keyword">return</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(t* solution3273)</span></span> getFullS(prefix <span class="hljs-type">string</span>) <span class="hljs-type">string</span> &#123;<br>    suffix := []<span class="hljs-type">byte</span>(prefix)<br>    <span class="hljs-keyword">if</span> t.n % <span class="hljs-number">2</span> == <span class="hljs-number">1</span> &#123;<br>        suffix = suffix[:<span class="hljs-built_in">len</span>(suffix) - <span class="hljs-number">1</span>]<br>    &#125;<br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(suffix) / <span class="hljs-number">2</span>; i++ &#123;<br>        suffix[i], suffix[<span class="hljs-built_in">len</span>(suffix) - i - <span class="hljs-number">1</span>] = suffix[<span class="hljs-built_in">len</span>(suffix) - i - <span class="hljs-number">1</span>], suffix[i]<br>    &#125;<br>    <span class="hljs-keyword">return</span> prefix + <span class="hljs-type">string</span>(suffix)<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">countGoodIntegers</span><span class="hljs-params">(n <span class="hljs-type">int</span>, k <span class="hljs-type">int</span>)</span></span> (ans <span class="hljs-type">int64</span>) &#123;<br>    solution := init3273(n, k)<br>    from := <span class="hljs-type">int</span>(math.Pow10((n - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>))<br>    to := from * <span class="hljs-number">10</span><br>    <span class="hljs-keyword">for</span> i := from; i &lt; to; i++ &#123;<br>        s := solution.getFullS(strconv.Itoa(i))<br>        <span class="hljs-keyword">if</span> solution.isOk(s) &amp;&amp; !solution.ifVisited(s) &#123;<br>            ans += solution.calc(s)<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/147163366">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/04/12/LeetCode%203272.%E7%BB%9F%E8%AE%A1%E5%A5%BD%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A2%98%E8%A7%A3/LeetCode/" class="category-chain-item">LeetCode</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E5%9B%B0%E9%9A%BE/">#困难</a>
+      
+        <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">#组合数学</a>
+      
+        <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
+      
+        <a href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/">#回文串</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E6%9E%90/">#字符串解析</a>
+      
+        <a href="/tags/%E6%9E%9A%E4%B8%BE/">#枚举</a>
+      
+        <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/">#排列组合</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>3272.统计好整数的数目：枚举+排列组合+哈希表</div>
+      <div>https://blog.letmefly.xyz/2025/04/12/LeetCode 3272.统计好整数的数目/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年4月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/04/11/LeetCode%202843.%E7%BB%9F%E8%AE%A1%E5%AF%B9%E7%A7%B0%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" title="2843.统计对称整数的数目：字符串数字转换">
+                        <span class="hidden-mobile">2843.统计对称整数的数目：字符串数字转换</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
