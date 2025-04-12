@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-12 07:51:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-12 08:16:54
+ * @LastEditTime: 2025-04-12 08:19:56
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -24,7 +24,7 @@ class Solution {
 private:
     bool isOk(string s, int k) {
         ll val = stoll(s);
-        printf("%s: %d\n", s.c_str(), val % k == 0);  // *****
+        // printf("%s: %d\n", s.c_str(), val % k == 0);  // *****
         return val % k == 0;
     };
 public:
