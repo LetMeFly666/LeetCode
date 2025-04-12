@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-12 07:51:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-12 09:25:01
+ * @LastEditTime: 2025-04-12 13:01:46
  * @Description: AC,21.21%,93.94%
  */
 #if defined(_WIN32) || defined(__APPLE__)
@@ -71,8 +71,8 @@ public:
             string prefix = to_string(start), suffix = prefix.substr(0, prefix.size() - n % 2);
             reverse(suffix.begin(), suffix.end());
             string thisNum = prefix + suffix;
-            if (isOk(thisNum) && !ifVisited(thisNum)) {
-                printf("ans: %lld, calc(%s): %lld, ans = ans + calc(%s) = %lld\n", ans, thisNum.c_str(), calc(thisNum), thisNum.c_str(), ans + calc(thisNum));  // ****
+            if (isOk(thisNum) && !ifVisited(thisNum)) {  // 注意ifVisited会将thisNum加入哈希表的话记得先判断isOk再判断ifVisited
+                // printf("ans: %lld, calc(%s): %lld, ans = ans + calc(%s) = %lld\n", ans, thisNum.c_str(), calc(thisNum), thisNum.c_str(), ans + calc(thisNum));  // ****
                 ans += calc(thisNum);
             }
         }
