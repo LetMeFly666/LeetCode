@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-12 07:51:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-12 08:51:06
+ * @LastEditTime: 2025-04-12 09:00:20
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -31,7 +31,7 @@ private:
         factor.resize(n + 1);
         factor[0] = 1;
         for (int i = 1; i <= n; i++) {
-            factor[i] = factor[i - 1] * 10;
+            factor[i] = factor[i - 1] * i;
         }
     }
 
@@ -51,11 +51,11 @@ private:
     };
 
     ll calc(string& s) {
+        memset(times, 0, sizeof(times));
         for (char c : s) {
             times[c - '0']++;
         }
         ll ans = (s.size() - times[0]) * factor[s.size() - 1];
-        memset(times, 0, sizeof(times));
         for (int i = 0; i < 10; i++) {
             ans /= factor[times[i]];
         }
@@ -71,6 +71,7 @@ public:
             reverse(suffix.begin(), suffix.end());
             string thisNum = prefix + suffix;
             if (!ifVisited(thisNum) && isOk(thisNum)) {
+                // printf("ans: %lld, calc(%s): %lld, ans = ans + calc(%s) = %lld\n", ans, thisNum.c_str(), calc(thisNum), thisNum.c_str(), ans + calc(thisNum));  // ****
                 ans += calc(thisNum);
             }
         }
