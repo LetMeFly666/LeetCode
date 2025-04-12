@@ -1,3 +1,43 @@
+'''
+Author: LetMeFly
+Date: 2025-04-12 09:02:55
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-04-12 09:07:16
+'''
+from collections import Counter
+from math import factorial
+
+class Solution:
+    def calc(self, s: str) -> int:
+        cnt = Counter(s)
+        res = (len(s) - cnt['0']) * self.fac[len(s) - 1]
+        for c in cnt.values():
+            res //= self.fac[c]
+        return res
+    
+    def countGoodIntegers(self, n: int, k: int) -> int:
+        self.fac = [factorial(i) for i in range(n + 1)]
+        ans = 0
+        vis = set()
+        base = 10 ** ((n - 1) // 2)
+        for i in range(base, base * 10):  # 枚举回文数左半边
+            s = str(i)
+            s += s[::-1][n % 2:]
+            if int(s) % k:  # 回文数不能被 k 整除
+                continue
+
+            sorted_s = ''.join(sorted(s))
+            if sorted_s in vis:  # 不能重复统计
+                continue
+            vis.add(sorted_s)
+
+            res = self.calc(s)
+            print(f'ans: {ans}, calc({s}): {res}, ans = ans + calc({s}) = {ans + res}')
+            ans += res
+        return ans
+# Copy And Change From https://leetcode.cn/problems/find-the-count-of-good-integers/solutions/2899725/mei-ju-suo-you-hui-wen-shu-zu-he-shu-xue-3d35/
+    
+"""
 ans: 0, calc(20202): 6, ans = ans + calc(20202) = 6
 ans: 6, calc(20502): 18, ans = ans + calc(20502) = 24
 ans: 24, calc(20802): 18, ans = ans + calc(20802) = 42
@@ -111,3 +151,4 @@ ans: 2393, calc(88788): 5, ans = ans + calc(88788) = 2398
 ans: 2398, calc(89298): 30, ans = ans + calc(89298) = 2428
 ans: 2428, calc(89598): 30, ans = ans + calc(89598) = 2458
 ans: 2458, calc(89898): 10, ans = ans + calc(89898) = 2468
+"""
