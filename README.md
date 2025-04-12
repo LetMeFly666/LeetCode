@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-03-28 23:17:56
+ * @LastEditTime: 2025-04-11 22:38:06
 -->
 # LetLeet Blog
 
@@ -937,6 +937,7 @@
 |3264.K次乘运算后的最终数组I|简单|<a href="https://leetcode.cn/problems/final-array-state-after-k-multiplication-operations-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/13/LeetCode%203264.K%E6%AC%A1%E4%B9%98%E8%BF%90%E7%AE%97%E5%90%8E%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%B0%E7%BB%84I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144442552" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/final-array-state-after-k-multiplication-operations-i/solutions/3018990/letmefly-3264k-ci-cheng-yun-suan-hou-de-ahxh2/" target="_blank">LeetCode题解</a>|
 |3266.K次乘运算后的最终数组II|困难|<a href="https://leetcode.cn/problems/final-array-state-after-k-multiplication-operations-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/14/LeetCode%203266.K%E6%AC%A1%E4%B9%98%E8%BF%90%E7%AE%97%E5%90%8E%E7%9A%84%E6%9C%80%E7%BB%88%E6%95%B0%E7%BB%84II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144473973" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/final-array-state-after-k-multiplication-operations-ii/solutions/3020166/letmefly-3266k-ci-cheng-yun-suan-hou-de-44xf1/" target="_blank">LeetCode题解</a>|
 |3270.求出数字答案|简单|<a href="https://leetcode.cn/problems/find-the-key-of-the-numbers/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/13/LeetCode%203270.%E6%B1%82%E5%87%BA%E6%95%B0%E5%AD%97%E7%AD%94%E6%A1%88/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145126790" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-key-of-the-numbers/solutions/3046615/letmefly-3270qiu-chu-shu-zi-da-an-mei-we-riuc/" target="_blank">LeetCode题解</a>|
+|3272.统计好整数的数目|困难|<a href="https://leetcode.cn/problems/find-the-count-of-good-integers/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/04/12/LeetCode%203272.%E7%BB%9F%E8%AE%A1%E5%A5%BD%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/147163366" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-count-of-good-integers/solutions/3648738/letmefly-3272tong-ji-hao-zheng-shu-de-sh-pjy8/" target="_blank">LeetCode题解</a>|
 |3280.将日期转换为二进制表示|简单|<a href="https://leetcode.cn/problems/convert-date-to-binary/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/01/LeetCode%203280.%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144870892" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/convert-date-to-binary/solutions/3036032/letmefly-3280jiang-ri-qi-zhuan-huan-wei-149mv/" target="_blank">LeetCode题解</a>|
 |3285.找到稳定山的下标|简单|<a href="https://leetcode.cn/problems/find-indices-of-stable-mountains/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/19/LeetCode%203285.%E6%89%BE%E5%88%B0%E7%A8%B3%E5%AE%9A%E5%B1%B1%E7%9A%84%E4%B8%8B%E6%A0%87/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144596618" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-indices-of-stable-mountains/solutions/3025068/letmefly-3285zhao-dao-wen-ding-shan-de-x-u3wc/" target="_blank">LeetCode题解</a>|
 |3297.统计重新排列后包含另一个字符串的子字符串数目I|中等|<a href="https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/09/LeetCode%203297.%E7%BB%9F%E8%AE%A1%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%90%8E%E5%8C%85%E5%90%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AEI/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145031494" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/solutions/3042787/letmefly-3297tong-ji-zhong-xin-pai-lie-h-8ele/" target="_blank">LeetCode题解</a>|
@@ -1020,6 +1021,11 @@
 - [ ] [722. 删除注释](https://leetcode.cn/problems/remove-comments/)的“状态机”解法和“正则”解法
 - [ ] [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)的分治解法
 - [ ] [2732. 找到矩阵中的好子集](https://leetcode.cn/problems/find-a-good-subset-of-the-matrix/)（加```VE1ECg==```班没写）
+- [ ] [2873. 有序三元组中的最大值 I](https://leetcode.cn/problems/maximum-value-of-an-ordered-triplet-i/)  补每日一题
+- [ ] [2874. 有序三元组中的最大值 II](https://leetcode.cn/problems/maximum-value-of-an-ordered-triplet-ii/)  补每日一题
+- [ ] [368. 最大整除子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题(代码)
+- [ ] [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题
+- [ ] [2999. 统计强大整数的数目](https://leetcode.cn/problems/count-the-number-of-powerful-integers/)  补每日一题
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
