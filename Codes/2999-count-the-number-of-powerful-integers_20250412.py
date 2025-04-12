@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-04-12 22:20:48
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-12 22:28:31
+LastEditTime: 2025-04-12 22:33:26
 '''
 from functools import cache
 
@@ -24,9 +24,9 @@ class Solution:
         return ans
         
     def numberOfPowerfulInt(self, start: int, finish: int, limit: int, s: str) -> int:
-        self.start = list(map(int, str(start)))
-        self.n = len(self.start)
-        self.finish = list(map(int, str(finish).zfill(self.n)))
+        self.finish = list(map(int, str(finish)))
+        self.n = len(self.finish)
+        self.start = list(map(int, str(start).zfill(self.n)))
         self.limit = limit
         self.free = self.n - len(s)
         self.s = list(map(int, s))
