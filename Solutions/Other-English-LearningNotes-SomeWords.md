@@ -1090,6 +1090,9 @@ categories: [自用]
 |hurrah|n. 欢呼声，激动，纷争<br/>int. 万岁<br/>|
 |elemental|adj. 狂暴的，猛烈的，似自然力的，基本的<br/>n. (古希腊)四元素的精灵，基本原理|
 |clearance|n. 清除，清理，许可，批准，间距，间隙，票据交换，清算|
+|||
+|demurrage|n. (船舶)租借逾期费用，滞留|
+|cripple|n. 跛子，残疾人，瘸子，伤残人<br/>v. 使残疾，使跛，使成瘸子，严重损坏|
 
 <p class="wordCounts">单词收录总数</p>
 
