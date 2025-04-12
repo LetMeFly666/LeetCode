@@ -2,24 +2,26 @@
  * @Author: LetMeFly
  * @Date: 2025-04-12 10:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-12 11:07:18
+ * @LastEditTime: 2025-04-12 11:13:08
  */
 import java.util.Set;
 import java.util.HashSet;
-import java.util.StringBuilder;
+// import java.lang.StringBuilder;  // 默认自动导入 无需手动导入
 import java.util.Arrays;
 
 class Solution {
     private int k;
     private int[] factor;
-    private Set<Integer> visited = new HashSet<Integer>;
+    private Set<String> visited = new HashSet<>();
 
     private boolean isOk(String s) {
         return Long.parseLong(s) % k == 0;
     }
 
     private boolean ifVisited(String s) {
-        String sorted = new String(Arrays.sort(s.toCharArray()));
+        char[] array = s.toCharArray();
+        Arrays.sort(array);
+        String sorted = new String(array);
         return !visited.add(sorted);
     }
 
@@ -44,7 +46,7 @@ class Solution {
         }
         long ans = 0;
         for (int from = (int)Math.pow(10, (n - 1) / 2), to = from * 10; from < to; from++) {
-            String prefix = String.valufOf(from);
+            String prefix = String.valueOf(from);
             String suffix = new StringBuilder(prefix).reverse().substring(n % 2);
             String s = prefix + suffix;
             if (isOk(s) && !ifVisited(s)) {
