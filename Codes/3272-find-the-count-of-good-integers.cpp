@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-12 07:51:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-12 08:50:05
+ * @LastEditTime: 2025-04-12 08:51:06
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -51,11 +51,11 @@ private:
     };
 
     ll calc(string& s) {
-        ll ans = (s.size() - times[0]) * factor[s.size() - 1];
-        memset(times, 0, sizeof(times));
         for (char c : s) {
             times[c - '0']++;
         }
+        ll ans = (s.size() - times[0]) * factor[s.size() - 1];
+        memset(times, 0, sizeof(times));
         for (int i = 0; i < 10; i++) {
             ans /= factor[times[i]];
         }
@@ -65,9 +65,8 @@ public:
     ll countGoodIntegers(int n, int k) {
         initFactor(n);
         this->k = k;
-        int half = (n - 1) / 2;
         ll ans = 0;
-        for (int start = pow(10, half - 1), end = start * 10; start < end; start++) {
+        for (int start = pow(10, (n - 1) / 2), end = start * 10; start < end; start++) {
             string prefix = to_string(start), suffix = prefix.substr(0, prefix.size() - n % 2);
             reverse(suffix.begin(), suffix.end());
             string thisNum = prefix + suffix;
