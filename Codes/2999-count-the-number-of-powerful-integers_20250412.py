@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-04-12 22:20:48
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-12 22:33:26
+LastEditTime: 2025-04-12 22:37:40
 '''
 from functools import cache
 
@@ -12,10 +12,10 @@ class Solution:
         if n == self.n:
             return 1
         low = self.start[n] if limitLow else 0
-        high = self.finish[n] if limitHigh else 0
+        high = self.finish[n] if limitHigh else 9
         ans = 0
         if n < self.free:  # 什么都可以
-            for d in range(low, high + 1):
+            for d in range(low, min(high, self.limit) + 1):
                 ans += self.dfs(n + 1, limitLow and d == low, limitHigh and d == high)
         else:
             x = self.s[n - self.free]
