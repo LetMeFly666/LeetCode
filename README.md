@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-11 22:38:06
+ * @LastEditTime: 2025-04-14 00:11:36
 -->
 # LetLeet Blog
 
@@ -1026,7 +1026,6 @@
 - [ ] [2874. 有序三元组中的最大值 II](https://leetcode.cn/problems/maximum-value-of-an-ordered-triplet-ii/)  补每日一题
 - [ ] [368. 最大整除子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题(代码)
 - [ ] [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题
-- [ ] [2999. 统计强大整数的数目](https://leetcode.cn/problems/count-the-number-of-powerful-integers/)  补每日一题
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
@@ -1048,6 +1047,7 @@
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] [1845. 座位预约管理系统 ](https://leetcode.cn/problems/seat-reservation-manager/)
 - [x] [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets/)
+- [x] [2999. 统计强大整数的数目](https://leetcode.cn/problems/count-the-number-of-powerful-integers/)  补每日一题
 - [x] 将域名修改为blog.letmefly.xyz，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
 
