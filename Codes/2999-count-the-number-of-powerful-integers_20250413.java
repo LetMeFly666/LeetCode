@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 13:00:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 13:25:11
+ * @LastEditTime: 2025-04-13 13:28:24
  */
 import java.util.Arrays;
 
@@ -18,15 +18,15 @@ class Solution {
         if (!limitLow && !limitHigh && cache[i] != -1) {
             return cache[i];
         }
-        int low = limitLow ? start[i] - '0' : 0;
-        int high = limitHigh ? finish[i] - '0' : 9;
+        int low = limitLow ? start.charAt(i) - '0' : 0;
+        int high = limitHigh ? finish.charAt(i) - '0' : 9;
         long ans = 0;
         if (i < nonFixed) {
             for (int d = low; d <= Math.min(limit, high); i++) {
                 ans += dfs(i + 1, limitLow && d == low, limitHigh && d == high);
             }
         } else {
-            int x = suffix[i - nonFixed] - '0';
+            int x = suffix.charAt(i - nonFixed) - '0';
             if (low <= x && x <= high) {
                 ans = dfs(i + 1, limitLow && x == low, limitHigh && x == high);
             }
