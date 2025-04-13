@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 11:03:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 11:23:13
+ * @LastEditTime: 2025-04-13 11:26:19
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ private:
         if (i == n) {
             return 1;
         }
-        if (cache.count(i)) {
+        if (!limitLow && !limitHigh && cache.count(i)) {
             return cache[i];
         }
         int low = limitLow ? start[i] - '0' : 0;
