@@ -1,7 +1,7 @@
 ---
 title: 2999.统计强大整数的数目：上下界数位DP
 date: 2025-04-13 14:04:15
-tags: [题解, LeetCode, 困难, 数学, 字符串, 动态规划, 搜索, 深度优先搜索, DFS]
+tags: [题解, LeetCode, 困难, 数学, 字符串, 动态规划, DP, 搜索, 深度优先搜索, DFS, 数位DP]
 categories: [题解, LeetCode]
 ---
 
@@ -84,8 +84,8 @@ categories: [题解, LeetCode]
 
 > 记忆化的时候，记录`(i, limitLow, limitHigh)`三个变量可能有些麻烦，我们也可以只记录`i`这一个变量，并且在`limitLow`和`limitHigh`都为`false`时再使用记忆化。（因为有`true`的话不会被再次调用）
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 时间复杂度$O(\log finish\times D)$，其中$D=10$
++ 空间复杂度$O(\log finish)$
 
 ### AC代码
 
@@ -98,10 +98,6 @@ categories: [题解, LeetCode]
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-04-13 11:56:04
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 typedef long long ll;
 
 class Solution {
@@ -117,15 +113,15 @@ private:
         if (!limitLow && !limitHigh && cache.count(i)) {
             return cache[i];
         }
-        int low = limitLow ? start[i] - '0' : 0;
+        int low = limitLow ? start[i] - '0' : 0;  // 这一位的有效范围时[log, high]
         int high = limitHigh ? finish[i] - '0' : 9;
         ll ans = 0;
         if (i < nonFixed) {
-            for (int d = low; d <= min(high, limit); d++) {
+            for (int d = low; d <= min(high, limit); d++) {  // 构造这一位
                 ans += dfs(i + 1, limitLow && d == low, limitHigh && d == high);
             }
         } else {
-            int x = suffix[i - nonFixed] - '0';
+            int x = suffix[i - nonFixed] - '0';  // 构造这一位
             if (low <= x && x <= high) {  // 题目限制一定小于limit
                 ans = dfs(i + 1, limitLow && x == low, limitHigh && x == high);
             }
@@ -142,7 +138,7 @@ public:
         this->finish = to_string(finish);
         n = this->finish.size();
         this->start = to_string(start);
-        this->start = string(n - this->start.size(), '0') + this->start;
+        this->start = string(n - this->start.size(), '0') + this->start;  // 原始范围时[1, 200]的话，将其变成[001, 200]
         nonFixed = n - this->suffix.size();
 
         return dfs(0, true, true);
@@ -310,6 +306,6 @@ func numberOfPowerfulInt(start int64, finish int64, limit int, s string) int64 {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/04/12/LeetCode%202999.%E7%BB%9F%E8%AE%A1%E5%BC%BA%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/147191672)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/04/12/LeetCode%202999.%E7%BB%9F%E8%AE%A1%E5%BC%BA%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
