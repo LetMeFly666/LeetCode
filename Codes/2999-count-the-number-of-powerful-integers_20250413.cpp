@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 11:03:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 11:17:19
+ * @LastEditTime: 2025-04-13 11:20:55
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,8 +19,8 @@ private:
         if (i == n) {
             return 1;
         }
-        int low = limitLow ? start[i] : 0;
-        int high = limitHigh ? finish[i] : 9;
+        int low = limitLow ? start[i] - '0' : 0;
+        int high = limitHigh ? finish[i] - '0' : 9;
         ll ans = 0;
         if (i < nonFixed) {
             for (int d = low; d <= min(high, limit); d++) {
