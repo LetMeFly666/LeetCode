@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 11:03:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 11:26:19
+ * @LastEditTime: 2025-04-13 11:47:39
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -36,7 +36,10 @@ private:
                 ans = dfs(i + 1, limitLow && x == low, limitHigh && x == high);
             }
         }
-        return cache[i] = ans;
+        if (!limitLow && !limitHigh) {
+            cache[i] = ans;
+        }
+        return ans;
     }
 public:
     long long numberOfPowerfulInt(long long start, long long finish, int limit, string s) {
