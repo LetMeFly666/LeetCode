@@ -2,7 +2,8 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 13:00:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 13:28:24
+ * @LastEditTime: 2025-04-13 13:37:04
+ * @Description: AC,70.30%,86.73%
  */
 import java.util.Arrays;
 
@@ -22,7 +23,7 @@ class Solution {
         int high = limitHigh ? finish.charAt(i) - '0' : 9;
         long ans = 0;
         if (i < nonFixed) {
-            for (int d = low; d <= Math.min(limit, high); i++) {
+            for (int d = low; d <= Math.min(limit, high); d++) {
                 ans += dfs(i + 1, limitLow && d == low, limitHigh && d == high);
             }
         } else {
@@ -42,6 +43,7 @@ class Solution {
         n = this.finish.length();
         this.start = String.valueOf(start);
         this.start = "0".repeat(n - this.start.length()) + this.start;
+        this.limit = limit;
         nonFixed = n - s.length();
         cache = new long[n];
         Arrays.fill(cache, -1);
