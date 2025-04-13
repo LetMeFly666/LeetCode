@@ -82,7 +82,7 @@ categories: [题解, LeetCode]
 
 最后就是需要记忆化一下。
 
-> 记忆化的时候，记录`(i, limitLow, limitHigh)`三个变量可能有些麻烦，我们也可以只记录`i`这一个变量，并且在`limitLow`和`limitHigh`都为`false`时再使用记忆化。（因为只能由`false`到`true`而不能由`true`到`false`）
+> 记忆化的时候，记录`(i, limitLow, limitHigh)`三个变量可能有些麻烦，我们也可以只记录`i`这一个变量，并且在`limitLow`和`limitHigh`都为`false`时再使用记忆化。（因为有`true`的话不会被再次调用）
 
 + 时间复杂度$O(N^2)$
 + 空间复杂度$O(N\log N)$
