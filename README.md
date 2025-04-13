@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-11 22:38:06
+ * @LastEditTime: 2025-04-14 00:11:36
 -->
 # LetLeet Blog
 
@@ -626,6 +626,7 @@
 |1884.鸡蛋掉落-两枚鸡蛋|中等|<a href="https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/10/13/LeetCode%201884.%E9%B8%A1%E8%9B%8B%E6%8E%89%E8%90%BD-%E4%B8%A4%E6%9E%9A%E9%B8%A1%E8%9B%8B/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142906976" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/egg-drop-with-2-eggs-and-n-floors/solutions/2949710/letmefly-1884ji-dan-diao-luo-liang-mei-j-saz6/" target="_blank">LeetCode题解</a>|
 |1901.寻找峰值II|中等|<a href="https://leetcode.cn/problems/find-a-peak-element-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/12/19/LeetCode%201901.%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BCII/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135083347" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-a-peak-element-ii/solutions/2572012/letmefly-1901xun-zhao-feng-zhi-iier-fen-19tmj/" target="_blank">LeetCode题解</a>|
 |1911.最大子序列交替和|中等|<a href="https://leetcode.cn/problems/maximum-alternating-subsequence-sum/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2023/07/11/LeetCode%201911.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E4%BA%A4%E6%9B%BF%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/131652316" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-alternating-subsequence-sum/solutions/2339029/letmefly-1911zui-da-zi-xu-lie-jiao-ti-he-fyzq/" target="_blank">LeetCode题解</a>|
+|1922.统计好数字的数目|中等|<a href="https://leetcode.cn/problems/count-good-numbers/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/04/14/LeetCode%201922.%E7%BB%9F%E8%AE%A1%E5%A5%BD%E6%95%B0%E5%AD%97%E7%9A%84%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/147200001" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-good-numbers/solutions/3650327/letmefly-1922tong-ji-hao-shu-zi-de-shu-m-ev7k/" target="_blank">LeetCode题解</a>|
 |1928.规定时间内到达终点的最小花费|困难|<a href="https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/10/03/LeetCode%201928.%E8%A7%84%E5%AE%9A%E6%97%B6%E9%97%B4%E5%86%85%E5%88%B0%E8%BE%BE%E7%BB%88%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/142691241" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-cost-to-reach-destination-in-time/solutions/2937779/letmefly-1928gui-ding-shi-jian-nei-dao-d-h1rk/" target="_blank">LeetCode题解</a>|
 |1944.队列中可以看到的人数|困难|<a href="https://leetcode.cn/problems/number-of-visible-people-in-a-queue/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/01/05/LeetCode%201944.%E9%98%9F%E5%88%97%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BA%BA%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/135416441" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/number-of-visible-people-in-a-queue/solutions/2592403/letmefly-1944dui-lie-zhong-ke-yi-kan-dao-e8p6/" target="_blank">LeetCode题解</a>|
 |1945.字符串转化后的各位数字之和|简单|<a href="https://leetcode.cn/problems/sum-of-digits-of-string-after-convert/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2022/12/15/LeetCode%201945.%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E5%90%8E%E7%9A%84%E5%90%84%E4%BD%8D%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/128335606" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/sum-of-digits-of-string-after-convert/solutions/2021840/letmefly-1945zi-fu-chuan-zhuan-hua-hou-d-569r/" target="_blank">LeetCode题解</a>|
@@ -1026,7 +1027,6 @@
 - [ ] [2874. 有序三元组中的最大值 II](https://leetcode.cn/problems/maximum-value-of-an-ordered-triplet-ii/)  补每日一题
 - [ ] [368. 最大整除子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题(代码)
 - [ ] [416. 分割等和子集](https://leetcode.cn/problems/partition-equal-subset-sum/)  补每日一题
-- [ ] [2999. 统计强大整数的数目](https://leetcode.cn/problems/count-the-number-of-powerful-integers/)  补每日一题
 - [ ] Readme（尤其是文章列表部分）自动生成而非半自动或手动输修改
 - [ ] 有空玩下[这个](https://github.com/LetMeFly666/ViT-MGI/commit/df2255f07aa318d55f44da262315789a15f0f2fc)
 - [ ] arknights主题不支持mermaid的渲染
@@ -1048,6 +1048,7 @@
 - [x] [1037. 有效的回旋镖](https://leetcode.cn/problems/valid-boomerang/)也可写
 - [x] [1845. 座位预约管理系统 ](https://leetcode.cn/problems/seat-reservation-manager/)
 - [x] [2073. 买票需要的时间](https://leetcode.cn/problems/time-needed-to-buy-tickets/)
+- [x] [2999. 统计强大整数的数目](https://leetcode.cn/problems/count-the-number-of-powerful-integers/)  补每日一题
 - [x] 将域名修改为blog.letmefly.xyz，以使用Cloudflare代理，旧域名会重定向到新域名（的对应路径）
 - [x] 自动发起pr
 

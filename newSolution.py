@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-09 23:21:29
+LastEditTime: 2025-04-14 00:27:31
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -60,9 +60,20 @@ def getPlatform():
         return 'MacOS'
     else:
         return 'Linux(or others)'
-issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} " -l "题解" -a "@me"').read()
-print(issueCreateResult)
-issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
+issueTitle = f'Who can add 1 more problem of LeetCode {num}'  # (#872)
+alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
+alreadyRelatedIssueListsSplited = alreadyRelatedIssueLists.split('\n')
+print(alreadyRelatedIssueLists)
+print(alreadyRelatedIssueListsSplited)
+issueNum = 0
+for line in alreadyRelatedIssueListsSplited:
+    if issueTitle in line:
+        issueNum = int(line.split()[0])
+print(issueNum)
+if not issueNum:
+    issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} " -l "题解" -a "@me"').read()
+    print(issueCreateResult)
+    issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 
 input('代码写完后按回车生成题解模板：')
 

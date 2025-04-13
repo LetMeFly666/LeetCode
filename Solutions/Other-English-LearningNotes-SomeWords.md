@@ -1093,6 +1093,9 @@ categories: [自用]
 |||
 |demurrage|n. (船舶)租借逾期费用，滞留|
 |cripple|n. 跛子，残疾人，瘸子，伤残人<br/>v. 使残疾，使跛，使成瘸子，严重损坏|
+|||
+|voucher|n. 保证人，证件，教育补助券，消费券<br/>v. 证明，为...准备凭据，发给...凭证|
+|deterioration|n. 恶化，退化，变质，堕落|
 
 <p class="wordCounts">单词收录总数</p>
 
