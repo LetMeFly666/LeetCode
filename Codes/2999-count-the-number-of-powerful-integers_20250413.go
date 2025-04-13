@@ -7,15 +7,15 @@
 package main
 
 import (
-	"strconv"
-	"strings"
+    "strconv"
+    "strings"
 )
 
 func dfs2999(i int, limitLow, limitHigh bool, start, finish string, nonFixed int, cache []int64, limit int, suffix string) (ans int64) {
     if i == len(start) {
         return 1
     }
-    if !limitLow && !limitHigh && cache[i] == -1 {
+    if !limitLow && !limitHigh && cache[i] != -1 {
         return cache[i]
     }
 
