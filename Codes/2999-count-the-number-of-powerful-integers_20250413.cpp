@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-13 11:03:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-13 11:47:39
+ * @LastEditTime: 2025-04-13 11:56:04
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -14,7 +14,7 @@ class Solution {
 private:
     int limit, n, nonFixed;
     string suffix, start, finish;
-    unordered_map<int, int> cache;
+    unordered_map<int, ll> cache;
 
     ll dfs(int i, bool limitLow, bool limitHigh) {
         if (i == n) {
