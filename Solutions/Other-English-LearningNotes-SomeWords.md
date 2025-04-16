@@ -1096,6 +1096,13 @@ categories: [自用]
 |||
 |voucher|n. 保证人，证件，教育补助券，消费券<br/>v. 证明，为...准备凭据，发给...凭证|
 |deterioration|n. 恶化，退化，变质，堕落|
+|||
+|wordy|adj. 话多的，冗长的，啰嗦的|
+|oceanography|n. 海洋学|
+|stronghold|n. 要塞，据点，堡垒，有广泛支持的地方|
+|mackintosh|n. 防水胶布，胶布雨衣（麦金托什）|
+|||
+|ferrous|adj. 含铁的，铁的|
 
 <p class="wordCounts">单词收录总数</p>
 
