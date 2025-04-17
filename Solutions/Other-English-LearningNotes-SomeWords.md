@@ -1103,6 +1103,8 @@ categories: [自用]
 |mackintosh|n. 防水胶布，胶布雨衣（麦金托什）|
 |||
 |ferrous|adj. 含铁的，铁的|
+|||
+|stammer|v. 口吃，结结巴巴地说<br.>n. 口吃，结巴|
 
 <p class="wordCounts">单词收录总数</p>
 
