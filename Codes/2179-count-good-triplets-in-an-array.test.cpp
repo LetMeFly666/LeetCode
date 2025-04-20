@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-19 22:10:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-19 22:26:13
+ * @LastEditTime: 2025-04-20 10:52:31
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -38,8 +38,8 @@ public:
         for (int i = 0; i < n; i++) {
             while (true) {
                 int t = rand() % n;
-                cout << "rand: " << t << " | ";
-                debug(a, "a");
+                // cout << "rand: " << t << " | ";
+                // debug(a, "a");
                 if (isIn(t, a)) {
                     continue;
                 }
@@ -51,7 +51,7 @@ public:
                 if (isIn(t, b)) {
                     continue;
                 }
-                a.push_back(t);
+                b.push_back(t);
                 break;
             }
         }
@@ -86,7 +86,9 @@ public:
 
 int main() {
     time_t start = clock();
+    int cnt = 0;
     while (double(clock() - start) / CLOCKS_PER_SEC < testTime) {
+        cnt++;
         Test test = Test();
         test.P();
         if (!test.ok()) {
@@ -94,5 +96,11 @@ int main() {
             break;
         }
     }
+    cout << "total " << cnt << " tests in " << testTime << "s" << endl;
     return 0;
 }
+
+/*
+total 656375 tests in 10s
+没有发现assert failed
+*/
