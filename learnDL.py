@@ -6,4 +6,5 @@ LastEditTime: 2025-04-19 22:47:43
 '''
 m = 10
 for i in range(m):
-    print('processing', i)
+    print('正在处理', i)
+    
