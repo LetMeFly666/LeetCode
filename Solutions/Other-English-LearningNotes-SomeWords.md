@@ -1105,6 +1105,10 @@ categories: [自用]
 |ferrous|adj. 含铁的，铁的|
 |||
 |stammer|v. 口吃，结结巴巴地说<br>n. 口吃，结巴|
+|||
+|terrace|n. 露天平台，阳台，阶梯看台，梯田|
+|||
+|bottle-neck|n. 瓶颈，道路上的狭窄处|
 
 <p class="wordCounts">单词收录总数</p>
 
