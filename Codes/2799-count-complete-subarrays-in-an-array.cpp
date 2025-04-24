@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-24 22:47:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-24 22:54:33
+ * @LastEditTime: 2025-04-24 23:04:03
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,15 +19,12 @@ public:
         int ans = 0;
         for (int l = 0, r = 0; r < nums.size(); r++) {
             times[nums[r]]++;
-            if (times.size() < allType) {
-                continue;
+            while (times.size() == allType && times[nums[l]] > 1) {
+                times[nums[l++]]--;
             }
-            while (times.size() == allType) {
-                if (!--times[nums[l]]) {
-                    times.erase(nums[l++]);
-                }
+            if (times.size() == allType) {
+                ans += l + 1;
             }
-            ans += l + 1;
         }
         return ans;
     }
