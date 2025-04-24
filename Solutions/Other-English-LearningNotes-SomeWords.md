@@ -1106,9 +1106,15 @@ categories: [自用]
 |||
 |stammer|v. 口吃，结结巴巴地说<br>n. 口吃，结巴|
 |||
+|unjust|adj. 不公平的，不公正的，非正义的|
+|handkerchief|n. 手帕，纸巾|
+|clientele|n. 客户|
+|||
 |terrace|n. 露天平台，阳台，阶梯看台，梯田|
 |||
 |bottle-neck|n. 瓶颈，道路上的狭窄处|
+|||
+|perimeter|n. 周长，外缘，边缘|
 
 <p class="wordCounts">单词收录总数</p>
 
