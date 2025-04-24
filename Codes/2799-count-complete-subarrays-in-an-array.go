@@ -2,12 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2025-04-24 22:47:30
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-24 23:22:04
+ * @LastEditTime: 2025-04-24 23:23:21
  */
 package main
 
 func countCompleteSubarrays(nums []int) (ans int) {
-    visited := map[int]bool{}
+	visited := map[int]bool{}
 	for _, t := range nums {
 		visited[t] = true
 	}
