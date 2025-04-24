@@ -21,10 +21,10 @@ class Solution {
         int l = 0;
         for (int t : nums) {
             times.merge(t, 1, Integer::sum);
-            if (cnt.size() == allType && cnt.get(nums[l]) > 1) {
-                cnt.merge(nums[l++], -1, Integer::sum);
+            if (times.size() == allType && times.get(nums[l]) > 1) {
+                times.merge(nums[l++], -1, Integer::sum);
             }
-            if (cnt.size() == allType) {
+            if (times.size() == allType) {
                 ans += l + 1;
             }
         }
