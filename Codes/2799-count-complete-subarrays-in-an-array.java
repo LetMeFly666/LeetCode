@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-24 22:47:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-24 23:16:56
+ * @LastEditTime: 2025-04-24 23:18:36
  */
 import java.util.Set;
 import java.util.Map;
@@ -21,7 +21,7 @@ class Solution {
         int l = 0;
         for (int t : nums) {
             times.merge(t, 1, Integer::sum);
-            if (times.size() == allType && times.get(nums[l]) > 1) {
+            while (times.size() == allType && times.get(nums[l]) > 1) {
                 times.merge(nums[l++], -1, Integer::sum);
             }
             if (times.size() == allType) {
