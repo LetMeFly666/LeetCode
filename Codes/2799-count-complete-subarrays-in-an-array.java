@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-24 22:47:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-24 23:14:56
+ * @LastEditTime: 2025-04-24 23:16:56
  */
 import java.util.Set;
 import java.util.Map;
@@ -21,10 +21,10 @@ class Solution {
         int l = 0;
         for (int t : nums) {
             times.merge(t, 1, Integer::sum);
-            if (cnt.size() == k && cnt.get(nums[l]) > 1) {
+            if (cnt.size() == allType && cnt.get(nums[l]) > 1) {
                 cnt.merge(nums[l++], -1, Integer::sum);
             }
-            if (cnt.size() == k) {
+            if (cnt.size() == allType) {
                 ans += l + 1;
             }
         }
