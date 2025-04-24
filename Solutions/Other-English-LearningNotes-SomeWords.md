@@ -1105,10 +1105,6 @@ categories: [自用]
 |ferrous|adj. 含铁的，铁的|
 |||
 |stammer|v. 口吃，结结巴巴地说<br>n. 口吃，结巴|
-|||
-|unjust|adj. 不公平的，不公正的，非正义的|
-|handkerchief|n. 手帕，纸巾|
-|clientele|n. 客户|
 
 <p class="wordCounts">单词收录总数</p>
 
