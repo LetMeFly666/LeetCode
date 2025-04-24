@@ -72,6 +72,7 @@ for line in alreadyRelatedIssueListsSplited:
 print(issueNum)
 if not issueNum:
     issueCreateResult = os.popen(f'gh issue create -t "Who can add 1 more problem of LeetCode {num}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} " -l "题解" -a "@me"').read()
+    print(issueCreateResult)
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 
 input('代码写完后按回车生成题解模板：')
