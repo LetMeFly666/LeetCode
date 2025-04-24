@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-14 00:11:36
+ * @LastEditTime: 2025-04-24 10:29:33
 -->
 # LetLeet Blog
 
@@ -1039,6 +1039,7 @@
 - [ ] arknights主题不支持mermaid的渲染
 - [ ] 研究DQT的[代码](https://github.com/LetMeFly666/LeetCode/tree/f14c448bc54f4efc3fa41b1d691d5e58a629353f/Codes/1366-rank-teams-by-votes_DQT-RE_version.cpp)为何RE
 - [ ] Hexo的`$1\_2$`会被直接渲染成`$1_2$`，然后前端mathjs就会将$1\_2$解析成$1_2$。如[This](https://github.com/LetMeFly666/LeetCode/blob/7a007400b54908796c58576cb587c5f0a99550b8/Solutions/Other-Notes-Mianjing.md?plain=1#L358)。
+- [ ] 总结贝叶斯公式 [1 简单推导](https://blog.csdn.net/weixin_41938903/article/details/105566524)、[2 条件概率公式原理](https://blog.csdn.net/u013066730/article/details/115249553)
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
