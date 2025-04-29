@@ -1121,6 +1121,8 @@ categories: [自用]
 |frying-pan|n. 煎锅，长柄平锅|
 |||
 |lining|n. 内衬，衬层，衬里|
+|||
+|cape|n. 岬，海角；披肩，披风，短斗篷|
 
 <p class="wordCounts">单词收录总数</p>
 
