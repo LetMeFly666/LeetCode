@@ -676,7 +676,7 @@ categories: [自用]
 |<font color="#28bea0" title="二次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
 |garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
 |woodpecker|n. 啄木鸟|
-|<font color="#28bea0" title="二次复习">cosmetics</font>|n. 化妆品|
+|<font color="#28bea0" title="三次复习">cosmetics</font>|n. 化妆品|
 |violet|n. 紫罗兰，紫罗兰色，蓝紫色<br/>adj. 紫罗兰色的|
 |stow|v. 妥善放置，把…收好|
 |presently|adv. 一会儿，不久，现在，目前<br/>Tisfy: 当下这个意思与currently类似|
@@ -876,7 +876,7 @@ categories: [自用]
 |butchery|n. 残杀，杀戮，屠宰工作|
 |||
 |secretariat|n. 秘书处，书记处|
-|<font color="#28bea0" title="二次复习">sheriff</font>|n. 县(郡)治安官|
+|<font color="#28bea0" title="三次复习">sheriff</font>|n. 县(郡)治安官|
 |inasmuch|adv. 由于，〈古〉只要<details><summary>例句</summary>Inasmuch as you are an adult, you must be responsible for your own behavior.<br/>因为你是一个成年人，你必须对自己的行为负责。</details>|
 |countenance|n. 面容，脸色，面部表情<br/>v. 支持，赞成，同意|
 |||
@@ -1115,6 +1115,12 @@ categories: [自用]
 |bottle-neck|n. 瓶颈，道路上的狭窄处|
 |||
 |perimeter|n. 周长，外缘，边缘|
+|||
+|luncheon|n. 午宴，正事的午餐|
+|voiceless|ajd. (语音)发清音的，无法出声的，无发言权的|
+|frying-pan|n. 煎锅，长柄平锅|
+|||
+|lining|n. 内衬，衬层，衬里|
 
 <p class="wordCounts">单词收录总数</p>
 
