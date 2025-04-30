@@ -1099,7 +1099,7 @@ categories: [自用]
 |||
 |wordy|adj. 话多的，冗长的，啰嗦的|
 |oceanography|n. 海洋学|
-|stronghold|n. 要塞，据点，堡垒，有广泛支持的地方|
+|<font color="#28bea0" title="二次复习">stronghold</font>|n. 要塞，据点，堡垒，有广泛支持的地方|
 |mackintosh|n. 防水胶布，胶布雨衣（麦金托什）|
 |||
 |ferrous|adj. 含铁的，铁的|
@@ -1123,6 +1123,8 @@ categories: [自用]
 |lining|n. 内衬，衬层，衬里|
 |||
 |cape|n. 岬，海角；披肩，披风，短斗篷|
+|||
+|nought|n. 无，零|
 
 <p class="wordCounts">单词收录总数</p>
 
