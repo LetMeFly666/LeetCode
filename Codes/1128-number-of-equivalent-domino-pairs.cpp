@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-04 14:26:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-04 14:43:44
+ * @LastEditTime: 2025-05-04 14:48:05
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -27,12 +27,12 @@ public:
         int ans = 0;
         for (int i = 0; i < 81; i++) {
             int r = reverseNum(i);
+            int t = times[i] + (i == r ? 0 : times[r]);
             if (times[i] || times[r]) {
-                printf("i: %d, r: %d, times[%d]: %d, times[%d]: %d\n", i, r, i, times[i], r, times[r]);
+                printf("i: %d, r: %d, times[%d]: %d, times[%d]: %d\n, t = %d, %d * (%d - 1) = %d\n", i, r, i, times[i], r, times[r], t, t, t, t * (t - 1));
             }
-            int t = times[i] + (t == r ? 0 : times[r]);
             ans += t * (t - 1);
         }
-        return ans / 2;
+        return ans / 4;
     }
 };
