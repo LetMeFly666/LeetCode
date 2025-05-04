@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-24 10:48:42
+LastEditTime: 2025-05-04 21:10:34
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -26,7 +26,7 @@ for i in range(2, len(argv)):
     if i != 2:
         title += " "
     title += argv[i]
-nameProblem = "AllProblems/{0}.{1}.md".format(num, title)
+nameProblem = "AllProblems/{0}.{1}/{0}.{1}.md".format(num, title)
 print(nameProblem)
 
 title = ""
