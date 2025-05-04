@@ -1125,6 +1125,8 @@ categories: [自用]
 |cape|n. 岬，海角；披肩，披风，短斗篷|
 |||
 |nought|n. 无，零|
+|||
+|commemoration|n. 纪念，纪念仪式|
 
 <p class="wordCounts">单词收录总数</p>
 
