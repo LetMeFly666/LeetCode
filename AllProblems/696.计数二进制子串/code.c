@@ -1,0 +1,3 @@
+int countBinarySubstrings(char* s) {
+    
+}

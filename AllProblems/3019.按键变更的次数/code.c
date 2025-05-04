@@ -1,0 +1,3 @@
+int countKeyChanges(char* s) {
+    
+}

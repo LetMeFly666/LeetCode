@@ -1,0 +1,3 @@
+bool judgeCircle(char* moves) {
+    
+}

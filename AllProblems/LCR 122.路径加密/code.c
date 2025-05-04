@@ -1,0 +1,3 @@
+char* pathEncryption(char* path) {
+    
+}

@@ -1,0 +1,3 @@
+int smallestValue(int n) {
+    
+}

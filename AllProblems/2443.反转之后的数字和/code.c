@@ -1,0 +1,3 @@
+bool sumOfNumberAndReverse(int num) {
+    
+}

@@ -1,0 +1,3 @@
+int waysToStep(int n) {
+    
+}

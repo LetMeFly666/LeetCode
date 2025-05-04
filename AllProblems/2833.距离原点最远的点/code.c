@@ -1,0 +1,3 @@
+int furthestDistanceFromOrigin(char* moves) {
+    
+}

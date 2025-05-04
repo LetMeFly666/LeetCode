@@ -1,0 +1,3 @@
+bool isThree(int n) {
+    
+}

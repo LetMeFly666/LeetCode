@@ -1,0 +1,3 @@
+int splitNum(int num) {
+    
+}

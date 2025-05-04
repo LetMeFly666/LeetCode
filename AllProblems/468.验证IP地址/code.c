@@ -1,0 +1,3 @@
+char* validIPAddress(char* queryIP) {
+    
+}

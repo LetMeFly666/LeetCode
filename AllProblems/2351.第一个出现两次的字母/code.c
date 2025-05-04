@@ -1,0 +1,3 @@
+char repeatedCharacter(char* s) {
+    
+}

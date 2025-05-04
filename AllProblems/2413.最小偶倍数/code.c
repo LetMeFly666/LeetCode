@@ -1,0 +1,3 @@
+int smallestEvenMultiple(int n) {
+    
+}

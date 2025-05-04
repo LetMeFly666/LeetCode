@@ -1,0 +1,3 @@
+bool isSubstringPresent(char* s) {
+    
+}

@@ -1,0 +1,3 @@
+int nextGreaterElement(int n) {
+    
+}

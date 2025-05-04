@@ -1,0 +1,3 @@
+bool checkString(char* s) {
+    
+}

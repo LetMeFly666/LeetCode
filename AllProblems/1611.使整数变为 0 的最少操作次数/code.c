@@ -1,0 +1,3 @@
+int minimumOneBitOperations(int n) {
+    
+}

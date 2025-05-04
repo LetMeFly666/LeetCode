@@ -1,0 +1,3 @@
+int minimumOperations(char* num) {
+    
+}

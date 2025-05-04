@@ -1,0 +1,3 @@
+bool doesAliceWin(char* s) {
+    
+}

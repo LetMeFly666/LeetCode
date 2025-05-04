@@ -1,0 +1,3 @@
+int countSpecialNumbers(int n) {
+    
+}

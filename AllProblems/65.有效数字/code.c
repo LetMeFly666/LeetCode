@@ -1,0 +1,3 @@
+bool isNumber(char* s) {
+    
+}

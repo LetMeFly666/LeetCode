@@ -1,0 +1,3 @@
+int minDays(int n) {
+    
+}

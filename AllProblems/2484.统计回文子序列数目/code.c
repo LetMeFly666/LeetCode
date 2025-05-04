@@ -1,0 +1,3 @@
+int countPalindromes(char* s) {
+    
+}

@@ -1,0 +1,3 @@
+bool isPathCrossing(char* path) {
+    
+}

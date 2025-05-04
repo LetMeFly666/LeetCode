@@ -1,0 +1,3 @@
+int myAtoi(char* str) {
+    
+}

@@ -1,0 +1,1 @@
+lexicographically-smallest-equivalent-string

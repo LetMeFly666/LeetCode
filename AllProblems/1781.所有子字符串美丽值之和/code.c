@@ -1,0 +1,3 @@
+int beautySum(char* s) {
+    
+}

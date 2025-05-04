@@ -2,16 +2,18 @@
 Author: LetMeFly
 Date: 2022-06-02 14:14:26
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-04-08 22:10:39
+LastEditTime: 2025-05-05 00:17:20
 '''
 # WorkDir: BASE DIR
 # CMD: python AllProblems/_获取首页题目_LeetCode.py
 import requests
 import datetime
-# import json
+import json
 from bs4 import BeautifulSoup
 import time
 import os
+
+START_TIME = time.time()
 
 headers = {"cookie": "LEETCODE_SESSION=你的session"}
 url = 'https://leetcode.cn/graphql/'
@@ -26,7 +28,6 @@ def html2markdown(html: str) -> str:
     #TODO: html2markdown
     return html
     
-
 
 def getAllProblemLinks() -> list:
     # data = {
@@ -133,7 +134,7 @@ def getAllProblemLinks() -> list:
                 url 为 https://leetcode.cn/problems/two-sum/
                 titleSlug 为 two-sum
 """
-def getOneProblemData(titleSlug: str) -> str:
+def getOneProblemData(titleSlug: str) -> dict:
     query = {
         "variables": {
             "titleSlug": titleSlug
@@ -217,6 +218,10 @@ def getOneProblemData(titleSlug: str) -> str:
         """
     }
     response = GraphQL(query=query)
+    # print(response.json())
+    # with open('AllProblems/_getResult.json', 'w', encoding='utf-8') as f:
+    #     f.write(json.dumps(response.json(), indent=4, ensure_ascii=False))
+    
 
     question = response.json()["data"]["question"]
     title = question["questionFrontendId"] + "." + question["translatedTitle"]
@@ -248,28 +253,42 @@ tags: [题解, LeetCode, {difficulty}, {tags}]
 
     """
     # print(markdown)
+    codeSnippets = question["codeSnippets"]
 
-    return {"markdown": markdown, "title": title}
-
+    return {"markdown": markdown, "title": title, "codeSnippets": codeSnippets}
 
 
 allProblems = getAllProblemLinks()
 failedProblems = []
+with open('AllProblems/_mappingData.json', 'r', encoding='utf-8') as f:
+    mappingData = json.loads(f.read())
+mappingSuffix: dict = mappingData["templateSlug2sourceCodeFilePrefix"]["data"]
 
 for titleSlug in allProblems:
     try:
         data = getOneProblemData(titleSlug)
         markdown = data["markdown"]
         title = data["title"]
-        if os.path.exists(f"AllProblems/{title}.md"):
-            with open(f"AllProblems/{title}.md", "r", encoding="utf-8") as f:
+        codeSnippets = data["codeSnippets"]
+        if os.path.exists(f"AllProblems/{title}/{title}.md"):
+            with open(f"AllProblems/{title}/{title}.md", "r", encoding="utf-8") as f:
                 originalData = f.read()
                 originalDataDate = originalData.split('\n')[2].split('date: ')[-1]
                 markdownSplited = markdown.split('\n')
                 markdownSplited[2] = f'date: {originalDataDate}'
                 markdown = '\n'.join(markdownSplited)
-        with open(f"AllProblems/{title}.md", "w", encoding="utf-8") as f:
+        if not os.path.exists(f"AllProblems/{title}"):
+            os.mkdir(f"AllProblems/{title}")
+        with open(f"AllProblems/{title}/{title}.md", "w", encoding="utf-8") as f:
             f.write(markdown)
+        for snip in codeSnippets:
+            langSlug = snip["langSlug"]
+            code = snip["code"]
+            suffix = mappingSuffix.get(langSlug, langSlug)
+            with open(f"AllProblems/{title}/code.{suffix}", "w", encoding="utf-8") as f:
+                f.write(code)
+        with open(f"AllProblems/{title}/titleSlug.txt", "w", encoding="utf-8") as f:
+            f.write(titleSlug)
         print(title)
         # time.sleep(1)
     except BaseException as e:
@@ -277,3 +296,5 @@ for titleSlug in allProblems:
         failedProblems.append(titleSlug)
 
 print(failedProblems)
+END_TIME = time.time()
+print(f"time consume: {END_TIME - START_TIME}")

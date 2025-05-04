@@ -1,0 +1,3 @@
+bool checkRecord(char* s) {
+    
+}

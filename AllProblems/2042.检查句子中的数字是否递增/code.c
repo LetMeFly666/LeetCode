@@ -1,0 +1,3 @@
+bool areNumbersAscending(char* s) {
+    
+}

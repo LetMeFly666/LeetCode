@@ -1,0 +1,3 @@
+char* interpret(char* command) {
+    
+}

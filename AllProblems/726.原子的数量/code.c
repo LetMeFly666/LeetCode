@@ -1,0 +1,3 @@
+char* countOfAtoms(char* formula) {
+    
+}

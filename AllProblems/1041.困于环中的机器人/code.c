@@ -1,0 +1,3 @@
+bool isRobotBounded(char* instructions) {
+    
+}

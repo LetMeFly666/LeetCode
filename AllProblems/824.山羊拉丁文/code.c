@@ -1,0 +1,3 @@
+char* toGoatLatin(char* sentence) {
+    
+}

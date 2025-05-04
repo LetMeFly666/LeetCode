@@ -1,0 +1,3 @@
+bool isUgly(int n) {
+    
+}

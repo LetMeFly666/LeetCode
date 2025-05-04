@@ -1,0 +1,3 @@
+int numPermsDISequence(char* s) {
+    
+}

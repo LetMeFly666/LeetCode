@@ -1,0 +1,3 @@
+int countPoints(char* rings) {
+    
+}

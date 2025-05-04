@@ -1,0 +1,3 @@
+int maxActiveSectionsAfterTrade(char* s) {
+    
+}

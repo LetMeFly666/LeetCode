@@ -1,0 +1,3 @@
+int minTimeToType(char* word) {
+    
+}

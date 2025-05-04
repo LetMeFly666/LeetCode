@@ -1,0 +1,3 @@
+bool isCircularSentence(char* sentence) {
+    
+}

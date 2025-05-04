@@ -1,0 +1,3 @@
+bool strongPasswordCheckerII(char* password) {
+    
+}

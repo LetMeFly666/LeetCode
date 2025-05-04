@@ -1,0 +1,3 @@
+int possibleStringCount(char* word) {
+    
+}

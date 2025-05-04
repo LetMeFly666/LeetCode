@@ -1,0 +1,3 @@
+int scoreOfString(char* s) {
+    
+}

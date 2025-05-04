@@ -1,0 +1,3 @@
+char* predictPartyVictory(char* senate) {
+    
+}

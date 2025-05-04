@@ -1,0 +1,3 @@
+char kthCharacter(int k) {
+    
+}

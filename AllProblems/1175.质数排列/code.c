@@ -1,0 +1,3 @@
+int numPrimeArrangements(int n) {
+    
+}

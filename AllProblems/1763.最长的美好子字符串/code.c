@@ -1,0 +1,3 @@
+char* longestNiceSubstring(char* s) {
+    
+}

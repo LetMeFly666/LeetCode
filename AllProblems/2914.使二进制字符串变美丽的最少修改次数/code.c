@@ -1,0 +1,3 @@
+int minChanges(char* s) {
+    
+}

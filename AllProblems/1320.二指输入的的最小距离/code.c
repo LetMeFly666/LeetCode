@@ -1,0 +1,3 @@
+int minimumDistance(char* word) {
+    
+}

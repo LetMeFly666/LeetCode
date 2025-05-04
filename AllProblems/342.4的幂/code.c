@@ -1,0 +1,3 @@
+bool isPowerOfFour(int n) {
+    
+}

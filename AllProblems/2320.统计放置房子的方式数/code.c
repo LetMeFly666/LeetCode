@@ -1,0 +1,3 @@
+int countHousePlacements(int n) {
+    
+}

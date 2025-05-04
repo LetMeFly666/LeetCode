@@ -1,0 +1,3 @@
+int checkRecord(int n) {
+    
+}

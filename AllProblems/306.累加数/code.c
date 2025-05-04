@@ -1,0 +1,3 @@
+bool isAdditiveNumber(char* num) {
+    
+}

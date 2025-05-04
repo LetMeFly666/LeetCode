@@ -1,0 +1,3 @@
+bool isValid(char* s) {
+    
+}

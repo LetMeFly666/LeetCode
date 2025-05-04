@@ -1,0 +1,3 @@
+int totalNQueens(int n) {
+    
+}

@@ -1,0 +1,3 @@
+bool checkPowersOfThree(int n) {
+    
+}

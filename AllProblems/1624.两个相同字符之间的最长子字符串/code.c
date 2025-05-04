@@ -1,0 +1,3 @@
+int maxLengthBetweenEqualCharacters(char* s) {
+    
+}

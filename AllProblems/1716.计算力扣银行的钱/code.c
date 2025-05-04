@@ -1,0 +1,3 @@
+int totalMoney(int n) {
+    
+}

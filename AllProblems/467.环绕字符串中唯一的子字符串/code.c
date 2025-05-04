@@ -1,0 +1,3 @@
+int findSubstringInWraproundString(char* s) {
+    
+}

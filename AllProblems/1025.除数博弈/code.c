@@ -1,0 +1,3 @@
+bool divisorGame(int n) {
+    
+}

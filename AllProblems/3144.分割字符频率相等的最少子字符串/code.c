@@ -1,0 +1,3 @@
+int minimumSubstringsInPartition(char* s) {
+    
+}

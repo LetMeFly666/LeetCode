@@ -1,0 +1,3 @@
+bool judgeSquareSum(int c) {
+    
+}

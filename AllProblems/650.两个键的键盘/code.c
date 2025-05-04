@@ -1,0 +1,3 @@
+int minSteps(int n) {
+    
+}

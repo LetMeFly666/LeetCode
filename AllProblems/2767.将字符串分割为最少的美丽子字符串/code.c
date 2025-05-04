@@ -1,0 +1,3 @@
+int minimumBeautifulSubstrings(char* s) {
+    
+}

@@ -1,0 +1,3 @@
+int countGoodSubstrings(char* s) {
+    
+}

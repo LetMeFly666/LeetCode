@@ -1,0 +1,9 @@
+%% Definition for a binary tree node.
+%%
+%% -record(tree_node, {val = 0 :: integer(),
+%%                     left = null  :: 'null' | #tree_node{},
+%%                     right = null :: 'null' | #tree_node{}}).
+
+-spec leaf_similar(Root1 :: #tree_node{} | null, Root2 :: #tree_node{} | null) -> boolean().
+leaf_similar(Root1, Root2) ->
+  .

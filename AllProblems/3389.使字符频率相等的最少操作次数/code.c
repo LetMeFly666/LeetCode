@@ -1,0 +1,3 @@
+int makeStringGood(char* s) {
+    
+}

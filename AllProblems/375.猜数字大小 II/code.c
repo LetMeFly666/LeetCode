@@ -1,0 +1,3 @@
+int getMoneyAmount(int n) {
+    
+}

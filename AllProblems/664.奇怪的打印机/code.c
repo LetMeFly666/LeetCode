@@ -1,0 +1,3 @@
+int strangePrinter(char* s) {
+    
+}

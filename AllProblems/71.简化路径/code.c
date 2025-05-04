@@ -1,0 +1,3 @@
+char* simplifyPath(char* path) {
+    
+}

@@ -1,0 +1,3 @@
+char* compressedString(char* word) {
+    
+}

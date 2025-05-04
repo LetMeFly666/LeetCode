@@ -1,0 +1,3 @@
+int numDupDigitsAtMostN(int n) {
+    
+}

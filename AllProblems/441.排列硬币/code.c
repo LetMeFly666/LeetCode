@@ -1,0 +1,3 @@
+int arrangeCoins(int n) {
+    
+}

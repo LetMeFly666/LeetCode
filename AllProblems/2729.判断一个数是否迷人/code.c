@@ -1,0 +1,3 @@
+bool isFascinating(int n) {
+    
+}

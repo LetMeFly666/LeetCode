@@ -1,0 +1,3 @@
+int minAddToMakeValid(char* s) {
+    
+}

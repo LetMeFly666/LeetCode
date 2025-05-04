@@ -1,0 +1,3 @@
+char* findValidPair(char* s) {
+    
+}

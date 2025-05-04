@@ -1,0 +1,3 @@
+int removeAlmostEqualCharacters(char* word) {
+    
+}

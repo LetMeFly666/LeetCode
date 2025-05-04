@@ -1,0 +1,5 @@
+
+
+int countSubstrings(char * s){
+
+}

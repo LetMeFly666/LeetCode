@@ -1,0 +1,3 @@
+int minimumBuckets(char* hamsters) {
+    
+}

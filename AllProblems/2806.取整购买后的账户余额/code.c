@@ -1,0 +1,3 @@
+int accountBalanceAfterPurchase(int purchaseAmount) {
+    
+}

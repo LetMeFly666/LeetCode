@@ -1,0 +1,3 @@
+int punishmentNumber(int n) {
+    
+}

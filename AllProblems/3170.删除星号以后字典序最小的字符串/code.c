@@ -1,0 +1,3 @@
+char* clearStars(char* s) {
+    
+}

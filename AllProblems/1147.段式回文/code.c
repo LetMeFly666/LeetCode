@@ -1,0 +1,3 @@
+int longestDecomposition(char* text) {
+    
+}

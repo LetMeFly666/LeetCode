@@ -1,0 +1,3 @@
+int smallestRepunitDivByK(int k) {
+    
+}

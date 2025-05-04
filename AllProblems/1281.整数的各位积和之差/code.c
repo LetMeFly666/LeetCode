@@ -1,0 +1,3 @@
+int subtractProductAndSum(int n) {
+    
+}

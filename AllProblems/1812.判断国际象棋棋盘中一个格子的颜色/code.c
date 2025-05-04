@@ -1,0 +1,3 @@
+bool squareIsWhite(char* coordinates) {
+    
+}

@@ -1,0 +1,3 @@
+int waysToChange(int n) {
+    
+}

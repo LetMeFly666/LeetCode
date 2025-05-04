@@ -1,0 +1,3 @@
+int digitOneInNumber(int num) {
+    
+}

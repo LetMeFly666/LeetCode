@@ -1,0 +1,3 @@
+int numberOfSubstrings(char* s) {
+    
+}

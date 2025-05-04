@@ -1,0 +1,3 @@
+int numberOfSteps(int num) {
+    
+}

@@ -1,0 +1,3 @@
+char* lastSubstring(char* s) {
+    
+}

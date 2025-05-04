@@ -1,0 +1,3 @@
+int secondHighest(char* s) {
+    
+}

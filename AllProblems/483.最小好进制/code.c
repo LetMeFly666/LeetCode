@@ -1,0 +1,3 @@
+char* smallestGoodBase(char* n) {
+    
+}

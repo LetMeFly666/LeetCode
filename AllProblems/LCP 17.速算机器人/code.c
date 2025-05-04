@@ -1,0 +1,5 @@
+
+
+int calculate(char* s){
+
+}

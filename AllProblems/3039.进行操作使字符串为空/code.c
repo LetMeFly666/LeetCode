@@ -1,0 +1,3 @@
+char* lastNonEmptyString(char* s) {
+    
+}

@@ -1,0 +1,3 @@
+int minOperationsToFlip(char* expression) {
+    
+}

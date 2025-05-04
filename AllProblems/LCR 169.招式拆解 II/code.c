@@ -1,0 +1,3 @@
+char dismantlingAction(char* arr) {
+    
+}

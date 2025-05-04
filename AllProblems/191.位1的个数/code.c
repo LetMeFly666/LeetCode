@@ -1,0 +1,3 @@
+int hammingWeight(int n) {
+    
+}

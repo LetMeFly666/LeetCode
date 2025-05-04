@@ -1,0 +1,3 @@
+int countVowelPermutation(int n) {
+    
+}

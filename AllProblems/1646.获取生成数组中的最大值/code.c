@@ -1,0 +1,3 @@
+int getMaximumGenerated(int n) {
+    
+}

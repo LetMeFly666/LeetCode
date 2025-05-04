@@ -1,0 +1,3 @@
+int numberOfWays(char* corridor) {
+    
+}

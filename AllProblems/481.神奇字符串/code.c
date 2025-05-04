@@ -1,0 +1,3 @@
+int magicalString(int n) {
+    
+}

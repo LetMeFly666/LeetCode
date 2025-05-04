@@ -1,0 +1,3 @@
+int minNonZeroProduct(int p) {
+    
+}

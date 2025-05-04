@@ -1,0 +1,3 @@
+int firstUniqChar(char* s) {
+    
+}

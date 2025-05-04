@@ -1,0 +1,3 @@
+bool checkIfPangram(char* sentence) {
+    
+}

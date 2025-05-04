@@ -1,0 +1,5 @@
+
+
+int maxNiceDivisors(int primeFactors){
+
+}

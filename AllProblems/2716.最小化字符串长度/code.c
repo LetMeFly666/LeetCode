@@ -1,0 +1,3 @@
+int minimizedStringLength(char* s) {
+    
+}

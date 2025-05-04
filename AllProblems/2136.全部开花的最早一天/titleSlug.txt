@@ -1,0 +1,1 @@
+earliest-possible-day-of-full-bloom

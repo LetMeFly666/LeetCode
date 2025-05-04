@@ -1,0 +1,3 @@
+int countAnagrams(char* s) {
+    
+}

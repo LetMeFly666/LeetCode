@@ -1,0 +1,3 @@
+int numberOfCombinations(char* num) {
+    
+}

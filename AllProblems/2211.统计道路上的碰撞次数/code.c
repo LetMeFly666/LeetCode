@@ -1,0 +1,3 @@
+int countCollisions(char* directions) {
+    
+}

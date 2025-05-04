@@ -1,0 +1,3 @@
+int mechanicalAccumulator(int target) {
+    
+}

@@ -1,0 +1,3 @@
+int countHomogenous(char* s) {
+    
+}

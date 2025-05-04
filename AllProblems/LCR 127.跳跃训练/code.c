@@ -1,0 +1,3 @@
+int trainWays(int num) {
+    
+}

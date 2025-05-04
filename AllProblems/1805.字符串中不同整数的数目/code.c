@@ -1,0 +1,3 @@
+int numDifferentIntegers(char* word) {
+    
+}

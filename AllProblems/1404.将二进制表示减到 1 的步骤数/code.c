@@ -1,0 +1,3 @@
+int numSteps(char* s) {
+    
+}

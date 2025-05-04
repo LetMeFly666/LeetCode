@@ -1,0 +1,3 @@
+int countArrangement(int n) {
+    
+}

@@ -1,0 +1,3 @@
+bool checkPartitioning(char* s) {
+    
+}

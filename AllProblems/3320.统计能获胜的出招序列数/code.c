@@ -1,0 +1,3 @@
+int countWinningSequences(char* s) {
+    
+}

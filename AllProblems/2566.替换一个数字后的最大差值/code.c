@@ -1,0 +1,3 @@
+int minMaxDifference(int num) {
+    
+}

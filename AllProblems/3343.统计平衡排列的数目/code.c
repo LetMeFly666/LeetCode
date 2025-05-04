@@ -1,0 +1,3 @@
+int countBalancedPermutations(char* num) {
+    
+}

@@ -1,0 +1,3 @@
+int minimumChairs(char* s) {
+    
+}

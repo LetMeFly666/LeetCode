@@ -1,0 +1,3 @@
+int longestSemiRepetitiveSubstring(char* s) {
+    
+}

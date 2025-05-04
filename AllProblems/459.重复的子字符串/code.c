@@ -1,0 +1,3 @@
+bool repeatedSubstringPattern(char* s) {
+    
+}

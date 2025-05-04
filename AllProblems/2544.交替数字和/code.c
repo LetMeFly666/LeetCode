@@ -1,0 +1,3 @@
+int alternateDigitSum(int n) {
+    
+}

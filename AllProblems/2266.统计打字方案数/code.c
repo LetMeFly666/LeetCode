@@ -1,0 +1,3 @@
+int countTexts(char* pressedKeys) {
+    
+}

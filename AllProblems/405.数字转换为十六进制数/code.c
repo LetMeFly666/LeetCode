@@ -1,0 +1,3 @@
+char* toHex(int num) {
+    
+}

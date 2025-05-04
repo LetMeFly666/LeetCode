@@ -1,0 +1,3 @@
+int sumOfTheDigitsOfHarshadNumber(int x) {
+    
+}

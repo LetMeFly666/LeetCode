@@ -1,0 +1,3 @@
+bool winnerOfGame(char* colors) {
+    
+}

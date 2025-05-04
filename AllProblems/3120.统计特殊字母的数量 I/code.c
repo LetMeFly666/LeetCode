@@ -1,0 +1,3 @@
+int numberOfSpecialChars(char* word) {
+    
+}

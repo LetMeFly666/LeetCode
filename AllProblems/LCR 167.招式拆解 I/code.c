@@ -1,0 +1,3 @@
+int dismantlingAction(char* arr) {
+    
+}

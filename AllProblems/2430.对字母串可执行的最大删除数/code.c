@@ -1,0 +1,3 @@
+int deleteString(char* s) {
+    
+}

@@ -1,0 +1,3 @@
+int numberOfCuts(int n) {
+    
+}

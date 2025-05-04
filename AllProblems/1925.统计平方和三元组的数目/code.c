@@ -1,0 +1,3 @@
+int countTriples(int n) {
+    
+}

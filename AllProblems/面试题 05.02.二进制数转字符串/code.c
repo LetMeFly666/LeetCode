@@ -1,0 +1,3 @@
+char* printBin(double num) {
+    
+}

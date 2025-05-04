@@ -1,0 +1,3 @@
+char* originalDigits(char* s) {
+    
+}

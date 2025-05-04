@@ -1,0 +1,3 @@
+int minOperations(int k) {
+    
+}

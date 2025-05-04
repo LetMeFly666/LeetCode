@@ -1,0 +1,3 @@
+int crackNumber(int ciphertext) {
+    
+}

@@ -1,0 +1,3 @@
+int findIntegers(int n) {
+    
+}
