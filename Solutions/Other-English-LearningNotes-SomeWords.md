@@ -1127,6 +1127,8 @@ categories: [自用]
 |nought|n. 无，零|
 |||
 |commemoration|n. 纪念，纪念仪式|
+|||
+|monarch|n. 君主，帝王|
 
 <p class="wordCounts">单词收录总数</p>
 
