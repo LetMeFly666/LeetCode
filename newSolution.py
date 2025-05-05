@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-05-04 21:51:41
+LastEditTime: 2025-05-05 22:00:31
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -12,6 +12,7 @@ import re
 import sys
 import json
 import time
+import shutil
 import datetime
 import subprocess
 from urllib.parse import quote
@@ -29,6 +30,26 @@ for i in range(2, len(argv)):
     title += argv[i]
 nameProblem = "AllProblems/{0}.{1}/{0}.{1}.md".format(num, title)
 print(nameProblem)
+
+# 生成代码模板
+alreadyExists = False
+with open(f'AllProblems/{num}.{title}/titleSlug.txt', 'r', encoding='utf-8') as f:
+    titleSulg = f.read()
+with open(f'AllProblems/_mappingData.json', 'r', encoding='utf-8') as f:
+    mappingData = json.loads(f.read())
+mappingSuffix: dict = mappingData["templateSlug2sourceCodeFilePrefix"]["data"]
+alreadyCodes = os.listdir('Codes')
+for code2gen in CODES_TO_GEN:
+    toName = f'{num:04}-{titleSulg}.{mappingSuffix[code2gen]}'
+    if toName in alreadyCodes:
+        alreadyExists = True
+        break
+dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
+for code2gen in CODES_TO_GEN:
+    toName = f'Codes/{num:04}-{titleSulg}{dateSuffix}.{mappingSuffix[code2gen]}'
+    fromName = f'AllProblems/{num}.{title}/code.{mappingSuffix[code2gen]}'
+    print(toName)
+    shutil.copy(fromName, toName)
 
 title = ""
 for i in range(2, len(argv)):
