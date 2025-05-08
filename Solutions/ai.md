@@ -1,9 +1,9 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2025-05-04 22:29:26
- * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-05 21:45:53
--->
+---
+title: 陪某人学AI(题目暂定)
+date: 2025-05-04 22:29:26
+tags: []
+categories: []
+---
 ## 二元分类 - 20250504
 
 **新概念：**

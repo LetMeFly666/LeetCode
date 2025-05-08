@@ -1129,6 +1129,11 @@ categories: [自用]
 |commemoration|n. 纪念，纪念仪式|
 |||
 |monarch|n. 君主，帝王|
+|||
+|B/L|abbr. (=bill of lading)提(货)单|
+|||
+|solicitor|事务律师，推销员，(城镇/政府部门)法务官|
+|humane|ajd. 善良的，仁慈的，人道的|
 
 <p class="wordCounts">单词收录总数</p>
 
