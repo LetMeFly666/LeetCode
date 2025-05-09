@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-09 12:45:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-09 13:46:47
+ * @LastEditTime: 2025-05-09 13:48:19
  */
 import java.util.PriorityQueue;
 import java.util.Arrays;
@@ -32,8 +32,8 @@ class Solution {
                     continue;
                 }
                 int nt = Math.max(t, moveTime[nx][ny]) + (x + y) % 2 + 1;
-                if (nt < moveTime[nx][ny]) {
-                    moveTime[nx][ny] = nt;
+                if (nt < ans[nx][ny]) {
+                    ans[nx][ny] = nt;
                     pq.offer(new int[]{nt, nx, ny});
                 }
             }
