@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-09 12:45:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-09 13:45:08
+ * @LastEditTime: 2025-05-09 13:46:47
  */
 import java.util.PriorityQueue;
 import java.util.Arrays;
@@ -17,9 +17,9 @@ class Solution {
             Arrays.fill(ans[i], 2000000001);
         }
         ans[0][0] = 0;
-        PirorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);
         pq.offer(new int[]{0, 0, 0});
-        while (!pq.empty()) {
+        while (!pq.isEmpty()) {
             int[] node = pq.poll();
             int t = node[0], x = node[1], y = node[2];
             if (t > ans[x][y]) {
