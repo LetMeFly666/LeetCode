@@ -274,6 +274,6 @@ func (pq *pq3341) Push(node any)      {*pq = append(*pq, node.(node3341))}
 func (pq *pq3341) Pop() (ans any)     {*pq, ans = (*pq)[:len(*pq) - 1], (*pq)[len(*pq) - 1]; return ans}
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/CANNOT_PUBLISH)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/05/07/LeetCode%203341.%E5%88%B0%E8%BE%BE%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E6%88%BF%E9%97%B4%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4I/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/147807022)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/05/07/LeetCode%203341.%E5%88%B0%E8%BE%BE%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E6%88%BF%E9%97%B4%E7%9A%84%E6%9C%80%E5%B0%91%E6%97%B6%E9%97%B4I/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
