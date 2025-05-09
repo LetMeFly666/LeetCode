@@ -1,7 +1,7 @@
 ---
 title: 3342.到达最后一个房间的最少时间 II：dijkstra算法(和I一样)
 date: 2025-05-09 18:58:42
-tags: [题解, LeetCode, 中等, 图, 数组, 矩阵, 最短路, 堆（优先队列）]
+tags: [题解, LeetCode, 中等, 图, 数组, 矩阵, 最短路, 堆（优先队列）, 堆, 优先队列, Dijkstra]
 categories: [题解, LeetCode]
 ---
 
