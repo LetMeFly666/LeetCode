@@ -1,9 +1,12 @@
 ---
-title: 陪某人学AI(题目暂定)
+title: 人工智能(基础版) - 学习记录(陪某人学AI)
 date: 2025-05-04 22:29:26
-tags: []
-categories: []
+tags: [其他, AI, DL, 人工智能, 深度学习, Notes]
+categories: [技术思考]
+mermaid: true
 ---
+# 人工智能(基础版) - 学习记录(陪某人学AI)
+
 ## 二元分类 - 20250504
 
 **新概念：**
@@ -42,9 +45,9 @@ function
 
 ## 损失函数 - 20250504
 
-目标是损失函数值越小时让$y$和$\hat{y}$的差值尽可能小。
+目标是损失函数值越小时让 $y$ 和 $\hat{y}$ 的差值尽可能小。
 
-代价函数（以$y=w^Tx+b$为例）： $J(w, b)=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(i)$
+代价函数（以 $y=w^Tx+b$ 为例）： $J(w, b)=\frac{1}{m}\sum_{i=1}^{m}\mathcal{L}(i)$
 
 ## 梯度下降 - 20250505
 
@@ -60,8 +63,8 @@ function
 graph LR
 
 A[a]-->V[v=a+u]-->J[J=3v]
-B[a]-->U[u=bc]-->V
-C[a]-->U
+B[b]-->U[u=bc]-->V
+C[c]-->U
 ```
 
 左到右是前向传播，右到左是反向传播。
@@ -89,3 +92,8 @@ J["①"]-->V["②"]
 ⑤⑥⑦⑧⑨⑩⑪⑫⑬
 
 这是求导里面的链式传播法则。
+
+# End
+
+> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2025/05/08/Other-AI-LearnAiWithWuenda/)哦~
+> [https://blog.letmefly.xyz/2025/05/08/Other-AI-LearnAiWithWuenda/](https://blog.letmefly.xyz/2025/05/08/Other-AI-LearnAiWithWuenda/)

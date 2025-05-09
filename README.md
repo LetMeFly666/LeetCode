@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-04-24 10:29:33
+ * @LastEditTime: 2025-05-09 12:54:11
 -->
 # LetLeet Blog
 
@@ -43,6 +43,7 @@
 |人工智能 - 联邦学习(安全性) - 自用(ProjectDoing) - 开题报告-针对视觉大模型联邦学习训练过程中的攻击防御安全及效率问题研究|<a href="https://blog.letmefly.xyz/2024/12/07/Other-AI-FL-FederatedLearning-KaiTiBaoGao/">本平台博客</a>|无|
 |人工智能 - 联邦学习(安全性) - 自用(ProjectDoing)|<a href="https://blog.letmefly.xyz/2024/01/06/Other-AI-FL-FederatedLearning-ProjectWritingIn1month/">本平台博客</a>|无|
 |人工智能 - 跟李沐学AI|<a href="https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
+|人工智能(基础版) - 学习记录(陪某人学AI)|<a href="https://blog.letmefly.xyz/2025/05/08/Other-AI-LearnAiWithWuenda/">本平台博客</a>|暂无|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.letmefly.xyz/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
 |安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
 |App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
