@@ -1134,6 +1134,8 @@ categories: [自用]
 |||
 |solicitor|事务律师，推销员，(城镇/政府部门)法务官|
 |humane|ajd. 善良的，仁慈的，人道的|
+|||
+|ultimo|adj. 上个月的<br/>adv. 上个月地|
 
 <p class="wordCounts">单词收录总数</p>
 
