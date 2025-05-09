@@ -2,11 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-05-09 12:45:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-09 13:58:27
+ * @LastEditTime: 2025-05-09 18:58:00
  */
 package main
 
 import "container/heap"
+
+var directions3342 [][]int = [][]int{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}
 
 func minTimeToReach(moveTime [][]int) int {
     n, m := len(moveTime), len(moveTime[0])
@@ -22,7 +24,23 @@ func minTimeToReach(moveTime [][]int) int {
     heap.Init(pq)
     heap.Push(pq, node3342{0, 0, 0})
     for len(*pq) > 0 {
-        
+        node := heap.Pop(pq).(node3342)
+        t, x, y := node.t, node.x, node.y
+        if t > ans[x][y] {
+            continue
+        }
+        for _, d := range directions3342 {
+            nx := x + d[0]
+            ny := y + d[1]
+            if nx < 0 || nx >= n || ny < 0 || ny >= m {
+                continue
+            }
+            nt := max(t, moveTime[nx][ny]) + (x + y) % 2 + 1
+            if nt < ans[nx][ny] {
+                ans[nx][ny] = nt
+                heap.Push(pq, node3342{nt, nx, ny})
+            }
+        }
     }
     return ans[n - 1][m - 1]
 }
