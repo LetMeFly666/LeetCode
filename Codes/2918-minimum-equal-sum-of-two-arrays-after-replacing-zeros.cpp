@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-10 12:07:54
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-10 18:56:04
+ * @LastEditTime: 2025-05-10 19:00:36
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,9 +23,9 @@ public:
             s2 += t;
             c2 += t == 0;
         }
-        if (s1 < s2 && c1 == 0 || s1 > s2 && c2 == 0) {
+        if (s1 < s2 + c2 && c1 == 0 || s1 + c1 > s2 && c2 == 0) {
             return -1;
         }
-        return min(s1 + c1, s2 + c2);
+        return max(s1 + c1, s2 + c2);
     }
 };
