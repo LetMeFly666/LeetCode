@@ -18,7 +18,7 @@ class Solution:
     
     def minSum(self, nums1: List[int], nums2: List[int]) -> int:
         s1, c1 = self.cal1(nums1)
-        s2, c2 = self.cal2(nums2)
+        s2, c2 = self.cal1(nums2)
         if s1 < s2 + c2 and c1 == 0 or s1 + c1 > s2 and c2 == 0:
             return -1
         return max(s1 + c1, s2 + c2)
