@@ -269,6 +269,12 @@ git remote prune origin
 
 执行起来[嘎嘎爽](https://github.com/LetMeFly666/LeetCode/blob/dc2fd35e116bddf5d1e0cbbadba5ce868e4880bb/tryGoPy/git%20remote%20prune)。
 
+### git status等文件名显示中文
+
+```bash
+git config --global core.quotepath false
+```
+
 ## About HTML
 
 ### 空白字符
