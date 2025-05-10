@@ -1,11 +1,11 @@
 ---
-title: 2918.数组的最小相等和
+title: 2918.数组的最小相等和：if-else
 date: 2025-05-10 19:39:40
 tags: [题解, LeetCode, 中等, 贪心, 数组]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2918.数组的最小相等和
+# 【LetMeFly】2918.数组的最小相等和：if-else
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros/](https://leetcode.cn/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros/)
 
@@ -45,14 +45,18 @@ categories: [题解, LeetCode]
 	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>6</sup></code></li>
 </ul>
 
+## 解题方法：讨论
 
-    
-## 解题方法：xx
+假设$nums1$的和为$s1$且$nums1$中有$c1$个$0$，$nums2$的和以及零的个数分别为$s2$和$c2$，则有：
 
-11111
++ 若$s1 < s2 + c2 and c1 == 0$，说明$nums2$的和至少变为$s2+c2$，比$s1$大并且$s1$中没有$0$可以使其和变大，直接返回$-1$；
++ 若$s1 + c1 > s2 and cs == 0$，同理，直接返回$-1$；
++ 否则，返回$max(s1 + c1, s2 + c2)$。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+时空复杂度分析：
+
++ 时间复杂度$O(len(nums1) + len(nums2))$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
@@ -65,10 +69,6 @@ categories: [题解, LeetCode]
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-05-10 19:00:36
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 typedef long long ll;
 
 class Solution {
@@ -186,6 +186,6 @@ func minSum(nums1 []int, nums2 []int) int64 {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/05/10/LeetCode%202918.%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E7%9B%B8%E7%AD%89%E5%92%8C/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/147858203)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/05/10/LeetCode%202918.%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%B0%8F%E7%9B%B8%E7%AD%89%E5%92%8C/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
