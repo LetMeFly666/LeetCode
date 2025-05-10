@@ -788,7 +788,7 @@ categories: [自用]
 |sportsmanship|n. 运动员风范，体育精神|
 |abasement|n. 身份低微，屈尊，降低|
 |||
-|swan|n. 天鹅<br/>v. 悠游，悠然闲逛|
+|<font color="#28bea0" title="二次复习">swan</font>|n. 天鹅<br/>v. 悠游，悠然闲逛|
 |confide|v. (向某人)吐露(秘密/隐私)|
 |analogue|adj. 模拟的，指针式的<br/>n. 相似物，类似事情|
 |kangaroo|n. 袋鼠|
@@ -1136,6 +1136,12 @@ categories: [自用]
 |humane|ajd. 善良的，仁慈的，人道的|
 |||
 |ultimo|adj. 上个月的<br/>adv. 上个月地|
+|||
+|hysteria|n. 情绪失控，歇斯底里，癔症，大肆鼓吹|
+|||
+|deficient|adj. 缺乏的，不足的，有缺点的，有缺陷的|
+|||
+|barometer|n. 气压计，晴雨表|
 
 <p class="wordCounts">单词收录总数</p>
 
