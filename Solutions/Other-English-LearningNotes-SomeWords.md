@@ -1142,6 +1142,8 @@ categories: [自用]
 |deficient|adj. 缺乏的，不足的，有缺点的，有缺陷的|
 |||
 |barometer|n. 气压计，晴雨表|
+|||
+|earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
 
 <p class="wordCounts">单词收录总数</p>
 
