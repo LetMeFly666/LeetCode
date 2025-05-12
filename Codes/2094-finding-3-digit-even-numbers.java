@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-12 10:20:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-12 22:35:02
+ * @LastEditTime: 2025-05-12 22:38:33
  */
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ class Solution {
         for (int d : digits) {
             times[d]++;
         }
-        List<Integer> ans = new Array<>();
+        List<Integer> ans = new ArrayList<>();
         for (int i = 100; i < 1000; i += 2) {
             int tmp = i;
             int[] thisTimes = new int[10];
