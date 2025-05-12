@@ -2,9 +2,10 @@
  * @Author: LetMeFly
  * @Date: 2025-05-12 10:20:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-12 22:32:22
+ * @LastEditTime: 2025-05-12 22:35:02
  */
-import java.util.Array;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 class Solution {
     public int[] findEvenNumbers(int[] digits) {
@@ -12,7 +13,7 @@ class Solution {
         for (int d : digits) {
             times[d]++;
         }
-        Array<Integer> ans = new Array<>();
+        List<Integer> ans = new Array<>();
         for (int i = 100; i < 1000; i += 2) {
             int tmp = i;
             int[] thisTimes = new int[10];
@@ -31,7 +32,10 @@ class Solution {
                 ans.add(i);
             }
         }
-        Arrays.sort(ans);
-        return new int[]{ans};
+        int[] res = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) {
+            res[i] = ans.get(i);
+        }
+        return res;
     }
 }
