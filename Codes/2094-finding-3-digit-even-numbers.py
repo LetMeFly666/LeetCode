@@ -14,9 +14,10 @@ class Solution:
         ans = []
         for i in range(100, 1000, 2):
             thisTimes = [0] * 10
-            while i:
-                thisTimes[i % 10] += 1
-                i //= 10
+            tmp = i
+            while tmp:
+                thisTimes[tmp % 10] += 1
+                tmp //= 10
             ok = True
             for j in range(10):
                 if thisTimes[j] > times[j]:
