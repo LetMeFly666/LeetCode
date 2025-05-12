@@ -12,7 +12,7 @@ func findEvenNumbers(digits []int) []int {
         times[d]++
     }
     ans := make([]int, 0)
-    for i := 100; i < 1000; i++ {
+    for i := 100; i < 1000; i += 2 {
         thisTimes := make([]int, 10)
         for tmp := i; tmp > 0; tmp /= 10 {
             thisTimes[tmp % 10]++
