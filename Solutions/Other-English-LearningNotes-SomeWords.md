@@ -1144,6 +1144,8 @@ categories: [自用]
 |barometer|n. 气压计，晴雨表|
 |||
 |earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
+|||
+|custody|n. 抚养权，羁押，保管，保护|
 
 <p class="wordCounts">单词收录总数</p>
 
