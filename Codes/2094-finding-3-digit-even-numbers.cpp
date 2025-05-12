@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-12 10:20:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-12 10:31:45
+ * @LastEditTime: 2025-05-12 22:35:40
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -39,7 +39,7 @@ public:
                 ans.push_back(i);
             }
         }
-        sort(ans.begin(), ans.end());
+        // sort(ans.begin(), ans.end());
         return ans;
     }
 };
