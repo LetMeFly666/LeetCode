@@ -2,9 +2,10 @@
  * @Author: LetMeFly
  * @Date: 2025-04-19 22:10:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-13 22:52:18
+ * @LastEditTime: 2025-05-13 22:55:56
  */
 #include <bits/stdc++.h>
+#include "2179-count-good-triplets-in-an-array.cpp"
 using namespace std;
 
 const int testTime = 10;
@@ -85,7 +86,7 @@ public:
 };
 
 int main() {
-    FenwickTree ft = FenwickTree();
+    FenwickTree ft = FenwickTree(3);
     time_t start = clock();
     int cnt = 0;
     while (double(clock() - start) / CLOCKS_PER_SEC < testTime) {
