@@ -5,7 +5,6 @@
  * @LastEditTime: 2025-05-13 22:44:52
  */
 #include <bits/stdc++.h>
-#include "2179.h"
 using namespace std;
 
 const int testTime = 10;
