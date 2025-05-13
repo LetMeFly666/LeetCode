@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-04-19 22:10:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-13 22:44:52
+ * @LastEditTime: 2025-05-13 22:46:25
  */
 #include <bits/stdc++.h>
 #include "2179.h"
@@ -12,7 +12,7 @@ const int testTime = 10;
 const int maxLengthPerTest = 20;
 
 // 测试置换是否正确
-class Test {
+class TestFT {
 private:
     vector<int> a, b, p;
 
@@ -33,7 +33,7 @@ private:
         return false;
     }
 public:
-    Test() {
+    TestFT() {
         int n = rand() % maxLengthPerTest + 1;
         cout << "n = " << n << endl;
         for (int i = 0; i < n; i++) {
@@ -90,7 +90,7 @@ int main() {
     int cnt = 0;
     while (double(clock() - start) / CLOCKS_PER_SEC < testTime) {
         cnt++;
-        Test test = Test();
+        TestFT test = TestFT();
         test.P();
         if (!test.ok()) {
             test.info();
