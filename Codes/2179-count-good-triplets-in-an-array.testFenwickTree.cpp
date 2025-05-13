@@ -2,86 +2,116 @@
  * @Author: LetMeFly
  * @Date: 2025-04-19 22:10:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-13 22:55:56
+ * @LastEditTime: 2025-05-13 23:52:00
  */
 #include <bits/stdc++.h>
 #include "2179-count-good-triplets-in-an-array.cpp"
 using namespace std;
 
 const int testTime = 10;
-const int maxLengthPerTest = 20;
+const int maxLengthPerTest = 200;
+const int maxValPerNum = 200;
+const int maxOpPerTest = 200;
+
+class FT2 {
+private:
+    int n;
+    vector<int> v;
+public:
+    FT2(int n): v(n + 1), n(n) {}
+
+    FT2() {};
+
+    void add(int a, int b) {
+        while (a <= n) {
+            v[a] += b;
+            a += a & -a;
+        }
+    }
+
+    int get(int a) {
+        int ans = 0;
+        while (a) {
+            ans += v[a];
+            a -= a & -a;
+        }
+        return ans;
+    }
+
+    vector<int>& debug_getV() {
+        return v;
+    }
+};
 
 // 测试置换是否正确
 class TestFT {
 private:
-    vector<int> a, b, p;
+    struct Op {
+        int a, b;  // v[a]增加b
+        bool isAdd;
+    };
 
-    void debug(vector<int>& a, string name) {
-        cout << name << ":";
-        for (int t : a) {
-            cout << ' ' << t;
+    vector<int> v;
+    vector<Op> opHistory;
+    FT2 ft;
+    int n;
+
+    void debugOp(Op& op) {
+        if (op.isAdd) {
+            printf("v[%d] += %d\n", op.a, op.b);
+        } else {
+            printf("sum(v[1], ..., v[%d])\n", op.a);
         }
-        cout << endl;
     }
 
-    bool isIn(int a, vector<int>& v) {
-        for (int t : v) {
-            if (a == t) {
-                return true;
-            }
-        }
-        return false;
+    void debugVector(vector<int>& v, string name) {
+        cout << name << ": ";
+        debug(v);
     }
 public:
     TestFT() {
         int n = rand() % maxLengthPerTest + 1;
         cout << "n = " << n << endl;
-        for (int i = 0; i < n; i++) {
-            while (true) {
-                int t = rand() % n;
-                // cout << "rand: " << t << " | ";
-                // debug(a, "a");
-                if (isIn(t, a)) {
-                    continue;
-                }
-                a.push_back(t);
-                break;
-            }
-            while (true) {
-                int t = rand() % n;
-                if (isIn(t, b)) {
-                    continue;
-                }
-                b.push_back(t);
-                break;
-            }
-        }
+        v = vector<int>(n + 1);
+        this->n = n;
+        ft = FT2(n);
     }
 
-    void P() {
-        p.resize(a.size());
-        for (int i = 0; i < a.size(); i++) {
-            p[a[i]] = b[i];
-        }
-    }
-
-    bool ok() {
-        unordered_map<int, int> ma;
-        for (int i = 0; i < a.size(); i++) {
-            ma[a[i]] = b[i];
-        }
-        for (int i = 0; i < a.size(); i++) {
-            if (ma[i] != p[i]) {
-                return false;
+    bool run() {
+        int op = rand() % maxOpPerTest + 1;
+        while (op--) {
+            bool isAdd = rand() % 2;
+            // cout << isAdd << endl;
+            if (isAdd) {
+                int a = rand() % n + 1;
+                int b = rand() % maxValPerNum + 1;
+                opHistory.push_back({a, b, isAdd});
+                ft.add(a, b);
+                v[a] += b;
+            } else {
+                int a = rand() % n + 1;
+                opHistory.push_back({a, 0, isAdd});
+                int result_ft = ft.get(a);
+                int result_v = 0;
+                for (int i = 1; i <= a; i++) {
+                    result_v += v[i];
+                }
+                if (result_ft != result_v) {
+                    return false;
+                }
             }
+            // debugOp(opHistory.back());
         }
         return true;
     }
 
     void info() {
-        debug(a, "a");
-        debug(b, "b");
-        debug(p, "p");
+        cout << "operation history: " << endl;
+        for (Op& op : opHistory) {
+            debugOp(op);
+        }
+        debugVector(v, "realV");
+        debugVector(ft.debug_getV(), "ft.v");
     }
 };
 
@@ -92,8 +122,7 @@ int main() {
     while (double(clock() - start) / CLOCKS_PER_SEC < testTime) {
         cnt++;
         TestFT test = TestFT();
-        test.P();
-        if (!test.ok()) {
+        if (!test.run()) {
             test.info();
             break;
         }
