@@ -1,0 +1,203 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+index 34778efbca1..3fbfba87b47 100644
+--- a/.vscode/settings.json
++++ b/.vscode/settings.json
+@@ -89,7 +89,8 @@
+         "__hash_table": "cpp",
+         "__split_buffer": "cpp",
+         "__tree": "cpp",
+-        "queue": "cpp"
++        "queue": "cpp",
++        "__locale": "cpp"
+     },
+     "editor.mouseWheelZoom": true,
+     "workbench.tree.enableStickyScroll": true,
+diff --git a/Codes/2179-count-good-triplets-in-an-array.cpp b/Codes/2179-count-good-triplets-in-an-array.cpp
+new file mode 100644
+index 00000000000..eee44218aa8
+--- /dev/null
++++ b/Codes/2179-count-good-triplets-in-an-array.cpp
+@@ -0,0 +1,69 @@
++/*
++ * @Author: LetMeFly
++ * @Date: 2025-04-19 20:43:51
++ * @LastEditors: LetMeFly.xyz
++ * @LastEditTime: 2025-04-19 21:18:18
++ */
++#if defined(_WIN32) || defined(__APPLE__)
++#include "_[1,2]toVector.h"
++#endif
++
++/*
++2 0 1 3
++0 1 2 3
++   ⬇️
++0 1 2 3
++1 2 0 3
++   ⬇️
++i左边小于p[i]的有less个
++左边大于p[i]的有i-less个
++大于p[i]的一共有n-p[i]-1个
++右边大于p[i]的有n-p[i]-1-(i-less)个
++*/
++
++typedef long long ll;
++
++class FenwickTree {
++private:
++    vector<int> v;
++public:
++    FenwickTree(int n) : v(n + 1) {}
++
++    // 1 <= i <= n
++    // 相当于v[i]加1
++    void add(int i) {
++        for (; i < v.size(); i += i & -i) {
++            v[i]++;
++        }
++    }
++
++    // 0 <= i < n
++    // 相当于sum(1..i)
++    int get(int i) {
++        int ans = 0;
++        for (; i > 0; i &= i - 1) {
++            ans += v[i];
++        }
++        return ans;
++    }
++};
++
++class Solution {
++public:
++    ll goodTriplets(vector<int>& nums1, vector<int>& nums2) {
++        int n = nums1.size();
++        vector<int> p(n);
++        for (int i = 0; i < n; i++) {
++            p[nums1[i]] = nums2[i];
++        }
++
++        ll ans = 0;
++        FenwickTree tree = FenwickTree(n);
++        for (int i = 0; i < n; i++) {
++            ll less = tree.get(p[i]);
++            ans += less * (n - p[i] - 1 - (i - less));
++            tree.add(p[i] + 1);
++        }
++        return ans;
++    }
++};
+\ No newline at end of file
+diff --git a/Codes/2179-count-good-triplets-in-an-array.test.cpp b/Codes/2179-count-good-triplets-in-an-array.test.cpp
+new file mode 100644
+index 00000000000..4905f908f50
+--- /dev/null
++++ b/Codes/2179-count-good-triplets-in-an-array.test.cpp
+@@ -0,0 +1,106 @@
++/*
++ * @Author: LetMeFly
++ * @Date: 2025-04-19 22:10:42
++ * @LastEditors: LetMeFly.xyz
++ * @LastEditTime: 2025-04-20 10:52:31
++ */
++#include <bits/stdc++.h>
++using namespace std;
++
++const int testTime = 10;
++const int maxLengthPerTest = 20;
++
++// 测试置换是否正确
++class Test {
++private:
++    vector<int> a, b, p;
++
++    void debug(vector<int>& a, string name) {
++        cout << name << ":";
++        for (int t : a) {
++            cout << ' ' << t;
++        }
++        cout << endl;
++    }
++
++    bool isIn(int a, vector<int>& v) {
++        for (int t : v) {
++            if (a == t) {
++                return true;
++            }
++        }
++        return false;
++    }
++public:
++    Test() {
++        int n = rand() % maxLengthPerTest + 1;
++        cout << "n = " << n << endl;
++        for (int i = 0; i < n; i++) {
++            while (true) {
++                int t = rand() % n;
++                // cout << "rand: " << t << " | ";
++                // debug(a, "a");
++                if (isIn(t, a)) {
++                    continue;
++                }
++                a.push_back(t);
++                break;
++            }
++            while (true) {
++                int t = rand() % n;
++                if (isIn(t, b)) {
++                    continue;
++                }
++                b.push_back(t);
++                break;
++            }
++        }
++    }
++
++    void P() {
++        p.resize(a.size());
++        for (int i = 0; i < a.size(); i++) {
++            p[a[i]] = b[i];
++        }
++    }
++
++    bool ok() {
++        unordered_map<int, int> ma;
++        for (int i = 0; i < a.size(); i++) {
++            ma[a[i]] = b[i];
++        }
++        for (int i = 0; i < a.size(); i++) {
++            if (ma[i] != p[i]) {
++                return false;
++            }
++        }
++        return true;
++    }
++
++    void info() {
++        debug(a, "a");
++        debug(b, "b");
++        debug(p, "p");
++    }
++};
++
++int main() {
++    time_t start = clock();
++    int cnt = 0;
++    while (double(clock() - start) / CLOCKS_PER_SEC < testTime) {
++        cnt++;
++        Test test = Test();
++        test.P();
++        if (!test.ok()) {
++            test.info();
++            break;
++        }
++    }
++    cout << "total " << cnt << " tests in " << testTime << "s" << endl;
++    return 0;
++}
++
++/*
++total 656375 tests in 10s
++没有发现assert failed
++*/
+\ No newline at end of file
