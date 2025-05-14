@@ -48,15 +48,15 @@ class Solution {
         for (int i = 0; i < s.length(); i++) {
             cnt[s.charAt(i) - 'a']++;
         }
-        int ans = 0;
+        long ans = 0;
         for (int i = 0; i < 26; i++) {
-            long s = 0;
+            long sum = 0;
             for (int j = 0; j < 26; j++) {
                 sum += Mt[i][j];
             }
             sum %= MOD;
-            ans = (ans + sum * cnt[i]) % (long)MOD;
+            ans = (ans + sum * cnt[i]) % MOD;
         }
-        return ans;
+        return (int)ans;
     }
 }
