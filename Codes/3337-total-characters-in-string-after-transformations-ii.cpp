@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 09:36:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:36:14
+ * @LastEditTime: 2025-05-14 22:42:12
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -49,7 +49,7 @@ private:
     }
 public:
     int lengthAfterTransformations(string s, int t, vector<int>& nums) {
-        Matrix M;
+        Matrix M{};
         for (int i = 0; i < 26; i++) {
             for (int j = 1; j <= nums[i]; j++) {
                 M[i][(i + j) % 26] = 1;
