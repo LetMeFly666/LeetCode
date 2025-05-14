@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 09:36:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:17:22
+ * @LastEditTime: 2025-05-14 22:23:44
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,8 +23,8 @@ private:
     
     Matrix Pow(Matrix a, int b) {
         Matrix ans;
-        for (array<ll, 26>& row : ans) {
-            row.fill(1);
+        for (int i = 0; i < 26; i++) {
+            ans[i][i] = 1;
         }
         while (b) {
             if (b & 1) {
