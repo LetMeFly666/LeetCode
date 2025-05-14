@@ -15,7 +15,7 @@ class Solution {
             ans[i][i] = 1;
         }
         while (b > 0) {
-            if (b & 1) {
+            if (b & 1 == 1) {
                 ans = mul(ans, a);
             }
             a = mul(a, a);
