@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:29:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:40:56
+ * @LastEditTime: 2025-05-14 22:46:21
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,6 +11,7 @@
 
 typedef long long ll;
 
+// Copy And Change From 0x3f的题解
 class Solution {
     static constexpr int MOD = 1'000'000'007;
     static constexpr int SIZE = 26;
