@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:29:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:34:30
+ * @LastEditTime: 2025-05-14 22:37:28
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -51,25 +51,23 @@ class Solution {
 
 public:
     int lengthAfterTransformations(string s, int t, vector<int>& nums) {
-        Matrix m{};
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = i + 1; j <= i + nums[i]; j++) {
-                m[i][j % SIZE] = 1;
+        Matrix M;
+        for (int i = 0; i < 26; i++) {
+            for (int j = 1; j <= nums[i]; j++) {
+                M[i][(i + j) % 26] = 1;
             }
         }
-        Matrix M = Pow(m, t);
-
-        int cnt[SIZE]{};
+        M = Pow(M, t);
+        ll cnt[26] = {0};
         for (char c : s) {
             cnt[c - 'a']++;
         }
-
-        long long ans = 0;
-        for (int i = 0; i < SIZE; i++) {
+        int ans = 0;
+        for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 26; j++) {
-                ans += (ll)M[i][j] * cnt[i];
+                ans = (ans + M[i][j] * cnt[i] % MOD) % MOD;
             }
         }
-        return ans % MOD;
+        return ans;
     }
 };
