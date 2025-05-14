@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:01:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 23:58:14
+ * @LastEditTime: 2025-05-14 23:59:59
  */
 import java.util.List;
 
@@ -40,7 +40,7 @@ class Solution {
         long[][] M = new long[26][26];
         for (int i = 0; i < 26; i++) {
             for (int j = 1; i <= nums.get(i); j++) {
-                M[i][(i + j) % MOD] = 1;
+                M[i][(i + j) % 26] = 1;
             }
         }
         long[][] Mt = pow(M, t);
