@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 09:36:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:23:44
+ * @LastEditTime: 2025-05-14 22:36:14
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -63,7 +63,7 @@ public:
         int ans = 0;
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 26; j++) {
-                ans = (ans + M[i][j] * cnt[j] % MOD) % MOD;
+                ans = (ans + M[i][j] * cnt[i] % MOD) % MOD;
             }
         }
         return ans;
