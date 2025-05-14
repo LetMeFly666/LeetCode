@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 09:36:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 10:11:30
+ * @LastEditTime: 2025-05-14 10:19:42
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -36,7 +36,7 @@ private:
         return ans;
     }
 
-    Matrix Mul(Matrix a, Matrix b) {
+    Matrix Mul(Matrix& a, Matrix& b) {
         Matrix ans;
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 26; j++) {
