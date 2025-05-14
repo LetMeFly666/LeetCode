@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 09:36:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:42:12
+ * @LastEditTime: 2025-05-14 22:43:39
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -22,7 +22,7 @@ private:
     static const int MOD = 1000000007;
     
     Matrix Pow(Matrix a, int b) {
-        Matrix ans;
+        Matrix ans{};
         for (int i = 0; i < 26; i++) {
             ans[i][i] = 1;
         }
@@ -37,7 +37,7 @@ private:
     }
 
     Matrix Mul(Matrix& a, Matrix& b) {
-        Matrix ans;
+        Matrix ans{};
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 26; j++) {
                 for (int k = 0; k < 26; k++) {
