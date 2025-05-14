@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:29:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 22:38:45
+ * @LastEditTime: 2025-05-14 22:40:56
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -51,13 +51,13 @@ class Solution {
 
 public:
     int lengthAfterTransformations(string s, int t, vector<int>& nums) {
-        Matrix m{};
+        Matrix M;
         for (int i = 0; i < SIZE; i++) {
             for (int j = i + 1; j <= i + nums[i]; j++) {
-                m[i][j % SIZE] = 1;
+                M[i][j % SIZE] = 1;
             }
         }
-        Matrix M = Pow(m, t);
+        M = Pow(M, t);
 
         int cnt[SIZE]{};
         for (char c : s) {
