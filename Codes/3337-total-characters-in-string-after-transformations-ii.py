@@ -36,7 +36,7 @@ class Solution:
         Mt = self.pow(M, t)
         cnt = [0] * 26
         for c in s:
-            cnt[c - ord('a')] += 1
+            cnt[ord(c) - ord('a')] += 1
         ans = 0
         for i in range(26):
             ans += sum(Mt[i]) * cnt[i]
