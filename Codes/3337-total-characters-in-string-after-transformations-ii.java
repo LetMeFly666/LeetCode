@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:01:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 23:59:59
+ * @LastEditTime: 2025-05-15 00:12:57
  */
 import java.util.List;
 
@@ -39,7 +39,7 @@ class Solution {
     public int lengthAfterTransformations(String s, int t, List<Integer> nums) {
         long[][] M = new long[26][26];
         for (int i = 0; i < 26; i++) {
-            for (int j = 1; i <= nums.get(i); j++) {
+            for (int j = 1; j <= nums.get(i); j++) {
                 M[i][(i + j) % 26] = 1;
             }
         }
