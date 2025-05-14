@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-14 22:01:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 23:55:51
+ * @LastEditTime: 2025-05-14 23:58:14
  */
 import java.util.List;
 
@@ -15,7 +15,7 @@ class Solution {
             ans[i][i] = 1;
         }
         while (b > 0) {
-            if (b & 1 == 1) {
+            if ((b & 1) == 1) {
                 ans = mul(ans, a);
             }
             a = mul(a, a);
@@ -52,10 +52,10 @@ class Solution {
         for (int i = 0; i < 26; i++) {
             long s = 0;
             for (int j = 0; j < 26; j++) {
-                s += Mt[i][j];
+                sum += Mt[i][j];
             }
-            s %= MOD;
-            ans = (ans + s * cnt[i]) % MOD;
+            sum %= MOD;
+            ans = (ans + sum * cnt[i]) % (long)MOD;
         }
         return ans;
     }
