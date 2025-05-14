@@ -51,7 +51,7 @@ class Solution {
 
 public:
     int lengthAfterTransformations(string s, int t, vector<int>& nums) {
-        Matrix M;
+        Matrix M{};
         for (int i = 0; i < SIZE; i++) {
             for (int j = i + 1; j <= i + nums[i]; j++) {
                 M[i][j % SIZE] = 1;
