@@ -1146,6 +1146,13 @@ categories: [自用]
 |earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
 |||
 |custody|n. 抚养权，羁押，保管，保护|
+|||
+|repudiate|v. 拒绝，不接受，回绝，(正式地)否认|
+|torture|v. 拷打，折磨，严刑逼供<br/>n. 拷打，折磨，酷刑|
+|stuffy|adj. 闷热的，通风不畅的，一本正经的，古板的|
+|sexuality|n. 性欲，性倾向|
+|||
+|oversight|n. 监督，照管；疏忽，失察，忽略，负责|
 
 <p class="wordCounts">单词收录总数</p>
 
