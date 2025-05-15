@@ -1,9 +1,10 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2025-05-14 22:46:00
- * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-14 23:35:57
--->
+---
+title: 3337.字符串转换后的长度 II
+date: 2025-05-15 10:07:46
+tags: [题解, LeetCode, 困难, 哈希表, 数学, 字符串, 动态规划, 计数]
+categories: [题解, LeetCode]
+---
+
 > 鸣谢[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)的题解[矩阵快速幂优化 DP](https://leetcode.cn/problems/total-characters-in-string-after-transformations-ii/solutions/2967037/ju-zhen-kuai-su-mi-you-hua-dppythonjavac-cd2j)
 
 先计算一个字符`a`进行$t$次替换后的长度、一个`b`进行$t$次替换后的长度、...、一个`z`进行$t$次替换后的长度。每个字母进行$t$次替换后字符串长度计算出来后，只需要统计一下原始字符串中每种字符分别有多少个，乘一下就好了。
