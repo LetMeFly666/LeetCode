@@ -1153,6 +1153,10 @@ categories: [自用]
 |sexuality|n. 性欲，性倾向|
 |||
 |oversight|n. 监督，照管；疏忽，失察，忽略，负责|
+|||
+|masculine|adj. 男人的，像男人的，阳性的<br/>n. 阳性|
+|liability|n. 责任，义务，不利因素，欠债，负债，可能性|
+|tactics|n. 战术，策略|
 
 <p class="wordCounts">单词收录总数</p>
 
