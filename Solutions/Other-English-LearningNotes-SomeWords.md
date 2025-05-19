@@ -1157,6 +1157,17 @@ categories: [自用]
 |masculine|adj. 男人的，像男人的，阳性的<br/>n. 阳性|
 |liability|n. 责任，义务，不利因素，欠债，负债，可能性|
 |tactics|n. 战术，策略|
+|||
+|circumference|n. 圆周，圆周长|
+|apprize|v. 通知，报告<details><summary>例句</summary>He asked a real estate agent to <font color="#28bea0">apprize</font> the house.<br/>他请一名房产中介来评估房子。</details>|
+|intimation|n. 暗示，透漏，间接表示|
+|||
+|pope|n. 教皇|
+|||
+|amends|n. 赔偿，赎罪，复原|
+|twilight|n. 暮色，黄昏，没落时期，衰退期<br/>adj. 奇妙神秘的，虚幻的，朦胧的，界限不清的|
+|||
+|ascertain|v. 查明，弄清|
 
 <p class="wordCounts">单词收录总数</p>
 
