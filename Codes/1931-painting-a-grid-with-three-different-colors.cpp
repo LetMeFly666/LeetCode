@@ -59,7 +59,7 @@ public:
             secondCol = vector<int>(ok1type);
         }
         int ans = 0;
-        for (int t : secondCol) {
+        for (int t : firstCol) {
             ans = (ans + t) % MOD;
         }
         return ans;
