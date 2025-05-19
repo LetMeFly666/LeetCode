@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-19 21:52:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-19 22:26:55
+ * @LastEditTime: 2025-05-19 22:39:57
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -30,17 +30,17 @@ private:
 public:
     int colorTheGrid(int m, int n) {
         int types = pow[m];
-        vector<vector<int>> okList(types);
+        vector<int> okList(types);
         for (int i = 0; i < types; i++) {
             for (int j = 0; j < types; j++) {
                 if (ok(i, j, m)) {
-                    okList[i].push_back(j);
+                    okList[i]++;
                 }
             }
         }
         int firstCow[5] = {1, 1, 1, 1, 1}, secondCow[5];
         for (int j = 2; j <= n; j++) {
-            
+            secondCow[j] = 
         }
     }
 };
