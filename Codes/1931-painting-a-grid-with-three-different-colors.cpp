@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-19 21:52:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-19 22:45:33
+ * @LastEditTime: 2025-05-19 22:51:47
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -39,12 +39,16 @@ public:
             }
         }
         int ok1type = okList.size();
-        unordered_map<int, int> firstCol(ok1type), secondCol(ok1type);
-        for (unordered_map<int, int>::iterator it = okList.begin(); it != okList.end(); it++) {
-            firstCol[it->first] = 1;
+        vector<int> firstCol(ok1type, 1), secondCol(ok1type);
+        unordered_map<int, int> code2idx(ok1type);
+        int th = 0;
+        for (unordered_map<int, int>::iterator it = okList.begin(); it != okList.end(); it++, th++) {
+            code2idx[it->first] = th;
         }
         for (int j = 2; j <= n; j++) {
-            
+            for (int t = 0; t < ok1type; t++) {
+                
+            }
         }
     }
 };
