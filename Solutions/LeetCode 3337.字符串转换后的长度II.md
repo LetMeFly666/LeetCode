@@ -127,6 +127,16 @@ $$f[i][j] = \sum_{k=1}^{nums[j]} f[i-1][(j+k)\mod 26]$$
 
 于是有：
 
+$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
+
+$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
+
+<center>
+
+$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
+
+</center>
+
 $$
 \begin{aligned}
 f[i][0] & =f[i-1][1] \\
