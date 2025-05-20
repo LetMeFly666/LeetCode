@@ -94,7 +94,7 @@ for line in alreadyRelatedIssueListsSplited:
         issueNum = int(line.split()[0])
 print(issueNum)
 if not issueNum:
-    issueCreateResult = os.popen(f'gh issue create -t "{issueTitle}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} " -l "题解" -a "@me"').read()
+    issueCreateResult = os.popen(f'gh issue create -t "{issueTitle}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | [{num}.{title}](https://leetcode.cn/problems/{titleSulg}) " -l "题解" -a "@me"').read()
     print(issueCreateResult)
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 

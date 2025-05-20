@@ -1,7 +1,7 @@
 ---
 title: 3337.字符串转换后的长度 II：矩阵快速幂(也没有想象中的那么高级啦)
 date: 2025-05-15 10:07:46
-tags: [题解, LeetCode, 困难, 哈希表, 数学, 字符串, 动态规划, 计数]
+tags: [题解, LeetCode, 困难, 哈希表, 数学, 字符串, 动态规划, 计数, 矩阵快速幂]
 categories: [题解, LeetCode]
 ---
 
@@ -126,6 +126,16 @@ $$f[i][j] = \sum_{k=1}^{nums[j]} f[i-1][(j+k)\mod 26]$$
 以样例一为例（其实也就是[3335. 字符串转换后的长度 I](https://leetcode.cn/problems/total-characters-in-string-after-transformations-i)）：$nums = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2]$
 
 于是有：
+
+$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
+
+$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
+
+<center>
+
+$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
+
+</center>
 
 $$
 \begin{aligned}
