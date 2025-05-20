@@ -8,6 +8,7 @@
 #include "_[1,2]toVector.h"
 #endif
 
+typedef long long ll;
 typedef vector<vector<int>> matrix;
 
 class Solution {
