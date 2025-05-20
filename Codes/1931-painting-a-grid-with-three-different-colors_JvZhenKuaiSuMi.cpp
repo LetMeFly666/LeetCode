@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-20 08:59:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-20 09:30:07
+ * @LastEditTime: 2025-05-20 09:34:32
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -76,6 +76,7 @@ public:
             }
         }
         singleNum = singleOk.size();  // 即使m=5也一共有48种
+        // printf("%d\n", singleNum);
         matrix M(singleNum, vector<int>(singleNum));
         for (int i = 0; i < singleNum; i++) {
             for (int j = 0; j < singleNum; j++) {
@@ -84,7 +85,7 @@ public:
                 }
             }
         }
-        matrix Mn = Pow(M, n);
+        matrix Mn = Pow(M, n - 1);
         int ans = 0;
         for (int i = 0; i < singleNum; i++) {
             for (int j = 0; j < singleNum; j++) {
