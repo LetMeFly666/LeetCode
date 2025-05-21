@@ -11,7 +11,7 @@ class Solution:
         diff = [0] * (len(nums) + 1)
         for l, r in queries:
             diff[l] += 1
-            diff[r - 1] += 1
+            diff[r + 1] += 1
         cnt = 0
         for i in range(len(nums)):
             cnt += diff[i]
