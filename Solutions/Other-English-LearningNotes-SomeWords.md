@@ -1168,6 +1168,9 @@ categories: [自用]
 |twilight|n. 暮色，黄昏，没落时期，衰退期<br/>adj. 奇妙神秘的，虚幻的，朦胧的，界限不清的|
 |||
 |ascertain|v. 查明，弄清|
+|||
+|trample|v. 踩踏，践踏(尊严/权力等)|
+|telefax|n. 传真<br/>v. 用传真发|
 
 <p class="wordCounts">单词收录总数</p>
 
