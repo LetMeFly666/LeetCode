@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-21 23:06:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-21 23:12:45
+ * @LastEditTime: 2025-05-21 23:14:28
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,8 +18,8 @@ public:
         }
         int cnt = 0;
         for (int i = 0; i < nums.size(); i++) {
-            cnt += nums[i] + diff[i];
-            if (cnt > 0) {
+            cnt += diff[i];
+            if (nums[i] > cnt) {
                 return false;
             }
         }
