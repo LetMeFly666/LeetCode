@@ -31,9 +31,9 @@ class Solution {
         while (l + 1 < r) {
             int m = (l + r) >> 1;
             if (check(m)) {
-                r = m - 1;
+                r = m;
             } else {
-                l = m + 1;
+                l = m;
             }
         }
         return r > queries.length ? -1 : r;
