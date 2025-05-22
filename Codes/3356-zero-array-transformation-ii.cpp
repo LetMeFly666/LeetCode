@@ -36,6 +36,6 @@ public:
                 l = m;
             }
         }
-        return r > nums.size() ? -1 : r;
+        return r > queries.size() ? -1 : r;
     }
 };
