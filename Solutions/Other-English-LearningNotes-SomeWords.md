@@ -1169,8 +1169,15 @@ categories: [自用]
 |||
 |ascertain|v. 查明，弄清|
 |||
+|conveyance|n. 输送，运送，传送，交通/运载工具|
+|perusal|n. 读，阅读|
+|hymn|n. 赞美诗，圣歌，歌颂某事物的作品|
+|||
 |trample|v. 踩踏，践踏(尊严/权力等)|
 |telefax|n. 传真<br/>v. 用传真发|
+|||
+|comedian|n. 滑稽演员|
+|stool|n. 凳子，垫脚凳；马桶；粪便(医学/生物学)<br/>v. 长新芽，诱捕，引诱|
 
 <p class="wordCounts">单词收录总数</p>
 
