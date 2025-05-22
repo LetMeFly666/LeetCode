@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-22 13:41:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-22 13:47:47
+ * @LastEditTime: 2025-05-22 13:50:47
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -27,15 +27,17 @@ private:
     }
 public:
     int minZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
-        int l = 0, r = queries.size() - 1;
+        int ans = -1;
+        int l = 0, r = queries.size() - 1;  // [l, r)
         while (l < r) {
             int m = (l + r) >> 1;
             if (ok(nums, queries, m)) {
                 r = m;
+                ans = m;
             } else {
                 l = m + 1;
             }
         }
-        return l;
+        return ans;
     }
 };
