@@ -32,7 +32,7 @@ public:
         while (l < r) {
             int m = (l + r) >> 1;
             if (ok(nums, queries, m)) {
-                r = m - 1;
+                r = m;
                 ans = m;
             } else {
                 l = m + 1;
