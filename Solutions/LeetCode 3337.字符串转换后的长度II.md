@@ -127,35 +127,6 @@ $$f[i][j] = \sum_{k=1}^{nums[j]} f[i-1][(j+k)\mod 26]$$
 
 于是有：
 
-$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-<center>
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-</center>
-
-{% raw %}
-
-$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-<center>
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-</center>
-
-{% endraw %}
-
-{% raw %}
-
-$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
-
-{% endraw %}
 
 {% raw %}
 
@@ -173,31 +144,10 @@ $$
 
 {% endraw %}
 
-```math
-\begin{aligned}
-f[i][0] & =f[i-1][1] \\
-f[i][1] & =f[i-1][2] \\
-f[i][2] & =f[i-1][3] \\
-\vdots & \\
-f[i][23] & =f[i-1][24] \\
-f[i][24] & =f[i-1][25] \\
-f[i][25] & =f[i-1][0]+f[i-1][1]
-\end{aligned}\\
-```
-
-$$
-\begin{aligned}
-f[i][0] & =f[i-1][1] \\
-f[i][1] & =f[i-1][2] \\
-f[i][2] & =f[i-1][3] \\
-\vdots & \\
-f[i][23] & =f[i-1][24] \\
-f[i][24] & =f[i-1][25] \\
-f[i][25] & =f[i-1][0]+f[i-1][1]
-\end{aligned}\\
-$$
 
 使用矩阵表示，有：
+
+{% raw %}
 
 $$
 \left[\begin{array}{c}
@@ -227,13 +177,21 @@ f[i-1][25]
 \end{array}\right]
 $$
 
+{% endraw %}
+
 把上式中的三个矩阵分别记作$F[i],M,F[i−1]$，即
+
+{% raw %}
 
 $$
 F[i]=M \times F[i-1]
 $$
 
+{% endraw %}
+
 则有：
+
+{% raw %}
 
 $$
 \begin{aligned}
@@ -244,6 +202,8 @@ F[t] & =M \times F[t-1] \\
 & =M^{t} \times F[0]
 \end{aligned}
 $$
+
+{% endraw %}
 
 也就是说，我们只需要在$\log t\times C^3$的时间内算出$M^t$，问题就解决了。
 
