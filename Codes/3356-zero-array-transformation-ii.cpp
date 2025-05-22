@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-22 13:41:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-22 13:52:13
+ * @LastEditTime: 2025-05-22 13:53:43
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -35,7 +35,7 @@ public:
                 r = m - 1;
                 ans = m;
             } else {
-                l = m;
+                l = m + 1;
             }
         }
         return ans;
