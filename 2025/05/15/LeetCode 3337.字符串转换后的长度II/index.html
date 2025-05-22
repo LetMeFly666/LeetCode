@@ -26,7 +26,7 @@
 <meta property="og:description" content="【LetMeFly】3337.字符串转换后的长度 II：矩阵快速幂(也没有想象中的那么高级啦)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;total-characters-in-string-after-transformations-ii&#x2F; 给你一个由小写英文字母组成的字符串 s，一个整数 t 表示要执行的 转换 次数，以及一个长度为 26 的数组 nums。每次 转">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-05-15T02:07:46.000Z">
-<meta property="article:modified_time" content="2025-05-21T15:55:40.038Z">
+<meta property="article:modified_time" content="2025-05-22T15:45:36.185Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="题解">
 <meta property="article:tag" content="数学">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          8.6k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          89 分钟
+          72 分钟
         
       </span>
     
@@ -402,33 +402,6 @@
 <p><strong>矩阵快速幂优化</strong></p>
 <p>以样例一为例（其实也就是<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/total-characters-in-string-after-transformations-i">3335. 字符串转换后的长度 I</a>）：$nums &#x3D; [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2]$</p>
 <p>于是有：</p>
-<p>$$ \begin{aligned} f[i][0] &amp; &#x3D;f[i-1][1] \ f[i][1] &amp; &#x3D;f[i-1][2] \ f[i][2] &amp; &#x3D;f[i-1][3] \ \vdots &amp; \ f[i][23] &amp; &#x3D;f[i-1][24] \ f[i][24] &amp; &#x3D;f[i-1][25] \ f[i][25] &amp; &#x3D;f[i-1][0]+f[i-1][1] \end{aligned}\ $$</p>
-<p>$ \begin{aligned} f[i][0] &amp; &#x3D;f[i-1][1] \ f[i][1] &amp; &#x3D;f[i-1][2] \ f[i][2] &amp; &#x3D;f[i-1][3] \ \vdots &amp; \ f[i][23] &amp; &#x3D;f[i-1][24] \ f[i][24] &amp; &#x3D;f[i-1][25] \ f[i][25] &amp; &#x3D;f[i-1][0]+f[i-1][1] \end{aligned}\ $</p>
-<center>
-
-<p>$ \begin{aligned} f[i][0] &amp; &#x3D;f[i-1][1] \ f[i][1] &amp; &#x3D;f[i-1][2] \ f[i][2] &amp; &#x3D;f[i-1][3] \ \vdots &amp; \ f[i][23] &amp; &#x3D;f[i-1][24] \ f[i][24] &amp; &#x3D;f[i-1][25] \ f[i][25] &amp; &#x3D;f[i-1][0]+f[i-1][1] \end{aligned}\ $</p>
-</center>
-
-
-
-$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-<center>
-
-$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $
-
-</center>
-
-
-
-
-
-$$ \begin{aligned} f[i][0] & =f[i-1][1] \\ f[i][1] & =f[i-1][2] \\ f[i][2] & =f[i-1][3] \\ \vdots & \\ f[i][23] & =f[i-1][24] \\ f[i][24] & =f[i-1][25] \\ f[i][25] & =f[i-1][0]+f[i-1][1] \end{aligned}\\ $$
-
-
-
 
 
 $$
@@ -445,15 +418,64 @@ $$
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs math">\begin&#123;aligned&#125;<br>f[i][0] &amp; =f[i-1][1] \\<br>f[i][1] &amp; =f[i-1][2] \\<br>f[i][2] &amp; =f[i-1][3] \\<br>\vdots &amp; \\<br>f[i][23] &amp; =f[i-1][24] \\<br>f[i][24] &amp; =f[i-1][25] \\<br>f[i][25] &amp; =f[i-1][0]+f[i-1][1]<br>\end&#123;aligned&#125;\\<br></code></pre></td></tr></table></figure>
 
-<p>$$<br>\begin{aligned}<br>f[i][0] &amp; &#x3D;f[i-1][1] \<br>f[i][1] &amp; &#x3D;f[i-1][2] \<br>f[i][2] &amp; &#x3D;f[i-1][3] \<br>\vdots &amp; \<br>f[i][23] &amp; &#x3D;f[i-1][24] \<br>f[i][24] &amp; &#x3D;f[i-1][25] \<br>f[i][25] &amp; &#x3D;f[i-1][0]+f[i-1][1]<br>\end{aligned}\<br>$$</p>
 <p>使用矩阵表示，有：</p>
-<p>$$<br>\left[\begin{array}{c}<br>f[i][0] \<br>f[i][1] \<br>f[i][2] \<br>\vdots \<br>f[i][23] \<br>f[i][24] \<br>f[i][25]<br>\end{array}\right]&#x3D;\left[\begin{array}{ccccccc}<br>0 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \<br>0 &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \<br>0 &amp; 0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 &amp; 0 \<br>\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 &amp; 0 \<br>0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 \<br>1 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0<br>\end{array}\right]\left[\begin{array}{c}<br>f[i-1][0] \<br>f[i-1][1] \<br>f[i-1][2] \<br>\vdots \<br>f[i-1][23] \<br>f[i-1][24] \<br>f[i-1][25]<br>\end{array}\right]<br>$$</p>
+
+
+$$
+\left[\begin{array}{c}
+f[i][0] \\
+f[i][1] \\
+f[i][2] \\
+\vdots \\
+f[i][23] \\
+f[i][24] \\
+f[i][25]
+\end{array}\right]=\left[\begin{array}{ccccccc}
+0 & 1 & 0 & 0 & \cdots & 0 & 0 \\
+0 & 0 & 1 & 0 & \cdots & 0 & 0 \\
+0 & 0 & 0 & 1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \cdots & 1 & 0 \\
+0 & 0 & 0 & 0 & \cdots & 0 & 1 \\
+1 & 1 & 0 & 0 & \cdots & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+f[i-1][0] \\
+f[i-1][1] \\
+f[i-1][2] \\
+\vdots \\
+f[i-1][23] \\
+f[i-1][24] \\
+f[i-1][25]
+\end{array}\right]
+$$
+
+
+
 <p>把上式中的三个矩阵分别记作$F[i],M,F[i−1]$，即</p>
-<p>$$<br>F[i]&#x3D;M \times F[i-1]<br>$$</p>
+
+
+$$
+F[i]=M \times F[i-1]
+$$
+
+
+
 <p>则有：</p>
-<p>$$<br>\begin{aligned}<br>F[t] &amp; &#x3D;M \times F[t-1] \<br>&amp; &#x3D;M \times M \times F[t-2] \<br>&amp; &#x3D;M \times M \times M \times F[t-3] \<br>&amp; \vdots \<br>&amp; &#x3D;M^{t} \times F[0]<br>\end{aligned}<br>$$</p>
+
+
+$$
+\begin{aligned}
+F[t] & =M \times F[t-1] \\
+& =M \times M \times F[t-2] \\
+& =M \times M \times M \times F[t-3] \\
+& \vdots \\
+& =M^{t} \times F[0]
+\end{aligned}
+$$
+
+
+
 <p>也就是说，我们只需要在$\log t\times C^3$的时间内算出$M^t$，问题就解决了。</p>
 <p>使用矩阵快速幂即可完美解决。</p>
 <p>听到矩阵快速幂不要怕，它和<a href="https://blog.letmefly.xyz/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>的原理是一模一样的，只是把快速幂中的整数乘法换成了矩阵乘法而已。</p>
