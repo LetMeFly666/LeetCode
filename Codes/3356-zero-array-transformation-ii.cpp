@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-22 13:41:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-22 13:45:43
+ * @LastEditTime: 2025-05-22 13:47:47
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -31,9 +31,9 @@ public:
         while (l < r) {
             int m = (l + r) >> 1;
             if (ok(nums, queries, m)) {
-                l = m;
+                r = m;
             } else {
-                r = m - 1;
+                l = m + 1;
             }
         }
         return l;
