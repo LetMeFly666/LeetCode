@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-22 22:07:10
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-22 23:25:25
+ * @LastEditTime: 2025-05-22 23:29:09
  */
 class Solution {
     private int[] nums;
@@ -25,6 +25,8 @@ class Solution {
     }
 
     public int minZeroArray(int[] nums, int[][] queries) {
+        this.nums = nums;
+        this.queries = queries;
         int l = -1, r = queries.length + 1;
         while (l + 1 < r) {
             int m = (l + r) >> 1;
