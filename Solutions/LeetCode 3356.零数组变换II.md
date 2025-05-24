@@ -36,7 +36,6 @@ categories: [题解, LeetCode]
 
 <ul>
 	<li><strong>对于 i = 0（l = 0, r = 2, val = 1）：</strong>
-
 	<ul>
 		<li>在下标&nbsp;<code>[0, 1, 2]</code> 处分别减少 <code>[1, 0, 1]</code>。</li>
 		<li>数组将变为 <code>[1, 0, 1]</code>。</li>
@@ -62,7 +61,6 @@ categories: [题解, LeetCode]
 
 <ul>
 	<li><strong>对于 i = 0（l = 1, r = 3, val = 2）：</strong>
-
 	<ul>
 		<li>在下标&nbsp;<code>[1, 2, 3]</code> 处分别减少 <code>[2, 2, 1]</code>。</li>
 		<li>数组将变为 <code>[4, 1, 0, 0]</code>。</li>
@@ -92,7 +90,7 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：二分查找+差分数组
 
 首先请解决[3355.零数组变换 I](https://blog.letmefly.xyz/2025/05/21/LeetCode%203355.%E9%9B%B6%E6%95%B0%E7%BB%84%E5%8F%98%E6%8D%A2I/)。
 

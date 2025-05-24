@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-05-21 22:51:22
+LastEditTime: 2025-05-24 15:45:49
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -129,10 +129,15 @@ def genSolutionPart(num):
             print('time not found')
             continue
         year, month, day, hour, miunte, second = map(int, match.groups())
-        fileDay = f'{year:04d}-{day:02d}-{month:02d}'
-        today = datetime.date.today().strftime('%Y-%d-%m')
-        if fileDay != today:
-            print(f'{fileDay} != {today}')
+        fileDay = f'{year:04d}-{month:02d}-{day:02d}'  # What 之前咋写的year-day-month
+        fileDay = datetime.datetime.strptime(fileDay, '%Y-%m-%d').date()
+        today = datetime.date.today()
+        deltaDays = (today - fileDay).days
+        if deltaDays > 5 or deltaDays < -1:  # 最多接受5天前的或“明天的”(暂且视为时差)
+            if deltaDays > 5:
+                print(f'{fileDay} ~ {today} = {deltaDays} days > 5 days')
+            else:
+                print(f'{today} ~ {fileDay}: future {-deltaDays} days?')
             continue
         today4code.append(os.path.join('Codes', file))
     # TODO: 一题两解的支持
