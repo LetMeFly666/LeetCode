@@ -1178,6 +1178,11 @@ categories: [自用]
 |||
 |comedian|n. 滑稽演员|
 |stool|n. 凳子，垫脚凳；马桶；粪便(医学/生物学)<br/>v. 长新芽，诱捕，引诱|
+|||
+|componential|adj. 成分的，与成分有关的|
+|stipulate|v. 规定，明确要求<br/>adj. 有托叶的|
+|businesslike|adj. 高效的，井然有序的，工作认真而有条理的|
+|buddhism|n. 佛教|
 
 <p class="wordCounts">单词收录总数</p>
 
