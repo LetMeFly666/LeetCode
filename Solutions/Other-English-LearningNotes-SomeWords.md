@@ -1183,6 +1183,10 @@ categories: [自用]
 |stipulate|v. 规定，明确要求<br/>adj. 有托叶的|
 |businesslike|adj. 高效的，井然有序的，工作认真而有条理的|
 |buddhism|n. 佛教|
+|||
+|arduous|adj. 艰苦的，简单的，费力的|
+|wherein|adv. 其中，在那里，在那种情况下，以什么方式<details><summary>例句</summary>He looked around the room, <font color="#28bea0">wherein</font> were assembled his entire family.<br/>他环视了下房间，他全家人都在那里。</details>|
+|handout|n. 捐赠品，救济品，传单，(发给学生的)课堂讲义|
 
 <p class="wordCounts">单词收录总数</p>
 

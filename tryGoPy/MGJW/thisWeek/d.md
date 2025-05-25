@@ -1,28 +1,6 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2025-05-20 16:17:34
- * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-25 15:56:20
--->
-1. 本周进展围绕负责的“环境2传输通道构建”指标来做，
-2. 该指标完成了“设计阶段”，现阶段设计了一套隐蔽传输方式，可能仍需一些“校验”、“冗余”等保证这种方案的鲁棒性。
-3. 还剩这个“设计webex隐蔽传输方式”负责的指标继续完善。
+# 最长公共子序列
 
-# 前言
-
-之前的工作中论证了及时通信软件在转发消息时候的可伪造性，决定使用消息diff的方式编码
-
-# git diff
-
-说到文本diff，很容易想到git的差异机制。git能够轻轻松松在很小的空间占用下保留成千上万个版本的文本信息的更改。
-
-所以很容易想到在这里做一些手脚。
-
-git diff使用的是Myers差分算法，在学习Myers差分算法的时候发现，Myers差分算法能够在较低的时间复杂度内算出差异结果，但研究的时候发现对于少数内容的编码，不需要到Myers这一步，只需要到“最小编辑距离”这一步即可。
-
-## 最长公共子序列
-
-先引用一下 LeetCode 中的问题描述，如下所示。
+在介绍 Myers 算法之前，我们先来了解一下著名的 **最长公共子序列（Longest Common Subsequence，LCS）** 问题。我们引用一下 LeetCode 中的问题描述，如下所示。
 
 > 给定两个字符串 text1 和 text2，返回这两个字符串的最长「公共子序列」的长度。如果不存在「公共子序列」，则返回 0 。
 > 
@@ -36,7 +14,7 @@ git diff使用的是Myers差分算法，在学习Myers差分算法的时候发�
 > 输出：4  
 > 解释：最长公共子序列是 \"BABA\" 或 \"CABA\" 或 \"CBBA\" ，它的长度为 4 。
 
-对于 LCS 问题，经典思路是使用动态规划来解决。动态规划的核心思想是 **将一个大问题拆分成多个子问题，分别求解各个子问题，基于各个子问题的解推断出大问题的解**。与分治、递归相比，动态规划会记录各个子问题的解，避免重复运算，以空间换时间，从而实现对时间复杂度的优化。
+对于 LCS 问题，经典思路是使用动态规划来解决。动态规划的核心思想是 **将一个大问题拆分成多个子问题，分别求解各个子问题，基于各个子问题的解推断出大问题的解**。与分治、递归相比，动态规划会记录各个子问题的解，避免重复运算，以空间换时间，从而实现对时间复杂度的优化。下面，我们来介绍一下 LCS 的动态规划解法。
 
 假设字符串 text1 和 text2 的长度分别为 m 和 n，对此创建一个 m+1 行 n+1 列的二维数组 dp，其中 dp[i][j] 表示 text1[0:i] 和 text2[0:j] 的最长公共子序列的长度。
 
@@ -70,6 +48,7 @@ dp[i][j] = {
 根据状态转移方程，我们可以得到如下代码实现：
 
 ```cpp
+// C++
 int longestCommonSubsequence(string text1, string text2) {
     int m = text1.size();
     int n = text2.size();
@@ -91,7 +70,7 @@ int longestCommonSubsequence(string text1, string text2) {
 
 下图所示为二维数组 dp[i][j] 的存储内容，大问题的解由子问题的解推导而出，数组整体从左到右，从上到下推导构建。我们在图中使用黄色标识了 text1[i-1] == text2[j-1] 的情况。此时将从左上角相邻的位置取值并加 1；否则，取左边或上边的相邻值中的最大值。整个二维数组中保存的最大值就是 LCS 问题的解。
 
-![001](pics/001.png)
+![DP Table Explanation](image-url-1)
 
 至此我们计算得到了最长公共子序列的长度，然而在实际情况中，我们倾向于得到最长公共子序列本身。此时，可以借助我们构建的二维数组进行回溯。
 
@@ -104,23 +83,21 @@ int longestCommonSubsequence(string text1, string text2) {
 
 由此，我们可以得到如下的遍历路径。
 
-![Backtracking Path 1](pics/002.png)
+![Backtracking Path 1](image-url-2)
 
 在回溯得到遍历路径之后，我们对路径中向左上角遍历的起始位置进行染色（黄色），即可得到最长公共子序列 CABA，如下图所示。
 
-![LCS CABA](pics/003.png)
+![LCS CABA](image-url-3)
 
 当然，细心的同学可能会对上述的回溯方法产生疑问：为什么 dp[i][j] = dp[i-1][j] 时向上遍历，而非向左遍历？事实上，如果我们也可以修改回溯方法，得到如下的遍历路径。
 
-![Backtracking Path 2](pics/004.png)
+![Backtracking Path 2](image-url-4)
 
 同样，我们对路径中向左上角遍历的起始位置进行染色（黄色），即可得到最长公共子序列 BABA，如下图所示。
 
-![LCS BABA](pics/005.png)
+![LCS BABA](image-url-5)
 
 ## 最小编辑距离
-
-有一篇很不错的文章：[Myers 差分算法](https://chuquan.me/2023/09/13/myers-difference-algorithm/)
 
 事实上，在特定设定下，最长公共子序列问题可以等价为 **最小编辑距离（Minimum Edit Distance，也称 Levenshtein）** 问题。
 
@@ -134,8 +111,8 @@ min_edit_distance = len(A) + len(B) - 2 * len(LCS)
 
 此时，我们可以将向左遍历的起始位置染成红色，将向上遍历的起始位置染成绿色，如下所示是分别对 CABA 和 BABA 遍历路径的染色图。
 
-![Edit Distance Coloring 1](pics/006.png)  
-![Edit Distance Coloring 2](pics/007.png)
+![Edit Distance Coloring 1](image-url-6)  
+![Edit Distance Coloring 2](image-url-7)
 
 这里，我们对已经染色的路径进行编辑规则的定义，如下：
 
@@ -145,39 +122,11 @@ min_edit_distance = len(A) + len(B) - 2 * len(LCS)
 
 此时，我们就可以得到最小编辑距离的实际操作步骤，即 **最短编辑脚本（Shortest Edit Script，SES）**，如下所示。
 
-![Shortest Edit Script 1](pics/008.png)  
-![Shortest Edit Script 2](pics/009.png)
+![Shortest Edit Script 1](image-url-8)  
+![Shortest Edit Script 2](image-url-9)
 
 上面两图的右半部分是两个符合预期的最短编辑脚本。然而，在实际过程中，对某一个原始文本进行编辑得到另一个目标文本，可能会存在非常多的最短编辑脚本。此时我们该如何选择？根据实际经验，我们认为先删除旧内容，后插入新内容，具有更直观的体验。比如：Code Review 的差异比较也都是按照先删除后插入的方式进行展示，如下所示。因此，上述第一种最短编辑脚本更加直观，符合预期。
 
-![Code Review Example](pics/0010.png)
+![Code Review Example](image-url-10)
 
-只需要将向右编码为0，向下编码为1，右下设置为校验（或者想简单的话，设置为“无意义”的干扰也行），双方约定一个具体的diff方式，即可得到相同的编码结果。
-
-对于diff的内容，可以使用两段文本，也可以使用“某个项目的提交diff(原生git项目)”来进行。
-
-# 转发图片uri
-
-转发消息是可以转发图片的，正常流程是发送方转发时候重新上传所有文件到服务器（所以合并转发大文件很慢）然后接收方下载文件或加载图片。
-
-只要能加载图片就可以参考之前邮件的隐蔽编码方式进行设计了。
-
-除非特殊判断参数中所有的uri，否则一般都只会选取自己关注的的uri来处理，多加一些参数完全不影响加载出来的图片。
-
-例如一张图片的原始url地址为：
-
-```
-https://i0.hdslb.com/bfs/archive/182ec1a908293e16a1af505d138a28a6fa00adb7.jpg?from=letmefly.xyz
-```
-
-![01](pics/01.png)
-
-我往后面随便拼接有的没的参数都不影响图片的正常加载
-
-```
-https://i0.hdslb.com/bfs/archive/182ec1a908293e16a1af505d138a28a6fa00adb7.jpg?from=letmefly.xyz&message=YangLaoShiHaoShuai&666=888&jwt=juwshshbwbwuwufsfsiofuoeu98293878ytugfdghjkytgfhhjuytryuio7trfghjkloiuytfg
-```
-
-![02](pics/02.png)
-
-鉴于转发的消息是可以伪造的，所以即使不更改被转发消息的原文，也能在参数中传递隐蔽消息。
+                    
