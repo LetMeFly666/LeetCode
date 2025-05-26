@@ -1187,6 +1187,9 @@ categories: [自用]
 |arduous|adj. 艰苦的，简单的，费力的|
 |wherein|adv. 其中，在那里，在那种情况下，以什么方式<details><summary>例句</summary>He looked around the room, <font color="#28bea0">wherein</font> were assembled his entire family.<br/>他环视了下房间，他全家人都在那里。</details>|
 |handout|n. 捐赠品，救济品，传单，(发给学生的)课堂讲义|
+|||
+|charter|n. 宪章，章程，特许状，(交通工具的)包租<br/>v. 包租，租用，特许成立，发特许执照，给予...特权|
+|ajar|adj. 半开<br/>adv. (门)敞开，不协调|
 
 <p class="wordCounts">单词收录总数</p>
 
