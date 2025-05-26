@@ -39,6 +39,11 @@ public:
                 }
             }
         }
-        return q.size() ? -1 : ans;
+        for (int i = 0; i < colors.size(); i++) {
+            if (indegree[i]) {
+                return -1;
+            }
+        }
+        return ans;
     }
 };
