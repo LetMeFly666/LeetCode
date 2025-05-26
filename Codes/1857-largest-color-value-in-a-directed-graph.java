@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-26 22:02:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-27 00:01:04
+ * @LastEditTime: 2025-05-27 00:02:40
  */
 import java.util.List;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ class Solution {
             int thisNode = q.poll();
             ans = Math.max(ans, ++dp[thisNode][colors.charAt(thisNode) - 'a']);
             for (int nextNode : out[thisNode]) {
-                indegree[nextNode]++;
+                indegree[nextNode]--;
                 if (indegree[nextNode] == 0) {
                     q.offer(nextNode);
                 }
