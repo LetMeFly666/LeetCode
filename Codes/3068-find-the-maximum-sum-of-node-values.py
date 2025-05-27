@@ -11,3 +11,4 @@ class Solution:
         odd, even = -100000000000000, 0
         for t in nums:
             odd, even = max(odd + t, even + (t ^ k)), max(even + t, odd + (t ^ k))
+        return even
