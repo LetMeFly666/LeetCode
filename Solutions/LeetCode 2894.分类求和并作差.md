@@ -69,7 +69,7 @@ categories: [题解, LeetCode]
 
 这就需要拿出我们小学二年级就学过的**等差数列求和公式** $\lfloor\frac{(首项+尾项)\times 项数}{2}\rfloor$
 
-另外有$num1-num2=(num1+num2)-num2$，而$num1+num2$就是整个数列$1$到$n$的和，$nums2$就是首项为$m$尾项为$\lfloor\frac{n}m\rfloor\times m$项数为$\lfloor\frac{n}m\rfloor$的等差数列。
+另外有$num1-num2=(num1+num2)-num2$，而$num1+num2$就是整个数列$1$到$n$的和，$num2$就是首项为$m$尾项为$\lfloor\frac{n}m\rfloor\times m$项数为$\lfloor\frac{n}m\rfloor$的等差数列。
 
 + 时间复杂度$O(1)$
 + 空间复杂度$O(1)$
