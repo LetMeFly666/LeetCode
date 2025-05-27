@@ -1190,6 +1190,10 @@ categories: [自用]
 |||
 |charter|n. 宪章，章程，特许状，(交通工具的)包租<br/>v. 包租，租用，特许成立，发特许执照，给予...特权|
 |ajar|adj. 半开<br/>adv. (门)敞开，不协调|
+|||
+|managerial|adj. 经理的，管理的|
+|skyrocket|v. 飞涨，猛涨<br/>n. 流星焰火，高空探测火箭|
+|nullify|v. 使失去法律效力，废止，使无效，抵消|
 
 <p class="wordCounts">单词收录总数</p>
 
