@@ -10,6 +10,8 @@ class Solution {
         for (int t : nums) {
             long newO = Math.max(odd + t, even + (t ^ k));
             long newE = Math.max(even + t, odd + (t ^ k));
+            odd = newO;
+            even = newE;
         }
         return even;
     }
