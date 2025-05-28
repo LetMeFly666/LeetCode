@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-28 21:43:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-28 22:53:41
+ * @LastEditTime: 2025-05-28 22:55:41
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ private:
     }
 
     int dfs(vector<vector<int>>& graph, int lastNode, int thisNode, int k) {
-        if (k <= 0) {
+        if (k < 0) {
             return 0;
         }
         int ans = 1;
