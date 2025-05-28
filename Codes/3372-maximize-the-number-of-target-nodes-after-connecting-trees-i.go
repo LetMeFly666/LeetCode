@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-28 21:43:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-29 00:41:25
+ * @LastEditTime: 2025-05-29 00:43:41
  */
 package main
 
@@ -20,7 +20,7 @@ func dfs3372(tree [][]int, lastNode, thisNode, k int) int {
         return 0
     }
     ans := 1
-    for nextNode := range tree[thisNode] {
+    for _, nextNode := range tree[thisNode] {
         if nextNode != lastNode {
             ans += dfs3372(tree, thisNode, nextNode, k - 1)
         }
