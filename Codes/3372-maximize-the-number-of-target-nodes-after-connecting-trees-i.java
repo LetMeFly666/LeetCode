@@ -2,14 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2025-05-28 21:43:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-28 23:18:09
+ * @LastEditTime: 2025-05-28 23:19:46
  */
 import java.util.List;
 import java.util.ArrayList;
 
 class Solution {
-    private int[][] buildTree(int[][] edges) {
-        List<Integer>[] ans = new ArrayList<>()[edges.length + 1];
+    private List<Integer>[] buildTree(int[][] edges) {
+        List<Integer>[] ans = new ArrayList<>[edges.length + 1];
         for (int i = 0; i < ans.length; i++) {
             ans[i] = new ArrayList<>();
         }
