@@ -28,7 +28,7 @@ private:
             if (nextNode == lastNode) {
                 continue;
             }
-            ans += dfs(graph, thisNode, nextNode, k);
+            ans += dfs(graph, thisNode, nextNode, k - 1);
         }
         return ans;
     }
