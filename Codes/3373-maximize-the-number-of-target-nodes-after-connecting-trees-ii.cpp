@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-05-29 22:14:08
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-29 22:47:36
+ * @LastEditTime: 2025-05-29 22:50:54
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -53,8 +53,8 @@ public:
         vector<bool> color1 = tree2color(graph1), color2 = tree2color(graph2);
         auto [black1, white1] = count01(color1);
         auto [black2, white2] = count01(color2);
-        int toAdd = max(black1, black2);
-        black1 += toAdd, black2 += toAdd;
+        int toAdd = max(black2, white2);
+        black1 += toAdd, white1 += toAdd;
         vector<int> ans(color1.size());
         for (int i = 0; i < ans.size(); i++) {
             ans[i] = color1[i] ? white1 : black1;

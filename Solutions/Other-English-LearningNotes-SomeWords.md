@@ -1145,7 +1145,7 @@ categories: [自用]
 |||
 |earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
 |||
-|custody|n. 抚养权，羁押，保管，保护|
+|<font color="#28bea0" title="二次复习">custody</font>|n. 抚养权，羁押，保管，保护|
 |||
 |repudiate|v. 拒绝，不接受，回绝，(正式地)否认|
 |torture|v. 拷打，折磨，严刑逼供<br/>n. 拷打，折磨，酷刑|
@@ -1164,7 +1164,7 @@ categories: [自用]
 |||
 |pope|n. 教皇|
 |||
-|amends|n. 赔偿，赎罪，复原|
+|amends|n. 复原，赎罪，赔偿|
 |twilight|n. 暮色，黄昏，没落时期，衰退期<br/>adj. 奇妙神秘的，虚幻的，朦胧的，界限不清的|
 |||
 |ascertain|v. 查明，弄清|
@@ -1194,6 +1194,11 @@ categories: [自用]
 |managerial|adj. 经理的，管理的|
 |skyrocket|v. 飞涨，猛涨<br/>n. 流星焰火，高空探测火箭|
 |nullify|v. 使失去法律效力，废止，使无效，抵消|
+|||
+|undermentioned|adj. (用于书或文件)下述的|
+|||
+|greengrocer|n. 果菜商，素菜水果店|
+|ruthless|adj. 残酷无情的，残忍的|
 
 <p class="wordCounts">单词收录总数</p>
 
