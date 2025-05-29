@@ -1,7 +1,7 @@
 ---
 title: 3373.连接两棵树后最大目标节点数目 II：脑筋急转弯+广度优先搜索(黑白染色法)
 date: 2025-05-29 23:41:45
-tags: [题解, LeetCode, 困难, 树, 广度优先搜索, BFS]
+tags: [题解, LeetCode, 困难, 树, 广度优先搜索, BFS, 深度优先搜索, 脑筋急转弯]
 categories: [题解, LeetCode]
 ---
 
