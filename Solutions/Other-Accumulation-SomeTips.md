@@ -443,6 +443,28 @@ ssh lzy@3090.narc.letmefly.xyz 'cd ~/ltf && ./timer.sh 5'
 
 然后你就可以看到一个进度条，5秒后进度达到100%。
 
+## About Mac
+
+### SMB协议时不生成.DS_Store
+
+禁止Finder浏览SMB文件夹时生成`.DS_Store`：
+
+```bash
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+```
+
+删除已在SMB文件夹中生成的`.DS_Store`：
+
+```bash
+find /path/to/shared/folder -name ".DS_Store" -type f -delete
+```
+
+可能需要重启系统或Finder才能生效
+
+```bash
+killall Finder
+```
+
 ## About Windows
 
 ### Windows应用商店安装的应用

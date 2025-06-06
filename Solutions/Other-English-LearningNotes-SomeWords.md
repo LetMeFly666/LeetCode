@@ -1199,6 +1199,12 @@ categories: [自用]
 |||
 |greengrocer|n. 果菜商，素菜水果店|
 |ruthless|adj. 残酷无情的，残忍的|
+|||
+|protracted|adj. 拖沓的|
+|preferential|adj. 优先的，优惠的，优待的<br/>n. 优先权，优惠税率|
+|||
+|stupidity|n. 愚蠢，愚蠢行为，糊涂，笨|
+|mutton|n. 羊肉|
 
 <p class="wordCounts">单词收录总数</p>
 
