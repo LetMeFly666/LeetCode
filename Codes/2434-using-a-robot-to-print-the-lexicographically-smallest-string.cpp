@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-06 21:49:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-06 22:08:25
+ * @LastEditTime: 2025-06-06 22:17:57
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,18 +11,18 @@
 class Solution {
 public:
     string robotWithString(string s) {
-        string ans;
+        vector<char> mini(s.size() + 1, 'z');
+        for (int i = s.size() - 1; i >= 0; i--) {
+            mini[i] = min(mini[i + 1], s[i]);
+        }
         stack<char> st;
-        for (char c : s) {
-            while (st.size() && c < st.top()) {
+        string ans;
+        for (int i = 0; i < s.size(); i++) {
+            st.push(s[i]);
+            while (st.size() && st.top() <= mini[i]) {
                 ans += st.top();
                 st.pop();
             }
-            st.push(c);
-        }
-        while (st.size()) {
-            ans += st.top();
-            st.pop();
         }
         return ans;
     }
