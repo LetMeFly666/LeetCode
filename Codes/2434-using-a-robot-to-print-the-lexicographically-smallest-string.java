@@ -13,7 +13,7 @@ class Solution {
         char[] mini = new char[s.length() + 1];
         mini[s.length()] = 'z';
         for (int i = s.length() - 1; i >= 0; i--) {
-            mini[i] = Math.min(mini[i + 1], s.charAt(i));
+            mini[i] = (char) Math.min(mini[i + 1], s.charAt(i));
         }
         StringBuilder ans = new StringBuilder(s.length());
         Deque<Character> st = new ArrayDeque<>();
