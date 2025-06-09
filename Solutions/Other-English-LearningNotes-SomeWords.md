@@ -1205,6 +1205,10 @@ categories: [自用]
 |||
 |stupidity|n. 愚蠢，愚蠢行为，糊涂，笨|
 |mutton|n. 羊肉|
+|||
+|plume|n. 羽毛，飘升之物，一缕，(常用作装饰的)连在一起的羽毛<br/>v. 用羽毛装饰，(鸟)整理(羽毛)，借衣服修饰，自夸|
+|||
+|indefinitely|adv. 无期限的|
 
 <p class="wordCounts">单词收录总数</p>
 
