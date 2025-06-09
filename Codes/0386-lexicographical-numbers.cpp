@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-09 10:09:21
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-09 10:13:06
+ * @LastEditTime: 2025-06-09 10:15:25
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,7 +18,7 @@ public:
             if (now * 10 <= n) {
                 now *= 10;
             } else {
-                while (now % 10 == 9) {
+                while (now % 10 == 9 || now == n) {
                     now /= 10;
                 }
                 now++;
