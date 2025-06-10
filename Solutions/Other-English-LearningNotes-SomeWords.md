@@ -1209,6 +1209,9 @@ categories: [自用]
 |plume|n. 羽毛，飘升之物，一缕，(常用作装饰的)连在一起的羽毛<br/>v. 用羽毛装饰，(鸟)整理(羽毛)，借衣服修饰，自夸|
 |||
 |indefinitely|adv. 无期限的|
+|||
+|prayer|n. 祷告，祈祷文，经文|
+|better-off|adj. 比较富裕的，境况较好的|
 
 <p class="wordCounts">单词收录总数</p>
 
