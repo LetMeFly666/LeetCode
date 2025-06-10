@@ -1,11 +1,11 @@
 ---
-title: 3442.奇偶频次间的最大差值 I
+title: 3442.奇偶频次间的最大差值 I：计数
 date: 2025-06-10 23:41:55
 tags: [题解, LeetCode, 简单, 哈希表, 字符串, 计数]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3442.奇偶频次间的最大差值 I
+# 【LetMeFly】3442.奇偶频次间的最大差值 I：计数
 
 力扣题目链接：[https://leetcode.cn/problems/maximum-difference-between-even-and-odd-frequency-i/](https://leetcode.cn/problems/maximum-difference-between-even-and-odd-frequency-i/)
 
@@ -62,12 +62,19 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：计数
 
-11111
+遍历一遍字符串，统计出每种字符的出现次数。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+遍历英文单词的每种字符：
+
++ 若这种字符出现次数为奇数次，则更新a1的值
++ 否则若这种字符出现次数大于0，则更新a2的值
+
+最终返回$a_1-a_2$。
+
++ 时间复杂度$O(len(s)+C)$，其中$C=26$
++ 空间复杂度$O(C)$
 
 ### AC代码
 
@@ -80,10 +87,6 @@ categories: [题解, LeetCode]
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-06-10 23:14:08
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int maxDifference(string s) {
@@ -177,6 +180,6 @@ func maxDifference(s string) int {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/06/10/LeetCode%203442.%E5%A5%87%E5%81%B6%E9%A2%91%E6%AC%A1%E9%97%B4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BCI/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/148570777)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/06/10/LeetCode%203442.%E5%A5%87%E5%81%B6%E9%A2%91%E6%AC%A1%E9%97%B4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BCI/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
