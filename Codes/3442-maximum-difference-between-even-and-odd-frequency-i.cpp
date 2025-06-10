@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-10 23:07:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-10 23:09:00
+ * @LastEditTime: 2025-06-10 23:12:29
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,7 +19,7 @@ public:
         for (int i = 0; i < 26; i++) {
             if (cnt[i] % 2) {
                 a1 = max(a1, cnt[i]);
-            } else {
+            } else if (cnt[i]) {
                 a2 = min(a2, cnt[i]);
             }
         }
