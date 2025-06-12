@@ -853,7 +853,7 @@ categories: [自用]
 |<font color="#28bea0" title="二次复习">reverence</font>|n. 尊敬，尊重，尊崇<br/>v. 尊敬，尊重，尊崇|
 |||
 |hitchhike|v. 搭便车(旅行)|
-|memoir|n. 自传，(尤指名人的)回忆录，传说，地方志|
+|<font color="#28bea0" title="二次复习">memoir</font>|n. 自传，(尤指名人的)回忆录，传说，地方志|
 |||
 |clown|n. 丑角，小丑，蠢货，笨蛋<br/>v. 做出蠢相，扮小丑|
 |triangular|adj. 三角形的，涉及三方的|
@@ -1212,6 +1212,9 @@ categories: [自用]
 |||
 |prayer|n. 祷告，祈祷文，经文|
 |better-off|adj. 比较富裕的，境况较好的|
+|||
+|courteous|adj. 有礼貌的，客气的|
+|postpone|v. 延期，延迟|
 
 <p class="wordCounts">单词收录总数</p>
 
