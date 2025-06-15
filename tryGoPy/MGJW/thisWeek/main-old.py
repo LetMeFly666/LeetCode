@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-06-04 19:41:24
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-15 14:50:20
+LastEditTime: 2025-06-15 14:52:00
 '''
 import random
 import string
@@ -25,8 +25,8 @@ HTML_HEADER = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安全编码系统</title>
-    <link href="https://cdn.letmefly.xyz/css/bootstrap@5.3.0/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.letmefly.xyz/css/bootstrap@5.3.0/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         :root {
             --primary-color: #3498db;
@@ -225,7 +225,7 @@ HTML_FOOTER = """
         </div>
     </footer>
     
-    <script src="https://cdn.letmefly.xyz/js/bootstrap@5.3.0/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 """
