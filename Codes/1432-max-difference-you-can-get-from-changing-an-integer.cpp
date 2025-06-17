@@ -49,7 +49,7 @@ public:
                         if (y[0] == '0') {
                             continue;
                         }
-                        ans = max(ans, abs(atoi(x.c_str()) - atoi(y.c_str())));
+                        ans = max(ans, atoi(x.c_str()) - atoi(y.c_str()));
                     }
                 }
             }
