@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-15 22:35:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-17 10:44:08
+ * @LastEditTime: 2025-06-17 10:49:41
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -10,7 +10,7 @@
 
 class Solution {
 private:
-    inline bool isIn(char c, string s) {
+    inline bool isIn(string s, char c) {
         for (char t : s) {
             if (t == c) {
                 return true;
@@ -18,25 +18,24 @@ private:
         }
         return false;
     }
+
+    inline string replace(string s, char a, char b) {
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == a) {
+                s[i] = b;
+            }
+        }
+        return s;
+    }
 public:
     int maxDiff(int num) {
         int ans = 0;
         string s = to_string(num);
-        for (int i = 0; i < 10; i++) {
-            if (!isIn('a' + i, s)) {
-                continue;
-            }
-            for (int x = 0; x < 10; x++) {
-                string a;
-                for (char c : s) {
-                    if (c == 'a' + i) {
-                        a += 'x' + i;
-                    } else {
-                        a += c;
-                    }
-                }
-                for (int y = 0; y < 10; y++) {
-                    if (!isIn('a' + y, s)) {
+        for (int a = 0; a < 10; a++) {
+            
+            for (int b = 0; b < 10; b++) {
+                for (int c = 0; c < 10; c++) {
+                    for (int d = 0; d < 10; d++) {
                         
                     }
                 }
