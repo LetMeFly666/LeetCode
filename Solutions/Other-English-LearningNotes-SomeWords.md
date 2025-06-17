@@ -1215,6 +1215,12 @@ categories: [自用]
 |||
 |courteous|adj. 有礼貌的，客气的|
 |postpone|v. 延期，延迟|
+|||
+|gaol|n. 监狱(jail的英式拼法)|
+|dungeon|n. (尤指城堡中的)地牢|
+|||
+|makeshift|ajd. 临时的，凑合的<br/>n. 权宜之计，临时替代品|
+|growl|v. 发出低沉的怒吼，咆哮<br/>n. 怒吼声，咆哮|
 
 <p class="wordCounts">单词收录总数</p>
 
