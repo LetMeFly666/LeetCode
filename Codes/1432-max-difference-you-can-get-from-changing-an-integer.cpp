@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-15 22:35:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-17 23:47:23
+ * @LastEditTime: 2025-06-17 23:50:02
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -29,7 +29,7 @@ private:
     }
 public:
     int maxDiff(int num) {
-        int ans = 0;
+        int m = 100000000, M = 0;
         string s = to_string(num);
         for (int a = 0; a < 10; a++) {
             if (!isIn(s, '0' + a)) {
@@ -40,20 +40,11 @@ public:
                 if (x[0] == '0') {
                     continue;
                 }
-                for (int c = 0; c < 10; c++) {
-                    if (!isIn(x, '0' + c)) {
-                        continue;
-                    }
-                    for (int d = 0; d < 10; d++) {
-                        string y = replace(x, '0' + c, '0' + d);
-                        if (y[0] == '0') {
-                            continue;
-                        }
-                        ans = max(ans, atoi(x.c_str()) - atoi(y.c_str()));
-                    }
-                }
+                int val = atoi(x.c_str());
+                m = min(m, val);
+                M = max(M, val);
             }
         }
-        return ans;
+        return M - m;
     }
 };
