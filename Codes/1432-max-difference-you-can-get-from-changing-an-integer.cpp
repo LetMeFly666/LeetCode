@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-15 22:35:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-17 23:42:32
+ * @LastEditTime: 2025-06-17 23:47:23
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -37,12 +37,18 @@ public:
             }
             for (int b = 0; b < 10; b++) {
                 string x = replace(s, '0' + a, '0' + b);
+                if (x[0] == '0') {
+                    continue;
+                }
                 for (int c = 0; c < 10; c++) {
                     if (!isIn(x, '0' + c)) {
                         continue;
                     }
                     for (int d = 0; d < 10; d++) {
                         string y = replace(x, '0' + c, '0' + d);
+                        if (y[0] == '0') {
+                            continue;
+                        }
                         ans = max(ans, abs(atoi(x.c_str()) - atoi(y.c_str())));
                     }
                 }
