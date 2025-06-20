@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-12 23:12:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-18 21:17:09
+ * @LastEditTime: 2025-06-20 18:52:08
 -->
 ---
 title: 英语学习笔记（自用） - 英语易忘单词等
@@ -1229,6 +1229,9 @@ categories: [自用]
 |growl|v. 发出低沉的怒吼，咆哮<br/>n. 怒吼声，咆哮|
 |||
 |sensational|adj. 轰动的，引起哗然的，哗众取宠的，耸人听闻的|
+|||
+|perpetual|adj. 永恒的，永久的，终身的，持续的，不间断的|
+|encyclopaedia|n. 百科全书|
 
 <p class="wordCounts">单词收录总数</p>
 
