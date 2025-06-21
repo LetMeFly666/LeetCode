@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-19 10:16:46
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-19 13:47:56
+ * @LastEditTime: 2025-06-21 11:33:06
  */
 package main
 
@@ -14,7 +14,7 @@ import (
 // M: !9->9
 // m: first==1 ? !01->0 : first->1
 func maxDiff(num int) int {
-    s := string(num)
+    s := strconv.Itoa(num)  // 不可！： s := string(num)
     M, m := num, num
     change := func(s string, a, b byte) int {
         ans, _ := strconv.Atoi(strings.ReplaceAll(s, string(a), string(b)))
