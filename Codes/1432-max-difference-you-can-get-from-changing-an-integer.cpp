@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-06-15 22:35:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-17 23:50:02
+ * @LastEditTime: 2025-06-21 15:34:17
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -10,7 +10,7 @@
 
 class Solution {
 private:
-    inline bool isIn(string s, char c) {
+    inline bool isIn(string& s, char c) {
         for (char t : s) {
             if (t == c) {
                 return true;
