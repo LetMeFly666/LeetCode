@@ -1,5 +1,5 @@
-Long time no see.
+这次周期拉的有点长啊（9天终于更新了）
 
-但我的打字速度似乎变快了些。
+域名备案机制吐槽
 
-几天不见，CSDN又改版了。
+5Y+I6KaB5YeG5aSH5piO5aSp55qE57uE5Lya5LqGIOWRnOWRnOWRnPCfmK0K

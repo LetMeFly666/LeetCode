@@ -1,23 +1,8 @@
-<!--
- * @Author: LetMeFly
- * @Date: 2025-06-09 21:21:30
- * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-15 16:03:21
--->
-# 情报
-
-+ 【离谱！把原神设为微信头像，别人点开30秒微信闪退】 【精准空降到 00:38】 https://www.bilibili.com/video/BV1Ze7HznEou/?share_source=copy_web&vd_source=92aeccdc2df6dec97830880acc658895&t=38
-+ 【【黑客】如何在几秒内入侵你的电脑 从BadUSB的实现到近源渗透】 【精准空降到 07:27】 https://www.bilibili.com/video/BV1orTUzPEiX/?share_source=copy_web&vd_source=92aeccdc2df6dec97830880acc658895&t=447
-键盘灯闪烁获取隔离网络中的文件
-
-# 转发匹配
-
-```python
 '''
 Author: LetMeFly
 Date: 2025-06-04 19:41:24
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-15 14:50:20
+LastEditTime: 2025-06-15 14:52:00
 '''
 import random
 import string
@@ -40,8 +25,8 @@ HTML_HEADER = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安全编码系统</title>
-    <link href="https://cdn.letmefly.xyz/css/bootstrap@5.3.0/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.letmefly.xyz/css/bootstrap@5.3.0/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         :root {
             --primary-color: #3498db;
@@ -240,7 +225,7 @@ HTML_FOOTER = """
         </div>
     </footer>
     
-    <script src="https://cdn.letmefly.xyz/js/bootstrap@5.3.0/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 """
@@ -761,21 +746,3 @@ def create_default_image():
 if __name__ == '__main__':
     create_default_image()
     app.run(port=5000, debug=True, host='0.0.0.0')
-```
-
-# 具有实际意义的句子（而非乱码）
-
-我想寻找一些单词，使用单词之间组成的句子代表01进行编码。
-
-编码方式如下：
-
-+ 两个句子等长
-+ 两个句子中对应位置字符，如果s1[i]>s2[i]，则编码为0；否则编码为1
-
-为了让句子看起来有意义(符合语法错误)，我想请求你的帮助，例如：
-
-+ 首先寻找一些等长的单词，has和had相比ha相同而s>d，所以has和had对应就会编码为1；
-+ 主语分别有哪些单词组、谓语分别由哪些、宾语分别有哪些；句子的构成方式有“主+谓+宾”、...
-+ 寻找大量的这种单词组。
-
-以便我想得到一些编码时，能够方便地找到符合条件编码的单词组。

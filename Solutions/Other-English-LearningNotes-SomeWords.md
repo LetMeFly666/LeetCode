@@ -1215,6 +1215,20 @@ categories: [自用]
 |||
 |courteous|adj. 有礼貌的，客气的|
 |postpone|v. 延期，延迟|
+|||
+|gaol|n. 监狱(jail的英式拼法)|
+|dungeon|n. (尤指城堡中的)地牢|
+|||
+|makeshift|ajd. 临时的，凑合的<br/>n. 权宜之计，临时替代品|
+|growl|v. 发出低沉的怒吼，咆哮<br/>n. 怒吼声，咆哮|
+|||
+|sensational|adj. 轰动的，引起哗然的，哗众取宠的，耸人听闻的|
+|||
+|elastic|n. 橡皮带<br/>adj. 有弹性的，灵活的|
+|jealousy|n. 妒忌，羡慕|
+|||
+|perpetual|adj. 永恒的，永久的，终身的，持续的，不间断的|
+|encyclopaedia|n. 百科全书|
 
 <p class="wordCounts">单词收录总数</p>
 
