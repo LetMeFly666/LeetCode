@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1432.改变一个整数能得到的最大差值：暴力模拟&#x2F;贪心力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;max-difference-you-can-get-from-changing-an-integer&#x2F; 给你一个整数&nbsp;num&nbsp;。你可以对它进行如下步骤恰好 两次&nbsp;：   	选择一个数字&nbsp;x (0&amp;nbs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1432.改变一个整数能得到的最大差值：暴力模拟&#x2F;贪心">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201432.%E6%94%B9%E5%8F%98%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E8%83%BD%E5%BE%97%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1432.改变一个整数能得到的最大差值：暴力模拟&#x2F;贪心力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;max-difference-you-can-get-from-changing-an-integer&#x2F; 给你一个整数&nbsp;num&nbsp;。你可以对它进行如下步骤恰好 两次&nbsp;：   	选择一个数字&nbsp;x (0&amp;nbs">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-21T06:41:16.000Z">
+<meta property="article:modified_time" content="2025-06-21T07:40:59.143Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1432.改变一个整数能得到的最大差值：暴力模拟/贪心 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1432.改变一个整数能得到的最大差值：暴力模拟/贪心"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1432-改变一个整数能得到的最大差值：暴力模拟-贪心"><a href="#【LetMeFly】1432-改变一个整数能得到的最大差值：暴力模拟-贪心" class="headerlink" title="【LetMeFly】1432.改变一个整数能得到的最大差值：暴力模拟&#x2F;贪心"></a>【LetMeFly】1432.改变一个整数能得到的最大差值：暴力模拟&#x2F;贪心</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-difference-you-can-get-from-changing-an-integer/">https://leetcode.cn/problems/max-difference-you-can-get-from-changing-an-integer/</a></p>
+<p>给你一个整数&nbsp;<code>num</code>&nbsp;。你可以对它进行如下步骤恰好 <strong>两次</strong>&nbsp;：</p>
+
+<ul>
+	<li>选择一个数字&nbsp;<code>x (0&nbsp;&lt;= x &lt;= 9)</code>.</li>
+	<li>选择另一个数字&nbsp;<code>y (0&nbsp;&lt;= y &lt;= 9)</code>&nbsp;。数字&nbsp;<code>y</code>&nbsp;可以等于&nbsp;<code>x</code>&nbsp;。</li>
+	<li>将 <code>num</code>&nbsp;中所有出现 <code>x</code>&nbsp;的数位都用 <code>y</code>&nbsp;替换。</li>
+	<li>得到的新的整数 <strong>不能</strong>&nbsp;有前导 0 ，得到的新整数也 <strong>不能</strong>&nbsp;是 0&nbsp;。</li>
+</ul>
+
+<p>令两次对 <code>num</code>&nbsp;的操作得到的结果分别为&nbsp;<code>a</code>&nbsp;和&nbsp;<code>b</code>&nbsp;。</p>
+
+<p>请你返回&nbsp;<code>a</code> 和&nbsp;<code>b</code>&nbsp;的 <strong>最大差值</strong> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>num = 555
+<strong>输出：</strong>888
+<strong>解释：</strong>第一次选择 x = 5 且 y = 9 ，并把得到的新数字保存在 a 中。
+第二次选择 x = 5 且 y = 1 ，并把得到的新数字保存在 b 中。
+现在，我们有 a = 999 和 b = 111 ，最大差值为 888
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>num = 9
+<strong>输出：</strong>8
+<strong>解释：</strong>第一次选择 x = 9 且 y = 9 ，并把得到的新数字保存在 a 中。
+第二次选择 x = 9 且 y = 1 ，并把得到的新数字保存在 b 中。
+现在，我们有 a = 9 和 b = 1 ，最大差值为 8
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>num = 123456
+<strong>输出：</strong>820000
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>num = 10000
+<strong>输出：</strong>80000
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>num = 9288
+<strong>输出：</strong>8700
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= num &lt;= 10^8</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法一：暴力模拟"><a href="#解题方法一：暴力模拟" class="headerlink" title="解题方法一：暴力模拟"></a>解题方法一：暴力模拟</h2><p>从0到9模x，从0到9模拟y，(如果x出现过则)将所有x替换为y，就能得到一个新数字。</p>
+<p>在所有的新数字中，返回其中最大数和最小数之差。</p>
+<ul>
+<li>时间复杂度$O(C^2\log num)$，其中C&#x3D;10</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-06-15 22:35:58</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-06-17 23:50:02</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">bool</span> <span class="hljs-title">isIn</span><span class="hljs-params">(string s, <span class="hljs-type">char</span> c)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> t : s) &#123;<br>            <span class="hljs-keyword">if</span> (t == c) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">inline</span> string <span class="hljs-title">replace</span><span class="hljs-params">(string s, <span class="hljs-type">char</span> a, <span class="hljs-type">char</span> b)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s[i] == a) &#123;<br>                s[i] = b;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDiff</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-type">int</span> m = <span class="hljs-number">100000000</span>, M = <span class="hljs-number">0</span>;<br>        string s = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> a = <span class="hljs-number">0</span>; a &lt; <span class="hljs-number">10</span>; a++) &#123;<br>            <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">isIn</span>(s, <span class="hljs-string">&#x27;0&#x27;</span> + a)) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> b = <span class="hljs-number">0</span>; b &lt; <span class="hljs-number">10</span>; b++) &#123;<br>                string x = <span class="hljs-built_in">replace</span>(s, <span class="hljs-string">&#x27;0&#x27;</span> + a, <span class="hljs-string">&#x27;0&#x27;</span> + b);<br>                <span class="hljs-keyword">if</span> (x[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;0&#x27;</span>) &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-type">int</span> val = <span class="hljs-built_in">atoi</span>(x.<span class="hljs-built_in">c_str</span>());<br>                m = <span class="hljs-built_in">min</span>(m, val);<br>                M = <span class="hljs-built_in">max</span>(M, val);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> M - m;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="解题方法二：贪心"><a href="#解题方法二：贪心" class="headerlink" title="解题方法二：贪心"></a>解题方法二：贪心</h2><p>如何将num变得尽可能大？</p>
+<blockquote>
+<p>前面的数哪怕变大一点(8-&gt;9)也比后面的数变大很多(0-&gt;9)更优(80-&gt;90比80-&gt;89更优)。</p>
+<p>所以只需要将num中第一个非9数字全部变为9即可。</p>
+</blockquote>
+<p>如何将num变得尽可能小？</p>
+<blockquote>
+<p>题目要求不能包含前导零。</p>
+<ul>
+<li><p>如果num的最高位不是1，那么将所有值为num最高位的数变成1即可；</p>
+</li>
+<li><p>否则，将第一个大于1的数字全部变为0即可(首位是1，所以不能将1变成0，只能将大于1的数变成0)。</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>时间复杂度$O(\log num)$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-06-19 10:16:46</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-06-19 10:28:35</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// max-&gt;第一个非9的值全改为9</span><br><span class="hljs-comment">// min-&gt;第一位如果是1，将第一个大于1的值全改为0；否则，将第一位的值全改为1</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">firstNot9</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s[i] != <span class="hljs-string">&#x27;9&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">firstNot01</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s[i] &gt; <span class="hljs-string">&#x27;1&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">change</span><span class="hljs-params">(string s, <span class="hljs-type">char</span> a, <span class="hljs-type">char</span> b)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s[i] == a) &#123;<br>                s[i] = b;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">atoi</span>(s.<span class="hljs-built_in">c_str</span>());<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxDiff</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        <span class="hljs-type">int</span> M, m;<br>        string s = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-type">int</span> index = <span class="hljs-built_in">firstNot9</span>(s);<br>        M = index &lt; <span class="hljs-number">0</span> ? num : <span class="hljs-built_in">change</span>(s, s[index], <span class="hljs-string">&#x27;9&#x27;</span>);<br>        <span class="hljs-keyword">if</span> (s[<span class="hljs-number">0</span>] != <span class="hljs-string">&#x27;1&#x27;</span>) &#123;<br>            m = <span class="hljs-built_in">change</span>(s, s[<span class="hljs-number">0</span>], <span class="hljs-string">&#x27;1&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            index = <span class="hljs-built_in">firstNot01</span>(s);<br>            m = index &lt; <span class="hljs-number">0</span> ? num : <span class="hljs-built_in">change</span>(s, s[index], <span class="hljs-string">&#x27;0&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> M - m;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-06-19 10:16:46</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-06-19 10:35:59</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-comment"># M: !9 -&gt; 9</span><br><span class="hljs-comment"># m: first == 1 ? (!01 -&gt; 0) : (first-&gt;1)</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">firstN9</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            <span class="hljs-keyword">if</span> c != <span class="hljs-string">&#x27;9&#x27;</span>:<br>                <span class="hljs-keyword">return</span> i<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">firstN01</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            <span class="hljs-keyword">if</span> c != <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">and</span> c != <span class="hljs-string">&#x27;1&#x27;</span>:<br>                <span class="hljs-keyword">return</span> i<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">change</span>(<span class="hljs-params">self, s: <span class="hljs-built_in">str</span>, a: <span class="hljs-built_in">str</span>, b: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        li = <span class="hljs-built_in">list</span>(s)<br>        <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(li):<br>            <span class="hljs-keyword">if</span> c == a:<br>                li[i] = b<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;&#x27;</span>.join(li))<br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">maxDiff</span>(<span class="hljs-params">self, num: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        M = m = <span class="hljs-number">0</span><br>        s = <span class="hljs-built_in">str</span>(num)<br>        index = <span class="hljs-variable language_">self</span>.firstN9(s)<br>        M = num <span class="hljs-keyword">if</span> index &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-variable language_">self</span>.change(s, s[index], <span class="hljs-string">&#x27;9&#x27;</span>)<br>        <span class="hljs-keyword">if</span> s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;1&#x27;</span>:<br>            index = <span class="hljs-variable language_">self</span>.firstN01(s)<br>            m = num <span class="hljs-keyword">if</span> index &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-variable language_">self</span>.change(s, s[index], <span class="hljs-string">&#x27;0&#x27;</span>)<br>        <span class="hljs-keyword">else</span>:<br>            m = <span class="hljs-variable language_">self</span>.change(s, s[<span class="hljs-number">0</span>], <span class="hljs-string">&#x27;1&#x27;</span>)<br>        <span class="hljs-keyword">return</span> M - m<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-06-19 10:16:46</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-06-21 14:38:38</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// M: !9-&gt;9</span><br><span class="hljs-comment">// m: first==1 ? !01-&gt;0 : first-&gt;1</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">not9</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s.charAt(i) != <span class="hljs-string">&#x27;9&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">not01</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; s.length(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (s.charAt(i) &gt; <span class="hljs-string">&#x27;1&#x27;</span>) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">replace</span><span class="hljs-params">(String s, <span class="hljs-type">char</span> a, <span class="hljs-type">char</span> b)</span> &#123;<br>        <span class="hljs-keyword">return</span> Integer.parseInt(s.replace(a, b));<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxDiff</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> &#123;<br>        <span class="hljs-type">int</span> M, m;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> String.valueOf(num);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> not9(s);<br>        M = index == -<span class="hljs-number">1</span> ? num : replace(s, s.charAt(index), <span class="hljs-string">&#x27;9&#x27;</span>);<br>        <span class="hljs-keyword">if</span> (s.charAt(<span class="hljs-number">0</span>) == <span class="hljs-string">&#x27;1&#x27;</span>) &#123;<br>            index = not01(s);<br>            m = index == -<span class="hljs-number">1</span> ? num : replace(s, s.charAt(index), <span class="hljs-string">&#x27;0&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            m = replace(s, s.charAt(<span class="hljs-number">0</span>), <span class="hljs-string">&#x27;1&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> M - m;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-06-19 10:16:46</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-06-21 11:33:06</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>	<span class="hljs-string">&quot;strconv&quot;</span><br>	<span class="hljs-string">&quot;strings&quot;</span><br>)<br><br><span class="hljs-comment">// M: !9-&gt;9</span><br><span class="hljs-comment">// m: first==1 ? !01-&gt;0 : first-&gt;1</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">maxDiff</span><span class="hljs-params">(num <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    s := strconv.Itoa(num)  <span class="hljs-comment">// 不可！： s := string(num)</span><br>    M, m := num, num<br>    change := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(s <span class="hljs-type">string</span>, a, b <span class="hljs-type">byte</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>        ans, _ := strconv.Atoi(strings.ReplaceAll(s, <span class="hljs-type">string</span>(a), <span class="hljs-type">string</span>(b)))<br>        <span class="hljs-keyword">return</span> ans<br>    &#125;<br>    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> s &#123;<br>        <span class="hljs-keyword">if</span> s[i] != <span class="hljs-string">&#x27;9&#x27;</span> &#123;<br>            M = change(s, s[i], <span class="hljs-string">&#x27;9&#x27;</span>)<br>            <span class="hljs-keyword">break</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;1&#x27;</span> &#123;<br>        <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> s &#123;<br>            <span class="hljs-keyword">if</span> s[i] &gt; <span class="hljs-string">&#x27;1&#x27;</span> &#123;<br>                m = change(s, s[i], <span class="hljs-string">&#x27;0&#x27;</span>)<br>                <span class="hljs-keyword">break</span><br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        m = change(s, s[<span class="hljs-number">0</span>], <span class="hljs-string">&#x27;1&#x27;</span>)<br>    &#125;<br>    <span class="hljs-keyword">return</span> M - m<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/148811010">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/06/19/LeetCode%201432.%E6%94%B9%E5%8F%98%E4%B8%80%E4%B8%AA%E6%95%B4%E6%95%B0%E8%83%BD%E5%BE%97%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%B7%AE%E5%80%BC/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
