@@ -1234,6 +1234,9 @@ categories: [自用]
 |||
 |terrific|adj. 极好的，绝妙的；可怕的，吓人的；[尺寸/程度]及其巨大的|
 |ore|n. 矿，矿石，矿砂|
+|||
+|monopoly|n. 垄断，专营服务，独占<br/>phrase. 垄断，专利，独占，控制|
+|sultry|adj. 闷热的，姿色迷人的，风情万种的，性感的|
 
 <p class="wordCounts">单词收录总数</p>
 
