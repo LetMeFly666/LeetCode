@@ -6,11 +6,8 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def redirect_all(path):
-    # 获取完整的请求URL（不包括协议和域名部分）
     full_path = request.full_path.strip('?')
-    # 构建目标URL（去掉开头的斜杠）
     target_url = full_path.lstrip('/')
-    # 执行重定向
     return redirect(target_url, code=302)
 
 if __name__ == '__main__':
