@@ -1,9 +1,3 @@
-'''
-Author: LetMeFly
-Date: 2025-06-22 14:51:38
-LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-22 14:51:42
-'''
 from flask import Flask, render_template, request, redirect, url_for
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
