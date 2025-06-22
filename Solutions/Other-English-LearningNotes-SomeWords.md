@@ -1231,6 +1231,9 @@ categories: [自用]
 |encyclopaedia|n. 百科全书|
 |||
 |solvency|n. 偿债能力|
+|||
+|terrific|adj. 极好的，绝妙的；可怕的，吓人的；[尺寸/程度]及其巨大的|
+|ore|n. 矿，矿石，矿砂|
 
 <p class="wordCounts">单词收录总数</p>
 
