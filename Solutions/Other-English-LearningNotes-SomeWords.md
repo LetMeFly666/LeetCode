@@ -1229,6 +1229,8 @@ categories: [自用]
 |||
 |perpetual|adj. 永恒的，永久的，终身的，持续的，不间断的|
 |encyclopaedia|n. 百科全书|
+|||
+|solvency|n. 偿债能力|
 
 <p class="wordCounts">单词收录总数</p>
 
