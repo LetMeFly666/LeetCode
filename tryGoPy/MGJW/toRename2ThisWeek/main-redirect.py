@@ -1,9 +1,4 @@
-'''
-Author: LetMeFly
-Date: 2025-06-22 13:15:08
-LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-22 13:15:11
-'''
+# http://127.0.0.1:6000/webexteams://im?space=388bc8a0-4f23-11f0-9978-197e3894c22a&s=ljsjfl&message=5ce38670-4f23-11f0-8dc1-cf25d4d2274c
 from flask import Flask, redirect, request
 
 app = Flask(__name__)
