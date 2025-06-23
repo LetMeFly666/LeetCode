@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-05-09 12:54:11
+ * @LastEditTime: 2025-06-23 13:02:52
 -->
 # LetLeet Blog
 
@@ -121,6 +121,7 @@
 |Python - with语句 - 写一个支持with方法调用的类|<a href="https://blog.letmefly.xyz/2024/05/08/Other-Python-WithStatement-write1classSupportingWith/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138576722">CSDN博客</a>|
 |QT - 实例 - 可点击的进度条、无窗口应用|<a href="https://blog.letmefly.xyz/2023/08/02/Other-QT-Example-ClickableProgressBar-noWindow/">本平台博客</a>|无|
 |北邮暑期课 - R语言数据分析|<a href="https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
+|域名转到国外注册商-备案实效风险折腾日记|<a href="https://blog.letmefly.xyz/2025/06/23/Other-Server-BeiAnXiaoTuCao/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/148844350">CSDN博客</a>|
 |SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
 |Verilog学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
 |Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP|<a href="https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1">本平台博客</a>|无|
