@@ -738,7 +738,7 @@ categories: [自用]
 |||
 |stationery|n. 文具，信笺/信封|
 |banquet|n. 宴会，盛宴|
-|fleet|adj. 快速的<br/>n. 舰队<details><summary>例句</summary>A fleet of ambulances took the injured to the hospital.<br/>救护车队把伤者送往医院。</details>|
+|<font color="#28bea0" title="二次复习">fleet</font>|adj. 快速的<br/>n. 舰队<details><summary>例句</summary>A fleet of ambulances took the injured to the hospital.<br/>救护车队把伤者送往医院。</details>|
 |fleshy|adj. 多肉的，肥胖的，肉质的|
 |remedy|n. 解决方法，药品，治疗方法<br/>v. 补救，矫正|
 |||
@@ -1237,6 +1237,12 @@ categories: [自用]
 |||
 |monopoly|n. 垄断，专营服务，独占<br/>phrase. 垄断，专利，独占，控制|
 |sultry|adj. 闷热的，姿色迷人的，风情万种的，性感的|
+|||
+|coil|v. 卷，卷曲，蜿蜒流进<br/>n. 盘管，螺旋管，感应圈，(一)圈|
+|||
+|stroller|n. 婴儿车，散步的人|
+|patronage|n. 赞助，惠顾，光顾，资助|
+|antecedent|n. 先行词，事前，前情，祖先<br/>adj. 先前的|
 
 <p class="wordCounts">单词收录总数</p>
 
