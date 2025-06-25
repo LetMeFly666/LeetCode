@@ -1237,6 +1237,10 @@ categories: [自用]
 |||
 |monopoly|n. 垄断，专营服务，独占<br/>phrase. 垄断，专利，独占，控制|
 |sultry|adj. 闷热的，姿色迷人的，风情万种的，性感的|
+|||
+|coil|v. 卷，卷曲，蜿蜒流进<br/>n. 盘管，螺旋管，感应圈，(一)圈|
+|stroller|n. 婴儿车，散步的人|
+|||
 
 <p class="wordCounts">单词收录总数</p>
 
