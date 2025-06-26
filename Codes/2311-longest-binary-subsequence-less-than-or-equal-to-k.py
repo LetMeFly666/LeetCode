@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-06-26 22:16:30
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-26 22:30:11
+LastEditTime: 2025-06-26 22:38:54
 '''
 class Solution:
     def longestSubsequence(self, s: str, k: int) -> int:
@@ -11,7 +11,7 @@ class Solution:
             if c == '0':
                 ans += 1
                 continue
-            if i <= k_length and val + (1 << i) <= k:
+            if i < k_length and val + (1 << i) <= k:
                 ans += 1
                 val += 1 << i
         return ans
