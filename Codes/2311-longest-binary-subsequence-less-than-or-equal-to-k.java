@@ -2,11 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2025-06-26 22:16:30
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-26 22:44:32
+ * @LastEditTime: 2025-06-26 22:45:37
  */
 class Solution {
     public int longestSubsequence(String s, int k) {
-        int ans = 0, n = s.length(), lenK = Integer.numberOfLeadingZeros(k), val = 0;
+        int ans = 0, n = s.length(), lenK = 32 - Integer.numberOfLeadingZeros(k), val = 0;
         for (int i = 0; i < n; i++) {
             if (s.charAt(n - i - 1) == '0') {
                 ans++;
