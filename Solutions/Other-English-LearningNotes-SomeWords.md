@@ -1024,7 +1024,7 @@ categories: [自用]
 |fission|n. (核)裂变，分裂，细胞分裂，(化学键)断裂，裂变|
 |introductory|adj. 序言的，引导的，介绍的，入门的|
 |||
-|duly|adv. 适时地，适当地，恰当地，按时地|
+|<font color="#28bea0" title="二次复习">duly</font>|adv. 适时地，适当地，恰当地，按时地|
 |||
 |ironical|adj. 反语的，讽刺的，令人啼笑皆非的|
 |peruse|v. 细读，研读|
@@ -1243,6 +1243,11 @@ categories: [自用]
 |stroller|n. 婴儿车，散步的人|
 |patronage|n. 赞助，惠顾，光顾，资助|
 |antecedent|n. 先行词，事前，前情，祖先<br/>adj. 先前的|
+|||
+|cathedral|n. 主教座堂，教区总教堂<br/>adj. (像)大教堂的，庄严的|
+|disbursement|n. 支付，支出款项<details><summary>例句</summary>The financial officer prepared a <font color="#28bea0">disbursement</font> report to track all the funds allocated for the project over the past quarter.<br/>财务官员准备了一份支出报告，以跟踪过去一个季度分配给该项目的所有资金。</details>|
+|explanatory|adj. 解释的，说明的，阐述的|
+|Arab|n. 阿拉伯人，阿拉伯马<br/>adj. 阿拉伯的，阿拉伯人的，阿拉伯语的|
 
 <p class="wordCounts">单词收录总数</p>
 
