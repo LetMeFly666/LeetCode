@@ -2,12 +2,12 @@
 Author: LetMeFly
 Date: 2025-06-26 22:16:30
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-26 22:28:52
+LastEditTime: 2025-06-26 22:30:11
 '''
 class Solution:
     def longestSubsequence(self, s: str, k: int) -> int:
         ans, val, k_length = 0, 0, k.bit_length()
-        for i, c in range(s[::-1]):
+        for i, c in enumerate(s[::-1]):
             if c == '0':
                 ans += 1
                 continue
