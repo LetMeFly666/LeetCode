@@ -1252,6 +1252,9 @@ categories: [自用]
 |hitherto|adv. 迄今，直到某时|
 |dizzy|adj. 头晕目眩的，眩晕的，使人眩晕的|
 |coarse|adj. 粗的，粗糙的，粗劣的|
+|||
+|ulcer|n. 溃疡|
+|airway|n. 气道，呼吸道，(飞机的)固定航线|
 
 <p class="wordCounts">单词收录总数</p>
 
