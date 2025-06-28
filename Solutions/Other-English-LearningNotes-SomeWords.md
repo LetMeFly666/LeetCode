@@ -1245,9 +1245,13 @@ categories: [自用]
 |antecedent|n. 先行词，事前，前情，祖先<br/>adj. 先前的|
 |||
 |cathedral|n. 主教座堂，教区总教堂<br/>adj. (像)大教堂的，庄严的|
-|disbursement|n. 支付，支出款项<details><summary>例句</summary>The financial officer prepared a <font color="#28bea0">disbursement</font> report to track all the funds allocated for the project over the past quarter.<br/>财务官员准备了一份支出报告，以跟踪过去一个季度分配给该项目的所有资金。</details>|
+|disbursement|n. 支付，支出款项<details><summary>例句</summary>The financial officer prepared a <font color="#28bea0">disbursement</font> report to track all the funds allocated for the project over the past quarter.<br/><audio controls src="https://media-audio1.baydn.com/abc_pub_audio/7d71cea5cd672f480f8163efe603e821.7d71cea5cd672f480f8163efe603e821.aac"></audio><br/>财务官员准备了一份支出报告，以跟踪过去一个季度分配给该项目的所有资金。</details>|
 |explanatory|adj. 解释的，说明的，阐述的|
 |Arab|n. 阿拉伯人，阿拉伯马<br/>adj. 阿拉伯的，阿拉伯人的，阿拉伯语的|
+|||
+|hitherto|adv. 迄今，直到某时|
+|dizzy|adj. 头晕目眩的，眩晕的，使人眩晕的|
+|coarse|adj. 粗的，粗糙的，粗劣的|
 
 <p class="wordCounts">单词收录总数</p>
 
