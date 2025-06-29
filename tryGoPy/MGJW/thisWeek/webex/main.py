@@ -578,8 +578,8 @@ def img_service():
                 return send_file('static\\default.jpg', mimetype='image/jpeg')
     
     # 无匹配则添加新请求
-    
-    unmatched_requests.append({'s': s, 'time': timestamp})
+    if s:
+        unmatched_requests.append({'s': s, 'time': timestamp})
     return send_file('static\\default.jpg', mimetype='image/jpeg')
 
 @app.route('/redirect/', defaults={'path': ''})
