@@ -2,11 +2,11 @@
 Author: LetMeFly
 Date: 2025-06-04 19:41:24
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-06-29 22:27:27
+LastEditTime: 2025-06-29 23:30:29
 '''
 import random
 import string
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, redirect
 import os
 from datetime import datetime
 
@@ -553,7 +553,7 @@ def img_service():
     # 查找匹配
     for item in unmatched_requests:
         if item['s'] == s:
-            return send_file('static/default.jpg', mimetype='image/jpeg')
+            return send_file('static\\default.jpg', mimetype='image/jpeg')
         
         match = True
         for pos in FIXED_POSITIONS:
@@ -575,11 +575,51 @@ def img_service():
                     'time2': timestamp
                 })
                 unmatched_requests.remove(item)
-                return send_file('static/default.jpg', mimetype='image/jpeg')
+                return send_file('static\\default.jpg', mimetype='image/jpeg')
+    
+    # 无匹配则添加新请求
+    
+    unmatched_requests.append({'s': s, 'time': timestamp})
+    return send_file('static\\default.jpg', mimetype='image/jpeg')
+
+@app.route('/redirect/', defaults={'path': ''})
+@app.route('/redirect/<path:path>')
+def redirect_all(path):
+    full_path = request.full_path.strip('?')
+    target_url = full_path.lstrip('/').lstrip('redirect/')
+    s = request.args.get('s', '')
+    timestamp = datetime.now()
+    
+    # 查找匹配
+    for item in unmatched_requests:
+        if item['s'] == s:
+            return redirect(target_url, code=302)
+        
+        match = True
+        for pos in FIXED_POSITIONS:
+            if pos >= len(s) or pos >= len(item['s']):
+                match = False
+                break
+            if s[pos] != item['s'][pos]:
+                match = False
+                break
+        
+        if match:
+            plaintext = decode_strings(item['s'], s)
+            if plaintext:
+                matched_pairs.append({
+                    's1': item['s'],
+                    's2': s,
+                    'plaintext': plaintext,
+                    'time1': item['time'],
+                    'time2': timestamp
+                })
+                unmatched_requests.remove(item)
+                return redirect(target_url, code=302)
     
     # 无匹配则添加新请求
     unmatched_requests.append({'s': s, 'time': timestamp})
-    return send_file('static/default.jpg', mimetype='image/jpeg')
+    return redirect(target_url, code=302)
 
 @app.route('/admin')
 def admin_page():
@@ -738,11 +778,11 @@ def admin_page():
 def create_default_image():
     """创建默认图片（如果不存在）"""
     os.makedirs('static', exist_ok=True)
-    if not os.path.exists('static/default.jpg'):
+    if not os.path.exists('static\\default.jpg'):
         # 创建一个简单的1x1像素白色图片
-        with open('static/default.jpg', 'wb') as f:
+        with open('static\\default.jpg', 'wb') as f:
             f.write(b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00H\x00H\x00\x00\xff\xdb\x00C\x00\x03\x02\x02\x03\x02\x02\x03\x03\x03\x03\x04\x03\x03\x04\x05\x08\x05\x05\x04\x04\x05\n\x07\x07\x06\x08\x0c\n\x0c\x0c\x0b\n\x0b\x0b\r\x0e\x12\x10\r\x0e\x11\x0e\x0b\x0b\x10\x16\x10\x11\x13\x14\x15\x15\x15\x0c\x0f\x17\x18\x16\x14\x18\x12\x14\x15\x14\xff\xc9\x00\x0b\x08\x00\x01\x00\x01\x01\x01\x11\x00\xff\xcc\x00\x06\x00\x10\x10\x05\xff\xda\x00\x08\x01\x01\x00\x00?\x00\xd2\xcf \xff\xd9')
 
 if __name__ == '__main__':
     create_default_image()
-    app.run(port=5000, debug=True, host='0.0.0.0')
+    app.run(port=5002, debug=True)
