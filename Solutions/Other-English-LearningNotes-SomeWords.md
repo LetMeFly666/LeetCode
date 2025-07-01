@@ -1255,6 +1255,12 @@ categories: [自用]
 |||
 |ulcer|n. 溃疡|
 |airway|n. 气道，呼吸道，(飞机的)固定航线|
+|||
+|proceeds|n. 收益|
+|||
+|astray|adv. 迷路地，误入歧途地|
+|boyish|adj. (长相/举止)像男孩的|
+|glisten|v. 闪耀|
 
 <p class="wordCounts">单词收录总数</p>
 
