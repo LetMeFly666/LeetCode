@@ -1261,6 +1261,16 @@ categories: [自用]
 |astray|adv. 迷路地，误入歧途地|
 |boyish|adj. (长相/举止)像男孩的|
 |glisten|v. 闪耀|
+|||
+|hereinafter|adv. (文件中)在下文中<details><summary>例句</summary>The defendant, <font color="#28bea0">hereinafter</font> referred to as "Mr. Smith", is accused of fraud.<br/>被告，以下称为 “史密斯先生”，被指控犯有欺诈罪。</details>|
+|dime|n. 十分钱|
+|queer|adj. 奇怪的，不舒服的，可疑的<br/>n. 同性恋者<br/>v. 破坏，使觉得不舒服，使陷入困境，使处于危险地位|
+|||
+|wring|v. 拧(水)<details><summary>过去分词</summary>wrung</details>|
+|typist|n. 打字员，打字者|
+|creek|n. 小溪|
+｜stillness｜n. 静止，沉静｜
+|utterance|n. 话语，说话，用语言的表达，言论|
 
 <p class="wordCounts">单词收录总数</p>
 
