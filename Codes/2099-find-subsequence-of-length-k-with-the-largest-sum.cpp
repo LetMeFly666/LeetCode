@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-03 21:31:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-03 21:34:56
+ * @LastEditTime: 2025-07-03 21:36:06
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,7 +11,7 @@
 class Solution {
 public:
     vector<int> maxSubsequence(vector<int>& nums, int k) {
-        int M = 0, l = 0, r = k - 1;
+        int M = 0, l = 0;
         for (int i = 0; i < k; i++) {
             M += nums[i];
         }
@@ -20,9 +20,8 @@ public:
             if (now > M) {
                 M = now;
                 l = i;
-                r = i + k - 1;
             }
         }
-        return vector<int>(nums.begin() + i, nums.begin() + i + k - 1);
+        return vector<int>(nums.begin() + l, nums.begin() + l + k - 1);
     }
 };
