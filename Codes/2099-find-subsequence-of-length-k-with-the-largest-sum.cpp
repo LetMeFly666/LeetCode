@@ -18,6 +18,10 @@ public:
         sort(idx.begin(), idx.end(), [&nums](int i, int j) {
             return nums[i] > nums[j];
         });
-        return vector<int>(idx.begin(), idx.begin() + k);
+        idx.resize(k);
+        for (int i = 0; i < k; i++) {
+            idx[i] = nums[idx[i]];
+        }
+        return idx;
     }
 };
