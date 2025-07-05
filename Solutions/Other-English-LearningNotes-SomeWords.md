@@ -1268,9 +1268,11 @@ categories: [自用]
 |||
 |wring|v. 拧(水)<details><summary>过去分词</summary>wrung</details>|
 |typist|n. 打字员，打字者|
-|creek|n. 小溪|
+|creek|n. 小溪| x   x 
 ｜stillness｜n. 静止，沉静｜
 |utterance|n. 话语，说话，用语言的表达，言论|
+|||
+|fortress|n. 堡垒，要塞，防御工作|
 
 <p class="wordCounts">单词收录总数</p>
 
