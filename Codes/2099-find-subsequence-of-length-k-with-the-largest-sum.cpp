@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-03 21:31:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-06 00:01:28
+ * @LastEditTime: 2025-07-06 00:06:51
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,8 +20,8 @@ public:
         });
         idx.resize(k);
         sort(idx.begin(), idx.end());
-        for (int i = 0; i < k; i++) {
-            idx[i] = nums[idx[i]];
+        for (int &t : idx) {
+            t = nums[t];
         }
         return idx;
     }
