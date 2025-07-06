@@ -1273,6 +1273,8 @@ categories: [自用]
 |utterance|n. 话语，说话，用语言的表达，言论|
 |||
 |fortress|n. 堡垒，要塞，防御工作|
+|||
+|fret|v. 苦恼，烦躁，焦躁不安|
 
 <p class="wordCounts">单词收录总数</p>
 
