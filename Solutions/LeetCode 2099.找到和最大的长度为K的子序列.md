@@ -1,11 +1,11 @@
 ---
-title: 2099.找到和最大的长度为 K 的子序列
+title: 2099.找到和最大的长度为 K 的子序列：自定义排序
 date: 2025-07-07 23:40:45
-tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序, 堆（优先队列）]
+tags: [题解, LeetCode, 简单, 数组, 排序]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2099.找到和最大的长度为 K 的子序列
+# 【LetMeFly】2099.找到和最大的长度为 K 的子序列：自定义排序
 
 力扣题目链接：[https://leetcode.cn/problems/find-subsequence-of-length-k-with-the-largest-sum/](https://leetcode.cn/problems/find-subsequence-of-length-k-with-the-largest-sum/)
 
@@ -51,14 +51,16 @@ categories: [题解, LeetCode]
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
 </ul>
 
+Long Time No See.
 
-    
-## 解题方法：xx
+## 解题方法：排序
 
-11111
+使用一个“下标数组”idx，初始值$idx[i] = i$，然后对这个idx数组排序，排序依据是$nums[idx[i]]$大的优先。这样，$idx$的前$k$个元素就是$nums$最大的$k$个数的下标了。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+返回这$k$个下标对应的$nums$中的元素之前，不要忘了对$idx$再按从小到大的顺序排个序，因为返回的“$nums$子序列”是要保持原有顺序的。
+
++ 时间复杂度$O(n\log n)$，其中$n=len(nums)$
++ 空间复杂度$O(\log n)$
 
 ### AC代码
 
@@ -71,10 +73,6 @@ categories: [题解, LeetCode]
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-07-06 00:06:51
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     vector<int> maxSubsequence(vector<int>& nums, int k) {
@@ -176,6 +174,6 @@ func maxSubsequence(nums []int, k int) []int {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/07/07/LeetCode%202099.%E6%89%BE%E5%88%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BAK%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/149184546)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/07/07/LeetCode%202099.%E6%89%BE%E5%88%B0%E5%92%8C%E6%9C%80%E5%A4%A7%E7%9A%84%E9%95%BF%E5%BA%A6%E4%B8%BAK%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
