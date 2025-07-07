@@ -896,7 +896,7 @@ categories: [自用]
 |||
 |grim|adj. 忧愁的，令人沮丧的，严肃的，令人不快的，冷酷的，糟糕的，残忍的|
 |||
-|carol|n. 颂歌，尤指圣诞颂歌<br/>v. 欢唱，挨家挨户地唱圣诞歌|
+|<font color="#28bea0" title="二次复习">carol</font>|n. 颂歌，尤指圣诞颂歌<br/>v. 欢唱，挨家挨户地唱圣诞歌|
 |||
 |condemn|v. 谴责，指责，宣判，判处(某人刑罚)|
 |storey|n. 楼层|
@@ -1275,6 +1275,10 @@ categories: [自用]
 |fortress|n. 堡垒，要塞，防御工作|
 |||
 |fret|v. 苦恼，烦躁，焦躁不安|
+|||
+|petty|adj. 琐碎的，微不足道的，小气的|
+|agony|n. 极度痛苦|
+|detour|n. 绕道，绕行路<br/>v. 迂回，绕道|
 
 <p class="wordCounts">单词收录总数</p>
 
