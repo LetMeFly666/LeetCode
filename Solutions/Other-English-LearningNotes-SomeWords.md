@@ -896,7 +896,7 @@ categories: [自用]
 |||
 |grim|adj. 忧愁的，令人沮丧的，严肃的，令人不快的，冷酷的，糟糕的，残忍的|
 |||
-|carol|n. 颂歌，尤指圣诞颂歌<br/>v. 欢唱，挨家挨户地唱圣诞歌|
+|<font color="#28bea0" title="二次复习">carol</font>|n. 颂歌，尤指圣诞颂歌<br/>v. 欢唱，挨家挨户地唱圣诞歌|
 |||
 |condemn|v. 谴责，指责，宣判，判处(某人刑罚)|
 |storey|n. 楼层|
@@ -1245,9 +1245,40 @@ categories: [自用]
 |antecedent|n. 先行词，事前，前情，祖先<br/>adj. 先前的|
 |||
 |cathedral|n. 主教座堂，教区总教堂<br/>adj. (像)大教堂的，庄严的|
-|disbursement|n. 支付，支出款项<details><summary>例句</summary>The financial officer prepared a <font color="#28bea0">disbursement</font> report to track all the funds allocated for the project over the past quarter.<br/>财务官员准备了一份支出报告，以跟踪过去一个季度分配给该项目的所有资金。</details>|
+|disbursement|n. 支付，支出款项<details><summary>例句</summary>The financial officer prepared a <font color="#28bea0">disbursement</font> report to track all the funds allocated for the project over the past quarter.<br/><audio controls src="https://media-audio1.baydn.com/abc_pub_audio/7d71cea5cd672f480f8163efe603e821.7d71cea5cd672f480f8163efe603e821.aac"></audio><br/>财务官员准备了一份支出报告，以跟踪过去一个季度分配给该项目的所有资金。</details>|
 |explanatory|adj. 解释的，说明的，阐述的|
 |Arab|n. 阿拉伯人，阿拉伯马<br/>adj. 阿拉伯的，阿拉伯人的，阿拉伯语的|
+|||
+|hitherto|adv. 迄今，直到某时|
+|dizzy|adj. 头晕目眩的，眩晕的，使人眩晕的|
+|coarse|adj. 粗的，粗糙的，粗劣的|
+|||
+|ulcer|n. 溃疡|
+|airway|n. 气道，呼吸道，(飞机的)固定航线|
+|||
+|proceeds|n. 收益|
+|||
+|astray|adv. 迷路地，误入歧途地|
+|boyish|adj. (长相/举止)像男孩的|
+|glisten|v. 闪耀|
+|||
+|hereinafter|adv. (文件中)在下文中<details><summary>例句</summary>The defendant, <font color="#28bea0">hereinafter</font> referred to as "Mr. Smith", is accused of fraud.<br/>被告，以下称为 “史密斯先生”，被指控犯有欺诈罪。</details>|
+|dime|n. 十分钱|
+|queer|adj. 奇怪的，不舒服的，可疑的<br/>n. 同性恋者<br/>v. 破坏，使觉得不舒服，使陷入困境，使处于危险地位|
+|||
+|wring|v. 拧(水)<details><summary>过去分词</summary>wrung</details>|
+|typist|n. 打字员，打字者|
+|creek|n. 小溪| x   x 
+｜stillness｜n. 静止，沉静｜
+|utterance|n. 话语，说话，用语言的表达，言论|
+|||
+|fortress|n. 堡垒，要塞，防御工作|
+|||
+|fret|v. 苦恼，烦躁，焦躁不安|
+|||
+|petty|adj. 琐碎的，微不足道的，小气的|
+|agony|n. 极度痛苦|
+|detour|n. 绕道，绕行路<br/>v. 迂回，绕道|
 
 <p class="wordCounts">单词收录总数</p>
 
