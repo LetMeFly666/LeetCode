@@ -1279,6 +1279,8 @@ categories: [自用]
 |petty|adj. 琐碎的，微不足道的，小气的|
 |agony|n. 极度痛苦|
 |detour|n. 绕道，绕行路<br/>v. 迂回，绕道|
+|||
+|dent|n. 凹痕<br/>v. 使...凹陷，挫伤，损害（信心等）|
 
 <p class="wordCounts">单词收录总数</p>
 
