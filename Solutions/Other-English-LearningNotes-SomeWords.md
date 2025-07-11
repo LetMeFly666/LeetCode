@@ -1268,8 +1268,8 @@ categories: [自用]
 |||
 |wring|v. 拧(水)<details><summary>过去分词</summary>wrung</details>|
 |typist|n. 打字员，打字者|
-|creek|n. 小溪| x   x 
-｜stillness｜n. 静止，沉静｜
+|creek|n. 小溪|
+|stillness|n. 静止，沉静|
 |utterance|n. 话语，说话，用语言的表达，言论|
 |||
 |fortress|n. 堡垒，要塞，防御工作|
@@ -1279,6 +1279,12 @@ categories: [自用]
 |petty|adj. 琐碎的，微不足道的，小气的|
 |agony|n. 极度痛苦|
 |detour|n. 绕道，绕行路<br/>v. 迂回，绕道|
+|||
+|dent|n. 凹痕<br/>v. 使...凹陷，挫伤，损害（信心等）|
+|||
+|cutlery|n. 刀叉勺|
+|indicative|adj. 表示的，显示的，暗示的，象征的，陈述的，指示的<br/>n. 陈述语句<details><summary>例句</summary>Their failure to act is <font color="#28bea0">indicative</font> of their lack of interest.<br/>他们未采取行动，这表示他们没有兴趣。</details>|
+|creditworthiness(credit·worthy·ness)|n. 信贷价值，信誉|
 
 <p class="wordCounts">单词收录总数</p>
 
