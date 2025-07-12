@@ -1285,6 +1285,9 @@ categories: [自用]
 |cutlery|n. 刀叉勺|
 |indicative|adj. 表示的，显示的，暗示的，象征的，陈述的，指示的<br/>n. 陈述语句<details><summary>例句</summary>Their failure to act is <font color="#28bea0">indicative</font> of their lack of interest.<br/>他们未采取行动，这表示他们没有兴趣。</details>|
 |creditworthiness(credit·worthy·ness)|n. 信贷价值，信誉|
+|||
+|dodge|v. 闪避，躲开<br/>n. 推脱的计策，逃避的诡计，骗人的伎俩|
+|suburban|adj. 郊区的，城外的，平淡乏味的，呆板的<br/>n. 〈美〉郊区居民|
 
 <p class="wordCounts">单词收录总数</p>
 
