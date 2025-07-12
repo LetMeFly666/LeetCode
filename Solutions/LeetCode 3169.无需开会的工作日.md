@@ -64,14 +64,18 @@ categories: [题解, LeetCode]
 	<li><code>1 &lt;= meetings[i][0] &lt;= meetings[i][1] &lt;= days</code></li>
 </ul>
 
-
+好奇，怎么都在说正难则反。
     
-## 解题方法：xx
+## 解题方法：排序
 
-11111
+只需要按照meetings开始的顺序从小到大排序，使用一个变量(last)记录上次会议的结束日期（初始值为0），接着开始遍历meetings数组。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+如果开始时间比last晚不只一天，就说明从last到这个开始时间都有空，累加到答案中。每遍历完一个meeting，就将last更新为last和meeting结束时间的最大值。
+
+最终，days-last也是空闲时间，累加到答案中。
+
++ 时间复杂度$O(n\log n)$，其中$n=len(meetings)$。
++ 空间复杂度$O(\log n)$
 
 ### AC代码
 
@@ -84,10 +88,6 @@ categories: [题解, LeetCode]
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-07-11 23:33:35
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int countDays(int days, vector<vector<int>>& meetings) {
@@ -186,6 +186,6 @@ func countDays(days int, meetings [][]int) (ans int) {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/07/11/LeetCode%203169.%E6%97%A0%E9%9C%80%E5%BC%80%E4%BC%9A%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%97%A5/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/149301503)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/07/11/LeetCode%203169.%E6%97%A0%E9%9C%80%E5%BC%80%E4%BC%9A%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%97%A5/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
