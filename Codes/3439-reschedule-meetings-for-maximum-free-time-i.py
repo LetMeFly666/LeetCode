@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-07-13 21:44:10
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-13 22:10:26
+LastEditTime: 2025-07-13 22:11:54
 '''
 from typing import List
 
@@ -13,9 +13,9 @@ class Solution:
         ans = 0
         for i in range(k, n + 1):
             l = (endTime[i - k - 1] if i > k else 0) + cnt
-            r = eventTime if i == n + 1 else startTime[i]
+            r = eventTime if i == n else startTime[i]
             ans = max(ans, r - l)
-            if i == n + 1:
+            if i == n:
                 break
             cnt += endTime[i] - startTime[i]
             cnt -= endTime[i - k] - startTime[i - k]
