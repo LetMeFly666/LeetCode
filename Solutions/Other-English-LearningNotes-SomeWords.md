@@ -1288,6 +1288,9 @@ categories: [自用]
 |||
 |dodge|v. 闪避，躲开<br/>n. 推脱的计策，逃避的诡计，骗人的伎俩|
 |suburban|adj. 郊区的，城外的，平淡乏味的，呆板的<br/>n. 〈美〉郊区居民|
+|||
+|doggedly|adv. 顽强的，坚持不懈的|
+|backlog|n. 滞后，后备，存货<br/>v. 积压|
 
 <p class="wordCounts">单词收录总数</p>
 
