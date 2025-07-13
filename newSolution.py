@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-13 16:44:10
+LastEditTime: 2025-07-13 17:23:58
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -34,19 +34,19 @@ print(nameProblem)
 # 生成代码模板
 alreadyExists = False
 with open(f'AllProblems/{num}.{title}/titleSlug.txt', 'r', encoding='utf-8') as f:
-    titleSulg = f.read()
+    titleSlug = f.read()
 with open(f'AllProblems/_mappingData.json', 'r', encoding='utf-8') as f:
     mappingData = json.loads(f.read())
 mappingSuffix: dict = mappingData["templateSlug2sourceCodeFilePrefix"]["data"]
 alreadyCodes = os.listdir('Codes')
 for code2gen in CODES_TO_GEN:
-    toName = f'{num:04}-{titleSulg}.{mappingSuffix[code2gen]}'
+    toName = f'{num:04}-{titleSlug}.{mappingSuffix[code2gen]}'
     if toName in alreadyCodes:
         alreadyExists = True
         break
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
 for code2gen in CODES_TO_GEN:
-    toName = f'Codes/{num:04}-{titleSulg}{dateSuffix}.{mappingSuffix[code2gen]}'
+    toName = f'Codes/{num:04}-{titleSlug}{dateSuffix}.{mappingSuffix[code2gen]}'
     fromName = f'AllProblems/{num}.{title}/code.{mappingSuffix[code2gen]}'
     print(toName)
     if not os.path.exists(toName):
@@ -94,11 +94,11 @@ for line in alreadyRelatedIssueListsSplited:
         issueNum = int(line.split()[0])
 print(issueNum)
 if not issueNum:
-    issueCreateResult = os.popen(f'gh issue create -t "{issueTitle}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | [{num}.{title}](https://leetcode.cn/problems/{titleSulg}) " -l "题解" -l "solving" -a "@me"').read()
+    issueCreateResult = os.popen(f'gh issue create -t "{issueTitle}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | [{num}.{title}](https://leetcode.cn/problems/{titleSlug}) " -l "题解" -l "solving" -a "@me"').read()
     print(issueCreateResult)
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 else:
-    os.popen(f'gh issue edit {issueNum} --add-label "solving"')
+    os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
 
 input('代码写完后按回车生成题解模板：')
 
