@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-13 21:44:10
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-13 22:15:49
+ * @LastEditTime: 2025-07-13 22:17:13
  */
 class Solution {
     public int maxFreeTime(int eventTime, int k, int[] startTime, int[] endTime) {
@@ -20,7 +20,7 @@ class Solution {
                 break;
             }
             cnt += endTime[i] - startTime[i];
-            cnt -= endTime[i] - startTime[i];
+            cnt -= endTime[i - k] - startTime[i - k];
         }
         return ans;
     }
