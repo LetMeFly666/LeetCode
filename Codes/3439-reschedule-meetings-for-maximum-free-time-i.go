@@ -2,13 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-07-13 21:44:10
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-13 22:19:42
+ * @LastEditTime: 2025-07-13 22:23:03
  */
 package main
 
 func maxFreeTime(eventTime int, k int, startTime []int, endTime []int) (ans int) {
     cnt := 0
-    for i := 0; i <= k; i++ {
+    for i := 0; i < k; i++ {
         cnt += endTime[i] - startTime[i]
     }
     n := len(startTime)
