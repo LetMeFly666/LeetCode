@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-13 17:26:32
+LastEditTime: 2025-07-14 23:37:23
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -78,7 +78,7 @@ os.system(f'git push --set-upstream origin {num}')  # (#832)
 def getPlatform():
     platform = sys.platform
     if platform == 'win32':
-        return 'Windows'
+        return 'Windows(+MacOS)'
     elif platform == 'darwin':
         return 'MacOS'
     else:
