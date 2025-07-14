@@ -464,7 +464,7 @@ categories: [自用]
 |amiable|adj. 和蔼可亲的，亲切友好的|
 |plump|adj. 丰满的，丰腴的，胖乎乎的，饱满的<br/>v. (拍打坐垫等)使蓬松，猛地摔下，重重的坐下<br/>n. 突然前冲，种种坠落|
 |miscarriage|n. 流产|
-|<font color="#28bea0" title="二次复习">sullen</font>|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
+|<font color="#28bea0" title="三次复习">sullen</font>|adj. 闷闷不乐的，郁郁寡欢的，(天空/天气)阴沉的|
 |||
 |carpenter|n. 木匠，木工<br/>v. 以木工手艺造/修(家具/器物)|
 |||
