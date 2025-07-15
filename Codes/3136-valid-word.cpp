@@ -11,7 +11,7 @@
 class Solution {
 private:
     bool isYuan(char c) {
-        return c == 'a' || c == 'e' || c == 'o' || c == 'u';
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 public:
     bool isValid(string word) {
@@ -24,7 +24,6 @@ public:
                 // python -c "print(ord('a') - ord('A'))"
                 c += 32;
             }
-            cout << c << endl;
             if ('a' <= c && c <= 'z') {
                 if (isYuan(c)) {
                     hasYuan = true;
@@ -35,7 +34,6 @@ public:
                 return false;
             }
         }
-        cout << hasYuan << hasFu << endl;
         return hasYuan && hasFu;
     }
 };
