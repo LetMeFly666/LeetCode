@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-15 23:15:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-15 23:33:39
+ * @LastEditTime: 2025-07-15 23:35:42
  */
 class Solution {
     private boolean isYuan(char c) {
@@ -14,7 +14,7 @@ class Solution {
             return false;
         }
         boolean hasYuan = false, hasFu = false;
-        for (char c : word) {
+        for (char c : word.toCharArray()) {
             if ('A' <= c && c <= 'Z') {
                 c += 32;
             }
