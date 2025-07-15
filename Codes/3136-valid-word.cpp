@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-15 23:15:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-15 23:20:33
+ * @LastEditTime: 2025-07-15 23:22:47
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -24,6 +24,7 @@ public:
                 // python -c "print(ord('a') - ord('A'))"
                 c += 32;
             }
+            cout << c << endl;
             if ('a' <= c && c <= 'z') {
                 if (isYuan(c)) {
                     hasYuan = true;
@@ -34,6 +35,7 @@ public:
                 return false;
             }
         }
+        cout << hasYuan << hasFu << endl;
         return hasYuan && hasFu;
     }
 };
