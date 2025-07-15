@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-07-15 23:15:03
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-15 23:26:06
+LastEditTime: 2025-07-15 23:28:33
 '''
 class Solution:
     def isYuan(self, c: str) -> bool:
@@ -13,8 +13,9 @@ class Solution:
             return False
         ok = [False, False]
         for c in word:
-            if c.isalpah():
+            if c.isalpha():
                 ok[self.isYuan(c)] = True
             elif not c.isdigit():
                 return False
+        print(ok)
         return all(ok)
