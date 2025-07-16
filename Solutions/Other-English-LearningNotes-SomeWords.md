@@ -1065,7 +1065,7 @@ categories: [自用]
 |rascal|n. 无赖，坏蛋，淘气鬼，不诚实的人|
 |lioness|n. 母狮|
 |||
-|malady|n. 疾病，严重问题，痼疾|
+|<font color="#28bea0" title="二次复习">malady</font>|n. 疾病，严重问题，痼疾|
 |outturn|n. 产量，(计算机)输出信息|
 |||
 |mansion|n. 大厦，豪宅，楼宇|
@@ -1291,6 +1291,12 @@ categories: [自用]
 |||
 |doggedly|adv. 顽强的，坚持不懈的|
 |backlog|n. 滞后，后备，存货<br/>v. 积压|
+|||
+|alienate|v. 离间，使疏远，使不友好，使（与某群体）格格不入|
+|fort|n. 要塞；堡垒；兵营，军营|
+|bulletin|n. 公告，告示；新闻快报；简报|
+|stevedore|n. 码头工人<br/>装船卸货|
+|tar|n. 焦油，沥青<br/>用沥青抹，用柏油涂<br/>adj. 涂油柏油的|
 
 <p class="wordCounts">单词收录总数</p>
 
