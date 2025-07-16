@@ -20,4 +20,4 @@ class Solution:
                 if last:
                     last = False
                     ans += 1
-        return ans
+        return max(ans, odd, len(nums) - odd)
