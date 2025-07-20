@@ -1297,6 +1297,12 @@ categories: [自用]
 |bulletin|n. 公告，告示；新闻快报；简报|
 |stevedore|n. 码头工人<br/>装船卸货|
 |tar|n. 焦油，沥青<br/>用沥青抹，用柏油涂<br/>adj. 涂油柏油的|
+|||
+|ejection|n. 驱逐(某人)，弹出(光盘)，喷射|
+|||
+|naval|adj. 海军的|
+|||
+|prophesy|v. 预告，预言|
 
 <p class="wordCounts">单词收录总数</p>
 
