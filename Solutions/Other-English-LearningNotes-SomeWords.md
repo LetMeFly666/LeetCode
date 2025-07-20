@@ -1301,6 +1301,8 @@ categories: [自用]
 |ejection|n. 驱逐(某人)，弹出(光盘)，喷射|
 |||
 |naval|adj. 海军的|
+|||
+|prophesy|v. 预告，预言|
 
 <p class="wordCounts">单词收录总数</p>
 
