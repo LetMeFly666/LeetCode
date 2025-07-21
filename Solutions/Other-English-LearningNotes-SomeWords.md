@@ -1303,6 +1303,9 @@ categories: [自用]
 |naval|adj. 海军的|
 |||
 |prophesy|v. 预告，预言|
+|||
+|moderately|adv. 适当地，适度地，中庸地，勉强地，一般地|
+|construe|v. 理解，解释，领会<br/>n. 解释，语法分析，分析练习句，直译|
 
 <p class="wordCounts">单词收录总数</p>
 
