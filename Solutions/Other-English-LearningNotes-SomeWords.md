@@ -1184,7 +1184,7 @@ categories: [自用]
 |businesslike|adj. 高效的，井然有序的，工作认真而有条理的|
 |buddhism|n. 佛教|
 |||
-|arduous|adj. 艰苦的，简单的，费力的|
+|<font color="#28bea0" title="二次复习">arduous</font>|adj. 艰苦的，简单的，费力的|
 |wherein|adv. 其中，在那里，在那种情况下，以什么方式<details><summary>例句</summary>He looked around the room, <font color="#28bea0">wherein</font> were assembled his entire family.<br/>他环视了下房间，他全家人都在那里。</details>|
 |handout|n. 捐赠品，救济品，传单，(发给学生的)课堂讲义|
 |||
@@ -1306,6 +1306,9 @@ categories: [自用]
 |||
 |moderately|adv. 适当地，适度地，中庸地，勉强地，一般地|
 |construe|v. 理解，解释，领会<br/>n. 解释，语法分析，分析练习句，直译|
+|||
+|financier|n. 金融家，理财家<br/>v. 对…提供资金，〈美〉骗取，管理财务，从事（不正当的）金融活动|
+|oblong|adj. 矩形的，长方形的，椭圆形的，椭圆体的<br/>n. 长方形(的)|
 
 <p class="wordCounts">单词收录总数</p>
 
