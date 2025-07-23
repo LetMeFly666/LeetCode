@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-23 10:31:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-23 13:18:00
+ * @LastEditTime: 2025-07-23 13:26:19
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -14,15 +14,13 @@ public:
         unordered_set<int> had;
         int ans = 0, cnt = 0;
         for (int l = 0, r = 0; r < nums.size(); r++) {
-            if (had.count(nums[r])) {
-                do {
-                    cnt -= nums[l];
-                } while (nums[l++] != nums[r]);
-            } else {
-                had.insert(nums[r]);
+            while (had.count(nums[r])) {
+                had.erase(nums[l]);
+                cnt -= nums[l++];
             }
+            had.insert(nums[r]);
             cnt += nums[r];
-            printf("l = %d, r = %d, cnt = %d\n", l, r, cnt);
+            // printf("l = %d, r = %d, cnt = %d\n", l, r, cnt);
             ans = max(ans, cnt);
         }
         return ans;
