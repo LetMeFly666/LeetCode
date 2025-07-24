@@ -195,3 +195,5 @@ func maximumUniqueSubarray(nums []int) (ans int) {
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/149602144)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/07/23/LeetCode%201695.%E5%88%A0%E9%99%A4%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%BE%97%E5%88%86/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+今天发现CSDN文章的代码块还带“运行”按钮了。
