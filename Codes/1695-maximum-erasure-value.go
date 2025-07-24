@@ -6,7 +6,7 @@
  */
 package main
 
-import "fmt"
+// import "fmt"
 
 func maximumUniqueSubarray(nums []int) (ans int) {
     had := map[int]struct{}{}
@@ -19,6 +19,7 @@ func maximumUniqueSubarray(nums []int) (ans int) {
         }
         cnt += t
         had[t] = struct{}{}
+        ans = max(ans, cnt)
     }
     return
 }
