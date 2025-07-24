@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-23 10:31:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-24 13:20:35
+ * @LastEditTime: 2025-07-24 13:22:02
  */
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +18,7 @@ class Solution {
             }
             had.add(nums[r]);
             cnt += nums[r];
-            ans = Math.max(ans, nums[r]);
+            ans = Math.max(ans, cnt);
         }
         return ans;
     }
