@@ -1,3 +1,9 @@
+'''
+Author: LetMeFly
+Date: 2025-07-26 15:58:33
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-07-26 16:09:09
+'''
 import requests
 
 FILE_NAME = 'urls.txt'
