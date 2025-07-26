@@ -2,11 +2,11 @@ import random
 import string
 from flask import request, send_file, Blueprint
 from datetime import datetime
+from app.redirect import unmatched_requests
+from app.redirect import matched_pairs
 
 webex_blueprint = Blueprint('webex', __name__)
 
-unmatched_requests = []
-matched_pairs = []
 # 固定校验位位置
 FIXED_POSITIONS = [0, 2, 3, 7, 9, 12, 15]
 

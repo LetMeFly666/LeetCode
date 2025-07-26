@@ -1,0 +1,187 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2025-04-12 20:09:35
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-04-12 20:22:26
+-->
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成信标ID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --light-bg: #f8f9fa;
+            --dark-text: #2b2d42;
+            --light-text: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            margin-top: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        form {
+            margin: 30px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+        }
+        
+        textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-section {
+            margin: 40px 0;
+            padding: 25px;
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .beacon-id {
+            word-break: break-all;
+            padding: 15px;
+            background: white;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            border: 1px solid #e9ecef;
+            margin-top: 15px;
+        }
+        
+        .nav-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            textarea {
+                height: 120px;
+            }
+            
+            button {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>生成信标ID</h1>
+        
+        <form method="POST">
+            <textarea name="email" placeholder="请输入邮件文本内容..." required></textarea>
+            <button type="submit">生成信标ID</button>
+        </form>
+        
+        {% if beacon_id %}
+        <div class="result-section">
+            <h3>生成结果：</h3>
+            <div class="beacon-id">{{ beacon_id }}</div>
+        </div>
+        {% endif %}
+        
+        <a href="{{ url_for('owa.show_list') }}" class="nav-link">查看所有记录 →</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流量诱导与分析</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='traffic_style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dropdown-menu-wrapper">
+        <div class="dropdown">
+            <button class="dropdown-toggle" id="dropdownMenuBtn">
+                <span>菜单</span>
+                <span class="triangle">&#9662;</span>
+            </button>
+            <div class="dropdown-content" id="dropdownContent" style="display:none;">
+                <a href="/webex">安全编码系统</a>
+                <a href="/owa">生成信标系统</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="left-column">
+            <div class="ip-section">
+                <h3>受控主机IP列表</h3>
+                <!-- IP输入和添加按钮 -->
+                <div class="ip-input-row">
+                    <input type="text" id="ip-input" placeholder="请输入ip">
+                    <input type="text" id="username-input" placeholder="请输入username">
+                    <input type="password" id="password-input" placeholder="请输入password">
+                    <button id="add-ip-btn">添加</button>
+                </div>
+                <!-- IP列表 -->
+                <div class="saved-ip-list-wrapper">
+                    <ul id="saved-ip-list"></ul>
+                </div>
+                <div class="ip-buttons">
+                    <button id="start-capture">开始诱导</button>
+                    <button id="cancel-capture">停止诱导</button>
+                </div>
+            </div>
+            
+            <!-- 流量统计图表 -->
+            <div class="chart-section">
+                <div class="chart-container">
+                    <canvas id="traffic-chart1"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="traffic-chart2"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="traffic-chart3"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="traffic-chart4"></canvas>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="right-column">
+            <div class="upload-section">
+                <h3>上传PCAP文件</h3>
+                <div class="ip-input-row">
+                    <input type="text" id="linux-ip-input" placeholder="Linux_ip">
+                    <input type="text" id="linux-username-input" placeholder="Linux_username">
+                    <input type="password" id="linux-password-input" placeholder="Linux_password">
+                    <button id="add-linux-ip-btn">保存</button>
+                </div>
+                <div class="file-input-wrapper">
+                    <label class="custom-file-label" for="file-upload">选择文件</label>
+                    <input id="file-upload" type="file" multiple accept=".pcap,.zip">
+                </div>
+                <div id="file-list"></div>
+            </div>
+            
+
+            <!-- 开始推理与取消上传按钮 -->
+            <div class="control-buttons">
+                <button id="start-inference">开始推理</button>
+                <button id="cancel-upload">取消上传</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="processing-section">
+                <h3>推理结果</h3>
+                <ul id="results-list">
+                    <!-- 每个文件的推理结果将动态添加 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src= "{{ url_for('static', filename='traffic_script.js') }}"></script>
+</body>
+</html>

@@ -1,11 +1,5 @@
 '''
 Author: LetMeFly
-Date: 2025-07-26 13:23:04
-LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-26 14:27:56
-'''
-'''
-Author: LetMeFly
 Date: 2025-06-04 19:41:24
 LastEditors: LetMeFly.xyz
 LastEditTime: 2025-06-29 23:30:29
@@ -601,11 +595,12 @@ def img_service():
 def redirect_all(path):
     full_path = request.full_path.strip('?')
     target_url = full_path.lstrip('/').lstrip('redirect/')
+    print(request.args)
     s = request.args.get('s', '')
     timestamp = datetime.now()
     print("targeturl"+target_url)
     target_url = target_url
-    target_url = "webexteams://im?" + target_url
+    target_url = "webexteams://im" + target_url
     # 查找匹配
     print(target_url)
     for item in unmatched_requests:
