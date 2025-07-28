@@ -1,0 +1,144 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2025-04-12 20:14:27
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-04-12 20:20:37
+-->
+<!-- templates/list.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LetMeFly - 邮件与信标ID对应表</title>
+    <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cae;
+            --accent-color: #ff7e5f;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        thead tr {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #dddddd;
+            transition: all 0.2s;
+        }
+        
+        tbody tr:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+        
+        tbody tr:last-of-type {
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        tbody tr:hover {
+            background-color: rgba(74, 111, 165, 0.1);
+            transform: translateX(2px);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>邮件与信标ID对应表</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>邮件内容</th>
+                    <th>信标ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.email }}</td>
+                    <td style="word-break: break-all;">{{ entry.beacon_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('owa.index') }}" class="back-link">返回生成页面</a>
+    </div>
+</body>
+</html>
