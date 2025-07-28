@@ -16,10 +16,8 @@ private:
 
     void dfs(int th, int now) {
         if (th == nums.size()) {
+            ans += now == maxium;
             return;
-        }
-        if (now == maxium) {
-            ans++;
         }
         dfs(th + 1, now);
         dfs(th + 1, now | nums[th]);
