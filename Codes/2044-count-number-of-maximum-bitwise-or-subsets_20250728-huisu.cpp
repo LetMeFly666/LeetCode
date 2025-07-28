@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-28 19:30:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-28 19:42:03
+ * @LastEditTime: 2025-07-28 19:43:19
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -10,19 +10,20 @@
 
 class Solution {
 private:
-    int ans = 0;
     int maxium = 0;
     vector<int> nums;
 
-    void dfs(int th, int now) {
+    int dfs(int th, int now, int ans) {
         if (th == nums.size()) {
-            return;
+            return ans;
         }
         if (now == maxium) {
-            ans++;
+            ans++;  // 不能return，后面还有可选的呢
         }
-        dfs(th + 1, now);
-        dfs(th + 1, now | nums[th]);
+        if (now | nums[th] == now) {
+            return 2 * dfs(th + 1, now, ans);
+        }
+        return dfs(th + 1, now, ans) + dfs(th + 1, now | nums[th], ans);
     }
 public:
     int countMaxOrSubsets(vector<int>& nums) {
@@ -30,7 +31,6 @@ public:
             maxium |= t;
         }
         this->nums = move(nums);
-        dfs(0, 0);
-        return ans;
+        return dfs(0, 0, 0);
     }
 };
