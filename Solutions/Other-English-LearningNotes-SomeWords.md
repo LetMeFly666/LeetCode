@@ -1314,6 +1314,8 @@ categories: [自用]
 |omen|n. 预兆，征兆，前兆<br/>v. 预告|
 |disinclined|adj. 不情愿，不乐意，无意于|
 |||
+|procure|v. 取得，诱使（妇女）卖淫|
+|||
 |cordially|adv. 热情友好地，和蔼可亲地，非常，十分|
 |slay|v. 杀死，杀害，残害，谋杀<details><summary>过去分词</summary>slain</details>|
 
