@@ -101,6 +101,22 @@ public:
 };
 ```
 
+贴一个[来自扣友](https://leetcode.cn/problems/count-hills-and-valleys-in-an-array/solutions/1374467/tong-ji-shu-zu-zhong-feng-he-gu-de-shu-l-ca7e/comments/3085283/)的C++20高级写法:
+
+```cpp
+#include <ranges>
+class Solution {
+public:
+    int countHillValley(vector<int>& nums) {
+        return ranges::count(nums
+            | views::chunk_by(equal_to{})
+            | views::transform(ranges::begin)
+            | views::adjacent_transform<3>([](auto a, auto b, auto c) { return (*a <=> *b) == (*c <=> *b); })
+            , true);
+    }
+};
+```
+
 #### Python
 
 ```python
