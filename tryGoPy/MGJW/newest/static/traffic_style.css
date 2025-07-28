@@ -1,0 +1,529 @@
+
+/* 文件上传模块 */
+#linux-ip-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#linux-ip-input:focus {
+    border-color: #3498db;
+}
+
+#linux-username-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#linux-username-input:focus {
+    border-color: #3498db;
+}
+
+#linux-password-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#linux-password-input:focus {
+    border-color: #3498db;
+}
+
+#add-linux-ip-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background .18s;
+}
+
+#add-linux-ip-btn:hover {
+    background: #217dbb;
+}
+
+/* 下拉按钮 */
+.dropdown-menu-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+.dropdown-toggle {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.triangle {
+    margin-left: 6px;
+}
+.dropdown-content {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    min-width: 140px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-top: 2px;
+    border-radius: 4px;
+}
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+}
+.dropdown-content a:hover {
+    background: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+}
+
+.right-column {
+    width: 40%;
+    background-color: #fff;
+    padding: 46px 40px;
+    overflow-y: auto;
+    min-width: 340px;
+    box-shadow: -2px 0 18px rgba(44,62,80,0.04);
+}
+
+/* 文件上传部分整体居中 */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 横向居中 */
+    margin-bottom: 30px;
+}
+
+.file-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom:8px;
+}
+
+/* 隐藏原生的文件输入框 */
+input[type="file"] {
+    display: none; 
+}
+
+/* 自定义文件选择按钮 */
+.custom-file-label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    border: 2px dashed #bdc3c7; /* 虚线框 */
+    border-radius: 8px;
+    background-color: #ecf0f1;
+    color: #7f8c8d;
+    font-size: 1.2em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border 0.2s, background-color 0.2s;
+}
+
+/* 增加一个灰色的加号 */
+.custom-file-label:before {
+    content: '+';
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+/* 鼠标悬停时的效果 */
+.custom-file-label:hover {
+    background-color: #f4f6f7;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+/* 文件列表样式 */
+#file-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#file-list li {
+    background-color: #ecf0f1;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 5px;
+    color: #34495e;
+    font-size: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#file-list li .file-name {
+    flex-grow: 1;
+}
+
+#file-list li .delete-btn {
+    background-color: #e74c3c;  /* 红色删除按钮 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 删除按钮悬停 */
+#file-list li .delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.upload-section h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #273c51;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 30px; /* 调整与下方内容的间距 */
+    margin-top: 0;
+}
+
+.processing-section h3 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #273c51;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 40px; /* 给推理结果标题增加更大的顶部间距 */
+    margin-bottom: 20px; /* 调整与内容的间距 */
+}
+
+.section-divider {
+    border-bottom: 2px solid #e0e6ed; /* 浅灰色分割线 */
+    margin: 20px 0;                   /* 增加上下的间距 */
+}
+
+#results-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#results-list li {
+    background-color: #ecf0f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #34495e;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 状态标签 */
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.9em;
+}
+
+.status.processing {
+    background-color: #f39c12; /* 黄色表示处理中 */
+}
+
+.status.completed {
+    background-color: #27ae60; /* 绿色表示完成 */
+}
+
+/* 控制按钮区域样式 */
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* 按钮间隔 */
+    margin-top: 18px;
+}
+
+.control-buttons button {
+    padding: 10px 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;  /* 更圆润 */
+    background-color: #3498db;  /* 蓝色按钮 */
+    color: white;
+    transition: 
+        background-color 0.25s,
+        box-shadow 0.25s,
+        transform 0.2s;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.10);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.control-buttons button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 18px rgba(44,62,80,0.15);
+}
+
+/* 取消按钮为橙色 */
+.control-buttons button#cancel-upload {
+    background-color: #e67e22;
+}
+
+.control-buttons button#cancel-upload:hover {
+    background-color: #d35400;
+}
+
+
+/* 左边区域 */
+/* 左边区域 */
+/* 左边区域 */
+/* 左边区域 */
+/* 左边区域 */
+
+.left-column {
+    width: 60%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 90vh;
+    background-color: #fff;
+    color: #273c51;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 36px 32px 36px 36px;
+    font-size: 1.15em;
+    font-weight: normal;
+    min-width: 380px;
+    box-shadow: 2px 0 18px rgba(44,62,80,0.08);
+}
+
+/*受控ip输入部分*/
+.ip-section {
+    width: 100%;
+    background: #f8fafc;
+    padding: 26px 24px 18px 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+}
+
+
+.ip-section h3 {
+    margin: 0 0 14px 0;
+    margin-bottom: 20px;
+    font-size: 1.9em;
+    text-align: center;
+    color: #273c51;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 输入框和添加布局按钮 */
+.ip-input-row {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+#ip-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#ip-input:focus {
+    border-color: #3498db;
+}
+
+#username-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#username-input:focus {
+    border-color: #3498db;
+}
+
+#password-input {
+    width: 160px;
+    border: 1px solid #d0d7df;
+    padding: 8px 10px;
+    font-size: 1em;
+    outline: none;
+    background: #fff;
+    transition: border .18s;
+}
+
+#password-input:focus {
+    border-color: #3498db;
+}
+
+#add-ip-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background .18s;
+}
+
+#add-ip-btn:hover {
+    background: #217dbb;
+}
+
+/* 受控主机IP列表样式 */
+.saved-ip-list-wrapper {
+    width: 70%;
+    height: 140px;
+    overflow-y: scroll;
+    border: 1px solid #e0e6ed;
+    background: #fff;
+    padding: 4px 0;
+    box-shadow: 0 1px 4px rgba(44,62,80,0.03);
+    margin: 0 auto; 
+    margin-top: 14px;
+    position: relative;
+}
+#saved-ip-list:empty::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #a0aec0;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+#saved-ip-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#saved-ip-list li {
+    padding: 8px 16px;
+    font-size: 1em;
+    color: #34495e;
+    border-bottom: 1px solid #f0f3f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#saved-ip-list li:last-child {
+    border-bottom: none;
+}
+
+.ip-delete-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    font-size: 0.98em;
+    padding: 2px 10px;
+    cursor: pointer;
+    margin-left: 14px;
+    transition: background .18s;
+}
+.ip-delete-btn:hover {
+    background: #c0392b;
+}
+
+/* 控制按钮的容器 */
+.ip-buttons {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    gap: 20px;               /* 按钮间隔 */
+    margin-top: 20px;   /* 与IP列表的左侧保持一些间距 */
+}
+
+/* 按钮样式保持不变 */
+.ip-buttons button {
+    padding: 10px 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.25s, box-shadow 0.25s, transform 0.2s;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.10);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.ip-buttons button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 4px 18px rgba(44,62,80,0.15);
+}
+
+
+
+/* 每个图表的容器 */
+.chart-container {
+    width:45%;
+    height: 300px;  /* 固定高度，您可以调整 */
+}
+
+/* 流量图部分样式 */
+.chart-section {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    padding: 24px 30px 22px 30px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.05);   
+    position: relative;
+
+    display: flex;
+    flex-wrap: wrap;  /* 允许换行 */
+    justify-content: center;  /* 水平居中 */
+    align-items: center;  /* 垂直居中 */
+    gap: 20px;  /* 设置每个图表容器之间的间距 */
+}
+
+.left-column {
+    overflow-y: auto;
+    max-height: 90vh; /* 确保左侧区域不超出屏幕 */
+}
