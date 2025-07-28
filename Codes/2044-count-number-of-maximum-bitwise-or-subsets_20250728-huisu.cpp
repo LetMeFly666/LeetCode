@@ -1,3 +1,9 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-07-28 19:30:16
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-07-28 19:42:03
+ */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
@@ -14,10 +20,6 @@ private:
         }
         if (now == maxium) {
             ans++;
-            return;
-        }
-        if (now | nums[th] == now) {
-            return;
         }
         dfs(th + 1, now);
         dfs(th + 1, now | nums[th]);
