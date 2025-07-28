@@ -19,7 +19,7 @@ public:
             } else if (nums[i] < last && nums[i] < nums[i + 1]) {
                 ans++;
             }
-            if (nums[i] != nums[i - 1]) {
+            if (nums[i] != nums[i + 1]) {
                 last = nums[i];
             }
         }
