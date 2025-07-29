@@ -1318,6 +1318,7 @@ categories: [自用]
 |||
 |cordially|adv. 热情友好地，和蔼可亲地，非常，十分|
 |slay|v. 杀死，杀害，残害，谋杀<details><summary>过去分词</summary>slain</details>|
+|||
 |catholic|adj. 天主教的，包罗万象的<br/>n. 天主教徒|
 |marvellous|adj. 极好的，非凡的<br/>n. 怪事|
 
