@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-29 23:42:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-29 23:55:01
+ * @LastEditTime: 2025-07-29 23:58:55
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,9 +18,8 @@ public:
             for (int j = 0; j < 31; j++) {
                 if (nums[i] >> j & 1) {
                     lastPos[j] = i;
-                    continue;
                 } else if (lastPos[j] != -1) {
-                    last = max(last, j);
+                    last = max(last, lastPos[j]);
                 }
             }
             ans[i] = max(ans[i], last - i + 1);
