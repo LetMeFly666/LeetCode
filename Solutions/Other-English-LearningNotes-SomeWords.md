@@ -1102,7 +1102,7 @@ categories: [自用]
 |<font color="#28bea0" title="二次复习">stronghold</font>|n. 要塞，据点，堡垒，有广泛支持的地方|
 |mackintosh|n. 防水胶布，胶布雨衣（麦金托什）|
 |||
-|ferrous|adj. 含铁的，铁的|
+|<font color="#28bea0" title="二次复习">ferrous</font>|adj. 含铁的，铁的|
 |||
 |stammer|v. 口吃，结结巴巴地说<br>n. 口吃，结巴|
 |||
@@ -1290,7 +1290,7 @@ categories: [自用]
 |suburban|adj. 郊区的，城外的，平淡乏味的，呆板的<br/>n. 〈美〉郊区居民|
 |||
 |doggedly|adv. 顽强的，坚持不懈的|
-|backlog|n. 滞后，后备，存货<br/>v. 积压|
+|backlog|n. 滞后，后备，存货<br/>v. 积压<details><summary>例句</summary>I came back from my vacation to find a huge <font color="#28bea0">backlog</font> of work to do.<br/>我度假回来后发现有一大堆积压的工作要做。</details>|
 |||
 |alienate|v. 离间，使疏远，使不友好，使（与某群体）格格不入|
 |fort|n. 要塞；堡垒；兵营，军营|
@@ -1318,6 +1318,8 @@ categories: [自用]
 |||
 |cordially|adv. 热情友好地，和蔼可亲地，非常，十分|
 |slay|v. 杀死，杀害，残害，谋杀<details><summary>过去分词</summary>slain</details>|
+|catholic|adj. 天主教的，包罗万象的<br/>n. 天主教徒|
+|marvellous|adj. 极好的，非凡的<br/>n. 怪事|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
