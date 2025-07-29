@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-29 23:42:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-29 23:51:37
+ * @LastEditTime: 2025-07-29 23:55:01
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,8 +19,7 @@ public:
                 if (nums[i] >> j & 1) {
                     lastPos[j] = i;
                     continue;
-                }
-                if (lastPos[j] != -1) {
+                } else if (lastPos[j] != -1) {
                     last = max(last, j);
                 }
             }
@@ -29,3 +28,19 @@ public:
         return ans;
     }
 };
+
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+ [1,0,2,1,3]
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<int> v = stringToVector(s);
+        Solution sol;
+        debug(sol.smallestSubarrays(v));
+    }
+    return 0;
+}
+#endif
