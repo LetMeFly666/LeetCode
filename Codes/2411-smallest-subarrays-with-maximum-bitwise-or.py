@@ -8,7 +8,7 @@ from typing import List
 
 class Solution:
     def smallestSubarrays(self, nums: List[int]) -> List[int]:
-        ans = 0
+        ans = [0] * 31
         lastPos = [0] * 31
         for i in range(len(nums) - 1, -1, -1):
             last = i
