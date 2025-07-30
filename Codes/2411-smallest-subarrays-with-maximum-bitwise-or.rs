@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-07-29 23:42:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-07-30 20:56:38
+ * @LastEditTime: 2025-07-30 21:00:40
  */
 use std::cmp::max;
 
@@ -13,7 +13,7 @@ impl Solution {
         for i in (0..ans.len()).rev() {
             let ii32: i32 = i.try_into().unwrap();
             let mut last: i32 = ii32;
-            for j in (0..32) {
+            for j in (0..31) {
                 if nums[i] >> j & 1 == 1 {
                     lastPos[j] = ii32;
                 } else {
