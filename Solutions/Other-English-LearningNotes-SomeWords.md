@@ -1321,6 +1321,11 @@ categories: [自用]
 |||
 |catholic|adj. 天主教的，包罗万象的<br/>n. 天主教徒|
 |marvellous|adj. 极好的，非凡的<br/>n. 怪事|
+|||
+|postulate|v. 假定，假设<br/>n. 假定，假设，公理|
+|embroider|v. 刺绣，加以润饰，对...添枝加叶|
+|lipstick|n. 口红，唇膏，唇彩|
+|governess|n. 家庭女教师|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
