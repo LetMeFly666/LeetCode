@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-13 17:26:32
+LastEditTime: 2025-07-31 10:47:13
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -20,7 +20,7 @@ from urllib.parse import quote
 
 argv = sys.argv
 print(argv)
-CODES_TO_GEN = ['cpp', 'python3', 'golang', 'java']  # 参考“AllProblems/_mappingData.json”
+CODES_TO_GEN = ['cpp', 'python3', 'golang', 'java', 'rust']  # 参考“AllProblems/_mappingData.json”
 
 num = int(argv[1][:-1])
 title = ""
@@ -111,7 +111,8 @@ def genSolutionPart(num):
         'py': ('python', 'Python'),
         'c': ('c', 'C语言'),
         'java': ('java', 'Java'),
-        'go': ('go', 'Go')
+        'go': ('go', 'Go'),
+        'rs': ('rust', 'Rust')
     }
     today4code = []
     for file in os.listdir('Codes'):
