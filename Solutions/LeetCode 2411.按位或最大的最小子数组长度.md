@@ -1,11 +1,11 @@
 ---
-title: 2411.按位或最大的最小子数组长度
+title: 2411.按位或最大的最小子数组长度：一次倒序遍历
 date: 2025-08-01 10:41:56
-tags: [题解, LeetCode, 中等, 位运算, 数组, 二分查找, 滑动窗口]
+tags: [题解, LeetCode, 中等, 位运算, 数组, 遍历]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2411.按位或最大的最小子数组长度
+# 【LetMeFly】2411.按位或最大的最小子数组长度：一次倒序遍历
 
 力扣题目链接：[https://leetcode.cn/problems/smallest-subarrays-with-maximum-bitwise-or/](https://leetcode.cn/problems/smallest-subarrays-with-maximum-bitwise-or/)
 
@@ -59,12 +59,30 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：倒序遍历
 
-11111
+### 解题思路
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+或运算的性质决定每一位是可以分开来单独看的。假设我们只关注最低的一位，那么问题就转化为了：
+
+> 从nums[i]开始到哪个元素为止最低的一位出现过$1$。
+>
+> 一旦最低位出现了$1$，子数组的最短长度就确定了，就没必要继续往后遍历了。
+
+现在nums的范围是$10^9$，二进制下一共有31位，每一位互不影响，单独来看，求最长的子数组就好了。
+
+### 具体方法
+
+对于某一位（以二进制下的最低位为例），如何判断从nums[i]开始，第一个这一位是1的元素呢？
+
+只需要从后往前遍历，使用一个变量lastPos记录最后一次这一位为1的下标（即这位为1的最小下标），则遍历到nums[i]时，lastPos的值就是从nums[i]开始第一个这一位为1的元素下标。
+
+特别的，我们可以将lastPos的初始值设置为0；由于nums[i]的范围是$10^9$，所以我们需要一个长度为$31$的lastPos数组，nums[i]开始的最短数组的长度为31位中结果最长的那个。
+
+### 时空复杂度
+
++ 时间复杂度$O(len(nums)\times C)$，其中$C=\log \max (nums[i])=\log10^9=31$
++ 空间复杂度$O(C)$
 
 ### AC代码
 
@@ -234,6 +252,6 @@ impl Solution {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/08/01/LeetCode%202411.%E6%8C%89%E4%BD%8D%E6%88%96%E6%9C%80%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/149831577)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/08/01/LeetCode%202411.%E6%8C%89%E4%BD%8D%E6%88%96%E6%9C%80%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E6%95%B0%E7%BB%84%E9%95%BF%E5%BA%A6/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
