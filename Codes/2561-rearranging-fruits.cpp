@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-03 22:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-03 23:03:17
+ * @LastEditTime: 2025-08-03 23:30:35
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -39,7 +39,7 @@ public:
             if (times % 2) {
                 return -1;
             }
-            for (int i = 0; i < times / 2; i++) {
+            for (int i = 0; i < abs(times) / 2; i++) {
                 change.push_back(val);
             }
         }
@@ -51,3 +51,21 @@ public:
         return ans;
     }
 };
+
+/*
+[4,2,2,2]
+[1,4,1,2]
+
+1
+*/
+#if defined(_WIN32) || defined(__APPLE__)
+int main() {
+    string s1, s2;
+    while (cin >> s1 >> s2) {
+        vector<int> v1 = stringToVector(s1), v2 = stringToVector(s2);
+        Solution sol;
+        cout << sol.minCost(v1, v2) << endl;
+    }
+    return 0;
+}
+#endif
