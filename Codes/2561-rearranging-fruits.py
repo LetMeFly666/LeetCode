@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-08-03 22:53:42
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-04 00:04:32
+LastEditTime: 2025-08-04 00:07:41
 '''
 from typing import List
 from collections import defaultdict
@@ -16,12 +16,12 @@ class Solution:
         for t in basket2:
             diffTimes[t] -= 1
         change = []
-        for val, times in diffTimes.values():
+        for val, times in diffTimes.items():
             if not times:
                 continue
-            if times % 1:
+            if times % 2:
                 return -1
-            for _ in range(times // 2):
+            for _ in range(abs(times) // 2):
                 change.append(val)
         change.sort()
         return sum(min(m * 2, t) for t in change[:len(change) // 2])
