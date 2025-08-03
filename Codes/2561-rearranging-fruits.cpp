@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-03 22:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-03 23:30:35
+ * @LastEditTime: 2025-08-03 23:46:56
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -44,7 +44,7 @@ public:
             }
         }
         sort(change.begin(), change.end());
-        int ans = 0;
+        ll ans = 0;
         for (int i = 0; i < change.size() / 2; i++) {
             ans += min(change[i], 2 * m);
         }
