@@ -1294,7 +1294,7 @@ categories: [自用]
 |||
 |alienate|v. 离间，使疏远，使不友好，使（与某群体）格格不入|
 |fort|n. 要塞；堡垒；兵营，军营|
-|bulletin|n. 公告，告示；新闻快报；简报|
+|<font color="#28bea0" title="二次复习">bulletin</font>|n. 公告，告示；新闻快报；简报|
 |stevedore|n. 码头工人<br/>装船卸货|
 |tar|n. 焦油，沥青<br/>用沥青抹，用柏油涂<br/>adj. 涂油柏油的|
 |||
@@ -1329,6 +1329,10 @@ categories: [自用]
 |||
 |convict|v. 定罪<br/>n. 服刑囚犯，已决犯|
 |bugle|n. 号角，军号，喇叭|
+|||
+|dew|n. 露水<br/>v. 喷湿，结露水|
+|impartial|adj. 无私的，公平的，中立的|
+|centigrade|n. 摄氏温度<br/>adj. 摄氏的|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
