@@ -90,7 +90,107 @@ public:
 
 运行结果：耗时还挺少
 
-![挺快的这次](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/062fef3809fd4c878ac408f98b2f2d24.jpeg#pic_center)
+![挺快的这次](https://cors.letmefly.xyz/https://img-blog.csdnimg.cn/062fef3809fd4c878ac408f98b2f2d24.jpeg#pic_center)
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-08-01 23:51:32
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-08-02 00:01:53
+'''
+from typing import List
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        ans = [[1] for _ in range(numRows)]
+        for i in range(1, numRows):
+            for j in range(1, i):
+                ans[i].append(ans[i - 1][j - 1] + ans[i - 1][j])
+            ans[i].append(1)
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-01 23:51:32
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-02 12:47:48
+ */
+import java.util.List;
+import java.util.ArrayList;
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>(numRows);
+        ans.add(List.of(1));
+        for (int i = 1; i < numRows; i++) {
+            ans.add(new ArrayList<>(i + 1));
+            ans.get(i).add(1);
+            for (int j = 1; j < i; j++) {
+                ans.get(i).add(ans.get(i - 1).get(j - 1) + ans.get(i - 1).get(j));
+            }
+            ans.get(i).add(1);
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-01 23:51:32
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-02 13:12:32
+ */
+package main
+
+func generate(numRows int) [][]int {
+    ans := make([][]int, numRows)
+    ans[0] = []int{1}
+    for i := 1; i < numRows; i++ {
+        ans[i] = make([]int, i + 1)
+        ans[i][0] = 1
+        for j := 1; j < i; j++ {
+            ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j]
+        }
+        ans[i][i] = 1
+    }
+    return ans
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-01 23:51:32
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-02 13:25:16
+ */
+impl Solution {
+    pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
+        let size = num_rows as usize;
+        let mut ans = vec![vec![]; size];
+        for i in 0..size {
+            ans[i].resize(i + 1, 1);
+            for j in 1..i {
+                ans[i][j] = ans[i - 1][j - 1] + ans[i - 1][j];
+            }
+        }
+        ans
+    }
+}
+```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/17/LeetCode%200118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/125829159](https://letmefly.blog.csdn.net/article/details/125829159)

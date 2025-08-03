@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-07-31 10:47:13
+LastEditTime: 2025-08-03 20:07:03
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -99,6 +99,7 @@ if not issueNum:
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 else:
     os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
+    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now."')
 
 input('代码写完后按回车生成题解模板：')
 
@@ -185,31 +186,33 @@ solution = refreshPublistTime(solution)
 print(solution)
 
 solutionName = "Solutions/LeetCode {0:04d}.{1}.md".format(num, title)
-with open(solutionName, "x", encoding="utf-8") as f:
-    f.write(solution)
+solutionExists = os.path.exists(solutionName)
+if not solutionExists:
+    with open(solutionName, "w", encoding="utf-8") as f:
+        f.write(solution)
 
-print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
+    print("请编辑题解: “{0}”，注意不要更改文件前5行".format(solutionName))
 
-print("请去掉可能的由其他插件自动生成的头部注释信息，并保存你所编辑的题解")
-csdnid = input("请输入CSDN题解文章的id(11022152)：")
-solutionURLcs = "https://letmefly.blog.csdn.net/article/details/{0}".format(csdnid)
+    print("请去掉可能的由其他插件自动生成的头部注释信息，并保存你所编辑的题解")
+    csdnid = input("请输入CSDN题解文章的id(11022152)：")
+    solutionURLcs = "https://letmefly.blog.csdn.net/article/details/{0}".format(csdnid)
 
-with open(solutionName, "r", encoding="utf-8") as f:
-    solution = f.read()
+    with open(solutionName, "r", encoding="utf-8") as f:
+        solution = f.read()
 
-solution = solution.replace("--------------------------", csdnid)
-# solution = solution.replace("--------------------------", csdnid)
+    solution = solution.replace("--------------------------", csdnid)
+    # solution = solution.replace("--------------------------", csdnid)
 
-with open(solutionName, "w", encoding="utf-8") as f:
-    f.write(solution)
+    with open(solutionName, "w", encoding="utf-8") as f:
+        f.write(solution)
 
-print("请重新复制所有的题解内容，并粘贴到CSDN中发布")
-print("请在LeetCode中新建、编辑并发布题解")
+    print("请重新复制所有的题解内容，并粘贴到CSDN中发布")
+    print("请在LeetCode中新建、编辑并发布题解")
 
-solutionURLlc = input("LeetCode题解的url: ")
+    solutionURLlc = input("LeetCode题解的url: ")
 
-with open("README.md", "r", encoding="utf-8") as f:
-    readme = f.read()
+    with open("README.md", "r", encoding="utf-8") as f:
+        readme = f.read()
 
 def readmeNewLine(readme: str) -> str:
     splited = readme.split("\n")
@@ -260,10 +263,16 @@ def readmeNewLine(readme: str) -> str:
     splited.insert(i, generateNewLine())
     return "\n".join(splited)
 
-readme = readmeNewLine(readme)
-print(readme)
-with open("README.md", "w", encoding="utf-8") as f:
-    f.write(readme)
+if not solutionExists:
+    readme = readmeNewLine(readme)
+    print(readme)
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(readme)
+
+if solutionExists:
+    gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码(并更新其题解)'
+else:
+    gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -277,7 +286,7 @@ def getPrOrIssueMaxNum(prOrIssue: str) -> int:  # (#811)
     return data[0]['number']
 lastNum = max(getPrOrIssueMaxNum('pr'), getPrOrIssueMaxNum('issue'))
 print(lastNum)
-commitMsg = f'update: 添加问题“{num}.{title}”的代码和题解(#{lastNum + 1})'
+commitMsg = f'{gitCommitMsgPrefix} (#{lastNum + 1})'
 if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     with open('.commitmsg', 'r', encoding='utf-8') as f:
         commitMsgFromfile = f.read()
@@ -286,7 +295,7 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
 os.system(f'git push --set-upstream origin {num}')
-cmd = f'gh pr create -H {num} -t "添加问题“{num}.{title}”的代码和题解" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}" -l "题解" -a "@me"'  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+cmd = f'gh pr create -H {num} -t "{gitCommitMsgPrefix}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}" -l "题解" -a "@me"'  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
 print(cmd)
 prResult = os.popen(cmd).read()
 print(prResult)
