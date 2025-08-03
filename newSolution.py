@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-03 20:07:03
+LastEditTime: 2025-08-03 20:13:00
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -323,7 +323,7 @@ if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge�
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete origin {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
-    os.system(f'gh pr merge -s -d -t "update: 添加问题“{num}.{title}”的代码和题解(#{prNumber})"')
+    os.system(f'gh pr merge -s -d -t "{gitCommitMsgPrefix} (#{prNumber})"')
 os.system(f'gh issue edit {issueNum} --remove-label "solving"')
 
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py
