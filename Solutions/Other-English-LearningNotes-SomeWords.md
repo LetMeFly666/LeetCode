@@ -1326,6 +1326,9 @@ categories: [自用]
 |embroider|v. 刺绣，加以润饰，对...添枝加叶|
 |lipstick|n. 口红，唇膏，唇彩|
 |governess|n. 家庭女教师|
+|||
+|convict|v. 定罪<br/>n. 服刑囚犯，已决犯|
+|bugle|n. 号角，军号，喇叭|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
