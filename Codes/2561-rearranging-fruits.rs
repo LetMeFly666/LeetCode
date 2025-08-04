@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-03 22:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-04 23:05:04
+ * @LastEditTime: 2025-08-04 23:06:33
  */
 use std::collections::HashMap;
 
@@ -30,7 +30,7 @@ impl Solution {
         }
 
         change.sort_unstable();
-        let ans: i64 = 0;
+        let mut ans: i64 = 0;
         for i in 0..(change.len() / 2) {
             ans += i64::from(change[i].min(2 * m));
         }
