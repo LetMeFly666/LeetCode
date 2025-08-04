@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-03 22:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-04 13:35:42
+ * @LastEditTime: 2025-08-04 13:37:38
  */
 package main
 
@@ -28,7 +28,9 @@ func minCost(basket1 []int, basket2 []int) (ans int64) {
         if times % 2 != 0 {
             return -1
         }
-        change = append(change, val)
+        for i := 0; i < abs(times) / 2; i++ {
+            change = append(change, val)
+        }
     }
 
     sort.Ints(change)
