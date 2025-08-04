@@ -1333,6 +1333,8 @@ categories: [自用]
 |dew|n. 露水<br/>v. 喷湿，结露水|
 |impartial|adj. 无私的，公平的，中立的|
 |centigrade|n. 摄氏温度<br/>adj. 摄氏的|
+|||
+|antique|adj. 古董的，古老的，过时的，陈旧的<br/>n. 古物，古董|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
