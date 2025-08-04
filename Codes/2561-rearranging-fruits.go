@@ -2,11 +2,18 @@
  * @Author: LetMeFly
  * @Date: 2025-08-03 22:53:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-04 13:37:38
+ * @LastEditTime: 2025-08-04 13:38:44
  */
 package main
 
 import "sort"
+
+func abs2561(x int) int {
+    if x < 0 {
+        return -x
+    }
+    return x
+}
 
 func minCost(basket1 []int, basket2 []int) (ans int64) {
     timeDiffs := map[int]int{}
@@ -28,7 +35,7 @@ func minCost(basket1 []int, basket2 []int) (ans int64) {
         if times % 2 != 0 {
             return -1
         }
-        for i := 0; i < abs(times) / 2; i++ {
+        for range abs2561(times) / 2 {  // 刚发现go还有这种语法呢
             change = append(change, val)
         }
     }
