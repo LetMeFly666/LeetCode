@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-05 10:28:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-06 18:42:21
+ * @LastEditTime: 2025-08-06 18:49:58
  */
 import java.util.Map;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ class Solution {
                 if (window.get(fruits[l]) == 0) {
                     window.remove(fruits[l]);
                 }
-                l--;
+                l++;
             }
             ans = Math.max(ans, r - l + 1);
         }
