@@ -2,13 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-08-05 10:28:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-07 10:47:02
+ * @LastEditTime: 2025-08-07 10:48:21
  */
 use std::collections::HashMap;
 
 impl Solution {
     pub fn total_fruit(fruits: Vec<i32>) -> i32 {
-        let mut ans: i32 = 0;
+        let mut ans = 0;
         let mut l = 0;
         let mut window = HashMap::new();
         for (r, &x) in fruits.iter().enumerate() {
@@ -22,6 +22,6 @@ impl Solution {
             }
             ans = ans.max(r - l + 1);
         }
-        ans
+        ans as i32
     }
 }
