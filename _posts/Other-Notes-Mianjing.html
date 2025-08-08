@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/BaGu_MianJing/TCP_FastRetransmit.svg">
 <meta property="article:published_time" content="2025-02-18T03:44:54.000Z">
-<meta property="article:modified_time" content="2025-08-04T15:40:11.302Z">
+<meta property="article:modified_time" content="2025-08-08T02:52:03.232Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="面经">
@@ -250,7 +250,7 @@
 <li><code>Cache-Control</code>，是一个相对时间；</li>
 <li><code>Expires</code>，是一个绝对时间。</li>
 </ol>
-<p>二者同时存在的化，<code>Cache-Control</code>的优先级更高。（推荐）</p>
+<p>二者同时存在的话，<code>Cache-Control</code>的优先级更高。（推荐）</p>
 <h4 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h4><p>协商缓存是客户端和服务器协商之后通过协商结果判断是否使用本地缓存。若浏览器发现客户端不用加载新资源则返回<code>304</code>。实现方法有2：</p>
 <ol>
 <li>请求头中的<code>If-Modified-Since</code>和响应头中的<code>Last-Modified</code>。</li>
@@ -462,7 +462,7 @@
 <li>若修改记录的事务id就是事务id，则该修改记录对该事务可见</li>
 <li>若修改记录的trx_id小于read view中的min_trx_id，则说明记录是在read view创建前已提交的事务生成的，该版本的记录对当前事务可见</li>
 <li>若trx_id大于等于max_trx_id，说明是该事务启动后的事务修改的，对该事务不可见，该事务开始遍历undo log中的下一条修改记录并进行相同的4种判断</li>
-<li>若$min_trx_id\leq trx_id \lt max_trx_id$：若该事务id在m_ids列表则说明生成该版本记录事务依然活跃着仍未提交(该版本对当前事务不可见)；若该事务id不再m_ids中则说明生成该版本记录的事务已经被提交(该版本记录对当前事务可见)</li>
+<li>若$min_trx_id\leq trx_id \lt max_trx_id$：若该事务id在m_ids列表则说明生成该版本记录事务依然活跃着仍未提交(该版本对当前事务不可见)；若该事务id不在m_ids中则说明生成该版本记录的事务已经被提交(该版本记录对当前事务可见)</li>
 </ol>
 <p>可重复读和读提交的实现方式：</p>
 <ol>
