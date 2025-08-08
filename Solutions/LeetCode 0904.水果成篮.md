@@ -177,5 +177,157 @@ public:
 };
 ```
 
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-05 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-05 10:31:43
+ */
+#if defined(_WIN32) || defined(__APPLE__)
+#include "_[1,2]toVector.h"
+#endif
+
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        int ans = 0;
+        unordered_map<int, int> window;
+        for (int l = 0, r = 0; r < fruits.size(); r++) {
+            window[fruits[r]]++;
+            while (window.size() > 2) {
+                if (! --window[fruits[l]]) {
+                    window.erase(fruits[l]);
+                }
+                l++;
+            }
+            ans = max(ans, r - l + 1);
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-08-05 10:28:59
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-08-05 10:40:16
+'''
+from typing import List
+from collections import defaultdict
+
+class Solution:
+    def totalFruit(self, fruits: List[int]) -> int:
+        ans = l = 0
+        window = defaultdict(int)
+        for r, v in enumerate(fruits):
+            window[v] += 1
+            while len(window) > 2:
+                window[fruits[l]] -= 1
+                if not window[fruits[l]]:
+                    del window[fruits[l]]
+                l += 1
+            ans = max(ans, r - l + 1)
+        return ans
+```
+
+#### Golang
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-05 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-06 18:33:14
+ */
+package main
+
+func totalFruit(fruits []int) (ans int) {
+    window := map[int]int{}
+    for l, r := 0, 0; r < len(fruits); r++ {
+        window[fruits[r]]++
+        for len(window) > 2 {
+            window[fruits[l]]--
+            if window[fruits[l]] == 0 {
+                delete(window, fruits[l])
+            }
+            l++
+        }
+        ans = max(ans, r - l + 1)
+    }
+    return
+}
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-05 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-06 18:49:58
+ */
+import java.util.Map;
+import java.util.HashMap;
+
+class Solution {
+    public int totalFruit(int[] fruits) {
+        int ans = 0;
+        Map<Integer, Integer> window = new HashMap<>();
+        for (int l = 0, r = 0; r < fruits.length; r++) {
+            window.merge(fruits[r], 1, Integer::sum);
+            while (window.size() > 2) {
+                window.merge(fruits[l], -1, Integer::sum);
+                if (window.get(fruits[l]) == 0) {
+                    window.remove(fruits[l]);
+                }
+                l++;
+            }
+            ans = Math.max(ans, r - l + 1);
+        }
+        return ans;
+    }
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-05 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-08 10:23:47
+ */
+use std::collections::HashMap;
+
+impl Solution {
+    pub fn total_fruit(fruits: Vec<i32>) -> i32 {
+        let mut ans = 0;
+        let mut l = 0;
+        let mut window = HashMap::new();
+        for (r, &x) in fruits.iter().enumerate() {
+            *window.entry(x).or_insert(0) += 1;
+            while window.len() > 2 {
+                *window.entry(fruits[l]).or_insert(0) -= 1;  // 即使键一定存在也需要or_insert(一个默认值)
+                if window[&fruits[l]] == 0 {  // 键必须是&i32
+                    window.remove(&fruits[l]);
+                }
+                l += 1;
+            }
+            ans = ans.max(r - l + 1);
+        }
+        ans as i32
+    }
+}
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/17/LeetCode%200904.%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127358126](https://letmefly.blog.csdn.net/article/details/127358126)

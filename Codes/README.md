@@ -1,8 +1,8 @@
 <!--
  * @Author: LetMeFly
  * @Date: 2023-10-20 22:24:18
- * @LastEditors: LetMeFly
- * @LastEditTime: 2023-10-20 22:24:18
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-08 09:52:46
 -->
 ## AC代码
 
@@ -73,3 +73,7 @@ int main() {
 ```
 
 可以通过[Github Gist](https://gist.github.com/LetMeFly666/9e9c47db429532b212537cc1f6f36a42)进行下载/查看
+
+## 其他文件
+
+`cargo.lock`、`cargo.toml`、`lib.rs`都是rust所需

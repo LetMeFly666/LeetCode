@@ -1335,6 +1335,14 @@ categories: [自用]
 |centigrade|n. 摄氏温度<br/>adj. 摄氏的|
 |||
 |antique|adj. 古董的，古老的，过时的，陈旧的<br/>n. 古物，古董|
+|||
+|carton|n. 硬纸板制成的容器(如牛奶盒)|
+|sober|adj. 未醉的，清醒的；严肃的，冷静的；朴素的<br/>v. 使清醒，使理智|
+|||
+|freight|v. 货运，寄送，使充满(某种心情/口气)<br/>n. 货运，(海/陆/空运的)货物|
+|fervent|adj. 热情的，热枕的，热诚的，热烈的|
+|||
+|figurative|adj. 比喻的，形象的<details><summary>例句</summary>In <font color="#28bea0">figurative</font> language, words are used to create images and ideas.<br/>在比喻性语言中，词语用于创造图像和想法。</details>|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
