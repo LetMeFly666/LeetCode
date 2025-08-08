@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-03 20:13:00
+LastEditTime: 2025-08-08 10:18:12
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -51,6 +51,15 @@ for code2gen in CODES_TO_GEN:
     print(toName)
     if not os.path.exists(toName):
         shutil.copy(fromName, toName)
+    # rust - 更新lib.rs （若同时多个pr改代码则这里很容易冲突）
+    if code2gen == 'rust':
+        with open("lib.rs", "r+", encoding="utf-8") as f:
+            content = f.read()
+            import re
+            content = re.sub(r'include!\(".*?"\);', f'include!("{toName}");', content, count=1)
+            f.seek(0)
+            f.write(content)
+            f.truncate()
 
 title = ""
 for i in range(2, len(argv)):
