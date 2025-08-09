@@ -1170,7 +1170,7 @@ categories: [自用]
 |ascertain|v. 查明，弄清|
 |||
 |conveyance|n. 输送，运送，传送，交通/运载工具|
-|perusal|n. 读，阅读|
+|<font color="#28bea0" title="二次复习">perusal</font>|n. 读，阅读|
 |hymn|n. 赞美诗，圣歌，歌颂某事物的作品|
 |||
 |trample|v. 踩踏，践踏(尊严/权力等)|
@@ -1343,6 +1343,10 @@ categories: [自用]
 |fervent|adj. 热情的，热枕的，热诚的，热烈的|
 |||
 |figurative|adj. 比喻的，形象的<details><summary>例句</summary>In <font color="#28bea0">figurative</font> language, words are used to create images and ideas.<br/>在比喻性语言中，词语用于创造图像和想法。</details>|
+|||
+|contemptuous|adj. 轻蔑的，鄙夷的|
+|industrious|adj. 勤劳的，勤奋的，忙碌的|
+|turk|n. 土耳其人|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
