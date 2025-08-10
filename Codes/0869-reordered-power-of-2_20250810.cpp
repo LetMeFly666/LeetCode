@@ -2,11 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-08-10 17:20:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-10 17:24:03
+ * @LastEditTime: 2025-08-10 17:27:46
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
+
+unordered_set<string> Solution::can;
 
 class Solution {
 private:
