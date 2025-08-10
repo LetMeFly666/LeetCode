@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-10 17:20:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-10 20:44:18
+ * @LastEditTime: 2025-08-10 20:46:54
  */
 package main
 
@@ -18,7 +18,7 @@ func init0869() {
         return
     }
     for i := 0; i < 31; i++ {
-        can0869[itoa869(i)] = true
+        can0869[itoa869(1 << i)] = true
     }
 }
 
