@@ -8,8 +8,6 @@
 #include "_[1,2]toVector.h"
 #endif
 
-unordered_set<string> Solution::can;
-
 class Solution {
 private:
     // unordered_set<unordered_map<int, int>> times;  // 无默认哈希函数
@@ -33,3 +31,5 @@ public:
         return can.count(s);
     }
 };
+
+unordered_set<string> Solution::can;
