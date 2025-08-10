@@ -1347,6 +1347,11 @@ categories: [自用]
 |contemptuous|adj. 轻蔑的，鄙夷的|
 |industrious|adj. 勤劳的，勤奋的，忙碌的|
 |turk|n. 土耳其人|
+|||
+|shipwreck|n. 船舶失事，海滩，失事船只<br/>v. 遭遇海难|
+|canary|n. 金丝雀；试验品|
+|stylist|n. 发型师，形象设计师，语言风格优美的人|
+|shrewd|adj. 机灵的，精明的|
 
 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 
