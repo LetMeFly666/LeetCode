@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-10 17:20:07
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-10 20:49:53
+ * @LastEditTime: 2025-08-10 20:51:10
  */
 import java.util.Set;
 import java.util.HashSet;
@@ -20,7 +20,7 @@ class Solution {
     private static String itoa(int n) {
         char[] s = String.valueOf(n).toCharArray();
         Arrays.sort(s);
-        return String(s);
+        return new String(s);
     }
 
     public boolean reorderedPowerOf2(int n) {
