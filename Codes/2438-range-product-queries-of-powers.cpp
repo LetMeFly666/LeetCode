@@ -2,11 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-08-11 18:41:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-11 18:56:42
+ * @LastEditTime: 2025-08-11 18:55:02
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
+
+typedef long long ll;
 
 class Solution {
 public:
@@ -20,15 +22,16 @@ public:
             n >>= 1;
             th++;
         }
-        vector<int> perfix(pows.size() + 1);
+        vector<ll> perfix(pows.size() + 1);
+        perfix[0] = 1;  // query是相乘不是相加
         for (int i = 0; i < pows.size(); i++) {
-            perfix[i + 1] = perfix[i] + pows[i];
+            perfix[i + 1] = perfix[i] * pows[i];
         }
-        debug(pows);
-        debug(perfix);
+        // debug(pows);
+        // debug(perfix);
         vector<int> ans(queries.size());
         for (int i = 0; i < queries.size(); i++) {
-            ans[i] = perfix[queries[i][1] + 1] - perfix[queries[i][0]];
+            ans[i] = perfix[queries[i][1] + 1] / perfix[queries[i][0]];
         }
         return ans;
     }
