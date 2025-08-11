@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-08-08 10:19:31
  */
 pub struct Solution;
-include!("0869-reordered-power-of-2_20250810.rs");  // 这个fileName是会被脚本替换掉的
+include!("2438-range-product-queries-of-powers.rs");  // 这个fileName是会被脚本替换掉的
