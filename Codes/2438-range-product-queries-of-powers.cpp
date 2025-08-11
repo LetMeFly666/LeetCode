@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-11 18:41:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-11 19:13:43
+ * @LastEditTime: 2025-08-11 21:43:41
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,8 +26,8 @@ public:
         vector<int> ans(queries.size());
         for (int i = 0; i < queries.size(); i++) {
             ll thisVal = 1;
-            for (int i = queries[i][0]; i <= queries[i][1]; i++) {
-                thisVal = thisVal * pows[i] % MOD;
+            for (int j = queries[i][0]; j <= queries[i][1]; j++) {
+                thisVal = thisVal * pows[j] % MOD;
             }
             ans[i] = thisVal;
         }
