@@ -2,13 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2025-08-11 18:41:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-11 18:55:02
+ * @LastEditTime: 2025-08-11 19:13:43
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
 typedef long long ll;
+const ll MOD = 1e9 + 7;
 
 class Solution {
 public:
@@ -22,16 +23,13 @@ public:
             n >>= 1;
             th++;
         }
-        vector<ll> perfix(pows.size() + 1);
-        perfix[0] = 1;  // query是相乘不是相加
-        for (int i = 0; i < pows.size(); i++) {
-            perfix[i + 1] = perfix[i] * pows[i];
-        }
-        // debug(pows);
-        // debug(perfix);
         vector<int> ans(queries.size());
         for (int i = 0; i < queries.size(); i++) {
-            ans[i] = perfix[queries[i][1] + 1] / perfix[queries[i][0]];
+            ll thisVal = 1;
+            for (int i = queries[i][0]; i <= queries[i][1]; i++) {
+                thisVal = thisVal * pows[i] % MOD;
+            }
+            ans[i] = thisVal;
         }
         return ans;
     }
