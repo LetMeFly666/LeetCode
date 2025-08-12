@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-12 09:48:56
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-12 18:55:05
+ * @LastEditTime: 2025-08-12 21:33:24
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -17,26 +17,22 @@ private:
         long long ans = 1;
         while (b) {
             if (b & 1) {
-                ans = ans * a % MOD;
+                ans = ans * a;
             }
-            a = a * a % MOD;
+            a = a * a;
             b >>= 1;
         }
         return ans;
     }
 public:
     int numberOfWays(int n, int x) {
-        vector<long long> pows;
-        for (int i = 1; ; i++) {
-            int p = pow(i, x);
+        vector<int> dp(n + 1);
+        dp[0] = 1;
+        for (int th = 1; ; th++) {
+            int p = pow(th, x);
             if (p > n) {
                 break;
             }
-            pows.push_back(p);
-        }
-        vector<int> dp(n + 1);
-        dp[0] = 1;
-        for (int p : pows) {
             for (int i = n; i >= p; i--) {
                 dp[i] = (dp[i] + dp[i - p]) % MOD;
             }
