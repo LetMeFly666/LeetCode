@@ -14,6 +14,7 @@ func pow2787(a, b int) int {
 
 func numberOfWays(n int, x int) int {
     dp := make([]int, n + 1)
+    dp[0] = 1
     for th := 1; ; th++ {
         p := pow2787(th, x)
         if p > n {
