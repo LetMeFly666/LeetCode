@@ -137,9 +137,6 @@ class Solution:
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-08-12 21:50:02
  */
-import java.util.List;
-import java.util.ArrayList;
-
 class Solution {
     public int numberOfWays(int n, int x) {
         long[] dp = new long[n + 1];
