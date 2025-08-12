@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-12 09:48:56
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-12 10:20:30
+ * @LastEditTime: 2025-08-12 18:44:54
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,14 +18,10 @@ public:
             pows.push_back(now);
             now *= x;
         }
-        reverse(pows.begin(), pows.end());
         vector<int> dp(n + 1);
         dp[0] = 1;
-        for (int i = 1; i <= n; i++) {
-            for (int p : pows) {
-                if (p > i) {
-                    continue;
-                }
+        for (int p : pows) {
+            for (int i = n; i >= p; i--) {
                 dp[i] += dp[i - p];
             }
         }
@@ -38,6 +34,12 @@ public:
 10 2
 
 1
+*/
+
+/*
+4 1
+
+
 */
 int main() {
     int a, b;
