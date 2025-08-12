@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-12 09:48:56
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-12 18:47:04
+ * @LastEditTime: 2025-08-12 18:49:58
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -12,14 +12,13 @@
 class Solution {
 public:
     int numberOfWays(int n, int x) {
-        if (x == 1) {
-            return n == 1;
-        }
         vector<int> pows;
-        int now = x;
-        while (now <= n) {
-            pows.push_back(now);
-            now *= x;
+        for (int i = 1; ; i++) {
+            int p = pow(i, x);
+            if (p > n) {
+                break;
+            }
+            pows.push_back(p);
         }
         vector<int> dp(n + 1);
         dp[0] = 1;
