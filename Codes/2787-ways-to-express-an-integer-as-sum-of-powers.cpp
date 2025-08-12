@@ -10,6 +10,18 @@
 
 // dp[i]: 和为i的方案数
 class Solution {
+private:
+    int pow(int a, int b) {
+        int ans = 1;
+        while (b) {
+            if (b & 1) {
+                ans *= a;
+            }
+            a *= a;
+            b >>= 1;
+        }
+        return ans;
+    }
 public:
     int numberOfWays(int n, int x) {
         vector<int> pows;
