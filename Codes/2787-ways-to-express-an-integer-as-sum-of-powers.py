@@ -6,7 +6,7 @@ LastEditTime: 2025-08-12 21:37:06
 '''
 class Solution:
     def numberOfWays(self, n: int, x: int) -> int:
-        dp = [0] + [1] * n
+        dp = [1] + [0] * n
         th = 1
         while True:
             p = th ** x
