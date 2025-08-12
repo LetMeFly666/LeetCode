@@ -24,5 +24,5 @@ func numberOfWays(n int, x int) int {
             dp[i] += dp[i - p]
         }
     }
-    return dp[n]
+    return dp[n] % 1000000007
 }
