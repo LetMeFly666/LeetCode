@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-08-11 22:07:08
  */
 pub struct Solution;
-include!("2787-ways-to-express-an-integer-as-sum-of-powers.rs");  // 这个fileName是会被脚本替换掉的
+include!("0326-power-of-three_20250813.rs");  // 这个fileName是会被脚本替换掉的
