@@ -134,12 +134,19 @@ public:
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-14 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-14 18:41:02
+ */
 class Solution {
 public:
     bool checkPowersOfThree(int n) {
         while (n) {
-            if (n % 3 == 2)
+            if (n % 3 == 2) {
                 return false;
+            }
             n /= 3;
         }
         return true;
@@ -147,5 +154,89 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/09/LeetCode%201780.%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%89%E7%9A%84%E5%B9%82%E7%9A%84%E5%92%8C/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/128248159](https://letmefly.blog.csdn.net/article/details/128248159)
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-08-14 10:28:59
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-08-14 18:43:00
+'''
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
+        while n:
+            if n % 3 == 2:
+                return False
+            n //= 3
+        return True
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-14 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-14 18:44:38
+ */
+class Solution {
+    public boolean checkPowersOfThree(int n) {
+        while (n > 0) {
+            if (n % 3 == 2) {
+                return false;
+            }
+            n /= 3;
+        }
+        return true;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-14 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-14 18:43:30
+ */
+package main
+
+func checkPowersOfThree(n int) bool {
+    for ; n > 0; n /= 3 {
+        if n % 3 == 2 {
+            return false
+        }
+    }
+    return true
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-14 10:28:59
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-14 18:45:31
+ */
+impl Solution {
+    pub fn check_powers_of_three(mut n: i32) -> bool {
+        while n > 0 {
+            if n % 3 == 2 {
+                return false;
+            }
+            n /= 3;
+        }
+        return true;
+    }
+}
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/128248159)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/12/09/LeetCode%201780.%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E6%88%90%E4%B8%89%E7%9A%84%E5%B9%82%E7%9A%84%E5%92%8C)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

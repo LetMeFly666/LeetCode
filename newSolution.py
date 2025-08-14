@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-12 22:11:48
+LastEditTime: 2025-08-14 18:47:41
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -225,7 +225,7 @@ if not solutionExists:
     with open("README.md", "r", encoding="utf-8") as f:
         readme = f.read()
 else:
-    input(f'手动更新完{solutionName}了吗？: ')
+    input(f'手动更新完 {solutionName} 了吗？: ')
     # TODO: 有空时候可以写个手动更新题解中代码的函数 - 最简单的办法是代码追加到(最后一种方法的)后面然后手动删
 
 def readmeNewLine(readme: str) -> str:
