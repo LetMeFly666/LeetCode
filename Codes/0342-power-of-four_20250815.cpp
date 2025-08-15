@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-15 18:29:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-15 18:40:05
+ * @LastEditTime: 2025-08-15 18:41:27
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,8 +11,11 @@
 class Solution {
 public:
     bool isPowerOfFour(int n) {
+        if (n <= 0) {
+            return false;
+        }
         int k = sqrt(n);
-        return n > 0 && k * k == n && (n & (n - 1)) == n;
+        return k * k == n && (n & (n - 1)) == 0;
     }
 };
 
