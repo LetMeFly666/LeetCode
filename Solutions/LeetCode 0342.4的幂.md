@@ -81,5 +81,94 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/09/29/LeetCode%200342.4%E7%9A%84%E5%B9%82/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127104821](https://letmefly.blog.csdn.net/article/details/127104821)
+## 方法二：判断是否 是2的幂且是平方数
+
+如何判断一个数是否是2的幂？这里有5种方法判断：[【LetMeFly】231.2 的幂：五种小方法判断](http://blog.letmefly.xyz/2022/09/08/LeetCode%200231.2%E7%9A%84%E5%B9%82/)
+
+如果一个数是2的幂，那么它是4的幂吗？只需要看这个数是否是平方数即可（$\lfloor\sqrt{n}\rfloor^2==n$）。
+
+这是因为$4^t=(2^{\frac{t}{2}})^2$。
+
++ 时间复杂度$O(1)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        if (n <= 0) {
+            return false;
+        }
+        int k = sqrt(n);
+        return k * k == n && (n & (n - 1)) == 0;
+    }
+};
+```
+
+## 方法三：判断是否 是2的幂且模3得1
+
+如果一个数是2的幂，那么它是4的幂等价于它模3得1。
+
++ 时间复杂度$O(1)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    bool isPowerOfFour(int n) {
+        return n > 0 && (n & (n - 1)) == 0 && n % 3 == 1;
+    }
+};
+```
+
+#### Python
+
+```python
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        return n > 0 and n & (n - 1) == 0 and n % 3 == 1
+```
+
+#### Java
+
+```java
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        return n > 0 && (n & (n - 1)) == 0 && n % 3 == 1;
+    }
+}
+```
+
+#### Go
+
+```go
+package main
+
+func isPowerOfFour(n int) bool {
+    return n > 0 && n & (n - 1) == 0 && n % 3 == 1
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn is_power_of_four(n: i32) -> bool {
+        n > 0 && n & (n - 1) == 0 && n % 3 == 1
+    }
+}
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127104821)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/09/29/LeetCode%200342.4%E7%9A%84%E5%B9%82/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

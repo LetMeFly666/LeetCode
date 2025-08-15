@@ -1073,7 +1073,7 @@ categories: [自用]
 |detract|v. 破坏，损害，转移，使分心<details><summary>例句</summary>Too much make-up will <font color="#28bea0">detract</font> from her beauty.<br/>画太浓的妆有损她的美丽。</details>|
 |esteem|n. 尊重，敬重，好评<br/>v. 尊重，敬重，认为，把...看作|
 |||
-|piston|n. 活塞|
+|<font color="#28bea0" title="二次复习">piston</font>|n. 活塞|
 |||
 |postponement|n. 延期，推迟|
 |||
@@ -1360,6 +1360,9 @@ categories: [自用]
 |commonsense|n. 常识，直觉判断力<br/>adj. 常识的，具有常识的|
 |||
 |solemn|adj. 严肃的，庄严的，正式的，郑重的|
+|||
+|conscientiously|adv. 完全地，彻底地，负责地|
+|headmaster|n. (中小学)校长|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
