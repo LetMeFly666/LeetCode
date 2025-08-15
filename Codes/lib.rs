@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-08-11 22:07:08
  */
 pub struct Solution;
-include!("1780-check-if-number-is-a-sum-of-powers-of-three_20250814.rs");  // 这个fileName是会被脚本替换掉的
+include!("0342-power-of-four_20250815.rs");  // 这个fileName是会被脚本替换掉的
