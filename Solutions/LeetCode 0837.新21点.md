@@ -208,7 +208,7 @@ impl Solution {
         let max_pts: usize = max_pts as usize;
         let n: usize = n as usize;
 
-        let mut dp: Vec<f64> = vec![0 as f64; k + max_pts];
+        let mut dp: Vec<f64> = vec![0.; k + max_pts];
         let mut s: f64 = 0.;
         for i in k..(k+max_pts) {
             if i <= n {
