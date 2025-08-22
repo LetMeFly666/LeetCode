@@ -1366,7 +1366,17 @@ categories: [自用]
 |||
 |dramatize|v. 将...改编成剧本，将...搬上舞台，使戏剧化|
 |||
-|dissipate||
+|dissipate|v. (使)消散，驱散，挥霍，浪费|
+|||
+|requisite|adj. 必需的，必不可少的<br/>n. 必需的事物|
+|associative|adj. 联想的，结合的|
+|know-how|n. 专门知识，技能，实际经验|
+|||
+|vengeance|n. 报复，报仇，复仇|
+|locust|n. 蝗虫|
+|||
+|nylon|n. 尼龙|
+|cohesive|adj. 构成一个整体的，使结合的，使凝结的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
