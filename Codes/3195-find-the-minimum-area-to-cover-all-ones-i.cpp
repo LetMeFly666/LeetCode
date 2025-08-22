@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-22 21:18:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-22 21:20:03
+ * @LastEditTime: 2025-08-22 21:21:31
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,7 +18,7 @@ public:
                     l = min(l, j);
                     r = max(r, j);
                     u = min(u, i);
-                    d = max(d, j);
+                    d = max(d, i);
                 }
             }
         }
