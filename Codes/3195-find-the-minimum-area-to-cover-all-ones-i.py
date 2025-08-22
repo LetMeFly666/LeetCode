@@ -16,5 +16,5 @@ class Solution:
                     l = min(l, j)
                     r = max(r, j)
                     u = min(u, i)
-                    d = max(d, j)
+                    d = max(d, i)
         return (r - l + 1) * (d - u + 1)
