@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-25 18:56:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-25 22:07:27
+ * @LastEditTime: 2025-08-25 22:09:04
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,7 +19,7 @@ public:
                     ans.push_back(mat[i][j]);
                 }
             } else {
-                for (int i = min(k, n - 1), j = k - i; i >= 0 && i < m; i--, j++) {
+                for (int i = min(k, n - 1), j = k - i; i >= 0 && j < m; i--, j++) {
                     ans.push_back(mat[i][j]);
                 }
             }
