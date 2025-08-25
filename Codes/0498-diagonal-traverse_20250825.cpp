@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-25 18:56:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-25 21:39:42
+ * @LastEditTime: 2025-08-25 21:47:09
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -12,23 +12,29 @@ class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
         vector<int> ans;
-        int i = 0, j = 0, d = 1;
+        int i = 0, j = 0;
+        bool d = true;
         int total = mat.size() * mat[0].size();
         while (ans.size() < total) {
+            printf("i = %d, j = %d, d = %d\n", i, j, d);  // *****
             ans.push_back(mat[i][j]);
             if (d) {
                 i--, j++;
                 if (i == -1) {
                     i = 0;
+                    d = !d;
                 } else if (j == mat[0].size()) {
                     j = mat[0].size() - 1;
+                    d = !d;
                 }
             } else {
                 i++, j--;
                 if (j == -1) {
                     j = 0;
+                    d = !d;
                 } else if (i == mat.size()) {
                     i = mat.size() - 1;
+                    d = !d;
                 }
             }
         }
