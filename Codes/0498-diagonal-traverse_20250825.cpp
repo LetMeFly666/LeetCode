@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-25 18:56:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-25 21:59:34
+ * @LastEditTime: 2025-08-25 22:07:27
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -15,11 +15,11 @@ public:
         int n = mat.size(), m = mat[0].size();
         for (int k = 0; k < m + n - 1; k++) {
             if (k % 2) {
-                for (int i = 0, j = k; j >= 0; i++, j--) {
+                for (int j = min(k, m - 1), i = k - j; j >= 0 && i < n; i++, j--) {
                     ans.push_back(mat[i][j]);
                 }
             } else {
-                for (int i = k, j = 0; i >= 0; i--, j++) {
+                for (int i = min(k, n - 1), j = k - i; i >= 0 && i < m; i--, j++) {
                     ans.push_back(mat[i][j]);
                 }
             }
@@ -27,3 +27,20 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[[1,2,3],[4,5,6],[7,8,9]]
+
+[1,2,4,7,5,3,6,8,9]
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        debug(sol.findDiagonalOrder(v));
+    }
+    return 0;
+}
+#endif
