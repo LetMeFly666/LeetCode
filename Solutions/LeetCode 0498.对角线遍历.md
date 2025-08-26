@@ -1,11 +1,11 @@
 ---
-title: 498.对角线遍历：模拟遍历/对角线思维
+title: 498.对角线遍历：模拟遍历(if-else)/对角线思维
 date: 2025-08-26 10:40:07
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 模拟]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】498.对角线遍历：模拟遍历/对角线思维
+# 【LetMeFly】498.对角线遍历：模拟遍历(if-else)/对角线思维
 
 力扣题目链接：[https://leetcode.cn/problems/diagonal-traverse/](https://leetcode.cn/problems/diagonal-traverse/)
 
@@ -32,16 +32,22 @@ categories: [题解, LeetCode]
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>m == mat.length</code></li>
-	<li><code>n == mat[i].length</code></li>
+	<li><code>n == mat.length</code></li>
+	<li><code>m == mat[i].length</code></li>
 	<li><code>1 &lt;= m, n &lt;= 10<sup>4</sup></code></li>
 	<li><code>1 &lt;= m * n &lt;= 10<sup>4</sup></code></li>
 	<li><code>-10<sup>5</sup> &lt;= mat[i][j] &lt;= 10<sup>5</sup></code></li>
 </ul>
 
-## 解题方法一：模拟遍历
+## 解题方法一：模拟遍历 —— if-else
 
-没啥好说的，起点`(0, 0)`，终点`(n - 1, m - 1)`
+![官方图示例1](https://assets.leetcode.com/uploads/2021/04/10/diag1-grid.jpg)
+
+没啥好说的，起点`(0, 0)`，终点`(n - 1, m - 1)`，`direction=true`代表向右上否则代表向左下。
+
+向右上时：如果已经达到了最右边一列，则下次从下一行对应元素开始(如图中的3到6)；如果已经达到了第一行，则下次从这一行右边一个元素开始（如图中的1到2）；否则就正常往右上方走（如图中的5到3）。
+
+向左下时：同理，判下if-else即可。
 
 + 时间复杂度$O(mn)$
 + 空间复杂度$O(1)$，力扣返回值不计入算法空间复杂度
@@ -100,12 +106,20 @@ public:
 };
 ```
 
-## 解题方法二：模拟遍历
+## 解题方法二：对角线思维
 
-11111
+![官方图示例1](https://assets.leetcode.com/uploads/2021/04/10/diag1-grid.jpg)
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+不考虑图中mat外的虚线，不难发现不管是褐色(向右上方)还是黄色(向左下方)，都是在沿着反对角线的方向走。
+
+$n\times m$的矩形一共有多少条对角线呢？一共$m+n-1$条。并且反对角线上的坐标有一个性质，就是一条反对角线上的元素横纵坐标之和相等。
+
+所以只需要枚举是第几根反对角线(从0开始)，偶数时往右上走奇数时往左下走，走到边界就停下。
+
+相比于方法一，其实是将很多的if-else（下一个坐标位置的计算判断）改成了相对简单的走到边界就停下，省去了**方向转换时**的“复杂”判断。
+
++ 时间复杂度$O(mn)$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
@@ -118,10 +132,6 @@ public:
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-08-25 22:09:04
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     vector<int> findDiagonalOrder(vector<vector<int>>& mat) {
@@ -141,23 +151,6 @@ public:
         return ans;
     }
 };
-
-#if defined(_WIN32) || defined(__APPLE__)
-/*
-[[1,2,3],[4,5,6],[7,8,9]]
-
-[1,2,4,7,5,3,6,8,9]
-*/
-int main() {
-    string s;
-    while (cin >> s) {
-        vector<vector<int>> v = stringToVectorVector(s);
-        Solution sol;
-        debug(sol.findDiagonalOrder(v));
-    }
-    return 0;
-}
-#endif
 ```
 
 #### Python
@@ -294,6 +287,6 @@ impl Solution {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/08/25/LeetCode%200498.%E5%AF%B9%E8%A7%92%E7%BA%BF%E9%81%8D%E5%8E%86/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/150851418)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/08/25/LeetCode%200498.%E5%AF%B9%E8%A7%92%E7%BA%BF%E9%81%8D%E5%8E%86/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
