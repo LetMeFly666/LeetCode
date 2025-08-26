@@ -9,7 +9,7 @@ categories: [题解, LeetCode]
 
 力扣题目链接：[https://leetcode.cn/problems/diagonal-traverse/](https://leetcode.cn/problems/diagonal-traverse/)
 
-<p>给你一个大小为 <code>m x n</code> 的矩阵 <code>mat</code> ，请以对角线遍历的顺序，用一个数组返回这个矩阵中的所有元素。</p>
+<p>给你一个大小为 <code>n x m</code> 的矩阵 <code>mat</code> ，请以对角线遍历的顺序，用一个数组返回这个矩阵中的所有元素。</p>
 
 <p>&nbsp;</p>
 
