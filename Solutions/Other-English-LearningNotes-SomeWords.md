@@ -1384,6 +1384,9 @@ categories: [自用]
 |neutron|n. 中子|
 |countersignature|n. 副署，会签|
 |trim|n. 修剪，修整<br/>v. 修剪，削减<br/>adj. (修剪)整齐的，苗条的|
+|||
+|startle|v. 惊吓，使吓一跳<br/>n. 惊愕，惊恐|
+|superintendent|n. 负责人，主管，监管人|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
