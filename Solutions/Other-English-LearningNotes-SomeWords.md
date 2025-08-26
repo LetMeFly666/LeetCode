@@ -940,7 +940,7 @@ categories: [自用]
 |||
 |attributive|adj. (用于所修饰的名词前)定语的<br/>n. 定语|
 |||
-|puppet|n. 木偶，傀儡，受他人操纵的人|
+|<font color="#28bea0" title="二次复习">puppet</font>|n. 木偶，傀儡，受他人操纵的人|
 |||
 |eel|n. 鳗鱼，鳗鲡，鳗鱼肉|
 |leeway|n. 自由活动的空间|
@@ -1377,6 +1377,16 @@ categories: [自用]
 |||
 |nylon|n. 尼龙|
 |cohesive|adj. 构成一个整体的，使结合的，使凝结的|
+|||
+|oar|n. 船桨|
+|||
+|hydroelectric|adj. 使用水力发电的，水力产生的|
+|neutron|n. 中子|
+|countersignature|n. 副署，会签|
+|trim|n. 修剪，修整<br/>v. 修剪，削减<br/>adj. (修剪)整齐的，苗条的|
+|||
+|startle|v. 惊吓，使吓一跳<br/>n. 惊愕，惊恐|
+|superintendent|n. 负责人，主管，监管人|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
