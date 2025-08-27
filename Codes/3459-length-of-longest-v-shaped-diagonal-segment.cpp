@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-27 23:30:36
+ * @LastEditTime: 2025-08-27 23:42:19
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -61,9 +61,9 @@ public:
     int lenOfVDiagonal(vector<vector<int>>& grid) {
         this->grid = move(grid);
         int ans = 0;
-        for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid[i].size(); j++) {
-                if (grid[i][j] != 1) {
+        for (int i = 0; i < this->grid.size(); i++) {
+            for (int j = 0; j < this->grid[i].size(); j++) {
+                if (this->grid[i][j] != 1) {
                     continue;
                 }
                 for (int d = 0; d < 4; d++) {
@@ -74,3 +74,20 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[[2,2,1,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]
+
+5
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.lenOfVDiagonal(v) << endl;
+    }
+    return 0;
+}
+#endif
