@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-27 23:42:19
+ * @LastEditTime: 2025-08-27 23:53:17
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -48,6 +48,10 @@ private:
         if (times == 0) {
             for (int nd = 0; nd < 4; nd++) {
                 if (abs(nd - d) == 2) {
+                    continue;
+                }
+                int ni = i + directions[nd][0], nj = j + directions[nd][1];
+                if (!(ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size())) {
                     continue;
                 }
                 if (canContinue(i, j, ni, nj)) {
