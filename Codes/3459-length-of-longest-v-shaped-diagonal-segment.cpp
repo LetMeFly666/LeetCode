@@ -10,7 +10,7 @@
 
 class Solution {
 private:
-    const bool directions[4][2] = {{1, 1}, {1, -1}, {-1, -1}, {-1, 1}};
+    const int directions[4][2] = {{1, 1}, {1, -1}, {-1, -1}, {-1, 1}};
     vector<vector<int>> grid;
     unordered_map<int, int> cache;
 
