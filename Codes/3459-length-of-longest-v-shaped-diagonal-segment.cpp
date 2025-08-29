@@ -2,15 +2,22 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-28 00:04:10
+ * @LastEditTime: 2025-08-29 13:24:36
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
+#define dbgIJDT(msg) printf("dbg(%s): i == %d && j == %d && d == %d && times == %d\n", msg, i, j, d, times)
+
 class Solution {
 private:
-    const int directions[4][2] = {{1, 1}, {1, -1}, {-1, -1}, {-1, 1}};
+    const int directions[4][2] = {
+        {1, 1},    // 0 - ↘️
+        {1, -1},   // 1 - ↙️
+        {-1, -1},  // 2 - ↖️
+        {-1, 1}    // 3 - ↗️
+    };
     vector<vector<int>> grid;
     unordered_map<int, int> cache;
 
@@ -30,18 +37,21 @@ private:
     8
     */
     inline int getCacheKey(int i, int j, int d, int times) {
-        return i * 4000 + j * 8 + d * 2;
+        return i * 4000 + j * 8 + d * 2 + times;  // 这里忘记加times了！！！
     }
 
     int dfs(int i, int j, int d, int times) {
         int cacheKey = getCacheKey(i, j, d, times);
+        if (cacheKey == 12018) {
+            dbgIJDT("cacheKey=12018");
+        }
         if (cache.count(cacheKey)) {
             return cache[cacheKey];
         }
         int toAdd = 0;
         int ni = i + directions[d][0], nj = j + directions[d][1];
-        if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 2 && times == 1) {
-            printf("dbg: i == %d && j == %d && d == %d && times == %d\n", i, j, d, times);
+        if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
+            dbgIJDT("after cache");
         }
         if (ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size()) {
             if (canContinue(i, j, ni, nj)) {
