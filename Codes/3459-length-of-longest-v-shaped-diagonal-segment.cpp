@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:26:07
+ * @LastEditTime: 2025-08-29 13:30:10
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -59,14 +59,9 @@ private:
             }
         }
         if (times == 0) {
-            for (int nd = 0; nd < 4; nd++) {
-                if (abs(nd - d) == 2) {
-                    continue;
-                }
-                int ni = i + directions[nd][0], nj = j + directions[nd][1];
-                if (!(ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size())) {
-                    continue;
-                }
+            int nd = (d + 1) % 4;
+            int ni = i + directions[nd][0], nj = j + directions[nd][1];
+            if (ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size()) {
                 if (canContinue(i, j, ni, nj)) {
                     toAdd = max(toAdd, dfs(ni, nj, nd, 1));
                 }
@@ -102,6 +97,15 @@ public:
 [[2,2,2,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]
 
 4
+*/
+/*
+[[1,2,2],[1,0,2]]
+
+
+1 2 2
+1 0 2
+
+2
 */
 int main() {
     string s;
