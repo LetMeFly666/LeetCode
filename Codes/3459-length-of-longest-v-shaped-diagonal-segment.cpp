@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:35:33
+ * @LastEditTime: 2025-08-29 13:40:33
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,6 +20,7 @@ private:
     };
     vector<vector<int>> grid;
     unordered_map<int, int> cache;
+    int n, m;
 
     inline bool canContinue(int i, int j, int ni, int nj) {
         int thisVal = grid[i][j], nextVal = grid[ni][nj];
@@ -53,7 +54,7 @@ private:
         // if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
         //     dbgIJDT("after cache");
         // }
-        if (ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size()) {
+        if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
             if (canContinue(i, j, ni, nj)) {
                 toAdd = dfs(ni, nj, d, times);
             }
@@ -61,7 +62,7 @@ private:
         if (times == 0) {
             int nd = (d + 1) % 4;
             int ni = i + directions[nd][0], nj = j + directions[nd][1];
-            if (ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size()) {
+            if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
                 if (canContinue(i, j, ni, nj)) {
                     toAdd = max(toAdd, dfs(ni, nj, nd, 1));
                 }
@@ -72,8 +73,9 @@ private:
 public:
     int lenOfVDiagonal(vector<vector<int>>& grid) {
         this->grid = move(grid);
+        n = this->grid.size(), m = this->grid[0].size();
         int ans = 0;
-        for (int i = 0; i < this->grid.size(); i++) {
+        for (int i = 0; i < this->n; i++) {
             for (int j = 0; j < this->grid[i].size(); j++) {
                 if (this->grid[i][j] != 1) {
                     continue;
