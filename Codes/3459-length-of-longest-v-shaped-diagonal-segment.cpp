@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:40:33
+ * @LastEditTime: 2025-08-29 13:42:49
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,6 +23,9 @@ private:
     int n, m;
 
     inline bool canContinue(int i, int j, int ni, int nj) {
+        if (!(ni >= 0 && ni < n && nj >= 0 && nj < m)) {
+            return false;
+        }
         int thisVal = grid[i][j], nextVal = grid[ni][nj];
         return (thisVal == 1 && nextVal == 2) || (thisVal != 1 && nextVal != 1 && thisVal != nextVal);
     }
@@ -54,18 +57,14 @@ private:
         // if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
         //     dbgIJDT("after cache");
         // }
-        if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
-            if (canContinue(i, j, ni, nj)) {
-                toAdd = dfs(ni, nj, d, times);
-            }
+        if (canContinue(i, j, ni, nj)) {
+            toAdd = dfs(ni, nj, d, times);
         }
         if (times == 0) {
             int nd = (d + 1) % 4;
             int ni = i + directions[nd][0], nj = j + directions[nd][1];
-            if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
-                if (canContinue(i, j, ni, nj)) {
-                    toAdd = max(toAdd, dfs(ni, nj, nd, 1));
-                }
+            if (canContinue(i, j, ni, nj)) {
+                toAdd = max(toAdd, dfs(ni, nj, nd, 1));
             }
         }
         return cache[cacheKey] = 1 + toAdd;
