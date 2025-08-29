@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:30:10
+ * @LastEditTime: 2025-08-29 13:35:33
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,7 +23,7 @@ private:
 
     inline bool canContinue(int i, int j, int ni, int nj) {
         int thisVal = grid[i][j], nextVal = grid[ni][nj];
-        return (thisVal == 1 && nextVal != 1) || (thisVal != 1 && nextVal != 1 && thisVal != nextVal);
+        return (thisVal == 1 && nextVal == 2) || (thisVal != 1 && nextVal != 1 && thisVal != nextVal);
     }
 
     /*
@@ -104,6 +104,14 @@ public:
 
 1 2 2
 1 0 2
+
+2
+*/
+/*
+[[2,2,0,2,0,2,0],[1,2,2,1,0,2,0]]
+
+2 2 0 2 0 2 0
+1 2 2 1 0 2 0
 
 2
 */
