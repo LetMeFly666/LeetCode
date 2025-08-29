@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:42:49
+ * @LastEditTime: 2025-08-29 18:50:39
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -10,6 +10,7 @@
 
 #define dbgIJDT(msg) printf("dbg(%s): i == %d && j == %d && d == %d && times == %d\n", msg, i, j, d, times)
 
+// 有点卡极限 数据范围似乎不是很好
 class Solution {
 private:
     const int directions[4][2] = {
@@ -19,7 +20,7 @@ private:
         {-1, 1}    // 3 - ↗️
     };
     vector<vector<int>> grid;
-    unordered_map<int, int> cache;
+    vector<int> cache;
     int n, m;
 
     inline bool canContinue(int i, int j, int ni, int nj) {
@@ -41,7 +42,7 @@ private:
     8
     */
     inline int getCacheKey(int i, int j, int d, int times) {
-        return i * 4000 + j * 8 + d * 2 + times;  // 这里忘记加times了！！！
+        return i * 8 * m + j * 8 + d * 2 + times;
     }
 
     int dfs(int i, int j, int d, int times) {
@@ -49,7 +50,7 @@ private:
         // if (cacheKey == 12018) {
         //     dbgIJDT("cacheKey=12018");
         // }
-        if (cache.count(cacheKey)) {
+        if (cache[cacheKey] != -1) {
             return cache[cacheKey];
         }
         int toAdd = 0;
@@ -73,6 +74,7 @@ public:
     int lenOfVDiagonal(vector<vector<int>>& grid) {
         this->grid = move(grid);
         n = this->grid.size(), m = this->grid[0].size();
+        cache.resize(m * n * 8, -1);
         int ans = 0;
         for (int i = 0; i < this->n; i++) {
             for (int j = 0; j < this->grid[i].size(); j++) {
