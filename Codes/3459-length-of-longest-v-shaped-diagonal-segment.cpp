@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-08-27 23:08:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-08-29 13:24:36
+ * @LastEditTime: 2025-08-29 13:26:07
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -42,17 +42,17 @@ private:
 
     int dfs(int i, int j, int d, int times) {
         int cacheKey = getCacheKey(i, j, d, times);
-        if (cacheKey == 12018) {
-            dbgIJDT("cacheKey=12018");
-        }
+        // if (cacheKey == 12018) {
+        //     dbgIJDT("cacheKey=12018");
+        // }
         if (cache.count(cacheKey)) {
             return cache[cacheKey];
         }
         int toAdd = 0;
         int ni = i + directions[d][0], nj = j + directions[d][1];
-        if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
-            dbgIJDT("after cache");
-        }
+        // if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
+        //     dbgIJDT("after cache");
+        // }
         if (ni >= 0 && ni < grid.size() && nj >= 0 && nj < grid[0].size()) {
             if (canContinue(i, j, ni, nj)) {
                 toAdd = dfs(ni, nj, d, times);
