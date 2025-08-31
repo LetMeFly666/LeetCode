@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-08-28 12:54:06
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-31 19:06:27
+LastEditTime: 2025-08-31 19:08:33
 '''
 from typing import List
 from functools import cache
@@ -27,14 +27,14 @@ class Solution:
         return now == 1 and next == 2 or now != 1 and next != 1 and now != next
 
     @cache
-    def dfs(self, i: int, j: int, d: int, times: int) -> int:
+    def dfs(self, i: int, j: int, d: int, canChange: bool) -> int:
         then = 0
         if self.canContinue(i, j, d):
-            then = self.dfs(i + self.directions[d][0], j + self.directions[d][1], d, times)
-        if times == 0:
+            then = self.dfs(i + self.directions[d][0], j + self.directions[d][1], d, canChange)
+        if canChange:
             nd = (d + 1) % 4
             if self.canContinue(i, j, nd):
-                then = max(then, self.dfs(i + self.directions[nd][0], j + self.directions[nd][1], nd, 1))
+                then = max(then, self.dfs(i + self.directions[nd][0], j + self.directions[nd][1], nd, False))
         return then + 1
 
     def lenOfVDiagonal(self, grid: List[List[int]]) -> int:
@@ -46,7 +46,7 @@ class Solution:
                 if g != 1:
                     continue
                 for d in range(4):
-                    ans = max(ans, self.dfs(i, j, d, 0))
+                    ans = max(ans, self.dfs(i, j, d, True))
         return ans
 
 
