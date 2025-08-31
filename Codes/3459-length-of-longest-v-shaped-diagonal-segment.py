@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-08-28 12:54:06
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-31 17:56:33
+LastEditTime: 2025-08-31 19:06:27
 '''
 from typing import List
 from functools import cache
@@ -48,3 +48,23 @@ class Solution:
                 for d in range(4):
                     ans = max(ans, self.dfs(i, j, d, 0))
         return ans
+
+
+if __name__ == '__main__':
+    from functools import cache
+    class A:
+        def __init__(self, x):
+            self.x = x
+
+        @cache
+        def f(self, y):
+            print("running f...")
+            return self.x + y
+
+
+    a1 = A(10)
+    a2 = A(20)
+
+    print(a1.f(1))  # 运行函数，输出 11
+    print(a1.f(1))  # 命中缓存，直接输出 11
+    print(a2.f(1))  # 不命中缓存，输出21
