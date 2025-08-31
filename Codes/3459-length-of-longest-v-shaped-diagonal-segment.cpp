@@ -1,0 +1,130 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-08-27 23:08:01
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-08-29 18:50:39
+ */
+#if defined(_WIN32) || defined(__APPLE__)
+#include "_[1,2]toVector.h"
+#endif
+
+#define dbgIJDT(msg) printf("dbg(%s): i == %d && j == %d && d == %d && times == %d\n", msg, i, j, d, times)
+
+// 有点卡极限 数据范围似乎不是很好
+class Solution {
+private:
+    const int directions[4][2] = {
+        {1, 1},    // 0 - ↘️
+        {1, -1},   // 1 - ↙️
+        {-1, -1},  // 2 - ↖️
+        {-1, 1}    // 3 - ↗️
+    };
+    vector<vector<int>> grid;
+    vector<int> cache;
+    int n, m;
+
+    inline bool canContinue(int i, int j, int ni, int nj) {
+        if (!(ni >= 0 && ni < n && nj >= 0 && nj < m)) {
+            return false;
+        }
+        int thisVal = grid[i][j], nextVal = grid[ni][nj];
+        return (thisVal == 1 && nextVal == 2) || (thisVal != 1 && nextVal != 1 && thisVal != nextVal);
+    }
+
+    /*
+    >>> 500 * 500
+    250000
+    >>> 500 * 500 * 4 * 2
+    2000000
+    >>> 500 * 4 * 2
+    4000
+    >>> 4 * 2
+    8
+    */
+    inline int getCacheKey(int i, int j, int d, int times) {
+        return i * 8 * m + j * 8 + d * 2 + times;
+    }
+
+    int dfs(int i, int j, int d, int times) {
+        int cacheKey = getCacheKey(i, j, d, times);
+        // if (cacheKey == 12018) {
+        //     dbgIJDT("cacheKey=12018");
+        // }
+        if (cache[cacheKey] != -1) {
+            return cache[cacheKey];
+        }
+        int toAdd = 0;
+        int ni = i + directions[d][0], nj = j + directions[d][1];
+        // if (i == 2 && j == 1 && d == 2 && times == 1 || i == 3 && j == 2 && d == 1 && times == 0 || i == 2 && j == 3 && d == 1 && times == 0) {
+        //     dbgIJDT("after cache");
+        // }
+        if (canContinue(i, j, ni, nj)) {
+            toAdd = dfs(ni, nj, d, times);
+        }
+        if (times == 0) {
+            int nd = (d + 1) % 4;
+            int ni = i + directions[nd][0], nj = j + directions[nd][1];
+            if (canContinue(i, j, ni, nj)) {
+                toAdd = max(toAdd, dfs(ni, nj, nd, 1));
+            }
+        }
+        return cache[cacheKey] = 1 + toAdd;
+    }
+public:
+    int lenOfVDiagonal(vector<vector<int>>& grid) {
+        this->grid = move(grid);
+        n = this->grid.size(), m = this->grid[0].size();
+        cache.resize(m * n * 8, -1);
+        int ans = 0;
+        for (int i = 0; i < this->n; i++) {
+            for (int j = 0; j < this->grid[i].size(); j++) {
+                if (this->grid[i][j] != 1) {
+                    continue;
+                }
+                for (int d = 0; d < 4; d++) {
+                    ans = max(ans, dfs(i, j, d, 0));
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[[2,2,1,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]
+
+5
+*/
+/*
+[[2,2,2,2,2],[2,0,2,2,0],[2,0,1,1,0],[1,0,2,2,2],[2,0,0,2,2]]
+
+4
+*/
+/*
+[[1,2,2],[1,0,2]]
+
+
+1 2 2
+1 0 2
+
+2
+*/
+/*
+[[2,2,0,2,0,2,0],[1,2,2,1,0,2,0]]
+
+2 2 0 2 0 2 0
+1 2 2 1 0 2 0
+
+2
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.lenOfVDiagonal(v) << endl;
+    }
+    return 0;
+}
+#endif
