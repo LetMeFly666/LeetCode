@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-08-28 12:54:06
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-08-31 17:55:12
+LastEditTime: 2025-08-31 17:56:33
 '''
 from typing import List
 from functools import cache
@@ -26,6 +26,7 @@ class Solution:
         next = self.grid[ni][nj]
         return now == 1 and next == 2 or now != 1 and next != 1 and now != next
 
+    @cache
     def dfs(self, i: int, j: int, d: int, times: int) -> int:
         then = 0
         if self.canContinue(i, j, d):
