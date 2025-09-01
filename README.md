@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-06-23 13:02:52
+ * @LastEditTime: 2025-09-01 23:59:01
 -->
 # LetLeet Blog
 
@@ -88,6 +88,7 @@
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
 |Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
+|MacOS - 记录MacOS发烫的好几天 - 幕后黑手竟然是|<a href="https://blog.letmefly.xyz/2025/09/01/Other-MacOS-Logging_several_days_of_macOS_overheating/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/151087541">CSDN博客</a>|
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
