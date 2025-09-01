@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-01 21:38:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-01 22:00:19
+ * @LastEditTime: 2025-09-01 22:01:22
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,7 +23,7 @@ public:
     double maxAverageRatio(vector<vector<int>>& classes, int extraStudents) {
         auto comp = [&classes](int i, int j) {
             return 1. * (classes[i][0] + 1) / (classes[i][1] + 1) - 1. * classes[i][0] / classes[i][1]
-                 > 1. * (classes[j][0] + 1) / (classes[j][1] + 1) - 1. * classes[j][0] / classes[j][1];
+                 < 1. * (classes[j][0] + 1) / (classes[j][1] + 1) - 1. * classes[j][0] / classes[j][1];
         };
         priority_queue<int, vector<int>, decltype(comp)> pq(comp);
         for (int i = 0; i < classes.size(); i++) {
