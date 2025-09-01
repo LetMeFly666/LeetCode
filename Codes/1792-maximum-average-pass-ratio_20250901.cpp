@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-01 21:38:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-01 21:47:04
+ * @LastEditTime: 2025-09-01 21:49:15
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,7 +23,10 @@ public:
             classes[i][1]++;
             pq.push(i);
         }
-        int i = pq.top();
-        return 1. * classes[i][0] / classes[i][1];
+        double ans = 0;
+        for (vector<int>& c : classes) {
+            ans += 1. * c[0] / c[1];
+        }
+        return ans;
     }
 };
