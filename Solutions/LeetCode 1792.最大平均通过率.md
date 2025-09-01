@@ -1,11 +1,11 @@
 ---
-title: 1792.最大平均通过率
+title: 1792.最大平均通过率：优先队列
 date: 2023-02-19 21:45:44
 tags: [题解, LeetCode, 中等, 贪心, 数组, 堆（优先队列）, 优先队列]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1792.最大平均通过率
+# 【LetMeFly】1792.最大平均通过率：优先队列
 
 力扣题目链接：[https://leetcode.cn/problems/maximum-average-pass-ratio/](https://leetcode.cn/problems/maximum-average-pass-ratio/)
 
@@ -94,6 +94,36 @@ public:
             pq.pop();
         }
         return total / classes.size();
+    }
+};
+```
+
+#### C++ —— 或者写起来简单一点
+
+```cpp
+class Solution {
+public:
+    double maxAverageRatio(vector<vector<int>>& classes, int extraStudents) {
+        auto comp = [&classes](int i, int j) {
+            return 1. * (classes[i][0] + 1) / (classes[i][1] + 1) - 1. * classes[i][0] / classes[i][1]
+                 < 1. * (classes[j][0] + 1) / (classes[j][1] + 1) - 1. * classes[j][0] / classes[j][1];
+        };
+        priority_queue<int, vector<int>, decltype(comp)> pq(comp);
+        for (int i = 0; i < classes.size(); i++) {
+            pq.push(i);
+        }
+        while (extraStudents--) {
+            int i = pq.top();
+            pq.pop();
+            classes[i][0]++;
+            classes[i][1]++;
+            pq.push(i);
+        }
+        double ans = 0;
+        for (vector<int>& c : classes) {
+            ans += 1. * c[0] / c[1];
+        }
+        return ans / classes.size();
     }
 };
 ```
