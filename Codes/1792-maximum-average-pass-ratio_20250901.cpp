@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-01 21:38:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-01 21:49:15
+ * @LastEditTime: 2025-09-01 21:54:03
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,7 +26,8 @@ public:
         double ans = 0;
         for (vector<int>& c : classes) {
             ans += 1. * c[0] / c[1];
+            printf("(%d, %d)\n", c[0], c[1]);  // **********
         }
-        return ans;
+        return ans / classes.size();
     }
 };
