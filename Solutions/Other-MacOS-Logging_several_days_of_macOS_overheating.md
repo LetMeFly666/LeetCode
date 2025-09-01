@@ -9,6 +9,7 @@ categories: [技术思考]
 
 ## 前言
 
+今天Windows `Microsoft Office SDX Helper`又开始发疯（`C:\Program Files\Microsoft Office\root\Office16`）
 
 ## End
 
