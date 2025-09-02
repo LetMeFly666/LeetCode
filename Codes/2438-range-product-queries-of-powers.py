@@ -15,7 +15,7 @@ class Solution:
                 pows.append(1 << th)
             th += 1
             n >>= 1
-        perfix = [1] * (len(pows) + 1)
+        prefix = [1] * (len(pows) + 1)
         for i in range(1, len(pows) + 1):
-            perfix[i] = perfix[i - 1] * pows[i - 1]
-        return [perfix[q[1] + 1] // perfix[q[0]] % 1000000007 for q in queries]
+            prefix[i] = prefix[i - 1] * pows[i - 1]
+        return [prefix[q[1] + 1] // prefix[q[0]] % 1000000007 for q in queries]

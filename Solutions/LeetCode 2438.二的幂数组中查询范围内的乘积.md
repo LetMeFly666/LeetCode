@@ -61,7 +61,7 @@ categories: [题解, LeetCode]
 两种方法：
 
 1. 直接暴力从query[0]累乘到query[1]并随时取模
-2. 前缀和的思想，使用数组perfix[j]代表$\prod_{0}^{j-1}powers[i]$
+2. 前缀和的思想，使用数组prefix[j]代表$\prod_{0}^{j-1}powers[i]$
 
 直接暴力的方法并不会很耗时，因为powers数组中最多30个元素；
 
@@ -138,10 +138,10 @@ class Solution:
                 pows.append(1 << th)
             th += 1
             n >>= 1
-        perfix = [1] * (len(pows) + 1)
+        prefix = [1] * (len(pows) + 1)
         for i in range(1, len(pows) + 1):
-            perfix[i] = perfix[i - 1] * pows[i - 1]
-        return [perfix[q[1] + 1] // perfix[q[0]] % 1000000007 for q in queries]
+            prefix[i] = prefix[i - 1] * pows[i - 1]
+        return [prefix[q[1] + 1] // prefix[q[0]] % 1000000007 for q in queries]
 ```
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/150227536)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/08/11/LeetCode%202438.%E4%BA%8C%E7%9A%84%E5%B9%82%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E8%AF%A2%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E4%B9%98%E7%A7%AF/)哦~

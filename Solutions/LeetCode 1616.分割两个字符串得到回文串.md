@@ -73,16 +73,16 @@ a = "abkfkzz", b = "xxiouba"
 
 $newStr$由三部分组成：$abkfkba = ab + kfk + ba$
 
-其中$s_1 = ab \in a_{perfix}$，$s_3 = ba \in b_{suffix}$，$ab$和$ba$互为回文串，$s_2 = kfk$自身为回文串。
+其中$s_1 = ab \in a_{prefix}$，$s_3 = ba \in b_{suffix}$，$ab$和$ba$互为回文串，$s_2 = kfk$自身为回文串。
 
 **那么思路来了：**
 
 一个指针指向$a$串的首部，另一个指针指向$b$串的尾部，当两个指针所指字符相等时，a指针后移b指针前移，直到两指针相遇或两指针所指不同为止。
 
-+ 如果两指针相遇，则说明$a_{perfix}$和$b_{suffix}$已经互为回文，$s_2$为空即可，直接返回$true$
++ 如果两指针相遇，则说明$a_{prefix}$和$b_{suffix}$已经互为回文，$s_2$为空即可，直接返回$true$
 + 如果两指针所指不同，则a指针前面的部分视为$s_1$，b指针后面的部分视为$s_3$（可以保证$s_1$和$s_3$互为回文），字符串a**或**字符串b 从a指针到b指针的部分 视为$s_2$，只需要判断$s_2$自身是否为回文串即可。若是则返回true，不是则返回false
 
-上面判断了$a_{perfix} + b_{suffix}$的情况，$b_{perfix} + a_{suffix}$则同理
+上面判断了$a_{prefix} + b_{suffix}$的情况，$b_{prefix} + a_{suffix}$则同理
 
 + 时间复杂度$O(len(a))$
 + 空间复杂度$O(1)$
