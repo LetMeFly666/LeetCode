@@ -2,14 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2025-09-02 20:09:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-02 20:22:54
+ * @LastEditTime: 2025-09-02 20:25:35
  */
 impl Solution {
-    fn check2(points: &Vec<Vec<i32>>, i: usize, j: usize) -> bool {
+    fn check2(&self, points: &Vec<Vec<i32>>, i: usize, j: usize) -> bool {
         points[i][0] <= points[j][0] && points[i][1] >= points[j][1]
     }
 
-    fn check3(points: &Vec<Vec<i32>>, i: usize, j: usize, k: usize) -> bool {
+    fn check3(&self, points: &Vec<Vec<i32>>, i: usize, j: usize, k: usize) -> bool {
         !(points[i][0] <= points[k][0] && points[k][0] <= points[j][0] && points[i][1] >= points[k][1] && points[k][1] >= points[j][1])
     }
     pub fn number_of_pairs(points: Vec<Vec<i32>>) -> i32 {
