@@ -323,6 +323,57 @@ func numberOfPairs(points [][]int) (ans int) {
 }
 ```
 
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-02 20:09:04
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-02 20:14:52
+ */
+class Solution {
+    private int[][] points;
+
+    private boolean check(int i, int j) {
+        return points[i][0] <= points[j][0] && points[i][1] >= points[j][1];
+    }
+
+    private boolean check(int i, int j, int k) {
+        return !(points[i][0] <= points[k][0] && points[k][0] <= points[j][0] && points[i][1] >= points[k][1] && points[k][1] >= points[j][1]);
+    }
+
+    public int numberOfPairs(int[][] points) {
+        int ans = 0;
+        this.points = points;
+        for (int i = 0; i < points.length; i++) {
+            for (int j = 0; j < points.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (!check(i, j)) {
+                    continue;
+                }
+                boolean can = true;
+                for (int k = 0; k < points.length; k++) {
+                    if (k == i || k == j) {
+                        continue;
+                    }
+                    if (!check(i, j, k)) {
+                        can = false;
+                        break;
+                    }
+                }
+                if (can) {
+                    ans ++;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/151119511)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/09/02/LeetCode%203025.%E4%BA%BA%E5%91%98%E7%AB%99%E4%BD%8D%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0I/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
