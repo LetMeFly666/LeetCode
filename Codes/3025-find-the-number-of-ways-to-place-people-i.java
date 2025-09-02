@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-02 20:09:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-02 20:13:13
+ * @LastEditTime: 2025-09-02 20:14:52
  */
 class Solution {
     private int[][] points;
@@ -17,7 +17,7 @@ class Solution {
 
     public int numberOfPairs(int[][] points) {
         int ans = 0;
-        this->points = points;
+        this.points = points;
         for (int i = 0; i < points.length; i++) {
             for (int j = 0; j < points.length; j++) {
                 if (i == j) {
