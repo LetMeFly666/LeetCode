@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-04 13:33:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-04 13:35:13
+ * @LastEditTime: 2025-09-04 13:36:19
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -12,6 +12,6 @@ class Solution {
 public:
     int findClosest(int x, int y, int z) {
         int diff = abs(x - z) - abs(y - z);
-        return diff ? diff > 0 ? 2 : 1 : 0
+        return diff ? diff > 0 ? 2 : 1 : 0;
     }
 };
