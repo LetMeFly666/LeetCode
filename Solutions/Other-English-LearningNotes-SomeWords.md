@@ -944,7 +944,7 @@ categories: [自用]
 |||
 |eel|n. 鳗鱼，鳗鲡，鳗鱼肉|
 |leeway|n. 自由活动的空间|
-|<font color="#28bea0" title="二次复习">pertinence</font>|n. 相关性|
+|<font color="#28bea0" title="三次复习">pertinence</font>|n. 相关性|
 |||
 |<font color="#28bea0" title="二次复习">tumult</font>|n. 骚动，骚乱，心烦意乱，混乱|
 |||
@@ -1410,6 +1410,8 @@ categories: [自用]
 |crow|n. 乌鸦，喔喔叫声<br/>v. (尤指在清晨的)啼叫|
 |satire|n. 讽刺作品，讽刺|
 |melancholy|n. 忧郁，伤悲<br/>adj. 令人悲哀的，沮丧的|
+|||
+|rumor|n. 谣言，传闻|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
