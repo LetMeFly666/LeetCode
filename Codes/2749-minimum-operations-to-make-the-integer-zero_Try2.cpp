@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-05 23:51:34
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-05 23:53:20
+ * @LastEditTime: 2025-09-05 23:55:36
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -14,7 +14,7 @@ nums1 - k * nums2 = 2^{i_1} + 2^{i_2} + ... + 2^{i_k}
 class Solution {
 public:
     int makeTheIntegerZero(int num1, int num2) {
-        if (1 <= num1 - num2) {
+        if (num1 - num2 < 1) {
             return -1;
         }
         int k = 1;
