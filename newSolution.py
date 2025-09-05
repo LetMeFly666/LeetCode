@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-09-05 12:57:27
+LastEditTime: 2025-09-05 13:22:10
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -161,7 +161,7 @@ if not issueNum:
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 else:
     os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
-    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again)"')
+    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again)."')
 
 input('代码写完后按回车生成题解模板：')
 
