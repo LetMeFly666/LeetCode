@@ -4,7 +4,7 @@
  * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-09-05 10:42:50
  */
-import java.Arrays;
+import java.util.Arrays;
 
 class Solution {
     public int numberOfPairs(int[][] points) {
