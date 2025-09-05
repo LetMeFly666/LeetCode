@@ -1,7 +1,7 @@
 ---
 title: 2749.得到整数零需要执行的最少操作数：很独特的一道数学题（多公式硬讲——一步步还真能看懂）
 date: 2025-09-05 21:34:33
-tags: [题解, LeetCode, 中等, 位运算, 枚举]
+tags: [题解, LeetCode, 中等, 位运算, 枚举, 数学]
 categories: [题解, LeetCode]
 ---
 
@@ -118,6 +118,13 @@ int makeTheIntegerZero(int num1, int num2) {
 }
 ```
 
+关于这个循环的范围：
+
++ 如果$1+num_2\gt 1$，那么要么`for`循环先终止返回`-1`（如`num1=16, num2=10`会在`k=2`时结束for循环），要么`if`条件先命中`return k`。
++ 如果$1+num_2\leq 0$，`for`循环相当于`while true`，但是里面的`if`条件一定会很快满足，并`return k`。
+
+总之$k$枚举不会超过$40$次。解喽。这还真不好想。
+
 ### AC代码
 
 #### C++
@@ -149,6 +156,6 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/09/05/LeetCode%202749.%E5%BE%97%E5%88%B0%E6%95%B4%E6%95%B0%E9%9B%B6%E9%9C%80%E8%A6%81%E6%89%A7%E8%A1%8C%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/151233574)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/09/05/LeetCode%202749.%E5%BE%97%E5%88%B0%E6%95%B4%E6%95%B0%E9%9B%B6%E9%9C%80%E8%A6%81%E6%89%A7%E8%A1%8C%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
