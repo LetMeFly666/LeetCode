@@ -2,13 +2,14 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-09-02 19:10:14
+LastEditTime: 2025-09-05 13:42:35
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
 '''
 import os
 import re
+import ast
 import sys
 import json
 import time
@@ -31,7 +32,35 @@ for i in range(2, len(argv)):
 nameProblem = "AllProblems/{0}.{1}/{0}.{1}.md".format(num, title)
 print(nameProblem)
 
-# 生成代码模板
+# ===================== 生成代码模板 =====================
+def normalizePyCode(code: str) -> str:
+    """给不完整的class/def补上 pass"""
+    lines = code.splitlines()
+    new_lines = []
+    for i, line in enumerate(lines):
+        new_lines.append(line)
+        if re.match(r'^\s*def\s+\w+\(.*\)\s*(->\s*.*)?:\s*$', line):
+            new_lines.append(" " * (len(line) - len(line.lstrip()) + 4) + "pass")
+    if lines and re.match(r'^\s*class\s+\w+\s*.*:\s*$', lines[-1]):
+        new_lines.append("    pass")
+    return "\n".join(new_lines)
+def needsImportTyping(code: str, toImport: str = 'List') -> bool:
+    code = normalizePyCode(code)  # 先补全
+    tree = ast.parse(code)
+    class ListChecker(ast.NodeVisitor):
+        def __init__(self):
+            self.uses_list = False
+        def visit_Name(self, node):
+            if node.id == toImport:
+                self.uses_list = True
+            self.generic_visit(node)
+        def visit_Attribute(self, node):
+            if isinstance(node.value, ast.Name) and node.value.id == "typing" and node.attr == toImport:
+                self.uses_list = True
+            self.generic_visit(node)
+    checker = ListChecker()
+    checker.visit(tree)
+    return checker.uses_list
 alreadyExists = False
 with open(f'AllProblems/{num}.{title}/titleSlug.txt', 'r', encoding='utf-8') as f:
     titleSlug = f.read()
@@ -60,6 +89,27 @@ for code2gen in CODES_TO_GEN:
             f.seek(0)
             f.write(content)
             f.truncate()
+    elif code2gen == 'cpp':
+        with open(toName, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            f.seek(0)
+            header = '#if defined(_WIN32) || defined(__APPLE__)\n' +\
+                     '#include "_[1,2]toVector.h"\n' +\
+                     '#endif\n\n'
+            f.write(header + content)
+    elif code2gen == 'python3':
+        with open(toName, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            if needsImportTyping(content):
+                f.seek(0)
+                header = 'from typing import List\n\n'
+                f.write(header + content)
+    elif code2gen == 'golang':
+        with open(toName, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            f.seek(0)
+            header = 'package main\n\n'
+            f.write(header + content)
 
 title = ""
 for i in range(2, len(argv)):
