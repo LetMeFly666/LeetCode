@@ -2,11 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2025-09-05 23:51:34
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-06 00:00:49
+ * @LastEditTime: 2025-09-06 00:13:36
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
+
+// **** 这段代码不能通过这道题，但是它的错误样例能帮你更好地理解正确代码
 
 /*
 nums1 - k * nums2 = 2^{i_1} + 2^{i_2} + ... + 2^{i_k}
