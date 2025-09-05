@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-09-02 19:10:14
+LastEditTime: 2025-09-05 10:30:49
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -60,6 +60,16 @@ for code2gen in CODES_TO_GEN:
             f.seek(0)
             f.write(content)
             f.truncate()
+    elif code2gen == 'cpp':
+        with open(toName, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            f.seek(0)
+            header = '#if defined(_WIN32) || defined(__APPLE__)\n' +\
+                     '#include "_[1,2]toVector.h"\n' +\
+                     '#endif\n\n'
+            f.write(header + content)
+    elif code2gen == 'py':
+        pass
 
 title = ""
 for i in range(2, len(argv)):
