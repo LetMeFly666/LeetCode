@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-05 18:29:32
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-05 21:33:38
+ * @LastEditTime: 2025-09-05 23:57:58
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -22,3 +22,18 @@ public:
         return -1;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+16 10
+
+*/
+int main() {
+    int a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.makeTheIntegerZero(a, b) << endl;
+    }
+    return 0;
+}
+#endif

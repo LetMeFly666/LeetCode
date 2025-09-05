@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-05 23:51:34
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-05 23:55:36
+ * @LastEditTime: 2025-09-06 00:00:49
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,3 +26,6 @@ public:
         return -2;  // Fake Return: unreachable
     }
 };
+
+// 这样写的错因在于没有限制上界
+// 16 10会在k=2时不满足上界而退出
