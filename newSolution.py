@@ -41,7 +41,7 @@ def normalizePyCode(code: str) -> str:
         new_lines.append(line)
         if re.match(r'^\s*def\s+\w+\(.*\)\s*(->\s*.*)?:\s*$', line):
             new_lines.append(" " * (len(line) - len(line.lstrip()) + 4) + "pass")
-    if re.match(r'^\s*class\s+\w+\s*.*:\s*$', lines[-1]):
+    if lines and re.match(r'^\s*class\s+\w+\s*.*:\s*$', lines[-1]):
         new_lines.append("    pass")
     return "\n".join(new_lines)
 def needsImportTyping(code: str, toImport: str = 'List') -> bool:
