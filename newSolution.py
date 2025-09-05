@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-09-05 13:22:10
+LastEditTime: 2025-09-05 13:42:35
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -101,12 +101,9 @@ for code2gen in CODES_TO_GEN:
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
             if needsImportTyping(content):
-                print('needs')
                 f.seek(0)
                 header = 'from typing import List\n\n'
                 f.write(header + content)
-            else:
-                print('*' * 100)
     elif code2gen == 'golang':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
