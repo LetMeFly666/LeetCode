@@ -17,8 +17,8 @@ public:
         if (num1 - num2 < 1) {
             return -1;
         }
-        int k = 1;
-        while (k++) {
+        int k = 0;
+        while (++k) {
             if (k >= __builtin_popcountll(num1 - (long long)num2 * k)) {
                 return k;
             }
