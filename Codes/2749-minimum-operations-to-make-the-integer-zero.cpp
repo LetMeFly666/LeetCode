@@ -1,0 +1,24 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-05 18:29:32
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-05 21:29:47
+ */
+#if defined(_WIN32) || defined(__APPLE__)
+#include "_[1,2]toVector.h"
+#endif
+
+/*
+nums1 - k * nums2 = 2^{i_1} + 2^{i_2} + ... + 2^{i_k}
+*/
+class Solution {
+public:
+    int makeTheIntegerZero(int num1, int num2) {
+        for (int k = 1; k <= num1 - (long long)num2 * k; k++) {
+            if (k >= __builtin_popcount((uint64_t)(num1 - (long long)num2* k))) {
+                return k;
+            }
+        }
+        return -1;
+    }
+};
