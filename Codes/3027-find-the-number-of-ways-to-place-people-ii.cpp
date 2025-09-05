@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-05 09:55:20
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-05 10:04:27
+ * @LastEditTime: 2025-09-05 10:05:44
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -16,7 +16,7 @@ public:
         });
         int ans = 0;
         for (int i = 0; i < points.size(); i++) {
-            int mxY = -1;
+            int mxY = -1000000001;
             for (int j = i + 1; j < points.size(); j++) {
                 if (points[j][1] > mxY && points[j][1] <= points[i][1]) {
                     ans++;
