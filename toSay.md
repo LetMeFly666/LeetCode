@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-07 15:31:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-07 17:32:25
+ * @LastEditTime: 2025-09-07 19:23:22
 -->
 我有一些HTML页面，我想让你实现一个js功能：
 
@@ -68,3 +68,36 @@ https://github.com/LetMeFly666/LeetCode/tree/master/api
     - 对于加密方式，要保证一定的复杂性，用户无法通过查看网页源码反推出密码，要在常见的加密方式上进行组合（如md5+reverse+分段...）
     - 设计蒙层页面淡出的动画
 1. 支持回调函数，在梦层淡出动画结束后回调这个函数。
+
+
+---
+
+1. 按键自动消失设计成这个样式:
+   - 不显示默认的“等待输入...”
+   - 当用户正在输入时不消失，当用户一段时间没有输入时整个消失，并清空字符串（下次不再显示这次消失的内容，这次消失的内容也不作为密码匹配）
+2. 你给的demo中，加载外部蒙层导致内部蒙层的样式也发生了变化，并且外部蒙层没有居中显示，而是显示到了最左边并且半透明。
+
+
+---
+
+
+https://github.com/LetMeFly666/LeetCode/tree/master/api
+看到这个地址了吗？这其实是一个隐藏的sub git子项目，它是一个简单的cloudflare workers项目。
+1. 读懂这个项目
+2. 添加一个新路由（及其子路由），这个路由类似github/public，命名为logs/keyboard_website
+3. 这个api支持第三方网站调用，调用时传入或自动记录（可以自动记录的不需要作为参数传入）以下几个参数：
+    - url
+    - 时间
+    - ip
+    - 按键记录(是一个字符串)
+4. 网站可以往这个api上报用户按键记录，如a.com 按下了hello；a.com 按下了ok。
+5. 将这些数据继续存放在api数据库中，新建一个数据表，表名Logs_Keyboard_Website。
+
+
+
+
+---
+
+
+1. advanced-example.html弹出的蒙层字体颜色为白色，看不见
+2. external-overlay-example.html中，加载外部蒙层导致内部蒙层的样式也发生了变化，并且外部蒙层没有居中显示，而是显示到了最左边并且半透明。这个问题仍然没有得到解决。test-fixes.html也是如此。这可能是新页面的样式影响了旧页面导致的。

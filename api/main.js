@@ -2,19 +2,21 @@
  * @Author: LetMeFly
  * @Date: 2024-12-09 14:18:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-26 08:34:46
+ * @LastEditTime: 2025-09-07 23:07:50
  */
 // main.js
 
 import { imgRoutes } from './img/url.js';  // 导入 img 模块的路由
 import { github_public } from './github/public/url.js'
 import { calendarRoutes } from './calendar/url.js'
+import { logsRoutes } from './logs/url.js'
 
 // 路由表
 const routes = {
     '/img': imgRoutes,  // 将 /img 路由映射到 img 模块
     '/github/public': github_public,  // Github一个仓库是否为public
     '/calendar': calendarRoutes,  // 日历
+    '/logs': logsRoutes,  // 日志记录
 };
 
 // 请求事件监听
