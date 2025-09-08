@@ -8,7 +8,7 @@ package main
 
 func nonZero1317(n int) bool {
     for n > 0 {
-        if n % 10 == n {
+        if n % 10 == 0 {
             return false
         }
     }
