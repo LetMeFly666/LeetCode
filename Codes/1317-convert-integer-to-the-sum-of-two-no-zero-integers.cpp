@@ -23,7 +23,7 @@ public:
     vector<int> getNoZeroIntegers(int n) {
         for (int i = 1; i < n; i++) {
             if (ok(i) && ok(n - i)) {
-                return {n, n - i};
+                return {i, n - i};
             }
         }
         return {};  // FAKE RETURN
