@@ -275,6 +275,22 @@ git remote prune origin
 git config --global core.quotepath false
 ```
 
+### 已提交历史修改
+
+### 修改所有提交的username和email
+
+```bash
+git filter-branch --env-filter '
+CORRECT_NAME="LetMeFly666"
+CORRECT_EMAIL="814114971@qq.com"
+
+export GIT_AUTHOR_NAME="$CORRECT_NAME"
+export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+export GIT_COMMITTER_NAME="$CORRECT_NAME"
+export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+' --tag-name-filter cat -- --branches --tags
+```
+
 ## About HTML
 
 ### 空白字符

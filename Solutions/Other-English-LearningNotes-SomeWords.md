@@ -929,7 +929,7 @@ categories: [自用]
 |snore|n. 鼾声<br/>v. 打鼾|
 |lark|n. 云雀，百灵鸟，玩乐，嬉戏<br/>v. 捉云雀，嬉戏，骑马越野，愚弄|
 |||
-|tuberculosis|n. 结核病|
+|<font color="#28bea0" title="二次复习">tuberculosis</font>|n. 结核病|
 |||
 |granite|n. 花岗岩，花岗石|
 |||
@@ -1415,6 +1415,14 @@ categories: [自用]
 |||
 |repent|v. 后悔，忏悔|
 |duty-free|adj. 免关税的|
+|||
+|delegation|n. 代表团，委派，委托|
+|opium|n. 鸦片|
+|||
+|icebound|adj. 被冰封冻着的|
+|induction|n. 就职(仪式)，入门，诱导，归纳法，电磁效应|
+|||
+|abreast|adv. 并排地<br/>adj.(少见) 并肩的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

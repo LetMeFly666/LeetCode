@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键记录API演示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .input-area {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background: #007cba;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #005a87;
+        }
+        .result {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+        .error {
+            background: #ffe8e8;
+            border-left-color: #f44336;
+        }
+        .code {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .recorded-keys {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>按键记录API演示</h1>
+    
+    <div class="container">
+        <h2>功能说明</h2>
+        <p>这个演示页面展示了如何使用按键记录API。在下面的文本框中输入内容，系统会自动记录您的按键并发送到API。</p>
+        
+        <div class="input-area">
+            <h3>测试输入区域</h3>
+            <textarea id="keyboardInput" placeholder="在这里输入任何内容，系统会记录您的按键..."></textarea>
+            <p><small>已记录的按键将显示在下方</small></p>
+        </div>
+        
+        <div id="recordedKeys" class="recorded-keys" style="display: none;">
+            <strong>记录的按键：</strong>
+            <span id="keyDisplay"></span>
+        </div>
+        
+        <button onclick="sendToAPI()">发送按键记录到API</button>
+        <button onclick="clearRecords()">清除记录</button>
+        
+        <div id="result" style="display: none;"></div>
+    </div>
+
+    <div class="container">
+        <h2>API使用示例</h2>
+        
+        <h3>JavaScript代码</h3>
+        <div class="code">
+fetch('https://api.letmefly.xyz/logs/keyboard_website/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        url: window.location.href,
+        keyboardData: 'hello world'
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+})
+.catch((error) => {
+    console.error('Error:', error);
+});
+        </div>
+
+        <h3>curl命令</h3>
+        <div class="code">
+curl -X POST https://api.letmefly.xyz/logs/keyboard_website/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://example.com",
+    "keyboardData": "hello world"
+  }'
+        </div>
+    </div>
+
+    <script>
+        let recordedKeys = '';
+        
+        // 监听键盘输入
+        document.getElementById('keyboardInput').addEventListener('input', function(event) {
+            const inputValue = event.target.value;
+            recordedKeys = inputValue;
+            
+            if (recordedKeys.length > 0) {
+                document.getElementById('recordedKeys').style.display = 'block';
+                document.getElementById('keyDisplay').textContent = recordedKeys;
+            } else {
+                document.getElementById('recordedKeys').style.display = 'none';
+            }
+        });
+        
+        // 发送数据到API
+        async function sendToAPI() {
+            if (!recordedKeys) {
+                showResult('请先在文本框中输入一些内容', true);
+                return;
+            }
+            
+            const apiUrl = 'https://api.letmefly.xyz/logs/keyboard_website/';
+            const data = {
+                url: window.location.href,
+                keyboardData: recordedKeys
+            };
+            
+            try {
+                showResult('正在发送数据到API...', false);
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    showResult(`
+                        <strong>发送成功！</strong><br>
+                        记录ID: ${result.recordId}<br>
+                        记录时间: ${result.recordTime}<br>
+                        消息: ${result.message}
+                    `, false);
+                } else {
+                    showResult(`发送失败: ${result.error || '未知错误'}`, true);
+                }
+            } catch (error) {
+                showResult(`网络错误: ${error.message}`, true);
+            }
+        }
+        
+        // 清除记录
+        function clearRecords() {
+            recordedKeys = '';
+            document.getElementById('keyboardInput').value = '';
+            document.getElementById('recordedKeys').style.display = 'none';
+            document.getElementById('result').style.display = 'none';
+        }
+        
+        // 显示结果
+        function showResult(message, isError) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = message;
+            resultDiv.className = isError ? 'result error' : 'result';
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
