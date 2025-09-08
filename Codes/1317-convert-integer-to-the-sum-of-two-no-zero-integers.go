@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-08 23:05:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-08 23:15:34
+ * @LastEditTime: 2025-09-08 23:16:59
  */
 package main
 
@@ -11,6 +11,7 @@ func nonZero1317(n int) bool {
         if n % 10 == 0 {
             return false
         }
+        n /= 10
     }
     return true
 }
