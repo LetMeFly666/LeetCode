@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-09 23:42:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-11 10:38:32
+ * @LastEditTime: 2025-09-11 10:48:06
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,16 +19,32 @@ public:
         ll now = 0, ans = 0;
         for (int i = 1; i <= n; i++) {
             now = (now + diff[i]) % MOD;
-            if (i + forget >= n) {
+            if (i + forget > n) {
                 ans = (ans + now) % MOD;
             }
             if (i + delay <= n) {
                 diff[i + delay] = (diff[i + delay] + now) % MOD;
             }
             if (i + forget <= n) {
-                diff[i + forget] = (diff[i + forget] + MOD - now) % MOD;
+                diff[i + forget] = (diff[i + forget] - now) % MOD;
             }
         }
-        return now;
+        return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+6 2 4
+
+5
+*/
+int main() {
+    int a, b, c;
+    while (cin >> a >> b >> c) {
+        Solution sol;
+        cout << sol.peopleAwareOfSecret(a, b, c) << endl;
+    }
+    return 0;
+}
+#endif
