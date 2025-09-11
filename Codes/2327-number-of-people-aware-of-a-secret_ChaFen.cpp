@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-09 23:42:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-11 10:34:24
+ * @LastEditTime: 2025-09-11 10:38:32
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -16,9 +16,12 @@ public:
         vector<ll> diff(n + 1);
         diff[1] = 1;
         diff[2] = -1;
-        int now = 0;
+        ll now = 0, ans = 0;
         for (int i = 1; i <= n; i++) {
-            now += diff[i];
+            now = (now + diff[i]) % MOD;
+            if (i + forget >= n) {
+                ans = (ans + now) % MOD;
+            }
             if (i + delay <= n) {
                 diff[i + delay] = (diff[i + delay] + now) % MOD;
             }
