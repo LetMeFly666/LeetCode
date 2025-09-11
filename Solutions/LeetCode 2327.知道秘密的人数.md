@@ -116,8 +116,6 @@ public:
 
 #### C++
 
-#### C++
-
 ```cpp
 /*
  * @Author: LetMeFly
