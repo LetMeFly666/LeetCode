@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-09 23:42:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-11 10:48:06
+ * @LastEditTime: 2025-09-11 10:49:54
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,7 +26,7 @@ public:
                 diff[i + delay] = (diff[i + delay] + now) % MOD;
             }
             if (i + forget <= n) {
-                diff[i + forget] = (diff[i + forget] - now) % MOD;
+                diff[i + forget] = (diff[i + forget] + MOD - now) % MOD;
             }
         }
         return ans;
