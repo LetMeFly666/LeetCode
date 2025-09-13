@@ -1,3 +1,3 @@
-func hanota(A []int, B []int, C []int)  {
+func hanota(A *[]int, B *[]int, C *[]int)  {
     
 }

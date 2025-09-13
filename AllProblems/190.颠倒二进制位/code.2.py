@@ -1,5 +1,7 @@
-class Solution:
-    # @param n, an integer
-    # @return an integer
+class Solution(object):
     def reverseBits(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
         

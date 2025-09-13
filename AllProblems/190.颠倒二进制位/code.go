@@ -1,3 +1,3 @@
-func reverseBits(num uint32) uint32 {
+func reverseBits(n int) int {
     
 }

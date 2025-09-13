@@ -3,7 +3,7 @@ class MyCalendar {
 
     }
     
-    func book(start: Int64, end: Int64): Bool {
+    func book(startTime: Int64, endTime: Int64): Bool {
 
     }
 }
@@ -11,5 +11,5 @@ class MyCalendar {
 /**
  * Your MyCalendar object will be instantiated and called as such:
  * let obj: MyCalendar = MyCalendar()
- * let param_1 = obj.book(start,end)
+ * let param_1 = obj.book(startTime,endTime)
  */

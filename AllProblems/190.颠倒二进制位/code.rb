@@ -1,4 +1,4 @@
-# @param {Integer} n, a positive integer
+# @param {Integer} n
 # @return {Integer}
 def reverse_bits(n)
     

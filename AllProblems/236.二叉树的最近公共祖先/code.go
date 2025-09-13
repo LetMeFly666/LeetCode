@@ -6,6 +6,6 @@
  *     Right *TreeNode
  * }
  */
- func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
   
 }

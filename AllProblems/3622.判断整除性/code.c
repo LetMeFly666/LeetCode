@@ -1,0 +1,3 @@
+bool checkDivisibility(int n) {
+    
+}
