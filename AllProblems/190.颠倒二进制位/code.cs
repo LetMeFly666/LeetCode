@@ -1,5 +1,5 @@
 public class Solution {
-    public uint reverseBits(uint n) {
+    public int ReverseBits(int n) {
         
     }
 }

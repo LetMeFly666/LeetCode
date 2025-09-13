@@ -1,0 +1,3 @@
+char* resultingString(char* s) {
+    
+}

@@ -1,6 +1,6 @@
 /**
- * @param {number} n - a positive integer
- * @return {number} - a positive integer
+ * @param {number} n
+ * @return {number}
  */
 var reverseBits = function(n) {
     

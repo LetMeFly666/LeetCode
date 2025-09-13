@@ -1,0 +1,3 @@
+char* generateTag(char* caption) {
+    
+}

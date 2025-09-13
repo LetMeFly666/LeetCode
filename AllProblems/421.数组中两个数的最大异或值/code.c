@@ -1,3 +1,3 @@
-int findMaximumXOR(int* nums, int numsSize) {
-    
+int findMaximumXOR(int* nums, int numsSize){
+
 }

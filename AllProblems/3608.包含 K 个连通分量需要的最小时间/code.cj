@@ -1,0 +1,5 @@
+class Solution {
+    func minTime(n: Int64, edges: Array<Array<Int64>>, k: Int64): Int64 {
+
+    }
+}

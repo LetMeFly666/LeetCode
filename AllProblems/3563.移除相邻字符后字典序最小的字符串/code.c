@@ -1,0 +1,3 @@
+char* lexicographicallySmallestString(char* s) {
+    
+}
