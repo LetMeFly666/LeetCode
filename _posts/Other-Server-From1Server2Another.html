@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录为代价) 看着四年的服务器正式到期，没什么轰轰烈烈的告别，就像目送老朋友转身走远，只默默记下：哦，原来它陪了我这么久啊。  前言一台陪伴了我4年的服务器昨天晚上到期了，数据和服务迁移到新服务器上有两点想尽可能保证的：  服务不中断 数据不丢失  最终结果是服务没中断，迁移过程中丢失了约数十条的PV记录。 大致流程是：新服务器部署环境安装">
+<meta property="og:type" content="website">
+<meta property="og:title" content="服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录)">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Server-From1Server2Another.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录为代价) 看着四年的服务器正式到期，没什么轰轰烈烈的告别，就像目送老朋友转身走远，只默默记下：哦，原来它陪了我这么久啊。  前言一台陪伴了我4年的服务器昨天晚上到期了，数据和服务迁移到新服务器上有两点想尽可能保证的：  服务不中断 数据不丢失  最终结果是服务没中断，迁移过程中丢失了约数十条的PV记录。 大致流程是：新服务器部署环境安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/ad47918d32754204ada29783364cb2ad.png">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f5653230709e42428a74bba4b3e298c1.png">
+<meta property="og:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/77de92cccae346d88daa8d2f8899be00.png">
+<meta property="article:published_time" content="2025-09-14T08:16:17.000Z">
+<meta property="article:modified_time" content="2025-09-14T15:09:08.948Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="域名">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/ad47918d32754204ada29783364cb2ad.png">
+  
+  
+  
+  <title>服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录) - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录)"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="服务器-从一台服务器切换至另一台服务器-损失数十条PV记录为代价"><a href="#服务器-从一台服务器切换至另一台服务器-损失数十条PV记录为代价" class="headerlink" title="服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录为代价)"></a>服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录为代价)</h1><blockquote>
+<p>看着四年的服务器正式到期，没什么轰轰烈烈的告别，就像目送老朋友转身走远，只默默记下：哦，原来它陪了我这么久啊。</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一台陪伴了我4年的服务器昨天晚上到期了，数据和服务迁移到新服务器上有两点想尽可能保证的：</p>
+<ol>
+<li>服务不中断</li>
+<li>数据不丢失</li>
+</ol>
+<p>最终结果是服务没中断，迁移过程中丢失了约数十条的PV记录。</p>
+<p>大致流程是：新服务器部署环境安装依赖同步静态数据 –&gt; 新服务器上准备好服务启动命令准备按回车 –&gt; 旧服务器导出数据库数据传输到新服务器上并导入新服务器数据库 –&gt; 新服务器快速启动服务 –&gt; 将流量切到新服务器上。</p>
+<p>中间从<code>旧服务器开始导出数据</code>到<code>流量切到新服务器上</code>这段时间的产生的十几条PV记录写到了旧服务器上并与新服务器数据库产生了冲突。由于影响不是很大就没去处理。</p>
+<p>当然想做到数据也不丢失似乎也可以通过主从数据库的方式来保证，但主要是我不会。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="新服务器安装依赖部署环境同步旧服务器的静态数据"><a href="#新服务器安装依赖部署环境同步旧服务器的静态数据" class="headerlink" title="新服务器安装依赖部署环境同步旧服务器的静态数据"></a>新服务器安装依赖部署环境同步旧服务器的静态数据</h3><p>我有一个习惯，旧服务器上的配置几乎都存放在一个专门的文件夹<code>TFpath</code>，然后<code>ln -s</code>软链接到原始位置，这样不论我修改什么配置，实质上配置文件都会在<code>TFpath</code>文件夹下被修改。</p>
+<p>也就是说这些静态配置我只需要<code>scp</code>到新服务器上并在新服务器上将他们分别软链接到对应位置就好了。</p>
+<p>这样在新服务器上安装好各个服务后一启动，配置就和旧服务器一样了。 万物皆文件好啊(bushi)</p>
+<p>代码什么的统统复制到新服务器上，该安装的依赖安装好，坐等数据库改好后一键启动。</p>
+<h3 id="旧服务器导出数据库数据传输到新服务器上并导入新服务器数据库"><a href="#旧服务器导出数据库数据传输到新服务器上并导入新服务器数据库" class="headerlink" title="旧服务器导出数据库数据传输到新服务器上并导入新服务器数据库"></a>旧服务器导出数据库数据传输到新服务器上并导入新服务器数据库</h3><p>我所涉及的动态数据主要存储在MySQL中，<code>mysqldumps -u xx -p --all-databases &gt; all.sql</code>可方便导出整个数据库，<code>scp all.sql user@ip:path</code>可将数据库文件拷贝到新服务器上，新服务器上在MySQL命令行中执行<code>source all.sql</code>即可一键将数据库变得和旧服务器相同，连用户名密码都会变得一致。</p>
+<p>有了数据之后，新服务器上的服务就可以启动，等待流量的到来了。</p>
+<h3 id="将流量切换到新服务器上"><a href="#将流量切换到新服务器上" class="headerlink" title="将流量切换到新服务器上"></a>将流量切换到新服务器上</h3><p>我使用的是CloudFlare的DNS(以及CDN)，代理模式为完全。虽然名义上是CDN实际上在国内就是个减速器，这样做的目的主要是友好为数不多的国外用户以及隐匿我的真实IP。</p>
+<p>实质上当你访问我的域名如<code>https://letmefly.xyz</code>时，DNS服务器将请求定向到其中一个Cloudflare节点上，Cloudflare节点再去请求我的源服务器，这样第三方用户就不知道我的真实IP了。</p>
+<p>虽然通过一些特殊手段还是可能反映射到，但是cloudflare已经在很大程度上保证源服务器的安全了。请大家把赛博菩萨打在公屏上。</p>
+<p>这样还有一个好处，就是切流量异常地顺利，几乎可以说是秒级。因为这种机制导致切流量时无需更新DNS，用户仍然访问cloudflare节点，cloudflare直接把流量切到新机器上就好了。</p>
+<h2 id="现在可以公开的情报"><a href="#现在可以公开的情报" class="headerlink" title="现在可以公开的情报"></a>现在可以公开的情报</h2><p>旧服务器IP是<code>123.56.114.139</code>，这个倒背如流的IP可以公开了。</p>
+<p>新服务器的IP还藏在坚强的CloudFlare护盾后面，以防一波应该不会出现的针对源IP服务器直接的DDoS。</p>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><p>有人说为何不借助云服务商的一键迁移或者镜像导入导出？</p>
+<blockquote>
+<p>这样是很省事儿，一个是迁移过程中可能仍然会有部分数据修改到旧服务器上，一个是阿某云轻量应用服务器不支持大磁盘机器向小磁盘机器的一键迁移（想一键迁移还得氪金）。</p>
+</blockquote>
+<p>有人说备案问题怎么解决？新服务器会不会因为没有备案导致流量被拦截？</p>
+<blockquote>
+<p>不会。个人备案主要备的是域名不是IP，工信部规定解析到中国IP的域名都需要进行备案否则将会被拦截，但是我这个域名在旧服务器上的时候已经备案过了，所以不会被拦截。</p>
+</blockquote>
+<h2 id="Last-But-Not-Least"><a href="#Last-But-Not-Least" class="headerlink" title="Last But Not Least"></a>Last But Not Least</h2><p>陪伴了我4年的老战友，值得一个小小的纪念仪式。</p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/ad47918d32754204ada29783364cb2ad.png" srcset="/img/loading.gif" lazyload alt="还有最后10分钟"></p>
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f5653230709e42428a74bba4b3e298c1.png" srcset="/img/loading.gif" lazyload alt="时间归零"></p>
+<!-- ![goodbye隐藏款](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/70ef1566308b4e75b896980b800b7e16.png) -->
+
+<p><img src="https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/77de92cccae346d88daa8d2f8899be00.png" srcset="/img/loading.gif" lazyload alt="goodbye"></p>
+<p>介绍后想起来两台同区域的阿里云服务器之间数据应该是可以通过局域网IP快速传，免受公网IP带宽限制。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>当然这也许并非最优解，也许会有很多更简单好用的方法。如果有，请不要吝惜告诉我。</p>
+<center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/151684306">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/09/14/Other-Server-From1Server2Another/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
