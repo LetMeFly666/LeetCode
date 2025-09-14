@@ -1213,7 +1213,7 @@ categories: [自用]
 |prayer|n. 祷告，祈祷文，经文|
 |better-off|adj. 比较富裕的，境况较好的|
 |||
-|courteous|adj. 有礼貌的，客气的|
+|<font color="#28bea0" title="二次复习">courteous</font>|adj. 有礼貌的，客气的|
 |postpone|v. 延期，延迟|
 |||
 |gaol|n. 监狱(jail的英式拼法)|
@@ -1434,6 +1434,10 @@ categories: [自用]
 |||
 |vest|n. 汗衫，背心<br/>v. 给xx穿上(法衣)，赋予xx权力，授予|
 |breach|n. (对法规等的)违背，破坏；缺口，突破口<br/>v. 违背，在..上打开缺口|
+|||
+|fuss|n. 大惊小怪，反应过度；争吵<br/>v. 大惊小怪，过度关心|
+|arrear|n. 落后，欠款<details><summary>例句</summary>The arts of medicine and surgery are somewhat in <font color="#28bea0">arrear</font> in Africa.<br/>医疗和外科手术在非洲稍微有些落后。</details>|
+|frail|adj. 脆弱的，虚弱的，易碎的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

@@ -29,13 +29,13 @@ ps aux|head -1;ps aux|sort -rn -k3|head -10
 
 **解释：**
 
-```ps aux|head -1;ps aux|sort -rn -k3|head -10```相当于```ps aux|head -1```和```ps aux|sort -rn -k3|head -10```分别执行
+`ps aux|head -1;ps aux|sort -rn -k3|head -10`相当于`ps aux|head -1`和`ps aux|sort -rn -k3|head -10`分别执行
 
 **ps**
 
-其中```ps```的参数```a```代表“所有进程(all with tty, including other users)”，```u```代表“user(user-oriented format)”，```x```代表“显示所有进程(processes without controlling ttys)”
+其中`ps`的参数`a`代表“所有进程(all with tty, including other users)”，`u`代表“user(user-oriented format)”，`x`代表“显示所有进程(processes without controlling ttys)”
 
-那么```ps aux```就显示了所有进程的资源占用信息：
+那么`ps aux`就显示了所有进程的资源占用信息：
 
 ```bash
 [Tisfy@LetMeFly ~]# ps aux
@@ -50,21 +50,21 @@ root           6  0.0  0.0      0     0 ?        I<    2022   0:00 [kworker/0:0H
 
 **head**
 
-```head```命令用于显示前几行。```head -1```就是显示第一行的内容，也就是
+`head`命令用于显示前几行。`head -1`就是显示第一行的内容，也就是
 
 ```
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 ```
 
-同理，```head -10```就是显示前10行
+同理，`head -10`就是显示前10行
 
 **sort**
 
-```sort```命令用于排序，```-r```是“从大到小排序(reverse the result of comparisons)”默认从小到大，```-n```是“根据数值排序(compare according to string numerical value)”，```-k```是“以第几列为依据进行排序(sort via a key; KEYDEF gives location and type)”（下标从1开始，没有-k0）
+`sort`命令用于排序，`-r`是“从大到小排序(reverse the result of comparisons)”默认从小到大，`-n`是“根据数值排序(compare according to string numerical value)”，`-k`是“以第几列为依据进行排序(sort via a key; KEYDEF gives location and type)”（下标从1开始，没有-k0）
 
 ## How to do
 
-我修改了Mysql的配置文件（文件路径：```/etc/my.conf```）
+我修改了Mysql的配置文件（文件路径：`/etc/my.cnf`）
 
 可以修改或在下方添加这些参数。参数的具体意义可以在网上搜索
 
@@ -103,7 +103,7 @@ PS，今日添加了table_definition_cache，内存占用大概降低了5%（2G 
 free
 ```
 
-其中```free -m```是以M形式显示（显示多少M），```free -g```是以G的形式显示（1.7G会显示为1G哈哈）
+其中`free -m`是以M形式显示（显示多少M），`free -g`是以G的形式显示（1.7G会显示为1G哈哈）
 
 **对于我的服务器**，MySQL大约会使用300M，远程VSCode在有连接时大约会使用160M，无连接时大约会使用70M，django项目每个约70M，nginx大约会使用5M
 
