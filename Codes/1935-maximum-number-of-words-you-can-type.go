@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-15 21:48:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-15 22:04:45
+ * @LastEditTime: 2025-09-15 22:06:31
  */
 package main
 
@@ -21,7 +21,7 @@ func canBeTypedWords(text string, brokenLetters string) (ans int) {
             }
             continue
         }
-        if _, in := cannot[text[i]]; !in {
+        if _, in := cannot[text[i]]; in {
             can = false
         }
     }
