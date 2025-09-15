@@ -1438,6 +1438,9 @@ categories: [自用]
 |fuss|n. 大惊小怪，反应过度；争吵<br/>v. 大惊小怪，过度关心|
 |arrear|n. 落后，欠款<details><summary>例句</summary>The arts of medicine and surgery are somewhat in <font color="#28bea0">arrear</font> in Africa.<br/>医疗和外科手术在非洲稍微有些落后。</details>|
 |frail|adj. 脆弱的，虚弱的，易碎的|
+|||
+|statute|n. 法规，法令，章程，条例|
+|immaterial|adj. 无形的，非物质的，无关紧要的，不重要|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
