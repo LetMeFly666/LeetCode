@@ -13,7 +13,7 @@ impl Solution {
         let mut can: bool = true;
         for c in text.chars() {
             if c == ' ' {
-                ans += if can { 1 } else { 0 }
+                ans += if can { 1 } else { 0 };
                 can = true;
             } else if cannot.contains(&c) {
                 can = false;
