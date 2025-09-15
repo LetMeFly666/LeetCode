@@ -1,3 +1,0 @@
-int mySqrt(int x) {
-    
-}
