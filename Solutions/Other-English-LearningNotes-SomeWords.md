@@ -797,7 +797,7 @@ categories: [自用]
 |omit|v. 省略，遗漏|
 |scorch|v. 烫坏，烤焦，(使)枯黄，枯萎|
 |lemonade|n. 柠檬味汽水，柠檬饮料，一杯/瓶柠檬饮料|
-|pertinent|adj. 相关的，切题的，中肯的，恰当的|
+|<font color="#28bea0" title="二次复习">pertinent</font>|adj. 相关的，切题的，中肯的，恰当的|
 |||
 |shrine|n. 神庙，神龛，圣地|
 |engrave|v. 在...上雕刻(文字/图案)|
@@ -1000,7 +1000,7 @@ categories: [自用]
 |massacre|n. 屠杀，残杀，(运动/比赛の)惨败<br/>v. 屠杀，杀戮，使(运动/比赛中)惨败|
 |||
 |sonnet|n. 十四行诗，商籁体|
-|<font color="#28bea0" title="二次复习">headlong</font>|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
+|<font color="#28bea0" title="三次复习">headlong</font>|adv. 头朝前地，轻率地，莽撞地，慌慌张张的<br/>adj. 轻率的|
 |||
 |shadowy|ajd. 昏暗的，阴影中的，朦胧的，神秘的|
 |||
@@ -1441,6 +1441,11 @@ categories: [自用]
 |||
 |statute|n. 法规，法令，章程，条例|
 |immaterial|adj. 无形的，非物质的，无关紧要的，不重要|
+|||
+|triumphant|adj. 大获全胜的，巨大成功的，欢欣鼓舞的，洋洋得意的|
+|impurity|n. 不纯之物，杂质|
+|||
+|emigrant|n. 移民<br/>adj. (向国外)移居的，侨居的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
