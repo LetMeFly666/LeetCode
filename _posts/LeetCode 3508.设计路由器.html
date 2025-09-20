@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】3508.设计路由器：STL套STL——有什么需求就设计什么数据结构力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;implement-router&#x2F; 请你设计一个数据结构来高效管理网络路由器中的数据包。每个数据包包含以下属性：   	source：生成该数据包的机器的唯一标识符。 	destination：目标机器的唯一标识符。 	timestamp：">
+<meta property="og:type" content="website">
+<meta property="og:title" content="3508.设计路由器：STL套STL——有什么需求就设计什么数据结构">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%203508.%E8%AE%BE%E8%AE%A1%E8%B7%AF%E7%94%B1%E5%99%A8.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】3508.设计路由器：STL套STL——有什么需求就设计什么数据结构力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;implement-router&#x2F; 请你设计一个数据结构来高效管理网络路由器中的数据包。每个数据包包含以下属性：   	source：生成该数据包的机器的唯一标识符。 	destination：目标机器的唯一标识符。 	timestamp：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-20T09:40:53.000Z">
+<meta property="article:modified_time" content="2025-09-20T10:13:49.945Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="题解">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="队列">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="set">
+<meta property="article:tag" content="map">
+<meta property="article:tag" content="二分查找">
+<meta property="article:tag" content="有序集合">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>3508.设计路由器：STL套STL——有什么需求就设计什么数据结构 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3508.设计路由器：STL套STL——有什么需求就设计什么数据结构"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】3508-设计路由器：STL套STL——有什么需求就设计什么数据结构"><a href="#【LetMeFly】3508-设计路由器：STL套STL——有什么需求就设计什么数据结构" class="headerlink" title="【LetMeFly】3508.设计路由器：STL套STL——有什么需求就设计什么数据结构"></a>【LetMeFly】3508.设计路由器：STL套STL——有什么需求就设计什么数据结构</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/implement-router/">https://leetcode.cn/problems/implement-router/</a></p>
+<p>请你设计一个数据结构来高效管理网络路由器中的数据包。每个数据包包含以下属性：</p>
+
+<ul>
+	<li><code>source</code>：生成该数据包的机器的唯一标识符。</li>
+	<li><code>destination</code>：目标机器的唯一标识符。</li>
+	<li><code>timestamp</code>：该数据包到达路由器的时间戳。</li>
+</ul>
+
+<p>实现 <code>Router</code> 类：</p>
+
+<p><code>Router(int memoryLimit)</code>：初始化路由器对象，并设置固定的内存限制。</p>
+
+<ul>
+	<li><code>memoryLimit</code> 是路由器在任意时间点可以存储的 <strong>最大</strong> 数据包数量。</li>
+	<li>如果添加一个新数据包会超过这个限制，则必须移除 <strong>最旧的</strong> 数据包以腾出空间。</li>
+</ul>
+
+<p><code>bool addPacket(int source, int destination, int timestamp)</code>：将具有给定属性的数据包添加到路由器。</p>
+
+<ul>
+	<li>如果路由器中已经存在一个具有相同 <code>source</code>、<code>destination</code> 和 <code>timestamp</code> 的数据包，则视为重复数据包。</li>
+	<li>如果数据包成功添加（即不是重复数据包），返回 <code>true</code>；否则返回 <code>false</code>。</li>
+</ul>
+
+<p><code>int[] forwardPacket()</code>：以 FIFO（先进先出）顺序转发下一个数据包。</p>
+
+<ul>
+	<li>从存储中移除该数据包。</li>
+	<li>以数组 <code>[source, destination, timestamp]</code> 的形式返回该数据包。</li>
+	<li>如果没有数据包可以转发，则返回空数组。</li>
+</ul>
+
+<p><code>int getCount(int destination, int startTime, int endTime)</code>：</p>
+
+<ul>
+	<li>返回当前存储在路由器中（即尚未转发）的，且目标地址为指定 <code>destination</code> 且时间戳在范围 <code>[startTime, endTime]</code>（包括两端）内的数据包数量。</li>
+</ul>
+
+<p><strong>注意</strong>：对于 <code>addPacket</code> 的查询会按照 <code>timestamp</code> 的递增顺序进行。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><br />
+<span class="example-io">["Router", "addPacket", "addPacket", "addPacket", "addPacket", "addPacket", "forwardPacket", "addPacket", "getCount"]<br />
+[[3], [1, 4, 90], [2, 5, 90], [1, 4, 90], [3, 5, 95], [4, 5, 105], [], [5, 2, 110], [5, 100, 110]]</span></p>
+
+<p><strong>输出：</strong><br />
+<span class="example-io">[null, true, true, false, true, true, [2, 5, 90], true, 1] </span></p>
+
+<p><strong>解释：</strong></p>
+<code>Router router = new Router(3);</code> // 初始化路由器，内存限制为 3。<br />
+<code>router.addPacket(1, 4, 90);</code> // 数据包被添加，返回 True。<br />
+<code>router.addPacket(2, 5, 90);</code> // 数据包被添加，返回 True。<br />
+<code>router.addPacket(1, 4, 90);</code> // 这是一个重复数据包，返回 False。<br />
+<code>router.addPacket(3, 5, 95);</code> // 数据包被添加，返回 True。<br />
+<code>router.addPacket(4, 5, 105);</code> // 数据包被添加，<code>[1, 4, 90]</code> 被移除，因为数据包数量超过限制，返回 True。<br />
+<code>router.forwardPacket();</code> // 转发数据包 <code>[2, 5, 90]</code> 并将其从路由器中移除。<br />
+<code>router.addPacket(5, 2, 110);</code> // 数据包被添加，返回 True。<br />
+<code>router.getCount(5, 100, 110);</code> // 唯一目标地址为 5 且时间在 <code>[100, 110]</code>&nbsp;范围内的数据包是 <code>[4, 5, 105]</code>，返回 1。</div>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong><br />
+<span class="example-io">["Router", "addPacket", "forwardPacket", "forwardPacket"]<br />
+[[2], [7, 4, 90], [], []]</span></p>
+
+<p><strong>输出：</strong><br />
+<span class="example-io">[null, true, [7, 4, 90], []] </span></p>
+
+<p><strong>解释：</strong></p>
+<code>Router router = new Router(2);</code> // 初始化路由器，内存限制为 2。<br />
+<code>router.addPacket(7, 4, 90);</code> // 返回 True。<br />
+<code>router.forwardPacket();</code> // 返回 <code>[7, 4, 90]</code>。<br />
+<code>router.forwardPacket();</code> // 没有数据包可以转发，返回 <code>[]</code>。</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>2 &lt;= memoryLimit &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= source, destination &lt;= 2 * 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= timestamp &lt;= 10<sup>9</sup></code></li>
+	<li><code>1 &lt;= startTime &lt;= endTime &lt;= 10<sup>9</sup></code></li>
+	<li><code>addPacket</code>、<code>forwardPacket</code> 和 <code>getCount</code> 方法的总调用次数最多为 <code>10<sup>5</sup></code>。</li>
+	<li>对于 <code>addPacket</code> 的查询，<code>timestamp</code> 按递增顺序给出。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：STL套STL"><a href="#解题方法：STL套STL" class="headerlink" title="解题方法：STL套STL"></a>解题方法：STL套STL</h2><p>首先拆解需求，无非以下三个：</p>
+<ol>
+<li>FIFO；</li>
+<li>判断一个packet是否已经存在；</li>
+<li>查找指定destination的所有包中时间戳在<code>[s, e]</code>中的有多少个。</li>
+</ol>
+<p>让我们逐个分析破解之，有什么需求就设计什么数据结构。</p>
+<p><strong>FIFO</strong></p>
+<p>首先对于第一个需求，当路由器中数据包数量已经达到memoryLimit个时，新来的数据包会挤掉最早加入的数据包。</p>
+<p>很简单，使用一个队列就行。如果想效率更高点，也可以使用数组模拟队列（容量多开一个来区分队列是满是空，两个指针指向队列第一个元素下标和最后一个元素下标的下一个下标）。</p>
+<p>由于使用了多个数据结构，所以有元素出队时记得更新其他数据结构中的内容。</p>
+<p><strong>判断一个packet是否已经存在</strong></p>
+<p>这个需求来自新加入包时是返回true还是false。这个也简单，使用一个哈希表判断路由器中都有哪些包就好了。</p>
+<p><strong>查找指定destination的所有包中时间戳在<code>[s, e]</code>中的有多少个</strong></p>
+<p>这个相对复杂一点。所好在于，题目给定数据满足添加addPacket的timestamp是递增的。</p>
+<blockquote>
+<p>最后那句“注意”我也没看懂，也不知道到底是同destination的包timestamp递增还是所有包整体上timestamp递增，反正无所谓，就当成“针对这道题随便操作，只要你所涉及到的数据包都是timestamp递增的”就好了。</p>
+</blockquote>
+<p>好吧，既然给定的数据包都是timestamp递增的了，那么范围查询就容易实现了。</p>
+<p>既然查询的范围是指定的destination，那么我们就简历一个哈希表finder，把键设置为destination好了。finder[destination]是所有目标地址为destination的数据包。</p>
+<p>这些数据包怎么存储呢？使用一个vector存放每个数据包的timestamp就可以了，新来数据包就直接push到vector后面，就能实现vector中的数据包是天然按照timestamp递增的，就能使用二分法在log级别的时间内找到时间戳在<code>[s, e]</code>中的数据包有多少个了。</p>
+<p>这就解决了？等下，数据包还能被移除呢！怎么办，好说，再使用一个整数startIdx记录vector中没被移除的数据包下标是从哪个开始的就好了。</p>
+<blockquote>
+<p>相当于移除数据包时，在针对需求3设计的结构体中，并没有真正移除，而是把“有效范围指针”右移了一位。实际设计中可别这样！内存分分钟爆炸。</p>
+</blockquote>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度：add和forward $O(1)$，count $(\log memoryLimit)$</li>
+<li>空间复杂度$O(memoryLimit)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-09-20 16:10:20</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-09-20 17:38:56</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">if</span> defined(_WIN32) || defined(__APPLE__)</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;_[1,2]toVector.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">FIFO: 一个数组一个指针</span><br><span class="hljs-comment">是否重复：一个哈希表</span><br><span class="hljs-comment">Find：哈希表+有序集合</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">啊，我不想写了</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title">hash_combine</span><span class="hljs-params">(<span class="hljs-type">size_t</span> &amp;seed, <span class="hljs-type">size_t</span> h)</span> </span>&#123;<br>    seed ^= h + <span class="hljs-number">0x9e3779b97f4a7c15ULL</span> + (seed &lt;&lt; <span class="hljs-number">6</span>) + (seed &gt;&gt; <span class="hljs-number">2</span>);<br>&#125;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">TupleHash</span> &#123;<br>    <span class="hljs-function"><span class="hljs-type">size_t</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-type">const</span> tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; t)</span> <span class="hljs-type">const</span> <span class="hljs-keyword">noexcept</span> </span>&#123;<br>        <span class="hljs-type">size_t</span> seed = <span class="hljs-number">0</span>;<br>        <span class="hljs-built_in">hash_combine</span>(seed, hash&lt;<span class="hljs-type">int</span>&gt;&#123;&#125;(<span class="hljs-built_in">get</span>&lt;<span class="hljs-number">0</span>&gt;(t)));<br>        <span class="hljs-built_in">hash_combine</span>(seed, hash&lt;<span class="hljs-type">int</span>&gt;&#123;&#125;(<span class="hljs-built_in">get</span>&lt;<span class="hljs-number">1</span>&gt;(t)));<br>        <span class="hljs-built_in">hash_combine</span>(seed, hash&lt;<span class="hljs-type">int</span>&gt;&#123;&#125;(<span class="hljs-built_in">get</span>&lt;<span class="hljs-number">2</span>&gt;(t)));<br>        <span class="hljs-keyword">return</span> seed;<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">TupleEq</span> &#123;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-type">const</span> tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; a, <span class="hljs-type">const</span> tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; b)</span> <span class="hljs-type">const</span> <span class="hljs-keyword">noexcept</span> </span>&#123;  <span class="hljs-comment">// 记得const noexcept（好难记）</span><br>        <span class="hljs-keyword">return</span> a == b;<br>    &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Router</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    vector&lt;tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&gt; fifo;<br>    <span class="hljs-type">int</span> fifoLeft, fifoRight, memoryLimit;<br>    unordered_set&lt;tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;, TupleHash, TupleEq&gt; already;<br>    unordered_map&lt;<span class="hljs-type">int</span>, pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;, <span class="hljs-type">int</span>&gt;&gt; finder;  <span class="hljs-comment">// destance -&gt; &lt;[timestamp], 有效范围&gt;</span><br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">removePacket</span><span class="hljs-params">()</span> </span>&#123;  <span class="hljs-comment">// remove fifoLeft，不判断是否为空</span><br>        tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; toRemove = fifo[fifoLeft];<br>        already.<span class="hljs-built_in">erase</span>(toRemove);<br>        finder[<span class="hljs-built_in">get</span>&lt;<span class="hljs-number">1</span>&gt;(toRemove)].second++;<br>        fifoLeft = (fifoLeft + <span class="hljs-number">1</span>) % (memoryLimit + <span class="hljs-number">1</span>);<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Router</span>(<span class="hljs-type">int</span> memoryLimit) &#123;<br>        <span class="hljs-keyword">this</span>-&gt;memoryLimit = memoryLimit;<br>        fifo.<span class="hljs-built_in">resize</span>(memoryLimit + <span class="hljs-number">1</span>);  <span class="hljs-comment">// 多开一个区分空和满</span><br>        fifoLeft = fifoRight = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">addPacket</span><span class="hljs-params">(<span class="hljs-type">int</span> source, <span class="hljs-type">int</span> destination, <span class="hljs-type">int</span> timestamp)</span> </span>&#123;<br>        tuple&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; package = <span class="hljs-built_in">tuple</span>(source, destination, timestamp);<br>        <span class="hljs-keyword">if</span> (already.<span class="hljs-built_in">count</span>(package)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        already.<span class="hljs-built_in">insert</span>(package);<br>        <span class="hljs-keyword">if</span> ((fifoRight + <span class="hljs-number">1</span>) % (memoryLimit + <span class="hljs-number">1</span>) == fifoLeft) &#123;  <span class="hljs-comment">// remove fifo[fifoLeft]</span><br>            <span class="hljs-built_in">removePacket</span>();<br>        &#125;<br>        fifo[fifoRight] = package;<br>        fifoRight = (fifoRight + <span class="hljs-number">1</span>) % (memoryLimit + <span class="hljs-number">1</span>);<br>        finder[destination].first.<span class="hljs-built_in">push_back</span>(timestamp);<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">forwardPacket</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (fifoLeft == fifoRight) &#123;<br>            <span class="hljs-keyword">return</span> &#123;&#125;;<br>        &#125;<br>        <span class="hljs-keyword">auto</span> [source, destination, timeStamp] = fifo[fifoLeft];<br>        <span class="hljs-built_in">removePacket</span>();<br>        <span class="hljs-keyword">return</span> &#123;source, destination, timeStamp&#125;;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(<span class="hljs-type">int</span> destination, <span class="hljs-type">int</span> startTime, <span class="hljs-type">int</span> endTime)</span> </span>&#123;<br>        <span class="hljs-keyword">auto</span>&amp;&amp; [timeStamps, startIdx] = finder[destination];<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">upper_bound</span>(timeStamps.<span class="hljs-built_in">begin</span>() + startIdx, timeStamps.<span class="hljs-built_in">end</span>(), endTime) - <span class="hljs-built_in">lower_bound</span>(timeStamps.<span class="hljs-built_in">begin</span>() + startIdx, timeStamps.<span class="hljs-built_in">end</span>(), startTime);<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your Router object will be instantiated and called as such:</span><br><span class="hljs-comment"> * Router* obj = new Router(memoryLimit);</span><br><span class="hljs-comment"> * bool param_1 = obj-&gt;addPacket(source,destination,timestamp);</span><br><span class="hljs-comment"> * vector&lt;int&gt; param_2 = obj-&gt;forwardPacket();</span><br><span class="hljs-comment"> * int param_3 = obj-&gt;getCount(destination,startTime,endTime);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/151901838">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/09/20/LeetCode%203508.%E8%AE%BE%E8%AE%A1%E8%B7%AF%E7%94%B1%E5%99%A8/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<p>ios26更新好烫！</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
