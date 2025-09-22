@@ -1451,6 +1451,11 @@ categories: [自用]
 |heartily|adv. 尽情地|
 |||
 |outermost|adj. 最外边的，最远的|
+|||
+|thoughtless|adj. 粗心的，欠考虑的，轻率的|
+|constitution|n. 宪法；组成；体质|
+|hairdress|n. 发型|
+|ornament|n. 装饰<br/>v. 装饰，美化|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
