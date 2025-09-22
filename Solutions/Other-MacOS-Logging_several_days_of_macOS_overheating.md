@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2025-09-09 21:49:13
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-22 22:52:40
+-->
 ---
 title: MacOS - 记录MacOS发烫的好几天 - 幕后黑手竟然是
 date: 2025-09-01 23:52:47
@@ -31,7 +37,7 @@ letmefly        18900 186.4  0.0 1626974576   5904   ??  R    二03下午 5706:1
 
 ## End
 
-今天Windows的`Microsoft Office SDX Helper`（`C:\Program Files\Microsoft Office\root\Office16`）又开始发了下疯，同样是狂吃CPU导致电脑发烫，直接在任务管理器中终止了就没事儿了。
+今天Windows的`Microsoft Office SDX Helper`（`C:\Program Files\Microsoft Office\root\Office16`）又开始发了下疯，同样是狂吃CPU导致电脑发烫，直接在任务管理器中终止了就没事儿了。经常这样的小伙伴可以参考[这篇CSDN](https://blog.csdn.net/qq_42110985/article/details/124210544)
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
