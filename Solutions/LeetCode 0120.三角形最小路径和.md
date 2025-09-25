@@ -1,11 +1,11 @@
 ---
-title: 120.三角形最小路径和
+title: 120.三角形最小路径和：原地动态规划（根本不需要演变来演变去）
 date: 2022-07-18 16:23:53
 tags: [题解, LeetCode, 中等, 数组, 动态规划]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】120.三角形最小路径和
+# 【LetMeFly】120.三角形最小路径和：原地动态规划（根本不需要演变来演变去）
 
 力扣题目链接：[https://leetcode.cn/problems/triangle/](https://leetcode.cn/problems/triangle/)
 
@@ -72,6 +72,12 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2022-07-18 16:16:49
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2022-07-18 16:22:44
+ */
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
@@ -93,5 +99,152 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/18/LeetCode%200120.%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/125854342](https://letmefly.blog.csdn.net/article/details/125854342)
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-25 23:12:43
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-25 23:18:09
+ */
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        for (int i = 1; i < triangle.size(); i++) {
+            for (int j = 0; j <= i; j++) {
+                int toAdd = 100000;
+                if (j - 1 >= 0) {
+                    toAdd = min(toAdd, triangle[i - 1][j - 1]);
+                }
+                if (j < i) {
+                    toAdd = min(toAdd, triangle[i - 1][j]);
+                }
+                triangle[i][j] += toAdd;
+            }
+        }
+        int ans = 100000;
+        for (int t : triangle.back()) {
+            ans = min(ans, t);
+        }
+        return ans;
+    }
+};
+```
+
+## 方法二：原地修改（倒序遍历）
+
+其实只需要倒着写，代码实现就会简单很多。
+
++ 时间复杂度$O(N^2)$，其中$N$为三角形的边长
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-25 23:20:10
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-25 23:21:43
+ */
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);
+            }
+        }
+        return triangle[0][0];
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+Author: LetMeFly
+Date: 2025-08-01 23:51:32
+LastEditors: LetMeFly.xyz
+LastEditTime: 2025-08-02 00:01:53
+'''
+from typing import List
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        ans = [[1] for _ in range(numRows)]
+        for i in range(1, numRows):
+            for j in range(1, i):
+                ans[i].append(ans[i - 1][j - 1] + ans[i - 1][j])
+            ans[i].append(1)
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-25 23:12:43
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-25 23:31:13
+ */
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        for (int i = triangle.size() - 2; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));
+            }
+        }
+        return triangle.get(0).get(0);
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-25 23:12:43
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-25 23:26:32
+ */
+package main
+
+func minimumTotal(triangle [][]int) int {
+    for i := len(triangle) - 2; i >= 0; i-- {
+        for j := 0; j <= i; j++ {
+            triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1])
+        }
+    }
+    return triangle[0][0]
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-09-25 23:12:43
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-09-25 23:34:54
+ */
+impl Solution {
+    pub fn minimum_total(mut triangle: Vec<Vec<i32>>) -> i32 {
+        for i in (0..triangle.len()-1).rev() {
+            for j in 0..=i {
+                triangle[i][j] += triangle[i+1][j].min(triangle[i+1][j+1]);
+            }
+        }
+        return triangle[0][0];
+    }
+}
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/125854342)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/18/LeetCode%200120.%E4%B8%89%E8%A7%92%E5%BD%A2%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
