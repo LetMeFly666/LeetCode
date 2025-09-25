@@ -2,15 +2,15 @@
  * @Author: LetMeFly
  * @Date: 2025-09-25 23:12:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-25 23:29:00
+ * @LastEditTime: 2025-09-25 23:30:09
  */
-class Solution {  // 这个交上去肯定RE
+class Solution {  // 说错了，是CE
     public int minimumTotal(List<List<Integer>> triangle) {
         for (int i = triangle.length() - 2; i >= 0; i--) {
             for (int j = 0; j <= i; j++) {
-                triangle.at(i).set(j, triangle.at(i).at(j) + Math.min(triangle.at(i + 1).at(j), triangle.at(i + 1).at(j + 1)));
+                triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));
             }
         }
-        return triangle.at(i).at(j);
+        return triangle.get(0).get(0);
     }
 }
