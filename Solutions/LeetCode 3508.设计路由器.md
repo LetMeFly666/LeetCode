@@ -133,7 +133,7 @@ categories: [题解, LeetCode]
 
 好吧，既然给定的数据包都是timestamp递增的了，那么范围查询就容易实现了。
 
-既然查询的范围是指定的destination，那么我们就简历一个哈希表finder，把键设置为destination好了。finder[destination]是所有目标地址为destination的数据包。
+既然查询的范围是指定的destination，那么我们就建立一个哈希表finder，把键设置为destination好了。finder[destination]是所有目标地址为destination的数据包。
 
 这些数据包怎么存储呢？使用一个vector存放每个数据包的timestamp就可以了，新来数据包就直接push到vector后面，就能实现vector中的数据包是天然按照timestamp递增的，就能使用二分法在log级别的时间内找到时间戳在`[s, e]`中的数据包有多少个了。
 
@@ -193,7 +193,7 @@ private:
     vector<tuple<int, int, int>> fifo;
     int fifoLeft, fifoRight, memoryLimit;
     unordered_set<tuple<int, int, int>, TupleHash, TupleEq> already;
-    unordered_map<int, pair<vector<int>, int>> finder;  // destance -> <[timestamp], 有效范围>
+    unordered_map<int, pair<vector<int>, int>> finder;  // destination -> <[timestamp], 有效范围>
 
     void removePacket() {  // remove fifoLeft，不判断是否为空
         tuple<int, int, int> toRemove = fifo[fifoLeft];

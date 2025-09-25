@@ -691,7 +691,7 @@ categories: [自用]
 |||
 |ultraviolet|adj. 紫外线的，利用紫外线的|
 |vex|v. 使恼火，使懊恼，使忧虑|
-|razor|n. 剃须刀，刮脸刀|
+|<font color="#28bea0" title="二次复习">razor</font>|n. 剃须刀，刮脸刀|
 |ox|n. （阉割的）公牛，去势公牛，饲养的牛<details><summary>复数</summary>oxen</details>|
 |||
 |reiterate|v. 反复地说，重申|
@@ -1451,6 +1451,18 @@ categories: [自用]
 |heartily|adv. 尽情地|
 |||
 |outermost|adj. 最外边的，最远的|
+|||
+|thoughtless|adj. 粗心的，欠考虑的，轻率的|
+|constitution|n. 宪法；组成；体质|
+|hairdress|n. 发型|
+|ornament|n. 装饰<br/>v. 装饰，美化|
+|||
+|frock|n. 连衣裙，女装|
+|||
+|oval|adj. 椭圆形的，卵形的<br/>椭圆形，卵形|
+|||
+|fire-engine|n. 消防车|
+|plea|n. 请求，辩护，申诉|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

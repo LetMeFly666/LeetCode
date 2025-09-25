@@ -40,7 +40,7 @@ private:
     vector<tuple<int, int, int>> fifo;
     int fifoLeft, fifoRight, memoryLimit;
     unordered_set<tuple<int, int, int>, TupleHash, TupleEq> already;
-    unordered_map<int, pair<vector<int>, int>> finder;  // destance -> <[timestamp], 有效范围>
+    unordered_map<int, pair<vector<int>, int>> finder;  // destination -> <[timestamp], 有效范围>
 
     void removePacket() {  // remove fifoLeft，不判断是否为空
         tuple<int, int, int> toRemove = fifo[fifoLeft];
