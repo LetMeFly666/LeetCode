@@ -18,22 +18,22 @@
   <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【LetMeFly】467.环绕字符串中唯一的子字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;unique-substrings-in-wraparound-string&#x2F; 把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s看起来是这样的：  &quot;...zabcdefghijklmnopqrstuvwxyzabc">
+    <meta name="description" content="【LetMeFly】467.环绕字符串中唯一的子字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;unique-substrings-in-wraparound-string&#x2F; 把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s看起来是这样的：  .1234567现在给定另一个字符串&#96;&#96;&#96;p&#96;&#96;&#96;。返回&#96;&#96;&#96;s&#96;&#96;&#96;中 **">
 <meta property="og:type" content="article">
 <meta property="og:title" content="467.环绕字符串中唯一的子字符串">
 <meta property="og:url" content="https://blog.letmefly.xyz/2022/05/25/LeetCode%200467.%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
-<meta property="og:description" content="【LetMeFly】467.环绕字符串中唯一的子字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;unique-substrings-in-wraparound-string&#x2F; 把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s看起来是这样的：  &quot;...zabcdefghijklmnopqrstuvwxyzabc">
+<meta property="og:description" content="【LetMeFly】467.环绕字符串中唯一的子字符串力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;unique-substrings-in-wraparound-string&#x2F; 把字符串s看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以s看起来是这样的：  .1234567现在给定另一个字符串&#96;&#96;&#96;p&#96;&#96;&#96;。返回&#96;&#96;&#96;s&#96;&#96;&#96;中 **">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-25T05:45:46.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.918Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.903Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="题解">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="中等">
 <meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="DP">
 <meta property="article:tag" content="子问题">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -90,7 +90,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -233,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          2.5k 字
         
       </span>
     
@@ -244,7 +244,7 @@
         
         
         
-          18 分钟
+          21 分钟
         
       </span>
     
@@ -290,60 +290,14 @@
                 <h1 id="【LetMeFly】467-环绕字符串中唯一的子字符串"><a href="#【LetMeFly】467-环绕字符串中唯一的子字符串" class="headerlink" title="【LetMeFly】467.环绕字符串中唯一的子字符串"></a>【LetMeFly】467.环绕字符串中唯一的子字符串</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-substrings-in-wraparound-string/">https://leetcode.cn/problems/unique-substrings-in-wraparound-string/</a></p>
 <p>把字符串<code>s</code>看作是<code>“abcdefghijklmnopqrstuvwxyz”</code>的无限环绕字符串，所以<code>s</code>看起来是这样的：</p>
 <ul>
-<li><code>&quot;...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....&quot;</code> .</li>
+<li><figure class="highlight plaintext"><figcaption><span>.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs "...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd...."```"><br>现在给定另一个字符串```p```。返回```s```中 **唯一** 的```p```的 **非空子串** 的数量 。 <br><br>&lt;del&gt;笔者：&lt;small&gt;给LeetCode提的&lt;a href=&quot;https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/7420&quot;&gt;issue&lt;/a&gt;通过了竟然。“唯一”改成了“不同”，虽然可能更容易理解了，但是与题目不匹配了。&lt;/small&gt;&lt;/del&gt;<br><br>**示例 1:**<br><br></code></pre></td></tr></table></figure>
+输入: p &#x3D; “a”<br>输出: 1<br>解释: 字符串 s 中只有一个”a”子字符。</li>
 </ul>
-<p> </p>
-<p>现在给定另一个字符串<code>p</code>。返回<code>s</code>中 <strong>唯一</strong> 的<code>p</code>的 <strong>非空子串</strong> 的数量 。 </p>
-<p><del>笔者：<small>给LeetCode提的<a target="_blank" rel="noopener" href="https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/7420">issue</a>通过了竟然。“唯一”改成了“不同”，虽然可能更容易理解了，但是与题目不匹配了。</small></del></p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: p = &quot;a&quot;</span><br><span class="hljs-section">输出: 1</span><br><span class="hljs-section">解释: 字符串 s 中只有一个&quot;a&quot;子字符。</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>示例 2:</strong></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: p = &quot;cac&quot;</span><br><span class="hljs-section">输出: 2</span><br><span class="hljs-section">解释: 字符串 s 中的字符串“cac”只有两个子串“a”、“c”。</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>示例 3:</strong></p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: p = &quot;zab&quot;</span><br><span class="hljs-section">输出: 6</span><br><span class="hljs-section">解释: 在字符串 s 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>提示:</strong></p>
-<ul>
-<li>$1\leq p.length\leq 10^5$</li>
-<li>$p$ 由小写英文字母构成</li>
-</ul>
-<h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>给你一个全是小写字母的字符串p，让你找到其中所有的“连续递增子串”。</p>
-<p>其中，“连续递增子串”满足：</p>
-<blockquote>
-<p>后一个字母是前一个字母的下一个字母，字母z除外。</p>
-<blockquote>
-<p>也就是说，a的下一个字母是b，b的下一个字母是c，…，z的下一个字母是a。</p>
-</blockquote>
-</blockquote>
-<p>例如 “abc”、“xyz”、“zab”都是“连续递增子串”</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>先讲一下我之前的思路，想直接看结论的话请点击<a href="#RightWay">这里</a></p>
-<p><strong>子串来自于连续“递增”串</strong>。也就是说某个串如果从左到右字母按字母序依次递增，这个串的所有连续子串都是答案。</p>
-<p>于是我们只需要把原串划分成多个“连续递增串”，每个串的长度至少为1。这个步骤时间复杂度O(q.length)</p>
-<p>对于某个划分出来的串(假设长度为l)，它的连续子串的个数是“l + (l - 1) + (l - 2) + … + 1 &#x3D; l * (l + 1) &#x2F; 2”</p>
-<p>但是这样会导致结果偏大，因为题目要求“<strong>唯一</strong>的p的非空子串”。其实我觉得改成“<strong>不同</strong>的”更好<a target="_blank" rel="noopener" href="https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/7420">。</a></p>
-<p>如果仅计数，对于长度为l的串所需的时间复杂度就是O(1)，但如果要去重（以时间复杂度为O(1)的哈希表为例），那时间复杂度就会上升为O(l<sup>2</sup>)，显然会超时。</p>
-<p>那么怎么办呢？接下来请出正题：动态规划。</p>
-<p><a id="RightWay"></a></p>
-<h2 id="方法一：动态规划"><a href="#方法一：动态规划" class="headerlink" title="方法一：动态规划"></a>方法一：动态规划</h2><p>其实不难发现：<strong>如果答案串的长度定了，最后一个字符也定了，那么我们就可以唯一推断出这个字符串。</strong></p>
-<blockquote>
-<p>例如例三中“zab”的一个“连续递增子串”是“ab”。我们知道了“ab”的长度(2)，也知道了“ab”的最后一个字母(b)，因此我们就能还原出原串为“ab”。</p>
-</blockquote>
-<p>同时：<strong>如果“ab”是答案串，那么“b”一定是答案串</strong>。</p>
-<blockquote>
-<p>这是因为“b”是“ab”的子串。</p>
-</blockquote>
-<p>因此：</p>
-<p><strong>我们只需要记录以各个字母结尾的串的最大长度，并将它们加起来就是答案。</strong></p>
-<blockquote>
-<p>比如：用endBy[i] 代表以第i个小写字母结尾的串的最大长度，假设endBy[25] &#x3D; 5，那么就说明存在以z结尾的串最大长度为5。也就是说p中存在子串“vwxyz”。这样我们就能得到以“z”结尾的符合条件的5个答案“vwxyz”、“wxyz”、“xyz”、“yz”、“z”。同时endBy[24]一定也不会为0，以“y”结尾的答案串累计道了endBy[24]中。</p>
-</blockquote>
-<ul>
-<li>时间复杂度$O(n)$，其中$n$是字符串$p$的长度。</li>
-<li>空间复杂度$O(|Σ|)$，其中$|Σ|$是字符集的大小。本题字符串由小写字母构成，因此$|Σ|&#x3D;26$</li>
-</ul>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findSubstringInWraproundString</span><span class="hljs-params">(string&amp; p)</span> </span>&#123;<br>        <span class="hljs-type">int</span> endBy[<span class="hljs-number">26</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>        <span class="hljs-type">int</span> length = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; p.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (i &amp;&amp; (p[i] - <span class="hljs-string">&#x27;a&#x27;</span>) == (p[i - <span class="hljs-number">1</span>] - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">1</span>) % <span class="hljs-number">26</span>) &#123;<br>                length++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                length = <span class="hljs-number">1</span>;<br>            &#125;<br>            endBy[p[i] - <span class="hljs-string">&#x27;a&#x27;</span>] = <span class="hljs-built_in">max</span>(endBy[p[i] - <span class="hljs-string">&#x27;a&#x27;</span>], length);<br>        &#125;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">26</span>; i++)<br>            ans += endBy[i];<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><br><span class="hljs-strong">**示例 2:**</span><br><br></code></pre></td></tr></table></figure>
+<p>输入: p &#x3D; “cac”<br>输出: 2<br>解释: 字符串 s 中的字符串“cac”只有两个子串“a”、“c”。</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><br><span class="hljs-strong">**示例 3:**</span><br><br></code></pre></td></tr></table></figure>
+<p>输入: p &#x3D; “zab”<br>输出: 6<br>解释: 在字符串 s 中有六个子串“z”、“a”、“b”、“za”、“ab”、“zab”。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><br>**提示:**<br><br>+ <span class="hljs-variable">$1</span>\leq p.length\leq <span class="hljs-number">10</span>^<span class="hljs-number">5</span><span class="hljs-variable">$</span><br>+ <span class="hljs-variable">$p</span><span class="hljs-variable">$</span> 由小写英文字母构成<br><br><span class="hljs-comment"># 题目大意</span><br><br>给你一个全是小写字母的字符串p，让你找到其中所有的“连续递增子串”。<br><br>其中，“连续递增子串”满足：<br><br>&gt; 后一个字母是前一个字母的下一个字母，字母z除外。<br>&gt;  &gt; 也就是说，a的下一个字母是b，b的下一个字母是c，...，z的下一个字母是a。<br><br>例如 “abc”、“xyz”、“zab”都是“连续递增子串”<br><br><span class="hljs-comment"># 思路</span><br><br>先讲一下我之前的思路，想直接看结论的话请点击[这里](<span class="hljs-comment">#RightWay)</span><br><br>**子串来自于连续“递增”串**。也就是说某个串如果从左到右字母按字母序依次递增，这个串的所有连续子串都是答案。<br><br>于是我们只需要把原串划分成多个“连续递增串”，每个串的长度至少为<span class="hljs-number">1</span>。这个步骤时间复杂度O(q.length)<br><br>对于某个划分出来的串(假设长度为l)，它的连续子串的个数是“l + (l - <span class="hljs-number">1</span>) + (l - <span class="hljs-number">2</span>) + ... + <span class="hljs-number">1</span> = l * (l + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>”<br><br>但是这样会导致结果偏大，因为题目要求“**唯一**的p的非空子串”。其实我觉得改成“**不同**的”更好[。](https://github.com/LeetCode<span class="hljs-literal">-Feedback</span>/LeetCode<span class="hljs-literal">-Feedback</span>/issues/<span class="hljs-number">7420</span>)<br><br>如果仅计数，对于长度为l的串所需的时间复杂度就是O(<span class="hljs-number">1</span>)，但如果要去重（以时间复杂度为O(<span class="hljs-number">1</span>)的哈希表为例），那时间复杂度就会上升为O(l&lt;sup&gt;<span class="hljs-number">2</span>&lt;/sup&gt;)，显然会超时。<br><br>那么怎么办呢？接下来请出正题：动态规划。<br><br>&lt;a id=<span class="hljs-string">&quot;RightWay&quot;</span>&gt;&lt;/a&gt;<br><br><span class="hljs-comment">## 方法一：动态规划</span><br><br>其实不难发现：**如果答案串的长度定了，最后一个字符也定了，那么我们就可以唯一推断出这个字符串。**<br><br>&gt; 例如例三中“zab”的一个“连续递增子串”是“ab”。我们知道了“ab”的长度(<span class="hljs-number">2</span>)，也知道了“ab”的最后一个字母(b)，因此我们就能还原出原串为“ab”。<br><br>同时：**如果“ab”是答案串，那么“b”一定是答案串**。<br><br>&gt; 这是因为“b”是“ab”的子串。<br><br>因此：<br><br>**我们只需要记录以各个字母结尾的串的最大长度，并将它们加起来就是答案。**<br><br>&gt; 比如：用endBy[<span class="hljs-type">i</span>] 代表以第i个小写字母结尾的串的最大长度，假设endBy[<span class="hljs-number">25</span>] = <span class="hljs-number">5</span>，那么就说明存在以z结尾的串最大长度为<span class="hljs-number">5</span>。也就是说p中存在子串“vwxyz”。这样我们就能得到以“z”结尾的符合条件的<span class="hljs-number">5</span>个答案“vwxyz”、“wxyz”、“xyz”、“yz”、“z”。同时endBy[<span class="hljs-number">24</span>]一定也不会为<span class="hljs-number">0</span>，以“y”结尾的答案串累计道了endBy[<span class="hljs-number">24</span>]中。<br><br>+ 时间复杂度<span class="hljs-variable">$O</span>(n)<span class="hljs-variable">$</span>，其中<span class="hljs-variable">$n</span><span class="hljs-variable">$</span>是字符串<span class="hljs-variable">$p</span><span class="hljs-variable">$</span>的长度。<br>+ 空间复杂度<span class="hljs-variable">$O</span>(|Σ|)<span class="hljs-variable">$</span>，其中<span class="hljs-variable">$</span>|Σ|<span class="hljs-variable">$</span>是字符集的大小。本题字符串由小写字母构成，因此<span class="hljs-variable">$</span>|Σ|=<span class="hljs-number">26</span><span class="hljs-variable">$</span><br><br><span class="hljs-comment">### AC代码</span><br><br><span class="hljs-comment">#### C++</span><br><br>```cpp<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span></span> &#123;<br>public:<br>    int findSubstringInWraproundString(string&amp; p) &#123;<br>        int endBy[<span class="hljs-number">26</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>        int length = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (int i = <span class="hljs-number">0</span>; i &lt; p.size(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (i &amp;&amp; (p[<span class="hljs-type">i</span>] - <span class="hljs-string">&#x27;a&#x27;</span>) == (p[<span class="hljs-type">i</span> - <span class="hljs-number">1</span>] - <span class="hljs-string">&#x27;a&#x27;</span> + <span class="hljs-number">1</span>) % <span class="hljs-number">26</span>) &#123;<br>                length++;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                length = <span class="hljs-number">1</span>;<br>            &#125;<br>            endBy[<span class="hljs-type">p</span>[<span class="hljs-type">i</span>] - <span class="hljs-string">&#x27;a&#x27;</span>] = max(endBy[<span class="hljs-type">p</span>[<span class="hljs-type">i</span>] - <span class="hljs-string">&#x27;a&#x27;</span>], length);<br>        &#125;<br>        int ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (int i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">26</span>; i++)<br>            ans += endBy[<span class="hljs-type">i</span>];<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <blockquote>
 <p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/05/25/LeetCode%200467.%E7%8E%AF%E7%BB%95%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%94%AF%E4%B8%80%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/124972046">https://letmefly.blog.csdn.net/article/details/124972046</a></p>

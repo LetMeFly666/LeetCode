@@ -30,11 +30,11 @@
 <meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/bc6dbc770ce84d8e843c3c10fd08b3d3.png">
 <meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/b270b0c8bcfd4ef5814c578531a8c12d.jpeg">
 <meta property="article:published_time" content="2023-01-13T08:11:42.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.947Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.948Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="C++">
-<meta property="article:tag" content="简单">
 <meta property="article:tag" content="Research">
+<meta property="article:tag" content="简单">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/f89b9d0db3a246adbf63a05ded0d60c0.png">
   
@@ -86,7 +86,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -275,15 +275,8 @@
 </ol>
 <p>这表明：</p>
 <ol>
-<li><code>i++</code>并且开O2优化的执行时间“远”小于<code>i++</code>或<code>++i</code>不开优化的执行时间</li>
-<li>不开启O2优化的情况下，<code>i++</code>和<code>++i</code>的效率相差不大，使用<code>++i</code>的耗时略长，使用<code>i++</code>的时间消耗约为<code>++i</code>的99.507%</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs i++```并且开O2优化的执行时间“远”小于```i++```或```++i```不开优化的执行时间">2. 不开启O2优化的情况下，```i++```和```++i```的效率相差不大，使用```++i```的耗时略长，使用```i++```的时间消耗约为```++i```的99.507%<br><br>**进一步实验：**<br><br>在上述实验中，虽说每隔1000000000次打印一次，但在循环中仍打印了10000次。这1万次的打印会消耗不少的时间，并且也可以引起一定的误差。<br><br>因此，在实验二中，我们取消了循环中的打印，只保留循环结束后的时间打印。<br><br>同样新建了两个简单的cpp文件：```i++NC.cpp```和```++iNC.cpp```。其中NC的意思是：Not Cout<br><br>```i++NC.cpp```为：<br><br>```cpp<br>#include &lt;iostream&gt;<br>#include &lt;time.h&gt;<br>using namespace std;<br><br>#define forTo 10000000000000<br>#define perCout 1000000000<br><br>int main() &#123;<br>    clock_t start = clock();<br>    for (long long i = 0; i &lt; forTo; i++) &#123;<br>        ;<br>    &#125;<br>    puts(&quot;End..&quot;);<br>    cout &lt;&lt; &quot;Time consume: &quot; &lt;&lt; double(clock() - start) / CLOCKS_PER_SEC &lt;&lt; endl;<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
-<p><strong>进一步实验：</strong></p>
-<p>在上述实验中，虽说每隔1000000000次打印一次，但在循环中仍打印了10000次。这1万次的打印会消耗不少的时间，并且也可以引起一定的误差。</p>
-<p>因此，在实验二中，我们取消了循环中的打印，只保留循环结束后的时间打印。</p>
-<p>同样新建了两个简单的cpp文件：<code>i++NC.cpp</code>和<code>++iNC.cpp</code>。其中NC的意思是：Not Cout</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs i++NC.cpp```为："><br>```cpp<br>#include &lt;iostream&gt;<br>#include &lt;time.h&gt;<br>using namespace std;<br><br>#define forTo 10000000000000<br>#define perCout 1000000000<br><br>int main() &#123;<br>    clock_t start = clock();<br>    for (long long i = 0; i &lt; forTo; i++) &#123;<br>        ;<br>    &#125;<br>    puts(&quot;End..&quot;);<br>    cout &lt;&lt; &quot;Time consume: &quot; &lt;&lt; double(clock() - start) / CLOCKS_PER_SEC &lt;&lt; endl;<br>    return 0;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>而<code>++iNC.cpp</code>为</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> forTo 10000000000000</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> perCout 1000000000</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">clock_t</span> start = <span class="hljs-built_in">clock</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i = <span class="hljs-number">0</span>; i &lt; forTo; ++i) &#123;<br>        ;<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;End..&quot;</span>);<br>    cout &lt;&lt; <span class="hljs-string">&quot;Time consume: &quot;</span> &lt;&lt; <span class="hljs-built_in">double</span>(<span class="hljs-built_in">clock</span>() - start) / CLOCKS_PER_SEC &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 

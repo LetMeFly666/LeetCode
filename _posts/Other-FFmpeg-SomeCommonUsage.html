@@ -26,13 +26,13 @@
 <meta property="og:description" content="FFmpeg（强大的音视频处理工具） - 一些基本实用方法下载安装官网：ffmpeg.org 下载页面 -&gt; Windows -&gt; Windows builds from gyan.dev  或 Windows builds by BtbN 推荐使用第二个Github@BtbN&#x2F;FFmpeg-Builds，在最新的一个release中，搜索win，下载ffmpeg-maste">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-03T07:30:06.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.948Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.949Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="其他">
-<meta property="article:tag" content="中等">
 <meta property="article:tag" content="FFmpeg">
-<meta property="article:tag" content="音频">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="其他">
 <meta property="article:tag" content="视频">
+<meta property="article:tag" content="音频">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -83,7 +83,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -258,16 +258,8 @@
 <p>将input.mp3分割为数个7秒的小片段，并命名为output001.mp3、output002.mp3、…。</p>
 <p>其中：</p>
 <ul>
-<li><code>-acodec copy</code> instructs FFmpeg to copy the audio codec from the input file without re-encoding it, which means the output files will have the same audio quality.</li>
-<li><code>-vn</code> tells FFmpeg to extract only the audio stream from the input file and ignore the video stream, as this command does not produce any video output.</li>
-<li><code>-f segment</code> sets the output format to segmented files.</li>
-<li><code>-segment_time 7</code> 每段7秒</li>
+<li><figure class="highlight plaintext"><figcaption><span>copy``` instructs FFmpeg to copy the audio codec from the input file without re-encoding it, which means the output files will have the same audio quality.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs -acodec">+ ```-vn``` tells FFmpeg to extract only the audio stream from the input file and ignore the video stream, as this command does not produce any video output.<br>+ ```-f segment``` sets the output format to segmented files.<br>+ ```-segment_time 7``` 每段7秒<br><br>🤫<br><br>### 给视频添加图片文字<br><br>所用到素材及结果详见：[阿里云盘分享](https://www.aliyundrive.com/s/EQKti4XkgB3)<br><br>#### 给视频添加图片<br><br>如果想要往某个视频上的某个位置添加一个图片（比如二维码），则可以使用以下命令将```0.png```添加到```0.mp4```的左上角```(10, 10)```的位置：<br><br>```bash<br>ffmpeg -i 0.mp4 -i 0.png -filter_complex &quot;overlay=10:10&quot; output.mp4<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>🤫</p>
-<h3 id="给视频添加图片文字"><a href="#给视频添加图片文字" class="headerlink" title="给视频添加图片文字"></a>给视频添加图片文字</h3><p>所用到素材及结果详见：<a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/EQKti4XkgB3">阿里云盘分享</a></p>
-<h4 id="给视频添加图片"><a href="#给视频添加图片" class="headerlink" title="给视频添加图片"></a>给视频添加图片</h4><p>如果想要往某个视频上的某个位置添加一个图片（比如二维码），则可以使用以下命令将<code>0.png</code>添加到<code>0.mp4</code>的左上角<code>(10, 10)</code>的位置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i 0.mp4 -i 0.png -filter_complex <span class="hljs-string">&quot;overlay=10:10&quot;</span> output.mp4<br></code></pre></td></tr></table></figure>
-
 <p>如果想要0.png仅在第5到10秒出现，则可以：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i 0.mp4 -i 0.png -filter_complex <span class="hljs-string">&quot;overlay=10:10:enable=&#x27;between(t,5,10)&quot;</span> output.mp4<br></code></pre></td></tr></table></figure>
 

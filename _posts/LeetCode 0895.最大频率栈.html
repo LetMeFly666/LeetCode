@@ -26,15 +26,15 @@
 <meta property="og:description" content="【LetMeFly】895.最大频率栈力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;maximum-frequency-stack&#x2F; 设计一个类似堆栈的数据结构，将元素推入堆栈，并从堆栈中弹出出现频率最高的元素。  实现 FreqStack&nbsp;类:   	FreqStack()&nbsp;构造一个空的堆栈。 	void push(int val)&nbsp;将一个">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-30T14:57:12.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.923Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.907Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="题解">
 <meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="哈希表">
 <meta property="article:tag" content="困难">
+<meta property="article:tag" content="有序集合">
 <meta property="article:tag" content="栈">
 <meta property="article:tag" content="设计">
-<meta property="article:tag" content="哈希表">
-<meta property="article:tag" content="有序集合">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -85,7 +85,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -285,25 +285,8 @@ freqStack.pop ();//返回 4 ，因为 4, 5 和 7 出现频率最高，但 4 是�
 <h2 id="方法一：哈希表设计"><a href="#方法一：哈希表设计" class="headerlink" title="方法一：哈希表设计"></a>方法一：哈希表设计</h2><p>其实主要也就是两个数据结构，一个是<code>int</code>转<code>int</code>的哈希表，一个是<code>int</code>转<code>stack&lt;int&gt;</code>的哈希表</p>
 <ul>
 <li><code>unordered_map&lt;int, int&gt; value2times</code>记录一个数值出现的次数。假如<code>value2times[1] = 5</code>，那么就说明栈中有<code>5</code>个<code>1</code></li>
-<li><code>unordered_map&lt;int, stack&lt;int&gt;&gt; times2values</code>记录某个频率的数。假如<code>times2values[3] = [1, 2, 5</code>，那么就说明<code>1</code>、<code>2</code>、<code>5</code>都出现过<code>3</code>次</li>
+<li><figure class="highlight plaintext"><figcaption><span>stack<int>> times2values```记录某个频率的数。假如```times2values[3] </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs unordered_map<int,"><br>最后，我们再使用一个整数类型的数据```maxTimes```来记录整个栈中的“最大频率”<br><br>**当元素入栈时：**<br><br>假设入栈了元素```val```，那么```val```在栈中出现的次数增加（```value2times[val]++```）<br><br>出现次数增加后，这个元素出现了```value2times[val]```次（记为```thisTimes```）<br><br>那么我们同时就需要将这个元素插入```times2values[thisTimes]```这个栈中<br><br>最后，更新整个栈中的最大频率```maxTimes```即可<br><br>**当元素出栈时：**<br><br>通过```maxTimes```我们可以得到栈中元素的“最大出现次数”<br><br>因此，```value2times[maxTimes]```栈的栈顶元素记为要找的元素。（记为```value```）<br><br>将这个元素弹出栈，并将这个元素在栈中的出现次数减一。<br><br>如果出栈后```maxTimes```对应的栈空了，那么就将```maxTimes```减1<br><br><br>+ 时间复杂度$O(1)$，单次入栈和出栈的时间复杂度都是$O(1)$<br>+ 空间复杂度$O(n)$，其中$n$是栈中的最大元素个数<br><br>### AC代码<br><br>#### C++<br><br>```cpp<br>class FreqStack &#123;<br>private:<br>    unordered_map&lt;int, int&gt; value2times;<br>    unordered_map&lt;int, stack&lt;int&gt;&gt; times2values;<br>    int maxTimes;<br>public:<br>    FreqStack() &#123;<br>        maxTimes = 0;<br>    &#125;<br>    <br>    void push(int val) &#123;<br>        value2times[val]++;<br>        int thisTimes = value2times[val];<br>        times2values[thisTimes].push(val);<br>        maxTimes = max(maxTimes, thisTimes);<br>    &#125;<br>    <br>    int pop() &#123;<br>        int value = times2values[maxTimes].top();<br>        times2values[maxTimes].pop();<br>        value2times[value]--;<br>        if (times2values[maxTimes].empty()) &#123;<br>            maxTimes--;<br>        &#125;<br>        return value;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>最后，我们再使用一个整数类型的数据<code>maxTimes</code>来记录整个栈中的“最大频率”</p>
-<p><strong>当元素入栈时：</strong></p>
-<p>假设入栈了元素<code>val</code>，那么<code>val</code>在栈中出现的次数增加（<code>value2times[val]++</code>）</p>
-<p>出现次数增加后，这个元素出现了<code>value2times[val]</code>次（记为<code>thisTimes</code>）</p>
-<p>那么我们同时就需要将这个元素插入<code>times2values[thisTimes]</code>这个栈中</p>
-<p>最后，更新整个栈中的最大频率<code>maxTimes</code>即可</p>
-<p><strong>当元素出栈时：</strong></p>
-<p>通过<code>maxTimes</code>我们可以得到栈中元素的“最大出现次数”</p>
-<p>因此，<code>value2times[maxTimes]</code>栈的栈顶元素记为要找的元素。（记为<code>value</code>）</p>
-<p>将这个元素弹出栈，并将这个元素在栈中的出现次数减一。</p>
-<p>如果出栈后<code>maxTimes</code>对应的栈空了，那么就将<code>maxTimes</code>减1</p>
-<ul>
-<li>时间复杂度$O(1)$，单次入栈和出栈的时间复杂度都是$O(1)$</li>
-<li>空间复杂度$O(n)$，其中$n$是栈中的最大元素个数</li>
-</ul>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">FreqStack</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; value2times;<br>    unordered_map&lt;<span class="hljs-type">int</span>, stack&lt;<span class="hljs-type">int</span>&gt;&gt; times2values;<br>    <span class="hljs-type">int</span> maxTimes;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">FreqStack</span>() &#123;<br>        maxTimes = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        value2times[val]++;<br>        <span class="hljs-type">int</span> thisTimes = value2times[val];<br>        times2values[thisTimes].<span class="hljs-built_in">push</span>(val);<br>        maxTimes = <span class="hljs-built_in">max</span>(maxTimes, thisTimes);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-type">int</span> value = times2values[maxTimes].<span class="hljs-built_in">top</span>();<br>        times2values[maxTimes].<span class="hljs-built_in">pop</span>();<br>        value2times[value]--;<br>        <span class="hljs-keyword">if</span> (times2values[maxTimes].<span class="hljs-built_in">empty</span>()) &#123;<br>            maxTimes--;<br>        &#125;<br>        <span class="hljs-keyword">return</span> value;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/11/30/LeetCode%200895.%E6%9C%80%E5%A4%A7%E9%A2%91%E7%8E%87%E6%A0%88/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/128124298">https://letmefly.blog.csdn.net/article/details/128124298</a></p>
 </blockquote>

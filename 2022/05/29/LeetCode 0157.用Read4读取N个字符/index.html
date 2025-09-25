@@ -26,14 +26,14 @@
 <meta property="og:description" content="【LetMeFly】157.用Read4读取N个字符给你一个文件，并且该文件只能通过给定的 read4 方法来读取，请实现一个方法使其能够读取 n 个字符。 read4 方法： API read4 可以从文件中读取 4 个连续的字符，并且将它们写入缓存数组 buf 中。 返回值为实际读取的字符个数。 注意 read4() 自身拥有文件指针，很类似于 C 语言中的 FILE *fp 。 read4">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-29T05:56:48.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.915Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.899Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="题解">
-<meta property="article:tag" content="简单">
-<meta property="article:tag" content="模拟">
-<meta property="article:tag" content="字符串">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="交互">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="简单">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -90,7 +90,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -244,7 +244,7 @@
         
         
         
-          18 分钟
+          19 分钟
         
       </span>
     
@@ -319,12 +319,8 @@
 <p><strong>提示:</strong></p>
 <ul>
 <li>你 <strong>不能</strong> 直接操作该文件，文件只能通过 <code>read4</code> 获取而 <strong>不能</strong> 通过 <code>read</code>。</li>
-<li><code>read</code>  函数只在每个测试用例调用一次。</li>
-<li>你可以假定目标缓存数组 <code>buf</code> 保证有足够的空间存下 n 个字符。</li>
+<li><figure class="highlight plaintext"><figcaption><span>函数只在每个测试用例调用一次。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs read```">+ 你可以假定目标缓存数组 ```buf``` 保证有足够的空间存下 n 个字符。 <br><br># 题目大意<br><br>```int read4(char* buf)```函数的作用是从字符串缓冲区读取4个字符（当字符数量小于4个时读取全部的字符）<br><br>```int read(char* buf, int n)```函数的作用是从字符缓冲区读取n个字符（当字符数量小于n个时读取全部的字符）<br><br>现在已经实现好了```read4```函数，让你用```read4```函数来实现```read```函数。<br><br># 思路<br><br>在读取字符数量不足$n$时，我们可以一直尝试读取（每次读取4个字符），直到“无字符可读”或“读够n个字符”为止。<br><br>同时，因为我们要把字符全部读入到```buf```中，所以每次读取4个字符的时候，存放的起始位置不同。<br><br>假如某次读取完$4$个字符后字符数量超过了$n$，那就把多读入的字符抹去即可（变成```\0```）。<br><br>## 方法一：模拟<br><br>+ 时间复杂度$O(n)$<br>+ 空间复杂度$O(1)$<br><br>### AC代码<br><br>#### C++<br><br>```cpp<br>class Solution &#123;<br>public:<br>    /**<br>     * @param buf Destination buffer<br>     * @param n   Number of characters to read<br>     * @return    The number of actual characters read<br>     */<br>    int read(char *buf, int n) &#123;<br>        int ans = 0;<br>        int thisNum;<br>        while (thisNum = read4(buf + ans)) &#123;<br>            ans += thisNum;<br>            if (ans &gt;= n) &#123;<br>                while (ans &gt; n) &#123;<br>                    *(buf + --ans) = &#x27;\0&#x27;;<br>                &#125;<br>                break;<br>            &#125;<br>        &#125;<br>        return ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p> </p>
-<h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><figure class="highlight plaintext"><figcaption><span>read4(char* buf)```函数的作用是从字符串缓冲区读取4个字符（当字符数量小于4个时读取全部的字符）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs int"><br>```int read(char* buf, int n)```函数的作用是从字符缓冲区读取n个字符（当字符数量小于n个时读取全部的字符）<br><br>现在已经实现好了```read4```函数，让你用```read4```函数来实现```read```函数。<br><br># 思路<br><br>在读取字符数量不足$n$时，我们可以一直尝试读取（每次读取4个字符），直到“无字符可读”或“读够n个字符”为止。<br><br>同时，因为我们要把字符全部读入到```buf```中，所以每次读取4个字符的时候，存放的起始位置不同。<br><br>假如某次读取完$4$个字符后字符数量超过了$n$，那就把多读入的字符抹去即可（变成```\0```）。<br><br>## 方法一：模拟<br><br>+ 时间复杂度$O(n)$<br>+ 空间复杂度$O(1)$<br><br>### AC代码<br><br>#### C++<br><br>```cpp<br>class Solution &#123;<br>public:<br>    /**<br>     * @param buf Destination buffer<br>     * @param n   Number of characters to read<br>     * @return    The number of actual characters read<br>     */<br>    int read(char *buf, int n) &#123;<br>        int ans = 0;<br>        int thisNum;<br>        while (thisNum = read4(buf + ans)) &#123;<br>            ans += thisNum;<br>            if (ans &gt;= n) &#123;<br>                while (ans &gt; n) &#123;<br>                    *(buf + --ans) = &#x27;\0&#x27;;<br>                &#125;<br>                break;<br>            &#125;<br>        &#125;<br>        return ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/05/29/LeetCode%200157.%E7%94%A8Read4%E8%AF%BB%E5%8F%96N%E4%B8%AA%E5%AD%97%E7%AC%A6">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/125030886">https://letmefly.blog.csdn.net/article/details/125030886</a></p>
 </blockquote>

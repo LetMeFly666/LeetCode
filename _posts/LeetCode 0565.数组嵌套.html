@@ -18,25 +18,25 @@
   <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
   <meta name="keywords" content="">
   
-    <meta name="description" content="【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;array-nesting&#x2F; 索引从0开始长度为N的数组A，包含0到N - 1的所有整数。找到最大的集合S并返回其大小，其中 S[i] &#x3D; &#123;A[i], A[A[i]], A[A[A[i]]], ... &#125;且遵守以下的规则。  假设选择索引为">
+    <meta name="description" content="【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;array-nesting&#x2F; 索引从0开始长度为N的数组A，包含0到N - 1的所有整数。找到最大的集合S并返回其大小，其中 S[i] &#x3D; {A[i], A[A[i]], A[A[A[i]]], ... }且遵守以下的规则。  假设选择索引为i的元素A[i]为S">
 <meta property="og:type" content="website">
 <meta property="og:title" content="565.数组嵌套">
 <meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%200565.%E6%95%B0%E7%BB%84%E5%B5%8C%E5%A5%97.html">
 <meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
-<meta property="og:description" content="【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;array-nesting&#x2F; 索引从0开始长度为N的数组A，包含0到N - 1的所有整数。找到最大的集合S并返回其大小，其中 S[i] &#x3D; &#123;A[i], A[A[i]], A[A[A[i]]], ... &#125;且遵守以下的规则。  假设选择索引为">
+<meta property="og:description" content="【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;array-nesting&#x2F; 索引从0开始长度为N的数组A，包含0到N - 1的所有整数。找到最大的集合S并返回其大小，其中 S[i] &#x3D; {A[i], A[A[i]], A[A[A[i]]], ... }且遵守以下的规则。  假设选择索引为i的元素A[i]为S">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/aa14df7da5194e37982867e06991236d.png#pic_center">
 <meta property="article:published_time" content="2022-07-17T01:37:58.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.920Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.904Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="题解">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="中等">
-<meta property="article:tag" content="深度优先搜索">
-<meta property="article:tag" content="数组">
 <meta property="article:tag" content="图">
 <meta property="article:tag" content="图遍历">
+<meta property="article:tag" content="数组">
 <meta property="article:tag" content="最大环">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/aa14df7da5194e37982867e06991236d.png#pic_center">
   
@@ -88,7 +88,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -237,7 +237,7 @@
 
 <article class="page-content">
   <h1 id="【LetMeFly】565-数组嵌套：转换为图-原地修改の优化"><a href="#【LetMeFly】565-数组嵌套：转换为图-原地修改の优化" class="headerlink" title="【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化"></a>【LetMeFly】565.数组嵌套：转换为图 + 原地修改の优化</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/array-nesting/">https://leetcode.cn/problems/array-nesting/</a></p>
-<p>索引从<code>0</code>开始长度为<code>N</code>的数组<code>A</code>，包含<code>0</code>到<code>N - 1</code>的所有整数。找到最大的集合<code>S</code>并返回其大小，其中 <code>S[i] = &#123;A[i], A[A[i]], A[A[A[i]]], ... &#125;</code>且遵守以下的规则。</p>
+<p>索引从<code>0</code>开始长度为<code>N</code>的数组<code>A</code>，包含<code>0</code>到<code>N - 1</code>的所有整数。找到最大的集合<code>S</code>并返回其大小，其中 <code>S[i] = {A[i], A[A[i]], A[A[A[i]]], ... }</code>且遵守以下的规则。</p>
 
 <p>假设选择索引为<code>i</code>的元素<code>A[i]</code>为<code>S</code>的第一个元素，<code>S</code>的下一个元素应该是<code>A[A[i]]</code>，之后是<code>A[A[A[i]]]...</code> 以此类推，不断添加直到<code>S</code>出现重复的元素。</p>
 

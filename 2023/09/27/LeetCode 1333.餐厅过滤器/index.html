@@ -26,13 +26,13 @@
 <meta property="og:description" content="【LetMeFly】1333.餐厅过滤器力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;filter-restaurants-by-vegan-friendly-price-and-distance&#x2F; 给你一个餐馆信息数组&nbsp;restaurants，其中&nbsp;&nbsp;restaurants[i] &#x3D; [idi, ratingi, veganFriendly">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-27T11:09:35.000Z">
-<meta property="article:modified_time" content="2025-09-20T10:13:49.926Z">
+<meta property="article:modified_time" content="2025-09-25T15:46:49.911Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
-<meta property="article:tag" content="题解">
-<meta property="article:tag" content="中等">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="排序">
 <meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -89,7 +89,7 @@
 
   
   <script src="https://letmefly.xyz/Links/Common.js"></script>
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 8.0.0"></head>
 
 
 <body>
@@ -341,17 +341,8 @@
 <p>接着将数组中的元素按照rating优先其次id优先的规则排序，排序后，将临时数组中每个元素的id放入新数组并返回即可。</p>
 <p><strong>怎么判断某个餐厅是否满足条件呢？</strong></p>
 <ul>
-<li><code>veganFriendly</code>：如果这个餐厅的<code>veganFriendly</code><strong>大于等于</strong>所需的<code>veganFriendly</code>，则不删</li>
-<li><code>price</code>：如果这个餐厅的<code>price</code><strong>大于等于</strong>所需的<code>price</code>，则不删</li>
-<li><code>distance</code>：如果这个餐厅的<code>distance</code><strong>大于等于</strong>所需的<code>distance</code>，则不删</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs veganFriendly```：如果这个餐厅的```veganFriendly```**大于等于**所需的```veganFriendly```，则不删">+ ```price```：如果这个餐厅的```price```**大于等于**所需的```price```，则不删<br>+ ```distance```：如果这个餐厅的```distance```**大于等于**所需的```distance```，则不删<br><br>即可。<br><br>+ 时间复杂度$O(n\log n)$，其中$n = len(restaurants)$<br>+ 空间复杂度$O(n)$<br><br>### AC代码<br><br>#### C++<br><br>```cpp<br>class Solution &#123;<br>public:<br>    vector&lt;int&gt; filterRestaurants(vector&lt;vector&lt;int&gt;&gt;&amp; restaurants, int veganFriendly, int maxPrice, int maxDistance) &#123;<br>        vector&lt;vector&lt;int&gt;&gt; temp;<br>        for (auto&amp;&amp; v : restaurants) &#123;<br>            if (v[2] &gt;= veganFriendly &amp;&amp; v[3] &lt;= maxPrice &amp;&amp; v[4] &lt;= maxDistance) &#123;<br>                temp.push_back(v);<br>            &#125;<br>        &#125;<br>        sort(temp.begin(), temp.end(), [](const vector&lt;int&gt;&amp; a, const vector&lt;int&gt;&amp; b) &#123;<br>            return a[1] == b[1] ? a[0] &gt; b[0] : a[1] &gt; b[1];<br>        &#125;);<br>        vector&lt;int&gt; ans;<br>        for (auto&amp;&amp; v : temp) &#123;<br>            ans.push_back(v[0]);<br>        &#125;<br>        return ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>即可。</p>
-<ul>
-<li>时间复杂度$O(n\log n)$，其中$n &#x3D; len(restaurants)$</li>
-<li>空间复杂度$O(n)$</li>
-</ul>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">filterRestaurants</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; restaurants, <span class="hljs-type">int</span> veganFriendly, <span class="hljs-type">int</span> maxPrice, <span class="hljs-type">int</span> maxDistance)</span> </span>&#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; temp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp;&amp; v : restaurants) &#123;<br>            <span class="hljs-keyword">if</span> (v[<span class="hljs-number">2</span>] &gt;= veganFriendly &amp;&amp; v[<span class="hljs-number">3</span>] &lt;= maxPrice &amp;&amp; v[<span class="hljs-number">4</span>] &lt;= maxDistance) &#123;<br>                temp.<span class="hljs-built_in">push_back</span>(v);<br>            &#125;<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(temp.<span class="hljs-built_in">begin</span>(), temp.<span class="hljs-built_in">end</span>(), [](<span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;&amp; a, <span class="hljs-type">const</span> vector&lt;<span class="hljs-type">int</span>&gt;&amp; b) &#123;<br>            <span class="hljs-keyword">return</span> a[<span class="hljs-number">1</span>] == b[<span class="hljs-number">1</span>] ? a[<span class="hljs-number">0</span>] &gt; b[<span class="hljs-number">0</span>] : a[<span class="hljs-number">1</span>] &gt; b[<span class="hljs-number">1</span>];<br>        &#125;);<br>        vector&lt;<span class="hljs-type">int</span>&gt; ans;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp;&amp; v : temp) &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(v[<span class="hljs-number">0</span>]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># from typing import List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">filterRestaurants</span>(<span class="hljs-params">self, restaurants: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]], veganFriendly: <span class="hljs-built_in">int</span>, maxPrice: <span class="hljs-built_in">int</span>, maxDistance: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        temp = [v <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> restaurants <span class="hljs-keyword">if</span> v[<span class="hljs-number">2</span>] &gt;= veganFriendly <span class="hljs-keyword">and</span> v[<span class="hljs-number">3</span>] &lt;= maxPrice <span class="hljs-keyword">and</span> v[<span class="hljs-number">4</span>] &lt;= maxDistance]<br>        temp.sort(key=<span class="hljs-keyword">lambda</span> v:(-v[<span class="hljs-number">1</span>], -v[<span class="hljs-number">0</span>]))<br>        <span class="hljs-keyword">return</span> [v[<span class="hljs-number">0</span>] <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> temp]<br></code></pre></td></tr></table></figure>
 
 <blockquote>
