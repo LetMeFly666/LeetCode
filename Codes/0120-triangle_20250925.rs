@@ -11,6 +11,6 @@ impl Solution {
                 triangle[i][j] += triangle[i+1][j].min(triangle[i+1][j+1]);
             }
         }
-        return tirangle[0][0];
+        return triangle[0][0];
     }
 }
