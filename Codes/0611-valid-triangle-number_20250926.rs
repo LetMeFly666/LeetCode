@@ -2,10 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2025-09-26 22:40:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-26 22:54:57
+ * @LastEditTime: 2025-09-26 22:56:15
  */
 impl Solution {
-    pub fn triangle_number(nums: Vec<i32>) -> i32 {
+    pub fn triangle_number(mut nums: Vec<i32>) -> i32 {
+        nums.sort();
         let mut ans: usize = 0;
         for i in nums.len()-1..=0 {
             let mut l: usize = 0;
