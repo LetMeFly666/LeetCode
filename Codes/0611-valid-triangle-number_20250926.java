@@ -13,7 +13,7 @@ class Solution {
         for (int i = nums.length - 1; i >= 0; i--) {
             for (int l = 0, r = i - 1; l < r;) {
                 if (nums[l] + nums[r] > nums[i]) {
-                    ans += r - 1;
+                    ans += r - l;
                     r--;
                 } else {
                     l++;
