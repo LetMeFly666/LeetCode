@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-26 22:40:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-09-26 22:58:20
+ * @LastEditTime: 2025-09-26 23:00:24
  */
 impl Solution {
     pub fn triangle_number(mut nums: Vec<i32>) -> i32 {
@@ -10,7 +10,7 @@ impl Solution {
         let mut ans: usize = 0;
         for i in (0..nums.len()).rev() {
             let mut l: usize = 0;
-            let mut r: usize = i - 1;
+            let mut r: usize = i.saturating_sub(1);  // 防止unsize为-1
             while l < r {
                 if nums[l] + nums[r] > nums[i] {
                     ans += r - l;
