@@ -10,7 +10,7 @@ impl Solution {
         let mut ans: usize = 0;
         for i in (0..nums.len()).rev() {
             let mut l: usize = 0;
-            let mut r: usize = i.saturating_sub(1);  // 防止unsize为-1
+            let mut r: usize = i.saturating_sub(1);  // 防止usize为-1
             while l < r {
                 if nums[l] + nums[r] > nums[i] {
                     ans += r - l;
