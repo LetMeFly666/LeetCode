@@ -1467,6 +1467,11 @@ categories: [自用]
 |waive|v. 放弃|
 |porcelain|n. 瓷器|
 |ventilate|v. 通风，使透气，公开表达|
+|||
+|mistress(对应master)|n. 主妇，女主人，女教师，情妇|
+|industrialization|n. 工业化|
+|panorama|n. 全景|
+|axial|adj. 轴的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-09-14 23:08:48
+LastEditTime: 2025-09-27 12:38:09
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -143,6 +143,7 @@ def getPlatform():
     else:
         return 'Linux(or others)'
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
+issueTitle = f'[newSolution+article]Who can add 1 more problem of LeetCode {num} + an article about MacOS Clang using bits/stdc++.h'  # TODO: REMOVE
 alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
 alreadyRelatedIssueListsSplited = alreadyRelatedIssueLists.split('\n')
 print(alreadyRelatedIssueLists)
@@ -337,6 +338,7 @@ if solutionExists:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码(并更新其题解)'
 else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
+    gitCommitMsgPrefix = f'update(doc): 添加问题“{num}.{title}”的代码和题解+文章“MacOS clang使用bits/stdc++.h”'  # TODO: remove this line
 
 # commit push pr merge delete-branch
 os.system('git add .')
