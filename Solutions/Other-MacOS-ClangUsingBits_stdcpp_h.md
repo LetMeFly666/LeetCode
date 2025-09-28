@@ -31,7 +31,7 @@ Windows和MacOS双用户，Windows上cpp**打竞赛/刷题**时使用`bits/stdc+
 
 ### 方法一：IDE中获取
 
-如果你使用IDE(大概率)，如VsCode，直接随便创建个cpp文件，如：
+如果你使用IDE(大概率)，如VsCode，直接随便创建个[cpp](https://raw.githubusercontent.com/LetMeFly666/LeetCode/ceb6160982e31eb4e7c809ceca402104a3230cd5/%23include%20%3Ciostream%3E.cpp)[文件](https://github.com/LetMeFly666/LeetCode/tree/ceb6160982e31eb4e7c809ceca402104a3230cd5/#include%20%3Ciostream%3E.cpp)，内容如：
 
 ```cpp
 #include <iostream>

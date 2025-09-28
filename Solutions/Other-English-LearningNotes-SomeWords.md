@@ -1472,6 +1472,12 @@ categories: [自用]
 |industrialization|n. 工业化|
 |panorama|n. 全景|
 |axial|adj. 轴的|
+|||
+|stout|adj. 结实的，坚固的<br/>n. 烈性黑啤|
+|senate|n. 参议院|
+|pitcher|n. 壶，罐，投球手|
+|short-weight|v. 缺斤短两|
+|radish|n. (小)萝卜|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
