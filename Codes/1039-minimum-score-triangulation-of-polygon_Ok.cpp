@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-29 18:44:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-01 20:32:59
+ * @LastEditTime: 2025-10-01 20:38:27
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,7 +23,6 @@ private:
             return cache[key];
         }
         if (j - i == 2) {
-            printf("dfs(%d, %d) = %d\n", i, j, values[i] * values[i + 1] * values[i + 2]);  //*****
             return cache[key] = values[i] * values[i + 1] * values[i + 2];
         }
         int ans = 1000000000;
@@ -34,12 +33,22 @@ private:
 
         3   2
 
+
+        0 1 2 3 4
+
+
+            3
+                 
+        4        2
+
+         0      1
+
         
+        (i,j,k) + dfs(i,k)+dfs(k,j)
         */
         for (int k = i + 1; k < j; k++) {
-            ans = min(ans, dfs(i, k) + dfs(k, j));
+            ans = min(ans, dfs(i, k) + dfs(k, j) + values[i] * values[k] * values[j]);
         }
-        printf("dfs(%d, %d) = %d\n", i, j, ans);  //*****
         return cache[key] = ans;
     }
 public:
