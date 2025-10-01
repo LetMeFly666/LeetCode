@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-29 18:44:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-01 20:14:36
+ * @LastEditTime: 2025-10-01 20:16:32
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -25,9 +25,9 @@ private:
         if (j - i == 2) {
             return cache[key] = values[i] * values[i + 1] * values[i + 2];
         }
-        int ans = 0;
+        int ans = 1000000000;
         for (int k = i + 1; k < j; k++) {
-            ans = max(ans, dfs(i, k) + dfs(k, j));
+            ans = min(ans, dfs(i, k) + dfs(k, j));
         }
         return cache[key] = ans;
     }
