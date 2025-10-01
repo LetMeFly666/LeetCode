@@ -1478,6 +1478,14 @@ categories: [自用]
 |pitcher|n. 壶，罐，投球手|
 |short-weight|v. 缺斤短两|
 |radish|n. (小)萝卜|
+|||
+|sieve|n. 筛子，漏斗，滤器，笊篱<br>v. 筛，滤|
+|exempt|v. 豁免<br/>adj. 获豁免的，被免除的<br/>n. 被免除(责任/义务)的人，免税人<details><summary>例句</summary>She is <font color="#28bea0" title="adj.">exempt</font> from the exam.<br/>她被免除了考试。</details>|
+|deflate|v. 放气，使泄气，挫败...的锐气|
+|||
+|yoke|n. 束缚，枷锁，奴役<br/>v. 给(动物)上轭，(强行)使结合|
+|||
+|liberal|adj. 开朗的，自由的<br/>n. 自由勇敢者|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
