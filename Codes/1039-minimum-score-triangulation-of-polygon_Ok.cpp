@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-09-29 18:44:48
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-01 20:07:55
+ * @LastEditTime: 2025-10-01 20:14:36
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -23,7 +23,7 @@ private:
             return cache[key];
         }
         if (j - i == 2) {
-            return cache[key] = values[i] * values[i + 1] + values[i + 1] * values[i + 2] + values[i + 2] * values[i];
+            return cache[key] = values[i] * values[i + 1] * values[i + 2];
         }
         int ans = 0;
         for (int k = i + 1; k < j; k++) {
