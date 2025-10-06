@@ -3,6 +3,7 @@ title: 812.最大三角形面积：三角形面积公式考察（附三种公式
 date: 2025-09-27 15:19:16
 tags: [题解, LeetCode, 简单, 几何, 数组, 数学]
 categories: [题解, LeetCode]
+index_img: https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/04/1027.png
 ---
 
 # 【LetMeFly】812.最大三角形面积：三角形面积公式考察（附三种公式）
