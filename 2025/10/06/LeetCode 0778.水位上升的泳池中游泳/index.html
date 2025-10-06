@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】778.水位上升的泳池中游泳：(贪心)优先队列(附C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;swim-in-rising-water&#x2F; 在一个 n x n&nbsp;的整数矩阵&nbsp;grid 中，每一个方格的值 grid[i][j] 表示位置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="778.水位上升的泳池中游泳：(贪心)优先队列(附C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表)">
+<meta property="og:url" content="https://blog.letmefly.xyz/2025/10/06/LeetCode%200778.%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】778.水位上升的泳池中游泳：(贪心)优先队列(附C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;swim-in-rising-water&#x2F; 在一个 n x n&nbsp;的整数矩阵&nbsp;grid 中，每一个方格的值 grid[i][j] 表示位置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg">
+<meta property="article:published_time" content="2025-10-06T06:49:45.000Z">
+<meta property="article:modified_time" content="2025-10-06T07:24:05.891Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="优先队列">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="堆">
+<meta property="article:tag" content="堆（优先队列）">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="矩阵">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg">
+  
+  
+  
+  <title>778.水位上升的泳池中游泳：(贪心)优先队列(附C++/Python/Java/Go/Rust优先队列方法表) - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="778.水位上升的泳池中游泳：(贪心)优先队列(附C++/Python/Java/Go/Rust优先队列方法表)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-06 14:49" pubdate>
+          2025年10月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">778.水位上升的泳池中游泳：(贪心)优先队列(附C++/Python/Java/Go/Rust优先队列方法表)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】778-水位上升的泳池中游泳：-贪心-优先队列-附C-Python-Java-Go-Rust优先队列方法表"><a href="#【LetMeFly】778-水位上升的泳池中游泳：-贪心-优先队列-附C-Python-Java-Go-Rust优先队列方法表" class="headerlink" title="【LetMeFly】778.水位上升的泳池中游泳：(贪心)优先队列(附C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表)"></a>【LetMeFly】778.水位上升的泳池中游泳：(贪心)优先队列(附C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swim-in-rising-water/">https://leetcode.cn/problems/swim-in-rising-water/</a></p>
+<p>在一个 <code>n x n</code>&nbsp;的整数矩阵&nbsp;<code>grid</code> 中，每一个方格的值 <code>grid[i][j]</code> 表示位置 <code>(i, j)</code> 的平台高度。</p>
+
+<p>当开始下雨时，在时间为&nbsp;<code>t</code>&nbsp;时，水池中的水位为&nbsp;<code>t</code>&nbsp;。你可以从一个平台游向四周相邻的任意一个平台，但是前提是此时水位必须同时淹没这两个平台。假定你可以瞬间移动无限距离，也就是默认在方格内部游动是不耗时的。当然，在你游泳的时候你必须待在坐标方格里面。</p>
+
+<p>你从坐标方格的左上平台&nbsp;<code>(0，0)</code> 出发。返回 <em>你到达坐标方格的右下平台&nbsp;<code>(n-1, n-1)</code>&nbsp;所需的最少时间 。</em></p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1:</strong></p>
+
+<p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg" srcset="/img/loading.gif" lazyload /></p>
+
+<pre>
+<strong>输入:</strong> grid = [[0,2],[1,3]]
+<strong>输出:</strong> 3
+<strong>解释:</strong>
+时间为0时，你位于坐标方格的位置为 <code>(0, 0)。</code>
+此时你不能游向任意方向，因为四个相邻方向平台的高度都大于当前时间为 0 时的水位。
+等时间到达 3 时，你才可以游向平台 (1, 1). 因为此时的水位是 3，坐标方格中的平台没有比水位 3 更高的，所以你可以游向坐标方格中的任意位置
+</pre>
+
+<p><strong>示例 2:</strong></p>
+
+<p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg" srcset="/img/loading.gif" lazyload /></p>
+
+<pre>
+<strong>输入:</strong> grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+<strong>输出:</strong> 16
+<strong>解释: </strong>最终的路线用加粗进行了标记。
+我们必须等到时间为 16，此时才能保证平台 (0, 0) 和 (4, 4) 是连通的
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+	<li><code>n == grid.length</code></li>
+	<li><code>n == grid[i].length</code></li>
+	<li><code>1 &lt;= n &lt;= 50</code></li>
+	<li><code>0 &lt;= grid[i][j] &lt;&nbsp;n<sup>2</sup></code></li>
+	<li><code>grid[i][j]</code>&nbsp;中每个值&nbsp;<strong>均无重复</strong></li>
+</ul>
+
+
+    
+<h2 id="解题方法：贪心-优先队列"><a href="#解题方法：贪心-优先队列" class="headerlink" title="解题方法：贪心(优先队列)"></a>解题方法：贪心(优先队列)</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><blockquote>
+<p>由于你可以在水中瞬移，所以你可以随意地进行尝试，并在发现更优解时瞬移过去继续。</p>
+</blockquote>
+<p>想要找从左上角到右下角最大值尽可能小的一条路，可以使用一个优先队列，把所有的可以走但是还没走到的位置放入优先队列中，然后每次从中取出一个最小的值作为下一步。</p>
+<h3 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h3><p>使用一个布尔类型的数组判断每个位置是否已经走过（贪心策略保证早走一定优于晚走）。使用一个优先队列放入所有可以走到的位置，初始值只有左上角的<code>(0, 0)</code>在优先队列中。</p>
+<p>不断从优先队列中取出元素，从当前位置向上下左右四个方向进行尝试，并把没有走过的位置放入优先队列中。入队时更新整条路径中的最高点为当前点和上一个点的最大值。</p>
+<p>特别的，一旦右下角的点可走，不用入队再出队了，函数直接返回就好。</p>
+<h3 id="思路解析"><a href="#思路解析" class="headerlink" title="思路解析"></a>思路解析</h3><p>由于你可以瞬移，所以尝试是不值钱的。哪怕绕18圈也要让一路上的最高点尽可能低。</p>
+<p>所以我们采用贪心策略，每次都在下一个能走到的位置中，选一个最低点走过去。</p>
+<p>这样走到右下角时，路径的最高点一定是（可能绕来绕去）最低的。</p>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><ul>
+<li>时间复杂度$O(n^2\log n)$</li>
+<li>空间复杂度$O(n^2)$</li>
+</ul>
+<h3 id="C-Python-Java-Go-Rust优先队列方法表"><a href="#C-Python-Java-Go-Rust优先队列方法表" class="headerlink" title="C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表"></a>C++&#x2F;Python&#x2F;Java&#x2F;Go&#x2F;Rust优先队列方法表</h3><table>
+<thead>
+<tr>
+<th>语言</th>
+<th>数据结构</th>
+<th>小顶堆 &#x2F; 大顶堆</th>
+<th>示例代码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C++</td>
+<td><code>priority_queue</code></td>
+<td>小顶堆（自定义 comparator）</td>
+<td><pre><code class="hljs cpp">auto cmp = [&amp;grid](pair&lt;int,int&gt;&amp; a, pair&lt;int,int&gt;&amp; b) {<br/>    return grid[a.first][a.second] &gt; grid[b.first][b.second];  // val 小的优先<br/>};<br/>priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, decltype(cmp)&gt; pq(cmp);<br/>pq.push({0,0});</code></pre></td>
+<td>使用 lambda 自定义比较函数，小的值优先。</td>
+</tr>
+<tr>
+<td>Python</td>
+<td><code>heapq</code></td>
+<td>小顶堆（默认）</td>
+<td><pre><code class="hljs python">import heapq<br/><br/>pq = []<br/>heapq.heappush(pq, (grid[0][0], 0, 0))  # (priority, x, y)<br/>priority, x, y = heapq.heappop(pq)</code></pre></td>
+<td>用元组的第一个元素作为优先级，heapq 默认最小堆。</td>
+</tr>
+<tr>
+<td>Go</td>
+<td><code>container/heap</code></td>
+<td>小顶堆（自定义 Less）</td>
+<td><pre><code class="hljs go">import &quot;container/heap&quot;<br/><br/>type Item struct { x, y int<br/>priority int }<br/><br/>type PriorityQueue []*Item<br/><br/>func (pq PriorityQueue) Len() int { return len(pq) }<br/>func (pq PriorityQueue) Less(i, j int) bool { return pq[i].priority &lt; pq[j].priority }<br/>func (pq PriorityQueue) Swap(i, j int) { pq[i], pq[j] = pq[j], pq[i] }<br/><br/>func (pq *PriorityQueue) Push(x any) { *pq = append(*pq, x.(*Item)) }<br/>func (pq *PriorityQueue) Pop() any { n := len(*pq); item := (*pq)[n-1]; *pq = (*pq)[:n-1]; return item }<br/><br/>pq := &amp;PriorityQueue{}<br/>heap.Init(pq)<br/>heap.Push(pq, &amp;Item{x: 0, y: 0, priority: grid[0][0]})<br/>item := heap.Pop(pq).(*Item)</code></pre></td>
+<td>需要自定义类型和接口方法 Len&#x2F;Swap&#x2F;Less&#x2F;Push&#x2F;Pop。</td>
+</tr>
+<tr>
+<td>Java</td>
+<td><code>PriorityQueue</code></td>
+<td>小顶堆（自定义 Comparator）</td>
+<td><pre><code class="hljs java">import java.util.PriorityQueue;<br/><br/>PriorityQueue&lt;int[]&gt; pq = new PriorityQueue&lt;&gt;((a, b) -&gt; grid[a[0]][a[1]] - grid[b[0]][b[1]]);<br/>pq.add(new int[]{0, 0});<br/>int[] top = pq.poll();<br/>int x = top[0], y = top[1];</code></pre></td>
+<td>用数组存坐标对，Comparator 按 grid 值升序。</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td><code>BinaryHeap</code> + <code>Reverse</code></td>
+<td>小顶堆（默认最大堆，需要 Reverse）</td>
+<td><pre><code class="hljs rust">use std::collections::BinaryHeap;<br/>use std::cmp::Reverse;<br/><br/>let mut pq = BinaryHeap::new();<br/>pq.push(Reverse((grid[0][0], 0, 0)));  // Reverse 使最小值优先<br/><br/>if let Some(Reverse((priority, x, y))) = pq.pop() {<br/>    // 使用 x, y<br/>}</code></pre></td>
+<td>BinaryHeap 默认最大堆，使用 Reverse 包装最小值优先。</td>
+</tr>
+</tbody></table>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-10-06 12:17:42</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-10-06 12:31:27</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">static</span> <span class="hljs-keyword">constexpr</span> <span class="hljs-type">int</span> direction[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>] = &#123;&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">swimInWater</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = grid.<span class="hljs-built_in">size</span>(), m = grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span> &amp;&amp; m == <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">return</span> grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];  <span class="hljs-comment">// while的判断逻辑是入队时判断是否是终点</span><br>        &#125;<br>        <span class="hljs-keyword">auto</span> cmp = [&amp;grid](pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; a, pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&amp; b) &#123;<br>            <span class="hljs-keyword">return</span> grid[a.first][a.second] &gt; grid[b.first][b.second];  <span class="hljs-comment">// val小的优先</span><br>        &#125;;<br>        priority_queue&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;, vector&lt;pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;&gt;, <span class="hljs-keyword">decltype</span>(cmp)&gt; <span class="hljs-built_in">pq</span>(cmp);<br>        vector&lt;vector&lt;<span class="hljs-type">bool</span>&gt;&gt; <span class="hljs-built_in">visited</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">bool</span>&gt;(m));<br>        pq.<span class="hljs-built_in">push</span>(&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;);<br>        visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">auto</span> [x, y] = pq.<span class="hljs-built_in">top</span>();<br>            pq.<span class="hljs-built_in">pop</span>();<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>; d &lt; <span class="hljs-number">4</span>; d++) &#123;<br>                <span class="hljs-type">int</span> nx = x + direction[d][<span class="hljs-number">0</span>], ny = y + direction[d][<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span> (nx &lt; <span class="hljs-number">0</span> || nx &gt;= n || ny &lt; <span class="hljs-number">0</span> || ny &gt;= m || visited[nx][ny]) &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                grid[nx][ny] = <span class="hljs-built_in">max</span>(grid[nx][ny], grid[x][y]);<br>                <span class="hljs-keyword">if</span> (nx == n - <span class="hljs-number">1</span> &amp;&amp; ny == m - <span class="hljs-number">1</span>) &#123;<br>                    <span class="hljs-keyword">return</span> grid[nx][ny];<br>                &#125;<br>                visited[nx][ny] = <span class="hljs-literal">true</span>;<br>                pq.<span class="hljs-built_in">push</span>(&#123;nx, ny&#125;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Author: LetMeFly</span><br><span class="hljs-string">Date: 2025-10-06 12:17:42</span><br><span class="hljs-string">LastEditors: LetMeFly.xyz</span><br><span class="hljs-string">LastEditTime: 2025-10-06 13:06:15</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">import</span> heapq<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    directions = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]]<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">swimInWater</span>(<span class="hljs-params">self, grid: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        n, m = <span class="hljs-built_in">len</span>(grid), <span class="hljs-built_in">len</span>(grid[<span class="hljs-number">0</span>])<br>        <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> m == <span class="hljs-number">1</span>:<br>            <span class="hljs-keyword">return</span> grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>        visited = [[<span class="hljs-literal">False</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>        pq = [(grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>], <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)]<br>        visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            val, x, y = heapq.heappop(pq)<br>            <span class="hljs-keyword">for</span> dx, dy <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.directions:<br>                nx, ny = x + dx, y + dy<br>                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">not</span> (<span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m)) <span class="hljs-keyword">or</span> visited[nx][ny]:<br>                    <span class="hljs-keyword">continue</span><br>                grid[nx][ny] = <span class="hljs-built_in">max</span>(grid[nx][ny], val)<br>                <span class="hljs-keyword">if</span> nx == n - <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> ny == m - <span class="hljs-number">1</span>:<br>                    <span class="hljs-keyword">return</span> grid[nx][ny]<br>                visited[nx][ny] = <span class="hljs-literal">True</span><br>                heapq.heappush(pq, (grid[nx][ny], nx, ny))<br></code></pre></td></tr></table></figure>
+
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-10-06 12:17:42</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-10-06 14:04:24</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> java.util.PriorityQueue;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[][] directions = &#123;&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>&#125;, &#123;-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">swimInWater</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] grid)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> grid.length, m = grid[<span class="hljs-number">0</span>].length;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span> &amp;&amp; m == <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">return</span> grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>        &#125;<br>        <span class="hljs-type">boolean</span>[][] visited = <span class="hljs-keyword">new</span> <span class="hljs-title class_">boolean</span>[n][m];<br>        PriorityQueue&lt;<span class="hljs-type">int</span>[]&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;((a, b) -&gt; grid[a[<span class="hljs-number">0</span>]][a[<span class="hljs-number">1</span>]] - grid[b[<span class="hljs-number">0</span>]][b[<span class="hljs-number">1</span>]]);<br>        pq.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;);<br>        visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-type">int</span>[] top = pq.poll();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> top[<span class="hljs-number">0</span>], y = top[<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] d : directions) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">nx</span> <span class="hljs-operator">=</span> x + d[<span class="hljs-number">0</span>], ny = y + d[<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span> (nx &lt; <span class="hljs-number">0</span> || nx &gt;= n || ny &lt; <span class="hljs-number">0</span> || ny &gt;= m || visited[nx][ny]) &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                grid[nx][ny] = Math.max(grid[nx][ny], grid[x][y]);<br>                <span class="hljs-keyword">if</span> (nx == n - <span class="hljs-number">1</span> &amp;&amp; ny == m - <span class="hljs-number">1</span>) &#123;<br>                    <span class="hljs-keyword">return</span> grid[nx][ny];<br>                &#125;<br>                visited[nx][ny] = <span class="hljs-literal">true</span>;<br>                pq.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;nx, ny&#125;);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-10-06 12:17:42</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-10-06 14:31:37</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;container/heap&quot;</span><br><br><span class="hljs-keyword">type</span> Item778 <span class="hljs-keyword">struct</span> &#123;<br>    x, y <span class="hljs-type">int</span><br>    val <span class="hljs-type">int</span><br>&#125;<br><br><span class="hljs-keyword">type</span> PriorityQueue778 []*Item778<br><br><span class="hljs-keyword">var</span> directions778 = [][]<span class="hljs-type">int</span>&#123;&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">swimInWater</span><span class="hljs-params">(grid [][]<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    n, m := <span class="hljs-built_in">len</span>(grid), <span class="hljs-built_in">len</span>(grid[<span class="hljs-number">0</span>])<br>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span> &amp;&amp; m == <span class="hljs-number">1</span> &#123;<br>        <span class="hljs-keyword">return</span> grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>    &#125;<br>    visited := <span class="hljs-built_in">make</span>([][]<span class="hljs-type">bool</span>, n)<br>    <span class="hljs-keyword">for</span> i, _ := <span class="hljs-keyword">range</span> visited &#123;<br>        visited[i] = <span class="hljs-built_in">make</span>([]<span class="hljs-type">bool</span>, m)<br>    &#125;<br><br>    pq := &amp;PriorityQueue778&#123;&#125;<br>    heap.Init(pq)<br>    heap.Push(pq, &amp;Item778&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]&#125;)<br>    visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-literal">true</span> &#123;<br>        item := heap.Pop(pq).(*Item778)<br>        x, y, val := item.x, item.y, item.val<br>        <span class="hljs-keyword">for</span> _, d := <span class="hljs-keyword">range</span> directions778 &#123;<br>            nx, ny := x + d[<span class="hljs-number">0</span>], y + d[<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">if</span> nx &lt; <span class="hljs-number">0</span> || nx &gt;= n || ny &lt; <span class="hljs-number">0</span> || ny &gt;= m || visited[nx][ny] &#123;<br>                <span class="hljs-keyword">continue</span><br>            &#125;<br>            grid[nx][ny] = max(grid[nx][ny], val)<br>            <span class="hljs-keyword">if</span> nx == n - <span class="hljs-number">1</span> &amp;&amp; ny == m - <span class="hljs-number">1</span> &#123;<br>                <span class="hljs-keyword">return</span> grid[nx][ny]<br>            &#125;<br>            visited[nx][ny] = <span class="hljs-literal">true</span><br>            heap.Push(pq, &amp;Item778&#123;nx, ny, grid[nx][ny]&#125;)<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>  <span class="hljs-comment">// Fake Return</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PriorityQueue778)</span></span> Len() <span class="hljs-type">int</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(pq) &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PriorityQueue778)</span></span> Less(i, j <span class="hljs-type">int</span>) <span class="hljs-type">bool</span> &#123; <span class="hljs-keyword">return</span> pq[i].val &lt; pq[j].val &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq PriorityQueue778)</span></span> Swap(i, j <span class="hljs-type">int</span>) &#123; pq[i], pq[j] = pq[j], pq[i] &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq *PriorityQueue778)</span></span> Push(x any) &#123; *pq = <span class="hljs-built_in">append</span>(*pq, x.(*Item778)) &#125;<br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(pq *PriorityQueue778)</span></span> Pop() any &#123; n := <span class="hljs-built_in">len</span>(*pq); item := (*pq)[n - <span class="hljs-number">1</span>]; *pq = (*pq)[:n<span class="hljs-number">-1</span>]; <span class="hljs-keyword">return</span> item &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @Author: LetMeFly</span><br><span class="hljs-comment"> * @Date: 2025-10-06 12:17:42</span><br><span class="hljs-comment"> * @LastEditors: LetMeFly.xyz</span><br><span class="hljs-comment"> * @LastEditTime: 2025-10-06 14:48:19</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">use</span> std::collections::BinaryHeap;<br><span class="hljs-keyword">use</span> std::cmp::Reverse;<br><br><span class="hljs-keyword">impl</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">const</span> DIRECTIONS: [[<span class="hljs-type">i32</span>; <span class="hljs-number">2</span>]; <span class="hljs-number">4</span>] = [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>], [-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>]];<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">swim_in_water</span>(grid: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">i32</span>&gt;&gt;) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">i32</span> &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">n</span>: <span class="hljs-type">usize</span> = grid.<span class="hljs-title function_ invoke__">len</span>();<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">m</span>: <span class="hljs-type">usize</span> = grid[<span class="hljs-number">0</span>].<span class="hljs-title function_ invoke__">len</span>();<br>        <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span> &amp;&amp; m == <span class="hljs-number">1</span> &#123;<br>            <span class="hljs-keyword">return</span> grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>        &#125;<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">pq</span> = BinaryHeap::<span class="hljs-title function_ invoke__">new</span>();<br>        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">visited</span>: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">bool</span>&gt;&gt; = <span class="hljs-built_in">vec!</span>[<span class="hljs-built_in">vec!</span>[<span class="hljs-literal">false</span>; m]; n];<br>        pq.<span class="hljs-title function_ invoke__">push</span>(<span class="hljs-title function_ invoke__">Reverse</span>((grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>], <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)));<br>        visited[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-literal">true</span>;<br><br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-title function_ invoke__">Reverse</span>((val, x, y))) = pq.<span class="hljs-title function_ invoke__">pop</span>() &#123;<br>            <span class="hljs-keyword">for</span> &amp;[dx, dy] <span class="hljs-keyword">in</span> <span class="hljs-keyword">Self</span>::DIRECTIONS.<span class="hljs-title function_ invoke__">iter</span>() &#123;<br>                <span class="hljs-keyword">let</span> <span class="hljs-variable">nx</span>: <span class="hljs-type">usize</span> = x + dx <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>;<br>                <span class="hljs-keyword">let</span> <span class="hljs-variable">ny</span>: <span class="hljs-type">usize</span> = y + dy <span class="hljs-keyword">as</span> <span class="hljs-type">usize</span>;<br>                <span class="hljs-keyword">if</span> nx &lt; <span class="hljs-number">0</span> || nx &gt;= n || ny &lt; <span class="hljs-number">0</span> || ny &gt;= m || visited[nx][ny] &#123;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-keyword">let</span> <span class="hljs-variable">n_val</span>: <span class="hljs-type">i32</span> = val.<span class="hljs-title function_ invoke__">max</span>(grid[nx][ny]);<br>                <span class="hljs-keyword">if</span> nx == n - <span class="hljs-number">1</span> &amp;&amp; ny == m - <span class="hljs-number">1</span> &#123;<br>                    <span class="hljs-keyword">return</span> n_val;<br>                &#125;<br>                visited[nx][ny] = <span class="hljs-literal">true</span>;<br>                pq.<span class="hljs-title function_ invoke__">push</span>(<span class="hljs-title function_ invoke__">Reverse</span>((n_val, nx, ny)));<br>            &#125;<br>        &#125;<br><br>        -<span class="hljs-number">1</span>  <span class="hljs-comment">// Fake Return</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/152604318">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/10/06/LeetCode%200778.%E6%B0%B4%E4%BD%8D%E4%B8%8A%E5%8D%87%E7%9A%84%E6%B3%B3%E6%B1%A0%E4%B8%AD%E6%B8%B8%E6%B3%B3/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A2%98%E8%A7%A3/LeetCode/" class="category-chain-item">LeetCode</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+        <a href="/tags/%E5%9B%B0%E9%9A%BE/">#困难</a>
+      
+        <a href="/tags/%E5%A0%86%EF%BC%88%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%89/">#堆（优先队列）</a>
+      
+        <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/">#优先队列</a>
+      
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">#深度优先搜索</a>
+      
+        <a href="/tags/%E7%9F%A9%E9%98%B5/">#矩阵</a>
+      
+        <a href="/tags/%E5%A0%86/">#堆</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>778.水位上升的泳池中游泳：(贪心)优先队列(附C++/Python/Java/Go/Rust优先队列方法表)</div>
+      <div>https://blog.letmefly.xyz/2025/10/06/LeetCode 0778.水位上升的泳池中游泳/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年10月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/10/01/LeetCode%201039.%E5%A4%9A%E8%BE%B9%E5%BD%A2%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E7%9A%84%E6%9C%80%E4%BD%8E%E5%BE%97%E5%88%86/" title="1039.多边形三角剖分的最低得分：记忆化搜索（深度优先搜索）">
+                        <span class="hidden-mobile">1039.多边形三角剖分的最低得分：记忆化搜索（深度优先搜索）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
