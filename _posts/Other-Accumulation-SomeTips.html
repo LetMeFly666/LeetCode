@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2025-10-06T07:24:05.917Z">
+<meta property="article:modified_time" content="2025-10-08T14:47:25.086Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -404,6 +404,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh lzy@3090.narc.letmefly.xyz <span class="hljs-string">&#x27;cd ~/ltf &amp;&amp; ./timer.sh 5&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p>然后你就可以看到一个进度条，5秒后进度达到100%。</p>
+<h3 id="crontab执行导致持续mailto-CPU占用率过高"><a href="#crontab执行导致持续mailto-CPU占用率过高" class="headerlink" title="crontab执行导致持续mailto CPU占用率过高"></a>crontab执行导致持续mailto CPU占用率过高</h3><p>Linux crontab定时任务的stdout和stderr会默认发送“邮件”到mailto配置的用户，在我服务器隔三差五在crontab执行前后报CPU使用率过高的警报后，我守在了一次crontab任务执行前，使用<code>htop</code>检测CPU使用率较高的进程。</p>
+<p>到达指定时间后，先是定时任务占据了一下高CPU，然后CPU利用率很快就下去了。后面就出现了mailTo进程，<code>/bin/bash /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t -f root</code>，持续占据较高CPU。</p>
+<p>解决办法：<code>crontab -e</code>并在头部加上个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">MAILTO=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>就好了。</p>
+<p>如果想只针对某些特定任务设置不sendmail也可以修改crontab的命令并加上<code>&gt; /dev/null 2&gt;&amp;1</code>。</p>
 <h2 id="About-Mac"><a href="#About-Mac" class="headerlink" title="About Mac"></a>About Mac</h2><h3 id="SMB协议时不生成-DS-Store"><a href="#SMB协议时不生成-DS-Store" class="headerlink" title="SMB协议时不生成.DS_Store"></a>SMB协议时不生成.DS_Store</h3><p>禁止Finder浏览SMB文件夹时生成<code>.DS_Store</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
