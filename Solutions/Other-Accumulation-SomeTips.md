@@ -459,6 +459,22 @@ ssh lzy@3090.narc.letmefly.xyz 'cd ~/ltf && ./timer.sh 5'
 
 然后你就可以看到一个进度条，5秒后进度达到100%。
 
+### crontab执行导致持续mailto CPU占用率过高
+
+Linux crontab定时任务的stdout和stderr会默认发送“邮件”到mailto配置的用户，在我服务器隔三差五在crontab执行前后报CPU使用率过高的警报后，我守在了一次crontab任务执行前，使用`htop`检测CPU使用率较高的进程。
+
+到达指定时间后，先是定时任务占据了一下高CPU，然后CPU利用率很快就下去了。后面就出现了mailTo进程，`/bin/bash /usr/sbin/sendmail -FCronDaemon -i -odi -oem -oi -t -f root`，持续占据较高CPU。
+
+解决办法：`crontab -e`并在头部加上个
+
+```bash
+MAILTO=""
+```
+
+就好了。
+
+如果想只针对某些特定任务设置不sendmail也可以修改crontab的命令并加上`> /dev/null 2>&1`。
+
 ## About Mac
 
 ### SMB协议时不生成.DS_Store

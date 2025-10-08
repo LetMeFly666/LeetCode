@@ -2,11 +2,9 @@
  * @Author: LetMeFly
  * @Date: 2025-10-06 12:17:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-06 14:31:25
+ * @LastEditTime: 2025-10-06 14:31:37
  */
 package main
-
-// The Wrong Version: should call heap.Pop(pq) but not pq.Pop()
 
 import "container/heap"
 
@@ -31,10 +29,10 @@ func swimInWater(grid [][]int) int {
 
     pq := &PriorityQueue778{}
     heap.Init(pq)
-    pq.Push(&Item778{0, 0, grid[0][0]})
+    heap.Push(pq, &Item778{0, 0, grid[0][0]})
     visited[0][0] = true
     for true {
-        item := pq.Pop().(*Item778)
+        item := heap.Pop(pq).(*Item778)
         x, y, val := item.x, item.y, item.val
         for _, d := range directions778 {
             nx, ny := x + d[0], y + d[1]
@@ -46,7 +44,7 @@ func swimInWater(grid [][]int) int {
                 return grid[nx][ny]
             }
             visited[nx][ny] = true
-            pq.Push(&Item778{nx, ny, grid[nx][ny]})
+            heap.Push(pq, &Item778{nx, ny, grid[nx][ny]})
         }
     }
 
