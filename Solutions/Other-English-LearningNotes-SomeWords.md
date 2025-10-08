@@ -1496,9 +1496,16 @@ categories: [自用]
 |trader|n. 商人，股票交易人|
 |||
 |reexport|n. 再出口，再出口的货物<br/>v. (将...)再出口|
+|||
+|kerosene|n. 煤油|
+|magician|n. 魔术师，术士，巫师|
+|confer|v. 授予，协商，商讨，交换意见<details><summary>例句</summary>The university <font color="#28bea0" title="adj.">conferred</font> an honorary degree <font color="#28bea0" title="adj.">on</font> the scientist after his speech.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/96682c7a38182f2f2615b0465d747fe4.6c8bec2563bee55b38aa3cf2ac701dbc.mp3"></audio><br/>这所大学在这位科学家演讲完毕后，授予了他荣誉学位。</details>|
+|||
+|woollen|n. 毛线，毛织品<br/>adj. 羊毛的，毛纺的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
++ 音频懒加载
 
 <p class="wordCounts">单词收录总数</p>
 
