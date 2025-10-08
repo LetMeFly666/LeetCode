@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-10-06 12:17:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-06 14:48:19
+ * @LastEditTime: 2025-10-06 15:27:02
  */
 use std::collections::BinaryHeap;
 use std::cmp::Reverse;
@@ -22,8 +22,8 @@ impl Solution {
 
         while let Some(Reverse((val, x, y))) = pq.pop() {
             for &[dx, dy] in Self::DIRECTIONS.iter() {
-                let nx: usize = x + dx as usize;
-                let ny: usize = y + dy as usize;
+                let nx: usize = x + dx as usize;  // 这样写其实不好，x+dx<0时nx会溢出变成很大的数（一定大于n）
+                let ny: usize = y + dy as usize;  // 所以结果正确但其实代码有点迷惑
                 if nx < 0 || nx >= n || ny < 0 || ny >= m || visited[nx][ny] {
                     continue;
                 }

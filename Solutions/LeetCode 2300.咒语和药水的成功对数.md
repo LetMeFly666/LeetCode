@@ -1,11 +1,11 @@
 ---
-title: 2300.咒语和药水的成功对数
+title: 2300.咒语和药水的成功对数：二分查找（附(lower/upper)_bound库函数大于小于个数查找表）
 date: 2023-11-10 14:18:05
 tags: [题解, LeetCode, 中等, 数组, 双指针, 二分查找, 二分, 排序]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2300.咒语和药水的成功对数：二分查找
+# 【LetMeFly】2300.咒语和药水的成功对数：二分查找（附(lower/upper)_bound库函数大于小于个数查找表）
 
 力扣题目链接：[https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/](https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/)
 
@@ -53,7 +53,7 @@ categories: [题解, LeetCode]
 
 
     
-## 方法一：二分查找
+## 解题方法：二分查找
 
 我们首先将“毒药”数组从小到大排序，那么对于咒语$i$，计算出其想要达到$success$所需的最小毒药强度$toFind$，接着二分查找$toFind$的位置即可。
 
@@ -65,6 +65,12 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2023-11-10 14:17:25
+ * @LastEditors: LetMeFly
+ * @LastEditTime: 2023-11-10 14:23:41
+ */
 typedef long long ll;
 class Solution {
 public:
@@ -85,6 +91,12 @@ public:
 #### Python
 
 ```python
+'''
+Author: LetMeFly
+Date: 2023-11-10 14:25:21
+LastEditors: LetMeFly
+LastEditTime: 2023-11-10 14:28:30
+'''
 # from typing import List
 # from bisect import bisect_left
 
@@ -100,5 +112,136 @@ class Solution:
 
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/10/LeetCode%202300.%E5%92%92%E8%AF%AD%E5%92%8C%E8%8D%AF%E6%B0%B4%E7%9A%84%E6%88%90%E5%8A%9F%E5%AF%B9%E6%95%B0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/134332611](https://letmefly.blog.csdn.net/article/details/134332611)
+## 查找范围小优化+不进行类型转换小优化
+
+上述有两个可以优化的地方：
+
+1. 确定$toFind$的值，实质上就是$\lceil success / t\rceil$
+2. `lower_bound(vector<int>::iterator, vector<int>::iterator, long long)`会在比较的过程中将每个int自动转为`long long`类型，有一丢丢耗时；可以在$toFind$明显超出毒药毒性数据范围时直接返回$0$。
+
+以上。
+
++ 时间复杂度$O(n\log n)$，其中$n=len(potions)$
++ 空间复杂度$O(log n)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-10-08 21:37:50
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-10-08 22:17:48
+ */
+/*
+a * b >= success
+a >= success/b
+s b s/b a
+6 2  3  3
+6 3  2  2
+6 4 1.5 2
+6 5 1.x 2
+a >= ⌈s/b⌉
+a >= ⌊(s+b-1)/b⌋
+*/
+typedef long long ll;
+class Solution {
+public:
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        sort(potions.begin(), potions.end());
+        for (int& s : spells) {
+            ll toFind = (success + s - 1) / s;
+            if (toFind > 100000) {
+                s = 0;
+            } else {
+                s = potions.end() - lower_bound(potions.begin(), potions.end(), toFind);
+            }
+        }
+        return spells;
+    }
+};
+```
+
+## 查找范围小优化
+
+上述有一个可以优化的地方：
+
+> $\geq\lceil \frac{success}{t}\rceil$ ⇔ $\geq\lfloor\frac{success+t-1}{t}\rfloor$ ⇔ $\geq\lfloor\frac{success-1}{t}\rfloor+1$
+>
+> 由于所涉及的数据都是整数，所以有$\geq\lfloor\frac{success-1}{t}\rfloor+1$ ⇔ $\gt \lfloor\frac{success-1}{t}\rfloor$
+
+以上。
+
++ 时间复杂度$O(n\log n)$，其中$n=len(potions)$
++ 空间复杂度$O(log n)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-10-08 21:37:50
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-10-08 22:21:04
+ */
+/*
+a * b >= success
+a >= success/b
+s b s/b a
+6 2  3  3
+6 3  2  2
+6 4 1.5 2
+6 5 1.x 2
+a >= ⌈s/b⌉
+a >= ⌊(s+b-1)/b⌋
+a >= ⌊(s-1)/b⌋+1
+a > ⌊(s-1)/b⌋
+*/
+typedef long long ll;
+class Solution {
+public:
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        sort(potions.begin(), potions.end());
+        success -= 1;  // 提前-1后面不用每次都-1了
+        for (int& s : spells) {
+            ll target = success / s;
+            if (target > 100000) {
+                s = 0;
+            } else {
+                s = potions.end() - upper_bound(potions.begin(), potions.end(), target);
+            }
+        }
+        return spells;
+    }
+};
+```
+
+## (lower/upper)_bound库函数含义、大于小于个数查找表
+
+### (lower/upper)_bound库函数含义
+
+| 函数 | 返回的位置含义 |
+|------|----------------|
+| `lower_bound(a.begin(), a.end(), x)` | 第一个 **≥ x** 的元素的位置 |
+| `upper_bound(a.begin(), a.end(), x)` | 第一个 **> x** 的元素的位置 |
+
+### 查找(大于等于/大于/小于/小于等于)x的元素的个数
+
+| 条件 | 表达式 | 含义 |
+|------|----------|------|
+| **≥ x** | `a.end() - lower_bound(a.begin(), a.end(), x)` | 从 ≥x 开始到末尾 |
+| **> x** | `a.end() - upper_bound(a.begin(), a.end(), x)` | 从 >x 开始到末尾 |
+| **≤ x** | `upper_bound(a.begin(), a.end(), x) - a.begin()` | 从开头到 ≤x 结束 |
+| **< x** | `lower_bound(a.begin(), a.end(), x) - a.begin()` | 从开头到 <x 结束 |
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/134332611)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/11/10/LeetCode%202300.%E5%92%92%E8%AF%AD%E5%92%8C%E8%8D%AF%E6%B0%B4%E7%9A%84%E6%88%90%E5%8A%9F%E5%AF%B9%E6%95%B0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+<!-- https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/solutions/3800734/letmefly-2300zhou-yu-he-yao-shui-de-chen-pyqp/ -->
