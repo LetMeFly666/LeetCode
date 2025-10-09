@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-10-09 22:19:32
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-09 22:57:06
+ * @LastEditTime: 2025-10-09 23:01:17
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ public:
             }
             times.back() = nowFinish;
             for (int i = skill.size() - 2; i >= 0; i--) {
-                times[i] = times[i + 1] - skill[i] * m;
+                times[i] = times[i + 1] - skill[i + 1] * m;
             }
         }
         return times.back();
