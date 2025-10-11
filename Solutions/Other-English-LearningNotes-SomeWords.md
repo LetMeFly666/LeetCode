@@ -1499,13 +1499,21 @@ categories: [自用]
 |||
 |kerosene|n. 煤油|
 |magician|n. 魔术师，术士，巫师|
-|confer|v. 授予，协商，商讨，交换意见<details><summary>例句</summary>The university <font color="#28bea0" title="adj.">conferred</font> an honorary degree <font color="#28bea0" title="adj.">on</font> the scientist after his speech.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/96682c7a38182f2f2615b0465d747fe4.6c8bec2563bee55b38aa3cf2ac701dbc.mp3"></audio><br/>这所大学在这位科学家演讲完毕后，授予了他荣誉学位。</details>|
+|confer|v. 授予，协商，商讨，交换意见<details><summary>例句</summary>The university <font color="#28bea0" title="adj.">conferred</font> an honorary degree <font color="#28bea0">on</font> the scientist after his speech.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/96682c7a38182f2f2615b0465d747fe4.6c8bec2563bee55b38aa3cf2ac701dbc.mp3"></audio><br/>这所大学在这位科学家演讲完毕后，授予了他荣誉学位。</details>|
 |||
 |woollen|n. 毛线，毛织品<br/>adj. 羊毛的，毛纺的|
 |||
 |negate|v. 否定，否认，取消，使无效|
 |gust|n. 一阵(风)，(感情/气味)突然爆发<br/>v. 猛刮|
 |receptionist|n. 接待员|
+|||
+|tack|n. 图钉；行动方针，方法；航向<br/>v. 用图钉钉住，改变方向|
+|||
+|jumble|n. 杂乱的一堆<br/>v. 使乱堆，使混乱|
+|rummage|v. 乱翻，搜寻<br/>n. 翻找，搜寻<details><summary>例句</summary>The policeman <font color="#28bea0">rummage</font>d through the <font color="#28bea0">jumble</font> of documents on the desk.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/88423f3f7e1b0ba2b15a2404be8edc26.88423f3f7e1b0ba2b15a2404be8edc26.mp3"></audio><br/>警察在桌子上乱七八糟的文件中翻找。</details>|
+|talkative|adj. 爱说话的，多嘴的，健谈的|
+|plight|n. 困境，苦难<br/>v. 保证，发誓，订婚|
+|potentiality|n. 潜在，潜在的可能性|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
