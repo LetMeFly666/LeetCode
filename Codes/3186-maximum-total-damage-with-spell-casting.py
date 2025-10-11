@@ -11,7 +11,7 @@ class Solution:
     def maximumTotalDamage(self, power: List[int]) -> int:
         cnt = Counter(power)
         values = sorted(cnt)
-        dp = [0] * len(values + 1)
+        dp = [0] * len(values) + 1
         j = 0
         for i, val in enumerate(values):
             while values[j] < val + 2:
