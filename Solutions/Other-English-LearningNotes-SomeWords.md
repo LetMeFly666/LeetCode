@@ -1499,7 +1499,7 @@ categories: [自用]
 |||
 |kerosene|n. 煤油|
 |magician|n. 魔术师，术士，巫师|
-|confer|v. 授予，协商，商讨，交换意见<details><summary>例句</summary>The university <font color="#28bea0" title="adj.">conferred</font> an honorary degree <font color="#28bea0">on</font> the scientist after his speech.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/96682c7a38182f2f2615b0465d747fe4.6c8bec2563bee55b38aa3cf2ac701dbc.mp3"></audio><br/>这所大学在这位科学家演讲完毕后，授予了他荣誉学位。</details>|
+|confer|v. 授予，协商，商讨，交换意见<details><summary>例句</summary>The university <font color="#28bea0">conferred</font> an honorary degree <font color="#28bea0">on</font> the scientist after his speech.<audio controls src="https://media-audio1.baydn.com/abc_pri_audio/96682c7a38182f2f2615b0465d747fe4.6c8bec2563bee55b38aa3cf2ac701dbc.mp3"></audio><br/>这所大学在这位科学家演讲完毕后，授予了他荣誉学位。</details>|
 |||
 |woollen|n. 毛线，毛织品<br/>adj. 羊毛的，毛纺的|
 |||
