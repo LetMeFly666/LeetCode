@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-10-11 18:47:55
  */
 pub struct Solution;
-include!("3349-adjacent-increasing-subarrays-detection-i.rs");  // 这个fileName是会被脚本替换掉的
+include!("3350-adjacent-increasing-subarrays-detection-ii.rs");  // 这个fileName是会被脚本替换掉的

@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-10-14 20:14:45
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-10-14 20:21:32
+LastEditTime: 2025-10-14 20:24:03
 '''
 from typing import List
 
@@ -10,6 +10,6 @@ from typing import List
 class Solution:
     def hasIncreasingSubarrays(self, nums: List[int], k: int) -> bool:
         for i in range(len(nums) - 2 * k + 1):
-            if all(nums[j + 1] > nums[j] for j in range(i, i + k)) and all(nums[j + 1] > nums[j] for j in range(i + k, i + k * 2)):
+            if all(nums[j + 1] > nums[j] for j in range(i, i + k - 1)) and all(nums[j + 1] > nums[j] for j in range(i + k, i + k * 2 - 1)):
                 return True
         return False
