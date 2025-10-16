@@ -67,10 +67,10 @@ categories: [题解, LeetCode]
     
 ## 解题方法：一次遍历
 
-数组`[2,5,7,8,9,2,3,4,3,1]`由四个递增数组组成：`[2,5,7,8,9]`、`[2,3,4]`、`[3]`、`[1]`，他们的长度分别是4、3、1、1。
+数组`[2,5,7,8,9,2,3,4,3,1]`由四个递增数组组成：`[2,5,7,8,9]`、`[2,3,4]`、`[3]`、`[1]`，他们的长度分别是5、3、1、1。
 
-1. 对于相邻的长度为4、3的递增数组，可以设置$k=min(4,3)=3$
-2. 对于单个长度为4的递增数组，可以设置$k=\lfloor\frac42\rfloor$
+1. 对于相邻的长度为5、3的递增数组，可以设置$k=min(5,3)=3$
+2. 对于单个长度为5的递增数组，可以设置$k=\lfloor\frac52\rfloor$
 
 一遍遍历更新并计算上述两个值中最大的那个作为答案。
 
@@ -220,3 +220,5 @@ impl Solution {
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/153350590)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/10/15/LeetCode%203350.%E6%A3%80%E6%B5%8B%E7%9B%B8%E9%82%BB%E9%80%92%E5%A2%9E%E5%AD%90%E6%95%B0%E7%BB%84II/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+今天(2025.10.15)是我在CSDN的[2048天纪念日](https://app-blog.csdn.net/incentive?utm_medium=notify.im.blog_action.20251015.a&username=Tisfy)诶。
