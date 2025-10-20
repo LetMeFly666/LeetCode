@@ -65,6 +65,19 @@ nums 的 MEX 是 2 。可以证明 2 是可以取到的最大 MEX 。
 
 遇到无可消耗的值即为答案MEX。
 
+### What's more
+
+负数取模：
+
+> python负数取模正数得到结果为正数，C++/Rust/Go/Java得到结果为负数。可以取模后加上模数再次取模保证结果落在$[0, 模数-1)$
+
+推荐题解：
+
+1. [黑魔法正则取模写法](https://leetcode.cn/problems/smallest-missing-non-negative-integer-after-operations/solutions/3807906/zheng-ze-biao-da-shi-jie-fa-by-stoic-kap-om09)
+2. [哈希表写法2](https://leetcode.cn/problems/smallest-missing-non-negative-integer-after-operations/solutions/2177789/tong-yu-pythonjavacgo-by-endlesscheng-qoan/)
+
+### 时空复杂度分析
+
 + 时间复杂度$O(len(nums))$
 + 空间复杂度$O(\min(len(nums), value))$
 
@@ -76,10 +89,6 @@ nums 的 MEX 是 2 。可以证明 2 是可以取到的最大 MEX 。
 /*
  * @LastEditTime: 2025-10-16 19:43:19
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int findSmallestInteger(vector<int>& nums, int value) {

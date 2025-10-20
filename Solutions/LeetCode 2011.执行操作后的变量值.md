@@ -1,11 +1,11 @@
 ---
-title: 2011.执行操作后的变量值
+title: 2011.执行操作后的变量值：简单题简单做
 date: 2022-12-23 19:19:38
 tags: [题解, LeetCode, 简单, 数组, 字符串, 模拟]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2011.执行操作后的变量值
+# 【LetMeFly】2011.执行操作后的变量值：简单题简单做
 
 力扣题目链接：[https://leetcode.cn/problems/final-value-of-variable-after-performing-operations/](https://leetcode.cn/problems/final-value-of-variable-after-performing-operations/)
 
@@ -86,6 +86,9 @@ X--：X 减 1 ，X = 1 - 1 = 0
 #### C++
 
 ```cpp
+/*
+ *  @LastEditTime: 2022-12-23 19:18:09
+ */
 // 下面代码中，ans即为题解中的X。使用变量ans是一些ACMer的习惯
 class Solution {
 public:
@@ -100,6 +103,99 @@ public:
         return ans;
     }
 };
+```
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2025-10-20 18:46:29
+ */
+class Solution {
+public:
+    int finalValueAfterOperations(vector<string>& operations) {
+        int ans = 0;
+        for (string& op : operations) {
+            ans += op[1] == '+' ? 1 : -1;
+        }
+        return ans;
+    }
+};
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2025-10-20 18:48:49
+ */
+package main
+
+func finalValueAfterOperations(operations []string) (ans int) {
+    for _, op := range operations {
+        if op[1] == '+' {
+            ans++;
+        } else {
+            ans--
+        }
+    }
+    return
+}
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2025-10-20 18:48:23
+ */
+class Solution {
+    public int finalValueAfterOperations(String[] operations) {
+        int ans = 0;
+        for (String op : operations) {
+            if (op.charAt(1) == '+') {
+                ans++;
+            } else {
+                ans--;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Python
+
+```python
+'''
+LastEditTime: 2025-10-20 18:47:35
+'''
+from typing import List
+
+class Solution:
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        return sum(1 if op[1] == '+' else -1 for op in operations)
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2025-10-20 18:56:38
+ */
+impl Solution {
+    pub fn final_value_after_operations(operations: Vec<String>) -> i32 {
+        let mut ans: i32 = 0;
+        for op in operations {
+            if op.as_bytes()[1] == b'+' {
+                ans += 1;  // cannot write as: ans++;
+            } else {
+                ans -= 1;
+            }
+        }
+        ans
+    }
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/12/23/LeetCode%202011.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E7%9A%84%E5%8F%98%E9%87%8F%E5%80%BC/)哦~
