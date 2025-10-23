@@ -215,7 +215,7 @@ impl Solution {
 
 ## End
 
-今天发现CSDN给我发私信说准备把我一些文章变为VIP可见，实在受之有愧，拒绝之。
+今天发现CSDN给我发私信说准备把我一些文章变为VIP可见，实在受之有愧，故拒绝之。
 
 ![突然发现的通知](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f359a47bf52746bd970139258bb99da0.jpeg)
 
