@@ -2,19 +2,18 @@
  * @Author: LetMeFly
  * @Date: 2025-10-23 23:05:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-23 23:38:58
+ * @LastEditTime: 2025-10-23 23:42:40
  */
 class Solution {
     public boolean hasSameDigits(String s) {
-        byte[] a = new byte[s.length()];
+        int[] a = new int[s.length()];
         for (int i = 0; i < s.length(); i++) {
-            a[i] = (byte)(s.charAt(i) - '0');
+            a[i] = (s.charAt(i) - '0');
         }
-        byte mod = 10;
         while (a.length > 2) {
-            byte[] b = new byte[a.length - 1];
+            int[] b = new int[a.length - 1];
             for (int i = 0; i < b.length; i++) {
-                b[i] = (a[i] + a[i + 1]) % mod;
+                b[i] = (a[i] + a[i + 1]) % 10;
             }
             a = b;
         }
