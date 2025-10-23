@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-10-23 23:05:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-23 23:30:56
+ * @LastEditTime: 2025-10-23 23:32:07
  */
 package main
 
@@ -17,6 +17,6 @@ func hasSameDigits(s string) bool {
             b[i] = (a[i] + a[i + 1]) % 10
         }
         a = b
-        return a[0] == a[1]
     }
+    return a[0] == a[1]
 }
