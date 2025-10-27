@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-27 09:58:21
+ * @LastEditTime: 2025-10-27 10:03:05
 -->
 # LetLeet Blog
 
@@ -37,7 +37,7 @@
 
 |贡献者|贡献内容|
 |:--:|:--:|
-|[laughWinter](https://github.com/laughWinter)|(添加LeetCode669.Java版本的代码[#1186](https://github.com/LetMeFly666/LeetCode/pull/1186))|
+|[laughWinter](https://github.com/laughWinter)|添加LeetCode669.Java版本的代码[#1186](https://github.com/LetMeFly666/LeetCode/pull/1186)|
 
 ## 技术思考
 
