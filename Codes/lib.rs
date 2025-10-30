@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-10-11 18:47:55
  */
 pub struct Solution;
-include!("2011-final-value-of-variable-after-performing-operations_20251020.rs");  // 这个fileName是会被脚本替换掉的
+include!("3346-maximum-frequency-of-an-element-after-performing-operations-i.rs");  // 这个fileName是会被脚本替换掉的
