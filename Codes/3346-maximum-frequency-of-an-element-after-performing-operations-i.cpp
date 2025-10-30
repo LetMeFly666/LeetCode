@@ -21,7 +21,7 @@ public:
             while (target - nums[l] > k) {
                 l++;
             }
-            while (r < static_cast<int>(nums.size()) && nums[r] - target <= k) {
+            while (r < nums.size() && nums[r] - target <= k) {
                 r++;
             }
             ans = max(ans, min(r - l, numOperations + frequency[target]));
