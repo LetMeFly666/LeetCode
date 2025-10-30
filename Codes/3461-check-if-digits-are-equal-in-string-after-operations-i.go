@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-10-23 23:05:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-23 23:32:07
+ * @LastEditTime: 2025-10-24 14:21:02
  */
 package main
 
@@ -12,7 +12,7 @@ func hasSameDigits(s string) bool {
         a[i] = s[i] - '0'
     }
     for len(a) > 2 {
-        b := make([]byte,len(a) - 1)
+        b := make([]byte, len(a) - 1)
         for i := range b {
             b[i] = (a[i] + a[i + 1]) % 10
         }

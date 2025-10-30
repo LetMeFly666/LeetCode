@@ -3,6 +3,7 @@ title: 3461.判断操作后字符串中的数字是否相等 I：简单题简单
 date: 2025-10-23 23:50:07
 tags: [题解, LeetCode, 简单, 数学, 字符串, 组合数学, 数论, 模拟]
 categories: [题解, LeetCode]
+index_img: https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f359a47bf52746bd970139258bb99da0.jpeg
 ---
 
 # 【LetMeFly】3461.判断操作后字符串中的数字是否相等 I：简单题简单做的时候到了
@@ -85,7 +86,7 @@ categories: [题解, LeetCode]
 
 tips1：若真的使用字符来一直模拟，可以提前算出两个`'0'`和一个<code>`</code>的ASCII码相等。
 
-tips：也可以使用int8或int数组来存储，不用真的一直字符串操作。
+tips2：也可以使用int8或int数组来存储，不用真的一直字符串操作。
 
 + 时间复杂度$O(len(s)^2)$
 + 空间复杂度$O(len(s))$
@@ -170,7 +171,7 @@ class Solution {
 
 ```go
 /*
- * @LastEditTime: 2025-10-23 23:32:07
+ * @LastEditTime: 2025-10-24 14:21:02
  */
 package main
 
@@ -180,7 +181,7 @@ func hasSameDigits(s string) bool {
         a[i] = s[i] - '0'
     }
     for len(a) > 2 {
-        b := make([]byte,len(a) - 1)
+        b := make([]byte, len(a) - 1)
         for i := range b {
             b[i] = (a[i] + a[i + 1]) % 10
         }
@@ -215,13 +216,15 @@ impl Solution {
 
 ## End
 
-今天发现CSDN给我发私信说准备把我一些文章变为VIP可见，实在受之有愧，故拒绝之。
+<details><summary>今天发现CSDN给我发私信说准备把我一些文章变为VIP可见，实在受之有愧，故拒绝之。</summary>
 
 ![突然发现的通知](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f359a47bf52746bd970139258bb99da0.jpeg)
 
 ![拒绝之](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/2896694c1aa5453d991acba075607fbd.jpeg)
 
 可能是因为快1024了官方想要再整一些活动吧。
+
+</details>
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/153800840)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/10/23/LeetCode%203461.%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E5%90%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89I/)哦~
 >
