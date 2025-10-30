@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-10-21 18:51:21
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-10-30 22:51:38
+ * @LastEditTime: 2025-10-30 22:53:20
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -17,14 +17,14 @@ public:
             frequency[t]++;
         }
         int ans = 0;
-        for (int l = 0, r = 0, i = 0; i < nums.size(); i++) {
-            while (nums[i] - nums[l] > k) {
+        for (int l = 0, r = 0, target = nums[0]; target <= nums.back(); target++) {
+            while (target - nums[l] > k) {
                 l++;
             }
-            while (r < nums.size() && nums[r] - nums[i] <= k) {
+            while (r < nums.size() && nums[r] - target <= k) {
                 r++;
             }
-            ans = max(ans, min(r - l, numOperations + frequency[nums[i]]));
+            ans = max(ans, min(r - l, numOperations + frequency[target]));
         }
         return ans;
     }
