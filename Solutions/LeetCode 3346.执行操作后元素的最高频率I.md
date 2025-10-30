@@ -240,3 +240,5 @@ impl Solution {
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/154155843)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/10/30/LeetCode%203346.%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%90%8E%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E9%AB%98%E9%A2%91%E7%8E%87I/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+今天发现github copilot可以根据review意见提pr了诶。
