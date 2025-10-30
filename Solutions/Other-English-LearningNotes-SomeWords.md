@@ -1554,7 +1554,7 @@ categories: [自用]
 |feud|n. 世仇，夙愿<br/>v. 长期斗争|
 |obliterate|v. 毁掉，覆盖，清除|
 |||
-|femine|n. 饥荒|
+|famine|n. 饥荒|
 |capitalism|n. 资本主义|
 |||
 |nationality|n. 国籍，民族|
