@@ -1566,6 +1566,8 @@ categories: [自用]
 |awfully|adv. 非常，及其|
 |||
 |lighter|n. 打火机，驳船|
+|||
+|ashtray <!-- <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/c2f2b408d50b8faba490c46534ed83fc.986e3875547b2b496c3feb48a9e1808f.mp3"></audio> --> |n. 烟灰缸|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
