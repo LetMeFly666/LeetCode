@@ -1568,6 +1568,12 @@ categories: [自用]
 |lighter|n. 打火机，驳船|
 |||
 |ashtray <!-- <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/c2f2b408d50b8faba490c46534ed83fc.986e3875547b2b496c3feb48a9e1808f.mp3"></audio> --> |n. 烟灰缸|
+|||
+|haggard|adj. 憔悴的|
+|vividness|n. 生动，鲜艳|
+|jingle|n. (金属撞击的)叮当声<br/>v. 使发出叮当声|
+|plenary|adj. 全体参加的，无限的，完整的，绝对的<br/>n. 全体会议，全会|
+|retroactive|adj. 有追溯效力的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
