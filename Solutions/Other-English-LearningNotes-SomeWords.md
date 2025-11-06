@@ -1567,6 +1567,11 @@ categories: [自用]
 |||
 |lighter|n. 打火机，驳船|
 |||
+|bough|n. 大树枝|
+|||
+|hearty|adj. 热情的，精力充沛的；(食物)大量的，丰盛的|
+|haggard|adj. (人)憔悴的，疲惫的|
+|||
 |ashtray <!-- <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/c2f2b408d50b8faba490c46534ed83fc.986e3875547b2b496c3feb48a9e1808f.mp3"></audio> --> |n. 烟灰缸|
 |||
 |haggard|adj. 憔悴的|
