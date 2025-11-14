@@ -1566,6 +1566,38 @@ categories: [自用]
 |awfully|adv. 非常，及其|
 |||
 |lighter|n. 打火机，驳船|
+|||
+|bough|n. 大树枝|
+|||
+|hearty|adj. 热情的，精力充沛的；(食物)大量的，丰盛的|
+|haggard|adj. (人)憔悴的，疲惫的|
+|||
+|ashtray <!-- <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/c2f2b408d50b8faba490c46534ed83fc.986e3875547b2b496c3feb48a9e1808f.mp3"></audio> --> |n. 烟灰缸|
+|||
+|vividness|n. 生动，鲜艳|
+|jingle|n. (金属撞击的)叮当声<br/>v. 使发出叮当声|
+|plenary|adj. 全体参加的，无限的，完整的，绝对的<br/>n. 全体会议，全会|
+|retroactive|adj. 有追溯效力的|
+|||
+|displease|v. 使恼怒，使生气，使不悦|
+|disinfectant|n. 消毒剂，杀菌剂<br/>adj. 消毒的|
+|||
+|hoist|n. 起重机，吊车<br/>v. 升起，升高，举起，提升|
+|contingency|n. 偶然，可能性；意外事件，紧急事件|
+|gracious|adj. 慈祥的，有礼貌的|
+|||
+|hideous|adj. 十分丑陋的，令人厌恶的|
+|abeyance|n. 中止，未定，搁置，暂缓|
+|||
+|forsake|v. 抛弃，离开|
+|forefinger|n. 食指|
+|||
+|Malaysia|n. 马来西亚|
+|lad|n. 小伙子，少年，男孩儿，男青年|
+|||
+|punctuation|n. 标点符号，标点符号用法|
+|||
+|whitewash|n. 粉饰，掩盖；石灰水；完胜<br/>v. 用石灰水刷，涂白；掩饰；零封|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

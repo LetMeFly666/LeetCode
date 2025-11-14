@@ -1,13 +1,13 @@
 /*
  * @Author: LetMeFly
- * @Date: 2025-11-01 21:45:28
+ * @Date: 2025-11-01 21:53:51
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-11-01 21:54:03
+ * @LastEditTime: 2025-11-01 21:54:45
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
-// THIS IS NOT RIGHT
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -21,8 +21,8 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* now) {
-        unordered_set<int> se;
-        ListNode* head(0, now);
+        unordered_set<int> se(nums.begin(), nums.end());
+        ListNode* head = new ListNode(0, now);
         ListNode* last = head;
         while (now) {
             if (se.count(now->val)) {
