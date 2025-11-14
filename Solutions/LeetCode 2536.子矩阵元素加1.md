@@ -3,6 +3,7 @@ title: 2536.子矩阵元素加 1：二维差分数组
 date: 2025-11-14 19:17:41
 tags: [题解, LeetCode, 中等, 数组, 矩阵, 前缀和, 差分数组]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2022/11/24/p2example11.png
 ---
 
 # 【LetMeFly】2536.子矩阵元素加 1：二维差分数组
@@ -117,9 +118,6 @@ public:
 
 ```python
 '''
-Author: LetMeFly
-Date: 2025-11-14 17:51:14
-LastEditors: LetMeFly.xyz
 LastEditTime: 2025-11-14 19:16:40
 '''
 from typing import List
@@ -142,6 +140,55 @@ class Solution:
         return ans
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/11/14/LeetCode%202536.%E5%AD%90%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E5%8A%A01/)哦~
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2025-11-14 19:38:51
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2025-11-14 19:46:39
+ */
+package main
+
+func rangeAddQueries(n int, queries [][]int) [][]int {
+    diff := make([][]int, n + 1)
+    for i := range diff {
+        diff[i] = make([]int, n + 1)
+    }
+    for _, q := range queries {
+        x1, y1, x2, y2 := q[0], q[1], q[2], q[3]
+        diff[x1][y1]++
+        diff[x2 + 1][y1]--
+        diff[x1][y2 + 1]--
+        diff[x2 + 1][y2 + 1]++
+    }
+
+    ans := make([][]int, n)
+    for i := range ans {
+        ans[i] = make([]int, n)
+    }
+    for i := range ans {
+        for j := range ans[i] {
+            up := 0
+            if i > 0 {
+                up = ans[i - 1][j]
+            }
+            left := 0
+            if j > 0 {
+                left = ans[i][j - 1]
+            }
+            lu := 0
+            if i > 0 && j > 0 {
+                lu = ans[i - 1][j - 1]
+            }
+            ans[i][j] = diff[i][j] + left + up - lu
+        }
+    }
+    return ans
+}
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/154847708)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/11/14/LeetCode%202536.%E5%AD%90%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E5%8A%A01/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
