@@ -1574,7 +1574,6 @@ categories: [自用]
 |||
 |ashtray <!-- <audio controls src="https://media-audio1.baydn.com/abc_pub_audio/c2f2b408d50b8faba490c46534ed83fc.986e3875547b2b496c3feb48a9e1808f.mp3"></audio> --> |n. 烟灰缸|
 |||
-|haggard|adj. 憔悴的|
 |vividness|n. 生动，鲜艳|
 |jingle|n. (金属撞击的)叮当声<br/>v. 使发出叮当声|
 |plenary|adj. 全体参加的，无限的，完整的，绝对的<br/>n. 全体会议，全会|
