@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-11-14 19:38:51
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-11-14 19:42:41
+ * @LastEditTime: 2025-11-14 19:46:39
  */
 package main
 
@@ -27,17 +27,17 @@ func rangeAddQueries(n int, queries [][]int) [][]int {
         for j := range ans[i] {
             up := 0
             if i > 0 {
-                up = diff[i - 1][j]
+                up = ans[i - 1][j]
             }
             left := 0
             if j > 0 {
-                left = diff[i][j - 1]
+                left = ans[i][j - 1]
             }
             lu := 0
             if i > 0 && j > 0 {
-                lu = diff[i - 1][j - 1]
+                lu = ans[i - 1][j - 1]
             }
-            ans[i][j] = diff[i][j] - left - up + lu
+            ans[i][j] = diff[i][j] + left + up - lu
         }
     }
     return ans
