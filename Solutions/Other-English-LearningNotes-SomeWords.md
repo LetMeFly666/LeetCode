@@ -1145,7 +1145,7 @@ categories: [自用]
 |||
 |earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
 |||
-|<font color="#28bea0" title="二次复习">custody</font>|n. 抚养权，羁押，保管，保护|
+|<font color="#28bea0" title="三次复习">custody</font>|n. 抚养权，羁押，保管，保护|
 |||
 |repudiate|v. 拒绝，不接受，回绝，(正式地)否认|
 |torture|v. 拷打，折磨，严刑逼供<br/>n. 拷打，折磨，酷刑|
@@ -1603,6 +1603,8 @@ categories: [自用]
 |cavalry|n. 骑兵，装甲兵|
 |||
 |impost|n. 关税，拱墩，顶替<br/>v. 依关税分类|
+|||
+|embroidery|n. 刺绣，刺绣图案，刺绣品（可数）|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
