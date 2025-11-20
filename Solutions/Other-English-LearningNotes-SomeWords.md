@@ -1609,6 +1609,10 @@ categories: [自用]
 |ingenuity|n. 聪明才智，独创力，心灵手巧|
 |tigress|n. 母老虎|
 |propellent|adj. 推进的<br/>n. 推进燃料，压缩气体(同propellant)|
+|||
+|nobility|n. 贵族，高贵的金属|
+|left-handed|adj. 左撇子的，左手的，左旋的|
+|left-hander|n. 左撇子|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
