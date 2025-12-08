@@ -1145,7 +1145,7 @@ categories: [自用]
 |||
 |earnest|adj. 非常认真的，诚实的，真诚的<br/>n. 认真，热心，保证金，预兆|
 |||
-|<font color="#28bea0" title="二次复习">custody</font>|n. 抚养权，羁押，保管，保护|
+|<font color="#28bea0" title="三次复习">custody</font>|n. 抚养权，羁押，保管，保护|
 |||
 |repudiate|v. 拒绝，不接受，回绝，(正式地)否认|
 |torture|v. 拷打，折磨，严刑逼供<br/>n. 拷打，折磨，酷刑|
@@ -1598,6 +1598,63 @@ categories: [自用]
 |punctuation|n. 标点符号，标点符号用法|
 |||
 |whitewash|n. 粉饰，掩盖；石灰水；完胜<br/>v. 用石灰水刷，涂白；掩饰；零封|
+|||
+|remit|v. 汇款，免除，赦免<br/>n. 职权范围，控制范围，影响范围|
+|cavalry|n. 骑兵，装甲兵|
+|||
+|impost|n. 关税，拱墩，顶替<br/>v. 依关税分类|
+|||
+|embroidery|n. 刺绣，刺绣图案，刺绣品（可数）|
+|||
+|ingenuity|n. 聪明才智，独创力，心灵手巧|
+|tigress|n. 母老虎|
+|propellent|adj. 推进的<br/>n. 推进燃料，压缩气体(同propellant)|
+|||
+|nobility|n. 贵族，高贵的金属|
+|left-handed|adj. 左撇子的，左手的，左旋的|
+|left-hander|n. 左撇子|
+|||
+|thermometer|n. 温度计，体温计，寒暑表|
+|shrill|adj. 刺耳的，尖酸刻薄的<br/>v. 发出刺耳声音，尖叫，尖声说|
+|||
+|missionary|n. 传教士<br/>adj. 传教(士)的|
+|reportage|n. 新闻报道，报道风格，报道文体|
+|baroness|n. 男爵夫人，某领域顶尖女性|
+|||
+|imperialism|n. 帝国主义，帝国统治；(商业/文化向外国)扩张，扩张主义|
+|||
+|undersigned|adj. 签了名的<br/>n. 签名者，署名人|
+|levy|v. 征收，征税<br/>n. 征收额，税款|
+|||
+|trumpet|n. 喇叭，小号<br/>v. 宣扬，鼓吹，吹嘘，吼叫|
+|||
+|constitutive|adj. 组成部分的，本质的，基本的|
+|baron|n. 男爵，巨头|
+|calculus|n. 微积分|
+|||
+|offence|n. 违法行为；犯罪；冒犯，搅扰；侮辱|
+|||
+|eccentric|adj. 古怪的，异乎寻常的<br/>n. 怪人；偏心圆；偏心器；离心圈|
+|recollect|v. 记得，回忆起，记起|
+|||
+|wretched|adj. 不愉快的，恶劣的，可怜的，该死的，无法容忍的|
+|||
+|soy|n. 大豆，酱油|
+|lump sum|phrase. 一次总付的钱款|
+|||
+|yolk|n. 蛋黄|
+|volley|n. 齐射，连发<br/>v. 齐发|
+|||
+|mileage|n. 英里里程，英里数；好处，利益|
+|||
+|consulate|n. 领事馆|
+|locomotive|n. 机车，火车头<br/>adj. 移动的，运动的|
+|||
+|reputable|adj. 声誉好的，值得信赖的|
+|||
+|irrigate|v. 灌溉，冲洗(伤口/身体部位)|
+|heir|n. 继承人|
+|bona fide|adj. 真诚的，真实的，合法的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
