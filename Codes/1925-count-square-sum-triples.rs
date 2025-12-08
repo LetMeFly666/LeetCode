@@ -10,7 +10,7 @@ impl Solution {
         for a in 1..n+1 {
             for b in 1..n+1 {
                 let k = a * a + b * b;
-                let c = (k as f64).sqrt();
+                let c = (k as f64).sqrt() as i32;
                 if c <= n && c * c == k {
                     ans += 1;
                 }
