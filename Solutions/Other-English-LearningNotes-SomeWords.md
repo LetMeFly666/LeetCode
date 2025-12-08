@@ -1648,7 +1648,9 @@ categories: [自用]
 |mileage|n. 英里里程，英里数；好处，利益|
 |||
 |consulate|n. 领事馆|
-|locomotive|TODO:|
+|locomotive|n. 机车，火车头<br/>adj. 移动的，运动的|
+|||
+|reputable|adj. 声誉好的，值得信赖的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
