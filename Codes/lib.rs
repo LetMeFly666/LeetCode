@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-11-01 22:18:35
  */
 pub struct Solution;
-include!("3583-count-special-triplets.rs");  // 这个fileName是会被脚本替换掉的
+include!("1925-count-square-sum-triples.rs");  // 这个fileName是会被脚本替换掉的
