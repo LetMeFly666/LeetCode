@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-09 18:38:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-09 18:41:50
+ * @LastEditTime: 2025-12-09 18:43:53
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -22,7 +22,7 @@ public:
             int finding = t * 2;
             if (now.count(finding)) {
                 ll left = now[finding];
-                ans = (ans + left * (total[finding] - left)) % MOD;
+                ans = (ans + left * (total[finding] - left - (t == 0))) % MOD;
             }
             now[t]++;
         }
