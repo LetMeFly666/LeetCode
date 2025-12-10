@@ -5,7 +5,7 @@
  * @LastEditTime: 2025-12-10 23:03:09
  */
 class Solution {
-    private long MOD = 1000000007;
+    private final long MOD = 1000000007;
 
     public int countPermutations(int[] complexity) {
         long ans = 1;
