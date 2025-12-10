@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-10 22:34:20
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-10 22:45:08
+ * @LastEditTime: 2025-12-10 22:48:50
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -22,10 +22,14 @@ public:
                 miniTimes++;
             }
         }
+        // printf("mini: %d, miniTimes: %d\n", mini, miniTimes);
         if (miniTimes != 1) {
             return 0;
         }
-        int n = complexity.size() - 1;
-        return static_cast<int>(static_cast<ll>(n) * static_cast<ll>(n - 1) % MOD);
+        ll ans = 1;
+        for (ll i = complexity.size() - 1; i > 1; i--) {
+            ans = ans * i % MOD;
+        }
+        return static_cast<int>(ans);
     }
 };
