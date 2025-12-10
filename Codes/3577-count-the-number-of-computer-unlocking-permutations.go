@@ -6,7 +6,7 @@
  */
 package main
 
-var MOD3577 int = 1000000007
+const MOD3577 int = 1000000007
 
 func countPermutations(complexity []int) int {
     ans := 1
