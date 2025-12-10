@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-12-08 13:22:59
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-09 13:33:35
+LastEditTime: 2025-12-10 22:33:12
 '''
 from bs4 import BeautifulSoup
 from bs4.element import Tag
@@ -60,7 +60,7 @@ slugs = [a['href'].removeprefix('/problems/').split('/')[0] for a in a_s if a.ha
 today = datetime(2025, 11, 1)
 th = 8
 cmds = []
-skipList = [2536, 1925, 3217, 2257]
+skipList = [2536, 1925, 3217, 2257, 3577]
 
 for slug in slugs:
     th += 1
