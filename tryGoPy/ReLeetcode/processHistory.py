@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-09 23:48:21
+LastEditTime: 2025-12-10 18:55:02
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -232,6 +232,42 @@ daily_order = [
     "[newSolution]Who can add 1 more problem of LeetCode 3217 #1193",
     "[newSolution]Who can add 1 more problem of LeetCode 3217 #1205",
     "[newSolution]Who can add 1 more problem of LeetCode 2257 #1208",
+    1578,
+    3318,
+    3321,
+    3607,
+    2528,
+    1611,
+    2169,
+    3542,
+    474,
+    2654,
+    3228,
+    2536,
+    3234,
+    1513,
+    1437,
+    717,
+    2154,
+    757,
+    1930,
+    3190,
+    1262,
+    1018,
+    1015,
+    2435,
+    3381,
+    2872,
+    3512,
+    1590,
+    2141,
+    3623,
+    3625,
+    2211,
+    3432,
+    3578,
+    1523,
+    1925
 ]
 
 def gh_api(path, method="GET", data=None):
