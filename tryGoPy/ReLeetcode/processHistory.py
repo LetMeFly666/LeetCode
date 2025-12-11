@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-10 23:53:54
+LastEditTime: 2025-12-11 19:06:22
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -552,8 +552,17 @@ def sort_issues(original: List[dict]):
     onlyHasProblemNumList = []
     for issue in original:
         issueNum = issue['url'].split('issues/')[1]
-        # problemNum = re.search(r'\|\s*\[(\d+)\.', issue['body']).group(1)
-        problemNum = issue['body'].split('| [')[1].split('.')[0]
+        match = re.compile(r'\[(\d{2,4})\.[A-Za-z\s]*[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]+').search(issue['body'])
+        if match:
+            problemNum = match.group(1)
+        else:
+            print('*' * 50)
+            print(f'#{issueNum}')
+            print(issue['body'])
+            print('*' * 50)
+        # problemNum = re.search(r'\[(\d+)\.', issue['body']).group(1)
+        # print(issue['body'])
+        # problemNum = issue['body'].split('[')[1].split('.')[0]
         print(issueNum)
         print(problemNum)
 
@@ -583,6 +592,7 @@ def main():
         return
     # 构建 daily_order 的编号顺序映射
     targets = sort_issues(targets)
+    exit(0)  # TODO:Let's remove this line
 
     # --------------------------- 开始添加issue到project中 ---------------------------
 

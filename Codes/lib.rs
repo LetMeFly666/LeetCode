@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-11-01 22:18:35
  */
 pub struct Solution;
-include!("3577-count-the-number-of-computer-unlocking-permutations.rs");  // 这个fileName是会被脚本替换掉的
+include!("3531-count-covered-buildings.rs");  // 这个fileName是会被脚本替换掉的
