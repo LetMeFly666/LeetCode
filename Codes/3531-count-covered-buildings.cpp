@@ -11,7 +11,8 @@
 class Solution {
 public:
     int countCoveredBuildings(int n, vector<vector<int>>& buildings) {
-        vector<int> xm(100001, 100001), xM(100001), ym(100001, 100001), yM(100001);
+        n++;
+        vector<int> xm(n, n), xM(n), ym(n, n), yM(n);
         for (vector<int>& building : buildings) {
             int x = building[0], y = building[1];
             xm[x] = min(xm[x], y);
