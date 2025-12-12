@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】3433.统计用户被提及情况：（大）模拟力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-mentions-per-user&#x2F; 给你一个整数&nbsp;numberOfUsers&nbsp;表示用户总数，另有一个大小为 n x 3 的数组&nbsp;events&nbsp;。  每个&nbsp;events[i]&nbsp;都属于下述两种类型之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3433.统计用户被提及情况：（大）模拟">
+<meta property="og:url" content="https://blog.letmefly.xyz/2025/12/12/LeetCode%203433.%E7%BB%9F%E8%AE%A1%E7%94%A8%E6%88%B7%E8%A2%AB%E6%8F%90%E5%8F%8A%E6%83%85%E5%86%B5/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】3433.统计用户被提及情况：（大）模拟力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-mentions-per-user&#x2F; 给你一个整数&nbsp;numberOfUsers&nbsp;表示用户总数，另有一个大小为 n x 3 的数组&nbsp;events&nbsp;。  每个&nbsp;events[i]&nbsp;都属于下述两种类型之">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-12T10:30:01.000Z">
+<meta property="article:modified_time" content="2025-12-12T10:53:28.975Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>3433.统计用户被提及情况：（大）模拟 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3433.统计用户被提及情况：（大）模拟"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-12 18:30" pubdate>
+          2025年12月12日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">3433.统计用户被提及情况：（大）模拟</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="【LetMeFly】3433-统计用户被提及情况：（大）模拟"><a href="#【LetMeFly】3433-统计用户被提及情况：（大）模拟" class="headerlink" title="【LetMeFly】3433.统计用户被提及情况：（大）模拟"></a>【LetMeFly】3433.统计用户被提及情况：（大）模拟</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-mentions-per-user/">https://leetcode.cn/problems/count-mentions-per-user/</a></p>
+<p>给你一个整数&nbsp;<code>numberOfUsers</code>&nbsp;表示用户总数，另有一个大小为 <code>n x 3</code> 的数组&nbsp;<code>events</code>&nbsp;。</p>
+
+<p>每个&nbsp;<code inline="">events[i]</code>&nbsp;都属于下述两种类型之一：</p>
+
+<ol>
+	<li><strong>消息事件（Message Event）：</strong><code>["MESSAGE", "timestamp<sub>i</sub>", "mentions_string<sub>i</sub>"]</code>
+
+<pre><code class="hljs">&lt;ul&gt;
+	&lt;li&gt;事件表示在&amp;nbsp;&lt;code&gt;timestamp&lt;sub&gt;i&lt;/sub&gt;&lt;/code&gt;&amp;nbsp;时，一组用户被消息提及。&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;mentions_string&lt;sub&gt;i&lt;/sub&gt;&lt;/code&gt;&amp;nbsp;字符串包含下述标识符之一：
+	&lt;ul&gt;
+		&lt;li&gt;&lt;code&gt;id&amp;lt;number&amp;gt;&lt;/code&gt;：其中&amp;nbsp;&lt;code&gt;&amp;lt;number&amp;gt;&lt;/code&gt;&amp;nbsp;是一个区间&amp;nbsp;&lt;code&gt;[0,numberOfUsers - 1]&lt;/code&gt;&amp;nbsp;内的整数。可以用单个空格分隔&amp;nbsp;&lt;strong&gt;多个&lt;/strong&gt; id ，并且 id 可能重复。此外，这种形式可以提及离线用户。&lt;/li&gt;
+		&lt;li&gt;&lt;code&gt;ALL&lt;/code&gt;：提及 &lt;strong&gt;所有&lt;/strong&gt; 用户。&lt;/li&gt;
+		&lt;li&gt;&lt;code&gt;HERE&lt;/code&gt;：提及所有 &lt;strong&gt;在线&lt;/strong&gt; 用户。&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;离线事件（Offline Event）：&lt;/strong&gt;&lt;code&gt;[&quot;OFFLINE&quot;, &quot;timestamp&lt;sub&gt;i&lt;/sub&gt;&quot;, &quot;id&lt;sub&gt;i&lt;/sub&gt;&quot;]&lt;/code&gt;
+&lt;ul&gt;
+	&lt;li&gt;事件表示用户&amp;nbsp;&lt;code&gt;id&lt;sub&gt;i&lt;/sub&gt;&lt;/code&gt;&amp;nbsp;在&amp;nbsp;&lt;code&gt;timestamp&lt;sub&gt;i&lt;/sub&gt;&lt;/code&gt;&amp;nbsp;时变为离线状态 &lt;strong&gt;60 个单位时间&lt;/strong&gt;。用户会在&amp;nbsp;&lt;code&gt;timestamp&lt;sub&gt;i&lt;/sub&gt; + 60&lt;/code&gt;&amp;nbsp;时自动再次上线。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+</ol>
+
+<p>返回数组&nbsp;<code>mentions</code>&nbsp;，其中&nbsp;<code>mentions[i]</code>&nbsp;表示 &nbsp;id 为 &nbsp;<code>i</code>&nbsp;的用户在所有&nbsp;<code>MESSAGE</code>&nbsp;事件中被提及的次数。</p>
+
+<p>最初所有用户都处于在线状态，并且如果某个用户离线或者重新上线，其对应的状态变更将会在所有相同时间发生的消息事件之前进行处理和同步。</p>
+
+<p><strong>注意 </strong>在单条消息中，同一个用户可能会被提及多次。每次提及都需要被 <strong>分别</strong> 统计。</p>
+
+<p>&nbsp;</p>
+
+<p><b>示例 1：</b></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>numberOfUsers = 2, events = [["MESSAGE","10","id1 id0"],["OFFLINE","11","0"],["MESSAGE","71","HERE"]]</span></p>
+
+<p><span class="example-io"><b>输出：</b>[2,2]</span></p>
+
+<p><b>解释：</b></p>
+
+<p>最初，所有用户都在线。</p>
+
+<p>时间戳 10 ，<code>id1</code>&nbsp;和&nbsp;<code>id0</code>&nbsp;被提及，<code>mentions = [1,1]</code></p>
+
+<p>时间戳 11 ，<code>id0</code>&nbsp;<strong>离线</strong> 。</p>
+
+<p>时间戳 71 ，<code>id0</code>&nbsp;再次 <strong>上线</strong>&nbsp;并且&nbsp;<code>"HERE"</code>&nbsp;被提及，<code>mentions = [2,2]</code></p>
+</div>
+
+<p><b>示例 2：</b></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>numberOfUsers = 2, events = [["MESSAGE","10","id1 id0"],["OFFLINE","11","0"],["MESSAGE","12","ALL"]]</span></p>
+
+<p><span class="example-io"><b>输出：</b>[2,2]</span></p>
+
+<p><b>解释：</b></p>
+
+<p>最初，所有用户都在线。</p>
+
+<p>时间戳 10 ，<code>id1</code>&nbsp;和&nbsp;<code>id0</code>&nbsp;被提及，<code>mentions = [1,1]</code></p>
+
+<p>时间戳 11 ，<code>id0</code>&nbsp;<strong>离线</strong> 。</p>
+
+<p>时间戳 12 ，<code>"ALL"</code>&nbsp;被提及。这种方式将会包括所有离线用户，所以&nbsp;<code>id0</code>&nbsp;和&nbsp;<code>id1</code>&nbsp;都被提及，<code>mentions = [2,2]</code></p>
+</div>
+
+<p><b>示例 3：</b></p>
+
+<div class="example-block">
+<p><span class="example-io"><b>输入：</b>numberOfUsers = 2, events = [["OFFLINE","10","0"],["MESSAGE","12","HERE"]]</span></p>
+
+<p><span class="example-io"><b>输出：</b>[0,1]</span></p>
+
+<p><b>解释：</b></p>
+
+<p>最初，所有用户都在线。</p>
+
+<p>时间戳 10 ，<code>id0</code>&nbsp;<strong>离线</strong>&nbsp;<b>。</b></p>
+
+<p>时间戳 12 ，<code>"HERE"</code>&nbsp;被提及。由于&nbsp;<code>id0</code>&nbsp;仍处于离线状态，其将不会被提及，<code>mentions = [0,1]</code></p>
+</div>
+
+<p>&nbsp;</p>
+
+<p><b>提示：</b></p>
+
+<ul>
+	<li><code>1 &lt;= numberOfUsers &lt;= 100</code></li>
+	<li><code>1 &lt;= events.length &lt;= 100</code></li>
+	<li><code>events[i].length == 3</code></li>
+	<li><code>events[i][0]</code>&nbsp;的值为&nbsp;<code>MESSAGE</code>&nbsp;或&nbsp;<code>OFFLINE</code>&nbsp;。</li>
+	<li><code>1 &lt;= int(events[i][1]) &lt;= 10<sup>5</sup></code></li>
+	<li>在任意 <code>"MESSAGE"</code>&nbsp;事件中，以&nbsp;<code>id&lt;number&gt;</code>&nbsp;形式提及的用户数目介于&nbsp;<code>1</code>&nbsp;和&nbsp;<code>100</code>&nbsp;之间。</li>
+	<li><code>0 &lt;= &lt;number&gt; &lt;= numberOfUsers - 1</code></li>
+	<li>题目保证 <code>OFFLINE</code>&nbsp;引用的用户 id 在事件发生时处于 <strong>在线</strong> 状态。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：模拟"><a href="#解题方法：模拟" class="headerlink" title="解题方法：模拟"></a>解题方法：模拟</h2><p>最多100个人，最多100个事件，所以直接暴力模拟就好了。</p>
+<p>创建一个答案数组，初始值全部为0，接着开始遍历事件：</p>
+<ul>
+<li>如果事件是<code>OFFLINE</code>，则什么都不做，直接continue。否则一定是消息事件：</li>
+<li>如果事件是<code>ALL</code>，则每人+1</li>
+<li>如果事件是<code>HERE</code>，则先每人+1，然后再遍历一遍事件数组，如果存在60时间内的下线时间，则此人-1</li>
+<li>否则（@指定人），被提及到的人们+1</li>
+</ul>
+<p>以上。</p>
+<h3 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h3><p>令$e&#x3D;len(events)$，$n&#x3D;numberOfUsers$：</p>
+<ul>
+<li>单次操作时间复杂度：下线$O(1)$、所有人$O(n)$、在线人$O(n+e)$、指定人$O(len(events[i][2]))$</li>
+<li>总空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">LastEditTime: 2025-12-12 13:42:16</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">countMentions</span>(<span class="hljs-params">self, numberOfUsers: <span class="hljs-built_in">int</span>, events: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">str</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        ans: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>] = [<span class="hljs-number">0</span>] * numberOfUsers<br>        <span class="hljs-keyword">for</span> action, time, who <span class="hljs-keyword">in</span> events:<br>            <span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;OFFLINE&quot;</span>:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">if</span> who == <span class="hljs-string">&quot;ALL&quot;</span>:<br>                ans = [x + <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ans]<br>            <span class="hljs-keyword">elif</span> who == <span class="hljs-string">&quot;HERE&quot;</span>:<br>                ans = [x + <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> ans]<br>                <span class="hljs-keyword">for</span> a, t, w <span class="hljs-keyword">in</span> events:<br>                    <span class="hljs-keyword">if</span> a == <span class="hljs-string">&quot;OFFLINE&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(time) - <span class="hljs-number">60</span> &lt; <span class="hljs-built_in">int</span>(t) &lt;= <span class="hljs-built_in">int</span>(time):<br>                        ans[<span class="hljs-built_in">int</span>(w)] -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> (<span class="hljs-built_in">int</span>(w[<span class="hljs-number">2</span>:]) <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> who.split(<span class="hljs-string">&quot; &quot;</span>)):<br>                    ans[i] += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> ans  <span class="hljs-comment"># 差点忘了return</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/155861707">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/12/12/LeetCode%203433.%E7%BB%9F%E8%AE%A1%E7%94%A8%E6%88%B7%E8%A2%AB%E6%8F%90%E5%8F%8A%E6%83%85%E5%86%B5/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A2%98%E8%A7%A3/" class="category-chain-item">题解</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A2%98%E8%A7%A3/LeetCode/" class="category-chain-item">LeetCode</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+      
+        <a href="/tags/%E6%A8%A1%E6%8B%9F/">#模拟</a>
+      
+        <a href="/tags/%E4%B8%AD%E7%AD%89/">#中等</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+      
+        <a href="/tags/LeetCode/">#LeetCode</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>3433.统计用户被提及情况：（大）模拟</div>
+      <div>https://blog.letmefly.xyz/2025/12/12/LeetCode 3433.统计用户被提及情况/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/11/LeetCode%203531.%E7%BB%9F%E8%AE%A1%E8%A2%AB%E8%A6%86%E7%9B%96%E7%9A%84%E5%BB%BA%E7%AD%91/" title="3531.统计被覆盖的建筑：最大最小值">
+                        <span class="hidden-mobile">3531.统计被覆盖的建筑：最大最小值</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
