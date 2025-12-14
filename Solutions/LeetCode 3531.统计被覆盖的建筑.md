@@ -3,6 +3,7 @@ title: 3531.统计被覆盖的建筑：最大最小值
 date: 2025-12-11 18:39:45
 tags: [题解, LeetCode, 中等, 数组, 排序]
 categories: [题解, LeetCode]
+index_img: https://pic.leetcode.cn/1745660407-qtNUjI-telegram-cloud-photo-size-5-6212982906394101085-m.jpg
 ---
 
 # 【LetMeFly】3531.统计被覆盖的建筑：最大最小值

@@ -1,14 +1,13 @@
 /*
  * @Author: LetMeFly
- * @Date: 2025-12-13 22:26:53
+ * @Date: 2025-12-13 22:41:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-13 22:42:38
+ * @LastEditTime: 2025-12-13 22:42:29
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
-// THIS CANNOT PASS
 class Solution {
 private:
     inline bool is_ok(string& s) {
@@ -29,13 +28,13 @@ public:
             if (!is_ok(code[i])) {
                 continue;
             }
-            if (businessLine[i][0] == 'e') {
+            if (businessLine[i] == "electronics") {
                 electronics.push_back(code[i]);
-            } else if (businessLine[i][0] == 'g') {
+            } else if (businessLine[i] == "grocery") {
                 grocery.push_back(code[i]);
-            } else if (businessLine[i][0] == 'p') {
+            } else if (businessLine[i] == "pharmacy") {
                 pharmacy.push_back(code[i]);
-            } else {
+            } else if (businessLine[i] == "restaurant") {
                 restaurant.push_back(code[i]);
             }
         }
