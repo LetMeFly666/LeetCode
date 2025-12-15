@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-15 13:24:06
+LastEditTime: 2025-12-15 13:44:18
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -157,7 +157,7 @@ daily_order_pr_num_half = [
     1074,
     1078,
     1080,
-    342,
+    1082,
     1084,
     837,
     1088,
@@ -371,6 +371,7 @@ daily_order_problem_num = [
     2787,
     326,
     1780,
+    342,
     1323,
     2711,
     679,
@@ -604,8 +605,10 @@ def find_project_field(proj_node, *, name=None):
     sys.exit(1)
 
 def iso_to_date(iso: str) -> str:
-    # "2025-05-02T13:41:27Z" -> "2025-05-02"
-    return iso.split("T")[0]
+    # "2025-05-02T13:41:27Z" (UTC) -> UTC-8 date "YYYY-MM-DD"
+    utc_dt = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
+    utc_minus_8 = utc_dt.astimezone(datetime.timezone(datetime.timedelta(hours=-8)))
+    return utc_minus_8.strftime("%Y-%m-%d")
 
 
 def main():
