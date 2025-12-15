@@ -606,7 +606,7 @@ def find_project_field(proj_node, *, name=None):
 
 def iso_to_date(iso: str) -> str:
     # "2025-05-02T13:41:27Z" (UTC) -> UTC-8 date "YYYY-MM-DD"
-    utc_dt = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
+    utc_dt = datetime.datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
     utc_minus_8 = utc_dt.astimezone(datetime.timezone(datetime.timedelta(hours=-8)))
     return utc_minus_8.strftime("%Y-%m-%d")
 
