@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-14 23:57:38
+LastEditTime: 2025-12-15 13:24:06
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -10,7 +10,7 @@ LastEditTime: 2025-12-14 23:57:38
 一次性执行：
  1. 查找 2025-04-07 之后、label 包含 “题解”、title 包含 “Who can add 1 more problem of LeetCode” 的 issue
  2. 对缺少 “[newSolution]” 的自动 rename
- 3. 将所有这些 issue 加入 Project #5，并设 Date = 对应日期
+ 3. 将所有这些 issue 加入 Project #5，并设 Date = 对应日期、FinishDate = 完成日期
 """
 
 """
@@ -593,6 +593,21 @@ def sort_issues(original: List[dict]):
     notMatchedList.sort(key=lambda x: int(x['url'].split('issues/')[1]))
     return [item[1] for item in hasIssueNumList + onlyHasProblemNumList + [(float('inf'), it) for it in notMatchedList]]
 
+def find_project_field(proj_node, *, name=None):
+    for f in proj_node["fields"]["nodes"]:
+        if not isinstance(f, dict):
+            continue
+        if name and f.get("name", "").lower() != name.lower():
+            continue
+        return f
+    print(f"Error: 未找到 {name} 字段 in project. 请确认 Project #{PROJECT_NUMBER} 存在 {name} 字段。")
+    sys.exit(1)
+
+def iso_to_date(iso: str) -> str:
+    # "2025-05-02T13:41:27Z" -> "2025-05-02"
+    return iso.split("T")[0]
+
+
 def main():
     issues = fetch_issues()
     print(f"Fetched {len(issues)} issues since {SINCE}")
@@ -651,14 +666,9 @@ def main():
     proj_node = proj["data"]["user"]["projectV2"]
     project_id = proj_node["id"]
 
-    status_field = None
-    for f in proj_node["fields"]["nodes"]:
-        if f["name"].lower() == "status":
-            status_field = f
-            break
-    if status_field is None:
-        print("Error: 未找到 Status 字段 in project. 请确认 Project #5 存在 Status 字段。")
-        sys.exit(1)
+    status_field = find_project_field(proj_node, name="Status")
+    date_field = find_project_field(proj_node, name="Date")
+    finish_date_field = find_project_field(proj_node, name="FinishDate")
 
     todo_opt = None
     for o in status_field.get("options", []):
@@ -690,6 +700,22 @@ def main():
         }
     }
     """
+    SET_DATE = """
+    mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $date: Date!) {
+        updateProjectV2ItemFieldValue(
+            input: {
+                projectId: $projectId
+                itemId: $itemId
+                fieldId: $fieldId
+                value: { date: $date }
+            }
+        ) {
+            projectV2Item {
+                id
+            }
+        }
+    }
+    """
     GET_ISSUE_NODE = """
     query($owner:String!,$repo:String!,$num:Int!){
       repository(owner:$owner,name:$repo){
@@ -697,7 +723,6 @@ def main():
       }
     }
     """
-
     today = datetime.datetime(year=2025, month=4, day=7)
     for it in targets:
         num = it["number"]
@@ -722,15 +747,24 @@ def main():
         add_resp = gh_graphql(ADD_ITEM, {"projectId": project_id, "contentId": node_id})
         item_id = add_resp["data"]["addProjectV2ItemById"]["item"]["id"]
 
-        # set status to TODO
-        print(f"  - Setting Status = {today.strftime('%Y.%m.%d')}")
-        gh_graphql(SET_STATUS, {
+        print(f"  - Setting Date = {today.strftime('%Y-%m-%d')}")
+        gh_graphql(SET_DATE, {
             "projectId": project_id,
             "itemId": item_id,
-            "fieldId": status_field["id"],
-            "date": today.strftime("%Y.%m.%d"),
+            "fieldId": date_field["id"],
+            "date": today.strftime("%Y-%m-%d"),
         })
         today = today + datetime.timedelta(days=1)
+
+        if it["state"] == "closed" and it["closed_at"]:
+            finish_date = iso_to_date(it["closed_at"])
+            print(f"  - Setting FinishDate = {finish_date}")
+            gh_graphql(SET_DATE, {
+                "projectId": project_id,
+                "itemId": item_id,
+                "fieldId": finish_date_field["id"],
+                "date": finish_date,
+            })
         
         print("  ✔ Issue processed.\n")
 
@@ -738,9 +772,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#    {
-#             "id": "PVTF_lAHOA2Wuss4BKNduzg6JnU0",
-#             "name": "Date",
-#             "dataType": "DATE"
-#           }
-#         ]
