@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-11 19:06:22
+LastEditTime: 2025-12-15 13:24:06
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -10,10 +10,15 @@ LastEditTime: 2025-12-11 19:06:22
 一次性执行：
  1. 查找 2025-04-07 之后、label 包含 “题解”、title 包含 “Who can add 1 more problem of LeetCode” 的 issue
  2. 对缺少 “[newSolution]” 的自动 rename
- 3. 将所有这些 issue 加入 Project #5，并设 Status = TODO
+ 3. 将所有这些 issue 加入 Project #5，并设 Date = 对应日期、FinishDate = 完成日期
 """
 
-import subprocess, json, sys, re
+"""
+projectId: PVT_kwHOA2Wuss4BKNdu
+
+"""
+
+import subprocess, json, sys, re, datetime
 from typing import List
 
 OWNER = "LetMeFly666"
@@ -550,21 +555,57 @@ def sort_issues(original: List[dict]):
     """
     hasIssueNumList = []
     onlyHasProblemNumList = []
+    notMatchedList = []
     for issue in original:
         issueNum = issue['url'].split('issues/')[1]
         match = re.compile(r'\[(\d{2,4})\.[A-Za-z\s]*[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]+').search(issue['body'])
         if match:
             problemNum = match.group(1)
         else:
-            print('*' * 50)
-            print(f'#{issueNum}')
-            print(issue['body'])
-            print('*' * 50)
-        # problemNum = re.search(r'\[(\d+)\.', issue['body']).group(1)
-        # print(issue['body'])
-        # problemNum = issue['body'].split('[')[1].split('.')[0]
-        print(issueNum)
-        print(problemNum)
+            match = re.compile(r'of LeetCode (\d{2,4})').search(issue['title'])
+            if match:
+                problemNum = match.group(1)
+            else:
+                print('*' * 50)
+                print(f'#{issueNum}')
+                print(issue['body'])
+                print('*' * 50)
+        # print(issueNum)
+        # print(problemNum)
+        try:
+            index = daily_order_pr_num_half.index(int(issueNum))
+            hasIssueNumList.append((index, issue))
+            continue
+        except ValueError:
+            pass
+        try:
+            index = daily_order_problem_num.index(int(problemNum))
+            onlyHasProblemNumList.append((index, issue))
+            continue
+        except ValueError:
+            pass
+        print(f'Warning: 无法为 issue #{issueNum} 找到排序依据！')
+        notMatchedList.append(issue)
+    print(f"{len(hasIssueNumList)} issues matched by issue number.")
+    print(f"{len(onlyHasProblemNumList)} issues matched by problem number.")
+    hasIssueNumList.sort(key=lambda x: x[0])
+    onlyHasProblemNumList.sort(key=lambda x: x[0])
+    notMatchedList.sort(key=lambda x: int(x['url'].split('issues/')[1]))
+    return [item[1] for item in hasIssueNumList + onlyHasProblemNumList + [(float('inf'), it) for it in notMatchedList]]
+
+def find_project_field(proj_node, *, name=None):
+    for f in proj_node["fields"]["nodes"]:
+        if not isinstance(f, dict):
+            continue
+        if name and f.get("name", "").lower() != name.lower():
+            continue
+        return f
+    print(f"Error: 未找到 {name} 字段 in project. 请确认 Project #{PROJECT_NUMBER} 存在 {name} 字段。")
+    sys.exit(1)
+
+def iso_to_date(iso: str) -> str:
+    # "2025-05-02T13:41:27Z" -> "2025-05-02"
+    return iso.split("T")[0]
 
 
 def main():
@@ -592,7 +633,7 @@ def main():
         return
     # 构建 daily_order 的编号顺序映射
     targets = sort_issues(targets)
-    exit(0)  # TODO:Let's remove this line
+    print("排序完成")
 
     # --------------------------- 开始添加issue到project中 ---------------------------
 
@@ -625,14 +666,9 @@ def main():
     proj_node = proj["data"]["user"]["projectV2"]
     project_id = proj_node["id"]
 
-    status_field = None
-    for f in proj_node["fields"]["nodes"]:
-        if f["name"].lower() == "status":
-            status_field = f
-            break
-    if status_field is None:
-        print("Error: 未找到 Status 字段 in project. 请确认 Project #5 存在 Status 字段。")
-        sys.exit(1)
+    status_field = find_project_field(proj_node, name="Status")
+    date_field = find_project_field(proj_node, name="Date")
+    finish_date_field = find_project_field(proj_node, name="FinishDate")
 
     todo_opt = None
     for o in status_field.get("options", []):
@@ -664,6 +700,22 @@ def main():
         }
     }
     """
+    SET_DATE = """
+    mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $date: Date!) {
+        updateProjectV2ItemFieldValue(
+            input: {
+                projectId: $projectId
+                itemId: $itemId
+                fieldId: $fieldId
+                value: { date: $date }
+            }
+        ) {
+            projectV2Item {
+                id
+            }
+        }
+    }
+    """
     GET_ISSUE_NODE = """
     query($owner:String!,$repo:String!,$num:Int!){
       repository(owner:$owner,name:$repo){
@@ -671,7 +723,7 @@ def main():
       }
     }
     """
-
+    today = datetime.datetime(year=2025, month=4, day=7)
     for it in targets:
         num = it["number"]
         title = it["title"]
@@ -695,15 +747,25 @@ def main():
         add_resp = gh_graphql(ADD_ITEM, {"projectId": project_id, "contentId": node_id})
         item_id = add_resp["data"]["addProjectV2ItemById"]["item"]["id"]
 
-        # set status to TODO
-        print("  - Setting Status = TODO")
-        gh_graphql(SET_STATUS, {
+        print(f"  - Setting Date = {today.strftime('%Y-%m-%d')}")
+        gh_graphql(SET_DATE, {
             "projectId": project_id,
             "itemId": item_id,
-            "fieldId": status_field["id"],
-            "optionId": todo_opt,
+            "fieldId": date_field["id"],
+            "date": today.strftime("%Y-%m-%d"),
         })
+        today = today + datetime.timedelta(days=1)
 
+        if it["state"] == "closed" and it["closed_at"]:
+            finish_date = iso_to_date(it["closed_at"])
+            print(f"  - Setting FinishDate = {finish_date}")
+            gh_graphql(SET_DATE, {
+                "projectId": project_id,
+                "itemId": item_id,
+                "fieldId": finish_date_field["id"],
+                "date": finish_date,
+            })
+        
         print("  ✔ Issue processed.\n")
 
     print("All done.")

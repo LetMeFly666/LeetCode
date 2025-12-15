@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-11-25 11:19:58
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-09 23:17:49
+LastEditTime: 2025-12-15 13:20:34
 '''
 """
 
@@ -22,57 +22,60 @@ LastEditTime: 2025-12-09 23:17:49
 
 
 
-是的，回答你的问题：
-①是
-②提供一个现成的 LeetCode 每日一题爬取方案
-③已创建
-④是，或者“ close: #1204”也算
-⑤全部
+为什么是
+SET_FINISH_DATE = 
+mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $date:String!) {
+  updateProjectV2ItemFieldValue(
+    input:{
+      projectId:$projectId,
+      itemId:$itemId,
+      fieldId:$fieldId,
+      value:{ date:$date }
+    }
+  ) {
+    __typename
+  }
+}
+和
+if issue["state"] == "closed" and issue["closed_at"]:
+    finish_date = iso_to_date(issue["closed_at"])
 
-额外补充：
-- 每日自动创建每日一题是UTC+8的0:10
-- issue的body内容为：“By xxx | 3583.统计特殊三元组”，其中xxx为创建脚本名称和链接，链接要链接到对应的hash地址；其中“3583.统计特殊三元组”也是个链接，要链接到这道题的地址
+    gh_graphql(SET_FINISH_DATE, {
+        "projectId": project_id,
+        "itemId": item_id,
+        "fieldId": finish_date_field["id"],
+        "date": finish_date,
+    })
+
+    print(f"  - FinishDate set to {finish_date}")
+而不是：
+SET_FINISH_DATE = 
+mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $date:String!, $finishDate:String!) {
+  updateProjectV2ItemFieldValue(
+    input:{
+      projectId:$projectId,
+      itemId:$itemId,
+      fieldId:$fieldId,
+      value:{ date:$date, finishDate:$finishDate }
+    }
+  ) {
+    __typename
+  }
+}
+和
+if issue["state"] == "closed" and issue["closed_at"]:
+    finish_date = iso_to_date(issue["closed_at"])
+
+    gh_graphql(SET_FINISH_DATE, {
+        "projectId": project_id,
+        "itemId": item_id,
+        "fieldId": finish_date_field["id"],
+        "date": today.strftime("%Y-%m-%d"),,
+        "finishDate": finish_date,
+    })
+
+    print(f"  - FinishDate set to {finish_date}")
 
 
-
-
-
-现在我使用的是Windows，能否将今天运行的那些修改为python脚本呢
-
-
-
-请使用gh吧，我Windows系统上也有gh并且gh鉴权过了，不想再申请GITHUB_TOKEN了
-
-
-我希望你给我返回的是今天的预处理脚本SOS，不是每天运行的脚本
-这样，现在你先给我返回今天要运行的脚本，包括rename issue和添加到project
-
-
-
-
-
-很棒，只是顺序不太正确，毕竟我创建issue时候的顺序就不太正确，这不能怪你。
-我的每日一题正确顺序如下，请你在targets中按照此顺序排序，若不在此顺序列表中，则排序到最后。
-返回需要修改的代码。
-此外，我刚刚新增了字段Date，类型为日期，请从“ 2873 #882”开始依次填入日期字段
-
-
-
-
-
-
-这样匹配有很大的匹配失败风险，以LeetCode后面的1208为依据排序
-
-
-
-
-不是这个意思嗷，
-daily_order = [
-    "[newSolution]Who can add 1 more problem of LeetCode 2873 #882",
-    "[newSolution]Who can add 1 more problem of LeetCode 2874 #883",
-    ...
-]
-
-以daily_order中的顺序为依据将targets排序，但targets和daily_order中元素相同的依据为：LeetCode后的数字相同
 
 """
