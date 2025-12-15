@@ -2,31 +2,44 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-11 19:06:22
+LastEditTime: 2025-12-15 23:27:04
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 一次性执行：
- 1. 查找 2025-04-07 之后、label 包含 “题解”、title 包含 “Who can add 1 more problem of LeetCode” 的 issue
+ 1. 查找 2025-04-01 之后、label 包含 “题解”、title 包含 “Who can add 1 more problem of LeetCode” 的 issue
  2. 对缺少 “[newSolution]” 的自动 rename
- 3. 将所有这些 issue 加入 Project #5，并设 Status = TODO
+ 3. 将所有这些 issue 加入 Project #5，并设 Date = 对应日期、FinishDate = 完成日期
 """
 
-import subprocess, json, sys, re
-from typing import List
+"""
+projectId: PVT_kwHOA2Wuss4BKNdu
+"""
+
+import subprocess, json, sys, re, datetime, time, functools
+from typing import List, Callable, TypeVar
+
 
 OWNER = "LetMeFly666"
 REPO = "LeetCode"
 PROJECT_NUMBER = 5
-SINCE = "2025-04-07T00:00:00Z"
+SINCE = "2025-04-01T00:00:00Z"
+
+T = TypeVar("T")
 
 daily_order_pr_num_half = [
+    854,
     882,
     883,
+    1227,
+    856,
     881,
     880,
+    858,
+    860,
     869,
+    862,
     867,
     871,
     875,
@@ -98,13 +111,13 @@ daily_order_pr_num_half = [
     989,
     990,
     992,
-    995,
+    993,
     996,
     997,
     998,
     1000,
     1002,
-    1004,
+    1003,
     1005,
     1006,
     1007,
@@ -152,9 +165,9 @@ daily_order_pr_num_half = [
     1074,
     1078,
     1080,
-    342,
+    1082,
     1084,
-    837,
+    1086,
     1088,
     1089,
     1090,
@@ -366,6 +379,7 @@ daily_order_problem_num = [
     2787,
     326,
     1780,
+    342,
     1323,
     2711,
     679,
@@ -481,9 +495,47 @@ daily_order_problem_num = [
     3432,
     3578,
     1523,
-    1925
+    1925,
+    3583,
+    3577,
+    3531,
+    3433,
+    3606,
+    2147,
+    2110
 ]
 
+"""
+当被修饰函数抛出异常时，休眠3s、5s之后不断休眠5s重复执行，直到执行成功。
+并输出休眠时间以及重复次数
+"""
+def retry_forever_with_sleep() -> Callable[[Callable[..., T]], Callable[..., T]]:
+    def decorator(func: Callable[..., T]) -> Callable[..., T]:
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs) -> T:
+            retry_count = 0
+
+            while True:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    retry_count += 1
+
+                    if retry_count == 1:
+                        sleep_time = 3
+                    else:
+                        sleep_time = 5
+
+                    print(
+                        f"[retry #{retry_count}] "
+                        f"error={e!r}, sleep {sleep_time}s..."
+                    )
+                    time.sleep(sleep_time)
+
+        return wrapper
+    return decorator
+
+@retry_forever_with_sleep()
 def gh_api(path, method="GET", data=None):
     cmd = ["gh", "api", path]
     if method != "GET":
@@ -493,6 +545,7 @@ def gh_api(path, method="GET", data=None):
     out = subprocess.check_output(cmd, text=True, encoding="utf-8", errors="replace")
     return json.loads(out)
 
+@retry_forever_with_sleep()
 def run_gh(cmd: list[str]) -> str:
     """
     运行 gh 命令并返回 UTF-8 文本。
@@ -537,6 +590,16 @@ def fetch_issues():
             break
         issues.extend(resp)
         page += 1
+    issues, beforeClean = [], issues
+    SINCE_DT = datetime.datetime.fromisoformat(
+        SINCE.replace("Z", "+00:00")
+    )
+    for issue in beforeClean:
+        created_at = datetime.datetime.fromisoformat(
+            issue["created_at"].replace("Z", "+00:00")
+        )
+        if created_at >= SINCE_DT:
+            issues.append(issue)
     return issues
 
 def leetcode_number(title):
@@ -550,21 +613,59 @@ def sort_issues(original: List[dict]):
     """
     hasIssueNumList = []
     onlyHasProblemNumList = []
+    notMatchedList = []
     for issue in original:
         issueNum = issue['url'].split('issues/')[1]
         match = re.compile(r'\[(\d{2,4})\.[A-Za-z\s]*[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]+').search(issue['body'])
         if match:
             problemNum = match.group(1)
         else:
-            print('*' * 50)
-            print(f'#{issueNum}')
-            print(issue['body'])
-            print('*' * 50)
-        # problemNum = re.search(r'\[(\d+)\.', issue['body']).group(1)
-        # print(issue['body'])
-        # problemNum = issue['body'].split('[')[1].split('.')[0]
-        print(issueNum)
-        print(problemNum)
+            match = re.compile(r'of LeetCode (\d{2,4})').search(issue['title'])
+            if match:
+                problemNum = match.group(1)
+            else:
+                print('*' * 50)
+                print(f'#{issueNum}')
+                print(issue['body'])
+                print('*' * 50)
+        # print(issueNum)
+        # print(problemNum)
+        try:
+            index = daily_order_pr_num_half.index(int(issueNum))
+            hasIssueNumList.append((index, issue))
+            continue
+        except ValueError:
+            pass
+        try:
+            index = daily_order_problem_num.index(int(problemNum))
+            onlyHasProblemNumList.append((index, issue))
+            continue
+        except ValueError:
+            pass
+        print(f'Warning: 无法为 issue #{issueNum} 找到排序依据！')
+        notMatchedList.append(issue)
+    print(f"{len(hasIssueNumList)} issues matched by issue number.")
+    print(f"{len(onlyHasProblemNumList)} issues matched by problem number.")
+    hasIssueNumList.sort(key=lambda x: x[0])
+    onlyHasProblemNumList.sort(key=lambda x: x[0])
+    notMatchedList.sort(key=lambda x: int(x['url'].split('issues/')[1]))
+    return [item[1] for item in hasIssueNumList + onlyHasProblemNumList + [(float('inf'), it) for it in notMatchedList]]
+
+def find_project_field(proj_node, *, name=None):
+    for f in proj_node["fields"]["nodes"]:
+        if not isinstance(f, dict):
+            continue
+        if name and f.get("name", "").lower() != name.lower():
+            continue
+        return f
+    print(f"Error: 未找到 {name} 字段 in project. 请确认 Project #{PROJECT_NUMBER} 存在 {name} 字段。")
+    sys.exit(1)
+
+def iso_to_date(iso: str) -> str:
+    # "2025-05-02T13:41:27Z" (UTC) -> UTC-8 date "YYYY-MM-DD"
+    utc_dt = datetime.datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
+    utc_minus_8 = utc_dt.astimezone(datetime.timezone(datetime.timedelta(hours=-8)))
+    return utc_minus_8.strftime("%Y-%m-%d")
 
 
 def main():
@@ -592,7 +693,7 @@ def main():
         return
     # 构建 daily_order 的编号顺序映射
     targets = sort_issues(targets)
-    exit(0)  # TODO:Let's remove this line
+    print("排序完成")
 
     # --------------------------- 开始添加issue到project中 ---------------------------
 
@@ -625,14 +726,9 @@ def main():
     proj_node = proj["data"]["user"]["projectV2"]
     project_id = proj_node["id"]
 
-    status_field = None
-    for f in proj_node["fields"]["nodes"]:
-        if f["name"].lower() == "status":
-            status_field = f
-            break
-    if status_field is None:
-        print("Error: 未找到 Status 字段 in project. 请确认 Project #5 存在 Status 字段。")
-        sys.exit(1)
+    status_field = find_project_field(proj_node, name="Status")
+    date_field = find_project_field(proj_node, name="Date")
+    finish_date_field = find_project_field(proj_node, name="FinishDate")
 
     todo_opt = None
     for o in status_field.get("options", []):
@@ -664,6 +760,22 @@ def main():
         }
     }
     """
+    SET_DATE = """
+    mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $date: Date!) {
+        updateProjectV2ItemFieldValue(
+            input: {
+                projectId: $projectId
+                itemId: $itemId
+                fieldId: $fieldId
+                value: { date: $date }
+            }
+        ) {
+            projectV2Item {
+                id
+            }
+        }
+    }
+    """
     GET_ISSUE_NODE = """
     query($owner:String!,$repo:String!,$num:Int!){
       repository(owner:$owner,name:$repo){
@@ -671,7 +783,7 @@ def main():
       }
     }
     """
-
+    today = datetime.datetime(year=2025, month=4, day=1)
     for it in targets:
         num = it["number"]
         title = it["title"]
@@ -695,15 +807,25 @@ def main():
         add_resp = gh_graphql(ADD_ITEM, {"projectId": project_id, "contentId": node_id})
         item_id = add_resp["data"]["addProjectV2ItemById"]["item"]["id"]
 
-        # set status to TODO
-        print("  - Setting Status = TODO")
-        gh_graphql(SET_STATUS, {
+        print(f"  - Setting Date = {today.strftime('%Y-%m-%d')}")
+        gh_graphql(SET_DATE, {
             "projectId": project_id,
             "itemId": item_id,
-            "fieldId": status_field["id"],
-            "optionId": todo_opt,
+            "fieldId": date_field["id"],
+            "date": today.strftime("%Y-%m-%d"),
         })
+        today = today + datetime.timedelta(days=1)
 
+        if it["state"] == "closed" and it["closed_at"]:
+            finish_date = iso_to_date(it["closed_at"])
+            print(f"  - Setting FinishDate = {finish_date}")
+            gh_graphql(SET_DATE, {
+                "projectId": project_id,
+                "itemId": item_id,
+                "fieldId": finish_date_field["id"],
+                "date": finish_date,
+            })
+        
         print("  ✔ Issue processed.\n")
 
     print("All done.")

@@ -37,7 +37,7 @@ public:
                 }
             }
         }
-        if (!ing && now != 0 || !atLeast2) {
+        if (!ing || !atLeast2) {
             return 0;
         }
         return static_cast<int>(ans);
