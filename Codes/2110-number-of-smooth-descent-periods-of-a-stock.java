@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-15 13:32:17
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-15 18:57:44
+ * @LastEditTime: 2025-12-15 21:37:22
  */
 class Solution {
     public long getDescentPeriods(int[] prices) {
@@ -13,7 +13,9 @@ class Solution {
                 cnt = 0;
             }
             cnt++;
-            last = prices[i];
+            if (i < prices.length) {
+                last = prices[i];
+            }
         }
         return ans;
     }
