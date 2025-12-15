@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-11-25 11:19:58
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-15 13:20:34
+LastEditTime: 2025-12-15 23:50:45
 '''
 """
 
@@ -78,4 +78,15 @@ if issue["state"] == "closed" and issue["closed_at"]:
 
 
 
+我有一个函数def run_gh(cmd: list[str]) -> str:，可能会抛出异常
+请写一个修饰器，当被修饰函数抛出异常时，休眠3s、5s之后不断休眠5s重复执行，直到执行成功。
+并输出休眠时间以及重复次数
+
+
+
+LeetCode获取某月每日一题情况的接口是：
+https://leetcode.cn/graphql/
+荷载是：
+{"query":"\n    query dailyQuestionRecords($year: Int!, $month: Int!) {\n  dailyQuestionRecords(year: $year, month: $month) {\n    date\n    userStatus\n    question {\n      questionFrontendId\n      title\n      titleSlug\n      translatedTitle\n    }\n  }\n}\n    ","variables":{"year":2025,"month":4},"operationName":"dailyQuestionRecords"}
+转为python代码
 """
