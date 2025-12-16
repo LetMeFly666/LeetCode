@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-11-25 11:19:58
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-15 23:56:55
+LastEditTime: 2025-12-16 10:55:05
 '''
 """
 
@@ -17,4 +17,15 @@ LastEditTime: 2025-12-15 23:56:55
 - 视图还包含两个字段：Date、FinishDate（issue关闭日期，如有）
 
 
+
+1. 我这个view是公开的，需要隐藏字段ID吗，如果不隐藏会不会有一些风险
+2. 我只能将yml放在.github/workflows下吗，可不可以放到.github/workflows/1problem1day文件夹下
+
+
+
+我明白了你的良苦用心，https://github.com/LetMeFly666/LeetCode/settings/secrets/actions发现有Environment secrets和Repository secrets，旁边甚至还有variables，他们有什么区别，应该选择哪个？
+
+
+但是我UI里有这个字段（并且有3种选项） 我不想重新创建一次，如何获取STATUS_FIELD_ID
+Status 字段 ID
 """

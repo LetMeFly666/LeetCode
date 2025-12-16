@@ -1,0 +1,65 @@
+name: Auto add 1problem1day issue to 1problem1day Project
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+  issues: read
+  repository-projects: write
+
+jobs:
+  add-to-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check title and add to project
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          STATUS_FIELD_ID: ${{ secrets.STATUS_FIELD_ID }}
+          DATE_FIELD_ID: ${{ secrets.DATE_FIELD_ID }}
+        run: |
+          title="${{ github.event.issue.title }}"
+          issue_id="${{ github.event.issue.node_id }}"
+          created_at="${{ github.event.issue.created_at }}"
+
+          if [[ ! "$title" =~ ^\[newSolution\]Who\ can\ add\ 1\ more\ problem\ of\ LeetCode\ .* ]]; then
+            echo "Title not match, skip"
+            exit 0
+          fi
+
+          echo "Adding issue to project..."
+
+          item_id=$(gh api graphql -f query='
+            mutation($project:ID!, $content:ID!) {
+              addProjectV2ItemById(projectId:$project, contentId:$content) {
+                item { id }
+              }
+            }' -f project="$PROJECT_ID" -f content="$issue_id" --jq '.data.addProjectV2ItemById.item.id')
+
+          echo "Set Status = TODO"
+          gh api graphql -f query='
+            mutation($item:ID!, $field:ID!, $value:String!) {
+              updateProjectV2ItemFieldValue(
+                itemId:$item
+                fieldId:$field
+                value:{ singleSelectOptionId:$value }
+              ) { projectV2Item { id } }
+            }' \
+            -f item="$item_id" \
+            -f field="$STATUS_FIELD_ID" \
+            -f value="TODO"
+
+          echo "Set Date"
+          gh api graphql -f query='
+            mutation($item:ID!, $field:ID!, $value:Date!) {
+              updateProjectV2ItemFieldValue(
+                itemId:$item
+                fieldId:$field
+                value:{ date:$value }
+              ) { projectV2Item { id } }
+            }' \
+            -f item="$item_id" \
+            -f field="$DATE_FIELD_ID" \
+            -f value="${created_at%%T*}"

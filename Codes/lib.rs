@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-11-01 22:18:35
  */
 pub struct Solution;
-include!("2110-number-of-smooth-descent-periods-of-a-stock.rs");  // 这个fileName是会被脚本替换掉的
+include!("3562-maximum-profit-from-trading-stocks-with-discounts.rs");  // 这个fileName是会被脚本替换掉的
