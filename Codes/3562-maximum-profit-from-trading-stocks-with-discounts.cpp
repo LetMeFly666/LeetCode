@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-16 18:37:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-16 18:45:09
+ * @LastEditTime: 2025-12-16 18:49:00
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -15,15 +15,18 @@ private:
     unordered_map<int, vector<int>> childs;
 
     void dfs(int node, bool fatherBought, int now, int budget) {
-        ans = max(ans, now);
+        int cost = present[node - 1];
+        if (fatherBought) {
+            cost /= 2;
+        }
+        int afterBuy = now + future[node - 1] - cost;
+        if (cost <= budget) {
+            ans = max(ans, afterBuy);
+        }
         for (int child : childs[node]) {
             dfs(child, false, now, budget);
-            int cost = present[node - 1];
-            if (fatherBought) {
-                cost /= 2;
-            }
             if (cost <= budget) {
-                dfs(child, true, now + future[node - 1] - cost, budget - cost);
+                dfs(child, true, afterBuy, budget - cost);
             }
         }
     }
