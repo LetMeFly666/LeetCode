@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-16 18:37:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-16 18:49:00
+ * @LastEditTime: 2025-12-16 19:00:52
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -41,3 +41,26 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+3 [6,4,23] [50,48,17] [[1,3],[1,2]] 28
+
+96
+
+1买: 赚44，剩22
+2买: 赚
+*/
+int main() {
+    int n, budget;
+    string a, b, c;
+    while (cin >> n >> a >> b >> c >> budget) {
+        vector<int> present = stringToVector(a);
+        vector<int> future = stringToVector(b);
+        vector<vector<int>> hierarchy = stringToVectorVector(c);
+        Solution sol;
+        cout << sol.maxProfit(n, present, future, hierarchy, budget) << endl;
+    }
+    return 0;
+}
+#endif
