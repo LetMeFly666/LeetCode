@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-17 21:38:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-17 23:02:36
+ * @LastEditTime: 2025-12-17 23:04:59
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -35,9 +35,9 @@ private:
         }
 
         if (status == 0) {
-            return cache[key] = max({dfs(i - 1, j, 0), dfs(i - 1, j - 1, 1) + prices[i], dfs(i - 1, j - 1, 2) - prices[i]});
+            return cache[key] = max({dfs(i - 1, j, 0), dfs(i - 1, j, 1) + prices[i], dfs(i - 1, j, 2) - prices[i]});
         } else if (status == 1) {
-            return cache[key] = max(dfs(i - 1, j - 1, 0) - prices[i], dfs(i - 1, j, 0));
+            return cache[key] = max(dfs(i - 1, j - 1, 0) - prices[i], dfs(i - 1, j, 1));
         } else {
             return cache[key] = max(dfs(i - 1, j - 1, 0) + prices[i], dfs(i - 1, j, 2));
         }
