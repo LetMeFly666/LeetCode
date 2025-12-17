@@ -2,43 +2,62 @@
  * @Author: LetMeFly
  * @Date: 2025-12-16 18:37:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-16 19:00:52
+ * @LastEditTime: 2025-12-17 13:27:51
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
+#include <iostream>
 #endif
 
 class Solution {
 private:
-    int ans = 0;
-    vector<int> present, future;
-    unordered_map<int, vector<int>> childs;
+    unordered_map<int, vector<int>> tree;
+    vector<int> present;
+    vector<int> future;
+    vector<vector<int>> dfs(int node, int budget) {
+        /*
+            return f:
+                f[i][j]: node及其所有子节点共花费i的最大总收益
+                         j=0：node没半价 / j=1：node半价买
+        */
 
-    void dfs(int node, bool fatherBought, int now, int budget) {
-        int cost = present[node - 1];
-        if (fatherBought) {
-            cost /= 2;
-        }
-        int afterBuy = now + future[node - 1] - cost;
-        if (cost <= budget) {
-            ans = max(ans, afterBuy);
-        }
-        for (int child : childs[node]) {
-            dfs(child, false, now, budget);
-            if (cost <= budget) {
-                dfs(child, true, afterBuy, budget - cost);
+        // 先算subF
+        vector<vector<int>> subF(2, vector<int>(budget + 1));
+        for (int child : tree[node]) {
+            vector<vector<int>> thisF = dfs(child, budget);
+            for (int j = 0; j < 1; j++) {
+                for (int i = budget; i >= 0; i--) {
+                    for (int first = budget; first >= 0; first--) {
+                        subF[j][i] = max(subF[j][i], subF[j][first] + thisF[j][i - first]);
+                    }
+                }
             }
         }
+
+        // 再算当前节点
+        vector<vector<int>> f(2, vector<int>(budget + 1));
+        for (int j = 0; j < 1; j++) {
+            for (int i = 0; i <= budget; i++) {
+                int cost = present[i] / (j + 1);
+                if (i > cost) {
+                    f[j][i] = max(subF[j][i], subF[1][i - cost] + future[i] - cost);
+                } else {
+                    f[j][i] = subF[j][i];
+                }
+            }
+        }
+
+        return f;
     }
 public:
     int maxProfit(int n, vector<int>& present, vector<int>& future, vector<vector<int>>& hierarchy, int budget) {
+        for (vector<int>& h : hierarchy) {
+            tree[h[0]].push_back(h[1]);
+        }
         this->present = move(present);
         this->future = move(future);
-        for (vector<int>& h : hierarchy) {
-            childs[h[0]].push_back(h[1]);
-        }
-        dfs(1, false, 0, budget);
-        return ans;
+        vector<vector<int>> f = dfs(1, budget);
+        return *max_element(f[0].begin(), f[0].end());
     }
 };
 
