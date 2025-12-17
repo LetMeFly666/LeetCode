@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-16 18:37:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-17 13:29:27
+ * @LastEditTime: 2025-12-17 13:42:11
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -25,9 +25,9 @@ private:
         vector<vector<int>> subF(2, vector<int>(budget + 1));
         for (int child : tree[node]) {
             vector<vector<int>> thisF = dfs(child, budget);
-            for (int j = 0; j < 1; j++) {
+            for (int j = 0; j < 2; j++) {
                 for (int i = budget; i >= 0; i--) {
-                    for (int first = budget; first >= 0; first--) {
+                    for (int first = min(budget, i); first >= 0; first--) {
                         subF[j][i] = max(subF[j][i], subF[j][first] + thisF[j][i - first]);
                     }
                 }
@@ -36,13 +36,13 @@ private:
 
         // 再算当前节点
         vector<vector<int>> f(2, vector<int>(budget + 1));
-        for (int j = 0; j < 1; j++) {
+        for (int j = 0; j < 2; j++) {
             for (int i = 0; i <= budget; i++) {
                 int cost = present[node - 1] / (j + 1);
                 if (i > cost) {
-                    f[j][i] = max(subF[j][i], subF[1][i - cost] + future[node - 1] - cost);
+                    f[j][i] = max(subF[0][i], subF[1][i - cost] + future[node - 1] - cost);
                 } else {
-                    f[j][i] = subF[j][i];
+                    f[j][i] = subF[0][i];
                 }
             }
         }
