@@ -261,7 +261,27 @@ class Solution:
 #### Python
 
 ```python
+'''
+LastEditTime: 2025-12-17 23:58:31
+'''
+from typing import List
+from math import inf
 
+class Solution:
+    def maximumProfit(self, prices: List[int], k: int) -> int:
+        n = len(prices)
+
+        # dp[i][j][status]: i有效范围0~n-1，j有效范围0~k，这俩都多开一个无效状态的空间
+        dp = [[-inf] * 3 for _ in range(k + 2)]
+        for j in range(1, k + 2):
+            dp[j][0] = 0
+
+        for i, price in enumerate(prices):
+            for j in range(k + 1, 0, -1):
+                dp[j][0] = max(dp[j][0], dp[j][1] + price, dp[j][2] - price)
+                dp[j][1] = max(dp[j][1], dp[j-1][0] - price)
+                dp[j][2] = max(dp[j][2], dp[j-1][0] + price)
+        return dp[-1][0]
 ```
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156029259)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/17/LeetCode%203573.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAV/)哦~
