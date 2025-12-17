@@ -1,11 +1,11 @@
 ---
-title: 3573.买卖股票的最佳时机 V：深度优先搜索 / 动态规划
+title: 3573.买卖股票的最佳时机 V：深度优先搜索 / 动态规划：通俗讲解
 date: 2025-12-17 23:19:51
 tags: [题解, LeetCode, 中等, 数组, 动态规划, DP, 深度优先搜索, DFS]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3573.买卖股票的最佳时机 V：深度优先搜索 / 动态规划
+# 【LetMeFly】3573.买卖股票的最佳时机 V：深度优先搜索 / 动态规划：通俗讲解
 
 力扣题目链接：[https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-v/](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-v/)
 
@@ -71,8 +71,8 @@ categories: [题解, LeetCode]
 	<li><code>1 &lt;= k &lt;= prices.length / 2</code></li>
 </ul>
 
+自我评价：好文x1(bushi)
 
-    
 ## 解题方法一：深度优先搜索
 
 定义`dfs(i, j, status)`含义为：
@@ -219,9 +219,48 @@ dp[i+1][j][2] = max(dp[i][j][2], dp[i][j-1][0] + price)
 
 ### AC代码
 
-#### C++
+#### Python
 
-```cpp
+```python
+'''
+LastEditTime: 2025-12-17 23:51:56
+'''
+from typing import List
+from math import inf
+
+class Solution:
+    def maximumProfit(self, prices: List[int], k: int) -> int:
+        n = len(prices)
+
+        # dp[i][j][status]: i有效范围0~n-1，j有效范围0~k，这俩都多开一个无效状态的空间
+        dp = [[[-inf] * 3 for _ in range(k + 2)] for _ in range(n + 1)]
+        for j in range(1, k + 2):
+            dp[0][j][0] = 0
+
+        for i, price in enumerate(prices):
+            for j in range(1, k + 2):
+                dp[i+1][j][0] = max(dp[i][j][0], dp[i][j][1] + price, dp[i][j][2] - price)
+                dp[i+1][j][1] = max(dp[i][j][1], dp[i][j-1][0] - price)
+                dp[i+1][j][2] = max(dp[i][j][2], dp[i][j-1][0] + price)
+        return dp[-1][-1][0]
+```
+
+## 解题方法三：动态规划+空间优化
+
+不难发现第$i$天（dp[i+1][xx][x]）数据仅和第$i-1$天有关（dp[i][xx][x]），因此可以优化掉数组第一维。
+
+注意j要倒序遍历，因为j依赖的是上一天的j-1，如果先更新j-1再更新j则会重复计算。
+
+时空复杂度：
+
++ 时间复杂度$O(len(prices)\times k)$
++ 空间复杂度$O(k)$
+
+### AC代码
+
+#### Python
+
+```python
 
 ```
 

@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-12-17 23:43:07
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-17 23:49:58
+LastEditTime: 2025-12-17 23:51:56
 '''
 from typing import List
 from math import inf
@@ -17,7 +17,7 @@ class Solution:
             dp[0][j][0] = 0
 
         for i, price in enumerate(prices):
-            for j in range(k + 2):
+            for j in range(1, k + 2):
                 dp[i+1][j][0] = max(dp[i][j][0], dp[i][j][1] + price, dp[i][j][2] - price)
                 dp[i+1][j][1] = max(dp[i][j][1], dp[i][j-1][0] - price)
                 dp[i+1][j][2] = max(dp[i][j][2], dp[i][j-1][0] + price)
