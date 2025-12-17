@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-16 18:37:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-17 13:27:51
+ * @LastEditTime: 2025-12-17 13:29:27
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -38,9 +38,9 @@ private:
         vector<vector<int>> f(2, vector<int>(budget + 1));
         for (int j = 0; j < 1; j++) {
             for (int i = 0; i <= budget; i++) {
-                int cost = present[i] / (j + 1);
+                int cost = present[node - 1] / (j + 1);
                 if (i > cost) {
-                    f[j][i] = max(subF[j][i], subF[1][i - cost] + future[i] - cost);
+                    f[j][i] = max(subF[j][i], subF[1][i - cost] + future[node - 1] - cost);
                 } else {
                     f[j][i] = subF[j][i];
                 }
