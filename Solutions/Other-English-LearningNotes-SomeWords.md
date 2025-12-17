@@ -1673,6 +1673,9 @@ categories: [自用]
 |twig|n. 嫩枝，细枝，小枝<br/>v. 理解|
 |||
 |acquaint|v. 使熟悉，使了解|
+|||
+|bossy|adj. 好指挥人的，专横的<br/>n. 牛|
+|scarlet|adj. 猩红的，鲜红的<details><summary>例句</summary>Her lips are <font color="#28bea0">scarlet</font>.<br/>她嘴唇鲜红。</details>|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
