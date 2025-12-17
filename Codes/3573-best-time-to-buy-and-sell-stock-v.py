@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-12-17 23:10:13
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-17 23:14:05
+LastEditTime: 2025-12-17 23:18:54
 '''
 from typing import List
 from functools import cache
@@ -28,4 +28,6 @@ class Solution:
             else:
                 return max(dfs(i - 1, j, 2), dfs(i - 1, j - 1, 0) + prices[i])
 
-        return dfs(n - 1, k, 0)
+        ans = dfs(n - 1, k, 0)
+        dfs.cache_clear()
+        return ans
