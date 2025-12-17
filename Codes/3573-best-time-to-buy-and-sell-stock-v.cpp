@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-17 21:38:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-17 23:04:59
+ * @LastEditTime: 2025-12-17 23:09:09
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -12,10 +12,10 @@ typedef long long ll;
 class Solution {
 private:
     vector<int> prices;
-    unordered_map<int, int> cache;
+    unordered_map<int, ll> cache;
 
     inline int getKey(int i, int j, int status) {
-        return i * 3000 + j * 1000 + status;
+        return i * 3000 + j * 3 + status;
     }
 
     ll dfs(int i, int j, int status) {
