@@ -116,7 +116,7 @@ private:
 
     ll dfs(int i, int j, int status) {
         // 0~i天 最多交易j次
-        // status: 0无1买2空头
+        // status: 0 无仓（空仓） 1 持有多头 2 持有空头
         
         int key = getKey(i, j, status);
         if (cache.count(key)) {
