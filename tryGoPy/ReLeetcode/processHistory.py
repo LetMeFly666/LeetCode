@@ -2,7 +2,7 @@
 Author: LetMeFly + ChatGPT
 Date: 2025-12-09 22:35:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-16 10:49:53
+LastEditTime: 2025-12-18 10:44:20
 '''
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
@@ -14,8 +14,8 @@ LastEditTime: 2025-12-16 10:49:53
 """
 
 """
-projectId: 
-{"data":{"node":{"fields":{"nodes":[{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSHo","name":"Title","dataType":"TITLE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSHs","name":"Assignees","dataType":"ASSIGNEES"},{},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH0","name":"Labels","dataType":"LABELS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH4","name":"Linked pull requests","dataType":"LINKED_PULL_REQUESTS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH8","name":"Milestone","dataType":"MILESTONE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIA","name":"Repository","dataType":"REPOSITORY"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIE","name":"Reviewers","dataType":"REVIEWERS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSII","name":"Parent issue","dataType":"PARENT_ISSUE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIM","name":"Sub-issues progress","dataType":"SUB_ISSUES_PROGRESS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JnU0","name":"Date","dataType":"DATE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6be2I","name":"FinishDate","dataType":"DATE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6ddUs","name":"备注","dataType":"TEXT"}]}}}}
+projectId: PVT_kwHOA2Wuss4BKNdu
+{"data":{"node":{"fields":{"nodes":[{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSHo","name":"Title","dataType":"TITLE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSHs","name":"Assignees","dataType":"ASSIGNEES"},{"id":"PVTSSF_lAHOA2Wuss4BKNduzg6JSHw","name":"Status","dataType":"SINGLE_SELECT"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH0","name":"Labels","dataType":"LABELS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH4","name":"Linked pull requests","dataType":"LINKED_PULL_REQUESTS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSH8","name":"Milestone","dataType":"MILESTONE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIA","name":"Repository","dataType":"REPOSITORY"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIE","name":"Reviewers","dataType":"REVIEWERS"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSII","name":"Parent issue","dataType":"PARENT_ISSUE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JnU0","name":"Date","dataType":"DATE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6be2I","name":"FinishDate","dataType":"DATE"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6ddUs","name":"备注","dataType":"TEXT"},{"id":"PVTF_lAHOA2Wuss4BKNduzg6JSIM","name":"Sub-issues progress","dataType":"SUB_ISSUES_PROGRESS"}]}}}}
 """
 
 import subprocess, json, sys, re, datetime, time, functools

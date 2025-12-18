@@ -16,15 +16,15 @@ jobs:
       - name: Check title and add to project
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROJECT_ID: ${{ secrets.PROJECT_ID }}
-          STATUS_FIELD_ID: ${{ secrets.STATUS_FIELD_ID }}
-          DATE_FIELD_ID: ${{ secrets.DATE_FIELD_ID }}
+          PROJECT_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_PROJECT_ID }}
+          STATUS_FIELD_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_STATUS_FIELD_ID }}
+          DATE_FIELD_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_DATE_FIELD_ID }}
         run: |
           title="${{ github.event.issue.title }}"
           issue_id="${{ github.event.issue.node_id }}"
           created_at="${{ github.event.issue.created_at }}"
 
-          if [[ ! "$title" =~ ^\[newSolution\]Who\ can\ add\ 1\ more\ problem\ of\ LeetCode\ .* ]]; then
+          if [[ ! "$title" =~ ^\[newSolution\]Who\ can\ add\ 1\ more\ problem\ of\ LeetCode\ [0-9]+.*$ ]]; then
             echo "Title not match, skip"
             exit 0
           fi
