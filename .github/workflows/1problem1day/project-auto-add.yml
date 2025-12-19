@@ -23,6 +23,7 @@ jobs:
           title="${{ github.event.issue.title }}"
           issue_id="${{ github.event.issue.node_id }}"
           created_at="${{ github.event.issue.created_at }}"
+          date_cn=$(date -d "$created_at +8 hours" +%F)
 
           if [[ ! "$title" =~ ^\[newSolution\]Who\ can\ add\ 1\ more\ problem\ of\ LeetCode\ [0-9]+.*$ ]]; then
             echo "Title not match, skip"
@@ -62,4 +63,4 @@ jobs:
             }' \
             -f item="$item_id" \
             -f field="$DATE_FIELD_ID" \
-            -f value="${created_at%%T*}"
+            -f value="${date_cn}"
