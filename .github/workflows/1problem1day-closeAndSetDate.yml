@@ -1,0 +1,69 @@
+name: Handle issue close
+# 当有issue被关闭时，自动在project中填写完成日期
+
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  issues: read
+  repository-projects: write
+
+env:
+  PROJECT_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_PROJECT_ID }}
+  FINISH_DATE_FIELD_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_FINISH_DATE_FIELD_ID }}
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set finish date & done
+        env:
+          GH_TOKEN: ${{ secrets.ONE_PROBLEM_ONE_DAY_PAT }}
+        run: |
+          issue_node_id="${{ github.event.issue.node_id }}"
+          closed_at="${{ github.event.issue.closed_at }}"
+          date_cn=$(date -d "$closed_at +8 hours" +%F)
+
+                    echo "Query project item_id via Issue.projectItems..."
+          item_id=$(gh api graphql -f query='
+            query($issue:ID!) {
+              node(id:$issue) {
+                ... on Issue {
+                  projectItems(first:20) {
+                    nodes {
+                      id
+                      project { id }
+                    }
+                  }
+                }
+              }
+            }
+          ' -f issue="$issue_node_id" \
+            --jq ".data.node.projectItems.nodes[]
+                  | select(.project.id==\"$PROJECT_ID\")
+                  | .id")
+          if [[ -z "$item_id" ]]; then
+            echo "Issue not in project, skip"
+            exit 0
+          fi
+          echo "Found item_id = $item_id"
+
+          echo "Set Finish Date field -> $date_cn"
+          gh api graphql -f query='
+            mutation($project:ID!, $item:ID!, $field:ID!, $date:Date!) {
+              updateProjectV2ItemFieldValue(input:{
+                projectId:$project
+                itemId:$item
+                fieldId:$field
+                value:{ date:$date }
+              }) {
+                projectV2Item { id }
+              }
+            }
+          ' \
+            -f project="$PROJECT_ID" \
+            -f item="$item_id" \
+            -f field="$FINISH_DATE_FIELD_ID" \
+            -f date="$date_cn"
+          echo "Set Finish Date successfully ✅"

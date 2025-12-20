@@ -5,4 +5,4 @@
  * @LastEditTime: 2025-11-01 22:18:35
  */
 pub struct Solution;
-include!("2110-number-of-smooth-descent-periods-of-a-stock.rs");  // 这个fileName是会被脚本替换掉的
+include!("0944-delete-columns-to-make-sorted_20251220.rs");  // 这个fileName是会被脚本替换掉的

@@ -1,0 +1,67 @@
+name: Add issue to 1problem1day project
+# 符合标题格式的issue自动添加到https://github.com/users/LetMeFly666/projects/5中
+# Test at https://github.com/LetMeFly666/LeetCode-test
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: read
+  repository-projects: write
+
+env:
+  PROJECT_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_PROJECT_ID }}
+  DATE_FIELD_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_DATE_FIELD_ID }}
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue & set Date
+        env:
+          GH_TOKEN: ${{ secrets.ONE_PROBLEM_ONE_DAY_PAT }}
+        run: |
+          title="${{ github.event.issue.title }}"
+          issue_node_id="${{ github.event.issue.node_id }}"
+          created_at="${{ github.event.issue.created_at }}"
+
+          if [[ ! "$title" =~ ^\[newSolution\]Who\ can\ add\ 1\ more\ problem\ of\ LeetCode\ [0-9]+.*$ ]]; then
+            echo "Title not match, skip"
+            exit 0
+          fi
+
+          date_cn=$(date -d "$created_at +8 hours" +%F)
+
+          echo "Add issue to project"
+          item_id=$(gh api graphql -f query='
+            mutation($project:ID!, $content:ID!) {
+              addProjectV2ItemById(input:{
+                projectId:$project
+                contentId:$content
+              }) {
+                item { id }
+              }
+            }
+          ' \
+            -f project="$PROJECT_ID" \
+            -f content="$issue_node_id" \
+            --jq '.data.addProjectV2ItemById.item.id')
+
+          echo "Set Date field"
+          gh api graphql -f query='
+            mutation($project:ID!, $item:ID!, $field:ID!, $date:Date!) {
+              updateProjectV2ItemFieldValue(input:{
+                projectId:$project
+                itemId:$item
+                fieldId:$field
+                value:{ date:$date }
+              }) {
+                projectV2Item { id }
+              }
+            }
+          ' \
+            -f project="$PROJECT_ID" \
+            -f item="$item_id" \
+            -f field="$DATE_FIELD_ID" \
+            -f date="$date_cn"
