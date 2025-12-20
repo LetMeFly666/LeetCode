@@ -1,0 +1,48 @@
+name: LeetCode Daily Issue
+
+# 每天北京时间0点自动创建今天的每日一题issue
+
+on:
+  schedule:
+    - cron: '0 16 * * *'   # UTC 16 = 北京 0 点
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch LeetCode daily question
+        id: fetch
+        run: |
+          date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          year=${date:0:4}
+          month=${date:5:2}
+
+          curl -s https://leetcode.cn/graphql/ \
+            -H 'Content-Type: application/json' \
+            -d "{
+              \"query\":\"query dailyQuestionRecords(\$year:Int!,\$month:Int!){dailyQuestionRecords(year:\$year,month:\$month){date question{questionFrontendId titleSlug translatedTitle}}}\",
+              \"variables\":{\"year\":$year,\"month\":$month}
+            }" \
+          | jq -r --arg d "$date" '
+            .data.dailyQuestionRecords[]
+            | select(.date==$d)
+            | "\(.question.questionFrontendId)|\(.question.titleSlug)|\(.question.translatedTitle)"
+          ' > daily.txt
+
+      - name: Create issue
+        env:
+          GH_TOKEN: ${{ secrets.ONE_PROBLEM_ONE_DAY_PAT }}
+        run: |
+          IFS='|' read -r id slug title < daily.txt
+          date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+
+          gh issue create \
+            --title "[newSolution]Who can add 1 more problem of LeetCode $id" \
+            --body "By Github Actions | [$id.$title](https://leetcode.cn/problems/$slug/) | $date" \
+            --label 题解 \
+            --assignee LetMeFly666 \
+            --repo LetMeFly666/LeetCode-test

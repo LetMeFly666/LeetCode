@@ -1,0 +1,151 @@
+name: Sync solving label to project status
+# 仅对issue增删的solving标签生效：
+#   添加solving标签->设置Project状态为In Progress
+#   移除solving标签-↓
+#     issue为close状态->设置Project状态为Done
+#     issue为open状态->设置Project状态为Todo
+# 这里GPT死活解决不了，最后分步命令之，成功了
+
+on:
+  issues:
+    types: [labeled, unlabeled]
+
+permissions:
+  issues: read
+  repository-projects: write
+
+env:
+  PROJECT_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_PROJECT_ID }}
+  STATUS_FIELD_ID: ${{ secrets.ONE_PROBLEM_ONE_DAY_STATUS_FIELD_ID }}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update project status by solving label
+        env:
+          GH_TOKEN: ${{ secrets.ONE_PROBLEM_ONE_DAY_PAT }}
+        run: |
+          echo "===== Event Debug ====="
+          echo "action        = ${{ github.event.action }}"
+          echo "issue number  = ${{ github.event.issue.number }}"
+          echo "issue node_id = ${{ github.event.issue.node_id }}"
+          echo "issue state   = ${{ github.event.issue.state }}"
+          echo "label(event)  = ${{ github.event.label.name }}"
+          echo "======================="
+
+          issue_node_id="${{ github.event.issue.node_id }}"
+          issue_state="${{ github.event.issue.state }}"
+
+          labels="${{ join(github.event.issue.labels.*.name, ' ') }}"
+          echo "Current labels: $labels"
+
+          has_solving=false
+          for l in $labels; do
+            [[ "$l" == "solving" ]] && has_solving=true
+          done
+          echo "has_solving = $has_solving"
+
+          echo "Query project item_id via Issue.projectItems..."
+          item_id=$(gh api graphql -f query='
+            query($issue:ID!) {
+              node(id:$issue) {
+                ... on Issue {
+                  projectItems(first:20) {
+                    nodes {
+                      id
+                      project { id }
+                    }
+                  }
+                }
+              }
+            }
+          ' -f issue="$issue_node_id" \
+            --jq ".data.node.projectItems.nodes[]
+                  | select(.project.id==\"$PROJECT_ID\")
+                  | .id")
+          if [[ -z "$item_id" ]]; then
+            echo "Issue not in project, skip"
+            exit 0
+          fi
+          echo "Found item_id = $item_id"
+
+          if [[ "$has_solving" == "true" ]]; then
+            status="In Progress"
+          else
+            if [[ "$issue_state" == "closed" ]]; then
+              status="Done"
+            else
+              status="Todo"
+            fi
+          fi
+          echo "Target status name = $status"
+
+          echo "Resolve status option ID..."
+          options_json=$(gh api graphql -f query='
+          query($field:ID!) {
+            node(id:$field) {
+              ... on ProjectV2SingleSelectField {
+                options { id name }
+              }
+            }
+          }' -F field="$STATUS_FIELD_ID")       
+          option_id=$(echo "$options_json" | jq -r --arg status "$status" '.data.node.options[] | select(.name==$status) | .id')
+          if [[ -z "$option_id" ]]; then
+            echo "❌ Cannot find option id for status=$status"
+            exit 1
+          fi
+          echo "Resolved option_id = $option_id"
+
+          echo "Update project status..."
+          if [[ "$option_id" =~ ^[0-9]+$ ]]; then
+              echo "纯数字 -> ID!"
+              gql_type="ID!"
+              # 不知道为什么，这里Done的option_id为纯数字，不论ID!还是String!都不行，折腾了好久好久
+              # 未验证这个能否用在In Progress和Todo上，感觉是可以的。保留if-else是为了保留这个神奇的Debug经历
+              gh api graphql -f query='
+                mutation UpdateProjectItemStatus($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
+                  updateProjectV2ItemFieldValue(
+                    input: {
+                      projectId: $projectId
+                      itemId: $itemId
+                      fieldId: $fieldId
+                      value: { singleSelectOptionId: $optionId }
+                    }
+                  ) {
+                    projectV2Item {
+                      id
+                      fieldValues(first: 10) {
+                        nodes {
+                          ... on ProjectV2ItemFieldSingleSelectValue {
+                            id
+                            name
+                            optionId
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ' -f projectId="$PROJECT_ID" -f itemId="$item_id" -f fieldId="$STATUS_FIELD_ID" -f optionId="$option_id"
+          else
+              echo "字符串 -> String!"
+              gql_type="String!"
+              gh api graphql -f query='
+              mutation($project:ID!, $item:ID!, $field:ID!, $option:String!) {
+                  updateProjectV2ItemFieldValue(input:{
+                  projectId:$project
+                  itemId:$item
+                  fieldId:$field
+                  value:{ singleSelectOptionId:$option }
+                  }) {
+                  projectV2Item { id }
+                  }
+              }
+              ' \
+              -F project="$PROJECT_ID" \
+              -F item="$item_id" \
+              -F field="$STATUS_FIELD_ID" \
+              -F option="$option_id"
+          fi
+          echo "Status updated successfully ✅"
