@@ -291,6 +291,10 @@ export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
 ' --tag-name-filter cat -- --branches --tags
 ```
 
+### github action相关一丢丢
+
+action的.yml一定要放到目录`.github/workflows`下！不能放在子目录下。
+
 ## About HTML
 
 ### 空白字符
