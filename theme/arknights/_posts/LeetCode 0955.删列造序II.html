@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>955.删列造序 II：模拟（O(mn)） + 提前退出 | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>955.删列造序 II：模拟（O(mn)） + 提前退出</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2025-12-21T12:48:50.000Z" id="date"> 2025-12-21</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】955-删列造序-II：模拟（O-mn-）-提前退出"><a href="#【LetMeFly】955-删列造序-II：模拟（O-mn-）-提前退出" class="headerlink" title="【LetMeFly】955.删列造序 II：模拟（O(mn)） + 提前退出"></a>【LetMeFly】955.删列造序 II：模拟（O(mn)） + 提前退出</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/delete-columns-to-make-sorted-ii/">https://leetcode.cn/problems/delete-columns-to-make-sorted-ii/</a></p>
+<p>给定由 <code>n</code> 个字符串组成的数组 <code>strs</code>，其中每个字符串长度相等。</p>
+
+<p>选取一个删除索引序列，对于 <code>strs</code> 中的每个字符串，删除对应每个索引处的字符。</p>
+
+<p>比如，有 <code>strs = ["abcdef", "uvwxyz"]</code>，删除索引序列 <code>{0, 2, 3}</code>，删除后 <code>strs</code> 为<code>["bef", "vyz"]</code>。</p>
+
+<p>假设，我们选择了一组删除索引 <code>answer</code>，那么在执行删除操作之后，最终得到的数组的元素是按 <strong>字典序</strong>（<code>strs[0] <= strs[1] <= strs[2] ... <= strs[n - 1]</code>）排列的，然后请你返回 <code>answer.length</code> 的最小可能值。</p>
+
+<p> </p>
+
+<ol>
+</ol>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>strs = ["ca","bb","ac"]
+<strong>输出：</strong>1
+<strong>解释： </strong>
+删除第一列后，strs = ["a", "b", "c"]。
+现在 strs 中元素是按字典排列的 (即，strs[0] <= strs[1] <= strs[2])。
+我们至少需要进行 1 次删除，因为最初 strs 不是按字典序排列的，所以答案是 1。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>strs = ["xc","yb","za"]
+<strong>输出：</strong>0
+<strong>解释：</strong>
+strs 的列已经是按字典序排列了，所以我们不需要删除任何东西。
+注意 strs 的行不需要按字典序排列。
+也就是说，strs[0][0] <= strs[0][1] <= ... 不一定成立。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>strs = ["zyx","wvu","tsr"]
+<strong>输出：</strong>3
+<strong>解释：</strong>
+我们必须删掉每一列。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>n == strs.length</code></li>
+	<li><code>1 <= n <= 100</code></li>
+	<li><code>1 <= strs[i].length <= 100</code></li>
+	<li><code>strs[i]</code> 由小写英文字母组成</li>
+</ul>
+
+
+    
+<h2 id="解题方法：模拟"><a href="#解题方法：模拟" class="headerlink" title="解题方法：模拟"></a>解题方法：模拟</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>先来理解题意：</p>
+<blockquote>
+<p>删除尽可能少的列，使得上面一行字符串的字典序不大于下面一行。</p>
+</blockquote>
+<p>什么时候上面(a)字典序不大于下面一行(b)呢？</p>
+<blockquote>
+<p>从前往后遍历两个字符串：</p>
+<ul>
+<li>一旦遇到<code>a[i] &gt; b[i]</code>，直接不符</li>
+<li>一旦遇到<code>a[i] &gt; b[i]</code>，直接符合（后面不用看了）</li>
+<li>如果遇到<code>a[i] = b[i]</code>，目前符合，继续往后看</li>
+</ul>
+</blockquote>
+<p>好了，现在开始一列一列地遍历，去保留满足条件的列，删去不满足条件的列吧！</p>
+<h3 id="具体做法"><a href="#具体做法" class="headerlink" title="具体做法"></a>具体做法</h3><p>使用一个布尔数组canSkip，其中canSkip[i]为true则代表第i行可以跳过与上一行的比较。</p>
+<p>第一层循环枚举列，一列一列开始遍历；</p>
+<p>第二层循环枚举行，从第二行开始枚举到最后一行：</p>
+<ul>
+<li>如果当前行被skip则直接跳过当前行</li>
+<li>否则，如果当前行小于上一行，这一列必须移除，退出第二层循环，删除这行（实际是答案数量+1）</li>
+<li>如果遍历到最后一行仍然满足条件，则这一列无需移除，再次遍历这一列，如果下一行大于上一行，则下一行永远不会比上一行字典序大，下次不用遍历“下一行”了，将<code>canSkip[下一行]</code>设置为true。</li>
+</ul>
+<p>特殊的，我们可以记录下一共有多少行可以跳过，当所有行都可以被跳过时，后续再也不用遍历了，直接返回答案即可。</p>
+<h3 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h3><ul>
+<li>时间复杂度$O(size(strs))$</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2025-12-21 20:46:33</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minDeletionSize</span><span class="params">(vector&lt;string&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> n = strs.<span class="built_in">size</span>(), m = strs[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> totalSkip = <span class="number">1</span>;  <span class="comment">// 第一行不用校验</span></span><br><span class="line">        <span class="function">vector&lt;<span class="type">bool</span>&gt; <span class="title">canSkip</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">            <span class="type">bool</span> can = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (canSkip[i]) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (strs[i][j] &lt; strs[i<span class="number">-1</span>][j]) &#123;</span><br><span class="line">                    can = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (can) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[i][j] != strs[i<span class="number">-1</span>][j] &amp;&amp; !canSkip[i]) &#123;</span><br><span class="line">                        canSkip[i] = <span class="literal">true</span>;</span><br><span class="line">                        totalSkip++;</span><br><span class="line">                        <span class="keyword">if</span> (totalSkip == n) &#123;</span><br><span class="line">                            <span class="keyword">return</span> ans;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行用时分布0ms击败100.00%</li>
+<li>消耗内存分布12.57MB击败81.82%</li>
+</ul>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/156134471">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/12/21/LeetCode%200955.%E5%88%A0%E5%88%97%E9%80%A0%E5%BA%8FII/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%91955-%E5%88%A0%E5%88%97%E9%80%A0%E5%BA%8F-II%EF%BC%9A%E6%A8%A1%E6%8B%9F%EF%BC%88O-mn-%EF%BC%89-%E6%8F%90%E5%89%8D%E9%80%80%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】955.删列造序 II：模拟（O(mn)） + 提前退出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">具体做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text">时空复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
