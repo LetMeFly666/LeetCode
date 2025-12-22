@@ -65,3 +65,33 @@ jobs:
             -f item="$item_id" \
             -f field="$DATE_FIELD_ID" \
             -f date="$date_cn"
+
+            # This issue was automatically added to the project.
+            # 🕒 Time (Beijing, UTC+8): 2025-12-22 13:45:32  
+            # 🤖 Triggered by GitHub Actions
+            # appid: 2517117
+            # installation id: 100703634
+      
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.DAILY_BOT_APP_ID }}
+          private-key: ${{ secrets.DAILY_BOT_APP_PRIVATE_KEY }}
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            const now = new Date().toLocaleString('zh-CN', {
+              timeZone: 'Asia/Shanghai',
+              hour12: false
+            });
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `This issue was automatically added to the project.\n🕒 Time (Beijing, UTC+8): ${now}\n🤖 Triggered by [1problem1day Bot](https://github.com/apps/1problem1day)`
+            });
