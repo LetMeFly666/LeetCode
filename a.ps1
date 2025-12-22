@@ -1,0 +1,1 @@
+gcc -trigraphs a.c; ./a.exe

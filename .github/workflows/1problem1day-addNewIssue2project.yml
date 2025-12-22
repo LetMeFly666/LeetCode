@@ -65,12 +65,16 @@ jobs:
             -f item="$item_id" \
             -f field="$DATE_FIELD_ID" \
             -f date="$date_cn"
-
-            # This issue was automatically added to the project.
-            # 🕒 Time (Beijing, UTC+8): 2025-12-22 13:45:32  
-            # 🤖 Triggered by GitHub Actions
-            # appid: 2517117
-            # installation id: 100703634
+      
+      - name: Resolve workflow path
+        id: resolve-workflow-path
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          workflow_path=${GITHUB_WORKFLOW_REF#*/}
+          workflow_path=${workflow_path%@*}
+          action_file="https://github.com/$REPO/blob/$GITHUB_SHA/$workflow_path"
+          echo "action_file=$action_file" >> $GITHUB_OUTPUT
       
       - name: Generate GitHub App token
         id: app-token
@@ -89,9 +93,11 @@ jobs:
               hour12: false
             });
 
+            const actionFile = `${{ steps.resolve-workflow-path.outputs.action_file }}`
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `This issue was automatically added to the project.\n🕒 Time (Beijing, UTC+8): ${now}\n🤖 Triggered by [1problem1day Bot](https://github.com/apps/1problem1day)`
+              body: `This issue was automatically added to the project.\n🕒 Time (Beijing, UTC+8): ${now}\n🤖 Triggered by [1problem1day Bot](https://github.com/apps/1problem1day) according to [action file](${actionFile})`
             });
