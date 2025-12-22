@@ -1,4 +1,4 @@
-name: Generate LeetCode Daily Issue
+name: Daily / Generate LeetCode Daily Issue
 
 # 每天北京时间0点自动创建今天的每日一题issue
 
@@ -41,12 +41,13 @@ jobs:
           IFS='|' read -r id slug title < daily.txt
           date=$(TZ=Asia/Shanghai date +%Y-%m-%d)
 
-          workflow_path=${GITHUB_WORKFLOW_REF#*/}
-          workflow_path=${workflow_path%@*}
+          workflow_path=${GITHUB_WORKFLOW_REF#*/}  # 去掉owner
+          workflow_path=${workflow_path#*/}        # 去掉repo名
+          workflow_path=${workflow_path%@*}        # 去掉@ref
 
           gh issue create \
             --title "[newSolution]Who can add 1 more problem of LeetCode $id" \
-            --body "By Github [Actions](https://github.com/$REPO/tree/$GITHUB_SHA/$workflow_path) | [$id.$title](https://leetcode.cn/problems/$slug/) | $date" \
+            --body "By Github [Actions](https://github.com/$REPO/blob/$GITHUB_SHA/$workflow_path) | [$id.$title](https://leetcode.cn/problems/$slug/) | $date" \
             --label 题解 \
             --assignee LetMeFly666 \
             --repo "$REPO"
