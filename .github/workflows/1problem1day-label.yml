@@ -1,4 +1,4 @@
-name: Sync solving label to project status
+name: Daily / Sync solving label to project status
 # 仅对issue增删的solving标签生效：
 #   添加solving标签->设置Project状态为In Progress
 #   移除solving标签-↓
@@ -159,8 +159,9 @@ jobs:
         env:
           REPO: ${{ github.repository }}
         run: |
-          workflow_path=${GITHUB_WORKFLOW_REF#*/}
-          workflow_path=${workflow_path%@*}
+          workflow_path=${GITHUB_WORKFLOW_REF#*/}  # 去掉owner
+          workflow_path=${workflow_path#*/}        # 去掉repo名
+          workflow_path=${workflow_path%@*}        # 去掉@ref
           action_file="https://github.com/$REPO/blob/$GITHUB_SHA/$workflow_path"
           echo "action_file=$action_file" >> $GITHUB_OUTPUT
       

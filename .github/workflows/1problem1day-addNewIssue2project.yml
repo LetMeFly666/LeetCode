@@ -1,4 +1,4 @@
-name: Add issue to 1problem1day project
+name: Daily / Add issue to 1problem1day project
 # 符合标题格式的issue自动添加到https://github.com/users/LetMeFly666/projects/5中
 # Test at https://github.com/LetMeFly666/LeetCode-test
 
@@ -71,8 +71,9 @@ jobs:
         env:
           REPO: ${{ github.repository }}
         run: |
-          workflow_path=${GITHUB_WORKFLOW_REF#*/}
-          workflow_path=${workflow_path%@*}
+          workflow_path=${GITHUB_WORKFLOW_REF#*/}  # 去掉owner
+          workflow_path=${workflow_path#*/}        # 去掉repo名
+          workflow_path=${workflow_path%@*}        # 去掉@ref
           action_file="https://github.com/$REPO/blob/$GITHUB_SHA/$workflow_path"
           echo "action_file=$action_file" >> $GITHUB_OUTPUT
       
