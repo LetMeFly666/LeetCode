@@ -1,11 +1,12 @@
 ---
-title: 2054.两个最好的不重叠活动：
-date: 2025-12-23 19:00:09
-tags: [题解, LeetCode, 中等, 数组, 二分查找, 动态规划, 排序, 堆（优先队列）]
+title: 2054.两个最好的不重叠活动：二分查找
+date: 2025-12-23 23:45:19
+tags: [题解, LeetCode, 中等, 数组, 二分查找, 动态规划, 排序]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2021/09/21/picture5.png
 ---
 
-# 【LetMeFly】2054.两个最好的不重叠活动：
+# 【LetMeFly】2054.两个最好的不重叠活动：二分查找
 
 力扣题目链接：[https://leetcode.cn/problems/two-best-non-overlapping-events/](https://leetcode.cn/problems/two-best-non-overlapping-events/)
 
@@ -56,12 +57,18 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：二分查找
 
-11111
+如果只能选一个event，那么好说，哪个价值大选哪个；如果一定要选两个event，假设第二个event选事件e，那么第一个event一定要选结束时间早于e开始时间的所有事件中价值最大的那个。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+很显然，为了枚举第一个event的可选范围，可以以结束时间为依据对所有event按从小到大排个序。
+
+接着使用一个（有序）数组maxValue，数组中存放的内容是：到xx时刻为止，单个event的最大价值是多少。排序依据是结束时间。
+
+遍历所有事件，对于某事件e，二分查找maxValue中小于e开始时间中最大的那个，其值加上e的价值即为第二个event选e情况下的最优解。之后更新e结束时间的单个事件最大值。
+
++ 时间复杂度$O(n\log n)$，其中$n=len(events)$
++ 空间复杂度$O(n)$
 
 ### AC代码
 
@@ -69,15 +76,8 @@ categories: [题解, LeetCode]
 
 ```cpp
 /*
- * @Author: LetMeFly
- * @Date: 2025-12-23 13:34:22
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2025-12-23 18:58:01
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int maxTwoEvents(vector<vector<int>>& events) {
@@ -101,6 +101,6 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/23/LeetCode%202054.%E4%B8%A4%E4%B8%AA%E6%9C%80%E5%A5%BD%E7%9A%84%E4%B8%8D%E9%87%8D%E5%8F%A0%E6%B4%BB%E5%8A%A8/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156207232)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/23/LeetCode%202054.%E4%B8%A4%E4%B8%AA%E6%9C%80%E5%A5%BD%E7%9A%84%E4%B8%8D%E9%87%8D%E5%8F%A0%E6%B4%BB%E5%8A%A8/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
