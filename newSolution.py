@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-24 09:57:55
+LastEditTime: 2025-12-24 22:17:37
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -337,6 +337,9 @@ if solutionExists:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码(并更新其题解)'
 else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
+if os.path.exists('.commitTitleExtra'):
+    with open('.commitTitleExtra', 'r', encoding='utf-8') as f:
+        gitCommitMsgPrefix += f.read().strip()
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -387,13 +390,17 @@ if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge�
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete origin {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
-    result = subprocess.run(
-        ["gh", "pr", "view", str(prNumber), "--json", "title"],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    os.system(f'gh pr merge -s -d -t "{gitCommitMsgPrefix} (#{prNumber})"')
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "view", str(prNumber), "--json", "title"],
+            capture_output=True,
+            text=True,
+            check=True,
+            encoding="utf-8",
+        )
+    except:
+        result = gitCommitMsgPrefix
+    os.system(f'gh pr merge -s -d -t "{result} (#{prNumber})"')
 os.system(f'gh issue edit {issueNum} --remove-label "solving"')
 
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py

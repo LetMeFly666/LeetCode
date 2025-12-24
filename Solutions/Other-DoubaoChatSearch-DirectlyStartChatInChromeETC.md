@@ -24,7 +24,8 @@ AI聊天正在越来越多地挤占传统搜索的份额，说明一些场景下
 
 豆包客户端就可以直接在一个全新的页面里直接开始对话（如下图）：
 
-![豆包新页面可直接对话](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/06b3ebd459f4442e93159d1a4c088231.png)
+<!-- ![豆包新页面可直接对话](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/06b3ebd459f4442e93159d1a4c088231.png) -->
+![豆包新页面可直接对话](https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/canDirectChat.png)
 
 这个页面可不是`https://www.doubao.com/chat`。
 
@@ -116,7 +117,9 @@ https://www.doubao.com/chat/url-action?action=%7B%22pluginId%22%3A%22Send_Messag
 
 找到网站搜索，点`添加`
 
-![添加](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/06b3ebd459f4442e93159d1a4c088231.png)
+<!-- ![添加](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/cc8cc9a9e2064e0c9ac661566649ecf7.png) -->
+
+![添加](https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/add.jpg)
 
 名称随意，`快捷字词`随意但要记住（如`doubao`），网址格式填：
 
@@ -124,7 +127,8 @@ https://www.doubao.com/chat/url-action?action=%7B%22pluginId%22%3A%22Send_Messag
 https://www.doubao.com/chat/url-action?action={"pluginId":"Send_Message","payload":{"text":"%s"}}
 ```
 
-![输入具体内容](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/cc8cc9a9e2064e0c9ac661566649ecf7.png)
+<!-- ![输入具体内容](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/cc8cc9a9e2064e0c9ac661566649ecf7.png) -->
+![输入具体内容](https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/inputDetailInfo.png)
 
 保存。
 
@@ -136,7 +140,9 @@ https://www.doubao.com/chat/url-action?action={"pluginId":"Send_Message","payloa
 
 就可以直接开始对话啦！
 
-![chatGIF](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/82f39a37913c4cd7943cd16ee0d0aa6f.gif)
+<!-- ![chatGIF](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/75d124bd2bb24b4a85667f3f9f2f41df.gif) -->
+
+![chatGIF](https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/chat.gif)
 
 ## End
 
