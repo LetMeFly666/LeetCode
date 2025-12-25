@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-24 09:57:55
+LastEditTime: 2025-12-25 22:08:40
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -143,7 +143,14 @@ def getPlatform():
     else:
         return 'Linux(or others)'
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
-alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
+# alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
+tmp_issueGetResult = subprocess.run(
+    ['gh', 'issue', 'list', '--search', issueTitle],
+    stdout=subprocess.PIPE,
+    text=True,
+    encoding='utf-8'
+)
+alreadyRelatedIssueLists = tmp_issueGetResult.stdout
 alreadyRelatedIssueListsSplited = alreadyRelatedIssueLists.split('\n')
 print(alreadyRelatedIssueLists)
 print(alreadyRelatedIssueListsSplited)
@@ -337,6 +344,9 @@ if solutionExists:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码(并更新其题解)'
 else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
+if os.path.exists('.commitTitleExtra'):
+    with open('.commitTitleExtra', 'r', encoding='utf-8') as f:
+        gitCommitMsgPrefix += f.read().replace("\n", " ").strip()
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -359,11 +369,31 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
 os.system(f'git push --set-upstream origin {num}')
-cmd = f'gh pr create -H {num} -t "{gitCommitMsgPrefix}" -b "By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}" -l "题解" -a "@me"'  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+cmd = [
+    'gh', 'pr', 'create',
+    '-H', f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    '-t', gitCommitMsgPrefix,
+    '-b', f'By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}',
+    "-l", "题解",
+    "-a", "@me",
+]
 print(cmd)
-prResult = os.popen(cmd).read()
+prResult = subprocess.run(
+    cmd,
+    capture_output=True,
+    text=True
+)
+if prResult.returncode:
+    prAlreadyExists = True
+    prResult = prResult.stderr
+else:
+    prAlreadyExists = False
+    prResult = prResult.stdout
 print(prResult)
 prNumber = int(prResult.split('/')[-1])
+if prAlreadyExists:
+    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', 'Hello, we meet again.']
+    subprocess.run(cmd)
 os.system('gh pr edit --add-label "under merge"')
 input('enter when ready to merge: ')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
 os.system('gh pr edit --remove-label "under merge"')
@@ -387,13 +417,18 @@ if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge�
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete origin {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
-    result = subprocess.run(
-        ["gh", "pr", "view", str(prNumber), "--json", "title"],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    os.system(f'gh pr merge -s -d -t "{gitCommitMsgPrefix} (#{prNumber})"')
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "view", str(prNumber), "--json", "title"],
+            capture_output=True,
+            text=True,
+            check=True,
+            encoding="utf-8",
+        )
+        mergeTitle = json.loads(result.stdout)["title"]
+    except:
+        mergeTitle = gitCommitMsgPrefix
+    os.system(f'gh pr merge -s -d -t "{mergeTitle} (#{prNumber})"')
 os.system(f'gh issue edit {issueNum} --remove-label "solving"')
 
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py
