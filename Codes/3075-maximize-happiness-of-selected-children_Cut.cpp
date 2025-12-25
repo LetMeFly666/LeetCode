@@ -1,8 +1,8 @@
 /*
  * @Author: LetMeFly
- * @Date: 2025-12-25 12:56:03
+ * @Date: 2025-12-25 12:59:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-25 12:59:03
+ * @LastEditTime: 2025-12-25 13:00:12
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -15,7 +15,11 @@ public:
         sort(happiness.begin(), happiness.end(), greater<>());
         ll ans = 0;
         for (int i = 0; i < k; i++) {
-            ans += max(0, happiness[i] - i);
+            happiness[i] -= i;
+            if (happiness[i] <= 0) {
+                return ans;
+            }
+            ans += happiness[i];
         }
         return ans;
     }
