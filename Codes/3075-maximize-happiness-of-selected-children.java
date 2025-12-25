@@ -12,10 +12,10 @@ class Solution {
         long ans = 0;
         int n = happiness.length;
         for (int i = 0; i < k; i++) {
-            if (happiness.get(n - i) <= i) {
+            if (happiness[n - i - 1] <= i) {
                 return ans;
             }
-            ans += happiness.get(n - i) - i;
+            ans += happiness[n - i - 1] - i;
         }
         return ans;
     }
