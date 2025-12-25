@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-24 10:04:41
+ * @LastEditTime: 2025-12-25 13:41:53
 -->
 # LetLeet Blog
 
@@ -132,6 +132,7 @@
 |北邮暑期课 - R语言数据分析|<a href="https://blog.letmefly.xyz/2023/06/26/Other-RLanguageDataAnalysis">本平台博客</a>|无|
 |域名转到国外注册商-备案失效风险折腾日记|<a href="https://blog.letmefly.xyz/2025/06/23/Other-Server-BeiAnXiaoTuCao/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/148844350">CSDN博客</a>|
 |服务器 - 从一台服务器切换至另一台服务器(损失数十条PV记录为代价)|<a href="https://blog.letmefly.xyz/2025/09/14/Other-Server-From1Server2Another/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/151684306">CSDN博客</a>|
+|服务器内存治理 - 从内存与日俱增到稳定运行 - 到底是哪里泄漏的内存|<a href="https://blog.letmefly.xyz/2025/12/25/Other-Server-MemoryGovernance/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/156268688">CSDN博客</a>|
 |SVG(可缩放矢量图形) - toLearn 和 创建|<a href="https://blog.letmefly.xyz/2023/07/06/Other-SVG-ToLearnAndToCreate/">本平台博客</a>|无|
 |Verilog学习笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/01/06/Other-Verilog-Note/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128584160">CSDN博客</a>|
 |Cloudflare Warp+，1.1.1.1，如何使用，如何获取免费流量，如何优选IP|<a href="https://blog.letmefly.xyz/2023/08/25/Other-VPN-CloudflareWarp+1.1.1.1">本平台博客</a>|无|

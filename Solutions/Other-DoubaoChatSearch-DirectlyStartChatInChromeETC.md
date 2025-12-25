@@ -3,7 +3,7 @@ title: “豆包聊天搜索” —— 直接在Chrome等浏览器地址栏开�
 date: 2025-12-24 09:59:04
 tags: [其他, 豆包, Chrome]
 categories: [技术思考]
-index_img: https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/how2use.jpg
+index_img: https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/chat.gif
 ---
 
 # “豆包聊天搜索” —— 直接在Chrome等浏览器地址栏开启对话
@@ -147,6 +147,8 @@ https://www.doubao.com/chat/url-action?action={"pluginId":"Send_Message","payloa
 ## End
 
 这种方式并非豆包官方的使用方式，豆包官方文档中未能找到相关设置，且这种方式没有给豆包透传埋点信息，只适合小范围使用。
+
+大费周章的目的不就是为了折腾么，折腾成功了就完事儿了。
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 
