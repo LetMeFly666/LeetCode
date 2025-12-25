@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2025-12-25 12:56:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2025-12-25 13:17:23
+ * @LastEditTime: 2025-12-25 13:18:34
  */
 import java.util.Arrays;
 
@@ -12,10 +12,10 @@ class Solution {
         long ans = 0;
         int n = happiness.length;
         for (int i = 0; i < k; i++) {
-            if (happiness[n - i] <= i) {
+            if (happiness.get(n - i) <= i) {
                 return ans;
             }
-            ans += happiness[n - i] - i;
+            ans += happiness.get(n - i) - i;
         }
         return ans;
     }
