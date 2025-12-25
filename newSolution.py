@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-24 22:17:37
+LastEditTime: 2025-12-25 21:43:25
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -143,7 +143,14 @@ def getPlatform():
     else:
         return 'Linux(or others)'
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
-alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
+# alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
+tmp_issueGetResult = subprocess.run(
+    ['gh', 'issue', 'list', '--search', issueTitle],
+    stdout=subprocess.PIPE,
+    text=True,
+    encoding='utf-8'
+)
+alreadyRelatedIssueLists = tmp_issueGetResult.stdout
 alreadyRelatedIssueListsSplited = alreadyRelatedIssueLists.split('\n')
 print(alreadyRelatedIssueLists)
 print(alreadyRelatedIssueListsSplited)
@@ -339,7 +346,7 @@ else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
 if os.path.exists('.commitTitleExtra'):
     with open('.commitTitleExtra', 'r', encoding='utf-8') as f:
-        gitCommitMsgPrefix += f.read().strip()
+        gitCommitMsgPrefix += f.read().replace("\n", " ").strip()
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -398,9 +405,10 @@ else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge�
             check=True,
             encoding="utf-8",
         )
+        mergeTitle = json.loads(result.stdout)["title"]
     except:
-        result = gitCommitMsgPrefix
-    os.system(f'gh pr merge -s -d -t "{result} (#{prNumber})"')
+        mergeTitle = gitCommitMsgPrefix
+    os.system(f'gh pr merge -s -d -t "{mergeTitle} (#{prNumber})"')
 os.system(f'gh issue edit {issueNum} --remove-label "solving"')
 
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py
