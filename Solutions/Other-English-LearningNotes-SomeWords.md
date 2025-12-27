@@ -1700,6 +1700,9 @@ categories: [自用]
 |sterling|n. 英镑<br/>adj. 优秀的，杰出的，纯银的|
 |herbal|adj. 药草的，香草的<br/>n. 草本植物志|
 |arbitration|n. 仲裁|
+|||
+|strap|n. 袋子，皮带<br/>捆扎|
+|novelette|n. 中篇小说|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
