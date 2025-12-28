@@ -3,6 +3,7 @@ title: 2402.会议室 III：优先队列大模拟
 date: 2025-12-27 23:38:12
 tags: [题解, LeetCode, 困难, 数组, 哈希表, 排序, 模拟, 大模拟, 堆（优先队列）, 优先队列]
 categories: [题解, LeetCode]
+index_img: https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f366ff4023ad490ab9ed7230d53933ae.png
 ---
 
 # 【LetMeFly】2402.会议室 III：优先队列大模拟
@@ -164,3 +165,7 @@ int main() {
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156343312)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/27/LeetCode%202402.%E4%BC%9A%E8%AE%AE%E5%AE%A4III/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+![leetcode广告？](https://cors.letmefly.xyz/https://i-blog.csdnimg.cn/direct/f366ff4023ad490ab9ed7230d53933ae.png)
+
+时隔两年，力扣题解不明文写原文链接也被标记为广告营销了，算了。
