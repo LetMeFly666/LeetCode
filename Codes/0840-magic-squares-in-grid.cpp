@@ -15,7 +15,7 @@ private:
                 colCnt[dj] += v;
             }
         }
-        if (mask != (1 << 10) - 1) {
+        if (mask != (1 << 10) - 2) {  // (1<<10)-1：1111111111（10个1）而mask没有或上1<<0所以再-1
             return false;
         }
 
@@ -45,3 +45,30 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[[4,3,8,4],[9,5,1,9],[2,7,6,2]]
+
+1
+*/
+void dbg1to9() {
+    int mask = 0;
+    for (int i = 1; i < 10; i++) {
+        mask |= 1 << i;
+    }
+    cout << mask << endl;  // 1022不是1023，因为mask没有或上1<<0
+}
+
+int main() {
+    dbg1to9();
+
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        vector<vector<int>> v = stringToVectorVector(s);
+        cout << sol.numMagicSquaresInside(v) << endl;
+    }
+    return 0;
+}
+#endif
