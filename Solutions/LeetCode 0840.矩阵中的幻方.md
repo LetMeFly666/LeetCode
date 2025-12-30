@@ -58,20 +58,70 @@ categories: [题解, LeetCode]
 
 这个函数怎么写呢？
 
-对于是否由1-9组成，
+对于是否由1-9组成，可以使用位运算，将所有数与初始值为0的mask按位或，如出现3则$mask |= 1 << 3$，最终看$mask$是否为$1<<10-2$。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+我们还可以使用两个大小为3的数组分别记录每一行和每一列的和，看他们是否相等、以及是否和主对角线和副对角线的和相等。
+
++ 时间复杂度$O(col\times row)$
++ 空间复杂度$O(1)$
 
 ### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2025-12-30 13:25:00
+ */
+class Solution {
+private:
+    inline bool is(vector<vector<int>>& grid, int i, int j) {
+        int mask = 0;
+        int rowCnt[3] = {0}, colCnt[3] = {0};
+        for (int di = 0; di < 3; di++) {
+            for (int dj = 0; dj < 3; dj++) {
+                int v = grid[i - di][j - dj];
+                mask |= 1 << v;
+                rowCnt[di] += v;
+                colCnt[dj] += v;
+            }
+        }
+        if (mask != (1 << 10) - 2) {  // (1<<10)-1：1111111111（10个1）而mask没有或上1<<0所以再-1
+            return false;
+        }
+
+        int cnt = rowCnt[0];
+        for (int d = 0; d < 3; d++) {
+            if (rowCnt[d] != cnt || colCnt[d] != cnt) {
+                return false;
+            }
+        }
+        if (grid[i][j] + grid[i - 1][j - 1] + grid[i - 2][j - 2] != cnt) {
+            return false;
+        }
+        if (grid[i - 2][j] + grid[i - 1][j - 1] + grid[i][j - 2] != cnt) {
+            return false;
+        }
+        return true;
+    }
+public:
+    int numMagicSquaresInside(vector<vector<int>>& grid) {
+        int ans = 0;
+        int n = grid.size(), m = grid[0].size();
+        for (int i = 2; i < n; i++) {
+            for (int j = 2; j < m; j++) {
+                ans += is(grid, i, j);
+            }
+        }
+        return ans;
+    }
+};
+```
 
 #### Python
 
 ```python
 '''
-Author: LetMeFly
-Date: 2025-12-30 13:14:11
-LastEditors: LetMeFly.xyz
 LastEditTime: 2025-12-30 13:38:58
 '''
 from typing import List
@@ -102,6 +152,6 @@ class Solution:
         return sum(self.ok(grid, i, j) for j in range(2, len(grid[0])) for i in range(2, len(grid)))
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/30/LeetCode%200840.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156429151)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/12/30/LeetCode%200840.%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%BB%E6%96%B9/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
