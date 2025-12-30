@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2025-12-30 13:14:11
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-30 13:37:41
+LastEditTime: 2025-12-30 13:38:58
 '''
 from typing import List
 
@@ -15,8 +15,8 @@ class Solution:
             for dj in range(3):
                 v = grid[i - di][j - dj]
                 mask |= 1 << v
-                rowCnt[i - di] += v
-                colCnt[j - dj] += v
+                rowCnt[di] += v
+                colCnt[dj] += v
         if mask != (1 << 10) - 2:
             return False
         cnt = grid[i][j] + grid[i - 1][j - 1] + grid[i - 2][j - 2]
@@ -29,4 +29,4 @@ class Solution:
         return True
     
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
-        return sum(self.ok(grid, i, j) for j in range(3, len(grid[0])) for i in range(3, len(grid)))
+        return sum(self.ok(grid, i, j) for j in range(2, len(grid[0])) for i in range(2, len(grid)))
