@@ -35,6 +35,14 @@ jobs:
           echo "label(event)  = ${{ github.event.label.name }}"
           echo "======================="
 
+          # 非solving标签改动时退出
+          label_event="${{ github.event.label.name }}"
+          if [[ "$label_event" != "solving" ]]; then
+            echo "Label '$label_event' is not 'solving', skip workflow"
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
           issue_node_id="${{ github.event.issue.node_id }}"
           issue_state="${{ github.event.issue.state }}"
 
