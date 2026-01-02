@@ -1,0 +1,14 @@
+'''
+Author: LetMeFly
+Date: 2026-01-02 17:02:43
+LastEditors: LetMeFly.xyz
+LastEditTime: 2026-01-02 17:02:53
+'''
+from typing import List
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        for i in range(2, len(nums)):
+            if nums[i] == nums[i-1] or nums[i] == nums[i-2]:
+                return nums[i]
+        return nums[0]

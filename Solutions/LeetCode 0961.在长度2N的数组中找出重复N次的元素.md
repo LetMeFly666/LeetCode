@@ -1,63 +1,70 @@
 ---
-title: 961.在长度2N的数组中找出重复N次的元素
-date: 2022-05-21 10:31:00
-tags: [题解, LeetCode, 简单, 数组, 哈希, set, 随机, Rand, 排序, 数学]
+title: 961.在长度 2N 的数组中找出重复 N 次的元素：5种语言x5种方法(及其变种) —— All By Hand
+date: 2026-01-02 13:01:10
+tags: [题解, LeetCode, 简单, 数组, 哈希表]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】四种方式解决 961.在长度2N的数组中找出重复N次的元素
+# 【LetMeFly】961.在长度 2N 的数组中找出重复 N 次的元素：5种语言x5种方法(及其变种) —— All By Hand
 
 力扣题目链接：[https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/](https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/)
 
-给你一个整数数组 $nums$ ，该数组具有以下属性：
+<p>给你一个整数数组 <code>nums</code> ，该数组具有以下属性：</p>
 
-+ $nums.length == 2 * n$.
-+ $nums$ 包含 $n + 1$ 个 不同的 元素
-+ $nums$ 中恰有一个元素重复 $n$ 次
+<div class="original__bRMd">
+<div>
+<ul>
+	<li><code>nums.length == 2 * n</code>.</li>
+	<li><code>nums</code> 包含 <code>n + 1</code> 个 <strong>不同的</strong> 元素</li>
+	<li><code>nums</code> 中恰有一个元素重复 <code>n</code> 次</li>
+</ul>
 
-找出并返回重复了 $n$ 次的那个元素。
+<p>找出并返回重复了 <code>n</code><em> </em>次的那个元素。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [1,2,3,3]
+<strong>输出：</strong>3
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [2,1,2,5,3,2]
+<strong>输出：</strong>2
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [5,1,5,2,5,3,5,4]
+<strong>输出：</strong>5
+</pre>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>2 &lt;= n &lt;= 5000</code></li>
+	<li><code>nums.length == 2 * n</code></li>
+	<li><code>0 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>
+	<li><code>nums</code> 由 <code>n + 1</code> 个<strong> 不同的</strong> 元素组成，且其中一个元素恰好重复 <code>n</code> 次</li>
+</ul>
 
 
+    
+## 解题方法一.1：排序+看相邻
 
-**示例 1:**
-
-```
-输入：nums = [1,2,3,3]
-输出：3
-```
-
-**示例 2:**
-
-```
-输入：nums = [2,1,2,5,3,2]
-输出：2
-```
-
-**示例 3:**
-
-```
-输入：nums = [5,1,5,2,5,3,5,4]
-输出：5
-```
-
-**提示:**
-
-+ $2\leq n\leq 5000$
-+ $nums.length == 2 * n$
-+ $0\leq nums[i]\leq10^4$
-+ $nums$由$n+1$个**不同的**元素组成，且其中一个元素恰好重复```n```次
-
-
-# 思路
-
-有一个元素出现了$n$次，其余元素都只出现了$1$次
-
-## 方法一：排序
-
-这让我们很容易想到排序。排序后相同的数字会挨到一起，从前向后遍历数组，如果有相邻的两个数字相同，那么这个数字就是答案。
+nums排个序，有且仅有出现$n$次的元素会相邻且相同。
 
 + 时间复杂度$O(n\log n)$
-+ 空间复杂度$O(n)$
++ 空间复杂度$O(\log n)$
 
 ### AC代码
 
@@ -73,14 +80,182 @@ public:
                 return nums[i];
             }
         }
-        return -1;  // Fake return：LeetCode编译器必须要求有一个返回值
+        return -1;  // FAKE RETURN
     }
 };
 ```
 
-## 方法二：哈希表
+竟然和2022.5.21[写的](https://blog.letmefly.xyz/2022/05/21/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0-20220521/#lastcpp)几乎一模一样。
 
-我们可以用哈希表记录下每个数出现的次数，如果遇到出现两次的数字就是答案。
+#### Python
+
+```python
+from typing import List
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        nums.sort()
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i - 1]:
+                return nums[i]
+```
+
+#### Go
+
+```go
+package main
+
+import "sort"
+
+func repeatedNTimes(nums []int) int {
+    sort.Ints(nums)
+    for i := 1; i < len(nums); i++ {
+        if nums[i] == nums[i - 1] {
+            return nums[i]
+        }
+    }
+    return -1  // FAKE RETURN
+}
+```
+
+#### Java
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i-1]) {
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        nums.sort();
+        for i in 1..nums.len() {
+            if nums[i] == nums[i - 1] {
+                return nums[i];
+            }
+        }
+        -1  // FAKE RETURN
+    }
+}
+```
+
+## 解题方法一.2：排序+看中间
+
+有一个数字恰好出现了$n$次，那么排序后中间位置的两个元素至少有一个是它。
+
++ 时间复杂度$O(n\log n)$
++ 空间复杂度$O(\log n)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int mid = nums.size() / 2;
+        return nums[mid] == nums[mid + 1] ? nums[mid] : nums[mid - 1];
+    }
+};
+```
+
+#### C++. 不能通过版本
+
+不能这样思考：
+
+> 有一个数字恰好出现了$n$次，那么排序后要么前半段全是它要么后半段全是它。
+
+> 排序后看看前两个元素相同的话就是前半段，否则就是后半段。
+
+```cpp
+// THIS CANNOT BE ACCEPTED
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        return nums[0] == nums[1] ? nums[0] : nums.back();
+    }
+};
+```
+
+反例：`[1, 2, 2, 3]`。
+
+#### Python
+
+```python
+from typing import List
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        nums.sort()
+        mid = len(nums) // 2
+        return nums[mid] if nums[mid] == nums[mid + 1] else nums[mid - 1]
+```
+
+#### Go
+
+```go
+package main
+
+import "sort"
+
+func repeatedNTimes(nums []int) int {
+    sort.Ints(nums)
+    mid := len(nums) / 2
+    if nums[mid] == nums[mid + 1] {
+        return nums[mid]
+    }
+    return nums[mid - 1]
+}
+```
+
+#### Java
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        Arrays.sort(nums);
+        int mid = nums.length / 2;
+        return nums[mid] == nums[mid + 1] ? nums[mid] : nums[mid - 1];
+    }
+}
+```
+
+#### Rust
+
+```rust
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        nums.sort();
+        let mid: usize = nums.len() / 2;
+        if nums[mid] == nums[mid + 1] {
+            return nums[mid];
+        }
+        nums[mid - 1]
+    }
+}
+```
+
+## 解题方法二：哈希表
+
+使用哈希表记录出现过的元素，如果一个元素二次出现则视为找到答案。
 
 + 时间复杂度$O(n)$
 + 空间复杂度$O(n)$
@@ -93,29 +268,98 @@ public:
 class Solution {
 public:
     int repeatedNTimes(vector<int>& nums) {
-        unordered_set<int> appended;  // 记录已经出现过的元素
-        for (int& t : nums) {  // 遍历
-            if (appended.count(t)) {  // 出现过
+        unordered_set<int> visited;
+        for (int t : nums) {
+            if (visited.count(t)) {
                 return t;
             }
-            appended.insert(t);
+            visited.insert(t);
         }
-        return -1;  // Fake return
+        return -1;  // FAKE RETURN
     }
 };
 ```
 
-## 方法三：数学
+#### Python
 
-首先我们可以思考：一个数组中有$n$个相同的数，这些相同的数中，距离最近的两个数的最大距离是多少呢？
+```python
+from typing import List
 
-答案肯定不会很大吧。实际上确实如此。证明如下：
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        visited = set()
+        for t in nums:
+            if t in visited:
+                return t
+            visited.add(t)
+```
 
-> 记$n$个相同的数为$x$，假设每两个$x$之间都间隔了$\geq2$个数。那么$n$个$x$需要至少$2\times(n-1)$个数来间隔。但是非$x$的数只有$n$个。只有$n\geq 2\times(n-1)$时上述假设才成立。解得$n\leq2$。
-> 也就是说，只有$n=2$时，才有可能满足两个$x$之间间隔$\geq2$（$[x,a,b,x]$）
-> **$n>2$时，必存在两个间距$<2$的相同的$x$**。
+#### Go
 
-因此我们只需要在“相邻两个数、间隔一个数”的条件下，就能找到答案（$n=2$时除外）
+```go
+package main
+
+func repeatedNTimes(nums []int) int {
+    visited := map[int]bool{}
+    for _, t := range nums {
+        if _, ok := visited[t]; ok {
+            return t
+        }
+        visited[t] = true
+    }
+    return -1  // FAKE RETURN
+}
+```
+
+#### Java
+
+```java
+import java.util.Set;
+import java.util.HashSet;
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        Set<Integer> visited = new HashSet<>();
+        for (int t : nums) {
+            if (visited.contains(t)) {
+                return t;
+            }
+            visited.add(t);
+        }
+        return -1;  // FAKE RETURN
+    }
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        let mut visited = HashSet::new();
+        for t in nums.iter() {
+            if visited.contains(&t) {
+                return *t;
+            }
+            visited.insert(t);
+        }
+        -1  // FAKE RETURN
+    }
+}
+```
+
+## 解题方法三：相邻相隔一次遍历
+
+长度为$2n$的数组中一个数出现了$n$次，那么数组中这个数（假设为$t$）一定存在一下情况之一：
+
+1. 两个$t$相邻
+2. 两个$t$中间隔一个元素
+
+否则，任何两个$t$之间都间隔至少两个元素，$t$的数量将会无法达到$n$。
+
+所以我们只需要遍历一遍数组，找到`相邻相同`或`相隔一数且相同`的数就好了。
 
 + 时间复杂度$O(n)$
 + 空间复杂度$O(1)$
@@ -128,73 +372,356 @@ public:
 class Solution {
 public:
     int repeatedNTimes(vector<int>& nums) {
-        if (nums.size() == 4) {  // n = 2时特判
-            for (int i = 0; i < 4; i++) {
-                for (int j = i + 1; j < 4; j++) {
-                    if (nums[i] == nums[j]) {
-                        return nums[i];
-                    }
-                }
-            }
-        }
-        // n > 2
-        for (int i = 0; i < nums.size(); i++) {
-            if (i + 1 < nums.size() && nums[i + 1] == nums[i]) {
-                return nums[i];
-            }
-            if (i + 2 < nums.size() && nums[i + 2] == nums[i]) {
+        for (int i = 2; i < nums.size(); i++) {
+            if (nums[i] == nums[i - 1] || nums[i] == nums[i - 2]) {
                 return nums[i];
             }
         }
-        return -1;  // Fake return
+        return nums[0];  // 前面循环中未判断nums[0]是否等于nums[1]，若前面未return则说明nums[0]=nums[1]如[1, 1, 2, 3]
     }
 };
 ```
 
-## 方法四：随机选择
+#### Python
 
-这种方法就是无脑随机选取两个**下标不同的**数，看两个数是否相等。如果不相等继续选择，直到相等为止。
+```python
+from typing import List
 
-这种方法看似很笨，其实效率很高。因为选择两个数相同的概率是$\frac{n}{2n}\times\frac{n-1}{2n}\approx \frac{1}{4}$，平均$4$次随机选择就能找到答案。因此期望时间复杂度为$O(1)$。
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        for i in range(2, len(nums)):
+            if nums[i] == nums[i-1] or nums[i] == nums[i-2]:
+                return nums[i]
+        return nums[0]
+```
 
-+ 期望时间复杂度$O(1)$
+#### Go
+
+```go
+package main
+
+import "sort"
+
+func repeatedNTimes(nums []int) int {
+    sort.Ints(nums)
+    for i := 2; i < len(nums); i++ {
+        if nums[i] == nums[i-1] || nums[i] == nums[i-2] {
+            return nums[i]
+        }
+    }
+    return nums[0]
+}
+```
+
+#### Java
+
+```java
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i] == nums[i-1] || nums[i] == nums[i-2]) {
+                return nums[i];
+            }
+        }
+        return nums[0];
+    }
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        for i in 2..nums.len() {
+            if nums[i] == nums[i - 1] || nums[i] == nums[i - 2] {
+                return nums[i]
+            }
+        }
+        nums[0]
+    }
+}
+```
+
+## 解题方法四：擂台赛（摩尔投票法）
+
+假设某个元素在数组中数量占绝对优势（大于半数），那么可以数组中元素依次上擂台：
+
+* 如果擂台上没有人，自己成为霸主，生命值为1
+* 如果擂台上有人，且和自己相同，则霸主生命值加1
+* 如果擂台上有人，且和自己不同，则霸主生命值减1（减少至0视为死亡）
+
+这种方法不限制其他数是否有重复，但是与本题相比本题其他数不会重复但是所寻找元素比严格大于半数少1次。
+
+怎么办呢？将数组分为第一个数和剩下其他数两部分：
+
+* 如果所找元素是第一个数，那么在剩下的数组中一定存在和这个数相同的数，相同则找到
+* 如果所找元素和第一个数不相等，那么所找元素在剩下的数组中出现次数大于半数，可以使用摩尔投票法
+
+**这种方法更适合其他元素也有相同的情况** ，用在此处略有牵强。
+
++ 时间复杂度$O(n)$
 + 空间复杂度$O(1)$
 
 ### AC代码
 
-#### C++错误示范
+#### C++
 
 ```cpp
-// 不可以这样写，因为这样可能会选取两个相同的下标
 class Solution {
 public:
     int repeatedNTimes(vector<int>& nums) {
-        srand(time(NULL));
-        int location;
-        do {
-            location = rand() % nums.size();
-        } while (nums[location] != nums[rand() % nums.size()]);
-        return nums[location];
+        if (nums[0] == nums[1]) {
+            return nums[0];
+        }
+        int now = -1, hp = 0;
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] == nums[0]) {
+                return nums[0];
+            }
+            if (hp == 0) {
+                hp = 1;
+                now = nums[i];
+            } else if (now == nums[i]) {
+                hp++;  // 其实也可以直接return了
+            } else {
+                hp--;
+            }
+        }
+        return now;
     }
 };
 ```
 
-#### C++正确示范
+#### Python
+
+```python
+from typing import List
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        ans, hp = -1, 0
+        for t in nums[1:]:
+            if t == nums[0]:
+                return t
+            if not hp:
+                ans, hp = t, 1
+            elif ans == t:
+                hp += 1
+            else:
+                hp -= 1
+        return ans
+```
+
+#### GO
+
+```go
+package main
+
+func repeatedNTimes(nums []int) int {
+    ans, hp := -1, 0
+    for i := 1; i < len(nums); i++ {
+        if nums[i] == nums[0] {
+            return nums[0]
+        }
+        if hp == 0 {
+            ans, hp = nums[i], 1
+        } else if ans == nums[i] {
+            hp++
+        } else {
+            hp--
+        }
+    }
+    return ans
+}
+```
+
+#### Java
+
+```java
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        int ans = 0, hp = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[0]) {
+                return nums[0];
+            }
+            if (hp == 0) {
+                ans = nums[i];
+                hp = 1;
+            } else if (ans == nums[i]) {
+                hp++;
+            } else {
+                hp--;
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Rust
+
+```rust
+use std::collections::HashSet;
+
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        let mut ans: i32 = -1;
+        let mut hp: i32 = 0;
+        for i in 1..nums.len() {
+            if nums[i] == nums[0] {
+                return nums[0]
+            }
+            if hp == 0 {
+                ans = nums[i];
+                hp = 1;
+            } else if ans == nums[i] {
+                hp += 1;
+            } else {
+                hp -= 1;
+            }
+        }
+        ans
+    }
+}
+```
+
+## 解题方法五(trick)：随机
+
+每次随机选取两个元素，直到选到两个相等的元素为止。
+
+这种方法看似很盲目，其实效率很高，所选两元素相同的概率为$\frac{n}{2n}\times \frac{n-1}{2n}\approx \frac{1}{4}$，平均4次随机选择就能找到答案，因此期望时间复杂度为$O(1)$。
+
+> 为什么是$\frac{n}{2n}\times \frac{n-1}{2n}$呢？因为是全随机，第一次在$2n$个数字里面有$n$个可选，第二次还是在$2n$个数字里面有$n-1$个可选。
+
++ 时间复杂度$O(n)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
 
 ```cpp
 class Solution {
+private:
+    inline static mt19937 gen = mt19937(random_device{}());
+    inline static uniform_int_distribution<> dis;
 public:
     int repeatedNTimes(vector<int>& nums) {
-        srand(time(NULL));
+        dis.param(uniform_int_distribution<>::param_type(0, nums.size() - 1));
         int loc1, loc2;
         do {
-            loc1 = rand() % nums.size();
-            loc2 = rand() % nums.size();
-        } while (nums[loc1] != nums[loc2]);
+            loc1 = dis(gen);
+            loc2 = dis(gen);
+        } while (loc1 == loc2 || nums[loc1] != nums[loc2]);
         return nums[loc1];
     }
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/05/21/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/124897591](https://letmefly.blog.csdn.net/article/details/124897591)
+#### Python
+
+```python
+from typing import List
+from random import randint
+
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        n = len(nums) - 1
+        while True:
+            loc1 = randint(0, n)
+            loc2 = randint(0, n)
+            # print(loc1, loc2)
+            if loc1 != loc2 and nums[loc1] == nums[loc2]:
+                return nums[loc1]
+```
+
+#### Python.TLE
+
+注意python random.randint包含左右区间端点，而random.randrange不包含右端点，所以下面代码在`[1, 2, 3, 3]`这种时候会因为永远无法随机到`3`而超时：
+
+```python
+from typing import List
+from random import randrange
+
+# THIS CANNOT ACCESS
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        n = len(nums) - 1
+        while True:
+            loc1 = randrange(0, n)
+            loc2 = randrange(0, n)
+            if loc1 != loc2 and nums[loc1] == nums[loc2]:
+                return nums[loc1]
+```
+
+#### Go
+
+```go
+package main
+
+import "math/rand"
+
+func repeatedNTimes(nums []int) int {
+    n := len(nums)
+    for true {
+        l1 := rand.Intn(n)
+        l2 := rand.Intn(n)
+        if l1 != l2 && nums[l1] == nums[l2] {
+            return nums[l1]
+        }
+    }
+    return -1  // FAKE RETURN
+}
+```
+
+#### Java
+
+```java
+import java.util.Random;
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        Random random = new Random();
+        int n = nums.length;
+        while (true) {
+            int l1 = random.nextInt(n);
+            int l2 = random.nextInt(n);
+            if (l1 != l2 && nums[l1] == nums[l2]) {
+                return nums[l1];
+            }
+        }
+    }
+}
+```
+
+#### Rust
+
+```rust
+use rand::Rng;
+
+impl Solution {
+    pub fn repeated_n_times(mut nums: Vec<i32>) -> i32 {
+        let mut rng = rand::thread_rng();  // 一定要为mut
+        let n= nums.len();
+        loop {
+            let l1 = rng.gen_range(0..n);
+            let l2 = rng.gen_range(0..n);
+            if l1 != l2 && nums[l1] == nums[l2] {
+                return nums[l1];
+            }
+        }
+    }
+}
+```
+
+# End
+
+<center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156519064)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/02/LeetCode%200961.%E5%9C%A8%E9%95%BF%E5%BA%A62N%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%AD%E6%89%BE%E5%87%BA%E9%87%8D%E5%A4%8DN%E6%AC%A1%E7%9A%84%E5%85%83%E7%B4%A0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
