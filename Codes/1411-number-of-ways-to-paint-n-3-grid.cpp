@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-03 21:06:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-03 21:23:03
+ * @LastEditTime: 2026-01-03 21:29:33
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -27,6 +27,9 @@ private:
     }
 
     bool isOk(int a, int b) {
+        if (a > b) {
+            swap(a, b);
+        }
         int key = a * 27 + b;
         if (okCache.count(key)) {
             return okCache[key];
@@ -59,6 +62,7 @@ private:
     }
 public:
     int numOfWays(int n) {
+        init();
         long long a[27] = {0};
         long long b[27] = {0};
         for (int t : okList) {
@@ -76,7 +80,7 @@ public:
             swap(a, b);
             memset(b, 0, sizeof(b));
         }
-        return *max_element(a, a + 27);
+        return accumulate(a, a + 27, 0ll) % MOD;
     }
 };
 
