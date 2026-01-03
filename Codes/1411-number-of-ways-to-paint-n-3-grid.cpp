@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-03 21:06:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-03 21:18:06
+ * @LastEditTime: 2026-01-03 21:23:03
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -42,7 +42,7 @@ private:
         return okCache[key] = a1 != b1 && a2 != b2 && a3 != b3;
     }
 
-    bool init() {
+    void init() {
         static bool first = true;
         if (!first) {
             return;
@@ -79,3 +79,6 @@ public:
         return *max_element(a, a + 27);
     }
 };
+
+vector<int> Solution::okList;
+unordered_map<int, bool> Solution::okCache;
