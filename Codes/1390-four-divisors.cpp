@@ -1,7 +1,13 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2026-01-04 13:32:09
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-01-04 18:42:03
+ */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
-
+// THIS CANNOT BE ACCEPTED
 class Solution {
 private:
     static unordered_map<int, pair<int, int>> cache;
@@ -50,3 +56,19 @@ public:
 };
 
 unordered_map<int, pair<int, int>> Solution::cache;
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[21,4,7]
+[16]
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<int> v = stringToVector(s);
+        Solution sol;
+        cout << sol.sumFourDivisors(v) << endl;
+    }
+    return 0;
+}
+#endif
