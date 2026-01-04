@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划) | Tisfy的LeetCode题解等博客</title><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划)</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-01-03T13:46:12.000Z" id="date"> 2026-01-03</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1411-给-N-x-3-网格图涂色的方案数：递推-原地滚动-动态规划"><a href="#【LetMeFly】1411-给-N-x-3-网格图涂色的方案数：递推-原地滚动-动态规划" class="headerlink" title="【LetMeFly】1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划)"></a>【LetMeFly】1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-ways-to-paint-n-3-grid/">https://leetcode.cn/problems/number-of-ways-to-paint-n-3-grid/</a></p>
+<p>你有一个 <code>n x 3</code>&nbsp;的网格图 <code>grid</code>&nbsp;，你需要用 <strong>红，黄，绿</strong>&nbsp;三种颜色之一给每一个格子上色，且确保相邻格子颜色不同（也就是有相同水平边或者垂直边的格子颜色不同）。</p>
+
+<p>给你网格图的行数 <code>n</code>&nbsp;。</p>
+
+<p>请你返回给&nbsp;<code>grid</code>&nbsp;涂色的方案数。由于答案可能会非常大，请你返回答案对&nbsp;<code>10^9 + 7</code>&nbsp;取余的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 1
+<strong>输出：</strong>12
+<strong>解释：</strong>总共有 12 种可行的方法：
+<img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/04/12/e1.png" style="height: 289px; width: 450px;">
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 2
+<strong>输出：</strong>54
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 3
+<strong>输出：</strong>246
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>n = 7
+<strong>输出：</strong>106494
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>n = 5000
+<strong>输出：</strong>30228214
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>n == grid.length</code></li>
+	<li><code>grid[i].length == 3</code></li>
+	<li><code>1 &lt;= n &lt;= 5000</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：动态规划"><a href="#解题方法：动态规划" class="headerlink" title="解题方法：动态规划"></a>解题方法：动态规划</h2><p><strong>一层3个方块有多少种涂色方式？</strong></p>
+<p>$3\times3\times3&#x3D;27$种。</p>
+<p><strong>对于一层，如何判断某种涂色方式是否有效？</strong></p>
+<p>第一块颜色不等于第二块，且第二块颜色不等于第三块即可。</p>
+<p>共有$3\times2\times2$共计$12$种有效涂色方式。</p>
+<p><strong>对于各自有效的两层，如何判断是否可以相邻？</strong></p>
+<p>两层的第一列颜色不同，两层的第二列颜色不同，两层的第三列颜色不同即可。</p>
+<p><strong>n层共有多少种有效方式？</strong></p>
+<p>使用长度为27的数组记录到当前层为止，每种方案的总计涂色方法数。</p>
+<p>假设上一层涂色方案$a$和这一层的涂色方案$b$可以相邻，那么就将上一层方案$a$的总计涂色方法数累加到这一层的方案$b$中。</p>
+<p><strong>优化方案？</strong></p>
+<p>其实单层的有效方案有哪些、相邻两层哪种相邻方案有效，都可以只计算一次，然后存下来，后续测试用例继续使用曾经计算出的结果。</p>
+<ul>
+<li>时间复杂度：$O(nC^2)$其中$C&#x3D;12$是单层合法方案数。</li>
+<li>空间复杂度$O(C)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-01-03 21:29:33</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">long</span> <span class="type">long</span> MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">    <span class="type">static</span> vector&lt;<span class="type">int</span>&gt; okList;</span><br><span class="line">    <span class="type">static</span> unordered_map&lt;<span class="type">int</span>, <span class="type">bool</span>&gt; okCache;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getFirst</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n % <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getSecond</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n / <span class="number">3</span> % <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">getThird</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n / <span class="number">9</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isOk</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a &gt; b) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(a, b);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> key = a * <span class="number">27</span> + b;</span><br><span class="line">        <span class="keyword">if</span> (okCache.<span class="built_in">count</span>(key)) &#123;</span><br><span class="line">            <span class="keyword">return</span> okCache[key];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> a1 = <span class="built_in">getFirst</span>(a);</span><br><span class="line">        <span class="type">int</span> a2 = <span class="built_in">getSecond</span>(a);</span><br><span class="line">        <span class="type">int</span> a3 = <span class="built_in">getThird</span>(a);</span><br><span class="line">        <span class="type">int</span> b1 = <span class="built_in">getFirst</span>(b);</span><br><span class="line">        <span class="type">int</span> b2 = <span class="built_in">getSecond</span>(b);</span><br><span class="line">        <span class="type">int</span> b3 = <span class="built_in">getThird</span>(b);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> okCache[key] = a1 != b1 &amp;&amp; a2 != b2 &amp;&amp; a3 != b3;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="type">static</span> <span class="type">bool</span> first = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (!first) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        first = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">27</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> first = <span class="built_in">getFirst</span>(i);</span><br><span class="line">            <span class="type">int</span> second = <span class="built_in">getSecond</span>(i);</span><br><span class="line">            <span class="type">int</span> third = <span class="built_in">getThird</span>(i);</span><br><span class="line">            <span class="keyword">if</span> (first != second &amp;&amp; second != third) &#123;</span><br><span class="line">                okList.<span class="built_in">push_back</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numOfWays</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">init</span>();</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> a[<span class="number">27</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> b[<span class="number">27</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> t : okList) &#123;</span><br><span class="line">            a[t] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (--n) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> first : okList) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> second : okList) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="built_in">isOk</span>(first, second)) &#123;</span><br><span class="line">                        b[second] = (b[second] + a[first]) % MOD;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">swap</span>(a, b);</span><br><span class="line">            <span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="built_in">sizeof</span>(b));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">accumulate</span>(a, a + <span class="number">27</span>, <span class="number">0ll</span>) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; Solution::okList;</span><br><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">bool</span>&gt; Solution::okCache;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/156545186">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/01/03/LeetCode%201411.%E7%BB%99Nx3%E7%BD%91%E6%A0%BC%E5%9B%BE%E6%B6%82%E8%89%B2%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911411-%E7%BB%99-N-x-3-%E7%BD%91%E6%A0%BC%E5%9B%BE%E6%B6%82%E8%89%B2%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0%EF%BC%9A%E9%80%92%E6%8E%A8-%E5%8E%9F%E5%9C%B0%E6%BB%9A%E5%8A%A8-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
