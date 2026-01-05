@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-05 13:31:38
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-05 13:33:53
+ * @LastEditTime: 2026-01-05 13:36:25
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -18,7 +18,7 @@ public:
         for (vector<int>& row : matrix) {
             for (int t : row) {
                 ans += abs(t);
-                if (t < 0) {
+                if (t <= 0) {
                     cntNeg++;
                     maxiumNeg = max(maxiumNeg, t);
                 }
@@ -30,3 +30,21 @@ public:
         return ans;
     }
 };
+
+/*
+[[-1,0,-1],[-2,1,3],[3,2,2]]
+
+-1 0 -1
+-2 1 3
+3  2 2
+*/
+
+/*
+[[2,9,3],[5,4,-4],[1,7,1]]
+
+2 9 3
+5 4 -4
+1 7 1
+
+34
+*/
