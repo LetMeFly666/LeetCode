@@ -87,7 +87,7 @@ typedef long long ll;
 class Solution {
 public:
     ll maxMatrixSum(vector<vector<int>>& matrix) {
-        int minium = 1000000;
+        int minimum = 1000000;
         int cntNeg = 0;
         ll ans = 0;
         for (vector<int>& row : matrix) {
@@ -96,11 +96,11 @@ public:
                 if (t < 0) {
                     cntNeg++;
                 }
-                minium = min(minium, abs(t));
+                minimum = min(minimum, abs(t));
             }
         }
         if (cntNeg % 2) {
-            ans -= minium * 2;
+            ans -= minimum * 2;
         }
         return ans;
     }
