@@ -3,6 +3,7 @@ title: 1975.最大方阵和：脑筋急转弯
 date: 2026-01-05 18:46:34
 tags: [题解, LeetCode, 中等, 贪心, 数组, 矩阵, 脑筋急转弯]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2021/07/16/pc79-q2ex1.png
 ---
 
 # 【LetMeFly】1975.最大方阵和：脑筋急转弯
