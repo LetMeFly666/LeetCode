@@ -2,48 +2,33 @@
  * @Author: LetMeFly
  * @Date: 2026-01-04 13:32:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-04 18:42:03
+ * @LastEditTime: 2026-01-04 18:51:38
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
-// THIS CANNOT BE ACCEPTED
+
 class Solution {
 private:
-    static unordered_map<int, pair<int, int>> cache;
-
-    pair<int, int> genWithTime(int n) {
-        if (cache.count(n)) {
-            return cache[n];
-        }
-        int k = sqrt(n);
-        for (int i = 2; i <= k; i++) {
-            if (n % i == 0) {
-                auto[remainNum, remainSum] = genWithTime(n / i);
-                return cache[n] = {remainNum + 1, remainSum + i};
-            }
-        }
-        return cache[n] = {1, n};
-    }
+    static unordered_map<int, int> cache;
 
     int gen(int n) {
         if (cache.count(n)) {
-            auto[num, sum] = cache[n];
-            return num == 4 ? sum : 0;
+            return cache[n];
         }
+
+        int cnt = 0, sum = 0;
         int k = sqrt(n);
-        for (int i = 2; i <= k; i++) {
+        for (int i = 1; i <= k; i++) {
             if (n % i == 0) {
-                auto[remainNum, remainSum] = genWithTime(n / i);
-                if (remainNum == 3) {
-                    cache[n] = {4, i + remainSum};
-                    return i + remainSum;
-                }
-                break;
+                cnt += 2;
+                sum += i + n / i;
             }
         }
-        cache[n] = {4, 0};
-        return 0;
+        if (k * k == n) {
+            cnt--, sum -= k;
+        }
+        return cache[n] = cnt == 4 ? sum : 0;
     }
 public:
     int sumFourDivisors(vector<int>& nums) {
@@ -55,12 +40,14 @@ public:
     }
 };
 
-unordered_map<int, pair<int, int>> Solution::cache;
+unordered_map<int, int> Solution::cache;
 
 #if defined(_WIN32) || defined(__APPLE__)
 /*
 [21,4,7]
 [16]
+[1,2,3,4,5,6,7,8,9,10]
+45
 */
 int main() {
     string s;
