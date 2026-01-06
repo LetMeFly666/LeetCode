@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2025-12-25 22:08:40
+LastEditTime: 2026-01-06 10:39:44
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -100,6 +100,10 @@ for code2gen in CODES_TO_GEN:
     elif code2gen == 'python3':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
+            if needsImportTyping(content, 'Optional'):  # 这样得ast两次，算了无所谓了暂时
+                f.seek(0)
+                header = 'from typing import Optional\n\n'
+                f.write(header + content)
             if needsImportTyping(content):
                 f.seek(0)
                 header = 'from typing import List\n\n'

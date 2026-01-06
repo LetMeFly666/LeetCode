@@ -1721,6 +1721,8 @@ categories: [自用]
 |attorney|n. 律师；代理人|
 |||
 |thumbtack|n. 图钉|
+|||
+|demolish|v. 破坏，拆除|
 
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
