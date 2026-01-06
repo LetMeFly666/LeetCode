@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-06 10:19:17
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-06 10:50:12
+ * @LastEditTime: 2026-01-06 10:54:39
  */
 import java.util.Deque;
 import java.util.ArrayDeque;
@@ -22,7 +22,6 @@ import java.util.ArrayDeque;
  *     }
  * }
  */
-// THIS CANNOT BE ACCEPTED
 class Solution {
     public int maxLevelSum(TreeNode root) {
         int ans = 0, maximum = -1000000000;
@@ -34,11 +33,11 @@ class Solution {
             int layerSum = 0;
             for (int i = q.size(); i > 0; i--) {
                 TreeNode node = q.poll();
-                layerNum += node.val;
-                if (node.left) {
+                layerSum += node.val;
+                if (node.left != null) {
                     q.offer(node.left);
                 }
-                if (node.right) {
+                if (node.right != null) {
                     q.offer(node.right);
                 }
             }

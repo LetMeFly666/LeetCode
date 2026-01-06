@@ -1003,6 +1003,50 @@ censys扫描全球所有IP并记录ip与域名直接的关系，并且扫描速�
 
 参考链接：[dmesg.app](https://dmesg.app/cloudlare-real-ip.html)、[blog.gezi.men](https://blog.gezi.men/p/after-using-cloudflare-cdn-how-can-nginx-obtain-the-real-ip-address-of-website-visitors/)、[CSDN](https://blog.csdn.net/dragonballs/article/details/126345175)
 
+### certbot自动颁发TLS证书
+
+Let's Encrypt提供免费的TLS证书以辅助站长实现https上网。
+
+以CentOS为例：
+
+**安装certbot**
+
+```bash
+dnf install -y epel-release
+dnf install -y certbot python3-certbot-nginx
+# certbot --version
+```
+
+**certbot安装证书**
+
+一行命令搞定，从域名归属权认定到nginx.conf修改均自动完成
+
+```bash
+certbot --nginx -d nextcloud.letmefly.xyz
+```
+
+首次要输入email。
+
+**管理证书列表**
+
+```bash
+# 所有证书
+certbot certificates
+# 删除某证书
+certbot delete --cert-name example.com
+```
+
+**续期**
+
+```bash
+# 测试
+certbot renew --dry-run
+# 只有块过期的才会续期
+certbot renew
+# 强制续期（不推荐生成）
+certbot renew --force-renewal
+```
+
 ## About API
 
 ### bilibili API
