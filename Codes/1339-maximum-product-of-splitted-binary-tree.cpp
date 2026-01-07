@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-07 21:29:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-07 21:42:23
+ * @LastEditTime: 2026-01-07 21:48:32
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,14 +26,14 @@ private:
         int leftSum = 0, rightSum = 0;
         cnt += root->val;
         if (root->left) {
-            leftSum = dfs(root->left, cnt);
+            leftSum = dfs(root->left, cnt);  // 错误原因：这里应该传dfs(root->left, cnt+rightSum)，所以无法一次遍历实现
         }
         if (root->right) {
             rightSum = dfs(root->right, cnt);
         }
         ans = max(ans, (cnt + leftSum) * rightSum);
         ans = max(ans, (cnt + rightSum) * leftSum);
-        // printf("root->val = %d, cnt = %d, leftSum = %d, rightSum = %d\n", root->val, cnt, leftSum, rightSum);
+        printf("root->val = %d, cnt = %d, leftSum = %d, rightSum = %d\n", root->val, cnt, leftSum, rightSum);
         return root->val + leftSum + rightSum;
     }
 public:
