@@ -1067,7 +1067,7 @@ certbot delete --cert-name example.com
 certbot renew --dry-run
 # 只有快过期的才会续期
 certbot renew
-# 强制续期（不推荐生成）
+# 强制续期（不推荐频繁生成）
 certbot renew --force-renewal
 ```
 
