@@ -479,6 +479,30 @@ MAILTO=""
 
 如果想只针对某些特定任务设置不sendmail也可以修改crontab的命令并加上`> /dev/null 2>&1`。
 
+### Linux通过挂载实现“创建文件夹的只读视图”
+
+假设我Linux服务器上有一个文件夹如`/xx/xx/x/很深的路径/x/xx/sync/Codes`，这个文件夹会自动同步代码，我有两个需求：
+
+1. Linux服务器是被动同步代码的地方，不是主动修改代码的地方，只负责编译代码并运行，尽量不要不小心改到代码
+2. 默认的同步路径太深了，且为同步路径，不适合作为程序的执行路径
+
+所以有没有办法在`/xx/Codes`创建一个文件夹“只读视图”呢？
+
+> 在`/xx/Codes`文件夹下，所有文件和`/xx/xx/x/很深的路径/x/xx/sync/Codes`相同，同步脚本对`/xx/xx/x/很深的路径/x/xx/sync/Codes`的修改也会作用到`/xx/Codes`上，且`/xx/Codes`文件夹中的内容没有写入权限，只能读取。
+
+试试挂载吧！只需要执行：
+
+```bash
+mount --bind /xx/xx/x/很深的路径/x/xx/sync/Codes /xx/Codes
+mount -o remount,ro,bind /xx/Codes
+```
+
+就可以了。
+
+第一条命令是在“绑定挂载”，第二条命令是在“重新挂载已绑定的`/xx/Codes`目录，并修改其挂载属性为只读”。
+
+这样源文件夹`/xx/xx/x/很深的路径/x/xx/sync/Codes`属性不变，可被同步脚本正常读写；目标文件夹`/xx/Codes`内的所有文件都只读，因为这是一个`Read-only file system`。
+
 ## About Mac
 
 ### SMB协议时不生成.DS_Store
@@ -1002,6 +1026,50 @@ censys扫描全球所有IP并记录ip与域名直接的关系，并且扫描速�
     其中```set_real_ip_from```的数据可以由```https://www.cloudflare.com/ips-v4```和[v6版本](https://www.cloudflare.com/ips-v6)获得。
 
 参考链接：[dmesg.app](https://dmesg.app/cloudlare-real-ip.html)、[blog.gezi.men](https://blog.gezi.men/p/after-using-cloudflare-cdn-how-can-nginx-obtain-the-real-ip-address-of-website-visitors/)、[CSDN](https://blog.csdn.net/dragonballs/article/details/126345175)
+
+### certbot自动颁发TLS证书
+
+Let's Encrypt提供免费的TLS证书以辅助站长实现https上网。
+
+以CentOS为例：
+
+**安装certbot**
+
+```bash
+dnf install -y epel-release
+dnf install -y certbot python3-certbot-nginx
+# certbot --version
+```
+
+**certbot安装证书**
+
+一行命令搞定，从域名归属权认定到nginx.conf修改均自动完成
+
+```bash
+certbot --nginx -d nextcloud.letmefly.xyz
+```
+
+首次要输入email。
+
+**管理证书列表**
+
+```bash
+# 所有证书
+certbot certificates
+# 删除某证书
+certbot delete --cert-name example.com
+```
+
+**续期**
+
+```bash
+# 测试
+certbot renew --dry-run
+# 只有快过期的才会续期
+certbot renew
+# 强制续期（不推荐频繁生成）
+certbot renew --force-renewal
+```
 
 ## About API
 
