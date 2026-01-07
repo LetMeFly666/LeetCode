@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-07 21:29:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-07 21:48:32
+ * @LastEditTime: 2026-01-07 21:52:59
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,27 +19,29 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+typedef long long ll;
 class Solution {
 private:
-    int ans;
-    int dfs(TreeNode* root, int cnt = 0) {
+    vector<int> subTreeSum;
+    int dfs(TreeNode* root) {
         int leftSum = 0, rightSum = 0;
-        cnt += root->val;
         if (root->left) {
-            leftSum = dfs(root->left, cnt);  // 错误原因：这里应该传dfs(root->left, cnt+rightSum)，所以无法一次遍历实现
+            leftSum = dfs(root->left);
+            subTreeSum.push_back(leftSum);
         }
         if (root->right) {
-            rightSum = dfs(root->right, cnt);
+            rightSum = dfs(root->right);
+            subTreeSum.push_back(rightSum);
         }
-        ans = max(ans, (cnt + leftSum) * rightSum);
-        ans = max(ans, (cnt + rightSum) * leftSum);
-        printf("root->val = %d, cnt = %d, leftSum = %d, rightSum = %d\n", root->val, cnt, leftSum, rightSum);
         return root->val + leftSum + rightSum;
     }
 public:
     int maxProduct(TreeNode* root) {
-        ans = 0;
-        dfs(root);
-        return ans;
+        int totalSum = dfs(root);
+        ll ans = 0;
+        for (int t : subTreeSum) {
+            ans = max(ans, (ll)t * (totalSum - t));
+        }
+        return ans % 1000000007;
     }
 };
