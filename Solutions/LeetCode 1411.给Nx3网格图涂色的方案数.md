@@ -3,7 +3,7 @@ title: 1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态�
 date: 2026-01-03 21:46:12
 tags: [题解, LeetCode, 困难, 动态规划, DP]
 categories: [题解, LeetCode]
-index_img: https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/04/12/e1.png
+index_img: https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/04/12/e1.png
 ---
 
 # 【LetMeFly】1411.给 N x 3 网格图涂色的方案数：递推+原地滚动(动态规划)
@@ -23,7 +23,7 @@ index_img: https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/04/12/e1
 <pre><strong>输入：</strong>n = 1
 <strong>输出：</strong>12
 <strong>解释：</strong>总共有 12 种可行的方法：
-<img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/04/12/e1.png" style="height: 289px; width: 450px;">
+<img alt="" src="https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/04/12/e1.png" style="height: 289px; width: 450px;">
 </pre>
 
 <p><strong>示例 2：</strong></p>
