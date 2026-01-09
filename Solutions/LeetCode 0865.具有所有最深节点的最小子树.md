@@ -1,11 +1,11 @@
 ---
-title: 865.具有所有最深节点的最小子树：深度优先搜索（一次DFS）
+title: 865.具有所有最深节点的最小子树：深度优先搜索（一次DFS + Python5行）
 date: 2026-01-09 21:00:40
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树, 树]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】865.具有所有最深节点的最小子树：深度优先搜索（一次DFS）
+# 【LetMeFly】865.具有所有最深节点的最小子树：深度优先搜索（一次DFS + Python5行）
 
 力扣题目链接：[https://leetcode.cn/problems/smallest-subtree-with-all-the-deepest-nodes/](https://leetcode.cn/problems/smallest-subtree-with-all-the-deepest-nodes/)
 
@@ -64,10 +64,25 @@ categories: [题解, LeetCode]
     
 ## 解题方法：DFS
 
-思考在深度优先搜索过程中，搜索到节点`node`时，哪些情况下哪些节点会是以`node`为根的子树的答案。
+思考对于根节点`root`，答案是什么：
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 如果左子树比右子树深，说明答案一定在左子树上
++ 如果右子树比左子树深，说明答案一定在右子树上
++ 如果左右子树一样深，说明`root`就是答案
+
+当左子树（假设为`left`节点）比右子树深时，答案是哪个呢？
+
+> 答案是以`left`为节点时“含所有最深节点最小子树”的答案。
+
+好一个天然递归。递归时候都需要什么？
+
+1. 树的深度
+2. 答案节点
+
+以上。
+
++ 时间复杂度$O(size(root))$
++ 空间复杂度$O(depth(root))$
 
 ### AC代码
 
@@ -75,25 +90,7 @@ categories: [题解, LeetCode]
 
 ```cpp
 /*
- * @Author: LetMeFly
- * @Date: 2026-01-09 13:11:16
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2026-01-09 13:19:41
- */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
  */
 typedef pair<TreeNode*, int> result;
 class Solution {
@@ -115,19 +112,9 @@ public:
 
 ```python
 '''
-Author: LetMeFly
-Date: 2026-01-09 20:55:06
-LastEditors: LetMeFly.xyz
 LastEditTime: 2026-01-09 20:58:21
 '''
 from typing import Optional, Tuple
-
-# # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 
 empty_result = (None, 0)
 
@@ -141,6 +128,6 @@ class Solution:
         return self.dfs(root)[0]
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/09/LeetCode%200865.%E5%85%B7%E6%9C%89%E6%89%80%E6%9C%89%E6%9C%80%E6%B7%B1%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E6%A0%91/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156773047)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/09/LeetCode%200865.%E5%85%B7%E6%9C%89%E6%89%80%E6%9C%89%E6%9C%80%E6%B7%B1%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E6%A0%91/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
