@@ -3,6 +3,7 @@ title: 865.具有所有最深节点的最小子树：深度优先搜索（一次
 date: 2026-01-09 21:00:40
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, DFS, 二叉树, 树]
 categories: [题解, LeetCode]
+index_img: https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/01/sketch1.png
 ---
 
 # 【LetMeFly】865.具有所有最深节点的最小子树：深度优先搜索（一次DFS + Python5行）
