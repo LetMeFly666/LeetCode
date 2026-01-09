@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-09 13:11:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-09 13:13:17
+ * @LastEditTime: 2026-01-09 13:19:41
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,21 +19,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+typedef pair<TreeNode*, int> result;
 class Solution {
 private:
-    TreeNode* ans;
-    
-    int dfs(TreeNode* root) {
-        int left = root->left ? dfs(root->left) : 0;
-        int right = root->right ? dfs(root->right) : 0;
-        if (left == right) {
-            ans = root;
-        }
-        return max(left, right) + 1;
+    result dfs(TreeNode* root) {
+        result left = root->left ? dfs(root->left) : result{nullptr, 0};
+        result right = root->right ? dfs(root->right) : result{nullptr, 0};
+        TreeNode* node = left.second == right.second ? root : (left.second > right.second ? left.first : right.first);
+        return {node, max(left.second, right.second) + 1};
     }
 public:
     TreeNode* subtreeWithAllDeepest(TreeNode* root) {
-        dfs(root);
-        return ans;
+        return dfs(root).first;
     }
 };
