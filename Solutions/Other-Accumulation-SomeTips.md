@@ -307,6 +307,20 @@ action的.yml一定要放到目录`.github/workflows`下！不能放在子目录
 
 见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
 
+### canonical
+
+canonical 就是告诉搜索引擎：“这些页面看起来不一样，但你把它们当成同一个页面就行，正主是这个。”
+
+同一篇内容有不同url可能会导致搜索引擎：
+
+* 权重被分散
+* 可能被认为是「重复内容」
+* SEO 变差
+
+```html
+<link rel="canonical" href="https://blog.letmefly.xyz/post/123">
+```
+
 ## About Linux
 
 ### Ubuntu防火墙
