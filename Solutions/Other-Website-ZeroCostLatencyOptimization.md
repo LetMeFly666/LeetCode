@@ -1,12 +1,12 @@
 ---
-title: 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程
+title: 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流
 title_en: "Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds"
 date: 2026-01-10 09:53:54
 tags: [其他, Website, 建站, 服务器, Linux, Nginx, DNS, Cloudflare]
 categories: [技术思考]
 ---
 
-# 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程
+# 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流
 
 > * Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds
 > * From 30 Seconds to 300 Milliseconds: Zero-Cost Website Performance Optimization
@@ -64,7 +64,13 @@ for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransf
 
 ## Geo-DNS分流
 
+既然知道了网络开销的巨大头主要来自HTTP的跨境行为，所以让国内用户访问我的国内服务器，国外用户访问国外Github Pages（纯静态页面）不就好了么，具体访问的哪个IP对用户是无感的，且一个域名就能实现。
 
+由于主域名[`letmefly.xyz`](https://letmefly.xyz)托管在cloudflare上且仍有其用，而cloudflare的GeoDNS成本大约每个月几十美元(未详细统计确认)，比小服务器贵很多，所以决定将`blog.letmefly.xyz`子域托管到免费的阿里云DNS服务上。（腾讯云DNS也有类似免费服务，但由于该域名购买自阿里云，所以选择了托管在阿里云上）
+
+### blog.letmefly.xyz子域托管
+
+在cloudflare控制面板修改blog.letmefly.xyz的DNS记录为`NS`
 
 ## 结果
 
