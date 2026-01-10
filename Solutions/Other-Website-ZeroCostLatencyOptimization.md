@@ -21,7 +21,7 @@ categories: [技术思考]
 >
 > 沃尔玛发现，页面加载时间每减少 1 秒，转化数就会增加 2％...
 
-最终，从每次访问“快则好几秒平均十来秒慢则好几十秒”到“粗略统计全球访问平均几百毫秒”的性能优化，并且几乎没有修改代码。
+**最终，从每次访问“快则好几秒平均十来秒慢则好几十秒”到“粗略统计全球访问平均几百毫秒”的性能优化，并且几乎没有修改代码。**（理想状态平均几十毫秒）
 
 ## 耗时原因分析
 
@@ -62,8 +62,13 @@ for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransf
 
 第二列和第三列几乎相同，说明服务端数据处理非常迅速，耗时几乎为0，而整个网络开销几乎均耗时在网络传输上（服务器--cloudflare--服务器），然后就有了第三列这灾难级别的耗时。
 
+## Geo-DNS分流
 
-## 
+
+
+## 结果
+
+### 国内
 
 在服务器上执行`for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransfer} %{time_total}\n" https://nextcloud.letmefly.xyz; done`，结果：
 
@@ -99,9 +104,24 @@ for i in {1..20}; do curl -o /dev/null -s --resolve nextcloud.letmefly.xyz:443:3
 tcpdump -i eth0 host 39.105.42.186 and port 443
 ```
 
+并另外启动一个窗口抓包：
+
+```bash
+tcpdump -i eth0 host 39.105.42.186 and port 443
+```
+
+可以看到：
+
+```bash
+tisfy.https → 39.105.42.186.38608
+39.105.42.186.38608 → tisfy.https
+```
+
+说明走了公网。
+
 诶，还是很快。
 
-直接使用另一台设备测试，不在服务器上测试了
+直接使用一台手中的设备测试，不在服务器上测试了
 
 ```
 0.030351 0.122197 0.122252
@@ -125,6 +145,117 @@ tcpdump -i eth0 host 39.105.42.186 and port 443
 0.013348 0.176619 0.176928
 0.014471 0.171316 0.171636
 ```
+
+这下没办法了，走的wifi连的服务器，还是很快。
+
+### 国外
+
+由于没有在国外的设备，所以临时写了个github action测下
+
+```yml
+name: Test blog.letmefly.xyz latency - 境外访问延迟测试
+
+on:
+   workflow_dispatch:
+
+jobs:
+  latency-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print debug info
+        run: |
+          echo "==== Debug Info ===="
+          echo "Runner hostname: $(hostname)"
+          echo "GitHub runner public IP:"
+          curl -s https://ifconfig.me || echo "Failed to get public IP"
+          echo "==================="
+
+      - name: Resolve target IP
+        id: resolve
+        run: |
+          TARGET=blog.letmefly.xyz
+          IP=$(dig +short $TARGET | head -n1)
+          echo "Target: $TARGET"
+          echo "Resolved IP: $IP"
+          echo "IP=$IP" >> $GITHUB_OUTPUT
+
+      - name: Test latency 20 times
+        run: |
+          TARGET=blog.letmefly.xyz
+          IP=${{ steps.resolve.outputs.IP }}
+          echo "time_connect time_starttransfer time_total"
+          
+          # 初始化累加器
+          sum_connect=0
+          sum_starttransfer=0
+          sum_total=0
+          
+          for i in {1..20}; do
+            # 取三个时间
+            read connect starttransfer total <<< $(curl -o /dev/null -s \
+                 --resolve $TARGET:443:$IP \
+                 -w "%{time_connect} %{time_starttransfer} %{time_total}" \
+                 https://$TARGET)
+                 
+            # 累加
+            sum_connect=$(echo "$sum_connect + $connect" | bc)
+            sum_starttransfer=$(echo "$sum_starttransfer + $starttransfer" | bc)
+            sum_total=$(echo "$sum_total + $total" | bc)
+            
+            # 输出
+            echo "$connect $starttransfer $total"
+          done
+          
+          # 计算平均
+          avg_connect=$(echo "scale=4; $sum_connect/20" | bc)
+          avg_starttransfer=$(echo "scale=4; $sum_starttransfer/20" | bc)
+          avg_total=$(echo "scale=4; $sum_total/20" | bc)
+          
+          echo "AVERAGE $avg_connect $avg_starttransfer $avg_total"
+```
+
+Github上测Github Pages似乎有点小作弊(bushi)，但没办法了。
+
+```
+Runner hostname: runnervmi13qx
+GitHub runner public IP:
+172.212.165.69
+
+Target: blog.letmefly.xyz
+Resolved IP: 185.199.110.153
+
+time_connect time_starttransfer time_total
+0.013474 0.096664 0.101290
+0.011528 0.091032 0.095257
+0.012259 0.053301 0.058006
+0.011481 0.049095 0.053492
+0.009328 0.046950 0.050534
+0.008894 0.042994 0.047134
+0.013758 0.056136 0.061113
+0.011655 0.059527 0.063557
+0.014356 0.054987 0.060360
+0.011576 0.049023 0.053552
+0.011710 0.049211 0.053547
+0.011660 0.048587 0.052985
+0.011670 0.057137 0.061753
+0.008896 0.045748 0.049883
+0.014311 0.053899 0.059477
+0.013615 0.053529 0.059438
+0.011551 0.049421 0.053476
+0.013896 0.060151 0.065085
+0.014129 0.090222 0.095611
+0.013318 0.052731 0.057438
+AVERAGE .0121 .0580 .0626
+```
+
+### 国内外
+
+也可以在[itdog](blog.letmefly.xyz)上测试国内外访问，网络质量及其不确定因素会增多，耗时结果稍高。
+
+但HTTP请求只要不经过墙墙，平均还是比较快的。
+
+国内外访问良民网站的DNS服务，也很快（并且还有缓存）
 
 ## End
 
