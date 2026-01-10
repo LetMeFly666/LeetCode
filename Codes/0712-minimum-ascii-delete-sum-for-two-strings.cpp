@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-10 09:12:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-10 09:18:03
+ * @LastEditTime: 2026-01-10 09:24:25
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -21,6 +21,29 @@ public:
                 }
             }
         }
-        return dp[n][m];
+        int total = 0;
+        for (char c : s1) {
+            total += c;
+        }
+        for (char c : s2) {
+            total += c;
+        }
+        return total - 2 * dp[n][m];
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+sea eat
+
+231
+*/
+int main() {
+    string a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.minimumDeleteSum(a, b) << endl;
+    }
+    return 0;
+}
+#endif
