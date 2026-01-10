@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流  Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds From 30 Seconds to 300 Milliseconds: Zero-Cost Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流">
+<meta property="og:url" content="https://blog.letmefly.xyz/2026/01/10/Other-Website-ZeroCostLatencyOptimization/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流  Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds From 30 Seconds to 300 Milliseconds: Zero-Cost Web">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-10T01:53:54.000Z">
+<meta property="article:modified_time" content="2026-01-10T15:54:57.682Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="Cloudflare">
+<meta property="article:tag" content="DNS">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Website">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="建站">
+<meta property="article:tag" content="服务器">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-10 09:53" pubdate>
+          2026年1月10日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          89 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="网站访问耗时优化-从数十秒到几百毫秒的“零成本”优化过程-阿里云子域GeoDNS国内外分流"><a href="#网站访问耗时优化-从数十秒到几百毫秒的“零成本”优化过程-阿里云子域GeoDNS国内外分流" class="headerlink" title="网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流"></a>网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流</h1><blockquote>
+<ul>
+<li>Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds</li>
+<li>From 30 Seconds to 300 Milliseconds: Zero-Cost Website Performance Optimization</li>
+</ul>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前为了保护我那台孱弱的小服务器的真实ip免受攻击，我将服务器的所有HTTP(s)服务限制为仅能通过域名访问，且把域名托管在了<strong>Cloudflare</strong>上开启了代理小云朵。</p>
+<p>就这样几年过去了，越来越觉得网站访问是真的慢（不管有没有特殊网络都很慢）。并且有👇，所以决定优化一手。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/">CloudFlare: 网站性能如何影响转化率</a></p>
+<p>沃尔玛发现，页面加载时间每减少 1 秒，转化数就会增加 2％…</p>
+</blockquote>
+<p><strong>最终，从每次访问“快则好几秒平均十来秒慢则好几十秒”到“粗略统计全球访问平均几百毫秒”的性能优化，并且几乎没有修改代码。</strong>（理想状态平均几十毫秒）</p>
+<h2 id="耗时原因分析"><a href="#耗时原因分析" class="headerlink" title="耗时原因分析"></a>耗时原因分析</h2><p>众所周知，正常情况下锅内外的网络传输都要不可避免地经过TheGreatWall，来保障国民的网络信息安全。</p>
+<p>为什么CDN服务器遍布全球的赛博菩萨Cloudflare在锅内会变成减速CDN呢？大概率是经过了上面的它↑。</p>
+<p>为了实锤一下，在服务器上执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1..20&#125;; <span class="hljs-keyword">do</span> curl -o /dev/null -s -w <span class="hljs-string">&quot;%&#123;time_connect&#125; %&#123;time_starttransfer&#125; %&#123;time_total&#125;\n&quot;</span> https://nextcloud.letmefly.xyz; <span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<p>得到结果20次请求的连接耗时、首字节返回耗时、总耗时：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">726453</span> <span class="hljs-number">4</span>.<span class="hljs-number">388203</span> <span class="hljs-number">4</span>.<span class="hljs-number">388237</span><br><span class="hljs-attribute">1</span>.<span class="hljs-number">346249</span> <span class="hljs-number">7</span>.<span class="hljs-number">263477</span> <span class="hljs-number">7</span>.<span class="hljs-number">263509</span><br><span class="hljs-attribute">2</span>.<span class="hljs-number">228933</span> <span class="hljs-number">10</span>.<span class="hljs-number">111719</span> <span class="hljs-number">10</span>.<span class="hljs-number">111752</span><br><span class="hljs-attribute">2</span>.<span class="hljs-number">660601</span> <span class="hljs-number">9</span>.<span class="hljs-number">483325</span> <span class="hljs-number">9</span>.<span class="hljs-number">483393</span><br><span class="hljs-attribute">1</span>.<span class="hljs-number">028620</span> <span class="hljs-number">3</span>.<span class="hljs-number">424524</span> <span class="hljs-number">3</span>.<span class="hljs-number">424555</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">795678</span> <span class="hljs-number">3</span>.<span class="hljs-number">197058</span> <span class="hljs-number">3</span>.<span class="hljs-number">197130</span><br><span class="hljs-attribute">1</span>.<span class="hljs-number">114911</span> <span class="hljs-number">3</span>.<span class="hljs-number">688075</span> <span class="hljs-number">3</span>.<span class="hljs-number">688237</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">697664</span> <span class="hljs-number">5</span>.<span class="hljs-number">477339</span> <span class="hljs-number">5</span>.<span class="hljs-number">477411</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">821841</span> <span class="hljs-number">26</span>.<span class="hljs-number">322082</span> <span class="hljs-number">26</span>.<span class="hljs-number">322112</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">916166</span> <span class="hljs-number">3</span>.<span class="hljs-number">698248</span> <span class="hljs-number">3</span>.<span class="hljs-number">698305</span><br><span class="hljs-attribute">1</span>.<span class="hljs-number">404712</span> <span class="hljs-number">4</span>.<span class="hljs-number">999771</span> <span class="hljs-number">4</span>.<span class="hljs-number">999802</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">772932</span> <span class="hljs-number">3</span>.<span class="hljs-number">323453</span> <span class="hljs-number">3</span>.<span class="hljs-number">323484</span><br><span class="hljs-attribute">2</span>.<span class="hljs-number">204168</span> <span class="hljs-number">5</span>.<span class="hljs-number">768386</span> <span class="hljs-number">5</span>.<span class="hljs-number">768476</span><br><span class="hljs-attribute">1</span>.<span class="hljs-number">264734</span> <span class="hljs-number">3</span>.<span class="hljs-number">941814</span> <span class="hljs-number">3</span>.<span class="hljs-number">941846</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">788361</span> <span class="hljs-number">6</span>.<span class="hljs-number">344063</span> <span class="hljs-number">6</span>.<span class="hljs-number">344097</span><br><span class="hljs-attribute">3</span>.<span class="hljs-number">425116</span> <span class="hljs-number">0</span>.<span class="hljs-number">000000</span> <span class="hljs-number">72</span>.<span class="hljs-number">185861</span><br><span class="hljs-attribute">2</span>.<span class="hljs-number">303902</span> <span class="hljs-number">9</span>.<span class="hljs-number">694897</span> <span class="hljs-number">9</span>.<span class="hljs-number">695196</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">919144</span> <span class="hljs-number">6</span>.<span class="hljs-number">506560</span> <span class="hljs-number">6</span>.<span class="hljs-number">506636</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">778423</span> <span class="hljs-number">4</span>.<span class="hljs-number">272682</span> <span class="hljs-number">4</span>.<span class="hljs-number">272722</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">527677</span> <span class="hljs-number">8</span>.<span class="hljs-number">258768</span> <span class="hljs-number">8</span>.<span class="hljs-number">258819</span><br></code></pre></td></tr></table></figure>
+
+<p>第二列和第三列几乎相同，说明服务端数据处理非常迅速，耗时几乎为0，而整个网络开销几乎均耗时在网络传输上（服务器–cloudflare–服务器），然后就有了第三列这灾难级别的耗时。</p>
+<h2 id="Geo-DNS分流"><a href="#Geo-DNS分流" class="headerlink" title="Geo-DNS分流"></a>Geo-DNS分流</h2><p>既然知道了网络开销的巨大头主要来自HTTP的跨境行为，所以让国内用户访问我的国内服务器，国外用户访问国外Github Pages（纯静态页面）不就好了么，具体访问的哪个IP对用户是无感的，且一个域名就能实现。</p>
+<p>由于主域名<a target="_blank" rel="noopener" href="https://letmefly.xyz/"><code>letmefly.xyz</code></a>托管在cloudflare上且仍有其用，而cloudflare的GeoDNS成本大约每个月几十美元(未详细统计确认)，比小服务器贵很多，所以决定将<code>blog.letmefly.xyz</code>子域托管到免费的阿里云DNS服务上。（腾讯云DNS也有类似免费服务，但由于该域名购买自阿里云，所以选择了托管在阿里云上）</p>
+<h3 id="blog-letmefly-xyz子域托管"><a href="#blog-letmefly-xyz子域托管" class="headerlink" title="blog.letmefly.xyz子域托管"></a>blog.letmefly.xyz子域托管</h3><p>在cloudflare控制面板修改<a href="https://blog.letmefly.xyz/">blog.letmefly.xyz</a>的DNS记录为<code>NS</code>，值为<code>ns1.alidns.com</code>，再新建一个<code>NS</code>值为<code>ns2.alidns.com</code>。</p>
+<p>在阿里云DNS解析控制台添加域名<code>blog.letmefly.xyz</code>，进行TXT校验（在cloudflare添加<code>alidnscheck.letmefly.xyz</code>的<code>TXT</code>类型的记录）。</p>
+<p>添加记录：</p>
+<table>
+<thead>
+<tr>
+<th>主机记录</th>
+<th>记录类型</th>
+<th>解析请求来源</th>
+<th>记录值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@</td>
+<td>AAAA</td>
+<td>境外</td>
+<td>2606:50c:0:8003::153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>AAAA</td>
+<td>境外</td>
+<td>2606:50c:0:8002::153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>AAAA</td>
+<td>境外</td>
+<td>2606:50c:0:8001::153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>AAAA</td>
+<td>境外</td>
+<td>2606:50c:0:8000::153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>境外</td>
+<td>185.199.111.153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>境外</td>
+<td>185.199.110.153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>境外</td>
+<td>185.199.109.153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>境外</td>
+<td>185.199.108.153</td>
+</tr>
+<tr>
+<td>@</td>
+<td>A</td>
+<td>中国地区</td>
+<td>39.105.42.186</td>
+</tr>
+</tbody></table>
+<p>前面8个是Github（<a target="_blank" rel="noopener" href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">官方文档</a>），最后一个是我的服务器。</p>
+<p>是的，就这么简单，完事了！</p>
+<h2 id="服务器拉取Github脚本"><a href="#服务器拉取Github脚本" class="headerlink" title="服务器拉取Github脚本"></a>服务器拉取Github脚本</h2><p>服务器上设计为：启动一个webhook listener，当github仓库website分支更新时向服务器发送通知，服务器拉取最新源码，并原子化链接整个目录到nginx配置的目录。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @LastEditTime: 2026-01-08 18:54:37</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> (<br>    <span class="hljs-string">&quot;crypto/hmac&quot;</span><br>    <span class="hljs-string">&quot;crypto/rand&quot;</span><br>    <span class="hljs-string">&quot;crypto/sha256&quot;</span><br>    <span class="hljs-string">&quot;encoding/hex&quot;</span><br>    <span class="hljs-string">&quot;encoding/json&quot;</span><br>    <span class="hljs-string">&quot;io&quot;</span><br>    <span class="hljs-string">&quot;log&quot;</span><br>    <span class="hljs-string">&quot;math/big&quot;</span><br>    <span class="hljs-string">&quot;net/http&quot;</span><br>    <span class="hljs-string">&quot;os&quot;</span><br>    <span class="hljs-string">&quot;os/exec&quot;</span><br>    <span class="hljs-string">&quot;path/filepath&quot;</span><br>    <span class="hljs-string">&quot;regexp&quot;</span><br>    <span class="hljs-string">&quot;strings&quot;</span><br>    <span class="hljs-string">&quot;time&quot;</span><br>)<br><br><span class="hljs-keyword">const</span> (<br>    listenAddr = <span class="hljs-string">&quot;127.0.0.1:1209&quot;</span><br>    secretFile = <span class="hljs-string">&quot;.secret&quot;</span><br>)<br><br><span class="hljs-keyword">type</span> RepoConfig <span class="hljs-keyword">struct</span> &#123;<br>    BaseDir   <span class="hljs-type">string</span><br>    RepoURL   <span class="hljs-type">string</span><br>    TargetRef <span class="hljs-type">string</span><br>    Branch    <span class="hljs-type">string</span><br>&#125;<br><br><span class="hljs-keyword">var</span> repos = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]RepoConfig&#123;<br>    <span class="hljs-string">&quot;/hook/github/leetcode&quot;</span>: &#123;<br>        BaseDir:   <span class="hljs-string">&quot;/www/blog&quot;</span>,<br>        RepoURL:   <span class="hljs-string">&quot;git@github.com:LetMeFly666/LeetCode.git&quot;</span>,<br>        TargetRef: <span class="hljs-string">&quot;refs/heads/website&quot;</span>,<br>        Branch:    <span class="hljs-string">&quot;website&quot;</span>,<br>    &#125;,<br>    <span class="hljs-string">&quot;/hook/github/various&quot;</span>: &#123;<br>        BaseDir:   <span class="hljs-string">&quot;/www/various&quot;</span>,<br>        RepoURL:   <span class="hljs-string">&quot;git@github.com:LetMeFly666/various.git&quot;</span>,<br>        TargetRef: <span class="hljs-string">&quot;refs/heads/master&quot;</span>,<br>        Branch:    <span class="hljs-string">&quot;master&quot;</span>,<br>    &#125;,<br>&#125;<br><br><span class="hljs-keyword">type</span> PushEvent <span class="hljs-keyword">struct</span> &#123;<br>    Ref <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;ref&quot;`</span><br>&#125;<br><br><span class="hljs-keyword">var</span> secret []<span class="hljs-type">byte</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">loadSecret</span><span class="hljs-params">()</span></span> &#123;<br>    data, err := os.ReadFile(secretFile)<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        log.Fatal(<span class="hljs-string">&quot;read secret failed:&quot;</span>, err)<br>    &#125;<br>    secret = []<span class="hljs-type">byte</span>(strings.TrimSpace(<span class="hljs-type">string</span>(data)))<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">verifySignature</span><span class="hljs-params">(body []<span class="hljs-type">byte</span>, signature <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>    mac := hmac.New(sha256.New, secret)<br>    mac.Write(body)<br>    expected := <span class="hljs-string">&quot;sha256=&quot;</span> + hex.EncodeToString(mac.Sum(<span class="hljs-literal">nil</span>))<br>    <span class="hljs-keyword">return</span> hmac.Equal([]<span class="hljs-type">byte</span>(signature), []<span class="hljs-type">byte</span>(expected))<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">handler</span><span class="hljs-params">(cfg RepoConfig)</span></span> http.HandlerFunc &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;<br>        body, _ := io.ReadAll(r.Body)<br><br>        sig := r.Header.Get(<span class="hljs-string">&quot;X-Hub-Signature-256&quot;</span>)<br>        <span class="hljs-keyword">if</span> !verifySignature(body, sig) &#123;<br>            http.Error(w, <span class="hljs-string">&quot;invalid signature&quot;</span>, http.StatusForbidden)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        <span class="hljs-keyword">var</span> event PushEvent<br>        <span class="hljs-keyword">if</span> err := json.Unmarshal(body, &amp;event); err != <span class="hljs-literal">nil</span> &#123;<br>            http.Error(w, <span class="hljs-string">&quot;bad payload&quot;</span>, http.StatusBadRequest)<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        <span class="hljs-keyword">if</span> event.Ref != cfg.TargetRef &#123;<br>            w.Write([]<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;ignored\n&quot;</span>))<br>            <span class="hljs-keyword">return</span><br>        &#125;<br><br>        w.Write([]<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;accepted\n&quot;</span>))<br><br>        <span class="hljs-keyword">go</span> deployWebsite(cfg)<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">randomSuffix</span><span class="hljs-params">()</span></span> <span class="hljs-type">string</span> &#123;<br>    n, _ := rand.Int(rand.Reader, big.NewInt(<span class="hljs-number">1_000_000</span>))<br>    <span class="hljs-keyword">return</span> n.String()<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deployWebsite</span><span class="hljs-params">(cfg RepoConfig)</span></span> &#123;<br>    ts := time.Now().Format(<span class="hljs-string">&quot;20060102_150405&quot;</span>)<br>    newDir := filepath.Join(cfg.BaseDir, <span class="hljs-string">&quot;website_&quot;</span>+ts+<span class="hljs-string">&quot;_&quot;</span>+randomSuffix())<br>    currentLink := filepath.Join(cfg.BaseDir, <span class="hljs-string">&quot;website&quot;</span>)<br><br>    <span class="hljs-keyword">if</span> err := os.MkdirAll(newDir, <span class="hljs-number">0755</span>); err != <span class="hljs-literal">nil</span> &#123;<br>        log.Println(<span class="hljs-string">&quot;mkdir failed:&quot;</span>, err)<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    cmd := exec.Command(<br>        <span class="hljs-string">&quot;git&quot;</span>, <span class="hljs-string">&quot;clone&quot;</span>,<br>        <span class="hljs-string">&quot;-b&quot;</span>, cfg.Branch,<br>        <span class="hljs-string">&quot;--depth=1&quot;</span>,<br>        cfg.RepoURL,<br>        newDir,<br>    )<br>    <span class="hljs-keyword">if</span> out, err := cmd.CombinedOutput(); err != <span class="hljs-literal">nil</span> &#123;<br>        log.Println(<span class="hljs-string">&quot;git clone failed:&quot;</span>, <span class="hljs-type">string</span>(out))<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    cmd = exec.Command(<span class="hljs-string">&quot;ln&quot;</span>, <span class="hljs-string">&quot;-sfn&quot;</span>, newDir, currentLink)<br>    <span class="hljs-keyword">if</span> out, err := cmd.CombinedOutput(); err != <span class="hljs-literal">nil</span> &#123;<br>        log.Println(<span class="hljs-string">&quot;ln -sfn failed:&quot;</span>, <span class="hljs-type">string</span>(out))<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    cleanupOldReleases(cfg.BaseDir, newDir)<br><br>    log.Println(<span class="hljs-string">&quot;deploy success:&quot;</span>, newDir)<br>&#125;<br><br><span class="hljs-keyword">var</span> releaseRegexp = regexp.MustCompile(<span class="hljs-string">`^website_\d&#123;8&#125;_\d&#123;6&#125;_\d+$`</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">cleanupOldReleases</span><span class="hljs-params">(baseDir, keepDir <span class="hljs-type">string</span>)</span></span> &#123;<br>    entries, err := os.ReadDir(baseDir)<br>    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span><br>    &#125;<br><br>    <span class="hljs-keyword">for</span> _, e := <span class="hljs-keyword">range</span> entries &#123;<br>        <span class="hljs-keyword">if</span> !e.IsDir() &#123;<br>            <span class="hljs-keyword">continue</span><br>        &#125;<br>        name := e.Name()<br>        <span class="hljs-keyword">if</span> !releaseRegexp.MatchString(name) &#123;<br>            <span class="hljs-keyword">continue</span><br>        &#125;<br>        full := filepath.Join(baseDir, name)<br>        <span class="hljs-keyword">if</span> full == keepDir &#123;<br>            <span class="hljs-keyword">continue</span><br>        &#125;<br>        _ = os.RemoveAll(full)<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    loadSecret()<br><br>    <span class="hljs-keyword">for</span> path, cfg := <span class="hljs-keyword">range</span> repos &#123;<br>        http.HandleFunc(path, handler(cfg))<br>    &#125;<br><br>    log.Println(<span class="hljs-string">&quot;listening on&quot;</span>, listenAddr)<br>    log.Fatal(http.ListenAndServe(listenAddr, <span class="hljs-literal">nil</span>))<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在github对应仓库–settings–webhook–新增–输入密钥（随机字符串，可由<code>openssl rand -hex 32</code>命令生成）–类型选择json–不需要额外数据。</p>
+<p>本地在程序执行目录创建一个<code>.secret</code>文件并写入生成的密钥，后台运行该监听脚本即可。（上面方法俺设计的，嘻嘻）</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h3><p>在服务器上执行<code>for i in {1..20}; do curl -o /dev/null -s -w &quot;%{time_connect} %{time_starttransfer} %{time_total}\n&quot; https://nextcloud.letmefly.xyz; done</code>，结果：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">007227</span> <span class="hljs-number">0</span>.<span class="hljs-number">079349</span> <span class="hljs-number">0</span>.<span class="hljs-number">079377</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005464</span> <span class="hljs-number">0</span>.<span class="hljs-number">081657</span> <span class="hljs-number">0</span>.<span class="hljs-number">081687</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005054</span> <span class="hljs-number">0</span>.<span class="hljs-number">074545</span> <span class="hljs-number">0</span>.<span class="hljs-number">074576</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">456098</span> <span class="hljs-number">0</span>.<span class="hljs-number">524839</span> <span class="hljs-number">0</span>.<span class="hljs-number">524884</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">469940</span> <span class="hljs-number">0</span>.<span class="hljs-number">541030</span> <span class="hljs-number">0</span>.<span class="hljs-number">541060</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">006224</span> <span class="hljs-number">0</span>.<span class="hljs-number">081239</span> <span class="hljs-number">0</span>.<span class="hljs-number">081265</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005814</span> <span class="hljs-number">0</span>.<span class="hljs-number">080448</span> <span class="hljs-number">0</span>.<span class="hljs-number">080479</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">006077</span> <span class="hljs-number">0</span>.<span class="hljs-number">077889</span> <span class="hljs-number">0</span>.<span class="hljs-number">077928</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005238</span> <span class="hljs-number">0</span>.<span class="hljs-number">079339</span> <span class="hljs-number">0</span>.<span class="hljs-number">079365</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">004949</span> <span class="hljs-number">0</span>.<span class="hljs-number">076759</span> <span class="hljs-number">0</span>.<span class="hljs-number">076791</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005104</span> <span class="hljs-number">0</span>.<span class="hljs-number">079881</span> <span class="hljs-number">0</span>.<span class="hljs-number">079907</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005950</span> <span class="hljs-number">0</span>.<span class="hljs-number">082108</span> <span class="hljs-number">0</span>.<span class="hljs-number">082139</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">006417</span> <span class="hljs-number">0</span>.<span class="hljs-number">082243</span> <span class="hljs-number">0</span>.<span class="hljs-number">082295</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005584</span> <span class="hljs-number">0</span>.<span class="hljs-number">081760</span> <span class="hljs-number">0</span>.<span class="hljs-number">081788</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">455143</span> <span class="hljs-number">0</span>.<span class="hljs-number">551400</span> <span class="hljs-number">0</span>.<span class="hljs-number">551427</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005367</span> <span class="hljs-number">0</span>.<span class="hljs-number">084855</span> <span class="hljs-number">0</span>.<span class="hljs-number">084886</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">455233</span> <span class="hljs-number">0</span>.<span class="hljs-number">535178</span> <span class="hljs-number">0</span>.<span class="hljs-number">535216</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005935</span> <span class="hljs-number">0</span>.<span class="hljs-number">084052</span> <span class="hljs-number">0</span>.<span class="hljs-number">084079</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">004623</span> <span class="hljs-number">0</span>.<span class="hljs-number">101036</span> <span class="hljs-number">0</span>.<span class="hljs-number">101117</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">005021</span> <span class="hljs-number">0</span>.<span class="hljs-number">082109</span> <span class="hljs-number">0</span>.<span class="hljs-number">082138</span><br></code></pre></td></tr></table></figure>
+
+<p>这个应该是直接走Localhost了?。</p>
+<p>强制走公网：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1..20&#125;; <span class="hljs-keyword">do</span> curl -o /dev/null -s --resolve nextcloud.letmefly.xyz:443:39.105.42.186 -w <span class="hljs-string">&quot;%&#123;time_connect&#125; %&#123;time_starttransfer&#125; %&#123;time_total&#125;\n&quot;</span> https://nextcloud.letmefly.xyz; <span class="hljs-keyword">done</span><br>tcpdump -i eth0 host 39.105.42.186 and port 443<br></code></pre></td></tr></table></figure>
+
+<p>并另外启动一个窗口抓包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcpdump -i eth0 host 39.105.42.186 and port 443<br></code></pre></td></tr></table></figure>
+
+<p>可以看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tisfy.https → 39.105.42.186.38608<br>39.105.42.186.38608 → tisfy.https<br></code></pre></td></tr></table></figure>
+
+<p>说明走了公网。</p>
+<p>诶，还是很快。</p>
+<p>直接使用一台手中的设备测试，不在服务器上测试了</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>.<span class="hljs-number">030351</span> <span class="hljs-number">0</span>.<span class="hljs-number">122197</span> <span class="hljs-number">0</span>.<span class="hljs-number">122252</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">012166</span> <span class="hljs-number">0</span>.<span class="hljs-number">094488</span> <span class="hljs-number">0</span>.<span class="hljs-number">094556</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013372</span> <span class="hljs-number">0</span>.<span class="hljs-number">118933</span> <span class="hljs-number">0</span>.<span class="hljs-number">119127</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">015152</span> <span class="hljs-number">0</span>.<span class="hljs-number">121100</span> <span class="hljs-number">0</span>.<span class="hljs-number">121195</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">012782</span> <span class="hljs-number">0</span>.<span class="hljs-number">093575</span> <span class="hljs-number">0</span>.<span class="hljs-number">093694</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011981</span> <span class="hljs-number">0</span>.<span class="hljs-number">090665</span> <span class="hljs-number">0</span>.<span class="hljs-number">090767</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">012699</span> <span class="hljs-number">0</span>.<span class="hljs-number">092128</span> <span class="hljs-number">0</span>.<span class="hljs-number">092318</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014691</span> <span class="hljs-number">0</span>.<span class="hljs-number">167777</span> <span class="hljs-number">0</span>.<span class="hljs-number">167850</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013061</span> <span class="hljs-number">0</span>.<span class="hljs-number">207214</span> <span class="hljs-number">0</span>.<span class="hljs-number">207498</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013980</span> <span class="hljs-number">0</span>.<span class="hljs-number">273402</span> <span class="hljs-number">0</span>.<span class="hljs-number">273721</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014736</span> <span class="hljs-number">0</span>.<span class="hljs-number">186312</span> <span class="hljs-number">0</span>.<span class="hljs-number">186655</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">015405</span> <span class="hljs-number">0</span>.<span class="hljs-number">170255</span> <span class="hljs-number">0</span>.<span class="hljs-number">170587</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">075688</span> <span class="hljs-number">0</span>.<span class="hljs-number">263535</span> <span class="hljs-number">0</span>.<span class="hljs-number">263765</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014979</span> <span class="hljs-number">0</span>.<span class="hljs-number">154608</span> <span class="hljs-number">0</span>.<span class="hljs-number">154884</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014043</span> <span class="hljs-number">0</span>.<span class="hljs-number">276435</span> <span class="hljs-number">0</span>.<span class="hljs-number">276624</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014873</span> <span class="hljs-number">0</span>.<span class="hljs-number">180383</span> <span class="hljs-number">0</span>.<span class="hljs-number">180700</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014767</span> <span class="hljs-number">0</span>.<span class="hljs-number">260764</span> <span class="hljs-number">0</span>.<span class="hljs-number">260981</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">015220</span> <span class="hljs-number">0</span>.<span class="hljs-number">166855</span> <span class="hljs-number">0</span>.<span class="hljs-number">167178</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013348</span> <span class="hljs-number">0</span>.<span class="hljs-number">176619</span> <span class="hljs-number">0</span>.<span class="hljs-number">176928</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014471</span> <span class="hljs-number">0</span>.<span class="hljs-number">171316</span> <span class="hljs-number">0</span>.<span class="hljs-number">171636</span><br></code></pre></td></tr></table></figure>
+
+<p>这下没办法了，走的wifi连的服务器，还是很快。</p>
+<h3 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h3><p>由于没有在国外的设备，所以临时写了个github action测下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Test</span> <span class="hljs-string">blog.letmefly.xyz</span> <span class="hljs-string">latency</span> <span class="hljs-bullet">-</span> <span class="hljs-string">境外访问延迟测试</span><br><br><span class="hljs-attr">on:</span><br>   <span class="hljs-attr">workflow_dispatch:</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">latency-test:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Print</span> <span class="hljs-string">debug</span> <span class="hljs-string">info</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          echo &quot;==== Debug Info ====&quot;</span><br><span class="hljs-string">          echo &quot;Runner hostname: $(hostname)&quot;</span><br><span class="hljs-string">          echo &quot;GitHub runner public IP:&quot;</span><br><span class="hljs-string">          curl -s https://ifconfig.me || echo &quot;Failed to get public IP&quot;</span><br><span class="hljs-string">          echo &quot;===================&quot;</span><br><span class="hljs-string"></span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Resolve</span> <span class="hljs-string">target</span> <span class="hljs-string">IP</span><br>        <span class="hljs-attr">id:</span> <span class="hljs-string">resolve</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          TARGET=blog.letmefly.xyz</span><br><span class="hljs-string">          IP=$(dig +short $TARGET | head -n1)</span><br><span class="hljs-string">          echo &quot;Target: $TARGET&quot;</span><br><span class="hljs-string">          echo &quot;Resolved IP: $IP&quot;</span><br><span class="hljs-string">          echo &quot;IP=$IP&quot; &gt;&gt; $GITHUB_OUTPUT</span><br><span class="hljs-string"></span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Test</span> <span class="hljs-string">latency</span> <span class="hljs-number">20</span> <span class="hljs-string">times</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          TARGET=blog.letmefly.xyz</span><br><span class="hljs-string">          IP=$&#123;&#123; steps.resolve.outputs.IP &#125;&#125;</span><br><span class="hljs-string">          echo &quot;time_connect time_starttransfer time_total&quot;</span><br><span class="hljs-string"></span>          <br>          <span class="hljs-comment"># 初始化累加器</span><br>          <span class="hljs-string">sum_connect=0</span><br>          <span class="hljs-string">sum_starttransfer=0</span><br>          <span class="hljs-string">sum_total=0</span><br>          <br>          <span class="hljs-string">for</span> <span class="hljs-string">i</span> <span class="hljs-string">in</span> &#123;<span class="hljs-number">1</span><span class="hljs-string">..20</span>&#125;<span class="hljs-string">;</span> <span class="hljs-string">do</span><br>            <span class="hljs-comment"># 取三个时间</span><br>            <span class="hljs-string">read</span> <span class="hljs-string">connect</span> <span class="hljs-string">starttransfer</span> <span class="hljs-string">total</span> <span class="hljs-string">&lt;&lt;&lt;</span> <span class="hljs-string">$(curl</span> <span class="hljs-string">-o</span> <span class="hljs-string">/dev/null</span> <span class="hljs-string">-s</span> <span class="hljs-string">\</span><br>                 <span class="hljs-string">--resolve</span> <span class="hljs-string">$TARGET:443:$IP</span> <span class="hljs-string">\</span><br>                 <span class="hljs-string">-w</span> <span class="hljs-string">&quot;<span class="hljs-template-variable">%&#123;time_connect&#125;</span> <span class="hljs-template-variable">%&#123;time_starttransfer&#125;</span> <span class="hljs-template-variable">%&#123;time_total&#125;</span>&quot;</span> <span class="hljs-string">\</span><br>                 <span class="hljs-string">https://$TARGET)</span><br>                 <br>            <span class="hljs-comment"># 累加</span><br>            <span class="hljs-string">sum_connect=$(echo</span> <span class="hljs-string">&quot;$sum_connect + $connect&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>            <span class="hljs-string">sum_starttransfer=$(echo</span> <span class="hljs-string">&quot;$sum_starttransfer + $starttransfer&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>            <span class="hljs-string">sum_total=$(echo</span> <span class="hljs-string">&quot;$sum_total + $total&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>            <br>            <span class="hljs-comment"># 输出</span><br>            <span class="hljs-string">echo</span> <span class="hljs-string">&quot;$connect $starttransfer $total&quot;</span><br>          <span class="hljs-string">done</span><br>          <br>          <span class="hljs-comment"># 计算平均</span><br>          <span class="hljs-string">avg_connect=$(echo</span> <span class="hljs-string">&quot;scale=4; $sum_connect/20&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>          <span class="hljs-string">avg_starttransfer=$(echo</span> <span class="hljs-string">&quot;scale=4; $sum_starttransfer/20&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>          <span class="hljs-string">avg_total=$(echo</span> <span class="hljs-string">&quot;scale=4; $sum_total/20&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">bc)</span><br>          <br>          <span class="hljs-string">echo</span> <span class="hljs-string">&quot;AVERAGE $avg_connect $avg_starttransfer $avg_total&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>Github上测Github Pages似乎有点小作弊(bushi)，但没办法了。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Runner</span> hostname: runnervmi13qx<br><span class="hljs-attribute">GitHub</span> runner public IP:<br><span class="hljs-attribute">172</span>.<span class="hljs-number">212</span>.<span class="hljs-number">165</span>.<span class="hljs-number">69</span><br><br><span class="hljs-attribute">Target</span>: blog.letmefly.xyz<br><span class="hljs-attribute">Resolved</span> IP: <span class="hljs-number">185.199.110.153</span><br><br><span class="hljs-attribute">time_connect</span> time_starttransfer time_total<br><span class="hljs-attribute">0</span>.<span class="hljs-number">013474</span> <span class="hljs-number">0</span>.<span class="hljs-number">096664</span> <span class="hljs-number">0</span>.<span class="hljs-number">101290</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011528</span> <span class="hljs-number">0</span>.<span class="hljs-number">091032</span> <span class="hljs-number">0</span>.<span class="hljs-number">095257</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">012259</span> <span class="hljs-number">0</span>.<span class="hljs-number">053301</span> <span class="hljs-number">0</span>.<span class="hljs-number">058006</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011481</span> <span class="hljs-number">0</span>.<span class="hljs-number">049095</span> <span class="hljs-number">0</span>.<span class="hljs-number">053492</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">009328</span> <span class="hljs-number">0</span>.<span class="hljs-number">046950</span> <span class="hljs-number">0</span>.<span class="hljs-number">050534</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">008894</span> <span class="hljs-number">0</span>.<span class="hljs-number">042994</span> <span class="hljs-number">0</span>.<span class="hljs-number">047134</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013758</span> <span class="hljs-number">0</span>.<span class="hljs-number">056136</span> <span class="hljs-number">0</span>.<span class="hljs-number">061113</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011655</span> <span class="hljs-number">0</span>.<span class="hljs-number">059527</span> <span class="hljs-number">0</span>.<span class="hljs-number">063557</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014356</span> <span class="hljs-number">0</span>.<span class="hljs-number">054987</span> <span class="hljs-number">0</span>.<span class="hljs-number">060360</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011576</span> <span class="hljs-number">0</span>.<span class="hljs-number">049023</span> <span class="hljs-number">0</span>.<span class="hljs-number">053552</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011710</span> <span class="hljs-number">0</span>.<span class="hljs-number">049211</span> <span class="hljs-number">0</span>.<span class="hljs-number">053547</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011660</span> <span class="hljs-number">0</span>.<span class="hljs-number">048587</span> <span class="hljs-number">0</span>.<span class="hljs-number">052985</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011670</span> <span class="hljs-number">0</span>.<span class="hljs-number">057137</span> <span class="hljs-number">0</span>.<span class="hljs-number">061753</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">008896</span> <span class="hljs-number">0</span>.<span class="hljs-number">045748</span> <span class="hljs-number">0</span>.<span class="hljs-number">049883</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014311</span> <span class="hljs-number">0</span>.<span class="hljs-number">053899</span> <span class="hljs-number">0</span>.<span class="hljs-number">059477</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013615</span> <span class="hljs-number">0</span>.<span class="hljs-number">053529</span> <span class="hljs-number">0</span>.<span class="hljs-number">059438</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">011551</span> <span class="hljs-number">0</span>.<span class="hljs-number">049421</span> <span class="hljs-number">0</span>.<span class="hljs-number">053476</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013896</span> <span class="hljs-number">0</span>.<span class="hljs-number">060151</span> <span class="hljs-number">0</span>.<span class="hljs-number">065085</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">014129</span> <span class="hljs-number">0</span>.<span class="hljs-number">090222</span> <span class="hljs-number">0</span>.<span class="hljs-number">095611</span><br><span class="hljs-attribute">0</span>.<span class="hljs-number">013318</span> <span class="hljs-number">0</span>.<span class="hljs-number">052731</span> <span class="hljs-number">0</span>.<span class="hljs-number">057438</span><br><span class="hljs-attribute">AVERAGE</span> .<span class="hljs-number">0121</span> .<span class="hljs-number">0580</span> .<span class="hljs-number">0626</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="国内外"><a href="#国内外" class="headerlink" title="国内外"></a>国内外</h3><p>也可以在<a target="_blank" rel="noopener" href="https://www.itdog.cn/">itdog</a>上测试国内外访问，网络质量及其不确定因素会增多，耗时结果稍高。</p>
+<p>但HTTP请求只要不经过墙墙，平均还是比较快的。</p>
+<p>国内外访问良民网站的DNS服务，也很快（并且还有缓存）；国外访问Github(Anycast)本来就很快。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>What’s more：</p>
+<blockquote>
+<p>这次估计触发了关键词，在CSDN上发布时不是先发后审了。</p>
+</blockquote>
+<center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/156789088">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/01/10/Other-Website-ZeroCostLatencyOptimization/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" class="category-chain-item">技术思考</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
+      
+        <a href="/tags/Website/">#Website</a>
+      
+        <a href="/tags/Cloudflare/">#Cloudflare</a>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">#服务器</a>
+      
+        <a href="/tags/%E5%BB%BA%E7%AB%99/">#建站</a>
+      
+        <a href="/tags/DNS/">#DNS</a>
+      
+        <a href="/tags/Nginx/">#Nginx</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流</div>
+      <div>https://blog.letmefly.xyz/2026/01/10/Other-Website-ZeroCostLatencyOptimization/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/01/10/LeetCode%200712.%E4%B8%A4%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8FASCII%E5%88%A0%E9%99%A4%E5%92%8C/" title="712.两个字符串的最小ASCII删除和：反向思维保留最大（动态规划）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">712.两个字符串的最小ASCII删除和：反向思维保留最大（动态规划）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/01/09/LeetCode%200865.%E5%85%B7%E6%9C%89%E6%89%80%E6%9C%89%E6%9C%80%E6%B7%B1%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%90%E6%A0%91/" title="865.具有所有最深节点的最小子树：深度优先搜索（一次DFS + Python5行）">
+                        <span class="hidden-mobile">865.具有所有最深节点的最小子树：深度优先搜索（一次DFS + Python5行）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
