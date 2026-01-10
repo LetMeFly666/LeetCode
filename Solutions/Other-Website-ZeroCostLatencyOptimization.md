@@ -70,7 +70,208 @@ for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransf
 
 ### blog.letmefly.xyz子域托管
 
-在cloudflare控制面板修改blog.letmefly.xyz的DNS记录为`NS`
+在cloudflare控制面板修改[blog.letmefly.xyz](https://blog.letmefly.xyz)的DNS记录为`NS`，值为`ns1.alidns.com`，再新建一个`NS`值为`ns2.alidns.com`。
+
+在阿里云DNS解析控制台添加域名`blog.letmefly.xyz`，进行TXT校验（在cloudflare添加`alidnscheck.letmefly.xyz`的`TXT`类型的记录）。
+
+添加记录：
+
+| 主机记录 | 记录类型 | 解析请求来源 | 记录值          |
+| -------- | -------- | ------------ | --------------- |
+| @        | AAAAA    | 境外         | 2606:50c:0:8003::153 |
+| @        | AAAAA    | 境外         | 2606:50c:0:8002::153 |
+| @        | AAAAA    | 境外         | 2606:50c:0:8001::153 |
+| @        | AAAAA    | 境外         | 2606:50c:0:8000::153 |
+| @        | A        | 境外         | 185.199.111.153 |
+| @        | A        | 境外         | 185.199.110.153 |
+| @        | A        | 境外         | 185.199.109.153 |
+| @        | A        | 境外         | 185.199.108.153 |
+| @        | A        | 中国地区     | 39.105.42.186   |
+
+前面8个是Github（[官方文档](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)），最后一个是我的服务器。
+
+是的，就这么简单，完事了！
+
+## 服务器拉取Github脚本
+
+服务器上设计为：启动一个webhook listener，当github仓库website分支更新时向服务器发送通知，服务器拉取最新源码，并原子化链接整个目录到nginx配置的目录。
+
+```go
+/*
+ * @LastEditTime: 2026-01-08 18:54:37
+ */
+package main
+
+import (
+    "crypto/hmac"
+    "crypto/rand"
+    "crypto/sha256"
+    "encoding/hex"
+    "encoding/json"
+    "io"
+    "log"
+    "math/big"
+    "net/http"
+    "os"
+    "os/exec"
+    "path/filepath"
+    "regexp"
+    "strings"
+    "time"
+)
+
+const (
+    listenAddr = "127.0.0.1:1209"
+    secretFile = ".secret"
+)
+
+type RepoConfig struct {
+    BaseDir   string
+    RepoURL   string
+    TargetRef string
+    Branch    string
+}
+
+var repos = map[string]RepoConfig{
+    "/hook/github/leetcode": {
+        BaseDir:   "/www/blog",
+        RepoURL:   "git@github.com:LetMeFly666/LeetCode.git",
+        TargetRef: "refs/heads/website",
+        Branch:    "website",
+    },
+    "/hook/github/various": {
+        BaseDir:   "/www/various",
+        RepoURL:   "git@github.com:LetMeFly666/various.git",
+        TargetRef: "refs/heads/master",
+        Branch:    "master",
+    },
+}
+
+type PushEvent struct {
+    Ref string `json:"ref"`
+}
+
+var secret []byte
+
+func loadSecret() {
+    data, err := os.ReadFile(secretFile)
+    if err != nil {
+        log.Fatal("read secret failed:", err)
+    }
+    secret = []byte(strings.TrimSpace(string(data)))
+}
+
+func verifySignature(body []byte, signature string) bool {
+    mac := hmac.New(sha256.New, secret)
+    mac.Write(body)
+    expected := "sha256=" + hex.EncodeToString(mac.Sum(nil))
+    return hmac.Equal([]byte(signature), []byte(expected))
+}
+
+func handler(cfg RepoConfig) http.HandlerFunc {
+    return func(w http.ResponseWriter, r *http.Request) {
+        body, _ := io.ReadAll(r.Body)
+
+        sig := r.Header.Get("X-Hub-Signature-256")
+        if !verifySignature(body, sig) {
+            http.Error(w, "invalid signature", http.StatusForbidden)
+            return
+        }
+
+        var event PushEvent
+        if err := json.Unmarshal(body, &event); err != nil {
+            http.Error(w, "bad payload", http.StatusBadRequest)
+            return
+        }
+
+        if event.Ref != cfg.TargetRef {
+            w.Write([]byte("ignored\n"))
+            return
+        }
+
+        w.Write([]byte("accepted\n"))
+
+        go deployWebsite(cfg)
+    }
+}
+
+func randomSuffix() string {
+    n, _ := rand.Int(rand.Reader, big.NewInt(1_000_000))
+    return n.String()
+}
+
+func deployWebsite(cfg RepoConfig) {
+    ts := time.Now().Format("20060102_150405")
+    newDir := filepath.Join(cfg.BaseDir, "website_"+ts+"_"+randomSuffix())
+    currentLink := filepath.Join(cfg.BaseDir, "website")
+
+    if err := os.MkdirAll(newDir, 0755); err != nil {
+        log.Println("mkdir failed:", err)
+        return
+    }
+
+    cmd := exec.Command(
+        "git", "clone",
+        "-b", cfg.Branch,
+        "--depth=1",
+        cfg.RepoURL,
+        newDir,
+    )
+    if out, err := cmd.CombinedOutput(); err != nil {
+        log.Println("git clone failed:", string(out))
+        return
+    }
+
+    cmd = exec.Command("ln", "-sfn", newDir, currentLink)
+    if out, err := cmd.CombinedOutput(); err != nil {
+        log.Println("ln -sfn failed:", string(out))
+        return
+    }
+
+    cleanupOldReleases(cfg.BaseDir, newDir)
+
+    log.Println("deploy success:", newDir)
+}
+
+var releaseRegexp = regexp.MustCompile(`^website_\d{8}_\d{6}_\d+$`)
+
+func cleanupOldReleases(baseDir, keepDir string) {
+    entries, err := os.ReadDir(baseDir)
+    if err != nil {
+        return
+    }
+
+    for _, e := range entries {
+        if !e.IsDir() {
+            continue
+        }
+        name := e.Name()
+        if !releaseRegexp.MatchString(name) {
+            continue
+        }
+        full := filepath.Join(baseDir, name)
+        if full == keepDir {
+            continue
+        }
+        _ = os.RemoveAll(full)
+    }
+}
+
+func main() {
+    loadSecret()
+
+    for path, cfg := range repos {
+        http.HandleFunc(path, handler(cfg))
+    }
+
+    log.Println("listening on", listenAddr)
+    log.Fatal(http.ListenAndServe(listenAddr, nil))
+}
+```
+
+在github对应仓库--settings--webhook--新增--输入密钥（随机字符串，可由`openssl rand -hex 32`命令生成）--类型选择json--不需要额外数据。
+
+本地在程序执行目录创建一个`.secret`文件并写入生成的密钥，后台运行该监听脚本即可。（上面方法俺设计的，嘻嘻）
 
 ## 结果
 
@@ -261,7 +462,7 @@ AVERAGE .0121 .0580 .0626
 
 但HTTP请求只要不经过墙墙，平均还是比较快的。
 
-国内外访问良民网站的DNS服务，也很快（并且还有缓存）
+国内外访问良民网站的DNS服务，也很快（并且还有缓存）；国外访问Github(Anycast)本来就很快。
 
 ## End
 
