@@ -1,0 +1,111 @@
+---
+title: 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程
+title_en: "Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds"
+date: 2026-01-10 09:53:54
+tags: [其他, Website, 建站, 服务器, Linux, Nginx, DNS, Cloudflare]
+categories: [技术思考]
+---
+
+# 网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程
+
+> * Website Latency Optimization: A Zero-Cost Journey from Tens of Seconds to Hundreds of Milliseconds
+> * From 30 Seconds to 300 Milliseconds: Zero-Cost Website Performance Optimization
+
+## 背景
+
+之前为了保护我那台孱弱的小服务器的真实ip免受攻击，我将服务器的所有HTTP(s)服务限制为仅能通过域名访问，且把域名托管在了**Cloudflare**上开启了代理小云朵。
+
+就这样几年过去了，越来越觉得网站访问是真的慢（不管有没有特殊网络都很慢）。并且有👇，所以决定优化一手。
+
+> [CloudFlare: 网站性能如何影响转化率](https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/)
+>
+> 沃尔玛发现，页面加载时间每减少 1 秒，转化数就会增加 2％...
+
+最终，从每次访问“快则好几秒平均十来秒慢则好几十秒”到“粗略统计全球访问平均几百毫秒”的性能优化，并且几乎没有修改代码。
+
+## 耗时原因分析
+
+众所周知，正常情况下锅内外的网络传输都要不可避免地经过TheGreatWall，来保障国民的网络信息安全。
+
+为什么CDN服务器遍布全球的赛博菩萨Cloudflare在锅内会变成减速CDN呢？大概率是经过了上面的它↑。
+
+为了实锤一下，在服务器上执行命令
+
+```bash
+for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransfer} %{time_total}\n" https://nextcloud.letmefly.xyz; done
+```
+
+得到结果20次请求的连接耗时、首字节返回耗时、总耗时：
+
+```
+0.726453 4.388203 4.388237
+1.346249 7.263477 7.263509
+2.228933 10.111719 10.111752
+2.660601 9.483325 9.483393
+1.028620 3.424524 3.424555
+0.795678 3.197058 3.197130
+1.114911 3.688075 3.688237
+0.697664 5.477339 5.477411
+0.821841 26.322082 26.322112
+0.916166 3.698248 3.698305
+1.404712 4.999771 4.999802
+0.772932 3.323453 3.323484
+2.204168 5.768386 5.768476
+1.264734 3.941814 3.941846
+0.788361 6.344063 6.344097
+3.425116 0.000000 72.185861
+2.303902 9.694897 9.695196
+0.919144 6.506560 6.506636
+0.778423 4.272682 4.272722
+0.527677 8.258768 8.258819
+```
+
+第二列和第三列几乎相同，说明服务端数据处理非常迅速，耗时几乎为0，而整个网络开销几乎均耗时在网络传输上（服务器--cloudflare--服务器），然后就有了第三列这灾难级别的耗时。
+
+
+## 
+
+在服务器上执行`for i in {1..20}; do curl -o /dev/null -s -w "%{time_connect} %{time_starttransfer} %{time_total}\n" https://nextcloud.letmefly.xyz; done`，结果：
+
+```
+0.007227 0.079349 0.079377
+0.005464 0.081657 0.081687
+0.005054 0.074545 0.074576
+0.456098 0.524839 0.524884
+0.469940 0.541030 0.541060
+0.006224 0.081239 0.081265
+0.005814 0.080448 0.080479
+0.006077 0.077889 0.077928
+0.005238 0.079339 0.079365
+0.004949 0.076759 0.076791
+0.005104 0.079881 0.079907
+0.005950 0.082108 0.082139
+0.006417 0.082243 0.082295
+0.005584 0.081760 0.081788
+0.455143 0.551400 0.551427
+0.005367 0.084855 0.084886
+0.455233 0.535178 0.535216
+0.005935 0.084052 0.084079
+0.004623 0.101036 0.101117
+0.005021 0.082109 0.082138
+```
+
+这个应该是直接走Localhost了。
+
+强制走公网：
+
+```bash
+for i in {1..20}; do curl -o /dev/null -s --resolve nextcloud.letmefly.xyz:443:39.105.42.186 -w "%{time_connect} %{time_starttransfer} %{time_total}\n" https://nextcloud.letmefly.xyz; done
+tcpdump -i eth0 host 39.105.42.186 and port 443
+```
+
+
+
+
+## End
+
+<center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156789088)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/10/Other-Website-ZeroCostLatencyOptimization/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
