@@ -83,6 +83,10 @@ jobs:
           git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           for branch in $(git branch -r | grep -v '\->'); do
             local_branch="${branch#origin/}"
+            if [[ "$local_branch" =~ ^[0-9] ]] || [[ "$local_branch" == "From_GitCode_CSDN" ]]; then
+              echo "Skipping branch $local_branch"
+              continue
+            fi
             if ! git show-ref --quiet "refs/heads/$local_branch"; then
               echo "Setting branch $local_branch"
               git switch -c $local_branch origin/$local_branch
