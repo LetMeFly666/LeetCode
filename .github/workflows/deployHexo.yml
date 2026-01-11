@@ -32,11 +32,9 @@ jobs:
       #     tree .. -d -a
 
       - name: Checkout this repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           ref: master
-          # 这是为了确定每个md的最后修改时间
-          fetch-depth: 0
       
       - name: Whether Skip Deploy(.nodeploy|filePath)
         id: deploy-check
@@ -183,6 +181,8 @@ jobs:
 
           # sub theme: 明日方舟arknights
           cp -a ../hexoWorkspace ../hexoWorkspace_arknights
+          ls -l ../hexoWorkspace/source/_posts
+          ls -l ../hexoWorkspace_arknights/source/_posts
       
       - name: Install dependencies
         if: env.SKIP_DEPLOY != 'true'
