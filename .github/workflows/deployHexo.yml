@@ -5,12 +5,11 @@ on:
     branches:
       - master
       - website_Static
-    paths:
-      - 'Solutions/**'  # (#814)
+      - website_testMaster
 
 env:
   GIT_USER: LetMeFly666
-  GIT_EMAIL: 814114971@qq.com
+  GIT_EMAIL: Tisfy@qq.com
 
 jobs:
   build:
@@ -36,15 +35,44 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v3
         with:
+          persist-credentials: true
           fetch-depth: 1
       
-      - name: Check for .nodeploy
+      - name: Whether Skip Deploy(.nodeploy|filePath)
         id: deploy-check
         run: |
           if [ -f .nodeploy ]; then
+            echo "Found .nodeploy, skip deploy"
             echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+            exit 0
+          fi
+
+          set -e
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_EVENT_BEFORE=${{ github.event.before }}"
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Current branch: $BRANCH"
+
+          if [ "$BRANCH" = "website_Static" ]; then
+            echo "website_Static branch, deploy"
+          elif [ "$BRANCH" = "master" ] || [ "$BRANCH" = "website_testMaster" ]; then  # (#814)、(#1318)
+            echo "master branch, checking Solutions changes"
+            git fetch --depth=2 origin "$BRANCH"
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} $GITHUB_SHA || true)
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            if echo "$CHANGED_FILES" | grep -q '^Solutions/'; then
+              echo "Solutions changed, deploy"
+            else
+              echo "No Solutions changes, skip deploy"
+              echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+              exit 0
+            fi
           else
-            echo "SKIP_DEPLOY=false" >> $GITHUB_ENV
+            echo "Other branch ($BRANCH), skip deploy"
+            echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+            exit 0
           fi
       
       - name: Fetch and checkout each branch (shallow)
@@ -52,9 +80,14 @@ jobs:
         run: |
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
+          # git rev-list --count HEAD
           git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           for branch in $(git branch -r | grep -v '\->'); do
             local_branch="${branch#origin/}"
+            if [[ "$local_branch" =~ ^[0-9] ]] || [[ "$local_branch" == "From_GitCode_CSDN" ]]; then
+              echo "Skipping branch $local_branch"
+              continue
+            fi
             if ! git show-ref --quiet "refs/heads/$local_branch"; then
               echo "Setting branch $local_branch"
               git switch -c $local_branch origin/$local_branch
@@ -62,7 +95,13 @@ jobs:
               echo "Branch $local_branch already exists, skipping..."
             fi
           done
-          git switch master
+          
+          if [ "${GITHUB_REF}" = "refs/heads/website_testMaster" ]; then
+            git switch website_testMaster
+          else
+            git switch master
+          fi
+          # git rev-list --count HEAD
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
@@ -98,16 +137,7 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
-      
-      - name: Install hexo and init
-        if: env.SKIP_DEPLOY != 'true'
-        run: |
-          npm install -g hexo-cli --save
-          hexo init ../hexoWorkspace
-          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
-          sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
-          # cat ../hexoWorkspace/node_modules/marked/lib/*
-          
+
           # 上次commit记录
           MESSAGE=$(git log -1 --format="%s")
           HASH=$(git log -1 --format="%H")
@@ -118,11 +148,104 @@ jobs:
           echo "$HASH"
           echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
           echo "HASH=$HASH" >> $GITHUB_ENV
+      
+      - name: Checkout LastModifiedTime.json
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          git switch website_modifyTime
+          cd ..
+          cp -r LeetCode website_modifyTime
+          cd LeetCode
+          
+          if [ "${GITHUB_REF}" = "refs/heads/website_testMaster" ]; then
+            git switch website_testMaster
+          else
+            git switch master
+          fi
+      
+      - name: Update LastModifiedTime.json
+        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/website_testMaster' ) && env.SKIP_DEPLOY != 'true'
+        continue-on-error: false
+        run: |
+          set -e
+
+          json_file="../website_modifyTime/LastModifiedTime.json"
+
+          # 获取本次 push 里 master 分支变动的文件列表
+          # TODO: Let's处理删除removed
+          # TODO: Let's solve this
+          echo '${{ toJSON(github.event) }}' | jq .
+          changed_files=$(jq -r '
+            [
+              .commits[].added[]?,
+              .commits[].modified[]?
+            ]
+            | unique
+            | .[]
+          ' "$GITHUB_EVENT_PATH")
+          echo "Changed files:"
+          echo "$changed_files"
+
+          # 保存原 json 内容顺序
+          tmp_json=$(mktemp)
+          cp "$json_file" "$tmp_json"
+
+          # 遍历每个文件，看是否是 Solutions 下的 md 文件
+          updated=false
+          commit_time=$(git show -s --format=%cI ${{ github.sha }})  # ISO 8601 commit 时间
+
+          while IFS= read -r file; do
+            # 只处理 Solutions/*.md 文件
+            if [[ "$file" == Solutions/*.md ]]; then
+              filename=$(basename "$file")
+              # 使用 jq 更新 JSON 值
+              # 保持原有顺序，用临时文件写回
+              jq --arg key "$filename" --arg value "$commit_time" '(.[$key] = $value) | .' "$tmp_json" > "$tmp_json.tmp" && mv "$tmp_json.tmp" "$tmp_json"
+              updated=true
+            fi
+          done <<< "$changed_files"
+
+          if [ "$updated" != true ]; then
+            echo "No Solutions/*.md file changed, skip JSON update."
+            exit 0
+          fi
+
+          # 提交修改
+          cp "$tmp_json" "$json_file"
+          cd ../website_modifyTime
+          git add "$json_file"
+          TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
+          git commit --allow-empty -m "$TOCOMMIT"
+          git push
+          cd ../LeetCode
+        
+      - name: Update Solutions/*.md file mtime
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          set -e
+
+          json_file="../website_modifyTime/LastModifiedTime.json"
+
+          while IFS= read -r line; do
+            file_name=$(echo "$line" | jq -r 'keys[0]')
+            file_time=$(echo "$line" | jq -r '.[keys[0]]')
+            touch -d "$file_time" "Solutions/$file_name"
+            echo "set Solutions/$file_name -> $file_time"
+          done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
+      
+      - name: Install hexo and init
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          npm install -g hexo-cli --save
+          hexo init ../hexoWorkspace
+          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
+          sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
+          # cat ../hexoWorkspace/node_modules/marked/lib/*
 
       - name: Copy config files from branch website_Static
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          cp -r Solutions ../Articles
+          cp -a Solutions ../Articles
 
           echo --- > ../Articles/README.md
           echo title: README >> ../Articles/README.md
@@ -141,7 +264,9 @@ jobs:
           # echo tree ../hexoWorkspace/source/_posts
 
           # sub theme: 明日方舟arknights
-          cp -r ../hexoWorkspace ../hexoWorkspace_arknights
+          cp -a ../hexoWorkspace ../hexoWorkspace_arknights
+          ls -l ../hexoWorkspace/source/_posts
+          ls -l ../hexoWorkspace_arknights/source/_posts
       
       - name: Install dependencies
         if: env.SKIP_DEPLOY != 'true'
@@ -188,6 +313,8 @@ jobs:
       - name: Modify sitemap
         if: env.SKIP_DEPLOY != 'true'
         run: |
+          # TODO: Let's change this
+          # TODO: Let's change tag orders
           echo "" > ../hexoWorkspace/public/sitemap.txt  # 主站优先
           sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
           cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
@@ -253,6 +380,6 @@ jobs:
       #   uses: EndBug/add-and-commit@v9
       #   with:
       #     author_name: LetMeFly
-      #     author_email: 814114971@qq.com
+      #     author_email: Tisfy@qq.com
       #     message: "backup .deploy_git"
       #     add: "."

@@ -273,6 +273,24 @@ func main() {
 
 本地在程序执行目录创建一个`.secret`文件并写入生成的密钥，后台运行该监听脚本即可。（上面方法俺设计的，嘻嘻）
 
+```
+                    letmefly.xyz
+                         │
+                 Cloudflare DNS
+                         │
+        ┌────────────────┴─────────────────┐
+        │                                  │
+  www.xxx / api.xxx                  blog.letmefly.xyz
+     （全 CF）                      NS 委派 → 阿里云 DNS
+                                            │
+                         ┌──────────────────┴──────────────────┐
+                         │                                     │
+                    中国大陆访问                             海外访问
+                    返回 ECS IP                           返回 Github IP
+                                                               ↓
+                                                          GitHub Pages
+```
+
 ## 结果
 
 ### 国内
