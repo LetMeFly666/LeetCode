@@ -144,20 +144,23 @@ jobs:
           echo "$HASH"
           echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
           echo "HASH=$HASH" >> $GITHUB_ENV
-
-      - name: Copy config files from branch website_Static
+      
+      - name: Set file modified time
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          cp -r Solutions ../Articles
-
           # 修改文件系统时间为git commit时间
-          cd ../Articles
+          cd Solutions
           for file in $(find . -name '*.md'); do
             modtime=$(git log -1 --format="%ct" -- "$file") # Unix timestamp
             touch -m -d "@$modtime" "$file"
             echo "set $file -> @$modtime"
           done
-          cd ../LeetCode
+          cd ..
+
+      - name: Copy config files from branch website_Static
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          cp -r Solutions ../Articles
 
           echo --- > ../Articles/README.md
           echo title: README >> ../Articles/README.md
