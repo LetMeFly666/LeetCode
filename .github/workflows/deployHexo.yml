@@ -172,7 +172,15 @@ jobs:
           json_file="../website_modifyTime/LastModifiedTime.json"
 
           # 获取本次 push 里 master 分支变动的文件列表
-          changed_files=$(jq -r 'keys[]' "$json_file")
+          # TODO: Let's删除removed
+          changed_files=$(jq -r '
+            [
+              .commits[].added[]?,
+              .commits[].modified[]?
+            ]
+            | unique
+            | .[]
+          ' "$GITHUB_EVENT_PATH")
           echo "Changed files:"
           echo "$changed_files"
 
@@ -303,6 +311,8 @@ jobs:
       - name: Modify sitemap
         if: env.SKIP_DEPLOY != 'true'
         run: |
+          # TODO: Let's change this
+          # TODO: Let's change tag orders
           echo "" > ../hexoWorkspace/public/sitemap.txt  # 主站优先
           sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
           cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
