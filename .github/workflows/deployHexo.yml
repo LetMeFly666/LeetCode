@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - website_Static
+      - website_testMaster
 
 env:
   GIT_USER: LetMeFly666
@@ -54,7 +55,7 @@ jobs:
 
           if [ "$BRANCH" = "website_Static" ]; then
             echo "website_Static branch, deploy"
-          elif [ "$BRANCH" = "master" ]; then  # (#814)、(#1318)
+          elif [ "$BRANCH" = "master" ] || [ "$BRANCH" = "website_testMaster" ]; then  # (#814)、(#1318)
             echo "master branch, checking Solutions changes"
             git fetch --depth=2 origin "$BRANCH"
             CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} $GITHUB_SHA || true)
@@ -138,27 +139,32 @@ jobs:
           echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
           echo "HASH=$HASH" >> $GITHUB_ENV
       
-      - name: Update LastModifiedTime.json and file mtime
-        if: github.ref == 'refs/heads/master' && env.SKIP_DEPLOY != 'true'
+      - name: Checkout LastModifiedTime.json
+        if: env.SKIP_DEPLOY != 'true'
         run: |
-          set -e
-
           git switch website_modifyTime
           cd ..
           cp -r LeetCode website_modifyTime
           cd LeetCode
+          git switch master
+      
+      - name: Update LastModifiedTime.json
+        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/website_testMaster' ) && env.SKIP_DEPLOY != 'true'
+        run: |
+          set -e
+
           json_file="website_modifyTime/LastModifiedTime.json"
 
-          # 1. 获取本次 push 里 master 分支变动的文件列表
+          # 获取本次 push 里 master 分支变动的文件列表
           changed_files=$(jq -r '[.added[], .modified[]] | .[]' <<< "$GITHUB_EVENT_PATH")
           echo "Changed files:"
           echo "$changed_files"
 
-          # 2. 保存原 json 内容顺序
+          # 保存原 json 内容顺序
           tmp_json=$(mktemp)
           cp "$json_file" "$tmp_json"
 
-          # 3. 遍历每个文件，看是否是 Solutions 下的 md 文件
+          # 遍历每个文件，看是否是 Solutions 下的 md 文件
           updated=false
           commit_time=$(git show -s --format=%cI ${{ github.sha }})  # ISO 8601 commit 时间
 
@@ -178,23 +184,28 @@ jobs:
             exit 0
           fi
 
-          # 4. 将临时 JSON 覆盖原文件
+          # 提交修改
           cp "$tmp_json" "$json_file"
-
-          # 5. 将 Solutions 下的 md 文件系统修改时间改为 JSON 中对应时间
-          while IFS= read -r line; do
-            file_name=$(echo "$line" | jq -r 'keys[0]')
-            file_time=$(echo "$line" | jq -r '.[keys[0]]')
-            touch -d "$file_time" "Solutions/$file_name"
-          done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
-
-          # 6. 提交修改
           cd ../website_modifyTime
           git add "$json_file"
           TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
           git commit --allow-empty -m "$TOCOMMIT"
           git push
           cd ../LeetCode
+        
+      - name: Update Solutions/*.md file mtime
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          set -e
+
+          json_file="website_modifyTime/LastModifiedTime.json"
+
+          while IFS= read -r line; do
+            file_name=$(echo "$line" | jq -r 'keys[0]')
+            file_time=$(echo "$line" | jq -r '.[keys[0]]')
+            touch -d "$file_time" "Solutions/$file_name"
+            echo "set Solutions/$file_name -> $file_time"
+          done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
       
       - name: Install hexo and init
         if: env.SKIP_DEPLOY != 'true'
