@@ -95,7 +95,12 @@ jobs:
               echo "Branch $local_branch already exists, skipping..."
             fi
           done
-          git switch master
+          
+          if [ "${GITHUB_REF}" = "refs/heads/website_testMaster" ]; then
+            git switch website_testMaster
+          else
+            git switch master
+          fi
           # git rev-list --count HEAD
 
       - name: Use Node.js ${{ matrix.node_version }}
@@ -151,7 +156,12 @@ jobs:
           cd ..
           cp -r LeetCode website_modifyTime
           cd LeetCode
-          git switch master
+          
+          if [ "${GITHUB_REF}" = "refs/heads/website_testMaster" ]; then
+            git switch website_testMaster
+          else
+            git switch master
+          fi
       
       - name: Update LastModifiedTime.json
         if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/website_testMaster' ) && env.SKIP_DEPLOY != 'true'
@@ -162,7 +172,7 @@ jobs:
           json_file="../website_modifyTime/LastModifiedTime.json"
 
           # 获取本次 push 里 master 分支变动的文件列表
-          changed_files=$(jq -r '[.added[], .modified[]] | .[]' "$json_file")
+          changed_files=$(jq -r 'keys[]' "$json_file")
           echo "Changed files:"
           echo "$changed_files"
 
