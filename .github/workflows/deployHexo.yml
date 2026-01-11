@@ -33,8 +33,9 @@ jobs:
       #     tree .. -d -a
 
       - name: Checkout this repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v3
         with:
+          persist-credentials: true
           fetch-depth: 1
       
       - name: Whether Skip Deploy(.nodeploy|filePath)
@@ -154,6 +155,7 @@ jobs:
       
       - name: Update LastModifiedTime.json
         if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/website_testMaster' ) && env.SKIP_DEPLOY != 'true'
+        continue-on-error: true
         run: |
           set -e
 
