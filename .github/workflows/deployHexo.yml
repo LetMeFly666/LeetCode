@@ -155,14 +155,14 @@ jobs:
       
       - name: Update LastModifiedTime.json
         if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/website_testMaster' ) && env.SKIP_DEPLOY != 'true'
-        continue-on-error: true
+        continue-on-error: false
         run: |
           set -e
 
           json_file="../website_modifyTime/LastModifiedTime.json"
 
           # 获取本次 push 里 master 分支变动的文件列表
-          changed_files=$(jq -r '[.added[], .modified[]] | .[]' <<< "$GITHUB_EVENT_PATH")
+          changed_files=$(jq -r '[.added[], .modified[]] | .[]' "$GITHUB_EVENT_PATH")
           echo "Changed files:"
           echo "$changed_files"
 
