@@ -89,6 +89,7 @@ jobs:
             fi
           done
           git switch master
+          git fetch --unshallow origin master  # 这是为了确定每个md的最后修改时间
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
@@ -150,10 +151,11 @@ jobs:
         run: |
           # 修改文件系统时间为git commit时间
           cd Solutions
-          for file in $(find . -name '*.md'); do
-            modtime=$(git log -1 --format="%ct" -- "$file") # Unix timestamp
-            touch -m -d "@$modtime" "$file"
-            echo "set $file -> @$modtime"
+          find . -name '*.md' -print0 | while IFS= read -r -d '' file; do
+            modtime=$(git log -1 --format="%ct" --follow -- "$file")
+            modtime_readable=$(date -d "@$modtime" "+%Y-%m-%d %H:%M:%S")
+            touch -m -d "$modtime_readable" "$file"
+            echo "set $file -> $modtime_readable"
           done
           cd ..
 
