@@ -34,6 +34,8 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v3
         with:
+          ref: master
+          # 这是为了确定每个md的最后修改时间
           fetch-depth: 1
       
       - name: Whether Skip Deploy(.nodeploy|filePath)
@@ -89,7 +91,6 @@ jobs:
             fi
           done
           git switch master
-          git fetch --unshallow origin master  # 这是为了确定每个md的最后修改时间
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
@@ -162,7 +163,7 @@ jobs:
       - name: Copy config files from branch website_Static
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          cp -r Solutions ../Articles
+          cp -a Solutions ../Articles
 
           echo --- > ../Articles/README.md
           echo title: README >> ../Articles/README.md
@@ -181,7 +182,7 @@ jobs:
           # echo tree ../hexoWorkspace/source/_posts
 
           # sub theme: 明日方舟arknights
-          cp -r ../hexoWorkspace ../hexoWorkspace_arknights
+          cp -a ../hexoWorkspace ../hexoWorkspace_arknights
       
       - name: Install dependencies
         if: env.SKIP_DEPLOY != 'true'
