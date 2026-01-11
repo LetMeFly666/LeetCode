@@ -1,0 +1,284 @@
+name: Blog markdown to hexo 
+
+on:
+  push:
+    branches:
+      - master
+      - website_Static
+
+env:
+  GIT_USER: LetMeFly666
+  GIT_EMAIL: Tisfy@qq.com
+
+jobs:
+  build:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node_version: [20.x]  # 如果[20.x, 22.x]的话会同步运行两个Job
+    
+    steps:
+      # - name: Using cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.deploy_git
+      #     key: deployGit
+      #     restore-keys: deployGit
+
+      # - name: Check if cached
+      #   run: |
+      #     tree .. -d -a
+
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      
+      - name: Whether Skip Deploy(.nodeploy|filePath)
+        id: deploy-check
+        run: |
+          if [ -f .nodeploy ]; then
+            echo "Found .nodeploy, skip deploy"
+            echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+            exit 0
+          fi
+
+          set -e
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_EVENT_BEFORE=${{ github.event.before }}"
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Current branch: $BRANCH"
+
+          if [ "$BRANCH" = "website_Static" ]; then
+            echo "website_Static branch, deploy"
+          elif [ "$BRANCH" = "website_Static" ]; then  # (#814)、(#1318)  # TODO: change to master
+            echo "master branch, checking Solutions changes"
+            git fetch --depth=2 origin "$BRANCH"
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} $GITHUB_SHA || true)
+            echo "Changed files:"
+            echo "$CHANGED_FILES"
+            if echo "$CHANGED_FILES" | grep -q '^Solutions/'; then
+              echo "Solutions changed, deploy"
+            else
+              echo "No Solutions changes, skip deploy"
+              echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+              exit 0
+            fi
+          else
+            echo "Other branch ($BRANCH), skip deploy"
+            echo "SKIP_DEPLOY=true" >> $GITHUB_ENV
+            exit 0
+          fi
+      
+      - name: Fetch and checkout each branch (shallow)
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
+          # cd LeetCode
+          git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+          for branch in $(git branch -r | grep -v '\->'); do
+            local_branch="${branch#origin/}"
+            if ! git show-ref --quiet "refs/heads/$local_branch"; then
+              echo "Setting branch $local_branch"
+              git switch -c $local_branch origin/$local_branch
+            else
+              echo "Branch $local_branch already exists, skipping..."
+            fi
+          done
+          git switch master
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        if: env.SKIP_DEPLOY != 'true'
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      
+      # - name: Install Python
+      #   uses: actions/setup-python@v1
+      #   with:
+      #     python-version: 3.7
+
+      # - name: Install requirements
+      #   run: |
+      #     pip install requests
+      
+      # - name: Use python to debug
+      #   env:
+      #     GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
+      #     FORPYTHONDEBUG: ${{ secrets.FORPYTHONDEBUG }}
+      #   run: |
+      #     python debug.py
+      
+      - name: Config environment
+        if: env.SKIP_DEPLOY != 'true'
+        env:
+          GITHUBLEETCODEDEPLOYKEY: ${{ secrets.GITHUBLEETCODEDEPLOYKEY }}
+        run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.GITHUBLEETCODEDEPLOYKEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name $GIT_USER
+          git config --global user.email $GIT_EMAIL
+      
+      - name: Install hexo and init
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          npm install -g hexo-cli --save
+          hexo init ../hexoWorkspace
+          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
+          sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
+          # cat ../hexoWorkspace/node_modules/marked/lib/*
+          
+          # 上次commit记录
+          MESSAGE=$(git log -1 --format="%s")
+          HASH=$(git log -1 --format="%H")
+          # ENCODED_MESSAGE=$(printf "%s\n\n%s" "$MESSAGE" "$HASH" | base64)
+          # echo "ENCODED_MESSAGE=$ENCODED_MESSAGE" >> $GITHUB_ENV
+          # echo "$ENCODED_MESSAGE"
+          echo "$MESSAGE"
+          echo "$HASH"
+          echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
+          echo "HASH=$HASH" >> $GITHUB_ENV
+
+      - name: Copy config files from branch website_Static
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          cp -r Solutions ../Articles
+
+          echo --- > ../Articles/README.md
+          echo title: README >> ../Articles/README.md
+          echo date: 9999-12-31 14:53:21 >> ../Articles/README.md
+          echo tags: README >> ../Articles/README.md
+          echo top: true >> ../Articles/README.md
+          echo --- >> ../Articles/README.md
+          cat README.md >> ../Articles/README.md
+
+          git checkout website_Static
+          cp -r ToCopy ../staticFiles
+          # rm -rf ../staticFiles/source/_posts  # 删除了 branch website_Static 的 ToCopy/source/_posts
+          mv ../Articles ../staticFiles/source/_posts
+          # mv -f ../staticFiles/* ../hexoWorkspace
+          rsync -a ../staticFiles/* ../hexoWorkspace
+          # echo tree ../hexoWorkspace/source/_posts
+
+          # sub theme: 明日方舟arknights
+          cp -r ../hexoWorkspace ../hexoWorkspace_arknights
+      
+      - name: Install dependencies
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          cd ../hexoWorkspace
+          # npm install hexo-deployer-git --save
+          npm install lodash  # 主题fluid需要使用
+          npm install css     # 主题fluid需要使用
+          # npm uninstall hexo-renderer-marked --save
+          # sudo apt-get install pandoc
+          # npm install hexo-renderer-pandoc --save
+          cd ../LeetCode
+          cd ../hexoWorkspace_arknights
+          npm install lodash  # 主题arknights需要使用
+          npm install css     # 主题arknights需要使用
+          npm install hexo-generator-sitemap --save
+          cd ../LeetCode
+      
+      - name: Generate hexo fluid
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          cd ../hexoWorkspace
+          echo hexo g:
+          hexo g
+          # echo hexo d:
+          # hexo d
+          cd ../LeetCode
+      
+      - name: Generate hexo arknights
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          cd ../hexoWorkspace_arknights
+          sed -i 's/theme: fluid/theme: arknights/g' _config.yml
+          sed -i 's|url: https://[^/]*/|&theme/arknights/|' _config.yml
+          echo 'npm install hexo-renderer-pug --save'
+          npm install hexo-renderer-pug --save
+          echo 'hexo g'
+          hexo g
+          echo 'generated'
+          mkdir ../hexoWorkspace/public/theme/
+          mv public ../hexoWorkspace/public/theme/arknights
+          cd ../LeetCode
+      
+      - name: Modify sitemap
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          echo "" > ../hexoWorkspace/public/sitemap.txt  # 主站优先
+          sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
+          cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
+          # echo "https://blog.letmefly.xyz/theme/arknights/sitemap.txt" >> ../hexoWorkspace/public/sitemap.txt
+      
+      - name: Push to github
+        if: env.SKIP_DEPLOY != 'true'
+        run: |
+          git checkout website
+          ls -la
+          cp -r .git ../hexoWorkspace/public
+          cd ../hexoWorkspace/public
+          # DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
+          # echo "$DECODED_MESSAGE"
+          TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
+          echo "$TOCOMMIT"
+          git add .
+          # git commit --allow-empty -m "$DECODED_MESSAGE"
+          git commit --allow-empty -m "$TOCOMMIT"
+          git push
+          cd ../../LeetCode
+
+      
+      # - name: Move cache dir to other place
+      #   run: |
+      #     mv ../hexoWorkspace/.deploy_git ..
+      #     tree .. -d -a
+      
+      # - name: Using cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: ~/.deploy_git
+      #     key: deployGit
+      #     restore-keys: deployGit
+
+      # - name: Try to keep logs
+      #   run: |
+      #     echo tree -d -a ..
+      #     tree -d -a ..
+      #     mv .deploy_git/.git .deploy_git/git
+      #     rsync -a .deploy_git/* ../LeetCode/.deploy_git
+      #     echo git config --list
+      #     git config --list
+      #     echo git remote -v
+      #     git remote -v
+      #     git add .
+      #     git commit -m "backup .deploy_git"
+      #     git push origin website_Static
+      #     echo cat .git/config
+      #     cat .git/config
+      #     echo ssh -T git@github.com
+      #     ssh -T git@github.com
+      
+      # - name: Push to branch website_Static
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.WORKFLOWTOKEN }}
+      #     # branch: ${{ github.ref }}
+      #     # branch: website_Static
+      #     branch: refs/heads/website_Static
+      
+      # - name: Push to branch website_Static
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: LetMeFly
+      #     author_email: Tisfy@qq.com
+      #     message: "backup .deploy_git"
+      #     add: "."
