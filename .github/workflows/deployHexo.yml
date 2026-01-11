@@ -78,6 +78,7 @@ jobs:
         run: |
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
+          git rev-list --count HEAD
           git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           for branch in $(git branch -r | grep -v '\->'); do
             local_branch="${branch#origin/}"
@@ -89,6 +90,7 @@ jobs:
             fi
           done
           git switch master
+          git rev-list --count HEAD
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
