@@ -34,9 +34,7 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v6
         with:
-          ref: master
-          fetch-depth: 0
-          fetch-tags: false
+          fetch-depth: 1
       
       - name: Whether Skip Deploy(.nodeploy|filePath)
         id: deploy-check
@@ -80,7 +78,7 @@ jobs:
         run: |
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
-          git rev-list --count HEAD
+          # git rev-list --count HEAD
           git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
           for branch in $(git branch -r | grep -v '\->'); do
             local_branch="${branch#origin/}"
@@ -92,7 +90,7 @@ jobs:
             fi
           done
           git switch master
-          git rev-list --count HEAD
+          # git rev-list --count HEAD
 
       - name: Use Node.js ${{ matrix.node_version }}
         if: env.SKIP_DEPLOY != 'true'
@@ -128,16 +126,7 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name $GIT_USER
           git config --global user.email $GIT_EMAIL
-      
-      - name: Install hexo and init
-        if: env.SKIP_DEPLOY != 'true'
-        run: |
-          npm install -g hexo-cli --save
-          hexo init ../hexoWorkspace
-          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
-          sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
-          # cat ../hexoWorkspace/node_modules/marked/lib/*
-          
+
           # 上次commit记录
           MESSAGE=$(git log -1 --format="%s")
           HASH=$(git log -1 --format="%H")
@@ -149,18 +138,72 @@ jobs:
           echo "MESSAGE=$MESSAGE" >> $GITHUB_ENV
           echo "HASH=$HASH" >> $GITHUB_ENV
       
-      - name: Set file modified time
+      - name: Update LastModifiedTime.json and file mtime
+        if: github.ref == 'refs/heads/master' && env.SKIP_DEPLOY != 'true'
+        run: |
+          set -e
+
+          git switch website_modifyTime
+          cd ..
+          cp -r LeetCode website_modifyTime
+          cd LeetCode
+          json_file="website_modifyTime/LastModifiedTime.json"
+
+          # 1. 获取本次 push 里 master 分支变动的文件列表
+          changed_files=$(jq -r '[.added[], .modified[]] | .[]' <<< "$GITHUB_EVENT_PATH")
+          echo "Changed files:"
+          echo "$changed_files"
+
+          # 2. 保存原 json 内容顺序
+          tmp_json=$(mktemp)
+          cp "$json_file" "$tmp_json"
+
+          # 3. 遍历每个文件，看是否是 Solutions 下的 md 文件
+          updated=false
+          commit_time=$(git show -s --format=%cI ${{ github.sha }})  # ISO 8601 commit 时间
+
+          while IFS= read -r file; do
+            # 只处理 Solutions/*.md 文件
+            if [[ "$file" == Solutions/*.md ]]; then
+              filename=$(basename "$file")
+              # 使用 jq 更新 JSON 值
+              # 保持原有顺序，用临时文件写回
+              jq --arg key "$filename" --arg value "$commit_time" '(.[$key] = $value) | .' "$tmp_json" > "$tmp_json.tmp" && mv "$tmp_json.tmp" "$tmp_json"
+              updated=true
+            fi
+          done <<< "$changed_files"
+
+          if [ "$updated" != true ]; then
+            echo "No Solutions/*.md file changed, skip JSON update."
+            exit 0
+          fi
+
+          # 4. 将临时 JSON 覆盖原文件
+          cp "$tmp_json" "$json_file"
+
+          # 5. 将 Solutions 下的 md 文件系统修改时间改为 JSON 中对应时间
+          while IFS= read -r line; do
+            file_name=$(echo "$line" | jq -r 'keys[0]')
+            file_time=$(echo "$line" | jq -r '.[keys[0]]')
+            touch -d "$file_time" "Solutions/$file_name"
+          done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
+
+          # 6. 提交修改
+          cd ../website_modifyTime
+          git add "$json_file"
+          TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
+          git commit --allow-empty -m "$TOCOMMIT"
+          git push
+          cd ../LeetCode
+      
+      - name: Install hexo and init
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          # 修改文件系统时间为git commit时间
-          cd Solutions
-          find . -name '*.md' -print0 | while IFS= read -r -d '' file; do
-            modtime=$(git log -1 --format="%ct" --follow -- "$file")
-            modtime_readable=$(date -d "@$modtime" "+%Y-%m-%d %H:%M:%S")
-            touch -m -d "$modtime_readable" "$file"
-            echo "set $file -> $modtime_readable"
-          done
-          cd ..
+          npm install -g hexo-cli --save
+          hexo init ../hexoWorkspace
+          rm -f ../hexoWorkspace/source/_posts/hello-world.md  # 不再显示Hello World这篇文章（每次都显示在首页）
+          sed -i 's/"<em>" + text + "<\/em>"/"_" + text + "_"/g' ../hexoWorkspace/node_modules/marked/lib/*
+          # cat ../hexoWorkspace/node_modules/marked/lib/*
 
       - name: Copy config files from branch website_Static
         if: env.SKIP_DEPLOY != 'true'
