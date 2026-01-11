@@ -52,8 +52,10 @@ jobs:
           BRANCH="${GITHUB_REF#refs/heads/}"
           echo "Current branch: $BRANCH"
 
-          if [ "$BRANCH" = "website_Static" ]; then  # (#814)、(#1318)  # TODO: change to master
-            echo "test website_Static branch, checking Solutions changes"
+          if [ "$BRANCH" = "website_Static" ]; then
+            echo "website_Static branch, deploy"
+          elif [ "$BRANCH" = "master" ]; then  # (#814)、(#1318)
+            echo "master branch, checking Solutions changes"
             git fetch --depth=2 origin "$BRANCH"
             CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} $GITHUB_SHA || true)
             echo "Changed files:"
@@ -147,6 +149,15 @@ jobs:
         if: env.SKIP_DEPLOY != 'true'
         run: |
           cp -r Solutions ../Articles
+
+          # 修改文件系统时间为git commit时间
+          cd ../Articles
+          for file in $(find . -name '*.md'); do
+            modtime=$(git log -1 --format="%ct" -- "$file") # Unix timestamp
+            touch -m -d "@$modtime" "$file"
+            echo "set $file -> @$modtime"
+          done
+          cd ../LeetCode
 
           echo --- > ../Articles/README.md
           echo title: README >> ../Articles/README.md
