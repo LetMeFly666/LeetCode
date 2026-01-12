@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           persist-credentials: true
-          fetch-depth: 1
+          fetch-depth: 2
       
       - name: Whether Skip Deploy(.nodeploy|filePath)
         id: deploy-check
@@ -78,6 +78,7 @@ jobs:
       - name: Fetch and checkout each branch (shallow)
         if: env.SKIP_DEPLOY != 'true'
         run: |
+          # TODO: Let's change this(only needed branch)
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
           # git rev-list --count HEAD
@@ -169,51 +170,56 @@ jobs:
         run: |
           set -e
 
-          json_file="../website_modifyTime/LastModifiedTime.json"
+          # git rev-list --count HEAD
+          json_file_name="LastModifiedTime.json"
+          json_file="../website_modifyTime/$json_file_name"
 
-          # 获取本次 push 里 master 分支变动的文件列表
-          # TODO: Let's处理删除removed
-          # TODO: Let's solve this
-          echo '${{ toJSON(github.event) }}' | jq .
-          changed_files=$(jq -r '
-            [
-              .commits[].added[]?,
-              .commits[].modified[]?
-            ]
-            | unique
-            | .[]
-          ' "$GITHUB_EVENT_PATH")
-          echo "Changed files:"
-          echo "$changed_files"
+          if [ -f "$json_file" ]; then
+            json_content=$(cat "$json_file")
+          else
+            json_content='{}'
+            echo "original Modified Json File Not exists"
+          fi
 
-          # 保存原 json 内容顺序
-          tmp_json=$(mktemp)
-          cp "$json_file" "$tmp_json"
+          commit_time=$(git show -s --format=%cI HEAD)
+          echo "Commit time: $commit_time"
 
-          # 遍历每个文件，看是否是 Solutions 下的 md 文件
-          updated=false
-          commit_time=$(git show -s --format=%cI ${{ github.sha }})  # ISO 8601 commit 时间
+          has_modified=false
+          while read -r status file; do
+            [[ "$file" == Solutions/*.md ]] || continue
 
-          while IFS= read -r file; do
-            # 只处理 Solutions/*.md 文件
-            if [[ "$file" == Solutions/*.md ]]; then
-              filename=$(basename "$file")
-              # 使用 jq 更新 JSON 值
-              # 保持原有顺序，用临时文件写回
-              jq --arg key "$filename" --arg value "$commit_time" '(.[$key] = $value) | .' "$tmp_json" > "$tmp_json.tmp" && mv "$tmp_json.tmp" "$tmp_json"
-              updated=true
-            fi
-          done <<< "$changed_files"
+            filename=$(basename "$file")
+            has_modified=true
 
-          if [ "$updated" != true ]; then
-            echo "No Solutions/*.md file changed, skip JSON update."
+            case "$status" in
+              A|M)
+                echo "Updated $filename"
+                json_content=$(echo "$json_content" | jq \
+                  --arg k "$filename" \
+                  --arg v "$commit_time" \
+                  '. + {($k): $v}')
+                ;;
+              D)
+                echo "Deleted $filename"
+                json_content=$(echo "$json_content" | jq \
+                  --arg k "$filename" \
+                  'del(.[$k])')
+                ;;
+            esac
+          done < <(git diff --name-status HEAD~1 HEAD)
+
+          if [ "$has_modified" = false ]; then
+            echo "no modified Solutions/*.md files"
             exit 0
           fi
 
+          # 按 key 字典序排序并写回
+          jq -S --indent 4 '.' <<<"$json_content" > "$json_file"
+          echo "Updated $json_file"
+
           # 提交修改
-          cp "$tmp_json" "$json_file"
           cd ../website_modifyTime
-          git add "$json_file"
+          git add "$json_file_name"
           TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
           git commit --allow-empty -m "$TOCOMMIT"
           git push

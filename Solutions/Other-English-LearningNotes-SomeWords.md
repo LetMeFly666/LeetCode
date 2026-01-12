@@ -899,7 +899,7 @@ categories: [自用]
 |<font color="#28bea0" title="二次复习">carol</font>|n. 颂歌，尤指圣诞颂歌<br/>v. 欢唱，挨家挨户地唱圣诞歌|
 |||
 |condemn|v. 谴责，指责，宣判，判处(某人刑罚)|
-|storey|n. 楼层|
+|<font color="#28bea0" title="二次复习">storey</font>|n. 楼层|
 |||
 |undertaking|n. 重大/艰巨の任务/事业，企业，承诺，保证，许诺|
 |gorge|n. 峡谷<br/>v. 贪婪地吃，狼吞虎咽|
@@ -1733,6 +1733,8 @@ categories: [自用]
 |postpone|v. 延迟，延期|
 |||
 |tyrant|n. 暴君|
+|||
+|exoneration|n. 免罪，免除|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
