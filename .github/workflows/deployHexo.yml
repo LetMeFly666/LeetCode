@@ -169,7 +169,7 @@ jobs:
         run: |
           set -e
 
-          git rev-list --count HEAD
+          # git rev-list --count HEAD
           json_file_name="LastModifiedTime.json"
           json_file="../website_modifyTime/$json_file_name"
 
@@ -213,7 +213,7 @@ jobs:
           fi
 
           # 按 key 字典序排序并写回
-          echo "$json_content" | jq -S '.' > "$json_file"
+          jq -S --indent 4 '.' <<<"$json_content" > "$json_file"
           echo "Updated $json_file"
 
           # 提交修改
