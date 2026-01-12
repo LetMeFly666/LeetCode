@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-01-06 13:17:16
  */
 pub struct Solution;
-include!("1458-max-dot-product-of-two-subsequences.rs");  // 这个fileName是会被脚本替换掉的
+include!("1266-minimum-time-visiting-all-points.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
