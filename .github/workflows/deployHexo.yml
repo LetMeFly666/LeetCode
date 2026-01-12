@@ -170,7 +170,8 @@ jobs:
           set -e
 
           git rev-list --count HEAD
-          json_file="../website_modifyTime/LastModifiedTime.json"
+          json_file_name="LastModifiedTime.json"
+          json_file="../website_modifyTime/$json_file_name"
 
           if [ -f "$json_file" ]; then
             json_content=$(cat "$json_file")
@@ -217,7 +218,7 @@ jobs:
 
           # 提交修改
           cd ../website_modifyTime
-          git add "$json_file"
+          git add "$json_file_name"
           TOCOMMIT=$(printf "%s\n\n%s" "$MESSAGE" "$HASH")
           git commit --allow-empty -m "$TOCOMMIT"
           git push
