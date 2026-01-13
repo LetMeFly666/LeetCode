@@ -2,6 +2,17 @@ meta(charset='UTF-8')
 meta(name='viewport' content='width=device-width, initial-scale=1.0')
 title= pageTitle
 
+-
+  let canonicalPath = page.permalink || page.path || ''
+  if (canonicalPath) {
+    canonicalPath = canonicalPath.toString()
+    canonicalPath = canonicalPath.replace(/^https?:\/\/[^/]+/, '')
+  }
+  if (!canonicalPath) canonicalPath = config.root || '/'
+  if (!canonicalPath.startsWith('/')) canonicalPath = '/' + canonicalPath
+  const canonicalUrl = 'https://blog.letmefly.xyz' + canonicalPath
+link(rel="canonical", href=canonicalUrl)
+
 link(
   rel="icon"
   type=(theme.favicon.type ? theme.favicon.type : "image/x-icon")
