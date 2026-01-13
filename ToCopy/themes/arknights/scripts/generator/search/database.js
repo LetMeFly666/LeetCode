@@ -29,7 +29,26 @@ function savedb(article, config, isPost) {
     data.categories = article.categories.map(category => category.name);
   }
   if (article.tags && article.tags.length > 0) {
-    data.tags = article.tags.map(tag => tag.name);
+    const tags = (article.tags && typeof article.tags.toArray === 'function')
+      ? article.tags.toArray()
+      : article.tags;
+    tags.sort((a, b) => {
+      const an = a && a.name ? String(a.name) : '';
+      const bn = b && b.name ? String(b.name) : '';
+      if (typeof an.localeCompare === 'function') {
+        try {
+          return an.localeCompare(bn, undefined, {sensitivity: 'base'});
+        } catch (e) {
+          // ignore and fallback
+        }
+      }
+      const al = an.toLowerCase();
+      const bl = bn.toLowerCase();
+      if (al < bl) return -1;
+      if (al > bl) return 1;
+      return 0;
+    });
+    data.tags = tags.map(tag => tag.name);
   }
   return data;
 }
