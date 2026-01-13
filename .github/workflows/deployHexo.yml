@@ -78,23 +78,36 @@ jobs:
       - name: Fetch and checkout each branch (shallow)
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          # TODO: Let's change this(only needed branch)
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
           # git rev-list --count HEAD
-          git fetch --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-          for branch in $(git branch -r | grep -v '\->'); do
-            local_branch="${branch#origin/}"
-            if [[ "$local_branch" =~ ^[0-9] ]] || [[ "$local_branch" == "From_GitCode_CSDN" ]]; then
-              echo "Skipping branch $local_branch"
+          branches=(
+            website
+            website_Static
+            website_modifyTime
+          )
+          # 非 website_testMaster 才需要 master
+          if [ "${GITHUB_REF}" != "refs/heads/website_testMaster" ]; then
+            branches+=(master)
+          else
+            echo "Triggered by website_testMaster, skip fetching master"
+          fi
+
+          echo "Branches to process: ${branches[*]}"
+
+          # 只 fetch 需要的分支
+          for branch in "${branches[@]}"; do
+            # 如果本地已存在，直接跳过
+            if git show-ref --quiet "refs/heads/$branch"; then
+              echo "Local branch $branch already exists, skipping fetch/checkout"
               continue
             fi
-            if ! git show-ref --quiet "refs/heads/$local_branch"; then
-              echo "Setting branch $local_branch"
-              git switch -c $local_branch origin/$local_branch
-            else
-              echo "Branch $local_branch already exists, skipping..."
-            fi
+
+            echo "Fetching branch $branch"
+            git fetch --depth=1 origin "$branch"
+
+            echo "Checking out branch $branch"
+            git switch -c "$branch" "origin/$branch"
           done
           
           if [ "${GITHUB_REF}" = "refs/heads/website_testMaster" ]; then
@@ -185,11 +198,12 @@ jobs:
           echo "Commit time: $commit_time"
 
           has_modified=false
-          while read -r status file; do
+          while IFS= read -r -d '' status && IFS= read -r -d '' file; do
             [[ "$file" == Solutions/*.md ]] || continue
 
             filename=$(basename "$file")
             has_modified=true
+            echo "($status)$filename"
 
             case "$status" in
               A|M)
@@ -206,7 +220,7 @@ jobs:
                   'del(.[$k])')
                 ;;
             esac
-          done < <(git diff --name-status HEAD~1 HEAD)
+          done < <(git diff --name-status -z HEAD~1 HEAD)
 
           if [ "$has_modified" = false ]; then
             echo "no modified Solutions/*.md files"
@@ -236,7 +250,7 @@ jobs:
             file_name=$(echo "$line" | jq -r 'keys[0]')
             file_time=$(echo "$line" | jq -r '.[keys[0]]')
             touch -d "$file_time" "Solutions/$file_name"
-            echo "set Solutions/$file_name -> $file_time"
+            # echo "set Solutions/$file_name -> $file_time"
           done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
       
       - name: Install hexo and init
@@ -271,8 +285,8 @@ jobs:
 
           # sub theme: 明日方舟arknights
           cp -a ../hexoWorkspace ../hexoWorkspace_arknights
-          ls -l ../hexoWorkspace/source/_posts
-          ls -l ../hexoWorkspace_arknights/source/_posts
+          # ls -l ../hexoWorkspace/source/_posts
+          # ls -l ../hexoWorkspace_arknights/source/_posts
       
       - name: Install dependencies
         if: env.SKIP_DEPLOY != 'true'
@@ -319,18 +333,16 @@ jobs:
       - name: Modify sitemap
         if: env.SKIP_DEPLOY != 'true'
         run: |
-          # TODO: Let's change this
-          # TODO: Let's change tag orders
           echo "" > ../hexoWorkspace/public/sitemap.txt  # 主站优先
           sed 's/theme\/arknights\///g' ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
-          cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
+          # cat ../hexoWorkspace/public/theme/arknights/sitemap.txt >> ../hexoWorkspace/public/sitemap.txt
           # echo "https://blog.letmefly.xyz/theme/arknights/sitemap.txt" >> ../hexoWorkspace/public/sitemap.txt
       
       - name: Push to github
         if: env.SKIP_DEPLOY != 'true'
         run: |
           git checkout website
-          ls -la
+          # ls -la
           cp -r .git ../hexoWorkspace/public
           cd ../hexoWorkspace/public
           # DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
