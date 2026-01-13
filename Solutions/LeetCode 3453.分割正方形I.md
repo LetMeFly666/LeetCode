@@ -1,7 +1,7 @@
 ---
 title: 3453.分割正方形 I：二分查找
 date: 2026-01-13 23:46:15
-tags: [题解, LeetCode, 中等, 数组, 二分查找]
+tags: [题解, LeetCode, 中等, 数组, 二分查找, 二分]
 categories: [题解, LeetCode]
 index_img: https://pic.leetcode.cn/1739609465-UaFzhk-4062example1drawio.png
 ---
@@ -132,6 +132,6 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/13/LeetCode%203453.%E5%88%86%E5%89%B2%E6%AD%A3%E6%96%B9%E5%BD%A2I/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/156915633)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/13/LeetCode%203453.%E5%88%86%E5%89%B2%E6%AD%A3%E6%96%B9%E5%BD%A2I/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
