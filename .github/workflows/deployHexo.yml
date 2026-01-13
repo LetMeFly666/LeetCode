@@ -78,6 +78,7 @@ jobs:
       - name: Fetch and checkout each branch (shallow)
         if: env.SKIP_DEPLOY != 'true'
         run: |
+          # TODO: Let's change this(only needed branch)
           # git clone git@github.com:LetMeFly666/LeetCode.git --depth=1
           # cd LeetCode
           # git rev-list --count HEAD
@@ -184,11 +185,12 @@ jobs:
           echo "Commit time: $commit_time"
 
           has_modified=false
-          while read -r status file; do
+          while IFS= read -r -d '' status && IFS= read -r -d '' file; do
             [[ "$file" == Solutions/*.md ]] || continue
 
             filename=$(basename "$file")
             has_modified=true
+            echo "($status)$filename"
 
             case "$status" in
               A|M)
@@ -205,7 +207,7 @@ jobs:
                   'del(.[$k])')
                 ;;
             esac
-          done < <(git diff --name-status HEAD~1 HEAD)
+          done < <(git diff --name-status -z HEAD~1 HEAD)
 
           if [ "$has_modified" = false ]; then
             echo "no modified Solutions/*.md files"
@@ -235,7 +237,7 @@ jobs:
             file_name=$(echo "$line" | jq -r 'keys[0]')
             file_time=$(echo "$line" | jq -r '.[keys[0]]')
             touch -d "$file_time" "Solutions/$file_name"
-            echo "set Solutions/$file_name -> $file_time"
+            # echo "set Solutions/$file_name -> $file_time"
           done < <(jq -c 'to_entries | map({(.key): .value}) | .[]' "$json_file")
       
       - name: Install hexo and init
@@ -270,8 +272,8 @@ jobs:
 
           # sub theme: 明日方舟arknights
           cp -a ../hexoWorkspace ../hexoWorkspace_arknights
-          ls -l ../hexoWorkspace/source/_posts
-          ls -l ../hexoWorkspace_arknights/source/_posts
+          # ls -l ../hexoWorkspace/source/_posts
+          # ls -l ../hexoWorkspace_arknights/source/_posts
       
       - name: Install dependencies
         if: env.SKIP_DEPLOY != 'true'
@@ -329,7 +331,7 @@ jobs:
         if: env.SKIP_DEPLOY != 'true'
         run: |
           git checkout website
-          ls -la
+          # ls -la
           cp -r .git ../hexoWorkspace/public
           cd ../hexoWorkspace/public
           # DECODED_MESSAGE=$(echo "$ENCODED_MESSAGE" | base64 --decode)
