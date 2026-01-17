@@ -3,6 +3,7 @@ title: 3047.求交集区域内的最大正方形面积：2层循环暴力枚举
 date: 2026-01-17 20:05:07
 tags: [题解, LeetCode, 中等, 几何, 数组, 数学]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2024/01/05/example12.png
 ---
 
 # 【LetMeFly】3047.求交集区域内的最大正方形面积：2层循环暴力枚举
