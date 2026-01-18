@@ -383,6 +383,10 @@ Interpreter: /bin/bash
 
 </details>
 
+### zsh里面 path和PATH是一个
+
+ZSH中修改$path$变量也会自动修改$PATH$变量。
+
 ### Linux登录欢迎语motd
 
 使用```ssh```登录Linux时会显示Linux欢迎语，据不完全测试，修改```/etc/motd```为你想要显示的内容即可。（比如看板娘）
@@ -637,6 +641,16 @@ Guid
 f35b2f66-3e03-4c9d-80b5-d72059a8735d
 ```
 
+### WOL(Wake on LAN)网络唤醒
+
+归类到Windows下其实并不仅局限于Windows。
+
+1. 固件支持WOL
+2. 局域网或公网可达
+3. 网卡有待机电
+4. 接收到魔术网络包(Magic Packe)，内容`6 字节的 FF`+`目标网卡 MAC 地址 × 16 次`
+
+没有认证，知道Mac地址就能发。
 
 ## About Phone
 
