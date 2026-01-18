@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2975.移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度 | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/01/17/LeetCode%202975.%E7%A7%BB%E9%99%A4%E6%A0%85%E6%A0%8F%E5%BE%97%E5%88%B0%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2%E7%94%B0%E5%9C%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2975.移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-01-17T13:10:06.000Z" id="date"> 2026-01-17</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2975-移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度"><a href="#【LetMeFly】2975-移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度" class="headerlink" title="【LetMeFly】2975.移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度"></a>【LetMeFly】2975.移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-square-area-by-removing-fences-from-a-field/">https://leetcode.cn/problems/maximum-square-area-by-removing-fences-from-a-field/</a></p>
+<p>有一个大型的 <code>(m - 1) x (n - 1)</code> 矩形田地，其两个对角分别是 <code>(1, 1)</code> 和 <code>(m, n)</code> ，田地内部有一些水平栅栏和垂直栅栏，分别由数组 <code>hFences</code> 和 <code>vFences</code> 给出。</p>
+
+<p>水平栅栏为坐标 <code>(hFences[i], 1)</code> 到 <code>(hFences[i], n)</code>，垂直栅栏为坐标 <code>(1, vFences[i])</code> 到 <code>(m, vFences[i])</code> 。</p>
+
+<p>返回通过<strong> 移除 </strong>一些栅栏（<strong>可能不移除</strong>）所能形成的最大面积的<strong> 正方形 </strong>田地的面积，或者如果无法形成正方形田地则返回 <code>-1</code>。</p>
+
+<p>由于答案可能很大，所以请返回结果对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的值。</p>
+
+<p><strong>注意：</strong>田地外围两个水平栅栏（坐标 <code>(1, 1)</code> 到 <code>(1, n)</code> 和坐标 <code>(m, 1)</code> 到 <code>(m, n)</code> ）以及两个垂直栅栏（坐标 <code>(1, 1)</code> 到 <code>(m, 1)</code> 和坐标 <code>(1, n)</code> 到 <code>(m, n)</code> ）所包围。这些栅栏<strong> 不能</strong> 被移除。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2023/11/05/screenshot-from-2023-11-05-22-40-25.png'><img alt="" src="https://assets.leetcode.com/uploads/2023/11/05/screenshot-from-2023-11-05-22-40-25.png" /></p>
+
+<pre>
+<strong>输入：</strong>m = 4, n = 3, hFences = [2,3], vFences = [2]
+<strong>输出：</strong>4
+<strong>解释：</strong>移除位于 2 的水平栅栏和位于 2 的垂直栅栏将得到一个面积为 4 的正方形田地。
+</pre>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2023/11/22/maxsquareareaexample1.png'><img alt="" src="https://assets.leetcode.com/uploads/2023/11/22/maxsquareareaexample1.png" style="width: 285px; height: 242px;" /></p>
+
+<pre>
+<strong>输入：</strong>m = 6, n = 7, hFences = [2], vFences = [4]
+<strong>输出：</strong>-1
+<strong>解释：</strong>可以证明无法通过移除栅栏形成正方形田地。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>3 &lt;= m, n &lt;= 10<sup>9</sup></code></li>
+	<li><code>1 &lt;= hFences.length, vFences.length &lt;= 600</code></li>
+	<li><code>1 &lt; hFences[i] &lt; m</code></li>
+	<li><code>1 &lt; vFences[i] &lt; n</code></li>
+	<li><code>hFences</code> 和 <code>vFences</code> 中的元素是唯一的。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：暴力枚举"><a href="#解题方法：暴力枚举" class="headerlink" title="解题方法：暴力枚举"></a>解题方法：暴力枚举</h2><p>水平竖直单看一个方向，可能的边长有哪些？</p>
+<blockquote>
+<p>任意两个栅栏之间的距离都可以是边长，可以二重循环栅栏位置并将其放入哈希表中。</p>
+</blockquote>
+<p>水平竖直一块看，如果一个边长在水平方向有可能得到，在竖直方向也有可能得到，那么就有办法得到这个长度为边长的正方形。</p>
+<p>也就是两个哈希表求个交并取最大就好了。</p>
+<ul>
+<li>时间复杂度$O((len(hFences) + len(vFences))^2)$，这是因为$(a+b)^2&#x3D;a^2+b^2+2ab$，复杂度中等于$a^2+b^2+ab$</li>
+<li>空间复杂度$O(len(hFences) + len(vFences))$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-01-17 21:08:43</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">unordered_set&lt;<span class="type">int</span>&gt; <span class="title">get</span><span class="params">(<span class="type">int</span> n, vector&lt;<span class="type">int</span>&gt;&amp; v)</span> </span>&#123;</span><br><span class="line">        v.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">        v.<span class="built_in">push_back</span>(n);</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; v.<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">                ans.<span class="built_in">insert</span>(<span class="built_in">abs</span>(v[i] - v[j]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maximizeSquareArea</span><span class="params">(<span class="type">int</span> m, <span class="type">int</span> n, vector&lt;<span class="type">int</span>&gt;&amp; hFences, vector&lt;<span class="type">int</span>&gt;&amp; vFences)</span> </span>&#123;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; va = <span class="built_in">get</span>(m, hFences), vb = <span class="built_in">get</span>(n, vFences);</span><br><span class="line">        <span class="type">int</span> side = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> a : va) &#123;</span><br><span class="line">            <span class="keyword">if</span> (vb.<span class="built_in">count</span>(a)) &#123;</span><br><span class="line">                side = <span class="built_in">max</span>(side, a);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> side ? (<span class="type">long</span> <span class="type">long</span>) side * side % <span class="number">1000000007</span> : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/157068738">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/01/17/LeetCode%202975.%E7%A7%BB%E9%99%A4%E6%A0%85%E6%A0%8F%E5%BE%97%E5%88%B0%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2%E7%94%B0%E5%9C%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/2026/01/18/LeetCode%201895.%E6%9C%80%E5%A4%A7%E7%9A%84%E5%B9%BB%E6%96%B9/">← Next 1895.最大的幻方：暴力中来点前缀和优化</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/01/17/LeetCode%203047.%E6%B1%82%E4%BA%A4%E9%9B%86%E5%8C%BA%E5%9F%9F%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF/">3047.求交集区域内的最大正方形面积：2层循环暴力枚举 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912975-%E7%A7%BB%E9%99%A4%E6%A0%85%E6%A0%8F%E5%BE%97%E5%88%B0%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2%E7%94%B0%E5%9C%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF%EF%BC%9A%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E5%AE%BD%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2975.移除栅栏得到的正方形田地的最大面积：暴力枚举所有可能宽度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：暴力枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
