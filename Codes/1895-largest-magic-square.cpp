@@ -2,13 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-01-18 20:47:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-18 23:16:07
+ * @LastEditTime: 2026-01-18 23:17:50
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
-// THIS CANNOT BE ACCEPTED
 class Solution {
 private:
     vector<vector<int>> rowSum, colSum;
@@ -17,7 +16,7 @@ private:
         int cnt = 0, cntRev = 0;
         for (int i = 0; i < l; i++) {
             cnt += grid[x + i][y + i];
-            cntRev += grid[x + l - i - 1][y + l - i - 1];
+            cntRev += grid[x + i][y + l - i - 1];  // 易错
         }
         if (cnt != cntRev) {
             return false;
