@@ -385,7 +385,7 @@ Interpreter: /bin/bash
 
 ### zsh里面 path和PATH是一个
 
-ZSH中修改$path$变量也会自动修改$PATH$变量。
+ZSH中修改`$path`变量也会自动修改`$PATH`变量。
 
 ### Linux登录欢迎语motd
 
@@ -648,7 +648,7 @@ f35b2f66-3e03-4c9d-80b5-d72059a8735d
 1. 固件支持WOL
 2. 局域网或公网可达
 3. 网卡有待机电
-4. 接收到魔术网络包(Magic Packe)，内容`6 字节的 FF`+`目标网卡 MAC 地址 × 16 次`
+4. 接收到魔术网络包(Magic Packet)，内容`6 字节的 FF`+`目标网卡 MAC 地址 × 16 次`
 
 没有认证，知道Mac地址就能发。
 

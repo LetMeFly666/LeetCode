@@ -1746,6 +1746,9 @@ categories: [自用]
 |||
 |bureau|n. 局，处，科|
 |disintegration|n. 崩解，瓦解，裂变|
+|||
+|reconnaissance|n. 侦察|
+|illegible|adj. 难以辨认的，无法辨识的，字迹模糊的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
