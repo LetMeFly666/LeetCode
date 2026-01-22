@@ -1756,6 +1756,9 @@ categories: [自用]
 |||
 |decree|n. 法令，政令，裁定，判决<br/>v. 裁定，判决，颁布|
 |baggy|adj. 宽松的|
+|||
+|incorporated|adv. 把...合入<br/>adj. 已经被并入的，已整合的，已注册成立的<br/>Apple incorporated|
+|ration|n. 定量<br/>v. 配给|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

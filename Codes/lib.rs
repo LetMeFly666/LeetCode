@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-01-06 13:17:16
  */
 pub struct Solution;
-include!("3315-construct-the-minimum-bitwise-array-ii.rs");  // 这个fileName是会被脚本替换掉的
+include!("3507-minimum-pair-removal-to-sort-array-i.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
