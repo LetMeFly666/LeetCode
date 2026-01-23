@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-23 20:28:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-23 21:22:45
+ * @LastEditTime: 2026-01-23 21:24:26
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -59,7 +59,7 @@ public:
             }
 
             nums[*idxIt] = nodeVal;
-            idxs.erase(idxIt);
+            idxs.erase(secondIdxIt);
             ans++;
         }
         return ans;
