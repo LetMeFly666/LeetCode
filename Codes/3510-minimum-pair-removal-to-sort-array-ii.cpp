@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-23 19:26:50
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-23 20:12:56
+ * @LastEditTime: 2026-01-23 20:28:25
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -37,11 +37,11 @@ private:
         return rFather[idx] = right(rIdx);
     }
 
-    int getRank(int a, int b, int c, int d) {
+    int getRank(ll a, ll b, ll c, ll d) {
         return 0 + (a > b) + (b > c) + (c > d);
     }
 
-    int getRank(int a, int b, int c) {
+    int getRank(ll a, ll b, ll c) {
         return 0 + (a > b) + (b > c);
     }
 
@@ -96,11 +96,36 @@ public:
         int ans = 0;
         while (cntRev) {
             ans++;
-            int idx = pq.top();
-            pq.pop();
-            
+            int idx;
+            do {
+                idx = pq.top();
+                pq.pop();
+            } while (!isNode[idx]);
+            pq.push(idx);
             cntRev -= merge(nums, idx);
         }
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[5,2,3,1]
+
+2
+*/
+/*
+[-2,1,2,-1,-1,-2,-2,-1,-1,1,1]
+
+
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        vector<int> v = stringToVector(s);
+        cout << sol.minimumPairRemoval(v) << endl;
+    }
+    return 0;
+}
+#endif
