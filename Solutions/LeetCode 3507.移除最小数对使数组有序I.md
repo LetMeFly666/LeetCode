@@ -229,6 +229,8 @@ impl Solution {
 }
 ```
 
+More: [3510.移除最小数对使数组有序 II：有序集合](https://blog.letmefly.xyz/2026/01/23/LeetCode%203510.%E7%A7%BB%E9%99%A4%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AF%B9%E4%BD%BF%E6%95%B0%E7%BB%84%E6%9C%89%E5%BA%8FII/)
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/157263848)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/22/LeetCode%203507.%E7%A7%BB%E9%99%A4%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AF%B9%E4%BD%BF%E6%95%B0%E7%BB%84%E6%9C%89%E5%BA%8FI/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
