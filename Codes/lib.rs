@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-01-06 13:17:16
  */
 pub struct Solution;
-include!("1877-minimize-maximum-pair-sum-in-array_20260124.rs");  // 这个fileName是会被脚本替换掉的
+include!("1984-minimum-difference-between-highest-and-lowest-of-k-scores_20260125.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

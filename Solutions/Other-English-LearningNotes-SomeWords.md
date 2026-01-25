@@ -1764,6 +1764,11 @@ categories: [自用]
 |||
 |superstitious|adj. 迷信的，有迷信观念的|
 |Occident|n. 西方，西方国家|
+|||
+|eminent|adj. 杰出的|
+|namesake|n. 同名的人(物)|
+|ratification|n. 批准|
+|militia|n. 民兵组织，国民卫队|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
