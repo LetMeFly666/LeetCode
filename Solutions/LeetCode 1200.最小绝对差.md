@@ -44,7 +44,7 @@ categories: [题解, LeetCode]
 
 
     
-## 方法一：排序
+## 方法一：排序+两次遍历
 
 这道题的数据范围是$10^5$，因此无法$O(n^2)$暴力
 
@@ -79,6 +79,93 @@ public:
         return ans;
     }
 };
+```
+
+## 方法二：排序+一次遍历
+
+一次遍历直接在ans中存储当前所有差值为当前最小值的pair，如果有更小的pair-diff则之前存的都扔掉。
+
++ 时间复杂度$O(n\log n)$，其中 $n$ 是数组 $\textit{arr}$ 的长度
++ 空间复杂度$O(n)$，最坏情况可能存接近$n$对非答案
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-01-26 23:39:44
+ */
+class Solution {
+public:
+    vector<vector<int>> minimumAbsDifference(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+        vector<vector<int>> ans;
+        int mini = 10000001;
+        for (int i = 1; i < arr.size(); i++) {
+            int diff = arr[i] - arr[i - 1];
+            if (diff == mini) {
+                ans.push_back({arr[i - 1], arr[i]});
+            } else if (diff < mini) {
+                mini = diff;
+                ans = {{arr[i - 1], arr[i]}};
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Py
+
+```python
+'''
+LastEditTime: 2026-01-26 23:45:24
+'''
+from typing import List
+
+class Solution:
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+        arr.sort()
+        ans = []
+        mini = 10000000
+        for i in range(1, len(arr)):
+            diff = arr[i] - arr[i - 1]
+            if diff < mini:
+                ans = [[arr[i - 1], arr[i]]]
+                mini = diff
+            elif diff == mini:
+                ans.append([arr[i - 1], arr[i]])
+        return ans
+```
+
+#### Go
+
+```go
+/*
+ * @Author: LetMeFly
+ * @Date: 2026-01-26 23:38:09
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-01-26 23:48:45
+ */
+package main
+
+import "sort"
+
+func minimumAbsDifference(arr []int) (ans [][]int) {
+    sort.Ints(arr)
+	mini := 10000000
+	for i := 1; i < len(arr); i++ {
+		diff := arr[i] - arr[i - 1]
+		if diff < mini {
+			mini = diff
+			ans = [][]int{{arr[i - 1], arr[i]}}
+		} else if diff == mini {
+			ans = append(ans, []int{arr[i - 1], arr[i]})
+		}
+	}
+	return
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/04/LeetCode%201200.%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/)哦~
