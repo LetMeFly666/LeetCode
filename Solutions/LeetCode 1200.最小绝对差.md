@@ -168,5 +168,6 @@ func minimumAbsDifference(arr []int) (ans [][]int) {
 }
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/04/LeetCode%201200.%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/125609898](https://letmefly.blog.csdn.net/article/details/125609898)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/125609898)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/04/LeetCode%201200.%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

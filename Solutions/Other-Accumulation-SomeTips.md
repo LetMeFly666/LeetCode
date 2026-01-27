@@ -1280,6 +1280,23 @@ export MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 ```
 
+## About 俚语
+
+### Best-Effort
+
+> 不保证质量，只保证“我尽力了”。
+
+例如UDP不保证一定成功。
+
+### Noisy Neighbor
+
+> 同一台大机器上的别人太猛，把自己拖累了。
+
+如：
+
+* 多个用户共享同一物理资源，某个用户磁盘狂写
+* 实验室有人用迅雷下载
+
 # End
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
