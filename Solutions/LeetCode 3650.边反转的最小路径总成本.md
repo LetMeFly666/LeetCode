@@ -3,6 +3,7 @@ title: 3650.边反转的最小路径总成本：Dijkstra算法
 date: 2026-01-27 23:43:39
 tags: [题解, LeetCode, 中等, Dijkstra, Dijstra, 图, 最短路]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2025/05/07/e1drawio.png
 ---
 
 # 【LetMeFly】3650.边反转的最小路径总成本：Dijkstra算法
