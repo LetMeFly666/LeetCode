@@ -511,6 +511,7 @@ MAILTO=""
 试试挂载吧！只需要执行：
 
 ```bash
+mkdir -p /xx/Codes
 mount --bind /xx/xx/x/很深的路径/x/xx/sync/Codes /xx/Codes
 mount -o remount,ro,bind /xx/Codes
 ```
