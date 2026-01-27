@@ -33,7 +33,7 @@ public:
             }
             for (auto[nextTo, nextCost] : graph[to]) {
                 nextCost += cost;
-                if (nextCost > costs[nextTo]) {
+                if (nextCost >= costs[nextTo]) {
                     continue;
                 }
                 costs[nextTo] = nextCost;
