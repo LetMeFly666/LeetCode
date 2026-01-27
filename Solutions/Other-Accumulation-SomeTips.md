@@ -511,6 +511,7 @@ MAILTO=""
 试试挂载吧！只需要执行：
 
 ```bash
+mkdir -p /xx/Codes
 mount --bind /xx/xx/x/很深的路径/x/xx/sync/Codes /xx/Codes
 mount -o remount,ro,bind /xx/Codes
 ```
@@ -1278,6 +1279,23 @@ export PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 export MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 ```
+
+## About 俚语
+
+### Best-Effort
+
+> 不保证质量，只保证“我尽力了”。
+
+例如UDP不保证一定成功。
+
+### Noisy Neighbor
+
+> 同一台大机器上的别人太猛，把自己拖累了。
+
+如：
+
+* 多个用户共享同一物理资源，某个用户磁盘狂写
+* 实验室有人用迅雷下载
 
 # End
 
