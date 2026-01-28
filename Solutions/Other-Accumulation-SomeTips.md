@@ -1297,6 +1297,22 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 * 多个用户共享同一物理资源，某个用户磁盘狂写
 * 实验室有人用迅雷下载
 
+### Breaking Change
+
+> 不向后兼容的变更
+
+例如：
+
+```rust
+// 旧版本
+fn foo(x: i32)
+
+// 新版本（breaking change）
+fn foo(x: u32)
+```
+
+用户一升级版本，代码就炸了。
+
 # End
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~
