@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-28 23:02:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-28 23:21:20
+ * @LastEditTime: 2026-01-28 23:23:30
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -26,7 +26,7 @@ public:
     int minCost(vector<vector<int>>& grid, int k) {
         unordered_map<int, vector<pair<int, int>>> graph;
         for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid.size(); j++) {
+            for (int j = 0; j < grid[0].size(); j++) {
                 graph[grid[i][j]].push_back({i, j});
             }
         }
