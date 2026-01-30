@@ -1,62 +1,91 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
 PREFIX="${1:-}"
+THREADS="${2:-$(nproc)}"
 
-# ========= 参数校验 =========
 if [[ -z "$PREFIX" ]]; then
-  echo "❌ 用法: $0 <sha-prefix>"
+  echo "❌ 用法: $0 <hex-prefix> [threads]"
   exit 1
 fi
 
-# 转小写（git sha 是小写）
-PREFIX="$(echo "$PREFIX" | tr 'A-F' 'a-f')"
-
-# 必须是 hex
-if ! [[ "$PREFIX" =~ ^[0-9a-f]+$ ]]; then
-  echo "❌ 前缀不合法：只能包含 [0-9a-f]"
+if ! [[ "$PREFIX" =~ ^[0-9a-fA-F]+$ ]]; then
+  echo "❌ 前缀必须是十六进制"
   exit 1
 fi
 
-LEN=${#PREFIX}
-
-# 给一个“理性提醒”
-if (( LEN > 8 )); then
-  echo "⚠️  警告：前缀长度 = $LEN"
-  echo "⚠️  理论期望尝试次数 ≈ 16^$LEN"
-  echo "⚠️  这可能需要非常久（甚至几天/几周）"
+if (( ${#PREFIX} > 40 )); then
+  echo "❌ SHA1 最多 40 位"
+  exit 1
 fi
 
-echo "🚀 目标前缀: $PREFIX"
-echo "🔁 使用命令: git commit --amend -nS --no-edit --allow-empty"
+echo "🚀 prefix=$PREFIX  threads=$THREADS"
+
+ORIG_REPO="$(pwd)"
+WORKDIR="$(mktemp -d /dev/shm/git-hash.XXXXXX 2>/dev/null || mktemp -d)"
+
+FOUND_FILE="$WORKDIR/found"
+export FOUND_FILE PREFIX
+
+cleanup() {
+  rm -rf "$WORKDIR"
+}
+trap cleanup EXIT
+
+echo "📁 workdir=$WORKDIR"
 echo "----------------------------------------"
 
-# ========= 主循环 =========
-COUNT=0
-START_TS=$(date +%s)
+worker() {
+  local id="$1"
+  local repo="$WORKDIR/repo_$id"
 
-while true; do
-  git commit --amend -nS --no-edit --allow-empty >/dev/null 2>&1
+  cp -a "$ORIG_REPO" "$repo"
+  cd "$repo"
 
-  SHA=$(git rev-parse HEAD)
-  COUNT=$((COUNT + 1))
+  local i=0
+  while [[ ! -f "$FOUND_FILE" ]]; do
+    export GIT_COMMITTER_DATE="$(date +%s.%N)"
+    export GIT_AUTHOR_DATE="$GIT_COMMITTER_DATE"
 
-  if [[ "$SHA" == "$PREFIX"* ]]; then
-    END_TS=$(date +%s)
-    COST=$((END_TS - START_TS))
-    echo "🎉 命中！"
-    echo "✅ SHA: $SHA"
-    echo "🔢 尝试次数: $COUNT"
-    echo "⏱️  用时: ${COST}s"
-    break
-  fi
+    git commit --amend -S --no-edit --allow-empty >/dev/null 2>&1
 
-  # 每 100 次输出一次状态
-  if (( COUNT % 100 == 0 )); then
-    NOW=$(date +%s)
-    ELAPSED=$((NOW - START_TS))
-    printf "⏳ tried=%d  elapsed=%ds  current=%s\n" \
-      "$COUNT" "$ELAPSED" "$SHA"
-  fi
+    sha="$(git rev-parse HEAD)"
+    ((i++))
+
+    if (( i % 100 == 0 )); then
+      echo "🧵 [$id] tried=$i sha=${sha:0:12}"
+    fi
+
+    if [[ "$sha" == "$PREFIX"* ]]; then
+      echo "🎯 [$id] FOUND: $sha"
+      echo "$repo" > "$FOUND_FILE"
+      break
+    fi
+  done
+}
+
+# 启动线程
+for i in $(seq 1 "$THREADS"); do
+  worker "$i" &
 done
+
+# 等待结果
+while [[ ! -f "$FOUND_FILE" ]]; do
+  sleep 0.05
+done
+
+WINNER_REPO="$(cat "$FOUND_FILE")"
+
+echo "----------------------------------------"
+echo "✅ Winner: $WINNER_REPO"
+echo "📦 Applying result..."
+
+# 停掉其它线程
+pkill -P $$ || true
+
+# 把成功结果落盘
+rm -rf "$ORIG_REPO/.git"
+cp -a "$WINNER_REPO/.git" "$ORIG_REPO/"
+
+echo "🎉 Done!"
+git rev-parse HEAD
