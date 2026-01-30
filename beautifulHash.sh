@@ -89,3 +89,9 @@ cp -a "$WINNER_REPO/.git" "$ORIG_REPO/"
 
 echo "🎉 Done!"
 git rev-parse HEAD
+
+# 刚刚：
+# ./beautifulHash.sh 0 2
+# 🚀 prefix=0 threads=2
+# 📁 workdir=/dev/shm/git-hash.LeMEJA
+# 还以为LetMeFly
