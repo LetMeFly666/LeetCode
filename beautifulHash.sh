@@ -29,7 +29,7 @@ if (( LEN > 8 )); then
 fi
 
 echo "🚀 目标前缀: $PREFIX"
-echo "🔁 使用命令: git commit --amend -S --no-edit --allow-empty"
+echo "🔁 使用命令: git commit --amend -nS --no-edit --allow-empty"
 echo "----------------------------------------"
 
 # ========= 主循环 =========
@@ -37,7 +37,7 @@ COUNT=0
 START_TS=$(date +%s)
 
 while true; do
-  git commit --amend -S --no-edit --allow-empty >/dev/null 2>&1
+  git commit --amend -nS --no-edit --allow-empty >/dev/null 2>&1
 
   SHA=$(git rev-parse HEAD)
   COUNT=$((COUNT + 1))
