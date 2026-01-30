@@ -5,6 +5,7 @@ THREADS="${2:-$(nproc)}"
 ORIG_REPO="$(pwd)"
 MEM_FILE_PATH="$(realpath "../memFiles")"
 FLAG="$MEM_FILE_PATH/flag"
+ORIGINAL_COMMIT_MSG="$(git log -1 --pretty=%B)"
 
 if [[ -z "$PREFIX" ]]; then
     echo "Usage: $0 <hex-prefix> [threads]"
@@ -49,7 +50,7 @@ worker() {
             return
         fi
 
-        git commit --amend -S --no-edit --allow-empty -m "$(printf "%s\n\nworker=%s round=%s" "$(git log -1 --pretty=%B)" "$id" "$round")" >/dev/null 2>&1
+        git commit --amend -S --no-edit --allow-empty -m "$(printf "%s\n\nworker=%s round=%s" "$ORIGINAL_COMMIT_MSG" "$id" "$round")" >/dev/null 2>&1
         sha="$(git rev-parse HEAD)"
         ((round++))
         if (( round % 100 == 0 )); then
@@ -60,8 +61,9 @@ worker() {
             echo "worker $id: FOUND!"
             echo "$1" > "$FLAG"
             rm -rf "$ORIG_REPO/.git"
-            rsync -a --delete "$dir/.git" "$ORIG_REPO/.git"
+            rsync -a --delete "$dir/.git" "$ORIG_REPO/"
             echo "worker $id: result synced to $ORIG_REPO/.git; exiting"
+            break
         fi
     done
 
