@@ -21,7 +21,10 @@ if (( ${#PREFIX} > 40 )); then
 fi
 echo "prefix=$PREFIX  threads=$THREADS"
 
-rm -rf "$MEM_FILE_PATH"
+if [ -d "$MEM_FILE_PATH" ]; then
+    sudo umount "$MEM_FILE_PATH"
+    rm -rf "$MEM_FILE_PATH"
+fi
 mkdir -p "$MEM_FILE_PATH"
 sudo mount -t ramfs ramfs "$MEM_FILE_PATH"
 sudo chown -R $USER:$USER "$MEM_FILE_PATH"
