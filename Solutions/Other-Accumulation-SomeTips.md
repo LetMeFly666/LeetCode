@@ -302,6 +302,12 @@ git remote add machine1 ssh://user@remote_host/abs/path/to/repo
 git fetch machine1
 ```
 
+如果想push，可能要再machine1上执行：
+
+```bash
+git config receive.denyCurrentBranch updateInstead
+```
+
 ## About HTML
 
 ### 空白字符
