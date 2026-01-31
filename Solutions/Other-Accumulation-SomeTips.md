@@ -295,6 +295,19 @@ export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
 
 action的.yml一定要放到目录`.github/workflows`下！不能放在子目录下。
 
+### git拉取另一台机器上的代码
+
+```bash
+git remote add machine1 ssh://user@remote_host/abs/path/to/repo
+git fetch machine1
+```
+
+如果想push，可能要再machine1上执行：
+
+```bash
+git config receive.denyCurrentBranch updateInstead
+```
+
 ## About HTML
 
 ### 空白字符
