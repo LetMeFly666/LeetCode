@@ -144,9 +144,9 @@ public:
 
 对了，邀请你看几个好看的hash：
 
-+ 1. [8888a4](https://github.com/LetMeFly666/LeetCode/commit/8888a42d8ea3df034501423ce2939f8fca414b2b)
-+ 2. [00009f](https://github.com/LetMeFly666/LeetCode/commit/00009f1f1c0ff2f4119c43f50a25d25f3ab02dc4)
-+ 3. [000097](https://github.com/LetMeFly666/LeetCode/commit/000097a21d98f8ea26956d8875cd40e7a67ff1fd)
+1. [8888a4](https://github.com/LetMeFly666/LeetCode/commit/8888a42d8ea3df034501423ce2939f8fca414b2b)
+2. [00009f](https://github.com/LetMeFly666/LeetCode/commit/00009f1f1c0ff2f4119c43f50a25d25f3ab02dc4)
+3. [000097](https://github.com/LetMeFly666/LeetCode/commit/000097a21d98f8ea26956d8875cd40e7a67ff1fd)
 
 还带签名的。
 
