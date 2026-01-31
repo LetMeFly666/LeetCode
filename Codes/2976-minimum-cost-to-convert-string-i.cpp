@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-01-31 12:12:51
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-01-31 12:17:33
+ * @LastEditTime: 2026-01-31 12:22:44
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -32,7 +32,11 @@ public:
         
         ll ans = 0;
         for (int i = 0; i < source.size(); i++) {
-            ans += floyd[source[i] - 'a'][target[i] - 'a'];
+            ll cost = floyd[source[i] - 'a'][target[i] - 'a'];
+            if (cost > 1000000000000) {
+                return -1;
+            }
+            ans += cost;
         }
         return ans;
     }
