@@ -39,6 +39,7 @@ cleanup() {
         }
     fi
 
+    echo "rm -rf $MEM_FILE_PATH"
     rm -rf "$MEM_FILE_PATH"
     echo "🧹 cleanup done"
 }
@@ -123,8 +124,13 @@ worker() {
     done
 }
 for i in $(seq 1 "$THREADS"); do
-    echo "cp dir $i"
-    rsync -a "$firstDir/" "$MEM_FILE_PATH/$i/"
+    if [[ "$i" -eq "$THREADS" ]]; then
+        echo "mv dir $i"
+        mv "$firstDir" "$MEM_FILE_PATH/$i"
+    else
+        echo "cp dir $i"
+        rsync -a "$firstDir/" "$MEM_FILE_PATH/$i/"
+    fi
     worker "$i" & pids+=($!)
 done
 
