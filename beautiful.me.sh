@@ -39,6 +39,7 @@ cleanup() {
         }
     fi
 
+    echo "rm -rf $MEM_FILE_PATH"
     rm -rf "$MEM_FILE_PATH"
     echo "🧹 cleanup done"
 }
