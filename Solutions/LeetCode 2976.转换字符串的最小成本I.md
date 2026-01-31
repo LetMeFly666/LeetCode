@@ -74,10 +74,30 @@ categories: [题解, LeetCode]
 
 如何将`source`字符串变为`target`字符串？必须一个字符一个字符地通过`cost[i]`的代价将`original[i]`变为`changed[i]`来实现。
 
-不难发现`source`中每个字符是独立的，b
+不难发现`source`中每个字符是独立的，并且从一个字符$a$经过数次变化最终变为字符$b$的最小代价也是固定的，所以我们不妨先计算出$26\times 26$种字母的转换方式分别最少需要花费多少代价：
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+> 将26个字母看成图中26个顶点，
+> 
+> 假设通过`cost[i]`的代价可以将`original[i]`变为`changed[i]`，那么就看作有一个从节点`original[i]`指向节点`changed[i]`且代价为`cost[i]`的边。
+>
+> floyd算法最适合算这个了，初始化`floyd[i][i]=0`，有直接a指向b的边的初始化`floyd[a][b]`为a指向b中代价最小的边，其他初始化为正无穷。然后：
+>
+> ```cpp
+> for (int k = 0; k < 26; k++) {
+>     for (int i = 0; i < 26; i++) {
+>         for (int j = 0; j < 26; j++) {
+>             floyd[i][j] = min(floyd[i][j], floyd[i][k] + floyd[k][j]);
+>         }
+>     }
+> }
+> ```
+>
+> 就计算出任何一个字母转为另一个字母的最小代价了。
+
+对original字符串中每个字母做最小代价转换，累加并返回答案或-1即可。
+
++ 时间复杂度$O(len(original)+len(original)+C^2)$，其中$C=16$
++ 空间复杂度$O(C^2)$
 
 ### AC代码
 
@@ -85,15 +105,8 @@ categories: [题解, LeetCode]
 
 ```cpp
 /*
- * @Author: LetMeFly
- * @Date: 2026-01-31 12:12:51
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2026-01-31 12:22:44
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 typedef long long ll;
 class Solution {
 public:
@@ -129,6 +142,14 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/31/LeetCode%202976.%E8%BD%AC%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%ACI/)哦~
+对了，邀请你看几个好看的hash：
+
++ 1. [8888a4](https://github.com/LetMeFly666/LeetCode/commit/8888a42d8ea3df034501423ce2939f8fca414b2b)
++ 2. [00009f](https://github.com/LetMeFly666/LeetCode/commit/00009f1f1c0ff2f4119c43f50a25d25f3ab02dc4)
++ 3. [000097](https://github.com/LetMeFly666/LeetCode/commit/000097a21d98f8ea26956d8875cd40e7a67ff1fd)
+
+还带签名的。
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/157581785)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/01/31/LeetCode%202976.%E8%BD%AC%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%ACI/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
