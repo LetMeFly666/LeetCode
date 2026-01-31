@@ -55,8 +55,8 @@ elapsed() {
 
     local output=""
 
-    (( hours > 0 )) && output+="${hours}h "
-    (( minutes > 0 )) && output+="${minutes}m "
+    (( hours > 0 )) && output+="${hours}h"
+    (( minutes > 0 )) && output+="${minutes}m"
     output+="${seconds}s"
 
     echo "$output"
