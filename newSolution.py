@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-01-06 10:39:44
+LastEditTime: 2026-02-01 09:53:34
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -350,7 +350,7 @@ else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
 if os.path.exists('.commitTitleExtra'):
     with open('.commitTitleExtra', 'r', encoding='utf-8') as f:
-        gitCommitMsgPrefix += f.read().replace("\n", " ").strip()
+        gitCommitMsgPrefix += f.read().replace("\n", " ")
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -372,6 +372,7 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
         commitMsgFromfile = '\n' + commitMsgFromfile
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
+input('ready to push?: [Enter when ready]')
 os.system(f'git push --set-upstream origin {num}')
 cmd = [
     'gh', 'pr', 'create',
