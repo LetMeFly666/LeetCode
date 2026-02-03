@@ -16,10 +16,10 @@ public:
         multiset<ll> stage(nums.begin() + 1, nums.begin() + dist + 2), candidate;
         ll ans = accumulate(nums.begin(), nums.begin() + dist + 2, 0ll);
         while (stage.size() > k) {
-                int retiree = *stage.rbegin();
-                stage.erase(prev(stage.end()));
-                ans -= retiree;
-                candidate.insert(retiree);
+            int retiree = *stage.rbegin();
+            stage.erase(prev(stage.end()));
+            ans -= retiree;
+            candidate.insert(retiree);
         }
 
         ll nowAns = ans;
