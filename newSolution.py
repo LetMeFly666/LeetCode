@@ -372,6 +372,7 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
         commitMsgFromfile = '\n' + commitMsgFromfile
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
+input('ready to push?: [Enter when ready]')
 os.system(f'git push --set-upstream origin {num}')
 cmd = [
     'gh', 'pr', 'create',
