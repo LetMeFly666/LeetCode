@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-03 22:42:07
+LastEditTime: 2026-02-04 22:17:14
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -372,7 +372,6 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
         commitMsgFromfile = '\n' + commitMsgFromfile
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
-input('ready to push?: [Enter when ready]')
 os.system(f'git push --set-upstream origin {num}')
 cmd = [
     'gh', 'pr', 'create',
