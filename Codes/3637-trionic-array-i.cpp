@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-04 21:46:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-04 21:53:14
+ * @LastEditTime: 2026-02-04 21:56:05
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,7 +11,7 @@
 class Solution {
 public:
     bool isTrionic(vector<int>& nums) {
-        bool state = 0;
+        int state = 0;
         if (nums[1] <= nums[0]) {
             return false;
         }
