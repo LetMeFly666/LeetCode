@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-04 21:46:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-04 21:49:42
+ * @LastEditTime: 2026-02-04 21:53:14
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -27,12 +27,29 @@ public:
                 if (nums[i] > nums[i - 1]) {
                     state = 2;
                 }
-            } else if (state == 3) {
+            } else if (state == 2) {
                 if (nums[i] < nums[i - 1]) {
                     return false;
                 }
             }
         }
-        return state == 3;
+        return state == 2;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[1,3,5,4,2,6]
+
+true
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        vector<int> t = stringToVector(s);
+        cout << sol.isTrionic(t) << endl;
+    }
+    return 0;
+}
+#endif
