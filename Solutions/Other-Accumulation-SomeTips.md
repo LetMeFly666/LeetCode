@@ -915,6 +915,42 @@ second end
 
 但是，只有手动让出控制权的操作才会避免阻塞循环事件，例如`asyncio.sleep()`、`asyncio.open()`、`asyncio.connect()`等。普通的文件读写、网络请求仍然会阻塞进程。
 
+### Python版本切换pyenv
+
+安装：
+
+```bash
+install pyenv
+pyenv install 3.11.14
+```
+
+然后在`.zshrc`中添加：
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+```
+
+列举所有python版本的命令是`pyenv versions`，但我想让它是`pyenv list`，那么就可以：
+
+```bash
+mkdir -p ~/.pyenv/plugins/custom/bin
+cat > ~/.pyenv/plugins/custom/bin/pyenv-list <<'EOF'
+#!/usr/bin/env bash
+exec pyenv versions "$@"
+EOF
+chmod +x ~/.pyenv/plugins/custom/bin/pyenv-list
+```
+
+相当于创建一个`~/.pyenv/plugins/custom/bin/pyenv-list`文件，当执行`pyenv list`时，就会调用这个文件，这个文件执行`pyenv versions`。
+
+类似的还有：
+
+```bash
+pyenv shell xxx -> pyenv use xxx
+```
+
 ## About C++
 
 ### C++原地建堆make_heap
