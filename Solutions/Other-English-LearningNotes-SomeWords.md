@@ -1790,6 +1790,10 @@ categories: [自用]
 |indemnify|v. 赔偿，补偿|
 |||
 |restock|v. 补充，囤货<details><summary>例句</summary>You'd better <font color="#28bea0">restock</font> your fridge before the storm.<br/>风暴来临前你最好给你的冰箱补点囤货。</details>|
+|||
+|supersede|v. 取代|
+|Negro|n. 黑人[侮辱，老式], adj. 黑人的|
+|paralyse|v. 使瘫痪，使麻痹，使不能正常工作|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
