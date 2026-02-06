@@ -83,17 +83,24 @@ categories: [题解, LeetCode]
 
 枚举每一个最小元素的下标，不难发现随着最小元素的增大，最大元素也在增大。
 
-###
+因此可以使用两个指针$l$和$r$分别指向窗口起始下标和结束下标的下一位，那么窗口中元素则是**平衡**的。
+
+从$l=0$开始不断右移左指针，每次确定右指针的位置，$r-l$即位当前方案最多保留的元素。
+
+### 优化
 
 对于初始$r$的确定，一共有三种方法：
 
 1. 从后往前遍历
-2. 二分查找第一个大于
+2. 二分查找第一个大于$nums[0]\times k$的下标 （二分查找小优化）
+3. 直接不找了，从$r=0$开始，第一次循环时不断往右遍历就会找到
 
-###
+如果$r$指针已经移出数组边界，则可提前结束左指针的右移。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+### 时空复杂度分析
+
++ 时间复杂度$O(n)$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
@@ -101,15 +108,8 @@ categories: [题解, LeetCode]
 
 ```cpp
 /*
- * @Author: LetMeFly
- * @Date: 2026-02-06 19:05:00
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2026-02-06 19:14:06
  */
-#if defined(_WIN32) || defined(__APPLE__)
-#include "_[1,2]toVector.h"
-#endif
-
 typedef long long ll;
 class Solution {
 private:
@@ -139,6 +139,6 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/02/06/LeetCode%203634.%E4%BD%BF%E6%95%B0%E7%BB%84%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E9%99%A4%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/157811143)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/02/06/LeetCode%203634.%E4%BD%BF%E6%95%B0%E7%BB%84%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E9%99%A4%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
