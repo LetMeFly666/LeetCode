@@ -915,6 +915,42 @@ second end
 
 但是，只有手动让出控制权的操作才会避免阻塞循环事件，例如`asyncio.sleep()`、`asyncio.open()`、`asyncio.connect()`等。普通的文件读写、网络请求仍然会阻塞进程。
 
+### Python版本切换pyenv
+
+安装：
+
+```bash
+brew install pyenv
+pyenv install 3.11.14
+```
+
+然后在`.zshrc`中添加：
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+```
+
+列举所有python版本的命令是`pyenv versions`，但我想让它是`pyenv list`，那么就可以：
+
+```bash
+mkdir -p ~/.pyenv/plugins/custom/bin
+cat > ~/.pyenv/plugins/custom/bin/pyenv-list <<'EOF'
+#!/usr/bin/env bash
+exec pyenv versions "$@"
+EOF
+chmod +x ~/.pyenv/plugins/custom/bin/pyenv-list
+```
+
+相当于创建一个`~/.pyenv/plugins/custom/bin/pyenv-list`文件，当执行`pyenv list`时，就会调用这个文件，这个文件执行`pyenv versions`。
+
+类似的还有：
+
+```bash
+pyenv shell xxx -> pyenv use xxx
+```
+
 ## About C++
 
 ### C++原地建堆make_heap
@@ -1025,6 +1061,21 @@ func main() {
     var aFromS [3]int
     copy(aFromS[:], slice)
     fmt.Printf("%T(%s): %v\n", aFromS, reflect.TypeOf(aFromS).Kind(), aFromS);  // [3]int(array): [1 100 3]
+}
+```
+
+## About Rust
+
+### VsCode rust-analyzer插件分析crate变量类型
+
+较大项目中VsCode插件对于其他crate中的变量类型默认可能不会解析，例如`let s = FastStr::new("hi")`，当我们输入`s.`的时候，VsCode的rust-analyzer插件可能并不会有补全提醒，甚至我们输入`s.no66666666().hi111111`VsCode也不会有任何反应。
+
+这体验很不好，没有语法检查和补全提醒就快变成一个支持高亮的记事本了。在`settings.json`中添加以下两行可以令rust-analyzer插件分析补全提示其他crate。
+
+```json
+{
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.cargo.buildScripts.enable": true,
 }
 ```
 
