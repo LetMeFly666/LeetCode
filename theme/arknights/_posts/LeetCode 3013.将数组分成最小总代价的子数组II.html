@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>3013.将数组分成最小总代价的子数组 II：两个堆维护k-1小 + 滑动窗口 | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/_posts/LeetCode%203013.%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84II.html"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>3013.将数组分成最小总代价的子数组 II：两个堆维护k-1小 + 滑动窗口</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-02-03T14:12:40.000Z" id="date"> 2026-02-03</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】3013-将数组分成最小总代价的子数组-II：两个堆维护k-1小-滑动窗口"><a href="#【LetMeFly】3013-将数组分成最小总代价的子数组-II：两个堆维护k-1小-滑动窗口" class="headerlink" title="【LetMeFly】3013.将数组分成最小总代价的子数组 II：两个堆维护k-1小 + 滑动窗口"></a>【LetMeFly】3013.将数组分成最小总代价的子数组 II：两个堆维护k-1小 + 滑动窗口</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/divide-an-array-into-subarrays-with-minimum-cost-ii/">https://leetcode.cn/problems/divide-an-array-into-subarrays-with-minimum-cost-ii/</a></p>
+<p>给你一个下标从 <strong>0</strong>&nbsp;开始长度为 <code>n</code>&nbsp;的整数数组&nbsp;<code>nums</code>&nbsp;和两个 <strong>正</strong>&nbsp;整数&nbsp;<code>k</code> 和&nbsp;<code>dist</code>&nbsp;。</p>
+
+<p>一个数组的 <strong>代价</strong>&nbsp;是数组中的 <strong>第一个</strong>&nbsp;元素。比方说，<code>[1,2,3]</code>&nbsp;的代价为&nbsp;<code>1</code>&nbsp;，<code>[3,4,1]</code>&nbsp;的代价为&nbsp;<code>3</code>&nbsp;。</p>
+
+<p>你需要将 <code>nums</code>&nbsp;分割成 <code>k</code>&nbsp;个 <strong>连续且互不相交</strong>&nbsp;的<span data-keyword="subarray">子数组</span>，满足 <strong>第二</strong>&nbsp;个子数组与第 <code>k</code>&nbsp;个子数组中第一个元素的下标距离 <strong>不超过</strong>&nbsp;<code>dist</code>&nbsp;。换句话说，如果你将&nbsp;<code>nums</code>&nbsp;分割成子数组&nbsp;<code>nums[0..(i<sub>1</sub> - 1)], nums[i<sub>1</sub>..(i<sub>2</sub> - 1)], ..., nums[i<sub>k-1</sub>..(n - 1)]</code>&nbsp;，那么它需要满足&nbsp;<code>i<sub>k-1</sub> - i<sub>1</sub> &lt;= dist</code>&nbsp;。</p>
+
+<p>请你返回这些子数组的 <strong>最小</strong>&nbsp;总代价。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>nums = [1,3,2,6,4,2], k = 3, dist = 3
+<b>输出：</b>5
+<b>解释：</b>将数组分割成 3 个子数组的最优方案是：[1,3] ，[2,6,4] 和 [2] 。这是一个合法分割，因为 i<sub>k-1</sub> - i<sub>1</sub> 等于 5 - 2 = 3 ，等于 dist 。总代价为 nums[0] + nums[2] + nums[5] ，也就是 1 + 2 + 2 = 5 。
+5 是分割成 3 个子数组的最小总代价。
+</pre>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>nums = [10,1,2,2,2,1], k = 4, dist = 3
+<b>输出：</b>15
+<b>解释：</b>将数组分割成 4 个子数组的最优方案是：[10] ，[1] ，[2] 和 [2,2,1] 。这是一个合法分割，因为 i<sub>k-1</sub> - i<sub>1</sub> 等于 3 - 1 = 2 ，小于 dist 。总代价为 nums[0] + nums[1] + nums[2] + nums[3] ，也就是 10 + 1 + 2 + 2 = 15 。
+分割 [10] ，[1] ，[2,2,2] 和 [1] 不是一个合法分割，因为 i<sub>k-1</sub> 和 i<sub>1</sub> 的差为 5 - 1 = 4 ，大于 dist 。
+15 是分割成 4 个子数组的最小总代价。
+</pre>
+
+<p><strong class="example">示例 3：</strong></p>
+
+<pre>
+<b>输入：</b>nums = [10,8,18,9], k = 3, dist = 1
+<b>输出：</b>36
+<b>解释：</b>将数组分割成 4 个子数组的最优方案是：[10] ，[8] 和 [18,9] 。这是一个合法分割，因为 i<sub>k-1</sub> - i<sub>1</sub> 等于 2 - 1 = 1 ，等于 dist 。总代价为 nums[0] + nums[1] + nums[2] ，也就是 10 + 8 + 18 = 36 。
+分割 [10] ，[8,18] 和 [9] 不是一个合法分割，因为 i<sub>k-1</sub> 和 i<sub>1</sub> 的差为 3 - 1 = 2 ，大于 dist 。
+36 是分割成 3 个子数组的最小总代价。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>3 &lt;= n &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>
+	<li><code>3 &lt;= k &lt;= n</code></li>
+	<li><code>k - 2 &lt;= dist &lt;= n - 2</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：有序集合-滑动窗口"><a href="#解题方法：有序集合-滑动窗口" class="headerlink" title="解题方法：有序集合 + 滑动窗口"></a>解题方法：有序集合 + 滑动窗口</h2><p>$nums$第一个元素必选，剩下$k-1$个元素的起始位置间隔必须$\leq dist$。使用一个大小为$dist+1$的滑动窗口，每次求这个窗口中$k-1$小元素的和。</p>
+<p>问题变成了滑动窗口向右滑动过程中，窗口中不断新增一个元素、移除一个元素的状态下如何保持计算$k-1$小的元素有哪些：</p>
+<blockquote>
+<p>我们可以使用两个有序集合，一个叫$stage$代表(正在舞台上的)$k-1$小元素，一个叫$candidate$代表在窗口中但(暂)未被选中的元素。</p>
+<p>窗口右移过程中，假设要新加入窗口的元素是$in$，移除窗口的元素是$out$，</p>
+<p>对于$out$有：</p>
+<ul>
+<li>如果$out$在$candidate$候选集合中，那么$out$永无上台之日，直接移出候选</li>
+<li>如果$out$在$stage$选中集合中，那么$out$是时候退役了，移出$stage$集合，并更新集合中元素之和</li>
+</ul>
+<p>对于$in$有：</p>
+<ul>
+<li>如果$in$比$stage$中最大元素小，说明更优秀的人来了，移出$stage$集合中最大的那个，将$in$加入$stage$集合，并更新$stage$集合中元素之和</li>
+<li>否则，将$in$加入候选</li>
+</ul>
+<p>之后进行$stage$集合大小的调整：</p>
+<ul>
+<li>如果$stage$集合小于$k-1$，说明有人退役暂无人顶上，从$candidate$中选最小的那个顶上(移出$candidate$并加入$stage$)，并更新$stage$集合中元素之和</li>
+<li>如果$stage$集合大于$k+1$，说明有更优秀的人来了，要把$stage$中最大的那个移出并加入到$candidate$，并更新$stage$集合中元素之和</li>
+</ul>
+</blockquote>
+<p>整个滑动窗口移动的过程中，所有$stage$元素和中最小的那个即为答案。</p>
+<p>为了方便计算，我们开局直接把$k$减一。</p>
+<ul>
+<li>时间复杂度$O(n\log dist)$</li>
+<li>空间复杂度$O(dist)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-02-03 22:11:11</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ll <span class="title">minimumCost</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k, <span class="type">int</span> dist)</span> </span>&#123;</span><br><span class="line">        k--;</span><br><span class="line">        <span class="function">multiset&lt;ll&gt; <span class="title">stage</span><span class="params">(nums.begin() + <span class="number">1</span>, nums.begin() + dist + <span class="number">2</span>)</span>, candidate</span>;</span><br><span class="line">        ll ans = <span class="built_in">accumulate</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">begin</span>() + dist + <span class="number">2</span>, <span class="number">0ll</span>);</span><br><span class="line">        <span class="keyword">while</span> (stage.<span class="built_in">size</span>() &gt; k) &#123;</span><br><span class="line">                <span class="type">int</span> retiree = *stage.<span class="built_in">rbegin</span>();</span><br><span class="line">                stage.<span class="built_in">erase</span>(<span class="built_in">prev</span>(stage.<span class="built_in">end</span>()));</span><br><span class="line">                ans -= retiree;</span><br><span class="line">                candidate.<span class="built_in">insert</span>(retiree);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ll nowAns = ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> end = dist + <span class="number">2</span>; end &lt; nums.<span class="built_in">size</span>(); end++) &#123;</span><br><span class="line">            <span class="type">int</span> in = nums[end], out = nums[end - dist - <span class="number">1</span>];</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// out</span></span><br><span class="line">            multiset&lt;ll&gt;::iterator it = candidate.<span class="built_in">find</span>(out);</span><br><span class="line">            <span class="keyword">if</span> (it != candidate.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                candidate.<span class="built_in">erase</span>(it);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stage.<span class="built_in">erase</span>(stage.<span class="built_in">find</span>(out));</span><br><span class="line">                nowAns -= out;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// in</span></span><br><span class="line">            <span class="keyword">if</span> (in &lt; *stage.<span class="built_in">rbegin</span>()) &#123;</span><br><span class="line">                stage.<span class="built_in">insert</span>(in);</span><br><span class="line">                nowAns += in;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                candidate.<span class="built_in">insert</span>(in);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// resize</span></span><br><span class="line">            <span class="keyword">if</span> (stage.<span class="built_in">size</span>() == k - <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="type">int</span> newActor = *candidate.<span class="built_in">begin</span>();</span><br><span class="line">                candidate.<span class="built_in">erase</span>(candidate.<span class="built_in">begin</span>());</span><br><span class="line">                stage.<span class="built_in">insert</span>(newActor);</span><br><span class="line">                nowAns += newActor;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (stage.<span class="built_in">size</span>() == k + <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="type">int</span> retiree = *stage.<span class="built_in">rbegin</span>();</span><br><span class="line">                stage.<span class="built_in">erase</span>(<span class="built_in">prev</span>(stage.<span class="built_in">end</span>()));</span><br><span class="line">                nowAns -= retiree;</span><br><span class="line">                candidate.<span class="built_in">insert</span>(retiree);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ans = <span class="built_in">min</span>(ans, nowAns);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(_WIN32) || defined(__APPLE__)</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[1,3,2,6,4,2]</span></span><br><span class="line"><span class="comment">3</span></span><br><span class="line"><span class="comment">3</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">5</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="type">int</span> a, b;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s &gt;&gt; a &gt;&gt; b) &#123;</span><br><span class="line">        Solution sol;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; v = <span class="built_in">stringToVector</span>(s);</span><br><span class="line">        cout &lt;&lt; sol.<span class="built_in">minimumCost</span>(v, a, b) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/157700064">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/02/03/LeetCode%203013.%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84II/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%913013-%E5%B0%86%E6%95%B0%E7%BB%84%E5%88%86%E6%88%90%E6%9C%80%E5%B0%8F%E6%80%BB%E4%BB%A3%E4%BB%B7%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84-II%EF%BC%9A%E4%B8%A4%E4%B8%AA%E5%A0%86%E7%BB%B4%E6%8A%A4k-1%E5%B0%8F-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】3013.将数组分成最小总代价的子数组 II：两个堆维护k-1小 + 滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：有序集合 + 滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
