@@ -1064,6 +1064,21 @@ func main() {
 }
 ```
 
+## About Rust
+
+### VsCode rust-analyzer插件分析crate变量类型
+
+较大项目中VsCode插件对于其他crate中的变量类型默认可能不会解析，例如`let s = FastStr::new("hi")`，当我们输入`s.`的时候，VsCode的rust-analyzer插件可能并不会有补全提醒，甚至我们输入`s.no66666666().hi111111`VsCode也不会有任何反应。
+
+这体验很不好，没有语法检查和补全提醒就快变成一个支持高亮的记事本了。在`settings.json`中添加以下两行可以令rust-analyzer插件分析补全提示其他crate。
+
+```json
+{
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.cargo.buildScripts.enable": true,
+}
+```
+
 ## About Website
 
 ### ip扫描工具censys
