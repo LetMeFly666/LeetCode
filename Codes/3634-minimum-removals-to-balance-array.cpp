@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-06 19:05:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-06 19:14:06
+ * @LastEditTime: 2026-02-06 19:18:00
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -16,7 +16,7 @@ private:
             return nums.size() - 1;
         }
         vector<int>::iterator it = upper_bound(nums.begin(), nums.end(), nums[0] * k);
-        return min((long)nums.size() - 1, it - nums.begin());
+        return it - nums.begin();
     }
 public:
     int minRemoval(vector<int>& nums, ll k) {
