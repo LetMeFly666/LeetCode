@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-06 19:05:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-06 19:12:17
+ * @LastEditTime: 2026-02-06 19:14:06
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -11,7 +11,7 @@
 typedef long long ll;
 class Solution {
 private:
-    int getLastRIndex(vector<int>& nums, int k) {
+    int getLastRIndex(vector<int>& nums, ll k) {
         if (nums[0] * k > INT_MAX) {
             return nums.size() - 1;
         }
