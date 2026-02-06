@@ -139,6 +139,8 @@ public:
 };
 ```
 
+不可`for (int l = 0, r = getLastRIndex(nums, k); r < nums.size(); l++) {`，否则可能一轮循环都进不去。
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/157811143)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/02/06/LeetCode%203634.%E4%BD%BF%E6%95%B0%E7%BB%84%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E9%99%A4%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

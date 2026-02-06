@@ -920,7 +920,7 @@ second end
 安装：
 
 ```bash
-install pyenv
+brew install pyenv
 pyenv install 3.11.14
 ```
 
