@@ -1,11 +1,11 @@
 ---
-title: 1653.使字符串平衡的最少删除次数
+title: 1653.使字符串平衡的最少删除次数：一个变量动态计算“前缀和”
 date: 2023-03-06 12:06:42
-tags: [题解, LeetCode, 中等, 栈, 字符串, 动态规划, 模拟, 前缀和]
+tags: [题解, LeetCode, 中等, 栈, 字符串, 动态规划, DP, 模拟, 前缀和]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1653.使字符串平衡的最少删除次数
+# 【LetMeFly】1653.使字符串平衡的最少删除次数：一个变量动态计算“前缀和”
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-deletions-to-make-string-balanced/](https://leetcode.cn/problems/minimum-deletions-to-make-string-balanced/)
 
@@ -123,6 +123,30 @@ public:
             }
         }
         return ans;        
+    }
+};
+```
+
+#### C++ version 2
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-07 23:16:01
+ */
+class Solution {
+public:
+    int minimumDeletions(string s) {
+        int remainA = count(s.begin(), s.end(), 'a'), alreadyB = 0;
+        int ans = remainA;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == 'a') {
+                remainA--;
+            } else {
+                alreadyB++;
+            }
+            ans = min(ans, remainA + alreadyB);
+        }
+        return ans;
     }
 };
 ```
