@@ -1,48 +1,122 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """\
-基于无人机群的 Bad Apple 黑白像素表演模拟脚本
-================================================
+基于无人机群的 Bad Apple 黑白像素表演模拟脚本（Poisson 采样 + 并发读帧版）
+=====================================================================
 
 本脚本使用固定数量的“无人机”（二维平面上的点）来近似还原 Bad Apple 的黑白像素视频：
 每架无人机只有亮/灭两种状态，可以在平面上移动，但速度存在上限，并且任意两机之间
 必须保持不小于给定最小间距。脚本通过 OpenCV 在电脑窗口中实时渲染模拟结果。
 
-一、总体思路
---------------
+与基础版相比，本版本主要做了两类改进：
+
+1. 目标点生成：增加 Poisson Disk（蓝噪声）采样模式
+------------------------------------------------------
+
+传统做法是对亮像素做 K-Means 聚类：聚类中心作为无人机“要去的点”。
+这样容易出现两个问题：
+
+- 聚类中心偏向高密度区域，导致轮廓位置的点被“拉向中间”，整体形状会被抹平；
+- 相邻帧的聚类结果敏感，对局部噪声或像素分布细节比较“跳”，会造成形状跳动。
+
+Poisson Disk（蓝噪声）采样的思路是：
+
+- 在亮像素集合内，随机挑选一批点；
+- 任何两个采样点之间的距离都不小于给定半径（这里采用 `min_gap`），
+  形成一种“既随机又均匀”的空间分布（蓝噪声分布）；
+- 构成的点集在视觉上更均匀、避免扎堆，有利于保留轮廓细节，使整体形状更“可读”。
+
+本脚本在二值图的亮像素集合上执行近似 Poisson Disk 采样：
+
+- 先对亮像素随机下采样（上限 `--max_samples`），作为候选集合；
+- 将舞台划分为网格（cell_size ≈ `min_gap / sqrt(2)`），每个格子最多存一个采样点；
+- 随机遍历候选像素，对每个候选点只检查其周围若干格子里的已选点距离；
+  若都大于 `min_gap` 则接受，否则拒绝；
+- 最多采样到 `--max_targets` 个目标点（默认等于无人机数）。
+
+这样得到的目标点：
+
+- 会更贴着原始亮像素的分布，而不是像 K-Means 那样偏在中心；
+- 相邻帧之间，由于采样受 `min_gap` 约束，局部抖动会被抑制，形状更稳、更易读；
+- 结合后续的“目标 ID 稳定匹配”和无人机分配，能明显改善 Bad Apple 的轮廓还原度。
+
+调参建议：
+
+- 阈值 `--threshold` 越低，认为是“亮”的像素越多，形状越细腻，但噪声也越多；
+- 最大目标数 `--max_targets` 越大，可亮的无人机越多，形状越接近原图，但整体更拥挤；
+- 当 `--threshold` 较低同时 `--max_targets` 较大时，建议增大 `--repulsion_strength`，
+  让“社交斥力”更强，从而减少无人机之间的碰撞和重叠，保持画面整洁；
+- 若对比想看老的 K-Means 方案，可设置 `--target_mode kmeans`，并调节 `--max_clusters`。
+
+2. 并发读帧管线：解码与计算解耦
+--------------------------------
+
+原始版本在主线程中串行完成：
+
+- 从 VideoCapture 读一帧；
+- 灰度化、二值化、聚类/采样、目标匹配、无人机物理更新、绘制与显示；
+
+当每帧的计算量较大（例如无人机很多、目标点很多、帧率较高）时，
+OpenCV 解码和 Python 端的计算会互相“排队”，导致吞吐不高，看起来只播放了很少的帧。
+
+本版本引入了一个典型的生产者-消费者（Producer-Consumer）结构：
+
+- 读帧线程（Producer）：
+  - 独立线程中持续从视频解码帧，并直接缩放到舞台尺寸；
+  - 将结果放入一个有界队列（`queue.Queue(maxsize=--queue_size)`）。
+- 主线程（Consumer）：
+  - 从队列中取出最新的帧，执行二值化、采样/聚类、目标匹配、物理更新与绘制；
+  - 只负责计算与显示，不与磁盘/解码 IO 竞争。
+
+当 `--threads >= 2` 时启用该并发管线，默认值为 2；当 `--threads < 2` 时退化为
+单线程串行处理，与原版行为接近。
+
+在启动时，脚本会打印：
+
+- 视频估计总帧数（CAP_PROP_FRAME_COUNT）；
+- 视频 FPS 与对应时间步长 dt；
+- 是否启用读帧线程、线程数与队列长度；
+- 目标生成模式（Poisson 或 K-Means）、每帧目标数上限 `max_targets`；
+- 其他关键参数（无人机数、最小间距、最大速度等）。
+
+一、总体思路（算法结构）
+------------------------
+
 1. 视频解码与预处理
    - 通过 `--video` 指定 Bad Apple 视频文件路径（mp4/avi 等）。
    - 使用 OpenCV `VideoCapture` 逐帧读取视频。
    - 每帧转换为灰度图，并按给定阈值二值化（亮/暗像素）。
    - 可选反色（`--invert`），以便适配不同版本的 Bad Apple 视频（反相或非纯黑白）。
 
-2. 亮像素抽样与 K-Means 聚类
-   - 从二值图中提取所有“亮”像素坐标，必要时随机下采样到 `--max_samples` 个，
-     以控制 K-Means 的计算量。
-   - 选择聚类数 K = min(亮像素数, `--max_clusters`, 无人机数)，并使用 OpenCV 的
-     `cv2.kmeans` 在二维平面上做聚类，得到 K 个聚类中心，这些中心就是本帧的
-     “目标点”。
+2. 亮像素抽样与目标点生成（Poisson / K-Means）
+   - 从二值图中提取所有“亮”像素坐标，必要时随机下采样到 `--max_samples`，
+     以控制后续计算量。
+   - 若 `--target_mode poisson`：
+     * 在亮像素集合上执行近似 Poisson Disk 采样，采样点两两间距不少于 `min_gap`；
+     * 最多保留 `--max_targets` 个目标点（默认等于无人机数）；
+     * 在局部均匀填充亮区域，轮廓更清晰、形状更可读。
+   - 若 `--target_mode kmeans`：
+     * 选择聚类数 K = min(亮像素数, `--max_clusters`, `--max_targets`)，并使用 `cv2.kmeans`；
+     * 得到 K 个聚类中心作为目标点。
    - 若某一帧没有亮像素，则视为本帧没有任何目标点。
 
-3. 聚类中心稳定追踪（目标 ID 维护）
-   - 为避免每帧聚类结果的中心编号发生剧烈跳变，采用最近邻匹配对相邻帧的聚类
-     中心做“稳定追踪”：
-     * 维护一个以整数 ID 为键、二维坐标为值的目标点字典 `targets`。
-     * 对前一帧的每个目标与当前帧所有聚类中心两两计算欧氏距离，按距离从小到大
-       排序后做贪心匹配：
-       - 若某个旧目标与某个新中心匹配成功，则沿用旧 ID。
-       - 未被匹配的新中心会分配新的 ID。
+3. 目标中心稳定追踪（目标 ID 维护）
+   - 无论使用 Poisson 采样还是 K-Means 聚类，本脚本都对相邻帧的目标点做“稳定追踪”：
+     * 维护一个以整数 ID 为键、二维坐标为值的目标点字典 `targets`；
+     * 将上一帧的目标与当前帧目标两两计算距离，按距离从小到大贪心匹配；
+       - 若某个旧目标与某个新点匹配成功，则沿用旧 ID；
+       - 未被匹配的新目标点分配新的 ID；
      * 未被匹配的旧目标在本帧中消失。
-   - 这样可以尽量保持目标点 ID 随时间连续，便于无人机持续跟随同一目标。
+   - 这样可以尽量保持目标点 ID 随时间连续，减少跳变与交叉。
 
 4. 无人机与目标的分配策略
    - 初始化时在舞台底部区域为每架无人机随机生成一个“驻留位置”（home 位置），
      并保证任意两机之间的初始距离不小于 `--min_gap`。
    - 每帧根据当前 `targets` 为无人机分配目标：
      * 首先保留所有“仍然存在”的旧绑定（无人机之前跟随的目标 ID 若仍在 `targets`
-       中，则继续跟随该目标）。
+       中，则继续跟随该目标）；
      * 剩余尚未分配目标的无人机与尚未被占用的目标点之间，计算两两距离，按最小
-       距离贪心匹配，一对一分配，直至目标或无人机用完。
+       距离贪心匹配，一对一分配，直至目标或无人机用完；
      * 被分配到目标的无人机处于“亮”状态；未分配目标的无人机处于“灭”状态，且
        不再跟随任何视频目标，只是缓慢返回各自的驻留位置在安全区静待。
 
@@ -78,6 +152,7 @@
 
 二、关键约束
 --------------
+
 - 无人机数量固定，由 `--num_drones` 指定。
 - 无人机只有亮/灭两种状态：
   * 亮：当前被分配到某个视频目标；
@@ -88,26 +163,33 @@
 
 三、命令行参数说明（常用）
 ----------------------------
+
 - `--video` (必选)：Bad Apple 视频文件路径（mp4/avi 等）。
 - `--num_drones`：无人机数量，默认 300。
 - `--width`, `--height`：舞台画布宽和高（像素），同时也是视频缩放后的尺寸。
-- `--min_gap`：无人机之间的最小安全距离（像素）。
+- `--min_gap`：无人机之间的最小安全距离（像素），也用于 Poisson 采样点间距。
 - `--max_speed`：无人机最大速度（像素/秒）。
 - `--threshold`：灰度二值化阈值（0~255），默认 200。
-- `--max_clusters`：每帧 K-Means 的最大聚类数，不会超过无人机数量。
-- `--max_samples`：每帧参与聚类的亮像素最大采样数，用于控制性能。
+- `--target_mode`：目标点生成模式，可选 `poisson` 或 `kmeans`，默认 `poisson`。
+- `--max_targets`：每帧最多目标点数量，默认等于 `--num_drones`。
+- `--max_clusters`：在 `kmeans` 模式下每帧 K-Means 的最大聚类数。
+- `--max_samples`：每帧参与采样/聚类的亮像素最大候选数，用于控制性能。
 - `--repulsion_strength`：斥力强度系数，适当增大可增强防碰撞能力。
+- `--queue_size`：多线程读帧队列长度（帧数上限），默认 16。
+- `--threads`：线程数，`>=2` 时启用独立读帧线程，`<2` 时退化为单线程。
 - `--invert`：使用反向二值化，将暗像素视为“亮”像素。
 - `--no_show_original`：不在画面角落叠加原始视频缩略图。
 
 四、运行示例
 --------------
+
 以下命令假设脚本文件名为 `drone_bad_apple_sim.py`，视频文件为 `bad_apple.mp4`，
 舞台尺寸为 960×720，300 架无人机，最小间距 8 像素，最大速度 200 像素/秒：
 
     python drone_bad_apple_sim.py --video ./bad_apple.mp4 \
         --num_drones 300 --width 960 --height 720 \
-        --min_gap 8 --max_speed 200 --threshold 200
+        --min_gap 8 --max_speed 200 --threshold 200 \
+        --threads 2 --queue_size 32 --target_mode poisson
 
 运行后将弹出一个窗口显示无人机模拟效果，按 Q 可退出。
 """
@@ -117,6 +199,8 @@ import sys
 import time
 import math
 import random
+import threading
+import queue
 
 try:
     import numpy as np
@@ -199,22 +283,47 @@ def parse_args():
         help="灰度二值化阈值（0-255）",
     )
     parser.add_argument(
+        "--target_mode",
+        type=str,
+        choices=["poisson", "kmeans"],
+        default="poisson",
+        help="亮像素目标点生成模式：poisson 为 Poisson Disk 采样，kmeans 为 K-Means 聚类",
+    )
+    parser.add_argument(
+        "--max_targets",
+        type=int,
+        default=None,
+        help="每帧最多目标点数量（默认等于无人机数）",
+    )
+    parser.add_argument(
         "--max_clusters",
         type=int,
         default=200,
-        help="每帧 K-Means 聚类的最大簇数（上限不超过无人机数量）",
+        help="在 kmeans 模式下每帧 K-Means 聚类的最大簇数（上限不超过 max_targets）",
     )
     parser.add_argument(
         "--max_samples",
         type=int,
         default=5000,
-        help="每帧参与聚类的亮像素最大采样数",
+        help="每帧参与采样/聚类的亮像素最大候选数",
     )
     parser.add_argument(
         "--repulsion_strength",
         type=float,
         default=1.0,
         help="无人机之间斥力强度系数（越大越“排斥”）",
+    )
+    parser.add_argument(
+        "--queue_size",
+        type=int,
+        default=16,
+        help="多线程读帧队列最大长度（帧数）",
+    )
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=2,
+        help="线程数（>=2 时启用独立读帧线程；<2 时退化为单线程）",
     )
     parser.add_argument(
         "--drone_radius",
@@ -318,6 +427,132 @@ def kmeans_cluster(points, k):
     return centers
 
 
+def poisson_disk_sampling(points, width, height, min_gap, max_points):
+    """对候选亮像素点执行近似 Poisson Disk 采样，返回采样点坐标。
+
+    参数
+    ----
+    points : np.ndarray(N, 2)
+        候选亮像素的 (x, y) 坐标，类型为 float32。
+    width, height : int
+        舞台宽和高（用于构建加速网格）。
+    min_gap : float
+        采样点之间的最小距离约束（像素），通常取无人机最小间距。
+    max_points : int
+        目标采样点数量上限。
+
+    返回
+    ----
+    centers : np.ndarray(M, 2)
+        采样得到的 (x, y) 坐标，M <= max_points。
+    """
+    n_points = points.shape[0]
+    if n_points == 0 or max_points <= 0:
+        return np.zeros((0, 2), dtype=np.float32)
+
+    # 若 min_gap 非正，退化为简单随机采样
+    if min_gap <= 1e-3:
+        m = min(max_points, n_points)
+        idx = np.random.choice(n_points, size=m, replace=False)
+        return points[idx].astype(np.float32)
+
+    cell_size = float(min_gap) / math.sqrt(2.0)
+    grid_w = max(1, int(math.ceil(width / cell_size)))
+    grid_h = max(1, int(math.ceil(height / cell_size)))
+
+    # 网格中存储 samples 列表的索引，-1 表示为空
+    grid = [[-1] * grid_w for _ in range(grid_h)]
+    samples = []
+
+    order = np.random.permutation(n_points)
+    min_gap2 = float(min_gap) * float(min_gap)
+
+    for idx in order:
+        p = points[idx]
+        gx = int(p[0] / cell_size)
+        gy = int(p[1] / cell_size)
+
+        if gx < 0:
+            gx = 0
+        elif gx >= grid_w:
+            gx = grid_w - 1
+        if gy < 0:
+            gy = 0
+        elif gy >= grid_h:
+            gy = grid_h - 1
+
+        ok = True
+        # 检查周围若干格（这里取 5x5 邻域）
+        for ny in range(max(0, gy - 2), min(grid_h, gy + 3)):
+            row = grid[ny]
+            for nx in range(max(0, gx - 2), min(grid_w, gx + 3)):
+                s_index = row[nx]
+                if s_index == -1:
+                    continue
+                sp = samples[s_index]
+                dx = p[0] - sp[0]
+                dy = p[1] - sp[1]
+                if dx * dx + dy * dy < min_gap2:
+                    ok = False
+                    break
+            if not ok:
+                break
+
+        if not ok:
+            continue
+
+        grid[gy][gx] = len(samples)
+        samples.append(p)
+
+        if len(samples) >= max_points:
+            break
+
+    if samples:
+        return np.stack(samples, axis=0).astype(np.float32)
+
+    # 若因过于严格导致一个点都没采到，则退化为少量随机点
+    m = min(max_points, n_points)
+    idx = np.random.choice(n_points, size=m, replace=False)
+    return points[idx].astype(np.float32)
+
+
+def extract_bright_points(binary, max_samples):
+    """从二值图中提取亮像素并随机下采样，返回 (x, y) 点集。"""
+    coords = np.column_stack(np.where(binary > 0))  # (N, 2) -> (y, x)
+    if coords.size == 0:
+        return None
+
+    if coords.shape[0] > max_samples:
+        idx = np.random.choice(coords.shape[0], size=max_samples, replace=False)
+        coords = coords[idx]
+
+    # 转换为 (x, y)
+    points = np.stack((coords[:, 1], coords[:, 0]), axis=1).astype(np.float32)
+    return points
+
+
+def generate_targets(points, mode, max_targets, max_clusters, width, height, min_gap):
+    """根据亮像素点生成目标点集合，支持 Poisson 采样与 K-Means。"""
+    if points is None or len(points) == 0 or max_targets <= 0:
+        return None
+
+    max_targets = int(max_targets)
+    if max_targets <= 0:
+        return None
+
+    if mode == "poisson":
+        max_points = min(max_targets, points.shape[0])
+        if max_points <= 0:
+            return None
+        centers = poisson_disk_sampling(points, width, height, min_gap, max_points)
+        return centers if centers.shape[0] > 0 else None
+    else:  # kmeans
+        k = min(max_clusters, max_targets, points.shape[0])
+        if k <= 0:
+            return None
+        return kmeans_cluster(points, k)
+
+
 def stable_match_targets(prev_targets, new_centers, next_id):
     """在相邻帧之间稳定匹配目标点，维护连续的目标 ID。
 
@@ -326,7 +561,7 @@ def stable_match_targets(prev_targets, new_centers, next_id):
     prev_targets : dict[int, np.ndarray]
         上一帧的目标点字典，键为目标 ID，值为 (x, y) 坐标。
     new_centers : np.ndarray or None
-        本帧 K-Means 得到的聚类中心数组（k, 2）。
+        本帧生成的目标点坐标数组（k, 2）。
     next_id : int
         可用的下一个新目标 ID。
 
@@ -453,25 +688,7 @@ def assign_drones_to_targets(drones, targets):
 
 
 def update_drones(drones, targets, width, height, dt, max_speed, min_gap, repulsion_strength):
-    """基于目标吸引 + 斥力 + 速度裁剪更新无人机位置。
-
-    参数
-    ----
-    drones : list[Drone]
-        所有无人机。
-    targets : dict[int, np.ndarray]
-        当前帧的目标点字典。
-    width, height : int
-        舞台宽和高。
-    dt : float
-        时间步长（秒）。
-    max_speed : float
-        最大速度（像素/秒）。
-    min_gap : float
-        无人机最小安全间距（像素）。
-    repulsion_strength : float
-        斥力强度系数。
-    """
+    """基于目标吸引 + 斥力 + 速度裁剪更新无人机位置。"""
     n = len(drones)
     if n == 0:
         return
@@ -593,22 +810,46 @@ def main():
     if fps is None or fps <= 1e-3 or math.isnan(fps):
         fps = 30.0  # 若视频未提供 FPS，则使用默认值
 
+    frame_count_total = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+    if frame_count_total is None:
+        frame_count_total = 0.0
+
     dt = 1.0 / fps
 
-    # 聚类数上限不能超过无人机数量
-    max_clusters = min(args.max_clusters, args.num_drones)
+    # 每帧目标数上限：默认等于无人机数
+    if args.max_targets is None or args.max_targets <= 0:
+        max_targets = args.num_drones
+    else:
+        max_targets = args.max_targets
+
+    # kmeans 模式下的有效最大聚类数
+    max_clusters = min(args.max_clusters, max_targets if max_targets > 0 else args.num_drones)
+
+    use_threading = args.threads is not None and args.threads >= 2
+    queue_size = max(1, int(args.queue_size))
 
     print("================= 模拟参数 =================")
     print(f"视频文件：{args.video}")
+    if frame_count_total > 0 and not math.isnan(frame_count_total):
+        print(f"视频帧数（约）：{int(frame_count_total)}")
+    else:
+        print("视频帧数（约）：未知")
     print(f"视频 FPS：{fps:.2f}，时间步长 dt = {dt:.4f} 秒")
     print(f"舞台尺寸：{args.width} x {args.height}")
     print(f"无人机数量：{args.num_drones}")
     print(f"最小间距 min_gap：{args.min_gap}")
     print(f"最大速度 max_speed：{args.max_speed}")
     print(f"二值化阈值 threshold：{args.threshold}")
-    print(f"最大聚类数 max_clusters：{max_clusters}")
-    print(f"亮像素最大采样数 max_samples：{args.max_samples}")
+    print(f"目标生成模式 target_mode：{args.target_mode}")
+    print(f"每帧目标数上限 max_targets：{max_targets}")
+    print(f"kmeans 最大聚类数 max_clusters：{max_clusters}")
+    print(f"亮像素最大候选数 max_samples：{args.max_samples}")
     print(f"斥力强度 repulsion_strength：{args.repulsion_strength}")
+    print(
+        "读帧线程：{} (threads={}, queue_size={})".format(
+            "启用" if use_threading else "未启用", args.threads, queue_size
+        )
+    )
     print("============================================")
 
     # 初始化无人机
@@ -631,20 +872,50 @@ def main():
     window_name = "Drone Bad Apple Simulation"
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
 
+    # 设置读帧管线
+    if use_threading:
+        frame_queue = queue.Queue(maxsize=queue_size)
+
+        def producer():
+            """读帧线程：负责从 cap 读取并缩放到舞台尺寸。"""
+            while True:
+                ret, frame = cap.read()
+                if not ret:
+                    break
+                frame_resized = cv2.resize(
+                    frame,
+                    (args.width, args.height),
+                    interpolation=cv2.INTER_AREA,
+                )
+                frame_queue.put(frame_resized)
+            cap.release()
+            frame_queue.put(None)
+
+        producer_thread = threading.Thread(target=producer, daemon=True)
+        producer_thread.start()
+
+        def get_frame():
+            return frame_queue.get()
+
+    else:
+        def get_frame():
+            ret, frame = cap.read()
+            if not ret:
+                return None
+            frame_resized = cv2.resize(
+                frame,
+                (args.width, args.height),
+                interpolation=cv2.INTER_AREA,
+            )
+            return frame_resized
+
     while True:
-        ret, frame = cap.read()
-        if not ret:
+        frame = get_frame()
+        if frame is None:
             print("视频播放结束。")
             break
 
         frame_count += 1
-
-        # 将视频帧缩放到舞台尺寸，方便坐标统一
-        frame = cv2.resize(
-            frame,
-            (args.width, args.height),
-            interpolation=cv2.INTER_AREA,
-        )
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -664,21 +935,19 @@ def main():
                 cv2.THRESH_BINARY,
             )
 
-        # 提取亮像素并抽样
-        coords = np.column_stack(np.where(binary > 0))  # (N, 2) -> (y, x)
-        centers = None
+        # 提取亮像素候选点
+        points = extract_bright_points(binary, args.max_samples)
 
-        if coords.size > 0:
-            if coords.shape[0] > args.max_samples:
-                idx = np.random.choice(coords.shape[0], size=args.max_samples, replace=False)
-                coords = coords[idx]
-
-            # 转换为 (x, y)
-            points = np.stack((coords[:, 1], coords[:, 0]), axis=1).astype(np.float32)
-
-            k = min(max_clusters, points.shape[0])
-            if k >= 1:
-                centers = kmeans_cluster(points, k)
+        # 根据目标模式生成目标中心
+        centers = generate_targets(
+            points,
+            mode=args.target_mode,
+            max_targets=max_targets,
+            max_clusters=max_clusters,
+            width=args.width,
+            height=args.height,
+            min_gap=args.min_gap,
+        )
 
         # 更新目标点并做稳定匹配
         targets, next_target_id = stable_match_targets(targets, centers, next_target_id)
@@ -737,7 +1006,8 @@ def main():
                 print(f"已播放 {frame_count} 帧，当前模拟 FPS ≈ {sim_fps:.1f}")
             last_log_time = now
 
-    cap.release()
+    if not use_threading:
+        cap.release()
     cv2.destroyAllWindows()
 
 
