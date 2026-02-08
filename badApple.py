@@ -10,11 +10,10 @@ from concurrent.futures import ThreadPoolExecutor
 # ======================
 GRID_W = 48
 GRID_H = 36
-DRONE_COUNT = 300
-FPS = 32
-V_MAX = 18.0
+DRONE_COUNT = 420
+FPS = 30
+V_MAX = 18.0           # 像素 / 秒
 WINDOW_SCALE = 12
-THRESH = 100
 SMALL_WIN_SCALE = 0.25  # 左上角小窗口缩放比例
 # ======================
 
@@ -24,24 +23,24 @@ class Drone:
         self.y = np.random.uniform(0, GRID_H)
         self.tx = self.x
         self.ty = self.y
-        self.on = False
+        self.on = False  # 当前帧是否亮
+        self.target_assigned = False  # 当前帧是否分配目标
 
     def set_target(self, tx, ty):
         self.tx = tx
         self.ty = ty
+        self.target_assigned = True
 
     def update(self, dt):
         dx = self.tx - self.x
         dy = self.ty - self.y
         dist = math.hypot(dx, dy)
-        if dist < 1e-3:
-            self.on = True
-            return
         step = V_MAX * dt
-        if step >= dist:
+        if dist < 1e-3 or step >= dist:
             self.x = self.tx
             self.y = self.ty
-            self.on = True
+            # 到达目标就亮
+            self.on = self.target_assigned
         else:
             self.x += dx / dist * step
             self.y += dy / dist * step
@@ -51,7 +50,6 @@ def process_frame(frame, reverse=False):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     small = cv2.resize(gray, (GRID_W, GRID_H))
     _, bw = cv2.threshold(small, 127, 255, cv2.THRESH_BINARY)
-    # 判断是否需要反转
     if reverse:
         bw = 255 - bw
     targets = np.column_stack(np.where(bw > 0))
@@ -66,12 +64,9 @@ def main(video_path):
 
     drones = [Drone() for _ in range(DRONE_COUNT)]
     dt = 1.0 / FPS
-
     cv2.namedWindow("Bad Apple Drone Simulation", cv2.WINDOW_NORMAL)
-
     last_time = time.time()
 
-    # 多线程处理帧
     executor = ThreadPoolExecutor(max_workers=2)
 
     while True:
@@ -79,27 +74,34 @@ def main(video_path):
         if not ret:
             break
 
+        # 控制帧率
         now = time.time()
         sleep_time = dt - (now - last_time)
         if sleep_time > 0:
             time.sleep(sleep_time)
         last_time = time.time()
 
-        # 判断是否反转色
+        # 判断前景：少数像素
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         num_black = np.sum(gray_frame < 127)
         num_white = np.sum(gray_frame >= 127)
-        reverse = num_black > num_white  # 黑色占多数 → 反转
+        # 前景 = 少数像素
+        if num_black < num_white:
+            reverse = False  # 前景黑色
+        else:
+            reverse = True   # 前景白色
 
         # 异步处理帧
         future = executor.submit(process_frame, frame.copy(), reverse)
         bw, targets = future.result()
 
-        # 设置无人机目标
+        # 重置无人机目标和亮灭状态
         for d in drones:
-            d.set_target(d.x, d.y)
+            d.target_assigned = False
             d.on = False
+            d.set_target(d.x, d.y)  # 默认目标是当前位置
 
+        # 分配无人机到前景像素
         used = set()
         for ty, tx in targets:
             best = None
@@ -125,14 +127,14 @@ def main(video_path):
         # ================= 可视化 =================
         canvas = np.zeros((GRID_H, GRID_W, 3), dtype=np.uint8)  # 全黑底
 
+        # 只显示亮着无人机
         for d in drones:
-            cx, cy = int(d.x), int(d.y)
-            if 0 <= cx < GRID_W and 0 <= cy < GRID_H:
-                if d.on:
+            if d.on:
+                cx, cy = int(d.x), int(d.y)
+                if 0 <= cx < GRID_W and 0 <= cy < GRID_H:
                     canvas[cy, cx] = (255, 255, 255)  # 点亮
-                else:
-                    canvas[cy, cx] = (30, 30, 30)    # 熄灭
 
+        # 放大显示
         canvas = cv2.resize(canvas, (GRID_W*WINDOW_SCALE, GRID_H*WINDOW_SCALE),
                             interpolation=cv2.INTER_NEAREST)
 
@@ -151,6 +153,6 @@ def main(video_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("用法: python badapple_drones.py bad_apple.mp4")
+        print("用法: python badapple_drones_foreground.py bad_apple.mp4")
         sys.exit(0)
     main(sys.argv[1])
