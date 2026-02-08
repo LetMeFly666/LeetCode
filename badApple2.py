@@ -1368,9 +1368,9 @@ def main():
 
     cv2.destroyAllWindows()
 
-    # 完成提示
-    print("音画同步与导出显示互斥修复完成")
-
 
 if __name__ == "__main__":
     main()
+# python badApple2.py --video ~/Downloads/badApple.mp4 --num_drones=400 --max_speed=500 --width=480 --height=360
+# python badApple2.py --video ~/Downloads/badApple.mp4 --num_drones=1000 --max_speed=500 --width=960 --height=720
+# python badApple2.py --video mini.mp4 --num_drones=1000 --max_speed=500 --width=960 --height=720 --output_video ./bad_apple_drones.mp4

@@ -1,158 +1,166 @@
+# -*- coding: utf-8 -*-
+"""
+Bad Apple 黑白像素无人机群表演模拟（多线程优化版）
+=====================================================================
+"""
+
 import cv2
-import sys
 import numpy as np
-import math
+import threading
+import queue
 import time
-from concurrent.futures import ThreadPoolExecutor
+import argparse
 
-# ======================
-# 参数
-# ======================
-GRID_W = 48
-GRID_H = 36
-DRONE_COUNT = 420
-FPS = 30
-V_MAX = 18.0           # 像素 / 秒
-WINDOW_SCALE = 12
-SMALL_WIN_SCALE = 0.25  # 左上角小窗口缩放比例
-# ======================
+# ------------------ 参数配置 ------------------
+parser = argparse.ArgumentParser()
+parser.add_argument('--video', type=str, required=True, help="输入视频路径")
+parser.add_argument('--width', type=int, default=80, help="无人机舞台宽度")
+parser.add_argument('--height', type=int, default=60, help="无人机舞台高度")
+parser.add_argument('--num_drones', type=int, default=200, help="无人机数量")
+parser.add_argument('--threads', type=int, default=1, help="线程数")
+parser.add_argument('--frame_skip', action='store_true', help="启用帧跳过同步")
+parser.add_argument('--show', action='store_true', help="显示模拟窗口")
+parser.add_argument('--output', type=str, default=None, help="输出视频路径")
+args = parser.parse_args()
 
-class Drone:
-    def __init__(self):
-        self.x = np.random.uniform(0, GRID_W)
-        self.y = np.random.uniform(0, GRID_H)
-        self.tx = self.x
-        self.ty = self.y
-        self.on = False  # 当前帧是否亮
-        self.target_assigned = False  # 当前帧是否分配目标
+# ------------------ 初始化 ------------------
+cap = cv2.VideoCapture(args.video)
+fps = cap.get(cv2.CAP_PROP_FPS)
+frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-    def set_target(self, tx, ty):
-        self.tx = tx
-        self.ty = ty
-        self.target_assigned = True
+stage_w, stage_h = args.width, args.height
+num_drones = args.num_drones
 
-    def update(self, dt):
-        dx = self.tx - self.x
-        dy = self.ty - self.y
-        dist = math.hypot(dx, dy)
-        step = V_MAX * dt
-        if dist < 1e-3 or step >= dist:
-            self.x = self.tx
-            self.y = self.ty
-            # 到达目标就亮
-            self.on = self.target_assigned
-        else:
-            self.x += dx / dist * step
-            self.y += dy / dist * step
-            self.on = False
+# 无人机状态初始化
+drones_pos = np.random.rand(num_drones, 2) * np.array([stage_w, stage_h])
+drones_vel = np.zeros((num_drones, 2), dtype=np.float32)
 
-def process_frame(frame, reverse=False):
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    small = cv2.resize(gray, (GRID_W, GRID_H))
-    _, bw = cv2.threshold(small, 127, 255, cv2.THRESH_BINARY)
-    if reverse:
-        bw = 255 - bw
-    targets = np.column_stack(np.where(bw > 0))
-    np.random.shuffle(targets)
-    return bw, targets
+# 画布
+canvas = np.zeros((stage_h, stage_w), dtype=np.uint8)
 
-def main(video_path):
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        print("❌ 无法打开视频")
-        return
+# ------------------ 多线程队列 ------------------
+frame_queue = queue.Queue(maxsize=32)
+stop_event = threading.Event()
 
-    drones = [Drone() for _ in range(DRONE_COUNT)]
-    dt = 1.0 / FPS
-    cv2.namedWindow("Bad Apple Drone Simulation", cv2.WINDOW_NORMAL)
-    last_time = time.time()
-
-    executor = ThreadPoolExecutor(max_workers=2)
-
-    while True:
+def producer(cap, queue, stop_event, width, height):
+    idx = 0
+    while not stop_event.is_set():
         ret, frame = cap.read()
         if not ret:
             break
+        frame_resized = cv2.resize(frame, (width, height), interpolation=cv2.INTER_AREA)
+        try:
+            queue.put((idx, frame_resized), timeout=0.1)
+        except queue.Full:
+            pass
+        idx += 1
+    stop_event.set()
 
-        # 控制帧率
+if args.threads >= 2:
+    t = threading.Thread(target=producer, args=(cap, frame_queue, stop_event, stage_w, stage_h))
+    t.start()
+
+# ------------------ 帧处理函数 ------------------
+def process_frame(frame):
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+    points = np.argwhere(binary > 0)[:, ::-1]  # (x, y)
+    return points
+
+# ------------------ 无人机更新函数 ------------------
+def update_drones(drones_pos, drones_vel, targets, dt=0.2, speed_limit=1.0):
+    """
+    drones_pos: (N,2)
+    drones_vel: (N,2)
+    targets: (N,2)
+    """
+    direction = targets - drones_pos
+    distance = np.linalg.norm(direction, axis=1, keepdims=True)
+    distance[distance==0] = 1e-6  # 避免除零
+    desired_vel = direction / distance * 0.5  # 速度系数
+    drones_vel += (desired_vel - drones_vel) * 0.5
+    speed = np.linalg.norm(drones_vel, axis=1, keepdims=True)
+    factor = np.minimum(1, speed_limit / (speed + 1e-6))
+    drones_vel *= factor
+    drones_pos += drones_vel * dt
+    return drones_pos, drones_vel
+
+# ------------------ 绘制函数 ------------------
+def draw_drones(drones_pos, stage_w, stage_h):
+    canvas = np.zeros((stage_h, stage_w), dtype=np.uint8)
+    for x, y in drones_pos:
+        ix, iy = int(x), int(y)
+        if 0 <= ix < stage_w and 0 <= iy < stage_h:
+            canvas[iy, ix] = 255
+    return canvas
+
+# ------------------ 输出视频 ------------------
+if args.output is not None:
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    out = cv2.VideoWriter(args.output, fourcc, fps, (stage_w, stage_h), False)
+else:
+    out = None
+
+# ------------------ 主循环 ------------------
+t_start = time.time()
+frame_idx = 0
+while True:
+    # 读取帧
+    if args.threads >= 2:
+        try:
+            frame_idx, frame = frame_queue.get(timeout=0.1)
+        except queue.Empty:
+            if stop_event.is_set() and frame_queue.empty():
+                break
+            continue
+    else:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        frame = cv2.resize(frame, (stage_w, stage_h), interpolation=cv2.INTER_AREA)
+    
+    # 帧跳过同步
+    if args.frame_skip:
         now = time.time()
-        sleep_time = dt - (now - last_time)
-        if sleep_time > 0:
-            time.sleep(sleep_time)
-        last_time = time.time()
+        expected_idx = int((now - t_start) * fps)
+        if frame_idx < expected_idx:
+            continue
 
-        # 判断前景：少数像素
-        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        num_black = np.sum(gray_frame < 127)
-        num_white = np.sum(gray_frame >= 127)
-        # 前景 = 少数像素
-        if num_black < num_white:
-            reverse = False  # 前景黑色
-        else:
-            reverse = True   # 前景白色
+    # 处理帧
+    points = process_frame(frame)
+    if len(points) < num_drones:
+        # 随机补齐
+        extra = np.random.rand(num_drones - len(points), 2) * np.array([stage_w, stage_h])
+        targets = np.vstack([points, extra])
+    else:
+        indices = np.random.choice(len(points), num_drones, replace=False)
+        targets = points[indices]
 
-        # 异步处理帧
-        future = executor.submit(process_frame, frame.copy(), reverse)
-        bw, targets = future.result()
+    # 更新无人机
+    drones_pos, drones_vel = update_drones(drones_pos, drones_vel, targets)
 
-        # 重置无人机目标和亮灭状态
-        for d in drones:
-            d.target_assigned = False
-            d.on = False
-            d.set_target(d.x, d.y)  # 默认目标是当前位置
+    # 绘制
+    canvas = draw_drones(drones_pos, stage_w, stage_h)
 
-        # 分配无人机到前景像素
-        used = set()
-        for ty, tx in targets:
-            best = None
-            best_dist = 1e9
-            for i, d in enumerate(drones):
-                if i in used:
-                    continue
-                dist = math.hypot(d.x - tx, d.y - ty)
-                if dist < best_dist:
-                    best_dist = dist
-                    best = (i, d)
-            if best:
-                i, d = best
-                d.set_target(tx, ty)
-                used.add(i)
-                if len(used) >= DRONE_COUNT:
-                    break
-
-        # 更新无人机位置
-        for d in drones:
-            d.update(dt)
-
-        # ================= 可视化 =================
-        canvas = np.zeros((GRID_H, GRID_W, 3), dtype=np.uint8)  # 全黑底
-
-        # 只显示亮着无人机
-        for d in drones:
-            if d.on:
-                cx, cy = int(d.x), int(d.y)
-                if 0 <= cx < GRID_W and 0 <= cy < GRID_H:
-                    canvas[cy, cx] = (255, 255, 255)  # 点亮
-
-        # 放大显示
-        canvas = cv2.resize(canvas, (GRID_W*WINDOW_SCALE, GRID_H*WINDOW_SCALE),
-                            interpolation=cv2.INTER_NEAREST)
-
-        # 左上角小窗口显示原视频
-        small_win = cv2.resize(frame, (0,0), fx=SMALL_WIN_SCALE, fy=SMALL_WIN_SCALE)
-        h, w, _ = small_win.shape
-        canvas[0:h,0:w] = small_win
-
-        cv2.imshow("Bad Apple Drone Simulation", canvas)
-        if cv2.waitKey(1) in (27, ord('q')):
+    # 显示
+    if args.show:
+        cv2.imshow('Drone Simulation', canvas)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-    cap.release()
-    cv2.destroyAllWindows()
-    executor.shutdown()
+    # 写视频
+    if out:
+        out.write(canvas)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("用法: python badapple_drones_foreground.py bad_apple.mp4")
-        sys.exit(0)
-    main(sys.argv[1])
+# ------------------ 清理 ------------------
+cap.release()
+if out:
+    out.release()
+cv2.destroyAllWindows()
+stop_event.set()
+if args.threads >= 2:
+    t.join()
+
+# python badApple2.py --video ~/Downloads/badApple.mp4 --num_drones=400 --max_speed=500 --width=480 --height=360
+# python badApple2.py --video ~/Downloads/badApple.mp4 --num_drones=1000 --max_speed=500 --width=960 --height=720
+# python badApple2.py --video mini.mp4 --num_drones=1000 --max_speed=500 --width=960 --height=720 --output_video ./bad_apple_drones.mp4
