@@ -1,276 +1,263 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """\
-基于无人机群的 Bad Apple 黑白像素表演模拟脚本（Poisson 采样 + 并发读帧 + 自动反色版）
+基于无人机群的 Bad Apple 黑白像素表演模拟脚本
 ==========================================================================
 
 本脚本使用固定数量的“无人机”（二维平面上的点）来近似还原 Bad Apple 的黑白像素视频：
 每架无人机只有亮/灭两种状态，可以在平面上移动，但速度存在上限，并且任意两机之间
-必须保持不小于给定最小间距。脚本通过 OpenCV 在电脑窗口中实时渲染模拟结果。
+必须保持不小于给定最小间距。脚本通过 OpenCV 在电脑窗口中实时渲染模拟结果，并支持：
 
-在前一版的 Poisson 采样 + 并发读帧基础上，本版本进一步做了三类改进：
+- Poisson Disk（蓝噪声）采样生成目标点，形状还原度更高；
+- 自动反色 auto_invert，使得黑/白背景切换时尽量始终以“主体”为亮点；
+- 近邻网格斥力（grid 模式），在大量无人机时降低 CPU 占用；
+- 并发读帧管线（解码线程 + 主处理线程），提高帧处理吞吐；
+- 小窗播放（window_scale），可缩放显示窗口尺寸而不影响内部舞台计算；
+- 导出模拟结果为视频，并自动从输入 MP4 中提取音轨合并生成带声 MP4。
 
-1. 目标点生成：Poisson Disk（蓝噪声）采样（默认）
+一、目标点生成：Poisson Disk（蓝噪声）采样（默认）
 -------------------------------------------------
 
 传统做法是对亮像素做 K-Means 聚类：聚类中心作为无人机“要去的点”。
 这样容易出现两个问题：
 
 - 聚类中心偏向高密度区域，导致轮廓位置的点被“拉向中间”，整体形状会被抹平；
-- 相邻帧的聚类结果敏感，对局部噪声或像素分布细节比较“跳”，会造成形状跳动。
+- 相邻帧的聚类结果对局部噪声敏感，容易产生形状跳动。
 
 Poisson Disk（蓝噪声）采样的思路是：
 
-- 在亮像素集合内，随机挑选一批点；
-- 任何两个采样点之间的距离都不小于给定半径（这里采用 `min_gap`），
-  形成一种“既随机又均匀”的空间分布（蓝噪声分布）；
-- 构成的点集在视觉上更均匀、避免扎堆，有利于保留轮廓细节，使整体形状更“可读”。
+- 在亮像素集合内随机挑选一批点；
+- 任何两个采样点之间的距离都不小于给定半径（这里采用 min_gap），
+  形成“既随机又均匀”的空间分布（蓝噪声分布）；
+- 采样点更均匀地覆盖亮区域，有利于保留轮廓细节，使整体形状更“可读”。
 
 本脚本在二值图的亮像素集合上执行近似 Poisson Disk 采样：
 
-- 先对亮像素随机下采样（上限 `--max_samples`），作为候选集合；
-- 将舞台划分为网格（cell_size ≈ `min_gap / sqrt(2)`），每个格子最多存一个采样点；
-- 随机遍历候选像素，对每个候选点只检查其周围若干格子里的已选点距离；
-  若都大于 `min_gap` 则接受，否则拒绝；
-- 最多采样到 `--max_targets` 个目标点（默认等于无人机数）。
-
-这样得到的目标点：
-
-- 会更贴着原始亮像素的分布，而不是像 K-Means 那样偏在中心；
-- 相邻帧之间，由于采样受 `min_gap` 约束，局部抖动会被抑制，形状更稳、更易读；
-- 结合后续的“目标 ID 稳定匹配”和无人机分配，能明显改善 Bad Apple 的轮廓还原度。
+- 先对亮像素随机下采样（上限 max_samples），作为候选集合；
+- 将舞台划分为网格（cell_size ≈ min_gap / sqrt(2)），每个格子最多存一个采样点；
+- 随机遍历候选像素，只检查其周围若干格子里的已选点距离；
+  若都大于 min_gap 则接受，否则拒绝；
+- 最多采样到 max_targets 个目标点（默认等于无人机数）。
 
 调参建议：
 
-- 阈值 `--threshold` 越低，认为是“亮”的像素越多，形状越细腻，但噪声也越多；
-- 最大目标数 `--max_targets` 越大，可亮的无人机越多，形状越接近原图，但整体更拥挤；
-- 当 `--threshold` 较低同时 `--max_targets` 较大时，建议增大 `--repulsion_strength`，
+- 阈值 threshold 越低，认为是“亮”的像素越多，形状越细腻，但噪声也越多；
+- 每帧目标数上限 max_targets 越大，可亮的无人机越多，形状越接近原图，但整体更拥挤；
+- 当 threshold 较低同时 max_targets 较大时，建议增大 repulsion_strength，
   让“社交斥力”更强，从而减少无人机之间的碰撞和重叠，保持画面整洁；
-- 若对比想看老的 K-Means 方案，可设置 `--target_mode kmeans`，并调节 `--max_clusters`。
+- 若想对比老的 K-Means 方案，可设置 --target_mode kmeans，并调节 --max_clusters。
 
-2. 自动反色 auto_invert：始终尽量让“主体亮、背景暗”
+二、自动反色 auto_invert：始终尽量让“主体亮、背景暗”
 ----------------------------------------------------
 
-Bad Apple 常见有两种版本：
+Bad Apple 常见有两种风格：
 
 - 黑背景 + 白人物/主体；
 - 白背景 + 黑人物/主体（或中途出现大面积反色切换）。
 
 若只固定一个二值化方向，要么背景很亮、点特别多（无人机全场乱飞），
-要么人物很暗、看不出轮廓。本脚本引入“自动反色”（默认开启）：
+要么人物很暗、看不出轮廓。为此本脚本引入“自动反色”（默认开启）：
 
-- 每帧先做一次普通二值化（亮 = 白像素）；
-- 在此基础上通过取反得到“反色二值图”（亮 = 原本的黑背景部分）；
-- 同时计算两种二值图的亮像素数量；
+- 每帧先做普通二值化（亮 = 白像素），得到 binary_normal；
+- 由 binary_normal 取反可得到“反色二值图”（亮 = 原本的黑色部分）；
+- 同时计算普通与反色两种情况下的亮像素数量；
 - 自动选择“亮像素数量较少”的那一种作为本帧的目标亮区：
   * 黑背景 + 白人物时，白像素少，自动选择普通二值化；
-  * 白背景 + 黑人物时，白背景巨大，反色后亮的就是人物，小而集中，自动选择反色。
+  * 白背景 + 黑人物时，反色后亮的就是人物，小而集中，自动选择反色。
 
-这样可以在黑/白背景切换时，始终尽量以“人物/主体”为亮点进行无人机调度，
-亮点数量平稳，形状也更容易辨认。
+这样在黑/白背景切换时，始终尽量以“人物/主体”为亮点进行无人机调度，
+亮点数量较为平稳，形状也更容易辨认。
 
-- `--auto_invert/--no_auto_invert` 控制是否启用自动反色，默认开启；
-- 若用户显式传入 `--invert`，则强制使用反色并覆盖自动策略；
-- 禁用自动反色（`--no_auto_invert`）时，亮区域完全由 `--invert` 与阈值控制。
+- auto_invert/no_auto_invert 控制是否启用自动反色（默认开启 auto_invert）；
+- 若用户显式传入 --invert，则强制使用反色并覆盖自动策略；
+- 禁用自动反色（--no_auto_invert）时，亮区域完全由 --invert 与 threshold 控制。
 
-调参建议：
+三、无人机调度与社交力模型（可中途熄灭）
+----------------------------------------
 
-- 若发现“亮点太多、画面很乱”，可以：
-  * 提高 `--threshold`，减少亮像素；
-  * 保持 `--auto_invert` 打开，让脚本自动偏向“亮点更少的一侧”；
-  * 或适当减小 `--max_targets`，限制每帧最多亮起的无人机数。
-- 若希望更多无人机参与（例如想要更实心的轮廓）：
-  * 降低 `--threshold` 并增大 `--max_targets`；
-  * 同时适当增大 `--repulsion_strength`，防止无人机过于拥挤。
+1. 初始化与驻留位置
+   - 初始化时在舞台底部区域为每架无人机随机生成一个“驻留位置”（home 位置），
+     并通过简单拒绝采样保证任意两机之间的初始距离不小于 min_gap。
 
-3. 社交斥力优化：近邻网格（grid）模式（默认）
--------------------------------------------
-
-无人机在朝目标靠拢时，需要互相“排斥”以保持最小间距：
-
-- 原始实现采用全量 O(N^2) 两两检查：对每对无人机都计算距离与斥力；
-- 当无人机数量较多（几百甚至上千）时，这一部分会占据大量 CPU 时间，
-  导致单核占用飙高、帧处理不稳定。
-
-本版本引入“近邻网格”斥力计算模式：
-
-- 将舞台按 `cell_size ≈ min_gap` 划分为网格；
-- 每架无人机仅登记到一个格子中；
-- 计算斥力时，只对自身所在格以及其相邻 3x3 共 9 个格子中的无人机进行检查；
-- 同时保证不重复计算对（只处理 j > i 的组合）。
-
-这样能显著减少距离计算次数，在无人机数量较多时有效降低单核高占用，
-提高帧率与整体稳定性。
-
-- CLI 中通过 `--repulsion_mode {grid,naive}` 选择斥力模式：
-  * `grid`：默认，采用上述近邻网格方法，适合大量无人机时避免 CPU 被打满；
-  * `naive`：保留原始 O(N^2) 全量两两检查，方便对比与调试。
-
-4. 并发读帧管线：解码与计算解耦
---------------------------------
-
-原始版本在主线程中串行完成：
-
-- 从 VideoCapture 读一帧；
-- 灰度化、二值化、采样/聚类、目标匹配、无人机物理更新、绘制与显示；
-
-当每帧的计算量较大（例如无人机很多、目标点很多、帧率较高）时，
-OpenCV 解码和 Python 端的计算会互相“排队”，导致吞吐不高，看起来只播放了很少的帧。
-
-本版本使用典型的生产者-消费者（Producer-Consumer）结构：
-
-- 读帧线程（Producer）：
-  - 独立线程中持续从视频解码帧，并直接缩放到舞台尺寸；
-  - 将结果放入一个有界队列（`queue.Queue(maxsize=--queue_size)`）。
-- 主线程（Consumer）：
-  - 从队列中取出最新的帧，执行二值化、采样/聚类、目标匹配、物理更新与绘制；
-  - 只负责计算与显示，不与磁盘/解码 IO 竞争。
-
-当 `--threads >= 2` 时启用该并发管线（默认 2）；当 `--threads < 2` 时退化为
-单线程串行处理，与原版行为接近。
-
-启动时脚本会打印：
-
-- 视频估计总帧数（CAP_PROP_FRAME_COUNT）；
-- 视频 FPS 与对应时间步长 dt；
-- 是否启用读帧线程、线程数与队列长度；
-- 目标生成模式（Poisson 或 K-Means）、每帧目标数上限 `max_targets`；
-- 自动反色开关状态与当前斥力模式；
-- 其他关键参数（无人机数、最小间距、最大速度等）。
-
-同时，每处理 60 帧会在控制台输出一次当前模拟 FPS，并附带当前帧的“亮像素数量”
-和“目标数量”，便于观察调参效果与负载情况。
-
-一、总体思路（算法结构）
-------------------------
-
-1. 视频解码与预处理
-   - 通过 `--video` 指定 Bad Apple 视频文件路径（mp4/avi 等）。
-   - 使用 OpenCV `VideoCapture` 逐帧读取视频。
-   - 每帧转换为灰度图，并按给定阈值二值化（亮/暗像素）。
-   - 默认开启自动反色（`--auto_invert`），每帧在普通/反色二值化之间选择“亮点更少”的一侧，
-     从而尽量让舞台上显示的是“主体亮点”；也可用 `--no_auto_invert` 关闭此行为，
-     或通过 `--invert` 强制反色。
-
-2. 亮像素抽样与目标点生成（Poisson / K-Means）
-   - 从最终选择的二值图中提取所有“亮”像素坐标，必要时随机下采样到 `--max_samples`，
-     以控制后续计算量。
-   - 若 `--target_mode poisson`：
-     * 在亮像素集合上执行近似 Poisson Disk 采样，采样点两两间距不少于 `min_gap`；
-     * 最多保留 `--max_targets` 个目标点（默认等于无人机数）；
-     * 在局部均匀填充亮区域，轮廓更清晰、形状更可读。
-   - 若 `--target_mode kmeans`：
-     * 选择聚类数 K = min(亮像素数, `--max_clusters`, `--max_targets`)，并使用 `cv2.kmeans`；
-     * 得到 K 个聚类中心作为目标点。
-   - 若某一帧没有亮像素，则视为本帧没有任何目标点。
-
-3. 目标中心稳定追踪（目标 ID 维护）
+2. 目标中心稳定追踪
    - 无论使用 Poisson 采样还是 K-Means 聚类，本脚本都对相邻帧的目标点做“稳定追踪”：
-     * 维护一个以整数 ID 为键、二维坐标为值的目标点字典 `targets`；
+     * 维护一个以整数 ID 为键、二维坐标为值的目标点字典 targets；
      * 将上一帧的目标与当前帧目标两两计算距离，按距离从小到大贪心匹配；
-       - 若某个旧目标与某个新点匹配成功，则沿用旧 ID；
+       - 匹配成功则沿用旧 ID；
        - 未被匹配的新目标点分配新的 ID；
      * 未被匹配的旧目标在本帧中消失。
-   - 这样可以尽量保持目标点 ID 随时间连续，减少跳变与交叉。
 
-4. 无人机与目标的分配策略（无人机可中途熄灭）
-   - 初始化时在舞台底部区域为每架无人机随机生成一个“驻留位置”（home 位置），
-     并保证任意两机之间的初始距离不小于 `--min_gap`。
-   - 每帧根据当前 `targets` 为无人机分配目标：
-     * 首先保留所有“仍然存在”的旧绑定（无人机之前跟随的目标 ID 若仍在 `targets`
-       中，则继续跟随该目标）；
-     * 剩余尚未分配目标的无人机与尚未被占用的目标点之间，计算两两距离，按最小
-       距离贪心匹配，一对一分配，直至目标或无人机用完；
-     * 被分配到目标的无人机处于“亮”状态；未分配目标的无人机处于“灭”状态，且
-       不再跟随任何视频目标，只是缓慢返回各自的驻留位置在安全区静待。
+3. 无人机与目标分配（支持中途熄灭）
+   - 每帧根据当前 targets 为无人机分配目标：
+     * 首先保留所有“仍然存在”的旧绑定（无人机之前跟随的目标 ID 若仍在 targets 中，
+       则继续跟随该目标）；
+     * 剩余未分配的无人机与未被占用的目标点之间，按就近原则做贪心匹配；
+     * 被分配到目标的无人机处于“亮”状态；未分配目标的无人机处于“灭”状态，
+       不再跟随任何视频目标，只是缓慢返回各自驻留位置在安全区静待。
 
    因此：
-   - 无人机数量是固定的，但每帧“亮着”的无人机数量会随画面亮部变化而动态调整；
-   - 无人机可以在表演过程中“中途熄灭”，这在目标较少或 `--max_targets` 较小、
-     阈值较高时非常常见；
-   - 通过 `--max_targets`、`--threshold` 以及自动反色，可以实现对无人机调度规模的
-     动态控制：亮部越多、允许的目标越多，被点亮调度的无人机就越多。
+   - 无人机总数是固定的，但每帧“亮着”的无人机数量会随画面亮部变化而动态调整；
+   - 无人机可以在表演过程中“中途熄灭”或再次被点亮；
+   - 通过 max_targets、threshold 以及自动反色，可以动态控制每帧被调度的无人机规模。
 
-5. 社交力模型：无人机运动控制（含近邻网格斥力）
-   - 时间步长 `dt` 由视频的 FPS 决定，`dt ≈ 1 / fps`。
-   - 对每帧，每架无人机的运动由两部分组成：
+4. 社交力模型与近邻网格斥力
+   - 时间步长 dt 由视频 FPS 决定，dt ≈ 1 / fps；
+   - 每帧对每架无人机：
      1) 指向目标（或驻留位置）的吸引：
-        - 记无人机当前位置为 x，目标位置为 g，则位移方向为 (g - x)。
-        - 计算到目标的距离 d，期望速度大小为 `min(max_speed, d/dt)`，保证
-          在单步内既不超过最大速度 `--max_speed`，又不会“冲过头”。
-        - 得到吸引速度向量 v_attr，吸引位移为 `v_attr * dt`。
+        - 记无人机当前位置为 x，目标位置为 g，则位移方向为 (g - x)；
+        - 计算到目标的距离 d，期望速度大小为 min(max_speed, d/dt)，
+          既不超过最大速度 max_speed，又不过冲目标；
+        - 得到吸引速度 v_attr，对应位移为 v_attr * dt。
      2) 对近邻无人机的斥力：
-        - 基于“社交力”思想，当两机之间距离小于 `--min_gap` 时，对应产生一对
-          反向的位移修正，以将二者推离；
-        - 在本版本中，斥力计算有两种模式：
-          * `grid`（默认）：使用近邻网格，只对每架无人机所在格及其相邻 3x3 以内
-            的无人机计算斥力，大幅减少计算量；
-          * `naive`：保留 O(N^2) 全量两两检查，便于对比与调试。
-        - 对于每一对过近的无人机，会根据距离差 `(min_gap - dist)` 和
-          `--repulsion_strength` 计算一个补偿位移，两机分别向相反方向移动一半。
-   - 吸引位移与斥力位移叠加后得到本步的总位移，对应总速度 v_total，再对
-     |v_total| 进行裁剪，不超过 `--max_speed`。
-   - 更新位置后，将无人机坐标裁剪在 [0, width) × [0, height) 的舞台区域内，
-     保证始终可见。
+        - 当两机距离小于 min_gap 时，沿连线方向施加补偿位移，将它们推离；
+        - 斥力强度由 repulsion_strength 控制，值越大越“排斥”。
 
-6. 渲染与交互
-   - 为每帧创建一个 size = (`--height`, `--width`) 的黑色画布。
-   - 对于每架无人机，在当前位置绘制实心圆：
-     * 亮状态（有目标）使用白色圆点；
-     * 灭状态（无目标，仅在安全区驻留）使用深灰色圆点。
-   - 可选择在左上角叠加缩小版原视频帧作为参考，比例由 `--overlay_scale` 控制。
-   - 在窗口底部显示当前帧序号与目标数量等调试信息。
-   - 按下键盘 Q/q 可提前退出模拟。
+   为降低计算量，本脚本提供两种斥力模式：
 
-二、关键约束
---------------
+   - repulsion_mode = grid（默认）：
+     * 将舞台按 cell_size ≈ min_gap 划分为网格；
+     * 每架无人机登记到对应格子；
+     * 只对自身所在格以及相邻 3x3 共 9 个格子中的无人机计算斥力，且只处理 j>i 的组合；
+     * 对大量无人机（几百、上千）时，能显著减少 O(N^2) 距离计算，降低单核高占用。
 
-- 无人机数量固定，由 `--num_drones` 指定；但每帧可亮起的无人机数量是动态的。
-- 无人机只有亮/灭两种状态：
-  * 亮：当前被分配到某个视频目标；
-  * 灭：当前未分配目标，仅在安全区附近缓慢移动或静止（可在表演中途熄灭和再次点亮）。
-- 速度上限：每帧更新之后的真实速度模长不会超过 `--max_speed`。
-- 最小间距：尝试通过斥力修正保证任意两机之间距离不小于 `--min_gap`，若出现
-  轻微违反，后续帧会自动通过社交力逐渐恢复安全距离。
+   - repulsion_mode = naive：
+     * 采用朴素 O(N^2) 全量两两检查，仅用于对比或调试。
 
-三、命令行参数说明（常用）
+四、并发读帧管线：解码与计算解耦
+--------------------------------
+
+原始串行方式在主线程中完成：
+
+- 从 VideoCapture 读一帧；
+- 灰度化、二值化、目标点生成、目标匹配、无人机物理更新、绘制与显示。
+
+当每帧计算量较大时，解码与计算会互相“排队”，导致吞吐不高。
+
+本脚本采用典型的生产者-消费者结构：
+
+- 读帧线程（Producer）
+  - 独立线程中持续从视频解码帧，并直接缩放到舞台尺寸 (width, height)；
+  - 将结果放入有界队列 queue.Queue(maxsize=queue_size)。
+
+- 主线程（Consumer）
+  - 从队列中取出最新帧，执行二值化、目标生成、匹配、物理更新与绘制；
+  - 只负责计算与显示，不与磁盘/解码 IO 竞争。
+
+当 threads >= 2 时启用读帧线程（默认 2）；threads < 2 时退化为单线程串行处理。
+
+五、小窗播放与音画同步（墙钟调度 + ffplay）
+-------------------------------------------
+
+1. 小窗播放 window_scale
+   - 内部“舞台”尺寸由 --width、--height 控制，所有物理计算与坐标系均以舞台尺寸为准；
+   - 新增参数 --window_scale（默认 1.0，建议 0.3~1.0），用于缩放显示窗口画面：
+     * 在绘制完成后，对 canvas 做一次 cv2.resize，再交给 cv2.imshow 显示；
+     * 仅影响显示窗口大小，不改变内部物理计算与视频解析分辨率；
+     * 适合在高分辨率舞台下“小窗播放”，避免窗口过大挡住屏幕。
+
+2. 音画同步：墙钟时间轴
+   - 若系统安装了 ffplay 且未关闭 --play_audio，本脚本会在开始时以子进程方式播放原视频音轨：
+
+       ffplay -nodisp -autoexit -loglevel error -i input.mp4
+
+   - 记录起始时间 t0（尽量与音轨启动时刻一致），第 k 帧的目标显示时间为：
+
+       t_target = t0 + k / fps
+
+   - 对每帧在完成全部计算与绘制后：
+
+       now = time.time()
+       delay = max(0, t_target - now)
+       time.sleep(delay)
+       cv2.waitKey(1)
+
+   - 若计算耗时过长导致 now 已经晚于 t_target，则不再额外等待（delay 为 0），
+     直接显示该帧，从而让整体时间轴尽可能跟随音轨，不刻意“追帧”。
+
+   - 若 ffplay 不存在或用户关闭 --play_audio，则依然按上述墙钟时间轴调度画面，
+     只是静音播放。
+
+六、导出模拟结果为视频（含音轨，音轨来自输入 MP4）
+---------------------------------------------------
+
+本脚本支持将无人机模拟结果导出为 MP4 视频，并自动与原视频音轨合并：
+
+1. 实时写出无音轨临时视频
+   - 通过参数 --output_video 指定输出路径（如 ./output.mp4）；
+   - 若提供该参数，脚本会创建一个临时无音轨 MP4 文件（例如 ./output_tmp_noaudio.mp4），
+     使用 OpenCV VideoWriter 以 fourcc=mp4v、fps=源视频 fps、尺寸=舞台尺寸 (width, height)
+     将每帧 canvas 写入该临时文件。
+
+2. 使用 ffmpeg 复用音轨
+   - 启动时检测系统是否存在 ffmpeg（通过 shutil.which("ffmpeg")）：
+     * 若可用，在播放结束后自动调用一次合并命令，将临时无音轨视频与输入视频的音轨复用，
+       生成最终 --output_video：
+
+       ffmpeg -y -i output_tmp_noaudio.mp4 -i input.mp4 \
+              -map 0:v:0 -map 1:a:0 -c:v copy -c:a copy -shortest output.mp4
+
+     * 若因编解码器不兼容导致 copy 失败，会自动退化为：
+
+       ffmpeg -y -i output_tmp_noaudio.mp4 -i input.mp4 \
+              -map 0:v:0 -map 1:a:0 -c:v libx264 -pix_fmt yuv420p \
+              -c:a copy -shortest output.mp4
+
+   - 合并成功后自动删除临时无音轨文件，仅保留最终带声 MP4；
+   - 音轨直接来自输入 MP4（--video 指定的文件），不需要用户额外提供 mp3。
+
+3. 无 ffmpeg 时的行为
+   - 若系统没有安装 ffmpeg，则仅保留无音轨临时视频，并在控制台提示：
+
+     “系统未检测到 ffmpeg，已写出无音轨模拟视频；安装 ffmpeg 即可自动合并音轨。”
+
+七、命令行参数说明（常用）
 ----------------------------
 
-- `--video` (必选)：Bad Apple 视频文件路径（mp4/avi 等）。
-- `--num_drones`：无人机数量，默认 300。
-- `--width`, `--height`：舞台画布宽和高（像素），同时也是视频缩放后的尺寸。
-- `--min_gap`：无人机之间的最小安全距离（像素），也用于 Poisson 采样点间距。
-- `--max_speed`：无人机最大速度（像素/秒）。
-- `--threshold`：灰度二值化阈值（0~255），默认 200。
-- `--auto_invert/--no_auto_invert`：是否开启自动反色，默认开启；
+- --video (必选)：Bad Apple 视频文件路径（mp4/avi 等）。
+- --num_drones：无人机数量，默认 300。
+- --width, --height：舞台画布宽和高（像素），同时也是视频缩放后的尺寸。
+- --min_gap：无人机之间的最小安全距离（像素），也用于 Poisson 采样点间距。
+- --max_speed：无人机最大速度（像素/秒）。
+- --threshold：灰度二值化阈值（0~255），默认 200。
+- --auto_invert/--no_auto_invert：是否开启自动反色，默认开启；
   * 开启时，每帧在普通/反色二值化中自动选择亮像素较少的一侧；
-  * 若显式加 `--invert`，则自动反色策略会被覆盖，始终按反色处理。
-- `--invert`：强制使用反向二值化，将暗像素视为“亮”像素（适配反色视频）。
-- `--target_mode`：目标点生成模式，可选 `poisson` 或 `kmeans`，默认 `poisson`。
-- `--max_targets`：每帧最多目标点数量，默认等于 `--num_drones`。
-- `--max_clusters`：在 `kmeans` 模式下每帧 K-Means 的最大聚类数。
-- `--max_samples`：每帧参与采样/聚类的亮像素最大候选数，用于控制性能。
-- `--repulsion_strength`：斥力强度系数，适当增大可增强防碰撞能力。
-- `--repulsion_mode`：斥力计算模式，`grid` 为近邻网格模式（默认），`naive` 为
-  全量两两检查模式。
-- `--queue_size`：多线程读帧队列长度（帧数上限），默认 16。
-- `--threads`：线程数，`>=2` 时启用独立读帧线程，`<2` 时退化为单线程。
-- `--drone_radius`：绘制无人机时的圆半径（像素）。
-- `--overlay_scale`：左上角原视频缩略图相对于舞台宽度的缩放比例。
-- `--no_show_original`：不在画面角落叠加原始视频缩略图。
+  * 若显式加 --invert，则自动反色策略会被覆盖，始终按反色处理。
+- --invert：强制使用反向二值化，将暗像素视为亮像素（适配反色视频）。
+- --target_mode：目标点生成模式，可选 poisson 或 kmeans，默认 poisson。
+- --max_targets：每帧最多目标点数量，默认等于 num_drones。
+- --max_clusters：在 kmeans 模式下每帧 K-Means 的最大聚类数。
+- --max_samples：每帧参与采样/聚类的亮像素最大候选数，用于控制性能。
+- --repulsion_strength：斥力强度系数，适当增大可增强防碰撞能力。
+- --repulsion_mode：斥力计算模式，grid 为近邻网格模式（默认），naive 为全量两两检查。
+- --queue_size：多线程读帧队列长度（帧数上限），默认 16。
+- --threads：线程数，>=2 时启用独立读帧线程，<2 时退化为单线程。
+- --drone_radius：绘制无人机时的圆半径（像素）。
+- --overlay_scale：左上角原视频缩略图相对于舞台宽度的缩放比例。
+- --window_scale：显示窗口缩放比例，仅影响显示，不改变舞台尺寸，建议 0.3~1.0。
+- --play_audio/--no_play_audio：是否通过 ffplay 播放输入视频音轨，默认开启 --play_audio。
+- --output_video：将模拟结果导出为带音轨的 MP4 文件路径（如 ./output.mp4）。
+- --no_show_original：不在画面角落叠加原始视频缩略图。
 
-四、运行示例
+八、运行示例
 --------------
 
-以下命令假设脚本文件名为 `drone_bad_apple_sim.py`，视频文件为 `bad_apple.mp4`，
-舞台尺寸为 960×720，300 架无人机，最小间距 8 像素，最大速度 200 像素/秒：
+1. 仅实时小窗播放（带音频）：
 
     python drone_bad_apple_sim.py --video ./bad_apple.mp4 \
         --num_drones 300 --width 960 --height 720 \
         --min_gap 8 --max_speed 200 --threshold 200 \
-        --threads 2 --queue_size 32 --target_mode poisson
+        --threads 2 --queue_size 32 --target_mode poisson \
+        --window_scale 0.5
 
-运行后将弹出一个窗口显示无人机模拟效果，按 Q 可退出。
+2. 实时播放并导出带音轨 MP4：
+
+    python drone_bad_apple_sim.py --video ./bad_apple.mp4 \
+        --num_drones 300 --width 960 --height 720 \
+        --min_gap 8 --max_speed 200 --threshold 200 \
+        --threads 2 --queue_size 32 --target_mode poisson \
+        --window_scale 0.6 --output_video ./bad_apple_drones.mp4
+
+运行后将弹出一个窗口显示无人机模拟效果，按 Q 可提前退出。
 """
 
 import argparse
@@ -280,6 +267,9 @@ import math
 import random
 import threading
 import queue
+import os
+import shutil
+import subprocess
 
 try:
     import numpy as np
@@ -442,6 +432,31 @@ def parse_args():
         help="左上角原视频缩略图相对于舞台宽度的缩放比例",
     )
     parser.add_argument(
+        "--window_scale",
+        type=float,
+        default=1.0,
+        help="显示窗口缩放比例（不影响内部舞台计算尺寸，建议 0.3~1.0）",
+    )
+    parser.add_argument(
+        "--play_audio",
+        dest="play_audio",
+        action="store_true",
+        help="通过 ffplay 播放输入视频音轨用于音画同步（默认开启，如需关闭用 --no_play_audio）",
+    )
+    parser.add_argument(
+        "--no_play_audio",
+        dest="play_audio",
+        action="store_false",
+        help="关闭音频播放，仅显示无人机画面",
+    )
+    parser.set_defaults(play_audio=True)
+    parser.add_argument(
+        "--output_video",
+        type=str,
+        default=None,
+        help="将模拟结果导出为带音轨的 MP4 文件路径（如 ./output.mp4）",
+    )
+    parser.add_argument(
         "--no_show_original",
         action="store_true",
         help="不在画面角落叠加原始视频缩略图",
@@ -498,16 +513,7 @@ def initialize_drones(num_drones, width, height, min_gap, max_attempts=10000):
 
 
 def kmeans_cluster(points, k):
-    """对亮像素点做 K-Means 聚类，返回聚类中心。
-
-    参数
-    ----
-    points : np.ndarray(N, 2)
-        所有亮像素的 (x, y) 坐标，类型为 float32。
-    k : int
-        聚类簇数。
-    """
-    # OpenCV K-Means 需要 float32 的输入
+    """对亮像素点做 K-Means 聚类，返回聚类中心。"""
     data = points.astype(np.float32)
 
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 0.5)
@@ -522,29 +528,11 @@ def kmeans_cluster(points, k):
         attempts,
         flags,
     )
-    # centers: (k, 2)
     return centers
 
 
 def poisson_disk_sampling(points, width, height, min_gap, max_points):
-    """对候选亮像素点执行近似 Poisson Disk 采样，返回采样点坐标。
-
-    参数
-    ----
-    points : np.ndarray(N, 2)
-        候选亮像素的 (x, y) 坐标，类型为 float32。
-    width, height : int
-        舞台宽和高（用于构建加速网格）。
-    min_gap : float
-        采样点之间的最小距离约束（像素），通常取无人机最小间距。
-    max_points : int
-        目标采样点数量上限。
-
-    返回
-    ----
-    centers : np.ndarray(M, 2)
-        采样得到的 (x, y) 坐标，M <= max_points。
-    """
+    """对候选亮像素点执行近似 Poisson Disk 采样，返回采样点坐标。"""
     n_points = points.shape[0]
     if n_points == 0 or max_points <= 0:
         return np.zeros((0, 2), dtype=np.float32)
@@ -960,6 +948,80 @@ def overlay_original(canvas, frame, scale=0.25, margin=8):
     canvas[margin : margin + new_h, margin : margin + new_w] = thumb
 
 
+def mux_video_with_audio(tmp_video_path, input_video_path, output_video_path, ffmpeg_path):
+    """使用 ffmpeg 将无音轨视频与原始音轨复用为最终输出视频。
+
+    返回 True 表示合并成功，False 表示失败（此时保留临时无音轨文件）。
+    """
+    # 尝试直接 copy 编解码参数
+    cmd_copy = [
+        ffmpeg_path,
+        "-y",
+        "-i",
+        tmp_video_path,
+        "-i",
+        input_video_path,
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
+        "-c:v",
+        "copy",
+        "-c:a",
+        "copy",
+        "-shortest",
+        output_video_path,
+    ]
+    try:
+        result = subprocess.run(
+            cmd_copy,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    except Exception as e:
+        print(f"调用 ffmpeg 复制编解码参数失败：{e}")
+        result = None
+
+    if result is not None and result.returncode == 0:
+        return True
+
+    print("ffmpeg 直接 copy 编码失败，尝试使用 libx264 重新编码视频轨……")
+
+    cmd_reencode = [
+        ffmpeg_path,
+        "-y",
+        "-i",
+        tmp_video_path,
+        "-i",
+        input_video_path,
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
+        "-c:v",
+        "libx264",
+        "-pix_fmt",
+        "yuv420p",
+        "-c:a",
+        "copy",
+        "-shortest",
+        output_video_path,
+    ]
+    try:
+        result2 = subprocess.run(
+            cmd_reencode,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    except Exception as e:
+        print(f"调用 ffmpeg 重新编码失败：{e}")
+        return False
+
+    return result2.returncode == 0
+
+
 def main():
     args = parse_args()
 
@@ -995,6 +1057,34 @@ def main():
     use_threading = args.threads is not None and args.threads >= 2
     queue_size = max(1, int(args.queue_size))
 
+    # 检测 ffmpeg / ffplay
+    ffmpeg_path = shutil.which("ffmpeg")
+    ffplay_path = shutil.which("ffplay")
+
+    # 初始化视频写出
+    write_video = False
+    video_writer = None
+    tmp_video_path = None
+    if args.output_video:
+        base, ext = os.path.splitext(args.output_video)
+        if not ext:
+            ext = ".mp4"
+        tmp_video_path = f"{base}_tmp_noaudio{ext}"
+        fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+        video_writer = cv2.VideoWriter(
+            tmp_video_path,
+            fourcc,
+            fps,
+            (args.width, args.height),
+        )
+        if not video_writer.isOpened():
+            print(f"无法打开视频写出文件：{tmp_video_path}，将跳过导出视频。")
+            video_writer.release()
+            video_writer = None
+            tmp_video_path = None
+        else:
+            write_video = True
+
     print("================= 模拟参数 =================")
     print(f"视频文件：{args.video}")
     if frame_count_total > 0 and not math.isnan(frame_count_total):
@@ -1023,6 +1113,17 @@ def main():
             "启用" if use_threading else "未启用", args.threads, queue_size
         )
     )
+    print(
+        f"ffmpeg 可用性：{'可用' if ffmpeg_path else '不可用'}；"
+        f" ffplay 可用性：{'可用' if ffplay_path else '不可用'}"
+    )
+    print(
+        f"播放音频 play_audio：{'开启' if args.play_audio and ffplay_path else '关闭'}；"
+        f" 输出视频：{args.output_video if args.output_video else '无'}"
+    )
+    print(f"窗口缩放 window_scale：{args.window_scale}")
+    if write_video and tmp_video_path:
+        print(f"无音轨临时视频路径：{tmp_video_path}")
     print("============================================")
 
     # 初始化无人机
@@ -1036,8 +1137,6 @@ def main():
     # 目标点字典及下一个可分配 ID
     targets = {}
     next_target_id = 0
-
-    delay_ms = int(1000.0 / fps) if fps > 0 else 33
 
     frame_count = 0
     last_log_time = time.time()
@@ -1073,6 +1172,7 @@ def main():
             return frame_queue.get()
 
     else:
+
         def get_frame():
             ret, frame = cap.read()
             if not ret:
@@ -1086,6 +1186,29 @@ def main():
 
     total_pixels = args.width * args.height
 
+    # 启动音频播放（若可用）
+    audio_proc = None
+    t_start = None
+    if args.play_audio and ffplay_path:
+        try:
+            audio_cmd = [
+                ffplay_path,
+                "-nodisp",
+                "-autoexit",
+                "-loglevel",
+                "error",
+                "-i",
+                args.video,
+            ]
+            audio_proc = subprocess.Popen(audio_cmd)
+            t_start = time.time()
+            print("已启动 ffplay 音轨播放进程以同步音频。")
+        except Exception as e:
+            print(f"启动 ffplay 播放音频失败，将静音播放。错误：{e}")
+            audio_proc = None
+    elif args.play_audio and not ffplay_path:
+        print("检测到 play_audio 开启，但系统未找到 ffplay，将静音播放。")
+
     while True:
         frame = get_frame()
         if frame is None:
@@ -1093,11 +1216,11 @@ def main():
             break
 
         frame_count += 1
+        frame_index = frame_count - 1  # 用于墙钟时间轴
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # 灰度二值化 + 自动反色逻辑
-        # 先做普通二值化
         _, binary_normal = cv2.threshold(
             gray,
             args.threshold,
@@ -1172,10 +1295,12 @@ def main():
         if not args.no_show_original:
             overlay_original(canvas, frame, scale=args.overlay_scale)
 
+        # 写入无音轨临时视频
+        if write_video and video_writer is not None:
+            video_writer.write(canvas)
+
         # 绘制调试文字
-        text = (
-            f"Frame: {frame_count}  Targets: {len(targets)}  Drones: {len(drones)}"
-        )
+        text = f"Frame: {frame_count}  Targets: {len(targets)}  Drones: {len(drones)}"
         cv2.putText(
             canvas,
             text,
@@ -1187,9 +1312,28 @@ def main():
             cv2.LINE_AA,
         )
 
-        cv2.imshow(window_name, canvas)
+        # 墙钟时间轴调度，保证与音轨时间尽量同步
+        if t_start is None:
+            t_start = time.time()
+        target_time = t_start + frame_index / fps
+        now = time.time()
+        delay = target_time - now
+        if delay > 0:
+            time.sleep(delay)
 
-        key = cv2.waitKey(max(1, delay_ms)) & 0xFF
+        # 小窗显示：根据 window_scale 缩放显示画面
+        display_canvas = canvas
+        scale = args.window_scale
+        if scale is not None and scale > 0 and abs(scale - 1.0) > 1e-3:
+            scale = max(0.1, float(scale))
+            disp_w = max(1, int(args.width * scale))
+            disp_h = max(1, int(args.height * scale))
+            interp = cv2.INTER_AREA if scale < 1.0 else cv2.INTER_LINEAR
+            display_canvas = cv2.resize(canvas, (disp_w, disp_h), interpolation=interp)
+
+        cv2.imshow(window_name, display_canvas)
+
+        key = cv2.waitKey(1) & 0xFF
         if key == ord("q") or key == ord("Q"):
             print("收到 Q 键，提前退出模拟。")
             break
@@ -1208,7 +1352,46 @@ def main():
 
     if not use_threading:
         cap.release()
+
+    # 停止音频进程
+    if audio_proc is not None:
+        try:
+            audio_proc.terminate()
+        except Exception:
+            pass
+        try:
+            audio_proc.wait(timeout=2.0)
+        except Exception:
+            pass
+
+    # 处理视频导出与音轨合并
+    if write_video and video_writer is not None and tmp_video_path is not None:
+        video_writer.release()
+        if ffmpeg_path:
+            print("开始使用 ffmpeg 将模拟视频与原始音轨合并……")
+            ok = mux_video_with_audio(tmp_video_path, args.video, args.output_video, ffmpeg_path)
+            if ok:
+                print(f"带音轨输出视频已生成：{args.output_video}")
+                try:
+                    os.remove(tmp_video_path)
+                    print(f"已删除临时无音轨文件：{tmp_video_path}")
+                except OSError:
+                    print(f"删除临时文件失败，请手动删除：{tmp_video_path}")
+            else:
+                print(
+                    "ffmpeg 合并音轨失败，已保留无音轨临时视频：" f"{tmp_video_path}\n"
+                    "可检查 ffmpeg 安装或参数后重新运行脚本，或手动使用 ffmpeg 合并。"
+                )
+        else:
+            print(
+                f"系统未检测到 ffmpeg，已将无音轨模拟视频写入：{tmp_video_path}\n"
+                "安装 ffmpeg 即可自动合并音轨（脚本会在运行结束后自动尝试复用音轨）。"
+            )
+
     cv2.destroyAllWindows()
+
+    # 任务完成提示
+    print("脚本新增小窗与视频导出（含音轨）完成")
 
 
 if __name__ == "__main__":
