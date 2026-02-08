@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-02-06T11:49:21.000Z">
+<meta property="article:modified_time" content="2026-02-08T06:18:06.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -251,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          24k 字
+          25k 字
         
       </span>
     
@@ -262,7 +262,7 @@
         
         
         
-          202 分钟
+          207 分钟
         
       </span>
     
@@ -423,6 +423,9 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;canonical&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://blog.letmefly.xyz/post/123&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
+<h3 id="HTML全屏幕取色器"><a href="#HTML全屏幕取色器" class="headerlink" title="HTML全屏幕取色器"></a>HTML全屏幕取色器</h3><p>Chrome、Edge、Opera浏览器支持<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper"><code>EyeDropper</code>API</a>，可以将鼠标变成一个取色器，取色器会将鼠标变成一个“圆形放大镜”，用户在屏幕上任意位置(<strong>哪怕是浏览器外</strong>)点击鼠标左键则HTML可以获取到该位置的颜色RGB，鼠标移动过程中经过像素颜色对HTML不可见。</p>
+<p>注意，<span title="2026.2.8">当前Firefox、Safari</span>浏览器以及所有主流手机浏览器都不支持该API。</p>
+<p>体验地址：<a target="_blank" rel="noopener" href="https://web.letmefly.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BACode/HTML%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95%E5%8F%96%E8%89%B2%E5%99%A8/">web.letmefly.xyz</a>。可查看网页源码，不难发现源码很简单。</p>
 <h2 id="About-Linux"><a href="#About-Linux" class="headerlink" title="About Linux"></a>About Linux</h2><h3 id="Ubuntu防火墙"><a href="#Ubuntu防火墙" class="headerlink" title="Ubuntu防火墙"></a>Ubuntu防火墙</h3><p>查看当前防火墙状态：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ufw status<br></code></pre></td></tr></table></figure>
 
@@ -497,6 +500,19 @@
 <p>就可以了。</p>
 <p>第一条命令是在“绑定挂载”，第二条命令是在“重新挂载已绑定的<code>/xx/Codes</code>目录，并修改其挂载属性为只读”。</p>
 <p>这样源文件夹<code>/xx/xx/x/很深的路径/x/xx/sync/Codes</code>属性不变，可被同步脚本正常读写；目标文件夹<code>/xx/Codes</code>内的所有文件都只读，因为这是一个<code>Read-only file system</code>。</p>
+<h3 id="Linux在用户尝试使用ssh登录时显示欢迎语"><a href="#Linux在用户尝试使用ssh登录时显示欢迎语" class="headerlink" title="Linux在用户尝试使用ssh登录时显示欢迎语"></a>Linux在用户尝试使用ssh登录时显示欢迎语</h3><ol>
+<li><p><code>/etc/ssh/sshd_config</code>中加一行：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs config">Banner /etc/ssh/let_banner.txt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>将你想要在ssh连接时显示的“欢迎语”写入<code>/etc/ssh/let_banner.txt</code></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Welcome, you idiot.&quot;</span> &gt; /etc/ssh/let_banner.txt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>(可选)重启sshd服务</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl restart sshd<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>这样，别人（其实是所有人，包括你自己）在进行ssh登录你的Linux主机时，身份验证前都会先看到一句：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">Welcome,</span> you idiot.<br></code></pre></td></tr></table></figure>
+
 <h2 id="About-Mac"><a href="#About-Mac" class="headerlink" title="About Mac"></a>About Mac</h2><h3 id="SMB协议时不生成-DS-Store"><a href="#SMB协议时不生成-DS-Store" class="headerlink" title="SMB协议时不生成.DS_Store"></a>SMB协议时不生成.DS_Store</h3><p>禁止Finder浏览SMB文件夹时生成<code>.DS_Store</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
