@@ -334,6 +334,14 @@ canonical 就是告诉搜索引擎：“这些页面看起来不一样，但你�
 <link rel="canonical" href="https://blog.letmefly.xyz/post/123">
 ```
 
+### HTML全屏幕取色器
+
+Chrome、Edge、Opera浏览器支持[`EyeDropper`API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper)，可以将鼠标变成一个取色器，取色器会将鼠标变成一个“圆形放大镜”，用户在屏幕上任意位置(**哪怕是浏览器外**)点击鼠标左键则HTML可以获取到该位置的颜色RGB，鼠标移动过程中经过像素颜色对HTML不可见。
+
+注意，<span title="2026.2.8">当前Firefox、Safari</span>浏览器以及所有主流手机浏览器都不支持该API。
+
+体验地址：[web.letmefly.xyz](https://web.letmefly.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BACode/HTML%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95%E5%8F%96%E8%89%B2%E5%99%A8/)。可查看网页源码，不难发现源码很简单。
+
 ## About Linux
 
 ### Ubuntu防火墙
@@ -534,6 +542,32 @@ mount -o remount,ro,bind /xx/Codes
 第一条命令是在“绑定挂载”，第二条命令是在“重新挂载已绑定的`/xx/Codes`目录，并修改其挂载属性为只读”。
 
 这样源文件夹`/xx/xx/x/很深的路径/x/xx/sync/Codes`属性不变，可被同步脚本正常读写；目标文件夹`/xx/Codes`内的所有文件都只读，因为这是一个`Read-only file system`。
+
+### Linux在用户尝试使用ssh登录时显示欢迎语
+
+1. `/etc/ssh/sshd_config`中加一行：
+
+    ```config
+    Banner /etc/ssh/let_banner.txt
+    ```
+
+2. 将你想要在ssh连接时显示的“欢迎语”写入`/etc/ssh/let_banner.txt`
+
+    ```bash
+    sudo echo "Welcome, you idiot." > /etc/ssh/let_banner.txt
+    ```
+
+3. (可选)重启sshd服务
+
+    ```bash
+    sudo systemctl restart sshd
+    ```
+
+这样，别人（其实是所有人，包括你自己）在进行ssh登录你的Linux主机时，身份验证前都会先看到一句：
+
+```
+Welcome, you idiot.
+```
 
 ## About Mac
 
