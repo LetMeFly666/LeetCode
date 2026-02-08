@@ -5,15 +5,15 @@ import math
 import time
 
 # ======================
-# 参数区（你可以调）
+# 参数
 # ======================
-GRID_W = 48          # 横向像素数
-GRID_H = 36          # 纵向像素数
-DRONE_COUNT = 120    # 无人机数量
+GRID_W = 48
+GRID_H = 36
+DRONE_COUNT = 120
 FPS = 15
-V_MAX = 12.0         # 最大速度（像素 / 秒）
-THRESH = 100         # 二值化阈值
-WINDOW_SCALE = 12    # 显示放大倍率
+V_MAX = 18.0         # 像素 / 秒
+THRESH = 100
+WINDOW_SCALE = 12
 # ======================
 
 
@@ -21,28 +21,40 @@ class Drone:
     def __init__(self):
         self.x = np.random.uniform(0, GRID_W)
         self.y = np.random.uniform(0, GRID_H)
+        self.tx = self.x
+        self.ty = self.y
         self.on = False
 
-    def can_reach(self, tx, ty, dt):
-        dist = math.hypot(self.x - tx, self.y - ty)
-        return dist <= V_MAX * dt
+    def set_target(self, tx, ty):
+        self.tx = tx
+        self.ty = ty
 
-    def move_to(self, tx, ty):
-        self.x = tx
-        self.y = ty
-        self.on = True
+    def update(self, dt):
+        dx = self.tx - self.x
+        dy = self.ty - self.y
+        dist = math.hypot(dx, dy)
 
+        if dist < 1e-3:
+            self.on = True
+            return
 
-def load_video(path):
-    cap = cv2.VideoCapture(path)
-    if not cap.isOpened():
-        print("❌ 无法打开视频:", path)
-        sys.exit(1)
-    return cap
+        step = V_MAX * dt
+        if step >= dist:
+            self.x = self.tx
+            self.y = self.ty
+            self.on = True
+        else:
+            self.x += dx / dist * step
+            self.y += dy / dist * step
+            self.on = False
 
 
 def main(video_path):
-    cap = load_video(video_path)
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print("❌ 无法打开视频")
+        return
+
     drones = [Drone() for _ in range(DRONE_COUNT)]
     dt = 1.0 / FPS
 
@@ -62,52 +74,57 @@ def main(video_path):
             time.sleep(sleep_time)
         last_time = time.time()
 
-        # 灰度 + 缩放
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         small = cv2.resize(gray, (GRID_W, GRID_H))
-        _, bw = cv2.threshold(small, THRESH, 255, cv2.THRESH_BINARY_INV)
+        _, bw = cv2.threshold(
+            small, THRESH, 255, cv2.THRESH_BINARY_INV
+        )
 
-        # 本帧目标像素
         targets = np.column_stack(np.where(bw > 0))  # (y, x)
         np.random.shuffle(targets)
 
-        # 重置灯状态
+        # 重置目标
         for d in drones:
+            d.set_target(d.x, d.y)
             d.on = False
 
-        # 贪心分配
-        for (ty, tx) in targets:
+        # === 目标分配（每架无人机最多一个） ===
+        used = set()
+        for ty, tx in targets:
             best = None
             best_dist = 1e9
-            for d in drones:
-                if d.on:
+            for i, d in enumerate(drones):
+                if i in used:
                     continue
-                if d.can_reach(tx, ty, dt):
-                    dist = math.hypot(d.x - tx, d.y - ty)
-                    if dist < best_dist:
-                        best_dist = dist
-                        best = d
-            if best is not None:
-                best.move_to(tx, ty)
+                dist = math.hypot(d.x - tx, d.y - ty)
+                if dist < best_dist:
+                    best_dist = dist
+                    best = (i, d)
+            if best:
+                i, d = best
+                d.set_target(tx, ty)
+                used.add(i)
+                if len(used) >= DRONE_COUNT:
+                    break
 
-        # =====================
-        # 可视化
-        # =====================
+        # 更新无人机位置
+        for d in drones:
+            d.update(dt)
+
+        # ================= 可视化 =================
         canvas = np.zeros((GRID_H, GRID_W, 3), dtype=np.uint8)
 
-        # 目标轮廓（暗灰）
-        canvas[bw > 0] = (50, 50, 50)
+        # 背景轮廓
+        canvas[bw > 0] = (40, 40, 40)
 
-        # 无人机
         for d in drones:
             cx, cy = int(d.x), int(d.y)
             if 0 <= cx < GRID_W and 0 <= cy < GRID_H:
                 if d.on:
                     canvas[cy, cx] = (255, 255, 255)
                 else:
-                    canvas[cy, cx] = (120, 120, 120)
+                    canvas[cy, cx] = (150, 150, 150)
 
-        # 放大显示
         canvas = cv2.resize(
             canvas,
             (GRID_W * WINDOW_SCALE, GRID_H * WINDOW_SCALE),
@@ -115,9 +132,7 @@ def main(video_path):
         )
 
         cv2.imshow("Bad Apple Drone Simulation", canvas)
-
-        key = cv2.waitKey(1)
-        if key == 27 or key == ord('q'):
+        if cv2.waitKey(1) in (27, ord('q')):
             break
 
     cap.release()
