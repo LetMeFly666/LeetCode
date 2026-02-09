@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-08 13:40:36
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-08 13:42:19
+ * @LastEditTime: 2026-02-08 14:39:13
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -21,7 +21,7 @@
  */
 class Solution {
 private:
-    int ok;
+    bool ok;
 
     int dfs(TreeNode* root) {
         if (!root) {

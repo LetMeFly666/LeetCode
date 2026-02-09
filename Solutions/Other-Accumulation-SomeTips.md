@@ -554,7 +554,7 @@ mount -o remount,ro,bind /xx/Codes
 2. 将你想要在ssh连接时显示的“欢迎语”写入`/etc/ssh/let_banner.txt`
 
     ```bash
-    sudo echo "Welcome, you idiot." > /etc/ssh/let_banner.txt
+    echo "Welcome, you idiot." | sudo tee /etc/ssh/let_banner.txt > /dev/null
     ```
 
 3. (可选)重启sshd服务
