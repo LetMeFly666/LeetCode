@@ -118,12 +118,16 @@ while True:
         if not ret:
             break
         frame = cv2.resize(frame, (stage_w, stage_h), interpolation=cv2.INTER_AREA)
+        # 注意：不在这里更新 frame_idx，而是在帧跳过检查后更新
     
     # 帧跳过同步
     if args.frame_skip:
         now = time.time()
         expected_idx = int((now - t_start) * fps)
         if frame_idx < expected_idx:
+            # 单线程模式下，即使跳过也要递增 frame_idx
+            if args.threads < 2:
+                frame_idx += 1
             continue
 
     # 处理帧
@@ -151,6 +155,10 @@ while True:
     # 写视频
     if out:
         out.write(canvas)
+    
+    # 单线程模式下，处理完帧后递增索引
+    if args.threads < 2:
+        frame_idx += 1
 
 # ------------------ 清理 ------------------
 cap.release()
