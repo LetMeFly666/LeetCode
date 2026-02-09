@@ -109,6 +109,7 @@ while True:
     if args.threads >= 2:
         try:
             frame_idx, frame = frame_queue.get(timeout=0.1)
+            current_idx = frame_idx
         except queue.Empty:
             if stop_event.is_set() and frame_queue.empty():
                 break
@@ -118,12 +119,14 @@ while True:
         if not ret:
             break
         frame = cv2.resize(frame, (stage_w, stage_h), interpolation=cv2.INTER_AREA)
+        current_idx = frame_idx
+        frame_idx += 1
     
     # 帧跳过同步
     if args.frame_skip:
         now = time.time()
         expected_idx = int((now - t_start) * fps)
-        if frame_idx < expected_idx:
+        if current_idx < expected_idx:
             continue
 
     # 处理帧
