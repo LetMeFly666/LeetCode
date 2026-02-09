@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-09 23:05:29
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-09 23:09:10
+ * @LastEditTime: 2026-02-09 23:11:52
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -41,7 +41,7 @@ private:
     }
 
     TreeNode* build(int l, int r) {
-        if (l <= r) {
+        if (l >= r) {
             return nullptr;
         }
         int mid = (l + r) >> 1;
