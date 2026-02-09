@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-09 23:05:29
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-09 23:11:52
+ * @LastEditTime: 2026-02-09 23:21:12
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -47,7 +47,7 @@ private:
         int mid = (l + r) >> 1;
         TreeNode* root = nodes[mid];
         root->left = build(l, mid);
-        root->right = build(mid, r);
+        root->right = build(mid + 1, r);
         return root;
     }
 public:
@@ -56,3 +56,20 @@ public:
         return build(0, nodes.size());
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+[1,null,2,null,3,null,4]
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        TreeNode* root = stringToTree(s);
+        cout << "original tree: " << root << endl;
+        Solution sol;
+        root = sol.balanceBST(root);
+        deleteTree(root);
+    }
+    return 0;
+}
+#endif
