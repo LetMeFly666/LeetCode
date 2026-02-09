@@ -3,6 +3,7 @@ title: 1382.将二叉搜索树变平衡：分治——求得所有节点再重�
 date: 2026-02-09 23:22:22
 tags: [题解, LeetCode, 中等, 贪心, 树, 深度优先搜索, DFS, 二叉搜索树, 分治, 二叉树]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2021/08/10/balance1-tree.jpg
 ---
 
 # 【LetMeFly】1382.将二叉搜索树变平衡：分治——求得所有节点再重新建树
