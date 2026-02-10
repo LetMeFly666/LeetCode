@@ -24,7 +24,7 @@ tags: [题解, LeetCode, 简单, 贪心, 数组, 堆（优先队列）]
 >解释：
 >第 1 次操作升级 bucket[0]；
 >第 2 ~ 4 次操作均选择蓄水，即可完成蓄水要求。
-![vat1.gif](https://pic.leetcode-cn.com/1616122992-RkDxoL-vat1.gif)
+![vat1.gif](https://pic.leetcode.cn/1616122992-RkDxoL-vat1.gif)
 
 
 

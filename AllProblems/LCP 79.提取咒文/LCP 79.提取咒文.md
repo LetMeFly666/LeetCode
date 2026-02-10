@@ -24,7 +24,7 @@ tags: [题解, LeetCode, 中等, ]
 >输出：`10`
 >
 >解释：如下图所示
-![矩阵 (2).gif](https://pic.leetcode-cn.com/1646288670-OTlvAl-%E7%9F%A9%E9%98%B5%20\(2\).gif)
+![矩阵 (2).gif](https://pic.leetcode.cn/1646288670-OTlvAl-%E7%9F%A9%E9%98%B5%20\(2\).gif)
 
 **示例 2：**
 >输入：`matrix = ["abc","daf","geg"]， mantra = "sad"`

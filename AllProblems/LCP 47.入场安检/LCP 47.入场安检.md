@@ -12,7 +12,7 @@ tags: [题解, LeetCode, 困难, 数组, 动态规划]
 - 先进先出：在安检室中的所有观众中，最早进入安检室的观众最先离开
 - 后进先出：在安检室中的所有观众中，最晚进入安检室的观众最先离开
 
-![c24754f1a5ff56989340ba5004dc5eda.gif](https://pic.leetcode-cn.com/1628843202-cdFPSt-c24754f1a5ff56989340ba5004dc5eda.gif)
+![c24754f1a5ff56989340ba5004dc5eda.gif](https://pic.leetcode.cn/1628843202-cdFPSt-c24754f1a5ff56989340ba5004dc5eda.gif)
 
 
 
@@ -41,7 +41,7 @@ tags: [题解, LeetCode, 困难, 数组, 动态规划]
 > - 方案 2：将编号为 `0` 、`1` 的实验室设置为 **先进先出** 的类型，编号为 `2` 的实验室设置为 **后进先出** 的类型。
 >
 > 以下是方案 1 的示意图：
->![c60e38199a225ad62f13b954872edf9b.gif](https://pic.leetcode-cn.com/1628841618-bFKsnt-c60e38199a225ad62f13b954872edf9b.gif)
+>![c60e38199a225ad62f13b954872edf9b.gif](https://pic.leetcode.cn/1628841618-bFKsnt-c60e38199a225ad62f13b954872edf9b.gif)
 
 
 
