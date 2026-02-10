@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-10 22:34:37
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-10 23:20:30
+ * @LastEditTime: 2026-02-10 23:21:50
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -16,11 +16,10 @@ public:
             int diff = 0;
             unordered_set<int> visited;
             for (int j = i; j < n; j++) {
-                if (visited.count(nums[j])) {
-                    continue;
+                if (!visited.count(nums[j])) {
+                    visited.insert(nums[j]);
+                    diff += nums[j] % 2 ? 1 : -1;
                 }
-                visited.insert(nums[j]);
-                diff += nums[j] % 2 ? 1 : -1;
                 if (!diff) {
                     ans = max(ans, j - i + 1);
                 }
