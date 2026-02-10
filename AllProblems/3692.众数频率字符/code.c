@@ -1,0 +1,3 @@
+char* majorityFrequencyGroup(char* s) {
+    
+}

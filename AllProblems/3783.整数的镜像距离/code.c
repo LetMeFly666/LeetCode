@@ -1,0 +1,3 @@
+int mirrorDistance(int n) {
+    
+}

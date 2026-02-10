@@ -1,0 +1,3 @@
+bool completePrime(int num) {
+    
+}

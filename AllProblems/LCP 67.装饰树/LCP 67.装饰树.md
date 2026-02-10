@@ -23,7 +23,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 >输出：`[7,-1,-1,5,null,null,6]`
 >
 >解释：如下图所示，
->![image.png](https://pic.leetcode-cn.com/1663575757-yRLGaq-image.png){:width=400px}
+>![image.png](https://pic.leetcode.cn/1663575757-yRLGaq-image.png){:width=400px}
 
 **示例 2：**
 >输入：
@@ -32,7 +32,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 广度优先搜索, �
 >输出：`[3,-1,-1,1,null,null,7,-1,-1,null,-1,3,null,null,8,null,4]`
 >
 >解释：如下图所示
-![image.png](https://pic.leetcode-cn.com/1663577920-sjrAYH-image.png){:width=500px}
+![image.png](https://pic.leetcode.cn/1663577920-sjrAYH-image.png){:width=500px}
 
 **提示：**
 >`0 <= root.Val <= 1000`

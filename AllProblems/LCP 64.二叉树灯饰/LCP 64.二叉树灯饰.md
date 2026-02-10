@@ -21,7 +21,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 动态规划, 二叉�
 >输出：`2`
 >
 >解释：以下是最佳的方案之一，如图所示
-![b71b95bf405e3b223e00b2820a062ba4.gif](https://pic.leetcode-cn.com/1629357030-GSbzpY-b71b95bf405e3b223e00b2820a062ba4.gif){:width="300px"}
+![b71b95bf405e3b223e00b2820a062ba4.gif](https://pic.leetcode.cn/1629357030-GSbzpY-b71b95bf405e3b223e00b2820a062ba4.gif){:width="300px"}
 
 **示例 2：**
 >输入：`root = [1,1,1,1,null,null,1]`
@@ -29,7 +29,7 @@ tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 动态规划, 二叉�
 >输出：`1`
 >
 >解释：以下是最佳的方案，如图所示
-![a4091b6448a0089b4d9e8f0390ff9ac6.gif](https://pic.leetcode-cn.com/1629356950-HZsKZC-a4091b6448a0089b4d9e8f0390ff9ac6.gif){:width="300px"}
+![a4091b6448a0089b4d9e8f0390ff9ac6.gif](https://pic.leetcode.cn/1629356950-HZsKZC-a4091b6448a0089b4d9e8f0390ff9ac6.gif){:width="300px"}
 
 **示例 3：**
 >输入：`root = [0,null,0]`

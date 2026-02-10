@@ -10,7 +10,7 @@ tags: [题解, LeetCode, 中等, 广度优先搜索, 图, 数组, 矩阵, 最短
 
 <p>欢迎各位勇者来到力扣城，本次试炼主题为「信物传送」。</p>
 
-<p>本次试炼场地设有若干传送带，<code>matrix[i][j]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;行&nbsp;<code>j</code>&nbsp;列的传送带运作方向，<code>"^","v","&lt;","&gt;"</code>&nbsp;这四种符号分别表示&nbsp;<strong>上、下、左、右</strong>&nbsp;四个方向。信物会随传送带的方向移动。勇者<strong>每一次</strong>施法操作，可<strong>临时</strong>变更一处传送带的方向，在物品经过后传送带恢复原方向。<img alt="lcp (2).gif" src="https://pic.leetcode-cn.com/1649835246-vfupSL-lcp%20(2).gif" style="height: 385px; width: 400px;" /></p>
+<p>本次试炼场地设有若干传送带，<code>matrix[i][j]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;行&nbsp;<code>j</code>&nbsp;列的传送带运作方向，<code>"^","v","&lt;","&gt;"</code>&nbsp;这四种符号分别表示&nbsp;<strong>上、下、左、右</strong>&nbsp;四个方向。信物会随传送带的方向移动。勇者<strong>每一次</strong>施法操作，可<strong>临时</strong>变更一处传送带的方向，在物品经过后传送带恢复原方向。<img alt="lcp (2).gif" src="https://pic.leetcode.cn/1649835246-vfupSL-lcp%20(2).gif" style="height: 385px; width: 400px;" /></p>
 
 <p>通关信物初始位于坐标&nbsp;<code>start</code>处，勇者需要将其移动到坐标&nbsp;<code>end</code>&nbsp;处，请返回勇者施法操作的最少次数。</p>
 

@@ -25,7 +25,7 @@ tags: [题解, LeetCode, 困难, 几何, 数组, 哈希表, 数学, 二分查找
 > 输出：`1`
 > 
 > 解释： 如图所示，仅套中一个玩具
-![image.png](https://pic.leetcode-cn.com/1629194140-ydKiGF-image.png)
+![image.png](https://pic.leetcode.cn/1629194140-ydKiGF-image.png)
 
 
 **示例 2：**
@@ -35,7 +35,7 @@ tags: [题解, LeetCode, 困难, 几何, 数组, 哈希表, 数学, 二分查找
 > 输出：`2`
 > 
 > 解释： 如图所示，套中两个玩具
-![image.png](https://pic.leetcode-cn.com/1629194157-RiOAuy-image.png){:width="400px"}
+![image.png](https://pic.leetcode.cn/1629194157-RiOAuy-image.png){:width="400px"}
 
 
 

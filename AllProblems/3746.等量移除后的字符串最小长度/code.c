@@ -1,0 +1,3 @@
+int minLengthAfterRemovals(char* s) {
+    
+}

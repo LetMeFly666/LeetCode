@@ -1,3 +1,3 @@
-int waysToBuildRooms(int* prevRoom, int prevRoomSize) {
-    
+int waysToBuildRooms(int* prevRoom, int prevRoomSize){
+
 }

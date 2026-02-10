@@ -12,7 +12,7 @@ tags: [题解, LeetCode, 中等, 广度优先搜索, 数组, 矩阵]
 
 
 
-![1.gif](https://pic.leetcode-cn.com/1630396029-eTgzpN-6da662e67368466a96d203f67bb6e793.gif){:height=170px}![2.gif](https://pic.leetcode-cn.com/1630396240-nMvdcc-8e4261afe9f60e05a4f740694b439b6b.gif){:height=170px}![3.gif](https://pic.leetcode-cn.com/1630396291-kEtzLL-6fcb682daeecb5c3f56eb88b23c81d33.gif){:height=170px}
+![1.gif](https://pic.leetcode.cn/1630396029-eTgzpN-6da662e67368466a96d203f67bb6e793.gif){:height=170px}![2.gif](https://pic.leetcode.cn/1630396240-nMvdcc-8e4261afe9f60e05a4f740694b439b6b.gif){:height=170px}![3.gif](https://pic.leetcode.cn/1630396291-kEtzLL-6fcb682daeecb5c3f56eb88b23c81d33.gif){:height=170px}
 
 「力扣挑战赛」黑白翻转棋项目中，将提供给选手一个未形成可翻转棋子的棋盘残局，其状态记作 `chessboard`。若下一步可放置一枚黑棋，请问选手最多能翻转多少枚白棋。
 
@@ -35,7 +35,7 @@ tags: [题解, LeetCode, 中等, 广度优先搜索, 数组, 矩阵]
 > 
 > 解释：
 > 可以选择下在 `[2,2]` 处，能够翻转白方两枚棋子。
-![2126c1d21b1b9a9924c639d449cc6e65.gif](https://pic.leetcode-cn.com/1626683255-OBtBud-2126c1d21b1b9a9924c639d449cc6e65.gif)
+![2126c1d21b1b9a9924c639d449cc6e65.gif](https://pic.leetcode.cn/1626683255-OBtBud-2126c1d21b1b9a9924c639d449cc6e65.gif)
 
 **示例 3：**
 > 输入：`chessboard = [".......",".......",".......","X......",".O.....","..O....","....OOX"]`
@@ -44,7 +44,7 @@ tags: [题解, LeetCode, 中等, 广度优先搜索, 数组, 矩阵]
 > 
 > 解释：
 > 可以选择下在 `[6,3]` 处，能够翻转白方四枚棋子。
-![803f2f04098b6174397d6c696f54d709.gif](https://pic.leetcode-cn.com/1630393770-Puyked-803f2f04098b6174397d6c696f54d709.gif)
+![803f2f04098b6174397d6c696f54d709.gif](https://pic.leetcode.cn/1630393770-Puyked-803f2f04098b6174397d6c696f54d709.gif)
 
 
 

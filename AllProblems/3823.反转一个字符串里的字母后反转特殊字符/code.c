@@ -1,0 +1,3 @@
+char* reverseByType(char* s) {
+    
+}

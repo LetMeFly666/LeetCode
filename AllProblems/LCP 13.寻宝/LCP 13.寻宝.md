@@ -1,7 +1,7 @@
 ---
 title: LCP 13.寻宝
 date: 2022-06-02 20-15-21
-tags: [题解, LeetCode, 困难, 位运算, 广度优先搜索, 数组, 动态规划, 状态压缩, 矩阵]
+tags: [题解, LeetCode, 困难, 位运算, 广度优先搜索, 数组, 动态规划, 位掩码, 矩阵]
 ---
 
 # 【LetMeFly】LCP 13.寻宝
@@ -25,7 +25,7 @@ tags: [题解, LeetCode, 困难, 位运算, 广度优先搜索, 数组, 动态�
 
 <p>输出：16</p>
 
-<p>解释：最优路线为： S-&gt;O, cost = 4, 去搬石头 O-&gt;第二行的M, cost = 3, M机关触发 第二行的M-&gt;O, cost = 3, 我们需要继续回去 O 搬石头。 O-&gt;第三行的M, cost = 4, 此时所有机关均触发 第三行的M-&gt;T, cost = 2，去T点拿宝藏。 总步数为16。 <img alt="图片.gif" src="https://pic.leetcode-cn.com/6bfff669ad65d494cdc237bcedfec10a2b1ac2f2593c2bf97e9aecb41dc8a08b-%E5%9B%BE%E7%89%87.gif" /></p>
+<p>解释：最优路线为： S-&gt;O, cost = 4, 去搬石头 O-&gt;第二行的M, cost = 3, M机关触发 第二行的M-&gt;O, cost = 3, 我们需要继续回去 O 搬石头。 O-&gt;第三行的M, cost = 4, 此时所有机关均触发 第三行的M-&gt;T, cost = 2，去T点拿宝藏。 总步数为16。 <img alt="图片.gif" src="https://pic.leetcode.cn/6bfff669ad65d494cdc237bcedfec10a2b1ac2f2593c2bf97e9aecb41dc8a08b-%E5%9B%BE%E7%89%87.gif" /></p>
 </blockquote>
 
 <p><strong>示例 2：</strong></p>

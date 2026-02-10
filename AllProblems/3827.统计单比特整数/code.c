@@ -1,0 +1,3 @@
+int countMonobit(int n) {
+    
+}

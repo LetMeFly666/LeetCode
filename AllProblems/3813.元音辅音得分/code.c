@@ -1,0 +1,3 @@
+int vowelConsonantScore(char* s) {
+    
+}

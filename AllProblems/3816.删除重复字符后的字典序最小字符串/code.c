@@ -1,0 +1,3 @@
+char* lexSmallestAfterDeletion(char* s) {
+    
+}

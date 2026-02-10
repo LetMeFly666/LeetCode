@@ -17,7 +17,7 @@ tags: [题解, LeetCode, 困难, 图, 最短路, 堆（优先队列）]
 <strong>输出：</strong><code>43</code>
 <strong>解释：</strong>最佳路线为：1-&gt;3-&gt;0。 在城市 1 仅充 3 单位电至城市 3，然后在城市 3 充 5 单位电，行驶至城市 0。 充电用时共 3*10 + 5*1= 35 行驶用时 3 + 5 = 8，此时总用时最短 43。
 </pre>
-<img alt="image.png" src="https://pic.leetcode-cn.com/1616125304-mzVxIV-image.png" />
+<img alt="image.png" src="https://pic.leetcode.cn/1616125304-mzVxIV-image.png" />
 <p><strong>示例 2：</strong></p>
 
 <pre>

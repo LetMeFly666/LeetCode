@@ -1,0 +1,3 @@
+char* lexSmallest(char* s) {
+    
+}

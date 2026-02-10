@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 困难, 数组, 动态规划]
 > 将 [8,9] 浮木移动至 [7,8]，花费 1「自然之力」，
 > 此时勇者可以顺着 [3,4]->[4,7]->[7,8] 跨越河流，
 > 因此，勇者最少需要花费 3 点「自然之力」跨越这条河流
-![wood (2).gif](https://pic.leetcode-cn.com/1648196478-ophADL-wood%20\(2\).gif){:width=650px}
+![wood (2).gif](https://pic.leetcode.cn/1648196478-ophADL-wood%20\(2\).gif){:width=650px}
 
 
 **示例 2：**

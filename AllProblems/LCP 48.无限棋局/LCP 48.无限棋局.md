@@ -34,7 +34,7 @@ tags: [题解, LeetCode, 困难, 数组, 数学, 枚举, 博弈]
 > 输出：`"Black"`
 >
 > 解释：三步之内黑棋必胜，以下是一种可能的落子情况：
->![902b87df29998b1c181146c8fdb3a4b6.gif](https://pic.leetcode-cn.com/1629800639-KabOfY-902b87df29998b1c181146c8fdb3a4b6.gif){:width="300px"}
+>![902b87df29998b1c181146c8fdb3a4b6.gif](https://pic.leetcode.cn/1629800639-KabOfY-902b87df29998b1c181146c8fdb3a4b6.gif){:width="300px"}
 
 
 
