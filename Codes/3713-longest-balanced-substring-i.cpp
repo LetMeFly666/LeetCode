@@ -10,7 +10,7 @@
 
 class Solution {
 private:
-    bool ok(int[] cnt) {
+    bool ok(int cnt[]) {
         for (int i = 1; i < 26; i++) {
             if (cnt[i] != cnt[0]) {
                 return false;
