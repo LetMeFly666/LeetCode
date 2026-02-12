@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-12 22:41:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-12 22:46:35
+ * @LastEditTime: 2026-02-12 22:49:40
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -12,7 +12,7 @@ class Solution {
 private:
     bool ok(int cnt[]) {
         int n = 0;
-        for (int i = 1; i < 26; i++) {
+        for (int i = 0; i < 26; i++) {
             if (cnt[i]) {
                 if (n && cnt[i] != n) {
                     return false;
@@ -37,3 +37,19 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+aba
+
+2
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        cout << sol.longestBalanced(s) << endl;
+    }
+    return 0;
+}
+#endif
