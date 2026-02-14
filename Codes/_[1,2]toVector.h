@@ -59,6 +59,14 @@ void debug(vector<vector<Type>> v) {
     printOneline(l);
 }
 
+template<class T>
+void debug(T* a, int len) {
+    for (int i = 0; i < len; i++) {
+        cout << a[i] << ' ';
+    }
+    cout << endl;
+}
+
 vector<string> split(string toSplit, char c)  // 将字符串以字符c为间隔分开
 {
     vector<string> ans;

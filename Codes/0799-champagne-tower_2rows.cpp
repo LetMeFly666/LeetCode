@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-14 10:04:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-14 10:22:09
+ * @LastEditTime: 2026-02-14 10:31:07
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -15,9 +15,15 @@ public:
         row1[0] = poured;
         for (int i = 0; i < query_row; i++) {
             memset(row2, 0, sizeof(double) * (query_row + 1));
-            double half_more = (row1[i] - 1) / 2;
-            row2[i] += half_more;
-            row2[i + 1] += half_more;
+            for (int j = 0; j <= i; j++) {
+                if (row1[j] <= 1) {
+                    continue;
+                }
+                double half_more = (row1[j] - 1) / 2;
+                row2[j] += half_more;
+                row2[j + 1] += half_more;
+            }
+            // debug(row2, query_row + 1);
             swap(row1, row2);
         }
         return min(1., row1[query_glass]);  // didn't delete
