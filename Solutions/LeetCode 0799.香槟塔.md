@@ -3,6 +3,7 @@ title: 799.香槟塔：一层一层模拟
 date: 2022-11-20 11:18:13
 tags: [题解, LeetCode, 中等, 动态规划, DP]
 categories: [题解, LeetCode]
+index_img: https://s3-lc-upload.s3.amazonaws.com/uploads/2018/03/09/tower.png
 ---
 
 # 【LetMeFly】799.香槟塔：一层一层模拟
@@ -141,6 +142,35 @@ public:
             }
         }
         return min(1., tower[query_row][query_glass]);
+    }
+};
+```
+
+#### C++ - 两行滚动 + 上层算下层
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-14 10:31:07
+ */
+class Solution {
+public:
+    double champagneTower(int poured, int query_row, int query_glass) {
+        double *row1 = new double[query_row + 1], *row2 = new double[query_row + 1];
+        row1[0] = poured;
+        for (int i = 0; i < query_row; i++) {
+            memset(row2, 0, sizeof(double) * (query_row + 1));
+            for (int j = 0; j <= i; j++) {
+                if (row1[j] <= 1) {
+                    continue;
+                }
+                double half_more = (row1[j] - 1) / 2;
+                row2[j] += half_more;
+                row2[j + 1] += half_more;
+            }
+            // debug(row2, query_row + 1);
+            swap(row1, row2);
+        }
+        return min(1., row1[query_glass]);  // didn't delete
     }
 };
 ```
