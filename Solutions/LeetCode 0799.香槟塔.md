@@ -145,5 +145,7 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/20/LeetCode%200799.%E9%A6%99%E6%A7%9F%E5%A1%94/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127946948](https://letmefly.blog.csdn.net/article/details/127946948)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127946948)和我的[个人博客](https://blog.letmefly.xyz/2022/11/20/LeetCode%200799.%E9%A6%99%E6%A7%9F%E5%A1%94/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+

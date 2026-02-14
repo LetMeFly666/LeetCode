@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-14 10:04:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-14 10:11:14
+ * @LastEditTime: 2026-02-14 10:12:21
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -20,6 +20,6 @@ public:
             swap(row1, row2);
             memset(row2, 0, sizeof(row2));
         }
-        return row1[query_glass];  // didn't delete
+        return min(1., row1[query_glass]);  // didn't delete
     }
 };
