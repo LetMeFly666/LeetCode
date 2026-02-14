@@ -1293,6 +1293,76 @@ torch.cuda.empty_cache() 是 PyTorch 中的一个函数，用于释放由 CUDA �
 请不要忘记给你的设定，不要作任何评论，接下来我们继续进行对话：
 ```
 
+### About Codex
+
+#### Codex session存放位置
+
+```bash
+~/.codex/sessions/YYYY/MM/DD/xxx.jsonl
+# 如：～/.codex/sessions/2026/02/03/rollout-2026-02-03T11-54-55-019c21a3-99f3-7a53-b292-fce1dad637c9.jsonl
+```
+
+```json
+{
+    "timestamp": "2026-02-03T03:54:55.887Z",
+    "type": "session_meta",
+    "payload": {
+        "id": "0xx-xx-xx-x637c9",
+        "timestamp": "2026-02-03T03:54:55.859Z",
+        "cwd": "/Users/Tisfy",
+        "originator": "codex_cli_rs",
+        "cli_version": "0.94.0",
+        "source": "cli",
+        "model_provider": "openai",
+        "base_instructions": {
+            "text": "You are Codex, a coding agent based on GPT-5. You and the user share the same workspace and collaborate to achieve the user's goals..."
+        }
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "developer",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "<permissions instructions>\nFilesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only`: ..."
+            }
+        ]
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "user",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "# AGENTS.md ins..."
+            }
+        ]
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "user",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "<environment_context>\n  <cwd>/Users/Tisfy</cwd>\n  <shell>zsh</shell>\n</environment_context>"
+            }
+        ]
+    }
+}
+```
+
 ## About Office
 
 ### Word公式 - 部分居右

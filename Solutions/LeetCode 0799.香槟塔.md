@@ -1,11 +1,12 @@
 ---
-title: 799.香槟塔
+title: 799.香槟塔：一层一层模拟
 date: 2022-11-20 11:18:13
 tags: [题解, LeetCode, 中等, 动态规划, DP]
 categories: [题解, LeetCode]
+index_img: https://s3-lc-upload.s3.amazonaws.com/uploads/2018/03/09/tower.png
 ---
 
-# 【LetMeFly】799.香槟塔
+# 【LetMeFly】799.香槟塔：一层一层模拟
 
 力扣题目链接：[https://leetcode.cn/problems/champagne-tower/](https://leetcode.cn/problems/champagne-tower/)
 
@@ -51,9 +52,22 @@ categories: [题解, LeetCode]
 	<li><code>0 &lt;= query_glass &lt;= query_row&nbsp;&lt; 100</code></li>
 </ul>
 
+## 方法总述
 
-    
-## 方法一：动态规划
+总之我们需要一层一层地往下模拟。
+
+至于**空间分配** ，大致有三种方式：
+
+1. 直接开$100\times 100$的double数组 或 $row\times row$大小的二维数组；
+2. 动态开第$i$行长度为$i+1$的二维数组；
+3. 开两行一维数组，因为下一行的计算只需要运用到上一行的信息。
+
+至于**计算方式** ，大致有两种方式：
+
+1. 由当前行直接计算并分配给下一行
+2. 由上一行信息计算当前行
+
+## 具体方法：以《固定大小空间 + 下层看上层》为例
 
 开辟一个大小为$dp[100][100]$的二维数组
 
@@ -74,9 +88,12 @@ $dp[i][j] = (dp[i - 1][j - 1] - 1) / 2 + (dp[i - 1][j] - 1) / 2$（注意边界�
 
 ### AC代码
 
-#### C++
+#### C++ - 固定大小空间 + 下层看上层
 
 ```cpp
+/*
+ * @LastEditTime: 2022-11-20 11:06:57
+ */
 class Solution {
 public:
     double champagneTower(int poured, int query_row, int query_glass) {
@@ -99,7 +116,66 @@ public:
 
 运行结果还不错
 
-![result](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/e1042e37b17e4c27bdd1083fd3f62719.jpeg#pic_center)
+![result](https://cors.letmefly.xyz/https://img-blog.csdnimg.cn/e1042e37b17e4c27bdd1083fd3f62719.jpeg#pic_center)
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/20/LeetCode%200799.%E9%A6%99%E6%A7%9F%E5%A1%94/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127946948](https://letmefly.blog.csdn.net/article/details/127946948)
+#### C++ - 每行不等长数组 + 上层算下层
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-14 09:44:57
+ */
+class Solution {
+public:
+    double champagneTower(int poured, int query_row, int query_glass) {
+        vector<vector<double>> tower(query_row + 1);
+        tower[0].resize(1);
+        tower[0][0] = poured;
+        for (int i = 0; i < query_row; i++) {
+            tower[i + 1].resize(i + 2);
+            for (int j = 0; j <= i; j++) {
+                if (tower[i][j] <= 1) {
+                    continue;
+                }
+                double half_more = (tower[i][j] - 1) / 2;
+                tower[i + 1][j] += half_more;
+                tower[i + 1][j + 1] += half_more;
+            }
+        }
+        return min(1., tower[query_row][query_glass]);
+    }
+};
+```
+
+#### C++ - 两行滚动 + 上层算下层
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-14 10:31:07
+ */
+class Solution {
+public:
+    double champagneTower(int poured, int query_row, int query_glass) {
+        double *row1 = new double[query_row + 1], *row2 = new double[query_row + 1];
+        row1[0] = poured;
+        for (int i = 0; i < query_row; i++) {
+            memset(row2, 0, sizeof(double) * (query_row + 1));
+            for (int j = 0; j <= i; j++) {
+                if (row1[j] <= 1) {
+                    continue;
+                }
+                double half_more = (row1[j] - 1) / 2;
+                row2[j] += half_more;
+                row2[j + 1] += half_more;
+            }
+            // debug(row2, query_row + 1);
+            swap(row1, row2);
+        }
+        return min(1., row1[query_glass]);  // didn't delete
+    }
+};
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127946948)和我的[个人博客](https://blog.letmefly.xyz/2022/11/20/LeetCode%200799.%E9%A6%99%E6%A7%9F%E5%A1%94/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
