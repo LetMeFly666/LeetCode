@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-04 22:17:14
+LastEditTime: 2026-02-15 12:06:07
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -16,8 +16,8 @@ import time
 import shutil
 import datetime
 import subprocess
+from enum import Enum
 from urllib.parse import quote
-
 
 argv = sys.argv
 print(argv)
@@ -135,9 +135,31 @@ def get_latest_commit_sha() -> str:
         return None
 lastSHA = get_latest_commit_sha()
 
+# whoami
+class User(Enum):
+    Tisfy = "Tisfy"
+    LetMeFly = "LetMeFly666"
+
+    @property
+    def remote(self) -> str:
+        return {
+            User.Tisfy: 'tisfy',
+            User.LetMeFly: 'origin',
+        }[self]
+
+def get_whoami() -> User:
+    name = subprocess.check_output(
+        ["git", "config", "user.name"],
+        stderr=subprocess.DEVNULL
+    ).decode().strip()
+    return User(name)
+WHOAMI = get_whoami()
+print(f'now {WHOAMI} working.')
+REMOTE = WHOAMI.remote
+
 # 认领issue
 os.system(f'git checkout -b {num}')
-os.system(f'git push --set-upstream origin {num}')  # (#832)
+os.system(f'git push --set-upstream {REMOTE} {num}')  # (#832)
 def getPlatform():
     platform = sys.platform
     if platform == 'win32':
@@ -372,7 +394,7 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
         commitMsgFromfile = '\n' + commitMsgFromfile
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
-os.system(f'git push --set-upstream origin {num}')
+os.system(f'git push --set-upstream {REMOTE} {num}')
 cmd = [
     'gh', 'pr', 'create',
     '-H', f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
@@ -417,9 +439,9 @@ commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
     os.system(f'git switch master')
     os.system(f'git merge {num}')
-    os.system(f'git push')
+    os.system(f'git push {REMOTE}')
     os.system(f'git branch -d {num}')
-    os.system(f'git push --delete origin {num}')
+    os.system(f'git push --delete {REMOTE} {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
     try:
         result = subprocess.run(

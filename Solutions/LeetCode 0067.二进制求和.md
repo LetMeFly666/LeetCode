@@ -39,7 +39,7 @@ categories: [题解, LeetCode]
 
 ## 方法一：reverse
 
-这里我对字符串进行了一个处理，先把字符串前后颠倒了一下顺序（123变成321)，计算后再颠倒回来。
+这里我对字符串进行了一个处理，先把字符串前后颠倒了一下顺序（123变成321），计算后再颠倒回来。
 
 这样做的目的是字符串往后添加比较容易（直接```s += '0'```即可），并且数位比较容易对齐（最低位的下标都变成了0）。当然你也可以选择不这么做，直接insert到前面也一样。
 
@@ -47,7 +47,7 @@ categories: [题解, LeetCode]
 
 然后令```a```为长度长的数字，从```0```到```a.size()```枚举```a```的每一位，如果```b```也有对应的这一位，就加之。
 
-![今日收到百度寄过来的礼品啦](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/8a7c122488d14b2b9ab60b982372b049.jpeg#pic_center)
+![今日收到百度寄过来的礼品啦](https://https://cors.letmefly.xyz/https://img-blog.csdnimg.cn/8a7c122488d14b2b9ab60b982372b049.jpeg#pic_center)
 
 + 时间复杂度$O(n)$，其中$n$是两个数字的最大长度
 + 空间复杂度$O(1)$（没考虑reverse所消耗的空间）
@@ -57,6 +57,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-06-08 11:33:09
+ */
 class Solution {
 public:
     string addBinary(string& a, string& b) {
@@ -79,6 +82,45 @@ public:
         return a;
     }
 };
+```
+
+#### C++ - 写法2
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-15 12:38:31
+ */
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+        string ans;
+        int cnt = 0;
+        for (int i = 0, to = max(a.size(), b.size()); i < to; i++) {
+            cnt += i < a.size() ? a[i] - '0' : 0;
+            cnt += i < b.size() ? b[i] - '0' : 0;
+            ans.push_back('0' + (cnt % 2));
+            cnt >>= 1;
+        }
+        if (cnt) {
+            ans.push_back('1');
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+```
+
+#### Python - 内部库 string->int->string
+
+```python
+'''
+LastEditTime: 2026-02-15 12:45:41
+'''
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        return format((int(a, 2) + int(b, 2)), 'b')
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/14/LeetCode%200067.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/)哦~
