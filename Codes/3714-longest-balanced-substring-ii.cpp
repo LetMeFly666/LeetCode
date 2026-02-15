@@ -2,13 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-02-15 15:24:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-15 15:55:47
+ * @LastEditTime: 2026-02-15 16:08:41
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
-// THIS CANNOT BE ACCPETED
 typedef long long ll;
 class Solution {
 private:
@@ -34,16 +33,19 @@ private:
     }
 
     int same2(string& s, char a, char b) {
-        unordered_map<int, int> ma;
-        ma[0] = -1;
-        int cnt = 0;
         int ans = 0;
         for (int i = 0; i < s.size(); i++) {
-            cnt += s[i] == a ? 1 : -1;
-            if (ma.count(cnt)) {
-                ans = max(ans, i - ma[cnt]);
-            } else {
-                ma[cnt] = i;
+            unordered_map<int, int> ma;
+            ma[0] = i - 1;
+            int cnt = 0;
+            for (; s[i] == a || s[i] == b; i++) {
+                cnt += s[i] == a ? 1 : -1;
+                if (ma.count(cnt)) {
+                    ans = max(ans, i - ma[cnt]);
+                } else {
+                    ma[cnt] = i;
+                }
+                // printf("same2(\"%s\", '%c', '%c'): i = %d, cnt = %d, ma[%d] = %d, ans = %d\n", s.c_str(), a, b, i, cnt, cnt, ma[cnt], ans);
             }
         }
         return ans;
@@ -55,7 +57,7 @@ private:
         //     2. cnt_a[j] - cnt_a[i] = cnt_c[j] - cnt_c[i]
         // 则有：
         //     1. cnt_a[j] - cnt_b[j] = cnt_a[i] - cnt_b[i]
-        //     1. cnt_a[j] - cnt_c[j] = cnt_a[i] - cnt_c[i]
+        //     2. cnt_a[j] - cnt_c[j] = cnt_a[i] - cnt_c[i]
         // 于是可记录(cnt_a-cnt_b, cnt_a-cnt_c)两个值
         unordered_map<ll, int> ma;
         ma[same3_pair2ll(0, 0)] = -1;
