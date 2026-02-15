@@ -123,5 +123,6 @@ class Solution:
         return format((int(a, 2) + int(b, 2)), 'b')
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/14/LeetCode%200067.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/125793685](https://letmefly.blog.csdn.net/article/details/125793685)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/125793685)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/14/LeetCode%200067.%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%B1%82%E5%92%8C/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

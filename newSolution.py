@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-15 12:06:07
+LastEditTime: 2026-02-15 15:10:44
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -397,7 +397,8 @@ subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commi
 os.system(f'git push --set-upstream {REMOTE} {num}')
 cmd = [
     'gh', 'pr', 'create',
-    '-H', f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    '-R', 'LetMeFly666/LeetCode',
+    '-H', f'{REMOTE}:{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
     '-t', gitCommitMsgPrefix,
     '-b', f'By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}',
     "-l", "题解",
@@ -416,7 +417,21 @@ else:
     prAlreadyExists = False
     prResult = prResult.stdout
 print(prResult)
-prNumber = int(prResult.split('/')[-1])
+try:
+    prNumber = int(prResult.split('/')[-1])
+except:
+    opening_pr_json = subprocess.run([
+        'gh', 'pr', 'list',
+        '--state', 'open',
+        '--json', 'number,url,headRefName,headRepository'
+    ], capture_output=True, text=True).stdout.strip()
+    opening_pr_json = json.loads(opening_pr_json)
+    for pr in opening_pr_json:
+        print(f"pr['headRefName']: {pr['headRefName']}")
+        if pr['headRefName'] == str(num):
+            prNumber = int(pr['number'])
+        break
+print(prNumber)
 if prAlreadyExists:
     cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', 'Hello, we meet again.']
     subprocess.run(cmd)
@@ -439,7 +454,12 @@ commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
     os.system(f'git switch master')
     os.system(f'git merge {num}')
-    os.system(f'git push {REMOTE}')
+    push_to_which = 'origin'
+    if WHOAMI == User.Tisfy:
+        push_to_which = 'tisfy_letslt'
+        # 因为直接push到origin的话，依据~/.ssh/config，会使用LetMeFly666的id_rsa进行push
+        # 会变成LetMeFly666 merged the pull result，贡献者变成LetMeFly666了
+    os.system(f'git push {push_to_which}')
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete {REMOTE} {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr

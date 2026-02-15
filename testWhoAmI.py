@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-02-15 12:00:05
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-15 12:01:08
+LastEditTime: 2026-02-15 15:08:14
 '''
 from enum import Enum
 import subprocess
@@ -20,3 +20,4 @@ def get_whoami() -> User:
     return User(name)
 WHOAMI = get_whoami()
 print(WHOAMI)
+print(WHOAMI == User.LetMeFly)

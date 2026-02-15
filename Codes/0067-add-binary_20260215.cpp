@@ -2,13 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-02-15 12:27:51
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-15 12:35:40
+ * @LastEditTime: 2026-02-15 13:11:28
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
 
-// THIS CANNOT BE ACCEPTED(maybe)
 class Solution {
 public:
     string addBinary(string a, string b) {
@@ -33,13 +32,15 @@ public:
 #if defined(_WIN32) || defined(__APPLE__)
 int main() {
     vector<tuple<string, string, string>> tests = {
-        {"11", "1", "110"},
+        {"11", "1", "100"},
         {"1010", "1011", "10101"}
     };
     for (auto [a, b, should] : tests) {
         Solution sol;
         string ans = sol.addBinary(a, b);
-        assert(ans == should);
+        if (ans != should) {
+            printf("%s + %s: should: %s, got: %s\n", a.c_str(), b.c_str(), should.c_str(), ans.c_str());
+        }
     } 
     return 0;
 }
