@@ -17,7 +17,7 @@ categories: [题解, LeetCode]
 
 <!-- <p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/03/29/binary_clock_samui_moon.jpg" style="height: 300px; width" /></p> -->
 
-<p><img src="https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/0e65d0f8c1664633a161c0e67f5e936f.jpeg" style="height: 300px; width" /></p>
+<p><img src="https://cors.letmefly.xyz/https://img-blog.csdnimg.cn/0e65d0f8c1664633a161c0e67f5e936f.jpeg" style="height: 300px; width" /></p>
 
 <p><small><em>（图源：<a href="https://commons.m.wikimedia.org/wiki/File:Binary_clock_samui_moon.jpg">WikiMedia - Binary clock samui moon.jpg</a> ，许可协议：<a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)</a> ）</em></small></p>
 
@@ -149,6 +149,25 @@ public:
 ```
 
 相比于方法一.1，运算量小了一丢丢，代码也简洁了不少。
+
+也可以使用C++20开始的`format`宏进行整数向时间的转换：
+
+```cpp
+class Solution {
+public:
+    vector<string> readBinaryWatch(int turnedOn) {
+        vector<string> ans;
+        for (int h = 0; h < 12; h++) {
+            for (int m = 0; m < 60; m++) {
+                if (__builtin_popcount(h) + __builtin_popcount(m) == turnedOn) {
+                    ans.push_back(format("{}:{:02}", h, m));
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
 
 ## 方法二：枚举合法的时和分，判断二进制下是否恰好为turned个1
 
