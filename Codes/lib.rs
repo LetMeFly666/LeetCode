@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3379-transformed-array.rs");  // 这个fileName是会被脚本替换掉的
+include!("0693-binary-number-with-alternating-bits_20260218.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
