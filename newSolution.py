@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-15 17:41:48
+LastEditTime: 2026-02-19 18:19:00
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -191,7 +191,7 @@ if not issueNum:
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 else:
     os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
-    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again)."')
+    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again). -- From {getPlatform()}"')
 
 input('代码写完后按回车生成题解模板：')
 
@@ -249,6 +249,60 @@ def genSolutionPart(num):
 
 ### AC代码
 """
+    def removePrefix(data: str, fileType: str) -> str:# (#1399)
+        if fileType == 'cpp':
+            # 1. 处理 /* ... */ 头部注释
+            m = re.match(r'(/\*[\s\S]*?\*/)([\s\S]*)', data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            # 只保留 LastEditTime 行
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip().startswith('/*') or line.strip().startswith('*/'):
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            # 2. 删除紧跟的单行 #if defined(...) #include "_[1,2]toVector.h" #endif
+            rest = re.sub(
+                r'^\s*#if\s+defined\([^\)]*\)(?:\s*\|\|\s*defined\([^\)]*\))*\s*\n\s*#include\s+"_\[1,2\]toVector\.h"\s*\n\s*#endif\s*\n?',
+                '',
+                rest,
+                count=1
+            )
+            return new_comment + '\n' + rest.lstrip('\n')
+        elif fileType == 'py':
+            m = re.match(r"(\'\'\'[\s\S]*?\'\'\')([\s\S]*)", data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip() == "'''":
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            return new_comment + '\n' + rest.lstrip('\n')
+        elif fileType in ('java', 'rs', 'go'):
+            m = re.match(r'(/\*[\s\S]*?\*/)([\s\S]*)', data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip().startswith('/*') or line.strip().startswith('*/'):
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            return new_comment + '\n' + rest.lstrip('\n')
+        return data
+
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
             fileType = os.path.splitext(file)[-1]
@@ -259,7 +313,7 @@ def genSolutionPart(num):
             markdowncode = suffix2markdowncode[fileType]
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
-            # data = removePrefix(data, fileType)  # TODO: 移除前面注释以及其他头部文件
+            data = removePrefix(data, fileType)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
@@ -433,7 +487,7 @@ except:
         break
 print(prNumber)
 if prAlreadyExists:
-    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', 'Hello, we meet again.']
+    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', f'Hello, we meet again. -- From {getPlatform()}']
     subprocess.run(cmd)
 os.system('gh pr edit --add-label "under merge"')
 input('enter when ready to merge: ')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
