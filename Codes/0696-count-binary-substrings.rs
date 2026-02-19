@@ -2,10 +2,11 @@
  * @Author: LetMeFly
  * @Date: 2026-02-19 11:16:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-19 11:25:31
+ * @LastEditTime: 2026-02-19 11:27:37
  */
 impl Solution {
     pub fn count_binary_substrings(s: String) -> i32 {
+        let s = s.as_bytes();  // the type `str` cannot be indexed by `usize`
         let mut ans = 0;
         let mut cnt = 1;
         let mut lastCnt = 0;
