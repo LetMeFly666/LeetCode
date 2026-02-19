@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("0693-binary-number-with-alternating-bits_20260218.rs");  // 这个fileName是会被脚本替换掉的
+include!("0696-count-binary-substrings.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
