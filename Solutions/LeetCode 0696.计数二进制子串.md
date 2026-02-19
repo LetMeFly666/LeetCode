@@ -90,7 +90,6 @@ class Solution:
                 cnt = 0
             cnt += 1
         return ans
-                
 ```
 
 #### Java
@@ -148,11 +147,11 @@ impl Solution {
         let s = s.as_bytes();  // the type `str` cannot be indexed by `usize`
         let mut ans = 0;
         let mut cnt = 1;
-        let mut lastCnt = 0;
+        let mut last_cnt = 0;
         for i in 1..(s.len() + 1) {
             if i == s.len() || s[i] != s[i - 1] {
-                ans += cnt.min(lastCnt);
-                lastCnt = cnt;
+                ans += cnt.min(last_cnt);
+                last_cnt = cnt;
                 cnt = 0;
             }
             cnt += 1;
