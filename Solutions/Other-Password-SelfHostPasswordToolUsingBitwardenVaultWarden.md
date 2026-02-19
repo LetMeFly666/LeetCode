@@ -112,7 +112,7 @@ docker load -i vaultwarden-alpine.tar
 rm -f vaultwarden-alpine.tar
 cd ~/django/vaultwarden
 docker compose down
-sed -i 's|image: vaultwarden/server:1.33.2-alpine|image: vaultwarden/server1.35.3:-alpine|' docker-compose.yml
+sed -i 's|image: vaultwarden/server:1.33.2-alpine|image: vaultwarden/server:1.35.3-alpine|' docker-compose.yml
 # sed -i 's|image: vaultwarden/server:1.35.3-alpine|image: vaultwarden/server:1.33.2-alpine|' docker-compose.yml
 docker compose up -d
 ```
