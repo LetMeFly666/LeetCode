@@ -26,7 +26,7 @@
 <meta property="og:description" content="密码管理 - 使用Bitwarden&#x2F;Vaultwarden自托管密码服务 - 折腾记录前言某天(大约两周前了至少 一直没找到机会记录)逛Github发现了开源的密码管理服务Bitwarden，能自托管、能加密、多端适配。 这，，不是让人如获至宝吗。于是就开始折腾了。 折腾Bitwarden镜像无法拉取在服务器上按照bitwarden&#x2F;server提示进行操作，拉取脚本并执行，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-15T04:42:16.000Z">
-<meta property="article:modified_time" content="2025-03-13T12:59:24.000Z">
+<meta property="article:modified_time" content="2026-02-19T03:53:06.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="其他">
 <meta property="article:tag" content="密码">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          3.3k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          19 分钟
+          28 分钟
         
       </span>
     
@@ -323,6 +323,9 @@
 <p>直到有一天，What The Fantastic，我访问我自己的网站访问不了了。。。我的服务器上搭建了很多服务，为了保护主机ip，全部使用了互联网界清流CF的CDN。那天，任何子域名，一概无法正常访问。那段时间，正常访问Github没有一秒可以成功过<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode/blob/1df877f2de19c6c7b25f85407587c7d370e6e798/Solutions/LeetCode%200680.%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2II.md?plain=1#L183-L189">。</a></p>
 <p>我甚至怀疑过是不是北邮V-P.N的BUG，也怀疑过xxx，还在Termux上进行了一堆的debug。可能是笔者计网知识薄弱导致的错误推断，结论是并非安卓机配置问题，而是遭到了神秘力量的强有力封锁。</p>
 <p>不过过了那十来天后现象有所缓和，又不想关掉CDN暴露主机真实IP，就先这样吧。。。大多时候一切正常，偶尔网络链路会受到一些魔改。</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>Linux上暂未配置docker直连网络，若通过MacOS或Windows拉取镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># on macos</span><br><span class="hljs-comment"># export NO_PROXY=registry-1.docker.io,docker.io</span><br>docker pull --platform=linux/amd64 vaultwarden/server:alpine<br><span class="hljs-comment"># docker pull vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1</span><br>docker save vaultwarden/server:alpine -o ~/Downloads/vaultwarden-alpine.tar<br><span class="hljs-comment"># docker save vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1 -o ~/Downloads/vaultwarden-alpine.tar</span><br>rsync -avz ~/Downloads/vaultwarden-alpine.tar Let:~/<br><span class="hljs-built_in">rm</span> -r ~/Downloads/vaultwarden-alpine.tar<br>docker rmi vaultwarden/server:alpine<br><span class="hljs-comment"># docker rmi vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1</span><br><br><span class="hljs-comment"># on linux</span><br>docker load -i vaultwarden-alpine.tar<br><span class="hljs-comment"># docker tag b4016fd0738a vaultwarden/server:1.35.3-alpine</span><br><span class="hljs-built_in">rm</span> -f vaultwarden-alpine.tar<br><span class="hljs-built_in">cd</span> ~/django/vaultwarden<br>docker compose down<br>sed -i <span class="hljs-string">&#x27;s|image: vaultwarden/server:1.33.2-alpine|image: vaultwarden/server:1.35.3-alpine|&#x27;</span> docker-compose.yml<br><span class="hljs-comment"># sed -i &#x27;s|image: vaultwarden/server:1.35.3-alpine|image: vaultwarden/server:1.33.2-alpine|&#x27; docker-compose.yml</span><br>docker compose up -d<br></code></pre></td></tr></table></figure>
+
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
 <p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">原文链接</a>哦~</p>
 <p>Tisfy：<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden</a></p>
