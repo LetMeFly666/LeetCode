@@ -90,6 +90,33 @@ categories: [技术思考]
 
 不过过了那十来天后现象有所缓和，又不想关掉CDN暴露主机真实IP，就先这样吧。。。大多时候一切正常，偶尔网络链路会受到一些魔改。
 
+### 更新
+
+Linux上暂未配置docker直连网络，若通过MacOS或Windows拉取镜像：
+
+```bash
+# on macos
+# export NO_PROXY=registry-1.docker.io,docker.io
+docker pull --platform=linux/amd64 vaultwarden/server:alpine
+# docker pull vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1
+docker save vaultwarden/server:alpine -o ~/Downloads/vaultwarden-alpine.tar
+# docker save vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1 -o ~/Downloads/vaultwarden-alpine.tar
+rsync -avz ~/Downloads/vaultwarden-alpine.tar Let:~/
+rm -r ~/Downloads/vaultwarden-alpine.tar
+docker rmi vaultwarden/server:alpine
+# docker rmi vaultwarden/server@sha256:f8b5ccb9cb7f1a156321c398e64f49e4fea681e2172281415e4fd5e23b6b89f1
+
+# on linux
+docker load -i vaultwarden-alpine.tar
+# docker tag b4016fd0738a vaultwarden/server:1.35.3-alpine
+rm -f vaultwarden-alpine.tar
+cd ~/django/vaultwarden
+docker compose down
+sed -i 's|image: vaultwarden/server:1.33.2-alpine|image: vaultwarden/server:1.35.3-alpine|' docker-compose.yml
+# sed -i 's|image: vaultwarden/server:1.35.3-alpine|image: vaultwarden/server:1.33.2-alpine|' docker-compose.yml
+docker compose up -d
+```
+
 ## End
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/145649203)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden)哦~
