@@ -15,4 +15,3 @@ class Solution:
                 cnt = 0
             cnt += 1
         return ans
-                
