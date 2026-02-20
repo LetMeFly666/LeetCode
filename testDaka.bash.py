@@ -2,13 +2,16 @@
 Author: LetMeFly
 Date: 2026-02-19 18:57:58
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-19 22:26:21
+LastEditTime: 2026-02-20 12:04:31
 '''
 import os
 
 problem_name = 't'
 problem_url = '1'
 daka_url = '2'
+
+# os.system(f'cd tryGoPy && bash -c pwd')
+# exit()
 
 # os.system(' bash -c "cmd.exe /c \\\"echo 1\\\""  ')
 # exit()
