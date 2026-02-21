@@ -308,6 +308,36 @@ git fetch machine1
 git config receive.denyCurrentBranch updateInstead
 ```
 
+### About Github GH(Github CLI)
+
+官网：[cli.github.com](https://cli.github.com/)
+
+安装：
+
+* Mac: 
+
+    ```bash
+    brew install gh
+    # brew upgrade gh
+    ```
+
+* Windows:
+
+    [Releases](https://github.com/cli/cli/releases)点`show all xx asserts`，找到`GitHub CLI 2.87.2 windows amd64`下载并添加到环境变量path中；或者找`GitHub CLI 2.87.2 windows amd64 installer`傻瓜式下一步安装。
+
+登录：
+
+```bash
+gh auth login
+# 可登录多账号，之后使用gh switch USERNAME切换
+```
+
+添加project权限：
+
+```bash
+gh auth refresh -s project
+```
+
 ## About HTML
 
 ### 空白字符
