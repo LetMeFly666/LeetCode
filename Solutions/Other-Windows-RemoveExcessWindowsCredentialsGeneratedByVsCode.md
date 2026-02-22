@@ -33,7 +33,7 @@ failed to move active token in keyring: Not enough memory resources are availabl
 
 <script src="https://web.letmefly.xyz/Links/JS/GithubGists/RmWindowsCredentials/5fc6647e2f5289a656d2441229cdd392.js"></script>
 
-<details><summary>script</summary>
+<details><summary>duplicated script(一键复制版本)</summary>
 
 
 ```powershell
@@ -114,6 +114,8 @@ Read-Host "按回车退出"
 ## End
 
 删了当年留下的182个凭据后，`gh`表现正常了。
+
+附：凭据位置 - `控制面板\所有控制面板项\凭据管理器`的`Windows凭据`
 
 <center><font size="6px" face="Ink Free">The Real End, Thanks!</font></center>
 

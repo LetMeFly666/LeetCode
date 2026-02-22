@@ -329,7 +329,7 @@ git config receive.denyCurrentBranch updateInstead
 
 ```bash
 gh auth login
-# 可登录多账号，之后使用gh switch USERNAME切换
+# 可登录多账号，之后使用gh auth switch -u USERNAME切换
 ```
 
 添加project权限：
