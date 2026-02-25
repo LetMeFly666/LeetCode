@@ -1835,6 +1835,9 @@ categories: [自用]
 |senseless|adj. 无意义的，无目的的；失去知觉的；不明智的，愚蠢的|
 |enlightening|v. 启迪，指导<br/>adj. 有启迪的，使人感悟的|
 |potent|adj. 强有效的，有力的，烈性的，影响身心的|
+|||
+|kneel|v. 跪<details><summary>过去式</summary>knelt</details>|
+这劲儿着呀
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
