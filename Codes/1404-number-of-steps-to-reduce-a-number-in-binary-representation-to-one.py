@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-02-26 23:55:52
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-26 23:58:03
+LastEditTime: 2026-02-26 23:59:25
 '''
 """
 1101
@@ -15,7 +15,7 @@ LastEditTime: 2026-02-26 23:58:03
 """
 class Solution:
     def numSteps(self, s: str) -> int:
-        a = int(s)
+        a = int(s, 2)
         ans = 0
         while a != 1:
             if a % 2:
