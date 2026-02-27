@@ -1837,7 +1837,12 @@ categories: [自用]
 |potent|adj. 强有效的，有力的，烈性的，影响身心的|
 |||
 |kneel|v. 跪<details><summary>过去式</summary>knelt</details>|
-这劲儿着呀
+|||
+|proprietor|n. 业主，所有人|
+|detain|v. 扣押，留住，耽搁|
+|||
+|rod|n. 杆，枝|
+|c/o|abbr. （用于投递给寄居人的信件上）由...转交|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
