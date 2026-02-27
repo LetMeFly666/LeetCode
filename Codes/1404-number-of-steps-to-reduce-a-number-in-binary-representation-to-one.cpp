@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-02-26 22:06:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-27 21:50:19
+ * @LastEditTime: 2026-02-27 22:29:56
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -75,7 +75,15 @@ public:
 
     // only >>1 supported
     LetsNum& operator>>=(const int&) {
-        num.erase(num.begin());
+        int mod = 0;
+        for (deque<char>::reverse_iterator it = num.rbegin(); it != num.rend(); it++) {
+            mod = mod * 10 + (*it - '0');
+            *it = mod / 2 + '0';
+            mod %= 2;
+        }
+        if (*num.rbegin() == '0') {
+            num.pop_back();
+        }
         return *this;
     }
 
@@ -112,7 +120,6 @@ public:
         return ans;
     }
 };
-
 
 #if defined(_WIN32) || defined(__APPLE__)
 /*
