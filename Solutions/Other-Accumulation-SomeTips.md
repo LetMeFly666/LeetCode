@@ -214,7 +214,7 @@ TODO: https://liaoxuefeng.com/books/git/branch/policy/index.html#0
 
 + `true`: 提交时会将文件的CRLF转为LF，检出时会将LF转为CRLF。（适合Windows用户）
 + `input`: 提交时会将文件的CRLF转为LF，检出时不进行转换。（适合Linux/Mac用户）
-+ `input`: 提交和检出时都不进行任何转换。
++ `false`: 提交和检出时都不进行任何转换。
 
 ```bash
 git config --global core.autocrlf [input | true | false]

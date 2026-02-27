@@ -1893,3 +1893,6 @@ categories: [自用]
 
 > 原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)哦~
 > [https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/](https://blog.letmefly.xyz/2024/02/19/Other-English-LearningNotes-SomeWords/)
+
+|rod|n. 杆，枝|
+|c/o|abbr. （用于投递给寄居人的信件上）由...转交|
