@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-02-19 18:19:00
+LastEditTime: 2026-03-01 20:15:38
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -193,7 +193,97 @@ else:
     os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
     os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again). -- From {getPlatform()}"')
 
+# ===================== 剪贴板监听：自动合成 AC,xx.xx%,xx.xx% =====================
+def _start_clipboard_monitor():
+    """
+    启动后台线程监听剪贴板。
+    连续两次复制含 xx.xx% 的内容后，自动写入 "AC,xx.xx%,xx.xx%"。
+    返回 threading.Event，set() 即可停止。
+    """
+    import threading
+
+    def _get_clipboard() -> str:
+        try:
+            if sys.platform == 'win32':
+                r = subprocess.run(['powershell', '-command', 'Get-Clipboard'],
+                                   capture_output=True, text=True, timeout=2)
+                return r.stdout.strip()
+            elif sys.platform == 'darwin':
+                r = subprocess.run(['pbpaste'], capture_output=True, text=True, timeout=2)
+                return r.stdout.strip()
+            else:
+                try:
+                    r = subprocess.run(['xclip', '-selection', 'clipboard', '-o'],
+                                       capture_output=True, text=True, timeout=2)
+                except FileNotFoundError:
+                    r = subprocess.run(['xsel', '--clipboard', '--output'],
+                                       capture_output=True, text=True, timeout=2)
+                return r.stdout.strip()
+        except Exception:
+            return ''
+
+    def _set_clipboard(text: str):
+        try:
+            if sys.platform == 'win32':
+                p = subprocess.Popen(['clip'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+            elif sys.platform == 'darwin':
+                p = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+            else:
+                try:
+                    p = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE)
+                except FileNotFoundError:
+                    p = subprocess.Popen(['xsel', '--clipboard', '--input'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+        except Exception as e:
+            print(f'[ClipboardMonitor] 写入剪贴板失败: {e}')
+
+    stop_event = threading.Event()
+
+    def _monitor():
+        last = _get_clipboard()
+        first_pct = None
+        first_time = 0
+        while not stop_event.is_set():
+            time.sleep(0.5)
+            try:
+                cur = _get_clipboard()
+            except Exception:
+                continue
+            if cur == last:
+                continue
+            last = cur
+            if cur.startswith('AC,') and cur.count(',') == 2:
+                continue
+            m = re.search(r'(\d{1,3}\.\d{1,2})%', cur) if len(cur) <= 20 else None
+            if not m:
+                first_pct = None
+                continue
+            pct = m.group(1) + '%'
+            now = time.time()
+            if first_pct is None or now - first_time > 7.5:
+                first_pct = pct
+                first_time = now
+                print(f'[ClipboardMonitor] 捕获第1个百分比: {pct}')
+            else:
+                result = f'AC,{first_pct},{pct}'
+                print(f'[ClipboardMonitor] 捕获第2个百分比: {pct}')
+                print(f'[ClipboardMonitor] ✅ 已写入剪贴板: {result}')
+                _set_clipboard(result)
+                last = result
+                first_pct = None
+
+    t = threading.Thread(target=_monitor, daemon=True)
+    t.start()
+    print('[ClipboardMonitor] 🎯 剪贴板监听已启动，连续复制两个百分比 → 自动合成 AC,xx.xx%,xx.xx%')
+    return stop_event
+
+_clip_stop = _start_clipboard_monitor()
 input('代码写完后按回车生成题解模板：')
+_clip_stop.set()
+print('[ClipboardMonitor] 剪贴板监听已停止')
+# ===================== 剪贴板监听结束 =====================
 
 with open(nameProblem, "r", encoding="utf-8") as f:
     problem = f.read()
