@@ -10,7 +10,7 @@
 
 class Solution {
 private:
-    inline int countSuffix(vector<int>& row) {
+    inline int countSuffix(const vector<int>& row) {
         int ans = 0;
         for (int i = row.size() - 1; i >= 0; i--, ans++) {
             if (row[i] != 0) {
