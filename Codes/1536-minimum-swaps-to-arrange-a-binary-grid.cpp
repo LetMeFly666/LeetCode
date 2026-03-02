@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-02 09:24:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-02 09:28:47
+ * @LastEditTime: 2026-03-02 09:32:18
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -19,6 +19,13 @@ private:
         }
         return ans;
     }
+
+    int change(vector<int>& suffix, int u, int d) {
+        for (int i = d - 1; i >= u; i--) {
+            swap(suffix[i], suffix[i + 1]);
+        }
+        return d - u;
+    }
 public:
     int minSwaps(vector<vector<int>>& grid) {
         int n = grid.size();
@@ -30,8 +37,7 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
                 if (suffix[j] >= n - i - 1) {
-                    swap(suffix[i], suffix[j]);
-                    ans += j - i;
+                    ans += change(suffix, i, j);
                     goto loop;
                 }
             }
