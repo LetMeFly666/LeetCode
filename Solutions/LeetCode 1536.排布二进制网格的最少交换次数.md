@@ -3,6 +3,7 @@ title: 1536.排布二进制网格的最少交换次数：后缀0（贪心）
 date: 2026-03-02 09:33:13
 tags: [题解, LeetCode, 中等, 贪心, 数组, 矩阵]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/08/02/fw.jpg
 ---
 
 # 【LetMeFly】1536.排布二进制网格的最少交换次数：后缀0（贪心）
