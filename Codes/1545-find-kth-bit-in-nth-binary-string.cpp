@@ -10,7 +10,7 @@ private:
         }
     }
 
-    string& next(string& now) {
+    string next(string& now) {
         string ans = now + '1';
         invert(now);
         reverse(now.begin(), now.end());
@@ -23,6 +23,6 @@ public:
         for (int i = 2; i <= n; i++) {
             now = next(now);
         }
-        return now[k];
+        return now[k - 1];
     }
 };
