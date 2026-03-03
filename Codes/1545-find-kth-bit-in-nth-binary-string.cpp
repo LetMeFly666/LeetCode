@@ -1,7 +1,13 @@
+/*
+ * @Author: LetMeFly
+ * @Date: 2026-03-03 09:03:20
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-03-03 09:14:52
+ */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
 #endif
-// x - 1的字符串
+
 class Solution {
 private:
     void invert(string& s) {
