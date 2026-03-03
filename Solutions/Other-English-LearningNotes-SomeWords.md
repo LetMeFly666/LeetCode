@@ -1842,7 +1842,7 @@ categories: [自用]
 |detain|v. 扣押，留住，耽搁|
 |||
 |rod|n. 杆，枝|
-|c/o|abbr. （用于投递给寄居人的信件上）由...转交|
+|c/o|= care of<br/>abbr. （用于投递给寄居人的信件上）由...转交<details><summary>例句</summary>Please send the package to John Smith <font color="#28bea0">c/o</font> Green Hotel.<br/>请将包裹寄给约翰·史密斯，由格林酒店转交。</details>|
 |||
 |testimony|n. 证词，证言，证据，证明|
 |treason|n. 危害国家罪，叛逆，通敌，背叛|
