@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-03 09:14:56
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-03 09:26:17
+ * @LastEditTime: 2026-03-03 09:28:21
  */
 #if defined(_WIN32) || defined(__APPLE__)
 #include "_[1,2]toVector.h"
@@ -22,10 +22,10 @@ public:
         if (n == 1) {
             return invert ? '1' : '0';
         }
-        int len = 1 << n - 1;
+        int len = (1 << n) - 1;
         int half_len = len >> 1;
         if (k == half_len + 1) {
-            return '1';
+            return invert ? '0' : '1';
         } else if (k <= half_len) {
             return findKthBit(n - 1, k, invert);
         } else {
