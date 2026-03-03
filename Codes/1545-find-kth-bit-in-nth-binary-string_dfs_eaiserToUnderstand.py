@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-03-03 20:11:50
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-03-03 20:15:07
+LastEditTime: 2026-03-03 20:16:16
 '''
 class Solution:
     def invert(self, n: str) -> str:
@@ -15,7 +15,7 @@ class Solution:
         half = len >> 1
         if k == half + 1:
             return '1'
-        elif k < half:
+        elif k <= half:
             return self.findKthBit(n - 1, k)
         else:
-            return self.invert(self.findKthBit(n - 1, n - k + 1))
+            return self.invert(self.findKthBit(n - 1, len - k + 1))
