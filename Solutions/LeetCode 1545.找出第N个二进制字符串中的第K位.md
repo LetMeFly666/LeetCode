@@ -114,7 +114,7 @@ public:
 };
 ```
 
-## 解题方法一：递归 + 数学
+## 解题方法二：递归 + 数学
 
 对于字符串长度：
 
@@ -140,7 +140,11 @@ n_k = ?
 >
 > 由于$a_k = n_k + 1$，所以$n_k=a_k-1=2^k-1$。
 
-那么`findKthBit
+那么`findKthBit`就可以依据字符串的长度（计算自$n$）计算出要找的$k$在字符串中的哪个位置了：
+
+> 字符串长度为$2^n-1$（记为$len$），说明生成这个字符串的上一个字符串的长度为$\frac{len}{2}$（记为$half\_len$）。
+> 
+> 如果$k==half\_len+1$，则说明正好处在<code>S<sub>i</sub> = S<sub>i-1</sub> + "1" + reverse(invert(S<sub>i-1</sub>))</code>中间的`1`，直接返回`1`；
 
 + 时间复杂度$O(n)$
 + 空间复杂度$O(n)$
@@ -148,6 +152,37 @@ n_k = ?
 ### AC代码
 
 #### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-03-03 09:39:20
+ */
+class Solution {
+private:
+    inline char invert(char c) {
+        return c == '0' ? '1' : '0';
+    }
+public:
+    char findKthBit(int n, int k) {
+        if (n == 1) {
+            return '0';
+        }
+        int len = (1 << n) - 1;
+        int half_len = len >> 1;
+        if (k == half_len + 1) {
+            return '1';
+        } else if (k <= half_len) {
+            return findKthBit(n - 1, k);
+        } else {
+            return invert(findKthBit(n - 1, len - k + 1));  // n = 2, k = 3 -> len = 3, half_len = 1, next_k = 1
+        }
+    }
+};
+```
+
+#### C++
+
+当然也可以：
 
 ```cpp
 /*
