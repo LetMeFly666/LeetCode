@@ -144,7 +144,9 @@ n_k = ?
 
 > 字符串长度为$2^n-1$（记为$len$），说明生成这个字符串的上一个字符串的长度为$\frac{len}{2}$（记为$half\_len$）。
 > 
-> 如果$k==half\_len+1$，则说明正好处在<code>S<sub>i</sub> = S<sub>i-1</sub> + "1" + reverse(invert(S<sub>i-1</sub>))</code>中间的`1`，直接返回`1`；
+> + 如果$k==half\_len+1$，则说明正好处在<code>S<sub>i</sub> = S<sub>i-1</sub> + "1" + reverse(invert(S<sub>i-1</sub>))</code>中间的`1`，直接返回`1`；
+> + 如果$k\leq half\_len$，则说明处在<code>S<sub>i-1</sub></code>部分，返回`findKthBit(n - 1, k)`；
+> + 否则，说明处在<code>reverse(invert(S<sub>i-1</sub>))</code>位置，$k$在$len$中是倒数第$len-k+1$个元素<span title="俺想出来的通俗易懂的解释哈哈哈">，</span>，返回`revert(findKthBit(n - 1, len - k + 1))`。
 
 + 时间复杂度$O(n)$
 + 空间复杂度$O(n)$
@@ -180,6 +182,29 @@ public:
 };
 ```
 
+#### Python
+
+```py
+'''
+LastEditTime: 2026-03-03 20:16:16
+'''
+class Solution:
+    def invert(self, n: str) -> str:
+        return '1' if n == '0' else '0'
+    
+    def findKthBit(self, n: int, k: int) -> str:
+        if n == 1:
+            return '0'
+        len = (1 << n) - 1
+        half = len >> 1
+        if k == half + 1:
+            return '1'
+        elif k <= half:
+            return self.findKthBit(n - 1, k)
+        else:
+            return self.invert(self.findKthBit(n - 1, len - k + 1))
+```
+
 #### C++
 
 当然也可以：
@@ -208,6 +233,6 @@ public:
 ```
 
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/03/03/LeetCode%201545.%E6%89%BE%E5%87%BA%E7%AC%ACN%E4%B8%AA%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%BD%8D/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/158621541)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/03/03/LeetCode%201545.%E6%89%BE%E5%87%BA%E7%AC%ACN%E4%B8%AA%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%BD%8D/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
