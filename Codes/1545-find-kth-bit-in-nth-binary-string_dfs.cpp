@@ -29,7 +29,7 @@ public:
         } else if (k <= half_len) {
             return findKthBit(n - 1, k, invert);
         } else {
-            return findKthBit(n - 1, len - k + 1, 1 ^ invert);  // n = 2, k = 3 -> len = 3, half_len = 1, next_k = 1
+            return findKthBit(n - 1, len - k + 1, !invert);  // n = 2, k = 3 -> len = 3, half_len = 1, next_k = 1
         }
     }
 };
