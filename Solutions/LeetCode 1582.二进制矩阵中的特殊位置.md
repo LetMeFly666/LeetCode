@@ -1,11 +1,11 @@
 ---
-title: 1582.二进制矩阵中的特殊位置
+title: 1582.二进制矩阵中的特殊位置：模拟/记录每行每列1个数/行有单1再看列
 date: 2022-09-04 14:59:22
 tags: [题解, LeetCode, 简单, 数组, 矩阵]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1582.二进制矩阵中的特殊位置
+# 【LetMeFly】1582.二进制矩阵中的特殊位置：模拟/记录每行每列1个数/行有单1再看列
 
 力扣题目链接：[https://leetcode.cn/problems/special-positions-in-a-binary-matrix/](https://leetcode.cn/problems/special-positions-in-a-binary-matrix/)
 
@@ -63,8 +63,6 @@ categories: [题解, LeetCode]
 	<li><code>mat[i][j]</code> 是 <code>0</code> 或 <code>1</code></li>
 </ul>
 
-
-    
 ## 方法一：直接模拟
 
 直接遍历一遍原始矩阵，如果当前元素是1，就判断是否这一行除此元素外都是0并且这一列除此元素外都是0。
@@ -141,6 +139,54 @@ public:
                     ans++;
                 }
             }
+        }
+        return ans;
+    }
+};
+```
+
+## 方法三：行有单1再看列
+
+从第一行到最后一行遍历，对于每一行，若这一行只有一个1，则遍历1这一列，若这一列其他位置皆为0，则此1为特殊位置。
+
++ 时间复杂度$O(n(n+m))$，其中原始矩阵的大小为$n\times m$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-03-05 00:02:09
+ */
+class Solution {
+public:
+    int numSpecial(vector<vector<int>>& mat) {
+        int ans = 0;
+        int n = mat.size(), m = mat[0].size();
+        for (int i = 0; i < n; i++) {
+            bool only1 = true;
+            int idx = -1;
+            for (int j = 0; j < m; j++) {
+                if (mat[i][j]) {
+                    if (idx != -1) {
+                        only1 = false;
+                        break;
+                    }
+                    idx = j;
+                }
+            }
+            if (!only1 || idx == -1) {
+                continue;
+            }
+            for (int k = 0; k < n; k++) {
+                if (mat[k][idx] && k != i) {
+                    only1 = false;
+                    break;
+                }
+            }
+            ans += only1;
         }
         return ans;
     }

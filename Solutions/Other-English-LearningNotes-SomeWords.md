@@ -1848,6 +1848,14 @@ categories: [自用]
 |treason|n. 危害国家罪，叛逆，通敌，背叛|
 |||
 |feeble|adj. 虚弱的，无效的|
+|||
+|gymnast|n. 体操运动员|
+|||
+|backbone|n. 脊椎，骨干，支柱|
+|constable|n. 警员<br/>头衔时首字母大写，如Constable Smith|
+|peninsular|adj. 半岛的|
+|||
+|wrath|n. 怒火|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
