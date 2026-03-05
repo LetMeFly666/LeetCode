@@ -3,6 +3,7 @@ title: 1582.二进制矩阵中的特殊位置：模拟/记录每行每列1个数
 date: 2022-09-04 14:59:22
 tags: [题解, LeetCode, 简单, 数组, 矩阵]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2021/12/23/special1.jpg
 ---
 
 # 【LetMeFly】1582.二进制矩阵中的特殊位置：模拟/记录每行每列1个数/行有单1再看列
@@ -16,6 +17,8 @@ categories: [题解, LeetCode]
 <p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
+
+<img src="https://assets.leetcode.com/uploads/2021/12/23/special1.jpg">
 
 <pre><strong>输入：</strong>mat = [[1,0,0],
 &nbsp;           [0,0,<strong>1</strong>],

@@ -1,11 +1,11 @@
 ---
-title: 1758.生成交替二进制字符串的最少操作数
+title: 1758.生成交替二进制字符串的最少操作数：5行代码一次遍历
 date: 2022-11-29 23:00:13
 tags: [题解, LeetCode, 简单, 字符串, 模拟, 遍历]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1758.生成交替二进制字符串的最少操作数
+# 【LetMeFly】1758.生成交替二进制字符串的最少操作数：5行代码一次遍历
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-changes-to-make-alternating-binary-string/](https://leetcode.cn/problems/minimum-changes-to-make-alternating-binary-string/)
 
@@ -69,6 +69,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-11-29 22:56:38
+ */
 class Solution {
 public:
     int minOperations(string& s) {
@@ -78,6 +81,36 @@ public:
             oneZero += (s[i] != '0' + i % 2);
         }
         return min(oneZero, n - oneZero);
+    }
+};
+```
+
+## 方法二：模拟
+
+要么`奇数`位置全`奇数` `偶数`位置全`偶数`，要么`偶数`位置全`奇数` `奇数`位置全`偶数`。
+
+两种情况两个变量一次遍历算出来取最小的那个就好了。
+
++ 时间复杂度$O(n)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-03-05 22:16:57
+ */
+class Solution {
+public:
+    int minOperations(string s) {
+        int c0 = 0, c1 = 0;
+        for (int i = 0; i < s.size(); i++) {
+            c0 += s[i] % 2 == i % 2;  // 不用减'0'就行
+            c1 += s[i] % 2 != i % 2;
+        }
+        return min(c0, c1);
     }
 };
 ```
