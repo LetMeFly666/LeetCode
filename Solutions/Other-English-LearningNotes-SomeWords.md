@@ -1856,6 +1856,11 @@ categories: [自用]
 |peninsular|adj. 半岛的|
 |||
 |wrath|n. 怒火|
+|||
+|unaccommodating|adj. 不亲切的，不随和的|
+|||
+|bribery|n. 贿赂，受贿|
+|bamboo shoot|phrase. 竹笋|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1689-partitioning-into-minimum-number-of-deci-binary-numbers_more-rust.rs");  // 这个fileName是会被脚本替换掉的
+include!("1784-check-if-binary-string-has-at-most-one-segment-of-ones_20260307.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

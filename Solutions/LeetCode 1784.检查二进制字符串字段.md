@@ -114,5 +114,85 @@ public:
 };
 ```
 
+#### C++ - 手动find版本
+
+```cpp
+/*
+ * @LastEditTime: 2026-03-07 13:14:57
+ */
+class Solution {
+public:
+    bool checkOnesSegment(string s) {
+        for (int i = 1; i < s.size(); i++) {
+            if (s[i] == '1' && s[i - 1] == '0') {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+LastEditTime: 2026-03-07 13:15:44
+'''
+class Solution:
+    def checkOnesSegment(self, s: str) -> bool:
+        return '01' not in s
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-03-07 13:17:43
+ */
+class Solution {
+    public boolean checkOnesSegment(String s) {
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i - 1) == '0' && s.charAt(i) == '1') {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2026-03-07 13:16:55
+ */
+package main
+
+func checkOnesSegment(s string) bool {
+    for i := 1; i < len(s); i++ {
+        if s[i - 1] == '0' && s[i] == '1' {
+            return false
+        }
+    }
+    return true
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2026-03-07 13:18:32
+ */
+impl Solution {
+    pub fn check_ones_segment(s: String) -> bool {
+        !s.contains("01")
+    }
+}
+```
+
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/03/LeetCode%201784.%E6%A3%80%E6%9F%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%97%E6%AE%B5/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/127150307](https://letmefly.blog.csdn.net/article/details/127150307)
