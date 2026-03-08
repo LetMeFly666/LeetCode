@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-07 17:46:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-08 11:19:50
+ * @LastEditTime: 2026-03-08 11:24:55
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -35,6 +35,9 @@ public:
         cout << "total: " << total << endl;
         #endif
         int ans = min(total, n - total);
+        if (n % 2) {
+            return ans;
+        }
         for (int i = 0, now = 0; i < n; i++) {
             now += s[i] % 2 == i % 2;
             int original_front = now;
