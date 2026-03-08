@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-07 17:46:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-08 11:40:26
+ * @LastEditTime: 2026-03-08 11:41:56
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -31,9 +31,6 @@ public:
         for (int i = 0; i < n; i++) {
             total += s[i] % 2 == i % 2;
         }
-        #ifdef _DEBUG
-        cout << "total: " << total << endl;
-        #endif
         int ans = min(total, n - total);
         if (n % 2 == 0) {
             return ans;
@@ -45,12 +42,6 @@ public:
             int changed_front = i + 1 - original_front;
             int changed_back = n - i - 1 - original_back;
             ans = min(ans, min(original_front + changed_back, changed_front + original_back));
-            #ifdef _DEBUG
-            printf("i = %d, original_front = %d, original_back = %d, changed_front = %d, changed_back = %d, original_front + changed_back = %d, changed_front + original_back = %d\n", i, original_front, original_back, changed_front, changed_back, original_front + changed_back, changed_front + original_back);
-            if (min(original_front + changed_back, changed_front + original_back) == 3) {
-                printf("ans = %d\n", ans);
-            }
-            #endif
         }
         return ans;
     }
