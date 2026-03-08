@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-07 17:46:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-07 18:01:06
+ * @LastEditTime: 2026-03-08 11:07:29
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,22 +23,23 @@
   --
 01010101010
 _         _
-
-
-01001001101
-   1次右移
-10010011010
-
-
 */
 class Solution {
 public:
-    int minFlips(string s) {
-        int o1 = 0, o2 = 0;
-        for (int i = 0; i < s.size(); i++) {
-            o1 += s[i] % 2 == i % 2;
-            o2 += s[i] % 2 != i % 2;
+    int minFlips(const string& s) {
+        int total = 0, n = s.size();
+        for (int i = 0; i < n; i++) {
+            total += s[i] % 2 == i % 2;
         }
-        return min(o1, o2);
+        int ans = min(total, n - total);
+        for (int i = 0, now = 0; i < n; i++) {
+            now += s[i] % 2 == i % 2;
+            int original_front = now;
+            int original_back = total - original_front;
+            int changed_front = i + 1 - original_front;
+            int changed_back = n - i - 1 - original_back;
+            ans = min(ans, min(original_front + changed_back, changed_front + original_back));
+        }
+        return ans;
     }
 };
