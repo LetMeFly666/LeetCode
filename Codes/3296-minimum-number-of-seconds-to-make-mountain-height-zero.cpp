@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-13 22:49:36
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-13 22:54:28
+ * @LastEditTime: 2026-03-13 22:57:56
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,7 +21,7 @@ public:
             auto[now, times, once] = pq.top();
             pq.pop();
             ans = now;
-            pq.push({now + times * once, times + 1, once});
+            pq.push({now + ++times * once, times, once});
         }
         return ans;
     }
