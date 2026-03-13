@@ -1865,6 +1865,13 @@ categories: [自用]
 |mechanics|n. 力学，结构，技巧，机械学|
 |pretentious|adj. 炫耀的，虚夸的，自命不凡的|
 |indignant|adj. 愤慨的，愤怒的|
+|||
+|conceptive|adj. 概念上的，设想上的，〈罕〉会受孕的|
+|groundless|adj. 无理由的，无根据的|
+|||
+|wreath|n. (祭奠)花圈，(圣诞节)花环|
+|||
+|prohibitive|adj. (法令)禁止的，贵得买不起的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
