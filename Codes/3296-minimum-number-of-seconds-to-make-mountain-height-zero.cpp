@@ -12,7 +12,7 @@ typedef long long ll;
 class Solution {
 public:
     ll minNumberOfSeconds(int mountainHeight, vector<int>& workerTimes) {
-        priority_queue<tuple<ll, int, int>, vector<tuple<ll, int, int>>, greater<>> pq;
+        priority_queue<tuple<ll, ll, int>, vector<tuple<ll, ll, int>>, greater<>> pq;
         for (int t : workerTimes) {
             pq.push({t, 1, t});
         }
