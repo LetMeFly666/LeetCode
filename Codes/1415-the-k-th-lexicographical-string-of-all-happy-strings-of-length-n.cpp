@@ -2,16 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-03-14 22:56:17
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-14 23:11:39
+ * @LastEditTime: 2026-03-14 23:21:37
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
-/*
-
-
-*/
 class Solution {
 public:
     string getHappyString(int n, int k) {
@@ -28,7 +24,7 @@ public:
             k %= remain;
             remain >>= 1;
             int th = k / remain;
-            if (ans.back() == toChoose[th]) {
+            if (toChoose[th] >= ans.back()) {
                 th++;
             }
             ans.push_back(toChoose[th]);
