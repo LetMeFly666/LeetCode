@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-14 22:56:17
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-14 23:28:12
+ * @LastEditTime: 2026-03-14 23:29:38
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -19,12 +19,12 @@ private:
         if (len == n) {
             k--;
             if (!k) {
-                now = ans;
+                ans = now;
                 return true;
             }
             return false;
         }
-        
+
         char last = now.empty() ? '0' : now.back();
         for (int i = 0; i < 3; i++) {
             if (can[i] == last) {
@@ -43,3 +43,19 @@ public:
         return ans;
     }
 };
+
+#if defined(_WIN32) || defined(__APPLE__)
+/*
+1 3
+
+c
+*/
+int main() {
+    int a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.getHappyString(a, b) << endl;
+    }
+    return 0;
+}
+#endif
