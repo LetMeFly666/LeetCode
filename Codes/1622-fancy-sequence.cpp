@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-15 10:21:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-15 11:11:33
+ * @LastEditTime: 2026-03-15 11:18:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,7 +27,7 @@ private:
         return ans;
     }
 public:
-    Num() {}
+    Num(): val(0) {}
     Num(ll n) : val(n % MOD) {}
     Num(int n) : val(n % MOD) {}
     Num operator+(const ll& b) const { return Num((val + b) % MOD); }
@@ -48,8 +48,8 @@ public:
 class Fancy {
 private:
     vector<Num> vals;
-    Num add = Num();
-    Num mul = Num();
+    Num add;
+    Num mul;
 public:
     Fancy() {}
     
@@ -95,8 +95,14 @@ int main() {
             continue;
         }
         Fancy fancy;
-        for (int i = 0; i < a.size(); i++) {
+        for (int i = 0; i < va.size(); i++) {
             string s = va[i];
+            if (!s.empty() && s[0] == '"') {
+                s.erase(s.begin());
+            }
+            if (!s.empty() && s.back() == '"') {
+                s.erase(prev(s.end()));
+            }
             int val = vb[i].empty() ? 0 : vb[i][0];
             if (s == "Fancy") {
                 fancy = Fancy();
@@ -112,7 +118,6 @@ int main() {
                 cout << "ERROR" << endl;
             }
         }
-        
     }
     return 0;
 }
