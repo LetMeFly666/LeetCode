@@ -1,5 +1,5 @@
 ---
-title: 1415.长度为 n 的开心字符串中字典序第 k 小的字符串：DFS构造 / 数学O(1)
+title: 1415.长度为 n 的开心字符串中字典序第 k 小的字符串：DFS构造 / 数学O(n)
 date: 2026-03-14 23:31:04
 tags: [题解, LeetCode, 中等, 字符串, 回溯, 深度优先搜索, DFS, 模拟, 数学, 构造]
 categories: [题解, LeetCode]
@@ -97,7 +97,7 @@ private:
     char can[3] = {'a', 'b', 'c'};
 
     // dfs and return if can stop
-    bool dfs(string now) {
+    bool dfs(string& now) {
         if (now.size() == n) {
             k--;
             if (!k) {
@@ -112,16 +112,19 @@ private:
             if (can[i] == last) {
                 continue;
             }
-            if (dfs(now + can[i])) {
+            now += can[i];
+            if (dfs(now)) {
                 return true;
             }
+            now.pop_back();
         }
-        return false;   
+        return false;
     }
 public:
     string getHappyString(int n, int k) {
         this->n = n, this->k = k;
-        dfs("");
+        string s;
+        dfs(s);
         return ans;
     }
 };

@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-14 22:56:17
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-14 23:33:32
+ * @LastEditTime: 2026-03-15 09:45:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,7 +15,7 @@ private:
     char can[3] = {'a', 'b', 'c'};
 
     // dfs and return if can stop
-    bool dfs(string now) {
+    bool dfs(string& now) {
         if (now.size() == n) {
             k--;
             if (!k) {
@@ -30,16 +30,19 @@ private:
             if (can[i] == last) {
                 continue;
             }
-            if (dfs(now + can[i])) {
+            now += can[i];
+            if (dfs(now)) {
                 return true;
             }
+            now.pop_back();
         }
-        return false;   
+        return false;
     }
 public:
     string getHappyString(int n, int k) {
         this->n = n, this->k = k;
-        dfs("");
+        string s;
+        dfs(s);
         return ans;
     }
 };
