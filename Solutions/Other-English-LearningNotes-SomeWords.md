@@ -1873,8 +1873,11 @@ categories: [自用]
 |||
 |prohibitive|adj. (法令)禁止的，贵得买不起的|
 |||
-|deduct|v. 减去，扣除，演绎|
+|deduct|v. 减去，扣除|
 |henceforth|adv. 从此之后|
+|||
+|acrobat|n. 杂技演员|
+|photostatic|adj. 静电复印的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
