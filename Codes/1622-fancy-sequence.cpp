@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-15 10:21:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-15 11:18:10
+ * @LastEditTime: 2026-03-15 11:19:41
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,7 +27,7 @@ private:
         return ans;
     }
 public:
-    Num(): val(0) {}
+    Num(): val(0) {}  // 即得初始化val
     Num(ll n) : val(n % MOD) {}
     Num(int n) : val(n % MOD) {}
     Num operator+(const ll& b) const { return Num((val + b) % MOD); }
@@ -51,7 +51,9 @@ private:
     Num add;
     Num mul;
 public:
-    Fancy() {}
+    Fancy() {
+        mul = Num(1);
+    }
     
     void append(int val) {
         vals.push_back((Num(val) - add) / mul);
