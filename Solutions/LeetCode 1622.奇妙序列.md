@@ -115,7 +115,7 @@ private:
         return ans;
     }
 public:
-    Num(): val(0) {}  // 即得初始化val
+    Num(): val(0) {}  // 记得初始化val
     Num(ll n) : val(n % MOD) {}
     Num(int n) : val(n % MOD) {}
     Num operator+(const ll& b) const { return Num((val + b) % MOD); }
