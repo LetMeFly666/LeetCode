@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-15 10:21:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-15 10:56:07
+ * @LastEditTime: 2026-03-15 10:59:43
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -14,8 +14,34 @@
 */
 
 typedef long long ll;
-
 const ll MOD = 1e9 + 7;
+
+class Fancy {
+private:
+    vector<Num> vals;
+    Num add;
+    Num mul;
+public:
+    Fancy() {}
+    
+    void append(int val) {
+        vals.push_back((Num(val) - add) / mul);
+    }
+    
+    void addAll(int inc) {
+        add += inc;
+    }
+    
+    void multAll(int m) {
+        add *= m;
+        mul *= m;
+    }
+    
+    int getIndex(int idx) {
+        return idx >= vals.size() ? -1 : (int)vals[idx];
+    }
+};
+
 class Num {
 private:
     ll val;
@@ -45,32 +71,6 @@ public:
     Num& operator*=(const ll& b) { return *this = *this * b; }
     Num& operator/=(const ll& b) { return *this = *this / b; }
     operator int() const { return static_cast<int>(val); }
-};
-
-class Fancy {
-private:
-    vector<Num> vals;
-    Num add;
-    Num mul;
-public:
-    Fancy() {}
-    
-    void append(int val) {
-        vals.push_back((Num(val) - add) / mul);
-    }
-    
-    void addAll(int inc) {
-        add += inc;
-    }
-    
-    void multAll(int m) {
-        add *= m;
-        mul *= m;
-    }
-    
-    int getIndex(int idx) {
-        return idx >= vals.size() ? -1 : (int)vals[idx];
-    }
 };
 
 /**
