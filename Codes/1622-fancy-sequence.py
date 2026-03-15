@@ -25,7 +25,7 @@ class Fancy:
     def getIndex(self, idx: int) -> int:
         if idx >= len(self.vals):
             return -1
-        return (self.vals[idx] + self.add) * self.mul % MOD
+        return (self.vals[idx] * self.mul + self.add) % MOD
 
 
 # Your Fancy object will be instantiated and called as such:
