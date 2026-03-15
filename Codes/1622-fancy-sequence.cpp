@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-15 10:21:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-15 11:09:44
+ * @LastEditTime: 2026-03-15 11:11:33
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -48,8 +48,8 @@ public:
 class Fancy {
 private:
     vector<Num> vals;
-    Num add;
-    Num mul;
+    Num add = Num();
+    Num mul = Num();
 public:
     Fancy() {}
     
