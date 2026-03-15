@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AI创作声明：以下内容由大模型总结自我与大模型的对话。  Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6) 作为一名后端开发工程师，你迟早会遇到服务器内存不够用的窘境。本文将带你深入理解 Linux Swap 的工作原理，并手把手教你如何正确地创建、启用和调优 Swap 文件。   目录 什么是 Swap？ Swap 分区 vs S">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Linux-SwapMemSetting.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="AI创作声明：以下内容由大模型总结自我与大模型的对话。  Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6) 作为一名后端开发工程师，你迟早会遇到服务器内存不够用的窘境。本文将带你深入理解 Linux Swap 的工作原理，并手把手教你如何正确地创建、启用和调优 Swap 文件。   目录 什么是 Swap？ Swap 分区 vs S">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-15T02:04:45.000Z">
+<meta property="article:modified_time" content="2026-03-15T05:30:19.469Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="其他">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6) - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <blockquote>
+<p>AI创作声明：以下内容由大模型总结自我与大模型的对话。</p>
+</blockquote>
+<h1 id="Linux-Swap-文件完全指南：从创建到调优-Written-By-AI-Claude-Opus4-6"><a href="#Linux-Swap-文件完全指南：从创建到调优-Written-By-AI-Claude-Opus4-6" class="headerlink" title="Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)"></a>Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)</h1><blockquote>
+<p>作为一名后端开发工程师，你迟早会遇到服务器内存不够用的窘境。本文将带你深入理解 Linux Swap 的工作原理，并手把手教你如何正确地创建、启用和调优 Swap 文件。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-swap">什么是 Swap？</a></li>
+<li><a href="#swap-%E5%88%86%E5%8C%BA-vs-swap-%E6%96%87%E4%BB%B6">Swap 分区 vs Swap 文件</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81-swap">什么时候需要 Swap？</a></li>
+<li><a href="#%E5%AE%9E%E6%88%986-%E6%AD%A5%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%90%AF%E7%94%A8-swap-%E6%96%87%E4%BB%B6">实战：6 步创建并启用 Swap 文件</a></li>
+<li><a href="#%E8%BF%9B%E9%98%B6swappiness-%E8%B0%83%E4%BC%98">进阶：Swappiness 调优</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5">常见问题排查</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ol>
+<hr>
+<h2 id="什么是-Swap？"><a href="#什么是-Swap？" class="headerlink" title="什么是 Swap？"></a>什么是 Swap？</h2><p>Swap（交换空间）是 Linux 内存管理机制的重要组成部分。简单来说，它是磁盘上的一块区域，充当物理内存（RAM）的”溢出缓冲区”。</p>
+<p>当系统的物理内存即将耗尽时，Linux 内核会将一些<strong>不活跃的内存页</strong>（inactive pages）从 RAM 移动到 Swap 空间中，从而释放 RAM 给更急需的进程使用。当这些被换出的内存页再次被访问时，内核会将它们从 Swap 读回到 RAM——这个过程叫做 <strong>swap in</strong>（换入）。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs scss">┌─────────────────────────────────────────────┐<br>│                   RAM (物理内存)              │<br>│                                             │<br>│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐       │<br>│  │ 进程<span class="hljs-selector-tag">A</span> │ │ 进程<span class="hljs-selector-tag">B</span> │ │ 进程C │ │ 进程D │       │<br>│  │(活跃) │ │(活跃) │ │(不活跃)│ │(活跃) │       │<br>│  └──────┘ └──────┘ └──┬───┘ └──────┘       │<br>│                        │                     │<br>│                  内存不足时                    │<br>│                   swap out                   │<br>│                        │                     │<br>└────────────────────────┼────────────────────┘<br>                         ▼<br>┌─────────────────────────────────────────────┐<br>│              Swap 空间 (磁盘)                │<br>│                                             │<br>│  ┌──────────────────────────┐               │<br>│  │  进程C 的不活跃内存页      │               │<br>│  │  (等待被再次访问时 swap in) │               │<br>│  └──────────────────────────┘               │<br>└─────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<h3 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念"></a>关键概念</h3><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Swap Out</strong></td>
+<td>内核将不活跃内存页从 RAM 写入 Swap 空间</td>
+</tr>
+<tr>
+<td><strong>Swap In</strong></td>
+<td>内核将之前换出的页从 Swap 空间读回 RAM</td>
+</tr>
+<tr>
+<td><strong>Page</strong></td>
+<td>内存管理的最小单位，通常为 4KB</td>
+</tr>
+<tr>
+<td><strong>Swappiness</strong></td>
+<td>内核使用 Swap 的积极程度（0-200，默认60）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Swap-分区-vs-Swap-文件"><a href="#Swap-分区-vs-Swap-文件" class="headerlink" title="Swap 分区 vs Swap 文件"></a>Swap 分区 vs Swap 文件</h2><p>Linux 支持两种 Swap 实现方式：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Swap 分区</th>
+<th>Swap 文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>创建方式</strong></td>
+<td>需要独立磁盘分区</td>
+<td>普通文件即可</td>
+</tr>
+<tr>
+<td><strong>灵活性</strong></td>
+<td>创建后难以调整大小</td>
+<td>可随时创建、删除、调整</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>理论上略好（无文件系统开销）</td>
+<td>现代内核下差异极小</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>安装时规划好的服务器</td>
+<td>云服务器、VPS、临时扩展</td>
+</tr>
+<tr>
+<td><strong>推荐度</strong></td>
+<td>★★★☆☆</td>
+<td>★★★★★（现代主流方案）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>结论</strong>：除非你有非常特殊的性能需求，否则 <strong>Swap 文件是更好的选择</strong>——灵活、简单、易管理。自 Linux 内核 2.6 以来，Swap 文件的性能已经与 Swap 分区几乎没有差别。</p>
+</blockquote>
+<hr>
+<h2 id="什么时候需要-Swap？"><a href="#什么时候需要-Swap？" class="headerlink" title="什么时候需要 Swap？"></a>什么时候需要 Swap？</h2><h3 id="推荐的-Swap-大小"><a href="#推荐的-Swap-大小" class="headerlink" title="推荐的 Swap 大小"></a>推荐的 Swap 大小</h3><table>
+<thead>
+<tr>
+<th>物理内存 (RAM)</th>
+<th>推荐 Swap 大小</th>
+<th>需要休眠时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>≤ 2 GB</td>
+<td>2× RAM</td>
+<td>3× RAM</td>
+</tr>
+<tr>
+<td>2 – 8 GB</td>
+<td>等于 RAM</td>
+<td>2× RAM</td>
+</tr>
+<tr>
+<td>8 – 64 GB</td>
+<td>至少 4 GB</td>
+<td>1.5× RAM</td>
+</tr>
+<tr>
+<td>&gt; 64 GB</td>
+<td>至少 4 GB</td>
+<td>不建议休眠</td>
+</tr>
+</tbody></table>
+<h3 id="必须配置-Swap-的场景"><a href="#必须配置-Swap-的场景" class="headerlink" title="必须配置 Swap 的场景"></a>必须配置 Swap 的场景</h3><ul>
+<li><strong>小内存 VPS&#x2F;云服务器</strong>（1-2GB RAM）：编译代码、运行数据库时容易 OOM</li>
+<li><strong>运行 Java 应用</strong>：JVM 的内存占用往往超出预期</li>
+<li><strong>需要休眠（Hibernate）</strong>：休眠时整个 RAM 内容会写入 Swap</li>
+<li><strong>数据库服务器</strong>：MySQL&#x2F;PostgreSQL 等在高并发时可能突发内存需求</li>
+</ul>
+<h3 id="不太需要-Swap-的场景"><a href="#不太需要-Swap-的场景" class="headerlink" title="不太需要 Swap 的场景"></a>不太需要 Swap 的场景</h3><ul>
+<li>内存充足（&gt;64GB）且负载可预测的专用服务器</li>
+<li>对延迟极其敏感的实时系统（Swap I&#x2F;O 会引入不可预测的延迟）</li>
+</ul>
+<hr>
+<h2 id="实战：6-步创建并启用-Swap-文件"><a href="#实战：6-步创建并启用-Swap-文件" class="headerlink" title="实战：6 步创建并启用 Swap 文件"></a>实战：6 步创建并启用 Swap 文件</h2><p>以下是在 Ubuntu&#x2F;Debian 系统上创建 2GB Swap 文件的完整步骤。每一步都有详细解释。</p>
+<h3 id="Step-1：分配磁盘空间"><a href="#Step-1：分配磁盘空间" class="headerlink" title="Step 1：分配磁盘空间"></a>Step 1：分配磁盘空间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> fallocate -l 2G /swapfile<br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sudo</code></td>
+<td>以 root 权限执行（在根目录创建文件需要）</td>
+</tr>
+<tr>
+<td><code>fallocate</code></td>
+<td>快速分配磁盘空间，不实际写入数据，几乎瞬间完成</td>
+</tr>
+<tr>
+<td><code>-l 2G</code></td>
+<td><code>--length</code> 的缩写，指定文件大小为 2 GiB</td>
+</tr>
+<tr>
+<td><code>/swapfile</code></td>
+<td>文件路径，惯例放在根目录下</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么用 <code>fallocate</code> 而不是 <code>dd</code>？</strong></p>
+<p>传统方式是 <code>dd if=/dev/zero of=/swapfile bs=1M count=2048</code>，它会逐块写入零数据，2GB 可能需要几十秒。而 <code>fallocate</code> 直接在文件系统层面预留空间，速度快几个数量级。</p>
+<p><strong>注意</strong>：<code>fallocate</code> 在某些文件系统（如 <code>btrfs</code>、<code>ZFS</code>）上可能不支持，此时需回退到 <code>dd</code> 方式。</p>
+</blockquote>
+<h3 id="Step-2：锁定文件权限"><a href="#Step-2：锁定文件权限" class="headerlink" title="Step 2：锁定文件权限"></a>Step 2：锁定文件权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> 600 /swapfile<br></code></pre></td></tr></table></figure>
+
+<p>权限 <code>600</code> 的含义：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vhdl"><span class="hljs-number">6</span>   <span class="hljs-number">0</span>   <span class="hljs-number">0</span><br>│   │   └── 其他用户（<span class="hljs-keyword">others</span>）：无任何权限<br>│   └────── 所属组（<span class="hljs-keyword">group</span>）：无任何权限<br>└────────── 文件所有者（root）：读(<span class="hljs-number">4</span>) + 写(<span class="hljs-number">2</span>) = <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>为什么这一步至关重要？</strong> Swap 文件中存储的是从内存换出的数据，可能包含密码、密钥、数据库记录等敏感信息。如果其他用户可以读取 swap 文件，就等于可以窥探其他进程的内存内容——这是严重的安全漏洞。</p>
+<p>如果跳过这一步，<code>swapon</code> 会发出警告：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">swapon: /swapfile:</span> <span class="hljs-string">insecure</span> <span class="hljs-string">permissions</span> <span class="hljs-number">0644</span><span class="hljs-string">,</span> <span class="hljs-number">0600 </span><span class="hljs-string">suggested.</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Step-3：格式化为-Swap-格式"><a href="#Step-3：格式化为-Swap-格式" class="headerlink" title="Step 3：格式化为 Swap 格式"></a>Step 3：格式化为 Swap 格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> mkswap /swapfile<br></code></pre></td></tr></table></figure>
+
+<p><code>mkswap</code>（<strong>m</strong>a<strong>k</strong>e <strong>swap</strong>）在文件头部写入 swap 签名和元数据：</p>
+<ul>
+<li><strong>Magic number</strong>：标识这是一个合法的 swap 空间</li>
+<li><strong>UUID</strong>：唯一标识符</li>
+<li><strong>页大小信息</strong>：通常为 4096 bytes</li>
+<li><strong>可用页数</strong>：总空间除以页大小</li>
+</ul>
+<p>典型输出：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Setting</span> up swapspace version <span class="hljs-number">1</span>, size = <span class="hljs-number">2</span> GiB (<span class="hljs-number">2147479552</span> bytes)<br><span class="hljs-attribute">no</span> label, UUID=a1b2c3d4-e5f6-<span class="hljs-number">7890</span>-abcd-ef1234567890<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这一步类似于用 <code>mkfs.ext4</code> 格式化磁盘分区——都是在存储介质上建立特定格式的数据结构，只不过这里的格式是 swap。</p>
+</blockquote>
+<h3 id="Step-4：立即激活-Swap"><a href="#Step-4：立即激活-Swap" class="headerlink" title="Step 4：立即激活 Swap"></a>Step 4：立即激活 Swap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> swapon /swapfile<br></code></pre></td></tr></table></figure>
+
+<p>执行后，Linux 内核<strong>立即开始使用</strong>该文件作为交换空间。这是即时生效的，无需重启。</p>
+<p>但有一个问题：<strong>这只是临时生效</strong>——系统重启后，这个 swap 就不会自动挂载了。所以我们需要下一步。</p>
+<h3 id="Step-5：持久化配置（开机自动挂载）"><a href="#Step-5：持久化配置（开机自动挂载）" class="headerlink" title="Step 5：持久化配置（开机自动挂载）"></a>Step 5：持久化配置（开机自动挂载）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/swapfile none swap sw 0 0&#x27;</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> -a /etc/fstab<br></code></pre></td></tr></table></figure>
+
+<p><strong>命令拆解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>echo &#39;...&#39;</code></td>
+<td>输出配置字符串</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>管道符，传递给下一个命令</td>
+</tr>
+<tr>
+<td><code>sudo tee -a</code></td>
+<td>以 root 权限<strong>追加</strong>写入文件（<code>-a</code> &#x3D; append）</td>
+</tr>
+<tr>
+<td><code>/etc/fstab</code></td>
+<td><strong>F</strong>ile <strong>S</strong>ystem <strong>Tab</strong>le，系统启动时读取的挂载配置表</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>为什么不用 <code>sudo echo &#39;...&#39; &gt;&gt; /etc/fstab</code>？</strong></p>
+<p>因为 <code>&gt;&gt;</code> 重定向是由<strong>当前 shell</strong> 执行的，而当前 shell 是普通用户权限。<code>sudo</code> 只提升了 <code>echo</code> 的权限，<code>&gt;&gt;</code> 操作仍然会因权限不足而失败。<code>tee</code> 命令本身被 <code>sudo</code> 提权，所以可以成功写入。这是 Linux 中一个经典的权限”坑”。</p>
+</blockquote>
+<p><strong>fstab 条目解析</strong>：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">/swapfile   none   <span class="hljs-keyword">swap</span>   sw   <span class="hljs-number">0</span>   <span class="hljs-number">0</span><br>    │         │      │     │   │   │<br>    │         │      │     │   │   └── fsck 顺序：<span class="hljs-number">0</span> = 启动时不检查<br>    │         │      │     │   └────── dump 备份：<span class="hljs-number">0</span> = 不需要备份<br>    │         │      │     └────────── 挂载选项：sw = <span class="hljs-keyword">swap</span> 默认选项<br>    │         │      └──────────────── 文件系统类型：<span class="hljs-keyword">swap</span><br>    │         └─────────────────────── 挂载点：none（<span class="hljs-keyword">swap</span> 不挂载到目录树）<br>    └───────────────────────────────── 设备/文件路径<br></code></pre></td></tr></table></figure>
+
+<h3 id="Step-6：验证"><a href="#Step-6：验证" class="headerlink" title="Step 6：验证"></a>Step 6：验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">swapon --show<br></code></pre></td></tr></table></figure>
+
+<p>预期输出：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fortran"><span class="hljs-keyword">NAME</span>      <span class="hljs-keyword">TYPE</span>  <span class="hljs-built_in">SIZE</span>  USED  PRIO<br>/swapfile <span class="hljs-keyword">file</span>    <span class="hljs-number">2</span>G    <span class="hljs-number">0</span>B    -<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NAME</strong></td>
+<td>swap 设备&#x2F;文件路径</td>
+</tr>
+<tr>
+<td><strong>TYPE</strong></td>
+<td><code>file</code>（文件）或 <code>partition</code>（分区）</td>
+</tr>
+<tr>
+<td><strong>SIZE</strong></td>
+<td>总大小</td>
+</tr>
+<tr>
+<td><strong>USED</strong></td>
+<td>已使用量</td>
+</tr>
+<tr>
+<td><strong>PRIO</strong></td>
+<td>优先级，数值越大越优先使用</td>
+</tr>
+</tbody></table>
+<p>其他验证方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看内存和 swap 概况</span><br>free -h<br><br><span class="hljs-comment"># 查看 /proc 虚拟文件系统中的 swap 信息</span><br><span class="hljs-built_in">cat</span> /proc/swaps<br><br><span class="hljs-comment"># 查看内存详细信息</span><br><span class="hljs-built_in">cat</span> /proc/meminfo | grep -i swap<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="进阶：Swappiness-调优"><a href="#进阶：Swappiness-调优" class="headerlink" title="进阶：Swappiness 调优"></a>进阶：Swappiness 调优</h2><h3 id="什么是-Swappiness？"><a href="#什么是-Swappiness？" class="headerlink" title="什么是 Swappiness？"></a>什么是 Swappiness？</h3><p><code>swappiness</code> 是一个内核参数，控制内核将内存页换出到 Swap 的积极程度：</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>0</code></td>
+<td>尽可能不使用 swap（仅在内存极度不足时使用）</td>
+</tr>
+<tr>
+<td><code>10</code></td>
+<td>推荐的服务器设置，减少 swap 使用</td>
+</tr>
+<tr>
+<td><code>60</code></td>
+<td>默认值，平衡策略</td>
+</tr>
+<tr>
+<td><code>100</code></td>
+<td>积极使用 swap</td>
+</tr>
+</tbody></table>
+<h3 id="查看当前值"><a href="#查看当前值" class="headerlink" title="查看当前值"></a>查看当前值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
+
+<h3 id="临时修改（立即生效，重启失效）"><a href="#临时修改（立即生效，重启失效）" class="headerlink" title="临时修改（立即生效，重启失效）"></a>临时修改（立即生效，重启失效）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> sysctl vm.swappiness=10<br></code></pre></td></tr></table></figure>
+
+<h3 id="永久修改"><a href="#永久修改" class="headerlink" title="永久修改"></a>永久修改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;vm.swappiness=10&#x27;</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> -a /etc/sysctl.conf<br><span class="hljs-built_in">sudo</span> sysctl -p  <span class="hljs-comment"># 重新加载配置</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="调优建议"><a href="#调优建议" class="headerlink" title="调优建议"></a>调优建议</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐 swappiness</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据库服务器</td>
+<td>1 - 10</td>
+<td>数据库有自己的缓存管理，频繁 swap 会严重影响查询性能</td>
+</tr>
+<tr>
+<td>Web 服务器</td>
+<td>10 - 30</td>
+<td>减少不必要的 swap，保持响应速度</td>
+</tr>
+<tr>
+<td>桌面系统</td>
+<td>40 - 60</td>
+<td>平衡内存使用和应用响应性</td>
+</tr>
+<tr>
+<td>内存紧张的 VPS</td>
+<td>60 - 80</td>
+<td>更积极地使用 swap，避免 OOM</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="常见问题排查"><a href="#常见问题排查" class="headerlink" title="常见问题排查"></a>常见问题排查</h2><h3 id="1-fallocate-报错-“fallocate-fallocate-failed-Operation-not-supported”"><a href="#1-fallocate-报错-“fallocate-fallocate-failed-Operation-not-supported”" class="headerlink" title="1. fallocate 报错 “fallocate: fallocate failed: Operation not supported”"></a>1. <code>fallocate</code> 报错 “fallocate: fallocate failed: Operation not supported”</h3><p><strong>原因</strong>：文件系统不支持 <code>fallocate</code>（如 <code>btrfs</code>、某些网络文件系统）。</p>
+<p><strong>解决</strong>：改用 <code>dd</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/zero of=/swapfile bs=1M count=2048 status=progress<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-swapon-报错-“swapon-swapfile-read-swap-header-failed”"><a href="#2-swapon-报错-“swapon-swapfile-read-swap-header-failed”" class="headerlink" title="2. swapon 报错 “swapon: &#x2F;swapfile: read swap header failed”"></a>2. <code>swapon</code> 报错 “swapon: &#x2F;swapfile: read swap header failed”</h3><p><strong>原因</strong>：忘记执行 <code>mkswap</code> 格式化步骤。</p>
+<p><strong>解决</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> mkswap /swapfile<br><span class="hljs-built_in">sudo</span> swapon /swapfile<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-重启后-Swap-消失"><a href="#3-重启后-Swap-消失" class="headerlink" title="3. 重启后 Swap 消失"></a>3. 重启后 Swap 消失</h3><p><strong>原因</strong>：没有将配置写入 <code>/etc/fstab</code>。</p>
+<p><strong>验证</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/fstab | grep swap<br></code></pre></td></tr></table></figure>
+
+<p>如果没有输出，执行 Step 5 添加配置。</p>
+<h3 id="4-如何关闭并删除-Swap-文件？"><a href="#4-如何关闭并删除-Swap-文件？" class="headerlink" title="4. 如何关闭并删除 Swap 文件？"></a>4. 如何关闭并删除 Swap 文件？</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 关闭 swap</span><br><span class="hljs-built_in">sudo</span> swapoff /swapfile<br><br><span class="hljs-comment"># 2. 从 fstab 中移除对应行</span><br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;/\/swapfile/d&#x27;</span> /etc/fstab<br><br><span class="hljs-comment"># 3. 删除文件</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">rm</span> /swapfile<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-如何调整-Swap-大小？"><a href="#5-如何调整-Swap-大小？" class="headerlink" title="5. 如何调整 Swap 大小？"></a>5. 如何调整 Swap 大小？</h3><p>无法直接调整，需要先关闭旧的，再创建新的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> swapoff /swapfile<br><span class="hljs-built_in">sudo</span> fallocate -l 4G /swapfile   <span class="hljs-comment"># 改为 4GB</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> 600 /swapfile<br><span class="hljs-built_in">sudo</span> mkswap /swapfile<br><span class="hljs-built_in">sudo</span> swapon /swapfile<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="完整命令速查"><a href="#完整命令速查" class="headerlink" title="完整命令速查"></a>完整命令速查</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># === 创建并启用 2G Swap ===</span><br><span class="hljs-built_in">sudo</span> fallocate -l 2G /swapfile       <span class="hljs-comment"># 1. 分配空间</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chmod</span> 600 /swapfile             <span class="hljs-comment"># 2. 设置权限</span><br><span class="hljs-built_in">sudo</span> mkswap /swapfile                <span class="hljs-comment"># 3. 格式化</span><br><span class="hljs-built_in">sudo</span> swapon /swapfile                <span class="hljs-comment"># 4. 激活</span><br><br><span class="hljs-comment"># === 持久化 ===</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;/swapfile none swap sw 0 0&#x27;</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> -a /etc/fstab<br><br><span class="hljs-comment"># === 验证 ===</span><br>swapon --show<br>free -h<br><br><span class="hljs-comment"># === 调优 (可选) ===</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;vm.swappiness=10&#x27;</span> | <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> -a /etc/sysctl.conf<br><span class="hljs-built_in">sudo</span> sysctl -p<br></code></pre></td></tr></table></figure>
+
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss">创建文件 ──→ 锁定权限 ──→ 格式化 ──→ 激活 ──→ 持久化 ──→ 验证<br>fallocate    chmod <span class="hljs-number">600</span>    mkswap     swapon    fstab      swapon <span class="hljs-attr">--show</span><br>  (快速)      (安全)     (初始化)   (即时生效)  (永久生效)   (确认状态)<br></code></pre></td></tr></table></figure>
+
+<p>Swap 是 Linux 内存管理中不可或缺的一环。即使你的服务器有充足的内存，配置一个合理大小的 Swap 也是一种良好的实践——它为你的系统提供了一个安全网，在内存使用突增时避免 OOM Killer 直接杀死进程。</p>
+<p>希望这篇文章对你有帮助！如果有任何疑问，欢迎在评论区讨论。</p>
+<hr>
+<p><em>作者：一个曾经因为没配 Swap 而在凌晨被 OOM 告警吵醒的程序员 🙃</em></p>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/159080576">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，(AI)创作不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/03/15/Other-Linux-SwapMemSetting/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

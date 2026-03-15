@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】1622.奇妙序列：懒更新力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;fancy-sequence&#x2F; 请你实现三个 API append，addAll 和 multAll 来实现奇妙序列。  请实现 Fancy 类 ：   	Fancy() 初始化一个空序列对象。 	void append(val) 将整数 val 添加在序列末尾。 	void ad">
+<meta property="og:type" content="website">
+<meta property="og:title" content="1622.奇妙序列：懒更新">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%201622.%E5%A5%87%E5%A6%99%E5%BA%8F%E5%88%97.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】1622.奇妙序列：懒更新力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;fancy-sequence&#x2F; 请你实现三个 API append，addAll 和 multAll 来实现奇妙序列。  请实现 Fancy 类 ：   	Fancy() 初始化一个空序列对象。 	void append(val) 将整数 val 添加在序列末尾。 	void ad">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-15T03:27:36.000Z">
+<meta property="article:modified_time" content="2026-03-15T05:29:45.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="困难">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="设计">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>1622.奇妙序列：懒更新 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="1622.奇妙序列：懒更新"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】1622-奇妙序列：懒更新"><a href="#【LetMeFly】1622-奇妙序列：懒更新" class="headerlink" title="【LetMeFly】1622.奇妙序列：懒更新"></a>【LetMeFly】1622.奇妙序列：懒更新</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fancy-sequence/">https://leetcode.cn/problems/fancy-sequence/</a></p>
+<p>请你实现三个 API <code>append</code>，<code>addAll</code> 和 <code>multAll</code> 来实现奇妙序列。</p>
+
+<p>请实现 <code>Fancy</code> 类 ：</p>
+
+<ul>
+	<li><code>Fancy()</code> 初始化一个空序列对象。</li>
+	<li><code>void append(val)</code> 将整数 <code>val</code> 添加在序列末尾。</li>
+	<li><code>void addAll(inc)</code> 将所有序列中的现有数值都增加 <code>inc</code> 。</li>
+	<li><code>void multAll(m)</code> 将序列中的所有现有数值都乘以整数 <code>m</code> 。</li>
+	<li><code>int getIndex(idx)</code> 得到下标为 <code>idx</code> 处的数值（下标从 0 开始），并将结果对 <code>10<sup>9</sup> + 7</code> 取余。如果下标大于等于序列的长度，请返回 <code>-1</code> 。</li>
+</ul>
+
+<p> </p>
+
+<p><strong>示例：</strong></p>
+
+<pre>
+<strong>输入：</strong>
+["Fancy", "append", "addAll", "append", "multAll", "getIndex", "addAll", "append", "multAll", "getIndex", "getIndex", "getIndex"]
+[[], [2], [3], [7], [2], [0], [3], [10], [2], [0], [1], [2]]
+<strong>输出：</strong>
+[null, null, null, null, null, 10, null, null, null, 26, 34, 20]
+
+<strong>解释：</strong>
+Fancy fancy = new Fancy();
+fancy.append(2);   // 奇妙序列：[2]
+fancy.addAll(3);   // 奇妙序列：[2+3] -> [5]
+fancy.append(7);   // 奇妙序列：[5, 7]
+fancy.multAll(2);  // 奇妙序列：[5*2, 7*2] -> [10, 14]
+fancy.getIndex(0); // 返回 10
+fancy.addAll(3);   // 奇妙序列：[10+3, 14+3] -> [13, 17]
+fancy.append(10);  // 奇妙序列：[13, 17, 10]
+fancy.multAll(2);  // 奇妙序列：[13*2, 17*2, 10*2] -> [26, 34, 20]
+fancy.getIndex(0); // 返回 26
+fancy.getIndex(1); // 返回 34
+fancy.getIndex(2); // 返回 20
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 <= val, inc, m <= 100</code></li>
+	<li><code>0 <= idx <= 10<sup>5</sup></code></li>
+	<li>总共最多会有 <code>10<sup>5</sup></code> 次对 <code>append</code>，<code>addAll</code>，<code>multAll</code> 和 <code>getIndex</code> 的调用。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：懒加载"><a href="#解题方法：懒加载" class="headerlink" title="解题方法：懒加载"></a>解题方法：懒加载</h2><p><strong>先看加法</strong></p>
+<p>假设这道题只有加法操作没有乘法操作，应该怎么做？每次<code>addAll</code>操作都把所有数加上个$inc$？太耗时了，时间复杂度直接干到了$O(n^2)$。</p>
+<p>所以我们很容易想到懒加载，<code>addAll</code>操作到时候不真的加，只有<code>getIndex</code>读取一个数的时候再一块加上。使用一个变量$add$存储每个数应该加上多少就可以了。</p>
+<p>但是<code>append</code>操作呢？新<code>append</code>的$m$发生在之前的<code>addAll</code>之后，$m$不应该加上已经累积的$add$。所以<code>append</code>的时候直接把$m$减去$add$再加入数组中就可以了，这样读取到时候剪去的$add$还会再加回来。</p>
+<p><strong>加上乘法</strong></p>
+<p>乘法操作也类似，使用一个变量$mul$记录每个数应该乘以多少就好了。但是注意：</p>
+<blockquote>
+<p>例如一个数$a$应有的操作是：$(a+add)\times mul$，那么其实相当于$a\times mul + add\times mul$。（令$add_{new}&#x3D;add\times mul$则相当于$a\times mul + add_{new}$）</p>
+</blockquote>
+<p>所以乘法操作时不但需要累乘$mul$，还要将加数$add$也乘上$mul$变成新的加数$add$。</p>
+<p>但是<code>append</code>操作呢？和只有加法时候同理，由于<code>getIndex</code>读数时需要$a\times mul+add$，所以<code>append</code>$val$的时候提前剪去$add$再除以$mul$就好了，即<code>append</code>一个$\frac{val-add}{mul}$。</p>
+<p><strong>模运算</strong></p>
+<p>好在模运算具有分配律，$(a+b)% MOD &#x3D; (a % MOD + b% MOD)% MOD，$所以可以在加减乘除运算过程中多次取模结果不变。</p>
+<blockquote>
+<p>注意质数模运算下的除法中，$a$除以$b$对质数$MOD$取模等于$a$乘以$b$对$MOD$的逆元，即$\frac{a}{b}\mod MOD &#x3D; a\times b^{MOD-2}\mod MOD$，而$b^{x}$可以使用快速幂在$\log x$的时间复杂度内求出。</p>
+</blockquote>
+<ul>
+<li>时间复杂度：append操作$O(\log MOD)$，其他操作$O(1)$</li>
+<li>空间复杂度$O(a)$，其中$a$是append的次数</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @LastEditTime: 2026-03-15 11:19:41</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><span class="hljs-type">const</span> ll MOD = <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Num</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    ll val;<br><br>    <span class="hljs-function">ll <span class="hljs-title">power</span><span class="hljs-params">(ll a, ll n)</span> <span class="hljs-type">const</span> </span>&#123;<br>        ll ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (; n; n &gt;&gt;= <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">if</span> (n &amp; <span class="hljs-number">1</span>) &#123;<br>                ans = ans * a % MOD;<br>            &#125;<br>            a = a * a % MOD;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Num</span>(): <span class="hljs-built_in">val</span>(<span class="hljs-number">0</span>) &#123;&#125;  <span class="hljs-comment">// 记得初始化val</span><br>    <span class="hljs-built_in">Num</span>(ll n) : <span class="hljs-built_in">val</span>(n % MOD) &#123;&#125;<br>    <span class="hljs-built_in">Num</span>(<span class="hljs-type">int</span> n) : <span class="hljs-built_in">val</span>(n % MOD) &#123;&#125;<br>    Num <span class="hljs-keyword">operator</span>+(<span class="hljs-type">const</span> ll&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>((val + b) % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>-(<span class="hljs-type">const</span> ll&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>((val - b + MOD) % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>*(<span class="hljs-type">const</span> ll&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>(val * b % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>/(<span class="hljs-type">const</span> ll&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>(val * <span class="hljs-built_in">power</span>(b, MOD - <span class="hljs-number">2</span>) % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>+(<span class="hljs-type">const</span> Num&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>((val + b.val) % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>-(<span class="hljs-type">const</span> Num&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>((val - b.val + MOD) % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>*(<span class="hljs-type">const</span> Num&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>(val * b.val % MOD); &#125;<br>    Num <span class="hljs-keyword">operator</span>/(<span class="hljs-type">const</span> Num&amp; b) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">Num</span>(val * <span class="hljs-built_in">power</span>(b.val, MOD - <span class="hljs-number">2</span>) % MOD); &#125;<br>    Num&amp; <span class="hljs-keyword">operator</span>+=(<span class="hljs-type">const</span> ll&amp; b) &#123; <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span> = *<span class="hljs-keyword">this</span> + b; &#125;<br>    Num&amp; <span class="hljs-keyword">operator</span>-=(<span class="hljs-type">const</span> ll&amp; b) &#123; <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span> = *<span class="hljs-keyword">this</span> - b; &#125;<br>    Num&amp; <span class="hljs-keyword">operator</span>*=(<span class="hljs-type">const</span> ll&amp; b) &#123; <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span> = *<span class="hljs-keyword">this</span> * b; &#125;<br>    Num&amp; <span class="hljs-keyword">operator</span>/=(<span class="hljs-type">const</span> ll&amp; b) &#123; <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span> = *<span class="hljs-keyword">this</span> / b; &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">operator</span> <span class="hljs-title">int</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">static_cast</span>&lt;<span class="hljs-type">int</span>&gt;(val); &#125;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Fancy</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    vector&lt;Num&gt; vals;<br>    Num add;<br>    Num mul;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Fancy</span>() &#123;<br>        mul = <span class="hljs-built_in">Num</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">append</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> </span>&#123;<br>        vals.<span class="hljs-built_in">push_back</span>((<span class="hljs-built_in">Num</span>(val) - add) / mul);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">addAll</span><span class="hljs-params">(<span class="hljs-type">int</span> inc)</span> </span>&#123;<br>        add += inc;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">multAll</span><span class="hljs-params">(<span class="hljs-type">int</span> m)</span> </span>&#123;<br>        add *= m;<br>        mul *= m;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> idx)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> idx &gt;= vals.<span class="hljs-built_in">size</span>() ? <span class="hljs-number">-1</span> : (<span class="hljs-type">int</span>)(vals[idx] * mul + add);<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your Fancy object will be instantiated and called as such:</span><br><span class="hljs-comment"> * Fancy* obj = new Fancy();</span><br><span class="hljs-comment"> * obj-&gt;append(val);</span><br><span class="hljs-comment"> * obj-&gt;addAll(inc);</span><br><span class="hljs-comment"> * obj-&gt;multAll(m);</span><br><span class="hljs-comment"> * int param_4 = obj-&gt;getIndex(idx);</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-keyword">ifdef</span> _DEBUG</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">[&quot;Fancy&quot;,&quot;append&quot;,&quot;addAll&quot;,&quot;append&quot;,&quot;multAll&quot;,&quot;getIndex&quot;,&quot;addAll&quot;,&quot;append&quot;,&quot;multAll&quot;,&quot;getIndex&quot;,&quot;getIndex&quot;,&quot;getIndex&quot;]</span><br><span class="hljs-comment">[[],[2],[3],[7],[2],[0],[3],[10],[2],[0],[1],[2]]</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string a, b;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; a &gt;&gt; b) &#123;<br>        vector&lt;string&gt; va = <span class="hljs-built_in">stringToVectorString</span>(a);<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; vb = <span class="hljs-built_in">stringToVectorVector</span>(b);<br>        <span class="hljs-keyword">if</span> (va.<span class="hljs-built_in">size</span>() != vb.<span class="hljs-built_in">size</span>()) &#123;<br>            cout &lt;&lt; <span class="hljs-string">&quot;ERROR length&quot;</span> &lt;&lt; endl;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        Fancy fancy;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; va.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            string s = va[i];<br>            <span class="hljs-keyword">if</span> (!s.<span class="hljs-built_in">empty</span>() &amp;&amp; s[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>                s.<span class="hljs-built_in">erase</span>(s.<span class="hljs-built_in">begin</span>());<br>            &#125;<br>            <span class="hljs-keyword">if</span> (!s.<span class="hljs-built_in">empty</span>() &amp;&amp; s.<span class="hljs-built_in">back</span>() == <span class="hljs-string">&#x27;&quot;&#x27;</span>) &#123;<br>                s.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">prev</span>(s.<span class="hljs-built_in">end</span>()));<br>            &#125;<br>            <span class="hljs-type">int</span> val = vb[i].<span class="hljs-built_in">empty</span>() ? <span class="hljs-number">0</span> : vb[i][<span class="hljs-number">0</span>];<br>            <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;Fancy&quot;</span>) &#123;<br>                fancy = <span class="hljs-built_in">Fancy</span>();<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;append&quot;</span>) &#123;<br>                fancy.<span class="hljs-built_in">append</span>(val);<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;addAll&quot;</span>) &#123;<br>                fancy.<span class="hljs-built_in">addAll</span>(val);<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;multAll&quot;</span>) &#123;<br>                fancy.<span class="hljs-built_in">multAll</span>(val);<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s == <span class="hljs-string">&quot;getIndex&quot;</span>) &#123;<br>                cout &lt;&lt; fancy.<span class="hljs-built_in">getIndex</span>(val) &lt;&lt; endl;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cout &lt;&lt; <span class="hljs-string">&quot;ERROR&quot;</span> &lt;&lt; endl;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">LastEditTime: 2026-03-15 11:25:58</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br>MOD = <span class="hljs-number">1000000007</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Fancy</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-variable language_">self</span>.add = <span class="hljs-number">0</span><br>        <span class="hljs-variable language_">self</span>.mul = <span class="hljs-number">1</span><br>        <span class="hljs-variable language_">self</span>.vals = []<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">append</span>(<span class="hljs-params">self, val: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-variable language_">self</span>.vals.append((val - <span class="hljs-variable language_">self</span>.add + MOD) * <span class="hljs-built_in">pow</span>(<span class="hljs-variable language_">self</span>.mul, -<span class="hljs-number">1</span>, MOD) % MOD)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">addAll</span>(<span class="hljs-params">self, inc: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-variable language_">self</span>.add = (<span class="hljs-variable language_">self</span>.add + inc) % MOD<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">multAll</span>(<span class="hljs-params">self, m: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:<br>        <span class="hljs-variable language_">self</span>.add = <span class="hljs-variable language_">self</span>.add * m % MOD<br>        <span class="hljs-variable language_">self</span>.mul = <span class="hljs-variable language_">self</span>.mul * m % MOD<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getIndex</span>(<span class="hljs-params">self, idx: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>        <span class="hljs-keyword">if</span> idx &gt;= <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.vals):<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> (<span class="hljs-variable language_">self</span>.vals[idx] * <span class="hljs-variable language_">self</span>.mul + <span class="hljs-variable language_">self</span>.add) % MOD<br><br><br><span class="hljs-comment"># Your Fancy object will be instantiated and called as such:</span><br><span class="hljs-comment"># obj = Fancy()</span><br><span class="hljs-comment"># obj.append(val)</span><br><span class="hljs-comment"># obj.addAll(inc)</span><br><span class="hljs-comment"># obj.multAll(m)</span><br><span class="hljs-comment"># param_4 = obj.getIndex(idx)</span><br></code></pre></td></tr></table></figure>
+
+<p>这道题也可以使用线段树来做。</p>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/159079979">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/03/15/LeetCode%201622.%E5%A5%87%E5%A6%99%E5%BA%8F%E5%88%97/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
