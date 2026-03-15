@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-02-21 11:12:11
+ * @LastEditTime: 2026-03-15 13:03:28
 -->
 # LetLeet Blog
 
@@ -95,6 +95,7 @@
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
 |Linux - 内存相关 - 减小Mysql的内存占用 or 查看内存使用情况|<a href="https://blog.letmefly.xyz/2023/02/20/Other-Linux-MysqlMemReduce/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129120029">CSDN博客</a>|
 |Linux - SSH - SSH免密登录（假设已生成过rsa key pair）|<a href="https://blog.letmefly.xyz/2023/04/22/Other-Linux-SSHLoginWithoutPassword/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/130302379">CSDN博客</a>|
+|Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)|<a href="https://blog.letmefly.xyz/2026/03/15/Other-Linux-SwapMemSetting/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/159080576">CSDN博客</a>|
 |MacOS - 记录MacOS发烫的好几天 - 幕后黑手竟然是|<a href="https://blog.letmefly.xyz/2025/09/01/Other-MacOS-Logging_several_days_of_macOS_overheating/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/151087541">CSDN博客</a>|
 |MacOS - Clang使用bits/stdc++.h - 非官方(竞赛用) - 通用方法|<a href="https://blog.letmefly.xyz/2025/09/27/Other-MacOS-ClangUsingBits_stdcpp_h/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/152164818">CSDN博客</a>|
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
