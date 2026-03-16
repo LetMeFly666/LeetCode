@@ -2,15 +2,15 @@
  * @Author: LetMeFly
  * @Date: 2026-03-16 22:56:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-16 23:53:11
+ * @LastEditTime: 2026-03-17 00:04:02
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
 /*
-(i, j) -> (x, y): diag[x+1][y+1] - diag[i][j]
-(i, j) -> (x, y): anti[x+1][y] - anti[i][j+1]
+↘ (i, j) -> (x, y): diag[x+1][y+1] - diag[i][j]
+↗ (i, j) -> (x, y): anti[i+1][j] - anti[x][y+1]
 */
 class Solution {
 private:
@@ -38,8 +38,8 @@ private:
         int val = 0
             + diag[i][j + k] - diag[i - k][j]                  // ↘ [上, 右)：(i-k, j)->(i, j+k) | (i-k,j)->(i-1, j+k-1)
             + diag[i + k + 1][j + 1] - diag[i + 1][j - k + 1]  // ↘ (左, 下]：(i,j-k)->(i+k,j) | (i+1,j-k+1)->(i+k,j)
-            + anti[i - k + 2][j - 1] - anti[i][j - k + 1]      // ↗ [左, 上)：(i,j-k)->(i-k,j) | (i,j-k)->(i-k+1,j-1)
-            + anti[i + 1][j + k] - anti[i + k][j + 1];         // ↗ (下, 右]：(i+k,j)->(i,j+k) | (i+k-1,j+1)->(i,j+k)
+            + anti[i + 1][j - k] - anti[i - k + 1][j]          // ↗ [左, 上)：(i,j-k)->(i-k,j) | (i,j-k)->(i-k+1,j-1)
+            + anti[i + k][j + 1] - anti[i][j + k + 1];         // ↗ (下, 右]：(i+k,j)->(i,j+k) | (i+k-1,j+1)->(i,j+k)
         update(val);
     }
 public:
