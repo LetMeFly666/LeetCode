@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-16 22:56:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-16 23:44:05
+ * @LastEditTime: 2026-03-16 23:53:11
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,11 +18,11 @@ private:
     vector<vector<int>> diag, anti;
 
     void update(int v) {
-        if (v >= x) {
+        if (v > x) {
             z = y, y = x, x = v;
-        } else if (v >= y) {
+        } else if (v < x && v > y) {
             z = y, y = v;
-        } else if (v > z) {
+        } else if (v < y && v > z) {
             z = v;
         }
     }
@@ -38,8 +38,8 @@ private:
         int val = 0
             + diag[i][j + k] - diag[i - k][j]                  // ↘ [上, 右)：(i-k, j)->(i, j+k) | (i-k,j)->(i-1, j+k-1)
             + diag[i + k + 1][j + 1] - diag[i + 1][j - k + 1]  // ↘ (左, 下]：(i,j-k)->(i+k,j) | (i+1,j-k+1)->(i+k,j)
-            + anti[i - k + 2][j - 1] - anti[i][i - k + 1]      // ↗ [左, 上)：(i,j-k)->(i-k,j) | (i,j-k)->(i-k+1,j-1)
-            + anti[i][j + k + 1] - anti[i + k][j + 1];         //  ↗ (下, 右]：(i+k,j)->(i,j+k) | (i+k-1,j+1)->(i,j+k)
+            + anti[i - k + 2][j - 1] - anti[i][j - k + 1]      // ↗ [左, 上)：(i,j-k)->(i-k,j) | (i,j-k)->(i-k+1,j-1)
+            + anti[i + 1][j + k] - anti[i + k][j + 1];         // ↗ (下, 右]：(i+k,j)->(i,j+k) | (i+k-1,j+1)->(i,j+k)
         update(val);
     }
 public:
