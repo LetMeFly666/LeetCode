@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-03-05 22:38:46
+LastEditTime: 2026-03-16 22:56:46
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -16,6 +16,7 @@ import time
 import shutil
 import datetime
 import subprocess
+import win32clipboard
 from enum import Enum
 from urllib.parse import quote
 
@@ -205,9 +206,17 @@ def _start_clipboard_monitor():
     def _get_clipboard() -> str:
         try:
             if sys.platform == 'win32':
-                r = subprocess.run(['powershell', '-command', 'Get-Clipboard'],
-                                   capture_output=True, text=True, timeout=2)
-                return r.stdout.strip()
+                try:
+                    win32clipboard.OpenClipboard()
+                    data = win32clipboard.GetClipboardData(win32clipboard.CF_UNICODETEXT)
+                    win32clipboard.CloseClipboard()
+                    return data.strip()
+                except Exception:
+                    try:
+                        win32clipboard.CloseClipboard()
+                    except:
+                        pass
+                    return ''
             elif sys.platform == 'darwin':
                 r = subprocess.run(['pbpaste'], capture_output=True, text=True, timeout=2)
                 return r.stdout.strip()
