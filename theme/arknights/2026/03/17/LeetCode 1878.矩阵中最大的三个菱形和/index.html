@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1878.矩阵中最大的三个菱形和：斜向前缀和 | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/03/17/LeetCode%201878.%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%89%E4%B8%AA%E8%8F%B1%E5%BD%A2%E5%92%8C/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1878.矩阵中最大的三个菱形和：斜向前缀和</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-03-17T05:31:48.000Z" id="date"> 2026-03-17</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1878-矩阵中最大的三个菱形和：斜向前缀和"><a href="#【LetMeFly】1878-矩阵中最大的三个菱形和：斜向前缀和" class="headerlink" title="【LetMeFly】1878.矩阵中最大的三个菱形和：斜向前缀和"></a>【LetMeFly】1878.矩阵中最大的三个菱形和：斜向前缀和</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/get-biggest-three-rhombus-sums-in-a-grid/">https://leetcode.cn/problems/get-biggest-three-rhombus-sums-in-a-grid/</a></p>
+<p>给你一个 <code>m x n</code> 的整数矩阵 <code>grid</code> 。</p>
+
+<p><strong>菱形和</strong> 指的是 <code>grid</code> 中一个正菱形 <strong>边界</strong> 上的元素之和。本题中的菱形必须为正方形旋转45度，且四个角都在一个格子当中。下图是四个可行的菱形，每个菱形和应该包含的格子都用了相应颜色标注在图中。</p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-desc-2.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-desc-2.png" style="width: 385px; height: 385px;" />
+<p> </p>
+
+<p>注意，菱形可以是一个面积为 0 的区域，如上图中右下角的紫色菱形所示。</p>
+
+<p>请你按照 <strong>降序</strong> 返回 <code>grid</code> 中三个最大的 <strong>互不相同的菱形和</strong> 。如果不同的和少于三个，则将它们全部返回。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-ex1.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-ex1.png" style="width: 360px; height: 361px;" />
+<pre>
+<b>输入：</b>grid = [[3,4,5,1,3],[3,3,4,2,3],[20,30,200,40,10],[1,5,5,4,1],[4,3,2,2,5]]
+<b>输出：</b>[228,216,211]
+<b>解释：</b>最大的三个菱形和如上图所示。
+- 蓝色：20 + 3 + 200 + 5 = 228
+- 红色：200 + 2 + 10 + 4 = 216
+- 绿色：5 + 200 + 4 + 2 = 211
+</pre>
+
+<p><strong>示例 2：</strong></p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-ex2.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/04/23/pc73-q4-ex2.png" style="width: 217px; height: 217px;" />
+<pre>
+<b>输入：</b>grid = [[1,2,3],[4,5,6],[7,8,9]]
+<b>输出：</b>[20,9,8]
+<b>解释：</b>最大的三个菱形和如上图所示。
+- 蓝色：4 + 2 + 6 + 8 = 20
+- 红色：9 （右下角红色的面积为 0 的菱形）
+- 绿色：8 （下方中央面积为 0 的菱形）
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<b>输入：</b>grid = [[7,7,7]]
+<b>输出：</b>[7]
+<b>解释：</b>所有三个可能的菱形和都相同，所以返回 [7] 。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>m == grid.length</code></li>
+	<li><code>n == grid[i].length</code></li>
+	<li><code>1 <= m, n <= 100</code></li>
+	<li><code>1 <= grid[i][j] <= 10<sup>5</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：斜向前缀和"><a href="#解题方法：斜向前缀和" class="headerlink" title="解题方法：斜向前缀和"></a>解题方法：斜向前缀和</h2><p>严格按照以下约定计算和使用前缀和：</p>
+<ul>
+<li>↘ <code>(i, j) -&gt; (x, y)</code>: $diag[x+1][y+1] - diag[i][j]$</li>
+<li>↗ <code>(i, j) -&gt; (x, y)</code>: $anti[i+1][j] - anti[x][y+1]$</li>
+</ul>
+<p>遍历一遍原始数组我们即可得到前缀和数组。</p>
+<p>然后枚举每个菱形的中心和菱形的二分之一对角线长度$k$，依据前缀和计算4条边的长度，三个变量维护三个最大的不同周长。</p>
+<ul>
+<li>时间复杂度$O(nm\min(m,n))$</li>
+<li>空间复杂度$O(mn)$</li>
+</ul>
+<p>主要是很多边界值加一减一的要细心。</p>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-03-17 00:04:02</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">↘ (i, j) -&gt; (x, y): diag[x+1][y+1] - diag[i][j]</span></span><br><span class="line"><span class="comment">↗ (i, j) -&gt; (x, y): anti[i+1][j] - anti[x][y+1]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>, z = <span class="number">0</span>;  <span class="comment">// 三大</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; diag, anti;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (v &gt; x) &#123;</span><br><span class="line">            z = y, y = x, x = v;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (v &lt; x &amp;&amp; v &gt; y) &#123;</span><br><span class="line">            z = y, y = v;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (v &lt; y &amp;&amp; v &gt; z) &#123;</span><br><span class="line">            z = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">calc</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!k) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">update</span>(diag[i + <span class="number">1</span>][j + <span class="number">1</span>] - diag[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 上：i - k, j</span></span><br><span class="line">        <span class="comment">// 下：i + k, j</span></span><br><span class="line">        <span class="comment">// 左：i, j - k</span></span><br><span class="line">        <span class="comment">// 右：i, j + k</span></span><br><span class="line">        <span class="type">int</span> val = <span class="number">0</span></span><br><span class="line">            + diag[i][j + k] - diag[i - k][j]                  <span class="comment">// ↘ [上, 右)：(i-k, j)-&gt;(i, j+k) | (i-k,j)-&gt;(i-1, j+k-1)</span></span><br><span class="line">            + diag[i + k + <span class="number">1</span>][j + <span class="number">1</span>] - diag[i + <span class="number">1</span>][j - k + <span class="number">1</span>]  <span class="comment">// ↘ (左, 下]：(i,j-k)-&gt;(i+k,j) | (i+1,j-k+1)-&gt;(i+k,j)</span></span><br><span class="line">            + anti[i + <span class="number">1</span>][j - k] - anti[i - k + <span class="number">1</span>][j]          <span class="comment">// ↗ [左, 上)：(i,j-k)-&gt;(i-k,j) | (i,j-k)-&gt;(i-k+1,j-1)</span></span><br><span class="line">            + anti[i + k][j + <span class="number">1</span>] - anti[i][j + k + <span class="number">1</span>];         <span class="comment">// ↗ (下, 右]：(i+k,j)-&gt;(i,j+k) | (i+k-1,j+1)-&gt;(i,j+k)</span></span><br><span class="line">        <span class="built_in">update</span>(val);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">getBiggestThree</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = grid.<span class="built_in">size</span>(), m = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        diag = vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(m + <span class="number">1</span>));  <span class="comment">// ↘</span></span><br><span class="line">        anti = vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(m + <span class="number">1</span>));  <span class="comment">// ↖</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                diag[i + <span class="number">1</span>][j + <span class="number">1</span>] = diag[i][j] + grid[i][j];</span><br><span class="line">                anti[i + <span class="number">1</span>][j] = anti[i][j + <span class="number">1</span>] + grid[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>, max_k = <span class="built_in">min</span>(i, <span class="built_in">min</span>(j, <span class="built_in">min</span>(n - i - <span class="number">1</span>, m - j - <span class="number">1</span>))); k &lt;= max_k; k++) &#123;</span><br><span class="line">                    <span class="built_in">calc</span>(i, j, k);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">if</span> (x) &#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (y) &#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(y);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (z) &#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(z);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/159162029">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/03/17/LeetCode%201878.%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%89%E4%B8%AA%E8%8F%B1%E5%BD%A2%E5%92%8C/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← 下一篇 README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/03/15/LeetCode%201622.%E5%A5%87%E5%A6%99%E5%BA%8F%E5%88%97/">1622.奇妙序列：懒更新 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911878-%E7%9F%A9%E9%98%B5%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E4%B8%89%E4%B8%AA%E8%8F%B1%E5%BD%A2%E5%92%8C%EF%BC%9A%E6%96%9C%E5%90%91%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1878.矩阵中最大的三个菱形和：斜向前缀和</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%9C%E5%90%91%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：斜向前缀和</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
