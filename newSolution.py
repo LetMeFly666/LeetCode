@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-03-16 22:56:46
+LastEditTime: 2026-03-17 13:31:00
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -16,9 +16,11 @@ import time
 import shutil
 import datetime
 import subprocess
-import win32clipboard
 from enum import Enum
 from urllib.parse import quote
+
+if sys.platform == 'win32':
+    import win32clipboard
 
 argv = sys.argv
 print(argv)
