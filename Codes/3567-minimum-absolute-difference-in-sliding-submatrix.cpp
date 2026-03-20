@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-20 23:10:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-20 23:23:00
+ * @LastEditTime: 2026-03-20 23:24:53
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -25,7 +25,7 @@ public:
                 sort(vals.begin(), vals.end());
                 int diff = 1000000;
                 for (int i = 1; i < k * k; i++) {
-                    int this_diff = vals[i] - vals[j];
+                    int this_diff = vals[i] - vals[i - 1];
                     if (this_diff) {
                         diff = min(diff, abs(this_diff));
                     }
