@@ -24,8 +24,8 @@ public:
                 }
                 sort(vals.begin(), vals.end());
                 int diff = 1000000;
-                for (int i = 1; i < k * k; i++) {
-                    int this_diff = vals[i] - vals[i - 1];
+                for (int idx = 1; idx < k * k; idx++) {
+                    int this_diff = vals[idx] - vals[idx - 1];
                     if (this_diff) {
                         diff = min(diff, abs(this_diff));
                     }
