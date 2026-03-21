@@ -131,7 +131,7 @@ public:
                 for (int idx = 1; idx < k * k; idx++) {
                     int this_diff = vals[idx] - vals[idx - 1];
                     if (this_diff) {
-                        diff = min(diff, abs(this_diff));
+                        diff = min(diff, this_diff);
                     }
                 }
                 ans[i][j] = diff == 1000000 ? 0 : diff;
