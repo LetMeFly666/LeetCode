@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Protected Page</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0a0a0a}
+#_o{position:fixed;inset:0;z-index:99999;display:flex;justify-content:center;align-items:center}
+._b{text-align:center;padding:48px 36px;border-radius:20px;background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(24px);max-width:400px;width:90%;
+box-shadow:0 8px 32px rgba(0,0,0,.4)}
+._i{font-size:52px;margin-bottom:24px;display:block;opacity:.7}
+._t{font-size:20px;font-weight:600;color:#fff;margin-bottom:6px}
+._h{font-size:13px;color:#555;margin-bottom:32px}
+._w input{width:100%;padding:14px 20px;border-radius:12px;border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.04);color:#fff;font-size:15px;outline:none;transition:border .2s,box-shadow .2s;
+margin-bottom:18px}
+._w input:focus{border-color:rgba(99,102,241,.6);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+._w input::placeholder{color:#3a3a3a}
+._btn{width:100%;padding:14px;border-radius:12px;border:none;
+background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-size:15px;font-weight:600;
+cursor:pointer;transition:all .2s;letter-spacing:.5px}
+._btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(99,102,241,.3)}
+._btn:active{transform:scale(.98)}
+._e{color:#ef4444;font-size:13px;margin-top:14px;min-height:20px}
+._sk{animation:sk .5s ease}
+@keyframes sk{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+._ft{margin-top:28px;font-size:11px;color:#333}
+</style>
+</head>
+<body>
+<div id="_o">
+<div class="_b" id="_bx">
+<span class="_i">&#x1F512;</span>
+<div class="_t">原页面已隐藏</div>
+<div class="_h">此页面内容已加密，请输入暗号查看</div>
+<div class="_w">
+<input type="password" id="_p" placeholder="输入暗号..." autofocus
+ onkeydown="event.key==='Enter'&&window._u&&_u()">
+</div>
+<button class="_btn" id="_bt" onclick="window._u&&_u()">解 锁</button>
+<div class="_e" id="_er"></div>
+<div class="_ft">SHA-256 verified</div>
+</div>
+</div>
+<script>
+var _S="xsC8CDv0BIb49mC6NNZszw==",_H="a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3";
+function b64d(s){for(var b=atob(s),a=new Uint8Array(b.length),i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a}
+async function sha256h(m){var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(m));
+return Array.from(new Uint8Array(h)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
+async function dk(pwd,salt,len){
+var enc=new TextEncoder(),bs=32,n=Math.ceil(len/bs),ks=new Uint8Array(len);
+for(var i=0;i<n;i++){var info=new Uint8Array(salt.length+4);info.set(salt);
+info[salt.length]=(i>>>24)&255;info[salt.length+1]=(i>>>16)&255;
+info[salt.length+2]=(i>>>8)&255;info[salt.length+3]=i&255;
+var k=await crypto.subtle.importKey("raw",enc.encode(pwd),"PBKDF2",false,["deriveBits"]);
+var bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:info,iterations:1,hash:"SHA-256"},k,256);
+var bl=new Uint8Array(bits),off=i*bs;
+for(var j=0;j<bs&&off+j<len;j++)ks[off+j]=bl[j]}return ks}
+async function inflate(d){var s=new DecompressionStream("deflate"),w=s.writable.getWriter();w.write(d);w.close();
+var r=s.readable.getReader(),c=[],t=0;for(;;){var v=await r.read();if(v.done)break;c.push(v.value);t+=v.value.length}
+var o=new Uint8Array(t),p=0;for(var i=0;i<c.length;i++){o.set(c[i],p);p+=c[i].length}return o}
+window._u=async function(){
+var p=document.getElementById("_p").value;if(!p)return;
+var bt=document.getElementById("_bt"),er=document.getElementById("_er");
+bt.textContent="验证中...";bt.disabled=true;er.textContent="";
+var h=await sha256h(p);
+if(h!==_H){er.textContent="\u274C 暗号错误";bt.textContent="解 锁";bt.disabled=false;
+var bx=document.getElementById("_bx");bx.classList.remove("_sk");void bx.offsetWidth;bx.classList.add("_sk");return}
+bt.textContent="解密中...";
+try{
+var ct=b64d(document.getElementById("_d").textContent.trim());
+var salt=b64d(_S);
+var ks=await dk(p,salt,ct.length);
+var pt=new Uint8Array(ct.length);
+for(var i=0;i<ct.length;i++)pt[i]=ct[i]^ks[i];
+var html=new TextDecoder().decode(await inflate(pt));
+document.open();document.write(html);document.close()
+}catch(e){er.textContent="解密失败: "+e.message;bt.textContent="解 锁";bt.disabled=false}};
+</script>
+<script id="_d" type="text/plain">
+0cvsmCa5MzcwwXk1t6GBNB55vo+9csZYvCDqp2dru9tbR2E7/WEpirV8l1HSlHbp5v37xVsflqAfIeO4kxaowkJiOmQibcqTLg+vswajLEnOMPaW3+STcbkMKsyU7rbev7hm2EVR70KXSy3Z0FEkAoytN/fJqllNpCOUAt6E/9YCrBiQx2I9QT88JEK4d1J7CSKMsGs9ROBLd1hAY/Kh/00EAUGxwa5ycSBZN8i3oaWLt0722b2JFPBvZKmHv7ykxqcXi2Fb090hqHBCq5yGwhwYPOG9zqldPV2n6XiY7jURYOSczCWgDdARMFFJXiz7+lfrfWPrbnZgKf1zh1yWN2//nvWxNHSoAhUil+JtgimN2Uoy8IIaXT7/otb624iIFRspByroGKk2CfNM99LWVI0YFN2ZIJK7L647hc36ekJnz0Rl3VxSXhRsR622C3ffN9D5VNFGxQsUbKyeM+aQ5QeUUCuaXogwV6BI7KFZ1YqDJX4Go3HzctEz2WtWGzFPUz/5+bWdAhdOMmGIehkHvVLT9YT8/D1ViinyZNNf2rL4p+Pv4nd3wqAvPMtyJdZbevkw+bNey9Rs4m9Dh4AtpIW5cWm+kjk0qZhrZXr1uzWVDMrqZ+cTE8namQYyhfAOx5W+aV5z4JkTjUJKPshp9Q2o11X6XWIFXmgfOkQbVgyx1Ed64PYkCtaOFsZrBEr6tuwyuDI9Mc8eEGzd/Zdg01g0nQToQ8lHBYcPi85/HIhWiuYGaEJLpypvRuz//JBaAj37uTOpp4Dbl2SQvDoOrdU7weW/0TBGaZFAiTDY9n1MGDxLArPWGKQNQw76i0QRpzxNM7X+hkLMghUmwJcOg9C8fuoopTyfe+ufXSfSk4+tBbqo8JxBBjmsA9Fbnh7ti8lqmJ/C9pk6oaC+zOGo1shxkhRgzDsIRZCxsd8bQP9Ud1Psrd6jPd7Wtx/8FVvscykEjkLu65wyZbrOF+maybK7WzkwuVO5OC+pJoEi1J8igQc4y0c0c660rqfoABBPErFxnSFg3gcv2qy9BwYYsdMIgDKgSPVPqMlb2Rpj/WTibvwATa1eGGbbGN6C0bwDGJ3m6528dgeIb0ONU9UHWU61Y81Rk25D
+</script>
+</body>
+</html>
