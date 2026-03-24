@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-24 21:47:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-24 21:58:44
+ * @LastEditTime: 2026-03-24 22:02:21
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -16,7 +16,7 @@ public:
         int n = grid.size(), m = grid[0].size();
 
         auto getIndex = [&](const int& t) {
-            return pair<int, int>{t / n, t % n};
+            return pair<int, int>{t / m, t % m};
         };
 
         vector<vector<ll>> prefix(n, vector<ll>(m, 1));
