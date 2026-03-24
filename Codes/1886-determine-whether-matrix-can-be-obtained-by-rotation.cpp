@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-22 23:35:27
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-22 23:45:34
+ * @LastEditTime: 2026-03-24 21:44:44
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -16,7 +16,7 @@ public:
             if (mat == target) {
                 return true;
             }
-            if (t == 4) {
+            if (t == 3) {
                 break;
             }
             vector<vector<int>> tmp(n, vector<int>(n));
