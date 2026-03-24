@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-24 21:47:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-24 21:57:27
+ * @LastEditTime: 2026-03-24 21:58:44
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,7 +15,7 @@ public:
     vector<vector<int>> constructProductMatrix(vector<vector<int>>& grid) {
         int n = grid.size(), m = grid[0].size();
 
-        auto inline getIndex = [&](const int& t) {
+        auto getIndex = [&](const int& t) {
             return pair<int, int>{t / n, t % n};
         };
 
