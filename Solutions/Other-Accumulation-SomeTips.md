@@ -390,8 +390,6 @@ lHs0hIf559bXbGDNCBz1dzwAT+xxx这是一串60k的base64字符串
 </body></html>
 ```
 
-我有一个HTML需要
-
 你猜在M3 Pro芯片的MacBook Pro的Chrome146.0.7680.153浏览器中打开需要多久？答案是平均5秒往上。
 
 这么长一段都在注释中都很慢，所以最佳的方式也许是另外一个文件然后fetch。

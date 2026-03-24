@@ -80,7 +80,7 @@ public:
             if (mat == target) {
                 return true;
             }
-            if (t == 4) {
+            if (t == 3) {
                 break;
             }
             vector<vector<int>> tmp(n, vector<int>(n));
