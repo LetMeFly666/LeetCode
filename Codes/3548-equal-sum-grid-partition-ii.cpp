@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-26 21:49:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-26 22:16:10
+ * @LastEditTime: 2026-03-26 22:24:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -45,8 +45,21 @@ private:
                 now += t;
             }
             ll need = now * 2 - all;
-            if (!need || !i && (need == grid[0][0] || need == grid[0].back()) || i && visited.count(need)) {
+            if (!need) {
                 return true;
+            }
+            if (i == 0) {  // 第一行只能首位
+                if (need == grid[0][0] || need == grid[0].back()) {
+                    return true;
+                }
+            } else if (grid[0].size() == 1) {  // 只有一列
+                if (need == grid[0][0]) {
+                    return true;
+                }
+            } else {  // 任意一个
+                if (visited.count(need)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -66,3 +79,20 @@ public:
         return false;
     }
 };
+
+#ifdef _DEBUG
+/*
+[[10,5,4,5]]
+
+true
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.canPartitionGrid(v) << endl;
+    }
+    return 0;
+}
+#endif
