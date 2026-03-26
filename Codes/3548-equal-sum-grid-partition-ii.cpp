@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-26 21:49:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-26 22:24:59
+ * @LastEditTime: 2026-03-26 22:26:44
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -53,7 +53,7 @@ private:
                     return true;
                 }
             } else if (grid[0].size() == 1) {  // 只有一列
-                if (need == grid[0][0]) {
+                if (need == grid[0][0] || need == grid[i][0]) {
                     return true;
                 }
             } else {  // 任意一个
