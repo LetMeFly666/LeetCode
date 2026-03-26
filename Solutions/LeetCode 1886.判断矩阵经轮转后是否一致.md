@@ -1,7 +1,7 @@
 ---
 title: 1886.判断矩阵经轮转后是否一致：模拟
 date: 2026-03-22 23:47:38
-tags: [题解, LeetCode, 简单, 数组, 矩阵]
+tags: [题解, LeetCode, 简单, 数组, 矩阵, 矩阵旋转]
 categories: [题解, LeetCode]
 index_img: https://assets.leetcode.com/uploads/2021/05/20/grid3.png
 ---
