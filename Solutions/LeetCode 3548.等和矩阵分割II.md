@@ -228,7 +228,7 @@ int main() {
 
 ```
 
-https://github.com/LetMeFly666/LeetCode/releases/download/v2.7/a_head_3548-special-case.txt
+注意set如果是32位整数的话，小心$need$是long long并且正好溢出到一个存在的int：[sample input](https://github.com/LetMeFly666/LeetCode/releases/download/v2.7/a_head_3548-special-case.txt)
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/159516501)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/03/26/LeetCode%203548.%E7%AD%89%E5%92%8C%E7%9F%A9%E9%98%B5%E5%88%86%E5%89%B2II/)哦~
 >
