@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-26 21:49:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-26 22:02:29
+ * @LastEditTime: 2026-03-26 22:10:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -32,7 +32,10 @@ private:
         grid.swap(after);
     }
 
-    bool ok(vector<vector<int>>& grid, ll half) {
+    // now - x = all - now
+    // now = (all + x) / 2
+    // x = now * 2 - all
+    bool ok(vector<vector<int>>& grid, ll all) {
         unordered_set<int> visited;
         ll now = 0;
         for (int i = 0; i < grid.size(); i++) {
@@ -40,7 +43,8 @@ private:
                 visited.insert(t);
                 now += t;
             }
-            if (now == half || i && visited.count(now - half)) {
+            ll need = now * 2 - all;
+            if (!need || !i && (need == grid[0][0] || need == grid[0].back()) || i && visited.count(need)) {
                 return true;
             }
         }
@@ -49,10 +53,6 @@ private:
 public:
     bool canPartitionGrid(vector<vector<int>>& grid) {
         ll sum = getSum(grid);
-        if (sum % 2) {
-            return false;
-        }
-        sum /= 2;
 
         for (int i = 0; i < 4; i++) {
             if (ok(grid, sum)) {
