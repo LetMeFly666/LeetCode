@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-26 21:49:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-26 22:10:14
+ * @LastEditTime: 2026-03-26 22:16:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,11 +21,12 @@ private:
         return ans;
     }
 
+    // (0, 3) -> (3, n-i-1)
     void rotate(vector<vector<int>>& grid) {
-        int n = grid.size();
-        vector<vector<int>> after(n, vector<int>(n));
+        int n = grid.size(), m = grid[0].size();
+        vector<vector<int>> after(m, vector<int>(n));
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < m; j++) {
                 after[j][n - i - 1] = grid[i][j];
             }
         }
