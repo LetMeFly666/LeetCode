@@ -45,7 +45,7 @@ private:
                 now += t;
             }
             ll need = now * 2 - all;
-            if (need < 0 || need >= 100000) {
+            if (need < 0 || need > 100000) {
                 continue;
             }
             if (!need) {
