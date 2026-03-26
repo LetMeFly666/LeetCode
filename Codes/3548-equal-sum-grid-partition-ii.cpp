@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-26 21:49:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-26 22:31:48
+ * @LastEditTime: 2026-03-26 22:33:09
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -37,7 +37,7 @@ private:
     // now = (all + x) / 2
     // x = now * 2 - all
     bool ok(vector<vector<int>>& grid, ll all) {
-        unordered_set<ll> visited;
+        unordered_set<int> visited;
         ll now = 0;
         for (int i = 0; i < grid.size(); i++) {
             for (int& t : grid[i]) {
@@ -45,6 +45,9 @@ private:
                 now += t;
             }
             ll need = now * 2 - all;
+            if (need < 0 || need >= 100000) {
+                continue;
+            }
             if (!need) {
                 return true;
             }
