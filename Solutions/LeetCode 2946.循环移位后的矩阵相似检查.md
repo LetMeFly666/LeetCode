@@ -137,15 +137,15 @@ class Solution {
 package main
 
 func areSimilar(mat [][]int, k int) bool {
-	m := len(mat[0])
+    m := len(mat[0])
     for _, row := range mat {
-		for j := range row {
-			if row[j] != row[(j + k) % m] {
-				return false
-			}
-		}
-	}
-	return true
+        for j := range row {
+            if row[j] != row[(j + k) % m] {
+                return false
+            }
+        }
+    }
+    return true
 }
 ```
 
