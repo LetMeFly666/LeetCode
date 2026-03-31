@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-31 21:55:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-31 22:54:28
+ * @LastEditTime: 2026-03-31 23:03:49
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -61,7 +61,7 @@ private:
         // 以下逻辑一定能设置成功ans.sub(idx)
 
         if (can_changed_place_are_all_a(ans, idx, s)) {
-            // 能改位置全是a，挑最后一个能改位置改为b
+            // 要改且能改位置全是a，挑最后一个能改位置改为b
             change_last2b(ans, idx, s);
         } else {
             // 可设置为全a，这样就满足F
@@ -83,6 +83,8 @@ private:
     bool can_changed_place_are_all_a(string& ans, int idx, const string& s) {
         for (int i = 0; i < m; i++) {
             if (can_change[i + idx] && s[i] != 'a') {
+                return false;
+            } else if (!can_change[i + idx] && ans[i + idx] != s[i]) {
                 return false;
             }
         }
@@ -139,6 +141,12 @@ TFTF
 ab
 
 ababa
+*/
+/*
+FT
+aghbdfhf
+
+aaghbdfhf
 */
 int main() {
     string a, b;
