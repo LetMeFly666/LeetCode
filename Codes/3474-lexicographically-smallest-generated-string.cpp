@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-31 21:55:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-31 22:36:56
+ * @LastEditTime: 2026-03-31 22:48:26
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -31,6 +31,9 @@ str1: F
 str2: aaaa
 ans:  aaab
 */
+/*
+todo: 这样逻辑行得通的话，can change: 可移除，通过-判断
+*/
 class Solution {
 private:
     int n, m;
@@ -54,14 +57,15 @@ private:
         if (all_cannot_change_and_all_same(ans, idx, s)) {
             return false;
         }
+
         // 以下逻辑一定能设置成功ans.sub(idx)
-        int first2a = get_first2a(ans, idx, s);
-        if (first2a == -1) {  // 能修改的元素对应的str2全部是a
-            
-        } else {  // first2a设置为a则后续可任意a
-            for (int i = 0; i < first2a; i++) {  // 前面能修改的元素对应str2一定是a，但是ans对应位置也设置为a最小
-                if ()
-            }
+
+        if (can_changed_place_are_all_a(ans, idx, s)) {
+            // 能改位置全是a，挑最后一个能改位置改为b
+            change_last2b(ans, idx, s);
+        } else {
+            // 可设置为全a，这样就满足F
+            set_all_a(ans, idx, s);
         }
         return true;
     }
@@ -75,14 +79,32 @@ private:
         return true;
     }
 
-    // 找第一个可以设置为a导致ans.sub和str2不同的位置
-    int get_first2a(string& ans, int idx, const string& s) {
+    // 可以修改的位置对应str2全部是a
+    bool can_changed_place_are_all_a(string& ans, int idx, const string& s) {
         for (int i = 0; i < m; i++) {
             if (can_change[i + idx] && s[i] != 'a') {
-                return i;
+                return false;
             }
         }
-        return -1;
+        return true;
+    }
+
+    void change_last2b(string& ans, int idx, const string& s) {
+        bool is_last = true;
+        for (int i = m - 1; i >= 0; i--) {
+            if (can_change[i + idx]) {
+                ans[i + idx] = is_last ? 'b' : 'a';
+                is_last = false;
+            }
+        }
+    }
+
+    void set_all_a(string& ans, int idx, const string& s) {
+        for (int i = 0; i < m; i++) {
+            if (can_change[i + idx]) {
+                ans[i + idx] = 'a';
+            }
+        }
     }
 public:
     string generateString(const string& str1, const string& str2) {
