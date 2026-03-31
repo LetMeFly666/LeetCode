@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-31 21:55:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-31 23:03:49
+ * @LastEditTime: 2026-03-31 23:21:23
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -30,9 +30,6 @@ ans:  aaaa
 str1: F
 str2: aaaa
 ans:  aaab
-*/
-/*
-todo: 这样逻辑行得通的话，can change: 可移除，通过-判断
 */
 class Solution {
 private:
@@ -95,8 +92,13 @@ private:
         bool is_last = true;
         for (int i = m - 1; i >= 0; i--) {
             if (can_change[i + idx]) {
-                ans[i + idx] = is_last ? 'b' : 'a';
-                is_last = false;
+                if (is_last) {
+                    ans[i + idx] = 'b';
+                    is_last = false;
+                    can_change[i + idx] = false;
+                } else {
+                    ans[i + idx] = 'a';
+                }
             }
         }
     }
