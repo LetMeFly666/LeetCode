@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-03-31 21:55:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-03-31 22:48:26
+ * @LastEditTime: 2026-03-31 22:54:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -110,7 +110,7 @@ public:
     string generateString(const string& str1, const string& str2) {
         n = str1.size();
         m = str2.size();
-        string ans('-', n + m - 1);
+        string ans(n + m - 1, '-');
         can_change = move(vector<bool>(n + m - 1, true));
         
         for (int i = 0; i < str1.size(); i++) {
@@ -132,3 +132,20 @@ public:
         return ans;
     }
 };
+
+#ifdef _DEBUG
+/*
+TFTF
+ab
+
+ababa
+*/
+int main() {
+    string a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.generateString(a, b) << endl;
+    }
+    return 0;
+}
+#endif
