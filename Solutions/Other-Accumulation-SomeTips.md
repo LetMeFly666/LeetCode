@@ -600,6 +600,53 @@ sudo mdutil -i on /Applications
 
 重建一下关于应用的索引，差不多好了。
 
+### macOS 解码二维码
+
+> 由AI总结自我与AI的对话
+
+#### zbar（推荐）
+
+```bash
+brew install zbar
+```
+
+> 会安装约 100M 左右的依赖。
+
+安装后直接命令行解码：
+
+```bash
+zbarimg qrcode.png
+```
+
+输出示例：
+
+```
+QR-Code:https://example.com
+```
+
+LetMeFly: 使用时候记得删除前面的`QR-Code:`
+
+批量解码：
+
+```bash
+zbarimg *.png
+```
+
+#### Python 踩坑记录
+
+尝试过以下方案，均不理想：
+
+| 方案 | 问题 |
+|------|------|
+| `pyzbar` | 依赖 zbar 共享库，macOS 未装 zbar 时报 `ImportError: Unable to find zbar shared library` |
+| `cv2.QRCodeDetector` | 不依赖 zbar，但识别率差，部分二维码返回空结果 |
+| `qreader` | 底层仍依赖 `pyzbar`，且额外拉入 torch、ultralytics 等约 150M+ 依赖 |
+
+#### 结论
+
+有 zbar 的情况下，单张解码似乎就没必要再 Python PIL read 再通过 pyzbar 调用 zbar 了——`zbarimg` 一行命令搞定。
+
+
 ## About Windows
 
 ### Windows应用商店安装的应用
@@ -1522,7 +1569,7 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 
 ### VsCode SSH Remote 下 Git 行内变动标记不显示
 
-> 让由AI总结自我与AI的对话
+> 由AI总结自我与AI的对话
 
 **现象**：通过 SSH 连接开发机，左侧源代码管理面板能看到文件变动（M/U），但编辑器行号旁边没有蓝色/绿色竖条。
 
