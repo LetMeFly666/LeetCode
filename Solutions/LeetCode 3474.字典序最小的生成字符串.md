@@ -126,10 +126,10 @@ categories: [题解, LeetCode]
 > 我们可以写个函数判断下还能change的位置能否全填`a`（如果某个位置可change且str2对应位置不是`a`，那么全填`a`就满足和str2不同，可全填`a`；如果某个位置已经和str2不一样了，那么可change位置也可全填`a`）：
 > 
 > + 如果可change位置可以全填`a`，则填之；
-> + 否则，
+> + 否则，找到最后一个可以填`b`的位置填`b`，将这个位置设置为cannot change，将其他可change位置改为`a`。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 时间复杂度$O(nm)$
++ 空间复杂度$O(n+m)$
 
 ### AC代码
 
@@ -294,6 +294,6 @@ int main() {
 
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/03/31/LeetCode%203474.%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/159736815)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/03/31/LeetCode%203474.%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
