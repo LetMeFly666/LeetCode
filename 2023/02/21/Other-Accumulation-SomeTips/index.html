@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-03-29T12:06:14.000Z">
+<meta property="article:modified_time" content="2026-04-01T14:52:52.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28k 字
+          29k 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          237 分钟
+          240 分钟
         
       </span>
     
@@ -529,6 +529,46 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> mdutil -i off /Applications<br><span class="hljs-built_in">sudo</span> mdutil -i on /Applications<br></code></pre></td></tr></table></figure>
 
 <p>重建一下关于应用的索引，差不多好了。</p>
+<h3 id="macOS-解码二维码"><a href="#macOS-解码二维码" class="headerlink" title="macOS 解码二维码"></a>macOS 解码二维码</h3><blockquote>
+<p>由AI总结自我与AI的对话</p>
+</blockquote>
+<h4 id="zbar（推荐）"><a href="#zbar（推荐）" class="headerlink" title="zbar（推荐）"></a>zbar（推荐）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install zbar<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>会安装约 100M 左右的依赖。</p>
+</blockquote>
+<p>安装后直接命令行解码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zbarimg qrcode.png<br></code></pre></td></tr></table></figure>
+
+<p>输出示例：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-variable constant_">QR</span>-<span class="hljs-title class_">Code</span><span class="hljs-symbol">:https</span><span class="hljs-symbol">://example</span>.com<br></code></pre></td></tr></table></figure>
+
+<p>LetMeFly: 使用时候记得删除前面的<code>QR-Code:</code></p>
+<p>批量解码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">zbarimg *.png<br></code></pre></td></tr></table></figure>
+
+<h4 id="Python-踩坑记录"><a href="#Python-踩坑记录" class="headerlink" title="Python 踩坑记录"></a>Python 踩坑记录</h4><p>尝试过以下方案，均不理想：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pyzbar</code></td>
+<td>依赖 zbar 共享库，macOS 未装 zbar 时报 <code>ImportError: Unable to find zbar shared library</code></td>
+</tr>
+<tr>
+<td><code>cv2.QRCodeDetector</code></td>
+<td>不依赖 zbar，但识别率差，部分二维码返回空结果</td>
+</tr>
+<tr>
+<td><code>qreader</code></td>
+<td>底层仍依赖 <code>pyzbar</code>，且额外拉入 torch、ultralytics 等约 150M+ 依赖</td>
+</tr>
+</tbody></table>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>有 zbar 的情况下，单张解码似乎就没必要再 Python PIL read 再通过 pyzbar 调用 zbar 了——<code>zbarimg</code> 一行命令搞定。</p>
 <h2 id="About-Windows"><a href="#About-Windows" class="headerlink" title="About Windows"></a>About Windows</h2><h3 id="Windows应用商店安装的应用"><a href="#Windows应用商店安装的应用" class="headerlink" title="Windows应用商店安装的应用"></a>Windows应用商店安装的应用</h3><p>Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">C:<span class="hljs-string">\Program</span> Files<span class="hljs-string">\WindowsApps</span><br></code></pre></td></tr></table></figure>
 
@@ -779,7 +819,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># bash的话可以：vim ~/.bashrc</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/usr/local/texlive/2024/bin/x86_64-linux<br><span class="hljs-built_in">export</span> MANPATH=<span class="hljs-variable">$MANPATH</span>:/usr/local/texlive/2024/texmf-dist/doc/man<br><span class="hljs-built_in">export</span> INFOPATH=<span class="hljs-variable">$INFOPATH</span>:/usr/local/texlive/2024/texmf-dist/doc/info<br></code></pre></td></tr></table></figure>
 
 <h2 id="About-VsCode"><a href="#About-VsCode" class="headerlink" title="About VsCode"></a>About VsCode</h2><h3 id="VsCode-SSH-Remote-下-Git-行内变动标记不显示"><a href="#VsCode-SSH-Remote-下-Git-行内变动标记不显示" class="headerlink" title="VsCode SSH Remote 下 Git 行内变动标记不显示"></a>VsCode SSH Remote 下 Git 行内变动标记不显示</h3><blockquote>
-<p>让由AI总结自我与AI的对话</p>
+<p>由AI总结自我与AI的对话</p>
 </blockquote>
 <p><strong>现象</strong>：通过 SSH 连接开发机，左侧源代码管理面板能看到文件变动（M&#x2F;U），但编辑器行号旁边没有蓝色&#x2F;绿色竖条。</p>
 <p><strong>原因</strong>：开发机上 <code>/home</code> 是 <code>/data00/home</code> 的软链接。你通过 <code>/home/xxx</code> 打开项目，但 git 内部记的是真实路径 <code>/data00/home/xxx</code>。编辑器显示行内标记时要拿这两个路径做字符串比对，路径不一致就匹配不上，标记就不出来。</p>
