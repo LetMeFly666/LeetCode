@@ -2,12 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-04-02 23:07:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-03 08:13:03
+ * @LastEditTime: 2026-04-03 08:13:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
-// THIS CANNOT BE ACCEPTED - 是不抢走不是变负为正 - 并且abs范围也笔误写大了
+
 class Solution {
 public:
     int maximumAmount(vector<vector<int>>& coins) {
@@ -21,7 +21,7 @@ public:
                     dp[th][i][j] = coins[i][j] + max(i ? dp[th][i - 1][j] : 0, j ? dp[th][i][j - 1] : 0);
                 }
                 for (int th = 1; th < 3; th++) {
-                    dp[th][i][j] = max(dp[th][i][j], abs(coins[i][j] + max(i ? dp[th - 1][i - 1][j] : 0, j ? dp[th - 1][i][j - 1] : 0)));
+                    dp[th][i][j] = max(dp[th][i][j], max(i ? dp[th - 1][i - 1][j] : 0, j ? dp[th - 1][i][j - 1] : 0));
                 }
             }
         }
