@@ -115,18 +115,8 @@ public:
                 }
                 for (int th = 0; th < 3; th++) {
                     dp[th][i][j] = coins[i][j] + max(i ? dp[th][i - 1][j] : -INF, j ? dp[th][i][j - 1] : -INF);
-                    // printf("dp[%d][%d][%d] = %d\n", th, i, j, dp[th][i][j]);
                 }
                 for (int th = 1; th < 3; th++) {
-                    // int a = dp[th][i][j], b = max(i ? dp[th - 1][i - 1][j] : -INF, j ? dp[th - 1][i][j - 1] : -INF);
-                    // if (b > a) {
-                    //     printf("dp[%d][%d][%d]: %d -> ", th, i, j, a);
-                    //     if (i && dp[th - 1][i - 1][j] > (j ? dp[th - 1][i][j - 1] : 0)) {
-                    //         printf
-                    //     } else {
-                    //         printf
-                    //     }
-                    // }
                     dp[th][i][j] = max(dp[th][i][j], max(i ? dp[th - 1][i - 1][j] : -INF, j ? dp[th - 1][i][j - 1] : -INF));
                 }
             }
@@ -135,9 +125,12 @@ public:
         return dp[2][n - 1][m - 1];
     }
 };
-
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/02/LeetCode%203418.%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E9%87%91%E5%B8%81%E6%95%B0/)哦~
+## 空间优化
+
+TODO:
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/159780459)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/02/LeetCode%203418.%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E9%87%91%E5%B8%81%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
