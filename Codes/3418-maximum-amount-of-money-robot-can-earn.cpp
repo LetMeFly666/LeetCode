@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-02 23:07:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-03 08:13:10
+ * @LastEditTime: 2026-04-03 08:20:25
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -19,8 +19,18 @@ public:
             for (int j = 0; j < m; j++) {
                 for (int th = 0; th < 3; th++) {
                     dp[th][i][j] = coins[i][j] + max(i ? dp[th][i - 1][j] : 0, j ? dp[th][i][j - 1] : 0);
+                    // printf("dp[%d][%d][%d] = %d\n", th, i, j, dp[th][i][j]);
                 }
                 for (int th = 1; th < 3; th++) {
+                    int a = dp[th][i][j], b = max(i ? dp[th - 1][i - 1][j] : 0, j ? dp[th - 1][i][j - 1] : 0);
+                    // if (b > a) {
+                    //     printf("dp[%d][%d][%d]: %d -> ", th, i, j, a);
+                    //     if (i && dp[th - 1][i - 1][j] > (j ? dp[th - 1][i][j - 1] : 0)) {
+                    //         printf
+                    //     } else {
+                    //         printf
+                    //     }
+                    // }
                     dp[th][i][j] = max(dp[th][i][j], max(i ? dp[th - 1][i - 1][j] : 0, j ? dp[th - 1][i][j - 1] : 0));
                 }
             }
