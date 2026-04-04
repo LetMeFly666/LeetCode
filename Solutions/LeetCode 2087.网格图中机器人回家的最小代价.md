@@ -69,8 +69,8 @@ index_img: https://assets.leetcode.com/uploads/2021/10/11/eg-1.png
 
 也就是说，任何场景我们都直接像样例中那样一个L形路径走过去就行了。
 
-+ 时间复杂度$O(\mathcal{O}(|start_{row} - home_{row}| + |start_{col} - home_{col}|))$
-+ 空间复杂度$O(1)$，前提是不使用python普通切片改为循环
++ 时间复杂度$\mathcal{O}(|start_{row} - home_{row}| + |start_{col} - home_{col}|)$
++ 空间复杂度$\mathcal{O}(1)$，前提是不使用python普通切片改为循环
 
 ### AC代码
 
