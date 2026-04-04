@@ -129,7 +129,7 @@ public:
 
 #### Python
 
-```cpp
+```python
 '''
 LastEditTime: 2026-04-04 14:23:48
 '''
