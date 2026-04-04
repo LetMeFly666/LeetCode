@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-04 14:24:22
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-04 14:29:31
+ * @LastEditTime: 2026-04-04 14:39:36
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,14 +15,14 @@ public:
         int n = coins.size(), m = coins[0].size();
         array<vector<int>, 3> dp;
         dp.fill(vector<int>(m));
-        dp[0][0] = coins[0][0];
-        dp[1][0] = dp[2][0] = max(coins[0][0], 0);
 
         for (int i = 0; i < n; i++) {
             array<vector<int>, 3> nextDP;
             nextDP.fill(vector<int>(m));
             for (int j = 0; j < m; j++) {
                 if (!i && !j) {
+                    nextDP[0][0] = coins[0][0];
+                    nextDP[1][0] = nextDP[2][0] = max(coins[0][0], 0);
                     continue;
                 }
                 for (int th = 0; th < 3; th++) {
