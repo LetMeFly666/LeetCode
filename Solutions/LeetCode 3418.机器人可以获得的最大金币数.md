@@ -70,8 +70,8 @@ categories: [题解, LeetCode]
 <p><strong>提示：</strong></p>
 
 <ul>
-	<li><code>m == coins.length</code></li>
-	<li><code>n == coins[i].length</code></li>
+	<li><code>n == coins.length</code></li>
+	<li><code>m == coins[i].length</code></li>
 	<li><code>1 &lt;= m, n &lt;= 500</code></li>
 	<li><code>-1000 &lt;= coins[i][j] &lt;= 1000</code></li>
 </ul>
@@ -127,9 +127,80 @@ public:
 };
 ```
 
+#### Python
+
+```python
+'''
+LastEditTime: 2026-04-04 14:23:48
+'''
+from typing import List
+from math import inf
+
+class Solution:
+    def maximumAmount(self, coins: List[List[int]]) -> int:
+        n, m = len(coins), len(coins[0])
+        dp = [[[-inf for _ in range(m)] for _ in range(n)] for _ in range(3)]
+        dp[0][0][0] = coins[0][0]
+        dp[1][0][0] = dp[2][0][0] = max(coins[0][0], 0)
+
+        for i in range(n):
+            for j in range(m):
+                if not i and not j:
+                    continue
+                for th in range(3):
+                    dp[th][i][j] = max(dp[th][i - 1][j] if i else -inf, dp[th][i][j - 1] if j else -inf) + coins[i][j]
+                for th in range(1, 3):
+                    dp[th][i][j] = max(dp[th][i][j], dp[th - 1][i - 1][j] if i else -inf, dp[th - 1][i][j - 1] if j else -inf)
+        
+        return dp[2][n - 1][m - 1]
+```
+
 ## 空间优化
 
-TODO:
+不难发现新的一行dp只需要利用上一行的dp结果，所以我们的dp数组没必要开$n$行$m$列，只需要开$1$行$m$列就好。
+
++ 时间复杂度$O(nm)$
++ 空间复杂度$O(m)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-04-04 14:39:36
+ */
+const int INF = 1e9;
+class Solution {
+public:
+    int maximumAmount(vector<vector<int>>& coins) {
+        int n = coins.size(), m = coins[0].size();
+        array<vector<int>, 3> dp;
+        dp.fill(vector<int>(m));
+
+        for (int i = 0; i < n; i++) {
+            array<vector<int>, 3> nextDP;
+            nextDP.fill(vector<int>(m));
+            for (int j = 0; j < m; j++) {
+                if (!i && !j) {
+                    nextDP[0][0] = coins[0][0];
+                    nextDP[1][0] = nextDP[2][0] = max(coins[0][0], 0);
+                    continue;
+                }
+                for (int th = 0; th < 3; th++) {
+                    nextDP[th][j] = coins[i][j] + max(i ? dp[th][j] : -INF, j ? nextDP[th][j - 1] : -INF);
+                }
+                for (int th = 1; th < 3; th++) {
+                    nextDP[th][j] = max(nextDP[th][j], max(i ? dp[th - 1][j] : -INF, j ? nextDP[th - 1][j - 1] : -INF));
+                }
+            }
+            dp = move(nextDP);
+        }
+
+        return dp[2][m - 1];
+    }
+};
+```
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/159780459)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/02/LeetCode%203418.%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%BE%97%E7%9A%84%E6%9C%80%E5%A4%A7%E9%87%91%E5%B8%81%E6%95%B0/)哦~
 >
