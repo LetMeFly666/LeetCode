@@ -643,7 +643,7 @@ categories: [自用]
 |odour|n. 气味，意味，迹象，名声|
 |ramble|n. 漫步，散步，杂乱无章的长篇大论<br/>v. 漫谈，闲聊，漫步，蔓生|
 |<font color="#28bea0" title="二次复习">nausea</font>|n. 恶心，反胃，作呕|
-|celery|n. 芹菜，(调味用)|
+|celery|n. 芹菜，(调味用)香芹粉|
 |<font color="#28bea0" title="二次复习">jug</font>|n. (有柄有嘴的)壶/罐，一壶/罐(的量)|
 |zealous|adj. 热情的，热烈的，充满激情的|
 |regime|n. 组织方法，管理体制，政权，政体|
