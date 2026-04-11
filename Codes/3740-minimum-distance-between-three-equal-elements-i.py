@@ -9,7 +9,7 @@ from typing import List
 class Solution:
     def minimumDistance(self, nums: List[int]) -> int:
         ans = 201
-        for i, a in range(nums):
+        for i, a in enumerate(nums):
             for j in range(i + 1, len(nums)):
                 if a != nums[j]:
                     continue
