@@ -955,7 +955,7 @@ categories: [自用]
 |||
 |disparity|n. 差异|
 |||
-|scorching|adj. 酷热的，猛烈的，激烈的，有力的<br/>adv. 〈口〉灼热地，热得灼人<br/>v. scorch的现在分词|
+|<font color="#28bea0" title="二次复习">scorching</font>|adj. 酷热的，猛烈的，激烈的，有力的<br/>adv. 〈口〉灼热地，热得灼人<br/>v. scorch的现在分词|
 |wagon|n. (铁路)货车车厢，四轮在中马车(/牛车)<br/>v. 用 运货马车/货车/手推车 运送【较少用作动词】|
 |||
 |bazaar|n. 集市，义卖会|
@@ -1884,6 +1884,8 @@ categories: [自用]
 |crouch|v. 蹲，蜷缩<br/>n. 蹲|
 |||
 |triplicate|n. 一式三份<br/>adj. 一式三份的<br/>v. 使成三倍，分成三份|
+|||
+|possessive|adj. 占有欲强的，不愿分享的<br/>n. 所有格|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
