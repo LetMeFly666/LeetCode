@@ -673,7 +673,7 @@ categories: [自用]
 |annex|v. 附加，附带，并吞，抢占，获得<br/>n. 附件，附属品，附属建筑|
 |wade|v. 跋涉，趟水|
 |||
-|<font color="#28bea0" title="二次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
+|<font color="#28bea0" title="三次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
 |garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
 |woodpecker|n. 啄木鸟|
 |<font color="#28bea0" title="三次复习">cosmetics</font>|n. 化妆品|
