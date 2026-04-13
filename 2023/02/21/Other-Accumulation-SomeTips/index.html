@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-04-01T14:52:52.000Z">
+<meta property="article:modified_time" content="2026-04-13T14:09:56.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -263,7 +263,7 @@
         
         
         
-          240 分钟
+          245 分钟
         
       </span>
     
@@ -804,6 +804,21 @@
 <p><img src="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg" srcset="/img/loading.gif" lazyload alt="Word查看缺失字体"></p>
 <p>依次从网上下载所有缺失的字体并安装到系统上。</p>
 <p>下载完所有缺失的字体，重新打开Word，显示就正常了。</p>
+<h3 id="PPT-power-point-整个页面所有图形放大1-5倍"><a href="#PPT-power-point-整个页面所有图形放大1-5倍" class="headerlink" title="PPT(power point) - 整个页面所有图形放大1.5倍"></a>PPT(power point) - 整个页面所有图形放大1.5倍</h3><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs vbscript"><span class="hljs-keyword">Sub</span> ScaleShapesOnSlide()<br>    <span class="hljs-keyword">Dim</span> s As Shape<br>    <span class="hljs-keyword">Dim</span> ratio As Double<br>    <span class="hljs-keyword">Dim</span> slideIndex As Long<br>    <br>    ratio = <span class="hljs-number">1.5</span>       <span class="hljs-comment">&#x27;放大倍数，按需改</span><br>    slideIndex = <span class="hljs-number">1</span>     <span class="hljs-comment">&#x27;要操作的幻灯片页码</span><br>    <br>    <span class="hljs-keyword">For</span> <span class="hljs-keyword">Each</span> s <span class="hljs-keyword">In</span> ActivePresentation.Slides(slideIndex).Shapes<br>        <span class="hljs-comment">&#x27;等比缩放位置和尺寸</span><br>        s.Left = s.Left * ratio<br>        s.Top = s.Top * ratio<br>        s.Width = s.Width * ratio<br>        s.Height = s.Height * ratio<br>    <span class="hljs-keyword">Next</span><br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span><br></code></pre></td></tr></table></figure>
+
+<ol>
+<li><code>Alt + F11</code> Open the VBA editor</li>
+<li>input a script name</li>
+<li>input the source code</li>
+<li>(<code>F5</code>) run the script</li>
+</ol>
+<p>这样，页面上的所有图形（和文字）都会被放大为原来的1.5倍，放大起点为左上角。</p>
+<h3 id="PPT-power-point-字体嵌入相关"><a href="#PPT-power-point-字体嵌入相关" class="headerlink" title="PPT(power point) - 字体嵌入相关"></a>PPT(power point) - 字体嵌入相关</h3><p><strong>字体嵌入选项</strong></p>
+<p><code>文件</code> - <code>选项</code> - <code>保存</code>可以勾选或取消勾选<code>将字体嵌入文件</code>。</p>
+<p>选择完成后下次保存ppt时，就会将字体连同保存到</p>
+<p><strong>字体在系统上不存在时default</strong></p>
+<p>若打开ppt的系统不存在ppt字体且ppt保存时未嵌入字体，则系统会找一个“最接近的字体”，具体替换规则未深度研究。</p>
+<p>也可<code>开始 → 替换 → 替换字体</code>一键替换<code>A</code>字体为<code>B</code>字体。</p>
 <h2 id="About-Latex"><a href="#About-Latex" class="headerlink" title="About Latex"></a>About Latex</h2><h3 id="Ubuntu上安装Latex（免安装版）"><a href="#Ubuntu上安装Latex（免安装版）" class="headerlink" title="Ubuntu上安装Latex（免安装版）"></a>Ubuntu上安装Latex（免安装版）</h3><p>我想使用<code>sudo aptitude install texlive-full</code>命令安装<code>xelatex</code>但是失败了。于是想到了直接下载可执行文件并添加到环境变量的方法。</p>
 <p>首先下载TeX Live 安装脚本，然后解压并安装。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz<br>tar -xzf install-tl-unx.tar.gz<br><span class="hljs-built_in">cd</span> install-tl-20240705  <span class="hljs-comment"># 这里20240705要替换成你下载到的版本</span><br><span class="hljs-built_in">sudo</span> ./install-tl<br></code></pre></td></tr></table></figure>
