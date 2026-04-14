@@ -661,600 +661,207 @@ C:\Program Files\WindowsApps
 
 ### Windows沙盒复制文件时发生错误的原因
 
-有时候在Windows Sandbox中下载了一个4G的学习资料，将其复制到主机时，可能会遇到复制了一半突然
+有时候复制文件到Windows沙盒中会提示类似“复制文件时发生错误”的信息。原因就是：Windows沙盒的C盘大小大约为8G，C盘空间不足了。
 
-```
-复制文件或文件夹时出错
-     未指定的错误
-        确定
-```
-
-然后如果文件复制时不干其他事情，只让系统进行复制操作，基本上每次都能复制完成且不出错（我没遇到过这样还报错的）
-
-某天（应该是2023.2.24），突然就发现了这“未知错误”的原因
-
-如果我们在主机和沙盒间通过复制粘贴的方式传输文件时，在文件传输过程中，我们又复制了其他东西，那么这时候文件传输就会出现上述错误！只要我们不更新剪贴板，随意操作其他东西，我是没见过复制错误发生未知错误的情况。
-
-我想，也许其原理是通过剪贴板的看不见的“文件链路”进行传输的？
-
-### autohotkey
-
-记录一下autohotkey，它是一款是一款免费的、Windows平台下开放源代码的热键脚本语言
-
-官网：[https://www.autohotkey.com/](www.autohotkey.com)
-
-### Bat中获取bat文件所在目录
-
-在.bat文件中，```%~dp0```代表所执行bat所在的路径。
-
-我们在```C:\BatDir\test.bat```中写入以下代码：
-
-```bat
-echo "%~dp0"
-explorer "%~dp0"
-cd /d "%~dp0"
-```
-
-然后在```F:\CWD```目录下使用cmd执行上述bat文件：
+### Windows可以查看系统信息的命令
 
 ```bash
-F:\CWD>"C:\BatDir\test.bat"
+msinfo32.exe
 ```
 
-则会```echo "%~dp0"```会显示```C:\BatDir\```；```explorer "%~dp0"```会打开资源管理器，且位置是```C:\BatDir\```；```cd /d "%~dp0"```则会使CMD的工作路径变成```C:\BatDir\```
+### cmd运行中文bat脚本 乱码的问题
 
-### Windows安装或卸载程序失败时的修复程序
+原因是：很多Windows下的编辑器创建出来的文件的编码是`utf-8`。而cmd默认的编码是`gbk`。解决方法：
 
-安装外星人AWCC(Alienware Command Center)后暴力删除残留文件了，导致卸载和重装AWCC时都失败。
+1. 在.bat文件的开头加上`chcp 65001 > nul`以将编码转为utf-8。但是有时候仍然不行。
+2. 将文件编码转为`gbk`。例如用VsCode的话在右下角就可以更改编码方式。（推荐）
 
-因此发现了一款微软官方的修复程序：[修复阻止程序安装或删除的问题](https://support.microsoft.com/zh-cn/windows/%E4%BF%AE%E5%A4%8D%E9%98%BB%E6%AD%A2%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85%E6%88%96%E5%88%A0%E9%99%A4%E7%9A%84%E9%97%AE%E9%A2%98-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d)，可下载[MicrosoftProgram_Install_and_Uninstall.meta.diagcab](https://download.microsoft.com/download/7/E/9/7E9188C0-2511-4B01-8B4E-0A641EC2F600/MicrosoftProgram_Install_and_Uninstall.meta.diagcab)并运行。（[自解压程序](https://www.alipan.com/s/uGoikCXQxNm)）
+### cmd不认识conda命令
 
-### Windows禁用某些Win开头的快捷键
+将`C:\ProgramData\anaconda3\Scripts`添加到环境变量`Path`下。
 
-今日按快捷键```Ctrl+C```，不小心按成了```Win+C```，弹出了```Cortana```，还告诉我说“你的语言不可用”。？？？
+### 快捷键
 
-想要禁用快捷键```Win+C```，需要在注册表```HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced```下新建一个“字符串值”，名为```DisabledHotkeys```，值为```C```。（若想禁用```Win+C```和```Win+S```，则值为```CS```）
+#### 锁屏
 
-重启计算机或重启资源管理器即可生效。
+`Win + L`
 
-### UPX加壳减小可执行文件体积
+#### 打开文件管理器
 
-UPX官网[upx.github.io](https://upx.github.io/)，主要目的是将可执行文件和共享库（通常是二进制文件）压缩为更小的尺寸，从而减少磁盘占用空间和下载时间。
+`Win + E`
 
-Pyinstaller打包可执行文件时若系统变量里有upx，则打包出来的体积也会小一些。
+#### 打开任务管理器
 
-### Win10右下角托盘区时间显示到秒
+`Ctrl + Shift + ESC`
 
-`Win + R` -> `regedit` -> `回车`，定位到`计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`并新建`DWORD (32位)值(D)`，名为`ShowSecondsInSystemClock`值为`1`，重启`explorer.exe`。
+#### 日历等
 
-### PowerShell修改文件日期
+`Win + N`
 
-```powershell
-ls 'dirName' | foreach-object { $_.LastWriteTime = '06/23/2023 15:39:11'; $_.CreationTime = '05/13/2023 12:03:14'; $_.LastAccessTime = '06/23/2023 15:39:11' }
-```
-
-### PowerShell生成uuid
+### 查看电脑连接过的WIFI密码
 
 ```bash
-Powershell -Command "[guid]::NewGuid()"
+netsh wlan show profiles 你的WiFi名 key=clear
 ```
 
+关键内容中的密码就是WiFi密码。
+
+### Windows自带远程桌面连接
+
+使用`远程桌面连接`或`mstsc`并输入要远程连接的IP地址，即可远程。
+
+前提：被远程端Windows系统开启了远程桌面选项
+
+## About Phone/手机
+
+### adb删除手机系统应用
+
+使用adb命令删除安卓手机的系统预装应用，无需root。
+
+首先确保电脑已安装`adb`且手机已在开发者选项中开启`USB调试`，之后电脑上运行
+
+```bash
+adb shell
+pm list packages  # 查看所有包名
+pm uninstall -k --user 0 包名  # 删除
 ```
-Guid
-----
-f35b2f66-3e03-4c9d-80b5-d72059a8735d
+
+### adb安装应用
+
+手机连接电脑并`adb devices`确认连接：
+
+```bash
+adb install xxx.apk
 ```
 
-### WOL(Wake on LAN)网络唤醒
+### iPhone播放FLAC
 
-归类到Windows下其实并不仅局限于Windows。
-
-1. 固件支持WOL
-2. 局域网或公网可达
-3. 网卡有待机电
-4. 接收到魔术网络包(Magic Packet)，内容`6 字节的 FF`+`目标网卡 MAC 地址 × 16 次`
-
-没有认证，知道Mac地址就能发。
-
-## About Phone
-
-### Phone APP 如视VR
-
-记录一款软件，使用智能手机拍摄就能三维建模。智能手机拍摄将信息传到服务器上，云计算后返回，可在线浏览。免费，但不可下载模型。
-
-其视频讲解可见：[科技宅小明](https://space.bilibili.com/5626102)的视频[科技还是魔法？！2分钟重建我的家！](https://www.bilibili.com/video/BV1mV4y1A7PP)
-
-早点有的话就能多建模两个地方喽~
+VLC应用
 
 ## About Python
 
-### Python chain
-
-连接两个iterable的东西为一个iterable的东西
+### 列表切片赋值的原理
 
 ```python
-from itertools import chain
-a = [1, 2, 6]
-b = [2, 5, 7]
-for i in chain(a, b):
-    print(i, end=', ')
+l = [1, 2, 3]
+l[1:2] = [5, 6]
+# l = [1, 5, 6, 3]
 ```
 
-执行结果：
-
-```
-1, 2, 6, 2, 5, 7,
-```
-
-### Python bisect
-
-python二分查找用。
-
-```bisect.bisect_right(list, val)```类似于C++的```upper_bound(list.begin(), lise.end(), val) - list.begin()```
-
-同理，```bisect_left```类似于```lower_bound```
-
-### Python json.dumps
-
-格式化输出json（实质是将python字典转化为格式化后的字符串）
+切片赋值和index赋值的原理不一样。切片赋值等价于先删除后插入
 
 ```python
-import json
-data = {"name": "你好", "list": [1, 2]}
-print("data:", data)
-formatted = json.dumps(data, indent=4, ensure_ascii=False)
-print("json.dumps:", formatted)
+l = [1, 2, 3]
+del l[1:2]
+# l = [1, 3]
+# 然后在index=1处插入[5, 6]
+# l = [1, 5, 6, 3]
 ```
 
-运行结果：
+### deque
 
-```
-data: {'name': '你好', 'list': [1, 2]}
-json.dumps: {
-    "name": "你好",
-    "list": [
-        1,
-        2
-    ]
-}
-```
-
-其中```ensure_ascii```默认为```True```，这时会以ASCII码的形式输出（中文你好就变成了"\u4f60\u597d"）
-
-More：json.dumps是将字典转为字符串，json.loads是将字符串转为字典。假如从爬虫得到的返回值是json格式的字符串，想将其格式化后输出，那么就可以：
-
-```python
-import json
-responsedData = '{"name": "\\u4f60\\u597d", "list": [1, 2]}'  # 假设responsedData由爬虫获得
-print("不好看的原版responsedData:", responsedData)
-formatted = json.dumps(json.loads(responsedData), indent=4, ensure_ascii=False)
-print("json.dumps(json.loads):", formatted)
-```
-
-运行结果：
-
-```
-不好看的原版responsedData: {"name": "\u4f60\u597d", "list": [1, 2]}
-json.dumps(json.loads): {
-    "name": "你好",
-    "list": [
-        1,
-        2
-    ]
-}
-```
-
-### Python enumerate
-
-python的enumerate可以将可迭代的“iterable”，打包成```(index, value)```的tuple：
-
-```python
-iterable = ['First', 'Second', 'Third']
-for index, value in enumerate(iterable):
-    print(f'The {index}-th is {value}')
-```
-
-运行结果：
-
-```
-The 0-th is First
-The 1-th is Second
-The 2-th is Third 
-```
-
-### Python双端队列 deque
+#### 双端队列
 
 ```python
 from collections import deque
-dq = deque()
-dq.append(1)
-dq.appendleft(2)
-dq.pop()
-dq.popleft()
+
+d = deque()
+d.append(1)      # 右端添加
+d.appendleft(2)  # 左端添加
+d.pop()          # 右端弹出
+d.popleft()      # 左端弹出
 ```
 
-### Python优先队列 heapq
-
-Python优先队列小元素先出队（小根堆）。
+#### 固定大小的滑动窗口
 
 ```python
-import heapq
-pq = []
-heapq.heappush(pq, 2)
-heapq.heappush(pq, 1)
-heapq.heappush(pq, 3)
-heapq.heappop(pq)  # 1
+from collections import deque
+
+d = deque(maxlen=3)
+for i in range(5):
+    d.append(i)
+# d = deque([2, 3, 4], maxlen=3)
 ```
 
-### Python sortedcontainers.SortedSet
+当deque达到maxlen后再往里面添加元素，会自动丢弃另一端的元素。
 
-Python有序集合，类似C++的set
-
-但缺点是需要手动安装，非Python自带
-
-```bash
-pip install sortedcontainers
-```
+### PriorityQueue
 
 ```python
-from sortedcontainers import SortedSet
-se = SortedSet()
-# 增删改查未完待续
+import queue
+
+pq = queue.PriorityQueue()
+pq.put((2, ‘two’))
+pq.put((1, ‘one’))
+pq.put((3, ‘three’))
+print(pq.get())  # (1, 'one')
 ```
 
-### Python有序集合SortedList
+```PriorityQueue```默认是最小堆。
 
-类似于```C++```的```multiset```。
+### selenium自动化
 
-```python
-from sortedcontainers import SortedList
-
-se = SortedList()
-se.add(2)  # SortedList([2])
-se.add(1)  # SortedList([1, 2])
-se.add(3)  # SortedList([1, 2, 3])
-se.add(2)  # SortedList([1, 2, 2, 3])
-se.discard(2)  # SortedList([1, 2, 3])
-se[0]  # 1
-se[-1]  # 3
-2 in se  # True
-```
-
-### Python selenium踩坑记录
-
-Python的```selenium```可以控制浏览器对网站进行模拟操作，但需要注意的地方有且不仅仅有如下二：
-
-1. 执行js脚本时：
-    ```
-    function ha() {console.log("666")}
-    ha()
-    报错 未定义
-
-    ha = function() {console.log("666")}
-    ha()
-    正常执行
-    ```
-2. selenium4.0之后移除了find_element(s)_by_xx的方法（[#2](https://github.com/LetMeFly666/YuketangAutoPlayer/issues/2)），需要使用find_element(s)_by方法。
-
-
-### Python 依赖分析工具
-
-写了一个Python项目准备发布，那不得写一个`requirements.txt`来告诉使用者都需要安装哪些第三方库？
-
-手动添加是一种方法。另外一种方法就是使用依赖分析工具`pipreqs`。
-
-```bash
-pip install pipreqs
-pipreqs /path/to/your/project
-```
-
-### 静态类型检查工具mypy
-
-根据你声明的类型自动检查你变量的实际类型是否相符。
-
-```bash
-pip3 install mypy
-mypy 待检查.py
-```
-
-```python
-def add(a:int, b:int) -> int:
-    return a + b
-
-add(1, 2) 
-add("123", "qwe")   # type: ignore
-```
-
-### Python asyncio
-
-async是Python 3.5引入的一种用于处理一步编程的特性，通过协程来实现，能够一定程度上避免阻塞。
-
-```python
-import asyncio
-
-async def first():
-    print("first begin")
-    await asyncio.sleep(1)
-    print("first end")
-
-async def second():
-    print("second begin")
-    await asyncio.sleep(2)
-    print("second end")
-
-async def main():
-    await asyncio.gather(first(), second())
-
-asyncio.run(main())
-```
-
-1. 程序会先执行`first`函数中的`print("first begin")`，执行到`asyncio.sleep(1)`时这个操作会暂停协程1秒，在等待期间时间循环可以切换到其他协程继续执行。
-2. 此时`second`函数中的`print("second begin")`会被执行，然后执行`asyncio.sleep(2)`暂停2秒，且在此期间事件循环可以执行其他任务。
-3. `first`函数的1秒等待完成后，执行`print("first end")`，协程执行完毕。
-4. `second`函数的2秒等待完成后，执行`print("second end")`，协程执行完毕。
-5. 两个协程都执行完毕，程序结束。
-
-运行结果：
-
-```
-first begin
-second begin
-first end
-second end
-```
-
-但是，只有手动让出控制权的操作才会避免阻塞循环事件，例如`asyncio.sleep()`、`asyncio.open()`、`asyncio.connect()`等。普通的文件读写、网络请求仍然会阻塞进程。
-
-### Python版本切换pyenv
-
-安装：
-
-```bash
-brew install pyenv
-pyenv install 3.11.14
-```
-
-然后在`.zshrc`中添加：
-
-```bash
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-```
-
-列举所有python版本的命令是`pyenv versions`，但我想让它是`pyenv list`，那么就可以：
-
-```bash
-mkdir -p ~/.pyenv/plugins/custom/bin
-cat > ~/.pyenv/plugins/custom/bin/pyenv-list <<'EOF'
-#!/usr/bin/env bash
-exec pyenv versions "$@"
-EOF
-chmod +x ~/.pyenv/plugins/custom/bin/pyenv-list
-```
-
-相当于创建一个`~/.pyenv/plugins/custom/bin/pyenv-list`文件，当执行`pyenv list`时，就会调用这个文件，这个文件执行`pyenv versions`。
-
-类似的还有：
-
-```bash
-pyenv shell xxx -> pyenv use xxx
-```
-
-## About C++
-
-### C++原地建堆make_heap
-
-```cpp
-vector<int> v = {1, 5, 9, 9, 8};
-make_heap(v.begin(), v.end());
-pop_heap(v.begin(), v.end());  // 堆顶元素（v[0]）放入数组v的末尾，其余元素调整为建堆
-v.pop_back();  // pop_heap并没有将元素弹出v数组
-v.push_back(2);
-push_heap(v.begin(), v.end());  // 将v的最后一个元素（v.back()）插入到堆中
-sort_heap(v.begin(), v.end()); // 将堆排序，排序后将失去堆的特性；非堆调用此函数将会报错；大根堆会变成从小到大的排序
-```
-
-### C++使得编译器支持第三方库（以MinGW为例）
-
-假如我想使用EasyX库编写带有图形界面的程序，那么我应该如何编译呢？
-
-可以把`EasyX`解压出来的`.h`头文件放到`{MinGW安装位置}\x86_64-w64-mingw32\include`，库文件放到`{MinGW安装位置}\x86_64-w64-mingw32\lib`目录。
-
-这样就能直接`#include <graphics.h>`了。编译时候需要加上参数`-leasyx`，这是因为添加了`libeasyx.a`。
-
-如果我把库文件放到其他目录下，则还需要加上`-L目录名`（绝对路径或编译执行路径的相对路径）。
-
-
-## About Java
-
-### Java 有序集合 TreeSet
-
-类似C++的set。
-
-```java
-import java.util.TreeSet;
-
-public class TreeSetExample {
-    public static void main(String[] args) {
-        // 创建
-        TreeSet<Integer> se = new TreeSet<>();
-        // 添加元素
-        se.add(20);
-        se.add(10);
-        se.add(10);  // 重复元素不会被添加
-        // 打印
-        System.out.println(se);  // [10, 20]
-        // 查找
-        se.contains(10);  // true
-        se.floor(10);  // ≤10的最大元素 （若无则返回null）  // 10
-        se.ceiling(10);  // ≥10的最大元素 （若无则返回null）  // 10
-        se.higher(10);  // >10的最小元素 （若无则返回null）  // 20
-        se.lower(10);  // <10的最大元素 （若无则返回null）  // null
-    }
-}
-```
-
-### Java 数组操作 Arrays
-
-包含一些对数组的“排序”、“填充”、“判等”等操作。
-
-```java
-public class ArrayExample {
-    public static void main(String[] args) {
-        int[] intList = {1, 4, 2};
-        Integer[] integerList = {3, -6, 4};
-        // 排序
-        Arrays.sort(intList);
-        Arrays.sort(integerList, (a, b) -> Math.abs(a) - Math.abs(b));  // int[]不支持sort的自定义Comparator
-        // 填充
-        Arrays.fill(intList, 1);  // 填充为[1, 2, 3]
-        // 相等
-        Arrays.equals(intList, new int[1]);
-    }
-}
-```
-
-## About Golang
-
-### Golang数组(array)和切片(slice)
-
-数组定长切片变长，数组是值类型(数组赋值给另一个数组会复制整个数组)切片是引用类型(切片赋值给另一个切片时两切片会指向同一个底层数组)。
-
-```go
-package main
-
-import "fmt"
-import "reflect"
-
-func main() {
-    // 创建
-    var array [5]int
-    array[0] = 1
-    fmt.Println(array)  // [1 0 0 0 0]
-    slice := []int{1, 2, 3}
-    slice2 := make([]int, 5)
-    subSlice := slice[1:2]
-    fmt.Println(slice)  // [1 2 3]
-    fmt.Println(slice2)  // [0 0 0 0 0]
-    fmt.Println(subSlice)  // [2]
-    // 赋值
-    array2 := array
-    array2[2] = 100
-    fmt.Println(array)  // [1 0 0 0 0]
-    slice3 := slice
-    slice3[1] = 100
-    fmt.Println(slice3)  // [1 100 3]
-    // 转换
-    sFromA := array[:]
-    fmt.Printf("%s(%s): %v\n", reflect.TypeOf(sFromA), reflect.TypeOf(sFromA).Kind(), sFromA);  // []int(slice): [1 0 0 0 0]
-    var aFromS [3]int
-    copy(aFromS[:], slice)
-    fmt.Printf("%T(%s): %v\n", aFromS, reflect.TypeOf(aFromS).Kind(), aFromS);  // [3]int(array): [1 100 3]
-}
-```
-
-## About Rust
-
-### VsCode rust-analyzer插件分析crate变量类型
-
-较大项目中VsCode插件对于其他crate中的变量类型默认可能不会解析，例如`let s = FastStr::new("hi")`，当我们输入`s.`的时候，VsCode的rust-analyzer插件可能并不会有补全提醒，甚至我们输入`s.no66666666().hi111111`VsCode也不会有任何反应。
-
-这体验很不好，没有语法检查和补全提醒就快变成一个支持高亮的记事本了。在`settings.json`中添加以下两行可以令rust-analyzer插件分析补全提示其他crate。
-
-```json
-{
-    "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.cargo.buildScripts.enable": true,
-}
-```
-
-## About HTML
-
-### 空白字符
-
-这是一个空白字符：“ㅤ”
-
-### WebView2
-
-（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电脑上安装有WebView2，则程序可以直接借助WebView2实现网页的浏览。
-
-见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
-
-### canonical
-
-canonical 就是告诉搜索引擎：“这些页面看起来不一样，但你把它们当成同一个页面就行，正主是这个。”
-
-同一篇内容有不同url可能会导致搜索引擎：
-
-* 权重被分散
-* 可能被认为是「重复内容」
-* SEO 变差
-
-```html
-<link rel="canonical" href="https://blog.letmefly.xyz/post/123">
-```
-
-### HTML全屏幕取色器
-
-Chrome、Edge、Opera浏览器支持[`EyeDropper`API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper)，可以将鼠标变成一个取色器，取色器会将鼠标变成一个“圆形放大镜”，用户在屏幕上任意位置(**哪怕是浏览器外**)点击鼠标左键则HTML可以获取到该位置的颜色RGB，鼠标移动过程中经过像素颜色对HTML不可见。
-
-注意，<span title="2026.2.8">当前Firefox、Safari</span>浏览器以及所有主流手机浏览器都不支持该API。
-
-体验地址：[web.letmefly.xyz](https://web.letmefly.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BACode/HTML%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95%E5%8F%96%E8%89%B2%E5%99%A8/)。可查看网页源码，不难发现源码很简单。
-
-### HTML渲染耗时问题
-
-有这样一个HTML：
-
-```html
-<html lang="zh"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Protected Page</title>
-</head>
-<body>
-<!-- <script id="_d" type="text/plain">
-lHs0hIf559bXbGDNCBz1dzwAT+xxx这是一串60k的base64字符串
-</script> -->
-
-</body></html>
-```
-
-你猜在M3 Pro芯片的MacBook Pro的Chrome146.0.7680.153浏览器中打开需要多久？答案是平均5秒往上。
-
-这么长一段都在注释中都很慢，所以最佳的方式也许是另外一个文件然后fetch。
-
-但是，好像只在打开本地html时会很慢。
++ driver.find_elements vs driver.find_element: 前者找不到不会报错，后者找不到会报错
++ send_keys是追加字符串到input中，如果想要覆盖，需要先clear
++ webdriverwait.until中的method会被不断调用直到不throw为止
 
 ## About Website
 
-### ip扫描工具censys
+### 使用M3芯片的MacBook Pro的Chromium内核的浏览器查看网页源代码是空白
 
-很多网站为了防止DDos等都使用CDN等将自己的真实ip隐藏起来。但是如果直接访问真实ip的话，还是有可能会返回SSL证书（例如浏览器提示的“证书无效/不匹配”
+这是Chromium的一个bug（可能已修复，我遇到的时候未修复）。
 
-censys扫描全球所有IP并记录ip与域名直接的关系，并且扫描速度快得惊人```(>_<)```
+## About 安全
 
-网址：censys.io
+### 关于SQL注入
 
-### 域名收集工具/SSL证书查询工具crt.sh
+如果传递给SQL的参数是可以由用户指定的，那么用户就可以传一个有特殊含义的字符串使得SQL执行的不再是原本想执行的语句。
 
-网址：crt.sh，传说所有的SSL证书都能在上面查到（好像是）
+例如“万能密码”`' or 1 = 1 -- `（注意最后有一个空格），使得SQL变成了
 
-并且，输入一个域名，它的所有子域名甚至都能被查到（似乎前提是开了https）。
+```sql
+SELECT * FROM users WHERE username = '' or 1 = 1 -- ' AND password = ''
+```
 
-### hexo部署到子路径上
+其中`-- `是注释的意思，所以实际上SQL变成了`SELECT * FROM users WHERE username = '' or 1 = 1`，也就是无论如何都会有返回值。
 
-在```_config.yml```中令```url```的值为```/x.com/sub/path```。
+**如何防止：**使用参数化查询（Parameterized Query）。
 
-否则不这么配置的话很多链接会链接到```/x.com/```
+```python
+cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
+```
 
-### ngxin获取cloudflare后的真实ip
+## About 网络
 
-使用cloudflare获取网站流量后打到网站的ip都是cloudflare的。若是使用nginx分发的这些请求，则可以通过下面两步获取真实ip。
+### 什么是DHCP
 
-1. 判断nginx是否支持real_ip功能（若无则此教程无效，似乎要重新编译nginx）：```nginx -V 2>&1 | grep -i http_realip_module```。若有（可能被标记为红色）则进入下一步。
-2. 编辑conf文件，在```http```下添加几行：
+DHCP: Dynamic Host Configuration Protocol
+
+当设备接入一个网络时，DHCP会自动分配IP地址、子网掩码、默认网关和DNS服务器等信息。
+
+## About 效率
+
+### 什么是SMART原则
+
+| 字母 | 全称 | 含义 |
+|------|------|------|
+| S | Specific（具体的） | 清晰明确，不含糊 |
+| M | Measurable（可衡量的） | 有量化指标来判断是否完成 |
+| A | Achievable（可实现的） | 跳一跳够得着，不空想也不太容易 |
+| R | Relevant（相关的） | 和大目标/核心事务有关，不跑偏 |
+| T | Time-bound（有时限的） | 有明确的截止日期或时间范围 |
+
+## About Nginx
+
+### cloudflare下nginx获取用户真实ip
+
+使用了cloudflare后nginx获取到的ip是cloudflare的ip而不是用户的真实ip，这会导致封禁ip功能的失效。
+
+怎么办呢？
+
+> 通常CDN会将真实的用户ip放入请求头（如`X-Forwarded-For`或`CF-Connecting-IP`），nginx只需要从请求头中取出真实ip即可。
+
+在nginx的```http```下添加几行：
     ```conf
     http {
         set_real_ip_from 173.245.48.0/20;
@@ -1281,7 +888,7 @@ location / {
 
 ### certbot自动颁发TLS证书
 
-Let's Encrypt提供免费的TLS证书以辅助站长实现https上网。
+Let’s Encrypt提供免费的TLS证书以辅助站长实现https上网。
 
 以CentOS为例：
 
@@ -1626,6 +1233,30 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
 
 讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
+
+### TDD（Test-Driven Development，测试驱动开发）
+
+核心流程是 **Red → Green → Refactor** 三步循环：
+
+1. **Red**：先写一个会失败的测试，明确期望行为
+2. **Green**：用最少代码让测试通过
+3. **Refactor**：在测试保护下重构，消除重复、改善设计
+
+以 Python 为例，假设要写一个 `add(a, b)` 函数：
+
+```python
+# 第一步：先写测试（函数还不存在）
+def test_add():
+    assert add(1, 2) == 3  # 运行 → 报错（Red）
+
+# 第二步：写最少的代码让测试通过
+def add(a, b):
+    return a + b  # 运行测试 → 通过（Green）
+
+# 第三步：重构（Refactor）—— 这个例子太简单无需重构，实际项目中用来消除重复、改命名、拆函数等
+```
+
+一句话总结：**永远测试先行，代码后补**。测试定义了“什么叫正确”，代码只负责满足它。
 
 ## About 俚语
 
