@@ -652,11 +652,11 @@ zbarimg *.png
 
 macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路径如下：
 
-#### 1. 系统登录项
+**1. 系统登录项**
 
 **系统设置 → 通用 → 登录项与扩展 → 登录时打开**，如果目标 App 在列表中，点 `-` 删除即可。
 
-#### 2. LaunchAgent
+**2. LaunchAgent**
 
 ```bash
 ls ~/Library/LaunchAgents/ | grep -i spotify
@@ -665,7 +665,7 @@ ls /Library/LaunchAgents/ | grep -i spotify
 
 有结果则 `launchctl unload` + `rm` 对应 plist 文件。
 
-#### 3. Saved Application State
+**3. Saved Application State**
 
 macOS 的「恢复上次会话」机制会在重启时重新打开之前运行过的 App。可以针对单个 App 禁用：
 
@@ -677,7 +677,7 @@ chmod 000 ~/Library/Saved\ Application\ State/com.spotify.client.savedState
 
 创建同名空目录并锁死权限，macOS 就无法再写入恢复状态。
 
-#### 4. launchctl（根治）
+**4. launchctl（根治）**
 
 以上都没有时，用 `launchctl list` 排查：
 
@@ -696,7 +696,7 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 
 恢复时将 `disable` 换成 `enable`。
 
-#### macOS App 自启注册途径汇总
+**macOS App 自启注册途径汇总**
 
 | 途径 | 位置 | 权限要求 |
 |------|------|----------|
