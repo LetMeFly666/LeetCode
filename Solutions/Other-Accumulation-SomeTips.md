@@ -648,6 +648,8 @@ zbarimg *.png
 
 ### 禁止特定 App 开机自启（以 Spotify 为例）
 
+> 本节内容由 AI (Mira) 生成，经人工审阅后合入。
+
 macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路径如下：
 
 #### 1. 系统登录项
@@ -704,7 +706,6 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 | App 内嵌注册（SMAppService） | launchctl 内部 | 无需额外授权 |
 
 > 本节内容由 AI (Mira) 生成，经人工审阅后合入。
-
 
 ## About Windows
 
