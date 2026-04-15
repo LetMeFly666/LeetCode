@@ -648,6 +648,7 @@ zbarimg *.png
 
 
 
+
 > **Note**: 本节内容由 AI (Mira) 生成，经人工审阅后合入。
 
 ### 禁止特定 App 开机自启（以 Spotify 为例）
