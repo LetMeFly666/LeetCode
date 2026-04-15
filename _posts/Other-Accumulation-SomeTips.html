@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-04-15T10:52:47.000Z">
+<meta property="article:modified_time" content="2026-04-15T14:58:19.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -514,6 +514,60 @@
 </tr>
 </tbody></table>
 <h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>有 zbar 的情况下，单张解码似乎就没必要再 Python PIL read 再通过 pyzbar 调用 zbar 了——<code>zbarimg</code> 一行命令搞定。</p>
+<h3 id="禁止特定-App-开机自启（以-Spotify-为例）"><a href="#禁止特定-App-开机自启（以-Spotify-为例）" class="headerlink" title="禁止特定 App 开机自启（以 Spotify 为例）"></a>禁止特定 App 开机自启（以 Spotify 为例）</h3><blockquote>
+<p>本节内容由 AI (Mira) 生成，经人工审阅后合入。</p>
+</blockquote>
+<p>macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路径如下：</p>
+<p><strong>1. 系统登录项</strong></p>
+<p><code>系统设置 → 通用 → 登录项与扩展 → 登录时打开</code>，如果目标 App 在列表中，点 <code>-</code> 删除即可。</p>
+<p><strong>2. LaunchAgent</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> ~/Library/LaunchAgents/ | grep -i spotify<br><span class="hljs-built_in">ls</span> /Library/LaunchAgents/ | grep -i spotify<br></code></pre></td></tr></table></figure>
+
+<p>有结果则 <code>launchctl unload</code> + <code>rm</code> 对应 plist 文件。</p>
+<p><strong>3. Saved Application State</strong></p>
+<p>macOS 的「恢复上次会话」机制会在重启时重新打开之前运行过的 App。可以针对单个 App 禁用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf ~/Library/Saved\ Application\ State/com.spotify.client.savedState<br><span class="hljs-built_in">mkdir</span> ~/Library/Saved\ Application\ State/com.spotify.client.savedState<br><span class="hljs-built_in">chmod</span> 000 ~/Library/Saved\ Application\ State/com.spotify.client.savedState<br></code></pre></td></tr></table></figure>
+
+<p>创建同名空目录并锁死权限，macOS 就无法再写入恢复状态。</p>
+<p><strong>4. launchctl（根治）</strong></p>
+<p>以上都没有时，用 <code>launchctl list</code> 排查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">launchctl list | grep -i spotify<br></code></pre></td></tr></table></figure>
+
+<p><code>launchctl</code> 是 macOS 的服务管理器（类似 Linux 的 systemd）。App 可以通过 <code>SMAppService</code> API 直接注册服务到 launchctl，<strong>无需用户显式授权</strong>，也不会出现在「登录项」或 <code>~/Library/LaunchAgents/</code> 中。</p>
+<p>找到服务后直接禁用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">launchctl <span class="hljs-built_in">disable</span> gui/$(<span class="hljs-built_in">id</span> -u)/com.spotify.client.startuphelper<br>launchctl <span class="hljs-built_in">disable</span> gui/$(<span class="hljs-built_in">id</span> -u)/com.spotify.client-launcher<br></code></pre></td></tr></table></figure>
+
+<p>恢复时将 <code>disable</code> 换成 <code>enable</code>。</p>
+<p><strong>macOS App 自启注册途径汇总</strong></p>
+<table>
+<thead>
+<tr>
+<th>途径</th>
+<th>位置</th>
+<th>权限要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用户级 LaunchAgent</td>
+<td><code>~/Library/LaunchAgents/</code></td>
+<td>无需管理员</td>
+</tr>
+<tr>
+<td>系统级 LaunchAgent</td>
+<td><code>/Library/LaunchAgents/</code></td>
+<td>需管理员密码</td>
+</tr>
+<tr>
+<td>系统级 LaunchDaemon</td>
+<td><code>/Library/LaunchDaemons/</code></td>
+<td>需管理员密码</td>
+</tr>
+<tr>
+<td>App 内嵌注册（SMAppService）</td>
+<td>launchctl 内部</td>
+<td>无需额外授权</td>
+</tr>
+</tbody></table>
 <h2 id="About-Windows"><a href="#About-Windows" class="headerlink" title="About Windows"></a>About Windows</h2><h3 id="Windows应用商店安装的应用"><a href="#Windows应用商店安装的应用" class="headerlink" title="Windows应用商店安装的应用"></a>Windows应用商店安装的应用</h3><p>Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？</p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livescript">C:<span class="hljs-string">\Program</span> Files<span class="hljs-string">\WindowsApps</span><br></code></pre></td></tr></table></figure>
 
