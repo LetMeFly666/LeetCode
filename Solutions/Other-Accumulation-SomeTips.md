@@ -1629,6 +1629,8 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 
 ### TDD（Test-Driven Development，测试驱动开发）
 
+> AI提交自AI总结自AI与人类的对话
+
 核心流程是 **Red → Green → Refactor** 三步循环：
 
 1. **Red**：先写一个会失败的测试，明确期望行为
