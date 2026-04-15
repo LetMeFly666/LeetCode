@@ -703,6 +703,8 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 | 系统级 LaunchDaemon | `/Library/LaunchDaemons/` | 需管理员密码 |
 | App 内嵌注册（SMAppService） | launchctl 内部 | 无需额外授权 |
 
+> 本节内容由 AI (Mira) 生成，经人工审阅后合入。
+
 
 ## About Windows
 
