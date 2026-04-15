@@ -675,7 +675,7 @@ chmod 000 ~/Library/Saved\ Application\ State/com.spotify.client.savedState
 
 创建同名空目录并锁死权限，macOS 就无法再写入恢复状态。
 
-#### 4. launchctl（根治）
+**4. launchctl（根治）**
 
 以上都没有时，用 `launchctl list` 排查：
 
