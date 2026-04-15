@@ -707,7 +707,6 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 
 ## About Windows
 
-
 ### Windows应用商店安装的应用
 
 Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？
