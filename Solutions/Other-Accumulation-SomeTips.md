@@ -646,11 +646,7 @@ zbarimg *.png
 
 有 zbar 的情况下，单张解码似乎就没必要再 Python PIL read 再通过 pyzbar 调用 zbar 了——`zbarimg` 一行命令搞定。
 
-### 禁止特定 App 开机自启（以 Spotify 为例）
 
-> 本节内容由 AI (Mira) 生成，经人工审阅后合入。
-
-macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路径如下：
 
 #### 1. 系统登录项
 
