@@ -654,7 +654,7 @@ macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路
 
 **系统设置 → 通用 → 登录项与扩展 → 登录时打开**，如果目标 App 在列表中，点 `-` 删除即可。
 
-#### 2. LaunchAgent
+**2. LaunchAgent**
 
 ```bash
 ls ~/Library/LaunchAgents/ | grep -i spotify
