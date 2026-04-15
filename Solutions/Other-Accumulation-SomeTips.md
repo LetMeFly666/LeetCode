@@ -1627,6 +1627,30 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 
 讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
 
+### TDD（Test-Driven Development，测试驱动开发）
+
+核心流程是 **Red → Green → Refactor** 三步循环：
+
+1. **Red**：先写一个会失败的测试，明确期望行为
+2. **Green**：用最少代码让测试通过
+3. **Refactor**：在测试保护下重构，消除重复、改善设计
+
+以 Python 为例，假设要写一个 `add(a, b)` 函数：
+
+```python
+# 第一步：先写测试（函数还不存在）
+def test_add():
+    assert add(1, 2) == 3  # 运行 → 报错（Red）
+
+# 第二步：写最少的代码让测试通过
+def add(a, b):
+    return a + b  # 运行测试 → 通过（Green）
+
+# 第三步：重构（Refactor）—— 这个例子太简单无需重构，实际项目中用来消除重复、改命名、拆函数等
+```
+
+一句话总结：**永远测试先行，代码后补**。测试定义了"什么叫正确"，代码只负责满足它。
+
 ## About 俚语
 
 ### Best-Effort
