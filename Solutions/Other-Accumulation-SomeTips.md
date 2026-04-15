@@ -663,7 +663,7 @@ ls /Library/LaunchAgents/ | grep -i spotify
 
 有结果则 `launchctl unload` + `rm` 对应 plist 文件。
 
-#### 3. Saved Application State
+**3. Saved Application State**
 
 macOS 的「恢复上次会话」机制会在重启时重新打开之前运行过的 App。可以针对单个 App 禁用：
 
