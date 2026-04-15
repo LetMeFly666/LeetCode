@@ -705,9 +705,7 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 | 系统级 LaunchDaemon | `/Library/LaunchDaemons/` | 需管理员密码 |
 | App 内嵌注册（SMAppService） | launchctl 内部 | 无需额外授权 |
 
-
-### Windows应用商店安装的应用
-
+## About Windows
 Windows应用商店安装的应用似乎不一定能找到.exe文件。那么这些应用到底安装到了哪里呢？
 
 ```
