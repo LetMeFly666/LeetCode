@@ -694,7 +694,7 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 
 恢复时将 `disable` 换成 `enable`。
 
-#### macOS App 自启注册途径汇总
+**macOS App 自启注册途径汇总**
 
 | 途径 | 位置 | 权限要求 |
 |------|------|----------|
