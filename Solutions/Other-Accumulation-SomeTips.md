@@ -1655,7 +1655,7 @@ def add(a, b):
 
 讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
 
-## About 开发(软件工程)
+## About 俚语
 
 ### Best-Effort
 
