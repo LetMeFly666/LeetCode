@@ -1619,14 +1619,6 @@ export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 
 **解决**：用 `pwd -P` 拿到真实路径（如 `/data00/home/xxx`），在 Trae 中用真实路径重新打开项目即可。
 
-## About Technology
-
-### 非视域成像
-
-以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
-
-讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
-
 ## About 开发(软件工程)
 
 ### TDD（Test-Driven Development，测试驱动开发）
@@ -1655,7 +1647,15 @@ def add(a, b):
 
 一句话总结：**永远测试先行，代码后补**。测试定义了"什么叫正确"，代码只负责满足它。
 
-## About 俚语
+## About Technology
+
+### 非视域成像
+
+以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
+
+讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
+
+## About 开发(软件工程)
 
 ### Best-Effort
 
