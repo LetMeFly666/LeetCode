@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-04-13T14:09:56.000Z">
+<meta property="article:modified_time" content="2026-04-15T10:52:47.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -784,6 +784,19 @@
 <p><strong>现象</strong>：通过 SSH 连接开发机，左侧源代码管理面板能看到文件变动（M&#x2F;U），但编辑器行号旁边没有蓝色&#x2F;绿色竖条。</p>
 <p><strong>原因</strong>：开发机上 <code>/home</code> 是 <code>/data00/home</code> 的软链接。你通过 <code>/home/xxx</code> 打开项目，但 git 内部记的是真实路径 <code>/data00/home/xxx</code>。编辑器显示行内标记时要拿这两个路径做字符串比对，路径不一致就匹配不上，标记就不出来。</p>
 <p><strong>解决</strong>：用 <code>pwd -P</code> 拿到真实路径（如 <code>/data00/home/xxx</code>），在 Trae 中用真实路径重新打开项目即可。</p>
+<h2 id="About-开发-软件工程"><a href="#About-开发-软件工程" class="headerlink" title="About 开发(软件工程)"></a>About 开发(软件工程)</h2><h3 id="TDD（Test-Driven-Development，测试驱动开发）"><a href="#TDD（Test-Driven-Development，测试驱动开发）" class="headerlink" title="TDD（Test-Driven Development，测试驱动开发）"></a>TDD（Test-Driven Development，测试驱动开发）</h3><blockquote>
+<p>AI提交自AI总结自AI与人类的对话</p>
+</blockquote>
+<p>核心流程是 <strong>Red → Green → Refactor</strong> 三步循环：</p>
+<ol>
+<li><strong>Red</strong>：先写一个会失败的测试，明确期望行为</li>
+<li><strong>Green</strong>：用最少代码让测试通过</li>
+<li><strong>Refactor</strong>：在测试保护下重构，消除重复、改善设计</li>
+</ol>
+<p>以 Python 为例，假设要写一个 <code>add(a, b)</code> 函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 第一步：先写测试（函数还不存在）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_add</span>():<br>    <span class="hljs-keyword">assert</span> add(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) == <span class="hljs-number">3</span>  <span class="hljs-comment"># 运行 → 报错（Red）</span><br><br><span class="hljs-comment"># 第二步：写最少的代码让测试通过</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">return</span> a + b  <span class="hljs-comment"># 运行测试 → 通过（Green）</span><br><br><span class="hljs-comment"># 第三步：重构（Refactor）—— 这个例子太简单无需重构，实际项目中用来消除重复、改命名、拆函数等</span><br></code></pre></td></tr></table></figure>
+
+<p>一句话总结：<strong>永远测试先行，代码后补</strong>。测试定义了”什么叫正确”，代码只负责满足它。</p>
 <h2 id="About-Technology"><a href="#About-Technology" class="headerlink" title="About Technology"></a>About Technology</h2><h3 id="非视域成像"><a href="#非视域成像" class="headerlink" title="非视域成像"></a>非视域成像</h3><p>以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。</p>
 <p>讲座地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TX4y1s7oe/">BiliBili@BV1TX4y1s7oe</a></p>
 <h2 id="About-俚语"><a href="#About-俚语" class="headerlink" title="About 俚语"></a>About 俚语</h2><h3 id="Best-Effort"><a href="#Best-Effort" class="headerlink" title="Best-Effort"></a>Best-Effort</h3><blockquote>
