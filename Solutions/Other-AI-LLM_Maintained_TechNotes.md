@@ -13,11 +13,11 @@ categories: [技术思考, AI]
 
 ## AI 辅助开发
 
-## Skill
-
 核心思路：不让 LLM 自由发挥写支付代码，而是让它从预先编写验证过的知识库中检索正确答案。代码示例（Java/Go）由微信支付团队预先编写并验证，LLM 只负责根据用户场景选对代码片段返回。
 
-提供 5 个能力：
+### 微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包
+
+微信支付官方推出了 [wechatpay-skills](https://github.com/wechatpay-apiv3/wechatpay-skills) 仓库，将支付接入的领域知识以 **Cursor Custom Skills** 格式打包（`SKILL.md` + `references/` 目录），放到 AI IDE 的 Skill 配置目录下即可使用。
 
 | 能力 | 说明 |
 |---|---|
