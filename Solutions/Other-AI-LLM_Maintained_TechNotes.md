@@ -13,7 +13,7 @@ categories: [技术思考, AI]
 
 ## AI 辅助开发
 
-### 微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包
+## Skill
 
 微信支付官方推出了 [wechatpay-skills](https://github.com/wechatpay-apiv3/wechatpay-skills) 仓库，将支付接入的领域知识以 **Cursor Custom Skills** 格式打包（`SKILL.md` + `references/` 目录），放到 AI IDE 的 Skill 配置目录下即可使用。
 
