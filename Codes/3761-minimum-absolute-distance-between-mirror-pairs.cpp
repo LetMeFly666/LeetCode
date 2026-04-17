@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-17 23:04:32
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-17 23:07:32
+ * @LastEditTime: 2026-04-17 23:09:39
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,7 +15,7 @@ private:
         int ans = 0;
         while (n) {
             ans = ans * 10 + n % 10;
-            n >>= 10;
+            n /= 10;
         }
         return ans;
     }
