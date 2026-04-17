@@ -12,13 +12,11 @@ constexpr int inf = 1000000;
 class Solution {
 private:
     int reverse(int n) {
-        printf("n = %d, ", n);
         int ans = 0;
         while (n) {
             ans = ans * 10 + n % 10;
             n /= 10;
         }
-        printf("ans = %d\n", ans);
         return ans;
     }
 public:
