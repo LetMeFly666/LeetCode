@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-17 23:04:32
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-17 23:09:39
+ * @LastEditTime: 2026-04-17 23:10:50
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -12,11 +12,13 @@ constexpr int inf = 1000000;
 class Solution {
 private:
     int reverse(int n) {
+        printf("n = %d, ", n);
         int ans = 0;
         while (n) {
             ans = ans * 10 + n % 10;
             n /= 10;
         }
+        printf("ans = %d\n", ans);
         return ans;
     }
 public:
@@ -24,11 +26,10 @@ public:
         unordered_map<int, int> ma;
         int ans = inf;
         for (int i = 0, n = nums.size(); i < n; i++) {
-            int r = reverse(nums[i]);
-            if (ma.count(r)) {
-                ans = min(ans, i - ma[r]);
+            if (ma.count(nums[i])) {
+                ans = min(ans, i - ma[nums[i]]);
             }
-            ma[r] = i;
+            ma[reverse(nums[i])] = i;
         }
         return ans == inf ? -1 : ans;
     }
