@@ -63,7 +63,13 @@ sudo pmset schedule sleep "04/19/2026 01:00:00"
 pmset -g sched
 ```
 
-`pmset` 不支持按索引取消单条计划，只能 `cancelall` 全部清除。要"取消某一条"，思路是先 cancelall，再把想保留的重新添加：
+取消所有定时计划：
+
+```bash
+sudo pmset schedule cancelall
+```
+
+`pmset` 不支持按索引取消单条计划，只能 `cancelall` 全部清除。要“取消某一条”，思路是先 cancelall，再把想保留的重新添加：
 
 ```bash
 sudo pmset schedule cancelall
@@ -71,30 +77,24 @@ sudo pmset schedule sleep "04/20/2026 02:00:00"   # 重新添加想保留的
 sudo pmset schedule wake "04/20/2026 08:00:00"
 ```
 
-取消所有定时计划：
-
-```bash
-sudo pmset schedule cancelall
-```
-
 **方式二：指定相对时间（N 分钟后）**
 
 macOS 的 `shutdown` 命令没有 `-s`（sleep）选项，只能关机/重启。要用相对时间触发睡眠，可以让 `date` 算出绝对时刻再传给 `pmset`：
 
-> **注意**：网上常见的 `(sleep 3600 && sudo pmset sleepnow) &` 方案有坑——`sudo` 凭据默认 5 分钟过期，后台进程又没有 tty 交互输入密码，等 sleep 结束后 `sudo` 会直接报错，根本不会睡眠。所以**相对时间睡眠推荐用 `date + pmset schedule` 方式**。
-
 ```bash
-(sleep 3600 && sudo pmset sleepnow) &
+sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 ```
 
-`3600` 是秒数（60 分钟 = 3600 秒）。
+`-v+60M` 表示当前时间加 60 分钟，改数字即可调整。
 
+> **注意**：网上常见的 `(sleep 3600 && sudo pmset sleepnow) &` 方案有坑——`sudo` 凭据默认 5 分钟过期，后台进程又没有 tty 交互输入密码，等 sleep 结束后 `sudo` 会直接报错，根本不会睡眠。所以**相对时间睡眠推荐用 `date` + `pmset schedule` 方式**。
+
+**对比**：
 
 | 方式 | 优点 | 缺点 |
 |---|---|---|
 | `pmset schedule sleep "日期"` | 精确到时刻，系统级调度 | 日期格式需手动拼 |
 | `pmset schedule sleep "$(date ...)"` | 支持相对时间，自动算时刻 | 命令稍长 |
-| `sleep N && pmset sleepnow` | 最简单直接 | 依赖终端进程存活 |
 
 **立即睡眠**：`sudo pmset sleepnow`
 
