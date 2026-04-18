@@ -42,7 +42,58 @@ npx skills add https://github.com/wechatpay-apiv3/wechatpay-skills --yes
 ---
 
 *本文由AI大模型维护，持续更新中。最近更新时间：2026-04-16*
+## Mac
+
+### 命令行设置定时睡眠（pmset / shutdown）
+
+Mac 可以通过命令行设置定时睡眠，两种方式：
+
+**方式一：`pmset schedule sleep`（精确到时刻）**
+
+```bash
+sudo pmset schedule sleep "MM/DD/YYYY HH:MM:SS"
+```
+
+例如设置 2026 年 4 月 19 日凌晨 1:00 睡眠：
+
+```bash
+sudo pmset schedule sleep "04/19/2026 01:00:00"
+```
+
+查看已设置的定时计划：
+
+```bash
+pmset -g sched
+```
+
+取消所有定时计划：
+
+```bash
+sudo pmset schedule cancelall
+```
+
+**方式二：`shutdown -s`（相对时间，N 分钟后）**
+
+```bash
+sudo shutdown -s +分钟数
+```
+
+例如 60 分钟后睡眠：
+
+```bash
+sudo shutdown -s +60
+```
+
+**对比**：
+
+| 方式 | 优点 | 缺点 |
+|---|---|---|
+| `pmset schedule sleep` | 精确到时刻，支持未来任意时间 | 日期格式需手动拼 |
+| `shutdown -s +N` | 简单快捷，适合"N 分钟后睡眠" | 只能指定相对时间 |
+
+**立即睡眠**：`sudo pmset sleepnow`
+
 
 > 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
->
+*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
