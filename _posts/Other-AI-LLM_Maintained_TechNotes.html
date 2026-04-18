@@ -26,7 +26,7 @@
 <meta property="og:description" content="AI创作声明：以下内容由大模型(Claude)生成并持续维护更新。  AI维护的技术随笔 - 由大模型持续更新的技术笔记这是一篇特殊的文章——它由AI大模型创作并持续维护更新。每当有新的技术知识值得记录时，AI会在这里添加新的内容。 Skill微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包微信支付官方推出了 wechatpay-skills 仓库，将支付接入的领域知识以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-16T14:46:56.000Z">
+<meta property="article:modified_time" content="2026-04-18T16:15:52.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="其他">
@@ -271,8 +271,53 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npx skills add https://github.com/wechatpay-apiv3/wechatpay-skills --<span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>
 
 <p>或手动将 Skill 目录复制到 <code>.cursor/skills/</code> 下。这种「结构化知识包 &gt; 纯 prompt」的模式值得关注——本质上是 API 提供方主动为 AI 编程场景适配知识格式，比开发者自己写 system prompt 靠谱得多。</p>
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><h3 id="命令行设置定时睡眠（pmset）"><a href="#命令行设置定时睡眠（pmset）" class="headerlink" title="命令行设置定时睡眠（pmset）"></a>命令行设置定时睡眠（pmset）</h3><p>Mac 可以通过命令行设置定时睡眠，核心工具是 <code>pmset</code>。</p>
+<p><strong>方式一：指定绝对时刻</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pmset schedule <span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;MM/DD/YYYY HH:MM:SS&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>例如设置 2026 年 4 月 19 日凌晨 1:00 睡眠：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pmset schedule <span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;04/19/2026 01:00:00&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>查看已设置的定时计划：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pmset -g <span class="hljs-built_in">sched</span><br></code></pre></td></tr></table></figure>
+
+<p>取消所有定时计划：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pmset schedule cancelall<br></code></pre></td></tr></table></figure>
+
+<p><code>pmset</code> 不支持按索引取消单条计划，只能 <code>cancelall</code> 全部清除。要“取消某一条”，思路是先 cancelall，再把想保留的重新添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pmset schedule cancelall<br><span class="hljs-built_in">sudo</span> pmset schedule <span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;04/20/2026 02:00:00&quot;</span>   <span class="hljs-comment"># 重新添加想保留的</span><br><span class="hljs-built_in">sudo</span> pmset schedule wake <span class="hljs-string">&quot;04/20/2026 08:00:00&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>方式二：指定相对时间（N 分钟后）</strong></p>
+<p>macOS 的 <code>shutdown</code> 命令没有 <code>-s</code>（sleep）选项，只能关机&#x2F;重启。要用相对时间触发睡眠，可以让 <code>date</code> 算出绝对时刻再传给 <code>pmset</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> pmset schedule <span class="hljs-built_in">sleep</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(date -v+60M &#x27;+%m/%d/%Y %H:%M:%S&#x27;)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><code>-v+60M</code> 表示当前时间加 60 分钟，改数字即可调整。</p>
+<blockquote>
+<p><strong>注意</strong>：网上常见的 <code>(sleep 3600 &amp;&amp; sudo pmset sleepnow) &amp;</code> 方案有坑——<code>sudo</code> 凭据默认 5 分钟过期，后台进程又没有 tty 交互输入密码，等 sleep 结束后 <code>sudo</code> 会直接报错，根本不会睡眠。所以<strong>相对时间睡眠推荐用 <code>date</code> + <code>pmset schedule</code> 方式</strong>。</p>
+</blockquote>
+<p><strong>对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pmset schedule sleep &quot;日期&quot;</code></td>
+<td>精确到时刻，系统级调度</td>
+<td>日期格式需手动拼</td>
+</tr>
+<tr>
+<td><code>pmset schedule sleep &quot;$(date ...)&quot;</code></td>
+<td>支持相对时间，自动算时刻</td>
+<td>命令稍长</td>
+</tr>
+</tbody></table>
+<p><strong>立即睡眠</strong>：<code>sudo pmset sleepnow</code></p>
 <hr>
-<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-16</em></p>
+<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19</em></p>
 <blockquote>
 <p>同步发文于我的<a href="https://blog.letmefly.xyz/">个人博客</a>，(AI)创作不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/">原文链接</a>哦~</p>
 <p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
