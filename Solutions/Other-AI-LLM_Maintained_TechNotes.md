@@ -41,9 +41,6 @@ npx skills add https://github.com/wechatpay-apiv3/wechatpay-skills --yes
 
 ---
 
-*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-16*
-## Mac
-
 ### 命令行设置定时睡眠（pmset / shutdown）
 
 Mac 可以通过命令行设置定时睡眠，两种方式：
@@ -72,28 +69,35 @@ pmset -g sched
 sudo pmset schedule cancelall
 ```
 
-**方式二：`shutdown -s`（相对时间，N 分钟后）**
+**方式二：`pmset schedule sleep` + `date`（相对时间，N 分钟后）**
+
+macOS 的 `shutdown` 命令没有 `-s`（sleep）选项，只能关机/重启。要用相对时间触发睡眠，可以用 `date` 命令算出绝对时刻再传给 `pmset`：
 
 ```bash
-sudo shutdown -s +分钟数
+sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 ```
 
-例如 60 分钟后睡眠：
+`-v+60M` 表示当前时间加 60 分钟，改数字即可调整。
+
+或者更直接——后台延时后执行 `sleepnow`：
 
 ```bash
-sudo shutdown -s +60
+(sleep 3600 && sudo pmset sleepnow) &
 ```
+
+`3600` 是秒数（60 分钟 = 3600 秒）。
 
 **对比**：
 
 | 方式 | 优点 | 缺点 |
 |---|---|---|
-| `pmset schedule sleep` | 精确到时刻，支持未来任意时间 | 日期格式需手动拼 |
-| `shutdown -s +N` | 简单快捷，适合"N 分钟后睡眠" | 只能指定相对时间 |
+| `pmset schedule sleep "日期"` | 精确到时刻，系统级调度 | 日期格式需手动拼 |
+| `pmset schedule sleep "$(date ...)"` | 支持相对时间，自动算时刻 | 命令稍长 |
+| `sleep N && pmset sleepnow` | 最简单直接 | 依赖终端进程存活 |
 
 **立即睡眠**：`sudo pmset sleepnow`
 
+---
 
-> 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
 *本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
