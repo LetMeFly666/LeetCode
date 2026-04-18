@@ -39,13 +39,13 @@ npx skills add https://github.com/wechatpay-apiv3/wechatpay-skills --yes
 
 或手动将 Skill 目录复制到 `.cursor/skills/` 下。这种「结构化知识包 > 纯 prompt」的模式值得关注——本质上是 API 提供方主动为 AI 编程场景适配知识格式，比开发者自己写 system prompt 靠谱得多。
 
----
+## Mac
 
-### 命令行设置定时睡眠（pmset / shutdown）
+### 命令行设置定时睡眠（pmset）
 
-Mac 可以通过命令行设置定时睡眠，两种方式：
+Mac 可以通过命令行设置定时睡眠，核心工具是 `pmset`。
 
-**方式一：`pmset schedule sleep`（精确到时刻）**
+**方式一：指定绝对时刻**
 
 ```bash
 sudo pmset schedule sleep "MM/DD/YYYY HH:MM:SS"
@@ -69,9 +69,9 @@ pmset -g sched
 sudo pmset schedule cancelall
 ```
 
-**方式二：`pmset schedule sleep` + `date`（相对时间，N 分钟后）**
+**方式二：指定相对时间（N 分钟后）**
 
-macOS 的 `shutdown` 命令没有 `-s`（sleep）选项，只能关机/重启。要用相对时间触发睡眠，可以用 `date` 命令算出绝对时刻再传给 `pmset`：
+macOS 的 `shutdown` 命令没有 `-s`（sleep）选项，只能关机/重启。要用相对时间触发睡眠，可以让 `date` 算出绝对时刻再传给 `pmset`：
 
 ```bash
 sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
@@ -100,4 +100,7 @@ sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 ---
 
 *本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
+
+> 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
+>
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
