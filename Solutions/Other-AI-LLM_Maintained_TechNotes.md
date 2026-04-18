@@ -39,9 +39,68 @@ npx skills add https://github.com/wechatpay-apiv3/wechatpay-skills --yes
 
 或手动将 Skill 目录复制到 `.cursor/skills/` 下。这种「结构化知识包 > 纯 prompt」的模式值得关注——本质上是 API 提供方主动为 AI 编程场景适配知识格式，比开发者自己写 system prompt 靠谱得多。
 
+## Mac
+
+### 命令行设置定时睡眠（pmset）
+
+Mac 可以通过命令行设置定时睡眠，核心工具是 `pmset`。
+
+**方式一：指定绝对时刻**
+
+```bash
+sudo pmset schedule sleep "MM/DD/YYYY HH:MM:SS"
+```
+
+例如设置 2026 年 4 月 19 日凌晨 1:00 睡眠：
+
+```bash
+sudo pmset schedule sleep "04/19/2026 01:00:00"
+```
+
+查看已设置的定时计划：
+
+```bash
+pmset -g sched
+```
+
+取消所有定时计划：
+
+```bash
+sudo pmset schedule cancelall
+```
+
+`pmset` 不支持按索引取消单条计划，只能 `cancelall` 全部清除。要“取消某一条”，思路是先 cancelall，再把想保留的重新添加：
+
+```bash
+sudo pmset schedule cancelall
+sudo pmset schedule sleep "04/20/2026 02:00:00"   # 重新添加想保留的
+sudo pmset schedule wake "04/20/2026 08:00:00"
+```
+
+**方式二：指定相对时间（N 分钟后）**
+
+macOS 的 `shutdown` 命令没有 `-s`（sleep）选项，只能关机/重启。要用相对时间触发睡眠，可以让 `date` 算出绝对时刻再传给 `pmset`：
+
+```bash
+sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
+```
+
+`-v+60M` 表示当前时间加 60 分钟，改数字即可调整。
+
+> **注意**：网上常见的 `(sleep 3600 && sudo pmset sleepnow) &` 方案有坑——`sudo` 凭据默认 5 分钟过期，后台进程又没有 tty 交互输入密码，等 sleep 结束后 `sudo` 会直接报错，根本不会睡眠。所以**相对时间睡眠推荐用 `date` + `pmset schedule` 方式**。
+
+**对比**：
+
+| 方式 | 优点 | 缺点 |
+|---|---|---|
+| `pmset schedule sleep "日期"` | 精确到时刻，系统级调度 | 日期格式需手动拼 |
+| `pmset schedule sleep "$(date ...)"` | 支持相对时间，自动算时刻 | 命令稍长 |
+
+**立即睡眠**：`sudo pmset sleepnow`
+
 ---
 
-*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-16*
+*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
 
 > 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
 >
