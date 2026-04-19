@@ -51,6 +51,7 @@
 |人工智能 - 跟李沐学AI|<a href="https://blog.letmefly.xyz/2023/03/15/Other-AI-LearnAIWithLiMu/">本平台博客</a>|暂无|
 |人工智能(基础版) - 学习记录(曾经陪她学AI的日子)|<a href="https://blog.letmefly.xyz/2025/05/08/Other-AI-LearnAiWithWuenda/">本平台博客</a>|暂无|
 |AI维护的技术随笔 - 由大模型持续更新的技术笔记|<a href="https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/">本平台博客</a>|无|
+|CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Nginx-CORSRedirectOriginNull/">本平台博客</a>|无|
 |人工智能 - 强化学习 - 探索和利用|<a href="https://blog.letmefly.xyz/2023/04/03/Other-AI-ReinforcementLearning-ExplorationAndExploitation/">本平台博客</a>|无|
 |安卓 - ADB - ADB的简单使用、简化华为鸿蒙系统|<a href="https://blog.letmefly.xyz/2023/07/27/Other-Android-ADB-SampleUseAndSamplifyHuaweiHarmonyOS/">本平台博客</a>|无|
 |App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
