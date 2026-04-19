@@ -65,11 +65,33 @@ Gamma模块负责结果的存储和分发。
 - Redis缓存层
 - S3对象存储
 
+### Gamma的配置参数
 
-delta_cpu_threshold = 80
-delta_memory_threshold = 90
-delta_latency_threshold = 500
-delta_error_rate_threshold = 5
+gamma_db_pool_size = 20
+gamma_redis_ttl = 3600
+gamma_s3_bucket = production-data
+
+## 第五章：数字.字符串
+
+本章探讨数字与字符串之间的转换和处理。
+
+### 数字转字符串
+
+- int → str: 直接转换，如 `str(42)` → `"42"`
+- float → str: 注意精度，如 `str(3.14)` → `"3.14"`
+- 格式化输出: `f"{value:08d}"` 补零对齐
+
+### 字符串转数字
+
+- str → int: `int("42")` → `42`
+- str → float: `float("3.14")` → `3.14`
+- 异常处理: 非法输入需捕获 `ValueError`
+
+### 数字.字符串的配置参数
+
+num_str_max_length = 256
+num_str_precision = 6
+num_str_encoding = utf-8
 
 ## 总结
 
