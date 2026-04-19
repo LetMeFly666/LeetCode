@@ -162,7 +162,7 @@ add_header Access-Control-Allow-Origin $corsHost always;
 ```nginx
 server {
     server_name web.letmefly.xyz;
-    listen 443 ssl;
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/160310109)和我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/)哦~
     root /srv/web/website;
 
     location / {
