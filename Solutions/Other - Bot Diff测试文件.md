@@ -19,7 +19,7 @@ categories: [测试]
 
 ## Section B：代码块
 
-```python
+| 2 | Beta | 偏移22行测试 | 第二轮测试 |
 def hello():
     print("Hello, World!")
     return True
