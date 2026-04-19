@@ -7,8 +7,8 @@
 - 项目名称：LeetCode Solutions
 - 作者：LetMeFly666
 - 创建日期：2026-04-19
-- 版本号：v3.0.0
-- 状态：Round 7 重置基线
+- 版本号：v3.2.0
+- 状态：Round 7c 单hunk验证完成
 
 ## Section B: 代码示例
 
