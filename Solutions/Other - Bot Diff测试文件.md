@@ -29,7 +29,6 @@ def goodbye():
     return False
 
 def calculate(a, b):
-    print(f"Computing {a} + {b}")
     result = a + b
     print(f"Result: {result}")
     return result
@@ -50,13 +49,18 @@ def calculate(a, b):
 
 - 列表项1
   - 子项1.1
-  - 子项1.2（已更新）
+  - 子项1.2
+- 列表项2
+  - 子项2.1
+  - 子项2.2
+    - 三级子项2.2.1
+    - 三级子项2.2.2
 - 列表项3
 
 ### D.2 二级子标题
 
 > 这是一段引用文本。
-> 它包含了重要的测试内容。
+> 它跨越了多行。
 > 用于测试引用块的修改。
 
 ### D.3 三级子标题
@@ -83,7 +87,7 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ```javascript
 function mixedContent() {
-    const items = ['apple', 'banana', 'durian'];
+    const items = ['apple', 'banana', 'cherry'];
     items.forEach(item => {
         console.log(`Item: ${item}`);
     });
