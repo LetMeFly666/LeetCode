@@ -62,12 +62,12 @@ def multiply(a, b):
    - 子项 1.3：cherry
 2. 第二大项
    - 子项 2.1：dragonfruit
-   - 子项 2.2：jackfruit
+   - 子项 2.2：elderberry
    - 子项 2.3：fig
 3. 第三大项
    - 子项 3.1：grape
    - 子项 3.2：honeydew
-   - 子项 3.3：elderberry
+   - 子项 3.3：jackfruit
    - 子项 3.4：kiwi
 
 ## Section F: 结尾标记
