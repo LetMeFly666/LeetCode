@@ -28,7 +28,7 @@ Beta模块负责数据的处理和转换。
 2. 数据清洗和验证
 3. 格式转换
 4. 输出结果
-
+beta_batch_size = 200
 ### Beta的配置参数
 
 beta_batch_size = 100
