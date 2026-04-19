@@ -78,4 +78,4 @@ int main() {
 
 ## 其他文件
 
-`cargo.lock`、`cargo.toml`、`lib.rs`都是Rust所需
+`cargo.lock`、`cargo.toml`、`lib.rs`都是Rust所需。
