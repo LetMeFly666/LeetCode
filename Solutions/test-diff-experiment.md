@@ -31,7 +31,7 @@ Beta模块负责数据的处理和转换。
 
 ### Beta的配置参数
 
-beta_batch_size = 100
+beta_batch_size = 200
 beta_parallel_workers = 4
 beta_output_format = json
 
