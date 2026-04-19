@@ -83,7 +83,7 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 
 ```javascript
 function mixedContent() {
-    const items = ['apple', 'banana', 'cherry'];
+    const items = ['apple', 'banana', 'durian'];
     items.forEach(item => {
         console.log(`Item: ${item}`);
     });
