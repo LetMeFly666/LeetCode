@@ -15,20 +15,13 @@ Alpha模块是系统的核心组件，负责数据的初始化和加载。
 ### Alpha的配置参数
 
 alpha_timeout = 60
+alpha_log_level = INFO
 alpha_retry_count = 3
 alpha_cache_size = 1024
-alpha_log_level = INFO
 
 ## 第二章：Beta模块
 
 Beta模块负责数据的处理和转换。
-
-### Beta的处理流程
-
-1. 接收原始数据
-2. 数据清洗和验证
-3. 格式转换
-4. 输出结果
 
 ### Beta的配置参数
 
@@ -36,6 +29,13 @@ beta_batch_size = 200
 beta_parallel_workers = 4
 beta_output_format = json
 beta_compression = gzip
+
+### Beta的处理流程
+
+1. 接收原始数据
+2. 数据清洗和验证
+3. 格式转换
+4. 输出结果
 
 ## 第三章：Gamma模块
 
