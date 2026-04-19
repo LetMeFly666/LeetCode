@@ -41,21 +41,9 @@ map $http_origin $corsHost {
 直接带 Origin 请求 `web.letmefly.xyz`：
 
 ```bash
-curl -I -H "Origin: https://blog.letmefly.xyz" \
-  https://web.letmefly.xyz/Links/JS/MathJax/output/chtml/fonts/woff-v2/MathJax_Zero.woff
-```
-
-返回了 `access-control-allow-origin: https://blog.letmefly.xyz`，完全正确。
-
-### 第三步：curl 验证重定向源
-
-```bash
-curl -I -H "Origin: https://blog.letmefly.xyz" \
-  https://letmefly.xyz/Links/JS/MathJax/output/chtml/fonts/woff-v2/MathJax_Zero.woff
-```
-
+### 第四步：Nginx add_header 继承陷阱
 302 响应也带了正确的 `access-control-allow-origin: https://blog.letmefly.xyz`。
-
+排查过程中还踩了另一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
 两端 curl 都正确，但浏览器就是报错。这说明**浏览器实际发出的请求和 curl 模拟的不一样**。
 
 ### 第四步：发现 map default 的坑

@@ -57,7 +57,6 @@
 |App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
 |C(C++)数组越界但能正常运行？关于数组越界和变量内存地址的一点研究|<a href="https://blog.letmefly.xyz/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135256408">CSDN博客</a>|
-|C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
 |C语言：在控制台输出香菱和火圈|<a href="https://blog.letmefly.xyz/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |汉语 - 生僻字积累|<a href="https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/">本平台博客</a>|无|
@@ -110,6 +109,7 @@
 |抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
 |密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录|<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN博客</a>|
+|CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Nginx-CORSRedirectOriginNull/">本平台博客</a>|无|
 |物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
 |PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
