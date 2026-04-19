@@ -14,7 +14,7 @@ Alpha模块是系统的核心组件，负责数据的初始化和加载。
 
 ### Alpha的配置参数
 
-alpha_timeout = 30
+alpha_timeout = 60
 alpha_retry_count = 3
 alpha_cache_size = 1024
 
@@ -47,7 +47,7 @@ Gamma模块负责结果的存储和分发。
 
 ### Gamma的配置参数
 
-gamma_db_pool_size = 10
+gamma_db_pool_size = 20
 gamma_redis_ttl = 3600
 gamma_s3_bucket = production-data
 
