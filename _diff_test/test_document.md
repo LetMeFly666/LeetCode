@@ -24,14 +24,14 @@ def add(a, b):
     result = a + b
     return result
 
-def multiply(a, b):
-    """两数相乘"""
-    result = a * b
-    return result
-
 def subtract(a, b):
     """两数相减"""
     result = a - b
+    return result
+
+def multiply(a, b):
+    """两数相乘"""
+    result = a * b
     return result
 ```
 
