@@ -41,16 +41,24 @@ map $http_origin $corsHost {
 直接带 Origin 请求 `web.letmefly.xyz`：
 
 ```bash
-### 第四步：Nginx add_header 继承陷阱
+curl -I -H "Origin: https://blog.letmefly.xyz" \
+  https://web.letmefly.xyz/Links/JS/MathJax/output/chtml/fonts/woff-v2/MathJax_Zero.woff
+```
+
+返回了 `access-control-allow-origin: https://blog.letmefly.xyz`，完全正确。
+
+### 第三步：curl 验证重定向源
+
+```bash
+curl -I -H "Origin: https://blog.letmefly.xyz" \
+  https://letmefly.xyz/Links/JS/MathJax/output/chtml/fonts/woff-v2/MathJax_Zero.woff
+```
+
 302 响应也带了正确的 `access-control-allow-origin: https://blog.letmefly.xyz`。
-排查过程中还踩了另一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
+
 两端 curl 都正确，但浏览器就是报错。这说明**浏览器实际发出的请求和 curl 模拟的不一样**。
 
-### 第四步：发现 map default 的坑
-
-排查过程中还发现了一个问题：map 的 `default` 原本设置为 `que.letmefly.xyz`（没有协议前缀），这是一个无效的 CORS 值。当 Origin 不匹配任何条目时，浏览器会收到 `Access-Control-Allow-Origin: que.letmefly.xyz`，直接报 `invalid value`。将 default 改为 `""` 后，报错变成了 `No 'Access-Control-Allow-Origin' header is present`——说明浏览器发到 `web.letmefly.xyz` 的请求中，Origin 确实没有匹配到 map 中的任何条目。
-
-### 第五步：Nginx add_header 继承陷阱
+### 第四步：Nginx add_header 继承陷阱
 
 排查过程中还踩了另一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
 
@@ -70,7 +78,7 @@ location /some-path {
 }
 ```
 
-### 第六步：根因定位——Origin 变成了 null
+### 第五步：根因定位——Origin 变成了 null
 
 综合以上线索：curl 手动带 Origin 请求没问题，但浏览器报错。说明浏览器跟随 302 重定向后，发到 `web.letmefly.xyz` 的请求里 **Origin 不是 `https://blog.letmefly.xyz`**。那它变成了什么？答案是字符串 `"null"`。
 
