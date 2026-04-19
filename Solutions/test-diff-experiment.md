@@ -17,6 +17,7 @@ Alpha模块是系统的核心组件，负责数据的初始化和加载。
 alpha_timeout = 60
 alpha_retry_count = 3
 alpha_cache_size = 1024
+alpha_log_level = INFO
 
 ## 第二章：Beta模块
 
@@ -34,6 +35,7 @@ Beta模块负责数据的处理和转换。
 beta_batch_size = 200
 beta_parallel_workers = 4
 beta_output_format = json
+beta_compression = gzip
 
 ## 第三章：Gamma模块
 
@@ -71,6 +73,7 @@ delta_error_rate_threshold = 5
 
 ## 总结
 
-本文件包含四个模块的详细介绍。
+修改状态: 已修改3处（实验2D）
+最后修改时间: 2026-04-19
 每个模块都有独立的功能和配置。
 修改状态: 未修改
