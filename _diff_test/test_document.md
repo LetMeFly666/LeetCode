@@ -7,8 +7,8 @@
 - 项目名称：LeetCode Solutions
 - 作者：LetMeFly666
 - 创建日期：2026-04-19
-- 版本号：v1.0.0
-- 状态：初始版本
+- 版本号：v1.1.0
+- 状态：Round 2 单行修改测试
 
 ## Section B: 代码示例
 
