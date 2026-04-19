@@ -145,9 +145,6 @@ sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 
 多几次 API 调用和 commit，换来 100% 成功率，完全值得。
 
-
-**立即睡眠**：`sudo pmset sleepnow`
-*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
 ---
 
 *本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19*
