@@ -12,9 +12,9 @@ AC代码见```Codes/*```，命名格式为：{题号}-{uri}.{后缀}
 
 题号类型有以下两种：数字开头、非数字开头。
 
-> + 数字开头的题目(如[https://leetcode.cn/problems/two-sum/](https://leetcode.cn/problems/two-sum/)的题目为"1. 两数之和")
+> + 数字开头的题目(如[https://leetcode.cn/problems/two-sum/](https://leetcode.cn/problems/two-sum/)的题目为“1. 两数之和”)
 >
-> + 非数字开头的题目(如[https://leetcode.cn/problems/successor-lcci/](https://leetcode.cn/problems/successor-lcci/)的题目为"面试题 04.06. 后继者")
+> + 非数字开头的题目(如[https://leetcode.cn/problems/successor-lcci/](https://leetcode.cn/problems/successor-lcci/)的题目为“面试题 04.06. 后继者”)
 
 |类型|例如|题号格式|
 |:--:|:--:|:--:|
