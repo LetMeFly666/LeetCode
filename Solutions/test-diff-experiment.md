@@ -37,23 +37,7 @@ beta_compression = gzip
 3. 格式转换
 4. 输出结果
 
-## 第三章：Gamma模块
-
-Gamma模块负责结果的存储和分发。
-
-### Gamma的存储后端
-
-- MySQL关系型数据库
-- Redis缓存层
-- S3对象存储
-
-### Gamma的配置参数
-
-gamma_db_pool_size = 20
-gamma_redis_ttl = 3600
-gamma_s3_bucket = production-data
-
-## 第四章：Delta模块
+## 第三章：Delta模块
 
 Delta模块负责监控和报警。
 
@@ -65,6 +49,22 @@ Delta模块负责监控和报警。
 - 错误率
 
 ### Delta的报警规则
+
+delta_cpu_threshold = 80
+delta_memory_threshold = 90
+delta_latency_threshold = 500
+delta_error_rate_threshold = 5
+
+## 第四章：Gamma模块
+
+Gamma模块负责结果的存储和分发。
+
+### Gamma的存储后端
+
+- MySQL关系型数据库
+- Redis缓存层
+- S3对象存储
+
 
 delta_cpu_threshold = 80
 delta_memory_threshold = 90
