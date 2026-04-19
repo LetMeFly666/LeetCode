@@ -125,23 +125,32 @@ map $http_origin $corsHost {
 
 排查过程中还踩了一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
 
-原因是 Nginx 的 `add_header` 指令**不会从 server 级别继承到 location 级别**——只要某个 `location` 块里有**任何** `add_header`，server 级别的 `add_header` 就全部失效（不是合并，是完全覆盖）。
+原因涉及 Nginx `add_header` 的继承机制。根据[官方文档](https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header)的描述：
+
+> These directives are inherited from the previous configuration level **if and only if** there are no `add_header` directives defined on the current level.
+
+也就是说，`add_header` **默认是会继承上层的**，但一旦当前层级（如 `location`）里出现了**任何一条** `add_header`，上层（`server`/`http`）的 `add_header` 就**全部失效**——不是合并，而是完全替换。
 
 以 `web.letmefly.xyz` 的配置为例，假设原本有这样的结构：
 
 ```nginx
 server {
     server_name web.letmefly.xyz;
-    add_header Access-Control-Allow-Origin $corsHost always;  # ← 这行不会生效
+    add_header Access-Control-Allow-Origin $corsHost always;  # ← server 级别
 
     location / {
-        add_header X-Frame-Options SAMEORIGIN;  # 只要这里有 add_header
-        # server 级别的 add_header 就全部被覆盖，CORS 头丢失
+        # 这个 location 里没有任何 add_header → 会继承 server 级别的 CORS 头 ✓
+        try_files $uri $uri/ =404;
+    }
+
+    location /api {
+        add_header X-Frame-Options SAMEORIGIN;  # ← 一旦出现这条
+        # server 级别的 add_header 全部失效，CORS 头丢失 ✗
     }
 }
 ```
 
-解决办法是把 CORS 头直接加到每个 location 块里。可以用 `include` 抽成公共片段避免重复：
+解决办法是把 CORS 头直接加到每个含有 `add_header` 的 location 块里。可以用 `include` 抽成公共片段避免重复：
 
 ```nginx
 # /etc/nginx/snippets/cors.conf
@@ -158,8 +167,13 @@ server {
 
     location / {
         include /etc/nginx/snippets/cors.conf;
-        add_header X-Frame-Options SAMEORIGIN;
         try_files $uri $uri/ =404;
+    }
+
+    location /api {
+        include /etc/nginx/snippets/cors.conf;
+        add_header X-Frame-Options SAMEORIGIN;
+        proxy_pass http://backend;
     }
 
     location ~* \.(woff|woff2|ttf|eot|otf)$ {
@@ -169,7 +183,9 @@ server {
 }
 ```
 
-这样每个 location 块都会独立输出 CORS 头，不受继承规则影响。
+这样即使某个 location 有自己的 `add_header`，CORS 头也不会丢失。
+
+> **补充**：Nginx 1.29.3 新增了 `add_header_inherit merge;` 指令，可以让子级别在保留自己 `add_header` 的同时继承上层的 `add_header`，但目前大多数生产环境的 Nginx 版本尚未支持。
 
 ---
 
