@@ -62,11 +62,11 @@ curl -I -H "Origin: https://blog.letmefly.xyz" \
 
 综合以上线索：curl 手动带 Origin 请求没问题，但浏览器报错。说明浏览器跟随 302 重定向后，发到 `web.letmefly.xyz` 的请求里 **Origin 不是 `https://blog.letmefly.xyz`**。那它变成了什么？答案是字符串 `"null"`。
 
-## 根因：WHATWG Fetch 规范的 tainted origin flag
+## 根因：WHATWG Fetch 规范的 redirect-tainted origin
 
 这不是浏览器 bug，而是 **WHATWG Fetch 规范**明确要求的行为。
 
-规范定义了 **tainted origin flag**（被污染的源标记）机制：
+规范定义了 **redirect-tainted origin**（重定向污染源，旧称 tainted origin flag）机制：
 
 - [Fetch 规范 Section 4.5 HTTP-redirect fetch](https://fetch.spec.whatwg.org/#http-redirect-fetch) 第 10 步：如果重定向目标 URL 的 origin 与请求当前 URL 的 origin **不同**，且请求的 origin 与当前 URL 的 origin 也**不同**，则设置请求的 tainted origin flag。
 - [Serializing a request origin](https://fetch.spec.whatwg.org/#serializing-a-request-origin) 算法：如果请求的 tainted origin flag 已设置，则返回字符串 `"null"`。
