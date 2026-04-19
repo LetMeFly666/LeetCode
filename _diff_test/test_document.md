@@ -72,7 +72,7 @@ def subtract(a, b):
 
 ## Section F: 结尾标记
 
-文档版本：v3.0.0
-最后修改：2026-04-19 Round 7 baseline
-修改次数：7
-校验值：CHECKSUM_R7_BASELINE
+文档版本：v3.1.0
+最后修改：2026-04-19 Round 7b
+修改次数：8
+校验值：CHECKSUM_R7B
