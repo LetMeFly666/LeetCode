@@ -56,6 +56,7 @@
 |App - 程序修改 - 修改阿里云盘电脑端传输完成时提示音|<a href="https://blog.letmefly.xyz/2023/08/04/Other-App-AppChange-AliyundriveTransferFinishVoice-Changement/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132096003">CSDN博客</a>|
 |有了域名想绑定域名邮箱？拥有域名后，如何免费绑定邮箱呢？如何使用【昵称@你的.域名】收发邮件|<a href="https://blog.letmefly.xyz/2022/09/27/Other-BandDomain2mail/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127077055">CSDN博客</a>|
 |C(C++)数组越界但能正常运行？关于数组越界和变量内存地址的一点研究|<a href="https://blog.letmefly.xyz/2023/12/27/Other-C-C++-ArrayBoundaryExceeded-MemoryAddress/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135256408">CSDN博客</a>|
+|C语言：使用 御坂美琴(misakamikoto)形状的C代码 播放OnlyMyRailgun|<a href="https://blog.letmefly.xyz/2023/08/02/Other-C-PlayOnlyMyRailgunByCodeShapedAsMisakamikoto/">本平台博客</a>|无|
 |C语言：在控制台输出香菱和火圈|<a href="https://blog.letmefly.xyz/2023/06/30/Other-C-ShowXianglingAndCirclingFireOnTheConsole/">本平台博客</a>|无|
 |比较C++在for循环中的i++和++i以及i++的O2优化的效率：++i真的比i++快吗|<a href="https://blog.letmefly.xyz/2023/01/13/Other-C++-Comparei++and++iAndi++O2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/128675905">CSDN博客</a>|
 |汉语 - 生僻字积累|<a href="https://blog.letmefly.xyz/2023/09/01/Other-Chinese-SpecialCharacterAccumulation/">本平台博客</a>|无|
@@ -99,6 +100,7 @@
 |MacOS - 记录MacOS发烫的好几天 - 幕后黑手竟然是|<a href="https://blog.letmefly.xyz/2025/09/01/Other-MacOS-Logging_several_days_of_macOS_overheating/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/151087541">CSDN博客</a>|
 |MacOS - Clang使用bits/stdc++.h - 非官方(竞赛用) - 通用方法|<a href="https://blog.letmefly.xyz/2025/09/27/Other-MacOS-ClangUsingBits_stdcpp_h/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/152164818">CSDN博客</a>|
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
+|借助mitmproxy通过电子邮件隐式传输信息|<a href="https://blog.letmefly.xyz/2025/03/23/Other-Network-HowToSendHiddenMsgThroughEmailWithMitmproxy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146461437">CSDN博客</a>|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
 |CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/160310109">CSDN博客</a>|
@@ -141,7 +143,6 @@
 |VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
 |VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
 |VsCode启用右括号自动跳过(自动重写)|<a href="https://blog.letmefly.xyz/2025/03/25/Other-VsCode-StartAutoClosingOvertype/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146515937">CSDN博客</a>|
-|VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
 |WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
 |CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/">本平台博客</a>|无|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
