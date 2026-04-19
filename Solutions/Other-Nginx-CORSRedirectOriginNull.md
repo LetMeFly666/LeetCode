@@ -58,27 +58,7 @@ curl -I -H "Origin: https://blog.letmefly.xyz" \
 
 两端 curl 都正确，但浏览器就是报错。这说明**浏览器实际发出的请求和 curl 模拟的不一样**。
 
-### 第四步：Nginx add_header 继承陷阱
-
-排查过程中还踩了另一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
-
-原因是 Nginx 的 `add_header` 指令**不会从 server 级别继承到 location 级别**——只要某个 `location` 块里有**任何** `add_header`，server 级别的 `add_header` 就全部失效（不是合并，是完全覆盖）。
-
-解决办法是把 CORS 头加到实际命中请求的 location 块里，或者用 `include` 抽成公共片段避免重复：
-
-```nginx
-# /etc/nginx/snippets/cors.conf
-add_header Access-Control-Allow-Origin $corsHost always;
-```
-
-```nginx
-location /some-path {
-    include /etc/nginx/snippets/cors.conf;
-    # ...
-}
-```
-
-### 第五步：根因定位——Origin 变成了 null
+### 第四步：根因定位——Origin 变成了 null
 
 综合以上线索：curl 手动带 Origin 请求没问题，但浏览器报错。说明浏览器跟随 302 重定向后，发到 `web.letmefly.xyz` 的请求里 **Origin 不是 `https://blog.letmefly.xyz`**。那它变成了什么？答案是字符串 `"null"`。
 
@@ -140,6 +120,56 @@ map $http_origin $corsHost {
 ```
 
 但这样做安全性稍差——任何 Origin 为 null 的请求都会被放行为 `blog.letmefly.xyz`。
+
+## 排查过程中踩的另一个坑：Nginx add_header 继承陷阱
+
+排查过程中还踩了一个坑：在 `web.letmefly.xyz` 的 server 块级别加了 `add_header Access-Control-Allow-Origin $corsHost;`，但不生效。
+
+原因是 Nginx 的 `add_header` 指令**不会从 server 级别继承到 location 级别**——只要某个 `location` 块里有**任何** `add_header`，server 级别的 `add_header` 就全部失效（不是合并，是完全覆盖）。
+
+以 `web.letmefly.xyz` 的配置为例，假设原本有这样的结构：
+
+```nginx
+server {
+    server_name web.letmefly.xyz;
+    add_header Access-Control-Allow-Origin $corsHost always;  # ← 这行不会生效
+
+    location / {
+        add_header X-Frame-Options SAMEORIGIN;  # 只要这里有 add_header
+        # server 级别的 add_header 就全部被覆盖，CORS 头丢失
+    }
+}
+```
+
+解决办法是把 CORS 头直接加到每个 location 块里。可以用 `include` 抽成公共片段避免重复：
+
+```nginx
+# /etc/nginx/snippets/cors.conf
+add_header Access-Control-Allow-Origin $corsHost always;
+```
+
+然后在每个需要 CORS 头的 location 中引入：
+
+```nginx
+server {
+    server_name web.letmefly.xyz;
+    listen 443 ssl;
+    root /srv/web/website;
+
+    location / {
+        include /etc/nginx/snippets/cors.conf;
+        add_header X-Frame-Options SAMEORIGIN;
+        try_files $uri $uri/ =404;
+    }
+
+    location ~* \.(woff|woff2|ttf|eot|otf)$ {
+        include /etc/nginx/snippets/cors.conf;
+        expires 30d;
+    }
+}
+```
+
+这样每个 location 块都会独立输出 CORS 头，不受继承规则影响。
 
 ---
 
