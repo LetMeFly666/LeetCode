@@ -162,7 +162,7 @@ add_header Access-Control-Allow-Origin $corsHost always;
 ```nginx
 server {
     server_name web.letmefly.xyz;
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/160310109)和我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/)哦~
+    listen 443 ssl;
     root /srv/web/website;
 
     location / {
@@ -191,6 +191,6 @@ server {
 
 *写完这篇文章后才发现，最好的排查方式是一开始就在浏览器 DevTools 的 Network 面板里查看重定向后实际发出的请求头……不过绕了一圈学到的东西更多（大概吧）。*
 
-> 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/160310109)和我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
