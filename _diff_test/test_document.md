@@ -30,6 +30,11 @@ def multiply(a, b):
     return result
 ```
 
+
+def subtract(a, b):
+    """两数相减（Round 3 新增）"""
+    result = a - b
+    return result
 ## Section C: 表格数据
 
 | 编号 | 名称 | 难度 | 状态 |
