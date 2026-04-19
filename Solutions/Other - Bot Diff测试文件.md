@@ -29,6 +29,7 @@ def goodbye():
     return False
 
 def calculate(a, b):
+    print(f"Computing {a} + {b}")
     result = a + b
     print(f"Result: {result}")
     return result
