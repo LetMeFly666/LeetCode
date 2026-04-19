@@ -94,8 +94,8 @@ blog.letmefly.xyz  →(fetch)→  letmefly.xyz  →(302)→  web.letmefly.xyz
 
 所有现代浏览器都遵循这一规范行为。Firefox 的 Bug 1444278 记录了完整的修复过程：之前 Firefox 在跨域重定向后仍然发送原始 Origin（与 Chrome/Safari 不一致），后来修复为发送 `"null"` 以对齐 WHATWG Fetch 规范。规范维护者 annevk 在该 bug 中确认：「Once we cross origin boundaries the request's origin is supposed to become a unique opaque identifier (which serializes to null).」
 
-## 解决方案
-
+| Chrome | 跨域重定向后 `Origin: null` | [Chromium Issue 154967](https://issues.chromium.org/40290910) |
+| Firefox | 跨域重定向后 `Origin: null` | [Bug 1444278](https://bugzilla.mozilla.org/show_bug.cgi?id=1444278)（Firefox 后续版本已对齐规范） |
 **最佳方案（推荐）**：在前端直接引用最终地址 `https://web.letmefly.xyz/...`，避免经过 `letmefly.xyz` 的重定向，根本不触发 tainted origin flag。
 
 **备选方案一**：在 `web.letmefly.xyz` 的 Nginx 配置中，对字体文件用 `*` 通配符：
@@ -186,7 +186,7 @@ server {
 这样即使某个 location 有自己的 `add_header`，CORS 头也不会丢失。
 
 > **补充**：Nginx 1.29.3 新增了 `add_header_inherit merge;` 指令，可以让子级别在保留自己 `add_header` 的同时继承上层的 `add_header`，但目前大多数生产环境的 Nginx 版本尚未支持。
-
+> **补充**：Nginx 1.29.3 新增了 `add_header_inherit merge;` 指令（[1.30.0 stable](https://nginx.org/) 已包含），可以让子级别在保留自己 `add_header` 的同时继承上层的 `add_header`。
 ---
 
 *写完这篇文章后才发现，最好的排查方式是一开始就在浏览器 DevTools 的 Network 面板里查看重定向后实际发出的请求头……不过绕了一圈学到的东西更多（大概吧）。*
