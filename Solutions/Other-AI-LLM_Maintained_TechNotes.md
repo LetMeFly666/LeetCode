@@ -95,6 +95,9 @@ sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 |---|---|---|
 | `pmset schedule sleep "日期"` | 精确到时刻，系统级调度 | 日期格式需手动拼 |
 | `pmset schedule sleep "$(date ...)"` | 支持相对时间，自动算时刻 | 命令稍长 |
+
+**立即睡眠**：`sudo pmset sleepnow`
+
 ## AI 工程实践
 
 ### AI Bot 稳定 Diff 修改方案：单 Hunk + 预读 + 单 Commit
