@@ -102,14 +102,12 @@
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
 |内网穿透：如何借助Cloudflare连接没有公网的电脑的远程桌面(RDP)-含详细原理配置说明介绍|<a href="https://blog.letmefly.xyz/2024/10/21/Other-Net_Traversal-How2UseCloudflareConnectingRDP(RemoteDesktopProtocol)WithoutPublicIP/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/143114828">CSDN博客</a>|
 |借助mitmproxy通过电子邮件隐式传输信息|<a href="https://blog.letmefly.xyz/2025/03/23/Other-Network-HowToSendHiddenMsgThroughEmailWithMitmproxy/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146461437">CSDN博客</a>|
-|CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Nginx-CORSRedirectOriginNull/">本平台博客</a>|无|
 |面经 - 当前只有计网|<a href="https://blog.letmefly.xyz/2025/02/18/Other-Notes-Mianjing/">本平台博客</a>|无|
 |Vjudge使用小指南 - Virtual Judge - 一个Online Judge(OJ)平台 - 支持大量第三方题库|<a href="https://blog.letmefly.xyz/2024/08/14/Other-OJ-Vjudge-how2use/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/141185238">CSDN博客</a>|
 |OWA(Outlook Web App) - 详细总结调研 - 特征相关|<a href="https://blog.letmefly.xyz/2024/10/18/Other-OWA-OutlookWebApp-IntroductionAndSurvey/">本平台博客</a>|**暂**无|
 |抓包 - 简要总结 - Windows和Android抓包|<a href="https://blog.letmefly.xyz/2023/08/25/Other-PacketCapture-briefSummary-WindwosAndAndroid/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132504020">CSDN博客</a>|
 |抓包 - 经典抓包工具Fiddler的安装与初使用|<a href="https://blog.letmefly.xyz/2023/02/04/Other-PacketCapture-FiddlerInsrallmentAndFirstUse/">本平台博客</a>|无|
 |密码管理 - 使用Bitwarden/Vaultwarden自托管密码服务 - 折腾记录|<a href="https://blog.letmefly.xyz/2025/02/15/Other-Password-SelfHostPasswordToolUsingBitwardenVaultwarden">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145649203">CSDN博客</a>|
-|CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Nginx-CORSRedirectOriginNull/">本平台博客</a>|无|
 |物理 - 三大宇宙速度 - 计算方法小回忆|<a href="https://blog.letmefly.xyz/2023/05/12/Other-Physics-ThreeCosmicVelocities/">本平台博客</a>|无|
 |提瓦特小助手 - 原神抓包的一个不错的Powershell脚本|<a href="https://blog.letmefly.xyz/2022/12/01/Other-Powershell-TiWaTeXiaoZuShouZhuaBao/">本平台博客</a>|无|
 |PWA(Progressive web apps)：Web技术实现类似原生应用 - 入门|<a href="https://blog.letmefly.xyz/2023/03/17/Other-PWA-ProgressiveWebApp-Introduction/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129629012">CSDN博客</a>|
@@ -145,6 +143,7 @@
 |VsCode启用右括号自动跳过(自动重写)|<a href="https://blog.letmefly.xyz/2025/03/25/Other-VsCode-StartAutoClosingOvertype/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146515937">CSDN博客</a>|
 |VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
 |WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
+|CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录|<a href="https://blog.letmefly.xyz/2026/04/19/Other-Website-CORSRedirectOriginNull/">本平台博客</a>|无|
 |建站 - 如何访问Cloudflare的workers.dev|<a href="https://blog.letmefly.xyz/2023/04/29/Other-Website-HowToAccessWordersDotDev/">本平台博客</a>|<span title="还是先不要有那么多人看到了，短网址服务被恶意使用定向到不良网站的话，很容易被BAN吧！等我做了安全限制后再开放公开使用，到时候再发布到CSDN吧（发布到我自己的博客平台肯定没有几个人会看到wuw）">无</span>）|
 |网站访问耗时优化 - 从数十秒到几百毫秒的“零成本”优化过程 - 阿里云子域GeoDNS国内外分流|<a href="https://blog.letmefly.xyz/2026/01/10/Other-Website-ZeroCostLatencyOptimization/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/156789088">CSDN博客</a>|
 |记录一下今日见到的.appinstaller格式的小巧文件|<a href="https://blog.letmefly.xyz/2022/11/05/Other-Windows-.appinstaller-firstfound/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127704968">CSDN博客</a>|
