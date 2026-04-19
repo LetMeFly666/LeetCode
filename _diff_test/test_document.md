@@ -72,7 +72,7 @@ def multiply(a, b):
 
 ## Section F: 结尾标记
 
-文档版本：v3.1.0
-最后修改：2026-04-19 Round 7b
-修改次数：8
-校验值：CHECKSUM_R7B
+文档版本：v4.0.0
+最后修改：2026-04-19 Round 9 (review tests)
+修改次数：10
+校验值：CHECKSUM_R9
