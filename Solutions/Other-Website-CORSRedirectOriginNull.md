@@ -6,7 +6,7 @@ tags: [其他, Nginx, CORS, Web]
 categories: [技术思考, AI]
 ---
 
-> AI创作声明：以下内容由大模型总结自我与大模型的对话。
+> AI创作声明：以下内容由大模型总结自我与大模型的[对话](https://github.com/LetMeFly666/LeetCode/pull/1519)。
 
 # CORS 跨域重定向后 Origin 变 null —— 一次 Nginx 字体加载失败的排查记录
 
