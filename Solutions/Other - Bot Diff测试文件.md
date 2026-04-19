@@ -15,6 +15,8 @@ categories: [测试]
 
 机器学习是AI的核心子领域之一。它使计算机能够从数据中学习模式，而无需被显式编程。监督学习、无监督学习和强化学习是三种主要的机器学习范式，每种都有其独特的应用场景和优势。
 
+自然语言处理（NLP）是AI中发展最快的领域之一。从早期的规则系统到Transformer架构，NLP技术使机器能够理解、生成和翻译人类语言。GPT、BERT等大语言模型的出现，标志着NLP进入了新纪元。
+
 
 ## Section B: 有序列表
 
@@ -24,6 +26,8 @@ categories: [测试]
    3. 1983年 - C++面世，引入面向对象编程
    4. 1991年 - Python发布，强调代码可读性
    5. 1995年 - Java发布，"一次编写，到处运行"
+   6. 2009年 - Go语言发布，简洁高效的系统编程
+   7. 2010年 - Rust发布，内存安全的系统编程
 2. 数据结构分类
    1. 线性结构
       1. 数组（Array）
@@ -92,6 +96,7 @@ categories: [测试]
      - Prometheus + Grafana
      - ELK Stack（Elasticsearch, Logstash, Kibana）
      - Datadog, New Relic
+     - PagerDuty：事件响应平台
 3. 安全最佳实践
    1. 认证与授权
       - OAuth 2.0 / OIDC
@@ -166,14 +171,14 @@ def merge(left, right):
 
 ## Section F: 表格与数据
 
-| 指标 | Python | Java | Go | Rust |
-|------|--------|------|----|------|
-| 学习曲线 | 低 | 中 | 中 | 高 |
-| 运行速度 | 慢 | 快 | 快 | 极快 |
-| 内存安全 | GC | GC | GC | 所有权 |
-| 并发模型 | GIL | 线程 | Goroutine | async/线程 |
-| 包管理 | pip | Maven | go mod | cargo |
-| 典型应用 | AI/数据 | 企业 | 云原生 | 系统 |
+| 指标 | Python | Java | Go | Rust | TypeScript |
+|------|--------|------|----|------|------------|
+| 学习曲线 | 低 | 中 | 中 | 高 | 低 |
+| 运行速度 | 慢 | 快 | 快 | 极快 | 中 |
+| 内存安全 | GC | GC | GC | 所有权 | GC |
+| 并发模型 | GIL | 线程 | Goroutine | async/线程 | Event Loop |
+| 包管理 | pip | Maven | go mod | cargo | npm |
+| 典型应用 | AI/数据 | 企业 | 云原生 | 系统 | 全栈 |
 
 1. 性能基准测试结果
    - Web框架吞吐量（req/s）
@@ -246,6 +251,7 @@ def merge(left, right):
        - API文档
        - 架构文档
        - 运维手册
+       - 变更日志
 
 ## 参考链接
 
