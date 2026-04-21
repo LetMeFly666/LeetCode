@@ -23,7 +23,7 @@ private:
             q.pop();
             for (int to : graph[from]) {
                 if (!visited[to]) {
-                    put(from, source, target, visited, a, b, q);
+                    put(to, source, target, visited, a, b, q);
                 }
             }
         }
