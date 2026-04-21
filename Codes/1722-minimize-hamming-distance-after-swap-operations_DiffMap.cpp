@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-21 23:10:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-21 23:11:41
+ * @LastEditTime: 2026-04-21 23:14:07
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -53,6 +53,6 @@ public:
                 ans += trace(i, source, target, graph, visited);
             }
         }
-        return ans;
+        return ans / 2;
     }
 };
