@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-22 23:07:22
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-22 23:09:06
+ * @LastEditTime: 2026-04-22 23:10:53
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,6 +23,7 @@ public:
             for (string& b : dictionary) {
                 if (ok(a, b)) {
                     ans.push_back(a);
+                    break;
                 }
             }
         }
