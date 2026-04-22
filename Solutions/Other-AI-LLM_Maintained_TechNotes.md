@@ -90,9 +90,95 @@ sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 > **注意**：网上常见的 `(sleep 3600 && sudo pmset sleepnow) &` 方案有坑——`sudo` 凭据默认 5 分钟过期，后台进程又没有 tty 交互输入密码，等 sleep 结束后 `sudo` 会直接报错，根本不会睡眠。所以**相对时间睡眠推荐用 `date` + `pmset schedule` 方式**。
 
 **对比**：
+### macOS sips 命令——自带的图片处理瑞士军刀
+
+`sips`（Scriptable Image Processing System）是 macOS 自带的命令行图片处理工具，无需安装任何依赖，支持格式转换、缩放、旋转、裁剪、属性查询等。
+
+**格式转换**
+
+支持的输出格式：jpeg、tiff、png、gif、jp2、pict、bmp、qtif、psd、sgi、tga、pdf。
+
+```bash
+# 单张 HEIC 转 JPG
+sips -s format jpeg input.heic --out output.jpg
+
+# 批量转换当前目录所有 HEIC
+for f in *.heic; do sips -s format jpeg "$f" --out "${f%.heic}.jpg"; done
+
+# PNG 转 JPG 并设置质量（0-100）
+sips -s format jpeg -s formatOptions 80 input.png --out output.jpg
+```
+
+**调整尺寸**
+
+| 参数 | 行为 | 保持宽高比 |
+|---|---|---|
+| `-Z <max>` | 最长边缩放到 max | 是 |
+| `-z <h> <w>` | 强制指定高×宽 | 否（会拉伸） |
+| `--resampleWidth <w>` | 指定宽度 | 是 |
+| `--resampleHeight <h>` | 指定高度 | 是 |
+
+```bash
+# 等比缩放到最大 800px（推荐，最常用）
+sips -Z 800 input.jpg --out resized.jpg
+
+# 批量生成缩略图
+mkdir thumbnails
+for f in *.jpg; do sips -Z 200 "$f" --out "thumbnails/$f"; done
+```
+
+**旋转与翻转**
+
+```bash
+sips -r 90 input.jpg --out rotated.jpg      # 顺时针旋转 90°
+sips -f horizontal input.jpg --out h.jpg     # 水平翻转
+sips -f vertical input.jpg --out v.jpg       # 垂直翻转
+```
+
+**裁剪与填充**
+
+```bash
+# 从中心裁剪到 500x500
+sips -c 500 500 input.jpg --out cropped.jpg
+
+# 填充到 1000x1000（白色填充空白区域）
+sips -p 1000 1000 input.jpg --padColor FFFFFF --out padded.jpg
+```
+
+**查询图片信息**
+
+```bash
+sips -g all input.jpg                        # 查看所有属性
+sips -g pixelWidth -g pixelHeight input.jpg  # 查看宽高
+sips -g format input.jpg                     # 查看格式
+sips -g dpiWidth -g dpiHeight input.jpg      # 查看 DPI
+```
+
+**设置 DPI（适合打印场景）**
+
+```bash
+sips -s dpiHeight 300 -s dpiWidth 300 input.jpg --out print_ready.jpg
+```
+
+**实用组合示例**
+
+```bash
+# 批量 HEIC 转 JPG + 压缩 + 限制最大尺寸
+for f in *.heic; do
+  sips -s format jpeg -s formatOptions 80 -Z 1920 "$f" --out "${f%.heic}.jpg"
+done
+
+# 快速查看目录下所有图片的尺寸
+for f in *.{jpg,png,heic}; do
+  [ -f "$f" ] && echo "$f: $(sips -g pixelWidth -g pixelHeight "$f" 2>/dev/null | grep pixel | awk '{print $2}' | tr '\n' 'x' | sed 's/x$//')"
+done
+```
+
+`sips` 的优势在于零依赖——macOS 原生自带，不需要 `brew install` 任何东西，脚本中随拿随用。对于日常的格式转换和批量缩放完全够用，更复杂的图片处理再考虑 ImageMagick。
+
 
 | 方式 | 优点 | 缺点 |
-|---|---|---|
+*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-22*
 | `pmset schedule sleep "日期"` | 精确到时刻，系统级调度 | 日期格式需手动拼 |
 | `pmset schedule sleep "$(date ...)"` | 支持相对时间，自动算时刻 | 命令稍长 |
 
