@@ -59,7 +59,7 @@ categories: [题解, LeetCode]
 
 合格后记得break，防止重复加入到答案数组中。
 
-+ 时间复杂度$O(n\times len(queries)\times len(dictionary))￥
++ 时间复杂度$O(n\times len(queries)\times len(dictionary))$
 + 空间复杂度$O(1)$吗，力扣返回值不计入算法空间复杂度
 
 ### AC代码
