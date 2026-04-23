@@ -124,10 +124,54 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 </tr>
 </tbody></table>
 <p><strong>立即睡眠</strong>：<code>sudo pmset sleepnow</code></p>
+<h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><h3 id="JSONL（JSON-Lines）"><a href="#JSONL（JSON-Lines）" class="headerlink" title="JSONL（JSON Lines）"></a>JSONL（JSON Lines）</h3><p>JSONL（也叫 NDJSON）是一种文本格式：每一行是一个独立的合法 JSON 对象，行与行之间用 <code>\n</code> 分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30&#125;</span><br><span class="line">&#123;&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25&#125;</span><br><span class="line">&#123;&quot;name&quot;: &quot;Charlie&quot;, &quot;age&quot;: 35&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文件扩展名通常为 <code>.jsonl</code> 或 <code>.ndjson</code>。</p>
+<p><strong>与标准 JSON 的核心区别</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>JSON</th>
+<th>JSONL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结构</td>
+<td>单个 JSON 值（通常是数组&#x2F;对象）</td>
+<td>每行一个独立 JSON 对象</td>
+</tr>
+<tr>
+<td>解析</td>
+<td>需整体解析</td>
+<td>可逐行解析</td>
+</tr>
+<tr>
+<td>追加写入</td>
+<td>困难（需维护闭合括号）</td>
+<td>直接 append 一行</td>
+</tr>
+<tr>
+<td>内存占用</td>
+<td>与文件大小成正比</td>
+<td>可流式处理，常数级内存</td>
+</tr>
+</tbody></table>
+<p><strong>典型使用场景</strong>：</p>
+<ul>
+<li><strong>机器学习训练数据</strong>：OpenAI fine-tuning 数据集要求 JSONL 格式（每行一个 <code>{&quot;messages&quot;: [...]}</code> 对象）</li>
+<li><strong>日志收集</strong>：每条日志一行 JSON，方便 <code>grep</code>、<code>jq</code>、<code>tail -f</code> 实时处理</li>
+<li><strong>数据管道 &#x2F; ETL</strong>：Spark、BigQuery 等都原生支持 JSONL 导入导出</li>
+<li><strong>流式传输</strong>：生产者不断 append 行，消费者逐行读取，天然适合管道和消息队列场景</li>
+</ul>
+<p>用 <code>jq</code> 处理 JSONL 非常方便：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提取所有 name 字段</span></span><br><span class="line"><span class="built_in">cat</span> data.jsonl | jq -r <span class="string">&#x27;.name&#x27;</span></span><br><span class="line"><span class="comment"># 过滤 age &gt; 28 的记录</span></span><br><span class="line"><span class="built_in">cat</span> data.jsonl | jq <span class="string">&#x27;select(.age &gt; 28)&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <hr>
-<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-19</em></p>
+<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-23</em></p>
 <blockquote>
 <p>同步发文于我的<a href="https://blog.letmefly.xyz/">个人博客</a>，(AI)创作不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/">原文链接</a>哦~</p>
 <p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
 </blockquote>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/2026/04/17/LeetCode%203761.%E9%95%9C%E5%83%8F%E5%AF%B9%E4%B9%8B%E9%97%B4%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E8%B7%9D%E7%A6%BB/">← Next 3761.镜像对之间最小绝对距离：哈希表（维护左，枚举右）</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/04/15/LeetCode%202515.%E5%88%B0%E7%9B%AE%E6%A0%87%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%9D%E7%A6%BB/">2515.到目标字符串的最短距离：从中间往两边遍历 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94-%E7%94%B1%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">AI维护的技术随笔 - 由大模型持续更新的技术笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Skill"><span class="toc-number">1.1.</span> <span class="toc-text">Skill</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98-AI-Skill%EF%BC%9A%E7%BB%99-IDE-%E4%B8%AD%E7%9A%84-LLM-%E7%94%A8%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86%E5%8C%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.</span> <span class="toc-text">Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E7%9D%A1%E7%9C%A0%EF%BC%88pmset%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">命令行设置定时睡眠（pmset）</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/2026/04/17/LeetCode%203761.%E9%95%9C%E5%83%8F%E5%AF%B9%E4%B9%8B%E9%97%B4%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E8%B7%9D%E7%A6%BB/">← Next 3761.镜像对之间最小绝对距离：哈希表（维护左，枚举右）</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/04/15/LeetCode%202515.%E5%88%B0%E7%9B%AE%E6%A0%87%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%9D%E7%A6%BB/">2515.到目标字符串的最短距离：从中间往两边遍历 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AI%E7%BB%B4%E6%8A%A4%E7%9A%84%E6%8A%80%E6%9C%AF%E9%9A%8F%E7%AC%94-%E7%94%B1%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E7%9A%84%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">AI维护的技术随笔 - 由大模型持续更新的技术笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Skill"><span class="toc-number">1.1.</span> <span class="toc-text">Skill</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98-AI-Skill%EF%BC%9A%E7%BB%99-IDE-%E4%B8%AD%E7%9A%84-LLM-%E7%94%A8%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86%E5%8C%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac"><span class="toc-number">1.2.</span> <span class="toc-text">Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E7%9D%A1%E7%9C%A0%EF%BC%88pmset%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">命令行设置定时睡眠（pmset）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">数据格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSONL%EF%BC%88JSON-Lines%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">JSONL（JSON Lines）</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
