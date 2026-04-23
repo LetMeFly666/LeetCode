@@ -69,7 +69,7 @@ pmset -g sched
 sudo pmset schedule cancelall
 ```
 
-`pmset` 不支持按索引取消单条计划，只能 `cancelall` 全部清除。要"取消某一条"，思路是先 cancelall，再把想保留的重新添加：
+`pmset` 不支持按索引取消单条计划，只能 `cancelall` 全部清除。要\u201c取消某一条\u201d，思路是先 cancelall，再把想保留的重新添加：
 
 ```bash
 sudo pmset schedule cancelall
