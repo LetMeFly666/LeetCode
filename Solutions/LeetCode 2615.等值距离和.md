@@ -67,6 +67,8 @@ i = 4 ，arr[4] = 0 因为不存在值等于 2 的其他下标。
 > 
 > 那么，$idxs[i]$要算出的最终结果就是：$i$后面所有元素之和($suffix[i+1]$) $-$ 后面元素个数$\times idxs[i] + i$前面元素个数$\times idxs[i]$ $-$ 前面元素之和$prefix$。
 
+另外，也可以不使用$suffix$数组，改为$suffix[i+1]$由$total-prefix-idxs[i]$得出。
+
 + 时间复杂度$O(len(nums))$
 + 空间复杂度$O(len(nums))$
 
@@ -76,20 +78,20 @@ i = 4 ，arr[4] = 0 因为不存在值等于 2 的其他下标。
 
 ```cpp
 /*
- * @LastEditTime: 2026-04-24 13:21:22
+ * @LastEditTime: 2026-04-24 13:53:47
  */
 typedef long long ll;
 class Solution {
 private:
     void cal(vector<int>& idxs, vector<ll>& ans) {
         int n = idxs.size();
-        vector<ll> suffix(n + 1);
+        ll total = 0;
         for (int i = n - 1; i >= 0; i--) {
-            suffix[i] = suffix[i + 1] + idxs[i];
+            total += idxs[i];
         }
         ll prefix = 0;
         for (int i = 0; i < n; i++) {
-            ans[idxs[i]] += suffix[i + 1] - (ll)(n - i - 1) * idxs[i];
+            ans[idxs[i]] += (total - prefix - idxs[i]) - (ll)(n - i - 1) * idxs[i];
             ans[idxs[i]] += (ll)i * idxs[i] - prefix;
             prefix += idxs[i];
         }
