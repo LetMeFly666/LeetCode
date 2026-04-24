@@ -77,6 +77,39 @@ for code2gen in CODES_TO_GEN:
         alreadyExists = True
         break
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
+def ensureTrailingBlankLine(content: str) -> str:
+    """
+    确保代码末尾有一个空行:
+    - 若末尾已是 "\n\n" 则不动
+    - 若末尾最后一行只含空白(如 python Solution 后只有若干空格或一个 tab),
+      视为非空行,仍需再补一个 '\n' 让其成为真正的空行
+    """
+    if not content:
+        return '\n'
+    if content.endswith('\n\n'):
+        return content
+    if content.endswith('\n'):
+        # 最后一个 \n 之前的那一行若全是空白(或存在只含空白的最后一行),
+        # 仍不算空行,需再补一个 \n
+        # 取倒数第二个 \n 到倒数第一个 \n 之间的内容
+        idx = content.rfind('\n', 0, len(content) - 1)
+        lastLine = content[idx + 1 : len(content) - 1] if idx != -1 else content[:-1]
+        if lastLine.strip() == '' and lastLine != '':
+            # 最后一行是纯空白(空格/tab)但非空串 —— 不算空行,补 \n
+            return content + '\n'
+        return content + '\n'
+    return content + '\n\n'
+def goSpaces2Tabs(content: str) -> str:
+    """go 源码文件中:行首若为 4 空格的整数倍,转换为对应数量的 tab"""
+    out_lines = []
+    for line in content.split('\n'):
+        stripped = line.lstrip(' ')
+        n_spaces = len(line) - len(stripped)
+        if n_spaces and n_spaces % 4 == 0:
+            out_lines.append('\t' * (n_spaces // 4) + stripped)
+        else:
+            out_lines.append(line)
+    return '\n'.join(out_lines)
 for code2gen in CODES_TO_GEN:
     toName = f'Codes/{num:04}-{titleSlug}{dateSuffix}.{mappingSuffix[code2gen]}'
     fromName = f'AllProblems/{num}.{title}/code.{mappingSuffix[code2gen]}'
@@ -95,28 +128,43 @@ for code2gen in CODES_TO_GEN:
     elif code2gen == 'cpp':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
+            content = ensureTrailingBlankLine(content)
             f.seek(0)
             header = '#ifdef _DEBUG\n' +\
                      '#include "_[1,2]toVector.h"\n' +\
                      '#endif\n\n'
             f.write(header + content)
+            f.truncate()
     elif code2gen == 'python3':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
+            content = ensureTrailingBlankLine(content)
+            prefix = ''
             if needsImportTyping(content, 'Optional'):  # 这样得ast两次，算了无所谓了暂时
-                f.seek(0)
-                header = 'from typing import Optional\n\n'
-                f.write(header + content)
+                prefix += 'from typing import Optional\n\n'
             if needsImportTyping(content):
-                f.seek(0)
-                header = 'from typing import List\n\n'
-                f.write(header + content)
+                prefix = 'from typing import List\n\n' + prefix
+            f.seek(0)
+            f.write(prefix + content)
+            f.truncate()
     elif code2gen == 'golang':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
+            content = goSpaces2Tabs(content)
+            content = ensureTrailingBlankLine(content)
             f.seek(0)
             header = 'package main\n\n'
             f.write(header + content)
+            f.truncate()
+    else:
+        # java / rust 等:仅补末尾空行
+        with open(toName, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            newContent = ensureTrailingBlankLine(content)
+            if newContent != content:
+                f.seek(0)
+                f.write(newContent)
+                f.truncate()
 
 title = ""
 for i in range(2, len(argv)):
@@ -404,6 +452,25 @@ def genSolutionPart(num):
             return new_comment + '\n' + rest.lstrip('\n')
         return data
 
+    def stripTrailingBlankLines(data: str) -> str:
+        """源码 → 题解:删掉末尾的所有空行(含仅含空白的行)"""
+        # rstrip('\n') 会把末尾所有 \n 清掉;再把可能残留的纯空白"尾行"去掉
+        lines = data.split('\n')
+        while lines and lines[-1].strip() == '':
+            lines.pop()
+        return '\n'.join(lines)
+    def goTabs2Spaces(data: str) -> str:
+        """源码 → 题解:go 的行首 tab 转为 4 空格"""
+        out_lines = []
+        for line in data.split('\n'):
+            stripped = line.lstrip('\t')
+            n_tabs = len(line) - len(stripped)
+            if n_tabs:
+                out_lines.append('    ' * n_tabs + stripped)
+            else:
+                out_lines.append(line)
+        return '\n'.join(out_lines)
+
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
             fileType = os.path.splitext(file)[-1]
@@ -415,6 +482,9 @@ def genSolutionPart(num):
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
             data = removePrefix(data, fileType)
+            if fileType == 'go':
+                data = goTabs2Spaces(data)
+            data = stripTrailingBlankLines(data)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
@@ -689,3 +759,4 @@ def syncGitcodeCSDN():
     os.system('git push Let main:From_GitCode_CSDN')
     os.chdir(nowCWD)
 syncGitcodeCSDN()
+
