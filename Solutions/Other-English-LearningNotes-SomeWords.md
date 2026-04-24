@@ -1891,6 +1891,8 @@ categories: [自用]
 |unanimous|adj. 一致的|
 |||
 |distributorship|n. 分销权|
+|||
+|farmhand|n. 农场工人|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
