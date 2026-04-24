@@ -2,13 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2026-04-23 22:33:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-24 13:21:22
+ * @LastEditTime: 2026-04-24 13:44:32
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
 /*
+@deprecate 注释未采用
 1 3 7 8
 1: 3-1 + 7-1 + 8-1 = 3+7+8 - 3*1 = 1+3+7+8 - 4*1
 3: 3-1 + 7-3 + 8-3 = -1+7+8 + 3 - 2*3 = ↑ + 2*(1-3)
