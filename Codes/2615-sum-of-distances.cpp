@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-23 22:33:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-24 13:20:12
+ * @LastEditTime: 2026-04-24 13:21:22
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -25,8 +25,8 @@ private:
         }
         ll prefix = 0;
         for (int i = 0; i < n; i++) {
-            ans[idxs[i]] += suffix[i + 1] - (n - i - 1) * idxs[i];
-            ans[idxs[i]] += i * idxs[i] - prefix;
+            ans[idxs[i]] += suffix[i + 1] - (ll)(n - i - 1) * idxs[i];
+            ans[idxs[i]] += (ll)i * idxs[i] - prefix;
             prefix += idxs[i];
         }
     }
