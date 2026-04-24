@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-23 22:33:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-24 13:16:11
+ * @LastEditTime: 2026-04-24 13:18:55
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -17,22 +17,18 @@
 typedef long long ll;
 class Solution {
 private:
-    ll cal(vector<int>& idxs) {
+    void cal(vector<int>& idxs, vector<ll>& ans) {
         int n = idxs.size();
-        if (n == 1) {
-            return 0;
-        }
         vector<ll> suffix(n + 1);
         for (int i = n - 1; i >= 0; i--) {
             suffix[i] = suffix[i + 1] + idxs[i];
         }
         ll prefix = 0, ans = 0;
         for (int i = 0; i < n; i++) {
-            ans += suffix[i + 1] - (n - i - 1) * idxs[i];
-            ans += i * idxs[i] - prefix;
+            ans[idxs[i]] += suffix[i + 1] - (n - i - 1) * idxs[i];
+            ans[idxs[i]] += i * idxs[i] - prefix;
             prefix += idxs[i];
         }
-        return ans;
     }
 public:
     vector<ll> distance(vector<int>& nums) {
@@ -41,10 +37,9 @@ public:
             ma[nums[i]].push_back(i);
         }
 
-        vector<ll> ans;
-        ans.reserve(nums.size());
+        vector<ll> ans(nums.size());
         for (auto&& [_, idxs] : ma) {
-            ans.push_back(cal(idxs));
+            cal(idxs, ans);
         }
         return ans;
     }
