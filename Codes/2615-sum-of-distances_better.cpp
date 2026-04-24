@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-04-24 13:53:24
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-04-24 13:53:47
+ * @LastEditTime: 2026-04-24 14:03:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -13,10 +13,7 @@ class Solution {
 private:
     void cal(vector<int>& idxs, vector<ll>& ans) {
         int n = idxs.size();
-        ll total = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            total += idxs[i];
-        }
+        ll total = accumulate(idxs.begin(), idxs.end(), 0LL);
         ll prefix = 0;
         for (int i = 0; i < n; i++) {
             ans[idxs[i]] += (total - prefix - idxs[i]) - (ll)(n - i - 1) * idxs[i];
