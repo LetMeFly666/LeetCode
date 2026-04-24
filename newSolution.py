@@ -79,26 +79,18 @@ for code2gen in CODES_TO_GEN:
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
 def ensureTrailingBlankLine(content: str) -> str:
     """
-    确保代码末尾有一个空行:
-    - 若末尾已是 "\n\n" 则不动
-    - 若末尾最后一行只含空白(如 python Solution 后只有若干空格或一个 tab),
-      视为非空行,仍需再补一个 '\n' 让其成为真正的空行
+    确保代码末尾恰好以一个 '\n' 结尾 (POSIX 文件末尾换行),
+    既不多也不少——不要制造多余空行 (与仓库 Codes/ 下既有文件一致):
+      - 若已恰好以一个 '\n' 结尾: 不动
+      - 若末尾是多个连续 '\n' (末尾空行): 只保留一个 '\n'
+      - 若完全没有 '\n' 结尾: 补一个 '\n'
+      - 空串 -> 返回 '\n'
     """
     if not content:
         return '\n'
-    if content.endswith('\n\n'):
-        return content
-    if content.endswith('\n'):
-        # 最后一个 \n 之前的那一行若全是空白(或存在只含空白的最后一行),
-        # 仍不算空行,需再补一个 \n
-        # 取倒数第二个 \n 到倒数第一个 \n 之间的内容
-        idx = content.rfind('\n', 0, len(content) - 1)
-        lastLine = content[idx + 1 : len(content) - 1] if idx != -1 else content[:-1]
-        if lastLine.strip() == '' and lastLine != '':
-            # 最后一行是纯空白(空格/tab)但非空串 —— 不算空行,补 \n
-            return content + '\n'
-        return content + '\n'
-    return content + '\n\n'
+    # 去掉末尾所有连续的 '\n', 再补恰好一个 '\n'
+    stripped = content.rstrip('\n')
+    return stripped + '\n'
 def goSpaces2Tabs(content: str) -> str:
     """
     go 源码文件中:行首若为 4 空格的整数倍,转换为对应数量的 tab。

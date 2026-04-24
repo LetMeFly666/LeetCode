@@ -54,60 +54,79 @@ goTabs2Spaces = _F['goTabs2Spaces']
 
 
 class TestEnsureTrailingBlankLine(unittest.TestCase):
-    '''功能 1: 写源码时末尾确保空行 (python Solution 后的空格/tab 不算空行)'''
+    '''功能 1: 写源码时末尾恰好以一个 \\n 结尾 (POSIX 文件尾约定,
+    与仓库 Codes/ 下既有文件保持一致——不要制造多余空行).'''
 
     def test_empty(self):
         self.assertEqual(ensureTrailingBlankLine(''), '\n')
 
     def test_no_trailing_newline(self):
-        self.assertEqual(ensureTrailingBlankLine('abc'), 'abc\n\n')
+        '''无尾换行 -> 补恰好 1 个 \\n (不是 2 个)'''
+        self.assertEqual(ensureTrailingBlankLine('abc'), 'abc\n')
 
-    def test_single_trailing_newline(self):
-        self.assertEqual(ensureTrailingBlankLine('abc\n'), 'abc\n\n')
+    def test_single_trailing_newline_unchanged(self):
+        '''已经恰好 1 个 \\n -> 不动'''
+        self.assertEqual(ensureTrailingBlankLine('abc\n'), 'abc\n')
 
-    def test_already_blank_line(self):
+    def test_double_trailing_newline_trimmed(self):
+        '''末尾多余空行 (\\n\\n) 要被削到 1 个 \\n'''
         self.assertEqual(
             ensureTrailingBlankLine('class Solution:\n    pass\n\n'),
-            'class Solution:\n    pass\n\n',
+            'class Solution:\n    pass\n',
         )
 
-    def test_python_solution_with_trailing_spaces_not_blank(self):
-        '''Solution 后仅若干空格的一行不算空行, 仍需补 \\n'''
+    def test_many_trailing_newlines_trimmed(self):
+        '''末尾任意多个 \\n 都削成 1 个'''
+        self.assertEqual(ensureTrailingBlankLine('abc\n\n\n\n'), 'abc\n')
+
+    def test_python_solution_with_trailing_spaces_preserved(self):
+        '''Python Solution 后仅空格的一行, 自身以 \\n 结尾即可, 空格行保留(是数据)'''
         src = 'class Solution:\n    pass\n    \n'
         got = ensureTrailingBlankLine(src)
-        # 末尾必须是真正的空行 (末尾两个连续 \n)
-        self.assertTrue(got.endswith('\n\n'))
-        # 且纯空格的那一行要保留 (是数据, 不能被吞)
-        self.assertIn('    \n\n', got)
+        # 末尾恰好 1 个 \n, 不应被补成 \n\n
+        self.assertTrue(got.endswith('\n'))
+        self.assertFalse(got.endswith('\n\n'))
+        # 空格行本身保留
+        self.assertIn('    \n', got)
+        # 确认等价
+        self.assertEqual(got, 'class Solution:\n    pass\n    \n')
 
-    def test_python_solution_with_trailing_tab_not_blank(self):
+    def test_python_solution_with_trailing_tab_preserved(self):
         src = 'class Solution:\n    pass\n\t\n'
         got = ensureTrailingBlankLine(src)
-        self.assertTrue(got.endswith('\n\n'))
-        self.assertIn('\t\n\n', got)
+        self.assertTrue(got.endswith('\n'))
+        self.assertFalse(got.endswith('\n\n'))
+        self.assertIn('\t\n', got)
+        self.assertEqual(got, 'class Solution:\n    pass\n\t\n')
 
     def test_rust_typical_no_newline(self):
-        '''复现真实 bug: rust 源码末尾 "...  }\\n}" 无换行'''
+        '''复现真实 bug: rust 源码末尾 "...  }\\n}" 无 \\n 结尾 -> 补 1 个'''
         src = 'impl Solution {\n    pub fn f() -> i32 {\n        0\n    }\n}'
         got = ensureTrailingBlankLine(src)
-        self.assertTrue(got.endswith('\n\n'))
+        self.assertTrue(got.endswith('}\n'))
+        self.assertFalse(got.endswith('\n\n'))
 
-    def test_idempotent_when_already_has_blank(self):
-        '''已满足"末尾空行"的输入, 再调一次应当不变 (幂等)'''
-        for s in ['abc\n\n', 'abc\n\n\n', 'class Solution:\n    pass\n    \n\n']:
+    def test_idempotent(self):
+        '''多次调用结果不变 (幂等)'''
+        for s in ['', 'abc', 'abc\n', 'abc\n\n', 'abc\n\n\n',
+                  'class Solution:\n    pass\n    \n\n']:
             once = ensureTrailingBlankLine(s)
             twice = ensureTrailingBlankLine(once)
             self.assertEqual(once, twice, f'not idempotent for {s!r}')
 
-    def test_always_ends_with_blank_line_after_call(self):
-        '''调用后输出一定以空行结尾 (endswith \\n\\n)'''
-        for s in ['', 'a', 'a\n', 'a\n\n', 'a\n   \n', 'a\n\t\n',
+    def test_always_ends_with_single_newline(self):
+        '''调用后输出一定恰好以 1 个 \\n 结尾, 不多也不少'''
+        for s in ['', 'a', 'a\n', 'a\n\n', 'a\n\n\n', 'a\n   \n', 'a\n\t\n',
                   'a\nb', 'a\nb\n', 'a\nb\n\n']:
             got = ensureTrailingBlankLine(s)
-            self.assertTrue(
-                got.endswith('\n\n') or got == '\n',
-                f'not blank-terminated for {s!r}, got {got!r}',
-            )
+            self.assertTrue(got.endswith('\n'),
+                            f'not newline-terminated for {s!r}, got {got!r}')
+            # 不应以 \n\n 结尾 (除非是单独的 '\n' 这种极端)
+            if got != '\n':
+                self.assertFalse(
+                    got.endswith('\n\n'),
+                    f'extra blank line for {s!r}, got {got!r}',
+                )
 
 
 class TestGoSpaces2Tabs(unittest.TestCase):
@@ -231,16 +250,17 @@ class TestIntegration(unittest.TestCase):
 
     def test_go_file_written_then_read_for_solution(self):
         '''模拟:
-        1) 刚从 leetcode 拿到的 go 代码 (4 空格缩进, 无尾空行)
+        1) 刚从 leetcode 拿到的 go 代码 (4 空格缩进, 无尾 \\n)
         2) 经 goSpaces2Tabs + ensureTrailingBlankLine 落盘
         3) 写题解时读回, 经 goTabs2Spaces + stripTrailingBlankLines
         4) 与原始代码等价 (仅缩进规范化, 首尾不多余)
         '''
         original = 'func twoSum(nums []int) int {\n    return 0\n}'
         on_disk = ensureTrailingBlankLine(goSpaces2Tabs(original))
-        # 落盘后: tab 缩进 + 末尾至少一个空行
+        # 落盘后: tab 缩进 + 末尾恰好 1 个 \n (不是 \n\n, 与仓库惯例一致)
         self.assertIn('\t', on_disk)
-        self.assertTrue(on_disk.endswith('\n\n'))
+        self.assertTrue(on_disk.endswith('\n'))
+        self.assertFalse(on_disk.endswith('\n\n'))
         # 读出写进题解
         for_solution = stripTrailingBlankLines(goTabs2Spaces(on_disk))
         # 题解里: 4 空格缩进, 无尾空行
@@ -248,11 +268,12 @@ class TestIntegration(unittest.TestCase):
         self.assertFalse(for_solution.endswith('\n'))
         self.assertEqual(for_solution, original)
 
-    def test_rust_file_written_gets_blank_line(self):
-        '''复现 PR #1543 中的 rust bug: 写盘后必须有末尾空行'''
+    def test_rust_file_written_gets_trailing_newline(self):
+        '''复现 PR #1543 中的 rust bug: 写盘后必须以 \\n 结尾 (但不能多到 \\n\\n)'''
         original = 'impl Solution {\n    pub fn f() -> i32 {\n        0\n    }\n}'
         on_disk = ensureTrailingBlankLine(original)
-        self.assertTrue(on_disk.endswith('\n\n'))
+        self.assertTrue(on_disk.endswith('}\n'))
+        self.assertFalse(on_disk.endswith('\n\n'))
 
 
 if __name__ == '__main__':
