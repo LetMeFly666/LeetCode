@@ -1,4 +1,8 @@
-# removed
+'''
+Author: LetMeFly (with Claude)
+Date: 2026-04-24 22:57:00
+LastEditors: LetMeFly.xyz
+LastEditTime: 2026-04-24 22:57:00
 Command: python -m unittest test_newSolution
 What's more: 单测 newSolution.py 中的纯函数
   - ensureTrailingBlankLine  (写源码: 末尾确保空行)
