@@ -57,7 +57,7 @@ i = 4 ，arr[4] = 0 因为不存在值等于 2 的其他下标。
 
 显而易见，对于元素$nums[i]$，其最终结果仅与和$nums[i]$相等的元素有关。因此我们可以使用一个哈希表，键为$nums[i]$值为所有等于$nums[i]$的下标们，遍历一遍即可实现原始数组按照值的分组。
 
-好了，分好组了，现在我们得到了很多的$idxs$数组，每个$idxs$数组存放的都是在$nums$中值相等的下标们。问题就变成了给你一个升序的$idxs$数组，对于其中的元素$a$，求数组中其他所有元素和$a$的的差的绝对值之和。
+好了，分好组了，现在我们得到了很多的$idxs$数组，每个$idxs$数组存放的都是在$nums$中值相等的下标们。问题就变成了给你一个升序的$idxs$数组，对于其中的元素$a$，求数组中其他所有元素和$a$的差的绝对值之和。
 
 怎么算？前缀和+后缀和就好：
 
@@ -85,10 +85,7 @@ class Solution {
 private:
     void cal(vector<int>& idxs, vector<ll>& ans) {
         int n = idxs.size();
-        ll total = 0;
-        for (int i = n - 1; i >= 0; i--) {
-            total += idxs[i];
-        }
+        ll total = accumulate(idxs.begin(), idxs.end(), 0LL);
         ll prefix = 0;
         for (int i = 0; i < n; i++) {
             ans[idxs[i]] += (total - prefix - idxs[i]) - (ll)(n - i - 1) * idxs[i];
@@ -110,7 +107,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/160474032)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/23/LeetCode%202615.%E7%AD%89%E5%80%BC%E8%B7%9D%E7%A6%BB%E5%92%8C/)哦~
