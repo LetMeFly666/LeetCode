@@ -56,6 +56,15 @@
   - 高光金句 Top 5
   - 每个角色的"人格一致性"主观打分
   - 本次实验是否达到了"涌现感"的结论
+## 5.1 发言渠道约束(重要)
+
+- **开幕白**已由 S0 通过 `submit_review`(COMMENT)发出,GitHub 侧一个 PR 只能 submit 一次 review。
+- **后续所有发言**一律使用 **issue / PR 普通 comment**(`POST /repos/{owner}/{repo}/issues/{number}/comments`),不要再走 review 通道。
+- 本仓库提供的 MCP `submit_review` 仅用于 S0 最终收尾总结(也可退而使用普通 comment)。
+- 若 MCP 端未提供普通 comment 工具,可退化为:
+  - (a) 在本仓库追加一次小提交,在提交 message 中附上发言内容;或
+  - (b) 通过 `gh api` 直接 POST 评论(若环境提供 `GH_TOKEN`)。
+
 
 ## 5. Agent 自驱动模式(Hands-off Loop)
 
