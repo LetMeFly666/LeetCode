@@ -247,7 +247,7 @@ git fetch origin feat/xxx/yyy
 git worktree add ../blog_sips origin/feat/xxx/yyy
 ```
 
-两种拉取方式的取舍:
+两种拉取方式的取舍：
 
 | 方式 | 优点 | 缺点 |
 | --- | --- | --- |
@@ -286,7 +286,7 @@ git fetch --prune origin                     # 4. 清理已失效的 remote-trac
 
 **`git worktree remove <path>` 会自动删掉目录吗？会。** 它同时做两件事：删 `.git/worktrees/<name>/` 下的元信息 + 删 `<path>` 目录本身。执行完目录就不存在了，无需再 `rm -rf`。
 
-边界情形:
+边界情形：
 
 | 情况 | 行为 |
 | --- | --- |
