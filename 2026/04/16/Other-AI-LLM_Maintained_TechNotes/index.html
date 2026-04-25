@@ -26,7 +26,7 @@
 <meta property="og:description" content="AI创作声明：以下内容由大模型(Claude)生成并持续维护更新。  AI维护的技术随笔 - 由大模型持续更新的技术笔记这是一篇特殊的文章——它由AI大模型创作并持续维护更新。每当有新的技术知识值得记录时，AI会在这里添加新的内容。 Skill微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包微信支付官方推出了 wechatpay-skills 仓库，将支付接入的领域知识以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-23T02:51:01.000Z">
+<meta property="article:modified_time" content="2026-04-25T06:13:11.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="其他">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          4.2k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          22 分钟
+          36 分钟
         
       </span>
     
@@ -371,6 +371,59 @@
 </tr>
 </tbody></table>
 <p><strong>立即睡眠</strong>：<code>sudo pmset sleepnow</code></p>
+<h3 id="macOS-sips-命令——自带的图片处理瑞士军刀"><a href="#macOS-sips-命令——自带的图片处理瑞士军刀" class="headerlink" title="macOS sips 命令——自带的图片处理瑞士军刀"></a>macOS sips 命令——自带的图片处理瑞士军刀</h3><p><code>sips</code>（Scriptable Image Processing System）是 macOS 自带的命令行图片处理工具，无需安装任何依赖，支持格式转换、缩放、旋转、裁剪、属性查询等。</p>
+<p><strong>格式转换</strong></p>
+<p>支持的输出格式：jpeg、tiff、png、gif、jp2、pict、bmp、qtif、psd、sgi、tga、pdf。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 单张 HEIC 转 JPG</span><br>sips -s format jpeg input.heic --out output.jpg<br><br><span class="hljs-comment"># 批量转换当前目录所有 HEIC</span><br><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.heic; <span class="hljs-keyword">do</span> sips -s format jpeg <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>&quot;</span> --out <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;f%.heic&#125;</span>.jpg&quot;</span>; <span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># PNG 转 JPG 并设置质量（0-100）</span><br>sips -s format jpeg -s formatOptions 80 input.png --out output.jpg<br></code></pre></td></tr></table></figure>
+
+<p><strong>调整尺寸</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>行为</th>
+<th>保持宽高比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-Z &lt;max&gt;</code></td>
+<td>最长边缩放到 max</td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>-z &lt;h&gt; &lt;w&gt;</code></td>
+<td>强制指定高×宽</td>
+<td>否（会拉伸）</td>
+</tr>
+<tr>
+<td><code>--resampleWidth &lt;w&gt;</code></td>
+<td>指定宽度</td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>--resampleHeight &lt;h&gt;</code></td>
+<td>指定高度</td>
+<td>是</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 等比缩放到最大 800px（推荐，最常用）</span><br>sips -Z 800 input.jpg --out resized.jpg<br><br><span class="hljs-comment"># 批量生成缩略图</span><br><span class="hljs-built_in">mkdir</span> thumbnails<br><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.jpg; <span class="hljs-keyword">do</span> sips -Z 200 <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>&quot;</span> --out <span class="hljs-string">&quot;thumbnails/<span class="hljs-variable">$f</span>&quot;</span>; <span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>旋转与翻转</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sips -r 90 input.jpg --out rotated.jpg      <span class="hljs-comment"># 顺时针旋转 90°</span><br>sips -f horizontal input.jpg --out h.jpg     <span class="hljs-comment"># 水平翻转</span><br>sips -f vertical input.jpg --out v.jpg       <span class="hljs-comment"># 垂直翻转</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>裁剪与填充</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从中心裁剪到 500x500</span><br>sips -c 500 500 input.jpg --out cropped.jpg<br><br><span class="hljs-comment"># 填充到 1000x1000（白色填充空白区域）</span><br>sips -p 1000 1000 input.jpg --padColor FFFFFF --out padded.jpg<br></code></pre></td></tr></table></figure>
+
+<p><strong>查询图片信息</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sips -g all input.jpg                        <span class="hljs-comment"># 查看所有属性</span><br>sips -g pixelWidth -g pixelHeight input.jpg  <span class="hljs-comment"># 查看宽高</span><br>sips -g format input.jpg                     <span class="hljs-comment"># 查看格式</span><br>sips -g dpiWidth -g dpiHeight input.jpg      <span class="hljs-comment"># 查看 DPI</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>设置 DPI（适合打印场景）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sips -s dpiHeight 300 -s dpiWidth 300 input.jpg --out print_ready.jpg<br></code></pre></td></tr></table></figure>
+
+<p><strong>实用组合示例</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 批量 HEIC 转 JPG + 压缩 + 限制最大尺寸</span><br><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.heic; <span class="hljs-keyword">do</span><br>  sips -s format jpeg -s formatOptions 80 -Z 1920 <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>&quot;</span> --out <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;f%.heic&#125;</span>.jpg&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># 快速查看目录下所有图片的尺寸</span><br><span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> *.&#123;jpg,png,heic&#125;; <span class="hljs-keyword">do</span><br>  [ -f <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>&quot;</span> ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>: <span class="hljs-subst">$(sips -g pixelWidth -g pixelHeight <span class="hljs-string">&quot;<span class="hljs-variable">$f</span>&quot;</span> 2&gt;/dev/null | grep pixel | awk &#x27;&#123;print $2&#125;&#x27; | tr &#x27;\n&#x27; &#x27;x&#x27; | sed &#x27;s/x$//&#x27;)</span>&quot;</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<p><code>sips</code> 的优势在于零依赖——macOS 原生自带，不需要 <code>brew install</code> 任何东西，脚本中随拿随用。对于日常的格式转换和批量缩放完全够用，更复杂的图片处理再考虑 ImageMagick。</p>
 <h2 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h2><h3 id="JSONL（JSON-Lines）"><a href="#JSONL（JSON-Lines）" class="headerlink" title="JSONL（JSON Lines）"></a>JSONL（JSON Lines）</h3><p>JSONL（也叫 NDJSON）是一种文本格式：每一行是一个独立的合法 JSON 对象，行与行之间用 <code>\n</code> 分隔。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jsonl">&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 30&#125;<br>&#123;&quot;name&quot;: &quot;Bob&quot;, &quot;age&quot;: 25&#125;<br>&#123;&quot;name&quot;: &quot;Charlie&quot;, &quot;age&quot;: 35&#125;<br></code></pre></td></tr></table></figure>
 
@@ -416,7 +469,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 提取所有 name 字段</span><br><span class="hljs-built_in">cat</span> data.jsonl | jq -r <span class="hljs-string">&#x27;.name&#x27;</span><br><span class="hljs-comment"># 过滤 age &gt; 28 的记录</span><br><span class="hljs-built_in">cat</span> data.jsonl | jq <span class="hljs-string">&#x27;select(.age &gt; 28)&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-23</em></p>
+<p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25</em></p>
 <blockquote>
 <p>同步发文于我的<a href="https://blog.letmefly.xyz/">个人博客</a>，(AI)创作不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/">原文链接</a>哦~</p>
 <p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
