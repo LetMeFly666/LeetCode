@@ -26,7 +26,7 @@
 <meta property="og:description" content="AI创作声明：以下内容由大模型(Claude)生成并持续维护更新。  AI维护的技术随笔 - 由大模型持续更新的技术笔记这是一篇特殊的文章——它由AI大模型创作并持续维护更新。每当有新的技术知识值得记录时，AI会在这里添加新的内容。 Skill微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包微信支付官方推出了 wechatpay-skills 仓库，将支付接入的领域知识以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-25T07:32:08.000Z">
+<meta property="article:modified_time" content="2026-04-25T07:41:37.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="其他">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.1k 字
+          7.3k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          51 分钟
+          61 分钟
         
       </span>
     
@@ -528,6 +528,63 @@
 <li><strong>查看现状</strong>：<code>git worktree list</code> 随时看当前有哪些 worktree、在哪个分支上，排障必备。</li>
 <li>GitHub 仓库设置开了 “Automatically delete head branches” 时，merge 后远端分支会自动删，第 3 步就省掉，<code>git fetch --prune</code> 顺手清掉 <code>origin/&lt;branch&gt;</code> 残留引用即可。</li>
 </ul>
+<h2 id="大模型"><a href="#大模型" class="headerlink" title="大模型"></a>大模型</h2><h3 id="MoE（Mixture-of-Experts，混合专家）"><a href="#MoE（Mixture-of-Experts，混合专家）" class="headerlink" title="MoE（Mixture of Experts，混合专家）"></a>MoE（Mixture of Experts，混合专家）</h3><p>一句话理解：一个大模型里塞了好多个“专家”小网络，每次来一个 token，只挑其中几个专家上场干活，剩下的专家全都摸鱼。所以<strong>总参数可以很大，但每次推理只用其中一小部分</strong>——又大又快，鱼和熊掌都想要。</p>
+<p><strong>它长什么样</strong></p>
+<p>在标准 Transformer 里，每层的 FFN（前馈网络）是一整块稠密的大矩阵。MoE 做的事就是把这一块 FFN 拆成 N 个并列的小 FFN（叫 Experts），前面加一个叫 Router（路由器 &#x2F; 门控）的小网络来决定“这个 token 该交给谁处理”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">                   ┌── Expert 1 ──┐<br>                   │   Expert 2   │  ← 被选中，参与计算<br>token → Router ──► │   Expert 3   │<br>                   │    ...       │<br>                   └── Expert N ──┘     未被选中，不激活<br>                      (选 Top-K)<br></code></pre></td></tr></table></figure>
+
+<p>常见做法是 <strong>Top-2 路由</strong>：每个 token 走得分最高的 2 个专家，输出按门控权重加权求和。</p>
+<p><strong>几个关键概念</strong></p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总参数量</td>
+<td>所有专家加起来的参数，模型“有多大”</td>
+</tr>
+<tr>
+<td>激活参数量</td>
+<td>实际参与本次前向计算的参数，决定“跑多快”</td>
+</tr>
+<tr>
+<td>Top-K</td>
+<td>每个 token 选几个专家，常见 K&#x3D;1 或 K&#x3D;2</td>
+</tr>
+<tr>
+<td>负载均衡损失</td>
+<td>额外加的 loss，防止所有 token 都挤到同一个专家那里（专家坍缩）</td>
+</tr>
+<tr>
+<td>共享专家</td>
+<td>DeepSeek 等模型的设计：留一两个“总是激活”的专家学通用知识</td>
+</tr>
+</tbody></table>
+<p>举个直观的数字：Mixtral 8x7B 有 8 个专家、每次选 2 个，总参数约 47B，但每个 token 实际只激活约 12.9B——推理成本接近一个 13B 的稠密模型，效果却能打到 70B 级别。</p>
+<p><strong>为什么它香</strong></p>
+<ul>
+<li><strong>Scaling 更划算</strong>：同样算力预算下，MoE 能塞进更多参数容量，学到更多知识</li>
+<li><strong>推理更便宜</strong>：参数多但激活少，显存够的前提下速度接近小模型</li>
+<li><strong>专家分工</strong>：不同专家会自发专精不同领域（代码 &#x2F; 数学 &#x2F; 自然语言 …），有点像一个团队</li>
+</ul>
+<p><strong>为什么它也难搞</strong></p>
+<ul>
+<li><strong>显存吃紧</strong>：虽然激活少，但所有专家都得加载进显存，部署门槛并不低</li>
+<li><strong>通信开销大</strong>：分布式训练时 token 要被路由到不同 GPU 上的专家，All-to-All 通信很贵</li>
+<li><strong>训练不稳定</strong>：Router 容易学偏，专家负载不均，得靠 balance loss 小心调教</li>
+<li><strong>小 batch 表现差</strong>：batch 太小时，专家利用率低，优势发挥不出来</li>
+</ul>
+<p><strong>代表玩家</strong></p>
+<ul>
+<li><strong>GShard &#x2F; Switch Transformer</strong>（Google）：MoE 在大模型里的早期代表作</li>
+<li><strong>Mixtral 8x7B &#x2F; 8x22B</strong>（Mistral）：第一个让大家都能本地跑的开源 MoE</li>
+<li><strong>DeepSeek-V2 &#x2F; V3</strong>：细粒度专家（V2 用了 160 个路由专家 + 2 个共享专家）+ 共享专家的创新设计，激活比例压得很低</li>
+<li><strong>Qwen MoE 系列、Llama 4（Scout &#x2F; Maverick）</strong>：国内外大厂纷纷跟进</li>
+</ul>
+<p>一句话总结：Dense 模型是“全员加班”，MoE 是“按需派单”——在同等效果下，后者更省电；在同等算力下，后者能学更多。未来相当长一段时间，大模型往更大规模扩展时，MoE 几乎是绕不开的一条路。</p>
 <hr>
 <p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25</em></p>
 <blockquote>
