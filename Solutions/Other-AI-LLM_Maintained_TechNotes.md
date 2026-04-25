@@ -149,11 +149,11 @@ cat data.jsonl | jq 'select(.age > 28)'
 
 ```text
                     ┌── Expert 1 ──┐
-                    │  Expert 2    │  ← 被选中，参与计算
- token → Router ──► │  Expert 3    │
+                    │   Expert 2   │  ← 被选中，参与计算
+  token → Router ──► │   Expert 3   │
                     │    ...       │
                     └── Expert N ──┘     未被选中，不激活
-                        (选 Top-K)
+                       (选 Top-K)
 ```
 
 常见做法是 **Top-2 路由**：每个 token 走得分最高的 2 个专家，输出按门控权重加权求和。
