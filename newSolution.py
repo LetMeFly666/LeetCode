@@ -77,118 +77,6 @@ for code2gen in CODES_TO_GEN:
         alreadyExists = True
         break
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
-
-def ensureTrailingBlankLine(content: str) -> str:
-    """
-    确保代码末尾恰好以一个 '\n' 结尾 (POSIX 文件末尾换行),
-    既不多也不少——不要制造多余空行 (与仓库 Codes/ 下既有文件一致):
-      - 若已恰好以一个 '\n' 结尾: 不动
-      - 若末尾是多个连续 '\n' (末尾空行): 只保留一个 '\n'
-      - 若完全没有 '\n' 结尾: 补一个 '\n'
-      - 空串 -> 返回 '\n'
-    """
-    if not content:
-        return '\n'
-    # 去掉末尾所有连续的 '\n', 再补恰好一个 '\n'
-    stripped = content.rstrip('\n')
-    return stripped + '\n'
-
-def goSpaces2Tabs(content: str) -> str:
-    """
-    go 源码文件中:行首若为 4 空格的整数倍,转换为对应数量的 tab。
-    跳过以下区间(其中的行首空格是数据,不应改动):
-      - 反引号 raw string literal: `...`(可跨行)
-      - 双引号 interpreted string: "..."(同一行内)
-      - 字符字面量: '...'
-      - 单行注释: // 到行尾
-      - 块注释: /* ... */(可跨行)
-    """
-    # 先扫一遍标记出每个字符是否在"可改动的代码区"
-    n = len(content)
-    in_code = [True] * n
-    i = 0
-    state = 'code'  # code | raw_str | dq_str | char | line_cmt | block_cmt
-    while i < n:
-        ch = content[i]
-        if state == 'code':
-            if ch == '`':
-                in_code[i] = False
-                state = 'raw_str'
-            elif ch == '"':
-                in_code[i] = False
-                state = 'dq_str'
-            elif ch == "'":
-                in_code[i] = False
-                state = 'char'
-            elif ch == '/' and i + 1 < n and content[i + 1] == '/':
-                in_code[i] = False
-                in_code[i + 1] = False
-                i += 2
-                state = 'line_cmt'
-                continue
-            elif ch == '/' and i + 1 < n and content[i + 1] == '*':
-                in_code[i] = False
-                in_code[i + 1] = False
-                i += 2
-                state = 'block_cmt'
-                continue
-            i += 1
-        elif state == 'raw_str':
-            in_code[i] = False
-            if ch == '`':
-                state = 'code'
-            i += 1
-        elif state == 'dq_str':
-            in_code[i] = False
-            if ch == '\\' and i + 1 < n:
-                in_code[i + 1] = False
-                i += 2
-                continue
-            if ch == '"':
-                state = 'code'
-            elif ch == '\n':
-                # go 的 interpreted string 不跨行,遇到换行视为结束(容错)
-                state = 'code'
-            i += 1
-        elif state == 'char':
-            in_code[i] = False
-            if ch == '\\' and i + 1 < n:
-                in_code[i + 1] = False
-                i += 2
-                continue
-            if ch == "'":
-                state = 'code'
-            elif ch == '\n':
-                state = 'code'
-            i += 1
-        elif state == 'line_cmt':
-            in_code[i] = False
-            if ch == '\n':
-                state = 'code'
-            i += 1
-        elif state == 'block_cmt':
-            in_code[i] = False
-            if ch == '*' and i + 1 < n and content[i + 1] == '/':
-                in_code[i + 1] = False
-                i += 2
-                state = 'code'
-                continue
-            i += 1
-    # 按行切,行首空格的每个字符都在 in_code 区时才替换
-    out_lines = []
-    pos = 0
-    for line in content.split('\n'):
-        line_len = len(line)
-        stripped = line.lstrip(' ')
-        n_spaces = line_len - len(stripped)
-        # 行首空格对应的全局偏移范围 [pos, pos + n_spaces)
-        all_code = all(in_code[pos + k] for k in range(n_spaces)) if n_spaces else True
-        if n_spaces and n_spaces % 4 == 0 and all_code:
-            out_lines.append('\t' * (n_spaces // 4) + stripped)
-        else:
-            out_lines.append(line)
-        pos += line_len + 1  # +1 for the '\n' that split consumed
-    return '\n'.join(out_lines)
 for code2gen in CODES_TO_GEN:
     toName = f'Codes/{num:04}-{titleSlug}{dateSuffix}.{mappingSuffix[code2gen]}'
     fromName = f'AllProblems/{num}.{title}/code.{mappingSuffix[code2gen]}'
@@ -204,54 +92,31 @@ for code2gen in CODES_TO_GEN:
             f.seek(0)
             f.write(content)
             f.truncate()
-        # rust 源码文件自身也要补末尾空行
-        with open(toName, 'r+', encoding='utf-8') as f:
-            content = f.read()
-            newContent = ensureTrailingBlankLine(content)
-            if newContent != content:
-                f.seek(0)
-                f.write(newContent)
-                f.truncate()
     elif code2gen == 'cpp':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
-            content = ensureTrailingBlankLine(content)
             f.seek(0)
             header = '#ifdef _DEBUG\n' +\
                      '#include "_[1,2]toVector.h"\n' +\
                      '#endif\n\n'
             f.write(header + content)
-            f.truncate()
     elif code2gen == 'python3':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
-            content = ensureTrailingBlankLine(content)
-            prefix = ''
             if needsImportTyping(content, 'Optional'):  # 这样得ast两次，算了无所谓了暂时
-                prefix += 'from typing import Optional\n\n'
+                f.seek(0)
+                header = 'from typing import Optional\n\n'
+                f.write(header + content)
             if needsImportTyping(content):
-                prefix = 'from typing import List\n\n' + prefix
-            f.seek(0)
-            f.write(prefix + content)
-            f.truncate()
+                f.seek(0)
+                header = 'from typing import List\n\n'
+                f.write(header + content)
     elif code2gen == 'golang':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
-            content = goSpaces2Tabs(content)
-            content = ensureTrailingBlankLine(content)
             f.seek(0)
             header = 'package main\n\n'
             f.write(header + content)
-            f.truncate()
-    else:
-        # java 等:仅补末尾空行
-        with open(toName, 'r+', encoding='utf-8') as f:
-            content = f.read()
-            newContent = ensureTrailingBlankLine(content)
-            if newContent != content:
-                f.seek(0)
-                f.write(newContent)
-                f.truncate()
 
 title = ""
 for i in range(2, len(argv)):
@@ -539,26 +404,6 @@ def genSolutionPart(num):
             return new_comment + '\n' + rest.lstrip('\n')
         return data
 
-    def stripTrailingBlankLines(data: str) -> str:
-        """源码 → 题解:删掉末尾的所有空行(含仅含空白的行)"""
-        # rstrip('\n') 会把末尾所有 \n 清掉;再把可能残留的纯空白"尾行"去掉
-        lines = data.split('\n')
-        while lines and lines[-1].strip() == '':
-            lines.pop()
-        return '\n'.join(lines)
-
-    def goTabs2Spaces(data: str) -> str:
-        """源码 → 题解:go 的行首 tab 转为 4 空格"""
-        out_lines = []
-        for line in data.split('\n'):
-            stripped = line.lstrip('\t')
-            n_tabs = len(line) - len(stripped)
-            if n_tabs:
-                out_lines.append('    ' * n_tabs + stripped)
-            else:
-                out_lines.append(line)
-        return '\n'.join(out_lines)
-
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
             fileType = os.path.splitext(file)[-1]
@@ -570,9 +415,6 @@ def genSolutionPart(num):
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
             data = removePrefix(data, fileType)
-            if fileType == 'go':
-                data = goTabs2Spaces(data)
-            data = stripTrailingBlankLines(data)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
@@ -847,4 +689,3 @@ def syncGitcodeCSDN():
     os.system('git push Let main:From_GitCode_CSDN')
     os.chdir(nowCWD)
 syncGitcodeCSDN()
-
