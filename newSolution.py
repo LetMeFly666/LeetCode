@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-03-17 13:31:00
+LastEditTime: 2026-04-25 16:34:20
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -83,15 +83,20 @@ for code2gen in CODES_TO_GEN:
     print(toName)
     if not os.path.exists(toName):
         shutil.copy(fromName, toName)
-    # rust - 更新lib.rs （若同时多个pr改代码则这里很容易冲突）
-    if code2gen == 'rust':
+    # POSIX标准：末尾字符为\n (#1543)
+    with open(toName, 'r+', encoding='utf-8') as f:
+        content = f.read()
+        if not content.endswith('\n'):  # 暂不特殊处理CRLF的情况了
+            f.write('\n')
+    # 不同源码类型特殊逻辑
+    if code2gen == 'rust':  # rust - 更新lib.rs （若同时多个pr改代码则这里很容易冲突）
         with open("Codes/lib.rs", "r+", encoding="utf-8") as f:
             content = f.read()
             relativePath = toName.removeprefix('Codes/')
             content = re.sub(r'include!\(".*?"\);', f'include!("{relativePath}");', content, count=1)
             f.seek(0)
             f.write(content)
-            f.truncate()
+            f.truncate()  # 新内容比旧内容短时截断，否则文件尾部会留下旧内容
     elif code2gen == 'cpp':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
@@ -116,7 +121,17 @@ for code2gen in CODES_TO_GEN:
             content = f.read()
             f.seek(0)
             header = 'package main\n\n'
-            f.write(header + content)
+            def spaces_to_tabs(src: str, width: int = 4) -> str:
+                # 只替换每行开头的空格，避免误伤字符串字面量中的空格
+                out = []
+                for line in src.splitlines(keepends=True):
+                    i = 0
+                    while line[i:i+width] == ' ' * width:
+                        i += width
+                    out.append('\t' * (i // width) + line[i:])
+                return ''.join(out)
+            f.write(spaces_to_tabs(header + content))
+            f.truncate()  # 小概率4个空格变tab后文件变短了
 
 title = ""
 for i in range(2, len(argv)):
@@ -403,6 +418,21 @@ def genSolutionPart(num):
             new_comment = '\n'.join(kept)
             return new_comment + '\n' + rest.lstrip('\n')
         return data
+    
+    def removeSuffix(data: str) -> str:
+        # 删除末尾的\n或\r\n
+        return data.rstrip('\r\n')
+    
+    def tab2space(data: str, width: int = 4) -> str:
+        # 将每行开头的tab替换为width个空格
+        out = []
+        for line in data.splitlines(keepends=True):
+            i = 0
+            while line[i:i+1] == '\t':
+                i += 1
+            out.append(' ' * width * i + line[i:])
+        return ''.join(out)
+
 
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
@@ -415,6 +445,9 @@ def genSolutionPart(num):
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
             data = removePrefix(data, fileType)
+            data = removeSuffix(data)
+            if fileType == 'go':
+                data = tab2space(data)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
