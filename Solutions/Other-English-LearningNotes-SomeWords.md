@@ -1311,7 +1311,7 @@ categories: [自用]
 |oblong|adj. 矩形的，长方形的，椭圆形的，椭圆体的<br/>n. 长方形(的)|
 |||
 |biscuit|n. 饼干，松饼，蛋黄褐色|
-|omen|n. 预兆，征兆，前兆<br/>v. 预告|
+|<font color="#28bea0" title="二次复习">omen</font>|n. 预兆，征兆，前兆<br/>v. 预告|
 |disinclined|adj. 不情愿，不乐意，无意于|
 |||
 |procure|v. 取得，诱使（妇女）卖淫|
@@ -1891,6 +1891,8 @@ categories: [自用]
 |unanimous|adj. 一致的|
 |||
 |distributorship|n. 分销权|
+|||
+|farmhand|n. 农场工人|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)

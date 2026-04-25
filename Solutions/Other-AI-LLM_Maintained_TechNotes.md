@@ -186,7 +186,48 @@ done
 
 ---
 
-*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-22*
+## 数据格式
+
+### JSONL（JSON Lines）
+
+JSONL（也叫 NDJSON）是一种文本格式：每一行是一个独立的合法 JSON 对象，行与行之间用 `\n` 分隔。
+
+```jsonl
+{"name": "Alice", "age": 30}
+{"name": "Bob", "age": 25}
+{"name": "Charlie", "age": 35}
+```
+
+文件扩展名通常为 `.jsonl` 或 `.ndjson`。
+
+**与标准 JSON 的核心区别**：
+
+| 维度 | JSON | JSONL |
+|---|---|---|
+| 结构 | 单个 JSON 值（通常是数组/对象） | 每行一个独立 JSON 对象 |
+| 解析 | 需整体解析 | 可逐行解析 |
+| 追加写入 | 困难（需维护闭合括号） | 直接 append 一行 |
+| 内存占用 | 与文件大小成正比 | 可流式处理，常数级内存 |
+
+**典型使用场景**：
+
+- **机器学习训练数据**：OpenAI fine-tuning 数据集要求 JSONL 格式（每行一个 `{"messages": [...]}` 对象）
+- **日志收集**：每条日志一行 JSON，方便 `grep`、`jq`、`tail -f` 实时处理
+- **数据管道 / ETL**：Spark、BigQuery 等都原生支持 JSONL 导入导出
+- **流式传输**：生产者不断 append 行，消费者逐行读取，天然适合管道和消息队列场景
+
+用 `jq` 处理 JSONL 非常方便：
+
+```bash
+# 提取所有 name 字段
+cat data.jsonl | jq -r '.name'
+# 过滤 age > 28 的记录
+cat data.jsonl | jq 'select(.age > 28)'
+```
+
+---
+
+*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25*
 
 > 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
 >
