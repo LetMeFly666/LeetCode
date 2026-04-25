@@ -184,6 +184,45 @@ done
 
 `sips` 的优势在于零依赖——macOS 原生自带，不需要 `brew install` 任何东西，脚本中随拿随用。对于日常的格式转换和批量缩放完全够用，更复杂的图片处理再考虑 ImageMagick。
 
+## 数据格式
+
+### JSONL（JSON Lines）
+
+JSONL（也叫 NDJSON）是一种文本格式：每一行是一个独立的合法 JSON 对象，行与行之间用 `\n` 分隔。
+
+```jsonl
+{"name": "Alice", "age": 30}
+{"name": "Bob", "age": 25}
+{"name": "Charlie", "age": 35}
+```
+
+文件扩展名通常为 `.jsonl` 或 `.ndjson`。
+
+**与标准 JSON 的核心区别**：
+
+| 维度 | JSON | JSONL |
+|---|---|---|
+| 结构 | 单个 JSON 值（通常是数组/对象） | 每行一个独立 JSON 对象 |
+| 解析 | 需整体解析 | 可逐行解析 |
+| 追加写入 | 困难（需维护闭合括号） | 直接 append 一行 |
+| 内存占用 | 与文件大小成正比 | 可流式处理，常数级内存 |
+
+**典型使用场景**：
+
+- **机器学习训练数据**：OpenAI fine-tuning 数据集要求 JSONL 格式（每行一个 `{"messages": [...]}` 对象）
+- **日志收集**：每条日志一行 JSON，方便 `grep`、`jq`、`tail -f` 实时处理
+- **数据管道 / ETL**：Spark、BigQuery 等都原生支持 JSONL 导入导出
+- **流式传输**：生产者不断 append 行，消费者逐行读取，天然适合管道和消息队列场景
+
+用 `jq` 处理 JSONL 非常方便：
+
+```bash
+# 提取所有 name 字段
+cat data.jsonl | jq -r '.name'
+# 过滤 age > 28 的记录
+cat data.jsonl | jq 'select(.age > 28)'
+```
+
 ## Git
 
 ### git worktree —— 不干扰当前工作目录切分支的正解
@@ -251,45 +290,6 @@ git fetch --prune origin                     # 4. 清理已失效的 remote-trac
 - **同一分支不能被两个 worktree 同时检出**（worktree 共享同一个 `.git`）。
 - **查看现状**：`git worktree list` 随时看当前有哪些 worktree、在哪个分支上，排障必备。
 - GitHub 仓库设置开了 "Automatically delete head branches" 时，merge 后远端分支会自动删，第 3 步就省掉，`git fetch --prune` 顺手清掉 `origin/<branch>` 残留引用即可。
-
-## 数据格式
-
-### JSONL（JSON Lines）
-
-JSONL（也叫 NDJSON）是一种文本格式：每一行是一个独立的合法 JSON 对象，行与行之间用 `\n` 分隔。
-
-```jsonl
-{"name": "Alice", "age": 30}
-{"name": "Bob", "age": 25}
-{"name": "Charlie", "age": 35}
-```
-
-文件扩展名通常为 `.jsonl` 或 `.ndjson`。
-
-**与标准 JSON 的核心区别**：
-
-| 维度 | JSON | JSONL |
-|---|---|---|
-| 结构 | 单个 JSON 值（通常是数组/对象） | 每行一个独立 JSON 对象 |
-| 解析 | 需整体解析 | 可逐行解析 |
-| 追加写入 | 困难（需维护闭合括号） | 直接 append 一行 |
-| 内存占用 | 与文件大小成正比 | 可流式处理，常数级内存 |
-
-**典型使用场景**：
-
-- **机器学习训练数据**：OpenAI fine-tuning 数据集要求 JSONL 格式（每行一个 `{"messages": [...]}` 对象）
-- **日志收集**：每条日志一行 JSON，方便 `grep`、`jq`、`tail -f` 实时处理
-- **数据管道 / ETL**：Spark、BigQuery 等都原生支持 JSONL 导入导出
-- **流式传输**：生产者不断 append 行，消费者逐行读取，天然适合管道和消息队列场景
-
-用 `jq` 处理 JSONL 非常方便：
-
-```bash
-# 提取所有 name 字段
-cat data.jsonl | jq -r '.name'
-# 过滤 age > 28 的记录
-cat data.jsonl | jq 'select(.age > 28)'
-```
 
 ## 大模型
 
