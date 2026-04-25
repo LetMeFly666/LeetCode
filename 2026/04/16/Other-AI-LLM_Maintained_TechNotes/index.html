@@ -26,7 +26,7 @@
 <meta property="og:description" content="AI创作声明：以下内容由大模型(Claude)生成并持续维护更新。  AI维护的技术随笔 - 由大模型持续更新的技术笔记这是一篇特殊的文章——它由AI大模型创作并持续维护更新。每当有新的技术知识值得记录时，AI会在这里添加新的内容。 Skill微信支付 AI Skill：给 IDE 中的 LLM 用的结构化知识包微信支付官方推出了 wechatpay-skills 仓库，将支付接入的领域知识以">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-16T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-25T06:13:11.000Z">
+<meta property="article:modified_time" content="2026-04-25T07:32:08.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="其他">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.2k 字
+          6.1k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          36 分钟
+          51 分钟
         
       </span>
     
@@ -468,6 +468,66 @@
 <p>用 <code>jq</code> 处理 JSONL 非常方便：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 提取所有 name 字段</span><br><span class="hljs-built_in">cat</span> data.jsonl | jq -r <span class="hljs-string">&#x27;.name&#x27;</span><br><span class="hljs-comment"># 过滤 age &gt; 28 的记录</span><br><span class="hljs-built_in">cat</span> data.jsonl | jq <span class="hljs-string">&#x27;select(.age &gt; 28)&#x27;</span><br></code></pre></td></tr></table></figure>
 
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="git-worktree-——-不干扰当前工作目录切分支的正解"><a href="#git-worktree-——-不干扰当前工作目录切分支的正解" class="headerlink" title="git worktree —— 不干扰当前工作目录切分支的正解"></a>git worktree —— 不干扰当前工作目录切分支的正解</h3><p><strong>场景</strong>：本地目录有未提交的工作，偏偏又要切到另一条冲突 PR 分支去解冲突。直接 <code>git switch</code> 会打断当前 working tree，<code>git stash</code> 来回切又繁琐。更清爽的做法是用 <code>git worktree</code> 把目标分支<strong>挂到另一个目录</strong>，原目录保持原样。</p>
+<h4 id="创建-worktree"><a href="#创建-worktree" class="headerlink" title="创建 worktree"></a>创建 worktree</h4><p>三种等价做法，按推荐度排序（以”把某 PR 分支挂到 <code>../blog_sips</code>“为例）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 方式 A(推荐)：已知 PR 的 head 分支名，同仓库分支</span><br>git fetch origin feat/xxx/yyy:feat/xxx/yyy          <span class="hljs-comment"># 只拉这一条 ref，最省带宽</span><br>git worktree add ../blog_sips feat/xxx/yyy          <span class="hljs-comment"># 挂目录，建立本地跟踪分支，便于后续 push</span><br><br><span class="hljs-comment"># 方式 B：只知 PR 号、不知分支名（也适用 fork PR）</span><br>git fetch origin pull/1536/head:pr-1536<br>git worktree add ../blog_sips pr-1536<br><br><span class="hljs-comment"># 方式 C：直接挂远端 ref(HEAD 处于 detached，不便 push 回 PR)</span><br>git fetch origin feat/xxx/yyy<br>git worktree add ../blog_sips origin/feat/xxx/yyy<br></code></pre></td></tr></table></figure>
+
+<p>两种拉取方式的取舍：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>pull/&lt;N&gt;/head</code></td>
+<td>不需要知道分支名、适用 fork PR</td>
+<td>是只读 ref，需要 <code>:local-name</code> 才便于 push</td>
+</tr>
+<tr>
+<td>具体分支名</td>
+<td>语义清晰、push 回去自动更新 PR</td>
+<td>必须知道分支名，fork PR 不适用</td>
+</tr>
+</tbody></table>
+<h4 id="术语澄清"><a href="#术语澄清" class="headerlink" title="术语澄清"></a>术语澄清</h4><p>官方术语叫 <strong>worktree</strong>（工作树 &#x2F; 附加工作树），命令就是 <code>git worktree</code>。主仓库目录是 <strong>main worktree</strong>，后加的叫 <strong>linked worktree &#x2F; additional worktree</strong>。中文社区也有说”多工作区”的，但规范叫法不是”临时工作区”——临时只是使用方式。</p>
+<h4 id="删除-worktree（merge-后清理全流程）"><a href="#删除-worktree（merge-后清理全流程）" class="headerlink" title="删除 worktree（merge 后清理全流程）"></a>删除 worktree（merge 后清理全流程）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> &lt;主仓库目录&gt;                              <span class="hljs-comment"># 不能在 ../blog_sips 内部删它自己</span><br><br>git worktree remove ../blog_sips             <span class="hljs-comment"># 1. 删 worktree(连同目录一起移除)</span><br><span class="hljs-comment"># 如有未提交 / 未追踪文件会拒绝，确认无用后加 --force</span><br><span class="hljs-comment"># git worktree remove --force ../blog_sips</span><br><br>git branch -d feat/xxx/yyy                   <span class="hljs-comment"># 2. 删本地分支(merge 过用 -d，未 merge 或 squash-merge 用 -D)</span><br>git push origin --delete feat/xxx/yyy        <span class="hljs-comment"># 3. 删远端分支(如 GitHub 未自动删)</span><br>git fetch --prune origin                     <span class="hljs-comment"># 4. 清理已失效的 remote-tracking ref</span><br></code></pre></td></tr></table></figure>
+
+<p><strong><code>git worktree remove &lt;path&gt;</code> 会自动删掉目录吗？会。</strong> 它同时做两件事：删 <code>.git/worktrees/&lt;name&gt;/</code> 下的元信息 + 删 <code>&lt;path&gt;</code> 目录本身。执行完目录就不存在了，无需再 <code>rm -rf</code>。</p>
+<p>边界情形：</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作区干净</td>
+<td>直接删目录 + 元信息 ✓</td>
+</tr>
+<tr>
+<td>有未提交 &#x2F; 未追踪文件</td>
+<td>拒绝执行，报 <code>contains modified or untracked files</code>；<code>--force</code> 才强删</td>
+</tr>
+<tr>
+<td>目录已被手动 <code>rm -rf</code></td>
+<td><code>remove</code> 会失败，改用 <code>git worktree prune</code> 清残留元信息</td>
+</tr>
+<tr>
+<td>磁盘 &#x2F; 权限问题致删目录失败</td>
+<td>元信息可能已删、目录残留，手动 <code>rm -rf</code> 即可</td>
+</tr>
+</tbody></table>
+<h4 id="常见坑"><a href="#常见坑" class="headerlink" title="常见坑"></a>常见坑</h4><ul>
+<li><strong>顺序不能反</strong>：先 <code>worktree remove</code> 再 <code>branch -d</code>。分支还被 worktree 占用时，<code>branch -d</code> 会报 <code>checked out at ...</code>。</li>
+<li><strong>孤儿 worktree</strong>：手动 <code>rm -rf</code> 而没走 <code>worktree remove</code>，<code>.git/worktrees/</code> 会留元信息，用 <code>git worktree prune</code> 清理。</li>
+<li><strong>同一分支不能被两个 worktree 同时检出</strong>（worktree 共享同一个 <code>.git</code>）。</li>
+<li><strong>查看现状</strong>：<code>git worktree list</code> 随时看当前有哪些 worktree、在哪个分支上，排障必备。</li>
+<li>GitHub 仓库设置开了 “Automatically delete head branches” 时，merge 后远端分支会自动删，第 3 步就省掉，<code>git fetch --prune</code> 顺手清掉 <code>origin/&lt;branch&gt;</code> 残留引用即可。</li>
+</ul>
 <hr>
 <p><em>本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25</em></p>
 <blockquote>
