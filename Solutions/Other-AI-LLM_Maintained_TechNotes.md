@@ -254,18 +254,6 @@ git worktree add ../blog_sips origin/feat/xxx/yyy
 | `pull/<N>/head` | 不需要知道分支名、适用 fork PR | 是只读 ref，需要 `:local-name` 才便于 push |
 | 具体分支名 | 语义清晰、push 回去自动更新 PR | 必须知道分支名，fork PR 不适用 |
 
-#### `git fetch origin` 的范围与收窄
-
-默认 `git fetch origin` 按 `remote.origin.fetch` refspec（通常是 `+refs/heads/*:refs/remotes/origin/*`）**拉 origin 上所有分支**以及可达的 annotated tag；不会拉 `refs/pull/*` 和 fork 分支。仓库分支多时建议收窄：
-
-```bash
-git fetch origin pull/1536/head:pr-1536      # 只拉该 PR 一条 ref，最省
-git fetch origin <branch>:<branch>           # 只拉指定分支
-git fetch --depth=1 origin pull/1536/head:pr-1536   # 浅克隆式，只要最近 1 个 commit
-git fetch --no-tags origin                   # 不拉 tag
-git fetch --prune origin                     # 清理远端已删分支的残留引用
-```
-
 #### 术语澄清
 
 官方术语叫 **worktree**（工作树 / 附加工作树），命令就是 `git worktree`。主仓库目录是 **main worktree**，后加的叫 **linked worktree / additional worktree**。中文社区也有说"多工作区"的，但规范叫法不是"临时工作区"——临时只是使用方式。
