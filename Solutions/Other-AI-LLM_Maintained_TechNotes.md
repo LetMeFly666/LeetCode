@@ -98,6 +98,160 @@ sudo pmset schedule sleep "$(date -v+60M '+%m/%d/%Y %H:%M:%S')"
 
 **立即睡眠**：`sudo pmset sleepnow`
 
+### macOS sips 命令——自带的图片处理瑞士军刀
+
+`sips`（Scriptable Image Processing System）是 macOS 自带的命令行图片处理工具，无需安装任何依赖，支持格式转换、缩放、旋转、裁剪、属性查询等。
+
+**格式转换**
+
+支持的输出格式：jpeg、tiff、png、gif、jp2、pict、bmp、qtif、psd、sgi、tga、pdf。
+
+```bash
+# 单张 HEIC 转 JPG
+sips -s format jpeg input.heic --out output.jpg
+
+# 批量转换当前目录所有 HEIC
+for f in *.heic; do sips -s format jpeg "$f" --out "${f%.heic}.jpg"; done
+
+# PNG 转 JPG 并设置质量（0-100）
+sips -s format jpeg -s formatOptions 80 input.png --out output.jpg
+```
+
+**调整尺寸**
+
+| 参数 | 行为 | 保持宽高比 |
+|---|---|---|
+| `-Z <max>` | 最长边缩放到 max | 是 |
+| `-z <h> <w>` | 强制指定高×宽 | 否（会拉伸） |
+| `--resampleWidth <w>` | 指定宽度 | 是 |
+| `--resampleHeight <h>` | 指定高度 | 是 |
+
+```bash
+# 等比缩放到最大 800px（推荐，最常用）
+sips -Z 800 input.jpg --out resized.jpg
+
+# 批量生成缩略图
+mkdir thumbnails
+for f in *.jpg; do sips -Z 200 "$f" --out "thumbnails/$f"; done
+```
+
+**旋转与翻转**
+
+```bash
+sips -r 90 input.jpg --out rotated.jpg      # 顺时针旋转 90°
+sips -f horizontal input.jpg --out h.jpg     # 水平翻转
+sips -f vertical input.jpg --out v.jpg       # 垂直翻转
+```
+
+**裁剪与填充**
+
+```bash
+# 从中心裁剪到 500x500
+sips -c 500 500 input.jpg --out cropped.jpg
+
+# 填充到 1000x1000（白色填充空白区域）
+sips -p 1000 1000 input.jpg --padColor FFFFFF --out padded.jpg
+```
+
+**查询图片信息**
+
+```bash
+sips -g all input.jpg                        # 查看所有属性
+sips -g pixelWidth -g pixelHeight input.jpg  # 查看宽高
+sips -g format input.jpg                     # 查看格式
+sips -g dpiWidth -g dpiHeight input.jpg      # 查看 DPI
+```
+
+**设置 DPI（适合打印场景）**
+
+```bash
+sips -s dpiHeight 300 -s dpiWidth 300 input.jpg --out print_ready.jpg
+```
+
+**实用组合示例**
+
+```bash
+# 批量 HEIC 转 JPG + 压缩 + 限制最大尺寸
+for f in *.heic; do
+  sips -s format jpeg -s formatOptions 80 -Z 1920 "$f" --out "${f%.heic}.jpg"
+done
+
+# 快速查看目录下所有图片的尺寸
+for f in *.{jpg,png,heic}; do
+  [ -f "$f" ] && echo "$f: $(sips -g pixelWidth -g pixelHeight "$f" 2>/dev/null | grep pixel | awk '{print $2}' | tr '\n' 'x' | sed 's/x$//')"
+done
+```
+
+`sips` 的优势在于零依赖——macOS 原生自带，不需要 `brew install` 任何东西，脚本中随拿随用。对于日常的格式转换和批量缩放完全够用，更复杂的图片处理再考虑 ImageMagick。
+
+## Git
+
+### git worktree —— 不干扰当前工作目录切分支的正解
+
+**场景**：本地目录有未提交的工作，偏偏又要切到另一条冲突 PR 分支去解冲突。直接 `git switch` 会打断当前 working tree，`git stash` 来回切又繁琐。更清爽的做法是用 `git worktree` 把目标分支**挂到另一个目录**，原目录保持原样。
+
+#### 创建 worktree
+
+三种等价做法，按推荐度排序（以"把某 PR 分支挂到 `../blog_sips`"为例）：
+
+```bash
+# 方式 A(推荐)：已知 PR 的 head 分支名，同仓库分支
+git fetch origin feat/xxx/yyy:feat/xxx/yyy          # 只拉这一条 ref，最省带宽
+git worktree add ../blog_sips feat/xxx/yyy          # 挂目录，建立本地跟踪分支，便于后续 push
+
+# 方式 B：只知 PR 号、不知分支名（也适用 fork PR）
+git fetch origin pull/1536/head:pr-1536
+git worktree add ../blog_sips pr-1536
+
+# 方式 C：直接挂远端 ref(HEAD 处于 detached，不便 push 回 PR)
+git fetch origin feat/xxx/yyy
+git worktree add ../blog_sips origin/feat/xxx/yyy
+```
+
+两种拉取方式的取舍：
+
+| 方式 | 优点 | 缺点 |
+| --- | --- | --- |
+| `pull/<N>/head` | 不需要知道分支名、适用 fork PR | 是只读 ref，需要 `:local-name` 才便于 push |
+| 具体分支名 | 语义清晰、push 回去自动更新 PR | 必须知道分支名，fork PR 不适用 |
+
+#### 术语澄清
+
+官方术语叫 **worktree**（工作树 / 附加工作树），命令就是 `git worktree`。主仓库目录是 **main worktree**，后加的叫 **linked worktree / additional worktree**。中文社区也有说"多工作区"的，但规范叫法不是"临时工作区"——临时只是使用方式。
+
+#### 删除 worktree（merge 后清理全流程）
+
+```bash
+cd <主仓库目录>                              # 不能在 ../blog_sips 内部删它自己
+
+git worktree remove ../blog_sips             # 1. 删 worktree(连同目录一起移除)
+# 如有未提交 / 未追踪文件会拒绝，确认无用后加 --force
+# git worktree remove --force ../blog_sips
+
+git branch -d feat/xxx/yyy                   # 2. 删本地分支(merge 过用 -d，未 merge 或 squash-merge 用 -D)
+git push origin --delete feat/xxx/yyy        # 3. 删远端分支(如 GitHub 未自动删)
+git fetch --prune origin                     # 4. 清理已失效的 remote-tracking ref
+```
+
+**`git worktree remove <path>` 会自动删掉目录吗？会。** 它同时做两件事：删 `.git/worktrees/<name>/` 下的元信息 + 删 `<path>` 目录本身。执行完目录就不存在了，无需再 `rm -rf`。
+
+边界情形：
+
+| 情况 | 行为 |
+| --- | --- |
+| 工作区干净 | 直接删目录 + 元信息 ✓ |
+| 有未提交 / 未追踪文件 | 拒绝执行，报 `contains modified or untracked files`；`--force` 才强删 |
+| 目录已被手动 `rm -rf` | `remove` 会失败，改用 `git worktree prune` 清残留元信息 |
+| 磁盘 / 权限问题致删目录失败 | 元信息可能已删、目录残留，手动 `rm -rf` 即可 |
+
+#### 常见坑
+
+- **顺序不能反**：先 `worktree remove` 再 `branch -d`。分支还被 worktree 占用时，`branch -d` 会报 `checked out at ...`。
+- **孤儿 worktree**：手动 `rm -rf` 而没走 `worktree remove`，`.git/worktrees/` 会留元信息，用 `git worktree prune` 清理。
+- **同一分支不能被两个 worktree 同时检出**（worktree 共享同一个 `.git`）。
+- **查看现状**：`git worktree list` 随时看当前有哪些 worktree、在哪个分支上，排障必备。
+- GitHub 仓库设置开了 "Automatically delete head branches" 时，merge 后远端分支会自动删，第 3 步就省掉，`git fetch --prune` 顺手清掉 `origin/<branch>` 残留引用即可。
+
 ## 数据格式
 
 ### JSONL（JSON Lines）
@@ -194,7 +348,7 @@ cat data.jsonl | jq 'select(.age > 28)'
 
 ---
 
-*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-24*
+*本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25*
 
 > 同步发文于我的[个人博客](https://blog.letmefly.xyz/)，(AI)创作不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/04/16/Other-AI-LLM_Maintained_TechNotes/)哦~
 >

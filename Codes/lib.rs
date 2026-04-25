@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1848-minimum-distance-to-the-target-element.rs");  // 这个fileName是会被脚本替换掉的
+include!("2833-furthest-point-from-origin.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
