@@ -184,7 +184,6 @@ done
 
 `sips` 的优势在于零依赖——macOS 原生自带，不需要 `brew install` 任何东西，脚本中随拿随用。对于日常的格式转换和批量缩放完全够用，更复杂的图片处理再考虑 ImageMagick。
 
-
 ## 数据格式
 
 ### JSONL（JSON Lines）
