@@ -223,6 +223,74 @@ cat data.jsonl | jq -r '.name'
 cat data.jsonl | jq 'select(.age > 28)'
 ```
 
+## Git
+
+### git worktree —— 不干扰当前工作目录切分支的正解
+
+**场景**：本地目录有未提交的工作，偏偏又要切到另一条冲突 PR 分支去解冲突。直接 `git switch` 会打断当前 working tree，`git stash` 来回切又繁琐。更清爽的做法是用 `git worktree` 把目标分支**挂到另一个目录**，原目录保持原样。
+
+#### 创建 worktree
+
+三种等价做法，按推荐度排序（以"把某 PR 分支挂到 `../blog_sips`"为例）：
+
+```bash
+# 方式 A(推荐)：已知 PR 的 head 分支名，同仓库分支
+git fetch origin feat/xxx/yyy:feat/xxx/yyy          # 只拉这一条 ref，最省带宽
+git worktree add ../blog_sips feat/xxx/yyy          # 挂目录，建立本地跟踪分支，便于后续 push
+
+# 方式 B：只知 PR 号、不知分支名（也适用 fork PR）
+git fetch origin pull/1536/head:pr-1536
+git worktree add ../blog_sips pr-1536
+
+# 方式 C：直接挂远端 ref(HEAD 处于 detached，不便 push 回 PR)
+git fetch origin feat/xxx/yyy
+git worktree add ../blog_sips origin/feat/xxx/yyy
+```
+
+两种拉取方式的取舍：
+
+| 方式 | 优点 | 缺点 |
+| --- | --- | --- |
+| `pull/<N>/head` | 不需要知道分支名、适用 fork PR | 是只读 ref，需要 `:local-name` 才便于 push |
+| 具体分支名 | 语义清晰、push 回去自动更新 PR | 必须知道分支名，fork PR 不适用 |
+
+#### 术语澄清
+
+官方术语叫 **worktree**（工作树 / 附加工作树），命令就是 `git worktree`。主仓库目录是 **main worktree**，后加的叫 **linked worktree / additional worktree**。中文社区也有说"多工作区"的，但规范叫法不是"临时工作区"——临时只是使用方式。
+
+#### 删除 worktree（merge 后清理全流程）
+
+```bash
+cd <主仓库目录>                              # 不能在 ../blog_sips 内部删它自己
+
+git worktree remove ../blog_sips             # 1. 删 worktree(连同目录一起移除)
+# 如有未提交 / 未追踪文件会拒绝，确认无用后加 --force
+# git worktree remove --force ../blog_sips
+
+git branch -d feat/xxx/yyy                   # 2. 删本地分支(merge 过用 -d，未 merge 或 squash-merge 用 -D)
+git push origin --delete feat/xxx/yyy        # 3. 删远端分支(如 GitHub 未自动删)
+git fetch --prune origin                     # 4. 清理已失效的 remote-tracking ref
+```
+
+**`git worktree remove <path>` 会自动删掉目录吗？会。** 它同时做两件事：删 `.git/worktrees/<name>/` 下的元信息 + 删 `<path>` 目录本身。执行完目录就不存在了，无需再 `rm -rf`。
+
+边界情形：
+
+| 情况 | 行为 |
+| --- | --- |
+| 工作区干净 | 直接删目录 + 元信息 ✓ |
+| 有未提交 / 未追踪文件 | 拒绝执行，报 `contains modified or untracked files`；`--force` 才强删 |
+| 目录已被手动 `rm -rf` | `remove` 会失败，改用 `git worktree prune` 清残留元信息 |
+| 磁盘 / 权限问题致删目录失败 | 元信息可能已删、目录残留，手动 `rm -rf` 即可 |
+
+#### 常见坑
+
+- **顺序不能反**：先 `worktree remove` 再 `branch -d`。分支还被 worktree 占用时，`branch -d` 会报 `checked out at ...`。
+- **孤儿 worktree**：手动 `rm -rf` 而没走 `worktree remove`，`.git/worktrees/` 会留元信息，用 `git worktree prune` 清理。
+- **同一分支不能被两个 worktree 同时检出**（worktree 共享同一个 `.git`）。
+- **查看现状**：`git worktree list` 随时看当前有哪些 worktree、在哪个分支上，排障必备。
+- GitHub 仓库设置开了 "Automatically delete head branches" 时，merge 后远端分支会自动删，第 3 步就省掉，`git fetch --prune` 顺手清掉 `origin/<branch>` 残留引用即可。
+
 ---
 
 *本文由AI大模型维护，持续更新中。最近更新时间：2026-04-25*
