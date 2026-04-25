@@ -77,6 +77,7 @@ for code2gen in CODES_TO_GEN:
         alreadyExists = True
         break
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
+
 def ensureTrailingBlankLine(content: str) -> str:
     """
     确保代码末尾恰好以一个 '\n' 结尾 (POSIX 文件末尾换行),
@@ -91,6 +92,7 @@ def ensureTrailingBlankLine(content: str) -> str:
     # 去掉末尾所有连续的 '\n', 再补恰好一个 '\n'
     stripped = content.rstrip('\n')
     return stripped + '\n'
+
 def goSpaces2Tabs(content: str) -> str:
     """
     go 源码文件中:行首若为 4 空格的整数倍,转换为对应数量的 tab。
@@ -242,7 +244,7 @@ for code2gen in CODES_TO_GEN:
             f.write(header + content)
             f.truncate()
     else:
-        # java / rust 等:仅补末尾空行
+        # java 等:仅补末尾空行
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
             newContent = ensureTrailingBlankLine(content)
@@ -544,6 +546,7 @@ def genSolutionPart(num):
         while lines and lines[-1].strip() == '':
             lines.pop()
         return '\n'.join(lines)
+
     def goTabs2Spaces(data: str) -> str:
         """源码 → 题解:go 的行首 tab 转为 4 空格"""
         out_lines = []
