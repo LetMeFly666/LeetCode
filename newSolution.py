@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-04-25 16:23:36
+LastEditTime: 2026-04-25 16:34:20
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -418,6 +418,21 @@ def genSolutionPart(num):
             new_comment = '\n'.join(kept)
             return new_comment + '\n' + rest.lstrip('\n')
         return data
+    
+    def removeSuffix(data: str) -> str:
+        # 删除末尾的\n或\r\n
+        return data.rstrip('\r\n')
+    
+    def tab2space(data: str, width: int = 4) -> str:
+        # 将每行开头的tab替换为width个空格
+        out = []
+        for line in data.splitlines(keepends=True):
+            i = 0
+            while line[i:i+1] == '\t':
+                i += 1
+            out.append(' ' * width * i + line[i:])
+        return ''.join(out)
+
 
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
@@ -430,6 +445,9 @@ def genSolutionPart(num):
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
             data = removePrefix(data, fileType)
+            data = removeSuffix(data)
+            if fileType == 'go':
+                data = tab2space(data)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
