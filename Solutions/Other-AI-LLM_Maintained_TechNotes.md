@@ -147,12 +147,13 @@ cat data.jsonl | jq 'select(.age > 28)'
 
 在标准 Transformer 里，每层的 FFN（前馈网络）是一整块稠密的大矩阵。MoE 做的事就是把这一块 FFN 拆成 N 个并列的小 FFN（叫 Experts），前面加一个叫 Router（路由器 / 门控）的小网络来决定“这个 token 该交给谁处理”。
 
-```
-         ┌──────── Expert 1 ────────┐
- token → Router  ──► (选 Top-K)  ──►│ Expert 2（被选中，参与计算）
-         └──────── Expert 3 ────────┘
-                   ...
-                   Expert N（未被选中，不激活）
+```text
+                    ┌── Expert 1 ──┐
+                    │  Expert 2    │  ← 被选中，参与计算
+ token → Router ──► │  Expert 3    │
+                    │    ...       │
+                    └── Expert N ──┘     未被选中，不激活
+                        (选 Top-K)
 ```
 
 常见做法是 **Top-2 路由**：每个 token 走得分最高的 2 个专家，输出按门控权重加权求和。
@@ -167,7 +168,7 @@ cat data.jsonl | jq 'select(.age > 28)'
 | 负载均衡损失 | 额外加的 loss，防止所有 token 都挤到同一个专家那里（专家坍缩） |
 | 共享专家 | DeepSeek 等模型的设计：留一两个“总是激活”的专家学通用知识 |
 
-举个直观的数字：Mixtral 8x7B 有 8 个专家、每次选 2 个，总参数约 47B，但每个 token 实际只激活约 13B——推理成本接近一个 13B 的稠密模型，效果却能打到 70B 级别。
+举个直观的数字：Mixtral 8x7B 有 8 个专家、每次选 2 个，总参数约 46.7B，但每个 token 实际只激活约 12.9B——推理成本接近一个 13B 的稠密模型，效果却能打到 70B 级别。
 
 **为什么它香**
 
@@ -186,7 +187,7 @@ cat data.jsonl | jq 'select(.age > 28)'
 
 - **GShard / Switch Transformer**（Google）：MoE 在大模型里的早期代表作
 - **Mixtral 8x7B / 8x22B**（Mistral）：第一个让大家都能本地跑的开源 MoE
-- **DeepSeek-V2 / V3**：细粒度专家 + 共享专家的创新设计，激活比例压得很低
+- **DeepSeek-V2 / V3**：细粒度专家（V2 用了 160 个路由专家 + 2 个共享专家）+ 共享专家的创新设计，激活比例压得很低
 - **Qwen MoE 系列、Llama 4（Scout / Maverick）**：国内外大厂纷纷跟进
 
 一句话总结：Dense 模型是“全员加班”，MoE 是“按需派单”——在同等效果下，后者更省电；在同等算力下，后者能学更多。未来相当长一段时间，大模型往更大规模扩展时，MoE 几乎是绕不开的一条路。
