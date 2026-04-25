@@ -150,7 +150,7 @@ cat data.jsonl | jq 'select(.age > 28)'
 ```text
                     ┌── Expert 1 ──┐
                     │   Expert 2   │  ← 被选中，参与计算
-  token → Router ──► │   Expert 3   │
+ token → Router ──► │   Expert 3   │
                     │    ...       │
                     └── Expert N ──┘     未被选中，不激活
                        (选 Top-K)
