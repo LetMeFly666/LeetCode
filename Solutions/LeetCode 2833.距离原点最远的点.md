@@ -1,7 +1,7 @@
 ---
 title: 2833.距离原点最远的点：计数
 date: 2026-04-24 23:10:40
-tags: [题解, LeetCode, 简单, 字符串, 计数]
+tags: [题解, LeetCode, 简单, 字符串, 计数, 模拟]
 categories: [题解, LeetCode]
 ---
 
