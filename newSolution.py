@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-04-25 16:34:20
+LastEditTime: 2026-05-01 21:46:58
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -526,6 +526,7 @@ def readmeNewLine(readme: str) -> str:
         def getHard():
             solutionSplited = solution.split("\n")
             tags = solutionSplited[3]
+            print('tags: ' + tags)
             realTags = tags.split("tags: [")[1][:-1].split(", ")
             if "简单" in realTags:
                 return "简单"
