@@ -18,7 +18,7 @@ private:
         while (n) {
             int t = n % 10;
             if (!((1 << t) & mask_ok)) {
-                return 0;
+                return false;
             }
             if ((1 << t) & mask_diff) {
                 has_diff = true;
