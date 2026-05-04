@@ -125,7 +125,7 @@ Vaultwarden 同时发布在：[ghcr.io/dani-garcia/vaultwarden](https://ghcr.io/
 
 这个截至<span title="2026.5.4">今日</span>是可以直接访问的（2.076MB/55.4s）就是了。
 
-修改`docker-commpose.yml`的image为`ghcr.io/dani-garcia/vaultwarden:1.36.0-alpine`，然后：
+修改`docker-compose.yml`的image为`ghcr.io/dani-garcia/vaultwarden:1.36.0-alpine`，然后：
 
 ```bash
 docker compose pull
