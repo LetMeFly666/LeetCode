@@ -123,7 +123,7 @@ docker compose up -d
 
 Vaultwarden 同时发布在：[ghcr.io/dani-garcia/vaultwarden](https://ghcr.io/dani-garcia/vaultwarden)，也就是GitHub Container Registry。
 
-这个截至<span title="2026.5.4">今日</span>是可以直接访问的（2.076MB 55.4s）就是了。
+这个截至<span title="2026.5.4">今日</span>是可以直接访问的（2.076MB/55.4s）就是了。
 
 修改`docker-commpose.yml`的image为`ghcr.io/dani-garcia/vaultwarden:1.36.0-alpine`，然后：
 
@@ -149,11 +149,11 @@ docker save vaultwarden/server:1.35.3-alpine | xz -z > vaultwarden_1.35.3-alpine
 docker rmi vaultwarden/server:1.35.3-alpine
 
 # 加载旧镜像
-docker load -i vaultwarden_1.35.3.tar
+docker load -i vaultwarden_1.35.3-alpine.tar
 # 或者是通过gzip压缩的话
-gunzip -c vaultwarden_1.35.3.tar.gz | docker load
+gunzip -c vaultwarden_1.35.3-alpine.tar.gz | docker load
 # 或者是通过xz压缩的话
-xz -dc vaultwarden_1.35.3.tar.xz | docker load
+xz -dc vaultwarden_1.35.3-alpine.tar.xz | docker load
 ```
 
 三种方式大小对比：
@@ -190,7 +190,7 @@ echo -n "your_password" | argon2 "$(openssl rand -base64 16)" -id -e
 可以创建一个临时容器：
 
 ```bash
-docker run --rm vaultwarden/server:latest vaultwarden-tmp hash
+docker run --rm vaultwarden/server:latest vaultwarden hash
 ```
 
 若已有正在运行的容器也可以进入执行：
