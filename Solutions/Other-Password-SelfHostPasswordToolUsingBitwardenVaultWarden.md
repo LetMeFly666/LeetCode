@@ -190,7 +190,7 @@ echo -n "your_password" | argon2 "$(openssl rand -base64 16)" -id -e
 可以创建一个临时容器：
 
 ```bash
-docker run --rm vaultwarden/server:latest vaultwarden hash
+docker run --rm -it --entrypoint /vaultwarden ghcr.io/dani-garcia/vaultwarden:1.36.0-alpine hash
 ```
 
 若已有正在运行的容器也可以进入执行：
