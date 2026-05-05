@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-05 11:42:10
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-05 11:48:08
+ * @LastEditTime: 2026-05-05 11:49:41
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,6 +21,10 @@
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
+        if (!head) {
+            return nullptr;
+        }
+        
         int n = 1;
         ListNode* p = head;
         while (p->next) {
