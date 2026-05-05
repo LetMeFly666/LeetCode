@@ -3,6 +3,7 @@ title: 61.旋转链表：算总长——算新头
 date: 2026-05-05 11:51:19
 tags: [题解, LeetCode, 中等, 链表, 双指针, 遍历, 模拟]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2020/11/13/rotate1.jpg
 ---
 
 # 【LetMeFly】61.旋转链表：算总长——算新头
