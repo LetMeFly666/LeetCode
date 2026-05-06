@@ -313,6 +313,17 @@ server {
 
 各种诊断结果可以在`域名/admin/diagnostics`中看到。
 
+## Usage/Feature 使用特性
+
+### 自动填充
+
+如果bitwarden浏览器拓展开启网站自动填充功能，则：
+
++ 如果是网站中html的账号密码输入框，bitwarden会自动填写账号密码但不点击“登录”；
++ 如果是Basic Auth（浏览器直接弹出一个丑丑的账号密码输入框）则会直接认证并“登录”。
+
+HTTP Basic Auth是协议级认证机制，定义在HTTP 标准里（RFC [7235](https://httpwg.org/specs/rfc7235.html) / [7617](https://datatracker.ietf.org/doc/rfc7617/)）。之后请求该网站时浏览器会自动带上header：`Authorization: Basic base64(username:password)`。服务器不保存session，浏览器按照`域名+realm`缓存凭证。
+
 ## End
 
 | 日期       | 变更内容                                   |
