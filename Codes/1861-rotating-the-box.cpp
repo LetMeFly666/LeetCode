@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-06 19:54:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-06 20:00:01
+ * @LastEditTime: 2026-05-06 20:02:37
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -33,7 +33,7 @@ public:
         vector<vector<char>> ans(m, vector<char>(n));
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                ans[j][i] = boxGrid[i][j];
+                ans[j][i] = boxGrid[n - i - 1][j];
             }
         }
         return ans;
