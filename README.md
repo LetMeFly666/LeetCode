@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-03 17:37:02
+ * @LastEditTime: 2026-05-07 22:35:17
 -->
 # LetLeet Blog
 
@@ -1161,6 +1161,7 @@
 |3650.边反转的最小路径总成本|中等|<a href="https://leetcode.cn/problems/minimum-cost-path-with-edge-reversals/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/01/27/LeetCode%203650.%E8%BE%B9%E5%8F%8D%E8%BD%AC%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E6%80%BB%E6%88%90%E6%9C%AC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157442073" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-cost-path-with-edge-reversals/solutions/3890549/letmefly-3650bian-fan-zhuan-de-zui-xiao-ubsdb/" target="_blank">LeetCode题解</a>|
 |3651.带传送的最小路径成本|困难|<a href="https://leetcode.cn/problems/minimum-cost-path-with-teleportations/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/01/28/LeetCode%203651.%E5%B8%A6%E4%BC%A0%E9%80%81%E7%9A%84%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E6%88%90%E6%9C%AC/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157480540" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-cost-path-with-teleportations/solutions/3891246/letmefly-3651dai-chuan-song-de-zui-xiao-z79qr/" target="_blank">LeetCode题解</a>|
 |3652.按策略买卖股票的最佳时机|中等|<a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-using-strategy/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/12/18/LeetCode%203652.%E6%8C%89%E7%AD%96%E7%95%A5%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/156061117" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-using-strategy/solutions/3860245/letmefly-3652an-ce-lue-mai-mai-gu-piao-d-cnx2/" target="_blank">LeetCode题解</a>|
+|3660.跳跃游戏IX|中等|<a href="https://leetcode.cn/problems/jump-game-ix/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/05/07/LeetCode%203660.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FIX/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/160869042" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/jump-game-ix/solutions/3964805/letmefly-3660tiao-yue-you-xi-ixdong-tai-km7j9/" target="_blank">LeetCode题解</a>|
 |3713.最长的平衡子串I|中等|<a href="https://leetcode.cn/problems/longest-balanced-substring-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/02/12/LeetCode%203713.%E6%9C%80%E9%95%BF%E7%9A%84%E5%B9%B3%E8%A1%A1%E5%AD%90%E4%B8%B2I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/158013353" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/longest-balanced-substring-i/solutions/3901766/letmefly-3713zui-chang-de-ping-heng-zi-c-idk1/" target="_blank">LeetCode题解</a>|
 |3714.最长的平衡子串II|中等|<a href="https://leetcode.cn/problems/longest-balanced-substring-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/02/15/LeetCode%203714.%E6%9C%80%E9%95%BF%E7%9A%84%E5%B9%B3%E8%A1%A1%E5%AD%90%E4%B8%B2II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/158100379" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/longest-balanced-substring-ii/solutions/3903202/letmefly-3714zui-chang-de-ping-heng-zi-c-qngc/" target="_blank">LeetCode题解</a>|
 |3719.最长平衡子数组I|中等|<a href="https://leetcode.cn/problems/longest-balanced-subarray-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/02/10/LeetCode%203719.%E6%9C%80%E9%95%BF%E5%B9%B3%E8%A1%A1%E5%AD%90%E6%95%B0%E7%BB%84I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157947059" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/longest-balanced-subarray-i/solutions/3900598/letmefly-3719zui-chang-ping-heng-zi-shu-z6a81/" target="_blank">LeetCode题解</a>|
@@ -1254,6 +1255,7 @@
 - [ ] Hexo的`$1\_2$`会被直接渲染成`$1_2$`，然后前端mathjs就会将$1\_2$解析成$1_2$。如[This](https://github.com/LetMeFly666/LeetCode/blob/7a007400b54908796c58576cb587c5f0a99550b8/Solutions/Other-Notes-Mianjing.md?plain=1#L358)。
 - [ ] 总结贝叶斯公式 [1 简单推导](https://blog.csdn.net/weixin_41938903/article/details/105566524)、[2 条件概率公式原理](https://blog.csdn.net/u013066730/article/details/115249553)
 - [ ] pr预编译机制 - 当有pr时候提前编译好（还能看），merge后如果可行直接使用编译好的内容
+- [ ] 分支名匹配机制/project status更早set2todo机制 - 新分支push时候就能标记一个issue为in progress了，甚至hello的时候就可以
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
