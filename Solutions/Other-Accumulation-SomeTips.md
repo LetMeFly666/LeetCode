@@ -803,6 +803,17 @@ Guid
 f35b2f66-3e03-4c9d-80b5-d72059a8735d
 ```
 
+### PowerShell保存剪贴板图片为文件
+
+```powershell
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$desktop = [Environment]::GetFolderPath("Desktop")
+$image = [Windows.Forms.Clipboard]::GetImage()
+$image.Save("$desktop\a.jpg")
+```
+
 ### WOL(Wake on LAN)网络唤醒
 
 归类到Windows下其实并不仅局限于Windows。
