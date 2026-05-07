@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-07 22:10:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-07 22:12:17
+ * @LastEditTime: 2026-05-07 22:14:17
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,7 +23,7 @@ public:
         ans.back() = maximum.back();
         for (int i = n - 2; i >= 0; i--) {
             if (maximum[i] > minimum) {
-                ans[i] = maximum[i + 1];
+                ans[i] = ans[i + 1];
             } else {
                 ans[i] = maximum[i];
             }
