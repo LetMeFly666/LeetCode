@@ -29,6 +29,6 @@ public:
             }
             minimum = min(minimum, nums[i]);
         }
-        return maximum;
+        return ans;
     }
 };
