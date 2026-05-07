@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-07 21:58:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-07 22:08:18
+ * @LastEditTime: 2026-05-07 22:10:01
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,9 +20,7 @@ public:
         
         int minimum = nums.back();
         for (int i = n - 2; i >= 0; i--) {
-            if (maximum[i] < minimum) {
-
-            } else {
+            if (maximum[i] > minimum) {
                 maximum[i] = maximum[i + 1];
             }
             minimum = min(minimum, nums[i]);
