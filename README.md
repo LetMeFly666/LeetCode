@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-07 22:35:17
+ * @LastEditTime: 2026-05-08 21:08:46
 -->
 # LetLeet Blog
 
@@ -27,7 +27,7 @@
   </tr>
 </table>
 
-[Tisfy](https://letmefly.xyz)的博客，包括算法题题解、一些计算机博客等实用技巧。关于[力扣](https://leetcode.cn/)，将会长期更新【力扣题解】、【解题技巧】等，目标包括但不限于力扣中数字开头的2k多道题。欢迎各位大佬共同参与、提交PR。
+[Tisfy](https://letmefly.xyz)的博客，包括算法题题解、一些计算机博客等实用技巧。关于[力扣](https://leetcode.cn/)，将会长期更新【力扣题解】、【解题技巧】等，目标包括但不限于力扣中数字开头的2k多道题。除AI声明外均手写。欢迎各位大佬共同参与、提交PR。
 
 现有代码：[Codes](https://github.com/LetMeFly666/LeetCode/tree/master/Codes)
 
@@ -1155,6 +1155,7 @@
 |3577.统计计算机解锁顺序排列数|中等|<a href="https://leetcode.cn/problems/count-the-number-of-computer-unlocking-permutations/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/12/10/LeetCode%203577.%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%A3%E9%94%81%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%88%97%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/155791805" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-the-number-of-computer-unlocking-permutations/solutions/3854206/letmefly-3577tong-ji-ji-suan-ji-jie-suo-5b6b8/" target="_blank">LeetCode题解</a>|
 |3583.统计特殊三元组|中等|<a href="https://leetcode.cn/problems/count-special-triplets/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/12/09/LeetCode%203583.%E7%BB%9F%E8%AE%A1%E7%89%B9%E6%AE%8A%E4%B8%89%E5%85%83%E7%BB%84/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/155754955" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/count-special-triplets/solutions/3853381/letmefly-3583tong-ji-te-shu-san-yuan-zu-cdnx3/" target="_blank">LeetCode题解</a>|
 |3606.优惠券校验器|简单|<a href="https://leetcode.cn/problems/coupon-code-validator/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/12/13/LeetCode%203606.%E4%BC%98%E6%83%A0%E5%88%B8%E6%A0%A1%E9%AA%8C%E5%99%A8/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/155893803" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/coupon-code-validator/solutions/3856383/letmefly-3606you-hui-quan-xiao-yan-qi-fe-vqir/" target="_blank">LeetCode题解</a>|
+|3629.通过质数传送到达终点的最少跳跃次数|中等|<a href="https://leetcode.cn/problems/minimum-jumps-to-reach-end-via-prime-teleportation/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/05/08/LeetCode%203629.%E9%80%9A%E8%BF%87%E8%B4%A8%E6%95%B0%E4%BC%A0%E9%80%81%E5%88%B0%E8%BE%BE%E7%BB%88%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-jumps-to-reach-end-via-prime-teleportation/solutions/3965336/letmefly-3629tong-guo-zhi-shu-chuan-song-9859/" target="_blank">LeetCode题解</a>|
 |3634.使数组平衡的最少移除数目|中等|<a href="https://leetcode.cn/problems/minimum-removals-to-balance-array/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/02/06/LeetCode%203634.%E4%BD%BF%E6%95%B0%E7%BB%84%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E7%A7%BB%E9%99%A4%E6%95%B0%E7%9B%AE/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157811143" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-removals-to-balance-array/solutions/3897779/letmefly-3634shi-shu-zu-ping-heng-de-zui-xpds/" target="_blank">LeetCode题解</a>|
 |3637.三段式数组I|简单|<a href="https://leetcode.cn/problems/trionic-array-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/02/04/LeetCode%203637.%E4%B8%89%E6%AE%B5%E5%BC%8F%E6%95%B0%E7%BB%84I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157738457" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/trionic-array-i/solutions/3896318/letmefly-3637san-duan-shi-shu-zu-iyi-ci-oqj8a/" target="_blank">LeetCode题解</a>|
 |3643.垂直翻转子矩阵|简单|<a href="https://leetcode.cn/problems/flip-square-submatrix-vertically/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/03/21/LeetCode%203643.%E5%9E%82%E7%9B%B4%E7%BF%BB%E8%BD%AC%E5%AD%90%E7%9F%A9%E9%98%B5/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/159318064" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/flip-square-submatrix-vertically/solutions/3932544/letmefly-3643chui-zhi-fan-zhuan-zi-ju-zh-22hn/" target="_blank">LeetCode题解</a>|
