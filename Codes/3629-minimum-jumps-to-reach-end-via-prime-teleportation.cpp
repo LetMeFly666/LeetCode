@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-08 20:06:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-08 20:21:59
+ * @LastEditTime: 2026-05-08 20:23:18
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -51,12 +51,12 @@ public:
                 if (now == nums.size() - 1) {
                     return ans;
                 }
-                toQueue(q, visited, now + 1);
+                toQueue(nextQueue, visited, now + 1);
                 if (now) {
-                    toQueue(q, visited, now - 1);
+                    toQueue(nextQueue, visited, now - 1);
                 }
                 for (int next : jumps[nums[now]]) {
-                    toQueue(q, visited, next);
+                    toQueue(nextQueue, visited, next);
                 }
                 jumps[nums[now]].clear();  // 防止重复遍历
             }
