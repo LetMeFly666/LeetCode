@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-05-08 20:58:17
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-05-08 21:07:32
+LastEditTime: 2026-05-08 21:10:33
 '''
 from typing import List
 from collections import defaultdict
@@ -40,7 +40,7 @@ class Solution:
                 self.push(next_queue, now + 1)
                 if now:
                     self.push(next_queue, now - 1)
-                for next in jumps[now]:
+                for next in jumps[nums[now]]:
                     self.push(next_queue, next)
-                jumps[now].clear()
+                jumps[nums[now]].clear()
             q = next_queue
