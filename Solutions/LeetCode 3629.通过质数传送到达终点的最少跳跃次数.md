@@ -236,6 +236,8 @@ class Solution:
             q = next_queue
 ```
 
+注意，在上述C++和Python的编程实现中，若$jums[nums[now]]$为空，上述代码可能会导致创建以$nums[now]$为key的空列表。也可以特判当键存在时再遍历。
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/160900999)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/05/08/LeetCode%203629.%E9%80%9A%E8%BF%87%E8%B4%A8%E6%95%B0%E4%BC%A0%E9%80%81%E5%88%B0%E8%BE%BE%E7%BB%88%E7%82%B9%E7%9A%84%E6%9C%80%E5%B0%91%E8%B7%B3%E8%B7%83%E6%AC%A1%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
