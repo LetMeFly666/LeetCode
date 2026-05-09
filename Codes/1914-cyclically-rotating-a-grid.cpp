@@ -11,17 +11,13 @@
 class Solution {
 private:
     int n, m, k;
-    vector<vector<int>> grid, ans;
+    vector<vector<int>> grid;
 
     void init(vector<vector<int>>& grid, int k) {
         n = grid.size();
         m = grid[0].size();
         this->grid = move(grid);
         this->k = k;
-        ans.resize(n);
-        for (int i = 0; i < n; i++) {
-            ans[i].resize(m);
-        }
     }
 
     void rotate(int th) {
@@ -70,6 +66,6 @@ public:
         for (int th = 0; th < min(m, n) / 2; th++) {
             rotate(th);
         }
-        return move(this->ans);
+        return move(this->grid);
     }
 };
