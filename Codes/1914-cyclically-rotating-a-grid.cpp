@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-09 21:35:05
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-09 22:09:11
+ * @LastEditTime: 2026-05-09 22:15:48
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,7 +24,7 @@ private:
         int m = this->m - 2 * th;
         int n = this->n - 2 * th;
         int all = (m + n) * 2 - 4;
-        k %= all;
+        int k = this->k % all;
         vector<int> round;
         round.reserve(all);
 
