@@ -114,7 +114,7 @@ public:
         n = nums.size();
         this->nums = move(nums);
         this->target = target;
-        mem = move(vector<int>(n));
+        mem.assign(n, 0);
         int ans = dfs(n - 1);
         return ans < 0 ? -1 : ans;
     }

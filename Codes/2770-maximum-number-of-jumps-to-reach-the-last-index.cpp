@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-10 19:40:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-10 19:53:35
+ * @LastEditTime: 2026-05-10 21:31:58
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -35,7 +35,7 @@ public:
         n = nums.size();
         this->nums = move(nums);
         this->target = target;
-        mem = move(vector<int>(n));
+        mem.assign(n, 0);
         int ans = dfs(n - 1);
         return ans < 0 ? -1 : ans;
     }
