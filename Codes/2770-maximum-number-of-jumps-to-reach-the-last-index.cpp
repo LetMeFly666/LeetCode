@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-10 19:40:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-10 19:51:26
+ * @LastEditTime: 2026-05-10 19:53:35
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -11,8 +11,7 @@
 class Solution {
 private:
     int n, target;
-    vector<int> nums;
-    vector<int> mem;
+    vector<int> nums, mem;
 
     int dfs(int loc) {
         if (loc == 0) {
@@ -25,7 +24,7 @@ private:
 
         ans = INT_MIN;
         for (int i = 0; i < loc; i++) {
-            if (abs(nums[loc] - nums[i] <= target)) {
+            if (abs(nums[loc] - nums[i]) <= target) {
                 ans = max(ans, dfs(i) + 1);
             }
         }
