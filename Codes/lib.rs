@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("2833-furthest-point-from-origin.rs");  // 这个fileName是会被脚本替换掉的
+include!("2553-separate-the-digits-in-an-array.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
