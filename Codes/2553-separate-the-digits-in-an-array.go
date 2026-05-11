@@ -9,7 +9,7 @@ package main
 import "slices"
 
 func separateDigits(nums []int) (ans []int) {
-	for _, x := range slices.BackWard(nums) {
+	for _, x := range slices.Backward(nums) {
 		for x > 0 {
 			ans = append(ans, x % 10)
 			x /= 10
