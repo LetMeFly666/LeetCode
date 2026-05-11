@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-05-11 21:16:18
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-05-11 21:18:21
+LastEditTime: 2026-05-11 21:20:12
 '''
 from typing import List
 
@@ -13,4 +13,5 @@ class Solution:
             while x:
                 ans.append(x % 10)
                 x //= 10
-        return reversed(ans)
+        ans.reverse()
+        return ans
