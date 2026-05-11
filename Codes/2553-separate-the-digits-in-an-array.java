@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-11 21:16:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-11 21:31:30
+ * @LastEditTime: 2026-05-11 21:32:57
  */
 class Solution {
     public int[] separateDigits(int[] nums) {
@@ -22,11 +22,6 @@ class Solution {
             }
         }
 
-        for (int l = 0, r = cnt - 1, tmp; l < r; l++, r--) {
-            tmp = ans[l];
-            ans[l] = ans[r];
-            ans[r] = tmp;
-        }
         return ans;
     }
 }
