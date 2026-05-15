@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-15 21:04:02
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-15 22:00:30
+ * @LastEditTime: 2026-05-15 22:01:34
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,6 +20,6 @@ public:
                 r = m;
             }
         }
-        return l;
+        return nums[l];
     }
 };
