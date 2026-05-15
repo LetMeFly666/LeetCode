@@ -1,16 +1,9 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: g++.exe 生成活动文件",
-            "command": "g++.exe",
-            "args": [
-                "-D_DEBUG",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            ],
+            "type": "shell",
+            "label": "C/C++ Build",
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -21,59 +14,39 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "调试器生成的任务。",
-            // "condition": {
-            //     "os": "windows"
-            // }
+            "detail": "Cross-platform C/C++ build task",
+            "windows": {
+                "command": "g++.exe",
+                "args": [
+                    "-D_DEBUG",
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                ],
+            },
+            "linux": {
+                "command": "g++",
+                "args": [
+                    "-D_DEBUG",
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}"
+                ],
+            },
+            "osx": {
+                "command": "/usr/bin/clang++",
+                "args": [
+                    "-D_DEBUG",
+                    "-fcolor-diagnostics",
+                    "-fansi-escape-codes",
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}"
+                ],
+            },
         },
-        {
-            "type": "cppbuild",
-            "label": "C/C++: clang++ build",
-            "command": "/usr/bin/clang++",
-            "args": [
-                "-D_DEBUG",
-                "-fcolor-diagnostics",
-                "-fansi-escape-codes",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "调试器生成的任务。"
-        },
-        {
-            "type": "cppbuild",
-            "label": "C/C++: g++ (code-server build)",
-            "command": "g++",
-            "args": [
-                "-D_DEBUG",
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "detail": "code-server / Linux g++ build"
-        }
     ],
-    "version": "2.0.0"
 }
