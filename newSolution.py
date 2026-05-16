@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-05-01 21:51:55
+LastEditTime: 2026-05-16 20:32:36
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -184,8 +184,10 @@ def getPlatform():
         return 'Windows'
     elif platform == 'darwin':
         return 'MacOS'
+    elif platform == 'Linux':
+        return 'Linux'
     else:
-        return 'Linux(or others)'
+        return platform
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
 # alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
 tmp_issueGetResult = subprocess.run(
@@ -361,7 +363,7 @@ def genSolutionPart(num):
 11111
 
 + 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 空间复杂度$O(N\\log N)$
 
 ### AC代码
 """
