@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="VsCode Docker(Code Server)每次重启docker首次dbg C++都要花费很久去下载一个15.5M的debuginfo的解决方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题">
+<meta property="og:url" content="https://blog.letmefly.xyz/2026/05/16/Other-VsCode-CodeServerDocker-StopDownloading15MgdbDebuginfod-gdb_debuginfod_docker_vscode_cpp_debugging_postmortem_2026/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="VsCode Docker(Code Server)每次重启docker首次dbg C++都要花费很久去下载一个15.5M的debuginfo的解决方案">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-16T12:58:46.000Z">
+<meta property="article:modified_time" content="2026-05-16T14:14:06.055Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="VsCode">
+<meta property="article:tag" content="简单">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-05-16 20:58" pubdate>
+          2026年5月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="VSCode-Docker-Code-Server-首次调试C-长时间下载debuginfo问题"><a href="#VSCode-Docker-Code-Server-首次调试C-长时间下载debuginfo问题" class="headerlink" title="VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题"></a>VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近在小服务器上部署了vscode docker(<a target="_blank" rel="noopener" href="https://github.com/coder/code-server">code server</a>)以便多处Continue一些项目，结果每次docker重启后首次调试C++时都会下载很久的debug info。</p>
+<p>虽然文件只有15.5M，但无魔法的话可能会下载个十来分钟甚至直接下载失败。主要是还没找到这东西下在了哪里没办法持久化。</p>
+<p>经过不断尝试，终于让docker重启后编译C++也不去下载这么个东西了。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Stopped due <span class="hljs-keyword">to</span> shared library event (<span class="hljs-literal">no</span> libraries added <span class="hljs-keyword">or</span> removed)<br>Loaded <span class="hljs-string">&#x27;/lib64/ld-linux-x86-64.so.2&#x27;</span>. Symbols loaded.<br>Downloading 15.52 M separate <span class="hljs-built_in">debug</span> <span class="hljs-built_in">info</span> <span class="hljs-keyword">for</span> /lib64/libstdc++.so.6<span class="hljs-built_in">..</span>.<br></code></pre></td></tr></table></figure>
+
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在VsCode默认shell配置环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> DEBUGINFOD_URLS=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<blockquote>
+<p>FBI WARNING</p>
+<p>以下内容让ChatGPT总结自我与ChatGPT的对话，有明显不合理之处但未改动。</p>
+<p>不合理之处如：</p>
+</blockquote>
+<ol>
+<li>“自动下载巨大的 debuginfo”，其实15.52M不算巨大，主要是没有魔法的话巨慢。</li>
+<li>“尝试 ~&#x2F;.gdbinit”部分并非“有时仍会：”，而是一定会“Downloading …”。</li>
+<li>“开始怀疑 Docker 持久化”我没怀疑过这个，因为我直到<code>~</code>目录都持久化了，是GPT忘了才怀疑的。</li>
+</ol>
+<hr>
+<h1 id="GDB-debuginfod-Docker-VSCode-C-Debugging-踩坑复盘（Fedora-code-server）"><a href="#GDB-debuginfod-Docker-VSCode-C-Debugging-踩坑复盘（Fedora-code-server）" class="headerlink" title="GDB &#x2F; debuginfod &#x2F; Docker &#x2F; VSCode C++ Debugging 踩坑复盘（Fedora + code-server）"></a>GDB &#x2F; debuginfod &#x2F; Docker &#x2F; VSCode C++ Debugging 踩坑复盘（Fedora + code-server）</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>环境：</p>
+<ul>
+<li>Docker 容器</li>
+<li>Fedora 39</li>
+<li><code>code-server</code></li>
+<li>VSCode C&#x2F;C++ 扩展 (<code>cppdbg</code>)</li>
+<li>GDB 15.1</li>
+<li>C++ (<code>g++ -g</code>)</li>
+</ul>
+<p>目标：</p>
+<ul>
+<li>在 Docker 中稳定调试 C++</li>
+<li>避免每次首次 debug 时自动下载巨大的 debuginfo</li>
+<li>避免 2h 卡死等待下载</li>
+<li>理解 debuginfod 到底在干什么</li>
+<li>理解为什么设置 seemingly 无效</li>
+</ul>
+<hr>
+<h1 id="第一阶段：发现问题"><a href="#第一阶段：发现问题" class="headerlink" title="第一阶段：发现问题"></a>第一阶段：发现问题</h1><p>最初现象：</p>
+<p>启动 VSCode Debug 后：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">Stopped due to shared library event (no libraries added or removed)<br>Loaded &#x27;/lib64/ld-linux-x86-64.so.2&#x27;. Symbols loaded.<br>Downloading 15.52 M separate debug info for /lib64/libstdc++.so.6...<br></code></pre></td></tr></table></figure>
+
+<p>而且：</p>
+<ul>
+<li>下载非常慢</li>
+<li>经常卡住</li>
+<li>Docker 重启后还会再次下载</li>
+<li>只有第一次 debug C++ 会触发</li>
+<li>其他普通程序不会</li>
+</ul>
+<p>于是开始怀疑：</p>
+<ul>
+<li>GDB 配置错误？</li>
+<li>VSCode 插件问题？</li>
+<li>Docker 没持久化？</li>
+<li>debuginfo 装错？</li>
+<li>cache 丢失？</li>
+</ul>
+<hr>
+<h1 id="第二阶段：尝试通过-launch-json-禁用-debuginfod"><a href="#第二阶段：尝试通过-launch-json-禁用-debuginfod" class="headerlink" title="第二阶段：尝试通过 launch.json 禁用 debuginfod"></a>第二阶段：尝试通过 launch.json 禁用 debuginfod</h1><p>最初配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;g++ (code-server / Linux gdb)&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cppdbg&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;request&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;launch&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;program&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;stopAtEntry&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;cwd&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$&#123;fileDirname&#125;&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;externalConsole&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;MIMode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;gdb&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;miDebuggerPath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/usr/bin/gdb&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;preLaunchTask&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;C/C++: g++ (code-server build)&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;setupCommands&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;enable pretty printing&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;-enable-pretty-printing&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;ignoreFailures&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;environment&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;DEBUGINFOD_URLS&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>期间踩坑：</p>
+<h2 id="1-environment-必须是-array"><a href="#1-environment-必须是-array" class="headerlink" title="1. environment 必须是 array"></a>1. <code>environment</code> 必须是 array</h2><p>错误尝试：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;environment&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;DEBUGINFOD_URLS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>报错：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Incorrect type. Expected &quot;array&quot;<br></code></pre></td></tr></table></figure>
+
+<p>后来确认：</p>
+<p>VSCode cppdbg 的 schema 要求：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;environment&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;XXX&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYY&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-env-不支持"><a href="#2-env-不支持" class="headerlink" title="2. env 不支持"></a>2. <code>env</code> 不支持</h2><p>尝试：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;DEBUGINFOD_URLS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Property env is not allowed<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-即使配置正确，也没用"><a href="#3-即使配置正确，也没用" class="headerlink" title="3. 即使配置正确，也没用"></a>3. 即使配置正确，也没用</h2><p>即使 launch.json 配置完全正确：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;environment&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>  <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;DEBUGINFOD_URLS&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<p>仍然会：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Downloading 15.52 M separate debug info...<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>VSCode 确实接受了配置</li>
+<li>但 debuginfod 仍然生效</li>
+</ul>
+<p>后来才发现：</p>
+<blockquote>
+<p>GDB 很可能在 VSCode 注入 environment 前，就已经初始化 debuginfod 了。</p>
+</blockquote>
+<hr>
+<h1 id="第三阶段：尝试通过-GDB-命令关闭"><a href="#第三阶段：尝试通过-GDB-命令关闭" class="headerlink" title="第三阶段：尝试通过 GDB 命令关闭"></a>第三阶段：尝试通过 GDB 命令关闭</h1><p>尝试：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;setupCommands&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;disable debuginfod&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;text&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;set debuginfod enabled off&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;ignoreFailures&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<p>结果仍然无效。</p>
+<p>原因后来才明白：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Loaded &#x27;/lib64/ld-linux-x86-64.so.2&#x27;<br>Downloading 15MB...<br></code></pre></td></tr></table></figure>
+
+<p>这些行为：</p>
+<blockquote>
+<p>发生在 setupCommands 执行之前。</p>
+</blockquote>
+<p>因此：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gdb">set debuginfod enabled off<br></code></pre></td></tr></table></figure>
+
+<p>只是：</p>
+<blockquote>
+<p>从现在开始关闭。</p>
+</blockquote>
+<p>而不是：</p>
+<blockquote>
+<p>阻止启动阶段请求。</p>
+</blockquote>
+<hr>
+<h1 id="第四阶段：尝试-gdbinit"><a href="#第四阶段：尝试-gdbinit" class="headerlink" title="第四阶段：尝试 ~&#x2F;.gdbinit"></a>第四阶段：尝试 ~&#x2F;.gdbinit</h1><p>尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gdb">set debuginfod enabled off<br></code></pre></td></tr></table></figure>
+
+<p>写入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">~/.gdbinit<br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p>依然不稳定。</p>
+<p>有时仍会：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Downloading 15.52 M...<br></code></pre></td></tr></table></figure>
+
+<p>后来分析：</p>
+<p>GDB 初始化顺序中：</p>
+<ul>
+<li>system gdbinit</li>
+<li>auto-load</li>
+<li>shared library scan</li>
+<li>debuginfod init</li>
+<li>user ~&#x2F;.gdbinit</li>
+</ul>
+<p>顺序可能因 Fedora patch 不同而变化。</p>
+<p>因此：</p>
+<blockquote>
+<p>用户 gdbinit 并不一定足够早。</p>
+</blockquote>
+<hr>
+<h1 id="第五阶段：开始怀疑-Docker-持久化"><a href="#第五阶段：开始怀疑-Docker-持久化" class="headerlink" title="第五阶段：开始怀疑 Docker 持久化"></a>第五阶段：开始怀疑 Docker 持久化</h1><p>因为观察到：</p>
+<ul>
+<li>同一个 Docker session 内不会再次下载</li>
+<li>只有 Docker 重启后才会再次下载</li>
+</ul>
+<p>于是怀疑：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">~/.cache/debuginfod_client<br></code></pre></td></tr></table></figure>
+
+<p>没有持久化。</p>
+<hr>
+<h1 id="第六阶段：定位-debuginfod-cache"><a href="#第六阶段：定位-debuginfod-cache" class="headerlink" title="第六阶段：定位 debuginfod cache"></a>第六阶段：定位 debuginfod cache</h1><p>发现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">~/.cache/debuginfod_client<br></code></pre></td></tr></table></figure>
+
+<p>目录存在。</p>
+<p>而且：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h ~/.cache/debuginfod_client<br></code></pre></td></tr></table></figure>
+
+<p>能看到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">15M /home/coder/.cache/debuginfod_client/289d812be7557bb66c6cfdd6e429614136188789<br></code></pre></td></tr></table></figure>
+
+<p>里面还有：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">debuginfo<br>debuginfo.GWLJYE<br>debuginfo.HvmaJg<br>debuginfo.N8U00F<br></code></pre></td></tr></table></figure>
+
+<p>于是开始推测：</p>
+<ul>
+<li>这就是下载的 15MB</li>
+<li>Docker 重启后没有复用</li>
+</ul>
+<hr>
+<h1 id="第七阶段：错误推理（后来证明）"><a href="#第七阶段：错误推理（后来证明）" class="headerlink" title="第七阶段：错误推理（后来证明）"></a>第七阶段：错误推理（后来证明）</h1><p>当时错误地认为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">Downloading 15MB<br>==<br>一定下载成功<br></code></pre></td></tr></table></figure>
+
+<p>并进一步认为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">既然 ~/.cache 没变<br>说明下载到别处了<br></code></pre></td></tr></table></figure>
+
+<p>后来通过实验推翻。</p>
+<hr>
+<h1 id="第八阶段：关键实验"><a href="#第八阶段：关键实验" class="headerlink" title="第八阶段：关键实验"></a>第八阶段：关键实验</h1><p>做了一个非常重要的实验：</p>
+<h2 id="1-删除-cache"><a href="#1-删除-cache" class="headerlink" title="1. 删除 cache"></a>1. 删除 cache</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -rf ~/.cache/debuginfod_client/289d812be7557bb66c6cfdd6e429614136188789/<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-再次-debug"><a href="#2-再次-debug" class="headerlink" title="2. 再次 debug"></a>2. 再次 debug</h2><p>结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">Downloading 15.52 M separate debug info for /lib64/libstdc++.so.6...<br>Download failed: Timer expired.<br>Continuing without separate debug info for /lib64/libstdc++.so.6.<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-检查-cache"><a href="#3-检查-cache" class="headerlink" title="3. 检查 cache"></a>3. 检查 cache</h2><p>结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h ~/.cache/debuginfod_client<br></code></pre></td></tr></table></figure>
+
+<p>大小并没有增加。</p>
+<hr>
+<h1 id="第九阶段：终于定位真相"><a href="#第九阶段：终于定位真相" class="headerlink" title="第九阶段：终于定位真相"></a>第九阶段：终于定位真相</h1><p>这个实验最终证明：</p>
+<blockquote>
+<p><code>Downloading 15.52 M</code> 并不意味着下载成功。</p>
+</blockquote>
+<p>真正发生的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs text">GDB<br> ↓<br>连接 Fedora debuginfod server<br> ↓<br>server 返回：文件大小 15.52MB<br> ↓<br>开始下载<br> ↓<br>下载极慢<br> ↓<br>超时<br> ↓<br>GDB fallback<br> ↓<br>继续调试（无 debuginfo）<br></code></pre></td></tr></table></figure>
+
+<p>因此：</p>
+<ul>
+<li>cache 变大：只是临时文件</li>
+<li>cache 变小：失败后清理</li>
+<li>并没有真正下载完成</li>
+</ul>
+<hr>
+<h1 id="第十阶段：理解-debuginfo-到底是什么"><a href="#第十阶段：理解-debuginfo-到底是什么" class="headerlink" title="第十阶段：理解 debuginfo 到底是什么"></a>第十阶段：理解 debuginfo 到底是什么</h1><p>发现：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">/lib64/libstdc++.so.6<br></code></pre></td></tr></table></figure>
+
+<p>只有：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">2.4MB<br></code></pre></td></tr></table></figure>
+
+<p>而下载提示却是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">15.52MB<br></code></pre></td></tr></table></figure>
+
+<p>于是意识到：</p>
+<blockquote>
+<p>debuginfo 不是运行库本体。</p>
+</blockquote>
+<p>而是：</p>
+<ul>
+<li>DWARF debug symbols</li>
+<li>行号</li>
+<li>类型信息</li>
+<li>STL 内部结构</li>
+<li>ABI metadata</li>
+</ul>
+<p>本质上类似：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">编译后二进制 + 源码映射<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="第十一阶段：尝试安装本地-debuginfo-rpm"><a href="#第十一阶段：尝试安装本地-debuginfo-rpm" class="headerlink" title="第十一阶段：尝试安装本地 debuginfo rpm"></a>第十一阶段：尝试安装本地 debuginfo rpm</h1><p>尝试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install libstdc++-debuginfo<br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">No match for argument<br></code></pre></td></tr></table></figure>
+
+<p>原因：</p>
+<p>Fedora 默认没有开启 debuginfo repo。</p>
+<hr>
+<h1 id="第十二阶段：手动添加-debuginfo-repo"><a href="#第十二阶段：手动添加-debuginfo-repo" class="headerlink" title="第十二阶段：手动添加 debuginfo repo"></a>第十二阶段：手动添加 debuginfo repo</h1><p>因为使用的是阿里云 Fedora 源：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[fedora]</span><br><span class="hljs-attr">baseurl</span>=https://mirrors.aliyun.com/fedora/releases/<span class="hljs-variable">$releasever</span>/Everything/<span class="hljs-variable">$basearch</span>/os/<br></code></pre></td></tr></table></figure>
+
+<p>没有 debug repo。</p>
+<p>于是手动添加：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[fedora-debuginfo]</span><br><span class="hljs-attr">name</span>=Fedora <span class="hljs-variable">$releasever</span> - <span class="hljs-variable">$basearch</span> - Debug<br><span class="hljs-attr">baseurl</span>=https://mirrors.aliyun.com/fedora/releases/<span class="hljs-variable">$releasever</span>/Everything/<span class="hljs-variable">$basearch</span>/debug/tree/<br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p>以及：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[updates-debuginfo]</span><br><span class="hljs-attr">name</span>=Fedora <span class="hljs-variable">$releasever</span> - <span class="hljs-variable">$basearch</span> - Updates Debug<br><span class="hljs-attr">baseurl</span>=https://mirrors.aliyun.com/fedora/updates/<span class="hljs-variable">$releasever</span>/Everything/<span class="hljs-variable">$basearch</span>/debug/tree/<br><span class="hljs-attr">enabled</span>=<span class="hljs-number">1</span><br><span class="hljs-attr">gpgcheck</span>=<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p>期间还遇到：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">404 repomd.xml<br></code></pre></td></tr></table></figure>
+
+<p>因为阿里云 updates debuginfo 不完整。</p>
+<hr>
+<h1 id="第十三阶段：发现本地-debuginfo-巨大"><a href="#第十三阶段：发现本地-debuginfo-巨大" class="headerlink" title="第十三阶段：发现本地 debuginfo 巨大"></a>第十三阶段：发现本地 debuginfo 巨大</h1><p>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> dnf install libstdc++-debuginfo glibc-debuginfo<br></code></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Installing dependencies:<br> gcc-debuginfo 102M<br></code></pre></td></tr></table></figure>
+
+<p>总大小：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">112M download<br>490M installed size<br></code></pre></td></tr></table></figure>
+
+<p>于是发现：</p>
+<blockquote>
+<p>为了一个 15MB runtime symbol<br>Fedora debuginfo rpm 会拉整个 gcc debuginfo dependency tree。</p>
+</blockquote>
+<p>完全不可接受。</p>
+<hr>
+<h1 id="第十四阶段：理解“其实不用-debuginfo”"><a href="#第十四阶段：理解“其实不用-debuginfo”" class="headerlink" title="第十四阶段：理解“其实不用 debuginfo”"></a>第十四阶段：理解“其实不用 debuginfo”</h1><p>后来发现：</p>
+<p>即使：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">Download failed: Timer expired.<br>Continuing without separate debug info.<br></code></pre></td></tr></table></figure>
+
+<p>之后：</p>
+<ul>
+<li>断点正常</li>
+<li>单步正常</li>
+<li>用户变量正常</li>
+<li>自己代码行号正常</li>
+</ul>
+<p>因此终于意识到：</p>
+<blockquote>
+<p>对日常 LeetCode &#x2F; 普通 C++ debug 来说，libstdc++ debuginfo 根本不是必须。</p>
+</blockquote>
+<p>缺少的只是：</p>
+<ul>
+<li>STL 深层内部解析</li>
+<li>libc 行号</li>
+<li>GCC runtime 深层调试</li>
+</ul>
+<hr>
+<h1 id="第十五阶段：最终正确解决方案"><a href="#第十五阶段：最终正确解决方案" class="headerlink" title="第十五阶段：最终正确解决方案"></a>第十五阶段：最终正确解决方案</h1><p>最终真正有效的方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> DEBUGINFOD_URLS=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>写入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>之后：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">Downloading 15MB...<br></code></pre></td></tr></table></figure>
+
+<p>彻底消失。</p>
+<hr>
+<h1 id="为什么这个方法-finally-有效？"><a href="#为什么这个方法-finally-有效？" class="headerlink" title="为什么这个方法 finally 有效？"></a>为什么这个方法 finally 有效？</h1><p>因为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> DEBUGINFOD_URLS=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>发生在：</p>
+<blockquote>
+<p>GDB 进程启动之前。</p>
+</blockquote>
+<p>因此：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">GDB process env:<br>DEBUGINFOD_URLS=&quot;&quot;<br></code></pre></td></tr></table></figure>
+
+<p>于是：</p>
+<blockquote>
+<p>debuginfod subsystem 从一开始就被禁用了。</p>
+</blockquote>
+<p>而之前的方法：</p>
+<ul>
+<li>launch.json</li>
+<li>setupCommands</li>
+<li>~&#x2F;.gdbinit</li>
+</ul>
+<p>都发生得太晚。</p>
+<hr>
+<h1 id="最终状态"><a href="#最终状态" class="headerlink" title="最终状态"></a>最终状态</h1><p>现在系统行为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">GDB<br> ├── debuginfod disabled at startup<br> ├── no network requests<br> ├── no 2h wait<br> ├── no repeated attempts<br> ├── normal C++ debug works<br> └── STL deep symbols unavailable（通常无所谓）<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="最终结论（重要）"><a href="#最终结论（重要）" class="headerlink" title="最终结论（重要）"></a>最终结论（重要）</h1><h2 id="真正的问题不是："><a href="#真正的问题不是：" class="headerlink" title="真正的问题不是："></a>真正的问题不是：</h2><ul>
+<li>Docker</li>
+<li>cache</li>
+<li>HOME</li>
+<li>volume</li>
+<li>VSCode</li>
+<li>GDB bug</li>
+</ul>
+<p>而是：</p>
+<blockquote>
+<p>Fedora debuginfod 下载极慢 + 初始化时机早于 VSCode 注入环境变量。</p>
+</blockquote>
+<hr>
+<h1 id="最终推荐配置"><a href="#最终推荐配置" class="headerlink" title="最终推荐配置"></a>最终推荐配置</h1><h2 id="zshrc"><a href="#zshrc" class="headerlink" title="~&#x2F;.zshrc"></a>~&#x2F;.zshrc</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> DEBUGINFOD_URLS=<span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">export</span> DEBUGINFOD_PROGRESS=0<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="1-Downloading-xxx-MB-不等于下载成功"><a href="#1-Downloading-xxx-MB-不等于下载成功" class="headerlink" title="1. Downloading xxx MB 不等于下载成功"></a>1. <code>Downloading xxx MB</code> 不等于下载成功</h2><p>只是 server 告诉你：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">这个文件大小是 xxx MB<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-debuginfo-不是运行库"><a href="#2-debuginfo-不是运行库" class="headerlink" title="2. debuginfo 不是运行库"></a>2. debuginfo 不是运行库</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">libstdc++.so<br></code></pre></td></tr></table></figure>
+
+<p>只是 runtime。</p>
+<p>真正大的：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">DWARF debug symbols<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-debuginfod-是增强功能，不是必须"><a href="#3-debuginfod-是增强功能，不是必须" class="headerlink" title="3. debuginfod 是增强功能，不是必须"></a>3. debuginfod 是增强功能，不是必须</h2><p>没有它：</p>
+<p>普通 C++ debug 仍然完全可用。</p>
+<hr>
+<h2 id="4-GDB-初始化非常早"><a href="#4-GDB-初始化非常早" class="headerlink" title="4. GDB 初始化非常早"></a>4. GDB 初始化非常早</h2><p>很多“关闭 debuginfod”的方法实际上已经晚了。</p>
+<hr>
+<h2 id="5-shell-environment-才是最稳定层级"><a href="#5-shell-environment-才是最稳定层级" class="headerlink" title="5. shell environment 才是最稳定层级"></a>5. shell environment 才是最稳定层级</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> DEBUGINFOD_URLS=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>比：</p>
+<ul>
+<li>launch.json</li>
+<li>gdbinit</li>
+<li>setupCommands</li>
+</ul>
+<p>都更底层、更可靠。</p>
+<hr>
+<h1 id="最终一句话总结"><a href="#最终一句话总结" class="headerlink" title="最终一句话总结"></a>最终一句话总结</h1><p>这次踩坑的本质是：</p>
+<blockquote>
+<p>GDB 在启动早期自动尝试通过 Fedora debuginfod 下载 libstdc++ 的 DWARF 调试符号；由于网络极慢导致长期卡顿，而 VSCode&#x2F;GDB 层面的关闭方法时机太晚，最终只有在 shell 启动阶段通过 <code>export DEBUGINFOD_URLS=&quot;&quot;</code> 才真正彻底禁用 debuginfod。</p>
+</blockquote>
+<hr>
+<h1 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h1><p>忽然发现Linux上文件排序顺序和Windows上不同，所以Readme文章顺序，，。。。</p>
+<center><font size="6px" face="Ink Free">The End, Thanks!</font></center>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/161147475">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/05/16/Other-VsCode-CodeServerDocker-StopDownloading15MgdbDebuginfod-gdb_debuginfod_docker_vscode_cpp_debugging_postmortem_2026/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" class="category-chain-item">技术思考</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+        <a href="/tags/VsCode/">#VsCode</a>
+      
+        <a href="/tags/%E7%AE%80%E5%8D%95/">#简单</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题</div>
+      <div>https://blog.letmefly.xyz/2026/05/16/Other-VsCode-CodeServerDocker-StopDownloading15MgdbDebuginfod-gdb_debuginfod_docker_vscode_cpp_debugging_postmortem_2026/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年5月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/05/16/LeetCode%200154.%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BCII/" title="154.寻找旋转排序数组中的最小值 II：比I多个if(二分查找?)">
+                        <span class="hidden-mobile">154.寻找旋转排序数组中的最小值 II：比I多个if(二分查找?)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
