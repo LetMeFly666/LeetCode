@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-17 09:51:20
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-17 09:53:15
+ * @LastEditTime: 2026-05-17 09:54:49
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -17,10 +17,10 @@ private:
             return false;
         }
         visited[start] = true;
-        if (start - arr[i] >= 0 && dfs(arr, start - arr[i])) {
+        if (start - arr[start] >= 0 && dfs(arr, start - arr[start])) {
             return true;
         }
-        if (start + arr[i] < arr.size() && dfs(arr, start + arr[i])) {
+        if (start + arr[start] < arr.size() && dfs(arr, start + arr[start])) {
             return true;
         }
         return false;
@@ -28,6 +28,6 @@ private:
 public:
     bool canReach(vector<int>& arr, int start) {
         visited.resize(arr.size());
-        return dfs(start);
+        return dfs(arr, start);
     }
 };
