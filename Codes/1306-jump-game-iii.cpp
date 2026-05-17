@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-17 09:51:20
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-17 09:54:49
+ * @LastEditTime: 2026-05-17 10:40:03
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,6 +15,9 @@ private:
     bool dfs(vector<int>& arr, int start) {
         if (visited[start]) {
             return false;
+        }
+        if (!arr[start]) {
+            return true;
         }
         visited[start] = true;
         if (start - arr[start] >= 0 && dfs(arr, start - arr[start])) {
