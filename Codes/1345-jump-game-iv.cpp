@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-18 21:34:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-18 21:40:41
+ * @LastEditTime: 2026-05-18 21:43:19
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,6 +27,9 @@ public:
             while (n--) {
                 int now = q.front();
                 q.pop();
+                if (now == n - 1) {
+                    return ans;
+                }
                 if (now - 1 >= 0 && !visited[now - 1]) {
                     q.push(now - 1);
                     visited[now - 1] = true;
