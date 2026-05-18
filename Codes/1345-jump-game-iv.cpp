@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-05-18 21:34:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-18 21:43:19
+ * @LastEditTime: 2026-05-18 21:51:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,9 +23,10 @@ public:
         visited[0] = true;
         int ans = 0;
         while (true) {
-            int n = q.size();
-            while (n--) {
+            int size = q.size();
+            while (size--) {
                 int now = q.front();
+                // cout << "now: " << now << endl;
                 q.pop();
                 if (now == n - 1) {
                     return ans;
