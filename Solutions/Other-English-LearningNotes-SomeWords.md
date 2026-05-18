@@ -1228,7 +1228,7 @@ categories: [自用]
 |jealousy|n. 妒忌，羡慕|
 |||
 |perpetual|adj. 永恒的，永久的，终身的，持续的，不间断的|
-|encyclopaedia|n. 百科全书|
+|encyclopaedia|n. 百科全书<br/>美式encyclopedia|
 |||
 |solvency|n. 偿债能力|
 |||
