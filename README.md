@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-05-17 11:48:18
+ * @LastEditTime: 2026-05-21 22:33:23
 -->
 # LetLeet Blog
 
@@ -1037,6 +1037,7 @@
 |3027.人员站位的方案数II|困难|<a href="https://leetcode.cn/problems/find-the-number-of-ways-to-place-people-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/09/05/LeetCode%203027.%E4%BA%BA%E5%91%98%E7%AB%99%E4%BD%8D%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0II/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/151220862" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-number-of-ways-to-place-people-ii/solutions/3772911/letmefly-3027ren-yuan-zhan-wei-de-fang-a-03g4/" target="_blank">LeetCode题解</a>|
 |3033.修改矩阵|简单|<a href="https://leetcode.cn/problems/modify-the-matrix/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/07/05/LeetCode%203033.%E4%BF%AE%E6%94%B9%E7%9F%A9%E9%98%B5/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/140219034" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/modify-the-matrix/solutions/2832430/letmefly-3033xiu-gai-ju-zhen-yuan-di-xiu-e0cy/" target="_blank">LeetCode题解</a>|
 |3038.相同分数的最大操作数目I|简单|<a href="https://leetcode.cn/problems/maximum-number-of-operations-with-the-same-score-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/06/07/LeetCode%203038.%E7%9B%B8%E5%90%8C%E5%88%86%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E6%93%8D%E4%BD%9C%E6%95%B0%E7%9B%AEI/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/139535702" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximum-number-of-operations-with-the-same-score-i/solutions/2804245/letmefly-3038xiang-tong-fen-shu-de-zui-d-dkj7/" target="_blank">LeetCode题解</a>|
+|3043.最长公共前缀的长度|中等|<a href="https://leetcode.cn/problems/find-the-length-of-the-longest-common-prefix/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/05/21/LeetCode%203043.%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80%E7%9A%84%E9%95%BF%E5%BA%A6/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/161294062" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-length-of-the-longest-common-prefix/solutions/3972278/letmefly-3043zui-chang-gong-gong-qian-zh-qiry/" target="_blank">LeetCode题解</a>|
 |3046.分割数组|简单|<a href="https://leetcode.cn/problems/split-the-array/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2024/12/28/LeetCode%203046.%E5%88%86%E5%89%B2%E6%95%B0%E7%BB%84/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/144789679" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/split-the-array/solutions/3032725/letmefly-3046fen-ge-shu-zu-ji-shu-by-tis-33vv/" target="_blank">LeetCode题解</a>|
 |3047.求交集区域内的最大正方形面积|中等|<a href="https://leetcode.cn/problems/find-the-largest-area-of-square-inside-two-rectangles/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/01/17/LeetCode%203047.%E6%B1%82%E4%BA%A4%E9%9B%86%E5%8C%BA%E5%9F%9F%E5%86%85%E7%9A%84%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157067926" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-largest-area-of-square-inside-two-rectangles/solutions/3882936/letmefly-3047qiu-jiao-ji-qu-yu-nei-de-zu-2lgs/" target="_blank">LeetCode题解</a>|
 |3065.超过阈值的最少操作数I|简单|<a href="https://leetcode.cn/problems/minimum-operations-to-exceed-threshold-value-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/01/14/LeetCode%203065.%E8%B6%85%E8%BF%87%E9%98%88%E5%80%BC%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/145136167" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-operations-to-exceed-threshold-value-i/solutions/3046964/letmefly-3065chao-guo-yu-zhi-de-zui-shao-58ii/" target="_blank">LeetCode题解</a>|
@@ -1269,6 +1270,7 @@
 - [ ] pr预编译机制 - 当有pr时候提前编译好（还能看），merge后如果可行直接使用编译好的内容
 - [ ] 分支名匹配机制/project status更早set2todo机制 - 新分支push时候就能标记一个issue为in progress了，甚至hello的时候就可以
 - [ ] code-server 浏览器运行时候目前没法做到自动修改剪贴板AC百分比
+- [ ] newSolutions.py状态机、题解时候支持上下选或指令操作
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
