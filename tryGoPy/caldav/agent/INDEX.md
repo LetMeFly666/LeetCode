@@ -175,7 +175,7 @@ cat logs/task_reader_*.log | tail -50
 A: Make sure virtual environment is activated: `source venv/bin/activate`
 
 **Q: Connection timeout?**  
-A: Check internet connection and CalDAV server status. Server is at https://nextcloud.letmefly.xyz
+A: Check internet connection and CalDAV server status. Server is at https://[your-caldav-server]
 
 **Q: No repeat tasks found?**  
 A: Check the calendar in Nextcloud directly. Current result: 1 repeat task found.

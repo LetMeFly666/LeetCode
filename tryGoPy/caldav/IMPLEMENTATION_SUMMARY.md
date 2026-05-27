@@ -89,21 +89,21 @@ from calendar_manager import modify_calendar_event
 # 改为永远每天重复
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY"
 )
 
 # 改为重复 30 次
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY;COUNT=30"
 )
 
 # 改为重复到某个日期
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY;UNTIL=20261231"
 )
 ```

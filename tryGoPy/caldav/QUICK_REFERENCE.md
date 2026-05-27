@@ -35,21 +35,21 @@ from calendar_manager import modify_calendar_event
 # 改为永远重复
 modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY"
 )
 
 # 改为重复 30 次
 modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY;COUNT=30"
 )
 
 # 改为重复到某个日期
 modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY;UNTIL=20261231"
 )
 ```
@@ -90,7 +90,7 @@ python3 example_usage.py
 # 主程序（会自动检查指定的 UID）
 python3 calendar_manager.py
 
-# 原始脚本（读取"背单词"日历）
+# 原始脚本（读取"Practice"日历）
 python3 read_tasks.py
 ```
 

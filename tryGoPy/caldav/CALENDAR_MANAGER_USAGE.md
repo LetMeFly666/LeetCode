@@ -82,21 +82,21 @@ from calendar_manager import modify_calendar_event
 # 修改事件的重复规则
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule="FREQ=DAILY"  # 改为每天重复，永不截止
 )
 
 # 修改事件的标题
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_summary="新的事件名称"
 )
 
 # 删除重复规则
 success = modify_calendar_event(
     calendar_id="背单词",
-    event_summary="背单词+英语小听力",
+    event_summary="Daily Practice",
     new_rrule=None
 )
 ```
@@ -153,7 +153,7 @@ python3 calendar_manager.py
 (cal, event_info)
 # event_info = {
 #     'uid': 'DA640753-2A56-4DB0-91BD-094374BDBAD6',
-#     'summary': '背单词+英语小听力',
+#     'summary': 'Daily Practice',
 #     'rrule': 'FREQ=YEARLY;UNTIL=19910914T170000Z;BYMONTH=9;BYDAY=3SU',
 #     'url': 'https://...',
 #     'has_repeat': True,
@@ -236,6 +236,6 @@ for event in events:
     print(f"{event['summary']}: {event['rrule']}")
 
 # 4. 修改事件
-if modify_calendar_event("背单词", "背单词+英语小听力", new_rrule="FREQ=DAILY"):
+if modify_calendar_event("背单词", "Daily Practice", new_rrule="FREQ=DAILY"):
     print("事件已成功修改!")
 ```

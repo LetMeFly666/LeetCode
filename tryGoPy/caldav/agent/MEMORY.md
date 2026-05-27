@@ -12,7 +12,7 @@
 
 ### Technology Stack
 - **Protocol**: CalDAV (CalDAV protocol for calendar data)
-- **Server**: Nextcloud (LetMeFly: HIDDEN! URL)
+- **Server**: Nextcloud ([User]: HIDDEN! URL)
 - **Library**: caldav 2.0+ Python library
 - **Data Format**: iCalendar (ICS/VCALENDAR)
 

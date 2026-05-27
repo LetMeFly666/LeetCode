@@ -63,15 +63,24 @@ def find_calendar_by_id(calendar_id: str) -> Optional[caldav.Calendar]:
         _, principal = get_client()
         calendars = principal.calendars()
         
+        # First pass: exact match
         for cal in calendars:
-            # Check by ID and name
             cal_id = cal.id or ""
             cal_name = cal.get_display_name() or ""
             
             logger.info(f"Found calendar - ID: {cal_id}, Name: {cal_name}")
             
+            if calendar_id.lower() == cal_id.lower() or calendar_id.lower() == cal_name.lower():
+                logger.info(f"Matched calendar (exact): {cal_name} (ID: {cal_id})")
+                return cal
+        
+        # Second pass: partial match (only if no exact match found)
+        for cal in calendars:
+            cal_id = cal.id or ""
+            cal_name = cal.get_display_name() or ""
+            
             if calendar_id.lower() in cal_id.lower() or calendar_id.lower() in cal_name.lower():
-                logger.info(f"Matched calendar: {cal_name} (ID: {cal_id})")
+                logger.info(f"Matched calendar (partial): {cal_name} (ID: {cal_id})")
                 return cal
         
         logger.warning(f"Calendar '{calendar_id}' not found")
