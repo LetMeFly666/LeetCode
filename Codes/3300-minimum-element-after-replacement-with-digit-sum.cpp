@@ -18,6 +18,7 @@ public:
                 s += t % 10;
                 t /= 10;
             }
+            ans = min(ans, s);
         }
         return ans;
     }
