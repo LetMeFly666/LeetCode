@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("2553-separate-the-digits-in-an-array.rs");  // 这个fileName是会被脚本替换掉的
+include!("2144-minimum-cost-of-buying-candies-with-discount.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
