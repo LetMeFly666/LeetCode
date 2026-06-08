@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2161.根据给定数字划分数组：双指针（O(1)但非源地操作） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/06/08/LeetCode%202161.%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E6%95%B0%E5%AD%97%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2161.根据给定数字划分数组：双指针（O(1)但非源地操作）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-06-08T12:36:51.000Z" id="date"> 2026-06-08</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2161-根据给定数字划分数组：双指针（O-1-但非源地操作）"><a href="#【LetMeFly】2161-根据给定数字划分数组：双指针（O-1-但非源地操作）" class="headerlink" title="【LetMeFly】2161.根据给定数字划分数组：双指针（O(1)但非源地操作）"></a>【LetMeFly】2161.根据给定数字划分数组：双指针（O(1)但非源地操作）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-array-according-to-given-pivot/">https://leetcode.cn/problems/partition-array-according-to-given-pivot/</a></p>
+<p>给你一个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums</code>&nbsp;和一个整数&nbsp;<code>pivot</code>&nbsp;。请你将&nbsp;<code>nums</code>&nbsp;重新排列，使得以下条件均成立：</p>
+
+<ul>
+	<li>所有小于&nbsp;<code>pivot</code>&nbsp;的元素都出现在所有大于&nbsp;<code>pivot</code>&nbsp;的元素&nbsp;<strong>之前</strong>&nbsp;。</li>
+	<li>所有等于&nbsp;<code>pivot</code>&nbsp;的元素都出现在小于和大于 <code>pivot</code>&nbsp;的元素 <strong>中间</strong>&nbsp;。</li>
+	<li>小于 <code>pivot</code>&nbsp;的元素之间和大于 <code>pivot</code>&nbsp;的元素之间的 <strong>相对顺序</strong>&nbsp;不发生改变。
+	<ul>
+		<li>更正式的，考虑每一对&nbsp;<code>p<sub>i</sub></code>，<code>p<sub>j</sub></code>&nbsp;，<code>p<sub>i</sub></code>&nbsp;是初始时位置 <code>i</code>&nbsp;元素的新位置，<code>p<sub>j</sub></code>&nbsp;是初始时位置&nbsp;<code>j</code>&nbsp;元素的新位置。如果&nbsp;<code>i &lt; j</code> 且两个元素&nbsp;<strong>都</strong>&nbsp;小于（或大于）<code>pivot</code>，那么&nbsp;<code>p<sub>i</sub> &lt; p<sub>j</sub></code>&nbsp;。</li>
+	</ul>
+	</li>
+</ul>
+
+<p>请你返回重新排列 <code>nums</code>&nbsp;数组后的结果数组。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>nums = [9,12,5,10,14,3,10], pivot = 10
+<b>输出：</b>[9,5,3,10,10,12,14]
+<b>解释：</b>
+元素 9 ，5 和 3 小于 pivot ，所以它们在数组的最左边。
+元素 12 和 14 大于 pivot ，所以它们在数组的最右边。
+小于 pivot 的元素的相对位置和大于 pivot 的元素的相对位置分别为 [9, 5, 3] 和 [12, 14] ，它们在结果数组中的相对顺序需要保留。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<b>输入：</b>nums = [-3,4,3,2], pivot = 2
+<b>输出：</b>[-3,2,4,3]
+<b>解释：</b>
+元素 -3 小于 pivot ，所以在数组的最左边。
+元素 4 和 3 大于 pivot ，所以它们在数组的最右边。
+小于 pivot 的元素的相对位置和大于 pivot 的元素的相对位置分别为 [-3] 和 [4, 3] ，它们在结果数组中的相对顺序需要保留。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>-10<sup>6</sup> &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>
+	<li><code>pivot</code>&nbsp;等于&nbsp;<code>nums</code>&nbsp;中的一个元素。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：双指针"><a href="#解题方法：双指针" class="headerlink" title="解题方法：双指针"></a>解题方法：双指针</h2><blockquote>
+<p>首先需要明确的是，这道题暂时没有找到合适的原地操作的方法。所谓空间复杂度$O(1)$，实则是因为力扣返回值不计入算法空间复杂度。</p>
+</blockquote>
+<p>开辟一个和原始数组等长的答案数组，使用两个指针分别从左往右存放比$pivot$小的值和从右往左存放比$pivot$大的值。</p>
+<p>最后记得把比$pivot$大的部分reverse一下（因为我们是优先把比$pivot$大的值放到最后面了所以需要翻转一下），中间没有填的位置默认赋值为$pivot$。</p>
+<ul>
+<li>时间复杂度$O(len(nums))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-06-08 20:34:51</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">pivotArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> pivot)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">ans</span><span class="params">(n, pivot)</span></span>;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; pivot) &#123;</span><br><span class="line">                ans[l++] = nums[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &gt; pivot) &#123;</span><br><span class="line">                ans[r--] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>() + r + <span class="number">1</span>, ans.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/161806767">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/06/08/LeetCode%202161.%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E6%95%B0%E5%AD%97%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/06/01/LeetCode%202144.%E6%89%93%E6%8A%98%E8%B4%AD%E4%B9%B0%E7%B3%96%E6%9E%9C%E7%9A%84%E6%9C%80%E5%B0%8F%E5%BC%80%E9%94%80/">2144.打折购买糖果的最小开销：贪心 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912161-%E6%A0%B9%E6%8D%AE%E7%BB%99%E5%AE%9A%E6%95%B0%E5%AD%97%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%88O-1-%E4%BD%86%E9%9D%9E%E6%BA%90%E5%9C%B0%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2161.根据给定数字划分数组：双指针（O(1)但非源地操作）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：双指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
