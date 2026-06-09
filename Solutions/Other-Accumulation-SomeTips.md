@@ -565,6 +565,10 @@ mount -o remount,ro,bind /xx/Codes
 Welcome, you idiot.
 ```
 
+### Linux ICMP(ping)协议
+
+TODO:Let's continue
+
 ## About Mac
 
 ### SMB协议时不生成.DS_Store
