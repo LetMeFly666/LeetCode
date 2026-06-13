@@ -1,6 +1,6 @@
 class MinStack() {
 
-    fun push(`val`: Int) {
+    fun push(value: Int) {
         
     }
 
@@ -21,7 +21,7 @@ class MinStack() {
 /**
  * Your MinStack object will be instantiated and called as such:
  * var obj = MinStack()
- * obj.push(`val`)
+ * obj.push(value)
  * obj.pop()
  * var param_3 = obj.top()
  * var param_4 = obj.getMin()

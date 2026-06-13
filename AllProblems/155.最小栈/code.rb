@@ -5,10 +5,10 @@ class MinStack
 
 
 =begin
-    :type val: Integer
+    :type value: Integer
     :rtype: Void
 =end
-    def push(val)
+    def push(value)
         
     end
 
@@ -41,7 +41,7 @@ end
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack.new()
-# obj.push(val)
+# obj.push(value)
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.get_min()

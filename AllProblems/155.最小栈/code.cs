@@ -4,7 +4,7 @@ public class MinStack {
         
     }
     
-    public void Push(int val) {
+    public void Push(int value) {
         
     }
     
@@ -24,7 +24,7 @@ public class MinStack {
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = new MinStack();
- * obj.Push(val);
+ * obj.Push(value);
  * obj.Pop();
  * int param_3 = obj.Top();
  * int param_4 = obj.GetMin();

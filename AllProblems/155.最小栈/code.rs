@@ -13,7 +13,7 @@ impl MinStack {
         
     }
     
-    fn push(&self, val: i32) {
+    fn push(&self, value: i32) {
         
     }
     
@@ -33,7 +33,7 @@ impl MinStack {
 /**
  * Your MinStack object will be instantiated and called as such:
  * let obj = MinStack::new();
- * obj.push(val);
+ * obj.push(value);
  * obj.pop();
  * let ret_3: i32 = obj.top();
  * let ret_4: i32 = obj.get_min();

@@ -6,10 +6,10 @@ class MinStack {
     }
   
     /**
-     * @param Integer $val
+     * @param Integer $value
      * @return NULL
      */
-    function push($val) {
+    function push($value) {
         
     }
   
@@ -38,7 +38,7 @@ class MinStack {
 /**
  * Your MinStack object will be instantiated and called as such:
  * $obj = MinStack();
- * $obj->push($val);
+ * $obj->push($value);
  * $obj->pop();
  * $ret_3 = $obj->top();
  * $ret_4 = $obj->getMin();
