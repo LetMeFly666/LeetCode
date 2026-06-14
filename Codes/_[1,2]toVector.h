@@ -193,6 +193,58 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+ListNode* vectorToLinkedList(vector<int> v) {
+    static bool first = true;
+    if (first) {
+        cout << "Don't forget to delete the LinkedList!" << endl;
+        first = false;
+    }
+
+    ListNode* head = new ListNode;
+    ListNode* p = head;
+    for (int t : v) {
+        p->next = new ListNode(t);
+        p = p->next;
+    }
+    p = head->next;
+    delete head;
+    return p;
+}
+
+ListNode* stringToLinkedList(string s) {
+    if (s == "[]") {
+        return nullptr;
+    }
+    return vectorToLinkedList(stringToVector(s));
+}
+
+/* 低级debugListNode */
+void debug(ListNode* head) {
+    if (!head) {
+        cout << "null linked list" << endl;
+        return;
+    }
+    bool first = true;
+    while (head) {
+        if (first) {
+            first = false;
+        } else {
+            cout << " -> ";
+        }
+        cout << head->val;
+        head = head->next;
+    }
+    puts("");
+}
+
+void deleteLinkedList(ListNode* head) {
+    while (head) {
+        ListNode* next = head->next;
+        delete head;
+        head = next;
+    }
+}
+
 struct TreeNode {
     int val;
     TreeNode *left;
