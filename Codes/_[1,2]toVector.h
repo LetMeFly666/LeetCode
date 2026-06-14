@@ -227,6 +227,7 @@ void debug(ListNode* head) {
         cout << head->val;
         head = head->next;
     }
+    puts("");
 }
 
 void deleteLinkedList(ListNode* head) {

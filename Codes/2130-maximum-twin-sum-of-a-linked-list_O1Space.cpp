@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-14 21:49:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-14 22:41:05
+ * @LastEditTime: 2026-06-14 22:48:35
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -34,19 +34,20 @@ public:
             fast = fast->next->next;  // 因为链表是偶数个节点，所以fast->next一定非null
             slow = slow->next;
         }
-        cout << "next_half's begin: " << slow->val << endl;
+        // cout << "next_half's begin: " << slow->val << endl;
 
         ListNode* last = slow;
         for (ListNode* now = last->next; now; ) {
-            if (!now) {
-                cout << "what? now is nullptr" << endl;
-                return -1;
-            }
+            // if (!now) {
+            //     cout << "what? now is nullptr" << endl;
+            //     return -1;
+            // }
             ListNode* next = now->next;
             now->next = last;
             last = now;
             now = next;
         }
+        slow->next = nullptr;
 
         int ans = 0;
         ListNode* p1 = head, *p2 = last;
@@ -78,9 +79,10 @@ int main() {
     string s;
     while (cin >> s) {
         ListNode* head = stringToLinkedList(s);
+        debug(head);
         Solution sol;
         cout << sol.pairSum(head) << endl;
-        // deleteLinkedList(head);
+        deleteLinkedList(head);  // 其实删不全，因为实际上有两个链表
     }
     return 0;
 }
