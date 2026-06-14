@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2130.链表最大孪生和：转数组 / 快慢指针+链表翻转（O(1)） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/06/14/LeetCode%202130.%E9%93%BE%E8%A1%A8%E6%9C%80%E5%A4%A7%E5%AD%AA%E7%94%9F%E5%92%8C/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2130.链表最大孪生和：转数组 / 快慢指针+链表翻转（O(1)）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-06-14T14:52:21.000Z" id="date"> 2026-06-14</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2130-链表最大孪生和：转数组-快慢指针-链表翻转（O-1-）"><a href="#【LetMeFly】2130-链表最大孪生和：转数组-快慢指针-链表翻转（O-1-）" class="headerlink" title="【LetMeFly】2130.链表最大孪生和：转数组 &#x2F; 快慢指针+链表翻转（O(1)）"></a>【LetMeFly】2130.链表最大孪生和：转数组 &#x2F; 快慢指针+链表翻转（O(1)）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-twin-sum-of-a-linked-list/">https://leetcode.cn/problems/maximum-twin-sum-of-a-linked-list/</a></p>
+<p>在一个大小为&nbsp;<code>n</code>&nbsp;且 <code>n</code>&nbsp;为&nbsp;<strong>偶数</strong> 的链表中，对于&nbsp;<code>0 &lt;= i &lt;= (n / 2) - 1</code>&nbsp;的 <code>i</code>&nbsp;，第&nbsp;<code>i</code>&nbsp;个节点（下标从 <strong>0</strong>&nbsp;开始）的孪生节点为第&nbsp;<code>(n-1-i)</code>&nbsp;个节点 。</p>
+
+<ul>
+	<li>比方说，<code>n = 4</code>&nbsp;那么节点&nbsp;<code>0</code>&nbsp;是节点 <code>3</code>&nbsp;的孪生节点，节点 <code>1</code>&nbsp;是节点 <code>2</code>&nbsp;的孪生节点。这是长度为 <code><span style="">n = 4</span></code>&nbsp;的链表中所有的孪生节点。</li>
+</ul>
+
+<p><strong>孪生和</strong>&nbsp;定义为一个节点和它孪生节点两者值之和。</p>
+
+<p>给你一个长度为偶数的链表的头节点&nbsp;<code>head</code>&nbsp;，请你返回链表的 <strong>最大孪生和</strong>&nbsp;。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例&nbsp;1：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/12/03/eg1drawio.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/12/03/eg1drawio.png" style="width: 250px; height: 70px;"></p>
+
+<pre><b>输入：</b>head = [5,4,2,1]
+<b>输出：</b>6
+<strong>解释：</strong>
+节点 0 和节点 1 分别是节点 3 和 2 的孪生节点。孪生和都为 6 。
+链表中没有其他孪生节点。
+所以，链表的最大孪生和是 6 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/12/03/eg2drawio.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/12/03/eg2drawio.png" style="width: 250px; height: 70px;"></p>
+
+<pre><b>输入：</b>head = [4,2,2,3]
+<b>输出：</b>7
+<strong>解释：</strong>
+链表中的孪生节点为：
+- 节点 0 是节点 3 的孪生节点，孪生和为 4 + 3 = 7 。
+- 节点 1 是节点 2 的孪生节点，孪生和为 2 + 2 = 4 。
+所以，最大孪生和为 max(7, 4) = 7 。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.com/uploads/2021/12/03/eg3drawio.png'><img alt="" src="https://assets.leetcode.com/uploads/2021/12/03/eg3drawio.png" style="width: 200px; height: 88px;"></p>
+
+<pre><b>输入：</b>head = [1,100000]
+<b>输出：</b>100001
+<strong>解释：</strong>
+链表中只有一对孪生节点，孪生和为 1 + 100000 = 100001 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li>链表的节点数目是&nbsp;<code>[2, 10<sup>5</sup>]</code>&nbsp;中的&nbsp;<strong>偶数</strong>&nbsp;。</li>
+	<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法一：转数组"><a href="#解题方法一：转数组" class="headerlink" title="解题方法一：转数组"></a>解题方法一：转数组</h2><p>遍历一遍链表，并且把链表中的每一个元素放入数组中。</p>
+<p>使用两个指针分别指向数组中第一个和最后一个元素，当左指针在右指针之前时，不断更新答案最大值并靠近两指针。</p>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是链表中节点数量</li>
+<li>空间复杂度$O(n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-06-14 21:48:39</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pairSum</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; vals;</span><br><span class="line">        <span class="keyword">while</span> (head) &#123;</span><br><span class="line">            vals.<span class="built_in">push_back</span>(head-&gt;val);</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>, r = vals.<span class="built_in">size</span>() - <span class="number">1</span>; l &lt; r; l++, r--) &#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, vals[l] + vals[r]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解题方法二：快慢指针-链表翻转"><a href="#解题方法二：快慢指针-链表翻转" class="headerlink" title="解题方法二：快慢指针+链表翻转"></a>解题方法二：快慢指针+链表翻转</h2><p>这道题可以变成两道题的组合再加一点。</p>
+<p>第一道题 —— 快慢指针确定链表中间节点：</p>
+<blockquote>
+<p>两个指针初始时都指向第一个节点，慢指针每次右移一个节点快指针每次右移两个，当快指针为空时即说明慢指针指向了中间节点（偏右一个）。</p>
+</blockquote>
+<p>第二道题 —— 链表翻转：</p>
+<blockquote>
+<p>将后半部分的链表翻转，使用三个指针分别指向<em>上一个节点</em>、<em>当前节点</em>、<em>下一个节点</em>，遍历一遍链表并：<em>将当前节点的next指向上一个节点</em>、<em>将当前节点赋值为下一个节点</em>、<em>将上一个节点赋值为当前节点</em>，直至当前节点为空时停止。</p>
+</blockquote>
+<p>再加一点：</p>
+<blockquote>
+<p>同时遍历前后两个链表，若前面链表指针指到了后半段链表则停止遍历。</p>
+<p>遍历过程中更新答案最大值。</p>
+</blockquote>
+<p>What’s more：</p>
+<blockquote>
+<p>由于本题是在后半段链表开始翻转的，所以实际上后半段链表的第一个元素的next没有被修改过的话，会形成环。这样力扣在尝试delete链表的时候就会RE。</p>
+<p>我们可以在翻转完后半段链表后将翻转过的链表最后一个节点(即为原始链表中后半段的第一个节点)的next置空。</p>
+</blockquote>
+<ul>
+<li>时间复杂度$O(n)$，其中$n$是链表中节点数量</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C-1"><a href="#C-1" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-06-14 22:51:59</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 2</span></span><br><span class="line"><span class="comment">  | |</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1 2 3 4</span></span><br><span class="line"><span class="comment">  | |</span></span><br><span class="line"><span class="comment">    |   |</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">pairSum</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* slow = head, *fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;  <span class="comment">// 因为链表是偶数个节点，所以fast-&gt;next一定非null</span></span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode* last = slow;</span><br><span class="line">        <span class="keyword">for</span> (ListNode* now = last-&gt;next; now; ) &#123;</span><br><span class="line">            ListNode* next = now-&gt;next;</span><br><span class="line">            now-&gt;next = last;</span><br><span class="line">            last = now;</span><br><span class="line">            now = next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        ListNode* p1 = head, *p2 = last;</span><br><span class="line">        <span class="keyword">while</span> (p1 != slow) &#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, p1-&gt;val + p2-&gt;val);</span><br><span class="line">            p1 = p1-&gt;next, p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/161985371">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/06/14/LeetCode%202130.%E9%93%BE%E8%A1%A8%E6%9C%80%E5%A4%A7%E5%AD%AA%E7%94%9F%E5%92%8C/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/06/14/LeetCode%203838.%E5%B8%A6%E6%9D%83%E5%8D%95%E8%AF%8D%E6%98%A0%E5%B0%84/">3838.带权单词映射：求和、取模、拼接（附python一行版） Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912130-%E9%93%BE%E8%A1%A8%E6%9C%80%E5%A4%A7%E5%AD%AA%E7%94%9F%E5%92%8C%EF%BC%9A%E8%BD%AC%E6%95%B0%E7%BB%84-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88-%E9%93%BE%E8%A1%A8%E7%BF%BB%E8%BD%AC%EF%BC%88O-1-%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2130.链表最大孪生和：转数组 &#x2F; 快慢指针+链表翻转（O(1)）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E8%BD%AC%E6%95%B0%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法一：转数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88-%E9%93%BE%E8%A1%A8%E7%BF%BB%E8%BD%AC"><span class="toc-number">1.2.</span> <span class="toc-text">解题方法二：快慢指针+链表翻转</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C-1"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
