@@ -1,0 +1,3 @@
+int minCost(int n) {
+    
+}
