@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-05-16 20:32:36
+LastEditTime: 2026-06-14 19:38:09
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -161,7 +161,7 @@ class User(Enum):
     @property
     def remote(self) -> str:
         return {
-            User.Tisfy: 'tisfy',
+            User.Tisfy: 'tisfy_let',  # TODO: Windows兼容性测试
             User.LetMeFly: 'origin',
         }[self]
 
