@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-14 21:49:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-14 22:48:35
+ * @LastEditTime: 2026-06-14 22:51:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -34,14 +34,9 @@ public:
             fast = fast->next->next;  // 因为链表是偶数个节点，所以fast->next一定非null
             slow = slow->next;
         }
-        // cout << "next_half's begin: " << slow->val << endl;
 
         ListNode* last = slow;
         for (ListNode* now = last->next; now; ) {
-            // if (!now) {
-            //     cout << "what? now is nullptr" << endl;
-            //     return -1;
-            // }
             ListNode* next = now->next;
             now->next = last;
             last = now;
