@@ -212,11 +212,18 @@ ListNode* vectorToLinkedList(vector<int> v) {
 }
 
 ListNode* stringToLinkedList(string s) {
+    if (s == "[]") {
+        return nullptr;
+    }
     return vectorToLinkedList(stringToVector(s));
 }
 
 /* 低级debugListNode */
 void debug(ListNode* head) {
+    if (!head) {
+        cout << "null linked list" << endl;
+        return;
+    }
     bool first = true;
     while (head) {
         if (first) {
