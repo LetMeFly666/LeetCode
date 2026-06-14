@@ -1,0 +1,3 @@
+int passwordStrength(char* password) {
+    
+}

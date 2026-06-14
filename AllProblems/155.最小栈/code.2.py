@@ -3,9 +3,9 @@ class MinStack(object):
     def __init__(self):
         
 
-    def push(self, val):
+    def push(self, value):
         """
-        :type val: int
+        :type value: int
         :rtype: None
         """
         
@@ -31,7 +31,7 @@ class MinStack(object):
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
-# obj.push(val)
+# obj.push(value)
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()

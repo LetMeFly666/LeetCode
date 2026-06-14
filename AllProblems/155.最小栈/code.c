@@ -10,7 +10,7 @@ MinStack* minStackCreate() {
     
 }
 
-void minStackPush(MinStack* obj, int val) {
+void minStackPush(MinStack* obj, int value) {
     
 }
 
@@ -33,7 +33,7 @@ void minStackFree(MinStack* obj) {
 /**
  * Your MinStack struct will be instantiated and called as such:
  * MinStack* obj = minStackCreate();
- * minStackPush(obj, val);
+ * minStackPush(obj, value);
  
  * minStackPop(obj);
  
