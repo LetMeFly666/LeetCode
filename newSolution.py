@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-06-14 19:38:09
+LastEditTime: 2026-06-14 19:43:56
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -588,7 +588,8 @@ os.system(f'git push --set-upstream {REMOTE} {num}')
 cmd = [
     'gh', 'pr', 'create',
     '-R', 'LetMeFly666/LeetCode',
-    '-H', f'{REMOTE}:{num}' if WHOAMI == User.Tisfy else f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    # '-H', f'{REMOTE}:{num}' if WHOAMI == User.Tisfy else f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    '-H', f'{num}',  # 
     '-t', gitCommitMsgPrefix,
     '-b', f'By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}',
     "-l", "题解",
