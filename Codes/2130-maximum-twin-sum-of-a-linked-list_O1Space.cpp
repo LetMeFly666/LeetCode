@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-14 21:49:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-14 22:01:34
+ * @LastEditTime: 2026-06-14 22:17:24
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -19,31 +19,36 @@
  * };
  */
 /*
-_ 1 2
+1 2
   | |
 
-_ 1 2 3 4
+1 2 3 4
   | |
     |   |
 */
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        ListNode* tmp = new ListNode(0, head);
-        ListNode* slow = tmp, *fast = tmp;
-        while (fast->next) {
-            fast = fast->next->next;  // 因为链表是偶数个节点，所以有next一定会有next->next
+        ListNode* slow = head, *fast = head;
+        while (fast) {
+            fast = fast->next->next;  // 因为链表是偶数个节点，所以fast->next一定非null
             slow = slow->next;
         }
 
-        ListNode* p = tmp;
-        do {
-            ListNode* next = p->next;
-            next->next
-        } while (p != slow);
+        ListNode* last = slow;
+        for (ListNode* now = last->next; now; ) {
+            ListNode* next = now->next;
+            now->next = last;
+            last = now;
+            now = next;
+        }
 
         int ans = 0;
-
+        ListNode* p1 = head, *p2 = last;
+        while (p1 != slow) {
+            ans = max(ans, p1->val + p2->val);
+            p1 = p1->next, p2 = p2->next;
+        }
         return ans;
     }
 };
