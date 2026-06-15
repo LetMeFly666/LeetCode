@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-15 17:02:26
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-15 17:19:37
+ * @LastEditTime: 2026-06-15 17:21:46
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,6 +18,11 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/*
+1  2
+||
+   |  |
+*/
 class Solution {
 public:
     ListNode* deleteMiddle(ListNode* head) {
@@ -28,7 +33,7 @@ public:
             fast = fast->next->next;
         }
 
-        if (last == head) {
+        if (slow == head) {
             return nullptr;
         }
         last->next = slow->next;
