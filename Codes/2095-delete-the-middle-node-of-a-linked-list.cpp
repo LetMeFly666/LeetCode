@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-15 17:02:26
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-15 17:15:17
+ * @LastEditTime: 2026-06-15 17:17:32
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,7 +24,7 @@ public:
         int cnt = 0;
         for (ListNode* p = head; p; cnt++, p = p->next) {}
         if (cnt == 1) {
-            // delete head;
+            // delete head;  // cannot，否则力扣尝试删除head会报错
             return nullptr;
         }
         
