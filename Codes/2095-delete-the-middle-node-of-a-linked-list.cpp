@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-15 17:02:26
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-15 17:09:44
+ * @LastEditTime: 2026-06-15 17:15:17
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,7 +24,7 @@ public:
         int cnt = 0;
         for (ListNode* p = head; p; cnt++, p = p->next) {}
         if (cnt == 1) {
-            delete head;
+            // delete head;
             return nullptr;
         }
         
@@ -38,3 +38,28 @@ public:
         return head;
     }
 };
+
+#ifdef _DEBUG
+/*
+[1,3,4,7,1,2,6]
+
+[1,3,4,1,2,6]
+*/
+
+/*
+[1]
+
+[]
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        ListNode* head = stringToLinkedList(s);
+        Solution sol;
+        ListNode* new_head = sol.deleteMiddle(head);
+        debug(new_head);
+        deleteLinkedList(new_head);
+    }
+    return 0;
+}
+#endif
