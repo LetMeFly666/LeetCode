@@ -6,28 +6,28 @@ LastEditTime: 2026-06-17 09:56:35
 '''
 class Solution:
     def processStr(self, s: str, k: int) -> str:
-        len = 0
+        l = 0
         for c in s:
             if c.islower():
-                len += 1
+                l += 1
             elif c == '*':
-                len = max(len - 1, 0)
+                l = max(l - 1, 0)
             elif c == '#':
-                len *= 2
-        if k >= len:
+                l *= 2
+        if k >= l:
             return '.'
         
         for i in range(len(s) - 1, -1, -1):
             c = s[i]
             if c.islower():
-                if k == len - 1:
+                if k == l - 1:
                     return c
-                len -= 1
+                l -= 1
             elif c == '*':
-                len += 1
+                l += 1
             elif c == '#':
-                k = k if k < len // 2 else k - len // 2
-                len //= 2
+                k = k if k < l // 2 else k - l // 2
+                l //= 2
             else:
-                k = len - 1 - k
+                k = l - 1 - k
         return '?'  # FAKE RETURN
