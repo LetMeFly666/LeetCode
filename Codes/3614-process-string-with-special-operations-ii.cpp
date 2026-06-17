@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-17 09:25:44
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-17 09:41:37
+ * @LastEditTime: 2026-06-17 09:48:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -54,9 +54,11 @@ public:
 
         for (int i = s.size() - 1; i >= 0; i--) {
             char c = s[i];
-            if ('a' <= c && c <= 'z' && k == len - 1) {
-                // len--;
-                return c;
+            if ('a' <= c && c <= 'z') {
+                if (k == len - 1) {
+                    return c;
+                }
+                len--;
             } else if (c == '*') {  // 若是正向操作中存在删没了的情况，则逆向复原时还没到删没了的时候就知道答案了
                 len++;
             } else if (c == '#') {
@@ -69,3 +71,21 @@ public:
         return '?';  // 理论上不会走到这里
     }
 };
+
+#ifdef _DEBUG
+/*
+jio#*g
+1
+
+i
+*/
+int main() {
+    string s;
+    int t;
+    while (cin >> s >> t) {
+        Solution sol;
+        cout << sol.processStr(s, t) << endl;
+    }
+    return 0;
+}
+#endif
