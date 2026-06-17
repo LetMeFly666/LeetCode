@@ -1720,6 +1720,29 @@ def add(a, b):
 
 一句话总结：**永远测试先行，代码后补**。测试定义了"什么叫正确"，代码只负责满足它。
 
+## About Network
+
+### Wireguard组网
+
+> 通过wireguard组网可以实现将多个设备组到一个虚拟的内网中。
+> 
+> 如：公网服务器(server)+数个不同的内网机器(client)，无公网IP的内网机器之间本来没发互通现在也可以互通了。
+
+**wireguard UDP转发**
+
+程序认为自己在发送普通IP包，wireguard自动把这些IP包加密封装成UDP包后发送出去。
+
+why UDP？还可靠吗？
+
++ 若本是TCP场景，则TCP发现包丢失后会触发重传。若wireguard继续使用TCP协议，则可能会有“TCP-over-TCP Meltdown”（双重重传、双重拥塞控制）
++ 若本就是UDP场景，丢了就丢了
+
+### ICMP Ping（Internet Control Message Protocol Echo）
+
+不属于TCP/UDP，没有“端口”。操作系统内核直接处理。
+
+以阿里云服务器为例，若想支持服务器被ping，则需要在安全组开启`全部 (-1/-1)`端口的`所有 ICMP-IPv4`。
+
 ## About Technology
 
 ### 非视域成像
