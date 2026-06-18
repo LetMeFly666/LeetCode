@@ -709,6 +709,21 @@ launchctl disable gui/$(id -u)/com.spotify.client-launcher
 | 系统级 LaunchDaemon | `/Library/LaunchDaemons/` | 需管理员密码 |
 | App 内嵌注册（SMAppService） | launchctl 内部 | 无需额外授权 |
 
+### Mac提取PDF中的所有图片
+
+```bash
+brew install poppler
+pdfimages -all test.pdf img
+```
+
+然后就会得到一堆如下的文件：
+
+```
+img-000.jpg
+img-001.png
+...
+```
+
 ## About Windows
 
 ### Windows应用商店安装的应用
