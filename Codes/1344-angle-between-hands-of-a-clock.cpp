@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-18 09:58:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-18 10:02:14
+ * @LastEditTime: 2026-06-18 10:08:12
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -11,8 +11,9 @@
 class Solution {
 public:
     double angleClock(int hour, int minutes) {
-        int diff = abs(hour * 5 - minutes);
-        diff = min(diff, 60 - diff);
-        return 6 * diff;  // 这次肯定还是WA，但是先fix一个bug再说，一个格子是6°不是3°
+        double h = (hour % 12 + (double)minutes / 60) * 30;
+        double m = minutes * 6;
+        double diff = abs(h - m);
+        return min(diff, 360 - diff);
     }
 };
