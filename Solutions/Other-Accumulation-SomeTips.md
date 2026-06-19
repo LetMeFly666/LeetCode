@@ -1799,6 +1799,10 @@ fn foo(x: u32)
 
 用户一升级版本，代码就炸了。
 
+### Phishing
+
+网络钓鱼，伪装成可信实体诱骗用户主动交出敏感信息或执行危险操作。
+
 # End
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~

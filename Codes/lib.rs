@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("2144-minimum-cost-of-buying-candies-with-discount.rs");  // 这个fileName是会被脚本替换掉的
+include!("1732-find-the-highest-altitude_20260619.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

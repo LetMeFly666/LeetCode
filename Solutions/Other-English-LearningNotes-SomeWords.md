@@ -784,7 +784,7 @@ categories: [自用]
 |panoramic|adj. 全景的|
 |craziness|n. 疯狂|
 |||
-|modulate|v. 调整，调节(音量)，变调|
+|<font color="#28bea0" title="二次复习">modulate</font>|v. 调整，调节(音量)，变调|
 |sportsmanship|n. 运动员风范，体育精神|
 |abasement|n. 身份低微，屈尊，降低|
 |||

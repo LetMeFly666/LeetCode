@@ -1,11 +1,11 @@
 ---
-title: 1732.找到最高海拔
+title: 1732.找到最高海拔：模拟
 date: 2022-11-19 08:33:19
 tags: [题解, LeetCode, 简单, 数组, 前缀和, 模拟]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1732.找到最高海拔
+# 【LetMeFly】1732.找到最高海拔：模拟
 
 力扣题目链接：[https://leetcode.cn/problems/find-the-highest-altitude/](https://leetcode.cn/problems/find-the-highest-altitude/)
 
@@ -59,6 +59,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-11-19 08:30:56
+ */
 class Solution {
 public:
     int largestAltitude(vector<int>& gain) {
@@ -71,6 +74,79 @@ public:
         return ans;
     }
 };
+```
+
+#### Python
+
+```python
+'''
+LastEditTime: 2026-06-19 10:19:06
+'''
+from typing import List
+
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        ans = now = 0
+        for t in gain:
+            now += t
+            ans = max(ans, now)
+        return ans
+
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-06-19 10:18:18
+ */
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int ans = 0, now = 0;
+        for (int t : gain) {
+            now += t;
+            ans = Math.max(ans, now);
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2026-06-19 10:17:13
+ */
+package main
+
+func largestAltitude(gain []int) (ans int) {
+    now := 0
+    for _, t := range gain {
+        now += t
+        ans = max(ans, now)
+    }
+    return
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2026-06-19 10:19:43
+ */
+impl Solution {
+    pub fn largest_altitude(gain: Vec<i32>) -> i32 {
+        let mut ans = 0;
+        let mut now = 0;
+        for t in gain.iter() {
+            now += t;
+            ans = ans.max(now);
+        }
+        ans
+    }
+}
 ```
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/19/LeetCode%201732.%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/)哦~

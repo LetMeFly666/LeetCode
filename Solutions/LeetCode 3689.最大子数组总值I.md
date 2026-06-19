@@ -92,7 +92,7 @@ categories: [题解, LeetCode]
 typedef long long ll;
 class Solution {
 public:
-    ll maxTotalValue(vector<int>& nums, ll k) {
+    ll maxTotalValue(vector<int>& nums, ll k) {  // 注意这里有个比较trick的方法，直接在入参把k改为了long long
         int m = nums[0], M = m;
         for (int t : nums) {
             m = min(m, t);
