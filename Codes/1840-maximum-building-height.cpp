@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-20 10:09:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-20 11:16:38
+ * @LastEditTime: 2026-06-20 11:17:44
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -16,7 +16,6 @@ private:
     int cal(int a, int ha, int b, int hb) {
         if (ha > hb) {
             swap(ha, hb);
-            swap(a, b);
         }
         return hb + (b - a - (hb - ha)) / 2;
     }
@@ -31,7 +30,6 @@ public:
         for (int i = restrictions.size() - 2; i >= 0; i--) {
             restrictions[i][1] = min(restrictions[i][1], restrictions[i + 1][1] + restrictions[i + 1][0] - restrictions[i][0]);
         }
-        debug(restrictions);
         
         int ans = 0;
         for (int i = 1; i < restrictions.size(); i++) {
@@ -42,7 +40,7 @@ public:
 
     void testCal() {
         assert(cal(7, 3, 10, 4) == 5);
-        assert(cal(7, 4, 10, 3) == 5);  // ERROR
+        assert(cal(7, 4, 10, 3) == 5);
     }
 };
 
