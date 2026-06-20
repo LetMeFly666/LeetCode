@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-20 10:09:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-20 11:07:07
+ * @LastEditTime: 2026-06-20 11:08:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -22,7 +22,8 @@ private:
     }
 public:
     int maxBuilding(int n, vector<vector<int>>& restrictions) {
-        restrictions.push_back({0, 0});
+        restrictions.push_back({1, 0});
+        restrictions.push_back({n, INT_MAX});
         sort(restrictions.begin(), restrictions.end());
         for (int i = 1; i < restrictions.size(); i++) {
             restrictions[i][1] = min(restrictions[i][1], restrictions[i - 1][1] + restrictions[i][0] - restrictions[i - 1][0]);
