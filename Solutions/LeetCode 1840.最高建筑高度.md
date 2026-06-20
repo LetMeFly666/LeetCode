@@ -74,7 +74,7 @@ index_img: https://assets.leetcode.cn/aliyun-lc-upload/uploads/2021/04/25/ic236-
 
 > 不妨假设$ha\leq hb$，那么楼高总体上呈现先上升后下降的趋势。$a$处楼高$ha$，$a+1$处楼高$ha+1$，...，$a + (hb-ha)$处楼高$hb$（和$b$处等高）。
 >
-> $a + (hb-ha)$处和$b$处楼都高$hb$，如果二者之间有一栋或两栋楼则最高高度可达$hb+1$，如果二者之间有三栋或四栋楼则最高高度可达$hb+2$，...，如果二者之间有$n$栋楼则最高高度可达$hb+\lfloor\frac{n+1}{2}\rfloor$。由于二者之间有$b-a-(ha-hb)-1$栋楼所以二者之间最高高度可达$hb+\lfloor\frac{b-a-(ha-hb)}{2}\rfloor$，即为从$a$到$b$这段范围的最大楼高。
+> $a + (hb-ha)$处和$b$处楼都高$hb$，如果二者之间有一栋或两栋楼则最高高度可达$hb+1$，如果二者之间有三栋或四栋楼则最高高度可达$hb+2$，...，如果二者之间有$n$栋楼则最高高度可达$hb+\lfloor\frac{n+1}{2}\rfloor$。由于二者之间有$b-a-(hb-ha)-1$栋楼所以二者之间最高高度可达$hb+\lfloor\frac{b-a-(hb-ha)}{2}\rfloor$，即为从$a$到$b$这段范围的最大楼高。
 >
 > 如果$ha\gt hb$同理，不妨直接交换$ha$和$hb$使得$ha\lt hb$，这样并不影响这段区间的最大楼高计算结果。
 
