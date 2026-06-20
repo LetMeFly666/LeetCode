@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-20 10:09:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-20 10:17:47
+ * @LastEditTime: 2026-06-20 10:57:16
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -10,15 +10,12 @@
 
 class Solution {
 private:
-    int cal(int a, int ha, int b, int hb) {
+    pair<int, int> cal(int a, int ha, int b, int hb) {
         if (ha > hb) {
-            swap(ha, hb);
-            swap(a, b);
+            int range_height = b - a <= ha - hb ? 
+        } else {
+
         }
-        if (hb - ha <= b - a) {
-            return ha + b - a;
-        }
-        return hb + (b - a - (hb - ha) - 1) / 2;
     }
 public:
     int maxBuilding(int n, vector<vector<int>>& restrictions) {
@@ -26,7 +23,9 @@ public:
         sort(restrictions.begin(), restrictions.end());
         int ans = 0;
         for (int i = 1; i < restrictions.size(); i++) {
-            ans = max(ans, cal(restrictions[i - 1][0], restrictions[i - 1][1], restrictions[i][0], restrictions[i][1]));
+            auto [range_height, last_height] = cal(restrictions[i - 1][0], restrictions[i - 1][1], restrictions[i][0], restrictions[i][1]);
+            ans = max(ans, range_height);
+            restrictions[i][1] = min(restrictions[i][1], last_height);
         }
         return ans;
     }
