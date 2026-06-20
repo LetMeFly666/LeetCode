@@ -341,7 +341,7 @@ categories: [自用]
 |fumble|v. 失球，笨手笨脚地做(某事)，笨拙地找(某物)，笨嘴拙舌地说话<br/>n. 笨拙的手部动作，乱摸，掉球|
 |<font color="#28bea0" title="二次复习">doom</font>|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
 |||
-|<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
+|<font color="#28bea0" title="二次复习">bestow</font><details><summary>例句</summary>He <font color="#28bea0">bestowed</font> high praise <font color="#28bea0">on</font> the winners.<br/>他对获胜者给予了高度赞扬。</details>|v. 授予，献给|
 |||
 |<font color="#28bea0" title="三次复习">ominous</font>|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
