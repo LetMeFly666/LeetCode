@@ -149,5 +149,6 @@ impl Solution {
 }
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/19/LeetCode%201732.%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127932334](https://letmefly.blog.csdn.net/article/details/127932334)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127932334)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/11/19/LeetCode%201732.%E6%89%BE%E5%88%B0%E6%9C%80%E9%AB%98%E6%B5%B7%E6%8B%94/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
