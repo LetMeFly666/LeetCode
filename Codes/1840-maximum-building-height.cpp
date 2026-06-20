@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-20 10:09:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-20 11:08:59
+ * @LastEditTime: 2026-06-20 11:16:38
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -31,6 +31,7 @@ public:
         for (int i = restrictions.size() - 2; i >= 0; i--) {
             restrictions[i][1] = min(restrictions[i][1], restrictions[i + 1][1] + restrictions[i + 1][0] - restrictions[i][0]);
         }
+        debug(restrictions);
         
         int ans = 0;
         for (int i = 1; i < restrictions.size(); i++) {
@@ -38,4 +39,30 @@ public:
         }
         return ans;
     }
+
+    void testCal() {
+        assert(cal(7, 3, 10, 4) == 5);
+        assert(cal(7, 4, 10, 3) == 5);  // ERROR
+    }
 };
+
+#ifdef _DEBUG
+/*
+10
+[[5,3],[2,5],[7,4],[10,3]]
+
+5
+*/
+int main() {
+    int a;
+    string s;
+    Solution sol;
+    sol.testCal();
+    while (cin >> a >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.maxBuilding(a, v) << endl;
+    }
+    return 0;
+}
+#endif
