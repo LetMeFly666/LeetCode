@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-23 21:24:26
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-23 21:37:57
+ * @LastEditTime: 2026-06-23 21:39:58
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -49,6 +49,6 @@ public:
         }
         max_depth--;
 
-        return pow(max_depth - 1, 2);
+        return pow(2, max_depth - 1);
     }
 };
