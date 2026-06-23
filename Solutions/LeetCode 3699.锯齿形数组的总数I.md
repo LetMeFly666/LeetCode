@@ -133,7 +133,7 @@ public:
                 down_cnt = (down_cnt + up[i]) % MOD;
             }
 
-            swap(up, up2);
+            swap(up, up2);  // 注意：这里swap会一一交换两个数组中的元素，时间复杂度是O(C)，不如使用指针或vector
             swap(down, down2);
         }
 
