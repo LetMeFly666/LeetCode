@@ -2,12 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2026-06-23 09:49:29
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-26 22:28:50
+ * @LastEditTime: 2026-06-26 22:31:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
+// THIS IS A HALF CODE & CANNOT BE ACCPETED
 typedef long long ll;
 const ll MOD = 1e9 + 7;
 class Solution {
@@ -51,8 +52,8 @@ public:
             up[i] = 1;
         }
 
-        while (--n) {
-            
+        while (--n) {  // 写到这里发现矩阵快速幂版本错在哪里了！
+
         }
 
         ll ans = 0;
