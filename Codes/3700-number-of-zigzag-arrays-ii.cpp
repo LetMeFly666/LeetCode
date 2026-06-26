@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-24 12:51:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-26 20:44:02
+ * @LastEditTime: 2026-06-26 22:30:12
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -126,6 +126,7 @@ private:
     }
 public:
     int zigZagArrays(int n, int l, int r) {
+        n--;
         Matrix MAT = buildMAT(r - l + 1);
         Matrix MAT2 = buildMAT2(r - l + 1);
         Matrix MATA = MAT * MAT2;

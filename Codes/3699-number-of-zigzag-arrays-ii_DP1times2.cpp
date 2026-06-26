@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-23 09:49:29
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-26 22:27:07
+ * @LastEditTime: 2026-06-26 22:28:50
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -30,13 +30,18 @@ private:
         ll up_cnt = 0;
         for (int i = l; i <= r; i++) {
             now[i] = up_cnt;
-            up_cnt += old[i];
+            up_cnt = (up_cnt + old[i]) % MOD;
         }
         swap(old, now);
     }
 
-    void mulDown(ll up[], ll up2[], int l, int r) {
-        
+    void mulDown(ll old[], ll now[], int l, int r) {
+        ll down_cnt = 0;
+        for (int i = r; i >= l; i--) {
+            now[i] = down_cnt;
+            down_cnt = (down_cnt + old[i]) % MOD;
+        }
+        swap(old, now);
     }
 public:
     int zigZagArrays(int n, int l, int r) {
@@ -46,7 +51,9 @@ public:
             up[i] = 1;
         }
 
-        
+        while (--n) {
+            
+        }
 
         ll ans = 0;
         ll cntUp = 0, cntDown = 0;
