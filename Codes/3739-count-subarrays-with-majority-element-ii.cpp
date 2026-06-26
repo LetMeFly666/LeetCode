@@ -29,6 +29,7 @@ public:
                 f -= cnt[--s];
             }
             ans += f;
+            cnt[s]++;
         }
         return ans;
     }
