@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-24 12:51:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-26 20:36:24
+ * @LastEditTime: 2026-06-26 20:42:05
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -65,12 +65,13 @@ public:
 
     // 需要保证matrix[i].size()==other.size()，为了运行效率此处不做断言
     Matrix operator*(const Matrix& other) const {
-        int n = matrix.size(), m = matrix[0].size(), p = other[1].size();
+        int n = matrix.size(), m = matrix[0].size(), p = other[0].size();
+        assert(m == other.size());
         Matrix ans(n, p);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < p; j++) {
                 for (int k = 0; k < m; k++) {
-                    ans[i][j] = (ans[i][j] + matrix[i][k] * matrix[k][j]) % MOD;
+                    ans[i][j] = (ans[i][j] + matrix[i][k] * other[k][j]) % MOD;
                 }
             }
         }
@@ -90,7 +91,7 @@ public:
         return ans;
     }
 
-    size_t size() {
+    size_t size() const {
         return matrix.size();
     }
 };
@@ -142,3 +143,19 @@ public:
         return ans * 2 % MOD;
     }
 };
+
+#ifdef _DEBUG
+/*
+3 4 5
+
+2
+*/
+int main() {
+    int a, b, c;
+    while (cin >> a >> b >> c) {
+        Solution sol;
+        cout << sol.zigZagArrays(a, b, c) << endl;
+    }
+    return 0;
+}
+#endif
