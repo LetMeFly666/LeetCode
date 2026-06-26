@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-06-24 12:51:01
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-26 20:42:05
+ * @LastEditTime: 2026-06-26 20:44:02
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -66,7 +66,6 @@ public:
     // 需要保证matrix[i].size()==other.size()，为了运行效率此处不做断言
     Matrix operator*(const Matrix& other) const {
         int n = matrix.size(), m = matrix[0].size(), p = other[0].size();
-        assert(m == other.size());
         Matrix ans(n, p);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < p; j++) {
@@ -137,7 +136,7 @@ public:
         Matrix up = buildUpDown(r - l + 1);
         Matrix matrixAns = up * toMul;
         ll ans = 0;
-        for (int i = 0; i < matrixAns.size(); i++) {
+        for (int i = 0; i < matrixAns[0].size(); i++) {
             ans += matrixAns[0][i];
         }
         return ans * 2 % MOD;
