@@ -15,13 +15,13 @@ private:
     }
 public:
     int maximumLength(vector<int>& nums) {
-        unordered_map<int, int> cnt;
+        unordered_map<long long, int> cnt;
         for (int t : nums) {
             cnt[t]++;
         }
 
         int ans = cnt[1];  // 特判1防止死循环
-        if (ans % 2) {
+        if (ans % 2 == 0) {
             ans--;
         }
         cnt.erase(1);
