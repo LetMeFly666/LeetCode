@@ -2,9 +2,10 @@
 #include "_[1,2]toVector.h"
 #endif
 
+typedef long long ll;
 class Solution {
 private:    
-    int cal(unordered_map<int, int>& cnt, int a) {
+    int cal(unordered_map<ll, int>& cnt, ll a) {
         int ans = 0;
         while (cnt.contains(a) && cnt[a] >= 2) {
             ans += 2;
@@ -15,7 +16,7 @@ private:
     }
 public:
     int maximumLength(vector<int>& nums) {
-        unordered_map<long long, int> cnt;
+        unordered_map<ll, int> cnt;
         for (int t : nums) {
             cnt[t]++;
         }
