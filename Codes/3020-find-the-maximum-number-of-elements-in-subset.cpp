@@ -20,7 +20,12 @@ public:
             cnt[t]++;
         }
 
-        int ans = 0;
+        int ans = cnt[1];  // 特判1防止死循环
+        if (ans % 2) {
+            ans--;
+        }
+        cnt.erase(1);
+
         for (auto[a, _] : cnt) {
             ans = max(ans, cal(cnt, a));
         }
