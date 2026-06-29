@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1732-find-the-highest-altitude_20260619.rs");  // 这个fileName是会被脚本替换掉的
+include!("1967-number-of-strings-that-appear-as-substrings-in-word.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
