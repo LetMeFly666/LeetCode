@@ -2,11 +2,12 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 17:43:36
+ * @LastEditTime: 2026-07-01 17:50:02
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
+#define debug_(x) {cout << #x << ":" << endl; debug(x);}
 
 typedef pair<int, int> pii;
 class Solution {
@@ -71,6 +72,10 @@ private:
         int n = dis.size(), m = dis[0].size();
         vector<vector<int>> start = bfs(0, 0);
         vector<vector<int>> end = bfs(n - 1, m - 1);
+        debug_(dis);
+        debug_(start);
+        debug_(end);
+
         int ans = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -78,6 +83,31 @@ private:
             }
         }
         return ans;
+    }
+
+    void debug(vector<vector<int>>& v) {
+        int n = v.size(), m = v[0].size();
+        for (int i = 0; i < n; i++) {
+            if (i == 0) {
+                cout << "[[";
+            } else {
+                cout << " [";
+            }
+
+            for (int j = 0; j < m; j++) {
+                if (j) {
+                    cout << ", ";
+                }
+                cout << v[i][j];
+            }
+
+            if (i == n - 1) {
+                cout << "]]";
+            } else {
+                cout << "],";
+            }
+            puts("");
+        }
     }
 public:
     int maximumSafenessFactor(vector<vector<int>>& grid) {
