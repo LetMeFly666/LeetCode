@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 22:56:07
+ * @LastEditTime: 2026-07-01 22:58:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -49,8 +49,8 @@ private:
         auto cmp = [this](const pii& a, const pii& b) {
             return dis[a.first][a.second] < dis[b.first][b.second];
         };
-        priority_queue<pii, vector<pii>, decltype(cmp)> q;
-        vector<vector<bool>> visited;
+        priority_queue<pii, vector<pii>, decltype(cmp)> q(cmp);
+        vector<vector<bool>> visited(n, vector<bool>(m));
         int ans = min(dis[0][0], dis[n - 1][m - 1]);
         q.push({0, 0});
         visited[0][0] = true;
