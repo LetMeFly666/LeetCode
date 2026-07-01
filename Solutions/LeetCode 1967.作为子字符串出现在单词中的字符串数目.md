@@ -167,6 +167,9 @@ impl Solution {
 }
 ```
 
++ 执行用时分布0ms，击败100.00%；
++ 消耗内存分布2.17MB，击败100.00%。
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/162424300)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/06/29/LeetCode%201967.%E4%BD%9C%E4%B8%BA%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E5%9C%A8%E5%8D%95%E8%AF%8D%E4%B8%AD%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
