@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 17:54:30
+ * @LastEditTime: 2026-07-01 18:01:37
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -43,49 +43,7 @@ private:
             }
         }
     }
-
-    vector<vector<int>> bfs(int x, int y) {
-        int n = dis.size(), m = dis[0].size();
-        vector<vector<int>> res(n, vector<int>(m));
-        vector<vector<bool>> visited(n, vector<bool>(m));
-        queue<pii> q;
-        q.push({x, y});
-        res[x][y] = dis[x][y];
-        visited[x][y] = true;
-
-        while (q.size()) {
-            auto [x, y] = q.front();
-            q.pop();
-            for (int d = 0; d < 4; d++) {
-                int nx = x + directions[d][0];
-                int ny = y + directions[d][1];
-                if (nx >= 0 && nx < n && ny >= 0 && ny <m && !visited[nx][ny]) {
-                    visited[nx][ny] = true;
-                    q.push({nx, ny});
-                    res[nx][ny] = min(dis[nx][ny], res[x][y]);
-                }
-            }
-        }
-        return res;
-    }
-
-    int bfs() {
-        int n = dis.size(), m = dis[0].size();
-        vector<vector<int>> start = bfs(0, 0);
-        vector<vector<int>> end = bfs(n - 1, m - 1);
-        debug_(dis);
-        debug_(start);
-        debug_(end);
-
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                ans = max(ans, min(start[i][j], end[i][j]));
-            }
-        }
-        return ans;
-    }
-
+    
     void debug(vector<vector<int>>& v) {
         int n = v.size(), m = v[0].size();
         for (int i = 0; i < n; i++) {
@@ -113,6 +71,22 @@ private:
 public:
     int maximumSafenessFactor(vector<vector<int>>& grid) {
         genDis(grid);
-        return bfs();
+        int n = grid.size(), m = grid[0].size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int maxFrom;
+                if (i && j) {
+                    maxFrom = max(dis[i - 1][j], dis[i][j - 1]);
+                } else if (i) {
+                    maxFrom = dis[i - 1][j];
+                } else if (j) {
+                    maxFrom = dis[i][j - 1];
+                } else {
+                    maxFrom = INT_MAX;
+                }
+                dis[i][j] = min(dis[i][j], maxFrom);
+            }
+        }
+        return grid[n - 1][m - 1];
     }
 };
