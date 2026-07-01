@@ -65,11 +65,11 @@ private:
             for (int d = 0; d < 4; d++) {
                 int nx = x + directions[d][0];
                 int ny = y + directions[d][1];
-                if (nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny]) {
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx][ny]) {
                     visited[nx][ny] = true;
                     q.push({nx, ny});
                     if (nx == n - 1 && ny == m - 1) {
-                        break;
+                        return ans;
                     }
                 }
             }
