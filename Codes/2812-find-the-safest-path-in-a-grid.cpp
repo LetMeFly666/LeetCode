@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 18:03:19
+ * @LastEditTime: 2026-07-01 22:47:08
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -43,6 +43,52 @@ private:
             }
         }
     }
+
+    int dfs() {
+        int n = dis.size(), m = dis[0].size();
+        queue<pii> q;
+        vector<vector<bool>> visited;
+        q.push({0, 0});
+        visited[0][0] = true;
+        if (n == 1 && m == 1) {
+            return dis[0][0];
+        }
+        int start = min(dis[0][0], dis[n - 1][m - 1]);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (dis[i][j] >= start) {
+                    visited[i][j] = true;
+                    q.push({i, j});
+                }
+            }
+        }
+
+        while (true) {
+            queue<pii> q2;
+            while (q.size()) {
+                auto [x, y] = q.front();
+                q.pop();
+                for (int d = 0; d < 4; d++) {
+                    int nx = x + directions[d][0];
+                    int ny = y + directions[d][1];
+                    if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx][ny]) {
+                        if (dis[nx][ny] <= start) {
+                            q.push({nx, ny});
+                            visited[nx][ny] = true;
+                            if (nx == n - 1 && ny == m - 1) {
+                                return start;
+                            }
+                        } else if (dis[nx][ny] == start + 1) {
+                            q2.push(...)
+                            ...
+                        }
+                    }
+                }
+            }
+            start++;
+            swap(q, q2);
+        }
+    }
     
     void debug(vector<vector<int>>& v) {
         int n = v.size(), m = v[0].size();
@@ -71,22 +117,8 @@ private:
 public:
     int maximumSafenessFactor(vector<vector<int>>& grid) {
         genDis(grid);
-        int n = grid.size(), m = grid[0].size();
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                int maxFrom;
-                if (i && j) {
-                    maxFrom = max(dis[i - 1][j], dis[i][j - 1]);
-                } else if (i) {
-                    maxFrom = dis[i - 1][j];
-                } else if (j) {
-                    maxFrom = dis[i][j - 1];
-                } else {
-                    maxFrom = INT_MAX;
-                }
-                dis[i][j] = min(dis[i][j], maxFrom);
-            }
-        }
-        return dis[n - 1][m - 1];
+        return dfs();
     }
 };
+
+// 忽然发现其实m=n
