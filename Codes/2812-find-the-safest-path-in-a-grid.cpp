@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 17:50:02
+ * @LastEditTime: 2026-07-01 17:54:30
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -51,6 +51,7 @@ private:
         queue<pii> q;
         q.push({x, y});
         res[x][y] = dis[x][y];
+        visited[x][y] = true;
 
         while (q.size()) {
             auto [x, y] = q.front();
@@ -61,7 +62,7 @@ private:
                 if (nx >= 0 && nx < n && ny >= 0 && ny <m && !visited[nx][ny]) {
                     visited[nx][ny] = true;
                     q.push({nx, ny});
-                    res[nx][ny] = min(dis[nx][ny], dis[x][y]);
+                    res[nx][ny] = min(dis[nx][ny], res[x][y]);
                 }
             }
         }
