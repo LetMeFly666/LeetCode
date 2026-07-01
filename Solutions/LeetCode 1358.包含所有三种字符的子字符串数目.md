@@ -107,7 +107,6 @@ public:
             while (r < n && !(cnt[0] && cnt[1] && cnt[2])) {
                 cnt[s[r++] - 'a']++;
             }
-            // printf("l = %d, r = %d, cnt = {%d, %d, %d}, ans += %d\n", l, r, cnt[0], cnt[1], cnt[2], n - r + 1);
             ans += (cnt[0] && cnt[1] && cnt[2]) ? n - r + 1 : 0;
             cnt[s[l] - 'a']--;
         }
