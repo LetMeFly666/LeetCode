@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 18:01:37
+ * @LastEditTime: 2026-07-01 18:03:19
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -87,6 +87,6 @@ public:
                 dis[i][j] = min(dis[i][j], maxFrom);
             }
         }
-        return grid[n - 1][m - 1];
+        return dis[n - 1][m - 1];
     }
 };
