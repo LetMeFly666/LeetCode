@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 17:40:06
+ * @LastEditTime: 2026-07-01 17:42:18
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -34,7 +34,7 @@ private:
             for (int d = 0; d < 4; d++) {
                 int nx = x + directions[d][0];
                 int ny = y + directions[d][1];
-                if (!visited[nx][ny]) {
+                if (nx >= 0 && nx < n && ny >= 0 && ny <m && !visited[nx][ny]) {
                     q.push({nx, ny});
                     visited[nx][ny] = true;
                     dis[nx][ny] = dis[x][y] + 1;
@@ -56,7 +56,7 @@ private:
             for (int d = 0; d < 4; d++) {
                 int nx = x + directions[d][0];
                 int ny = y + directions[d][1];
-                if (!visited[nx][ny]) {
+                if (nx >= 0 && nx < n && ny >= 0 && ny <m && !visited[nx][ny]) {
                     visited[nx][ny] = true;
                     q.push({nx, ny});
                     res[nx][ny] = min(dis[nx][ny], dis[x][y]);
