@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 17:42:18
+ * @LastEditTime: 2026-07-01 17:43:36
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -53,6 +53,7 @@ private:
 
         while (q.size()) {
             auto [x, y] = q.front();
+            q.pop();
             for (int d = 0; d < 4; d++) {
                 int nx = x + directions[d][0];
                 int ny = y + directions[d][1];
