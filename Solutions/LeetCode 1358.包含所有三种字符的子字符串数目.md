@@ -119,9 +119,23 @@ public:
 ### Python——方法二
 
 ```python
-
+'''
+LastEditTime: 2026-07-01 15:49:11
+'''
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        ans = 0
+        cnt = [0, 0, 0]
+        l = r = 0
+        for r in range(len(s)):
+            cnt[ord(s[r]) - ord('a')] += 1
+            while cnt[0] and cnt[1] and cnt[2]:
+                cnt[ord(s[l]) - ord('a')] -= 1
+                l += 1
+            ans += l
+        return ans
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/06/30/LeetCode%201358.%E5%8C%85%E5%90%AB%E6%89%80%E6%9C%89%E4%B8%89%E7%A7%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/162490761)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/06/30/LeetCode%201358.%E5%8C%85%E5%90%AB%E6%89%80%E6%9C%89%E4%B8%89%E7%A7%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
