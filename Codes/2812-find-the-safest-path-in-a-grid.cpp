@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-01 17:16:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-01 22:47:08
+ * @LastEditTime: 2026-07-01 22:56:07
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -46,48 +46,35 @@ private:
 
     int dfs() {
         int n = dis.size(), m = dis[0].size();
-        queue<pii> q;
+        auto cmp = [this](const pii& a, const pii& b) {
+            return dis[a.first][a.second] < dis[b.first][b.second];
+        };
+        priority_queue<pii, vector<pii>, decltype(cmp)> q;
         vector<vector<bool>> visited;
+        int ans = min(dis[0][0], dis[n - 1][m - 1]);
         q.push({0, 0});
         visited[0][0] = true;
         if (n == 1 && m == 1) {
-            return dis[0][0];
+            return ans;
         }
-        int start = min(dis[0][0], dis[n - 1][m - 1]);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (dis[i][j] >= start) {
-                    visited[i][j] = true;
-                    q.push({i, j});
-                }
-            }
-        }
-
-        while (true) {
-            queue<pii> q2;
-            while (q.size()) {
-                auto [x, y] = q.front();
-                q.pop();
-                for (int d = 0; d < 4; d++) {
-                    int nx = x + directions[d][0];
-                    int ny = y + directions[d][1];
-                    if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx][ny]) {
-                        if (dis[nx][ny] <= start) {
-                            q.push({nx, ny});
-                            visited[nx][ny] = true;
-                            if (nx == n - 1 && ny == m - 1) {
-                                return start;
-                            }
-                        } else if (dis[nx][ny] == start + 1) {
-                            q2.push(...)
-                            ...
-                        }
+        
+        while (q.size()) {
+            auto [x, y] = q.top();
+            q.pop();
+            ans = min(ans, dis[x][y]);
+            for (int d = 0; d < 4; d++) {
+                int nx = x + directions[d][0];
+                int ny = y + directions[d][1];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny]) {
+                    visited[nx][ny] = true;
+                    q.push({nx, ny});
+                    if (nx == n - 1 && ny == m - 1) {
+                        break;
                     }
                 }
             }
-            start++;
-            swap(q, q2);
         }
+        return ans;
     }
     
     void debug(vector<vector<int>>& v) {
