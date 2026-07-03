@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-01 17:16:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-03 10:50:51
+LastEditTime: 2026-07-03 10:57:32
 '''
 from typing import List
 from collections import deque
@@ -41,17 +41,18 @@ class Solution:
             return ans
         
         while pq:
-            dis, x, y = heapq.heappop(pq)
-            dis = -dis
+            _, x, y = heapq.heappop(pq)
             for dx, dy in self.directions:
                 nx, ny = x + dx, y + dy
                 if 0 <= nx < n and 0 <= ny < m and not visited[nx][ny]:
                     visited[nx][ny] = True
                     ans = min(ans, self.dis[nx][ny])
+                    print(f'nx = {nx}, ny = {ny}, self.dis[{nx}][{ny}] = {self.dis[nx][ny]}, ans = {ans}')
                     if nx == n - 1 and ny == m - 1:
                         return ans
                     heapq.heappush(pq, (-self.dis[nx][ny], nx, ny))
 
     def maximumSafenessFactor(self, grid: List[List[int]]) -> int:
         self.genDis(grid)
+        print(self.dis)
         return self.dfs()
