@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-01 17:16:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-03 10:49:14
+LastEditTime: 2026-07-03 10:50:51
 '''
 from typing import List
 from collections import deque
@@ -50,7 +50,7 @@ class Solution:
                     ans = min(ans, self.dis[nx][ny])
                     if nx == n - 1 and ny == m - 1:
                         return ans
-                    heapq.heappush((-self.dis[nx][ny], nx, ny))
+                    heapq.heappush(pq, (-self.dis[nx][ny], nx, ny))
 
     def maximumSafenessFactor(self, grid: List[List[int]]) -> int:
         self.genDis(grid)
