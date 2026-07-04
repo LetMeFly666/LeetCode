@@ -21,6 +21,7 @@ public:
             q.pop();
             for (auto [b, d] : graph[a]) {
                 if (!visited[b]) {
+                    printf("a = %d, b = %d, d = %d\n", a, b, d);
                     visited[b] = true;
                     q.push(b);
                     ans = min(ans, d);
