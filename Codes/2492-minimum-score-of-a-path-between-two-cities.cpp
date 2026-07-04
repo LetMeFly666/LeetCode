@@ -5,10 +5,14 @@
 class Solution {
 public:
     int minScore(int n, vector<vector<int>>& roads) {
-        vector<vector<pair<int, int>>> graph(n + 1);
+        vector<vector<int>> graph(n + 1);
+        vector<int> m(n + 1, 100000);
+
         for (vector<int>& road : roads) {
-            graph[road[0]].push_back({road[1], road[2]});
-            graph[road[1]].push_back({road[0], road[2]});
+            graph[road[0]].push_back(road[1]);
+            graph[road[1]].push_back(road[0]);
+            m[road[0]] = min(m[road[0]], road[2]);
+            m[road[1]] = min(m[road[1]], road[2]);
         }
         
         int ans = 100000;
@@ -19,12 +23,11 @@ public:
         while (q.size()) {
             int a = q.front();
             q.pop();
-            for (auto [b, d] : graph[a]) {
+            for (int b: graph[a]) {
                 if (!visited[b]) {
-                    printf("a = %d, b = %d, d = %d\n", a, b, d);
                     visited[b] = true;
                     q.push(b);
-                    ans = min(ans, d);
+                    ans = min(ans, m[b]);
                 }
             }
         }
