@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-06-20 15:38:39
+ * @LastEditTime: 2026-07-03 14:19:01
 -->
 # LetLeet Blog
 
@@ -99,6 +99,7 @@
 |Linux Swap 文件完全指南：从创建到调优 - Written By AI(Claude-Opus4.6)|<a href="https://blog.letmefly.xyz/2026/03/15/Other-Linux-SwapMemSetting/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/159080576">CSDN博客</a>|
 |MacOS - 记录MacOS发烫的好几天 - 幕后黑手竟然是|<a href="https://blog.letmefly.xyz/2025/09/01/Other-MacOS-Logging_several_days_of_macOS_overheating/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/151087541">CSDN博客</a>|
 |MacOS - Clang使用bits/stdc++.h - 非官方(竞赛用) - 通用方法|<a href="https://blog.letmefly.xyz/2025/09/27/Other-MacOS-ClangUsingBits_stdcpp_h/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/152164818">CSDN博客</a>|
+|MacOS：首次外接键盘初始化设置（Option/Command互换、左上角·～而非§±）|<a href="https://blog.letmefly.xyz/2026/07/03/Other-MacOS-ExternalKeyboardInitialSetup/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/162551319">CSDN博客</a>|
 |MacOS：使用纯C++创建一个简单的MacAPP的Demo(可以双击运行的那种)|<a href="https://blog.letmefly.xyz/2026/06/20/Other-MacOS-SimpleAppDemo/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/162148634">CSDN博客</a>|
 |图论笔记 - 极简极入门级|<a href="https://blog.letmefly.xyz/2023/10/27/Other-Math-GraphTheory-Notes/">本平台博客</a>|无|
 |码蹄集需要频繁登录？如何做到“一劳永逸”——码蹄集只登录一次久久不掉线的教程|<a href="https://blog.letmefly.xyz/2022/08/30/Other-MatijiAutoLogin/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126610331">CSDN博客</a>|
