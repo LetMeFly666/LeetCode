@@ -458,3 +458,203 @@ EOF
 4. 函数接收参数将变成这些照片文件夹所在文件夹路径，即使是静态图也会有一个专门的子文件夹
 5. 程序要在父文件夹中创建`exported`文件夹并将所有导出照片放到这个文件夹下（无需再创建子文件夹）
 ```
+
+
+--- 第二天(2026.7.5)发现不同文件名长度part5可能需要不同 ---
+part3： IMG_5164.HEIC.heic的字节数 0x24E4F8=2417912
+part5：0x24E557=2418007，而IMG_5164.HEIC.mov的local header offset是2417960，
+    2418007 - 2417960 = 47 文件名是17的话 47-17还有30不知道是什么，而ZIP 的 Local File Header固定就是30字节
+
+现在咱们先研究静态图在zip中的Central directory entry #1而动态图在zip中的#2的情况：
+part1: 0002
+part2: 00000030
+part3: heic字节数
+part4: 0003
+part5: #2的offset+30+mov文件名长度(长度为17的mov文件名的情况下等于part3+0x5F)
+part6: mov字节数
+part7: 313030304C495650(1000LIVP)
+其中part5验证：
+```python
+hex(2417960 + 30 + len('IMG_5164.HEIC.mov'))  # 0x24e557
+```
+0002000000300024E4F800030024E557004AF675313030304C495650
+offset of local header from start of archive:   2417960
+并且#2的offset=静态图的filesize+30+静态图filename
+这个0x5F也就是95=(30+filename1.len)+(30+filename2.len)
+坏了，算出了一个0002000000300024E4F800030024E559004AF675313030304C495650（1IMG_5164.HEIC.heic、 1IMG_5164.HEIC.mov） 还是不对。
+00020000003000 24E4F8 000300 24E559 004AF675 313030304C495650
+0x24E4F8=2417912 = #1 1IMG_5164.HEIC.heic filesize
+0x24E559=2418009 = 2417912 + 97
+0x4AF675=4912757 = #2 1IMG_5164.HEIC.mov  filesize
+
+修改为IMG_5190.H1IC.heic和IMG_5190.H1IC.mov是可以识别的
+len('IMG_5190.H1IC.heic') == len('1234567890123.heic')
+len('IMG_5190.H1IC.mov') == len('s5f=3z81sfx23.mov')
+修改为1234567890123.heic和s5f=3z81sfx23.mov还是可以识别的！
+.heic加一位都不行，但是.mov加一位可以！
+00020000003000 212BCA 000300 212C3B 004E9961 313030304C495650
+1234567890123.heic
+s5f=3z81sfx231sfjli298ksjfkJKjf.mov
+甚至这样都可以！
+0x212BCA=2173898 = #1 1234567890123.heic filesize
+0x212C3B=2174011 = 2173898 + 113 = 2173898 + (30 + len('1234567890123.heic')) + (30 + len('s5f=3z81sfx231sfjli298ksjfkJKjf.mov'))
+0x4E9961=5151073 = #2 s5f=3z81sfx231sfjli298ksjfkJKjf.mov filesize
+但是#1的filename len变化似乎就不行了。
+
+
+此外：
+zip命令是怎么确定#1和#2的？
+似乎是zip命令的文件顺序。
+
+
+现在试试静态图长度从传统的18改为19时候，part5从part3+50测试到part3+128，哪个可以渲染
+```bash
+#!/bin/bash
+set -e
+
+HEIC="/Users/tisfy/Downloads/Photos/IMG_5190/22345678901231.heic"
+MOV="/Users/tisfy/Downloads/Photos/IMG_5190/15f=3z81sfx231sfjli298ksjfkJKjf.mov"
+
+OUTDIR="/Users/tisfy/Downloads/Photos/exported"
+mkdir -p "$OUTDIR"
+
+# 获取文件大小（macOS / Linux 通用）
+filesize() {
+    stat -f%z "$1" 2>/dev/null || stat -c%s "$1"
+}
+
+HEIC_SIZE=$(filesize "$HEIC")
+MOV_SIZE=$(filesize "$MOV")
+
+# 转8位大写16进制
+hex8() {
+    printf "%08X" "$1"
+}
+
+PART3=$(hex8 "$HEIC_SIZE")
+PART6=$(hex8 "$MOV_SIZE")
+
+echo "HEIC size: $HEIC_SIZE ($PART3)"
+echo "MOV  size: $MOV_SIZE ($PART6)"
+
+for offset in $(seq 50 128); do
+    PART5=$(hex8 $((HEIC_SIZE + offset)))
+
+    COMMENT="000200000030${PART3}0003${PART5}${PART6}313030304C495650"
+
+    OUTFILE=$(printf "%s/%03d.livp" "$OUTDIR" "$offset")
+
+    zip -q -0 -X -z "$OUTFILE" "$HEIC" "$MOV" <<EOF
+$COMMENT
+EOF
+
+    echo "Generated $(basename "$OUTFILE")  part5=$PART5"
+done
+
+echo "Done."
+```
+00020000003000212BCA000300212C3C004E9961313030304C495650 IMG_5190.livp
+
+00020000003000212BCA000300212C3C004E9961313030304C495650 114.livp
+00020000003000212BCA000300212C3D004E9961313030304C495650 115.livp
+00020000003000212BCA000300212C3E004E9961313030304C495650 116.livp
+00020000003000212BCA000300212C3F004E9961313030304C495650
+
+一个都不行？
+忽然发现add的是 Users/tisfy/Downloads/Photos/IMG_5190/22345678901231.heic 而不是 22345678901231.heic 
+
+```bash
+#!/bin/bash
+set -e
+
+HEIC="22345678901231.heic"
+MOV="15f=3z81sfx231sfjli298ksjfkJKjf.mov"
+
+OUTDIR="../exported"
+mkdir -p "$OUTDIR"
+
+# 获取文件大小（macOS / Linux 通用）
+filesize() {
+    stat -f%z "$1" 2>/dev/null || stat -c%s "$1"
+}
+
+HEIC_SIZE=$(filesize "$HEIC")
+MOV_SIZE=$(filesize "$MOV")
+
+# 转8位大写16进制
+hex8() {
+    printf "%08X" "$1"
+}
+
+PART3=$(hex8 "$HEIC_SIZE")
+PART6=$(hex8 "$MOV_SIZE")
+
+echo "HEIC size: $HEIC_SIZE ($PART3)"
+echo "MOV  size: $MOV_SIZE ($PART6)"
+
+for offset in $(seq 100 120); do
+    PART5=$(hex8 $((HEIC_SIZE + offset)))
+
+    COMMENT="000200000030${PART3}0003${PART5}${PART6}313030304C495650"
+
+    OUTFILE=$(printf "%s/%03d.livp" "$OUTDIR" "$offset")
+
+    zip -q -0 -X -z "$OUTFILE" "$HEIC" "$MOV" <<EOF
+$COMMENT
+EOF
+
+    echo "Generated $(basename "$OUTFILE")  part5=$PART5"
+done
+
+echo "Done."
+```
+```
+HEIC size: 2173898 (00212BCA)
+MOV  size: 5151073 (004E9961)
+Generated 100.livp  part5=00212C2E
+Generated 101.livp  part5=00212C2F
+Generated 102.livp  part5=00212C30
+Generated 103.livp  part5=00212C31
+Generated 104.livp  part5=00212C32
+Generated 105.livp  part5=00212C33
+Generated 106.livp  part5=00212C34
+Generated 107.livp  part5=00212C35
+Generated 108.livp  part5=00212C36
+Generated 109.livp  part5=00212C37
+Generated 110.livp  part5=00212C38
+Generated 111.livp  part5=00212C39
+Generated 112.livp  part5=00212C3A
+Generated 113.livp  part5=00212C3B
+Generated 114.livp  part5=00212C3C
+Generated 115.livp  part5=00212C3D
+Generated 116.livp  part5=00212C3E
+Generated 117.livp  part5=00212C3F
+Generated 118.livp  part5=00212C40
+Generated 119.livp  part5=00212C41
+Generated 120.livp  part5=00212C42
+Done.
+```
+```
+c31fb8b4f87398aa2017f3deb4940158314cf13c5d85d216cbcaa1fb5a18bb46  exported/IMG_5190.livp
+c31fb8b4f87398aa2017f3deb4940158314cf13c5d85d216cbcaa1fb5a18bb46  exported/114.livp
+```
+改为IMG_51901.HEIC.heic和IMG_5190.HEIC.mov（因为IMG_5190.HEIC.heic时候是可以识别的）
+坏了，085.livp到105.livp都不可被识别
+（原脚本和096.livp的comment结果是一样的）
+坏了，000.livp到225.livp都不可被识别
+那就先保证静态图的文件名长度固定为18吧。
+
+最后再试试第一个文件名长度变化但是part5不随之变化：静态动态文件名长度分别为18和17时候以下comment合法
+00020000003000212BCA000300212C29004E9961313030304C495650
+zip -0 -X -z can.livp IMG_5190.HEIC.heic IMG_5190.HEIC.mov <<EOF
+00020000003000212BCA000300212C29004E9961313030304C495650
+EOF
+修改静态文件名为17，继续使用这个comment
+zip -0 -X -z canOrCannot.livp IMG_519.HEIC.heic IMG_5190.HEIC.mov <<EOF
+00020000003000212BCA000300212C29004E9961313030304C495650
+EOF
+坏了不行，看来不是和第一个文件名长度计算时候无关。
+
+还是那句话：那就先保证静态图的文件名长度固定为18吧。
+共测了24张各种类型的图，livp2.py完美胜任，全部可以识别。
+美中不足的是这样在网页端上传，系统没办法自动识别图片拍摄日期（后面也可以尝试修改压缩包修改时间试试）

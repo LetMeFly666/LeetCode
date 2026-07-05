@@ -2,12 +2,14 @@
 Author: LetMeFly
 Date: 2026-07-04 16:41:49
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-05 10:20:24
+LastEditTime: 2026-07-05 18:09:50
 '''
 import os
 import shutil
 import subprocess
 import sys
+import random
+import string
 
 
 IMAGE_EXTS = {
@@ -27,12 +29,40 @@ def u32_hex(x: int) -> str:
     return f"{x & 0xFFFFFFFF:08X}"
 
 
+def fix_len18(filename: str) -> str:
+    stem, ext = os.path.splitext(filename)
+
+    target = 18
+    stem_len = target - len(ext)
+
+    if len(stem) > stem_len:
+        stem = stem[:stem_len]
+    elif len(stem) < stem_len:
+        stem += "".join(
+            random.choices(
+                string.ascii_letters + string.digits,
+                k=stem_len - len(stem),
+            )
+        )
+
+    return stem + ext
+
+
 def generate_comment(heic_path: str, mov_path: str) -> str:
     heic_size = os.path.getsize(heic_path)
     mov_size = os.path.getsize(mov_path)
 
+    # zip 中记录的是文件名，不含路径
+    heic_name = os.path.basename(heic_path)
+    mov_name = os.path.basename(mov_path)
+
+    # Local File Header(30B) + 文件名长度
+    offset = (30 + len(heic_name.encode("utf-8"))) + (
+        30 + len(mov_name.encode("utf-8"))
+    )
+
     part3 = heic_size
-    part5 = part3 + 0x5F
+    part5 = part3 + offset
     part6 = mov_size
 
     if part5 > 0xFFFFFFFF:
@@ -76,25 +106,42 @@ def find_files(folder):
 
 
 def export_live(heic_path, mov_path, output_path):
-    comment = generate_comment(heic_path, mov_path)
+    heic_dir = os.path.dirname(heic_path)
+    heic_name = os.path.basename(heic_path)
+    new_heic_name = fix_len18(heic_name)
 
-    cmd = [
-        "zip",
-        "-0",
-        "-X",
-        "-z",
-        output_path,
-        os.path.basename(heic_path),
-        os.path.basename(mov_path),
-    ]
+    # 如果文件名需要修改，则临时复制一份
+    temp_heic = heic_path
+    need_delete = False
 
-    subprocess.run(
-        cmd,
-        cwd=os.path.dirname(heic_path),
-        input=comment + "\n",
-        text=True,
-        check=True,
-    )
+    if new_heic_name != heic_name:
+        temp_heic = os.path.join(heic_dir, new_heic_name)
+        shutil.copy2(heic_path, temp_heic)
+        need_delete = True
+
+    try:
+        comment = generate_comment(temp_heic, mov_path)
+
+        cmd = [
+            "zip",
+            "-0",
+            "-X",
+            "-z",
+            output_path,
+            os.path.basename(temp_heic),
+            os.path.basename(mov_path),
+        ]
+
+        subprocess.run(
+            cmd,
+            cwd=heic_dir,
+            input=comment + "\n",
+            text=True,
+            check=True,
+        )
+    finally:
+        if need_delete:
+            os.remove(temp_heic)
 
 
 def process_parent(parent_folder):
