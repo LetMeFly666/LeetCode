@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-04 16:41:49
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-06 22:20:18
+LastEditTime: 2026-07-06 22:26:05
 '''
 import os
 import shutil
@@ -67,7 +67,7 @@ def generate_comment(heic_path: str, mov_path: str) -> str:
 
     if part5 > 0xFFFFFFFF:
         raise ValueError("HEIC file too large")  # 可能不到32-bit range就不行了
-    if mov_size < 0 or mov_size > 0xFFFFFFFF:
+    if part6 > 0xFFFFFFFF:
         raise ValueError("MOV size out of 32-bit range")
 
     return (

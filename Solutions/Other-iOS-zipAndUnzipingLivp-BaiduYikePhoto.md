@@ -279,7 +279,7 @@ def generate_comment(heic_path: str, mov_path: str) -> str:
 
     if part5 > 0xFFFFFFFF:
         raise ValueError("HEIC file too large")  # 可能不到32-bit range就不行了
-    if mov_size < 0 or mov_size > 0xFFFFFFFF:
+    if part6 > 0xFFFFFFFF:
         raise ValueError("MOV size out of 32-bit range")
 
     return (
@@ -387,6 +387,7 @@ def process_parent(parent_folder):
             # 静态图片
             if len(images) == 1 and len(movs) == 0:
                 src = images[0]
+                # TODO: dst命名重复情况处理 (如果不同子目录里存在同名图片) 虽然是小概率
                 dst = os.path.join(exported, os.path.basename(src))
                 shutil.copy2(src, dst)
                 success += 1
