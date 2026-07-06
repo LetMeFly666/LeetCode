@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-03 14:19:01
+ * @LastEditTime: 2026-07-04 19:52:44
 -->
 # LetLeet Blog
 
@@ -91,6 +91,7 @@
 |HTML - Javascript - JS可变参数函数|<a href="https://blog.letmefly.xyz/2023/04/05/Other-HTML-Javascript-variableParamaterFunction">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129977062">CSDN博客</a>|
 |HTML - 在网页上显示Latex公式（使用纯js在网页上显示Latex公式）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderLatexByMathJaxJS">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464796">CSDN博客</a>|
 |HTML - 在网页上显示mermaid流程图（使用纯js在网页上显示mermaid流程图）|<a href="https://blog.letmefly.xyz/2023/06/29/Other-HTML-RenderMermaidByMermaidJS/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/131464925">CSDN博客</a>|
+|iOS：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持|<a href="https://blog.letmefly.xyz/2026/07/04/Other-iOS-zipAndUnzipingLivp-BaiduYikePhoto/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/162586089">CSDN博客</a>|
 |日语学习笔记（自用）|<a href="https://blog.letmefly.xyz/2023/11/24/Other-Japanese-LearningNotes">本平台博客</a>|无|
 |教资（教师资格证）学习笔记|<a href="https://blog.letmefly.xyz/2023/06/24/Other-JiaoZi-LearningNotes">本平台博客</a>|无|
 |力扣2022年1024卡牌活动，程序员怎么判断自己的卡牌能否组成1024？那就愉快地编程实现吧！|<a href="https://blog.letmefly.xyz/2022/10/19/Other-LeetCode1024-2022/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/127413787">CSDN博客</a>|
