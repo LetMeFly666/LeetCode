@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-04 16:41:49
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-05 18:21:02
+LastEditTime: 2026-07-06 22:17:08
 '''
 import os
 import glob
@@ -101,10 +101,10 @@ def generate_comment(folder: str) -> str:
 
     return comment
 
-# python livp.py ~/Downloads/Photos/IMG_5190
+# python gen_livp_comment.py ~/Downloads/Photos/IMG_5190
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python livp.py <folder>")
+        print("Usage: python gen_livp_comment.py <folder>")
         sys.exit(1)
 
     folder = sys.argv[1]
