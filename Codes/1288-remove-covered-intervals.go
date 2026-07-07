@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-07 22:09:22
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-07 22:26:01
+ * @LastEditTime: 2026-07-07 22:28:57
  */
 package main
 
@@ -11,7 +11,7 @@ import "sort"
 func removeCoveredIntervals(intervals [][]int) int {
 	sort.Slice(intervals, func(i, j int) bool {
 		if intervals[i][0] == intervals[j][0] {
-			return intervals[1][1] > intervals[j][1]
+			return intervals[i][1] > intervals[j][1]
 		}
 		return intervals[i][0] < intervals[j][0]
 	})
