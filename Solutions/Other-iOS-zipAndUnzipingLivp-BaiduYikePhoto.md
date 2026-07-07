@@ -458,7 +458,7 @@ if __name__ == "__main__":
 
 ## The End
 
-后续将创建一个 专门把两图压缩为百度系产品可直接识别的live图的 Github开源脚本仓库，敬请期待。
+Github仓库：[LetMeFly666/2livp](https://github.com/LetMeFly666/2livp)
 
 <details><summary>
 这个是原探究过程，TL;DR：
