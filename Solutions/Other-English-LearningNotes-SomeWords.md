@@ -1920,6 +1920,10 @@ categories: [自用]
 |||
 |overtake|v. 超过|
 |transverse|adj. 横向的|
+|||
+|corrosion|n. 腐蚀；锈蚀|
+|||
+|fragrant|adj. 香的|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
