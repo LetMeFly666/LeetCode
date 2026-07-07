@@ -9,7 +9,7 @@ package main
 import "sort"
 
 func removeCoveredIntervals(intervals [][]int) int {
-	sort.slice(intervals, func(i, j int) bool {
+	sort.Slice(intervals, func(i, j int) bool {
 		if intervals[i][0] == intervals[i][1] {
 			return intervals[1][1] > intervals[j][1]
 		}
