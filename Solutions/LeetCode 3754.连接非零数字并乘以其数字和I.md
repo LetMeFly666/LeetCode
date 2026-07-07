@@ -71,8 +71,8 @@ categories: [题解, LeetCode]
 
 最终$cnt\times con$即为答案。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 时间复杂度$O(\log n)$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
