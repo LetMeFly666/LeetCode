@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-08 13:35:37
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-08 14:00:52
+ * @LastEditTime: 2026-07-08 14:03:48
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -53,7 +53,7 @@ public:
         for (vector<int>& q : queries) {
             int l = q[0], r = q[1] + 1;
             ll this_cnt = cnt[r] - cnt[l];
-            ll this_con = con[r] - con[l] * p[r - l] % MOD + MOD;
+            ll this_con = con[r] - con[l] * p[num1[r] - num1[l]] % MOD + MOD;
             ans.push_back(this_cnt * this_con % MOD);
         }
         return ans;
