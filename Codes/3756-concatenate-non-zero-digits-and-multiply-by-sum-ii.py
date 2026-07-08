@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-08 14:31:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-08 14:42:50
+LastEditTime: 2026-07-08 14:50:01
 '''
 from typing import List
 
@@ -29,9 +29,19 @@ class Solution:
                 con[i + 1] = (con[i] * 10 + v) % MOD
                 cnt1[i + 1] = cnt1[i] + 1
 
+        print(sum)  # [0, 1, 5, 13]
+        print(con)  # [0, 1, 14, 148]
+        print(cnt1) # [0, 1, 2, 3]
+
         ans = [0] * len(queries)
         for i, (l, r) in enumerate(queries):
-            su = sum[r + 1] - sum[l]
-            cn = (con[r + 1] - con[l] * pow[cnt1[r + 1] - cnt1[l]]) % MOD + MOD
+            su = sum[r + 1] - sum[l]  # 12
+            cn = (con[r + 1] - con[l] * pow[cnt1[r + 1] - cnt1[l]]) % MOD + MOD  # 1000000145 = 1000000007 + 138
             ans[i] = su * cn % MOD
         return ans
+
+if __name__ == "__main__":
+    s = "148"
+    a = [[0,0],[0,1],[0,2],[1,1],[1,2],[2,2]]
+    sol = Solution()
+    print(sol.sumAndMultiply(s, a))
