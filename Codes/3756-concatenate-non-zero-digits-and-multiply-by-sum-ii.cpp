@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-08 13:35:37
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-08 14:22:42
+ * @LastEditTime: 2026-07-08 14:28:42
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,7 +21,7 @@
 #define debug_(x) { cout << #x << ": "; debug3756(x); cout << endl; }
 typedef long long ll;
 const int N = 100000;
-const ll MOD = 139 + 7;
+const ll MOD = 1e9 + 7;
 ll p[N + 1] = {1};
 int _ = []{
     for (int i = 1; i <= N; i++) {
@@ -65,9 +65,9 @@ public:
                 num1[i + 1] = num1[i] + 1;
             }
         }
-        debug_(cnt);
-        debug_(con);
-        debug_(num1);
+        // debug_(cnt);
+        // debug_(con);
+        // debug_(num1);
 
         vector<int> ans;
         ans.reserve(queries.size());
