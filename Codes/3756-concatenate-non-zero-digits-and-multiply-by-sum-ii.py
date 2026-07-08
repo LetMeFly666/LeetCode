@@ -9,7 +9,7 @@ from typing import List
 N = 100000
 MOD = 1000000007
 pow = [1] * N
-for i in range(1, N + 1):
+for i in range(1, N):
     pow[i] = pow[i] * 10 % MOD
 
 class Solution:
