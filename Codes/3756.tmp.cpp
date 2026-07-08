@@ -2,11 +2,77 @@
  * @Author: LetMeFly
  * @Date: 2026-07-08 13:35:37
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-08 14:22:42
+ * @LastEditTime: 2026-07-08 14:18:15
  */
-#ifdef _DEBUG
-#include "_[1,2]toVector.h"
-#endif
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
+这个文件的前面几个 split、stringToVector、stringToVectorVector函数copy自"_[1,2]toVector.h"
+*/
+
+vector<string> split(string toSplit, char c)  // 将字符串以字符c为间隔分开
+{
+    vector<string> ans;
+    toSplit+=c;
+    int left=0;
+    for(int right=0;right<toSplit.size();right++)
+    {
+        if(toSplit[right]==c)  //left->right-1
+        {
+            ans.push_back(toSplit.substr(left,right-left));
+            left=right+1;
+        }
+    }
+    return ans;
+}
+
+vector<string> split(string toSplit, string c)  // 将字符串以字符串c为间隔分开
+{
+    vector<string> ans;
+    toSplit+=c;
+    int left=0;
+    for(int right=0;right<toSplit.size()-c.size()+1;right++)
+    {
+        if(toSplit.substr(right,c.size())==c)  //left->right-1
+        {
+            ans.push_back(toSplit.substr(left,right-left));
+            left=right+c.size();
+        }
+    }
+    return ans;
+}
+
+vector<int> stringToVector(string s)  // [1,2,5]
+{
+    vector<int>v;
+    s=s.substr(1, s.size()).substr(0, s.size()-1);
+    vector<string>vs=split(s, ',');
+    for(int i=0;i<vs.size();i++)
+    {
+        string temp=vs[i];
+        int t;
+        sscanf(temp.c_str(), "%d", &t);
+        v.push_back(t);
+    }
+    return v;
+}
+
+vector<vector<int>> stringToVectorVector(string s) //[[1,2,5],[2,5,6],[5,6]]
+{
+    vector<vector<int>>ans;
+    s.erase(s.begin());
+    s.erase(s.begin());
+    s.erase(--s.end());
+    s.erase(--s.end());
+    vector<string> temp = split(s,"],[");
+    for(string&s:temp)
+    {
+        s='['+s+']';
+        ans.push_back(stringToVector(s));
+    }
+    return ans;
+}
 
 /*
 1234567890123456 % 1000000007
@@ -31,11 +97,6 @@ int _ = []{
 }();
 
 template<class Type>
-void debug3756(const Type& a) {
-    cout << a;
-}
-
-template<class Type>
 void debug3756(const vector<Type>& v) {
     cout << "[";
     for (int i = 0, n = v.size(); i < n; i++) {
@@ -47,12 +108,17 @@ void debug3756(const vector<Type>& v) {
     cout << "]";
 }
 
+template<class Type>
+void debug3756(const Type& a) {
+    cout << a;
+}
+
 class Solution {
 public:
     vector<int> sumAndMultiply(string& s, vector<vector<int>>& queries) {
-        vector<ll> cnt(s.size() + 1);
-        vector<ll> con(s.size() + 1);
-        vector<ll> num1(s.size() + 1);
+        vector<ll> cnt(N + 1);
+        vector<ll> con(N + 1);
+        vector<ll> num1(N + 1);
         for (int i = 0, n = s.size(); i < n; i++) {
             if (s[i] == '0') {
                 cnt[i + 1] = cnt[i];
@@ -81,7 +147,6 @@ public:
     }
 };
 
-#ifdef _DEBUG
 /*
 10203004
 [[0,7],[1,3],[4,6]]
@@ -93,9 +158,7 @@ int main() {
     while (cin >> a >> b) {
         vector<vector<int>> v = stringToVectorVector(b);
         Solution sol;
-        vector<int> ans = sol.sumAndMultiply(a, v);
-        debug_(ans);
+        debug_(sol.sumAndMultiply(a, v));
     }
     return 0;
 }
-#endif
