@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-08 14:31:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-08 14:37:33
+LastEditTime: 2026-07-08 14:39:14
 '''
 from typing import List
 
@@ -14,7 +14,7 @@ for i in range(1, N):
 
 class Solution:
     def sumAndMultiply(self, s: str, queries: List[List[int]]) -> List[int]:
-        n = len(queries)
+        n = len(s)
         sum = [0] * (n + 1)
         con = [0] * (n + 1)
         cnt1 = [0] * (n + 1)
