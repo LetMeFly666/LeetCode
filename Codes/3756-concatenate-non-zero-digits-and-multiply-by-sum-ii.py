@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-07-08 14:31:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-08 14:39:14
+LastEditTime: 2026-07-08 14:42:50
 '''
 from typing import List
 
@@ -28,10 +28,10 @@ class Solution:
                 sum[i + 1] = sum[i] + v
                 con[i + 1] = (con[i] * 10 + v) % MOD
                 cnt1[i + 1] = cnt1[i] + 1
-        
+
         ans = [0] * len(queries)
         for i, (l, r) in enumerate(queries):
             su = sum[r + 1] - sum[l]
             cn = (con[r + 1] - con[l] * pow[cnt1[r + 1] - cnt1[l]]) % MOD + MOD
-        ans[i] = su * cn % MOD
+            ans[i] = su * cn % MOD
         return ans
