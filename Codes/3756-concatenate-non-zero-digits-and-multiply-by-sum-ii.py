@@ -2,14 +2,14 @@
 Author: LetMeFly
 Date: 2026-07-08 14:31:47
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-08 14:51:26
+LastEditTime: 2026-07-08 14:53:09
 '''
 from typing import List
 
 N = 100000
 MOD = 1000000007
-pow = [1] * N
-for i in range(1, N):
+pow = [1] * (N + 1)
+for i in range(1, N + 1):
     pow[i] = pow[i - 1] * 10 % MOD
 
 class Solution:
