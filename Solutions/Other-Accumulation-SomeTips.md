@@ -1758,6 +1758,110 @@ why UDP？还可靠吗？
 
 以阿里云服务器为例，若想支持服务器被ping，则需要在安全组开启`全部 (-1/-1)`端口的`所有 ICMP-IPv4`。
 
+## About Tools - 一些工具
+
+### aria2下载工具
+
+aria2 是一个命令行下载器。
+
+它支持很多协议：
+
++ HTTP
++ HTTPS
++ FTP
++ SFTP
++ BitTorrent
++ Metalink
+
+它最大的特点有几个：
+
++ 多线程（准确来说是多连接）下载
++ 断点续传
++ 多个镜像源同时下载
++ 非常小巧
++ 脚本友好
+
+安装：
+
+```bash
+brew install aria2
+```
+
+最简单的下载：
+
+```bash
+aria2c https://example.com/file.zip
+```
+
+从多个源下载同一个文件的命令：
+
+```bash
+aria2c \
+    -c \    # --continue 断点续传（前提是服务器支持Accept-Ranges）
+    -x16 \  # 最多建立16个HTTP连接
+    -s16 \  # 把文件分成16块
+    -k4M \  # 至少4MB才切一次
+    --file-allocation=none \  # 不预先分配空间
+    --max-tries=0 \   # 无限重试
+    --retry-wait=5 \  # 失败了等5秒再试
+    --auto-file-renaming=false \  # 若file.zip已经存在，默认的true会自动下载为file.1.zip，false则会报错
+    -o dzd.mp4 \  # output filename
+    URL1 \
+    URL2
+```
+
+默认配置文件位置`~/.aria2/aria2.conf`：
+
+```conf
+# =========================
+# aria2.conf
+# =========================
+
+# 断点续传
+continue=true
+
+# 最多建立16个HTTP连接
+max-connection-per-server=16
+
+# 最多分16块下载
+split=16
+
+# 每块至少4MiB才继续分割
+min-split-size=4M
+
+# 不预分配磁盘空间（适合SSD）
+file-allocation=none
+
+# 无限重试
+max-tries=0
+
+# 重试间隔（秒）
+retry-wait=5
+
+# 已存在同名文件时，不自动改名为 *.1、*.2 ...
+auto-file-renaming=false
+
+# 下载完成后自动校验
+check-integrity=true
+
+# 控制台输出更简洁
+summary-interval=5
+
+# 允许覆盖已有文件（配合 continue 使用）
+allow-overwrite=true
+
+# 启用颜色输出
+enable-color=true
+```
+
+以后直接`aria2c URL`就可以了。
+
+若有多个配置也可以：
+
+```bash
+aria2c --conf-path=my.conf
+```
+
 ## About Technology
 
 ### 非视域成像
