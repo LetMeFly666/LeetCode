@@ -123,14 +123,67 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：前缀和
 
-11111
+创建一个数组`sum`并令`sum[i+1]`的含义是$\sum_{s[0]}^{s[i]}$，则$[l, r]$的query的元素和就等于$sum[r+1]-sum[l]$。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+元素拼接怎么实现呢？同样创建一个数组`con`并令`con[i+1]`的含义是从字符串$s$从下标$0$到下标$i$的非零数字拼接结果，例如`12304`的`con[0]`到`con[5]`为：`{0, 1, 12, 123, 1234, 1234}`。
+
+那么如何快速得到$[2, 4]$的query的字符串拼接结果呢？$34 = 1234 - 12\times 10^2$，其中$10^2$的$2$是从$l$到$r$非零元素的个数。这就说明我们还需要额外一个前缀和数组`cnt1`，其中`cnt1[i+1]`的含义是字符串$s$从下标$0$到下标$i$的非零数字的个数，那么$con[r + 1] - con[l]\times 10^{cnt1[r + 1] - cnt[l]}$即为拼接结果。
+
+还有取模的问题，这点倒是不用担心，该取模时就取模就好了，因为所有涉及到的运算都是加法和乘法（减法也是加法），这两种运算在模运算的世界里同余。
+
++ 时间复杂度$O(len(s) + len(queries))$；
++ 空间复杂度$O(len(s))$，答案返回的$len(queries)$的$ans$数组不计入算法空间复杂度。
 
 ### AC代码
+
+#### Python
+
+```python
+'''
+LastEditTime: 2026-07-08 14:53:09
+'''
+from typing import List
+
+N = 100000
+MOD = 1000000007
+pow = [1] * (N + 1)
+for i in range(1, N + 1):
+    pow[i] = pow[i - 1] * 10 % MOD
+
+class Solution:
+    def sumAndMultiply(self, s: str, queries: List[List[int]]) -> List[int]:
+        n = len(s)
+        sum = [0] * (n + 1)
+        con = [0] * (n + 1)
+        cnt1 = [0] * (n + 1)
+        for i in range(n):
+            if s[i] == '0':
+                sum[i + 1] = sum[i]
+                con[i + 1] = con[i]
+                cnt1[i + 1] = cnt1[i]
+            else:
+                v = ord(s[i]) - ord('0')
+                sum[i + 1] = sum[i] + v
+                con[i + 1] = (con[i] * 10 + v) % MOD
+                cnt1[i + 1] = cnt1[i] + 1
+
+        ans = [0] * len(queries)
+        for i, (l, r) in enumerate(queries):
+            su = sum[r + 1] - sum[l]
+            cn = (con[r + 1] - con[l] * pow[cnt1[r + 1] - cnt1[l]]) % MOD + MOD
+            ans[i] = su * cn % MOD
+        return ans
+
+# if __name__ == "__main__":
+#     s = "148"
+#     a = [[0,0],[0,1],[0,2],[1,1],[1,2],[2,2]]
+#     sol = Solution()
+#     print(sol.sumAndMultiply(s, a))
+# else:
+#     print(1)
+```
 
 #### C++
 
@@ -231,53 +284,6 @@ int main() {
 #endif
 ```
 
-#### Python
-
-```python
-'''
-LastEditTime: 2026-07-08 14:53:09
-'''
-from typing import List
-
-N = 100000
-MOD = 1000000007
-pow = [1] * (N + 1)
-for i in range(1, N + 1):
-    pow[i] = pow[i - 1] * 10 % MOD
-
-class Solution:
-    def sumAndMultiply(self, s: str, queries: List[List[int]]) -> List[int]:
-        n = len(s)
-        sum = [0] * (n + 1)
-        con = [0] * (n + 1)
-        cnt1 = [0] * (n + 1)
-        for i in range(n):
-            if s[i] == '0':
-                sum[i + 1] = sum[i]
-                con[i + 1] = con[i]
-                cnt1[i + 1] = cnt1[i]
-            else:
-                v = ord(s[i]) - ord('0')
-                sum[i + 1] = sum[i] + v
-                con[i + 1] = (con[i] * 10 + v) % MOD
-                cnt1[i + 1] = cnt1[i] + 1
-
-        ans = [0] * len(queries)
-        for i, (l, r) in enumerate(queries):
-            su = sum[r + 1] - sum[l]
-            cn = (con[r + 1] - con[l] * pow[cnt1[r + 1] - cnt1[l]]) % MOD + MOD
-            ans[i] = su * cn % MOD
-        return ans
-
-# if __name__ == "__main__":
-#     s = "148"
-#     a = [[0,0],[0,1],[0,2],[1,1],[1,2],[2,2]]
-#     sol = Solution()
-#     print(sol.sumAndMultiply(s, a))
-# else:
-#     print(1)
-```
-
 #### Java
 
 ```java
@@ -336,6 +342,6 @@ class Solution {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/07/08/LeetCode%203756.%E8%BF%9E%E6%8E%A5%E9%9D%9E%E9%9B%B6%E6%95%B0%E5%AD%97%E5%B9%B6%E4%B9%98%E4%BB%A5%E5%85%B6%E6%95%B0%E5%AD%97%E5%92%8CII/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/162731518)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/07/08/LeetCode%203756.%E8%BF%9E%E6%8E%A5%E9%9D%9E%E9%9B%B6%E6%95%B0%E5%AD%97%E5%B9%B6%E4%B9%98%E4%BB%A5%E5%85%B6%E6%95%B0%E5%AD%97%E5%92%8CII/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
