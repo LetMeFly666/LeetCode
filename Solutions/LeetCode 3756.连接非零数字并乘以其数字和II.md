@@ -38,7 +38,6 @@ categories: [题解, LeetCode]
 
 <ul>
 	<li><code>s[0..7] = "10203004"</code>
-
 	<ul>
 		<li><code>x = 1234</code></li>
 		<li><code>sum = 1 + 2 + 3 + 4 = 10</code></li>
@@ -73,7 +72,6 @@ categories: [题解, LeetCode]
 
 <ul>
 	<li><code>s[0..3] = "1000"</code>
-
 	<ul>
 		<li><code>x = 1</code></li>
 		<li><code>sum = 1</code></li>
@@ -101,7 +99,6 @@ categories: [题解, LeetCode]
 
 <ul>
 	<li><code>s[0..9] = "9876543210"</code>
-
 	<ul>
 		<li><code>x = 987654321</code></li>
 		<li><code>sum = 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 45</code></li>
