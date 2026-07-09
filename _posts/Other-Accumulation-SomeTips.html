@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-06-19T02:26:29.000Z">
+<meta property="article:modified_time" content="2026-07-09T06:57:47.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -872,6 +872,40 @@
 </ul>
 <h3 id="ICMP-Ping（Internet-Control-Message-Protocol-Echo）"><a href="#ICMP-Ping（Internet-Control-Message-Protocol-Echo）" class="headerlink" title="ICMP Ping（Internet Control Message Protocol Echo）"></a>ICMP Ping（Internet Control Message Protocol Echo）</h3><p>不属于TCP&#x2F;UDP，没有“端口”。操作系统内核直接处理。</p>
 <p>以阿里云服务器为例，若想支持服务器被ping，则需要在安全组开启<code>全部 (-1/-1)</code>端口的<code>所有 ICMP-IPv4</code>。</p>
+<h2 id="About-Tools-一些工具"><a href="#About-Tools-一些工具" class="headerlink" title="About Tools - 一些工具"></a>About Tools - 一些工具</h2><h3 id="aria2下载工具"><a href="#aria2下载工具" class="headerlink" title="aria2下载工具"></a>aria2下载工具</h3><p>aria2 是一个命令行下载器。</p>
+<p>它支持很多协议：</p>
+<ul>
+<li>HTTP</li>
+<li>HTTPS</li>
+<li>FTP</li>
+<li>SFTP</li>
+<li>BitTorrent</li>
+<li>Metalink</li>
+</ul>
+<p>它最大的特点有几个：</p>
+<ul>
+<li>多线程（准确来说是多连接）下载</li>
+<li>断点续传</li>
+<li>多个镜像源同时下载</li>
+<li>非常小巧</li>
+<li>脚本友好</li>
+</ul>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install aria2<br></code></pre></td></tr></table></figure>
+
+<p>最简单的下载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">aria2c https://example.com/file.zip<br></code></pre></td></tr></table></figure>
+
+<p>从多个源下载同一个文件的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">aria2c \<br>    -c \    <span class="hljs-comment"># --continue 断点续传（前提是服务器支持Accept-Ranges）</span><br>    -x16 \  <span class="hljs-comment"># 最多建立16个HTTP连接</span><br>    -s16 \  <span class="hljs-comment"># 把文件分成16块</span><br>    -k4M \  <span class="hljs-comment"># 至少4MB才切一次</span><br>    --file-allocation=none \  <span class="hljs-comment"># 不预先分配空间</span><br>    --max-tries=0 \   <span class="hljs-comment"># 无限重试</span><br>    --retry-wait=5 \  <span class="hljs-comment"># 失败了等5秒再试</span><br>    --auto-file-renaming=<span class="hljs-literal">false</span> \  <span class="hljs-comment"># 若file.zip已经存在，默认的true会自动下载为file.1.zip，false则会报错</span><br>    -o dzd.mp4 \  <span class="hljs-comment"># output filename</span><br>    URL1 \<br>    URL2<br></code></pre></td></tr></table></figure>
+
+<p>默认配置文件位置<code>~/.aria2/aria2.conf</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs conf"># =========================<br># aria2.conf<br># =========================<br><br># 断点续传<br>continue=true<br><br># 最多建立16个HTTP连接<br>max-connection-per-server=16<br><br># 最多分16块下载<br>split=16<br><br># 每块至少4MiB才继续分割<br>min-split-size=4M<br><br># 不预分配磁盘空间（适合SSD）<br>file-allocation=none<br><br># 无限重试<br>max-tries=0<br><br># 重试间隔（秒）<br>retry-wait=5<br><br># 已存在同名文件时，不自动改名为 *.1、*.2 ...<br>auto-file-renaming=false<br><br># 下载完成后自动校验<br>check-integrity=true<br><br># 控制台输出更简洁<br>summary-interval=5<br><br># 允许覆盖已有文件（配合 continue 使用）<br>allow-overwrite=true<br><br># 启用颜色输出<br>enable-color=true<br></code></pre></td></tr></table></figure>
+
+<p>以后直接<code>aria2c URL</code>就可以了。</p>
+<p>若有多个配置也可以：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">aria2c --conf-path=my.conf<br></code></pre></td></tr></table></figure>
+
 <h2 id="About-Technology"><a href="#About-Technology" class="headerlink" title="About Technology"></a>About Technology</h2><h3 id="非视域成像"><a href="#非视域成像" class="headerlink" title="非视域成像"></a>非视域成像</h3><p>以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。</p>
 <p>讲座地址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TX4y1s7oe/">BiliBili@BV1TX4y1s7oe</a></p>
 <h2 id="About-俚语"><a href="#About-俚语" class="headerlink" title="About 俚语"></a>About 俚语</h2><h3 id="Best-Effort"><a href="#Best-Effort" class="headerlink" title="Best-Effort"></a>Best-Effort</h3><blockquote>
