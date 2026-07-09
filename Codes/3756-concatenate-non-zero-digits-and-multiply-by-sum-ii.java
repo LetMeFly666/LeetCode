@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-09 14:23:02
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-09 14:35:10
+ * @LastEditTime: 2026-07-09 14:36:14
  */
 // 无编辑器补全、语法检查
 class Solution {
@@ -26,7 +26,7 @@ class Solution {
     public int[] sumAndMultiply(String s, int[][] queries) {
         int n = s.length();
         int[] sum = new int[n + 1];
-        int[] con = new int[n + 1];
+        long[] con = new long[n + 1];
         int[] cnt1 = new int[n + 1];
 
         for (int i = 0; i < n; i++) {
