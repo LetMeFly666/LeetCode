@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-11 07:59:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-11 08:12:34
+ * @LastEditTime: 2026-07-11 08:14:11
  */
 impl Solution {
     pub fn remove_covered_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
@@ -13,7 +13,7 @@ impl Solution {
             if v[1] <= maxr {
                 ans -= 1;
             } else {
-                maxr = r;
+                maxr = v[1];
             }
         }
         ans
