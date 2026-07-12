@@ -1,7 +1,7 @@
 ---
 title: 1331.数组序号转换
 date: 2022-07-28 10:48:43
-tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序, sort]
+tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序]
 categories: [题解, LeetCode]
 ---
 
@@ -67,6 +67,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-07-28 10:46:31
+ */
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
@@ -81,6 +84,32 @@ public:
             ma[toSort[i]] = ++th;
             last = toSort[i];
         }
+        for (int& t : arr) {
+            t = ma[t];
+        }
+        return arr;
+    }
+};
+```
+
+```cpp
+/*
+ * @LastEditTime: 2026-07-12 09:58:23
+ */
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        vector<int> b = arr;
+        sort(b.begin(), b.end());
+        unordered_map<int, int> ma;
+        int last = b.empty() ? 0 : b[0] + 1, num = 0;
+        for (int t : b) {
+            if (t != last) {
+                ma[t] = ++num;
+                last = t;
+            }
+        }
+        // trick直接给原始数组覆盖了
         for (int& t : arr) {
             t = ma[t];
         }
