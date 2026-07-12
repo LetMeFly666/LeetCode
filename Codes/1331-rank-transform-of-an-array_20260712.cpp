@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-12 09:27:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-12 09:50:55
+ * @LastEditTime: 2026-07-12 09:58:23
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -14,7 +14,7 @@ public:
         vector<int> b = arr;
         sort(b.begin(), b.end());
         unordered_map<int, int> ma;
-        int last = b[0] + 1, num = 0;
+        int last = b.empty() ? 0 : b[0] + 1, num = 0;
         for (int t : b) {
             if (t != last) {
                 ma[t] = ++num;
