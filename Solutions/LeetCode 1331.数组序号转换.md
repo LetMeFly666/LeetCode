@@ -131,5 +131,6 @@ class Solution:
         return [ranks[v] for v in arr]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/126030218](https://letmefly.blog.csdn.net/article/details/126030218)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/126030218)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
