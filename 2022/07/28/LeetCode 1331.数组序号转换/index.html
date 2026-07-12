@@ -26,10 +26,9 @@
 <meta property="og:description" content="【LetMeFly】1331.数组序号转换力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;rank-transform-of-an-array&#x2F; 给你一个整数数组&nbsp;arr ，请你将数组中的每个元素替换为它们排序后的序号。  序号代表了一个元素有多大。序号编号的规则如下：   	序号从 1 开始编号。 	一个元素越大，那么序号越大。如果两个元素相等，那么它们的序号相">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-28T02:48:43.000Z">
-<meta property="article:modified_time" content="2025-03-13T12:59:24.000Z">
+<meta property="article:modified_time" content="2026-07-12T02:38:08.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="sort">
 <meta property="article:tag" content="哈希表">
 <meta property="article:tag" content="排序">
 <meta property="article:tag" content="数组">
@@ -234,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.8k 字
         
       </span>
     
@@ -245,7 +244,7 @@
         
         
         
-          12 分钟
+          15 分钟
         
       </span>
     
@@ -338,14 +337,17 @@
 <li>时间复杂度$O(n\log n)$，其中$n$是数组中元素个数。排序耗时$n\log n$</li>
 <li>空间复杂度$O(N\log N)$。哈希表、排序和临时数组消耗空间都是$O(n)$</li>
 </ul>
-<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">arrayRankTransform</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; toSort = arr;<br>        <span class="hljs-built_in">sort</span>(toSort.<span class="hljs-built_in">begin</span>(), toSort.<span class="hljs-built_in">end</span>());<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ma;<br>        <span class="hljs-type">int</span> th = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> last = <span class="hljs-number">-1e9</span> - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; toSort.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (toSort[i] == last)<br>                <span class="hljs-keyword">continue</span>;<br>            ma[toSort[i]] = ++th;<br>            last = toSort[i];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; t : arr) &#123;<br>            t = ma[t];<br>        &#125;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @LastEditTime: 2022-07-28 10:46:31</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">arrayRankTransform</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; toSort = arr;<br>        <span class="hljs-built_in">sort</span>(toSort.<span class="hljs-built_in">begin</span>(), toSort.<span class="hljs-built_in">end</span>());<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ma;<br>        <span class="hljs-type">int</span> th = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> last = <span class="hljs-number">-1e9</span> - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; toSort.<span class="hljs-built_in">size</span>(); i++) &#123;<br>            <span class="hljs-keyword">if</span> (toSort[i] == last)<br>                <span class="hljs-keyword">continue</span>;<br>            ma[toSort[i]] = ++th;<br>            last = toSort[i];<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; t : arr) &#123;<br>            t = ma[t];<br>        &#125;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @LastEditTime: 2026-07-12 09:58:23</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">arrayRankTransform</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt; b = arr;<br>        <span class="hljs-built_in">sort</span>(b.<span class="hljs-built_in">begin</span>(), b.<span class="hljs-built_in">end</span>());<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ma;<br>        <span class="hljs-type">int</span> last = b.<span class="hljs-built_in">empty</span>() ? <span class="hljs-number">0</span> : b[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>, num = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t : b) &#123;<br>            <span class="hljs-keyword">if</span> (t != last) &#123;<br>                ma[t] = ++num;<br>                last = t;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// trick直接给原始数组覆盖了</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>&amp; t : arr) &#123;<br>            t = ma[t];<br>        &#125;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 <h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p>语法糖真简洁</p>
 <p>Python代码 Copy From <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rank-transform-of-an-array/solution/shu-zu-xu-hao-zhuan-huan-by-leetcode-sol-8zlu/">力扣官方题解</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">arrayRankTransform</span>(<span class="hljs-params">self, arr: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]:<br>        ranks = &#123;v: i <span class="hljs-keyword">for</span> i, v <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(arr)), <span class="hljs-number">1</span>)&#125;<br>        <span class="hljs-keyword">return</span> [ranks[v] <span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> arr]<br></code></pre></td></tr></table></figure>
 
 <blockquote>
-<p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/">原文链接</a>哦~<br>Tisfy：<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126030218">https://letmefly.blog.csdn.net/article/details/126030218</a></p>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/126030218">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
 </blockquote>
 
                 
@@ -389,8 +391,6 @@
       
       
         <a href="/tags/LeetCode/">#LeetCode</a>
-      
-        <a href="/tags/sort/">#sort</a>
       
         <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">#哈希表</a>
       
