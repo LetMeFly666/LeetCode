@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-13 21:54:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-13 21:59:27
+ * @LastEditTime: 2026-07-13 22:07:09
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,7 +27,7 @@ public:
     vector<int> sequentialDigits(int low, int high) {
         vector<int> ans;
         for (int t : good) {
-            if (low <=t && t <- high) {
+            if (low <=t && t <= high) {
                 ans.push_back(t);
             }
         }
