@@ -187,6 +187,8 @@ git checkout -- filename
 
 丢弃filename在工作区的更改。如果暂存区有此文件的版本则回到暂存区的版本，否则回到版本库的版本。
 
+其中这里的`--`在很多CLI中被认为是“参数结束标记”，其后面的(所有)参数即使是`-`开头也不被认为是选项。如`rm -test.txt`会报错`rm: illegal option -- t`而`rm -- -test.txt`会把`-text.txt`这个文件删除。
+
 **丢弃暂存区更改：**
 
 ```bash
@@ -723,6 +725,18 @@ img-000.jpg
 img-001.png
 ...
 ```
+
+## About iOS
+
+### Core ML
+
+Core ML 是 Apple 提供的端侧机器学习框架，于 iOS 11 引入。
+
+它允许开发者将训练好的机器学习模型（如 PyTorch/TensorFlow 模型）转换为 `.mlmodel` 格式，并在 iPhone/iPad/Mac 本地运行。
+
+运行时会自动利用 CPU、GPU 或 Neural Engine 进行推理，无需将用户数据上传到服务器。
+
+常用于图像识别、目标检测、OCR、语音处理、自然语言处理等 AI 场景。熊猫吃短信就是[通过这个](https://sspai.com/post/42134)实现的不联网短信分类。
 
 ## About Windows
 
@@ -1906,6 +1920,10 @@ fn foo(x: u32)
 ### Phishing
 
 网络钓鱼，伪装成可信实体诱骗用户主动交出敏感信息或执行危险操作。
+
+### No news is good news
+
+Unix设计哲学，没消息就是好消息。
 
 # End
 
