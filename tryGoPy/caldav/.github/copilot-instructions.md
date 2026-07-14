@@ -1,0 +1,1 @@
+Never read files in secrets/ directory.
