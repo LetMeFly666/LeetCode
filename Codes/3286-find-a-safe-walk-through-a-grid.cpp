@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-14 11:11:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-14 11:20:20
+ * @LastEditTime: 2026-07-14 11:24:26
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,13 +18,13 @@ public:
         vector<vector<int>> costs(n, vector<int>(m, 100000000));
         deque<pii> q;
         q.push_back({0, 0});
-        costs[0][0] = 0;
+        costs[0][0] = grid[0][0];  // 注意起点可能直接掉血
         while (q.size()) {
             auto [x, y] = q.front();
             q.pop_front();
             for (auto [dx, dy] : directions) {
                 int nx = x + dx, ny = y + dy;
-                if (0 <= nx < n && 0 <= ny < m) {
+                if (0 <= nx && nx < n && 0 <= ny && ny < m) {
                     int next_cost = costs[x][y] + grid[nx][ny];
                     if (next_cost >= costs[nx][ny]) {
                         continue;
@@ -38,6 +38,6 @@ public:
                 }
             }
         }
-        return grid[n - 1][m - 1] <= health;
+        return grid[n - 1][m - 1] < health;
     }
 };
