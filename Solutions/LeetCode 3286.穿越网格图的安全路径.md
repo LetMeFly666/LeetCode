@@ -1,7 +1,7 @@
 ---
 title: 3286.穿越网格图的安全路径：“优先”队列
 date: 2026-07-14 11:26:35
-tags: [题解, LeetCode, 中等, 广度优先搜索, 图, 数组, 矩阵, 最短路, 堆（优先队列）, 优先队列]
+tags: [题解, LeetCode, 中等, 广度优先搜索, 图, 数组, 矩阵, 最短路, 堆（优先队列）, 优先队列, BFS, Dijkstra]
 categories: [题解, LeetCode]
 index_img: https://assets.leetcode.com/uploads/2024/08/04/3868_examples_1drawio.png
 ---
