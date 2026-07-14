@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-14 11:11:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-14 11:24:26
+ * @LastEditTime: 2026-07-14 11:26:09
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -38,6 +38,6 @@ public:
                 }
             }
         }
-        return grid[n - 1][m - 1] < health;
+        return costs[n - 1][m - 1] < health;
     }
 };
