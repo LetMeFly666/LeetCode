@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1288-remove-covered-intervals_20260711.rs");  // 这个fileName是会被脚本替换掉的
+include!("3658-gcd-of-odd-and-even-sums.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
