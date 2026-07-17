@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3658-gcd-of-odd-and-even-sums.rs");  // 这个fileName是会被脚本替换掉的
+include!("1979-find-greatest-common-divisor-of-array.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
