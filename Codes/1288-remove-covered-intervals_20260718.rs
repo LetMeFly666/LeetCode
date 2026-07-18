@@ -7,7 +7,7 @@
 impl Solution {
     pub fn remove_covered_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
         intervals.sort_by_key(|x| (x[0], -x[1]));
-        let mut ans: i32 = intervals.len();
+        let mut ans: i32 = intervals.len() as i32;
         let mut maxr = 0;
         for v in intervals.iter() {
             if v[1] <= maxr {
