@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1979-find-greatest-common-divisor-of-array.rs");  // 这个fileName是会被脚本替换掉的
+include!("1288-remove-covered-intervals_20260718.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
