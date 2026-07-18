@@ -2,16 +2,15 @@
  * @Author: LetMeFly
  * @Date: 2026-07-18 07:00:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-18 07:10:14
+ * @LastEditTime: 2026-07-18 07:10:26
  */
 package main
 
-// THIS CANNOT BE ACCEPTED
 func gcd1979(a, b int) int {
 	if b == 0 {
 		return a
 	}
-	return gcd(b, a % b)
+	return gcd1979(b, a % b)
 }
 
 func findGCD(nums []int) int {
