@@ -2,14 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2026-07-18 07:00:55
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-18 07:14:49
+ * @LastEditTime: 2026-07-18 07:15:10
  */
-// THIS CANNOT BE ACCPETED
 impl Solution {
     pub fn find_gcd(nums: Vec<i32>) -> i32 {
         let mut m: i32 = nums[0];
         let mut M: i32 = m;
-        for t in nums.iter() {
+        for &t in nums.iter() {  // 记得&t解引用
             m = m.min(t);
             M = M.max(t);
         }
