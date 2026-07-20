@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-20 18:40:09
+LastEditTime: 2026-07-20 18:48:24
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -622,6 +622,7 @@ try:
 except:
     opening_pr_json = subprocess.run([
         'gh', 'pr', 'list',
+        '-R', 'LetMeFly666/LeetCode',
         '--state', 'open',
         '--json', 'number,url,headRefName,headRepository'
     ], capture_output=True, text=True).stdout.strip()
