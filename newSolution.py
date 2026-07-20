@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-06-14 19:43:56
+LastEditTime: 2026-07-20 18:40:09
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -161,8 +161,17 @@ class User(Enum):
     @property
     def remote(self) -> str:
         return {
-            User.Tisfy: 'tisfy_let',  # TODO: Windows兼容性测试
             User.LetMeFly: 'origin',
+            User.Tisfy: 'tisfy_let',  # TODO: Windows兼容性测试
+        }[self]
+    
+    @property
+    def push_to_which_when_single_commit(self) -> str:
+        # 因为直接push到origin的话，依据~/.ssh/config，会使用LetMeFly666的id_rsa进行push
+        # 会变成LetMeFly666 merged the pull result，贡献者变成LetMeFly666了
+        return {
+            User.LetMeFly: 'origin',
+            User.Tisfy: 'tisfy_let',  # TODO: CHANGE ON WINDOWS
         }[self]
 
 def get_whoami() -> User:
@@ -626,9 +635,9 @@ print(prNumber)
 if prAlreadyExists:
     cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', f'Hello, we meet again. -- From {getPlatform()}']
     subprocess.run(cmd)
-os.system('gh pr edit --add-label "under merge"')
+os.system('gh pr edit -R LetMeFly666/LeetCode --add-label "under merge"')
 input('enter when ready to merge: ')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
-os.system('gh pr edit --remove-label "under merge"')
+os.system('gh pr edit -R LetMeFly666/LeetCode --remove-label "under merge"')
 # os.system(f'gh pr merge {prNumber} -r -d')  # rebase没有verified的标，且sha也不一样
 def get_commit_diff():
     # 获取题解分支比master多出的提交次数
@@ -645,11 +654,7 @@ commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
     os.system(f'git switch master')
     os.system(f'git merge {num}')
-    push_to_which = 'origin'
-    if WHOAMI == User.Tisfy:
-        push_to_which = 'tisfy_letslt'
-        # 因为直接push到origin的话，依据~/.ssh/config，会使用LetMeFly666的id_rsa进行push
-        # 会变成LetMeFly666 merged the pull result，贡献者变成LetMeFly666了
+    push_to_which = User.push_to_which_when_single_commit
     os.system(f'git push {push_to_which}')
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete {REMOTE} {num}')
