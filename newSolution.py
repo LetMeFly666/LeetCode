@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-20 18:48:24
+LastEditTime: 2026-07-20 18:50:44
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -634,7 +634,7 @@ except:
         break
 print(prNumber)
 if prAlreadyExists:
-    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', f'Hello, we meet again. -- From {getPlatform()}']
+    cmd = ['gh', 'pr', 'comment', '-R', 'LetMeFly666/LeetCode', str(prNumber), '-b', f'Hello, we meet again. -- From {getPlatform()}']
     subprocess.run(cmd)
 os.system('gh pr edit -R LetMeFly666/LeetCode --add-label "under merge"')
 input('enter when ready to merge: ')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
