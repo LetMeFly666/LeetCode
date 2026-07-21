@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import sys
 import subprocess
@@ -9,8 +11,10 @@ from dataclasses import dataclass
 TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
 
 
+
 @dataclass
 class Change:
+
     commit: str
     timestamp: int
     lines: list[str]
@@ -28,7 +32,9 @@ def run_git(*args):
         capture_output=True
     )
 
+
     if result.returncode != 0:
+
         raise RuntimeError(
             f"""
 git command failed:
@@ -43,6 +49,7 @@ stderr:
 """
         )
 
+
     return result.stdout.strip()
 
 
@@ -52,36 +59,46 @@ def debug():
     print("=" * 80)
 
     print("ARGV:")
-    for i, x in enumerate(sys.argv):
-        print(i, repr(x))
+
+    for i,x in enumerate(sys.argv):
+
+        print(
+            i,
+            repr(x)
+        )
 
 
-    print("\nENV GITHEAD:")
+    print()
 
-    for k, v in os.environ.items():
+    print("GITHEAD:")
+
+    for k,v in os.environ.items():
 
         if k.startswith("GITHEAD_"):
+
             print(
                 k,
-                "=",
                 v
             )
 
+
     print("=" * 80)
+
 
 
 
 def get_merge_commits():
 
     """
-    merge driver 阶段：
+    获取当前merge两边commit
 
     ours:
         HEAD
 
     theirs:
-        GITHEAD_<sha>=branch
+        GITHEAD_xxx
     """
+
 
     ours = run_git(
         "rev-parse",
@@ -98,18 +115,23 @@ def get_merge_commits():
 
             sha = k[len("GITHEAD_"):]
 
+
             if len(sha) == 40:
+
                 theirs = sha
                 break
 
 
+
     if theirs is None:
+
         raise RuntimeError(
-            "Cannot find GITHEAD_*"
+            "cannot find GITHEAD"
         )
 
 
-    return ours, theirs
+    return ours,theirs
+
 
 
 
@@ -126,18 +148,24 @@ def commit_time(commit):
 
 
 
-def commits_between(base, head):
+
+def commits_between(base,head):
 
     result = run_git(
         "rev-list",
         "--reverse",
+        "--ancestry-path",
         f"{base}..{head}"
     )
 
+
     if not result:
+
         return []
 
+
     return result.splitlines()
+
 
 
 
@@ -149,6 +177,7 @@ def is_word(line):
             line
         )
     )
+
 
 
 
@@ -174,13 +203,14 @@ def extract_added_words(commit):
             and not line.startswith("+++")
         ):
 
-            content = line[1:]
+            content=line[1:]
 
 
             if (
-                content == "|||"
+                content=="|||"
                 or is_word(content)
             ):
+
                 result.append(content)
 
 
@@ -188,7 +218,9 @@ def extract_added_words(commit):
 
 
 
-def collect_changes(base, head):
+
+
+def collect_changes(base,head):
 
     result=[]
 
@@ -197,6 +229,7 @@ def collect_changes(base, head):
         base,
         head
     ):
+
 
         lines = extract_added_words(
             commit
@@ -218,36 +251,36 @@ def collect_changes(base, head):
 
 
 
+
+
 def find_table_end(lines):
 
     """
-    找 markdown 单词表结束位置。
+    找表格结束位置
 
-    文件结构：
+    结构:
 
-    前置markdown
+    markdown
 
-    |word|meaning|
     |word|meaning|
     |||
 
-    后续内容
-
-    返回：
-        后续内容开始 index
+    other content
     """
 
-    in_table = False
+
+    in_table=False
 
 
-    for i, line in enumerate(lines):
+    for i,line in enumerate(lines):
+
 
         if (
             is_word(line)
-            or line == "|||"
+            or line=="|||"
         ):
 
-            in_table = True
+            in_table=True
 
 
         elif in_table:
@@ -255,52 +288,34 @@ def find_table_end(lines):
             return i
 
 
+
     return len(lines)
 
 
 
-def normalize_append(lines):
-
-    """
-    保证追加内容格式正确。
-
-    两个分支都有 |||：
-    
-        |||
-        word
-
-    不删除。
-
-    只保证：
-        旧表格和新内容之间有分隔。
-    """
-
-    if not lines:
-        return lines
-
-
-    result = list(lines)
-
-
-    if result[0] != "|||":
-
-        result.insert(
-            0,
-            "|||"
-        )
-
-
-    return result
-
 
 
 def replace_table(
-    file,
+    ancestor_file,
+    output_file,
     merged_lines
 ):
 
+
+    """
+    注意：
+
+    使用 ancestor_file
+
+    不使用 output_file 原内容
+
+    因为 output_file(%A)
+    可能已经被git merge过
+    """
+
+
     content = Path(
-        file
+        ancestor_file
     ).read_text(
         encoding="utf-8"
     )
@@ -314,11 +329,6 @@ def replace_table(
     )
 
 
-    merged_lines = normalize_append(
-        merged_lines
-    )
-
-
     new_lines = (
         lines[:table_end]
         +
@@ -328,7 +338,7 @@ def replace_table(
     )
 
 
-    Path(file).write_text(
+    Path(output_file).write_text(
         "\n".join(new_lines)
         +
         "\n",
@@ -337,9 +347,12 @@ def replace_table(
 
 
 
+
+
 def main():
 
-    if len(sys.argv) != 4:
+
+    if len(sys.argv)!=4:
 
         print(
             "usage: merge_words.py %O %A %B"
@@ -348,15 +361,21 @@ def main():
         return 1
 
 
-    ancestor_file = sys.argv[1]
-    ours_file = sys.argv[2]
-    theirs_file = sys.argv[3]
+
+    ancestor_file=sys.argv[1]
+
+    ours_file=sys.argv[2]
+
+    theirs_file=sys.argv[3]
+
 
 
     debug()
 
 
+
     print("FILES:")
+
 
     for f in [
         ancestor_file,
@@ -364,7 +383,7 @@ def main():
         theirs_file
     ]:
 
-        p = Path(f)
+        p=Path(f)
 
         print(
             f,
@@ -377,7 +396,10 @@ def main():
         )
 
 
-    ours, theirs = get_merge_commits()
+
+
+    ours,theirs=get_merge_commits()
+
 
 
     print(
@@ -385,13 +407,15 @@ def main():
         ours
     )
 
+
     print(
         "THEIRS:",
         theirs
     )
 
 
-    base = run_git(
+
+    base=run_git(
         "merge-base",
         ours,
         theirs
@@ -402,6 +426,7 @@ def main():
         "BASE:",
         base
     )
+
 
 
     changes=[]
@@ -423,7 +448,11 @@ def main():
     )
 
 
-    print("COMMITS:")
+
+    print(
+        "\nCOMMITS:"
+    )
+
 
     for c in changes:
 
@@ -434,6 +463,7 @@ def main():
         )
 
 
+
     changes.sort(
         key=lambda x:
             (
@@ -441,6 +471,7 @@ def main():
                 x.commit
             )
     )
+
 
 
     merged=[]
@@ -453,13 +484,17 @@ def main():
         )
 
 
+
     print(
-        "MERGED LINES:",
-        len(merged)
+        "\nMERGED:",
+        len(merged),
+        "lines"
     )
 
 
+
     replace_table(
+        ancestor_file,
         ours_file,
         merged
     )
@@ -469,13 +504,18 @@ def main():
 
 
 
-if __name__ == "__main__":
+
+
+
+if __name__=="__main__":
+
 
     try:
 
         sys.exit(
             main()
         )
+
 
     except Exception as e:
 
