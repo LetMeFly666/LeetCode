@@ -1,211 +1,281 @@
-import sys
+
 import subprocess
+import sys
 import re
 from pathlib import Path
 
 
-TARGET_FILE = "Solutions/Other-English-LearningNotes-SomeWords.md"
+TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
 
 
-def get_commit_time(commit):
-    """
-    获取commit时间
-    """
-    result = subprocess.check_output(
-        [
-            "git",
+def git(*args):
+    return subprocess.check_output(
+        ["git", *args],
+        text=True
+    ).strip()
+
+
+
+def commit_time(commit):
+    return int(
+        git(
             "show",
             "-s",
             "--format=%ct",
-            commit,
-        ],
-        text=True,
+            commit
+        )
     )
 
-    return int(result.strip())
 
 
-def get_added_lines(base, branch):
+def commits_between(base, head):
     """
-    获取branch相对于base新增内容
+    获取 base..head 中所有commit
+    从旧到新
     """
 
-    diff = subprocess.check_output(
-        [
-            "git",
-            "diff",
+    result = git(
+        "rev-list",
+        "--reverse",
+        f"{base}..{head}"
+    )
+
+    if not result:
+        return []
+
+    return result.splitlines()
+
+
+
+def file_added_by_commit(commit):
+    """
+    获取某一次commit针对目标文件新增内容
+    """
+
+    try:
+
+        diff = git(
+            "show",
+            "--format=",
             "--unified=0",
-            base,
-            branch,
+            commit,
             "--",
-            TARGET_FILE,
-        ],
-        text=True,
-    )
+            TARGET
+        )
 
-    lines = []
+    except subprocess.CalledProcessError:
+        return []
+
+
+    result=[]
 
     for line in diff.splitlines():
 
-        # 只取新增
-        if line.startswith("+") and not line.startswith("+++"):
-            lines.append(line[1:])
-
-    return lines
-
-
-def extract_words(lines):
-
-    result = []
-
-    for line in lines:
-
-        # 单词表格
-        m = re.match(
-            r"\|([^|]+)\|([^|]+)\|",
-            line
-        )
-
-        if m:
+        if (
+            line.startswith("+")
+            and not line.startswith("+++")
+        ):
             result.append(
-                {
-                    "type": "word",
-                    "content": line,
-                }
+                line[1:]
             )
 
-        # 分隔
-        elif line.strip() == "|||":
-            result.append(
-                {
-                    "type": "separator",
-                    "content": "|||",
-                }
-            )
 
     return result
 
 
 
-def main():
+def is_word(line):
 
-    ancestor = sys.argv[1]
-    current = sys.argv[2]
-    other = sys.argv[3]
-
-
-    current_time = get_commit_time(current)
-    other_time = get_commit_time(other)
-
-
-    additions = []
-
-
-    for commit in [
-        (current, current_time),
-        (other, other_time),
-    ]:
-
-        lines = get_added_lines(
-            ancestor,
-            commit[0]
+    return bool(
+        re.match(
+            r"^\|[^|]+\|[^|]+\|$",
+            line
         )
-
-        additions.append(
-            (
-                commit[1],
-                extract_words(lines)
-            )
-        )
-
-
-    # 按commit时间排序
-    additions.sort(
-        key=lambda x:x[0]
     )
 
 
-    merged=[]
+
+def collect_commits(base, head):
+
+    commits=[]
+
+    for c in commits_between(base, head):
+
+        lines=file_added_by_commit(c)
+
+        words=[]
+
+        for line in lines:
+
+            if is_word(line) or line=="|||":
+
+                words.append(line)
 
 
-    for _, items in additions:
+        if words:
 
-        for item in items:
-
-            merged.append(
-                item["content"]
+            commits.append(
+                {
+                    "hash": c,
+                    "time": commit_time(c),
+                    "lines": words
+                }
             )
 
 
-    # 去掉连续重复空行
-    output=[]
-
-    last_sep=False
-
-    for line in merged:
-
-        if line=="|||":
-
-            if last_sep:
-                continue
-
-            last_sep=True
-
-        else:
-            last_sep=False
+    return commits
 
 
-        output.append(line)
 
-
-    # 取当前文件作为基础
-    current_file=Path(TARGET_FILE)
-
-    text=current_file.read_text()
-
-
-    # 找到表格区域
-    lines=text.splitlines()
-
+def find_table(lines):
 
     start=None
     end=None
 
 
-    for i,l in enumerate(lines):
+    for i,line in enumerate(lines):
 
-        if re.match(
-            r"\|[^|]+\|[^|]+\|",
-            l
-        ):
+        if is_word(line):
+
             if start is None:
                 start=i
 
         elif start is not None:
+
             end=i
             break
 
 
     if start is None:
-        print("cannot find table")
-        return 1
+        raise RuntimeError(
+            "cannot locate markdown table"
+        )
 
 
     if end is None:
         end=len(lines)
 
 
-    new_lines = (
+    return start,end
+
+
+
+def main():
+
+
+    # merge driver:
+    # %O ancestor file
+    # %A current file
+    # %B other file
+
+
+    if len(sys.argv)!=4:
+        print(
+            "usage: merge_words.py %O %A %B"
+        )
+        return 1
+
+
+    ancestor_file=sys.argv[1]
+
+
+    # 当前HEAD
+    try:
+        current_commit=git(
+            "rev-parse",
+            "HEAD"
+        )
+
+        other_commit=git(
+            "rev-parse",
+            "MERGE_HEAD"
+        )
+
+    except Exception as e:
+
+        print(e)
+        return 1
+
+
+
+    base_commit=git(
+        "merge-base",
+        current_commit,
+        other_commit
+    )
+
+
+    print(
+        "base:",
+        base_commit
+    )
+
+
+    commits=[]
+
+
+    commits.extend(
+        collect_commits(
+            base_commit,
+            current_commit
+        )
+    )
+
+
+    commits.extend(
+        collect_commits(
+            base_commit,
+            other_commit
+        )
+    )
+
+
+    # 按真实commit时间排序
+
+    commits.sort(
+        key=lambda x: (
+            x["time"],
+            x["hash"]
+        )
+    )
+
+
+    merged=[]
+
+
+    for c in commits:
+
+        merged.extend(
+            c["lines"]
+        )
+
+
+    # 读取当前文件
+
+    target=Path(TARGET)
+
+    text=target.read_text(
+        encoding="utf-8"
+    )
+
+    lines=text.splitlines()
+
+
+    start,end=find_table(lines)
+
+
+    new_lines=(
         lines[:start]
         +
-        output
+        merged
         +
         lines[end:]
     )
 
 
-    current_file.write_text(
-        "\n".join(new_lines)+"\n"
+    target.write_text(
+        "\n".join(new_lines)+"\n",
+        encoding="utf-8"
     )
 
 
@@ -214,4 +284,5 @@ def main():
 
 
 if __name__=="__main__":
+
     sys.exit(main())
