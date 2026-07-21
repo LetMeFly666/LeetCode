@@ -1,248 +1,302 @@
 #!/usr/bin/env python3
 
+import os
 import sys
-from pathlib import Path
+import subprocess
 import re
-import difflib
+from pathlib import Path
+from dataclasses import dataclass
+
+
+TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
+
+
+@dataclass
+class Change:
+    commit: str
+    timestamp: int
+    lines: list[str]
 
 
 
-def is_table_line(line):
+def run_git(*args):
 
-    return (
-        line == "|||"
-        or
-        bool(
-            re.match(
-                r"^\|.*\|.*\|$",
-                line
-            )
+    result = subprocess.run(
+        [
+            "git",
+            *args
+        ],
+        text=True,
+        capture_output=True
+    )
+
+    if result.returncode != 0:
+
+        raise RuntimeError(
+            f"""
+git failed:
+
+git {' '.join(args)}
+
+stdout:
+{result.stdout}
+
+stderr:
+{result.stderr}
+"""
+        )
+
+    return result.stdout.strip()
+
+
+
+def debug():
+
+    print("=" * 80)
+
+    print("ARGV:")
+
+    for i, x in enumerate(sys.argv):
+
+        print(i, repr(x))
+
+
+    print("\nGITHEAD:")
+
+    for k, v in os.environ.items():
+
+        if k.startswith("GITHEAD_"):
+
+            print(k, v)
+
+
+    print("=" * 80)
+
+
+
+def get_merge_commits():
+
+    ours = run_git(
+        "rev-parse",
+        "HEAD"
+    )
+
+
+    theirs = None
+
+
+    for k in os.environ:
+
+        if k.startswith("GITHEAD_"):
+
+            sha = k[len("GITHEAD_"):]
+
+            if len(sha) == 40:
+
+                theirs = sha
+                break
+
+
+    if theirs is None:
+
+        raise RuntimeError(
+            "cannot find GITHEAD"
+        )
+
+
+    return ours, theirs
+
+
+
+def commit_time(commit):
+
+    return int(
+        run_git(
+            "show",
+            "-s",
+            "--format=%ct",
+            commit
         )
     )
 
 
 
-def find_table_range(lines):
+def commits_between(base, head):
 
-    start=None
-    end=None
-
-
-    for i,line in enumerate(lines):
-
-        if is_table_line(line):
-
-            start=i
-            break
+    result = run_git(
+        "rev-list",
+        "--reverse",
+        "--ancestry-path",
+        f"{base}..{head}"
+    )
 
 
-    if start is None:
+    if not result:
 
-        raise Exception(
-            "cannot find table"
+        return []
+
+
+    return result.splitlines()
+
+
+
+def is_word(line):
+
+    return bool(
+        re.match(
+            r"^\|[^|]+\|[^|]+\|$",
+            line
         )
-
-
-    empty_count=0
-
-
-    for i in range(start,len(lines)):
-
-        line=lines[i]
-
-
-        if is_table_line(line):
-
-            empty_count=0
-            continue
-
-
-        if line.strip()=="":
-            empty_count+=1
-
-            # 一个空行允许
-            continue
-
-
-        # 非表格内容
-        if empty_count>=1:
-
-            end=i-empty_count
-            break
-
-
-    if end is None:
-        end=len(lines)
-
-
-    return start,end
+    )
 
 
 
-def extract_table(lines):
+def extract_added_words(commit):
 
-    s,e=find_table_range(lines)
+    diff = run_git(
+        "show",
+        "--format=",
+        "--unified=0",
+        commit,
+        "--",
+        TARGET
+    )
 
-    return lines[s:e]
-
-
-
-def after_common_prefix(base, branch):
-
-    """
-    获取branch相对于base新增部分
-    """
-
-    i=0
-
-
-    while (
-        i<len(base)
-        and
-        i<len(branch)
-        and
-        base[i]==branch[i]
-    ):
-        i+=1
-
-
-    return branch[i:]
-
-
-
-def remove_duplicate_boundary(lines):
-
-    """
-    只处理边界重复
-
-    不删除两个新增session
-    """
 
     result=[]
 
 
-    for x in lines:
+    for line in diff.splitlines():
 
         if (
-            result
+            line.startswith("+")
             and
-            x=="|||"
-            and
-            result[-1]=="|||"
+            not line.startswith("+++")
         ):
-            continue
 
-        result.append(x)
+            content=line[1:]
+
+
+            if (
+                content == "|||"
+                or is_word(content)
+            ):
+
+                result.append(content)
 
 
     return result
 
 
 
-def merge_file(
+def collect_changes(base, head):
+
+    result=[]
+
+
+    for commit in commits_between(
+        base,
+        head
+    ):
+
+        lines = extract_added_words(
+            commit
+        )
+
+
+        if lines:
+
+            result.append(
+                Change(
+                    commit=commit,
+                    timestamp=commit_time(commit),
+                    lines=lines
+                )
+            )
+
+
+    return result
+
+
+
+def find_table_end(lines):
+
+    """
+    找表格结束位置
+
+    支持:
+
+    |word|meaning|
+    |||
+
+    """
+
+    started=False
+
+
+    for i,line in enumerate(lines):
+
+        if (
+            is_word(line)
+            or line=="|||"
+        ):
+
+            started=True
+
+            continue
+
+
+        if started:
+
+            if line.strip()=="":
+                continue
+
+
+            return i
+
+
+    return len(lines)
+
+
+
+def replace_table(
     ancestor_file,
-    ours_file,
-    theirs_file
+    output_file,
+    merged_lines
 ):
 
 
-    ancestor=Path(
+    ancestor = Path(
         ancestor_file
     ).read_text(
-        encoding="utf8"
-    ).splitlines()
-
-
-    ours=Path(
-        ours_file
-    ).read_text(
-        encoding="utf8"
-    ).splitlines()
-
-
-    theirs=Path(
-        theirs_file
-    ).read_text(
-        encoding="utf8"
-    ).splitlines()
-
-
-
-    as_,ae=find_table_range(
-        ancestor
-    )
-
-    os_,oe=find_table_range(
-        ours
-    )
-
-    ts_,te=find_table_range(
-        theirs
+        encoding="utf-8"
     )
 
 
-    ancestor_table=ancestor[as_:ae]
-
-    ours_table=ours[os_:oe]
-
-    theirs_table=theirs[ts_:te]
+    lines = ancestor.splitlines()
 
 
 
-    ours_new=after_common_prefix(
-        ancestor_table,
-        ours_table
+    end = find_table_end(
+        lines
     )
 
 
-    theirs_new=after_common_prefix(
-        ancestor_table,
-        theirs_table
-    )
-
-
-    print(
-        "OURS NEW:",
-        ours_new
-    )
-
-    print(
-        "THEIRS NEW:",
-        theirs_new
-    )
-
-
-
-    merged_table=(
-        ancestor_table
+    new_lines = (
+        lines[:end]
         +
-        ours_new
+        merged_lines
         +
-        theirs_new
+        lines[end:]
     )
 
 
-    merged_table=remove_duplicate_boundary(
-        merged_table
-    )
-
-
-    result=(
-        ours[:os_]
+    Path(output_file).write_text(
+        "\n".join(new_lines)
         +
-        merged_table
-        +
-        ours[oe:]
+        "\n",
+        encoding="utf-8"
     )
-
-
-    Path(
-        ours_file
-    ).write_text(
-        "\n".join(result)+"\n",
-        encoding="utf8"
-    )
-
 
 
 
@@ -257,13 +311,137 @@ def main():
         return 1
 
 
-    merge_file(
-        sys.argv[1],
-        sys.argv[2],
-        sys.argv[3]
+
+    ancestor_file=sys.argv[1]
+
+    ours_file=sys.argv[2]
+
+    theirs_file=sys.argv[3]
+
+
+    debug()
+
+
+    ours, theirs = get_merge_commits()
+
+
+    print(
+        "OURS:",
+        ours
     )
+
+
+    print(
+        "THEIRS:",
+        theirs
+    )
+
+
+
+    base = run_git(
+        "merge-base",
+        ours,
+        theirs
+    )
+
+
+    print(
+        "BASE:",
+        base
+    )
+
+
+
+    changes=[]
+
+
+    changes.extend(
+        collect_changes(
+            base,
+            ours
+        )
+    )
+
+
+    changes.extend(
+        collect_changes(
+            base,
+            theirs
+        )
+    )
+
+
+
+    print("\nCOMMITS:")
+
+    for c in changes:
+
+        print(
+            c.timestamp,
+            c.commit[:8],
+            c.lines
+        )
+
+
+
+    # 关键：
+    # 按真实 commit 时间排序
+
+    changes.sort(
+        key=lambda x:
+            (
+                x.timestamp,
+                x.commit
+            )
+    )
+
+
+
+    merged=[]
+
+
+    for c in changes:
+
+        merged.extend(
+            c.lines
+        )
+
+
+
+    print(
+        "\nMERGED:"
+    )
+
+    for x in merged:
+
+        print(x)
+
+
+
+    replace_table(
+        ancestor_file,
+        ours_file,
+        merged
+    )
+
+
+    return 0
+
 
 
 if __name__=="__main__":
 
-    main()
+    try:
+
+        sys.exit(
+            main()
+        )
+
+    except Exception as e:
+
+        print(
+            "ERROR:",
+            e
+        )
+
+        sys.exit(1)
