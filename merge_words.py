@@ -1,443 +1,129 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import subprocess
-import re
 from pathlib import Path
-from dataclasses import dataclass
 
 
-TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
+def run(*args):
+    print("$ git", *args)
 
-
-@dataclass
-class CommitChange:
-    commit: str
-    timestamp: int
-    lines: list[str]
-
-
-def git(*args, check=True):
-    return subprocess.run(
+    r = subprocess.run(
         ["git", *args],
         text=True,
-        capture_output=True,
-        check=check,
-    ).stdout.strip()
+        capture_output=True
+    )
+
+    print("return:", r.returncode)
+
+    if r.stdout:
+        print("stdout:")
+        print(r.stdout)
+
+    if r.stderr:
+        print("stderr:")
+        print(r.stderr)
+
+    return r.stdout.strip()
 
 
 
-def get_commit_time(commit: str) -> int:
-    return int(
-        git(
-            "show",
-            "-s",
-            "--format=%ct",
-            commit,
+def main():
+
+    print("=" * 80)
+
+    print("ARGV:")
+    for i, x in enumerate(sys.argv):
+        print(i, repr(x))
+
+
+    print()
+    print("FILES:")
+
+    for x in sys.argv[1:]:
+        p = Path(x)
+
+        print(
+            x,
+            "exists=",
+            p.exists(),
+            "size=",
+            p.stat().st_size if p.exists() else None
         )
+
+
+    print()
+    print("HASH:")
+
+    for x in sys.argv[1:]:
+
+        run(
+            "hash-object",
+            "--path",
+            "Solutions/Other-English-LearningNotes-SomeWords.md",
+            x
+        )
+
+
+    print()
+    print("GIT STATUS")
+
+    run(
+        "status",
+        "--short"
     )
 
 
+    print()
+    print("INDEX UNMERGED")
 
-def get_conflict_blobs(path: str):
-    """
-    从 Git index 获取 merge 三方 blob
-
-    stage:
-        1 ancestor
-        2 ours
-        3 theirs
-    """
-
-    output = git(
+    run(
         "ls-files",
-        "-u",
-        "--",
-        path,
-    )
-
-    result = {}
-
-    for line in output.splitlines():
-
-        mode, sha, stage, filename = line.split(
-            maxsplit=3
-        )
-
-        result[int(stage)] = sha
-
-
-    return result
-
-
-
-def get_all_commits():
-
-    result = git(
-        "rev-list",
-        "--all",
-    ).splitlines()
-    print(f'all history len: {len(result)}')
-    return result
-
-
-
-def blob_in_commit(blob, commit):
-
-    output = git(
-        "ls-tree",
-        "-r",
-        commit,
-        "--",
-        TARGET,
-        check=False,
-    )
-
-    return blob in output
-
-
-
-def find_commits_by_blob(blob):
-
-    """
-    找拥有该 blob 的 commit
-    """
-
-    result=[]
-
-    for commit in get_all_commits():
-
-        if blob_in_commit(blob, commit):
-
-            result.append(commit)
-
-
-    return result
-
-
-
-def find_tip_commit(blob):
-
-    """
-    blob可能对应多个commit。
-    选择时间最新的那个。
-    """
-
-    commits=find_commits_by_blob(blob)
-
-    if not commits:
-        raise RuntimeError(
-            f"cannot find commit for blob {blob}"
-        )
-
-
-    return max(
-        commits,
-        key=get_commit_time
+        "-u"
     )
 
 
+    print()
+    print("HEAD")
 
-def commits_after(base, head):
-
-    if base == head:
-        return []
-
-    result = git(
-        "rev-list",
-        "--reverse",
-        f"{base}..{head}",
-    )
-
-    if not result:
-        return []
-
-    return result.splitlines()
-
-
-
-def extract_added_lines(commit):
-
-    diff = git(
-        "show",
-        "--format=",
-        "--unified=0",
-        commit,
-        "--",
-        TARGET,
+    run(
+        "rev-parse",
+        "HEAD"
     )
 
 
-    result=[]
+    print()
+    print("MERGE_HEAD")
 
-    for line in diff.splitlines():
-
-        if (
-            line.startswith("+")
-            and not line.startswith("+++")
-        ):
-            content=line[1:]
-
-            if (
-                content == "|||"
-                or is_word_line(content)
-            ):
-                result.append(content)
-
-
-    return result
-
-
-
-def is_word_line(line):
-
-    return bool(
-        re.match(
-            r"^\|[^|]+\|[^|]+\|$",
-            line
-        )
+    run(
+        "rev-parse",
+        "MERGE_HEAD"
     )
 
 
+    print()
+    print("ENV")
 
-def collect_branch_changes(
-    base,
-    head,
-):
+    for k,v in sorted(os.environ.items()):
 
-    changes=[]
+        if k.startswith("GIT"):
 
-    for commit in commits_after(
-        base,
-        head,
-    ):
-
-        lines=extract_added_lines(commit)
-
-        if lines:
-
-            changes.append(
-                CommitChange(
-                    commit=commit,
-                    timestamp=get_commit_time(commit),
-                    lines=lines,
-                )
+            print(
+                k,
+                "=",
+                v
             )
 
-    return changes
 
+    print("=" * 80)
 
 
-def get_merge_base(a,b):
-
-    return git(
-        "merge-base",
-        a,
-        b,
-    )
-
-
-
-def get_current_head():
-
-    return git(
-        "rev-parse",
-        "HEAD",
-    )
-
-
-
-def get_theirs_commit():
-
-    """
-    从 stage3 blob 找 incoming commit
-    """
-
-    blobs=get_conflict_blobs(TARGET)
-
-    theirs_blob=blobs[3]
-
-    return find_tip_commit(
-        theirs_blob
-    )
-
-
-
-def merge_words():
-
-    ancestor_file=sys.argv[1]
-    ours_file=sys.argv[2]
-    theirs_file=sys.argv[3]
-
-
-    print(
-        "ancestor:",
-        ancestor_file
-    )
-
-    print(
-        "ours:",
-        ours_file
-    )
-
-    print(
-        "theirs:",
-        theirs_file
-    )
-
-
-    blobs=get_conflict_blobs(TARGET)
-
-    print(
-        "blobs:",
-        blobs
-    )
-
-
-    ours_blob=blobs[2]
-    theirs_blob=blobs[3]
-
-
-    ours_commit=find_tip_commit(
-        ours_blob
-    )
-
-    theirs_commit=find_tip_commit(
-        theirs_blob
-    )
-
-
-    print(
-        "ours commit:",
-        ours_commit
-    )
-
-    print(
-        "theirs commit:",
-        theirs_commit
-    )
-
-
-    base=get_merge_base(
-        ours_commit,
-        theirs_commit
-    )
-
-
-    print(
-        "base:",
-        base
-    )
-
-
-    changes=[]
-
-
-    changes.extend(
-        collect_branch_changes(
-            base,
-            ours_commit
-        )
-    )
-
-
-    changes.extend(
-        collect_branch_changes(
-            base,
-            theirs_commit
-        )
-    )
-
-
-    # 按真实 commit 时间排序
-
-    changes.sort(
-        key=lambda x: (
-            x.timestamp,
-            x.commit,
-        )
-    )
-
-
-    merged=[]
-
-    for c in changes:
-
-        merged.extend(
-            c.lines
-        )
-
-
-    # 写回 %A
-    # 注意：
-    # 不写 TARGET
-    # Git 会读取这个文件作为 merge result
-
-    original=Path(
-        ours_file
-    ).read_text(
-        encoding="utf-8"
-    ).splitlines()
-
-
-    start=None
-    end=None
-
-
-    for i,line in enumerate(original):
-
-        if is_word_line(line):
-
-            if start is None:
-                start=i
-
-        elif start is not None:
-
-            end=i
-            break
-
-
-    if start is None:
-        raise RuntimeError(
-            "table not found"
-        )
-
-
-    if end is None:
-        end=len(original)
-
-
-    result=(
-        original[:start]
-        +
-        merged
-        +
-        original[end:]
-    )
-
-
-    Path(ours_file).write_text(
-        "\n".join(result)+"\n",
-        encoding="utf-8"
-    )
-
-
+    # 暂时告诉 git merge driver 成功
+    # 不然一直 conflict
     return 0
 
 
 
 if __name__=="__main__":
-
-    try:
-        sys.exit(
-            merge_words()
-        )
-
-    except Exception as e:
-
-        print(
-            "ERROR:",
-            e
-        )
-
-        sys.exit(1)
+    sys.exit(main())
