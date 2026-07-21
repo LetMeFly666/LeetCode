@@ -73,10 +73,12 @@ def get_conflict_blobs(path: str):
 
 def get_all_commits():
 
-    return git(
+    result = git(
         "rev-list",
         "--all",
     ).splitlines()
+    print(f'all history len: {len(result)}')
+    return result
 
 
 
