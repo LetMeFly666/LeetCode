@@ -142,9 +142,18 @@ def commits_between(base, head):
 
 def is_word(line):
 
+    # ||| 是 session separator，不是单词记录
+    if line == "|||":
+        return False
+
+    # 支持：
+    # |word|meaning|
+    # |1||
+    # ||2|
+    # |a|b|
     return bool(
         re.match(
-            r"^\|[^|]+\|[^|]+\|$",
+            r"^\|.*\|.*\|$",
             line
         )
     )
@@ -170,23 +179,22 @@ def extract_added_words(commit):
 
         if (
             line.startswith("+")
-            and
-            not line.startswith("+++")
+            and not line.startswith("+++")
         ):
 
-            content=line[1:]
+            content = line[1:]
 
 
-            if (
-                content == "|||"
-                or is_word(content)
-            ):
+            if content == "|||":
+
+                result.append(content)
+
+            elif is_word(content):
 
                 result.append(content)
 
 
     return result
-
 
 
 def collect_changes(base, head):
