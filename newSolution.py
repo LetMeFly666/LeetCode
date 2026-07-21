@@ -656,15 +656,12 @@ def get_commit_diff():
     return count
 commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
-    def tmp(s: str):
-        input(f'{s}: continue?')
-        os.system(s)
-    tmp(f'git switch master')
-    tmp(f'git merge {num}')
+    os.system(f'git switch master')
+    os.system(f'git merge {num}')
     push_to_which = WHOAMI.push_to_which_when_single_commit
-    tmp(f'git push {push_to_which}')
-    tmp(f'git branch -d {num}')
-    tmp(f'git push --delete {REMOTE} {num}')
+    os.system(f'git push {push_to_which}')
+    os.system(f'git branch -d {num}')
+    os.system(f'git push --delete {REMOTE} {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
     try:
         result = subprocess.run(
