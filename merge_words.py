@@ -3,105 +3,132 @@
 import sys
 from pathlib import Path
 import re
-
-
-TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
+import difflib
 
 
 
-def is_word(line):
+def is_table_line(line):
 
-    return bool(
-        re.match(
-            r"^\|[^|]+\|[^|]+\|$",
-            line
+    return (
+        line == "|||"
+        or
+        bool(
+            re.match(
+                r"^\|.*\|.*\|$",
+                line
+            )
         )
     )
 
 
 
-def table_end(lines):
+def find_table_range(lines):
 
-    started=False
+    start=None
+    end=None
+
 
     for i,line in enumerate(lines):
 
-        if is_word(line) or line=="|||":
+        if is_table_line(line):
 
-            started=True
-
-        elif started:
-
-            return i
+            start=i
+            break
 
 
-    return len(lines)
+    if start is None:
+
+        raise Exception(
+            "cannot find table"
+        )
+
+
+    empty_count=0
+
+
+    for i in range(start,len(lines)):
+
+        line=lines[i]
+
+
+        if is_table_line(line):
+
+            empty_count=0
+            continue
+
+
+        if line.strip()=="":
+            empty_count+=1
+
+            # 一个空行允许
+            continue
+
+
+        # 非表格内容
+        if empty_count>=1:
+
+            end=i-empty_count
+            break
+
+
+    if end is None:
+        end=len(lines)
+
+
+    return start,end
 
 
 
-def table_part(lines):
+def extract_table(lines):
 
-    end=table_end(lines)
+    s,e=find_table_range(lines)
 
-    return lines[:end]
+    return lines[s:e]
 
 
 
-def tail_after_ancestor(
-    ancestor,
-    branch
-):
+def after_common_prefix(base, branch):
 
     """
-    找 branch 比 ancestor 多出来的表格内容
+    获取branch相对于base新增部分
     """
-
-    a=table_part(ancestor)
-    b=table_part(branch)
-
-
-    if b[:len(a)]==a:
-
-        return b[len(a):]
-
-
-    # fallback:
-    # 找公共前缀
 
     i=0
 
+
     while (
-        i<len(a)
+        i<len(base)
         and
-        i<len(b)
+        i<len(branch)
         and
-        a[i]==b[i]
+        base[i]==branch[i]
     ):
         i+=1
 
 
-    return b[i:]
+    return branch[i:]
 
 
 
-
-def merge_separator(lines):
+def remove_duplicate_boundary(lines):
 
     """
-    防止两个|||连续
+    只处理边界重复
 
-    但只处理边界
-
+    不删除两个新增session
     """
 
     result=[]
 
+
     for x in lines:
 
         if (
+            result
+            and
             x=="|||"
-            and result
-            and result[-1]=="|||"
+            and
+            result[-1]=="|||"
         ):
             continue
 
@@ -112,7 +139,7 @@ def merge_separator(lines):
 
 
 
-def merge(
+def merge_file(
     ancestor_file,
     ours_file,
     theirs_file
@@ -141,59 +168,71 @@ def merge(
 
 
 
-    base_table=table_part(
+    as_,ae=find_table_range(
         ancestor
     )
 
-
-    ours_add=tail_after_ancestor(
-        ancestor,
+    os_,oe=find_table_range(
         ours
     )
 
-
-    theirs_add=tail_after_ancestor(
-        ancestor,
+    ts_,te=find_table_range(
         theirs
     )
 
 
+    ancestor_table=ancestor[as_:ae]
+
+    ours_table=ours[os_:oe]
+
+    theirs_table=theirs[ts_:te]
+
+
+
+    ours_new=after_common_prefix(
+        ancestor_table,
+        ours_table
+    )
+
+
+    theirs_new=after_common_prefix(
+        ancestor_table,
+        theirs_table
+    )
+
+
     print(
-        "OURS ADD:",
-        ours_add
+        "OURS NEW:",
+        ours_new
     )
 
     print(
-        "THEIRS ADD:",
-        theirs_add
+        "THEIRS NEW:",
+        theirs_new
     )
 
 
-    merged = (
-        base_table
+
+    merged_table=(
+        ancestor_table
         +
-        ours_add
+        ours_new
         +
-        theirs_add
+        theirs_new
     )
 
 
-    merged=merge_separator(
-        merged
-    )
-
-
-    end=table_end(
-        ancestor
+    merged_table=remove_duplicate_boundary(
+        merged_table
     )
 
 
     result=(
-        ancestor[:end]
+        ours[:os_]
         +
-        merged[len(base_table):]
+        merged_table
         +
-        ancestor[end:]
+        ours[oe:]
     )
 
 
@@ -206,33 +245,25 @@ def merge(
 
 
 
+
 def main():
 
     if len(sys.argv)!=4:
 
         print(
-            "usage %O %A %B"
+            "usage: merge_words.py %O %A %B"
         )
 
         return 1
 
 
-    ancestor,ours,theirs=sys.argv[1:]
-
-
-    merge(
-        ancestor,
-        ours,
-        theirs
+    merge_file(
+        sys.argv[1],
+        sys.argv[2],
+        sys.argv[3]
     )
-
-
-    return 0
-
 
 
 if __name__=="__main__":
 
-    sys.exit(
-        main()
-    )
+    main()
