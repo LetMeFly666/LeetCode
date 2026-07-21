@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-04 19:52:44
+ * @LastEditTime: 2026-07-21 10:07:24
 -->
 # LetLeet Blog
 
@@ -1179,6 +1179,7 @@
 |3461.判断操作后字符串中的数字是否相等I|简单|<a href="https://leetcode.cn/problems/check-if-digits-are-equal-in-string-after-operations-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/10/23/LeetCode%203461.%E5%88%A4%E6%96%AD%E6%93%8D%E4%BD%9C%E5%90%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%97%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/153800840" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/check-if-digits-are-equal-in-string-after-operations-i/solutions/3814120/letmefly-3461pan-duan-cao-zuo-hou-zi-fu-8nd1t/" target="_blank">LeetCode题解</a>|
 |3474.字典序最小的生成字符串|困难|<a href="https://leetcode.cn/problems/lexicographically-smallest-generated-string/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/03/31/LeetCode%203474.%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84%E7%94%9F%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/159736815" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/lexicographically-smallest-generated-string/solutions/3942826/letmefly-3474zi-dian-xu-zui-xiao-de-shen-hlj5/" target="_blank">LeetCode题解</a>|
 |3494.酿造药水需要的最少总时间|中等|<a href="https://leetcode.cn/problems/find-the-minimum-amount-of-time-to-brew-potions/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/10/09/LeetCode%203494.%E9%85%BF%E9%80%A0%E8%8D%AF%E6%B0%B4%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E6%80%BB%E6%97%B6%E9%97%B4/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/152847907" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/find-the-minimum-amount-of-time-to-brew-potions/solutions/3801656/letmefly-3494niang-zao-yao-shui-xu-yao-d-bjxv/" target="_blank">LeetCode题解</a>|
+|3499.操作后最大活跃区段数I|中等|<a href="https://leetcode.cn/problems/maximize-active-section-with-trade-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/07/21/LeetCode%203499.%E6%93%8D%E4%BD%9C%E5%90%8E%E6%9C%80%E5%A4%A7%E6%B4%BB%E8%B7%83%E5%8C%BA%E6%AE%B5%E6%95%B0I/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/163067749" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/maximize-active-section-with-trade-i/solutions/3999467/letmefly-3499cao-zuo-hou-zui-da-huo-yue-vl5n0/" target="_blank">LeetCode题解</a>|
 |3507.移除最小数对使数组有序I|简单|<a href="https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-i/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/01/22/LeetCode%203507.%E7%A7%BB%E9%99%A4%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AF%B9%E4%BD%BF%E6%95%B0%E7%BB%84%E6%9C%89%E5%BA%8FI/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157263848" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-i/solutions/3887006/letmefly-3507yi-chu-zui-xiao-shu-dui-shi-t5h5/" target="_blank">LeetCode题解</a>|
 |3508.设计路由器|中等|<a href="https://leetcode.cn/problems/implement-router/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2025/09/20/LeetCode%203508.%E8%AE%BE%E8%AE%A1%E8%B7%AF%E7%94%B1%E5%99%A8/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/151901838" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/implement-router/solutions/3787451/letmefly-3508she-ji-lu-you-qi-stltao-stl-ehkf/" target="_blank">LeetCode题解</a>|
 |3510.移除最小数对使数组有序II|困难|<a href="https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-ii/" target="_blank">题目地址</a>|<a href="https://blog.letmefly.xyz/2026/01/23/LeetCode%203510.%E7%A7%BB%E9%99%A4%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AF%B9%E4%BD%BF%E6%95%B0%E7%BB%84%E6%9C%89%E5%BA%8FII/" target="_blank">题解地址</a>|<a href="https://letmefly.blog.csdn.net/article/details/157301310" target="_blank">CSDN题解</a>|<a href="https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-ii/solutions/3887720/letmefly-3510yi-chu-zui-xiao-shu-dui-shi-v4tf/" target="_blank">LeetCode题解</a>|
@@ -1309,6 +1310,7 @@
 - [ ] 分支名匹配机制/project status更早set2todo机制 - 新分支push时候就能标记一个issue为in progress了，甚至hello的时候就可以
 - [ ] code-server 浏览器运行时候目前没法做到自动修改剪贴板AC百分比
 - [ ] newSolution.py状态机、题解时候支持上下选或指令操作
+- [ ] 多个代码段的支持（不再####C++了，而是想力扣那样可以通过点击tab的方式来切换代码种类）
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
