@@ -1,171 +1,11 @@
 #!/usr/bin/env python3
 
-import os
 import sys
-import subprocess
-import re
 from pathlib import Path
-from dataclasses import dataclass
+import re
 
 
 TARGET = "Solutions/Other-English-LearningNotes-SomeWords.md"
-
-
-
-@dataclass
-class Change:
-
-    commit: str
-    timestamp: int
-    lines: list[str]
-
-
-
-def run_git(*args):
-
-    result = subprocess.run(
-        [
-            "git",
-            *args
-        ],
-        text=True,
-        capture_output=True
-    )
-
-
-    if result.returncode != 0:
-
-        raise RuntimeError(
-            f"""
-git command failed:
-
-git {' '.join(args)}
-
-stdout:
-{result.stdout}
-
-stderr:
-{result.stderr}
-"""
-        )
-
-
-    return result.stdout.strip()
-
-
-
-def debug():
-
-    print("=" * 80)
-
-    print("ARGV:")
-
-    for i,x in enumerate(sys.argv):
-
-        print(
-            i,
-            repr(x)
-        )
-
-
-    print()
-
-    print("GITHEAD:")
-
-    for k,v in os.environ.items():
-
-        if k.startswith("GITHEAD_"):
-
-            print(
-                k,
-                v
-            )
-
-
-    print("=" * 80)
-
-
-
-
-def get_merge_commits():
-
-    """
-    获取当前merge两边commit
-
-    ours:
-        HEAD
-
-    theirs:
-        GITHEAD_xxx
-    """
-
-
-    ours = run_git(
-        "rev-parse",
-        "HEAD"
-    )
-
-
-    theirs = None
-
-
-    for k in os.environ:
-
-        if k.startswith("GITHEAD_"):
-
-            sha = k[len("GITHEAD_"):]
-
-
-            if len(sha) == 40:
-
-                theirs = sha
-                break
-
-
-
-    if theirs is None:
-
-        raise RuntimeError(
-            "cannot find GITHEAD"
-        )
-
-
-    return ours,theirs
-
-
-
-
-def commit_time(commit):
-
-    return int(
-        run_git(
-            "show",
-            "-s",
-            "--format=%ct",
-            commit
-        )
-    )
-
-
-
-
-def commits_between(base,head):
-
-    result = run_git(
-        "rev-list",
-        "--reverse",
-        "--ancestry-path",
-        f"{base}..{head}"
-    )
-
-
-    if not result:
-
-        return []
-
-
-    return result.splitlines()
-
 
 
 
@@ -180,323 +20,210 @@ def is_word(line):
 
 
 
+def table_end(lines):
 
-def extract_added_words(commit):
-
-    diff = run_git(
-        "show",
-        "--format=",
-        "--unified=0",
-        commit,
-        "--",
-        TARGET
-    )
-
-
-    result=[]
-
-
-    for line in diff.splitlines():
-
-        if (
-            line.startswith("+")
-            and not line.startswith("+++")
-        ):
-
-            content=line[1:]
-
-
-            if (
-                content=="|||"
-                or is_word(content)
-            ):
-
-                result.append(content)
-
-
-    return result
-
-
-
-
-
-def collect_changes(base,head):
-
-    result=[]
-
-
-    for commit in commits_between(
-        base,
-        head
-    ):
-
-
-        lines = extract_added_words(
-            commit
-        )
-
-
-        if lines:
-
-            result.append(
-                Change(
-                    commit=commit,
-                    timestamp=commit_time(commit),
-                    lines=lines
-                )
-            )
-
-
-    return result
-
-
-
-
-
-def find_table_end(lines):
-
-    """
-    找表格结束位置
-
-    结构:
-
-    markdown
-
-    |word|meaning|
-    |||
-
-    other content
-    """
-
-
-    in_table=False
-
+    started=False
 
     for i,line in enumerate(lines):
 
+        if is_word(line) or line=="|||":
 
-        if (
-            is_word(line)
-            or line=="|||"
-        ):
+            started=True
 
-            in_table=True
-
-
-        elif in_table:
+        elif started:
 
             return i
-
 
 
     return len(lines)
 
 
 
+def table_part(lines):
+
+    end=table_end(lines)
+
+    return lines[:end]
 
 
-def replace_table(
+
+def tail_after_ancestor(
+    ancestor,
+    branch
+):
+
+    """
+    找 branch 比 ancestor 多出来的表格内容
+    """
+
+    a=table_part(ancestor)
+    b=table_part(branch)
+
+
+    if b[:len(a)]==a:
+
+        return b[len(a):]
+
+
+    # fallback:
+    # 找公共前缀
+
+    i=0
+
+    while (
+        i<len(a)
+        and
+        i<len(b)
+        and
+        a[i]==b[i]
+    ):
+        i+=1
+
+
+    return b[i:]
+
+
+
+
+def merge_separator(lines):
+
+    """
+    防止两个|||连续
+
+    但只处理边界
+
+    """
+
+    result=[]
+
+    for x in lines:
+
+        if (
+            x=="|||"
+            and result
+            and result[-1]=="|||"
+        ):
+            continue
+
+        result.append(x)
+
+
+    return result
+
+
+
+def merge(
     ancestor_file,
-    output_file,
-    merged_lines
+    ours_file,
+    theirs_file
 ):
 
 
-    """
-    注意：
-
-    使用 ancestor_file
-
-    不使用 output_file 原内容
-
-    因为 output_file(%A)
-    可能已经被git merge过
-    """
-
-
-    content = Path(
+    ancestor=Path(
         ancestor_file
     ).read_text(
-        encoding="utf-8"
+        encoding="utf8"
+    ).splitlines()
+
+
+    ours=Path(
+        ours_file
+    ).read_text(
+        encoding="utf8"
+    ).splitlines()
+
+
+    theirs=Path(
+        theirs_file
+    ).read_text(
+        encoding="utf8"
+    ).splitlines()
+
+
+
+    base_table=table_part(
+        ancestor
     )
 
 
-    lines = content.splitlines()
-
-
-    table_end = find_table_end(
-        lines
+    ours_add=tail_after_ancestor(
+        ancestor,
+        ours
     )
 
 
-    new_lines = (
-        lines[:table_end]
+    theirs_add=tail_after_ancestor(
+        ancestor,
+        theirs
+    )
+
+
+    print(
+        "OURS ADD:",
+        ours_add
+    )
+
+    print(
+        "THEIRS ADD:",
+        theirs_add
+    )
+
+
+    merged = (
+        base_table
         +
-        merged_lines
+        ours_add
         +
-        lines[table_end:]
+        theirs_add
     )
 
 
-    Path(output_file).write_text(
-        "\n".join(new_lines)
-        +
-        "\n",
-        encoding="utf-8"
+    merged=merge_separator(
+        merged
     )
 
 
+    end=table_end(
+        ancestor
+    )
+
+
+    result=(
+        ancestor[:end]
+        +
+        merged[len(base_table):]
+        +
+        ancestor[end:]
+    )
+
+
+    Path(
+        ours_file
+    ).write_text(
+        "\n".join(result)+"\n",
+        encoding="utf8"
+    )
 
 
 
 def main():
 
-
     if len(sys.argv)!=4:
 
         print(
-            "usage: merge_words.py %O %A %B"
+            "usage %O %A %B"
         )
 
         return 1
 
 
-
-    ancestor_file=sys.argv[1]
-
-    ours_file=sys.argv[2]
-
-    theirs_file=sys.argv[3]
+    ancestor,ours,theirs=sys.argv[1:]
 
 
-
-    debug()
-
-
-
-    print("FILES:")
-
-
-    for f in [
-        ancestor_file,
-        ours_file,
-        theirs_file
-    ]:
-
-        p=Path(f)
-
-        print(
-            f,
-            "exists=",
-            p.exists(),
-            "size=",
-            p.stat().st_size
-            if p.exists()
-            else None
-        )
-
-
-
-
-    ours,theirs=get_merge_commits()
-
-
-
-    print(
-        "OURS:",
-        ours
-    )
-
-
-    print(
-        "THEIRS:",
-        theirs
-    )
-
-
-
-    base=run_git(
-        "merge-base",
+    merge(
+        ancestor,
         ours,
         theirs
-    )
-
-
-    print(
-        "BASE:",
-        base
-    )
-
-
-
-    changes=[]
-
-
-    changes.extend(
-        collect_changes(
-            base,
-            ours
-        )
-    )
-
-
-    changes.extend(
-        collect_changes(
-            base,
-            theirs
-        )
-    )
-
-
-
-    print(
-        "\nCOMMITS:"
-    )
-
-
-    for c in changes:
-
-        print(
-            c.timestamp,
-            c.commit[:8],
-            c.lines
-        )
-
-
-
-    changes.sort(
-        key=lambda x:
-            (
-                x.timestamp,
-                x.commit
-            )
-    )
-
-
-
-    merged=[]
-
-
-    for c in changes:
-
-        merged.extend(
-            c.lines
-        )
-
-
-
-    print(
-        "\nMERGED:",
-        len(merged),
-        "lines"
-    )
-
-
-
-    replace_table(
-        ancestor_file,
-        ours_file,
-        merged
     )
 
 
@@ -504,24 +231,8 @@ def main():
 
 
 
-
-
-
 if __name__=="__main__":
 
-
-    try:
-
-        sys.exit(
-            main()
-        )
-
-
-    except Exception as e:
-
-        print(
-            "ERROR:",
-            e
-        )
-
-        sys.exit(1)
+    sys.exit(
+        main()
+    )
