@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import sys
 import subprocess
@@ -54,13 +52,13 @@ def debug():
     print("=" * 80)
 
     print("ARGV:")
-    for i,x in enumerate(sys.argv):
+    for i, x in enumerate(sys.argv):
         print(i, repr(x))
 
 
     print("\nENV GITHEAD:")
 
-    for k,v in os.environ.items():
+    for k, v in os.environ.items():
 
         if k.startswith("GITHEAD_"):
             print(
@@ -83,7 +81,6 @@ def get_merge_commits():
 
     theirs:
         GITHEAD_<sha>=branch
-
     """
 
     ours = run_git(
@@ -177,7 +174,7 @@ def extract_added_words(commit):
             and not line.startswith("+++")
         ):
 
-            content=line[1:]
+            content = line[1:]
 
 
             if (
@@ -221,6 +218,82 @@ def collect_changes(base, head):
 
 
 
+def find_table_end(lines):
+
+    """
+    找 markdown 单词表结束位置。
+
+    文件结构：
+
+    前置markdown
+
+    |word|meaning|
+    |word|meaning|
+    |||
+
+    后续内容
+
+    返回：
+        后续内容开始 index
+    """
+
+    in_table = False
+
+
+    for i, line in enumerate(lines):
+
+        if (
+            is_word(line)
+            or line == "|||"
+        ):
+
+            in_table = True
+
+
+        elif in_table:
+
+            return i
+
+
+    return len(lines)
+
+
+
+def normalize_append(lines):
+
+    """
+    保证追加内容格式正确。
+
+    两个分支都有 |||：
+    
+        |||
+        word
+
+    不删除。
+
+    只保证：
+        旧表格和新内容之间有分隔。
+    """
+
+    if not lines:
+        return lines
+
+
+    result = list(lines)
+
+
+    if result[0] != "|||":
+
+        result.insert(
+            0,
+            "|||"
+        )
+
+
+    return result
+
+
+
 def replace_table(
     file,
     merged_lines
@@ -236,40 +309,22 @@ def replace_table(
     lines = content.splitlines()
 
 
-    start=None
-    end=None
+    table_end = find_table_end(
+        lines
+    )
 
 
-    for i,line in enumerate(lines):
-
-        if is_word(line):
-
-            if start is None:
-                start=i
-
-        elif start is not None:
-
-            end=i
-            break
-
-
-    if start is None:
-
-        raise RuntimeError(
-            "cannot locate word table"
-        )
-
-
-    if end is None:
-        end=len(lines)
+    merged_lines = normalize_append(
+        merged_lines
+    )
 
 
     new_lines = (
-        lines[:start]
+        lines[:table_end]
         +
         merged_lines
         +
-        lines[end:]
+        lines[table_end:]
     )
 
 
@@ -301,9 +356,7 @@ def main():
     debug()
 
 
-    print(
-        "FILES:"
-    )
+    print("FILES:")
 
     for f in [
         ancestor_file,
@@ -311,7 +364,7 @@ def main():
         theirs_file
     ]:
 
-        p=Path(f)
+        p = Path(f)
 
         print(
             f,
@@ -370,9 +423,7 @@ def main():
     )
 
 
-    print(
-        "COMMITS:"
-    )
+    print("COMMITS:")
 
     for c in changes:
 
@@ -382,10 +433,6 @@ def main():
             c.lines
         )
 
-
-    #
-    # 按 commit 时间排序
-    #
 
     changes.sort(
         key=lambda x:
@@ -411,11 +458,6 @@ def main():
         len(merged)
     )
 
-
-    #
-    # 注意：
-    # 写 %A
-    #
 
     replace_table(
         ours_file,

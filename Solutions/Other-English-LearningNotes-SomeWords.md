@@ -13,11 +13,14 @@ categories: [自用]
 
 <p class="wordCounts">单词收录总数</p>
 
-|||
-|test1 on branch feat/auto_merge_1|time 01|
-|||
-|test 2 on branch feat/auto_merge_2|time: 2|
-|test3 on branch feat/auto_merge_1|time: 3|
+|单词|词义|
+|:--|:--|
+|flute|n. 长笛<br/> v. 吹长笛|
+|realm|n. 领域|
+|dictatorship|n. 独裁，专政，独裁国家|
+|ripple|n. 波纹，涟漪<br/>v. (使)如波浪般起伏，扩散，涌起|
+|trivial|adj. 不重要的，琐碎的，微不足道的|
+|delinquency|n. 违法行为，不良行为|
 |||
 |portrait|n. 肖像，画像<br/>adj. 竖向的，纵向打印格式的|
 |fodder|n. 草料，(为实现某目的)可利用的人或物，（贬义）素材<br/>v. 用饲料喂<br/><details><summary>例句</summary>Food and fodder should go ahead of troops and horses.<br/>兵马未动，粮草先行。</details>|
@@ -1923,9 +1926,6 @@ categories: [自用]
 |fragrant|adj. 香的|
 |||
 |magnetism|n. 磁性，吸引力/魅力|
-|||
-|test1 on branch feat/auto_merge_1|time 01|
-|test3 on branch feat/auto_merge_1|time: 3|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
