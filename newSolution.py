@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-21 09:29:30
+LastEditTime: 2026-07-21 10:48:00
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -186,7 +186,11 @@ print(f'now {WHOAMI} working.')
 REMOTE = WHOAMI.remote
 
 # 认领issue
-os.system(f'git checkout -b {num}')
+def switch_branch(name: str):
+    result = subprocess.run(["git", "switch", "-c", name])
+    if result.returncode != 0:
+        subprocess.run(["git", "switch", name], check=True)
+switch_branch(str(num))
 os.system(f'git push --set-upstream {REMOTE} {num}')  # (#832)
 def getPlatform():
     platform = sys.platform
@@ -654,7 +658,7 @@ commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
     os.system(f'git switch master')
     os.system(f'git merge {num}')
-    push_to_which = User.push_to_which_when_single_commit
+    push_to_which = WHOAMI.push_to_which_when_single_commit
     os.system(f'git push {push_to_which}')
     os.system(f'git branch -d {num}')
     os.system(f'git push --delete {REMOTE} {num}')
