@@ -230,16 +230,24 @@ def collect_changes(base, head):
 def find_table_end(lines):
 
     """
-    找表格结束位置
+    找表格插入位置。
 
-    支持:
+    空行属于表格结束后的分隔，
+    插入应该发生在空行之前。
 
-    |word|meaning|
-    |||
+    例如：
 
+    |magnetism|...|
+    
+    <empty>
+
+    +list
+
+    返回 magnetism 后的位置。
     """
 
     started=False
+    last_table_line=-1
 
 
     for i,line in enumerate(lines):
@@ -250,17 +258,27 @@ def find_table_end(lines):
         ):
 
             started=True
+            last_table_line=i
 
             continue
 
 
         if started:
 
+            # 空行：
+            # 不作为结束位置，
+            # 但记录最后表格行即可
             if line.strip()=="":
                 continue
 
 
-            return i
+            # 第一个非空非表格内容
+            break
+
+
+    if last_table_line != -1:
+
+        return last_table_line + 1
 
 
     return len(lines)
