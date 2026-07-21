@@ -1928,6 +1928,7 @@ categories: [自用]
 |magnetism|n. 磁性，吸引力/魅力|
 |||
 |test1 on branch feat/auto_merge_1|time 01|
+|test3 on branch feat/auto_merge_1|time: 3|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
