@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>3499.操作后最大活跃区段数 I：一次遍历(脑筋急转弯) | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/07/21/LeetCode%203499.%E6%93%8D%E4%BD%9C%E5%90%8E%E6%9C%80%E5%A4%A7%E6%B4%BB%E8%B7%83%E5%8C%BA%E6%AE%B5%E6%95%B0I/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>3499.操作后最大活跃区段数 I：一次遍历(脑筋急转弯)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-07-21T01:49:59.000Z" id="date"> 2026-07-21</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】3499-操作后最大活跃区段数-I：一次遍历-脑筋急转弯"><a href="#【LetMeFly】3499-操作后最大活跃区段数-I：一次遍历-脑筋急转弯" class="headerlink" title="【LetMeFly】3499.操作后最大活跃区段数 I：一次遍历(脑筋急转弯)"></a>【LetMeFly】3499.操作后最大活跃区段数 I：一次遍历(脑筋急转弯)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximize-active-section-with-trade-i/">https://leetcode.cn/problems/maximize-active-section-with-trade-i/</a></p>
+<p>给你一个长度为 <code>n</code> 的二进制字符串 <code>s</code>，其中：</p>
+
+<ul>
+	<li><code>'1'</code> 表示一个 <strong>活跃</strong> 区段。</li>
+	<li><code>'0'</code> 表示一个 <strong>非活跃</strong> 区段。</li>
+</ul>
+
+<p>你可以执行 <strong>最多一次操作</strong>&nbsp;来最大化 <code>s</code> 中的活跃区段数量。在一次操作中，你可以：</p>
+
+<ul>
+	<li>将一个被 <code>'0'</code> 包围的连续 <code>'1'</code> 区块转换为全 <code>'0'</code>。</li>
+	<li>然后，将一个被 <code>'1'</code> 包围的连续 <code>'0'</code> 区块转换为全 <code>'1'</code>。</li>
+</ul>
+
+<p>返回在执行最优操作后，<code>s</code> 中的 <strong>最大</strong> 活跃区段数。</p>
+
+<p><strong>注意：</strong>处理时需要在 <code>s</code> 的两侧加上 <code>'1'</code> ，即 <code>t = '1' + s + '1'</code>。这些加上的 <code>'1'</code> 不会影响最终的计数。</p>
+
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong> <span class="example-io">s = "01"</span></p>
+
+<p><strong>输出：</strong> <span class="example-io">1</span></p>
+
+<p><strong>解释：</strong></p>
+
+<p>因为没有被 <code>'0'</code> 包围的 <code>'1'</code> 区块，因此无法进行有效操作。最大活跃区段数为 1。</p>
+</div>
+
+<p><strong class="example">示例 2：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong> <span class="example-io">s = "0100"</span></p>
+
+<p><strong>输出：</strong> <span class="example-io">4</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>字符串 <code>"0100"</code> → 两端加上 <code>'1'</code>&nbsp;后得到&nbsp;<code>"101001"</code>&nbsp;。</li>
+	<li>选择 <code>"0100"</code>，<code>"10<u><strong>1</strong></u>001"</code> → <code>"1<u><strong>0000</strong></u>1"</code> → <code>"1<u><strong>1111</strong></u>1"</code>&nbsp;。</li>
+	<li>最终的字符串去掉两端的 <code>'1'</code>&nbsp;后为 <code>"1111"</code>&nbsp;。最大活跃区段数为 4。</li>
+</ul>
+</div>
+
+<p><strong class="example">示例 3：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong> <span class="example-io">s = "1000100"</span></p>
+
+<p><strong>输出：</strong> <span class="example-io">7</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>字符串 <code>"1000100"</code> → 两端加上 <code>'1'</code>&nbsp;后得到 <code>"110001001"</code>&nbsp;。</li>
+	<li>选择 <code>"000100"</code>，<code>"11000<u><strong>1</strong></u>001"</code> → <code>"11<u><strong>000000</strong></u>1"</code> → <code>"11<u><strong>111111</strong></u>1"</code>。</li>
+	<li>最终的字符串去掉两端的 <code>'1'</code>&nbsp;后为 <code>"1111111"</code>。最大活跃区段数为 7。</li>
+</ul>
+</div>
+
+<p><strong class="example">示例 4：</strong></p>
+
+<div class="example-block">
+<p><strong>输入：</strong> <span class="example-io">s = "01010"</span></p>
+
+<p><strong>输出：</strong> <span class="example-io">4</span></p>
+
+<p><strong>解释：</strong></p>
+
+<ul>
+	<li>字符串 <code>"01010"</code> → 两端加上 <code>'1'</code>&nbsp;后得到 <code>"1010101"</code>。</li>
+	<li>选择 <code>"010"</code>，<code>"10<u><strong>1</strong></u>0101"</code> → <code>"1<u><strong>000</strong></u>101"</code> → <code>"1<u><strong>111</strong></u>101"</code>。</li>
+	<li>最终的字符串去掉两端的 <code>'1'</code>&nbsp;后为 <code>"11110"</code>。最大活跃区段数为 4。</li>
+</ul>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n == s.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>s[i]</code> 仅包含 <code>'0'</code> 或 <code>'1'</code></li>
+</ul>
+
+
+    
+<h2 id="解题思路：脑筋急转弯"><a href="#解题思路：脑筋急转弯" class="headerlink" title="解题思路：脑筋急转弯"></a>解题思路：脑筋急转弯</h2><p>最终求的是<code>1</code>的个数而非连续<code>1</code>的个数，所以我们的目的是把尽可能多的<code>0</code>变成<code>1</code>。</p>
+<p>首先可以把一段<code>1</code>变成<code>0</code>，这个操作的<strong>唯一意义</strong>就是把原本不相连的两段<code>0</code>连接起来，然后下一步一起变成<code>1</code>。</p>
+<p>所以其实这道题最终是把相邻的两段<code>0</code>变成<code>1</code>，然后返回<code>1</code>的个数。也相当于返回原始<code>1</code>的个数加上相邻两段<code>0</code>中<code>0</code>的个数。</p>
+<h2 id="解题方法：一次遍历"><a href="#解题方法：一次遍历" class="headerlink" title="解题方法：一次遍历"></a>解题方法：一次遍历</h2><p>回忆一下我们都需要哪些值：</p>
+<ol>
+<li>字符串中原始<code>1</code>的个数，这个可以由一个变量$cnt1$在一次遍历后得出。</li>
+<li>字符串中当前<em>区段</em>共计遍历到了多少个<code>0</code>，这个可以由一个变量$now_cnt0$在遍历过程中维护。当前字符是<code>0</code>的话$now_cnt0+1$；当前字符是刚刚由<code>0</code>转<code>1</code>的话，$now_cnt0$置$0$。</li>
+<li>字符串上一个连续<code>0</code>的个数，这个可以由一个变量$last_cnt0$来维护，初始值为无穷小。</li>
+<li>字符串最大两个连续<code>0</code>的个数，这个可以由一个变量$max0$来更新。</li>
+</ol>
+<p>这样，我们就可以开始遍历字符串：</p>
+<ul>
+<li>如果当前元素是<code>0</code>，则$now_cnt0+1$；</li>
+<li>如果当前原始是刚刚由<code>0</code>变成了<code>1</code>，则更新$max0$、$last_cnt0$、$now_cnt0$。</li>
+</ul>
+<h2 id="时空复杂度分析"><a href="#时空复杂度分析" class="headerlink" title="时空复杂度分析"></a>时空复杂度分析</h2><ul>
+<li>时间复杂度$O(len(s))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-07-21 09:48:29</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxActiveSectionsAfterTrade</span><span class="params">(string&amp; s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>, max0 = <span class="number">-1000000</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> last_cnt0 = <span class="number">-1000000</span>, now_cnt0 = <span class="number">0</span>, i = <span class="number">0</span>, n = s.<span class="built_in">size</span>(); i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; n &amp;&amp; s[i] == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">                now_cnt0++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &amp;&amp; s[i - <span class="number">1</span>] == <span class="string">&#x27;0&#x27;</span>) &#123;  <span class="comment">// 0-&gt;1</span></span><br><span class="line">                max0 = <span class="built_in">max</span>(max0, last_cnt0 + now_cnt0);</span><br><span class="line">                last_cnt0 = now_cnt0;</span><br><span class="line">                now_cnt0 = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt1 += i &lt; n &amp;&amp; s[i] == <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt1 + <span class="built_in">max</span>(max0, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163067749">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/07/21/LeetCode%203499.%E6%93%8D%E4%BD%9C%E5%90%8E%E6%9C%80%E5%A4%A7%E6%B4%BB%E8%B7%83%E5%8C%BA%E6%AE%B5%E6%95%B0I/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/07/18/LeetCode%201979.%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/">1979.找出数组的最大公约数：模拟（附手动gcd） Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%913499-%E6%93%8D%E4%BD%9C%E5%90%8E%E6%9C%80%E5%A4%A7%E6%B4%BB%E8%B7%83%E5%8C%BA%E6%AE%B5%E6%95%B0-I%EF%BC%9A%E4%B8%80%E6%AC%A1%E9%81%8D%E5%8E%86-%E8%84%91%E7%AD%8B%E6%80%A5%E8%BD%AC%E5%BC%AF"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】3499.操作后最大活跃区段数 I：一次遍历(脑筋急转弯)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E8%84%91%E7%AD%8B%E6%80%A5%E8%BD%AC%E5%BC%AF"><span class="toc-number">1.1.</span> <span class="toc-text">解题思路：脑筋急转弯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E4%B8%80%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.</span> <span class="toc-text">解题方法：一次遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">时空复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C"><span class="toc-number">1.4.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
