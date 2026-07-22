@@ -4,6 +4,7 @@ date: 2026-07-21 18:20:00
 tags: [Git]
 categories: [技术思考]
 description: 对某些特殊文件自定义Git的merge规则
+mermaid: true
 ---
 
 # Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文）
