@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-23 14:50:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-23 14:51:43
+ * @LastEditTime: 2026-07-23 14:55:02
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -11,7 +11,12 @@
 class Solution {
 public:
     int uniqueXorTriplets(vector<int>& nums) {
-        int n = nums.size(), cnt = 0;
+        int n = nums.size();
+        if (n < 3) {
+            return n;
+        }
+        
+        int cnt = 0;
         while (n) {
             n >>= 1;
             cnt++;
