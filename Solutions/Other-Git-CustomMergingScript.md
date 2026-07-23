@@ -377,6 +377,8 @@ Git 会自动调用脚本。
 
 ## The End
 
+但是需要注意，本demo没有考虑修改了表格之外位置的情况，如有修改则在合并时会被忽略。
+
 <center><font size="6px" face="Ink Free">The End, Thanks!</font></center>
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/163084329)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/07/21/Other-Git-CustomMergingScript/)哦~
