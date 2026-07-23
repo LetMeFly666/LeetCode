@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/_posts/Other-Git-CustomMergingScript.html"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文）</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-07-21T10:20:00.000Z" id="date"> 2026-07-21</time></div></span></div></div><hr><div id="post-content"><h1 id="Git：自定义merge规则——为追加型-Markdown-单词表实现基于-commit-时间的自动合并规则（AI文）"><a href="#Git：自定义merge规则——为追加型-Markdown-单词表实现基于-commit-时间的自动合并规则（AI文）" class="headerlink" title="Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文）"></a>Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文）</h1><blockquote>
+<p>本文总结<a target="_blank" rel="noopener" href="https://chatgpt.com/c/6a5f8435-2988-83ea-a577-bf2dc843e881">自</a>ChatGPT！ <a target="_blank" rel="noopener" href="https://chatgpt.com/share/6a60c2de-7a4c-83ea-9e07-147aed3d92e3">某分支的ChatLink</a></p>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
+<p>Git<br>默认的三方合并适合处理普通文本修改，但对于追加型日志文件（例如单词学习记录），更适合使用基于<br>commit history 的自定义 merge driver。</p>
+</blockquote>
+<p>要解决的问题：</p>
+<p>仓库中有一个 Markdown 文件：</p>
+<pre><code>Solutions/Other-English-LearningNotes-SomeWords.md
+</code></pre>
+<p>该文件包含：</p>
+<ul>
+<li>Markdown 元信息</li>
+<li>一个长期追加的单词表</li>
+<li>后续其他笔记内容</li>
+</ul>
+<p>单词表类似：</p>
+<pre><code>|corrosion|n. 腐蚀；锈蚀|
+|fragrant|adj. 香的|
+|||
+|magnetism|n. 磁性，吸引力/魅力|
+</code></pre>
+<p>其中：</p>
+<pre><code>|||
+</code></pre>
+<p>表示一次新的背单词记录。</p>
+<p>由于该文件只追加，不应该使用普通文本 merge。</p>
+<p>例如：</p>
+<p>分支 A：</p>
+<pre><code>|||
+|1||
+</code></pre>
+<p>分支 B：</p>
+<pre><code>|||
+||2|
+</code></pre>
+<p>正确结果应该按照 commit 时间：</p>
+<pre><code>|||
+|1||
+|||
+||2|
+</code></pre>
+<p>而不是依赖 Git 默认 diff merge。</p>
+<hr>
+<h2 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h2><h3 id="Git-merge-driver"><a href="#Git-merge-driver" class="headerlink" title="Git merge driver"></a>Git merge driver</h3><p>Git 支持针对特定文件指定 merge driver。</p>
+<p><code>.gitattributes</code>：</p>
+<pre><code>Solutions/Other-English-LearningNotes-SomeWords.md merge=words
+</code></pre>
+<p><code>.git/config</code>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[merge &quot;words&quot;]</span></span><br><span class="line">    <span class="attr">name</span> = English words timestamp merge</span><br><span class="line">    <span class="attr">driver</span> = python3 merge_words.py %O %A %B</span><br></pre></td></tr></table></figure>
+
+<p>参数：</p>
+<p>  参数   含义</p>
+<hr>
+<p>  %O     共同祖先文件<br>  %A     当前 merge 结果文件<br>  %B     另一个分支文件</p>
+<hr>
+<h2 id="merge-driver-执行流程"><a href="#merge-driver-执行流程" class="headerlink" title="merge driver 执行流程"></a>merge driver 执行流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">flowchart TD</span><br><span class="line">A[git merge branch] --&gt; B[发现 merge 属性]</span><br><span class="line">B --&gt; C[调用 merge driver]</span><br><span class="line">C --&gt; D[%O ancestor]</span><br><span class="line">C --&gt; E[%A ours]</span><br><span class="line">C --&gt; F[%B theirs]</span><br><span class="line">D --&gt; G[Python脚本]</span><br><span class="line">E --&gt; G</span><br><span class="line">F --&gt; G</span><br><span class="line">G --&gt; H[读取 Git commit history]</span><br><span class="line">H --&gt; I[提取新增记录]</span><br><span class="line">I --&gt; J[按照 commit 时间排序]</span><br><span class="line">J --&gt; K[生成最终文件]</span><br><span class="line">K --&gt; L[写回 %A]</span><br><span class="line">L --&gt; M[完成 merge]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="为什么不能直接比较三个文件"><a href="#为什么不能直接比较三个文件" class="headerlink" title="为什么不能直接比较三个文件"></a>为什么不能直接比较三个文件</h2><p>普通 merge 只能看到：</p>
+<pre><code>ancestor
+ours
+theirs
+</code></pre>
+<p>但是追加日志需要知道：</p>
+<pre><code>commit1
+commit2
+commit3
+</code></pre>
+<p>例如：</p>
+<pre><code>ours:
+
+1
+3
+
+theirs:
+
+2
+</code></pre>
+<p>文件内容无法知道：</p>
+<pre><code>1 &lt; 2 &lt; 3
+</code></pre>
+<p>所以需要：</p>
+<pre><code>git merge-base
+git rev-list
+git show --format=%ct
+</code></pre>
+<p>读取真实提交历史。</p>
+<hr>
+<h2 id="核心算法"><a href="#核心算法" class="headerlink" title="核心算法"></a>核心算法</h2><ol>
+<li>找共同祖先：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- --&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>git merge-base ours theirs
+</code></pre>
+<ol start="2">
+<li>获取两个分支新增 commit：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- --&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>git rev-list --reverse base..head
+</code></pre>
+<ol start="3">
+<li>对每个 commit：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- --&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>git show --unified=0 commit -- file
+</code></pre>
+<p>提取新增行。</p>
+<ol start="4">
+<li>获取时间：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- --&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>git show -s --format=%ct commit
+</code></pre>
+<ol start="5">
+<li>排序：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">changes.sort(</span><br><span class="line">    key=<span class="keyword">lambda</span> x:</span><br><span class="line">        (</span><br><span class="line">            x.timestamp,</span><br><span class="line">            x.commit</span><br><span class="line">        )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>按顺序重新生成单词表。</li>
+</ol>
+<hr>
+<h2 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h2><h3 id="1-A-不是原始-ours-文件"><a href="#1-A-不是原始-ours-文件" class="headerlink" title="1. %A 不是原始 ours 文件"></a>1. %A 不是原始 ours 文件</h3><p>错误思路：</p>
+<pre><code>读取 %A
+追加 ours/theirs diff
+</code></pre>
+<p>因为 <code>%A</code> 是 Git merge 过程中的目标文件，不一定等于 merge 前的 ours。</p>
+<p>正确：</p>
+<p>使用 ancestor + commit history 重建。</p>
+<hr>
+<h3 id="2-文件内容不能决定提交顺序"><a href="#2-文件内容不能决定提交顺序" class="headerlink" title="2. 文件内容不能决定提交顺序"></a>2. 文件内容不能决定提交顺序</h3><p>错误：</p>
+<pre><code>比较 ancestor/ours/theirs
+</code></pre>
+<p>无法恢复：</p>
+<pre><code>commit1 -&gt; commit2 -&gt; commit3
+</code></pre>
+<p>必须读取 Git history。</p>
+<hr>
+<h3 id="3-Markdown-表格空列"><a href="#3-Markdown-表格空列" class="headerlink" title="3. Markdown 表格空列"></a>3. Markdown 表格空列</h3><p>原正则：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">r&quot;^\|[^|]+\|[^|]+\|$&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>不能匹配：</p>
+<pre><code>|1||
+||2|
+</code></pre>
+<p>因为存在空 cell。</p>
+<p>修改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">r&quot;^\|.*\|.*\|$&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>并特殊处理：</p>
+<pre><code>|||
+</code></pre>
+<p>它是分隔符，不是单词。</p>
+<hr>
+<h3 id="4-不应该删除重复"><a href="#4-不应该删除重复" class="headerlink" title="4. 不应该删除重复 |||"></a>4. 不应该删除重复 |||</h3><p>两个分支同时新增：</p>
+<pre><code>|||
+|1|
+</code></pre>
+<p>和：</p>
+<pre><code>|||
+|2|
+</code></pre>
+<p>结果应该：</p>
+<pre><code>|||
+|1|
+|||
+|2|
+</code></pre>
+<p>两个 session 都有意义。</p>
+<hr>
+<h3 id="5-插入位置和空行"><a href="#5-插入位置和空行" class="headerlink" title="5. 插入位置和空行"></a>5. 插入位置和空行</h3><p>表格后：</p>
+<pre><code>|magnetism|...|
+
+其他内容
+</code></pre>
+<p>空行属于表格后的分隔。</p>
+<p>新增内容应该插入：</p>
+<pre><code>|magnetism|...|
+|||
+|new|
+
+其他内容
+</code></pre>
+<p>而不是：</p>
+<pre><code>|magnetism|...|
+
+|||
+|new|
+</code></pre>
+<hr>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p>配置：</p>
+<p><code>.gitattributes</code></p>
+<pre><code>Solutions/Other-English-LearningNotes-SomeWords.md merge=words
+</code></pre>
+<p>Git config：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[merge &quot;words&quot;]</span></span><br><span class="line">    <span class="attr">name</span> = English words timestamp merge</span><br><span class="line">    <span class="attr">driver</span> = python3 merge_words.py %O %A %B</span><br></pre></td></tr></table></figure>
+
+<p>之后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge other_branch</span><br></pre></td></tr></table></figure>
+
+<p>Git 会自动调用脚本。</p>
+<hr>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p>最终版本 merge_words.py 可放置于：</p>
+<pre><code>merge_words.py
+</code></pre>
+<p>并由 merge driver 调用。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个方案不是普通文本 merge。</p>
+<p>它实际上是：</p>
+<pre><code>Git merge driver
++
+Git commit history
++
+append-only log replay
+</code></pre>
+<p>适合：</p>
+<ul>
+<li>单词学习记录</li>
+<li>日志文件</li>
+<li>changelog</li>
+<li>自动生成 Markdown 列表</li>
+</ul>
+<p>核心思想：</p>
+<blockquote>
+<p>对追加型数据，不要 merge 最终文本，而应该重新播放两个分支产生的事件。</p>
+</blockquote>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><center><font size="6px" face="Ink Free">The End, Thanks!</font></center>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163084329">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/07/21/Other-Git-CustomMergingScript/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89merge%E8%A7%84%E5%88%99%E2%80%94%E2%80%94%E4%B8%BA%E8%BF%BD%E5%8A%A0%E5%9E%8B-Markdown-%E5%8D%95%E8%AF%8D%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E-commit-%E6%97%B6%E9%97%B4%E7%9A%84%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E8%A7%84%E5%88%99%EF%BC%88AI%E6%96%87%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Git：自定义merge规则——为追加型 Markdown 单词表实现基于 commit 时间的自动合并规则（AI文）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">技术原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-merge-driver"><span class="toc-number">1.2.1.</span> <span class="toc-text">Git merge driver</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#merge-driver-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">merge driver 执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E6%AF%94%E8%BE%83%E4%B8%89%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">为什么不能直接比较三个文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">核心算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">踩坑记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-A-%E4%B8%8D%E6%98%AF%E5%8E%9F%E5%A7%8B-ours-%E6%96%87%E4%BB%B6"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. %A 不是原始 ours 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E4%B8%8D%E8%83%BD%E5%86%B3%E5%AE%9A%E6%8F%90%E4%BA%A4%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 文件内容不能决定提交顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Markdown-%E8%A1%A8%E6%A0%BC%E7%A9%BA%E5%88%97"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. Markdown 表格空列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8D%E5%BA%94%E8%AF%A5%E5%88%A0%E9%99%A4%E9%87%8D%E5%A4%8D"><span class="toc-number">1.6.4.</span> <span class="toc-text">4. 不应该删除重复 |||</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%E5%92%8C%E7%A9%BA%E8%A1%8C"><span class="toc-number">1.6.5.</span> <span class="toc-text">5. 插入位置和空行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-number">1.7.</span> <span class="toc-text">最终效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-number">1.8.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-End"><span class="toc-number">1.10.</span> <span class="toc-text">The End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
