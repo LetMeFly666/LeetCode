@@ -2,7 +2,8 @@
 Author: LetMeFly + ChatGPT
 Date: 2026-07-21 17:32:28
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-21 17:45:14
+LastEditTime: 2026-07-23 12:58:53
+Description: 这个脚本没有考虑单词表格之外的更改，如有则merge后会被忽略
 '''
 import os
 import sys
@@ -217,7 +218,6 @@ def replace_table(
     output_file,
     merged_lines
 ):
-
     ancestor = Path(
         ancestor_file
     ).read_text(
