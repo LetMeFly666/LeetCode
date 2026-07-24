@@ -1,7 +1,7 @@
 ---
 title: 3513.不同 XOR 三元组的数目 I： 1 << bit_width（数学）
 date: 2026-07-23 16:02:15
-tags: [题解, LeetCode, 中等, 位运算, 数组, 数学, 构造]
+tags: [题解, LeetCode, 中等, 位运算, 数组, 数学, 构造, 异或]
 categories: [题解, LeetCode]
 ---
 
