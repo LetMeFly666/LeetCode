@@ -1929,6 +1929,30 @@ Unix设计哲学，没消息就是好消息。
 
 运营商提供的通信业务，无需打开便可直接显示在用户屏幕上且展示后一般不会保存，初衷是灾害提醒，后来似乎被用来“京东快递来电”等。
 
+### OSC 8（终端超链接） —— Operating System Command 8 (OSC 8) Hyperlink
+
+（如果终端支持）终端中输出：
+
+```bash
+ESC ] 8 ; ; URL ESC \
+TEXT
+ESC ] 8 ; ; ESC \
+```
+
+会得到一个带有下划线的TEXT，Cmd+Click会跳转到URL。
+
+例如运行如下Python代码后，在终端Cmd/Ctrl+单击`宝藏小网站`会跳转到`https://letmefly.xyz?from=terminalOSC8_20260724`。
+
+```python
+print(
+    "\033]8;;https://letmefly.xyz?from=terminalOSC8_20260724\033\\"
+    "宝藏小网站"
+    "\033]8;;\033\\"
+)
+```
+
+这和终端中直接显示的`https://example.com`、`main.py#L100`不同，这种是没有加特殊输出，终端app自动识别的。
+
 # End
 
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips)哦~

@@ -2,9 +2,10 @@
 Author: LetMeFly
 Date: 2026-07-22 20:56:24
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-22 21:13:57
+LastEditTime: 2026-07-24 22:23:57
 Description: 把MacOS的自定义短语导出为Rime可使用版本（词Tab拼写）
 Description: 首先需要在 设置-键盘-自定义短句-全部选中-导出为plist
+Description: See https://gist.github.com/LetMeFly666/f1cc13df935e99908d67a8b2bbff99eb for more
 '''
 import plistlib
 
