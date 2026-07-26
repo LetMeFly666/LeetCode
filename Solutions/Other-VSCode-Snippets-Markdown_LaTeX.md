@@ -35,7 +35,7 @@ VsCode中输入`分数`的拼音`fenshu`可以插入`\lfloor\frac{}{2}\rfloor`�
 
 注意(01)，一定要新建**全局**代码片段文件，不可以只选中markdown文件类型。因为输入 `⌊分数⌋` 的时候都是在markdown的公式中输入的，如果你新建一个关于markdown文件的代码段，很抱歉，你输入了`$`并开始输入`fenshu`的时候，诶，VsCode认为你在输入LaTeX，不给你弹代码段哈哈。
 
-如果你想限制代码段的生效范围是`markdown`和`LaTeX`，可以在全局代码段文件中新增`"scope": "markdown,latex"`配置（如果你选中markdown代码段的话，是不支持scope字段的）。
+如果你想限制代码段的生效范围是`markdown`和`LaTeX`，可以在全局代码段文件中新增`"scope": "markdown,latex"`配置（如果你选的是markdown代码段而不是全局代码段的话，相当于语言专属 snippet 文件本身已经绑定 language scope，所以不能额外指定 scope）。
 
 删掉默认的字符，把下面的字符粘贴进去（并保存）：
 
@@ -100,6 +100,6 @@ VsCode中输入`分数`的拼音`fenshu`可以插入`\lfloor\frac{}{2}\rfloor`�
 + [VsCode Snippets 文档](https://code.visualstudio.com/docs/editing/userdefinedsnippets)
 + [VsCode 中 `editor.quickSuggestions` 配置相关文档](https://code.visualstudio.com/docs/editing/intellisense#_settings)
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/163218874)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/07/26/Other-Git-CustomMergingScriptOther-VSCode-Snippets-Markdown_LaTeX/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/163218874)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/07/26/Other-VSCode-Snippets-Markdown_LaTeX/)哦~
 > 
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
