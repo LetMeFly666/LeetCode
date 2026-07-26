@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-26 18:46:00
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-26 19:00:36
+ * @LastEditTime: 2026-07-26 19:04:58
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -17,6 +17,17 @@
 + 全负: 最大3-
 
 不对，没考虑还有0的情况
+
+---
+
+假设全是负数： 只能选三个最大的
+没正数但有0：  选0
+
+算了，这样想有点麻烦
+
+---
+
+
 */
 class Solution {
 public:
