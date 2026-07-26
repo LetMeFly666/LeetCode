@@ -1,7 +1,7 @@
 ---
 title: MacOS：首次外接键盘初始化设置（Option/Command互换、左上角·～而非§±）
 date: 2026-07-03 15:25:21
-tags: [VsCode, 简单, Mac, MacOS]
+tags: [Mac, MacOS]
 categories: [技术思考]
 ---
 

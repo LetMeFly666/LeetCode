@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-21 18:28:18
+ * @LastEditTime: 2026-07-26 18:34:49
 -->
 # LetLeet Blog
 
@@ -146,6 +146,7 @@
 |VSCode Docker(Code Server)首次调试C++长时间下载debuginfo问题|<a href="https://blog.letmefly.xyz/2026/05/16/Other-VsCode-CodeServerDocker-StopDownloading15MgdbDebuginfod-gdb_debuginfod_docker_vscode_cpp_debugging_postmortem_2026/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/161147475">CSDN博客</a>|
 |VsCode美化 - VsCode自定义 - VsCode自定义背景图|<a href="https://blog.letmefly.xyz/2023/08/10/Other-VsCode-Custome-BackgroundPic/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132215972">CSDN博客</a>|
 |VsCode自定义单词分隔符 - 还在为“中文不论多长都会被识别为一句话”而发愁吗？|<a href="https://blog.letmefly.xyz/2024/05/14/Other-VsCode-CustomeWordSeparators/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/138871269">CSDN博客</a>|
+|在VsCode markdown的公式中快速插入⌊分数⌋等代码段|<a href="https://blog.letmefly.xyz/2026/07/26/Other-Git-CustomMergingScriptOther-VSCode-Snippets-Markdown_LaTeX/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/163218874">CSDN博客</a>|
 |VsCode启用右括号自动跳过(自动重写)|<a href="https://blog.letmefly.xyz/2025/03/25/Other-VsCode-StartAutoClosingOvertype/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/146515937">CSDN博客</a>|
 |VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身|<a href="https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/126082324">CSDN博客</a>|
 |WebDAV - 本地编辑远程服务器中文件 - 简单使用(Windows为例)|<a href="https://blog.letmefly.xyz/2024/12/25/Other-WebDAV-SampleUsage_Windows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/144721292">CSDN博客</a>|
