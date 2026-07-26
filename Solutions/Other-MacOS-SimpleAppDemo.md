@@ -1,7 +1,7 @@
 ---
 title: MacOS：使用纯C++创建一个简单的MacAPP的Demo(可以双击运行的那种)
 date: 2026-06-20 15:25:21
-tags: [VsCode, 简单, Mac, MacOS]
+tags: [Mac, MacOS]
 categories: [技术思考]
 ---
 

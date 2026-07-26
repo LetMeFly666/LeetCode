@@ -1,7 +1,7 @@
 ---
 title: iOS：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持
 date: 2026-07-04 19:38:47
-tags: [VsCode, 简单, Mac, MacOS, iPhone, iOS, 百度网盘, 一刻相册, 照片同步]
+tags: [Mac, MacOS, iPhone, iOS, 百度网盘, 一刻相册, 照片同步]
 categories: [技术思考]
 description: 市面上首篇把静态图+mov短视频打包回live图的方案
 excerpt: 市面上首篇把静态图+mov短视频打包回live图的方案
