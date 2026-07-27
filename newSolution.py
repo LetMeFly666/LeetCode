@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-07-21 10:48:00
+LastEditTime: 2026-07-27 10:31:32
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -202,6 +202,7 @@ def getPlatform():
         return 'Linux'
     else:
         return platform
+# issueTitle记得带上[newSolution]前缀，防止搜到duplicated的issue
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
 # alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
 tmp_issueGetResult = subprocess.run(
