@@ -9,92 +9,71 @@ if [[ -z "$PR" ]]; then
     exit 1
 fi
 
-read -r -d '' REVIEW <<'EOF' || true
+gh pr review "$PR" --request-changes --body "$(cat <<'EOF'
 ## Review
 
-### 🔴 Must fix
+### 🔴 必须修复
 
-#### 1. Remove temporary VSCode snippet test files
-
-The following files look like local debugging artifacts rather than repository content:
-
-- `testForSnipppet.md`
-- `testForSnipppet.md.cpp`
-- `testForSnipppet.md.tex`
-
-Please remove them or move them into a dedicated documentation/test area.
-
-#### 2. Fix typo in filenames
-
-`testForSnipppet` appears to contain an extra `p`.
-
-Consider renaming it to:
-
-```
-testForSnippet
-```
-
-#### 3. Confirm `.commitmsg` deletion
-
-`.commitmsg` was deleted in this PR.
-
-Please verify that no git hooks, scripts, or automation still depend on it before merging.
+暂无阻塞性问题。
 
 ---
 
-### 🟡 Suggestions
+### 🟡 建议改进
 
-#### 4. Consider O(n) solution for LeetCode 628
+#### 1. `maxProduct` 初始化逻辑依赖题目约束，建议增加说明
 
-The current implementation sorts the array:
+当前实现：
 
 ```cpp
-ranges::sort(nums);
+int mx1 = 1, mx2 = 1;
 ```
 
-This is correct, but the problem can also be solved with O(n) time and O(1) extra space by maintaining:
+依赖 LeetCode 1464 中 `nums[i] >= 1` 的约束。
 
-- three maximum values
-- two minimum values
+如果未来代码被复用到允许负数或 0 的场景，初始化为 1 会导致错误结果。建议：
 
-The current solution is acceptable if simplicity is preferred.
+- 在题解中明确说明该初始化依赖题目约束；
+- 或使用 `INT_MIN` 初始化，使算法更加通用。
 
-#### 5. Add `__main__` guard in `OSC8terminalLink.py`
+#### 2. 变量命名可以更语义化
 
-The script currently executes `print(...)` at import time.
+`mx1`、`mx2` 能表达含义，但可读性一般。
 
-Consider wrapping demo code:
+例如：
 
-```python
-if __name__ == "__main__":
-    ...
+```cpp
+int secondMax = 1;
+int maxValue = 1;
 ```
 
-to avoid import side effects.
+会更容易理解。
 
-#### 6. Improve explanation wording in LeetCode 628 article
+#### 3. README 中的待办事项改动需要确认是否属于本 PR 范围
 
-The proof is correct, but the negative-number classification could be made clearer by first explaining:
+新增：
 
-- If non-negative choices exist, selecting an odd number of negative numbers is generally not optimal.
-- The optimal candidates reduce to:
-  - three largest numbers
-  - two smallest numbers plus the largest number
+```
+- [ ] Link tester（发布完成渲染完毕后，检测本次改动涉及到的链接是否正常）
+```
+
+如果该 PR 主要目的是提交 LeetCode 1464 题解，这属于无关改动，建议拆分到单独 PR，保持提交粒度。
+
+---
+
+### 🟢 正向反馈
+
+- LeetCode 1464 的一次遍历解法正确，时间复杂度 `O(n)`，空间复杂度 `O(1)`。
+- 删除临时 snippet 测试文件和 OSC8 测试脚本符合清理仓库的目的。
+- 新增题解内容与代码保持一致。
 
 ---
 
 ### Summary
 
-Overall this PR is functional and the main changes look reasonable.
+整体代码和题解没有明显错误，可以合并。
 
-Before merging, I recommend:
-- remove temporary snippet test files
-- verify `.commitmsg` removal
-- fix typo naming
-
-The remaining items are improvement suggestions.
+建议合并前确认 README 的无关改动是否需要拆分，并补充初始化条件的说明。
 
 by ChatGPT
 EOF
-
-gh pr review "$PR" --request-changes --body "$REVIEW"
+)"

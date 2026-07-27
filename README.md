@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-26 22:30:35
+ * @LastEditTime: 2026-07-26 23:01:07
 -->
 # LetLeet Blog
 
@@ -1317,6 +1317,7 @@
 - [ ] code-server 浏览器运行时候目前没法做到自动修改剪贴板AC百分比
 - [ ] newSolution.py状态机、题解时候支持上下选或指令操作
 - [ ] 多个代码段的支持（不再####C++了，而是想力扣那样可以通过点击tab的方式来切换代码种类）
+- [ ] Link tester（发布完成渲染完毕后，检测本次改动涉及到的链接是否正常）
 - hexo我是一刻也待不下去了
 - [x] 生成题解的时候还是按一下回车再开始吧，要不然想要像[这次](https://github.com/LetMeFly666/LeetCode/issues/787)多次边coding边提交，生成题解文件过早还得手动复制代码过去。
 - [x] 写新题解时，若master本地为最新而远端并非最新，采用squash方式更新时，则远端pr会将本地master的一些commit也压缩为一个，远端和本地就冲突了。（还是保持master远端实时最新吧[#790](https://github.com/LetMeFly666/LeetCode/issues/790)）
