@@ -18,7 +18,7 @@ public:
         
         char middle = 0;
         if (s.size() % 2) {
-            middle = s[s.size() / 2 - 1];
+            middle = s[s.size() / 2];
         }
 
         int idx = 0;
