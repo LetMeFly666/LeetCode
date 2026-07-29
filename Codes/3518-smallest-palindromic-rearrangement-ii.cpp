@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-29 12:05:08
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-29 17:52:28
+ * @LastEditTime: 2026-07-29 17:54:26
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ private:
     ll C(ll a, ll b) {
         b = min(b, a - b);
         ll ans = 1;
-        for (ll numerator = a, denominator = 1; denominator <= b; numerator++, denominator--) {
+        for (ll numerator = a, denominator = 1; denominator <= b; numerator--, denominator++) {
             ans = ans * numerator / denominator;
             if (ans >= k) {
                 return k;
