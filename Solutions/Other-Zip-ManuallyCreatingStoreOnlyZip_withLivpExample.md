@@ -422,7 +422,7 @@ class File:
     
     def get_dos_datetime(self) -> tuple[int, int]:
         t = localtime(getmtime(self.filename))
-        year = min(max(t.tm_year, 1980), 2107)  #仅支持1980-2197年
+        year = min(max(t.tm_year, 1980), 2107)  #仅支持1980-2107年
         dos_time = (t.tm_hour << 11) | (t.tm_min << 5) | (t.tm_sec // 2)
         dos_date = ((year - 1980) << 9) | (t.tm_mon << 5) | t.tm_mday
         return dos_time, dos_date
@@ -595,7 +595,7 @@ if __name__ == "__main__":
 
 其中的 `struct.pack("<IHHHHHIIIHH", ...)`：
 
-+ `<`代表小端序(TODO: permalink)
++ `<`代表[小端序(little-endian)](https://github.com/LetMeFly666/LeetCode/blob/46a444928f1d248648e7379556ad36c1898e1e94/Solutions/Other-Accumulation-SomeTips.md?plain=1#L1956-L1996)
 + `I`代表unsigned int（4字节）
 + `H`代表unsigned short（2字节）
 + `Q`代表unsigned long long（8字节）
