@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-07-30 18:53:16
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-30 18:56:33
+ * @LastEditTime: 2026-07-30 18:59:13
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -19,15 +19,16 @@ public:
         int cnt = 0;
         if (n <= 8) {
             return n;
-        } else if (n <= 16) {
-            cnt += 8;
-            return cnt + (n - 8) * 2;
-        } else if (n <= 24) {
-            cnt += 8 * 2;
-            return cnt + (n - 16) * 3;
-        } else {
-            cnt += 8 * 3;
-            return cnt + (n - 24) * 4;
         }
+        cnt += 8;
+        if (n <= 16) {
+            return cnt + (n - 8) * 2;
+        }
+        cnt += 8 * 2;
+        if (n <= 24) {
+            return cnt + (n - 16) * 3;
+        }
+        cnt += 8 * 3;
+        return cnt + (n - 24) * 4;
     }
 };
