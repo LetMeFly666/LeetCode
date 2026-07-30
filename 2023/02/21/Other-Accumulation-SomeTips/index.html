@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-07-26T14:58:28.000Z">
+<meta property="article:modified_time" content="2026-07-30T10:28:54.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -263,7 +263,7 @@
         
         
         
-          281 分钟
+          284 分钟
         
       </span>
     
@@ -998,6 +998,24 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<br>    <span class="hljs-string">&quot;\033]8;;https://letmefly.xyz?from=terminalOSC8_20260724\033\\&quot;</span><br>    <span class="hljs-string">&quot;宝藏小网站&quot;</span><br>    <span class="hljs-string">&quot;\033]8;;\033\\&quot;</span><br>)<br></code></pre></td></tr></table></figure>
 
 <p>这和终端中直接显示的<code>https://example.com</code>、<code>main.py#L100</code>不同，这种是没有加特殊输出，终端app自动识别的。</p>
+<h3 id="Little-endian-小端"><a href="#Little-endian-小端" class="headerlink" title="Little-endian 小端"></a>Little-endian 小端</h3><p>整数<code>0x12345678</code>有四个字节，放到内存里有小端存储和大端存储两种方式：</p>
+<p>大端（人类平时写数字就是这种方式）：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">地址 increasing →<br><br><span class="hljs-number">12 34 56 78</span><br></code></pre></td></tr></table></figure>
+
+<p>小端（最低有效字节放最前）：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dns">地址 increasing →<br><br><span class="hljs-number">78 56 34 12</span><br></code></pre></td></tr></table></figure>
+
+<p>Why？最早是Intel 8位CPU，假设要做16位加法：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">0x1234<br><span class="hljs-bullet">+</span><br>0x5678<br></code></pre></td></tr></table></figure>
+
+<p>真正计算时，CPU 会先算最低位：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown">34<br><span class="hljs-bullet">+</span><br>78<br></code></pre></td></tr></table></figure>
+
+<p>产生进位以后，再算高位。因此，如果最低字节就在内存起始地址，CPU 读取第一个字节就能立即开始加。</p>
+<p>此外，假设一个整数<code>0x00000005</code>放内存里<code>05 00 00 00</code>，如果CPU升级为8086(16位)、80386(32位)、x86_64(64位)，原来很多程序可以不用改，因为低地址永远是最低位。CPU可以先读<code>05</code>，需要更多再往后面读。</p>
+<blockquote>
+<p>—— 研究zip有感。</p>
+</blockquote>
 <h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><blockquote>
 <p>同步发文于CSDN，原创不易，转载请附上<a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips">原文链接</a>哦~<br><a href="https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips">https://blog.letmefly.xyz/2023/02/21/Other-Accumulation-SomeTips</a></p>
 </blockquote>
