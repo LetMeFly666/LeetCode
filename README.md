@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-07-26 23:01:07
+ * @LastEditTime: 2026-07-29 21:56:28
 -->
 # LetLeet Blog
 
@@ -165,6 +165,7 @@
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
 |Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
 |Windows - UWP - 通过链接启动Windows设置中的应用：ms-settings|<a href="https://blog.letmefly.xyz/2023/03/16/Other-Windows-UWP-launchSttingsApp/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/129601344">CSDN博客</a>|
+|Zip：手动生成未压缩的zip文件（以百度系iOS动态图.livp为例）|<a href="https://blog.letmefly.xyz/2026/07/29/Other-Zip-ManuallyCreatingStoreOnlyZip_withLivpExample/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/163313641">CSDN博客</a>|
 
 ## 现有题解
 

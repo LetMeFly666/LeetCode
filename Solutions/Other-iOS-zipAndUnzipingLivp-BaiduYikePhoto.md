@@ -1,5 +1,5 @@
 ---
-title: iOS：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持
+title: 逆向(iOS)：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持
 date: 2026-07-04 19:38:47
 tags: [Mac, MacOS, iPhone, iOS, 百度网盘, 一刻相册, 照片同步, 逆向]
 categories: [技术思考]
@@ -8,7 +8,7 @@ description: 市面上首篇把静态图+mov短视频打包回live图的方案�
 
 市面上首篇把静态图+mov短视频打包回live图的方案， **不需要iPhone参与** 。
 
-# iOS：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持
+# 逆向(iOS)：压缩和解压live图(.livp)——百度一刻相册+百度网盘识别支持
 
 > 重磅原创!
 
@@ -64,7 +64,6 @@ part1  part2    part3  part4  part5   part6       part7
 > 
 > 在收集到的样本中，还都满足以下(若不遵守还可能能被正常识别的)约束：
 
-+ 文件名中不包含中文、空格
 + zip中Central Directory顺序为 静态图在#1、动态图在#2
 + 静态图、动态图文件名（除后缀）相同，且为`xx.静态图类型`。如`123.JPG.jpeg` + `123.JGP.mov`
 
@@ -553,7 +552,7 @@ if __name__ == "__main__":
 
 
 
-## 静态图+动态图->live图脚本
+## 静态图+动态图->live图脚本 （无需借助zip命令）
 
 如果你有一个.jpg/.jpeg格式的静态图和一个.mov格式的动态视频，则可以使用[以下脚本](https://github.com/LetMeFly666/2livp/blob/9a32caee3c3c12fc3b28501a933dd377b8e9edfc/livp_pack1.py)将其打包为一个动态图。
 
@@ -946,6 +945,8 @@ python live_pack1.py 静态文件路径 动态文件路径 导出livp文件路�
 ```
 
 最新脚本请见[Github@LetMeFly666/2livp](https://github.com/LetMeFly666/2livp)
+
+此外，我们可以通过研究仅存储的zip文件的格式，直接二进制**手搓**一个.livp文件出来。原理请见文章《[Zip：手动生成仅存储的zip文件（以百度系iOS动态图.livp为例）](https://blog.letmefly.xyz/2026/07/29/Other-Zip-ManuallyCreatingStoreOnlyZip_withLivpExample/)》。
 
 ## 杂念
 
