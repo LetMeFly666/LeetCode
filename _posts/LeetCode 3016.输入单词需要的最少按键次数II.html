@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="【LetMeFly】3016.输入单词需要的最少按键次数 II：排序（贪心）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-number-of-pushes-to-type-word-ii&#x2F; 给你一个字符串 word，由小写英文字母组成。  电话键盘上的按键与 不同 小写英文字母集合相映射，可以通过按压按键来组成单词。例如，按键 2 对应 [&quot;a&quot;,&quot;b&quot;,">
+<meta property="og:type" content="website">
+<meta property="og:title" content="3016.输入单词需要的最少按键次数 II：排序（贪心）">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/LeetCode%203016.%E8%BE%93%E5%85%A5%E5%8D%95%E8%AF%8D%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E6%8C%89%E9%94%AE%E6%AC%A1%E6%95%B0II.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="【LetMeFly】3016.输入单词需要的最少按键次数 II：排序（贪心）力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-number-of-pushes-to-type-word-ii&#x2F; 给你一个字符串 word，由小写英文字母组成。  电话键盘上的按键与 不同 小写英文字母集合相映射，可以通过按压按键来组成单词。例如，按键 2 对应 [&quot;a&quot;,&quot;b&quot;,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2023/12/26/keypaddesc.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2023/12/26/keypadv1e1.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2023/12/26/keypadv2e2.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2023/12/27/keypadv2.png">
+<meta property="article:published_time" content="2026-07-31T00:30:50.000Z">
+<meta property="article:modified_time" content="2026-07-31T00:36:26.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="中等">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="排序">
+<meta property="article:tag" content="计数">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2023/12/26/keypaddesc.png">
+  
+  
+  
+  <title>3016.输入单词需要的最少按键次数 II：排序（贪心） - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="3016.输入单词需要的最少按键次数 II：排序（贪心）"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="【LetMeFly】3016-输入单词需要的最少按键次数-II：排序（贪心）"><a href="#【LetMeFly】3016-输入单词需要的最少按键次数-II：排序（贪心）" class="headerlink" title="【LetMeFly】3016.输入单词需要的最少按键次数 II：排序（贪心）"></a>【LetMeFly】3016.输入单词需要的最少按键次数 II：排序（贪心）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-pushes-to-type-word-ii/">https://leetcode.cn/problems/minimum-number-of-pushes-to-type-word-ii/</a></p>
+<p>给你一个字符串 <code>word</code>，由小写英文字母组成。</p>
+
+<p>电话键盘上的按键与 <strong>不同 </strong>小写英文字母集合相映射，可以通过按压按键来组成单词。例如，按键 <code>2</code> 对应 <code>["a","b","c"]</code>，我们需要按一次键来输入 <code>"a"</code>，按两次键来输入 <code>"b"</code>，按三次键来输入 <code>"c"</code><em>。</em></p>
+
+<p>现在允许你将编号为 <code>2</code> 到 <code>9</code> 的按键重新映射到 <strong>不同 </strong>字母集合。每个按键可以映射到<strong> 任意数量 </strong>的字母，但每个字母 <strong>必须</strong> <strong>恰好</strong> 映射到 <strong>一个 </strong>按键上。你需要找到输入字符串 <code>word</code> 所需的<strong> 最少 </strong>按键次数。</p>
+
+<p>返回重新映射按键后输入 <code>word</code> 所需的 <strong>最少 </strong>按键次数。</p>
+
+<p>下面给出了一种电话键盘上字母到按键的映射作为示例。注意 <code>1</code>，<code>*</code>，<code>#</code> 和 <code>0</code> <strong>不</strong> 对应任何字母。</p>
+<img alt="" src="https://assets.leetcode.com/uploads/2023/12/26/keypaddesc.png" srcset="/img/loading.gif" lazyload style="width: 329px; height: 313px;" />
+<p>&nbsp;</p>
+
+<p><strong class="example">示例 1：</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2023/12/26/keypadv1e1.png" srcset="/img/loading.gif" lazyload style="width: 329px; height: 313px;" />
+<pre>
+<strong>输入：</strong>word = "abcde"
+<strong>输出：</strong>5
+<strong>解释：</strong>图片中给出的重新映射方案的输入成本最小。
+"a" -&gt; 在按键 2 上按一次
+"b" -&gt; 在按键 3 上按一次
+"c" -&gt; 在按键 4 上按一次
+"d" -&gt; 在按键 5 上按一次
+"e" -&gt; 在按键 6 上按一次
+总成本为 1 + 1 + 1 + 1 + 1 = 5 。
+可以证明不存在其他成本更低的映射方案。
+</pre>
+
+<p><strong class="example">示例 2：</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2023/12/26/keypadv2e2.png" srcset="/img/loading.gif" lazyload style="width: 329px; height: 313px;" />
+<pre>
+<strong>输入：</strong>word = "xyzxyzxyzxyz"
+<strong>输出：</strong>12
+<strong>解释：</strong>图片中给出的重新映射方案的输入成本最小。
+"x" -&gt; 在按键 2 上按一次
+"y" -&gt; 在按键 3 上按一次
+"z" -&gt; 在按键 4 上按一次
+总成本为 1 * 4 + 1 * 4 + 1 * 4 = 12 。
+可以证明不存在其他成本更低的映射方案。
+注意按键 9 没有映射到任何字母：不必让每个按键都存在与之映射的字母，但是每个字母都必须映射到按键上。
+</pre>
+
+<p><strong class="example">示例 3：</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2023/12/27/keypadv2.png" srcset="/img/loading.gif" lazyload style="width: 329px; height: 313px;" />
+<pre>
+<strong>输入：</strong>word = "aabbccddeeffgghhiiiiii"
+<strong>输出：</strong>24
+<strong>解释：</strong>图片中给出的重新映射方案的输入成本最小。
+"a" -&gt; 在按键 2 上按一次
+"b" -&gt; 在按键 3 上按一次
+"c" -&gt; 在按键 4 上按一次
+"d" -&gt; 在按键 5 上按一次
+"e" -&gt; 在按键 6 上按一次
+"f" -&gt; 在按键 7 上按一次
+"g" -&gt; 在按键 8 上按一次
+"h" -&gt; 在按键 9 上按两次
+"i" -&gt; 在按键 9 上按一次
+总成本为 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 1 * 2 + 2 * 2 + 6 * 1 = 24 。
+可以证明不存在其他成本更低的映射方案。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= word.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>word</code> 仅由小写英文字母组成。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：排序"><a href="#解题方法：排序" class="headerlink" title="解题方法：排序"></a>解题方法：排序</h2><p>贪心思路：出现次数多的字符分配到按键次数少的位置。</p>
+<p>遍历一遍原始字符串，使用一个大小为$26$的数组记录每种字符的出现次数，把出现次数按从大到小的顺序排序，接着按照只用按1次的位置开始分配（最多分配8个字符）、需要按2次的位置继续分配（最多分配8个字符）、…、直至分配完毕为止。</p>
+<p>分配完的标志可以视为26种字符处理完毕，也可视为处理到了出现次数为0的字符。</p>
+<ul>
+<li>时间复杂度$O(len(w) + C\log C)$，其中$C&#x3D;26$</li>
+<li>空间复杂度$O(C)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * @LastEditTime: 2026-07-31 08:24:25</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minimumPushes</span><span class="hljs-params">(string&amp; word)</span> </span>&#123;<br>        <span class="hljs-type">int</span> cnt[<span class="hljs-number">26</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">char</span> c : word) &#123;<br>            cnt[c - <span class="hljs-string">&#x27;a&#x27;</span>]++;<br>        &#125;<br>        ranges::<span class="hljs-built_in">sort</span>(cnt, greater&lt;&gt;());<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>, round = <span class="hljs-number">1</span>, th = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> t : cnt) &#123;<br>            th++;<br>            <span class="hljs-keyword">if</span> (th == <span class="hljs-number">9</span>) &#123;<br>                th = <span class="hljs-number">1</span>;<br>                round++;<br>            &#125;<br>            ans += t * round;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163353536">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/07/31/LeetCode%203016.%E8%BE%93%E5%85%A5%E5%8D%95%E8%AF%8D%E9%9C%80%E8%A6%81%E7%9A%84%E6%9C%80%E5%B0%91%E6%8C%89%E9%94%AE%E6%AC%A1%E6%95%B0II/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

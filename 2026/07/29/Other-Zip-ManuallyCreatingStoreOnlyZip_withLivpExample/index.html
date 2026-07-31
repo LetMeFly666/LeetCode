@@ -26,7 +26,7 @@
 <meta property="og:description" content="不借助zip工具生成仅存储的zip文件；未压缩的zip文件；手搓zip、手搓压缩文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-29T13:51:32.000Z">
-<meta property="article:modified_time" content="2026-07-30T11:13:47.000Z">
+<meta property="article:modified_time" content="2026-07-31T00:36:26.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="Mac">
 <meta property="article:tag" content="MacOS">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          20k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          134 分钟
+          170 分钟
         
       </span>
     
@@ -722,6 +722,30 @@
 <p>zip格式调研报告：<a target="_blank" rel="noopener" href="https://chatgpt.com/share/6a6a0d7e-9254-83ec-a48b-bb63b69f99cd">byChatGPT</a>（不要看其生成的脚本<a href="(https://chatgpt.com/c/6a6960ff-68e8-83ec-9e6a-73f27531bd77)">，</a>不可用）</p>
 <p>样本逐字节分析验证(+撰文制表)：All by Hand with Heart❤️.</p>
 <p>Phillip Katz的Zip故事<a target="_blank" rel="noopener" href="https://chatgpt.com/c/6a6aafcf-4be0-83ec-a3bf-c3f055065fac">：</a><a target="_blank" rel="noopener" href="https://chatgpt.com/s/t_6a6ab4b9e9448191b2aca675febd828b">看ChatGPT的第二段对话</a></p>
+<details><summary>
+这个是原探究过程，TL;DR：
+</summary>
+
+<p>[Local File Header #1][文件名1][文件数据1][Local File Header #2][文件名2][文件数据2]<br>[Central Directory File Header #1][Central Directory File Header #2]<br>[End Of Central Directory (EOCD)][ZIP 注释（百度自定义）]</p>
+<p>xxd byiOSLivpMakerB1785140239500.zip | less</p>
+<p>一个数字代表半个字节，如504b，50是一个字节</p>
+<p>Local File Header</p>
+<p> 0000 0024 6674 7970 6865 6963 0000</p>
+<p>签名          504B 0304  固定魔数<br>版本          1400       提取所需最低版本，一般设为 0x0014（2.0，即 decimal 20）<br>通用位标志     0000       GPFlag<br>压缩方法       0000       0x0000 &#x3D; 存储（store，无压缩）。<br>修改时间       2982       bit 15-11 小时(5 bit)<br/>bit 10-5 分钟(6 bit)<br/>bit 4-0 秒&#x2F;2(5 bit)<br/>0x8229 &#x3D; 1000 0010 0010 1001<br/>小时10000 &#x3D; 16<br/>分钟010001 &#x3D; 17<br/>秒&#x2F;2 01001 &#x3D; 9<br/> 16:17:18<br>修改日期       fb5c       bit 15-9 年份偏移(从1980开始)<br/>bit 8-5 月<br/>bit 4-0 日<br/>0x5cfb &#x3D; 0101 1100 1111 1011<br/>年diff 年0101110&#x3D;46<br/>月0111&#x3D;7<br/>日11011&#x3D;27<br/>2026年7月27日<br>CRC32         9571 d173  0x73d17195 见python脚本livp3.crc.py<br>压缩大小       2395 0000   0x9523，<code>stat -f &quot;%z&quot; IMB_TItMiu.HEIC.heic</code>得38179（字节），hex(38179)&#x3D;0x9523<br>未压缩大小     2395 0000   同上<br>文件名长度     1400        0x14 &#x3D; len(‘IMB_TItMiu.HEIC.heic’)<br>额外字段长度   0000<br>文件名        494d 425f 5449 744d 6975 2e48 4549 432e 6865 6963  运行<code>print(bytes.fromhex(&quot;494d 425f 5449 744d 6975 2e48 4549 432e 6865 6963&quot;).decode(&quot;ascii&quot;))</code>可得<code>IMB_TItMiu.HEIC.heic</code><br>文件数据       0000 0024 6674 7970 6865 6963 … …$ftypheic..</p>
+<p>文件数据起始偏移地址 16x3+2&#x3D;50<br>文件结束后第二个文件起始偏移地址：50 + 38179 &#x3D; 0x9555</p>
+<p>执行<code>xxd -s 0x9555 byiOSLivpMakerB1785140239500.zip | less</code>得到<br>00009555: 504b 0304 1400 0000 0000 2982 fb5c dbcf  PK……..)....<br>00009565: 6a4e 9d54 0300 9d54 0300 1300 0000 494d  jN.T…T……IM<br>00009575: 425f 5449 744d 6975 2e48 4549 432e 6d6f  B_TItMiu.HEIC.mo<br>00009585: 7600 0000 1466 7479 7071 7420 2000 0000  v….ftypqt  …</p>
+<p>文件起始地址 0x9585 + 1，文件大小 218269 字节 ，ZIP下一部分Central Directory File Header #1 起始地址 0x9585 + 1 + 218269 &#x3D; ‘0x3ea23’</p>
+<p>执行<code>xxd -s 0x3ea23 byiOSLivpMakerB1785140239500.zip</code>得到<br>0003ea23: 504b 0102 0000 1400 0000 0000 2982 fb5c  PK……….)..<br>0003ea33: 9571 d173 2395 0000 2395 0000 1400 0000  .q.s#…#…….<br>0003ea43: 0000 0000 0000 0000 0000 0000 0000 494d  …………..IM<br>0003ea53: 425f 5449 744d 6975 2e48 4549 432e 6865  B_TItMiu.HEIC.he<br>0003ea63: 6963 504b 0102 0000 1400 0000 0000 2982  icPK……….).<br>0003ea73: fb5c dbcf 6a4e 9d54 0300 9d54 0300 1300  ...jN.T…T….<br>0003ea83: 0000 0000 0000 0000 0000 0000 5595 0000  …………U…<br>0003ea93: 494d 425f 5449 744d 6975 2e48 4549 432e  IMB_TItMiu.HEIC.<br>0003eaa3: 6d6f 7650 4b05 0600 0000 0002 0002 0083  movPK………..<br>0003eab3: 0000 0023 ea03 0038 0030 3030 3230 3030  …#…8.0002000<br>0003eac3: 3030 3033 3230 3030 3039 3532 3330 3030  0003200009523000<br>0003ead3: 3330 3030 3039 3538 3630 3030 3335 3439  3000095860003549<br>0003eae3: 4433 3133 3033 3033 3034 4334 3935 3635  D313030304C49565<br>0003eaf3: 30                                       0</p>
+<p>Central Directory File Header #1</p>
+<p>签名Signature          504b 0102    固定魔数<br>版本VerMade            0000         创建此文件所用版本，一般也用2.0（14 00）<br>版本VerNeeded          1400         提取所需最低版本，同 Local Header<br>通用位标志GPFlag        0000         GPFlag<br>压缩方法CompMethod      0000         0x0000 &#x3D; 存储（store，无压缩）<br>修改时间ModTime         2982         同Local File Header<br>修改日期ModDate         fb5c         同Local File Header<br>CRC32                 9571 d173     同Local File Header<br>压缩大小CompSize       2395 0000     同Local File Header<br>未压缩大小UncompSize    2395 0000     同Local File Header<br>文件名长度NameLen       1400         同Local File Header<br>额外字段长度ExtraLen    0000         同Local File Header<br>文件注释长度CommentLen  0000         代表无注释<br>磁盘号DiskStart        0000         此文件起始于第几号磁盘（一般0）<br>内部属性IntAttr         0000        内部文件属性，一般 0<br>外部属性ExtAttr         0000 0000   外部文件属性，一般 0<br>相对偏移RelOffset       0000 0000   从 ZIP 文件起始到对应 Local Header 的偏移（字节数）。示例：第一个文件偏移 0。第二个文件按此计算。<br>文件名                 494d 425f 5449 744d 6975 2e48 4549 432e 6865 6963<br>（可选）额外字段&#x2F;注释</p>
+<p>Central Directory File Header #2</p>
+<p>大多都与#1相同<br>504b 0102 0000 1400 0000 0000 2982 fb5c<br>CRC32：dbcf 6a4e<br>未压缩大小：9d54 0300<br>压缩大小：9d54 0300<br>文件名长度：1300<br>0000 0000 0000 0000 0000 0000<br>相对偏移RelOffset 5595 0000 ，符合前面计算的0x9555（也就是0x00009555）<br>文件名494d 425f 5449 744d 6975 2e48 4549 432e 6d6f 76<br>运行<code>print(bytes.fromhex(&quot;494d 425f 5449 744d 6975 2e48 4549 432e 6d6f 76&quot;).decode(&quot;ascii&quot;))</code>可得<code>IMB_TItMiu.HEIC.mov</code></p>
+<p>End of Central Directory (EOCD)：</p>
+<p>xxd -s 0x3eaa6 byiOSLivpMakerB1785140239500.zip<br>0003eaa6: 504b 0506 0000 0000 0200 0200 8300 0000  PK…………..<br>0003eab6: 23ea 0300 3800 3030 3032 3030 3030 3030  #…8.0002000000<br>0003eac6: 3332 3030 3030 3935 3233 3030 3033 3030  3200009523000300<br>0003ead6: 3030 3935 3836 3030 3033 3534 3944 3331  0095860003549D31<br>0003eae6: 3330 3330 3330 3443 3439 3536 3530       3030304C495650</p>
+<p>签名Signature             504b 0506             固定魔数，标志 EOCD 开始<br>当前磁盘号DiskNum          0000                  本磁盘号，一般0<br>CD起始磁盘号DiskStart      0000                  中央目录所在磁盘号（一般0）<br>磁盘内条目数EntriesOnDisk  0200                  本磁盘上的目录条目数。示例0x0002&#x3D;2（图片+视频）。<br>总条目数TotalEntries       0200                  ZIP 文件中目录总条目数。示例2。<br>CD大小CDSize              8300 0000             （CD#1 46+20，CD#2 46+19，共计46+20+46+19&#x3D;131&#x3D;0x83）中央目录总大小（字节）。等于所有 Central 头长度之和（不含 EOCD 自身和注释）。<br>CD偏移CDOffset            23ea 0300             0x3eaa6-0x83&#x3D;0x03ea23中央目录起始位置相对 ZIP 开始的偏移（字节数）。<br>注释长度CommentLen        3800                   0x38&#x3D;56<br>注释内容                  3030 3032 3030 3030 3030 3332 3030 3030 3935 3233 3030 3033 3030 3030 3935 3836 3030 3033 3534 3944 3331 3330 3330 3330 3443 3439 3536 3530</p>
+<p>print(bytes.fromhex(“3030 3032 3030 3030 3030 3332 3030 3030 3935 3233 3030 3033 3030 3030 3935 3836 3030 3033 3534 3944 3331 3330 3330 3330 3443 3439 3536 3530”).decode(“ascii”))得到：000200000032000095230003000095860003549D313030304C495650</p>
+</details>
+
 <blockquote>
 <p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163313641">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/07/29/Other-Zip-ManuallyCreatingStoreOnlyZip_withLivpExample/">原文链接</a>哦~</p>
 <p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
