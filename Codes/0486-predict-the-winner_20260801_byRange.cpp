@@ -14,7 +14,7 @@ private:
         if (l == r) {
             return nums[l];
         }
-        return max(nums[l] - play(nums, l + 1, r), nums[r] - play(nums, l, r + 1));
+        return max(nums[l] - play(nums, l + 1, r), nums[r] - play(nums, l, r - 1));
     }
 public:
     bool predictTheWinner(vector<int>& nums) {
