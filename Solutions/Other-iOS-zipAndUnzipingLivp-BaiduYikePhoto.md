@@ -567,7 +567,7 @@ Date: 2026-07-30 14:49:28
 LastEditors: LetMeFly.xyz
 LastEditTime: 2026-08-01 18:31:32
 Description: 不借助zip工具生成.livp
-Description: All Writen By Hand
+Description: All Written By Hand
 Description: What A Beautiful Design(bushi
 '''
 from sys import argv
