@@ -42,10 +42,10 @@ part1  part2    part3  part4  part5   part6       part7
 ||含义|举例|
 |:--:|:--:|:--:|
 |part1|静态图类型|0002代表heic<br/>0005代表jepg|
-|part2|30+静态图文件名长度|如00000034|
+|part2|30+静态图文件名长度<hr/>即静态文件起始偏移地址|如00000034|
 |part3|静态图字节数|如000A0B3C|
-|part4|动态图类型|0003代表mov|
-|part5|part3<br/>+(30+静态图文件名长度)<br/>+(30+动态图文件名长度)|如000A0BA3|
+|part4|动态图类型|mov、mp4均为0003|
+|part5|part3<br/>+(30+静态图文件名长度)<br/>+(30+动态图文件名长度)<hr/>即动态文件起始偏移地址|如000A0BA3|
 |part6|动态图字节数|如001BF0C7|
 |part7|`1000LIVP`的ASCII码|固定为313030304C495650|
 
@@ -554,384 +554,214 @@ if __name__ == "__main__":
 
 ## 静态图+动态图->live图脚本 （无需借助zip命令）
 
-如果你有一个.jpg/.jpeg格式的静态图和一个.mov格式的动态视频，则可以使用[以下脚本](https://github.com/LetMeFly666/2livp/blob/9a32caee3c3c12fc3b28501a933dd377b8e9edfc/livp_pack1.py)将其打包为一个动态图。
+如果你有一个.jpg/.jpeg/.heic格式的静态图和一个.mov/.mp4格式的动态视频，则可以使用[以下脚本](https://github.com/LetMeFly666/2livp/blob/9a32caee3c3c12fc3b28501a933dd377b8e9edfc/livp_pack1.py)将其打包为一个动态图。
 
 <details>
 <summary>脚本点我展开</summary>
 
 
 ```python
-"""
-livp_pack1.py
-
-将一个静态图 + 一个动态图打包为可识别的 .livp 文件。
-
-支持：
-
-静态图：
-    *.jpeg
-    *.jpg
-    *.heic
-    *.HEIC.heic
-
-动态图：
-    *.mov
-
-
-生成规则：
-
-ZIP:
-    - 不压缩
-    - 不保存 extra attributes
-    - Central Directory:
-        静态图
-        动态图
-
-ZIP comment:
-
-    part1 part2 part3 part4 part5 part6 part7
-
-其中：
-
-part1:
-    静态类型
-        heic = 0002
-        jpeg = 0005
-
-part2:
-    30 + 静态文件名长度
-
-part3:
-    静态文件大小
-
-part4:
-    mov
-        0003
-
-part5:
-    静态 offset + 30 + static_name_len
-               + 30 + dynamic_name_len
-
-part6:
-    动态文件大小
-
-part7:
-    1000LIVP ASCII hex
-"""
+'''
+Author: LetMeFly
+Date: 2026-07-30 14:49:28
+LastEditors: LetMeFly.xyz
+LastEditTime: 2026-08-01 18:31:32
+Description: 不借助zip工具生成.livp
+Description: All Written By Hand
+Description: What A Beautiful Design(bushi
+'''
+from sys import argv
+from io import BufferedWriter
+from os.path import getmtime, basename
+from time import localtime
+from struct import pack
+from zlib import crc32
 
 
-import argparse
-import os
-import struct
-import subprocess
-import tempfile
-import shutil
+class File:
+    def __init__(self, filename: str):
+        self.filename = filename
+        self.name = basename(filename).encode("utf-8")
+        self.size = 0
+        self.crc32 = 0
+        self.data = b""  # 先给干内存里得了。
+        self.offset = 0  # 文件头起始位置在zip文件里的偏移量
+    
+    def get_dos_datetime(self) -> tuple[int, int]:
+        t = localtime(getmtime(self.filename))
+        year = min(max(t.tm_year, 1980), 2107)  #仅支持1980-2107年
+        dos_time = (t.tm_hour << 11) | (t.tm_min << 5) | (t.tm_sec // 2)
+        dos_date = ((year - 1980) << 9) | (t.tm_mon << 5) | t.tm_mday
+        return dos_time, dos_date
+    
+    def get_crc32(self) -> int:
+        if self.crc32:
+            return self.crc32
+        return self.__calc_crc32()
+    
+    def get_data(self) -> bytes:
+        if not self.data:
+            with open(self.filename, "rb") as f:
+                self.data = f.read()
+        return self.data
+
+    def get_size(self) -> int:
+        if not self.size:
+            self.size = len(self.get_data())
+        return self.size
+    
+    def __calc_crc32(self) -> int:
+        data = self.get_data()
+        self.crc32 = crc32(data) & 0xffffffff  # 只取32位（&0xffffffff是为了兼容python2写法）
+        return self.crc32
 
 
-MAGIC = "313030304C495650"
+class Zip:
+    def __init__(self, *files: File):
+        self.files = files
+        self.comment = self.t()
+        self.cd_len = 0  # 中央目录总长度
+    
+    def t(self) -> bytes:
+        # 这样是为了方便后面的拓展
+        return ZipCommenter.create(self.files).get_comment()
+
+    def _write1file(self, file: File, out: BufferedWriter):
+        file.offset = out.tell()
+        dos_time, dos_date = file.get_dos_datetime()
+        # 现在支持的版本标志位=0x0000，要么读两遍文件，要么seek回来覆盖掉crc32，暂时选择读两遍文件
+        crc32 = file.get_crc32()
+        size = file.get_size()
+        out.write(pack(
+            "<IHHHHHIIIHH",
+            0x04034b50,      # 签名
+            0x0014,          # 版本2.0
+            0x0000,          # 标志位
+            0x0000,          # 压缩方法(仅存储)
+            dos_time,        # 修改时间
+            dos_date,        # 修改日期
+            crc32,           # CRC32
+            size,            # 压缩大小
+            size,            # 原始大小
+            len(file.name),  # 文件名长度
+            0x0000           # 额外字段长度
+        ))
+        out.write(file.name)
+        out.write(file.get_data())
+    
+    def _write_central_directory(self, file: File, out: BufferedWriter):
+        dos_time, dos_date = file.get_dos_datetime()
+        crc32 = file.get_crc32()
+        size = file.get_size()
+        out.write(pack(
+            "<IHHHHHHIIIHHHHHII",
+            0x02014b50,      # 签名
+            0x0000,          # 创建此文件所用版本
+            0x0014,          # 提取所需最低版本，同 Local Header(版本2.0)
+            0x0000,          # 标志位
+            0x0000,          # 压缩方法(仅存储)
+            dos_time,        # 修改时间
+            dos_date,        # 修改日期
+            crc32,           # CRC32
+            size,            # 压缩大小
+            size,            # 原始大小
+            len(file.name),  # 文件名长度
+            0x0000,          # 额外字段长度
+            0x0000,          # 文件注释长度
+            0x0000,          # 磁盘号
+            0x0000,          # 内部文件属性
+            0x00000000,      # 外部文件属性
+            file.offset      # 文件头起始位置在zip文件中的偏移量
+        ))
+        out.write(file.name)
+        self.cd_len += 46 + len(file.name)
+    
+    def _write_end_of_central_directory(self, out: BufferedWriter):
+        out.write(pack(
+            "<IHHHHIIH",
+            0x06054b50,                # 签名
+            0x0000,                    # 磁盘号
+            0x0000,                    # 中央目录起始磁盘号
+            len(self.files),           # 本磁盘上中央目录记录数   
+            len(self.files),           # 中央目录记录总数
+            self.cd_len,               # 中央目录大小
+            out.tell() - self.cd_len,  # 中央目录起始位置相对于起始磁盘的偏移量
+            len(self.comment)          # zip文件注释长度
+        ))
+    
+
+    def _write_comment(self, out: BufferedWriter):
+        out.write(self.comment)
+
+    def write(self, output: str):
+        with open(output, "wb") as out:
+            for file in self.files:
+                self._write1file(file, out)
+            for file in self.files:
+                self._write_central_directory(file, out)
+            self._write_end_of_central_directory(out)
+            self._write_comment(out)
 
 
-STATIC_TYPES = {
-    ".heic": "0002",
-    ".jpeg": "0005",
-    ".jpg": "0005",
-}
+class ZipCommenter:
+    def get_comment(self) -> bytes:
+        return b"generated by LetMeFly.xyz"
+
+    @staticmethod
+    def create(files: list[File]) -> "ZipCommenter":
+        if len(files) == 2:
+            return LivpCommenter(files[0], files[1])
+        return ZipCommenter()
 
 
-def detect_static_type(filename):
-    """
-    判断静态图片类型
-    """
-
-    lower = filename.lower()
-
-    if lower.endswith(".heic"):
-        return "0002"
-
-    if lower.endswith(".jpeg") or lower.endswith(".jpg"):
-        return "0005"
-
-    raise ValueError(
-        f"不支持的静态图片类型: {filename}"
-    )
-
-
-def check_inputs(static, dynamic):
-
-    if not os.path.isfile(static):
-        raise FileNotFoundError(static)
-
-    if not os.path.isfile(dynamic):
-        raise FileNotFoundError(dynamic)
-
-    if not dynamic.lower().endswith(".mov"):
-        raise ValueError(
-            "动态图必须为 mov"
+class LivpCommenter(ZipCommenter):
+    def __init__(self, static_file: File, dynamic_file: File):
+        self.static_file = static_file
+        self.dynamic_file = dynamic_file
+        self.static_file_type = self.static_file.name.rsplit(b".", 1)[-1].lower()
+        assert self.static_file_type in [b"jpg", b"jpeg", b"heic"]
+        self.dynamic_file_type = self.dynamic_file.name.rsplit(b".", 1)[-1].lower()
+        assert self.dynamic_file_type in [b"mov", b"mp4"]
+    
+    @staticmethod
+    def _val(val: int, length: int) -> str:
+        return f"{val:0{length}X}"
+    
+    def get_comment(self) -> bytes:
+        comment = ""
+        if self.static_file_type == b"heic":
+            comment += self._val(2, 4)
+        elif self.static_file_type in [b"jpg", b"jpeg"]:
+            comment += self._val(5, 4)
+        comment += self._val(30 + len(self.static_file.name), 8)
+        comment += self._val(self.static_file.get_size(), 8)
+        if self.dynamic_file_type in [b"mov", b"mp4"]:
+            comment += self._val(3, 4)
+        comment += self._val(
+            self.static_file.get_size()
+            + 30 + len(self.static_file.name)
+            + 30 + len(self.dynamic_file.name),
+            8
         )
+        comment += self._val(self.dynamic_file.get_size(), 8)
+        comment += "313030304C495650"
+        return comment.encode("ascii")
 
+def help(filename: str):
+    print(f"Usage: python {filename} <static_file> <dynamic_file> <output_file>")
 
-def check_filename_rule(static, dynamic):
 
-    """
-    软规范：
-
-    xxx.xxx.jpeg
-    xxx.xxx.mov
-
-    去掉最后扩展名后必须一致
-    """
-
-    s = os.path.basename(static)
-    d = os.path.basename(dynamic)
-
-    s_prefix = os.path.splitext(s)[0]
-    d_prefix = os.path.splitext(d)[0]
-
-    if s_prefix != d_prefix:
-        raise ValueError(
-            "静态图和动态图文件名主体不一致:\n"
-            f"{s}\n{d}"
-        )
-
-
-def build_comment(static, dynamic):
-
-    static_name = os.path.basename(static)
-    dynamic_name = os.path.basename(dynamic)
-
-    static_type = detect_static_type(static)
-
-    static_size = os.path.getsize(static)
-    dynamic_size = os.path.getsize(dynamic)
-
-
-    # Local File Header 固定30字节
-    static_name_len = len(
-        static_name.encode("utf-8")
-    )
-
-    dynamic_name_len = len(
-        dynamic_name.encode("utf-8")
-    )
-
-
-    # static offset
-    #
-    # 第一个文件永远 offset 0
-    #
-
-    static_offset = 0
-
-
-    part2 = 30 + static_name_len
-
-
-    #
-    # dynamic Local Header offset:
-    #
-    # static local header
-    # + static data
-    #
-
-    dynamic_offset = (
-        static_offset
-        + 30
-        + static_name_len
-        + static_size
-    )
-
-
-    part5 = (
-        dynamic_offset
-        + 30
-        + dynamic_name_len
-    )
-
-
-    parts = [
-        static_type,
-        f"{part2:08X}",
-        f"{static_size:08X}",
-        "0003",
-        f"{part5:08X}",
-        f"{dynamic_size:08X}",
-        MAGIC,
-    ]
-
-
-    return "".join(parts)
-
-
-
-def create_zip(static, dynamic, output):
-
-    """
-    使用系统 zip 创建基础包
-
-    注意：
-    不能用 Python zipfile
-    """
-
-    with tempfile.TemporaryDirectory() as tmp:
-
-        temp_zip = os.path.join(
-            tmp,
-            "tmp.zip"
-        )
-
-
-        #
-        # -0:
-        #   store only
-        #
-        # -X:
-        #   exclude extra attributes
-        #
-
-        cmd = [
-            "zip",
-            "-0",
-            "-X",
-            temp_zip,
-            os.path.basename(static),
-            os.path.basename(dynamic),
-        ]
-
-
-        subprocess.run(
-            cmd,
-            cwd=os.path.dirname(static),
-            check=True,
-            stdout=subprocess.DEVNULL,
-        )
-
-
-        #
-        # 写入 comment
-        #
-
-        comment = build_comment(
-            static,
-            dynamic
-        )
-
-
-        with open(temp_zip, "rb") as f:
-            data = f.read()
-
-
-        #
-        # ZIP End Of Central Directory:
-        #
-        # signature:
-        # 4 bytes
-        #
-        # comment length:
-        # offset +20
-        #
-
-        eocd = data.rfind(
-            b"PK\x05\x06"
-        )
-
-        if eocd < 0:
-            raise RuntimeError(
-                "不是有效zip"
-            )
-
-
-        old_len = struct.unpack(
-            "<H",
-            data[eocd+20:eocd+22]
-        )[0]
-
-
-        #
-        # 去掉旧comment
-        #
-
-        data = (
-            data[:eocd+20]
-            +
-            struct.pack(
-                "<H",
-                len(comment)
-            )
-            +
-            data[eocd+22+old_len:]
-        )
-
-
-        data += comment.encode(
-            "ascii"
-        )
-
-
-        with open(output, "wb") as f:
-            f.write(data)
-
-
-
-def main():
-
-    parser = argparse.ArgumentParser(
-        description=
-        "将静态图+动态图打包为 livp"
-    )
-
-
-    parser.add_argument(
-        "static",
-        help="静态图片"
-    )
-
-    parser.add_argument(
-        "dynamic",
-        help="动态图 mov"
-    )
-
-    parser.add_argument(
-        "output",
-        help="输出 .livp"
-    )
-
-
-    args = parser.parse_args()
-
-
-    check_inputs(
-        args.static,
-        args.dynamic
-    )
-
-
-    check_filename_rule(
-        args.static,
-        args.dynamic
-    )
-
-
-    if not args.output.endswith(".livp"):
-        raise ValueError(
-            "输出文件必须为 .livp"
-        )
-
-
-    create_zip(
-        args.static,
-        args.dynamic,
-        args.output
-    )
-
-
-    print(
-        "完成:",
-        args.output
-    )
+def main(static_file: str, dynamic_file: str, output_file: str):
+    zip = Zip(File(static_file), File(dynamic_file))
+    zip.write(output_file)
 
 
 if __name__ == "__main__":
-    main()
+    if len(argv) != 4:
+        print("there must be 3 arguments, but got %d" % (len(argv) - 1))
+        help(argv[0])
+        exit(1)
+    main(argv[1], argv[2], argv[3])
 ```
 
 
@@ -940,13 +770,13 @@ if __name__ == "__main__":
 脚本使用方式：
 
 ```bash
-python live_pack1.py 静态文件路径 动态文件路径 导出livp文件路径
-# 如：python live_pack1.py a.JPG.jpeg a.JPG.mov LetMeFly.xyz.Handsome.livp
+python livp_maker.py 静态文件路径 动态文件路径 导出livp文件路径
+# 如：python livp_maker.py a.JPG.jpeg a.JPG.mov LetMeFly.xyz.Handsome.livp
 ```
 
 最新脚本请见[Github@LetMeFly666/2livp](https://github.com/LetMeFly666/2livp)
 
-此外，我们可以通过研究仅存储的zip文件的格式，直接二进制**手搓**一个.livp文件出来。原理请见文章《[Zip：手动生成仅存储的zip文件（以百度系iOS动态图.livp为例）](https://blog.letmefly.xyz/2026/07/29/Other-Zip-ManuallyCreatingStoreOnlyZip_withLivpExample/)》。
+此脚本是通过研究仅存储的zip文件的格式，直接二进制**手搓**一个.livp文件出来。原理请见文章《[Zip：手动生成仅存储的zip文件（以百度系iOS动态图.livp为例）](https://blog.letmefly.xyz/2026/07/29/Other-Zip-ManuallyCreatingStoreOnlyZip_withLivpExample/)》。
 
 ## 杂念
 
@@ -976,517 +806,324 @@ iOS拍摄的live图如果想通过iCloud之外的方式同步到其他电脑/设
 
 
 ```python
-"""
-livp_export.py
-
-递归导出图片目录。
-
-规则：
-
-1.
-如果一个目录中存在：
-
-    xxx.jpeg.jpeg
-    xxx.jpeg.mov
-
-或者：
-
-    xxx.HEIC.heic
-    xxx.HEIC.mov
-
-则：
-
-    打包为 xxx.livp
-
-    不导出原始两个文件。
-
-
-2.
-否则：
-
-    导出目录中的所有文件。
-
-
-输出：
-
-默认：
-
-    输入目录/_exported
-
-
-如果存在：
-
-    _exported_xxxxxxxx
-
-
-所有文件直接放在输出目录：
-
-    output/
-        a.jpeg
-        b.mov
-        c.livp
-
-
-文件冲突自动增加：
-
-    _1
-    _2
-
-
-普通文件：
-
-优先硬链接：
-
-    os.link()
-
-失败：
-
-    shutil.copy2()
-"""
-
-
-import argparse
+'''
+Author: LetMeFly
+Date: 2026-08-01 15:12:04
+LastEditors: LetMeFly.xyz
+LastEditTime: 2026-08-01 18:11:11
+Description: still 古法编程
+Description: 没livp_maker.py美观
+'''
 import os
-import shutil
-import subprocess
+import argparse
+from pathlib import Path
 import uuid
+from dataclasses import dataclass, field, asdict
+from pprint import pprint
+import livp_maker
 
 
-STATIC_EXTENSIONS = {
-    ".jpg",
-    ".jpeg",
-    ".heic",
-}
+SUPPORTED_STATIC_EXTS = [".jpg", ".jpeg", ".heic"]
+SUPPORTED_DYNAMIC_EXTS = [".mov", ".mp4"]
+IS_DEBUG = False
+IS_TEST = False
 
 
-def is_static(filename):
-
-    lower = filename.lower()
-
-    return any(
-        lower.endswith(x)
-        for x in STATIC_EXTENSIONS
-    )
+@dataclass
+class StaticFile:
+    path: Path
+    original_name: str
+    exported_name: str
 
 
-
-def is_dynamic(filename):
-
-    return filename.lower().endswith(
-        ".mov"
-    )
-
-
-
-def exported_name(path):
-
-    """
-    解决同名文件
-
-    xxx.jpg
-
-    xxx_1.jpg
-    xxx_2.jpg
-    """
-
-    if not os.path.exists(path):
-        return path
+@dataclass
+class DynamicFile:
+    path: Path
+    static_name: str
+    dynamic_name: str
+    livp_name: str
 
 
-    dirname = os.path.dirname(path)
-
-    filename = os.path.basename(path)
-
-
-    name, ext = os.path.splitext(filename)
+@dataclass
+class ExportList:
+    static_files: list[StaticFile] = field(default_factory=list)
+    dynamic_files: list[DynamicFile] = field(default_factory=list)
 
 
-    i = 1
-
+def gen_unique_export_name(export_names: set[str], filename: str, filetype: str) -> str:
+    name = filename + "." + filetype if filetype else filename
+    if name not in export_names:
+        return name
+    index = 1
     while True:
-
-        new = os.path.join(
-            dirname,
-            f"{name}_{i}{ext}"
-        )
-
-
-        if not os.path.exists(new):
-            return new
-
-        i += 1
+        name = f"{filename}_{index}.{filetype}"
+        if name not in export_names:
+            return name
+        index += 1
 
 
+def gen_export_list(src: Path, exclude_prefixes: list[str]) -> ExportList:
+    export_list = ExportList()
+    export_names = set()
+    for root, dirs, files in os.walk(src):
+        # 覆盖掉dirs直接不遍历了
+        dirs[:] = [d for d in dirs if not any(d.startswith(prefix) for prefix in exclude_prefixes)]
+        files = [f for f in files if not any(f.startswith(prefix) for prefix in exclude_prefixes)]
+        done_files = set()
+        for file in files:
+            if IS_DEBUG:
+                print(file, done_files)
+            if file in done_files:
+                continue
+            done_files.add(file)
+            filetype = file.rsplit(".", 1)[-1].lower()
+            if filetype == file:
+                filetype = ""
+            filename = file[:-len(filetype) - 1] if filetype else file
+            has_paired = False
+            if '.' + filetype in SUPPORTED_STATIC_EXTS:
+                for dynamic_ext in SUPPORTED_DYNAMIC_EXTS:
+                    dynamic_file = filename + "." + dynamic_ext[1:]
+                    if not dynamic_file in files or dynamic_file in done_files:  # 不然会重复配对
+                        continue
+                    done_files.add(dynamic_file)
+                    livp_name = gen_unique_export_name(export_names, filename, "livp")
+                    export_names.add(livp_name)
+                    export_list.dynamic_files.append(
+                        DynamicFile(
+                            path=Path(root),
+                            static_name=file,
+                            dynamic_name=dynamic_file,
+                            livp_name=livp_name
+                        )
+                    )
+                    has_paired = True
+                    break
+            elif '.' + filetype in SUPPORTED_DYNAMIC_EXTS:  # 记得加.，debug了半天
+                for static_ext in SUPPORTED_STATIC_EXTS:
+                    static_file = filename + "." + static_ext[1:]
+                    if IS_DEBUG:
+                        print(f'file: {file}, static_file: {static_file}, done_files: {done_files}')
+                    if not static_file in files or static_file in done_files:
+                        continue
+                    done_files.add(static_file)
+                    livp_name = gen_unique_export_name(export_names, filename, "livp")
+                    export_names.add(livp_name)
+                    export_list.dynamic_files.append(
+                        DynamicFile(
+                            path=Path(root),
+                            static_name=static_file,
+                            dynamic_name=file,
+                            livp_name=livp_name
+                        )
+                    )
+                    has_paired = True
+                    break
+            if not has_paired:
+                unique_name = gen_unique_export_name(export_names, filename, filetype)
+                export_names.add(unique_name)
+                export_list.static_files.append(
+                    StaticFile(
+                        path=Path(root),
+                        original_name=file,
+                        exported_name=unique_name
+                    )
+                )
+    return export_list
 
-def safe_link(src, dst):
 
-    """
-    优先硬链接
-
-    失败复制
-    """
-
-    try:
-
-        os.link(
-            src,
-            dst
-        )
-
-    except OSError:
-
-        shutil.copy2(
-            src,
-            dst
-        )
-
-
-
-def create_output_dir(src, user_output):
-
-    if user_output:
-
+def gen_output_dir(src: Path, dst: Path | None) -> Path:
+    if dst:
         os.makedirs(
-            user_output,
+            dst,
             exist_ok=True
         )
+        return dst
 
-        return user_output
-
-
-    base = os.path.join(
-        src,
-        "_exported"
-    )
-
-
-    if not os.path.exists(base):
-
+    base = src / "_exported"
+    if not base.exists():
         os.makedirs(base)
-
         return base
 
-
     while True:
-
-        name = (
-            "_exported_"
-            +
-            uuid.uuid4()
-            .hex[:8]
-        )
-
-
-        path = os.path.join(
-            src,
-            name
-        )
-
-
-        if not os.path.exists(path):
-
+        # 假设不会有过多过多的已存在文件夹
+        name = "_exported_" + uuid.uuid4().hex[:8]
+        path = src / name
+        if not path.exists():
             os.makedirs(path)
-
             return path
 
 
+def export(export_list: ExportList, dst_dir: Path):
+    for static_file in export_list.static_files:
+        src = static_file.path / static_file.original_name
+        dst = dst_dir / static_file.exported_name
+        try:
+            os.link(src, dst)
+        except Exception as e:
+            print(f"硬链接失败，尝试复制文件：{src} -> {dst}，错误：{e}")
+            try:
+                import shutil
+                shutil.copy2(src, dst)
+            except Exception as e:
+                print(f"复制文件失败：{src} -> {dst}，错误：{e}")
 
-def find_live_pairs(files):
+    for dynamic_file in export_list.dynamic_files:
+        src_static = dynamic_file.path / dynamic_file.static_name
+        src_dynamic = dynamic_file.path / dynamic_file.dynamic_name
+        dst_livp = dst_dir / dynamic_file.livp_name
+        try:
+            livp_maker.main(src_static, src_dynamic, dst_livp)
+        except Exception as e:
+            print(f"生成livp失败：{src_static}, {src_dynamic} -> {dst_livp}，错误：{e}")
 
-    """
-    返回：
 
-    [
-        (
-          static,
-          mov
+class TestInputGenerator:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
+    def __init__(self):
+        self.files = [
+            "test001.jpg", "test001.mov",  # -> livp
+            "test002.jpeg", "test002.mp4",  # -> livp
+            "test003.heic", "test003.mov",  # -> livp
+            "test004.jpg",  # -> jpg
+            "test005.mp4",  # -> mp4
+            "test006.txt",  # -> txt
+            "test007.jpg", "test007.mov", "test007.mp4",  # -> livp + mp4/mov
+            ".DS_Store_test008",  # -> 排除
+            "_exported_test/test009.jpg",  # -> 排除
+            "a/test010.jpg", "a/test010.mov",  # -> livp
+            "b/test011.jpg", "b/test011.mp4", "b/test011",  # -> livp + test011
+            "c/a/test012.jpg", "c/a/test012.mov",  # -> livp
+            "d/test013.jpg", "e/test013.jpg",  # -> test013.jpg + test013_1.jpg
+            "f/test014.jpg", "f/test014.mov", "g/test014.jpg", "g/test014.mov",  # -> test014.livp + test014_1.livp
+            "test015_withoutextension",  # -> test015_withoutextension
+        ]
+        self.expected_files = set([
+            "test001.livp",
+            "test002.livp",
+            "test003.livp",
+            "test004.jpg",
+            "test005.mp4",
+            "test006.txt",
+            "test007.livp", "test007.mp4",
+            "test010.livp",
+            "test011.livp", "test011",
+            "test012.livp",
+            "test013.jpg", "test013_1.jpg",
+            "test014.livp", "test014_1.livp",
+            "test015_withoutextension"
+        ])
+        self._gen_test_input_dir()
+    
+    @staticmethod
+    def input_dirname() -> Path:
+        return Path("test_input")
+    
+    def _gen_test_input_dir(self):
+        os.makedirs(
+            self.input_dirname(),
+            exist_ok=True
         )
-    ]
-
-    """
-
-    statics = {}
-    movs = {}
-
-
-    for f in files:
-
-        full = f
-
-
-        base, ext = os.path.splitext(
-            os.path.basename(f)
-        )
-
-
-        if is_static(f):
-
-            statics[base] = full
-
-
-        elif is_dynamic(f):
-
-            movs[base] = full
-
-
-
-    pairs = []
-
-
-    for key in statics:
-
-        if key in movs:
-
-            pairs.append(
-                (
-                    statics[key],
-                    movs[key]
-                )
+        for file in self.files:
+            path = self.input_dirname() / file
+            if os.path.exists(path):
+                continue
+            print(f"生成测试文件：{path}")
+            os.makedirs(
+                path.parent,
+                exist_ok=True
             )
-
-
-    return pairs
-
-
-
-def pack_live(static, mov, output):
-
-    """
-    调用脚本一
-    """
-
-    script = os.path.join(
-        os.path.dirname(
-            os.path.abspath(__file__)
-        ),
-        "livp_pack.py"
-    )
-
-
-    subprocess.run(
-        [
-            "python3",
-            script,
-            static,
-            mov,
-            output,
-        ],
-        check=True
-    )
-
-
-
-def export_directory(src, output):
-
-    """
-    处理单个目录
-
-    """
-
-    files = []
-
-    for name in os.listdir(src):
-
-        path = os.path.join(
-            src,
-            name
+            with open(path, "wb") as f:
+                f.write(b"test")
+    
+    def assert_expected_files(self, export_list: ExportList):
+        really_exported_files = set(
+            [f.exported_name for f in export_list.static_files] +
+            [f.livp_name for f in export_list.dynamic_files]
         )
+        assert really_exported_files == self.expected_files, \
+            f"导出文件不符合预期，\n" + \
+            f"预期：{self.expected_files}\n" + \
+            f"实际：{really_exported_files}\n" + \
+            f"差异：{really_exported_files.difference(self.expected_files)}\n"
+    
 
-        if os.path.isfile(path):
-
-            files.append(path)
-
-
-
-    handled = set()
-
-
-    #
-    # 先处理 live pair
-    #
-
-    pairs = find_live_pairs(files)
-
-
-    for static, mov in pairs:
-
-
-        base = os.path.splitext(
-            os.path.basename(static)
-        )[0]
-
-
-        out = exported_name(
-            os.path.join(
-                output,
-                base + ".livp"
-            )
-        )
-
-
-        print(
-            "[LIVP]",
-            static,
-            "+",
-            mov,
-            "->",
-            out
-        )
-
-
-        pack_live(
-            static,
-            mov,
-            out
-        )
-
-
-        handled.add(
-            static
-        )
-
-        handled.add(
-            mov
-        )
-
-
-
-    #
-    # 其他全部导出
-    #
-
-    for f in files:
-
-
-        if f in handled:
-
-            continue
-
-
-        out = exported_name(
-            os.path.join(
-                output,
-                os.path.basename(f)
-            )
-        )
-
-
-        print(
-            "[FILE]",
-            f,
-            "->",
-            out
-        )
-
-
-        safe_link(
-            f,
-            out
-        )
-
-
-
-def main():
-
+def init_args() -> tuple[Path, Path, list[str]]:
+    global IS_DEBUG
+    global IS_TEST
     parser = argparse.ArgumentParser(
-        description=
-        "递归导出图片并转换 live 图为 livp"
+        description=(
+            "递归导出一个文件夹下的所有文件，若能合并转为live图则转换\n\n"
+            "  - 若同一文件夹下存在同名的静态图片和动态视频，则将其合并为live图导出(同时存在多种可能组合则按先组合先消除原则)\n"
+            "  - 否则将其单独导出(默认硬链接的方式导出，失败再复制)"
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
-
-
     parser.add_argument(
         "input",
-        help="输入目录"
+        type=Path,
+        metavar="INPUT_DIR",
+        help="输入文件夹路径"
     )
-
-
     parser.add_argument(
         "--output",
-        help="输出目录"
+        type=Path,
+        metavar="OUTPUT_DIR",
+        help="输出文件夹路径，默认输入文件夹/_exported{_random_suffix}"
     )
-
+    default_exclude_prefixes = [".", "_exported"]
+    parser.add_argument(
+        "--exclude-prefix",
+        action="append",
+        default=[],
+        help="排除的前缀文件夹名，默认排除 “" + "”、“".join(default_exclude_prefixes) + "” 开头的文件夹"
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="启用调试模式"
+    )
+    parser.add_argument(
+        "--test",
+        action="store_true",
+        help="启用测试模式 | 测试模式下不依据input变量，而是自己生成一个测试文件夹"
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="%(prog)s 2.1.0"
+    )
 
     args = parser.parse_args()
 
-
-
-    src = os.path.abspath(
-        args.input
-    )
-
-
-    if not os.path.isdir(src):
-
-        raise ValueError(
-            "输入必须是目录"
-        )
-
-
-    output = create_output_dir(
-        src,
-        args.output
-    )
-
-
-    print(
-        "输出目录:",
-        output
-    )
-
-
-
-    #
-    # 递归遍历
-    #
-
-    for root, dirs, files in os.walk(src):
-
-
-        #
-        # 不扫描输出目录
-        #
-
-        if os.path.abspath(root) == os.path.abspath(output):
-
-            continue
-
-
-
-        paths = [
-            os.path.join(root, x)
-            for x in files
-        ]
-
-
-        if paths:
-
-            export_directory(
-                root,
-                output
-            )
-
-
-
-    print(
-        "完成"
-    )
-
+    IS_TEST = args.test
+    src = args.input.resolve() if not IS_TEST else TestInputGenerator.input_dirname().resolve()
+    if not src.is_dir() and not IS_TEST:
+        parser.error(f"{src} 不是目录")
+    dst = gen_output_dir(src, args.output)
+    exclude_prefixes = args.exclude_prefix or default_exclude_prefixes
+    IS_DEBUG = IS_TEST | args.debug
+    return src, dst, exclude_prefixes
 
 
 if __name__ == "__main__":
-    main()
-
-"""
-run result:
-python /Users/tisfy/Projects/2livp/livp_export.py . 
-输出目录: /Users/tisfy/Downloads/1/_exported
-[FILE] /Users/tisfy/Downloads/1/.DS_Store -> /Users/tisfy/Downloads/1/_exported/.DS_Store
-[FILE] /Users/tisfy/Downloads/1/IMG_5114/IMG_5114.PNG -> /Users/tisfy/Downloads/1/_exported/IMG_5114.PNG
-[FILE] /Users/tisfy/Downloads/1/1/.DS_Store -> /Users/tisfy/Downloads/1/_exported/.DS_Store_1
-[FILE] /Users/tisfy/Downloads/1/1/2/某线上AI峰会电话.m4a -> /Users/tisfy/Downloads/1/_exported/某线上AI峰会电话.m4a
-[LIVP] /Users/tisfy/Downloads/1/IMG_5120/IMG_5120.HEIC + /Users/tisfy/Downloads/1/IMG_5120/IMG_5120.MOV -> /Users/tisfy/Downloads/1/_exported/IMG_5120.livp
-完成: /Users/tisfy/Downloads/1/_exported/IMG_5120.livp
-"""
+    src, dst, exclude_prefixes = init_args()
+    if IS_TEST:
+        test_input_generator = TestInputGenerator()
+    export_list = gen_export_list(src, exclude_prefixes)
+    if IS_DEBUG:
+        pprint(asdict(export_list))
+    if IS_TEST:  # 测试模式下不真的导出文件
+        test_input_generator.assert_expected_files(export_list)
+        print("测试通过")
+        exit(0)
+    export(export_list, dst)
 ```
 
 </details>

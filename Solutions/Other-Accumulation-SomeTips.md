@@ -25,6 +25,54 @@ git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 
 ### 一些命令（学Git）
 
+#### Git Notes
+
+commit对象不可变，git notes允许在不改变commit及其hash的前提下给它挂一段额外文字。
+
+添加：
+
+```bash
+git notes add -m "Security scan passed" abc123
+# 其中commit sha可选，若不指定则默认当前commit
+```
+
+查看：
+
+```bash
+git notes show
+```
+
+修改：
+
+```bash
+git notes edit abc123
+```
+
+删除：
+
+```bash
+git notes remove abc123
+```
+
+git notes 存在哪里？
+
+```
+.git/
+├── objects/
+├── refs/
+└── refs/notes/
+    └── commits
+```
+
+push到github：
+
+```bash
+# push
+git push origin refs/notes/commits
+# 别人拉取需要以下操作才能看到
+git fetch origin refs/notes/commits:refs/notes/commits
+```
+
 #### 版本回退
 
 + 当前版本：`HEAD`

@@ -3,6 +3,7 @@ title: 3016.输入单词需要的最少按键次数 II：排序（贪心）
 date: 2026-07-31 08:30:50
 tags: [题解, LeetCode, 中等, 贪心, 字符串, 计数, 排序]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2023/12/26/keypaddesc.png
 ---
 
 # 【LetMeFly】3016.输入单词需要的最少按键次数 II：排序（贪心）
