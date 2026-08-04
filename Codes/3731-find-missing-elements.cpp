@@ -11,7 +11,7 @@
 class Solution {
 public:
     vector<int> findMissingElements(vector<int>& nums) {
-        vector<bool> ma;
+        vector<bool> ma(101);
         int m = nums[0], M = nums[0];
         for (int t : nums) {
             m = min(m, t);
