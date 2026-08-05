@@ -1319,6 +1319,27 @@ func main() {
 }
 ```
 
+## About JavaScript(JS)/TypeScript(TS)
+
+### TypeScript as/satisfies
+
++ as：相信我a是b
++ satisfies：检查下a是否*满足*b
+
+```typescript
+type User = {
+	name: string;
+}
+const user = {
+	name: "Tom",
+	age: 18,
+};
+```
+
+如果`const user1 = user as User;`，则`user1`*的静态类型*是只有`name`字段的`User`，存在`user1.name`而不存在`user1.age`。
+
+如果`const user2 = {name: "Alice", age: 18} satisfies User;`，则 TypeScript 检查`user2`的`{name: string, age: number}`是否满足`User`的`{name: string}`，答案是满足，所以`user2.age`仍然存在。
+
 ## About HTML
 
 ### 空白字符
@@ -2042,6 +2063,10 @@ Why？最早是Intel 8位CPU，假设要做16位加法：
 此外，假设一个整数`0x00000005`放内存里`05 00 00 00`，如果CPU升级为8086(16位)、80386(32位)、x86_64(64位)，原来很多程序可以不用改，因为低地址永远是最低位。CPU可以先读`05`，需要更多再往后面读。
 
 > —— 研究zip有感。
+
+### MVP (Minimum Viable Product) - 最小可行产品
+
+用最少的成本做出一个真正能被使用、能验证想法的版本。
 
 # End
 
