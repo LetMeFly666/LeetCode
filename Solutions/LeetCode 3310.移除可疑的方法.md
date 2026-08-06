@@ -3,6 +3,7 @@ title: 3310.移除可疑的方法：深度优先搜索(DFS)
 date: 2026-08-05 21:45:12
 tags: [题解, LeetCode, 中等, 深度优先搜索, DFS, 广度优先搜索, 图]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.com/uploads/2024/07/20/graph.png
 ---
 
 # 【LetMeFly】3310.移除可疑的方法：深度优先搜索(DFS)
@@ -98,7 +99,6 @@ categories: [题解, LeetCode]
  */
 class Solution {
 private:
-    int n;
     vector<bool> visited;
     vector<vector<int>> graph;
 
@@ -118,7 +118,6 @@ public:
         }
 
         visited.resize(n);
-        this->n = n;
         dfs(k);
 
         for (vector<int>& i : invocations) {

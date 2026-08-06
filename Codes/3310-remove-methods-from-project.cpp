@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-05 21:36:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-05 21:43:40
+ * @LastEditTime: 2026-08-05 21:57:08
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -10,7 +10,6 @@
 
 class Solution {
 private:
-    int n;
     vector<bool> visited;
     vector<vector<int>> graph;
 
@@ -30,7 +29,6 @@ public:
         }
 
         visited.resize(n);
-        this->n = n;
         dfs(k);
 
         for (vector<int>& i : invocations) {
