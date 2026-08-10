@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-10 11:40:46
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-10 12:01:03
+ * @LastEditTime: 2026-08-10 12:02:16
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -16,7 +16,7 @@ int init = []() {
             continue;
         }
         for (int x = 1; i + x * x <= 100000; x++) {
-            win[i + x * x] = false;
+            win[i + x * x] = true;
         }
     }
     return 0;
