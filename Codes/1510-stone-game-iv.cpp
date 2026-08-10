@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-10 11:40:46
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-10 11:45:23
+ * @LastEditTime: 2026-08-10 11:48:54
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -22,7 +22,7 @@ public:
             return false;
         }
         for (int x = 1; x * x <= n; x++) {
-            if (!winnerSquareGame(n - x)) {
+            if (!winnerSquareGame(n - x * x)) {
                 win[n] = 1;
                 return true;
             }
