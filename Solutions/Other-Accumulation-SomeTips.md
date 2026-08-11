@@ -774,6 +774,48 @@ img-001.png
 ...
 ```
 
+### 开启NFS服务给机顶盒共享资源
+
+```bash
+sudo vim /etc/exports
+# /Users/tisfy/Movies -network 192.168.1.0 -mask 255.255.255.0 -ro
+sudo nfsd enable
+sudo nfsd restart
+
+# 看是否成功
+showmount -e localhost
+# Exports list on localhost:
+# /Users/tisfy/Movies 192.168.1.0
+
+# 看ip
+ipconfig getifaddr en0
+# 192.168.1.23
+```
+
+机顶盒看：
+
+```
+NFS IP:
+192.168.1.23
+
+NFS Route:
+/Users/tisfy/Movies
+```
+
+本机挂载测试：
+
+```bash
+mkdir ~/nfs-test
+sudo mount -t nfs localhost:/Users/tisfy/Movies ~/nfs-test
+# 或指定NFS版本
+sudo mount -t nfs -o vers=3 localhost:/Users/tisfy/Movies ~/nfs-test
+ls ~/nfs-test
+
+# 卸载
+sudo umount ~/nfs-test
+rm -r ~/nfs-test
+```
+
 ## About iOS
 
 ### Core ML
@@ -1294,13 +1336,77 @@ func main() {
     fmt.Println(array)  // [1 0 0 0 0]
     slice3 := slice
     slice3[1] = 100
-    fmt.Println(slice3)  // [1 100 3]
+    fmt.Println(slice)  // [1 100 3]
     // 转换
     sFromA := array[:]
     fmt.Printf("%s(%s): %v\n", reflect.TypeOf(sFromA), reflect.TypeOf(sFromA).Kind(), sFromA);  // []int(slice): [1 0 0 0 0]
     var aFromS [3]int
     copy(aFromS[:], slice)
     fmt.Printf("%T(%s): %v\n", aFromS, reflect.TypeOf(aFromS).Kind(), aFromS);  // [3]int(array): [1 100 3]
+}
+```
+
+### Golang Gin
+
++ `Abort()`的话这个handler执行完，后面handler不再执行了。
++ `Next()`的话，先执行后面的handler再回来执行本函数后面逻辑。(Abort的话相当于后面没有需要执行的handler了)
+
+```go
+package main
+
+import "github.com/gin-gonic/gin"
+
+func a(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "a",
+	})
+}
+
+func b(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "b",
+	})
+}
+
+func aWithAbort(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "aAbort",
+	})
+	c.Abort()
+	c.JSON(200, gin.H{
+		"from": "aAbort2",
+	})
+}
+
+func next(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "next.before",
+	})
+	c.Next()
+	c.JSON(500, gin.H{
+		"from": "next.after",
+	})
+}
+
+func aAbortAndNext(c *gin.Context) {
+	c.JSON(404, gin.H{
+		"from": "aAbortAndNext",
+	})
+	c.Abort()
+	c.Next()
+	c.JSON(200, gin.H{
+		"from": "aAbortAndNext2",
+	})
+}
+
+
+func main() {
+	c := gin.Default()
+	c.GET("/1", a, b)              // {"from":"a"}{"from":"b"} 不难发现handler a并没有c.Next()
+	c.GET("/2", aWithAbort, b)     // {"from":"aAbort"}{"from":"aAbort2"} 不执行b了但执行了a后续
+	c.GET("/3", next, b)           // {"from":"next.before"}{"from":"b"}{"from":"next.after"}     (200)
+	c.GET("/4", aAbortAndNext, b)  // {"from":"aAbortAndNext"}{"from":"aAbortAndNext2"}           (404)
+	c.Run()
 }
 ```
 
