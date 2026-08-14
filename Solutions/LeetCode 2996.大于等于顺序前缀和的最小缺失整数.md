@@ -79,6 +79,11 @@ public:
 };
 ```
 
++ 执行用时分布 0 ms 击败 100.00%
++ 消耗内存分布 22.16 MB 击败 96.68%
+
+## End
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/163656089)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/08/11/LeetCode%202996.%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E%E9%A1%BA%E5%BA%8F%E5%89%8D%E7%BC%80%E5%92%8C%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BC%BA%E5%A4%B1%E6%95%B4%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
