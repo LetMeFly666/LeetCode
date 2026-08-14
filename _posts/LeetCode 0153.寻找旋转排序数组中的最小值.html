@@ -26,7 +26,7 @@
 <meta property="og:description" content="【LetMeFly】153.寻找旋转排序数组中的最小值：二分查找(左闭右开写法)力扣题目链接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;find-minimum-in-rotated-sorted-array&#x2F; 已知一个长度为 n 的数组，预先按照升序排列，经由 1 到 n 次 旋转 后，得到输入数组。例如，原数组 nums &#x3D; [0,1,2,4,5,6,7] 在变化后可能得到：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-05-15T14:02:06.000Z">
-<meta property="article:modified_time" content="2026-08-11T01:55:12.580Z">
+<meta property="article:modified_time" content="2026-08-14T02:15:01.772Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="中等">
@@ -288,7 +288,7 @@
 <h2 id="解题方法：二分查找"><a href="#解题方法：二分查找" class="headerlink" title="解题方法：二分查找"></a>解题方法：二分查找</h2><p>有序+要求<code>log n</code>，很容易想到二分。</p>
 <p>二分$mid$和谁比？如果和左右两个元素比，当$mid-1$、$mid$、$mid+1$递增时候，不好判断最小值在左边还是在右边。</p>
 <p>其实也可以让$nums[mid]$和$nums[-1]$比。如果$nums[mid]\gt nums[-1]$，说明最小值在$mid$右边(一旦出现“下降折点”,后边所有元素将永远小于左边)；否则(说明从$mid$到最后都处于递增状态)，说明最小值在$mid$及其右边。</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs 1c">       *<br>     *  <span class="hljs-string">|</span><br>   *    <span class="hljs-string">|</span><br>  *     <span class="hljs-string">|</span><br>*       <span class="hljs-string">|</span><br>        <span class="hljs-string">|   * 一旦遇到“轮转分割线”，右侧所有值都将小于左侧</span><br>        <span class="hljs-string">| *</span><br>        *<br></code></pre></td></tr></table></figure>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">       *<br>     <span class="hljs-keyword">*</span>  |<br>   <span class="hljs-keyword">*</span>    |<br>  <span class="hljs-keyword">*</span>     |<br><span class="hljs-keyword">*</span>       |<br>        |<span class="hljs-string">   * 一旦遇到“轮转分割线”，右侧所有值都将小于左侧</span><br>        |<span class="hljs-string"> *</span><br>        *<br></code></pre></td></tr></table></figure>
 
 <p>这很适合二分。直接二分查找<strong>第一个小于等于nums[-1]的元素</strong>就好了。</p>
 <ul>

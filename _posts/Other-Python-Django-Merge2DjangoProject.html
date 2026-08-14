@@ -257,7 +257,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> ZJSystem<br>python manage.py runserver<br></code></pre></td></tr></table></figure>
 
 <p>咦？发现<code>LetVisit</code>这个APP报错了：</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs clean">    <span class="hljs-keyword">from</span> LetVisit <span class="hljs-keyword">import</span> a<br>ModuleNotFoundError: No <span class="hljs-keyword">module</span> named <span class="hljs-string">&#x27;LetVisit&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dart">    from <span class="hljs-title class_">LetVisit</span> <span class="hljs-keyword">import</span> a<br><span class="hljs-title class_">ModuleNotFoundError</span>: <span class="hljs-title class_">No</span> module named <span class="hljs-string">&#x27;LetVisit&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p>这是因为，在单独的LetVisit项目中，<code>LetVisit/manage.py</code>和<code>LetVisit/LetVisit</code>是同级的，因此自然能找到LetVisit这个“包”。但是LetVisit作为ZJSystem的子项目后，运行的是<code>ZJSystem/manage.py</code>，找不到<code>ZJSystem/ZJSystem/LetVisit/LetVisit</code>。</p>
 <p>怎么办呢？也不难，把LetVisit添加到Python执行路径的环境中就好了。在<code>ZJSystem/ZJSystem/settings.py</code>中，添加：</p>

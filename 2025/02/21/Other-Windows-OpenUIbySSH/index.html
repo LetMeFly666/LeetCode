@@ -318,7 +318,7 @@
 <p>甚至，我直接通过SSH调用命令“立即执行这个计划任务”，是不是就达到了我想要的效果？</p>
 </blockquote>
 <p>于是思路就变成了<code>创建执行爱心.exe的任务计划 -&gt; 立即执行任务 -&gt; 删除任务计划</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs batch">schtasks /create /tn &quot;tempStartAiXin&quot; /sc ONCE /tr &quot;cmd /c start 爱心.exe&quot; /ru %USERNAME% /st 00:00<br>schtasks /run /tn &quot;tempStartAiXin&quot;<br>schtasks /delete /tn &quot;tempStartAiXin&quot; /f<br></code></pre></td></tr></table></figure>
+<figure class="highlight batch"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs batch">schtasks /create /tn &quot;tempStartAiXin&quot; /sc ONCE /tr &quot;<span class="hljs-built_in">cmd</span> /c <span class="hljs-built_in">start</span> 爱心.exe&quot; /ru <span class="hljs-variable">%USERNAME%</span> /st <span class="hljs-number">00</span>:<span class="hljs-number">00</span><br>schtasks /run /tn &quot;tempStartAiXin&quot;<br>schtasks /delete /tn &quot;tempStartAiXin&quot; /f<br></code></pre></td></tr></table></figure>
 
 <p>完美！<code>爱心.exe</code>在目标主机上成功运行，且不随我ssh会话的结束而终结。</p>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
