@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Codex：通过编辑配置文件添加带Bearer的自定义MCP背景 MCP像大模型的USB协议一样可以让Agent借此与万物交互。  笔者服务器上有一个Vibe Coding的24h运行的MCP(由于是公网服务器所以带鉴权)，研究了下怎么通过配置文件给Codex添加上这个MCP。 图形化界面配置先讲讲通过图形化界面配置，理解之后讲解通过配置文件配置会容易些。   ⌘+,&#x2F;Ctrl+,打开设">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Codex：通过编辑配置文件添加带Bearer的自定义MCP">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-AI-Agent-Codex-Adding1CustomMCPWithBearerByEditingConfigFiles.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Codex：通过编辑配置文件添加带Bearer的自定义MCP背景 MCP像大模型的USB协议一样可以让Agent借此与万物交互。  笔者服务器上有一个Vibe Coding的24h运行的MCP(由于是公网服务器所以带鉴权)，研究了下怎么通过配置文件给Codex添加上这个MCP。 图形化界面配置先讲讲通过图形化界面配置，理解之后讲解通过配置文件配置会容易些。   ⌘+,&#x2F;Ctrl+,打开设">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://files.letmefly.xyz/d/n/Codex%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89MCP%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2.jpg">
+<meta property="article:published_time" content="2026-08-14T14:06:39.000Z">
+<meta property="article:modified_time" content="2026-08-14T14:36:05.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://files.letmefly.xyz/d/n/Codex%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89MCP%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2.jpg">
+  
+  
+  
+  <title>Codex：通过编辑配置文件添加带Bearer的自定义MCP - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Codex：通过编辑配置文件添加带Bearer的自定义MCP"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Codex：通过编辑配置文件添加带Bearer的自定义MCP"><a href="#Codex：通过编辑配置文件添加带Bearer的自定义MCP" class="headerlink" title="Codex：通过编辑配置文件添加带Bearer的自定义MCP"></a>Codex：通过编辑配置文件添加带Bearer的自定义MCP</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
+<p>MCP像大模型的USB协议一样可以让Agent借此与万物交互。</p>
+</blockquote>
+<p>笔者服务器上有一个Vibe Coding的24h运行的MCP(由于是公网服务器所以带鉴权)，研究了下怎么通过配置文件给Codex添加上这个MCP。</p>
+<h2 id="图形化界面配置"><a href="#图形化界面配置" class="headerlink" title="图形化界面配置"></a>图形化界面配置</h2><p>先讲讲通过图形化界面配置，理解之后讲解通过配置文件配置会容易些。</p>
+<p><img src="https://files.letmefly.xyz/d/n/Codex%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89MCP%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2.jpg" srcset="/img/loading.gif" lazyload alt="Codex添加自定义MCP服务器-通过图形界面"></p>
+<ol>
+<li><code>⌘+,</code>&#x2F;<code>Ctrl+,</code>打开设置</li>
+<li>选择<code>插件</code></li>
+<li>点击<code>MCP</code></li>
+<li>点击<code>添加/添加MCP服务器</code></li>
+<li>输入<code>MCP服务器地址</code></li>
+<li>输入<code>Bearer令牌环境变量</code></li>
+<li>如果你的MCP服务还需要一些header，则可在此输入</li>
+<li>和7. 的不同之处在于8. 这里类似6. ，不是直接输入值，而是输入的环境变量名</li>
+</ol>
+<p>所谓环境变量名是什么呢？就是Bearer令牌或者一些敏感的header值不应该直接写在配置文件里，而是通过环境变量的方式传入，这样可以一定程度上避免敏感信息泄露。</p>
+<p>那么<code>环境变量</code>是怎么设置的呢？在<code>~/.codex/.env</code>里面输入就可以了。（如果没有这个文件则新建一个就好）：</p>
+<figure class="highlight freedesktop"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs freedesktop"><span class="hljs-attr">LETMEFLY_MCP_TOKEN</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;your_bearer_token_here_123456abc&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="全部通过配置文件配置"><a href="#全部通过配置文件配置" class="headerlink" title="全部通过配置文件配置"></a>全部通过配置文件配置</h2><p>了解如何配置文件而非图形化界面配置的好处在于，知道了如何通过配置文件配置，就能通过其他脚本来自定义管理MCP工具了。</p>
+<p>其实也很简单，修改<code>~/.codex/config.toml</code>，新增如下内容即可：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[mcp_servers.demo]</span><br><span class="hljs-attr">enabled</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">url</span> = <span class="hljs-string">&quot;https://mcp-demo.letmefly.xyz/mcp&quot;</span><br><span class="hljs-attr">bearer_token_env_var</span> = <span class="hljs-string">&quot;LETEFLY_MCP_TOKEN&quot;</span><br><br><span class="hljs-section">[mcp_servers.demo.http_headers]</span><br><span class="hljs-attr">de</span> = <span class="hljs-string">&quot;o&quot;</span><br><br><span class="hljs-section">[mcp_servers.demo.env_http_headers]</span><br><span class="hljs-attr">demo</span> = <span class="hljs-string">&quot;DEO_HEADER&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="永久允许Agent访问MCP的工具tool1"><a href="#永久允许Agent访问MCP的工具tool1" class="headerlink" title="永久允许Agent访问MCP的工具tool1"></a>永久允许Agent访问MCP的工具<code>tool1</code></h2><p>修改<code>~/.codex/config.toml</code>，新增：</p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-section">[mcp_servers.demo.tools.tool1]</span><br><span class="hljs-attr">approval_mode</span> = <span class="hljs-string">&quot;approve&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><center><font size="6px" face="Ink Free">The End, Thanks!</font></center>
+
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163763014">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/08/14/Other-AI-Agent-Codex-Adding1CustomMCPWithBearerByEditingConfigFiles/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
