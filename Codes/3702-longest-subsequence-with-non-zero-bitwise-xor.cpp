@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-15 09:33:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-15 09:34:42
+ * @LastEditTime: 2026-08-15 09:36:22
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -14,7 +14,7 @@ public:
         bool hasVal = false;
         int res = 0;
         for (int t : nums) {
-            res ^= res;
+            res ^= t;
             hasVal |= (t != 0);
         }
         return hasVal ? res ? nums.size() : nums.size() - 1 : 0;
