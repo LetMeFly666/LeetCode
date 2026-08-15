@@ -18,7 +18,7 @@ func removeCoveredIntervals(intervals [][]int) int {
 	
 	ans, maxr := len(intervals), 0
 	for _, p := range intervals {
-		if p[0] <= maxr {
+		if p[1] <= maxr {
 			ans--
 		} else {
 			maxr = p[0]
