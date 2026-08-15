@@ -12,12 +12,12 @@ impl Solution {
             } else {
                 a[0] < b[0]
             }
-        })
+        });
         let mut ans = intervals.len() as i32;
         let mut maxr = 0;
         for p in intervals.iter() {
             if p[1] <= maxr {
-                ans--;
+                ans -= 1;
             } else {
                 maxr = p[1];
             }
