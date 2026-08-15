@@ -9,7 +9,7 @@ import java.util.Arrays;
 class Solution {
     public int removeCoveredIntervals(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> {
-            a[0] == b[0] ? a[1] > b[1] : a[0] < b[0];
+            return a[0] == b[0] ? a[1] > b[1] : a[0] < b[0];
         })
         int ans = intervals.length, maxr = 0;
         for (int[] p : intervals) {
