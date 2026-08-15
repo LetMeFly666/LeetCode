@@ -3,6 +3,7 @@ title: Codex：通过编辑配置文件添加带Bearer的自定义MCP
 date: 2026-08-14 22:06:39
 tags: [Agent, MCP, LLM, AI, Codex, 逆向]
 categories: [技术思考]
+index_img: https://files.letmefly.xyz/d/n/Codex%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89MCP%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%80%9A%E8%BF%87%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2.jpg
 ---
 
 # Codex：通过编辑配置文件添加带Bearer的自定义MCP
