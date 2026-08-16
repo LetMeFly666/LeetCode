@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-16 08:57:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-16 09:32:02
+ * @LastEditTime: 2026-08-16 09:36:52
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,6 +27,7 @@ x+3->x
 3相当于跳跃牌，可以跳过一轮游戏（拿3等于没拿）
 偶数个跳跃牌相当于没有，必胜者一定不会首先使用跳跃牌，必败者要么(暂时)不使用跳跃牌早晚会败，要么使用跳跃牌(对手立刻紧接着使用一张跳跃牌)延缓死亡时间
 奇数个跳跃牌相当于1个(另外的偶数个抵消了)，无3情况下的必败者一定会使用跳跃牌交换两人位置，扭转必败为必胜
+只有3除外，只有3则Alice直接败
 
 */
 class Solution {
@@ -35,6 +36,9 @@ public:
         int cnt[3] = {0};
         for (int t : stones) {
             cnt[t % 3]++;
+        }
+        if (!cnt[1] && !cnt[2]) {
+            return false;
         }
         return (cnt[1] && cnt[2]) ^ (cnt[0] % 2);
     }
