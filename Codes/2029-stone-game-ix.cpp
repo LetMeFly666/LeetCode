@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-16 08:57:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-16 10:24:30
+ * @LastEditTime: 2026-08-16 10:52:32
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -52,6 +52,15 @@ x+3->x
 
 比较少 容易败
 多了，容易胜
+
+
+-----
+
+Alice胜：
+没有0：有1和2
+奇数0：
+1 0？
+1 1？
 
 */
 class Solution {
