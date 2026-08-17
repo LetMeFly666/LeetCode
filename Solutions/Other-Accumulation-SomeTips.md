@@ -341,6 +341,29 @@ export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
 ' --tag-name-filter cat -- --branches --tags
 ```
 
+### Git文件变更分支拆分(A分支关于toSay.md的变更拆分到另一分支上)
+
+背景：A分支修改了xx.cpp和toSay.md两个文件，本以为A分支会很快合并到master，结果可能需要好久之后再合并了。于是想把toSay.md的变更单独拆分到dev分支上下次一起合并、A分支去除toSay.md相关更改(未来合并master时候不冲突)，且不想进行rebase、cherry-pick等会丢弃或更改文件修改历史的操作。
+
+思路：dev分支合并A分支（或A分支上与toSay.md有关的最后一个提交），自定义合并，只合并toSay.md；A分支撤销其从master切出以来对toSay.md的更改，并做新commit。
+
+```bash
+git switch dev
+git merge --no-commit --no-ff 6fa8d8127a876c907c44d5097f5bd328da55d888
+# 删掉除了toSay.md之外的所有更改
+git commit -m "merge: merge branch half/2029 's toSay.md"
+git push
+
+git switch half/2029
+# 回滚自master切出以来toSay.md的更改
+git add .
+git commit -s -m "revert: rm toSay.md which is unrelated to this branch
+see 48d9a8c989024b1a251a0c9b453fe4466f39889a for more"
+git push
+```
+
+至此，家谱未删、历史未篡，A分支与toSay.md不再相关，toSay.md将于下次发车合并至master。
+
 ### github action相关一丢丢
 
 action的.yml一定要放到目录`.github/workflows`下！不能放在子目录下。
