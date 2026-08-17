@@ -654,6 +654,15 @@ sudo mdutil -i on /Applications
 
 重建一下关于应用的索引，差不多好了。
 
+### Mac更新DNS缓存
+
+有时候更新域名后dig结果已经更新但ping和浏览器无法访问：
+
+```bash
+dscacheutil -flushcache
+sudo killall -HUP mDNSResponder  # 必须sudo
+```
+
 ### macOS 解码二维码
 
 > 由AI总结自我与AI的对话
