@@ -362,7 +362,9 @@ see 48d9a8c989024b1a251a0c9b453fe4466f39889a for more"
 git push
 ```
 
-至此，家谱未删、历史未篡，A分支与toSay.md不再相关，toSay.md将于下次发车合并至master。
+至此，家谱未删、历史未篡，A分支与toSay.md不再相关，toSay.md将于下次发车**squash**至master。
+
+> ?：注意记得squash到master，不然master分支保留了dev分支合并A分支的方式，有朝一日A分支落叶归根(至master)时小心其他更改被吞掉。
 
 ### github action相关一丢丢
 
