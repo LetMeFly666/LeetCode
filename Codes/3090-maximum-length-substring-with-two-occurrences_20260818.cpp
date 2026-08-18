@@ -16,7 +16,7 @@ public:
         for (int l = 0, r = 0, n = s.size(); r < n; r++) {
             int th = s[r] - 'a';
             cnt[th]++;
-            while (cnt[th] > 1) {
+            while (cnt[th] > 2) {
                 cnt[s[l++] - 'a']--;
             }
             ans = max(ans, r - l + 1);
