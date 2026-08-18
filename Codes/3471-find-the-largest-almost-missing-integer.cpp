@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-18 16:23:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-18 16:41:58
+ * @LastEditTime: 2026-08-18 16:43:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -12,7 +12,7 @@ class Solution {
 public:
     int largestInteger(vector<int>& nums, int k) {
         int n = nums.size();
-        if (n == k || n == 1) {
+        if (n == k || k == 1) {
             return *max_element(nums.begin(), nums.end());
         }
         int first = nums[0], last = nums.back();
