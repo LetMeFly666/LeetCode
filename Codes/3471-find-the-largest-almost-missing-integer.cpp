@@ -19,7 +19,7 @@ public:
         if (k == 1) {
             ranges::sort(nums);
             for (int i = n - 1; i >= 0; i--) {
-                if (i - 1 && nums[i - 1] == nums[i]) {
+                if (i - 1 >= 0 && nums[i - 1] == nums[i]) {
                     continue;
                 }
                 if (i + 1 < n && nums[i + 1] == nums[i]) {
