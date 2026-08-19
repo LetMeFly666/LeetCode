@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-19 10:52:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-19 10:59:31
+ * @LastEditTime: 2026-08-19 11:14:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,14 +20,12 @@ public:
         for (vector<int>& people : reservedSeats) {
             reserved[people[0]] |= 1 << people[1];
         }
-        int ans = n * 2;
-        for (int i = n; i > 0; i--) {
-            if (!reserved.count(i) || !(reserved[i] & mask4)) {
-                // ans -= 0;
-            } else if (reserved[i] & mask1 || reserved[i] & mask2 || reserved[i] & mask3) {
-                ans--;
-            } else {
-                ans -= 2;
+        int ans = (n - reserved.size()) * 2;
+        for (auto [_, line] : reserved) {
+            if (line & mask4) {
+                ans += 2;
+            } else if (line & mask1 || line & mask2 || line & mask3) {
+                ans += 1;
             }
         }
         return ans;
