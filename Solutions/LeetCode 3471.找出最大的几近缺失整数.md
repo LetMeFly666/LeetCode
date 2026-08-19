@@ -90,7 +90,7 @@ categories: [题解, LeetCode]
 
 时空复杂度：
 
-+ 时间复杂度$O(n^2)$，其中$n=len(nums)$
++ 时间复杂度$O(n\log n)$，其中$n=len(nums)$
 + 空间复杂度$O(\log n)$，最大数据量是$50$不使用哈希表也很快
 
 ### AC代码
@@ -149,6 +149,10 @@ public:
 
 + 执行用时分布 0 ms 击败 100.00%
 + 消耗内存分布 28.13 MB 击败 92.86%
+
+# End
+
+感谢 LeetCode[@Dumbo](https://leetcode.cn/u/dumbo-i/) 对初版错误时间复杂度的[指正](https://leetcode.cn/problems/find-the-largest-almost-missing-integer/solutions/4014052/letmefly-3471zhao-chu-zui-da-de-ji-jin-q-v9bt/comments/3300297/)！
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/163860139)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/08/18/LeetCode%203471.%E6%89%BE%E5%87%BA%E6%9C%80%E5%A4%A7%E7%9A%84%E5%87%A0%E8%BF%91%E7%BC%BA%E5%A4%B1%E6%95%B4%E6%95%B0/)哦~
 >
