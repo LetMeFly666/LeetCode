@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-19 10:52:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-19 11:14:59
+ * @LastEditTime: 2026-08-19 11:43:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -22,12 +22,31 @@ public:
         }
         int ans = (n - reserved.size()) * 2;
         for (auto [_, line] : reserved) {
-            if (line & mask4) {
+            if (!(line & mask4)) {
                 ans += 2;
-            } else if (line & mask1 || line & mask2 || line & mask3) {
+            } else if (!(line & mask1) || !(line & mask2) || !(line & mask3)) {
                 ans += 1;
             }
         }
         return ans;
     }
 };
+
+#ifdef _DEBUG
+/*
+2
+[[2,1],[1,8],[2,6]]
+
+2
+*/
+int main() {
+    int n;
+    string s;
+    while (cin >> n >> s) {
+        vector<vector<int>> v = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.maxNumberOfFamilies(n, v) << endl;
+    }
+    return 0;
+}
+#endif
