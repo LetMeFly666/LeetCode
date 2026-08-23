@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1927.求和游戏：抵消+看最值 | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/08/23/LeetCode%201927.%E6%B1%82%E5%92%8C%E6%B8%B8%E6%88%8F/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"键入以继续","blurHolder":"数据检索","noResult":"无 $0 相关数据"},"code":{"codeInfo":"$0 - $1 行","copy":"复制"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: '确认'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="数据检索" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1927.求和游戏：抵消+看最值</h1><div id="post-info"><span>文章发布时间: <div class="control"><time datetime="2026-08-23T05:47:13.000Z" id="date"> 2026-08-23</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1927-求和游戏：抵消-看最值"><a href="#【LetMeFly】1927-求和游戏：抵消-看最值" class="headerlink" title="【LetMeFly】1927.求和游戏：抵消+看最值"></a>【LetMeFly】1927.求和游戏：抵消+看最值</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sum-game/">https://leetcode.cn/problems/sum-game/</a></p>
+<p>Alice 和 Bob 玩一个游戏，两人轮流行动，<strong>Alice 先手</strong> 。</p>
+
+<p>给你一个 <strong>偶数长度</strong> 的字符串 <code>num</code> ，每一个字符为数字字符或者 <code>'?'</code> 。每一次操作中，如果 <code>num</code> 中至少有一个 <code>'?'</code> ，那么玩家可以执行以下操作：</p>
+
+<ol>
+	<li>选择一个下标 <code>i</code> 满足 <code>num[i] == '?'</code> 。</li>
+	<li>将 <code>num[i]</code> 用 <code>'0'</code> 到 <code>'9'</code> 之间的一个数字字符替代。</li>
+</ol>
+
+<p>当 <code>num</code> 中没有<span style=""> </span><code>'?'</code> 时，游戏结束。</p>
+
+<p>Bob 获胜的条件是 <code>num</code> 中前一半数字的和 <strong>等于</strong> 后一半数字的和。Alice 获胜的条件是前一半的和与后一半的和 <strong>不相等</strong> 。</p>
+
+<ul>
+	<li>比方说，游戏结束时 <code>num = "243801"</code> ，那么 Bob 获胜，因为 <code>2+4+3 = 8+0+1</code> 。如果游戏结束时 <code>num = "243803"</code> ，那么 Alice 获胜，因为 <code>2+4+3 != 8+0+3</code> 。</li>
+</ul>
+
+<p>在 Alice 和 Bob 都采取 <strong>最优</strong> 策略的前提下，如果 Alice 获胜，请返回 <code>true</code> ，如果 Bob 获胜，请返回 <code>false</code> 。</p>
+
+<p> </p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<b>输入：</b>num = "5023"
+<b>输出：</b>false
+<b>解释：</b>num 中没有 '?' ，没法进行任何操作。
+前一半的和等于后一半的和：5 + 0 = 2 + 3 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<b>输入：</b>num = "25??"
+<b>输出：</b>true
+<strong>解释：</strong>Alice 可以将两个 '?' 中的一个替换为 '9' ，Bob 无论如何都无法使前一半的和等于后一半的和。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<b>输入：</b>num = "?3295???"
+<b>输出：</b>false
+<b>解释：</b>Bob 总是能赢。一种可能的结果是：
+- Alice 将第一个 '?' 用 '9' 替换。num = "93295???" 。
+- Bob 将后面一半中的一个 '?' 替换为 '9' 。num = "932959??" 。
+- Alice 将后面一半中的一个 '?' 替换为 '2' 。num = "9329592?" 。
+- Bob 将后面一半中最后一个 '?' 替换为 '7' 。num = "93295927" 。
+Bob 获胜，因为 9 + 3 + 2 + 9 = 5 + 9 + 2 + 7 。
+</pre>
+
+<p> </p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>2 <= num.length <= 10<sup>5</sup></code></li>
+	<li><code>num.length</code> 是 <strong>偶数</strong> 。</li>
+	<li><code>num</code> 只包含数字字符和 <code>'?'</code> 。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：先抵消，然后看最值"><a href="#解题方法：先抵消，然后看最值" class="headerlink" title="解题方法：先抵消，然后看最值"></a>解题方法：先抵消，然后看最值</h2><p>先算算前半个字符串总值是多少、问号有多少；再算算后半字符串总值是多少、问号有多少。</p>
+<blockquote>
+<p>不妨令后半字符串的问号不少于前半字符串（如果少于则交换前后两字符串的总值、问号数，不影响填写结果）。</p>
+</blockquote>
+<p>计算前半字符串比后半字符串的总值差值 $diff$，以及问号数差值 $times$。</p>
+<blockquote>
+<p>为何可以计算两字符串问号数量的差值？因为(假设前半字符串问号数量少)Alice在前半段填写什么，Bob就可以在后半段填写一样的数抵消差值，且<strong>Alice的最佳方案可以只填9或0</strong>。</p>
+</blockquote>
+<p>现在问题变成了，前半段总值比后半段多$diff$，后半段字符串有$times$个问号，Alice先手，能否导致后面总值不等于$diff$。</p>
+<blockquote>
+<p>算下先手Alice想让后半段字符串问号总和最大的话（Alice全填9Bob全填0）能有多大；算下先手Alice想让后半段字符串问号总和最小的话（Alice全填0Bob全填9）能有多小。如果bob全填0的后半段问号最大值$M$大于$diff$则Alice获胜、如果bob全填9的后半段问号最小值$m$小于$diff$则Alice获胜；否则Bob获胜。</p>
+</blockquote>
+<ul>
+<li>时间复杂度$O(len(num))$</li>
+<li>空间复杂度$O(1)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-08-23 13:46:29</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">pii <span class="title">cal</span><span class="params">(string&amp; s, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> val = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = l; i &lt; r; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&#x27;0&#x27;</span> &lt;= s[i] &amp;&amp; s[i] &lt;= <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">                val += s[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;val, cnt&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getM</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">9</span> * ((n + <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getm</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">9</span> * (n / <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">sumGame</span><span class="params">(string&amp; num)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = num.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">auto</span> [val1, cnt1] = <span class="built_in">cal</span>(num, <span class="number">0</span>, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">auto</span> [val2, cnt2] = <span class="built_in">cal</span>(num, n / <span class="number">2</span>, n);</span><br><span class="line">        <span class="keyword">if</span> (cnt1 &gt; cnt2) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(val1, val2);</span><br><span class="line">            <span class="built_in">swap</span>(cnt1, cnt2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> diff = val1 - val2, times = cnt2 - cnt1;</span><br><span class="line">        <span class="type">int</span> M = <span class="built_in">getM</span>(times), m = <span class="built_in">getm</span>(times);</span><br><span class="line">        <span class="keyword">return</span> M &gt; diff || m &lt; diff;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/163996898">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/08/23/LeetCode%201927.%E6%B1%82%E5%92%8C%E6%B8%B8%E6%88%8F/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← 下一篇 README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/08/20/LeetCode%203069.%E5%B0%86%E5%85%83%E7%B4%A0%E5%88%86%E9%85%8D%E5%88%B0%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%ADI/">3069.将元素分配到两个数组中 I：模拟 上一篇 →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="回到顶部" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="文章目录">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="切换主题"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>目录</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911927-%E6%B1%82%E5%92%8C%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%8A%B5%E6%B6%88-%E7%9C%8B%E6%9C%80%E5%80%BC"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1927.求和游戏：抵消+看最值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E5%85%88%E6%8A%B5%E6%B6%88%EF%BC%8C%E7%84%B6%E5%90%8E%E7%9C%8B%E6%9C%80%E5%80%BC"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：先抵消，然后看最值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
