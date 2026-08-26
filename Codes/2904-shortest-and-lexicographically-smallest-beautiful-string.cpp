@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-26 07:55:52
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-26 14:14:52
+ * @LastEditTime: 2026-08-26 14:16:35
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -13,7 +13,7 @@ private:
     void update(string& ans, string& s, int l, int r) {
         int len = r - l + 1;
         std::string_view cur(s.data() + l, len);
-        if (ans.empty() || len < ans.size() || len == ans.size() && ans < cur) {
+        if (ans.empty() || len < ans.size() || len == ans.size() && cur < ans) {
             ans = cur;
         }
     }
