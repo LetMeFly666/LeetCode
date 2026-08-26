@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-26 07:55:52
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-26 14:10:54
+ * @LastEditTime: 2026-08-26 14:14:52
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -26,6 +26,9 @@ public:
                 cnt -= s[l++] == '1';
             }
             if (cnt == k) {
+                while (s[l] == '0') {  // do not forget!
+                    l++;
+                }
                 update(ans, s, l, r);
             }
         }
