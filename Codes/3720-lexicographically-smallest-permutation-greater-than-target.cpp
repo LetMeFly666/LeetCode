@@ -50,12 +50,12 @@ public:
 
             // 也没有更大的了 比如s:124 target:125，走到4/5这里其实可以回退把s变成142
             if (!found) {
-                for (int j = i - 1; j >= 0; j--) {
-                    cnt[s[j] - 'a']++;
-                    for (int k = target[j] - 'a' + 1; k < 26; k++) {
-                        if (cnt[k]) {
-                            cnt[k]--;
-                            s[j] = k + 'a';
+                for (i--; i >= 0; i--) {
+                    cnt[s[i] - 'a']++;
+                    for (int j = target[i] - 'a' + 1; j < 26; j++) {
+                        if (cnt[j]) {
+                            cnt[j]--;
+                            s[i] = j + 'a';
                             alreadyBigger = true;
                             break;
                         }
@@ -87,6 +87,11 @@ ab
 /*
 baba
 bbaa
+
+*/
+/*
+ab
+ab
 
 */
 int main() {
