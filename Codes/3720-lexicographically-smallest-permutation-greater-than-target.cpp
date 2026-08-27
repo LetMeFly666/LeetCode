@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-27 13:33:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-27 13:57:03
+ * @LastEditTime: 2026-08-27 14:15:15
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -38,9 +38,9 @@ public:
 
             // 没有一样大的，看看有没有更大的
             bool found = false;
-            for (int j = target[i] - 'a'; j < 26; j++) {
-                if (target[j]) {
-                    target[j]--;
+            for (int j = target[i] - 'a' + 1; j < 26; j++) {
+                if (cnt[j]) {
+                    cnt[j]--;
                     s[i] = j + 'a';
                     alreadyBigger = true;
                     found = true;
@@ -72,3 +72,19 @@ public:
         return s;
     }
 };
+
+#ifdef _DEBUG
+/*
+abc
+bba
+
+*/
+int main() {
+    string a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.lexGreaterPermutation(a, b) << endl;
+    }
+    return 0;
+}
+#endif
