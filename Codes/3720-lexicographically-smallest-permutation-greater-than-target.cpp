@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-27 13:33:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-27 14:19:41
+ * @LastEditTime: 2026-08-27 14:23:39
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -52,7 +52,7 @@ public:
             if (!found) {
                 for (int j = i - 1; j >= 0; j--) {
                     cnt[s[j] - 'a']++;
-                    for (int k = target[i] - 'a'; k < 26; k++) {
+                    for (int k = target[j] - 'a'; k < 26; k++) {
                         if (cnt[k]) {
                             cnt[k]--;
                             s[j] = k + 'a';
@@ -82,6 +82,11 @@ bba
 /*
 ab
 ab
+
+*/
+/*
+baba
+bbaa
 
 */
 int main() {
