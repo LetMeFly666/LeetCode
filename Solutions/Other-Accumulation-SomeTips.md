@@ -644,6 +644,17 @@ Welcome, you idiot.
 
 TODO:Let's continue
 
+### 麒麟系统
+
+#### 麒麟系统调整亮度
+
+```bash
+ls -l /sys/class/backlight/
+# mipi2edp-backlight -> /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight
+cat /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness  # 读当前屏幕亮度
+sudo sh -c "echo 32400 > /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness"  # 调整屏幕亮度
+```
+
 ## About Mac
 
 ### SMB协议时不生成.DS_Store
@@ -1265,6 +1276,32 @@ chmod +x ~/.pyenv/plugins/custom/bin/pyenv-list
 
 ```bash
 pyenv shell xxx -> pyenv use xxx
+```
+
+### Python Counter和defaultdict
+
+defaultdict相较于dict，访问不存在的 key 时会自动调用 `default_factory` 创建默认值，并把这个 key 加入字典；Counter会统计一个iterable中各种元素的出现次数。但Counter与defaultdict不同的是，Counter访问不存在的key时会返回0但不会自动创建这个key。
+
+```python
+from collections import Counter, defaultdict
+
+a = "12"
+b = Counter(a)
+print(type(b))
+print(b['3'])
+print(b[1])
+
+"""
+python Counter和defaultdict(int)很像，只不过Counter访问不存在的键不会给默认加进去，而defaultdict会
+"""
+print(len(b))  # 2
+
+c = defaultdict(int)
+c['1'] = 1
+c['2'] = 1
+print(c['3'])
+print(c[1])
+print(len(c))  # 4
 ```
 
 ## About C++
