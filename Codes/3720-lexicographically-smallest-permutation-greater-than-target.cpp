@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-27 13:33:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-27 14:15:15
+ * @LastEditTime: 2026-08-27 14:16:16
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -69,7 +69,7 @@ public:
                 }
             }
         }
-        return s;
+        return alreadyBigger ? s : "";
     }
 };
 
