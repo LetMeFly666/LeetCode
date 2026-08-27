@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-27 13:33:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-27 14:16:16
+ * @LastEditTime: 2026-08-27 14:19:41
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -30,7 +30,7 @@ public:
             }
 
             // 尽量一样大
-            if (cnt[target[i] - 'a']) {
+            if (i != n - 1 && cnt[target[i] - 'a']) {
                 cnt[target[i] - 'a']--;
                 s[i] = target[i];
                 continue;
@@ -77,6 +77,11 @@ public:
 /*
 abc
 bba
+
+*/
+/*
+ab
+ab
 
 */
 int main() {
