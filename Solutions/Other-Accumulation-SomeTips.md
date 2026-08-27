@@ -644,6 +644,17 @@ Welcome, you idiot.
 
 TODO:Let's continue
 
+### 麒麟系统
+
+#### 麒麟系统调整亮度
+
+```bash
+ls -l /sys/class/backlight/
+# mipi2edp-backlight -> /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight
+cat /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness  # 读当前屏幕亮度
+sudo sh -c "echo 32400 > /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness"  # 调整屏幕亮度
+```
+
 ## About Mac
 
 ### SMB协议时不生成.DS_Store
