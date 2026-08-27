@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.letmefly.xyz/img/blog/Accumulation-SomeTips/word-findLossingFont.jpg">
 <meta property="article:published_time" content="2023-02-21T13:33:49.000Z">
-<meta property="article:modified_time" content="2026-08-18T10:34:10.000Z">
+<meta property="article:modified_time" content="2026-08-27T09:23:07.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="API">
@@ -252,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          38k 字
+          39k 字
         
       </span>
     
@@ -263,7 +263,7 @@
         
         
         
-          317 分钟
+          324 分钟
         
       </span>
     
@@ -544,6 +544,8 @@
 <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><span class="hljs-built_in">Welcome,</span> you idiot.<br></code></pre></td></tr></table></figure>
 
 <h3 id="Linux-ICMP-ping-协议"><a href="#Linux-ICMP-ping-协议" class="headerlink" title="Linux ICMP(ping)协议"></a>Linux ICMP(ping)协议</h3><p>TODO:Let’s continue</p>
+<h3 id="麒麟系统"><a href="#麒麟系统" class="headerlink" title="麒麟系统"></a>麒麟系统</h3><h4 id="麒麟系统调整亮度"><a href="#麒麟系统调整亮度" class="headerlink" title="麒麟系统调整亮度"></a>麒麟系统调整亮度</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -l /sys/class/backlight/<br><span class="hljs-comment"># mipi2edp-backlight -&gt; /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight</span><br><span class="hljs-built_in">cat</span> /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness  <span class="hljs-comment"># 读当前屏幕亮度</span><br><span class="hljs-built_in">sudo</span> sh -c <span class="hljs-string">&quot;echo 32400 &gt; /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness&quot;</span>  <span class="hljs-comment"># 调整屏幕亮度</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="About-Mac"><a href="#About-Mac" class="headerlink" title="About Mac"></a>About Mac</h2><h3 id="SMB协议时不生成-DS-Store"><a href="#SMB协议时不生成-DS-Store" class="headerlink" title="SMB协议时不生成.DS_Store"></a>SMB协议时不生成.DS_Store</h3><p>禁止Finder浏览SMB文件夹时生成<code>.DS_Store</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">defaults write com.apple.desktopservices DSDontWriteNetworkStores <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
@@ -802,6 +804,9 @@
 <p>相当于创建一个<code>~/.pyenv/plugins/custom/bin/pyenv-list</code>文件，当执行<code>pyenv list</code>时，就会调用这个文件，这个文件执行<code>pyenv versions</code>。</p>
 <p>类似的还有：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pyenv shell xxx -&gt; pyenv use xxx<br></code></pre></td></tr></table></figure>
+
+<h3 id="Python-Counter和defaultdict"><a href="#Python-Counter和defaultdict" class="headerlink" title="Python Counter和defaultdict"></a>Python Counter和defaultdict</h3><p>defaultdict相较于dict，访问不存在的 key 时会自动调用 <code>default_factory</code> 创建默认值，并把这个 key 加入字典；Counter会统计一个iterable中各种元素的出现次数。但Counter与defaultdict不同的是，Counter访问不存在的key时会返回0但不会自动创建这个key。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter, defaultdict<br><br>a = <span class="hljs-string">&quot;12&quot;</span><br>b = Counter(a)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))<br><span class="hljs-built_in">print</span>(b[<span class="hljs-string">&#x27;3&#x27;</span>])<br><span class="hljs-built_in">print</span>(b[<span class="hljs-number">1</span>])<br><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">python Counter和defaultdict(int)很像，只不过Counter访问不存在的键不会给默认加进去，而defaultdict会</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(b))  <span class="hljs-comment"># 2</span><br><br>c = defaultdict(<span class="hljs-built_in">int</span>)<br>c[<span class="hljs-string">&#x27;1&#x27;</span>] = <span class="hljs-number">1</span><br>c[<span class="hljs-string">&#x27;2&#x27;</span>] = <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(c[<span class="hljs-string">&#x27;3&#x27;</span>])<br><span class="hljs-built_in">print</span>(c[<span class="hljs-number">1</span>])<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(c))  <span class="hljs-comment"># 4</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="About-C"><a href="#About-C" class="headerlink" title="About C++"></a>About C++</h2><h3 id="C-原地建堆make-heap"><a href="#C-原地建堆make-heap" class="headerlink" title="C++原地建堆make_heap"></a>C++原地建堆make_heap</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; v = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">9</span>, <span class="hljs-number">8</span>&#125;;<br><span class="hljs-built_in">make_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());<br><span class="hljs-built_in">pop_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">// 堆顶元素（v[0]）放入数组v的末尾，其余元素调整为建堆</span><br>v.<span class="hljs-built_in">pop_back</span>();  <span class="hljs-comment">// pop_heap并没有将元素弹出v数组</span><br>v.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">2</span>);<br><span class="hljs-built_in">push_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>());  <span class="hljs-comment">// 将v的最后一个元素（v.back()）插入到堆中</span><br><span class="hljs-built_in">sort_heap</span>(v.<span class="hljs-built_in">begin</span>(), v.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 将堆排序，排序后将失去堆的特性；非堆调用此函数将会报错；大根堆会变成从小到大的排序</span><br></code></pre></td></tr></table></figure>
 
