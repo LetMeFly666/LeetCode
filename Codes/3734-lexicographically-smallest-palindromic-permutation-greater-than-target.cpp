@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 14:21:28
+ * @LastEditTime: 2026-08-28 14:27:21
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -82,8 +82,7 @@ public:
                 fullBigger(cnt, s, i, 0);
                 continue;
             }
-            if (canFullSame(cnt, s, target, i)) {  // 试试填一样的
-                full(cnt, s, i, target[i]);
+            if (canFullSame(cnt, s, target, i) && full(cnt, s, i, target[i])) {  // 试试填一样的
                 continue;
             }
             if (fullBigger(cnt, s, i, target[i] - 'a')) {  // 有更大的
@@ -106,3 +105,20 @@ public:
         return s > target ? s : "";
     }
 };
+
+#ifdef _DEBUG
+/*
+baba
+abba
+
+baab
+*/
+int main() {
+    string a, b;
+    while (cin >> a >> b) {
+        Solution sol;
+        cout << sol.lexPalindromicPermutation(a, b) << endl;
+    }
+    return 0;
+}
+#endif
