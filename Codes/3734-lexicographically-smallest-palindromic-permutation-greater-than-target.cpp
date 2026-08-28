@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 16:01:38
+ * @LastEditTime: 2026-08-28 16:24:24
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -96,7 +96,7 @@ public:
                 continue;
             }
             // 开始回退
-            for (; i >= 0; i--) {
+            for (i--; i >= 0; i--) {
                 cnt[s[i] - 'a']++;
                 if (fullBigger(cnt, s, i, target[i] - 'a' + 1)) {
                     alreadyBigger = true;
