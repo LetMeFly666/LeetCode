@@ -2,12 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 16:24:24
+ * @LastEditTime: 2026-08-28 16:30:36
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
+// WHAT A HOLY SHIT - 真是屎山代码啊
 class Solution {
 private:
     bool fullBigger(int cnt[26], string& s, int idx, int miniChar) {
@@ -47,8 +48,12 @@ private:
             return false;
         }
         // 有一样的字符可以填，但是要看看填上之后整个字符串是否bigger
-        if (n % 2 && s[half] > target[half]) {
-            return true;
+        if (n % 2) {
+            if (s[half] > target[half]) {
+                return true;
+            }
+            cnt[target[idx] - 'a']++;  // revert
+            return false;
         }
         for (int i = half - 1; i >= 0; i--) {
             if (s[i] > target[n - i - 1]) {
