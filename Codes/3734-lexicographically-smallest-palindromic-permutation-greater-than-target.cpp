@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 16:30:36
+ * @LastEditTime: 2026-08-28 16:35:00
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -51,9 +51,10 @@ private:
         if (n % 2) {
             if (s[half] > target[half]) {
                 return true;
+            } else if (s[half] < target[half]) {
+                cnt[target[idx] - 'a']++;  // revert
+                return false;
             }
-            cnt[target[idx] - 'a']++;  // revert
-            return false;
         }
         for (int i = half - 1; i >= 0; i--) {
             if (s[i] > target[n - i - 1]) {
@@ -135,6 +136,12 @@ aabb
 abaa
 
 abba
+*/
+/*
+abb
+baa
+
+bab
 */
 int main() {
     string a, b;
