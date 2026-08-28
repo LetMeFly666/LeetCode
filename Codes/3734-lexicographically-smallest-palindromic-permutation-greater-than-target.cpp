@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 15:02:36
+ * @LastEditTime: 2026-08-28 15:37:51
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -43,19 +43,17 @@ private:
         if (idx < half - 1) {
             return full(cnt, s, idx, target[idx]);
         }
-        if (n % 2 == 0) {
-            return false;
-        }
-
-        // 现在是奇数长度的字符串 并且 正在填充前半部分的最后一个字符
         if (!full(cnt, s, idx, target[idx])) {  // 直接没一样的字符可填了
             return false;
         }
         // 有一样的字符可以填，但是要看看填上之后整个字符串是否bigger
-        for (int i = 0; i <= half; i++) {
+        for (int i = 0; i < half; i++) {
             if (s[i] > target[n - i - 1]) {
                 return true;
             }
+        }
+        if (n % 2 && s[half] > target[half]) {
+            return true;
         }
         cnt[target[idx] - 'a']++;  // revert
         return false;
