@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 14:27:21
+ * @LastEditTime: 2026-08-28 14:31:34
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -40,7 +40,7 @@ private:
     // 不是前半个字符串的最后一个、或是前半个字符串的最后一个但是fullSame的话double后比target大
     bool canFullSame(int cnt[26], string& s, string& target, int idx) {
         int half = target.size() / 2;
-        if (idx < half) {
+        if (idx < half - 1 || target.size() % 2 && idx < half) {
             return true;
         }
         if (target.size() % 2 && s[half] > target[half]) {
