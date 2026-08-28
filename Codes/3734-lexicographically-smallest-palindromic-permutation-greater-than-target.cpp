@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 14:33:30
+ * @LastEditTime: 2026-08-28 14:41:16
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -65,9 +65,8 @@ public:
             if (cnt[i] % 2) {
                 oddTimes++;
                 oddChar = i;
-            } else {
-                cnt[i] /= 2;
             }
+            cnt[i] /= 2;
         }
         if (oddTimes > 1) {
             return "";
@@ -112,6 +111,12 @@ baba
 abba
 
 baab
+*/
+/*
+aab
+baa
+
+""
 */
 int main() {
     string a, b;
