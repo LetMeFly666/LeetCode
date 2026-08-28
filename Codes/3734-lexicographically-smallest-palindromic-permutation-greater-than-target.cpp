@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-28 13:30:47
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-28 14:31:34
+ * @LastEditTime: 2026-08-28 14:33:30
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -85,7 +85,7 @@ public:
             if (canFullSame(cnt, s, target, i) && full(cnt, s, i, target[i])) {  // 试试填一样的
                 continue;
             }
-            if (fullBigger(cnt, s, i, target[i] - 'a')) {  // 有更大的
+            if (fullBigger(cnt, s, i, target[i] - 'a' + 1)) {  // 有更大的
                 alreadyBigger = true;
                 continue;
             }
