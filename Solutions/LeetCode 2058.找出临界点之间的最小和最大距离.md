@@ -3,6 +3,7 @@ title: 2058.找出临界点之间的最小和最大距离：遍历+遇到极值�
 date: 2026-09-01 13:11:02
 tags: [题解, LeetCode, 中等, 链表]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/2058-a1.png
 ---
 
 # 【LetMeFly】2058.找出临界点之间的最小和最大距离：遍历+遇到极值则更新(这种题谁空间复杂度不是O(1)啊)
@@ -23,7 +24,8 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2021/10/13/a1.png" style="width: 148px; height: 55px;" /></p>
+<!-- <p><img alt="" src="https://assets.leetcode.com/uploads/2021/10/13/a1.png" style="width: 148px; height: 55px;" /></p> -->
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/2058-a1.png" style="width: 148px; height: 55px;" /></p>
 
 <pre>
 <strong>输入：</strong>head = [3,1]
