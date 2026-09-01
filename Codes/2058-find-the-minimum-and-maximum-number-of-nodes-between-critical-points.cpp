@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-31 12:11:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-01 13:00:59
+ * @LastEditTime: 2026-09-01 13:08:04
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -25,6 +25,7 @@ private:
     int MDis = -1;
 
     void updateDis(int idx) {
+        // cout << idx << endl;
         if (lastIdx == -1) {
             lastIdx = idx;
             return;
@@ -36,6 +37,7 @@ private:
             mDis = min(mDis, dis);
             MDis = max(MDis, dis);
         }
+        lastIdx = idx;  // 看来思路还是不能断啊
     }
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
