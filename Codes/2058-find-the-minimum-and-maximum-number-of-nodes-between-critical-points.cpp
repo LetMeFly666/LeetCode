@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-31 12:11:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-01 13:08:04
+ * @LastEditTime: 2026-09-01 13:10:00
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,14 +20,14 @@
  */
 class Solution {
 private:
-    int lastIdx = -1;
+    int lastIdx = -1, firstIdx = -1;
     int mDis = -1;
     int MDis = -1;
 
     void updateDis(int idx) {
         // cout << idx << endl;
         if (lastIdx == -1) {
-            lastIdx = idx;
+            firstIdx = lastIdx = idx;
             return;
         }
         int dis = idx - lastIdx;
@@ -35,7 +35,7 @@ private:
             mDis = MDis = dis;
         } else {
             mDis = min(mDis, dis);
-            MDis = max(MDis, dis);
+            MDis = idx - firstIdx;
         }
         lastIdx = idx;  // 看来思路还是不能断啊
     }
