@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-08-31 12:11:25
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-08-31 13:21:36
+ * @LastEditTime: 2026-09-01 13:00:59
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -34,11 +34,22 @@ private:
             mDis = MDis = dis;
         } else {
             mDis = min(mDis, dis);
-            MDis = max(MDis)
+            MDis = max(MDis, dis);
         }
     }
 public:
     vector<int> nodesBetweenCriticalPoints(ListNode* head) {
-        
+        int firstVal = head->val;
+        int secondVal = head->next->val;
+        int idx = 0;
+        for (head = head->next->next; head; head = head->next, idx++) {
+            int nowVal = head->val;
+            if (secondVal < firstVal && secondVal < nowVal || secondVal > firstVal && secondVal > nowVal) {
+                updateDis(idx);
+            }
+            firstVal = secondVal;
+            secondVal = nowVal;
+        }
+        return {mDis, MDis};
     }
 };
