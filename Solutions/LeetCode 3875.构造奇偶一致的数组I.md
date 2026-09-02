@@ -1,11 +1,11 @@
 ---
-title: 3875.构造奇偶一致的数组 I
+title: 3875.构造奇偶一致的数组 I：写4个字母，直接提交
 date: 2026-09-02 17:02:41
-tags: [题解, LeetCode, 简单, 数组, 数学]
+tags: [题解, LeetCode, 简单, 数组, 数学, 脑筋急转弯]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3875.构造奇偶一致的数组 I
+# 【LetMeFly】3875.构造奇偶一致的数组 I：写4个字母，直接提交
 
 力扣题目链接：[https://leetcode.cn/problems/construct-uniform-parity-array-i/](https://leetcode.cn/problems/construct-uniform-parity-array-i/)
 
@@ -68,12 +68,16 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：直接返回true
 
-11111
+如果$nums1$中全是偶数，那么$nums2$怎么造都是偶数，合法；
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+否则（$nums1$中有奇数）就把$nums2$全变成奇数：$nums1$奇数的位置在$nums2$中直接照抄，$nums1$中偶数的位置在$nums2$中减去$nums1$中任意一个奇数即可。
+
++ 时间复杂度$O(1)$
++ 空间复杂度$O(1)$
+
+> Rust直接在模板上写个`true`就行了。
 
 ### AC代码
 
@@ -141,6 +145,6 @@ impl Solution {
 }
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/02/LeetCode%203875.%E6%9E%84%E9%80%A0%E5%A5%87%E5%81%B6%E4%B8%80%E8%87%B4%E7%9A%84%E6%95%B0%E7%BB%84I/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/164301244)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/02/LeetCode%203875.%E6%9E%84%E9%80%A0%E5%A5%87%E5%81%B6%E4%B8%80%E8%87%B4%E7%9A%84%E6%95%B0%E7%BB%84I/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
