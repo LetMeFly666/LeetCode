@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3069-distribute-elements-into-two-arrays-i.rs");  // 这个fileName是会被脚本替换掉的
+include!("3875-construct-uniform-parity-array-i.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
