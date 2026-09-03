@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-03 13:14:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-03 13:16:53
+ * @LastEditTime: 2026-09-03 13:18:22
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -22,6 +22,6 @@ public:
         if (maxOdd == -1 || maxEven == -1) {
             return true;
         }
-        return maxOdd > maxEven;
+        return maxOdd < maxEven;
     }
 };
