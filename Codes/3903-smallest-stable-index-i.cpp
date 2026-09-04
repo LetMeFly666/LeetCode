@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-04 18:29:59
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-04 18:32:35
+ * @LastEditTime: 2026-09-04 18:34:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,10 +27,11 @@ private:
     }
 public:
     int firstStableIndex(vector<int>& nums, int k) {
-        int ans = 1000000001;
         for (int i = 0, n = nums.size(); i < n; i++) {
-            ans = min(ans, getM(nums, i) - getm(nums, i));
+            if (getM(nums, i) - getm(nums, i) <= k) {
+                return i;
+            }
         }
-        return ans > k ? -1 : ans;
+        return -1;
     }
 };
