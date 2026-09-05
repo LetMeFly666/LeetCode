@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3875-construct-uniform-parity-array-i.rs");  // 这个fileName是会被脚本替换掉的
+include!("3904-smallest-stable-index-ii.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
