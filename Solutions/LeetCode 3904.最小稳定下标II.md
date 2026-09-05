@@ -1,7 +1,7 @@
 ---
 title: 3904.最小稳定下标 II：前后缀分解 —— 附Python3行版
 date: 2026-09-05 08:58:00
-tags: [题解, LeetCode, 中等, 数组, 前缀和]
+tags: [题解, LeetCode, 中等, 数组, 前缀和, 前后缀分解]
 categories: [题解, LeetCode]
 ---
 
