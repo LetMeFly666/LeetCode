@@ -38,7 +38,7 @@ categories: [技术思考]
 ],
 ```
 
-第一个`C_CPP.intelliSenseCachePath`配置为缓存文件存放路径，第二个`C_Cpp.intelliSenseCacheSize`配置为缓存文件最大占用空间（单位为MB）。
+第一个`C_CPP.intelliSenseCachePath`配置为`ipch`缓存文件存放路径，第二个`C_Cpp.intelliSenseCacheSize`配置为`ipch`缓存文件最大占用空间（单位为MB）。
 
 第三个`settingsSync.ignoredSettings`是配置哪些配置不跨设备同步，由于缓存路径位置在不同电脑上可能不同，所以这里我设置ipch缓存位置不随设备同步，这样在其他设备登录VsCode账号，会同步其他配置而不同步这个，就可以实现每个设备配置不同的ipch缓存位置了。
 
