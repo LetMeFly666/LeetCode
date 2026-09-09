@@ -26,7 +26,7 @@
 <meta property="og:description" content="VsCode缓存清理 - 限制C++拓展的缓存文件ipch空间占用前文《VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身》通过Windows上的bat脚本实现了VsCode缓存的清理，可以释放大量空间。但是使用一段时间后空间占用还会逐渐增大。如果你是C++用户，那么也许你需要关注一下本篇文章。 缓存文件介绍ipc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-09T02:51:42.000Z">
-<meta property="article:modified_time" content="2026-09-09T03:19:20.000Z">
+<meta property="article:modified_time" content="2026-09-09T08:37:39.000Z">
 <meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
 <meta property="article:tag" content="VsCode">
 <meta property="article:tag" content="Windows">
@@ -246,7 +246,7 @@
 <h2 id="缓存配置"><a href="#缓存配置" class="headerlink" title="缓存配置"></a>缓存配置</h2><p>可以在<code>settings.json</code>（打开方式可以为<code>Ctrl + Shift + P -&gt; Preferences: Open User settings (JSON)</code>）中新增如下配置：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;C_Cpp.intelliSenseCachePath&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;F:\\FromC\\VsCode\\ipch&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;C_Cpp.intelliSenseCacheSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4096</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;settingsSync.ignoredSettings&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;-C_Cpp.intelliSenseCachePath&quot;</span><br><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
 
-<p>第一个<code>C_CPP.intelliSenseCachePath</code>配置为缓存文件存放路径，第二个<code>C_Cpp.intelliSenseCacheSize</code>配置为缓存文件最大占用空间（单位为MB）。</p>
+<p>第一个<code>C_CPP.intelliSenseCachePath</code>配置为<code>ipch</code>缓存文件存放路径，第二个<code>C_Cpp.intelliSenseCacheSize</code>配置为<code>ipch</code>缓存文件最大占用空间（单位为MB）。</p>
 <p>第三个<code>settingsSync.ignoredSettings</code>是配置哪些配置不跨设备同步，由于缓存路径位置在不同电脑上可能不同，所以这里我设置ipch缓存位置不随设备同步，这样在其他设备登录VsCode账号，会同步其他配置而不同步这个，就可以实现每个设备配置不同的ipch缓存位置了。</p>
 <p>当配置路径不存在时会存放到默认位置。</p>
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
