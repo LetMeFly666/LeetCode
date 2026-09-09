@@ -5,6 +5,8 @@ tags: [其他, VsCode, Windows, 磁盘清理]
 categories: [技术思考]
 ---
 
+# VsCode缓存清理 - 轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身
+
 VsCode是一款**轻量级**代码编辑器
 
 可用一段就会很快发现，“轻量级”的VsCode并不轻量
@@ -128,5 +130,8 @@ goto end
 
 [video(video-4523Dsfl-1662295789207)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=430147071)(image-https://i-blog.csdnimg.cn/blog_migrate/36191ca6fcf0df7e7a315f4b3efe8254.jpeg)(title-轻量级的VsCode为何越用越大？为什么吃了我C盘10G？如何无痛清理VsCode缓存？手把手教你为C盘瘦身)]
 
-> 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/126082324](https://letmefly.blog.csdn.net/article/details/126082324)
+续集：《[VsCode缓存清理 - 限制C++拓展的缓存文件ipch空间占用](https://blog.letmefly.xyz/2026/09/09/Other-VsCode-LimitIPCHGeneratedByCPPExtention/)》 —— 有关C++拓展缓存文件的分析。
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/126082324)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/30/Other-VsCode-WhyLightweightVsCodeCanEatMyCDrive10G/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
