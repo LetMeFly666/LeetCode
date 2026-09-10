@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-10 14:38:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-10 14:47:52
+ * @LastEditTime: 2026-09-10 14:49:28
  */
 /**
  * Definition for a binary tree node.
@@ -26,7 +26,7 @@ class Solution {
 
     private Result dfs(TreeNode root) {
         if (root == null) {
-            return new Record(0, 0);
+            return new Result(0, 0);
         }
         Result left = dfs(root.left);
         Result right = dfs(root.right);
@@ -35,7 +35,7 @@ class Solution {
         if (val / n == root.val) {
             ans++;
         }
-        return new Record(val, n);
+        return new Result(val, n);
     }
 
     public int averageOfSubtree(TreeNode root) {
