@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-09 10:56:07
+ * @LastEditTime: 2026-09-11 16:47:56
 -->
 # LetLeet Blog
 
@@ -164,6 +164,7 @@
 |Windows(奇思妙想) - 通过ssh打开带有图形界面的程序 - 一种通过计划任务的曲折实现方式|<a href="https://blog.letmefly.xyz/2025/02/21/Other-Windows-OpenUIbySSH">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145786262">CSDN博客</a>|
 |Windows程序互斥锁 - 一个程序同时仅允许运行一个实例|<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136139822">CSDN博客</a>|
 |Windows - VsCode导致Windows凭据过多之一键删除|<a href="https://blog.letmefly.xyz/2026/02/21/Other-Windows-RemoveExcessWindowsCredentialsGeneratedByVsCode/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/158262243">CSDN博客</a>|
+|Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH|<a href="https://blog.letmefly.xyz/2026/09/11/Other-Windows-Shell-UseZSHByGitBashAndMsys2/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/165002226">CSDN博客</a>|
 |Windows - URL Scheme - 在Windows上无管理员权限为你的程序添加URL Scheme|<a href="https://blog.letmefly.xyz/2024/02/08/Other-Windows-URLScheme-Define1URLSchemeForYourApplicationWithoutUACOnWindows/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136083203">CSDN博客</a>|
 |Windows - UWP - 为UWP应用创建桌面快捷方式|<a href="https://blog.letmefly.xyz/2023/08/12/Other-Windows-UWP-createShortcutOnDesktop/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132254567">CSDN博客</a>|
 |Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132257018">CSDN博客</a>|
