@@ -16,7 +16,7 @@ public:
                     continue;
                 }
                 for (int k = 0; k < n; k++) {
-                    if (k == i || k == j) {
+                    if (k == i || k == j || digits[k] % 2) {  // 别忘了只要偶数
                         continue;
                     }
                     int val = digits[i] * 100 + digits[j] * 10 + digits[k];
