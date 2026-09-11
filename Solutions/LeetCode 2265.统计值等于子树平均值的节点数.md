@@ -3,6 +3,7 @@ title: 2265.统计值等于子树平均值的节点数：一个深度优先搜�
 date: 2026-09-10 17:09:23
 tags: [题解, LeetCode, 中等, 树, 深度优先搜索, 二叉树, DFS]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/2265-image-20220315203925-1.png
 ---
 
 # 【LetMeFly】2265.统计值等于子树平均值的节点数：一个深度优先搜索
@@ -21,7 +22,7 @@ categories: [题解, LeetCode]
 <p>&nbsp;</p>
 
 <p><strong>示例 1：</strong></p>
-<img src="https://assets.leetcode.com/uploads/2022/03/15/image-20220315203925-1.png" style="width: 300px; height: 212px;">
+<img src="https://files.letmefly.xyz/d/n/leetcode/2265-image-20220315203925-1.png" style="width: 300px; height: 212px;">
 <pre><strong>输入：</strong>root = [4,8,5,0,1,null,6]
 <strong>输出：</strong>5
 <strong>解释：</strong>
@@ -33,7 +34,7 @@ categories: [题解, LeetCode]
 </pre>
 
 <p><strong>示例 2：</strong></p>
-<img src="https://assets.leetcode.com/uploads/2022/03/26/image-20220326133920-1.png" style="width: 80px; height: 76px;">
+<img src="https://files.letmefly.xyz/d/n/leetcode/image-20220326133920-1.png" style="width: 80px; height: 76px;">
 <pre><strong>输入：</strong>root = [1]
 <strong>输出：</strong>1
 <strong>解释：</strong>对值为 1 的节点：子树的平均值 1 / 1 = 1。
