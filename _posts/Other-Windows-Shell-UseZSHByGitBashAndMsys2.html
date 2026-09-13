@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH 天下人苦cmd久矣(bushi)  Windows自带的cmd和PowerShell在使用上都不如Linux下的shell方便，安装了Git后默认会带有Git Bash（运行时基于msys2-runtime修改而来），只需要再安装一个MSYS2的zsh就能在Windows上通过Git Bash使用zs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH">
+<meta property="og:url" content="https://blog.letmefly.xyz/_posts/Other-Windows-Shell-UseZSHByGitBashAndMsys2.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH 天下人苦cmd久矣(bushi)  Windows自带的cmd和PowerShell在使用上都不如Linux下的shell方便，安装了Git后默认会带有Git Bash（运行时基于msys2-runtime修改而来），只需要再安装一个MSYS2的zsh就能在Windows上通过Git Bash使用zs">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-09T02:51:42.000Z">
+<meta property="article:modified_time" content="2026-09-13T03:52:22.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="VsCode">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="bash">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="zsh">
+<meta property="article:tag" content="其他">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Windows-Shell-——-通过Git-Bash和Msys2在Windows上使用ZSH"><a href="#Windows-Shell-——-通过Git-Bash和Msys2在Windows上使用ZSH" class="headerlink" title="Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH"></a>Windows(Shell) —— 通过Git Bash和Msys2在Windows上使用ZSH</h1><blockquote>
+<p>天下人苦cmd久矣(bushi)</p>
+</blockquote>
+<p>Windows自带的cmd和PowerShell在使用上都不如Linux下的shell方便，安装了Git后默认会带有Git Bash（运行时基于msys2-runtime修改而来），只需要再安装一个MSYS2的zsh就能在Windows上通过Git Bash使用zsh了。</p>
+<h2 id="Git-安装（简述）"><a href="#Git-安装（简述）" class="headerlink" title="Git 安装（简述）"></a>Git 安装（简述）</h2><p>折腾Windows上ZSH的大概都安装过git。如果没，那就在<a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">官网</a><a target="_blank" rel="noopener" href="https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/Git-2.55.0.5-64-bit.exe">下载</a>并安装即可。</p>
+<p>安装完成后如果你能正常使用<code>git</code>命令那么你大概率也可以直接使用<code>bash</code>命令来使用Git Bash了。</p>
+<h2 id="MSYS2简介"><a href="#MSYS2简介" class="headerlink" title="MSYS2简介"></a>MSYS2简介</h2><p>MSYS2是一个在Windows上运行的类Unix环境，如果你想要省事儿的话，也可以直接安装一个MSYS2。MSYS2使用<code>pacman</code>作为包管理器，可以直接使用<code>pacman -S zsh</code>来安装zsh。</p>
+<p>但这不是本文的目的。由于Git Bash本身就是基于msys2-runtime修改而来，所以我们可以直接在Git Bash中使用MSYS2的zsh。</p>
+<h2 id="ZSH下载“安装”"><a href="#ZSH下载“安装”" class="headerlink" title="ZSH下载“安装”"></a>ZSH下载“安装”</h2><p>访问<a target="_blank" rel="noopener" href="https://packages.msys2.org/packages/zsh?repo=msys&variant=x86_64">msys2官网的zsh包</a>，找到<code>File:</code>后面的下载链接：<a target="_blank" rel="noopener" href="https://mirror.msys2.org/msys/x86_64/zsh-5.9.2-1-x86_64.pkg.tar.zst">https://mirror.msys2.org/msys/x86_64&#x2F;zsh-5.9.2-1-x86_64.pkg.tar.zst</a>，这是一个压缩包，可以使用Bandizip或者7-Zip等工具解压。</p>
+<p>解压后你可能会得到一个压缩包，再解压一次可得到一些文件：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs dart">zsh-<span class="hljs-number">5.9</span>.<span class="hljs-number">2</span>-<span class="hljs-number">1</span>-x86_64.pkg<br>├─etc<br>│  └─zsh<br>└─usr<br>    ├─bin<br>    ├─lib<br>    │  └─zsh<br>    │      └─<span class="hljs-number">5.9</span>.<span class="hljs-number">2</span><br>    │          └─zsh<br>    │              ├─net<br>    │              └─param<br>    └─share<br>        ├─licenses<br>        │  └─zsh<br>        ├─man<br>        │  └─man1<br>        └─zsh<br>            ├─<span class="hljs-number">5.9</span>.<span class="hljs-number">2</span><br>            │  └─help<br>            ├─functions<br>            │  ├─<span class="hljs-title class_">Calendar</span><br>            │  ├─<span class="hljs-title class_">Chpwd</span><br>            │  ├─<span class="hljs-title class_">Completion</span><br>            │  │  ├─<span class="hljs-title class_">Base</span><br>            │  │  ├─<span class="hljs-title class_">Linux</span><br>            │  │  ├─<span class="hljs-title class_">Unix</span><br>            │  │  ├─X<br>            │  │  └─<span class="hljs-title class_">Zsh</span><br>            │  ├─<span class="hljs-title class_">Exceptions</span><br>            │  ├─<span class="hljs-title class_">Math</span><br>            │  ├─MIME<br>            │  ├─<span class="hljs-title class_">Misc</span><br>            │  ├─<span class="hljs-title class_">Newuser</span><br>            │  ├─<span class="hljs-title class_">Prompts</span><br>            │  ├─TCP<br>            │  ├─VCS_Info<br>            │  │  └─<span class="hljs-title class_">Backends</span><br>            │  ├─<span class="hljs-title class_">Zftp</span><br>            │  └─<span class="hljs-title class_">Zle</span><br>            ├─scripts<br>            └─site-functions<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>参考文献：</p>
+<ul>
+<li>《<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/625583037">知乎：Windows安装Zsh终端</a>》</li>
+</ul>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/165002226">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/09/11/Other-Windows-Shell-UseZSHByGitBashAndMsys2/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
