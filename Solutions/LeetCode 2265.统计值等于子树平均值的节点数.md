@@ -34,7 +34,7 @@ index_img: https://files.letmefly.xyz/d/n/leetcode/2265-image-20220315203925-1.p
 </pre>
 
 <p><strong>示例 2：</strong></p>
-<img src="https://files.letmefly.xyz/d/n/leetcode/image-20220326133920-1.png" style="width: 80px; height: 76px;">
+<img src="https://files.letmefly.xyz/d/n/leetcode/2265-image-20220326133920-1.png" style="width: 80px; height: 76px;">
 <pre><strong>输入：</strong>root = [1]
 <strong>输出：</strong>1
 <strong>解释：</strong>对值为 1 的节点：子树的平均值 1 / 1 = 1。
