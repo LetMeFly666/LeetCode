@@ -87,4 +87,3 @@ public:
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/165307839)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/14/LeetCode%200836.%E7%9F%A9%E5%BD%A2%E9%87%8D%E5%8F%A0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
-archive
