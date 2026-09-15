@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3904-smallest-stable-index-ii.rs");  // 这个fileName是会被脚本替换掉的
+include!("1288-remove-covered-intervals_20260915.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
