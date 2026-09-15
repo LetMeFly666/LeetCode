@@ -2,14 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2026-09-15 17:12:02
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-15 17:21:29
+ * @LastEditTime: 2026-09-15 17:22:32
  */
 package main
 
-import "slices"
+import "sort"
 
 func removeCoveredIntervals(intervals [][]int) int {
-	slices.sort(intervals, func(i, j int) bool {
+	sort.Slice(intervals, func(i, j int) bool {
 		if intervals[i][0] == intervals[j][0] {
 			return intervals[i][1] > intervals[j][1]
 		}
