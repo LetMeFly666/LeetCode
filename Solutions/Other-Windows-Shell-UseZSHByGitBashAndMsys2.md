@@ -143,6 +143,22 @@ fi
 
 后面怎么配置就可以跟Linux和Mac上一样了，比如安装个`oh-my-zsh`和`zsh-autosuggestions`之类的。
 
+## VsCode设置默认使用git bash(zsh)
+
+如果你的Git和我一样不是正常安装的，那么VsCode可能识别不到你的git bash。需要在`settings.json`（Preferences: Open User Settings (JSON)）中添加以下内容：
+
+```json
+
+"terminal.integrated.profiles.windows": {
+    "Lets ZSH": {
+        "path": "C:\\MyApps\\Git\\App\\bin\\bash.exe"
+    }
+},
+"terminal.integrated.defaultProfile.windows": "Lets ZSH",
+```
+
+注意，你可以起名为`Lets ZSH`，但你不能起名为`Git Bash`。
+
 ## End
 
 参考文献：
