@@ -166,6 +166,6 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/16/LeetCode%201621.%E5%A4%A7%E5%B0%8F%E4%B8%BAK%E7%9A%84%E4%B8%8D%E9%87%8D%E5%8F%A0%E7%BA%BF%E6%AE%B5%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/165734405)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/16/LeetCode%201621.%E5%A4%A7%E5%B0%8F%E4%B8%BAK%E7%9A%84%E4%B8%8D%E9%87%8D%E5%8F%A0%E7%BA%BF%E6%AE%B5%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
