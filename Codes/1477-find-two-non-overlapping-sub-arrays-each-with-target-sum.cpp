@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-17 13:14:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-17 13:22:25
+ * @LastEditTime: 2026-09-17 13:24:04
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,7 +21,7 @@ public:
             }
             minL[r + 1] = minL[r];
             if (cnt == target) {
-                minL[r + 1] = min(minL[r + 1], minL[l - 1] + r - l + 1);
+                minL[r + 1] = min(minL[r + 1], minL[l] + r - l + 1);
                 ans = min(ans, minL[r + 1]);
             }
         }
