@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1477.找两个和为目标值且不重叠的子数组：滑动窗口 + 记录前值(动态规划) | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/_posts/LeetCode%201477.%E6%89%BE%E4%B8%A4%E4%B8%AA%E5%92%8C%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%80%BC%E4%B8%94%E4%B8%8D%E9%87%8D%E5%8F%A0%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.html"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1477.找两个和为目标值且不重叠的子数组：滑动窗口 + 记录前值(动态规划)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-09-17T05:26:42.000Z" id="date"> 2026-09-17</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1477-找两个和为目标值且不重叠的子数组：滑动窗口-记录前值-动态规划"><a href="#【LetMeFly】1477-找两个和为目标值且不重叠的子数组：滑动窗口-记录前值-动态规划" class="headerlink" title="【LetMeFly】1477.找两个和为目标值且不重叠的子数组：滑动窗口 + 记录前值(动态规划)"></a>【LetMeFly】1477.找两个和为目标值且不重叠的子数组：滑动窗口 + 记录前值(动态规划)</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/">https://leetcode.cn/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/</a></p>
+<p>给你一个整数数组&nbsp;<code>arr</code> 和一个整数值&nbsp;<code>target</code>&nbsp;。</p>
+
+<p>请你在 <code>arr</code>&nbsp;中找 <strong>两个互不重叠的子数组</strong>&nbsp;且它们的和都等于&nbsp;<code>target</code>&nbsp;。可能会有多种方案，请你返回满足要求的两个子数组长度和的 <strong>最小值</strong> 。</p>
+
+<p>请返回满足要求的最小长度和，如果无法找到这样的两个子数组，请返回 <strong>-1</strong>&nbsp;。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>arr = [3,2,2,4,3], target = 3
+<strong>输出：</strong>2
+<strong>解释：</strong>只有两个子数组和为 3 （[3] 和 [3]）。它们的长度和为 2 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>arr = [7,3,4,7], target = 7
+<strong>输出：</strong>2
+<strong>解释：</strong>尽管我们有 3 个互不重叠的子数组和为 7 （[7], [3,4] 和 [7]），但我们会选择第一个和第三个子数组，因为它们的长度和 2 是最小值。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>arr = [4,3,2,6,2,3,4], target = 6
+<strong>输出：</strong>-1
+<strong>解释：</strong>我们只有一个和为 6 的子数组。
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>arr = [5,5,4,4,5], target = 3
+<strong>输出：</strong>-1
+<strong>解释：</strong>我们无法找到和为 3 的子数组。
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>arr = [3,1,1,1,5,1,2,1], target = 3
+<strong>输出：</strong>3
+<strong>解释：</strong>注意子数组 [1,2] 和 [2,1] 不能成为一个方案因为它们重叠了。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= arr.length &lt;= 10^5</code></li>
+	<li><code>1 &lt;= arr[i] &lt;= 1000</code></li>
+	<li><code>1 &lt;= target &lt;= 10^8</code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：滑动窗口"><a href="#解题方法：滑动窗口" class="headerlink" title="解题方法：滑动窗口"></a>解题方法：滑动窗口</h2><p>如果这道题只需要求一个和为<code>target</code>的最短子数组的长度，那么一个滑动窗口就可以解决：</p>
+<blockquote>
+<p>用两个指针<code>l</code>和<code>r</code>表示滑动窗口的左右边界，用变量<code>cnt</code>表示当前窗口内元素的和。</p>
+<p>每次右指针<code>r</code>右移一位，当<code>cnt &gt; target</code>时，不断右移左指针。如果<code>cnt == target</code>，则更新最短子数组的长度。</p>
+</blockquote>
+<p>现在变成了两个和为<code>target</code>的不重叠子数组，怎么办？也好办，用一个数组把 从下标<code>0</code>到<code>l</code>为止最短的<code>target</code>和子数组 记录下来就好了。</p>
+<p>当滑动窗口中和为<code>target</code>时候，我们要做的事情就变成了两个：</p>
+<ul>
+<li>一是更新答案最小值，可能是 当前窗口中的一段($r-l+1$) + 当前窗口之前范围内的最短子数组长度($minL[l]$)</li>
+<li>二是更新从$0$到$r$为止的最短子数组长度$minL[r+1]$，可能是当前窗口中的这一段($r-l+1$)，或者是之前的最短子数组长度($minL[r]$)</li>
+</ul>
+<p>以上。</p>
+<ul>
+<li>时间复杂度$O(len(arr))$，每个元素最多入队一次出队一次；</li>
+<li>空间复杂度$O(len(arr))$。</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-09-17 13:26:14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minSumOfLengths</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; arr, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = arr.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">minL</span><span class="params">(n + <span class="number">1</span>, <span class="number">1e7</span>)</span></span>;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">1e7</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, cnt = <span class="number">0</span>; r &lt; n; r++) &#123;</span><br><span class="line">            cnt += arr[r];</span><br><span class="line">            <span class="keyword">while</span> (cnt &gt; target) &#123;</span><br><span class="line">                cnt -= arr[l++];</span><br><span class="line">            &#125;</span><br><span class="line">            minL[r + <span class="number">1</span>] = minL[r];</span><br><span class="line">            <span class="keyword">if</span> (cnt == target) &#123;</span><br><span class="line">                minL[r + <span class="number">1</span>] = <span class="built_in">min</span>(minL[r + <span class="number">1</span>], r - l + <span class="number">1</span>);</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, minL[l] + r - l + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans &gt; n ? <span class="number">-1</span> : ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/165740106">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/09/17/LeetCode%201477.%E6%89%BE%E4%B8%A4%E4%B8%AA%E5%92%8C%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%80%BC%E4%B8%94%E4%B8%8D%E9%87%8D%E5%8F%A0%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911477-%E6%89%BE%E4%B8%A4%E4%B8%AA%E5%92%8C%E4%B8%BA%E7%9B%AE%E6%A0%87%E5%80%BC%E4%B8%94%E4%B8%8D%E9%87%8D%E5%8F%A0%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-%E8%AE%B0%E5%BD%95%E5%89%8D%E5%80%BC-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1477.找两个和为目标值且不重叠的子数组：滑动窗口 + 记录前值(动态规划)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：滑动窗口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
