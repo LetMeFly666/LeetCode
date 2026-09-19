@@ -9,14 +9,6 @@
 #endif
 
 class Solution {
-private:
-    bool ok(int cnt[]) {
-        for (int i = 0; i < 26; i++) {
-            if (cnt[i] > 2) {
-                return false;
-            }
-        }
-    }
 public:
     int maximumLengthSubstring(string& s) {
         int ans = 0;
@@ -25,7 +17,7 @@ public:
             int idx = s[r] - 'a';
             cnt[idx]++;
             while (cnt[idx] == 3) {
-                
+                cnt[s[l] - 'a']--;
             }
             ans = max(ans, r - l + 1);
         }
