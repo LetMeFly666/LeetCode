@@ -20,8 +20,8 @@ impl Solution {
     }
 
     pub fn check_overlap(radius: i32, x_center: i32, y_center: i32, x1: i32, y1: i32, x2: i32, y2: i32) -> bool {
-        let x = get_closest(x_center, x1, x2);
-        let y = get_closest(y_center, y1, y2);
-        p(x - x_center) + p(y - y_center) <= p(radius)
+        let x = Self::get_closest(x_center, x1, x2);
+        let y = Self::get_closest(y_center, y1, y2);
+        Self::p(x - x_center) + Self::p(y - y_center) <= Self::p(radius)
     }
 }
