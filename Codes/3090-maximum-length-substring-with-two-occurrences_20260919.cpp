@@ -17,7 +17,7 @@ public:
             int idx = s[r] - 'a';
             cnt[idx]++;
             while (cnt[idx] == 3) {
-                cnt[s[l] - 'a']--;
+                cnt[s[l++] - 'a']--;
             }
             ans = max(ans, r - l + 1);
         }
