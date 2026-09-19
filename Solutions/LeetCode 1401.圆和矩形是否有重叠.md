@@ -3,6 +3,7 @@ title: 1401.圆和矩形是否有重叠：找最近点（三种可能）
 date: 2026-09-19 08:50:32
 tags: [题解, LeetCode, 中等, 几何, 数学]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/1401-sample_4_1728.png
 ---
 
 # 【LetMeFly】1401.圆和矩形是否有重叠：找最近点（三种可能）
@@ -18,7 +19,7 @@ categories: [题解, LeetCode]
 <p>&nbsp;</p>
 
 <p><strong class="example">示例 1 ：</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/02/20/sample_4_1728.png" style="width: 258px; height: 167px;" />
+<img alt="" src="https://files.letmefly.xyz/d/n/leetcode/1401-sample_4_1728.png" style="width: 258px; height: 167px;" />
 <pre>
 <strong>输入：</strong>radius = 1, xCenter = 0, yCenter = 0, x1 = 1, y1 = -1, x2 = 3, y2 = 1
 <strong>输出：</strong>true
@@ -33,7 +34,7 @@ categories: [题解, LeetCode]
 </pre>
 
 <p><strong class="example">示例 3 ：</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2020/02/20/sample_2_1728.png" style="width: 150px; height: 135px;" />
+<img alt="" src="https://files.letmefly.xyz/d/n/leetcode/1401-sample_2_1728.png" style="width: 150px; height: 135px;" />
 <pre>
 <strong>输入：</strong>radius = 1, xCenter = 0, yCenter = 0, x1 = -1, y1 = 0, x2 = 0, y2 = 1
 <strong>输出：</strong>true
