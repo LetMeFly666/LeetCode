@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-09-21 10:32:28
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-09-21 13:42:03
+LastEditTime: 2026-09-21 13:45:49
 '''
 from typing import List
 
@@ -14,7 +14,7 @@ class Solution:
             t %= k
             dp2 = [0] * k
             for i in range(k):
-                dp2[i] += dp[i * t % k]
+                dp2[i * t % k] += dp[i]
             dp2[t] += 1
             for i, v in enumerate(dp2):
                 ans[i] += v
