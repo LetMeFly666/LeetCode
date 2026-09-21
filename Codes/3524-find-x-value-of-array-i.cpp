@@ -2,23 +2,46 @@
  * @Author: LetMeFly
  * @Date: 2026-09-21 10:32:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-21 10:49:56
+ * @LastEditTime: 2026-09-21 11:13:17
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
 typedef long long ll;
+typedef array<ll, 5> Data;
 class Solution {
 public:
     vector<ll> resultArray(vector<int>& nums, int k) {
-        ll dp[k] = {0};
+        Data dp{};
         for (int t : nums) {
             t %= k;
-            ll dp2[k] = {0};
-            
+            Data dp2{};
+            for (int i = 0; i < k; i++) {
+                dp2[i * t % k] += dp[i];
+            }
+            dp2[t]++;
             swap(dp, dp2);
         }
-        return vector<ll>(dp, dp + k);
+        return vector<ll>(dp.begin(), dp.begin() + k);
     }
 };
+
+#ifdef _DEBUG
+/*
+[1,2,3,4,5]
+3
+
+[9,2,4]
+*/
+int main() {
+    string s;
+    int a;
+    while (cin >> s >> a) {
+        Solution sol;
+        vector<int> v = stringToVector(s);
+        debug(sol.resultArray(v, a));
+    }
+    return 0;
+}
+#endif
