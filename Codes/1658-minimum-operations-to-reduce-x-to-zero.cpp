@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-23 18:34:56
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-23 18:38:54
+ * @LastEditTime: 2026-09-23 18:40:09
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -16,7 +16,8 @@ public:
             cnt += nums[i];
             prefix[cnt] = i;
         }
-        int ans = nums.size() + 1;
+        prefix[0] = -1;
+        int ans = prefix.count(x) ? prefix[x] + 1 : nums.size() + 1;
         for (int n = nums.size(), i = n - 1, cnt = 0; i >= 0 && cnt < x; i--) {
             cnt += nums[i];
             if (prefix.count(x - cnt)) {
