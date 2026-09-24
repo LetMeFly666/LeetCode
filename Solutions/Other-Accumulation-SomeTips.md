@@ -993,6 +993,31 @@ $image.Save("$desktop\a.jpg")
 
 没有认证，知道Mac地址就能发。
 
+### diskpart一些常见命令
+
+以下命令主要用于系统重装时候的分区，日常谨慎操作！
+
+```bash
+Shift + F10  # 打开CMD
+diskpart
+list disk
+select disk 0
+list partition
+clean
+convert gpt
+convert mbr
+
+select partition 3
+delete partition
+
+create partition primary size=307200  # 300G C盘
+format fs=ntfs quick label=OS
+assign letter=C
+create partition primary  # 其他的D盘
+format fs=ntfs quick label=Data
+assign letter=D
+```
+
 ## About Phone
 
 ### Phone APP 如视VR
