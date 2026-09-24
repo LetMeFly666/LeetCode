@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-24 12:11:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-24 12:32:40
+ * @LastEditTime: 2026-09-24 12:36:53
  */
 package main
 
@@ -22,7 +22,7 @@ func removeCoveredIntervals(intervals [][]int) int {
 		if maxr >= v[1] {
 			ans--
 		} else {
-			maxr = v[1];
+			maxr = v[1]
 		}
 	}
 	return ans
