@@ -1,0 +1,3 @@
+int digitFrequencyScore(int n) {
+    
+}

@@ -90,9 +90,9 @@ categories: [题解, LeetCode]
 
 我们用i遍历字符串$s$的下标，$i$的初始值是$0$，到$s.length$为止。
 
-期间，如果$s[i]$不为```'('```，那么我们就不断地将$s[i]$添加到答案字符串中去（这些都是不用解析的部分）
+期间，如果$s[i]$不为`(`，那么我们就不断地将$s[i]$添加到答案字符串中去（这些都是不用解析的部分）
 
-一旦遇到了```'('```，我们就用另外一个变量$to$，从$i + 1$开始往后累加，直到$s[to]$为```')'```为止。
+一旦遇到了`(`，我们就用另外一个变量$to$，从$i + 1$开始往后累加，直到$s[to]$为`)`为止。
 
 这样，我们就提取出了这对括号中间的$key$
 
@@ -129,6 +129,35 @@ public:
                 i = to;  // 循环结束后会有i++
             }
             else {
+                ans += s[i];
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-09-26 09:34:05
+ */
+class Solution {
+public:
+    string evaluate(const string& s, vector<vector<string>>& knowledge) {
+        unordered_map<string, string> ma;
+        for (vector<string>& v : knowledge) {
+            ma[v[0]] = v[1];
+        }
+        string ans;
+        for (int i = 0, n = s.size(); i < n; i++) {
+            if (s[i] == '(') {
+                int next_i = s.find_first_of(')', i);  // 不应为nops
+                string key = s.substr(i + 1, next_i - i - 1);
+                ans += ma.count(key) ? ma[key] : "?";
+                i = next_i;
+            } else {
                 ans += s[i];
             }
         }

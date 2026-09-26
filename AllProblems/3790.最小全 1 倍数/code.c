@@ -1,0 +1,3 @@
+int minAllOneMultiple(int k) {
+    
+}

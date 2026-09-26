@@ -3,6 +3,7 @@ title: 1260.二维网格迁移
 date: 2022-07-20 11:27:33
 tags: [题解, LeetCode, 简单, 数组, 矩阵, 模拟, 位移变换, 数组变换]
 categories: [题解, LeetCode]
+index_img: https://assets.leetcode.cn/aliyun-lc-upload/uploads/2019/11/16/e1-1.png
 ---
 
 # 【LetMeFly】两种方法解决(k次模拟/一步到位)：1260.二维网格迁移
@@ -165,5 +166,47 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/20/LeetCode%201260.%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC%E8%BF%81%E7%A7%BB/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/125889225](https://letmefly.blog.csdn.net/article/details/125889225)
+## 方法三：一次移动（但一维数组辅助）
+
+方法二中需要通过计算求出一个元素在一维数组和二维数组中的下标对应关系，方法三相当于直接把二维数组中的数据放到一维数组中进行移动，移动完成后再放回二维数组中。
+
++ 时间复杂度$O(nm)$，其中矩阵的大小为$n\times m$
++ 空间复杂度$O(nm)$，和方法二相比，开辟了两个临时的一维数组
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-07-20 18:07:34
+ */
+class Solution {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int n = grid.size(), m = grid[0].size(), all = n * m;
+        int a[all], b[all];
+        for (int i = 0, th = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                a[th++] = grid[i][j];
+            }
+        }
+        
+        for (int i = 0; i < all; i++) {
+            b[(i + k) % all] = a[i];
+        }
+        for (int i = 0, th = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                grid[i][j] = b[th++];
+            }
+        }
+        return grid;
+    }
+};
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/125889225)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/20/LeetCode%201260.%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC%E8%BF%81%E7%A7%BB/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

@@ -1,3 +1,3 @@
 class Solution:
-    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+    def findMatrix(self, nums: list[int]) -> list[list[int]]:
         

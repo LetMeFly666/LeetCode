@@ -1,7 +1,7 @@
 ---
 title: 1331.数组序号转换
 date: 2022-07-28 10:48:43
-tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序, sort]
+tags: [题解, LeetCode, 简单, 数组, 哈希表, 排序]
 categories: [题解, LeetCode]
 ---
 
@@ -67,6 +67,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-07-28 10:46:31
+ */
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
@@ -89,6 +92,32 @@ public:
 };
 ```
 
+```cpp
+/*
+ * @LastEditTime: 2026-07-12 09:58:23
+ */
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        vector<int> b = arr;
+        sort(b.begin(), b.end());
+        unordered_map<int, int> ma;
+        int last = b.empty() ? 0 : b[0] + 1, num = 0;
+        for (int t : b) {
+            if (t != last) {
+                ma[t] = ++num;
+                last = t;
+            }
+        }
+        // trick直接给原始数组覆盖了
+        for (int& t : arr) {
+            t = ma[t];
+        }
+        return arr;
+    }
+};
+```
+
 #### Python
 
 语法糖真简洁
@@ -102,5 +131,6 @@ class Solution:
         return [ranks[v] for v in arr]
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/126030218](https://letmefly.blog.csdn.net/article/details/126030218)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/126030218)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/28/LeetCode%201331.%E6%95%B0%E7%BB%84%E5%BA%8F%E5%8F%B7%E8%BD%AC%E6%8D%A2/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

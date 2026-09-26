@@ -1,7 +1,7 @@
 ---
 title: LCP 69.Hello LeetCode!
 date: 2023-01-03 18-54-55
-tags: [题解, LeetCode, 困难, 位运算, 数组, 字符串, 动态规划, 状态压缩]
+tags: [题解, LeetCode, 困难, 位运算, 数组, 字符串, 动态规划, 位掩码]
 ---
 
 # 【LetMeFly】LCP 69.Hello LeetCode!

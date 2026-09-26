@@ -110,5 +110,36 @@ public:
 };
 ```
 
+## 方法三：一次遍历（O(n) + O(1)）
+
+使用两个变量别记录最大值和第二大值，遍历$nums$数组，如果当前元素大于最大值则令次大值等于最大值并令最大值等于当前元素，否则如果当前元素大于次大值则令次大值等于当前元素。
+
+这样，一次遍历即可得到top2。
+
++ 时间复杂度$O(n)$，其中$n$是元素个数
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int mx1 = 1, mx2 = 1;
+        for (int t : nums) {
+            if (t > mx2) {
+                mx1 = mx2;
+                mx2 = t;
+            } else if (t > mx1) {
+                mx1 = t;
+            }
+        }
+        return (mx1 - 1) * (mx2 - 1);
+    }
+};
+```
+
 > 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/08/26/LeetCode%201464.%E6%95%B0%E7%BB%84%E4%B8%AD%E4%B8%A4%E5%85%83%E7%B4%A0%E7%9A%84%E6%9C%80%E5%A4%A7%E4%B9%98%E7%A7%AF/)哦~
 > Tisfy：[https://letmefly.blog.csdn.net/article/details/126536351](https://letmefly.blog.csdn.net/article/details/126536351)

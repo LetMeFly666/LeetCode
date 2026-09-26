@@ -24,7 +24,7 @@ tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 图, �
 >输出：`3`
 >
 >解释：
->![image.png](https://pic.leetcode-cn.com/1597991318-goeHHr-image.png){:height="250px"}
+>![image.png](https://pic.leetcode.cn/1597991318-goeHHr-image.png){:height="250px"}
 >
 >第一回合，小力移动至 2 号点，小扣观察到小力的行动后移动至 6 号点；
 >第二回合，小力移动至 5 号点，小扣无法移动，留在原地；
@@ -37,7 +37,7 @@ tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 图, �
 >输出：`-1`
 >
 >解释：
->![image.png](https://pic.leetcode-cn.com/1597991157-QfeakF-image.png){:height="250px"}
+>![image.png](https://pic.leetcode.cn/1597991157-QfeakF-image.png){:height="250px"}
 >
 >小力如果不动，则小扣也不动；否则小扣移动到小力的对角线位置。这样小力无法追到小扣。
 

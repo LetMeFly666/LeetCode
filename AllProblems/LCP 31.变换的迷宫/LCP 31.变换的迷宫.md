@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 困难, 深度优先搜索, 广度优先搜索, 数组,
 >输出：`true`
 >
 >解释：
-![maze.gif](https://pic.leetcode-cn.com/1615892239-SCIjyf-maze.gif)
+![maze.gif](https://pic.leetcode.cn/1615892239-SCIjyf-maze.gif)
 
 
 **示例 2：**

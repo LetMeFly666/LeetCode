@@ -24,14 +24,14 @@ tags: [题解, LeetCode, 中等, 图, 数组, 数学]
 
 
 **示例 1：**
->![image.png](https://pic.leetcode-cn.com/1630061228-gnZsOz-image.png)
+>![image.png](https://pic.leetcode.cn/1630061228-gnZsOz-image.png)
 > 输入：
 >`finalCnt = [1,16], totalNum = 21, edges = [[0,1],[1,2]], plans = [[2,1],[1,0],[3,0]]`
 >
 > 输出：`[5,7,9]`
 >
 > 解释：
-> ![image.png](https://pic.leetcode-cn.com/1630061300-WuVkeF-image.png){:height=200}
+> ![image.png](https://pic.leetcode.cn/1630061300-WuVkeF-image.png){:height=200}
 
 
 **示例 2 ：**

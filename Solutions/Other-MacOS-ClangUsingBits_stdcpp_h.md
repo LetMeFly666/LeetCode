@@ -39,7 +39,7 @@ Windows和MacOS双用户，Windows上cpp**打竞赛/刷题**时使用`bits/stdc+
 
 然后鼠标在`iostream`上`Command+单击鼠标左键`就好。
 
-这样VsCode就会打开`iostream`这个文件，这个文件所在路径就是clang库文件的默认路径。（如：`/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/`）
+这样VsCode就会打开`iostream`这个文件，这个文件所在路径就是clang库文件的默认路径。（如：CommandLineTools的`/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/`或Xcode的`/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1`）
 
 ### 方法二：使用clang命令
 

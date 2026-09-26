@@ -1,0 +1,3 @@
+bool isDigitorialPermutation(int n) {
+    
+}

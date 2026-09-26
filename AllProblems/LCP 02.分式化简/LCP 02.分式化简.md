@@ -10,7 +10,7 @@ tags: [题解, LeetCode, 简单, 数组, 数学, 数论, 模拟]
 
 <p>有一个同学在学习分式。他需要将一个连分数化成最简分数，你能帮助他吗？</p>
 
-<p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/09/09/fraction_example_1.jpg" style="height: 195px; width: 480px;"></p>
+<p><img alt="" src="https://assets.leetcode.cn/aliyun-lc-upload/uploads/2019/09/09/fraction_example_1.jpg" style="height: 195px; width: 480px;"></p>
 
 <p>连分数是形如上图的分式。在本题中，所有系数都是大于等于0的整数。</p>
 

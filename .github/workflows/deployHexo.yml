@@ -60,6 +60,8 @@ jobs:
             echo "master branch, checking Solutions changes"
             git fetch --depth=2 origin "$BRANCH"
             CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} $GITHUB_SHA || true)
+            # 去掉前后可能的双引号，否则可能"Solutions/LeetCode 0067.xxxx"
+            CHANGED_FILES=$(echo "$CHANGED_FILES" | sed 's/^"//;s/"$//')
             echo "Changed files:"
             echo "$CHANGED_FILES"
             if echo "$CHANGED_FILES" | grep -q '^Solutions/'; then

@@ -62,6 +62,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-08-14 13:10:21
+ */
 class Solution {
 public:
     uint32_t reverseBits(uint32_t n) {
@@ -69,6 +72,26 @@ public:
         for (int i = 0; i < 32; i++) {
             if (n & (1 << (31 - i)))
                 ans |= (1 << i);
+        }
+        return ans;
+    }
+};
+```
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-16 15:26:10
+ */
+class Solution {
+public:
+    int reverseBits(int n) {
+        unsigned ans = 0;
+        for (int i = 0; i < 32; i++, n >>= 1) {
+            if (n & 1) {
+                ans |= 1 << (31 - i);
+            }
         }
         return ans;
     }

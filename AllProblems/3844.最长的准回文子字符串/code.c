@@ -1,0 +1,3 @@
+int almostPalindromic(char* s) {
+    
+}

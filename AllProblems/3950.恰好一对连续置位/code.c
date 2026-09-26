@@ -1,0 +1,3 @@
+bool consecutiveSetBits(int n) {
+    
+}

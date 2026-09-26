@@ -11,7 +11,7 @@ tags: [题解, LeetCode, 困难, 数组, 回溯, 矩阵]
 欢迎各位勇者来到力扣城，本次试炼主题为「积木拼接」。
 勇者面前有 `6` 片积木（厚度均为 1），每片积木的形状记录于二维字符串数组 `shapes` 中，`shapes[i]` 表示第 `i` 片积木，其中 `1` 表示积木对应位置无空缺，`0` 表示积木对应位置有空缺。
 例如 `["010","111","010"]` 对应积木形状为
-![image.png](https://pic.leetcode-cn.com/1616125620-nXMCxX-image.png)
+![image.png](https://pic.leetcode.cn/1616125620-nXMCxX-image.png)
 
 拼接积木的规则如下：
 - 积木片可以旋转、翻面
@@ -19,7 +19,7 @@ tags: [题解, LeetCode, 困难, 数组, 回溯, 矩阵]
 - **每片积木片 `shapes[i]` 的中心点在拼接时必须处于正方体对应面的中心点**
 
 例如 `3*3`、`4*4` 的积木片的中心点如图所示（红色点）：
-![middle_img_v2_c2d91eb5-9beb-4c06-9726-f7dae149d86g.png](https://pic.leetcode-cn.com/1650509082-wObiEp-middle_img_v2_c2d91eb5-9beb-4c06-9726-f7dae149d86g.png){:height="150px"}
+![middle_img_v2_c2d91eb5-9beb-4c06-9726-f7dae149d86g.png](https://pic.leetcode.cn/1650509082-wObiEp-middle_img_v2_c2d91eb5-9beb-4c06-9726-f7dae149d86g.png){:height="150px"}
 
 
 请返回这 6 片积木能否拼接成一个**严丝合缝的正方体**且每片积木正好对应正方体的一个面。
@@ -34,7 +34,7 @@ tags: [题解, LeetCode, 困难, 数组, 回溯, 矩阵]
 >输出：`true`
 >
 >解释：
-![cube.gif](https://pic.leetcode-cn.com/1616125823-hkXAeN-cube.gif)
+![cube.gif](https://pic.leetcode.cn/1616125823-hkXAeN-cube.gif)
 
 **示例 2：**
 >输入：`shapes = [["101","111","000"],["000","010","111"],["010","011","000"],["010","111","010"],["101","111","010"],["000","010","011"]]`

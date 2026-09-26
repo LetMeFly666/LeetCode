@@ -1,11 +1,11 @@
 ---
-title: 1758.生成交替二进制字符串的最少操作数
+title: 1758.生成交替二进制字符串的最少操作数：5行代码一次遍历
 date: 2022-11-29 23:00:13
 tags: [题解, LeetCode, 简单, 字符串, 模拟, 遍历]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1758.生成交替二进制字符串的最少操作数
+# 【LetMeFly】1758.生成交替二进制字符串的最少操作数：5行代码一次遍历
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-changes-to-make-alternating-binary-string/](https://leetcode.cn/problems/minimum-changes-to-make-alternating-binary-string/)
 
@@ -69,6 +69,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-11-29 22:56:38
+ */
 class Solution {
 public:
     int minOperations(string& s) {
@@ -82,5 +85,36 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/11/29/LeetCode%201758.%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/128107132](https://letmefly.blog.csdn.net/article/details/128107132)
+## 方法二：模拟
+
+要么`奇数`位置全`奇数` `偶数`位置全`偶数`，要么`偶数`位置全`奇数` `奇数`位置全`偶数`。
+
+两种情况两个变量一次遍历算出来取最小的那个就好了。
+
++ 时间复杂度$O(n)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-03-05 22:16:57
+ */
+class Solution {
+public:
+    int minOperations(string s) {
+        int c0 = 0, c1 = 0;
+        for (int i = 0; i < s.size(); i++) {
+            c0 += s[i] % 2 == i % 2;  // 不用减'0'就行
+            c1 += s[i] % 2 != i % 2;
+        }
+        return min(c0, c1);
+    }
+};
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/128107132)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/11/29/LeetCode%201758.%E7%94%9F%E6%88%90%E4%BA%A4%E6%9B%BF%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

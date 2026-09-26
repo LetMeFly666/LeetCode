@@ -1,7 +1,7 @@
 ---
 title: 日积月累 - 一些小知识
 date: 2023-02-21 21:33:49
-tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, 双端队列, 优先队列, Website, API, 深度学习, AI, DL, ChatGPT, Office, Word, 安全, BAT, shell]
+tags: [其他, 小杂, 知识, 中等, Github, HTML, Windows, Phone, Python, 双端队列, 优先队列, Website, API, 深度学习, AI, DL, ChatGPT, Office, Word, 安全, BAT, shell, VsCode]
 categories: [技术思考]
 ---
 
@@ -24,6 +24,54 @@ git clone --branch paper --single-branch git@github.com:LetMeFly666/SecFFT.git
 ```
 
 ### 一些命令（学Git）
+
+#### Git Notes
+
+commit对象不可变，git notes允许在不改变commit及其hash的前提下给它挂一段额外文字。
+
+添加：
+
+```bash
+git notes add -m "Security scan passed" abc123
+# 其中commit sha可选，若不指定则默认当前commit
+```
+
+查看：
+
+```bash
+git notes show
+```
+
+修改：
+
+```bash
+git notes edit abc123
+```
+
+删除：
+
+```bash
+git notes remove abc123
+```
+
+git notes 存在哪里？
+
+```
+.git/
+├── objects/
+├── refs/
+└── refs/notes/
+    └── commits
+```
+
+push到github：
+
+```bash
+# push
+git push origin refs/notes/commits
+# 别人拉取需要以下操作才能看到
+git fetch origin refs/notes/commits:refs/notes/commits
+```
 
 #### 版本回退
 
@@ -187,6 +235,8 @@ git checkout -- filename
 
 丢弃filename在工作区的更改。如果暂存区有此文件的版本则回到暂存区的版本，否则回到版本库的版本。
 
+其中这里的`--`在很多CLI中被认为是“参数结束标记”，其后面的(所有)参数即使是`-`开头也不被认为是选项。如`rm -test.txt`会报错`rm: illegal option -- t`而`rm -- -test.txt`会把`-text.txt`这个文件删除。
+
 **丢弃暂存区更改：**
 
 ```bash
@@ -214,7 +264,7 @@ TODO: https://liaoxuefeng.com/books/git/branch/policy/index.html#0
 
 + `true`: 提交时会将文件的CRLF转为LF，检出时会将LF转为CRLF。（适合Windows用户）
 + `input`: 提交时会将文件的CRLF转为LF，检出时不进行转换。（适合Linux/Mac用户）
-+ `input`: 提交和检出时都不进行任何转换。
++ `false`: 提交和检出时都不进行任何转换。
 
 ```bash
 git config --global core.autocrlf [input | true | false]
@@ -291,34 +341,76 @@ export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
 ' --tag-name-filter cat -- --branches --tags
 ```
 
+### Git文件变更分支拆分(A分支关于toSay.md的变更拆分到另一分支上)
+
+背景：A分支修改了xx.cpp和toSay.md两个文件，本以为A分支会很快合并到master，结果可能需要好久之后再合并了。于是想把toSay.md的变更单独拆分到dev分支上下次一起合并、A分支去除toSay.md相关更改(未来合并master时候不冲突)，且不想进行rebase、cherry-pick等会丢弃或更改文件修改历史的操作。
+
+思路：dev分支合并A分支（或A分支上与toSay.md有关的最后一个提交），自定义合并，只合并toSay.md；A分支撤销其从master切出以来对toSay.md的更改，并做新commit。
+
+```bash
+git switch dev
+git merge --no-commit --no-ff 6fa8d8127a876c907c44d5097f5bd328da55d888
+# 删掉除了toSay.md之外的所有更改
+git commit -m "merge: merge branch half/2029 's toSay.md"
+git push
+
+git switch half/2029
+# 回滚自master切出以来toSay.md的更改
+git add .
+git commit -s -m "revert: rm toSay.md which is unrelated to this branch
+see 48d9a8c989024b1a251a0c9b453fe4466f39889a for more"
+git push
+```
+
+至此，家谱未删、历史未篡，A分支与toSay.md不再相关，toSay.md将于下次发车**squash**至master。
+
+> ?：注意记得squash到master，不然master分支保留了dev分支合并A分支的方式，有朝一日A分支落叶归根(至master)时小心其他更改被吞掉。
+
 ### github action相关一丢丢
 
 action的.yml一定要放到目录`.github/workflows`下！不能放在子目录下。
 
-## About HTML
+### git拉取另一台机器上的代码
 
-### 空白字符
+```bash
+git remote add machine1 ssh://user@remote_host/abs/path/to/repo
+git fetch machine1
+```
 
-这是一个空白字符：“ㅤ”
+如果想push，可能要再machine1上执行：
 
-### WebView2
+```bash
+git config receive.denyCurrentBranch updateInstead
+```
 
-（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电脑上安装有WebView2，则程序可以直接借助WebView2实现网页的浏览。
+### About Github GH(Github CLI)
 
-见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
+官网：[cli.github.com](https://cli.github.com/)
 
-### canonical
+安装：
 
-canonical 就是告诉搜索引擎：“这些页面看起来不一样，但你把它们当成同一个页面就行，正主是这个。”
+* Mac: 
 
-同一篇内容有不同url可能会导致搜索引擎：
+    ```bash
+    brew install gh
+    # brew upgrade gh
+    ```
 
-* 权重被分散
-* 可能被认为是「重复内容」
-* SEO 变差
+* Windows:
 
-```html
-<link rel="canonical" href="https://blog.letmefly.xyz/post/123">
+    [Releases](https://github.com/cli/cli/releases)点`show all xx asserts`，找到`GitHub CLI 2.87.2 windows amd64`下载并添加到环境变量path中；或者找`GitHub CLI 2.87.2 windows amd64 installer`傻瓜式下一步安装。
+
+登录：
+
+```bash
+gh auth login
+# 可登录多账号，之后使用gh auth switch -u USERNAME切换
+```
+
+添加project权限：
+
+```bash
+gh auth refresh -s project
 ```
 
 ## About Linux
@@ -382,6 +474,10 @@ Interpreter: /bin/bash
 ```
 
 </details>
+
+### zsh里面 path和PATH是一个
+
+ZSH中修改`$path`变量也会自动修改`$PATH`变量。
 
 ### Linux登录欢迎语motd
 
@@ -507,6 +603,7 @@ MAILTO=""
 试试挂载吧！只需要执行：
 
 ```bash
+mkdir -p /xx/Codes
 mount --bind /xx/xx/x/很深的路径/x/xx/sync/Codes /xx/Codes
 mount -o remount,ro,bind /xx/Codes
 ```
@@ -516,6 +613,47 @@ mount -o remount,ro,bind /xx/Codes
 第一条命令是在“绑定挂载”，第二条命令是在“重新挂载已绑定的`/xx/Codes`目录，并修改其挂载属性为只读”。
 
 这样源文件夹`/xx/xx/x/很深的路径/x/xx/sync/Codes`属性不变，可被同步脚本正常读写；目标文件夹`/xx/Codes`内的所有文件都只读，因为这是一个`Read-only file system`。
+
+### Linux在用户尝试使用ssh登录时显示欢迎语
+
+1. `/etc/ssh/sshd_config`中加一行：
+
+    ```config
+    Banner /etc/ssh/let_banner.txt
+    ```
+
+2. 将你想要在ssh连接时显示的“欢迎语”写入`/etc/ssh/let_banner.txt`
+
+    ```bash
+    echo "Welcome, you idiot." | sudo tee /etc/ssh/let_banner.txt > /dev/null
+    ```
+
+3. (可选)重启sshd服务
+
+    ```bash
+    sudo systemctl restart sshd
+    ```
+
+这样，别人（其实是所有人，包括你自己）在进行ssh登录你的Linux主机时，身份验证前都会先看到一句：
+
+```
+Welcome, you idiot.
+```
+
+### Linux ICMP(ping)协议
+
+TODO:Let's continue
+
+### 麒麟系统
+
+#### 麒麟系统调整亮度
+
+```bash
+ls -l /sys/class/backlight/
+# mipi2edp-backlight -> /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight
+cat /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness  # 读当前屏幕亮度
+sudo sh -c "echo 32400 > /sys/devices/platform/amba/xxx/xx/x/mipi2edp-backlight/brightness"  # 调整屏幕亮度
+```
 
 ## About Mac
 
@@ -538,6 +676,202 @@ find /path/to/shared/folder -name ".DS_Store" -type f -delete
 ```bash
 killall Finder
 ```
+
+### Cmd+Space突然无法检索本地应用之Spotlight索引重建
+
+不知是iCloud过期还是为何，最近`Command+空格`突然无法检索到本地应用，例如我输入个`iTerm`会出来“照片中1个结果”等等但就是没有我要找的应用。
+
+于是：
+
+```bash
+sudo mdutil -i off /Applications
+sudo mdutil -i on /Applications
+```
+
+重建一下关于应用的索引，差不多好了。
+
+### Mac更新DNS缓存
+
+有时候更新域名后dig结果已经更新但ping和浏览器无法访问：
+
+```bash
+dscacheutil -flushcache
+sudo killall -HUP mDNSResponder  # 必须sudo
+```
+
+### macOS 解码二维码
+
+> 由AI总结自我与AI的对话
+
+#### zbar（推荐）
+
+```bash
+brew install zbar
+```
+
+> 会安装约 100M 左右的依赖。
+
+安装后直接命令行解码：
+
+```bash
+zbarimg qrcode.png
+```
+
+输出示例：
+
+```
+QR-Code:https://example.com
+```
+
+LetMeFly: 使用时候记得删除前面的`QR-Code:`
+
+批量解码：
+
+```bash
+zbarimg *.png
+```
+
+#### Python 踩坑记录
+
+尝试过以下方案，均不理想：
+
+| 方案 | 问题 |
+|------|------|
+| `pyzbar` | 依赖 zbar 共享库，macOS 未装 zbar 时报 `ImportError: Unable to find zbar shared library` |
+| `cv2.QRCodeDetector` | 不依赖 zbar，但识别率差，部分二维码返回空结果 |
+| `qreader` | 底层仍依赖 `pyzbar`，且额外拉入 torch、ultralytics 等约 150M+ 依赖 |
+
+#### 结论
+
+有 zbar 的情况下，单张解码似乎就没必要再 Python PIL read 再通过 pyzbar 调用 zbar 了——`zbarimg` 一行命令搞定。
+
+### 禁止特定 App 开机自启（以 Spotify 为例）
+
+> 本节内容由 AI (Mira) 生成，经人工审阅后合入。
+
+macOS 下某些 App 会绕过「登录项」列表实现开机自启。排查路径如下：
+
+**1. 系统登录项**
+
+`系统设置 → 通用 → 登录项与扩展 → 登录时打开`，如果目标 App 在列表中，点 `-` 删除即可。
+
+**2. LaunchAgent**
+
+```bash
+ls ~/Library/LaunchAgents/ | grep -i spotify
+ls /Library/LaunchAgents/ | grep -i spotify
+```
+
+有结果则 `launchctl unload` + `rm` 对应 plist 文件。
+
+**3. Saved Application State**
+
+macOS 的「恢复上次会话」机制会在重启时重新打开之前运行过的 App。可以针对单个 App 禁用：
+
+```bash
+rm -rf ~/Library/Saved\ Application\ State/com.spotify.client.savedState
+mkdir ~/Library/Saved\ Application\ State/com.spotify.client.savedState
+chmod 000 ~/Library/Saved\ Application\ State/com.spotify.client.savedState
+```
+
+创建同名空目录并锁死权限，macOS 就无法再写入恢复状态。
+
+**4. launchctl（根治）**
+
+以上都没有时，用 `launchctl list` 排查：
+
+```bash
+launchctl list | grep -i spotify
+```
+
+`launchctl` 是 macOS 的服务管理器（类似 Linux 的 systemd）。App 可以通过 `SMAppService` API 直接注册服务到 launchctl，**无需用户显式授权**，也不会出现在「登录项」或 `~/Library/LaunchAgents/` 中。
+
+找到服务后直接禁用：
+
+```bash
+launchctl disable gui/$(id -u)/com.spotify.client.startuphelper
+launchctl disable gui/$(id -u)/com.spotify.client-launcher
+```
+
+恢复时将 `disable` 换成 `enable`。
+
+**macOS App 自启注册途径汇总**
+
+| 途径 | 位置 | 权限要求 |
+|------|------|----------|
+| 用户级 LaunchAgent | `~/Library/LaunchAgents/` | 无需管理员 |
+| 系统级 LaunchAgent | `/Library/LaunchAgents/` | 需管理员密码 |
+| 系统级 LaunchDaemon | `/Library/LaunchDaemons/` | 需管理员密码 |
+| App 内嵌注册（SMAppService） | launchctl 内部 | 无需额外授权 |
+
+### Mac提取PDF中的所有图片
+
+```bash
+brew install poppler
+pdfimages -all test.pdf img
+```
+
+然后就会得到一堆如下的文件：
+
+```
+img-000.jpg
+img-001.png
+...
+```
+
+### 开启NFS服务给机顶盒共享资源
+
+```bash
+sudo vim /etc/exports
+# /Users/tisfy/Movies -network 192.168.1.0 -mask 255.255.255.0 -ro
+sudo nfsd enable
+sudo nfsd restart
+
+# 看是否成功
+showmount -e localhost
+# Exports list on localhost:
+# /Users/tisfy/Movies 192.168.1.0
+
+# 看ip
+ipconfig getifaddr en0
+# 192.168.1.23
+```
+
+机顶盒看：
+
+```
+NFS IP:
+192.168.1.23
+
+NFS Route:
+/Users/tisfy/Movies
+```
+
+本机挂载测试：
+
+```bash
+mkdir ~/nfs-test
+sudo mount -t nfs localhost:/Users/tisfy/Movies ~/nfs-test
+# 或指定NFS版本
+sudo mount -t nfs -o vers=3 localhost:/Users/tisfy/Movies ~/nfs-test
+ls ~/nfs-test
+
+# 卸载
+sudo umount ~/nfs-test
+rm -r ~/nfs-test
+```
+
+## About iOS
+
+### Core ML
+
+Core ML 是 Apple 提供的端侧机器学习框架，于 iOS 11 引入。
+
+它允许开发者将训练好的机器学习模型（如 PyTorch/TensorFlow 模型）转换为 `.mlmodel` 格式，并在 iPhone/iPad/Mac 本地运行。
+
+运行时会自动利用 CPU、GPU 或 Neural Engine 进行推理，无需将用户数据上传到服务器。
+
+常用于图像识别、目标检测、OCR、语音处理、自然语言处理等 AI 场景。熊猫吃短信就是[通过这个](https://sspai.com/post/42134)实现的不联网短信分类。
 
 ## About Windows
 
@@ -637,6 +971,52 @@ Guid
 f35b2f66-3e03-4c9d-80b5-d72059a8735d
 ```
 
+### PowerShell保存剪贴板图片为文件
+
+```powershell
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+
+$desktop = [Environment]::GetFolderPath("Desktop")
+$image = [Windows.Forms.Clipboard]::GetImage()
+$image.Save("$desktop\a.jpg")
+```
+
+### WOL(Wake on LAN)网络唤醒
+
+归类到Windows下其实并不仅局限于Windows。
+
+1. 固件支持WOL
+2. 局域网或公网可达
+3. 网卡有待机电
+4. 接收到魔术网络包(Magic Packet)，内容`6 字节的 FF`+`目标网卡 MAC 地址 × 16 次`
+
+没有认证，知道Mac地址就能发。
+
+### diskpart一些常见命令
+
+以下命令主要用于系统重装时候的分区，日常谨慎操作！
+
+```bash
+Shift + F10  # 打开CMD
+diskpart
+list disk
+select disk 0
+list partition
+clean
+convert gpt
+convert mbr
+
+select partition 3
+delete partition
+
+create partition primary size=307200  # 300G C盘
+format fs=ntfs quick label=OS
+assign letter=C
+create partition primary  # 其他的D盘
+format fs=ntfs quick label=Data
+assign letter=D
+```
 
 ## About Phone
 
@@ -887,6 +1267,68 @@ second end
 
 但是，只有手动让出控制权的操作才会避免阻塞循环事件，例如`asyncio.sleep()`、`asyncio.open()`、`asyncio.connect()`等。普通的文件读写、网络请求仍然会阻塞进程。
 
+### Python版本切换pyenv
+
+安装：
+
+```bash
+brew install pyenv
+pyenv install 3.11.14
+```
+
+然后在`.zshrc`中添加：
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+```
+
+列举所有python版本的命令是`pyenv versions`，但我想让它是`pyenv list`，那么就可以：
+
+```bash
+mkdir -p ~/.pyenv/plugins/custom/bin
+cat > ~/.pyenv/plugins/custom/bin/pyenv-list <<'EOF'
+#!/usr/bin/env bash
+exec pyenv versions "$@"
+EOF
+chmod +x ~/.pyenv/plugins/custom/bin/pyenv-list
+```
+
+相当于创建一个`~/.pyenv/plugins/custom/bin/pyenv-list`文件，当执行`pyenv list`时，就会调用这个文件，这个文件执行`pyenv versions`。
+
+类似的还有：
+
+```bash
+pyenv shell xxx -> pyenv use xxx
+```
+
+### Python Counter和defaultdict
+
+defaultdict相较于dict，访问不存在的 key 时会自动调用 `default_factory` 创建默认值，并把这个 key 加入字典；Counter会统计一个iterable中各种元素的出现次数。但Counter与defaultdict不同的是，Counter访问不存在的key时会返回0但不会自动创建这个key。
+
+```python
+from collections import Counter, defaultdict
+
+a = "12"
+b = Counter(a)
+print(type(b))
+print(b['3'])
+print(b[1])
+
+"""
+python Counter和defaultdict(int)很像，只不过Counter访问不存在的键不会给默认加进去，而defaultdict会
+"""
+print(len(b))  # 2
+
+c = defaultdict(int)
+c['1'] = 1
+c['2'] = 1
+print(c['3'])
+print(c[1])
+print(len(c))  # 4
+```
+
 ## About C++
 
 ### C++原地建堆make_heap
@@ -990,7 +1432,7 @@ func main() {
     fmt.Println(array)  // [1 0 0 0 0]
     slice3 := slice
     slice3[1] = 100
-    fmt.Println(slice3)  // [1 100 3]
+    fmt.Println(slice)  // [1 100 3]
     // 转换
     sFromA := array[:]
     fmt.Printf("%s(%s): %v\n", reflect.TypeOf(sFromA), reflect.TypeOf(sFromA).Kind(), sFromA);  // []int(slice): [1 0 0 0 0]
@@ -999,6 +1441,164 @@ func main() {
     fmt.Printf("%T(%s): %v\n", aFromS, reflect.TypeOf(aFromS).Kind(), aFromS);  // [3]int(array): [1 100 3]
 }
 ```
+
+### Golang Gin
+
++ `Abort()`的话这个handler执行完，后面handler不再执行了。
++ `Next()`的话，先执行后面的handler再回来执行本函数后面逻辑。(Abort的话相当于后面没有需要执行的handler了)
+
+```go
+package main
+
+import "github.com/gin-gonic/gin"
+
+func a(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "a",
+	})
+}
+
+func b(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "b",
+	})
+}
+
+func aWithAbort(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "aAbort",
+	})
+	c.Abort()
+	c.JSON(200, gin.H{
+		"from": "aAbort2",
+	})
+}
+
+func next(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"from": "next.before",
+	})
+	c.Next()
+	c.JSON(500, gin.H{
+		"from": "next.after",
+	})
+}
+
+func aAbortAndNext(c *gin.Context) {
+	c.JSON(404, gin.H{
+		"from": "aAbortAndNext",
+	})
+	c.Abort()
+	c.Next()
+	c.JSON(200, gin.H{
+		"from": "aAbortAndNext2",
+	})
+}
+
+
+func main() {
+	c := gin.Default()
+	c.GET("/1", a, b)              // {"from":"a"}{"from":"b"} 不难发现handler a并没有c.Next()
+	c.GET("/2", aWithAbort, b)     // {"from":"aAbort"}{"from":"aAbort2"} 不执行b了但执行了a后续
+	c.GET("/3", next, b)           // {"from":"next.before"}{"from":"b"}{"from":"next.after"}     (200)
+	c.GET("/4", aAbortAndNext, b)  // {"from":"aAbortAndNext"}{"from":"aAbortAndNext2"}           (404)
+	c.Run()
+}
+```
+
+## About Rust
+
+### VsCode rust-analyzer插件分析crate变量类型
+
+较大项目中VsCode插件对于其他crate中的变量类型默认可能不会解析，例如`let s = FastStr::new("hi")`，当我们输入`s.`的时候，VsCode的rust-analyzer插件可能并不会有补全提醒，甚至我们输入`s.no66666666().hi111111`VsCode也不会有任何反应。
+
+这体验很不好，没有语法检查和补全提醒就快变成一个支持高亮的记事本了。在`settings.json`中添加以下两行可以令rust-analyzer插件分析补全提示其他crate。
+
+```json
+{
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.cargo.buildScripts.enable": true,
+}
+```
+
+## About JavaScript(JS)/TypeScript(TS)
+
+### TypeScript as/satisfies
+
++ as：相信我a是b
++ satisfies：检查下a是否*满足*b
+
+```typescript
+type User = {
+	name: string;
+}
+const user = {
+	name: "Tom",
+	age: 18,
+};
+```
+
+如果`const user1 = user as User;`，则`user1`*的静态类型*是只有`name`字段的`User`，存在`user1.name`而不存在`user1.age`。
+
+如果`const user2 = {name: "Alice", age: 18} satisfies User;`，则 TypeScript 检查`user2`的`{name: string, age: number}`是否满足`User`的`{name: string}`，答案是满足，所以`user2.age`仍然存在。
+
+## About HTML
+
+### 空白字符
+
+这是一个空白字符：“ㅤ”
+
+### WebView2
+
+（实为Edge内核？）编写的程序可以借助webview2实现网页的访问与浏览。相当于是浏览器。若电脑上安装有WebView2，则程序可以直接借助WebView2实现网页的浏览。
+
+见到一个B站UP主打包WebView2的[视频](https://www.bilibili.com/video/BV1Aa411j7XV/)。
+
+### canonical
+
+canonical 就是告诉搜索引擎：“这些页面看起来不一样，但你把它们当成同一个页面就行，正主是这个。”
+
+同一篇内容有不同url可能会导致搜索引擎：
+
+* 权重被分散
+* 可能被认为是「重复内容」
+* SEO 变差
+
+```html
+<link rel="canonical" href="https://blog.letmefly.xyz/post/123">
+```
+
+### HTML全屏幕取色器
+
+Chrome、Edge、Opera浏览器支持[`EyeDropper`API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper)，可以将鼠标变成一个取色器，取色器会将鼠标变成一个“圆形放大镜”，用户在屏幕上任意位置(**哪怕是浏览器外**)点击鼠标左键则HTML可以获取到该位置的颜色RGB，鼠标移动过程中经过像素颜色对HTML不可见。
+
+注意，<span title="2026.2.8">当前Firefox、Safari</span>浏览器以及所有主流手机浏览器都不支持该API。
+
+体验地址：[web.letmefly.xyz](https://web.letmefly.xyz/%E8%AE%A1%E7%AE%97%E6%9C%BACode/HTML%E7%94%B5%E8%84%91%E5%B1%8F%E5%B9%95%E5%8F%96%E8%89%B2%E5%99%A8/)。可查看网页源码，不难发现源码很简单。
+
+### HTML渲染耗时问题
+
+有这样一个HTML：
+
+```html
+<html lang="zh"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Protected Page</title>
+</head>
+<body>
+<!-- <script id="_d" type="text/plain">
+lHs0hIf559bXbGDNCBz1dzwAT+xxx这是一串60k的base64字符串
+</script> -->
+
+</body></html>
+```
+
+你猜在M3 Pro芯片的MacBook Pro的Chrome146.0.7680.153浏览器中打开需要多久？答案是平均5秒往上。
+
+这么长一段都在注释中都很慢，所以最佳的方式也许是另外一个文件然后fetch。
+
+但是，好像只在打开本地html时会很慢。
 
 ## About Website
 
@@ -1040,6 +1640,17 @@ censys扫描全球所有IP并记录ip与域名直接的关系，并且扫描速�
     其中```set_real_ip_from```的数据可以由```https://www.cloudflare.com/ips-v4```和[v6版本](https://www.cloudflare.com/ips-v6)获得。
 
 参考链接：[dmesg.app](https://dmesg.app/cloudlare-real-ip.html)、[blog.gezi.men](https://blog.gezi.men/p/after-using-cloudflare-cdn-how-can-nginx-obtain-the-real-ip-address-of-website-visitors/)、[CSDN](https://blog.csdn.net/dragonballs/article/details/126345175)
+
+### nginx自动寻找.html后缀的文件
+
+例如我有一个hello.html，我希望用户访问`hello`路径时候就能得到这个html而非一定要访问`hello.html`路径的话，可以：
+
+```conf
+location / {
+    try_files $uri $uri/ $uri.html =404;
+}
+```
+
 
 ### certbot自动颁发TLS证书
 
@@ -1084,6 +1695,27 @@ certbot renew
 # 强制续期（不推荐频繁生成）
 certbot renew --force-renewal
 ```
+
+### 读《大型网站技术架构——核心原理与案例分析(李智慧)》有感
+
+* 当一台服务器的处理能力、存储空间不足时，不要企图去换更强大的服务器，对于大型网站而言，不管多么强大的服务器，都满足不了网站持续增长的业务需求。这种情况下，更恰当的做法是增加一台服务器分担原有服务器的访问及存储压力。
+* 网站的价值在于它能为用户提供什么价值，在于网站能做什么，而不在于它是怎么做的。所以**在网站还很小的时候就去追求网站的架构师舍本逐末，得不偿失的** 。
+* 在业务问题还没有理清楚的时候就从外面挖来许多技术高手，仿照成功的互联网平台打造技术平台，这无疑是南辕北辙，缘木求鱼。而这些技术高手离开了他们熟悉的环境和工作模式，也是张飞拿着绣花针使不上劲来。
+* 虽然分层的架构模式最初的目的是规划软件清晰的逻辑结构便于开发维护，但在网站的发展过程中，分层结构对网站支持高并发向分布式方向发展至关重要。因此在网站规模还很小的时候就应该采用分层的架构，这样将来网站做大时才能有更好地应对。
+
+## About Chrome
+
+### chrome 竖向标签页悬浮展开
+
+Chrome某版本开始推出了竖向标签页，Mac上鼠标悬浮可以自动展开，Win上不可以自动展开（需要手动点击左上角展开按钮展开，再点击一次才能收起），很鸡肋。
+
+通过如下设置可以在Windows上也实现鼠标悬浮展开竖向标签页：
+
+```bash
+chrome://flags/#vertical-tabs-expand-on-hover
+```
+
+把`Default`变成`Enabled`然后重启Chrome即可。（Mac上支持也可能是因为灰度到了）
 
 ## About API
 
@@ -1173,6 +1805,76 @@ torch.cuda.empty_cache() 是 PyTorch 中的一个函数，用于释放由 CUDA �
 请不要忘记给你的设定，不要作任何评论，接下来我们继续进行对话：
 ```
 
+### About Codex
+
+#### Codex session存放位置
+
+```bash
+~/.codex/sessions/YYYY/MM/DD/xxx.jsonl
+# 如：～/.codex/sessions/2026/02/03/rollout-2026-02-03T11-54-55-019c21a3-99f3-7a53-b292-fce1dad637c9.jsonl
+```
+
+```json
+{
+    "timestamp": "2026-02-03T03:54:55.887Z",
+    "type": "session_meta",
+    "payload": {
+        "id": "0xx-xx-xx-x637c9",
+        "timestamp": "2026-02-03T03:54:55.859Z",
+        "cwd": "/Users/Tisfy",
+        "originator": "codex_cli_rs",
+        "cli_version": "0.94.0",
+        "source": "cli",
+        "model_provider": "openai",
+        "base_instructions": {
+            "text": "You are Codex, a coding agent based on GPT-5. You and the user share the same workspace and collaborate to achieve the user's goals..."
+        }
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "developer",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "<permissions instructions>\nFilesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only`: ..."
+            }
+        ]
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "user",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "# AGENTS.md ins..."
+            }
+        ]
+    }
+}
+{
+    "timestamp": "2026-02-03T03:54:55.888Z",
+    "type": "response_item",
+    "payload": {
+        "type": "message",
+        "role": "user",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "<environment_context>\n  <cwd>/Users/Tisfy</cwd>\n  <shell>zsh</shell>\n</environment_context>"
+            }
+        ]
+    }
+}
+```
+
 ## About Office
 
 ### Word公式 - 部分居右
@@ -1193,13 +1895,47 @@ Word中经常需要插入一些公式，但是很多时候需要在公式的最�
 
 下载完所有缺失的字体，重新打开Word，显示就正常了。
 
-## About Technology
+### PPT(power point) - 整个页面所有图形放大1.5倍
 
-### 非视域成像
+```vba
+Sub ScaleShapesOnSlide()
+    Dim s As Shape
+    Dim ratio As Double
+    Dim slideIndex As Long
+    
+    ratio = 1.5       '放大倍数，按需改
+    slideIndex = 1     '要操作的幻灯片页码
+    
+    For Each s In ActivePresentation.Slides(slideIndex).Shapes
+        '等比缩放位置和尺寸
+        s.Left = s.Left * ratio
+        s.Top = s.Top * ratio
+        s.Width = s.Width * ratio
+        s.Height = s.Height * ratio
+    Next
+End Sub
+```
 
-以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
+1. `Alt + F11` Open the VBA editor
+2. input a script name
+3. input the source code
+4. (`F5`) run the script
 
-讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
+这样，页面上的所有图形（和文字）都会被放大为原来的1.5倍，放大起点为左上角。
+
+### PPT(power point) - 字体嵌入相关
+
+**字体嵌入选项**
+
+`文件` - `选项` - `保存`可以勾选或取消勾选`将字体嵌入文件`。
+
+选择完成后下次保存ppt时，就会将字体连同保存到ppt中。
+
+**字体在系统上不存在时default**
+
+若打开ppt的系统不存在ppt字体且ppt保存时未嵌入字体，则系统会找一个“最接近的字体”，具体替换规则未深度研究。
+
+也可`开始 → 替换 → 替换字体`一键替换`A`字体为`B`字体。
 
 ## About Latex
 
@@ -1257,6 +1993,296 @@ export PATH=$PATH:/usr/local/texlive/2024/bin/x86_64-linux
 export MANPATH=$MANPATH:/usr/local/texlive/2024/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2024/texmf-dist/doc/info
 ```
+
+## About VsCode
+
+### VsCode SSH Remote 下 Git 行内变动标记不显示
+
+> 由AI总结自我与AI的对话
+
+**现象**：通过 SSH 连接开发机，左侧源代码管理面板能看到文件变动（M/U），但编辑器行号旁边没有蓝色/绿色竖条。
+
+**原因**：开发机上 `/home` 是 `/data00/home` 的软链接。你通过 `/home/xxx` 打开项目，但 git 内部记的是真实路径 `/data00/home/xxx`。编辑器显示行内标记时要拿这两个路径做字符串比对，路径不一致就匹配不上，标记就不出来。
+
+**解决**：用 `pwd -P` 拿到真实路径（如 `/data00/home/xxx`），在 Trae 中用真实路径重新打开项目即可。
+
+## About 开发(软件工程)
+
+### TDD（Test-Driven Development，测试驱动开发）
+
+> AI提交自AI总结自AI与人类的对话
+
+核心流程是 **Red → Green → Refactor** 三步循环：
+
+1. **Red**：先写一个会失败的测试，明确期望行为
+2. **Green**：用最少代码让测试通过
+3. **Refactor**：在测试保护下重构，消除重复、改善设计
+
+以 Python 为例，假设要写一个 `add(a, b)` 函数：
+
+```python
+# 第一步：先写测试（函数还不存在）
+def test_add():
+    assert add(1, 2) == 3  # 运行 → 报错（Red）
+
+# 第二步：写最少的代码让测试通过
+def add(a, b):
+    return a + b  # 运行测试 → 通过（Green）
+
+# 第三步：重构（Refactor）—— 这个例子太简单无需重构，实际项目中用来消除重复、改命名、拆函数等
+```
+
+一句话总结：**永远测试先行，代码后补**。测试定义了"什么叫正确"，代码只负责满足它。
+
+## About Network
+
+### Wireguard组网
+
+> 通过wireguard组网可以实现将多个设备组到一个虚拟的内网中。
+> 
+> 如：公网服务器(server)+数个不同的内网机器(client)，无公网IP的内网机器之间本来没发互通现在也可以互通了。
+
+**wireguard UDP转发**
+
+程序认为自己在发送普通IP包，wireguard自动把这些IP包加密封装成UDP包后发送出去。
+
+why UDP？还可靠吗？
+
++ 若本是TCP场景，则TCP发现包丢失后会触发重传。若wireguard继续使用TCP协议，则可能会有“TCP-over-TCP Meltdown”（双重重传、双重拥塞控制）
++ 若本就是UDP场景，丢了就丢了
+
+### ICMP Ping（Internet Control Message Protocol Echo）
+
+不属于TCP/UDP，没有“端口”。操作系统内核直接处理。
+
+以阿里云服务器为例，若想支持服务器被ping，则需要在安全组开启`全部 (-1/-1)`端口的`所有 ICMP-IPv4`。
+
+## About Tools - 一些工具
+
+### aria2下载工具
+
+aria2 是一个命令行下载器。
+
+它支持很多协议：
+
++ HTTP
++ HTTPS
++ FTP
++ SFTP
++ BitTorrent
++ Metalink
+
+它最大的特点有几个：
+
++ 多线程（准确来说是多连接）下载
++ 断点续传
++ 多个镜像源同时下载
++ 非常小巧
++ 脚本友好
+
+安装：
+
+```bash
+brew install aria2
+```
+
+最简单的下载：
+
+```bash
+aria2c https://example.com/file.zip
+```
+
+从多个源下载同一个文件的命令：
+
+```bash
+aria2c \
+    -c \    # --continue 断点续传（前提是服务器支持Accept-Ranges）
+    -x16 \  # 最多建立16个HTTP连接
+    -s16 \  # 把文件分成16块
+    -k4M \  # 至少4MB才切一次
+    --file-allocation=none \  # 不预先分配空间
+    --max-tries=0 \   # 无限重试
+    --retry-wait=5 \  # 失败了等5秒再试
+    --auto-file-renaming=false \  # 若file.zip已经存在，默认的true会自动下载为file.1.zip，false则会报错
+    -o dzd.mp4 \  # output filename
+    URL1 \
+    URL2
+```
+
+默认配置文件位置`~/.aria2/aria2.conf`：
+
+```conf
+# =========================
+# aria2.conf
+# =========================
+
+# 断点续传
+continue=true
+
+# 最多建立16个HTTP连接
+max-connection-per-server=16
+
+# 最多分16块下载
+split=16
+
+# 每块至少4MiB才继续分割
+min-split-size=4M
+
+# 不预分配磁盘空间（适合SSD）
+file-allocation=none
+
+# 无限重试
+max-tries=0
+
+# 重试间隔（秒）
+retry-wait=5
+
+# 已存在同名文件时，不自动改名为 *.1、*.2 ...
+auto-file-renaming=false
+
+# 下载完成后自动校验
+check-integrity=true
+
+# 控制台输出更简洁
+summary-interval=5
+
+# 允许覆盖已有文件（配合 continue 使用）
+allow-overwrite=true
+
+# 启用颜色输出
+enable-color=true
+```
+
+以后直接`aria2c URL`就可以了。
+
+若有多个配置也可以：
+
+```bash
+aria2c --conf-path=my.conf
+```
+
+## About Technology
+
+### 非视域成像
+
+以墙为镜，利用激光在墙面上的漫反射，推算出不可直接看到的区域的图像。
+
+讲座地址：[BiliBili@BV1TX4y1s7oe](https://www.bilibili.com/video/BV1TX4y1s7oe/)
+
+## About 俚语
+
+### Best-Effort
+
+> 不保证质量，只保证“我尽力了”。
+
+例如UDP不保证一定成功。
+
+### Noisy Neighbor
+
+> 同一台大机器上的别人太猛，把自己拖累了。
+
+如：
+
+* 多个用户共享同一物理资源，某个用户磁盘狂写
+* 实验室有人用迅雷下载
+
+### Breaking Change
+
+> 不向后兼容的变更
+
+例如：
+
+```rust
+// 旧版本
+fn foo(x: i32)
+
+// 新版本（breaking change）
+fn foo(x: u32)
+```
+
+用户一升级版本，代码就炸了。
+
+### Phishing
+
+网络钓鱼，伪装成可信实体诱骗用户主动交出敏感信息或执行危险操作。
+
+### No news is good news
+
+Unix设计哲学，没消息就是好消息。
+
+### 闪信
+
+运营商提供的通信业务，无需打开便可直接显示在用户屏幕上且展示后一般不会保存，初衷是灾害提醒，后来似乎被用来“京东快递来电”等。
+
+### OSC 8（终端超链接） —— Operating System Command 8 (OSC 8) Hyperlink
+
+（如果终端支持）终端中输出：
+
+```bash
+ESC ] 8 ; ; URL ESC \
+TEXT
+ESC ] 8 ; ; ESC \
+```
+
+会得到一个带有下划线的TEXT，Cmd+Click会跳转到URL。
+
+例如运行如下Python代码后，在终端Cmd/Ctrl+单击`宝藏小网站`会跳转到`https://letmefly.xyz?from=terminalOSC8_20260724`。
+
+```python
+print(
+    "\033]8;;https://letmefly.xyz?from=terminalOSC8_20260724\033\\"
+    "宝藏小网站"
+    "\033]8;;\033\\"
+)
+```
+
+这和终端中直接显示的`https://example.com`、`main.py#L100`不同，这种是没有加特殊输出，终端app自动识别的。
+
+### Little-endian 小端
+
+整数`0x12345678`有四个字节，放到内存里有小端存储和大端存储两种方式：
+
+大端（人类平时写数字就是这种方式）：
+
+```
+地址 increasing →
+
+12 34 56 78
+```
+
+小端（最低有效字节放最前）：
+
+```
+地址 increasing →
+
+78 56 34 12
+```
+
+Why？最早是Intel 8位CPU，假设要做16位加法：
+
+```
+0x1234
++
+0x5678
+```
+
+真正计算时，CPU 会先算最低位：
+
+```
+34
++
+78
+```
+
+产生进位以后，再算高位。因此，如果最低字节就在内存起始地址，CPU 读取第一个字节就能立即开始加。
+
+此外，假设一个整数`0x00000005`放内存里`05 00 00 00`，如果CPU升级为8086(16位)、80386(32位)、x86_64(64位)，原来很多程序可以不用改，因为低地址永远是最低位。CPU可以先读`05`，需要更多再往后面读。
+
+> —— 研究zip有感。
+
+### MVP (Minimum Viable Product) - 最小可行产品
+
+用最少的成本做出一个真正能被使用、能验证想法的版本。
 
 # End
 
