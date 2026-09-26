@@ -2,15 +2,16 @@
  * @Author: LetMeFly
  * @Date: 2026-09-25 08:10:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-26 10:38:42
+ * @LastEditTime: 2026-09-26 11:11:20
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
-struct Res : unordered_set<string> {
-    Res() : unordered_set<string>{""} {}
-};
+// struct Res : unordered_set<string> {
+//     Res() : unordered_set<string>{""} {}
+// };
+typedef unordered_set<string> Res;
 
 Res operator* (const Res& a, const Res& b) {
     Res res;
@@ -89,6 +90,7 @@ private:
         }
         idxs.push_back(s.size());
         int last_idx = 0;
+        res.insert("");
         for (int idx : idxs) {
             res = res * dfs(s.substr(last_idx, idx - last_idx));
             last_idx = idx;
@@ -98,7 +100,6 @@ private:
 public:
     vector<string> braceExpansionII(string expression) {
         Res res = dfs(expression);
-        res.erase("");
         vector<string> ans(res.begin(), res.end());
         sort(ans.begin(), ans.end());
         return ans;
@@ -109,4 +110,16 @@ public:
 c{a{b}}d
 {{a,z},a{b,c},{ab,z}}
 {ab,c}{d},{e}
+a{b,c}
 */
+
+#ifdef _DEBUG
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        debug(sol.braceExpansionII(s));
+    }
+    return 0;
+}
+#endif
