@@ -144,6 +144,10 @@ https://www.doubao.com/chat/url-action?action={"pluginId":"Send_Message","payloa
 
 ![chatGIF](https://cdn.letmefly.xyz/img/blog/DoubaoChatSearch/chat.gif)
 
+## About ChatGPT
+
+ChatGPT可以通过`https://chatgpt.com/?prompt=xxx`实现把`xxx`放到输入框，但是不会自动发送。maybe这样意义就不是那么大了。
+
 ## End
 
 这种方式并非豆包官方的使用方式，豆包官方文档中未能找到相关设置，且这种方式没有给豆包透传埋点信息，只适合小范围使用。

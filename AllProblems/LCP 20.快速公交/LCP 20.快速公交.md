@@ -1,7 +1,7 @@
 ---
 title: LCP 20.快速公交
 date: 2022-06-02 20-15-25
-tags: [题解, LeetCode, 困难, 记忆化搜索, 数组, 动态规划]
+tags: [题解, LeetCode, 困难, 记忆化, 数组, 动态规划]
 ---
 
 # 【LetMeFly】LCP 20.快速公交

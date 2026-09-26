@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 中等, 图]
 >解释：如下图所示：
 > 地点 `0,1,2` 各有一条通往地点 `3` 的交通专线，
 > 且地点 `3` 不存在任何**通往其他地点**的交通专线。
->![image.png](https://pic.leetcode-cn.com/1663902572-yOlUCr-image.png){:width=200px}
+>![image.png](https://pic.leetcode.cn/1663902572-yOlUCr-image.png){:width=200px}
 
 
 **示例 2：**
@@ -35,7 +35,7 @@ tags: [题解, LeetCode, 中等, 图]
 >输出：`-1`
 >
 >解释：如下图所示：不存在满足 **交通枢纽** 的地点。
->![image.png](https://pic.leetcode-cn.com/1663902595-McsEkY-image.png){:width=200px}
+>![image.png](https://pic.leetcode.cn/1663902595-McsEkY-image.png){:width=200px}
 
 **提示：**
 - `1 <= path.length <= 1000`

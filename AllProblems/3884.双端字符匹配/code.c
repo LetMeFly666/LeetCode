@@ -1,0 +1,3 @@
+int firstMatchingIndex(char* s) {
+    
+}

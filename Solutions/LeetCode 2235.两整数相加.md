@@ -164,7 +164,7 @@ class Solution {
 ```rust
 impl Solution {
     pub fn sum(num1: i32, num2: i32) -> i32 {
-        return num1 + num2;
+        num1 + num2
     }
 }
 ```
@@ -235,5 +235,10 @@ class Solution {
 
 <!-- ![result.png](https://cors.tisfy.eu.org/https://img-blog.csdnimg.cn/img_convert/7bfad96251ad5d10960e098a60bec84f.png) -->
 
-> 同步发文于CSDN，原创不易，喜欢了点个赞再走吧[原文链接](https://blog.letmefly.xyz/2023/08/19/LeetCode%202235.%E4%B8%A4%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/132376238](https://letmefly.blog.csdn.net/article/details/132376238)
+## End
+
++ 感谢[@asu__](https://leetcode.cn/u/thirsty-jenningsmle/)[指出](https://leetcode.cn/problems/add-two-integers/solutions/2394963/2235liang-zheng-shu-xiang-jia-19chong-yu-42vp/comments/3310230/)[原版Rust](https://github.com/LetMeFly666/LeetCode/blob/0646be5c6b43db3437776bde2d4f9e7d06d0ea80/Solutions/LeetCode%202235.%E4%B8%A4%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0.md?plain=1#L167)的return没有省略。
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/132376238)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/19/LeetCode%202235.%E4%B8%A4%E6%95%B4%E6%95%B0%E7%9B%B8%E5%8A%A0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

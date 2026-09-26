@@ -2,10 +2,11 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-01-06 10:39:44
+LastEditTime: 2026-07-27 10:31:32
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
+What's more: 使用其他GH账号记得先gh repo set-default LetMeFly666/LeetCode
 '''
 import os
 import re
@@ -16,8 +17,11 @@ import time
 import shutil
 import datetime
 import subprocess
+from enum import Enum
 from urllib.parse import quote
 
+if sys.platform == 'win32':
+    import win32clipboard
 
 argv = sys.argv
 print(argv)
@@ -80,20 +84,25 @@ for code2gen in CODES_TO_GEN:
     print(toName)
     if not os.path.exists(toName):
         shutil.copy(fromName, toName)
-    # rust - 更新lib.rs （若同时多个pr改代码则这里很容易冲突）
-    if code2gen == 'rust':
+    # POSIX标准：末尾字符为\n (#1543)
+    with open(toName, 'r+', encoding='utf-8') as f:
+        content = f.read()
+        if not content.endswith('\n'):  # 暂不特殊处理CRLF的情况了
+            f.write('\n')
+    # 不同源码类型特殊逻辑
+    if code2gen == 'rust':  # rust - 更新lib.rs （若同时多个pr改代码则这里很容易冲突）
         with open("Codes/lib.rs", "r+", encoding="utf-8") as f:
             content = f.read()
             relativePath = toName.removeprefix('Codes/')
             content = re.sub(r'include!\(".*?"\);', f'include!("{relativePath}");', content, count=1)
             f.seek(0)
             f.write(content)
-            f.truncate()
+            f.truncate()  # 新内容比旧内容短时截断，否则文件尾部会留下旧内容
     elif code2gen == 'cpp':
         with open(toName, 'r+', encoding='utf-8') as f:
             content = f.read()
             f.seek(0)
-            header = '#if defined(_WIN32) || defined(__APPLE__)\n' +\
+            header = '#ifdef _DEBUG\n' +\
                      '#include "_[1,2]toVector.h"\n' +\
                      '#endif\n\n'
             f.write(header + content)
@@ -113,7 +122,17 @@ for code2gen in CODES_TO_GEN:
             content = f.read()
             f.seek(0)
             header = 'package main\n\n'
-            f.write(header + content)
+            def spaces_to_tabs(src: str, width: int = 4) -> str:
+                # 只替换每行开头的空格，避免误伤字符串字面量中的空格
+                out = []
+                for line in src.splitlines(keepends=True):
+                    i = 0
+                    while line[i:i+width] == ' ' * width:
+                        i += width
+                    out.append('\t' * (i // width) + line[i:])
+                return ''.join(out)
+            f.write(spaces_to_tabs(header + content))
+            f.truncate()  # 小概率4个空格变tab后文件变短了
 
 title = ""
 for i in range(2, len(argv)):
@@ -135,17 +154,55 @@ def get_latest_commit_sha() -> str:
         return None
 lastSHA = get_latest_commit_sha()
 
+# whoami
+class User(Enum):
+    Tisfy = "Tisfy"
+    LetMeFly = "LetMeFly666"
+
+    @property
+    def remote(self) -> str:
+        return {
+            User.LetMeFly: 'origin',
+            User.Tisfy: 'tisfy_let',  # TODO: Windows兼容性测试
+        }[self]
+    
+    @property
+    def push_to_which_when_single_commit(self) -> str:
+        # 因为直接push到origin的话，依据~/.ssh/config，会使用LetMeFly666的id_rsa进行push
+        # 会变成LetMeFly666 merged the pull result，贡献者变成LetMeFly666了
+        return {
+            User.LetMeFly: 'origin',
+            User.Tisfy: 'tisfy_let',  # TODO: CHANGE ON WINDOWS
+        }[self]
+
+def get_whoami() -> User:
+    name = subprocess.check_output(
+        ["git", "config", "user.name"],
+        stderr=subprocess.DEVNULL
+    ).decode().strip()
+    return User(name)
+WHOAMI = get_whoami()
+print(f'now {WHOAMI} working.')
+REMOTE = WHOAMI.remote
+
 # 认领issue
-os.system(f'git checkout -b {num}')
-os.system(f'git push --set-upstream origin {num}')  # (#832)
+def switch_branch(name: str):
+    result = subprocess.run(["git", "switch", "-c", name])
+    if result.returncode != 0:
+        subprocess.run(["git", "switch", name], check=True)
+switch_branch(str(num))
+os.system(f'git push --set-upstream {REMOTE} {num}')  # (#832)
 def getPlatform():
     platform = sys.platform
     if platform == 'win32':
         return 'Windows'
     elif platform == 'darwin':
         return 'MacOS'
+    elif platform == 'Linux':
+        return 'Linux'
     else:
-        return 'Linux(or others)'
+        return platform
+# issueTitle记得带上[newSolution]前缀，防止搜到duplicated的issue
 issueTitle = f'[newSolution]Who can add 1 more problem of LeetCode {num}'  # (#872)
 # alreadyRelatedIssueLists = os.popen(f'gh issue list --search "{issueTitle}"').read()
 tmp_issueGetResult = subprocess.run(
@@ -169,9 +226,107 @@ if not issueNum:
     issueNum = int(issueCreateResult.split('\n')[0].split('/')[-1])
 else:
     os.popen(f'gh issue edit {issueNum} --add-label "solving"')  # 这里暂不read等待popen执行完毕，这里的小异步是被允许的
-    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again)."')
+    os.popen(f'gh issue comment {issueNum} -b "hello #{issueNum} you are not alone now(/again). -- From {getPlatform()}"')
 
+# ===================== 剪贴板监听：自动合成 AC,xx.xx%,xx.xx% =====================
+def _start_clipboard_monitor():
+    """
+    启动后台线程监听剪贴板。
+    连续两次复制含 xx.xx% 的内容后，自动写入 "AC,xx.xx%,xx.xx%"。
+    返回 threading.Event，set() 即可停止。
+    """
+    import threading
+
+    def _get_clipboard() -> str:
+        try:
+            if sys.platform == 'win32':
+                try:
+                    win32clipboard.OpenClipboard()
+                    data = win32clipboard.GetClipboardData(win32clipboard.CF_UNICODETEXT)
+                    win32clipboard.CloseClipboard()
+                    return data.strip()
+                except Exception:
+                    try:
+                        win32clipboard.CloseClipboard()
+                    except:
+                        pass
+                    return ''
+            elif sys.platform == 'darwin':
+                r = subprocess.run(['pbpaste'], capture_output=True, text=True, timeout=2)
+                return r.stdout.strip()
+            else:
+                try:
+                    r = subprocess.run(['xclip', '-selection', 'clipboard', '-o'],
+                                       capture_output=True, text=True, timeout=2)
+                except FileNotFoundError:
+                    r = subprocess.run(['xsel', '--clipboard', '--output'],
+                                       capture_output=True, text=True, timeout=2)
+                return r.stdout.strip()
+        except Exception:
+            return ''
+
+    def _set_clipboard(text: str):
+        try:
+            if sys.platform == 'win32':
+                p = subprocess.Popen(['clip'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+            elif sys.platform == 'darwin':
+                p = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+            else:
+                try:
+                    p = subprocess.Popen(['xclip', '-selection', 'clipboard'], stdin=subprocess.PIPE)
+                except FileNotFoundError:
+                    p = subprocess.Popen(['xsel', '--clipboard', '--input'], stdin=subprocess.PIPE)
+                p.communicate(text.encode('utf-8'))
+        except Exception as e:
+            print(f'[ClipboardMonitor] 写入剪贴板失败: {e}')
+
+    stop_event = threading.Event()
+
+    def _monitor():
+        last = _get_clipboard()
+        first_pct = None
+        first_time = 0
+        while not stop_event.is_set():
+            time.sleep(0.5)
+            try:
+                cur = _get_clipboard()
+            except Exception:
+                continue
+            if cur == last:
+                continue
+            last = cur
+            if cur.startswith('AC,') and cur.count(',') == 2:
+                continue
+            m = re.search(r'(\d{1,3}\.\d{1,2})%', cur) if len(cur) <= 20 else None
+            if not m:
+                first_pct = None
+                continue
+            pct = m.group(1) + '%'
+            now = time.time()
+            if first_pct is None or now - first_time > 7.5:
+                first_pct = pct
+                first_time = now
+                print(f'[ClipboardMonitor] 捕获第1个百分比: {pct}')
+            else:
+                result = f'AC,{first_pct},{pct}'
+                print(f'[ClipboardMonitor] 捕获第2个百分比: {pct}')
+                print(f'[ClipboardMonitor] ✅ 已写入剪贴板: {result}')
+                _set_clipboard(result)
+                last = result
+                first_pct = None
+
+    t = threading.Thread(target=_monitor, daemon=True)
+    t.start()
+    print('[ClipboardMonitor] 🎯 剪贴板监听已启动，连续复制两个百分比 → 自动合成 AC,xx.xx%,xx.xx%')
+    return stop_event
+
+_clip_stop = _start_clipboard_monitor()
 input('代码写完后按回车生成题解模板：')
+_clip_stop.set()
+print('[ClipboardMonitor] 剪贴板监听已停止')
+# ===================== 剪贴板监听结束 =====================
 
 with open(nameProblem, "r", encoding="utf-8") as f:
     problem = f.read()
@@ -223,10 +378,79 @@ def genSolutionPart(num):
 11111
 
 + 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 空间复杂度$O(N\\log N)$
 
 ### AC代码
 """
+    def removePrefix(data: str, fileType: str) -> str:# (#1399)
+        if fileType == 'cpp':
+            # 1. 处理 /* ... */ 头部注释
+            m = re.match(r'(/\*[\s\S]*?\*/)([\s\S]*)', data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            # 只保留 LastEditTime 行
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip().startswith('/*') or line.strip().startswith('*/'):
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            # 2. 删除紧跟的单行 #if defined(...) #include "_[1,2]toVector.h" #endif
+            rest = re.sub(
+                r'^\s*#ifdef\s+\w+\s*\n\s*#include\s+"_\[1,2\]toVector\.h"\s*\n\s*#endif\s*\n?',
+                '',
+                rest,
+                count=1
+            )
+            return new_comment + '\n' + rest.lstrip('\n')
+        elif fileType == 'py':
+            m = re.match(r"(\'\'\'[\s\S]*?\'\'\')([\s\S]*)", data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip() == "'''":
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            return new_comment + '\n' + rest.lstrip('\n')
+        elif fileType in ('java', 'rs', 'go'):
+            m = re.match(r'(/\*[\s\S]*?\*/)([\s\S]*)', data)
+            if not m:
+                return data
+            comment, rest = m.groups()
+            lines = comment.splitlines()
+            kept = []
+            for line in lines:
+                if 'LastEditTime' in line:
+                    kept.append(line)
+                elif line.strip().startswith('/*') or line.strip().startswith('*/'):
+                    kept.append(line)
+            new_comment = '\n'.join(kept)
+            return new_comment + '\n' + rest.lstrip('\n')
+        return data
+    
+    def removeSuffix(data: str) -> str:
+        # 删除末尾的\n或\r\n
+        return data.rstrip('\r\n')
+    
+    def tab2space(data: str, width: int = 4) -> str:
+        # 将每行开头的tab替换为width个空格
+        out = []
+        for line in data.splitlines(keepends=True):
+            i = 0
+            while line[i:i+1] == '\t':
+                i += 1
+            out.append(' ' * width * i + line[i:])
+        return ''.join(out)
+
+
     for thisFileType in suffix2markdowncode:  # 修改题解中的展示顺序为suffix2markdowncode中出现的顺序而不是后缀字典序(复杂度可优化但没必要)
         for file in today4code:
             fileType = os.path.splitext(file)[-1]
@@ -237,7 +461,10 @@ def genSolutionPart(num):
             markdowncode = suffix2markdowncode[fileType]
             with open(file, 'r', encoding='utf-8') as f:
                 data = f.read()
-            # data = removePrefix(data, fileType)  # TODO: 移除前面注释以及其他头部文件
+            data = removePrefix(data, fileType)
+            data = removeSuffix(data)
+            if fileType == 'go':
+                data = tab2space(data)
             result += f'\n#### {markdowncode[1]}\n\n```{markdowncode[0]}\n{data}\n```\n'
     return result
 
@@ -350,7 +577,7 @@ else:
     gitCommitMsgPrefix = f'update: 添加问题“{num}.{title}”的代码和题解'
 if os.path.exists('.commitTitleExtra'):
     with open('.commitTitleExtra', 'r', encoding='utf-8') as f:
-        gitCommitMsgPrefix += f.read().replace("\n", " ").strip()
+        gitCommitMsgPrefix += f.read().replace("\n", " ")
 
 # commit push pr merge delete-branch
 os.system('git add .')
@@ -372,10 +599,11 @@ if os.path.exists('.commitmsg') and os.path.isfile('.commitmsg'):  # (#795)
         commitMsgFromfile = '\n' + commitMsgFromfile
     commitMsg += commitMsgFromfile
 subprocess.run(['git', 'commit', '-s', '-m', commitMsg])  # os.system('git commit -s -m "{msg}"')的话没法评论多行
-os.system(f'git push --set-upstream origin {num}')
+os.system(f'git push --set-upstream {REMOTE} {num}')
 cmd = [
     'gh', 'pr', 'create',
-    '-H', f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    # '-H', f'{REMOTE}:{num}' if WHOAMI == User.Tisfy else f'{num}',  # -H branch可能是 新版/旧版/Mac 所需的属性，并没有默认使用当前分支诶
+    '-H', f'{num}',  # 
     '-t', gitCommitMsgPrefix,
     '-b', f'By [newSolution.py](https://github.com/LetMeFly666/LeetCode/blob/{lastSHA}/newSolution.py) using GH on {getPlatform()} | close: #{issueNum}',
     "-l", "题解",
@@ -394,9 +622,23 @@ else:
     prAlreadyExists = False
     prResult = prResult.stdout
 print(prResult)
-prNumber = int(prResult.split('/')[-1])
+try:
+    prNumber = int(prResult.split('/')[-1])
+except:
+    opening_pr_json = subprocess.run([
+        'gh', 'pr', 'list',
+        '--state', 'open',
+        '--json', 'number,url,headRefName,headRepository'
+    ], capture_output=True, text=True).stdout.strip()
+    opening_pr_json = json.loads(opening_pr_json)
+    for pr in opening_pr_json:
+        print(f"pr['headRefName']: {pr['headRefName']}")
+        if pr['headRefName'] == str(num):
+            prNumber = int(pr['number'])
+        break
+print(prNumber)
 if prAlreadyExists:
-    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', 'Hello, we meet again.']
+    cmd = ['gh', 'pr', 'comment', str(prNumber), '-b', f'Hello, we meet again. -- From {getPlatform()}']
     subprocess.run(cmd)
 os.system('gh pr edit --add-label "under merge"')
 input('enter when ready to merge: ')  # 万一给带密码的东西merge了就无法恢复了(虽然这个仓库一次都没有过)
@@ -417,9 +659,10 @@ commitCount = get_commit_diff()
 if commitCount < 2:  # 直接本地merge，即不是rebase又减少一次merge记录 | 这个merge大概不会产生冲突
     os.system(f'git switch master')
     os.system(f'git merge {num}')
-    os.system(f'git push')
+    push_to_which = WHOAMI.push_to_which_when_single_commit
+    os.system(f'git push {push_to_which}')
     os.system(f'git branch -d {num}')
-    os.system(f'git push --delete origin {num}')
+    os.system(f'git push --delete {REMOTE} {num}')
 else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge并push的话github无法自动识别并关闭pr
     try:
         result = subprocess.run(
@@ -432,7 +675,7 @@ else:  # 使用gh在github上通过squash的方式merge | 在本地squash merge�
         mergeTitle = json.loads(result.stdout)["title"]
     except:
         mergeTitle = gitCommitMsgPrefix
-    os.system(f'gh pr merge -s -d -t "{mergeTitle} (#{prNumber})"')
+    os.system(f'gh pr merge {prNumber} -s -d -t "{mergeTitle} (#{prNumber})"')  # 如果-R则不会自动关联本地repo，所以最好gh repo set-default LetMeFly666/LeetCode
 os.system(f'gh issue edit {issueNum} --remove-label "solving"')
 
 # https://github.com/LetMeFly666/LeetCode/blob/3435204860a8a85aa666618d90f40916dc70a1f1/reassign.py

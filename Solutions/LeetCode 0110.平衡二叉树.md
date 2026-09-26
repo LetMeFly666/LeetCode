@@ -106,5 +106,71 @@ public:
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/07/09/LeetCode%200110.%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/125691684](https://letmefly.blog.csdn.net/article/details/125691684)
+或者`ok`已经为`false`时也可以提前退出：
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-08 13:44:51
+ */
+class Solution {
+private:
+    int ok;
+
+    int dfs(TreeNode* root) {
+        if (!root || !ok) {  // !ok时候返回一切都没有任何意义
+            return 0;
+        }
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+        if (abs(left - right) > 1) {
+            ok = false;
+        }
+        return max(left, right) + 1;
+    }
+public:
+    bool isBalanced(TreeNode* root) {
+        ok = true;
+        dfs(root);
+        return ok;
+    }
+};
+```
+
+#### Rust
+
+```rs
+// @LastEditTime: 2026-02-08 14:03:07
+use std::rc::Rc;
+use std::cell::RefCell;
+
+struct BalanceTree {
+    ok: bool
+}
+
+impl BalanceTree {
+    pub fn dfs(&mut self, root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        if root.is_none() || !self.ok {
+            return 0;
+        }
+        let root = root.unwrap();
+        let left = self.dfs(root.borrow().left.clone());
+        let right = self.dfs(root.borrow().right.clone());
+        if (left - right).abs() > 1 {
+            self.ok = false;
+        }
+        left.max(right) + 1
+    }
+}
+
+impl Solution {
+    pub fn is_balanced(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
+        let mut balance_tree = BalanceTree{ok: true};
+        balance_tree.dfs(root);
+        balance_tree.ok
+    }
+}
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/125691684)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/07/09/LeetCode%200110.%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

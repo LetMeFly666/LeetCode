@@ -4,8 +4,8 @@ defmodule MinStack do
     
   end
 
-  @spec push(val :: integer) :: any
-  def push(val) do
+  @spec push(value :: integer) :: any
+  def push(value) do
     
   end
 
@@ -27,7 +27,7 @@ end
 
 # Your functions will be called as such:
 # MinStack.init_()
-# MinStack.push(val)
+# MinStack.push(value)
 # MinStack.pop()
 # param_3 = MinStack.top()
 # param_4 = MinStack.get_min()

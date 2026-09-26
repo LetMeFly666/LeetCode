@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2024-12-16 23:16:42
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2024-12-17 08:56:47
+ * @LastEditTime: 2026-08-10 21:14:54
  */
 package main
 
@@ -26,7 +26,7 @@ func main() {
     fmt.Println(array)  // [1 0 0 0 0]
     slice3 := slice
     slice3[1] = 100
-    fmt.Println(slice3)  // [1 100 3]
+    fmt.Println(slice)  // [1 100 3]
     // 转换
     sFromA := array[:]
     fmt.Printf("%s(%s): %v\n", reflect.TypeOf(sFromA), reflect.TypeOf(sFromA).Kind(), sFromA);  // []int(slice): [1 0 0 0 0]

@@ -1,0 +1,3 @@
+char* trimTrailingVowels(char* s) {
+    
+}

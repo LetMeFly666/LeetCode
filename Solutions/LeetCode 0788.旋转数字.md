@@ -1,7 +1,7 @@
 ---
 title: 788.旋转数字
 date: 2022-09-25 20:03:35
-tags: [题解, LeetCode, 中等, 数学, 动态规划, 暴力, 模拟]
+tags: [题解, LeetCode, 中等, 数学, 动态规划, 暴力, 模拟, 数位DP]
 categories: [题解, LeetCode]
 ---
 
@@ -88,6 +88,42 @@ public:
         int ans = 0;
         for (int i = 0; i <= n; i++) {
             ans += isGoodNum(i);
+        }
+        return ans;
+    }
+};
+```
+
+#### C++ - 写法2
+
+```cpp
+/*
+ * @LastEditTime: 2026-05-02 19:19:23
+ */
+class Solution {
+private:
+    static const int mask_diff = (1 << 2) | (1 << 5) | (1 << 6) | (1 << 9);
+    static const int mask_ok = mask_diff | (1 << 0) | (1 << 1) | (1 << 8);
+
+    bool ok(int n) {
+        bool has_diff = false;
+        while (n) {
+            int t = n % 10;
+            if (!((1 << t) & mask_ok)) {
+                return false;
+            }
+            if ((1 << t) & mask_diff) {
+                has_diff = true;
+            }
+            n /= 10;
+        }
+        return has_diff;
+    }
+public:
+    int rotatedDigits(int n) {
+        int ans = 0;
+        for (int i = 1; i <= n; i++) {
+            ans += ok(i);
         }
         return ans;
     }

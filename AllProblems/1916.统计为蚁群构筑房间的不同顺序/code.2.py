@@ -4,4 +4,3 @@ class Solution(object):
         :type prevRoom: List[int]
         :rtype: int
         """
-        

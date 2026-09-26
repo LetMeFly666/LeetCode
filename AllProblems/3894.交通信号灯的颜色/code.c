@@ -1,0 +1,3 @@
+char* trafficSignal(int timer) {
+    
+}

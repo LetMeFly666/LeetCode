@@ -24,7 +24,7 @@ tags: [题解, LeetCode, 困难, 数组, 字符串, 动态规划]
 各个车道驶出的车辆可能的行驶路线如图所示：
 
 
-![图片.png](https://pic.leetcode-cn.com/1630393755-gyPeMM-%E5%9B%BE%E7%89%87.png){:height="350px"}
+![图片.png](https://pic.leetcode.cn/1630393755-gyPeMM-%E5%9B%BE%E7%89%87.png){:height="350px"}
 
 **注意：**
 - 测试数据保证不会出现掉头行驶指令，即某一方向的行驶车辆计划开往的方向不会是当前车辆所在的车道的方向;

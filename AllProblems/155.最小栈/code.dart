@@ -4,7 +4,7 @@ class MinStack {
     
   }
   
-  void push(int val) {
+  void push(int value) {
     
   }
   
@@ -24,7 +24,7 @@ class MinStack {
 /**
  * Your MinStack object will be instantiated and called as such:
  * MinStack obj = MinStack();
- * obj.push(val);
+ * obj.push(value);
  * obj.pop();
  * int param3 = obj.top();
  * int param4 = obj.getMin();

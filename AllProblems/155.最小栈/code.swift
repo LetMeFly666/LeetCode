@@ -5,7 +5,7 @@ class MinStack {
         
     }
     
-    func push(_ val: Int) {
+    func push(_ value: Int) {
         
     }
     
@@ -25,7 +25,7 @@ class MinStack {
 /**
  * Your MinStack object will be instantiated and called as such:
  * let obj = MinStack()
- * obj.push(val)
+ * obj.push(value)
  * obj.pop()
  * let ret_3: Int = obj.top()
  * let ret_4: Int = obj.getMin()

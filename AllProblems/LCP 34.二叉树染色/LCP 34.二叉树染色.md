@@ -17,7 +17,7 @@ tags: [题解, LeetCode, 中等, 树, 动态规划, 二叉树]
 > 输出：`12`
 >
 > 解释：`结点 5、3、4 染成蓝色，获得最大的价值 5+3+4=12`
-![image.png](https://pic.leetcode-cn.com/1616126267-BqaCRj-image.png)
+![image.png](https://pic.leetcode.cn/1616126267-BqaCRj-image.png)
 
 
 **示例 2：**
@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 中等, 树, 动态规划, 二叉树]
 > 输出：`16`
 >
 > 解释：结点 4、3、9 染成蓝色，获得最大的价值 4+3+9=16
-![image.png](https://pic.leetcode-cn.com/1616126301-gJbhba-image.png)
+![image.png](https://pic.leetcode.cn/1616126301-gJbhba-image.png)
 
 
 

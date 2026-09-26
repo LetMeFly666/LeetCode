@@ -19,7 +19,7 @@ tags: [题解, LeetCode, 困难, 树, 动态规划, 二叉树]
 >
 >解释：在景点 1、3 或景点 1、4 或景点 3、4 设置导航装置。
 >
->![image.png](https://pic.leetcode-cn.com/1597996812-tqrgwu-image.png){:height="250px"}
+>![image.png](https://pic.leetcode.cn/1597996812-tqrgwu-image.png){:height="250px"}
 
 
 
@@ -30,7 +30,7 @@ tags: [题解, LeetCode, 困难, 树, 动态规划, 二叉树]
 >
 >解释：在景点 3、4 设置导航装置皆可。
 >
->![image.png](https://pic.leetcode-cn.com/1597996826-EUQRyz-image.png){:height="200px"}
+>![image.png](https://pic.leetcode.cn/1597996826-EUQRyz-image.png){:height="200px"}
 
 
 

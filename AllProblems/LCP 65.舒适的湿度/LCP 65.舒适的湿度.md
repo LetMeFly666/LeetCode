@@ -26,7 +26,7 @@ tags: [题解, LeetCode, 困难, 数组, 动态规划]
 >操作指令 `[5,3],[3,-7]` 的「不适宜度」分别为 `8,4`
 >操作指令 `[5,3,-7]` 的「不适宜度」为 `1`，
 >因此对于方案 `[5,3,-7]`的「整体不适宜度」为 `8`，其余方案的「整体不适宜度」均不小于 `8`，如下表所示：
-![image.png](https://pic.leetcode-cn.com/1663902759-dgDCxn-image.png){:width=650px}
+![image.png](https://pic.leetcode.cn/1663902759-dgDCxn-image.png){:width=650px}
 
 **示例 2：**
 > 输入：`operate = [20,10]`

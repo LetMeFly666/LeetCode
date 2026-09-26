@@ -25,7 +25,7 @@ tags: [题解, LeetCode, 简单, 数组]
 >输出：`2`
 >
 >解释：如下表所示， 第 `2～4` 天两地气温变化趋势相同，且持续时间最长，因此返回 `4-2=2`
-![image.png](https://pic.leetcode-cn.com/1663902654-hlrSvs-image.png){:width=1000px}
+![image.png](https://pic.leetcode.cn/1663902654-hlrSvs-image.png){:width=1000px}
 
 
 **示例 2：**

@@ -1,11 +1,11 @@
 ---
-title: 1653.使字符串平衡的最少删除次数
+title: 1653.使字符串平衡的最少删除次数：一个变量动态计算“前缀和”
 date: 2023-03-06 12:06:42
-tags: [题解, LeetCode, 中等, 栈, 字符串, 动态规划, 模拟, 前缀和]
+tags: [题解, LeetCode, 中等, 栈, 字符串, 动态规划, DP, 模拟, 前缀和]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1653.使字符串平衡的最少删除次数
+# 【LetMeFly】1653.使字符串平衡的最少删除次数：一个变量动态计算“前缀和”
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-deletions-to-make-string-balanced/](https://leetcode.cn/problems/minimum-deletions-to-make-string-balanced/)
 
@@ -127,6 +127,30 @@ public:
 };
 ```
 
+#### C++ version 2
+
+```cpp
+/*
+ * @LastEditTime: 2026-02-07 23:16:01
+ */
+class Solution {
+public:
+    int minimumDeletions(string s) {
+        int remainA = count(s.begin(), s.end(), 'a'), alreadyB = 0;
+        int ans = remainA;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == 'a') {
+                remainA--;
+            } else {
+                alreadyB++;
+            }
+            ans = min(ans, remainA + alreadyB);
+        }
+        return ans;
+    }
+};
+```
+
 #### Python
 
 ```python
@@ -145,5 +169,6 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/03/06/LeetCode%201653.%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/129359377](https://letmefly.blog.csdn.net/article/details/129359377)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/129359377)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/03/06/LeetCode%201653.%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
