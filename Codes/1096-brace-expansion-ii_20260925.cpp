@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-25 08:10:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-26 11:11:20
+ * @LastEditTime: 2026-09-26 11:31:38
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -52,10 +52,10 @@ private:
         Idx idxs;
         int layer = 0;
         for (int i = 0, n = s.size(); i < n; i++) {
+            if (!layer && i && (s[i - 1] == '}' || s[i] == '{')) {
+                idxs.push_back(i);
+            }
             if (s[i] == '{') {
-                if (!layer) {
-                    idxs.push_back(i);
-                }
                 layer++;
             } else if (s[i] == '}') {
                 layer--;
@@ -78,12 +78,9 @@ private:
         }
         // 最外层是乘法运算(或单个字符串)
         idxs = getMul(s);
-        if (idxs.empty()) {  // 没有括号，那就是单个字符串
+        if (idxs.empty() && s.size() && s[0] != '{') {  // 没有括号，那就是单个字符串
             res.insert(string(s));
             return res;
-        }
-        if (idxs[0] == 0) {
-            idxs.erase(idxs.begin());
         }
         if (idxs.empty()) {  // 只有最外层一个大括号，如 {a,b}
             return dfs(s.substr(1, s.size() - 2));
@@ -111,6 +108,10 @@ c{a{b}}d
 {{a,z},a{b,c},{ab,z}}
 {ab,c}{d},{e}
 a{b,c}
+{a,b}c
+{a}b
+{a}
+d,a{b,c}
 */
 
 #ifdef _DEBUG
