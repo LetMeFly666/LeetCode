@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-25 08:10:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-26 11:31:38
+ * @LastEditTime: 2026-09-26 13:08:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,7 +23,7 @@ Res operator* (const Res& a, const Res& b) {
     return res;
 }
 
-Res operator+= (Res& a, const Res& b) {
+Res& operator+= (Res& a, const Res& b) {
     a.insert(b.begin(), b.end());
     return a;
 }
