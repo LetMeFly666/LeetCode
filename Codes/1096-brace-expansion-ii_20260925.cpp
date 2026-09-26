@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-25 08:10:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-26 10:37:10
+ * @LastEditTime: 2026-09-26 10:38:42
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,6 +24,7 @@ Res operator* (const Res& a, const Res& b) {
 
 Res operator+= (Res& a, const Res& b) {
     a.insert(b.begin(), b.end());
+    return a;
 }
 
 typedef vector<int> Idx;
@@ -97,11 +98,9 @@ private:
 public:
     vector<string> braceExpansionII(string expression) {
         Res res = dfs(expression);
+        res.erase("");
         vector<string> ans(res.begin(), res.end());
         sort(ans.begin(), ans.end());
-        if (ans.size() == 1 && ans[0].empty()) {
-            return {};
-        }
         return ans;
     }
 };
