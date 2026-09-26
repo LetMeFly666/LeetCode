@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-26 09:46:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-26 09:47:50
+ * @LastEditTime: 2026-09-26 09:50:11
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -11,7 +11,7 @@
 class Solution {
 private:
     int gcd(int x, int y) {
-        return y ? x : gcd(y, x % y);
+        return y ? gcd(y, x % y) : x ;
     }
 public:
     int gcdOfOddEvenSums(int n) {
