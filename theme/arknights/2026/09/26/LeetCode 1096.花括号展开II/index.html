@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1096.花括号展开 II：一个一百行的解题方法（DFS） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/09/26/LeetCode%201096.%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80II/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1096.花括号展开 II：一个一百行的解题方法（DFS）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-09-26T03:33:01.000Z" id="date"> 2026-09-26</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1096-花括号展开-II：一个一百行的解题方法（DFS）"><a href="#【LetMeFly】1096-花括号展开-II：一个一百行的解题方法（DFS）" class="headerlink" title="【LetMeFly】1096.花括号展开 II：一个一百行的解题方法（DFS）"></a>【LetMeFly】1096.花括号展开 II：一个一百行的解题方法（DFS）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/brace-expansion-ii/">https://leetcode.cn/problems/brace-expansion-ii/</a></p>
+<p>如果你熟悉 Shell 编程，那么一定了解过花括号展开，它可以用来生成任意字符串。</p>
+
+<p>花括号展开的表达式可以看作一个由 <strong>花括号</strong>、<strong>逗号</strong> 和 <strong>小写英文字母</strong> 组成的字符串，定义下面几条语法规则：</p>
+
+<ul>
+	<li>如果只给出单一的元素&nbsp;<code>x</code>，那么表达式表示的字符串就只有&nbsp;<code>"x"</code>。<code>R(x) = {x}</code>
+
+<pre><code>&lt;ul&gt;
+	&lt;li&gt;例如，表达式 &lt;code&gt;&quot;a&quot;&lt;/code&gt; 表示字符串 &lt;code&gt;&quot;a&quot;&lt;/code&gt;。&lt;/li&gt;
+	&lt;li&gt;而表达式 &lt;code&gt;&quot;w&quot;&lt;/code&gt; 就表示字符串 &lt;code&gt;&quot;w&quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;当两个或多个表达式并列，以逗号分隔，我们取这些表达式中元素的并集。&lt;code&gt;R({e_1,e_2,...}) = R(e_1)&amp;nbsp;∪ R(e_2)&amp;nbsp;∪ ...&lt;/code&gt;
+&lt;ul&gt;
+	&lt;li&gt;例如，表达式 &lt;code&gt;&quot;{a,b,c}&quot;&lt;/code&gt; 表示字符串&amp;nbsp;&lt;code&gt;&quot;a&quot;,&quot;b&quot;,&quot;c&quot;&lt;/code&gt;。&lt;/li&gt;
+	&lt;li&gt;而表达式 &lt;code&gt;&quot;{{a,b},{b,c}}&quot;&lt;/code&gt; 也可以表示字符串&amp;nbsp;&lt;code&gt;&quot;a&quot;,&quot;b&quot;,&quot;c&quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;要是两个或多个表达式相接，中间没有隔开时，我们从这些表达式中各取一个元素依次连接形成字符串。&lt;code&gt;R(e_1 + e_2) = {a + b for (a, b) in&amp;nbsp;R(e_1)&amp;nbsp;× R(e_2)}&lt;/code&gt;
+&lt;ul&gt;
+	&lt;li&gt;例如，表达式 &lt;code&gt;&quot;{a,b}{c,d}&quot;&lt;/code&gt; 表示字符串&amp;nbsp;&lt;code&gt;&quot;ac&quot;,&quot;ad&quot;,&quot;bc&quot;,&quot;bd&quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;表达式之间允许嵌套，单一元素与表达式的连接也是允许的。
+&lt;ul&gt;
+	&lt;li&gt;例如，表达式 &lt;code&gt;&quot;a{b,c,d}&quot;&lt;/code&gt; 表示字符串&amp;nbsp;&lt;code&gt;&quot;ab&quot;,&quot;ac&quot;,&quot;ad&quot;​​​​​​&lt;/code&gt;。&lt;/li&gt;
+	&lt;li&gt;例如，表达式 &lt;code&gt;&quot;a{b,c}{d,e}f{g,h}&quot;&lt;/code&gt; 可以表示字符串&amp;nbsp;&lt;code&gt;&quot;abdfg&quot;, &quot;abdfh&quot;, &quot;abefg&quot;, &quot;abefh&quot;, &quot;acdfg&quot;, &quot;acdfh&quot;, &quot;acefg&quot;, &quot;acefh&quot;&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+</ul>
+
+<p>给出表示基于给定语法规则的表达式&nbsp;<code>expression</code>，返回它所表示的所有字符串组成的有序列表。</p>
+
+<p>假如你希望以「集合」的概念了解此题，也可以通过点击 “<strong>显示英文描述</strong>” 获取详情。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre>
+<strong>输入：</strong>expression = "{a,b}{c,{d,e}}"
+<strong>输出：</strong>["ac","ad","ae","bc","bd","be"]</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>expression = "{{a,z},a{b,c},{ab,z}}"
+<strong>输出：</strong>["a","ab","ac","z"]
+<strong>解释：</strong>输出中 <strong>不应 </strong>出现重复的组合结果。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= expression.length &lt;= 60</code></li>
+	<li><code>expression[i]</code> 由 <code>'{'</code>，<code>'}'</code>，<code>','</code>&nbsp;或小写英文字母组成</li>
+	<li>给出的表达式&nbsp;<code>expression</code>&nbsp;用以表示一组基于题目描述中语法构造的字符串</li>
+</ul>
+
+
+    
+<h2 id="解题方法：深度优先搜索"><a href="#解题方法：深度优先搜索" class="headerlink" title="解题方法：深度优先搜索"></a>解题方法：深度优先搜索</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这种题最容易想到的就是递归。怎么递归？</p>
+<ol>
+<li><p>如果最外层是加法运算，如 <code>&lt;A,B,C&gt;</code>，则返回 <code>dfs(A) + dfs(B) + dfs(C)</code>。例如：</p>
+<ul>
+<li><code>{a,b},c</code>：<code>dfs({a,b}) + dfs(c)</code></li>
+<li><code>a,b,c</code>：<code>dfs(a) + dfs(b) + dfs(c)</code></li>
+<li><code>a,{b,c}</code>：<code>dfs(a) + dfs({b,c})</code></li>
+<li><code>{a,b{c}},{d,ef}</code>：<code>dfs({a,b{c}}) + dfs({d,ef})</code></li>
+</ul>
+<p> 仅限于最外层是加法的运算。</p>
+</li>
+<li><p>否则（说明可能有两种情况，要么最外层是乘法运算，要么就只有一个“运算单元”）如果最外层是乘法运算，如<code>ABC</code>，则返回 <code>dfs(A) * dfs(B) * dfs(C)</code>。例如：</p>
+<ul>
+<li><code>{a,b}{c,d}</code>：<code>dfs({a,b}) * dfs({c,d})</code></li>
+<li><code>a{b,c}</code>：<code>dfs(a) * dfs({b,c})</code></li>
+<li><code>{a,b}c</code>：<code>dfs({a,b}) * dfs(c)</code></li>
+<li><code>{a}b</code>：<code>dfs({a}) * dfs(b)</code></li>
+<li><code>{a}</code>：<code>dfs({a})</code>。注意这种被大括号包括的特殊情况</li>
+</ul>
+</li>
+<li><p>否则（说明只有一个单一的“运算单元”）。如果字符串第一个字符是<code>{</code>，则再次递归大括号中间的字符串；否则说明该字符串是不含<code>{</code>也不含<code>,</code>的单一字符串，直接返回该字符串。例如：</p>
+<ul>
+<li><code>{a}</code>：<code>dfs(a)</code></li>
+<li><code>{a,bc}</code>：<code>dfs(a,bc)</code></li>
+<li><code>a</code>：<code>a</code>。不再递归</li>
+<li><code>ab</code>：<code>ab</code>。不再递归</li>
+</ul>
+</li>
+</ol>
+<p>以上。</p>
+<p>其实相当于递归终止条件是不含<code>{</code>也不含<code>,</code>的单一字符串。</p>
+<h3 id="解题细节"><a href="#解题细节" class="headerlink" title="解题细节"></a>解题细节</h3><p>怎么判断最外层是否是加法运算？</p>
+<blockquote>
+<p>使用一个变量<code>layer</code>记录当前的括号层数，初始值是<code>0</code>。遇到<code>{</code>则<code>layer++</code>，遇到<code>}</code>则<code>layer--</code>。当遇到<code>,</code>时，如果此时<code>layer==0</code>，说明这个<code>,</code>是最外层的加法运算符，视为最外层为加法运算。</p>
+<p>同时我们也可以返回所有最外层<code>,</code>的下标。</p>
+</blockquote>
+<p>怎么判断最外层是否是乘法运算？</p>
+<blockquote>
+<p>（如果前面判断是否是加法运算时候返回了一个空数组，说明没有最外层的逗号，才会执行该判断最外层是否是乘法运算的算法）。</p>
+<p>同样使用一个变量<code>layer</code>记录当前的括号层数，初始值是<code>0</code>。遇到<code>{</code>则<code>layer++</code>，遇到<code>}</code>则<code>layer--</code>。当遇到一个字符时，如果此时<code>layer==0</code>，并且该字符的前一个字符是<code>}</code>或者该字符是<code>{</code>，说明不只有一个“运算单元”，视为最外层为乘法运算。</p>
+<p>同时我们也可以返回所有（除了起始下标<code>0</code>外的）最外层“运算单元”起始位置的下标，例如<code>{a,b}{c,d}e</code>相当于三个运算单元<code>{a,b}</code>、<code>{c,d}</code>和<code>e</code>相乘，返回下标<code>[5, 10]</code>。</p>
+</blockquote>
+<p>如果返回下标为空数组，说明只有一个“运算单元”，依据第一个字符是否为<code>{</code>来决定是否需要继续递归；否则说明该字符串总体上是不只一个运算单元的相乘，递归每个运算单元并相乘。</p>
+<h3 id="时空复杂度-我不会算"><a href="#时空复杂度-我不会算" class="headerlink" title="时空复杂度(我不会算)"></a>时空复杂度(我不会算)</h3><ul>
+<li>时间复杂度$O(unknown)$</li>
+<li>空间复杂度$O(unknown)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-09-26 11:31:38</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// struct Res : unordered_set&lt;string&gt; &#123;</span></span><br><span class="line"><span class="comment">//     Res() : unordered_set&lt;string&gt;&#123;&quot;&quot;&#125; &#123;&#125;</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="keyword">typedef</span> unordered_set&lt;string&gt; Res;</span><br><span class="line"></span><br><span class="line">Res <span class="keyword">operator</span>* (<span class="type">const</span> Res&amp; a, <span class="type">const</span> Res&amp; b) &#123;</span><br><span class="line">    Res res;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> string&amp; s1 : a) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> string&amp; s2 : b) &#123;</span><br><span class="line">            res.<span class="built_in">insert</span>(s1 + s2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Res <span class="keyword">operator</span>+= (Res&amp; a, <span class="type">const</span> Res&amp; b) &#123;</span><br><span class="line">    a.<span class="built_in">insert</span>(b.<span class="built_in">begin</span>(), b.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> vector&lt;<span class="type">int</span>&gt; Idx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 最外层是加法运算</span></span><br><span class="line">    <span class="function">Idx <span class="title">getAdd</span><span class="params">(string_view s)</span> </span>&#123;</span><br><span class="line">        Idx idxs;</span><br><span class="line">        <span class="type">int</span> layer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, n = s.<span class="built_in">size</span>(); i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">                layer++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span>) &#123;</span><br><span class="line">                layer--;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;,&#x27;</span> &amp;&amp; !layer) &#123;</span><br><span class="line">                idxs.<span class="built_in">push_back</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> idxs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Idx <span class="title">getMul</span><span class="params">(string_view s)</span> </span>&#123;</span><br><span class="line">        Idx idxs;</span><br><span class="line">        <span class="type">int</span> layer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, n = s.<span class="built_in">size</span>(); i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!layer &amp;&amp; i &amp;&amp; (s[i - <span class="number">1</span>] == <span class="string">&#x27;&#125;&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)) &#123;</span><br><span class="line">                idxs.<span class="built_in">push_back</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">                layer++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span>) &#123;</span><br><span class="line">                layer--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> idxs;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Res <span class="title">dfs</span><span class="params">(string_view s)</span> </span>&#123;</span><br><span class="line">        Res res;</span><br><span class="line">        Idx idxs = <span class="built_in">getAdd</span>(s);</span><br><span class="line">        <span class="keyword">if</span> (idxs.<span class="built_in">size</span>()) &#123;  <span class="comment">// 最外层是加法运算</span></span><br><span class="line">            idxs.<span class="built_in">push_back</span>(s.<span class="built_in">size</span>());</span><br><span class="line">            <span class="type">int</span> last_idx = <span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> idx : idxs) &#123;</span><br><span class="line">                res += <span class="built_in">dfs</span>(s.<span class="built_in">substr</span>(last_idx + <span class="number">1</span>, idx - last_idx - <span class="number">1</span>));</span><br><span class="line">                last_idx = idx;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 最外层是乘法运算(或单个字符串)</span></span><br><span class="line">        idxs = <span class="built_in">getMul</span>(s);</span><br><span class="line">        <span class="keyword">if</span> (idxs.<span class="built_in">empty</span>() &amp;&amp; s.<span class="built_in">size</span>() &amp;&amp; s[<span class="number">0</span>] != <span class="string">&#x27;&#123;&#x27;</span>) &#123;  <span class="comment">// 没有括号，那就是单个字符串</span></span><br><span class="line">            res.<span class="built_in">insert</span>(<span class="built_in">string</span>(s));</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (idxs.<span class="built_in">empty</span>()) &#123;  <span class="comment">// 只有最外层一个大括号，如 &#123;a,b&#125;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">dfs</span>(s.<span class="built_in">substr</span>(<span class="number">1</span>, s.<span class="built_in">size</span>() - <span class="number">2</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        idxs.<span class="built_in">push_back</span>(s.<span class="built_in">size</span>());</span><br><span class="line">        <span class="type">int</span> last_idx = <span class="number">0</span>;</span><br><span class="line">        res.<span class="built_in">insert</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> idx : idxs) &#123;</span><br><span class="line">            res = res * <span class="built_in">dfs</span>(s.<span class="built_in">substr</span>(last_idx, idx - last_idx));</span><br><span class="line">            last_idx = idx;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">braceExpansionII</span><span class="params">(string expression)</span> </span>&#123;</span><br><span class="line">        Res res = <span class="built_in">dfs</span>(expression);</span><br><span class="line">        <span class="function">vector&lt;string&gt; <span class="title">ans</span><span class="params">(res.begin(), res.end())</span></span>;</span><br><span class="line">        <span class="built_in">sort</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">c&#123;a&#123;b&#125;&#125;d</span></span><br><span class="line"><span class="comment">&#123;&#123;a,z&#125;,a&#123;b,c&#125;,&#123;ab,z&#125;&#125;</span></span><br><span class="line"><span class="comment">&#123;ab,c&#125;&#123;d&#125;,&#123;e&#125;</span></span><br><span class="line"><span class="comment">a&#123;b,c&#125;</span></span><br><span class="line"><span class="comment">&#123;a,b&#125;c</span></span><br><span class="line"><span class="comment">&#123;a&#125;b</span></span><br><span class="line"><span class="comment">&#123;a&#125;</span></span><br><span class="line"><span class="comment">d,a&#123;b,c&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _DEBUG</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; s) &#123;</span><br><span class="line">        Solution sol;</span><br><span class="line">        <span class="built_in">debug</span>(sol.<span class="built_in">braceExpansionII</span>(s));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/166688927">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/09/25/LeetCode%201096.%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80II/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/09/24/LeetCode%203550.%E6%95%B0%E4%BD%8D%E5%92%8C%E7%AD%89%E4%BA%8E%E4%B8%8B%E6%A0%87%E7%9A%84%E6%9C%80%E5%B0%8F%E4%B8%8B%E6%A0%87/">3550.数位和等于下标的最小下标：遍历模拟 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911096-%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80-II%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%B8%80%E7%99%BE%E8%A1%8C%E7%9A%84%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%88DFS%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1096.花括号展开 II：一个一百行的解题方法（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：深度优先搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E7%BB%86%E8%8A%82"><span class="toc-number">1.1.2.</span> <span class="toc-text">解题细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6-%E6%88%91%E4%B8%8D%E4%BC%9A%E7%AE%97"><span class="toc-number">1.1.3.</span> <span class="toc-text">时空复杂度(我不会算)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
