@@ -3,6 +3,7 @@ title: 1096.花括号展开 II：一个一百行的解题方法（DFS）
 date: 2026-09-26 11:33:01
 tags: [题解, LeetCode, 困难, 栈, 广度优先搜索, 哈希表, 字符串, 回溯, 排序, 深度优先搜索, DFS]
 categories: [题解, LeetCode]
+disableNunjucks: true
 ---
 
 # 【LetMeFly】1096.花括号展开 II：一个一百行的解题方法（DFS）
