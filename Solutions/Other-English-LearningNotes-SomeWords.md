@@ -341,7 +341,7 @@ categories: [自用]
 |fumble|v. 失球，笨手笨脚地做(某事)，笨拙地找(某物)，笨嘴拙舌地说话<br/>n. 笨拙的手部动作，乱摸，掉球|
 |<font color="#28bea0" title="二次复习">doom</font>|v. 使...注定失败/遭殃/死亡<br/>n. 厄运，毁灭，劫数，死亡|
 |||
-|<font color="#28bea0" title="二次复习">bestow</font>|v. 授予，献给|
+|<font color="#28bea0" title="二次复习">bestow</font><details><summary>例句</summary>He <font color="#28bea0">bestowed</font> high praise <font color="#28bea0">on</font> the winners.<br/>他对获胜者给予了高度赞扬。</details>|v. 授予，献给|
 |||
 |<font color="#28bea0" title="三次复习">ominous</font>|adj. 不详的，恶兆的，不吉利的|
 |lounge|n. (机场等的)等候室，休息室，起居室<br/>v. 懒洋洋地站/坐/躺着|
@@ -643,7 +643,7 @@ categories: [自用]
 |odour|n. 气味，意味，迹象，名声|
 |ramble|n. 漫步，散步，杂乱无章的长篇大论<br/>v. 漫谈，闲聊，漫步，蔓生|
 |<font color="#28bea0" title="二次复习">nausea</font>|n. 恶心，反胃，作呕|
-|celery|n. 芹菜，(调味用)|
+|celery|n. 芹菜，(调味用)香芹粉|
 |<font color="#28bea0" title="二次复习">jug</font>|n. (有柄有嘴的)壶/罐，一壶/罐(的量)|
 |zealous|adj. 热情的，热烈的，充满激情的|
 |regime|n. 组织方法，管理体制，政权，政体|
@@ -673,7 +673,7 @@ categories: [自用]
 |annex|v. 附加，附带，并吞，抢占，获得<br/>n. 附件，附属品，附属建筑|
 |wade|v. 跋涉，趟水|
 |||
-|<font color="#28bea0" title="二次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
+|<font color="#28bea0" title="三次复习">perturbed</font>|adj. 焦虑的，不安的，烦躁的<br/>v. 使焦虑，使不安|
 |garrison|n. 卫戍部队，守备不对，卫戍区，驻防地<br/>v. 驻防，派(兵)驻守|
 |woodpecker|n. 啄木鸟|
 |<font color="#28bea0" title="三次复习">cosmetics</font>|n. 化妆品|
@@ -784,7 +784,7 @@ categories: [自用]
 |panoramic|adj. 全景的|
 |craziness|n. 疯狂|
 |||
-|modulate|v. 调整，调节(音量)，变调|
+|<font color="#28bea0" title="二次复习">modulate</font>|v. 调整，调节(音量)，变调|
 |sportsmanship|n. 运动员风范，体育精神|
 |abasement|n. 身份低微，屈尊，降低|
 |||
@@ -955,7 +955,7 @@ categories: [自用]
 |||
 |disparity|n. 差异|
 |||
-|scorching|adj. 酷热的，猛烈的，激烈的，有力的<br/>adv. 〈口〉灼热地，热得灼人<br/>v. scorch的现在分词|
+|<font color="#28bea0" title="二次复习">scorching</font>|adj. 酷热的，猛烈的，激烈的，有力的<br/>adv. 〈口〉灼热地，热得灼人<br/>v. scorch的现在分词|
 |wagon|n. (铁路)货车车厢，四轮在中马车(/牛车)<br/>v. 用 运货马车/货车/手推车 运送【较少用作动词】|
 |||
 |bazaar|n. 集市，义卖会|
@@ -1228,7 +1228,7 @@ categories: [自用]
 |jealousy|n. 妒忌，羡慕|
 |||
 |perpetual|adj. 永恒的，永久的，终身的，持续的，不间断的|
-|encyclopaedia|n. 百科全书|
+|encyclopaedia|n. 百科全书<br/>美式encyclopedia|
 |||
 |solvency|n. 偿债能力|
 |||
@@ -1305,13 +1305,13 @@ categories: [自用]
 |prophesy|v. 预告，预言|
 |||
 |<font color="#28bea0" title="二次复习">moderately</font>|adv. 适当地，适度地，中庸地，勉强地，一般地|
-|construe|v. 理解，解释，领会<br/>n. 解释，语法分析，分析练习句，直译|
+|<font color="#28bea0" title="二次复习">construe</font>|v. 理解，解释，领会<br/>n. 解释，语法分析，分析练习句，直译|
 |||
 |financier|n. 金融家，理财家<br/>v. 对…提供资金，〈美〉骗取，管理财务，从事（不正当的）金融活动|
 |oblong|adj. 矩形的，长方形的，椭圆形的，椭圆体的<br/>n. 长方形(的)|
 |||
 |biscuit|n. 饼干，松饼，蛋黄褐色|
-|omen|n. 预兆，征兆，前兆<br/>v. 预告|
+|<font color="#28bea0" title="二次复习">omen</font>|n. 预兆，征兆，前兆<br/>v. 预告|
 |disinclined|adj. 不情愿，不乐意，无意于|
 |||
 |procure|v. 取得，诱使（妇女）卖淫|
@@ -1735,6 +1735,197 @@ categories: [自用]
 |tyrant|n. 暴君|
 |||
 |exoneration|n. 免罪，免除|
+|||
+|Oceania|n. 大洋洲|
+|phonetics|n. 语音学|
+|||
+|willow|n. 柳树，柳木制品|
+|misgiving|n. 疑虑，顾虑|
+|||
+|dismal|adj. 忧郁的，凄凉的，惨淡的，阴沉的|
+|||
+|bureau|n. 局，处，科|
+|disintegration|n. 崩解，瓦解，裂变|
+|||
+|reconnaissance|n. 侦察|
+|illegible|adj. 难以辨认的，无法辨识的，字迹模糊的|
+|||
+|Protestant|n. 新教教徒|
+|pilferage|n. 小偷小摸|
+|trainee|n. 实习生|
+|||
+|decree|n. 法令，政令，裁定，判决<br/>v. 裁定，判决，颁布|
+|baggy|adj. 宽松的|
+|||
+|incorporated|adv. 把...合入<br/>adj. 已经被并入的，已整合的，已注册成立的<br/>Apple incorporated|
+|ration|n. 定量<br/>v. 配给|
+|||
+|irrevocable|adj. 无法取消的，不能改变的|
+|||
+|superstitious|adj. 迷信的，有迷信观念的|
+|Occident|n. 西方，西方国家|
+|||
+|eminent|adj. 杰出的|
+|namesake|n. 同名的人(物)|
+|ratification|n. 批准|
+|militia|n. 民兵组织，国民卫队|
+|||
+|rejoice|v. 非常高兴，感到欣喜|
+|||
+|deformation|n. 变形，畸形，破相，变丑|
+|porter|n. 搬运工，门卫，护工|
+|||
+|streetcar|n. 有轨电车|
+|||
+|eloquence|n. 雄辩，口才|
+|||
+|ply|v. 勤奋地做，反复地做|
+|||
+|abrogate|v. 废除|
+|||
+|idiomatic|adj. 地道的，按母语者习惯来的|
+|suffice|v. 足够|
+|||
+|specification|n. 规格，规范，标准|
+|indemnify|v. 赔偿，补偿|
+|||
+|restock|v. 补充，囤货<details><summary>例句</summary>You'd better <font color="#28bea0">restock</font> your fridge before the storm.<br/>风暴来临前你最好给你的冰箱补点囤货。</details>|
+|||
+|supersede|v. 取代|
+|Negro|n. 黑人[侮辱，老式], adj. 黑人的|
+|paralyse|v. 使瘫痪，使麻痹，使不能正常工作|
+|||
+|invoice|n. 发票，发货单<br/>v. 开发票，开清单|
+|||
+|everlasting|adj. 永久的，冗长的|
+|prairie|n. (北美)大草原|
+|||
+|embargo|n. 禁止贸易令，禁运v. 禁止…的贸易，禁运|
+|antonymous|adj. 反义的|
+|||
+|christianity|n. 基督教|
+|||
+|hush|n. 肃静，安静，鸦雀无声<br/>v. 使安静，缄默|
+|||
+|pistol|n. 手枪<br/>v. 用手枪射击|
+|||
+|hotelling|n. 为短期员工提供临时办公位|
+|||
+|gramophone|n. 留声机，唱机|
+|||
+|landlady|n. 女房东，女老板，女地主|
+|||
+|transship|v. 换船，换车|
+|allied|adj. 联合的，同盟的|
+|popcorn|n. 爆米花|
+|||
+|dainty|adj. 娇小的，精美的<br/>n. 美味|
+|||
+|Brazilian|adj. 巴西的<br/>n. 巴西人|
+|infringe|v. 侵犯，违背|
+|||
+|mumps|n. 腮腺炎|
+|||
+|praise|v. 赞扬<br/>n. 赞扬|
+|||
+|stipulation|n. 规定，约定，合同|
+|||
+|turnip|n. 萝卜|
+|||
+|senseless|adj. 无意义的，无目的的；失去知觉的；不明智的，愚蠢的|
+|enlightening|v. 启迪，指导<br/>adj. 有启迪的，使人感悟的|
+|potent|adj. 强有效的，有力的，烈性的，影响身心的|
+|||
+|kneel|v. 跪<details><summary>过去式</summary>knelt</details>|
+|||
+|proprietor|n. 业主，所有人|
+|detain|v. 扣押，留住，耽搁|
+|||
+|rod|n. 杆，枝|
+|c/o|= care of<br/>abbr. （用于投递给寄居人的信件上）由...转交<details><summary>例句</summary>Please send the package to John Smith <font color="#28bea0">c/o</font> Green Hotel.<br/>请将包裹寄给约翰·史密斯，由格林酒店转交。</details>|
+|||
+|testimony|n. 证词，证言，证据，证明|
+|treason|n. 危害国家罪，叛逆，通敌，背叛|
+|||
+|feeble|adj. 虚弱的，无效的|
+|||
+|gymnast|n. 体操运动员|
+|||
+|backbone|n. 脊椎，骨干，支柱|
+|constable|n. 警员<br/>头衔时首字母大写，如Constable Smith|
+|peninsular|adj. 半岛的|
+|||
+|wrath|n. 怒火|
+|||
+|unaccommodating|adj. 不亲切的，不随和的|
+|||
+|bribery|n. 贿赂，受贿|
+|bamboo shoot|phrase. 竹笋|
+|||
+|mechanics|n. 力学，结构，技巧，机械学|
+|pretentious|adj. 炫耀的，虚夸的，自命不凡的|
+|indignant|adj. 愤慨的，愤怒的|
+|||
+|conceptive|adj. 概念上的，设想上的，〈罕〉会受孕的|
+|groundless|adj. 无理由的，无根据的|
+|||
+|wreath|n. (祭奠)花圈，(圣诞节)花环|
+|||
+|prohibitive|adj. (法令)禁止的，贵得买不起的|
+|||
+|deduct|v. 减去，扣除|
+|henceforth|adv. 从此之后|
+|||
+|acrobat|n. 杂技演员|
+|photostatic|adj. 静电复印的|
+|||
+|therefrom|adv. 由此，从那里|
+|||
+|crouch|v. 蹲，蜷缩<br/>n. 蹲|
+|||
+|triplicate|n. 一式三份<br/>adj. 一式三份的<br/>v. 使成三倍，分成三份|
+|||
+|possessive|adj. 占有欲强的，不愿分享的<br/>n. 所有格|
+|||
+|brotherhood|n. 兄弟关系，手足情谊|
+|unanimous|adj. 一致的|
+|||
+|distributorship|n. 分销权|
+|||
+|farmhand|n. 农场工人|
+|||
+|mob|n. 暴徒|
+|||
+|mayor|n. 市长|
+|||
+|assorted|adj. 各种各样的|
+|||
+|descendant|n. 子孙，后裔|
+|||
+|fortitude|n. 刚毅|
+|||
+|legislation|n. 立法|
+|||
+|dweller|n. 居住者，居民|
+|||
+|incompatibility|n. 不相容|
+|infantry|n. 步兵|
+|deliverance|n. 拯救|
+|||
+|contractual|adj. 合同的，按合同规定的|
+|||
+|prevailing|adj. 普遍的，流行的|
+|||
+|windowsill|n. 窗沿，窗台|
+|||
+|overtake|v. 超过|
+|transverse|adj. 横向的|
+|||
+|corrosion|n. 腐蚀；锈蚀|
+|||
+|fragrant|adj. 香的|
+|||
+|magnetism|n. 磁性，吸引力/魅力|
 
 + 这个web要是能设计得可以闭眼(完全不睁眼)键盘控制背单词就好了。
 + 也许可以加个AI用最近词编故事功能(返回接口中支持标注所使用单词高亮?)
