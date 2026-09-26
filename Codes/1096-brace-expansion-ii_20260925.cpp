@@ -2,13 +2,16 @@
  * @Author: LetMeFly
  * @Date: 2026-09-25 08:10:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-25 08:28:29
+ * @LastEditTime: 2026-09-26 10:37:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
-typedef unordered_set<string> Res;
+struct Res : unordered_set<string> {
+    Res() : unordered_set<string>{""} {}
+};
+
 Res operator* (const Res& a, const Res& b) {
     Res res;
     for (const string& s1 : a) {
@@ -19,16 +22,92 @@ Res operator* (const Res& a, const Res& b) {
     return res;
 }
 
+Res operator+= (Res& a, const Res& b) {
+    a.insert(b.begin(), b.end());
+}
+
+typedef vector<int> Idx;
+
 class Solution {
 private:
-    Res dfs(string s) {
-        
+    // 最外层是加法运算
+    Idx getAdd(string_view s) {
+        Idx idxs;
+        int layer = 0;
+        for (int i = 0, n = s.size(); i < n; i++) {
+            if (s[i] == '{') {
+                layer++;
+            } else if (s[i] == '}') {
+                layer--;
+            } else if (s[i] == ',' && !layer) {
+                idxs.push_back(i);
+            }
+        }
+        return idxs;
+    }
+
+    Idx getMul(string_view s) {
+        Idx idxs;
+        int layer = 0;
+        for (int i = 0, n = s.size(); i < n; i++) {
+            if (s[i] == '{') {
+                if (!layer) {
+                    idxs.push_back(i);
+                }
+                layer++;
+            } else if (s[i] == '}') {
+                layer--;
+            }
+        }
+        return idxs;
+    }
+
+    Res dfs(string_view s) {
+        Res res;
+        Idx idxs = getAdd(s);
+        if (idxs.size()) {  // 最外层是加法运算
+            idxs.push_back(s.size());
+            int last_idx = -1;
+            for (int idx : idxs) {
+                res += dfs(s.substr(last_idx + 1, idx - last_idx - 1));
+                last_idx = idx;
+            }
+            return res;
+        }
+        // 最外层是乘法运算(或单个字符串)
+        idxs = getMul(s);
+        if (idxs.empty()) {  // 没有括号，那就是单个字符串
+            res.insert(string(s));
+            return res;
+        }
+        if (idxs[0] == 0) {
+            idxs.erase(idxs.begin());
+        }
+        if (idxs.empty()) {  // 只有最外层一个大括号，如 {a,b}
+            return dfs(s.substr(1, s.size() - 2));
+        }
+        idxs.push_back(s.size());
+        int last_idx = 0;
+        for (int idx : idxs) {
+            res = res * dfs(s.substr(last_idx, idx - last_idx));
+            last_idx = idx;
+        }
+        return res;
     }
 public:
     vector<string> braceExpansionII(string expression) {
         Res res = dfs(expression);
         vector<string> ans(res.begin(), res.end());
         sort(ans.begin(), ans.end());
+        if (ans.size() == 1 && ans[0].empty()) {
+            return {};
+        }
         return ans;
     }
 };
+
+/*
+c{a{b}}d
+{{a,z},a{b,c},{ab,z}}
+{ab,c}{d},{e}
+*/
