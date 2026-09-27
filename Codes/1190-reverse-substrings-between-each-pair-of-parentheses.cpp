@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-27 08:22:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-27 08:35:56
+ * @LastEditTime: 2026-09-27 08:39:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -25,7 +25,7 @@ private:
         }
         string ans = string(s.substr(0, begin));
         size_t end = s.rfind(')');
-        string middle = dfs(s.substr(begin, end - begin - 1));
+        string middle = dfs(s.substr(begin + 1, end - begin - 1));
         reverse(middle.begin(), middle.end());
         ans += middle;
         ans += string(s.substr(end + 1, s.size() - end - 1));
@@ -36,3 +36,19 @@ public:
         return dfs(s);
     }
 };
+
+#ifdef _DEBUG
+/*
+(abcd)
+(u(love)i)
+(ed(et(oc))el)
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        cout << sol.reverseParentheses(s) << endl;
+    }
+    return 0;
+}
+#endif
