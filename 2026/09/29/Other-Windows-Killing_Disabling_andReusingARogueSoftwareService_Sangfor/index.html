@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程前言 WARNING: 本文的唯一目的就是学习Windows系统知识，了解Windows服务、进程保活相关技能。 文中所分析的样本均为带有签名的正常样本，本文对任何第三方开发的软件没有恶意。   某特定网站需要安装深信服的“认证助手”Ingress服务才能访问。但Ingress开机自启、关闭自动重启、多服务相互拉起、自动修改服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程">
+<meta property="og:url" content="https://blog.letmefly.xyz/2026/09/29/Other-Windows-Killing_Disabling_andReusingARogueSoftwareService_Sangfor/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程前言 WARNING: 本文的唯一目的就是学习Windows系统知识，了解Windows服务、进程保活相关技能。 文中所分析的样本均为带有签名的正常样本，本文对任何第三方开发的软件没有恶意。   某特定网站需要安装深信服的“认证助手”Ingress服务才能访问。但Ingress开机自启、关闭自动重启、多服务相互拉起、自动修改服务">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-09-29T02:38:11.000Z">
+<meta property="article:modified_time" content="2026-09-29T09:50:47.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="流氓软件">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-29 10:38" pubdate>
+          2026年9月29日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          52 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Windows-杀死冷冻再利用流氓软件服务——某深信服软件斗智过程"><a href="#Windows-杀死冷冻再利用流氓软件服务——某深信服软件斗智过程" class="headerlink" title="Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程"></a>Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>WARNING: 本文的唯一目的就是学习Windows系统知识，了解Windows服务、进程保活相关技能。</p>
+<p>文中所分析的样本均为带有签名的正常样本，本文对任何第三方开发的软件没有恶意。</p>
+</blockquote>
+<ol>
+<li>某特定网站需要安装深信服的“认证助手”Ingress服务才能访问。但Ingress开机自启、关闭自动重启、多服务相互拉起、自动修改服务启动类型和重试策略、安全模式下都要启动。能否只在需要访问该特定网站的时候启动认证助手服务，不需要的时候就关掉呢？</li>
+<li>某主机插入非认证的U盘无法使用，能否在不具备认证U盘的情况下使用普通U盘向该主机拷贝一些开发环境呢？</li>
+</ol>
+<h2 id="深信服Ingress相关服务探索"><a href="#深信服Ingress相关服务探索" class="headerlink" title="深信服Ingress相关服务探索"></a>深信服Ingress相关服务探索</h2><h3 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h3><h4 id="Ingress、IngressMgr"><a href="#Ingress、IngressMgr" class="headerlink" title="Ingress、IngressMgr"></a>Ingress、IngressMgr</h4><p>任务管理器可看到<code>准入服务（32位）</code>，右键<code>转到详细信息（G）</code>可以看到<code>Ingress.exe</code>。</p>
+<p>在powershell中查看谁启动的它：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Get-CimInstance</span> Win32_Process | <span class="hljs-built_in">Select-Object</span> ProcessID, ParentProcessID, Name | findstr Ingress.exe<br></code></pre></td></tr></table></figure>
+
+<p>可看到它的父进程是<code>IngressMgr.exe</code>，如果刚刚详细信息页面是以名称排序的话，<code>IngressMgr.exe</code>就在<code>Ingress.exe</code>旁边。</p>
+<p>在<code>IngressMgr.exe</code>上右键，<code>转到服务（S）</code>，可知该进程是通过在系统中注册了<code>IngressMgr</code>服务来启动的。</p>
+<p>点击<code>打开服务</code>并再次找到这个服务，在这个服务上右键<code>属性（S）</code>，可以看到这个服务默认是自动启动，且不可操作（<code>停止</code>、<code>暂停</code>等按钮是灰色的），恢复状态是<code>重新启动服务</code>。</p>
+<p>好，那咱就先给服务设置成“禁用”，恢复类型设置为不恢复，同时赶快杀掉<code>Ingress.exe</code>和<code>IngressMgr.exe</code>，防止二者相互拉起唤醒。在<code>cmd</code>中执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sc.exe config IngressMgr start= disabled<br>sc.exe failure IngressMgr reset=0 actions= <span class="hljs-string">&quot;&quot;</span><br>taskkill /f /im IngressMgr.exe<br>taskkill /f /im Ingress.exe<br></code></pre></td></tr></table></figure>
+
+<p>（注意<code>start=</code>后面和<code>actions=</code>后面必须有空格。）</p>
+<p>可以看到Ingress.exe、IngressMgr.exe都消失了。但是过了约十几秒，鼠标一转圈，这两个东西又起来了！并且服务也被修改回了原本的自启动和失败重试。</p>
+<h4 id="nac-monitor"><a href="#nac-monitor" class="headerlink" title="nac_monitor"></a>nac_monitor</h4><p>Sangfor一定还注册了别的程序&#x2F;服务来保活。</p>
+<p>在服务列表里寻找，发现了一个描述为<code>Sangfor NAC Monitor Service</code>的服务<code>nac_monitor</code>。把这个服务也给设置成<code>禁用</code>，再次执行刚刚的四句命令，可以发现<code>Ingress</code>没有再自启动了。</p>
+<p>如果想访问该特定网站的时候，重新启动IngressMgr服务就好了。并且发现，这个<code>nac_monitor</code>服务即使一直禁用掉不启用，也不影响该特定网站的访问和使用。</p>
+<h3 id="总结：怎么优雅使用"><a href="#总结：怎么优雅使用" class="headerlink" title="总结：怎么优雅使用"></a>总结：怎么优雅使用</h3><p>不想访问这个特定网站的时候（可能是大多时候），给nac_monitor服务和Ingress服务禁用掉；想访问这个特定网站的时候，再给Ingress服务重新开启就好了。</p>
+<p><code>nac_monitor</code>服务会每隔几十秒重置<code>IngressMgr</code>服务为自启动和失败重试，<code>IngressMgr</code>服务会启动<code>Ingress.exe</code>且二者会相互拉起。</p>
+<p>关（CMD中以管理员权限执行）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">sc.exe config nac_monitor start= disabled<br>sc.exe failure nac_monitor reset=0 actions= <span class="hljs-string">&quot;&quot;</span><br>taskkill /f /im nac_agent.exe<br>taskkill /f /fi <span class="hljs-string">&quot;SERVICES eq nac_monitor&quot;</span> /im *<br><br>sc.exe config IngressMgr start= disabled<br>sc.exe failure IngressMgr reset=0 actions= <span class="hljs-string">&quot;&quot;</span><br>taskkill /f /im IngressMgr.exe<br>taskkill /f /im Ingress.exe<br>taskkill /f /fi <span class="hljs-string">&quot;SERVICES eq IngressMgr&quot;</span> /im *<br></code></pre></td></tr></table></figure>
+
+<p>也可以把下面这段代码另存为<code>closeNet.bat</code>，记得编码方式为<code>GBK</code>：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><br>:: 检查是否已经是管理员权限<br>fltmc &gt;<span class="hljs-built_in">nul</span> <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">errorlevel</span> <span class="hljs-number">1</span> (<br>    <span class="hljs-built_in">echo</span> 请求管理员权限...<br>    powershell -NoProfile -Command &quot;<span class="hljs-built_in">Start</span>-Process -FilePath &#x27;%~f0&#x27; -Verb RunAs&quot;<br>    <span class="hljs-keyword">exit</span> /b<br>)<br><br><span class="hljs-built_in">echo</span>.<br><span class="hljs-built_in">echo</span> ===== 关闭 nac_monitor =====<br>sc.exe config nac_monitor <span class="hljs-built_in">start</span>= disabled<br>sc.exe failure nac_monitor reset=<span class="hljs-number">0</span> actions= &quot;&quot;<br><span class="hljs-built_in">taskkill</span> /f /im nac_agent.exe<br><span class="hljs-built_in">taskkill</span> /f /fi &quot;SERVICES eq nac_monitor&quot; /im *<br><br><span class="hljs-built_in">echo</span>.<br><span class="hljs-built_in">echo</span> ===== 关闭 IngressMgr =====<br>sc.exe config IngressMgr <span class="hljs-built_in">start</span>= disabled<br>sc.exe failure IngressMgr reset=<span class="hljs-number">0</span> actions= &quot;&quot;<br><span class="hljs-built_in">taskkill</span> /f /im IngressMgr.exe<br><span class="hljs-built_in">taskkill</span> /f /im Ingress.exe<br><span class="hljs-built_in">taskkill</span> /f /fi &quot;SERVICES eq IngressMgr&quot; /im *<br><br><span class="hljs-built_in">echo</span>.<br><span class="hljs-built_in">echo</span> ===== 执行完毕 =====<br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure>
+
+<p>开（CMD中以管理员权限执行）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sc.exe config IngressMgr start= demand<br>sc.exe start IngressMgr<br></code></pre></td></tr></table></figure>
+
+<p>也可以把下面这段代码另存为<code>openNet.bat</code>，记得编码方式为<code>GBK</code>：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br><br>:: 检查是否已经是管理员权限<br>fltmc &gt;<span class="hljs-built_in">nul</span> <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">errorlevel</span> <span class="hljs-number">1</span> (<br>    <span class="hljs-built_in">echo</span> 请求管理员权限...<br>    powershell -NoProfile -Command &quot;<span class="hljs-built_in">Start</span>-Process -FilePath &#x27;%~f0&#x27; -Verb RunAs&quot;<br>    <span class="hljs-keyword">exit</span> /b<br>)<br><br>sc.exe config IngressMgr <span class="hljs-built_in">start</span>= demand<br>sc.exe <span class="hljs-built_in">start</span> IngressMgr<br><br><span class="hljs-built_in">echo</span>.<br><span class="hljs-built_in">echo</span> ===== 执行完毕 =====<br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure>
+
+<p>样本：Ingress3.0.0。</p>
+<h2 id="U盘识别策略探索"><a href="#U盘识别策略探索" class="headerlink" title="U盘识别策略探索"></a>U盘识别策略探索</h2><h3 id="启动U盘识别"><a href="#启动U盘识别" class="headerlink" title="启动U盘识别"></a>启动U盘识别</h3><blockquote>
+<p>U盘插入后禁止安装，这个策略的设定来源未知，可能与深信服无关。</p>
+</blockquote>
+<p>本想往某主机通过U盘拷贝一些开发环境，结果插入U盘后资源管理器中并未出现U盘。在资源管理器<code>此电脑</code>右键，<code>管理（G）</code>，<code>计算机管理（本地） -&gt; 系统工具 -&gt; 设备管理器</code>中的<code>其他设备</code>下可以看到一个<code>SanDisk Ultra USB3.0</code>，右键<code>属性（R）</code>点击<code>事件</code>可看到<code>阻止的设备 disk.inf 策略已阻止设备USBSTOR xx 的配置</code>。</p>
+<p>解决方案是：<code>Win+R -&gt; gpedit.msc</code>，<code>计算机配置 -&gt; 管理模板 -&gt; 系统 -&gt; 设备安装 -&gt; 设备安装限制</code>，找到<code>禁止安装未由其他策略设置描述的设备</code>，右键<code>编辑（E）</code>，把<code>已启用(E)</code>改为<code>未配置(C)</code>。</p>
+<h3 id="清理U盘相关日志"><a href="#清理U盘相关日志" class="headerlink" title="清理U盘相关日志"></a>清理U盘相关日志</h3><p>若不想工作留痕，可(宁可错杀100不留一个活口地)执行下面powershell命令（不保证清理干净）：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># USB 设备历史</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># 普通 USB 设备历史</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USB&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># 当前用户的盘符/卷挂载痕迹</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># SetupAPI 设备安装日志</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:WINDIR</span>\INF\SetupAPI.dev.log&quot;</span> <span class="hljs-literal">-Force</span> <span class="hljs-literal">-ErrorAction</span> SilentlyContinue<br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:WINDIR</span>\INF\SetupAPI.app.log&quot;</span> <span class="hljs-literal">-Force</span> <span class="hljs-literal">-ErrorAction</span> SilentlyContinue<br><span class="hljs-comment"># 设备相关事件日志</span><br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DriverFrameworks-UserMode</span>/Operational<br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DeviceSetupManager</span>/Admin<br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DeviceSetupManager</span>/Operational<br></code></pre></td></tr></table></figure>
+
+<p>可以另存为一个GBK格式编码的<code>cleanUSBHistory.ps1</code>，运行时候右键运行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># 自动申请管理员权限</span><br><span class="hljs-variable">$currentUser</span> = [<span class="hljs-type">Security.Principal.WindowsIdentity</span>]::GetCurrent()<br><span class="hljs-variable">$principal</span> = <span class="hljs-built_in">New-Object</span> Security.Principal.WindowsPrincipal(<span class="hljs-variable">$currentUser</span>)<br><br><span class="hljs-keyword">if</span> (<span class="hljs-operator">-not</span> <span class="hljs-variable">$principal</span>.IsInRole([<span class="hljs-type">Security.Principal.WindowsBuiltInRole</span>]::Administrator)) &#123;<br>    <span class="hljs-built_in">Start-Process</span> powershell.exe <span class="hljs-literal">-Verb</span> RunAs <span class="hljs-literal">-ArgumentList</span> <span class="hljs-selector-tag">@</span>(<br>        <span class="hljs-string">&#x27;-NoProfile&#x27;</span><br>        <span class="hljs-string">&#x27;-ExecutionPolicy&#x27;</span>, <span class="hljs-string">&#x27;Bypass&#x27;</span><br>        <span class="hljs-string">&#x27;-File&#x27;</span>, <span class="hljs-string">&quot;`&quot;<span class="hljs-variable">$PSCommandPath</span>`&quot;&quot;</span><br>    )<br>    <span class="hljs-keyword">exit</span><br>&#125;<br><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;正在清理 USB 设备历史...&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Cyan<br><span class="hljs-variable">$ErrorActionPreference</span> = <span class="hljs-string">&quot;Continue&quot;</span><br><br><span class="hljs-comment"># USB 设备历史</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># 普通 USB 设备历史</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USB&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># 当前用户的盘符/卷挂载痕迹</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-comment"># SetupAPI 设备安装日志</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:WINDIR</span>\INF\SetupAPI.dev.log&quot;</span> <span class="hljs-literal">-Force</span> <span class="hljs-literal">-ErrorAction</span> SilentlyContinue<br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&quot;<span class="hljs-variable">$env:WINDIR</span>\INF\SetupAPI.app.log&quot;</span> <span class="hljs-literal">-Force</span> <span class="hljs-literal">-ErrorAction</span> SilentlyContinue<br><span class="hljs-comment"># 设备相关事件日志</span><br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DriverFrameworks-UserMode</span>/Operational<br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DeviceSetupManager</span>/Admin<br>wevtutil cl Microsoft<span class="hljs-literal">-Windows-DeviceSetupManager</span>/Operational<br><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;清理完成。&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Green<br><span class="hljs-built_in">Write-Host</span> <span class="hljs-string">&quot;按任意键退出...&quot;</span> <span class="hljs-literal">-ForegroundColor</span> Gray<br>[<span class="hljs-type">Console</span>]::ReadKey(<span class="hljs-variable">$true</span>) | <span class="hljs-built_in">Out-Null</span><br></code></pre></td></tr></table></figure>
+
+<p>如果觉得在<code>.ps1</code>上右键运行麻烦，也可以在相同目录下放一个<code>cleanUSBHistory.bat</code>，写入以下内容后双击运行即可：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bat">@<span class="hljs-built_in">echo</span> off<br>powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;%~dp0cleanUSBHistory.ps1&quot;<br></code></pre></td></tr></table></figure>
+
+<p>注意，这是一个激进的做法！尤其是最后两条命令：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br><span class="hljs-built_in">Remove-Item</span> <span class="hljs-string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Enum\USB&#x27;</span> <span class="hljs-literal">-Recurse</span> <span class="hljs-literal">-Force</span><br></code></pre></td></tr></table></figure>
+
+<p>是直接删除设备枚举相关注册表数据。它可能导致此前识别过的设备重新安装、重新枚举。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>天下人苦深信服久矣(bushi)(狗头保命)</p>
+</blockquote>
+<p>深信服的网络相关服务确实能解决很多问题，但深信服软件给我的感觉是“功能健壮、过度运行、想用我的软件我就是老大”：</p>
+<ol>
+<li>不论是准入服务还是一个普通的VPN，管理员权限安装后就给你注册一些自启动服务，不论你是否需要相关服务，反正就赖在后台运行着，强制杀掉就自动重启。</li>
+<li>个人认为深某服产品经理没有在客户角度考虑，安装时候不提供安装位置选项、不列举安装过程都进行了哪些操作、一系列过度的后台和保活操作…… 给人的感觉就是产品经理：“想用我的软件吗？先叫声爸爸，以后我的软件在你电脑上就是爹，你管不了”。产品的健壮性是得到了保证，但对于“对自己电脑有过度掌控欲”的用户而言简直就是在侮辱。</li>
+</ol>
+<p>所以笔者才会在闲暇之余研究这么一个解决方案出来，可能是软件提供方与使用者所处的立场和思考的角度不同吧。这也给我自己了一个提醒，以后设计产品一定要多多站在用户视角考虑。</p>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/166846736">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/09/29/Other-Windows-Killing_Disabling_andReusingARogueSoftwareService_Sangfor/">原文链接</a>哦~</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" class="category-chain-item">技术思考</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+      
+        <a href="/tags/Windows/">#Windows</a>
+      
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
+      
+        <a href="/tags/%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/">#流氓软件</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程</div>
+      <div>https://blog.letmefly.xyz/2026/09/29/Other-Windows-Killing_Disabling_andReusingARogueSoftwareService_Sangfor/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9999/12/31/README/" title="README">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">README</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/09/29/LeetCode%202267.%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E6%9C%89%E5%90%88%E6%B3%95%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%B7%AF%E5%BE%84/" title="2267.检查是否有合法括号字符串路径：动态规划（bitset记状态）">
+                        <span class="hidden-mobile">2267.检查是否有合法括号字符串路径：动态规划（bitset记状态）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
