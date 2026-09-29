@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-09-29 08:15:13
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-29 08:52:16
+ * @LastEditTime: 2026-09-29 08:53:56
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -38,7 +38,7 @@ public:
                 if (care) {
                     cout << "found what I care (" << i << ", " << j << "): ";
                 }
-                bool is_more = dp[i][j] == '(';
+                bool is_more = grid[i][j] == '(';
                 if (i) {
                     modify(dp[i][j], dp[i - 1][j], is_more);
                 }
