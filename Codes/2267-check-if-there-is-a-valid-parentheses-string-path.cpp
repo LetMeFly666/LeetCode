@@ -26,7 +26,6 @@ public:
             return false;
         }
         dp[0][0].set(1);
-        vector<array<int, 2>> care_list = {{0, 0}, {0, 1}, {0, 2}, {1, 2}, {2, 2}, {3, 2}};
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 bool is_more = grid[i][j] == '(';
