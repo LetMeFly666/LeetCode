@@ -207,7 +207,7 @@ wevtutil cl Microsoft-Windows-DeviceSetupManager/Operational
 Write-Host ""
 Write-Host "清理完成。" -ForegroundColor Green
 Write-Host "按任意键退出..." -ForegroundColor Gray
-[Console]::ReadKey($true) | Out-Null0
+[Console]::ReadKey($true) | Out-Null
 ```
 
 如果觉得在`.ps1`上右键运行麻烦，也可以在相同目录下放一个`cleanUSBHistory.bat`，写入以下内容后双击运行即可：
