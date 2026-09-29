@@ -11,7 +11,7 @@
 typedef bitset<201> states;
 class Solution {
 private:
-    void modify(states& now, states& from, bool is_more) {
+    void modify(states& now, const states& from, bool is_more) {
         if (is_more) {
             now |= from << 1;
         } else {
