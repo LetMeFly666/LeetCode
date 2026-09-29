@@ -9,7 +9,7 @@ categories: [技术思考]
 
 ## 前言
 
-> WARNGING: 本文的唯一目的就是学习Windows系统知识，了解Windows服务、进程保活相关技能。
+> WARNING: 本文的唯一目的就是学习Windows系统知识，了解Windows服务、进程保活相关技能。
 > 
 > 文中所分析的样本均为带有签名的正常样本，本文对任何第三方开发的软件没有恶意。
 
@@ -207,7 +207,7 @@ wevtutil cl Microsoft-Windows-DeviceSetupManager/Operational
 Write-Host ""
 Write-Host "清理完成。" -ForegroundColor Green
 Write-Host "按任意键退出..." -ForegroundColor Gray
-[Console]::ReadKey($true) | Out-Null0
+[Console]::ReadKey($true) | Out-Null
 ```
 
 如果觉得在`.ps1`上右键运行麻烦，也可以在相同目录下放一个`cleanUSBHistory.bat`，写入以下内容后双击运行即可：
@@ -216,6 +216,15 @@ Write-Host "按任意键退出..." -ForegroundColor Gray
 @echo off
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0cleanUSBHistory.ps1"
 ```
+
+注意，这是一个激进的做法！尤其是最后两条命令：
+
+```powershell
+Remove-Item 'HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR' -Recurse -Force
+Remove-Item 'HKLM:\SYSTEM\CurrentControlSet\Enum\USB' -Recurse -Force
+```
+
+是直接删除设备枚举相关注册表数据。它可能导致此前识别过的设备重新安装、重新枚举。
 
 ## End
 
