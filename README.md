@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2022-05-19 18:48:53
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-09-29 17:39:14
+ * @LastEditTime: 2026-09-30 08:05:09
 -->
 # LetLeet Blog
 
@@ -160,7 +160,7 @@
 |Windows - 管理员权限 - 删除需要管理员权限才能删掉的目录|<a href="https://blog.letmefly.xyz/2023/08/13/Other-Windows-AdministratorPrivilegesDeleting1Directory/">本平台博客</a>|无|
 |Windows - DWM - 桌面窗口管理器内存泄漏BUG（桌面窗口管理器内存占用过高）|<a href="https://blog.letmefly.xyz/2023/08/25/Other-Windows-DWM-MemoreLeakBug-Fixment/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/132503580">CSDN博客</a>|
 |Windows - 防火墙 - 如何开启单个端口以供Web应用访问(以82端口为例) - 开启端口后还是访问失败了？|<a href="https://blog.letmefly.xyz/2024/01/31/Other-Windows-FireWall-Open1PortForWebserver-WhyFailed/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/135981716">CSDN博客</a>|
-|Windows - 杀死冷冻再利用流氓软件服务——某深信服软件斗智过程|<a href="https://blog.letmefly.xyz/2026/09/29/Other-Windows-Killing_Disabling_andReusingARogueSoftwareService_Sangfor/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/166846736">CSDN博客</a>|
+|Windows - 杀死冷冻再利用“流氓”软件服务——某深信服软件斗智过程|<a href="https://blog.letmefly.xyz/2026/09/29/Other-Windows-Killing_Disabling_andReusingARogueSoftwareService_Sangfor/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/166846736">CSDN博客</a>|
 |Windows - Windows10绕过登录（修改）密码登录：未验证|<a href="https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/">本平台博客</a>|无|
 |Windows(奇思妙想) - 通过ssh打开带有图形界面的程序 - 一种通过计划任务的曲折实现方式|<a href="https://blog.letmefly.xyz/2025/02/21/Other-Windows-OpenUIbySSH">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/145786262">CSDN博客</a>|
 |Windows程序互斥锁 - 一个程序同时仅允许运行一个实例|<a href="https://blog.letmefly.xyz/2024/02/17/Other-Windows-ProgramMutex-onlyRun1instanceMeanwhile/">本平台博客</a>|<a href="https://letmefly.blog.csdn.net/article/details/136139822">CSDN博客</a>|
