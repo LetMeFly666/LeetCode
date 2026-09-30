@@ -45,6 +45,8 @@ categories: [技术思考]
 
 ## End
 
+另外还有一种解决方案是安装旧版Windows照片应用，详情请见《[Windows - UWP - 网络不好的情况下安装（微软商店）MicrosoftStore的应用](https://blog.letmefly.xyz/2023/08/13/Other-Windows-UWP-InstallingUWPinMSStoreUsingTroubleInternet/)》。
+
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/166889862)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/30/Other-Windows-PhotoApplicationCannotRun_FromFixToReplace/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
