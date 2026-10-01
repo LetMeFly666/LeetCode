@@ -1,7 +1,7 @@
 ---
 title: 20.有效的括号：栈匹配
 date: 2026-10-01 09:23:29
-tags: [题解, LeetCode, 简单, 栈, 字符串]
+tags: [题解, LeetCode, 简单, 栈, 字符串, 括号匹配, 字符串匹配]
 categories: [题解, LeetCode]
 ---
 
@@ -72,12 +72,14 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：栈
 
-11111
+遍历字符串，遇到左括号则入栈，遇到右括号则看栈顶元素与之是否匹配（匹配则出栈不匹配直接返回`False`），若遍历完栈为空才返回`True`。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
++ 时间复杂度$O(len(s))$
++ 空间复杂度$O(len(s))$
+
+也可以给栈中插入一个非括号哨兵字符来避免判断栈中是否有元素。
 
 ### AC代码
 
@@ -109,6 +111,23 @@ public:
 };
 ```
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/01/LeetCode%200020.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/)哦~
+#### Python
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        st = ['']
+        pair = {
+            '{': '}',
+            '(': ')',
+            '[': ']'
+        }
+        for c in s:
+            if c in pair: st.append(c)
+            elif pair.get(st.pop(), '') != c: return False
+        return len(st) == 1
+```
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/166937873)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/01/LeetCode%200020.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
