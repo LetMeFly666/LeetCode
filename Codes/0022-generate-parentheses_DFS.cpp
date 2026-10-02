@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-02 16:38:09
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-02 16:53:01
+ * @LastEditTime: 2026-10-02 16:54:44
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -27,7 +27,7 @@ private:
     }
 public:
     vector<string> generateParenthesis(int n) {
-        string s(n, ' ');
+        string s(n * 2, ' ');
         dfs(s, 0, 0, n, n);
         return ans;
     }
