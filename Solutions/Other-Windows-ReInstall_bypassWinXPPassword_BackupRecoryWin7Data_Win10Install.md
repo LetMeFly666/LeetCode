@@ -39,10 +39,13 @@ hdiutil create -srcdevice /dev/rdisk4 -format UDZO -o /Users/tisfy/Downloads/usb
 
 ```bash
 diskutil list external
-diskutil info /dev/disk4  
+diskutil info /dev/disk4
 diskutil info /dev/disk4 | grep Protocol  # 确认USB是/dev/disk4
 diskutil unmountDisk /dev/disk4
-sudo asr restore --source /Users/tisfy/Downloads/usb-backup.dmg --target /dev/disk4 --erase
+
+hdiutil attach -nomount /Users/tisfy/Downloads/usb-backup.dmg
+diskutil list  # 新挂载了/dev/disk5，名字就是当时U盘的名字
+sudo asr restore --source /dev/disk5 --target /dev/disk4 --erase
 ```
 
 ## 绕过WinXP密码登录
