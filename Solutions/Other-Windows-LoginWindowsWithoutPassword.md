@@ -74,7 +74,8 @@ net user 用户名 新密码
 
 ## More
 
-为什么不在U盘重装系统时的CMD中修改用户密码呢？权限不够？CMD执行者非当前用户？
+1. 为什么不在U盘重装系统时的CMD中修改用户密码呢？权限不够？CMD执行者非当前用户？
+2. WinXP密码绕过实操请见[《两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10》](https://blog.letmefly.xyz/2026/10/03/Other-Windows-ReInstall_bypassWinXPPassword_BackupRecoryWin7Data_Win10Install/)。非本文方式，而是通过chntpw清除注册表SAM(Security Accounts Manager)数据库。
 
 > 原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)哦~
 > [https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/](https://blog.letmefly.xyz/2023/07/05/Other-Windows-LoginWindowsWithoutPassword/)
