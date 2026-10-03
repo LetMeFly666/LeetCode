@@ -45,6 +45,7 @@ diskutil unmountDisk /dev/disk4
 
 hdiutil attach -nomount /Users/tisfy/Downloads/usb-backup.dmg
 diskutil list  # 新挂载了/dev/disk5，名字就是当时U盘的名字
+hdiutil detach /dev/disk5
 sudo asr restore --source /dev/disk5 --target /dev/disk4 --erase
 ```
 
