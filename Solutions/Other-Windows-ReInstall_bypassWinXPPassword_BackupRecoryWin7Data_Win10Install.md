@@ -222,12 +222,13 @@ cat > /tmp/restore-dmg-sparse-write.py <<'PY'
 import base64
 import os
 import plistlib
+import re
 import struct
 import subprocess
+import sys
 
 DMG = "/Users/tisfy/Downloads/usb-backup.dmg"
-SOURCE = "/dev/rdisk5"
-TARGET = "/dev/rdisk4"
+TARGET = "/dev/disk4"
 SECTOR_SIZE = 512
 
 DATA_TYPES = {
@@ -237,6 +238,15 @@ DATA_TYPES = {
     0x80000006,  # bzip2
     0x80000007,  # LZFSE
 }
+
+
+def run(*args):
+    return subprocess.check_output(args, text=True)
+
+
+# ------------------------------------------------------------
+# 1. DMG 保持未挂载，先读取 blkx
+# ------------------------------------------------------------
 
 xml = subprocess.check_output(
     ["hdiutil", "udifderez", "-xml", DMG]
@@ -271,8 +281,7 @@ for entry in rf["blkx"]:
         if typ == 0x7FFFFFFE:
             continue
 
-        # zero / empty block，原镜像这里本来就是 0，
-        # 为了避免整盘写入，跳过。
+        # 空白块 / 0 填充块
         if typ in (0x00000000, 0x00000002):
             continue
 
@@ -290,57 +299,138 @@ chunks.sort()
 
 total = sum(count * SECTOR_SIZE for _, count in chunks)
 
-print(f"源镜像: {SOURCE}")
-print(f"目标磁盘: {TARGET}")
-print(f"待写入: {total:,} bytes ({total / 1024 / 1024:.2f} MiB)")
+print(f"DMG: {DMG}")
+print(f"目标: {TARGET}")
+print(f"实际写入: {total:,} bytes ({total / 1024 / 1024:.2f} MiB)")
 print(f"数据块: {len(chunks)}")
 print()
 
-src = os.open(SOURCE, os.O_RDONLY)
-dst = os.open(TARGET, os.O_RDWR)
+
+# ------------------------------------------------------------
+# 2. 卸载目标 U 盘
+# ------------------------------------------------------------
+
+subprocess.run(
+    ["diskutil", "unmountDisk", TARGET],
+    check=True
+)
+
+
+# ------------------------------------------------------------
+# 3. 挂载 DMG，但不挂载其中的文件系统
+# ------------------------------------------------------------
+
+attach_output = subprocess.check_output(
+    ["hdiutil", "attach", "-nomount", "-readonly", DMG],
+    text=True,
+    stderr=subprocess.STDOUT
+)
+
+print(attach_output)
+
+match = re.search(
+    r"^(/dev/disk\d+)\s+FDisk_partition_scheme\s*$",
+    attach_output,
+    re.MULTILINE
+)
+
+if not match:
+    raise RuntimeError(
+        "无法从 hdiutil attach 输出中找到磁盘设备"
+    )
+
+source_disk = match.group(1)
+source_raw = source_disk.replace("/dev/disk", "/dev/rdisk")
+
+print(f"源虚拟磁盘: {source_raw}")
+print(f"目标物理磁盘: {TARGET}")
+print()
+
+
+# ------------------------------------------------------------
+# 4. 最后一次人工确认
+# ------------------------------------------------------------
+
+print("即将进行稀疏恢复。")
+print()
+print(f"源 : {source_raw}  ← usb-backup.dmg")
+print(f"目标: {TARGET}  ← U 盘")
+print()
+print(f"将写入约 {total / 1024 / 1024:.2f} MiB，而不是整个 8 GB。")
+print()
+
+answer = input("确认目标确实是 U 盘并继续？输入 YES：")
+
+if answer != "YES":
+    print("已取消，没有写入 U 盘。")
+    subprocess.run(["hdiutil", "detach", source_disk])
+    sys.exit(1)
+
+
+# ------------------------------------------------------------
+# 5. 只写 blkx 中实际存在的数据区域
+# ------------------------------------------------------------
+
+src = os.open(source_raw, os.O_RDONLY)
+dst = os.open(
+    TARGET.replace("/dev/disk", "/dev/rdisk"),
+    os.O_RDWR
+)
 
 try:
     done = 0
 
     for index, (sector, sector_count) in enumerate(chunks, 1):
-        src_offset = sector * SECTOR_SIZE
+        offset = sector * SECTOR_SIZE
         remaining = sector_count * SECTOR_SIZE
 
-        os.lseek(src, src_offset, os.SEEK_SET)
-        os.lseek(dst, src_offset, os.SEEK_SET)
+        os.lseek(src, offset, os.SEEK_SET)
+        os.lseek(dst, offset, os.SEEK_SET)
 
         while remaining:
             size = min(1024 * 1024, remaining)
 
             data = os.read(src, size)
+
             if len(data) != size:
                 raise RuntimeError(
-                    f"读取失败: sector={sector}, "
+                    f"读取源失败: sector={sector}, "
                     f"expected={size}, got={len(data)}"
                 )
 
-            view = memoryview(data)
-            while view:
-                n = os.write(dst, view)
+            written = 0
+
+            while written < len(data):
+                n = os.write(dst, data[written:])
+
                 if n <= 0:
-                    raise RuntimeError("写入 U 盘失败")
-                view = view[n:]
+                    raise RuntimeError("写入目标 U 盘失败")
+
+                written += n
 
             remaining -= size
             done += size
 
         print(
-            f"[{index}/{len(chunks)}] "
-            f"已写入 {done / 1024 / 1024:.2f} MiB",
+            f"[{index:2d}/{len(chunks)}] "
+            f"{done / 1024 / 1024:7.2f} / "
+            f"{total / 1024 / 1024:.2f} MiB",
             flush=True
         )
 
     os.fsync(dst)
-    print("\n恢复完成")
+
+    print()
+    print("恢复完成。")
 
 finally:
     os.close(src)
     os.close(dst)
+
+    subprocess.run(
+        ["hdiutil", "detach", source_disk],
+        check=False
+    )
 PY
 ```
 
@@ -349,6 +439,98 @@ PY
 ```bash
 sudo python3 /tmp/restore-dmg-sparse-write.py
 rm /tmp/restore-dmg-sparse-write.py
+```
+
+运行结果：
+
+```text
+sudo python3 /tmp/restore-dmg-sparse-write.py
+hdiutil: WARNING: udifderez is deprecated
+DMG: /Users/tisfy/Downloads/usb-backup.dmg
+目标: /dev/disk4
+实际写入: 49,443,328 bytes (47.15 MiB)
+数据块: 59
+
+Unmount of all volumes on disk4 was successful
+预计CRC32 $168A17EE
+hdiutil: WARNING: 'hdiutil attach -nomount -readonly ...' is deprecated. Please use 'diskutil image attach --noMount --readOnly ...' instead.
+/dev/disk5          	FDisk_partition_scheme         	
+/dev/disk5s1        	DOS_FAT_32                     	
+
+源虚拟磁盘: /dev/rdisk5
+目标物理磁盘: /dev/disk4
+
+即将进行稀疏恢复。
+
+源 : /dev/rdisk5  ← usb-backup.dmg
+目标: /dev/disk4  ← U 盘
+
+将写入约 47.15 MiB，而不是整个 8 GB。
+
+确认目标确实是 U 盘并继续？输入 YES：YES
+[ 1/59]    0.00 / 47.15 MiB
+[ 2/59]    1.00 / 47.15 MiB
+[ 3/59]    2.00 / 47.15 MiB
+[ 4/59]    3.00 / 47.15 MiB
+[ 5/59]    4.00 / 47.15 MiB
+[ 6/59]    5.00 / 47.15 MiB
+[ 7/59]    6.00 / 47.15 MiB
+[ 8/59]    7.00 / 47.15 MiB
+[ 9/59]    8.00 / 47.15 MiB
+[10/59]    9.00 / 47.15 MiB
+[11/59]   10.00 / 47.15 MiB
+[12/59]   11.00 / 47.15 MiB
+[13/59]   12.00 / 47.15 MiB
+[14/59]   13.00 / 47.15 MiB
+[15/59]   14.00 / 47.15 MiB
+[16/59]   15.00 / 47.15 MiB
+[17/59]   16.00 / 47.15 MiB
+[18/59]   17.00 / 47.15 MiB
+[19/59]   17.09 / 47.15 MiB
+[20/59]   17.10 / 47.15 MiB
+[21/59]   17.10 / 47.15 MiB
+[22/59]   17.11 / 47.15 MiB
+[23/59]   18.11 / 47.15 MiB
+[24/59]   19.11 / 47.15 MiB
+[25/59]   20.11 / 47.15 MiB
+[26/59]   21.11 / 47.15 MiB
+[27/59]   22.11 / 47.15 MiB
+[28/59]   23.11 / 47.15 MiB
+[29/59]   24.11 / 47.15 MiB
+[30/59]   25.11 / 47.15 MiB
+[31/59]   26.11 / 47.15 MiB
+[32/59]   27.11 / 47.15 MiB
+[33/59]   28.11 / 47.15 MiB
+[34/59]   29.11 / 47.15 MiB
+[35/59]   30.11 / 47.15 MiB
+[36/59]   31.11 / 47.15 MiB
+[37/59]   32.11 / 47.15 MiB
+[38/59]   32.99 / 47.15 MiB
+[39/59]   33.99 / 47.15 MiB
+[40/59]   34.99 / 47.15 MiB
+[41/59]   35.99 / 47.15 MiB
+[42/59]   36.99 / 47.15 MiB
+[43/59]   37.99 / 47.15 MiB
+[44/59]   38.99 / 47.15 MiB
+[45/59]   39.99 / 47.15 MiB
+[46/59]   40.99 / 47.15 MiB
+[47/59]   41.99 / 47.15 MiB
+[48/59]   42.99 / 47.15 MiB
+[49/59]   43.09 / 47.15 MiB
+[50/59]   44.09 / 47.15 MiB
+[51/59]   45.09 / 47.15 MiB
+[52/59]   45.30 / 47.15 MiB
+[53/59]   45.31 / 47.15 MiB
+[54/59]   45.88 / 47.15 MiB
+[55/59]   46.53 / 47.15 MiB
+[56/59]   46.90 / 47.15 MiB
+[57/59]   46.95 / 47.15 MiB
+[58/59]   47.15 / 47.15 MiB
+[59/59]   47.15 / 47.15 MiB
+
+恢复完成。
+hdiutil: WARNING: 'hdiutil detach ...' is deprecated. Please use 'diskutil eject ...' instead.
+"disk5" ejected.
 ```
 
 ## 绕过WinXP密码登录
