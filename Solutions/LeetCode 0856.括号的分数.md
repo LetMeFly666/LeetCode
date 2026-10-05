@@ -286,5 +286,3 @@ impl Solution {
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127221656)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/10/09/LeetCode%200856.%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%88%86%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
-
-1 to rm
