@@ -150,20 +150,9 @@ public:
 #### C++
 
 ```cpp
-#ifdef _DEBUG
-#include "_[1,2]toVector.h"
-#endif
-
 /*
- * @Author: LetMeFly
- * @Date: 2026-10-05 16:38:39
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2026-10-05 16:39:47
  */
-#ifdef _DEBUG
-#include "_[1,2]toVector.h"
-#endif
-
 class Solution {
 public:
     int scoreOfParentheses(const string& s) {
@@ -229,16 +218,9 @@ class Solution {
 #### Go
 
 ```go
-package main
-
 /*
- * @Author: LetMeFly
- * @Date: 2026-10-05 16:38:39
- * @LastEditors: LetMeFly.xyz
  * @LastEditTime: 2026-10-05 16:42:41
  */
-package main
-
 func scoreOfParentheses(s string) (ans int) {
     layer := 0
     for i, c := range s {
