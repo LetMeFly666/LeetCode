@@ -147,9 +147,144 @@ public:
 + 时间复杂度$O(n)$，其中$n$是字符串长度。
 + 空间复杂度$O(1)$
 
-### AC代码
+#### C++
+
+```cpp
+#ifdef _DEBUG
+#include "_[1,2]toVector.h"
+#endif
+
+/*
+ * @Author: LetMeFly
+ * @Date: 2026-10-05 16:38:39
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-10-05 16:39:47
+ */
+#ifdef _DEBUG
+#include "_[1,2]toVector.h"
+#endif
+
+class Solution {
+public:
+    int scoreOfParentheses(const string& s) {
+        int ans = 0;
+        for (int i = 0, n = s.size(), layer = 0; i < n; i++) {
+            if (s[i] == '(') {
+                layer++;
+            } else {
+                layer--;
+                if (s[i - 1] == '(') {
+                    ans += 1 << layer;
+                }
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+LastEditTime: 2026-10-05 16:45:23
+'''
+class Solution:
+    def scoreOfParentheses(self, s: str) -> int:
+        ans = layer = 0
+        for i, c in enumerate(s):
+            if c == '(':
+                layer += 1
+            else:
+                layer -= 1
+                if s[i - 1] == '(':
+                    ans += 1 << layer
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-10-05 16:44:16
+ */
+class Solution {
+    public int scoreOfParentheses(String s) {
+        int ans = 0;
+        for (int i = 0, n = s.length(), layer = 0; i < n; i++) {
+            if (s.charAt(i) == '(') {
+                layer++;
+            } else {
+                layer--;
+                if (s.charAt(i - 1) == '(') {
+                    ans += 1 << layer;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+package main
+
+/*
+ * @Author: LetMeFly
+ * @Date: 2026-10-05 16:38:39
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-10-05 16:42:41
+ */
+package main
+
+func scoreOfParentheses(s string) (ans int) {
+    layer := 0
+    for i, c := range s {
+        if c == '(' {
+            layer++
+        } else {
+            layer--
+            if s[i - 1] == '(' {
+                ans += 1 << layer
+            }
+        }
+    }
+    return
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2026-10-05 16:47:57
+ */
+impl Solution {
+    pub fn score_of_parentheses(s: String) -> i32 {
+        let s = s.as_bytes();
+        let mut ans = 0;
+        let mut layer = 0;
+        for i in 0..s.len() {
+            if s[i] == b'(' {
+                layer += 1;
+            } else {
+                layer -= 1;
+                if s[i - 1] == b'(' {
+                    ans += 1 << layer;
+                }
+            }
+        }
+        ans
+    }
+}
+```
 
 ## End
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/09/LeetCode%200856.%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%88%86%E6%95%B0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127221656](https://letmefly.blog.csdn.net/article/details/127221656)
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127221656)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/10/09/LeetCode%200856.%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%88%86%E6%95%B0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+1 to rm
