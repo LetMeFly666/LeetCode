@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://web.letmefly.xyz/favicon.ico">
+  <link rel="icon" href="https://web.letmefly.xyz/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="&lt;a href=&#34;https://letmefly.xyz&#34;&gt;Tisfy&lt;/a&gt;">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10前言国庆回家邻居有两台旧电脑，一台是WinXP系统的台式机忘记了密码，一台是Win7系统的笔记本电脑完全无法进入系统。故寻求我来帮忙修复这两台电脑。 PE盘制作恰逢手中PE盘被某位格外讨人喜欢的同事征用，故重做一枚。 U盘数据备份临时找了一个U盘，借助手中Mac制作一个镜像到Mac上，待U盘重装的使命完成后再恢复。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10">
+<meta property="og:url" content="https://blog.letmefly.xyz/2026/10/03/Other-Windows-ReInstall_bypassWinXPPassword_BackupRecoryWin7Data_Win10Install/index.html">
+<meta property="og:site_name" content="Tisfy的LeetCode题解等博客">
+<meta property="og:description" content="两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10前言国庆回家邻居有两台旧电脑，一台是WinXP系统的台式机忘记了密码，一台是Win7系统的笔记本电脑完全无法进入系统。故寻求我来帮忙修复这两台电脑。 PE盘制作恰逢手中PE盘被某位格外讨人喜欢的同事征用，故重做一枚。 U盘数据备份临时找了一个U盘，借助手中Mac制作一个镜像到Mac上，待U盘重装的使命完成后再恢复。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-10-03T09:28:33.000Z">
+<meta property="article:modified_time" content="2026-10-05T03:29:40.000Z">
+<meta property="article:author" content="&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;letmefly.xyz&quot;&gt;Tisfy&lt;&#x2F;a&gt;">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="其他">
+<meta property="article:tag" content="系统恢复">
+<meta property="article:tag" content="重装">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10 - Tisfy的LeetCode题解等博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.letmefly.xyz","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":25,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+  <script src="https://web.letmefly.xyz/Links/Common.js"></script>
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LetLeet Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+        <li class="nav-item" id="letmefly-goto-arknights">
+          <a class="nav-link" target="_self" href="javascript:;" aria-label="GotoTheme Arknights" title="切换为明日方舟主题">
+            <i class="iconfont icon-codepen-fill"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-10-03 17:28" pubdate>
+          2026年10月3日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          23k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          192 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="两台旧电脑修复-——-绕过WinXP密码登录、备份和恢复Win7数据、安装Win10"><a href="#两台旧电脑修复-——-绕过WinXP密码登录、备份和恢复Win7数据、安装Win10" class="headerlink" title="两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10"></a>两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>国庆回家邻居有两台旧电脑，一台是WinXP系统的台式机忘记了密码，一台是Win7系统的笔记本电脑完全无法进入系统。故寻求我来帮忙修复这两台电脑。</p>
+<h2 id="PE盘制作"><a href="#PE盘制作" class="headerlink" title="PE盘制作"></a>PE盘制作</h2><p>恰逢手中PE盘被某位格外讨人喜欢的同事征用，故重做一枚。</p>
+<h3 id="U盘数据备份"><a href="#U盘数据备份" class="headerlink" title="U盘数据备份"></a>U盘数据备份</h3><p>临时找了一个U盘，借助手中Mac制作一个镜像到Mac上，待U盘重装的使命完成后再恢复。</p>
+<p>第一次使用了<code>dd</code>命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">dd</span> <span class="hljs-keyword">if</span>=/dev/rdisk4 of=~/Downloads/usb-backup.img bs=4m<br></code></pre></td></tr></table></figure>
+
+<p>结果发现U盘里面只有几十M的文件，而这个命令需要制作U盘总容量等大的DMG。故改用了<code>hdiutil</code>命令只保存已使用内容并带上一部分的压缩算法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hdiutil create -srcdevice /dev/rdisk4 -format UDZO -o /Users/tisfy/Downloads/usb-backup.dmg<br></code></pre></td></tr></table></figure>
+
+<h3 id="启动盘制作"><a href="#启动盘制作" class="headerlink" title="启动盘制作"></a>启动盘制作</h3><p>Mac上制作PE盘，使用了Ventoy，使用第三方的<code>fcjr/ventoy2disk-cli</code>安装到U盘上。</p>
+<p>Ventoy启动盘占据U盘空间很小，剩余空间则直接将ISO文件拷贝到根目录上即可自动识别。但是Ventoy官方只支持Windows和Linux系统，所以可以使用第三方的<a target="_blank" rel="noopener" href="https://github.com/fcjr/ventoy-mac">fcjr&#x2F;ventoy-mac</a>在Mac上制作Ventoy启动盘。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install --cask fcjr/fcjr/ventoy2disk-cli<br>diskutil list external  <span class="hljs-comment"># 确认USB是/dev/disk4</span><br><span class="hljs-built_in">sudo</span> ventoy2disk -i /dev/disk4<br></code></pre></td></tr></table></figure>
+
+<p>结果<code>ventoy2disk</code>下载最新版的Ventoy 1.1.17很慢，故手动从<a target="_blank" rel="noopener" href="https://github.com/ventoy/Ventoy/releases">Ventoy Releases</a>下载了最新版<a target="_blank" rel="noopener" href="https://github.com/ventoy/Ventoy/releases/download/v1.1.17/ventoy-1.1.17-linux.tar.gz">ventoy-1.1.17-linux.tar.gz</a>，解压得到了<code>ventoy-1.1.17</code>文件夹，之后指定ventoy的位置并制作启动盘：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> ventoy2disk -i /dev/disk4 --pack ~/Downloads/ventoy-1.1.17<br></code></pre></td></tr></table></figure>
+
+<p>stdout如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs bash">Password:<br><br>**********************************************<br>      ventoy2disk <span class="hljs-keyword">for</span> macOS  (0.1.2)<br>      Ventoy: https://www.ventoy.net<br>**********************************************<br><br>Disk : /dev/disk4<br>Size : 127 GiB<br>Style: MBR<br><br>Ventoy version: 1.1.17<br>Secure boot support: YES<br><br>WARNING: All data on /dev/disk4 will be lost!<br>Continue? (y/n) y<br><br>WARNING: All data on /dev/disk4 will be lost!<br>Double-check. Continue? (y/n) y<br>Clearing old partition data ...<br>Formatting partition 1 (exFAT, label <span class="hljs-string">&#x27;Ventoy&#x27;</span>) ...<br>Writing EFI partition image ...<br>Writing boot image ...<br>Writing partition table ...<br>Syncing ...<br><br>Install Ventoy 1.1.17 to /dev/disk4 successfully finished.<br>You can now copy ISO files to the <span class="hljs-string">&#x27;Ventoy&#x27;</span> volume once macOS remounts it.<br></code></pre></td></tr></table></figure>
+
+<p>之后把要安装的ios镜像拷贝到这个叫<code>Ventoy</code>的U盘根目录上就好了。</p>
+<p>我一共下载拷贝了三个镜像，下文会详细说明来源和用途：</p>
+<ol>
+<li>cd140201.iso</li>
+<li>WePE_64_V2.3.iso</li>
+<li>Win10_22H2_Chinese_Simplified_x64v1.iso</li>
+</ol>
+<h3 id="U盘数据还原"><a href="#U盘数据还原" class="headerlink" title="U盘数据还原"></a>U盘数据还原</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">diskutil list external<br>diskutil info /dev/disk4<br>diskutil info /dev/disk4 | grep Protocol  <span class="hljs-comment"># 确认USB是/dev/disk4</span><br>diskutil unmountDisk /dev/disk4<br></code></pre></td></tr></table></figure>
+
+<p>看下要还原多少数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; /tmp/restore-dmg-sparse.py &lt;&lt;<span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-comment">#!/usr/bin/env python3</span><br><br>import <span class="hljs-built_in">base64</span><br>import plistlib<br>import struct<br>import subprocess<br>import sys<br><br>DMG = <span class="hljs-string">&quot;/Users/tisfy/Downloads/usb-backup.dmg&quot;</span><br>SECTOR_SIZE = 512<br><br>DATA_TYPES = &#123;<br>    0x00000001,  <span class="hljs-comment"># raw</span><br>    0x80000004,  <span class="hljs-comment"># ADC</span><br>    0x80000005,  <span class="hljs-comment"># zlib / UDZO</span><br>    0x80000006,  <span class="hljs-comment"># bzip2</span><br>    0x80000007,  <span class="hljs-comment"># LZFSE</span><br>&#125;<br><br>xml = subprocess.check_output(<br>    [<span class="hljs-string">&quot;hdiutil&quot;</span>, <span class="hljs-string">&quot;udifderez&quot;</span>, <span class="hljs-string">&quot;-xml&quot;</span>, DMG]<br>)<br><br>plist = plistlib.loads(xml)<br>rf = plist.get(<span class="hljs-string">&quot;resource-fork&quot;</span>, plist)<br>blkx_list = rf[<span class="hljs-string">&quot;blkx&quot;</span>]<br><br>chunks = []<br><br><span class="hljs-keyword">for</span> entry <span class="hljs-keyword">in</span> blkx_list:<br>    mish = entry[<span class="hljs-string">&quot;Data&quot;</span>]<br><br>    <span class="hljs-keyword">if</span> isinstance(mish, str):<br>        mish = base64.b64decode(mish)<br><br>    <span class="hljs-keyword">if</span> mish[:4] != b<span class="hljs-string">&quot;mish&quot;</span>:<br>        raise RuntimeError(<span class="hljs-string">&quot;发现无效的 BLKX/MISH 数据&quot;</span>)<br><br>    image_sector = struct.unpack_from(<span class="hljs-string">&quot;&gt;Q&quot;</span>, mish, 8)[0]<br>    count = struct.unpack_from(<span class="hljs-string">&quot;&gt;I&quot;</span>, mish, 200)[0]<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(count):<br>        off = 204 + i * 40<br><br>        typ, comment, sector, sector_count, compressed_offset, compressed_length = \<br>            struct.unpack_from(<span class="hljs-string">&quot;&gt;IIQQQQ&quot;</span>, mish, off)<br><br>        <span class="hljs-keyword">if</span> typ == 0xFFFFFFFF:<br>            <span class="hljs-built_in">break</span><br><br>        <span class="hljs-keyword">if</span> typ == 0x7FFFFFFE:       <span class="hljs-comment"># comment</span><br>            <span class="hljs-built_in">continue</span><br><br>        <span class="hljs-keyword">if</span> typ <span class="hljs-keyword">in</span> (0x00000000, 0x00000002):<br>            <span class="hljs-comment"># zero/free run，不需要从镜像读取</span><br>            <span class="hljs-built_in">continue</span><br><br>        <span class="hljs-keyword">if</span> typ not <span class="hljs-keyword">in</span> DATA_TYPES:<br>            raise RuntimeError(<br>                f<span class="hljs-string">&quot;遇到未处理的 chunk 类型: 0x&#123;typ:08x&#125;&quot;</span><br>            )<br><br>        absolute_sector = image_sector + sector<br><br>        chunks.append((<br>            absolute_sector,<br>            sector_count,<br>            typ,<br>        ))<br><br>chunks.sort()<br><br>total = <span class="hljs-built_in">sum</span>(count * SECTOR_SIZE <span class="hljs-keyword">for</span> _, count, _ <span class="hljs-keyword">in</span> chunks)<br><br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;需要写入的实际数据: &#123;total:,&#125; bytes&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;约 &#123;total / 1024 / 1024:.2f&#125; MiB&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;数据块数量: &#123;len(chunks)&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><br><span class="hljs-keyword">for</span> sector, count, typ <span class="hljs-keyword">in</span> chunks:<br>    <span class="hljs-built_in">print</span>(<br>        f<span class="hljs-string">&quot;sector=&#123;sector:&lt;10&#125; &quot;</span><br>        f<span class="hljs-string">&quot;count=&#123;count:&lt;10&#125; &quot;</span><br>        f<span class="hljs-string">&quot;bytes=&#123;count * SECTOR_SIZE:&lt;12&#125; &quot;</span><br>        f<span class="hljs-string">&quot;type=0x&#123;typ:08x&#125;&quot;</span><br>    )<br>PY<br><br>python3 /tmp/restore-dmg-sparse.py<br><span class="hljs-built_in">rm</span> /tmp/restore-dmg-sparse.py<br></code></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs text">hdiutil: WARNING: udifderez is deprecated<br>需要写入的实际数据: 49,443,328 bytes<br>约 47.15 MiB<br>数据块数量: 59<br><br>sector=0          count=1          bytes=512          type=0x80000005<br>sector=32         count=2048       bytes=1048576      type=0x80000005<br>sector=2080       count=2048       bytes=1048576      type=0x80000005<br>sector=4128       count=2048       bytes=1048576      type=0x80000005<br>sector=6176       count=2048       bytes=1048576      type=0x80000005<br>sector=8224       count=2048       bytes=1048576      type=0x80000005<br>sector=10272      count=2048       bytes=1048576      type=0x80000005<br>sector=12320      count=2048       bytes=1048576      type=0x80000005<br>sector=14368      count=2048       bytes=1048576      type=0x80000005<br>sector=16416      count=2048       bytes=1048576      type=0x80000005<br>sector=18464      count=2048       bytes=1048576      type=0x80000005<br>sector=20512      count=2048       bytes=1048576      type=0x80000005<br>sector=22560      count=2048       bytes=1048576      type=0x80000005<br>sector=24608      count=2048       bytes=1048576      type=0x80000005<br>sector=26656      count=2048       bytes=1048576      type=0x80000005<br>sector=28704      count=2048       bytes=1048576      type=0x80000005<br>sector=30752      count=2048       bytes=1048576      type=0x80000005<br>sector=32800      count=2048       bytes=1048576      type=0x80000005<br>sector=34848      count=192        bytes=98304        type=0x80000005<br>sector=754272     count=8          bytes=4096         type=0x80000005<br>sector=1122872    count=8          bytes=4096         type=0x80000005<br>sector=4749208    count=8          bytes=4096         type=0x80000005<br>sector=4773288    count=2048       bytes=1048576      type=0x80000005<br>sector=4775336    count=2048       bytes=1048576      type=0x00000001<br>sector=4777384    count=2048       bytes=1048576      type=0x00000001<br>sector=4779432    count=2048       bytes=1048576      type=0x00000001<br>sector=4781480    count=2048       bytes=1048576      type=0x00000001<br>sector=4783528    count=2048       bytes=1048576      type=0x00000001<br>sector=4785576    count=2048       bytes=1048576      type=0x00000001<br>sector=4787624    count=2048       bytes=1048576      type=0x00000001<br>sector=4789672    count=2048       bytes=1048576      type=0x00000001<br>sector=4791720    count=2048       bytes=1048576      type=0x00000001<br>sector=4793768    count=2048       bytes=1048576      type=0x00000001<br>sector=4795816    count=2048       bytes=1048576      type=0x00000001<br>sector=4797864    count=2048       bytes=1048576      type=0x00000001<br>sector=4799912    count=2048       bytes=1048576      type=0x00000001<br>sector=4801960    count=2048       bytes=1048576      type=0x80000005<br>sector=4804008    count=1808       bytes=925696       type=0x80000005<br>sector=4810896    count=2048       bytes=1048576      type=0x00000001<br>sector=4812944    count=2048       bytes=1048576      type=0x80000005<br>sector=4814992    count=2048       bytes=1048576      type=0x80000005<br>sector=4817040    count=2048       bytes=1048576      type=0x00000001<br>sector=4819088    count=2048       bytes=1048576      type=0x00000001<br>sector=4821136    count=2048       bytes=1048576      type=0x00000001<br>sector=4823184    count=2048       bytes=1048576      type=0x00000001<br>sector=4825232    count=2048       bytes=1048576      type=0x00000001<br>sector=4827280    count=2048       bytes=1048576      type=0x00000001<br>sector=4829328    count=2048       bytes=1048576      type=0x00000001<br>sector=4831376    count=208        bytes=106496       type=0x80000005<br>sector=9992088    count=2048       bytes=1048576      type=0x80000005<br>sector=9994136    count=2048       bytes=1048576      type=0x80000005<br>sector=9996184    count=424        bytes=217088       type=0x80000005<br>sector=10007328   count=24         bytes=12288        type=0x80000005<br>sector=10011120   count=1168       bytes=598016       type=0x80000005<br>sector=10023688   count=1336       bytes=684032       type=0x80000005<br>sector=10029416   count=744        bytes=380928       type=0x80000005<br>sector=10046472   count=120        bytes=61440        type=0x80000005<br>sector=10617384   count=400        bytes=204800       type=0x80000005<br>sector=11040712   count=8          bytes=4096         type=0x80000005<br></code></pre></td></tr></table></figure>
+
+<p>写入数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &gt; /tmp/restore-dmg-sparse-write.py &lt;&lt;<span class="hljs-string">&#x27;PY&#x27;</span><br><span class="hljs-comment">#!/usr/bin/env python3</span><br><br>import <span class="hljs-built_in">base64</span><br>import os<br>import plistlib<br>import re<br>import struct<br>import subprocess<br>import sys<br><br>DMG = <span class="hljs-string">&quot;/Users/tisfy/Downloads/usb-backup.dmg&quot;</span><br>TARGET = <span class="hljs-string">&quot;/dev/disk4&quot;</span><br>SECTOR_SIZE = 512<br><br>DATA_TYPES = &#123;<br>    0x00000001,  <span class="hljs-comment"># raw</span><br>    0x80000004,  <span class="hljs-comment"># ADC</span><br>    0x80000005,  <span class="hljs-comment"># zlib</span><br>    0x80000006,  <span class="hljs-comment"># bzip2</span><br>    0x80000007,  <span class="hljs-comment"># LZFSE</span><br>&#125;<br><br><br>def run(*args):<br>    <span class="hljs-built_in">return</span> subprocess.check_output(args, text=True)<br><br><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><span class="hljs-comment"># 1. DMG 保持未挂载，先读取 blkx</span><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><br>xml = subprocess.check_output(<br>    [<span class="hljs-string">&quot;hdiutil&quot;</span>, <span class="hljs-string">&quot;udifderez&quot;</span>, <span class="hljs-string">&quot;-xml&quot;</span>, DMG]<br>)<br><br>plist = plistlib.loads(xml)<br>rf = plist.get(<span class="hljs-string">&quot;resource-fork&quot;</span>, plist)<br><br>chunks = []<br><br><span class="hljs-keyword">for</span> entry <span class="hljs-keyword">in</span> rf[<span class="hljs-string">&quot;blkx&quot;</span>]:<br>    mish = entry[<span class="hljs-string">&quot;Data&quot;</span>]<br><br>    <span class="hljs-keyword">if</span> isinstance(mish, str):<br>        mish = base64.b64decode(mish)<br><br>    <span class="hljs-keyword">if</span> mish[:4] != b<span class="hljs-string">&quot;mish&quot;</span>:<br>        raise RuntimeError(<span class="hljs-string">&quot;Invalid MISH block map&quot;</span>)<br><br>    image_sector = struct.unpack_from(<span class="hljs-string">&quot;&gt;Q&quot;</span>, mish, 8)[0]<br>    count = struct.unpack_from(<span class="hljs-string">&quot;&gt;I&quot;</span>, mish, 200)[0]<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(count):<br>        off = 204 + i * 40<br><br>        typ, comment, sector, sector_count, _, _ = \<br>            struct.unpack_from(<span class="hljs-string">&quot;&gt;IIQQQQ&quot;</span>, mish, off)<br><br>        <span class="hljs-keyword">if</span> typ == 0xFFFFFFFF:<br>            <span class="hljs-built_in">break</span><br><br>        <span class="hljs-keyword">if</span> typ == 0x7FFFFFFE:<br>            <span class="hljs-built_in">continue</span><br><br>        <span class="hljs-comment"># 空白块 / 0 填充块</span><br>        <span class="hljs-keyword">if</span> typ <span class="hljs-keyword">in</span> (0x00000000, 0x00000002):<br>            <span class="hljs-built_in">continue</span><br><br>        <span class="hljs-keyword">if</span> typ not <span class="hljs-keyword">in</span> DATA_TYPES:<br>            raise RuntimeError(<br>                f<span class="hljs-string">&quot;Unsupported chunk type: 0x&#123;typ:08x&#125;&quot;</span><br>            )<br><br>        chunks.append((<br>            image_sector + sector,<br>            sector_count<br>        ))<br><br>chunks.sort()<br><br>total = <span class="hljs-built_in">sum</span>(count * SECTOR_SIZE <span class="hljs-keyword">for</span> _, count <span class="hljs-keyword">in</span> chunks)<br><br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;DMG: &#123;DMG&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;目标: &#123;TARGET&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;实际写入: &#123;total:,&#125; bytes (&#123;total / 1024 / 1024:.2f&#125; MiB)&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;数据块: &#123;len(chunks)&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><br><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><span class="hljs-comment"># 2. 卸载目标 U 盘</span><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><br>subprocess.run(<br>    [<span class="hljs-string">&quot;diskutil&quot;</span>, <span class="hljs-string">&quot;unmountDisk&quot;</span>, TARGET],<br>    check=True<br>)<br><br><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><span class="hljs-comment"># 3. 挂载 DMG，但不挂载其中的文件系统</span><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><br>attach_output = subprocess.check_output(<br>    [<span class="hljs-string">&quot;hdiutil&quot;</span>, <span class="hljs-string">&quot;attach&quot;</span>, <span class="hljs-string">&quot;-nomount&quot;</span>, <span class="hljs-string">&quot;-readonly&quot;</span>, DMG],<br>    text=True,<br>    stderr=subprocess.STDOUT<br>)<br><br><span class="hljs-built_in">print</span>(attach_output)<br><br>match = re.search(<br>    r<span class="hljs-string">&quot;^(/dev/disk\d+)\s+FDisk_partition_scheme\s*$&quot;</span>,<br>    attach_output,<br>    re.MULTILINE<br>)<br><br><span class="hljs-keyword">if</span> not match:<br>    raise RuntimeError(<br>        <span class="hljs-string">&quot;无法从 hdiutil attach 输出中找到磁盘设备&quot;</span><br>    )<br><br>source_disk = match.group(1)<br>source_raw = source_disk.replace(<span class="hljs-string">&quot;/dev/disk&quot;</span>, <span class="hljs-string">&quot;/dev/rdisk&quot;</span>)<br><br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;源虚拟磁盘: &#123;source_raw&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;目标物理磁盘: &#123;TARGET&#125;&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><br><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><span class="hljs-comment"># 4. 最后一次人工确认</span><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;即将进行稀疏恢复。&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;源 : &#123;source_raw&#125;  ← usb-backup.dmg&quot;</span>)<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;目标: &#123;TARGET&#125;  ← U 盘&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;将写入约 &#123;total / 1024 / 1024:.2f&#125; MiB，而不是整个 8 GB。&quot;</span>)<br><span class="hljs-built_in">print</span>()<br><br>answer = input(<span class="hljs-string">&quot;确认目标确实是 U 盘并继续？输入 YES：&quot;</span>)<br><br><span class="hljs-keyword">if</span> answer != <span class="hljs-string">&quot;YES&quot;</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已取消，没有写入 U 盘。&quot;</span>)<br>    subprocess.run([<span class="hljs-string">&quot;hdiutil&quot;</span>, <span class="hljs-string">&quot;detach&quot;</span>, source_disk])<br>    sys.exit(1)<br><br><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><span class="hljs-comment"># 5. 只写 blkx 中实际存在的数据区域</span><br><span class="hljs-comment"># ------------------------------------------------------------</span><br><br>src = os.open(source_raw, os.O_RDONLY)<br>dst = os.open(<br>    TARGET.replace(<span class="hljs-string">&quot;/dev/disk&quot;</span>, <span class="hljs-string">&quot;/dev/rdisk&quot;</span>),<br>    os.O_RDWR<br>)<br><br>try:<br>    <span class="hljs-keyword">done</span> = 0<br><br>    <span class="hljs-keyword">for</span> index, (sector, sector_count) <span class="hljs-keyword">in</span> enumerate(chunks, 1):<br>        offset = sector * SECTOR_SIZE<br>        remaining = sector_count * SECTOR_SIZE<br><br>        os.lseek(src, offset, os.SEEK_SET)<br>        os.lseek(dst, offset, os.SEEK_SET)<br><br>        <span class="hljs-keyword">while</span> remaining:<br>            size = min(1024 * 1024, remaining)<br><br>            data = os.read(src, size)<br><br>            <span class="hljs-keyword">if</span> len(data) != size:<br>                raise RuntimeError(<br>                    f<span class="hljs-string">&quot;读取源失败: sector=&#123;sector&#125;, &quot;</span><br>                    f<span class="hljs-string">&quot;expected=&#123;size&#125;, got=&#123;len(data)&#125;&quot;</span><br>                )<br><br>            written = 0<br><br>            <span class="hljs-keyword">while</span> written &lt; len(data):<br>                n = os.write(dst, data[written:])<br><br>                <span class="hljs-keyword">if</span> n &lt;= 0:<br>                    raise RuntimeError(<span class="hljs-string">&quot;写入目标 U 盘失败&quot;</span>)<br><br>                written += n<br><br>            remaining -= size<br>            <span class="hljs-keyword">done</span> += size<br><br>        <span class="hljs-built_in">print</span>(<br>            f<span class="hljs-string">&quot;[&#123;index:2d&#125;/&#123;len(chunks)&#125;] &quot;</span><br>            f<span class="hljs-string">&quot;&#123;done / 1024 / 1024:7.2f&#125; / &quot;</span><br>            f<span class="hljs-string">&quot;&#123;total / 1024 / 1024:.2f&#125; MiB&quot;</span>,<br>            flush=True<br>        )<br><br>    os.fsync(dst)<br><br>    <span class="hljs-built_in">print</span>()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;恢复完成。&quot;</span>)<br><br>finally:<br>    os.close(src)<br>    os.close(dst)<br><br>    subprocess.run(<br>        [<span class="hljs-string">&quot;hdiutil&quot;</span>, <span class="hljs-string">&quot;detach&quot;</span>, source_disk],<br>        check=False<br>    )<br>PY<br></code></pre></td></tr></table></figure>
+
+<p>再确认一次<code>diskutil info /dev/disk4 | grep Protocol</code>，确认是目标USB，运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> python3 /tmp/restore-dmg-sparse-write.py<br><span class="hljs-built_in">rm</span> /tmp/restore-dmg-sparse-write.py<br></code></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs text">sudo python3 /tmp/restore-dmg-sparse-write.py<br>hdiutil: WARNING: udifderez is deprecated<br>DMG: /Users/tisfy/Downloads/usb-backup.dmg<br>目标: /dev/disk4<br>实际写入: 49,443,328 bytes (47.15 MiB)<br>数据块: 59<br><br>Unmount of all volumes on disk4 was successful<br>预计CRC32 $168A17EE<br>hdiutil: WARNING: &#x27;hdiutil attach -nomount -readonly ...&#x27; is deprecated. Please use &#x27;diskutil image attach --noMount --readOnly ...&#x27; instead.<br>/dev/disk5          	FDisk_partition_scheme         	<br>/dev/disk5s1        	DOS_FAT_32                     	<br><br>源虚拟磁盘: /dev/rdisk5<br>目标物理磁盘: /dev/disk4<br><br>即将进行稀疏恢复。<br><br>源 : /dev/rdisk5  ← usb-backup.dmg<br>目标: /dev/disk4  ← U 盘<br><br>将写入约 47.15 MiB，而不是整个 8 GB。<br><br>确认目标确实是 U 盘并继续？输入 YES：YES<br>[ 1/59]    0.00 / 47.15 MiB<br>[ 2/59]    1.00 / 47.15 MiB<br>[ 3/59]    2.00 / 47.15 MiB<br>[ 4/59]    3.00 / 47.15 MiB<br>[ 5/59]    4.00 / 47.15 MiB<br>[ 6/59]    5.00 / 47.15 MiB<br>[ 7/59]    6.00 / 47.15 MiB<br>[ 8/59]    7.00 / 47.15 MiB<br>[ 9/59]    8.00 / 47.15 MiB<br>[10/59]    9.00 / 47.15 MiB<br>[11/59]   10.00 / 47.15 MiB<br>[12/59]   11.00 / 47.15 MiB<br>[13/59]   12.00 / 47.15 MiB<br>[14/59]   13.00 / 47.15 MiB<br>[15/59]   14.00 / 47.15 MiB<br>[16/59]   15.00 / 47.15 MiB<br>[17/59]   16.00 / 47.15 MiB<br>[18/59]   17.00 / 47.15 MiB<br>[19/59]   17.09 / 47.15 MiB<br>[20/59]   17.10 / 47.15 MiB<br>[21/59]   17.10 / 47.15 MiB<br>[22/59]   17.11 / 47.15 MiB<br>[23/59]   18.11 / 47.15 MiB<br>[24/59]   19.11 / 47.15 MiB<br>[25/59]   20.11 / 47.15 MiB<br>[26/59]   21.11 / 47.15 MiB<br>[27/59]   22.11 / 47.15 MiB<br>[28/59]   23.11 / 47.15 MiB<br>[29/59]   24.11 / 47.15 MiB<br>[30/59]   25.11 / 47.15 MiB<br>[31/59]   26.11 / 47.15 MiB<br>[32/59]   27.11 / 47.15 MiB<br>[33/59]   28.11 / 47.15 MiB<br>[34/59]   29.11 / 47.15 MiB<br>[35/59]   30.11 / 47.15 MiB<br>[36/59]   31.11 / 47.15 MiB<br>[37/59]   32.11 / 47.15 MiB<br>[38/59]   32.99 / 47.15 MiB<br>[39/59]   33.99 / 47.15 MiB<br>[40/59]   34.99 / 47.15 MiB<br>[41/59]   35.99 / 47.15 MiB<br>[42/59]   36.99 / 47.15 MiB<br>[43/59]   37.99 / 47.15 MiB<br>[44/59]   38.99 / 47.15 MiB<br>[45/59]   39.99 / 47.15 MiB<br>[46/59]   40.99 / 47.15 MiB<br>[47/59]   41.99 / 47.15 MiB<br>[48/59]   42.99 / 47.15 MiB<br>[49/59]   43.09 / 47.15 MiB<br>[50/59]   44.09 / 47.15 MiB<br>[51/59]   45.09 / 47.15 MiB<br>[52/59]   45.30 / 47.15 MiB<br>[53/59]   45.31 / 47.15 MiB<br>[54/59]   45.88 / 47.15 MiB<br>[55/59]   46.53 / 47.15 MiB<br>[56/59]   46.90 / 47.15 MiB<br>[57/59]   46.95 / 47.15 MiB<br>[58/59]   47.15 / 47.15 MiB<br>[59/59]   47.15 / 47.15 MiB<br><br>恢复完成。<br>hdiutil: WARNING: &#x27;hdiutil detach ...&#x27; is deprecated. Please use &#x27;diskutil eject ...&#x27; instead.<br>&quot;disk5&quot; ejected.<br></code></pre></td></tr></table></figure>
+
+<p>这样相当于是备份和恢复U盘都（几乎）只读写了实际使用的数据，而不是整个U盘的容量。</p>
+<p>只是有些曲折罢了。</p>
+<h2 id="绕过WinXP密码登录"><a href="#绕过WinXP密码登录" class="headerlink" title="绕过WinXP密码登录"></a>绕过WinXP密码登录</h2><p>邻居家WinXP系统的古早台式机，多年未使用，忘记了密码无法登录。尝试一些常见密码无果，尝试了<code>Ctrl+Alt+Del</code>两次进入经典登录界面仍然无法登录。</p>
+<p>在<a target="_blank" rel="noopener" href="http://www.chntpw.com/">Offline NT Password &amp; Registry Editor（chntpw）官网</a><a target="_blank" rel="noopener" href="http://www.chntpw.com/download/">下载</a>了<a target="_blank" rel="noopener" href="http://pogostick.net/~pnh/ntpasswd/cd140201.zip">cd140201.zip</a>，解压得到了一个17.9MB的ISO文件<code>cd140201.iso</code>，拷贝到Ventoy启动盘上。</p>
+<p>Windows XP 的本地账户信息主要存在 <code>C:\Windows\System32\config\SAM</code>，SAM全称是<code>Security Accounts Manager</code>，它不是一个普通的文本文件，而是 Windows Registry hive（注册表配置单元）。里面保存了本地账户相关的数据，包括账户标识、密码验证所需的信息、账户状态等。</p>
+<p>而<code>cd140201.iso</code>自己启动的是一个非常小的 Linux 环境，包含了 访问<code>NTFS</code>文件系统 和 操作<code>SAM</code>文件 的必要组件。Linux 可以直接把 NTFS 分区挂载起来，然后读取这个文件；chntpw 再按照 Windows Registry Hive 的格式解析它，获取账户信息，并清除掉密码。</p>
+<p>具体操作过程如下：</p>
+<p>插入U盘并选择U盘启动后，Ventoy 会先显示自身菜单。选择 <code>cd140201.iso</code> 后，进入该镜像的引导菜单。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dart">┌─────────────────────────────────────────────────────┐<br>│              <span class="hljs-title class_">Ventoy</span> 引导菜单                         │<br>│─────────────────────────────────────────────────────│<br>│  <span class="hljs-title class_">Boot</span> <span class="hljs-keyword">in</span> normal mode          ← 选择此项             │<br>│  <span class="hljs-title class_">Boot</span> <span class="hljs-keyword">in</span> grub2 mode                                  │<br>│  <span class="hljs-title class_">Boot</span> <span class="hljs-keyword">in</span> memdisk mode                                │<br>│  <span class="hljs-title class_">File</span> checksum                                       │<br>│  <span class="hljs-title class_">Return</span> to previous menu                             │<br>│─────────────────────────────────────────────────────│<br>│ <span class="hljs-number">1.1</span>.<span class="hljs-number">17</span> BIOS    L:<span class="hljs-title class_">Language</span>  <span class="hljs-title class_">F1</span>:<span class="hljs-title class_">Help</span>  <span class="hljs-title class_">F2</span>:<span class="hljs-title class_">Browse</span>       │<br>│ <span class="hljs-title class_">F3</span>:<span class="hljs-title class_">TreeView</span>  <span class="hljs-title class_">F4</span>:<span class="hljs-title class_">Localboot</span>  <span class="hljs-title class_">F5</span>:<span class="hljs-title class_">Tools</span>  <span class="hljs-title class_">F6</span>:<span class="hljs-title class_">ExMenu</span>      │<br>└─────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>选择 <code>Boot in normal mode</code> 正常启动即可。进入 chntpw 的引导提示符后，直接按回车使用默认参数启动：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs dart">┌─────────────────────────────────────────────────────┐<br>│  <span class="hljs-title class_">Windows</span> <span class="hljs-title class_">Reset</span> <span class="hljs-title class_">Password</span> / <span class="hljs-title class_">Registry</span> <span class="hljs-title class_">Editor</span>            │<br>│  (c) <span class="hljs-number">1998</span>-<span class="hljs-number">2014</span> <span class="hljs-title class_">Petter</span> <span class="hljs-title class_">Nordahl</span>-<span class="hljs-title class_">Hagen</span>                 │<br>│─────────────────────────────────────────────────────│<br>│  DISCLAIMER: THIS SOFTWARE COMES WITH ABSOLUTELY    │<br>│  NO WARRANTY...                                      │<br>│─────────────────────────────────────────────────────│<br>│  CD build date: <span class="hljs-title class_">Sat</span> <span class="hljs-title class_">Feb</span> <span class="hljs-number">1</span> <span class="hljs-number">17</span>:<span class="hljs-number">35</span>:<span class="hljs-number">02</span> CET <span class="hljs-number">2014</span>         │<br>│─────────────────────────────────────────────────────│<br>│  <span class="hljs-title class_">Press</span> enter to boot, or give linux kernel boot     │<br>│  options first.                                      │<br>│  <span class="hljs-title class_">Some</span> that I have to use once <span class="hljs-keyword">in</span> a <span class="hljs-keyword">while</span>:           │<br>│  boot nousb       - to turn off USB <span class="hljs-keyword">if</span> not used     │<br>│  boot irqpoll     - <span class="hljs-keyword">if</span> some drivers hang            │<br>│  boot vga=ask     - <span class="hljs-keyword">if</span> video mode problems          │<br>│  boot nodrivers   - skip automatic disk driver      │<br>│─────────────────────────────────────────────────────│<br>│  boot: _                                             │<br>└─────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>之后系统会自动扫描磁盘，列出所有分区并检测 Windows 安装位置：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs tap">┌────────────────────────────────────────────────────────────┐<br>│  Step ONE: Select disk partition where the Windows         │<br>│  installation is located                                   │<br>│────────────────────────────────────────────────────────────│<br>│  DISK PARTITIONS:                                          │<br>│ <span class="hljs-number"> 1 </span> sda1  <span class="hljs-number"> 249856000 </span>7 <span class="hljs-number"> 243996 </span>                            │<br>│ <span class="hljs-number"> 2 </span> sda2  <span class="hljs-number"> 32768 </span>   <span class="hljs-number"> 3 </span><span class="hljs-number"> 32 </span>                                │<br>│ <span class="hljs-number"> 3 </span> sdb1  <span class="hljs-number"> 52429072 </span><span class="hljs-number"> 7 </span><span class="hljs-number"> 51200 </span>     ← NTFS, 有Windows       │<br>│ <span class="hljs-number"> 4 </span> sdb5  <span class="hljs-number"> 14575236 </span><span class="hljs-number"> 139 </span>142336                            │<br>│ <span class="hljs-number"> 5 </span> sdb6  <span class="hljs-number"> 14575236 </span><span class="hljs-number"> 139 </span>142336                            │<br>│ <span class="hljs-number"> 6 </span> sdb7  <span class="hljs-number"> 14445191 </span><span class="hljs-number"> 137 </span>141066                            │<br>│────────────────────────────────────────────────────────────│<br>│  51200MB Partition sdb1 is NTFS:                           │<br>│  Found WINDOWS on: WINDOWS/system32/config                 │<br>│────────────────────────────────────────────────────────────│<br>│  Possible windows installations found:                     │<br>│ <span class="hljs-number"> 1 </span> sdb1    51200MB WINDOWS/system32/config                │<br>│────────────────────────────────────────────────────────────│<br>│  Select: [1] _                                             │<br>└────────────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>其中<code>sda1</code>和<code>sda2</code>是U盘的两个分区，<code>sdb*</code>是电脑硬盘的分区。<code>chntpw</code>在<code>sdb1</code>分区找到了Windows安装位置，输入<code>1</code>，回车：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-title class_">Selected</span> <span class="hljs-number">1</span><br><span class="hljs-title class_">Mounting</span> from /dev/sdb1 <span class="hljs-keyword">with</span> filesystem type NTFS<br><span class="hljs-title class_">Yes</span>, read-write, seems OK<br><span class="hljs-title class_">Success</span>!<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs tap">┌─────────────────────────────────────────────────────┐<br>│  Step TWO: Select registry files                    │<br>│─────────────────────────────────────────────────────│<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 262144 </span> May<span class="hljs-number"> 17 </span>2025  All Users│<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 262144 </span> Dec<span class="hljs-number"> 31 </span>2025  DEFAULT  │<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 131072 </span> Dec<span class="hljs-number"> 31 </span>2025  SECURITY │<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 6553600 </span> Dec<span class="hljs-number"> 31 </span>2025  software│<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 262144 </span> Jan<span class="hljs-number"> 1 </span>2026   system   │<br>│  drwxrwxrwx <span class="hljs-number"> 1 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 0 </span><span class="hljs-number"> 6553600 </span> Dec<span class="hljs-number"> 31 </span>2025  userdiff │<br>│─────────────────────────────────────────────────────│<br>│  Select which part of registry to load:             │<br>│ <span class="hljs-number"> 1 </span>- Password reset [sam]         ← 选择此项        │<br>│ <span class="hljs-number"> 2 </span>- RecoveryConsole parameters [software]          │<br>│ <span class="hljs-number"> 3 </span>- quit almost any other parameter...             │<br>│  Select: [1] _                                      │<br>└─────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>直接按回车（默认选择 <code>1 - Password reset [sam]</code>），屏幕显示 <code>Loaded hives: &lt;SAM&gt;</code>，表示 SAM 数据库已成功加载。工具自动列出了所有本地用户：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">┌──────────────────────────────────────────────────────┐<br>│  chntpw Edit <span class="hljs-keyword">User</span> <span class="hljs-title">Info</span> &amp; Passwords                   │<br>│──────────────────────────────────────────────────────│<br>│  RID   <span class="hljs-keyword">User</span> <span class="hljs-title">Name</span>           Admin?    Lock?           │<br>│  <span class="hljs-number">01</span>f4  Administrator       ADMIN     dis/lock       │<br>│  <span class="hljs-number">01</span>f5  Guest               -         dis/lock       │<br>│  <span class="hljs-number">03</span>eb  HelpAssistant       -         dis/lock       │<br>│  <span class="hljs-number">03</span>ea  SUPPORT_388945a0    -         dis/lock       │<br>│──────────────────────────────────────────────────────│<br>│  Please enter <span class="hljs-keyword">user</span> <span class="hljs-title">number</span> (RID) <span class="hljs-keyword">or</span> <span class="hljs-number">0</span> to exit: [<span class="hljs-number">1</span>f4]  │<br>│──────────────────────────────────────────────────────│<br>│  RID: <span class="hljs-number">0500</span> [<span class="hljs-number">01</span>f4]                                    │<br>│  Username: Administrator                             │<br>│  Fullname: Administrator                             │<br>│  Comment:  **X                                       │<br>│──────────────────────────────────────────────────────│<br>│  Account bits: <span class="hljs-number">0</span>x0214                                │<br>│  [ ] Disabled              [X] Normal account       │<br>│  [ ] Temp duplicate        [ ] Wks trust act.       │<br>│  [X] Pwd don&#x27;t expire      [ ] Auto lockout         │<br>│──────────────────────────────────────────────────────│<br>│  Failed login count: <span class="hljs-number">276</span>, while max tries is: <span class="hljs-number">0</span>      │<br>│  Total login count: <span class="hljs-number">276</span>                              │<br>│──────────────────────────────────────────────────────│<br>│  <span class="hljs-keyword">User</span> <span class="hljs-title">Edit</span> Menu:                                     │<br>│  <span class="hljs-number">1</span> - Clear (blank) <span class="hljs-keyword">user</span> <span class="hljs-title">password</span>                     │<br>│  <span class="hljs-number">2</span> - Unlock <span class="hljs-keyword">and</span> enable <span class="hljs-keyword">user</span> <span class="hljs-title">account</span>                  │<br>│  <span class="hljs-number">3</span> - <span class="hljs-literal">Promote</span> <span class="hljs-keyword">user</span> <span class="hljs-title">to</span> administrator                   │<br>│  <span class="hljs-number">4</span> - Add <span class="hljs-keyword">user</span> <span class="hljs-title">to</span> a <span class="hljs-keyword">group</span>                             <span class="hljs-title">│</span><br><span class="hljs-title">│  5</span> - Remove <span class="hljs-keyword">user</span> <span class="hljs-title">from</span> a <span class="hljs-keyword">group</span>                        <span class="hljs-title">│</span><br><span class="hljs-title">│  q</span> - Quit editing user, back to <span class="hljs-keyword">user</span> <span class="hljs-title">select</span>          │<br>│  Select: [q] &gt; _                                     │<br>└──────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>输入<code>1f4</code>回车选中<code>Administrator</code>，发现已经尝试了<code>276</code>次失败登录，<code>Lock?</code> 列显示 <code>dis/lock</code>表示账户已禁用且锁定。先输入<code>2</code>解锁账户，再输入<code>1</code>清除密码：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs inform7">┌──────────────────────────────────────────────────────┐<br>│  Select: <span class="hljs-comment">[q]</span> &gt; 2                                     │<br>│  Unlocked!                                           │<br>│──────────────────────────────────────────────────────│<br>│  Failed login count: 0    ← 已归零                   │<br>│  Account bits: 0x0214                                │<br>│  <span class="hljs-comment">[ ]</span> Disabled              <span class="hljs-comment">[X]</span> Normal account       │<br>│  <span class="hljs-comment">[X]</span> Pwd don&#x27;t expire      <span class="hljs-comment">[ ]</span> Auto lockout         │<br>│──────────────────────────────────────────────────────│<br>│  Select: <span class="hljs-comment">[q]</span> &gt; 1                                     │<br>│  Password cleared!                                   │<br>│──────────────────────────────────────────────────────│<br>│  Select: <span class="hljs-comment">[q]</span> &gt; _                                     │<br>└──────────────────────────────────────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p>之后需要逐级退出并保存更改：</p>
+<ol>
+<li>输入 <code>q</code> 退出用户编辑菜单</li>
+<li>再次输入 <code>q</code> 退回到主菜单</li>
+<li>主菜单询问 <code>Write changes?</code>，<strong>必须输入 <code>y</code></strong> 并回车（不保存的话前面操作相当于白做了）</li>
+<li>继续按 <code>q</code> 退出，直到能输入命令</li>
+<li>输入 <code>reboot</code> 重启电脑</li>
+</ol>
+<p>当系统完成关机拔掉U盘，系统启动正常进入XinXP系统，没有密码直接进入了桌面，数据也都完好无损。</p>
+<h2 id="坏得不能再坏的Win7-Win10系统重装"><a href="#坏得不能再坏的Win7-Win10系统重装" class="headerlink" title="坏得不能再坏的Win7-&gt;Win10系统重装"></a>坏得不能再坏的Win7-&gt;Win10系统重装</h2><p>邻居家还有一台坏得不能再坏的Win7系统，完全无法进入系统，需要备份+重装。</p>
+<p>下载Win10镜像，先访问<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">官网</a>，<code>选择版本</code>选<code>Windows 10（多版本ISO）</code>，<code>选择产品语言</code>找到<code>简体中文</code>，点击<code>确认</code>可以获得两个有效期为24小时的下载链接，选择<code>64位下载</code>即可。将得到的<code>Win10_22H2_Chinese_Simplified_x64v1.iso</code>拷贝到Ventoy启动盘上。</p>
+<p>笔记本为多年前联想ThinkPad，启动按<code>F8</code>，上下按键选中USB，回车。进入<code>Ventoy</code>菜单，选择<code>Win10_22H2_Chinese_Simplified_x64v1.iso</code>，回车，继续选择<code>Boot in normal mode</code>，进入安装界面。</p>
+<h3 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h3><p>在看到图形化界面后，<code>Fn + Shift + F10</code>打开命令行：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-function">E:</span><br><span class="hljs-function"><span class="hljs-title">mkdir</span> <span class="hljs-title">FromC</span></span><br><span class="hljs-function"><span class="hljs-title">robocopy</span> <span class="hljs-title">C</span>:\<span class="hljs-title">Users</span>\<span class="hljs-title">Administrator</span> <span class="hljs-title">E</span>:\<span class="hljs-title">FromC</span>\<span class="hljs-title">Administrator</span> /<span class="hljs-title">E</span> /<span class="hljs-title">R</span>:1 /<span class="hljs-title">W</span>:1</span><br></code></pre></td></tr></table></figure>
+
+<p>过一阵子发现开始递归了，路径越来越长：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs dart">windows\system32\cmd.exe robocopy C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span> E:\fromC\<span class="hljs-title class_">Administrator</span> /R:<span class="hljs-number">1</span> /W:<span class="hljs-number">1</span><br>目录<br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span> <span class="hljs-number">0</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br>源目录 <span class="hljs-title class_">Filter</span>\<br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span> <span class="hljs-number">0</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br>新目录<br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span> <span class="hljs-number">0</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br>新目录<br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span> <span class="hljs-number">0</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br>新目录<br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span> <span class="hljs-number">2</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br><span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>  C:\<span class="hljs-title class_">Users</span>\<span class="hljs-title class_">Administrator</span>\<span class="hljs-title class_">AppData</span>\<span class="hljs-title class_">Local</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span>\<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Data</span><br>新文件<br>                      <span class="hljs-number">195.6</span> m      CEF_AndrowsStore.log<br>                                    PC_YYB_SDK.log<br></code></pre></td></tr></table></figure>
+
+<p><code>Ctrl+C</code>终止，尝试使用图形界面备份。在命令行输入<code>notepad</code>打开记事本，点击<code>文件</code>-&gt;<code>打开</code>，诶，资源管理器出现了。在C盘找到<code>C:\Users\Administrator</code>右键<code>复制</code>，在E盘删除重建<code>FromC</code>文件夹并右键<code>粘贴</code>，还是卡死。</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bat"><span class="hljs-function">X:\<span class="hljs-title">Windows</span>\<span class="hljs-title">System32</span>\<span class="hljs-title">taskkill.exe</span> /<span class="hljs-title">f</span> /<span class="hljs-title">im</span> <span class="hljs-title">notepad.exe</span></span><br></code></pre></td></tr></table></figure>
+
+<p>强行终止并删掉重建<code>FromC</code>文件夹，改为只备份重要的数据：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat">robocopy &quot;C:\Users\Administrator\Desktop&quot; &quot;E:\FromC\Desktop&quot; /E /XJ /R:<span class="hljs-number">1</span> /W:<span class="hljs-number">1</span><br>robocopy &quot;C:\Users\Administrator\Documents&quot; &quot;E:\FromC\Documents&quot; /E /XJ /R:<span class="hljs-number">1</span> /W:<span class="hljs-number">1</span><br>robocopy &quot;C:\Users\Administrator\Downloads&quot; &quot;E:\FromC\Downloads&quot; /E /XJ /R:<span class="hljs-number">1</span> /W:<span class="hljs-number">1</span><br>robocopy &quot;C:\Users\Administrator\Pictures&quot; &quot;E:\FromC\Pictures&quot; /E /XJ /R:<span class="hljs-number">1</span> /W:<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p>之后格式化C盘，准备开始重装：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bat">diskpart<br>list disk<br>select disk <span class="hljs-number">0</span><br>clean<br></code></pre></td></tr></table></figure>
+
+<p>好家伙！忽然想起来三个分区在物理上是一块硬盘，这一下子给全部格式化了。</p>
+<p>立刻停止操作，关机，回去做恢复盘。</p>
+<h3 id="数据恢复"><a href="#数据恢复" class="headerlink" title="数据恢复"></a>数据恢复</h3><p>于是想到了大名鼎鼎的微PE，微PE默认只支持Windows系统，官网无ios镜像，官方的iso镜像获取方式是运行微PE的可执行程序（.exe）生成iso镜像。于是在网上找了个 微PE ISO镜像（不知是否官方但实测可用）。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://archive.org/download/we-pe-64-v-2.3/WePE_64_V2.3.iso">Internet Archive We PE 64 V 2.3 微PE工具箱</a>，结果下载下来 和 <a target="_blank" rel="noopener" href="https://github.com/ventoy/Ventoy/issues/3267">Ventoy Issue</a> 以及 <a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/distro_iso/winpe.html">Ventoy 官网iso 列表</a> 的sha值<code>b687e3f3b6eb09e531fcf57eb8c5cf0d236925ea</code>对不上，我的是<code>43b9ccf9024929ff4625cd3c3aa68b1435807770</code>。</p>
+<p>这次铤而走险倒是没出现什么幺蛾子，后续对应这么常用的东西还是在主机上也备份一份吧。</p>
+<p>镜像放入Ventoy启动盘，在ThinkPad上进入Ventoy后选择<code>WePE_64_V2.3.iso</code>启动，打开<code>DiskGenius</code>，选中被格式化的硬盘，上方菜单栏 <code>工具 -&gt; 搜索已丢失分区（重建分区表）</code>，选择 <code>整个磁盘</code> 开始搜索，好在一点点搜索找到了原来的三个分区，点击左上角<code>保存更改</code>，之前的数据回来了。</p>
+<h3 id="Win10重装"><a href="#Win10重装" class="headerlink" title="Win10重装"></a>Win10重装</h3><p>继续在微PE里面格式化C盘，由于该笔记本是比较老的<code>Legacy BIOS</code>和<code>MBR</code>分区模式，所以也不需要一个额外的系统引导分区，微PE的Windows安装器选择<code>Win10_22H2_Chinese_Simplified_x64v1.iso</code>、引导驱动器位置和安装驱动器位置都选择C盘，点击安装。等进度条读完就好了。</p>
+<p>安装过程中我还遇到了好几次，安装一般系统直接关机。一摸笔记本好烫家伙，猜测是过热断电保护。于是使用一盒牛奶让笔记本底部悬空，使用邻家小娃的小风扇吹着，终于顺利安装完毕。</p>
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>本文v1版本ASCII图绘制自DeepSeek。</p>
+</blockquote>
+<blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/167038314">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/10/03/Other-Windows-ReInstall_bypassWinXPPassword_BackupRecoryWin7Data_Win10Install/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/" class="category-chain-item">技术思考</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+      
+        <a href="/tags/Windows/">#Windows</a>
+      
+        <a href="/tags/%E5%85%B6%E4%BB%96/">#其他</a>
+      
+        <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%81%A2%E5%A4%8D/">#系统恢复</a>
+      
+        <a href="/tags/%E9%87%8D%E8%A3%85/">#重装</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>两台旧电脑修复 —— 绕过WinXP密码登录、备份和恢复Win7数据、安装Win10</div>
+      <div>https://blog.letmefly.xyz/2026/10/03/Other-Windows-ReInstall_bypassWinXPPassword_BackupRecoryWin7Data_Win10Install/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div><a target="_blank" rel="noopener" href="https://letmefly.xyz">Tisfy</a></div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年10月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/10/04/LeetCode%200678.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="678.有效的括号字符串：O(n)+O(1)一次遍历">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">678.有效的括号字符串：O(n)+O(1)一次遍历</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/10/02/LeetCode%200022.%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" title="22.括号生成：暴力枚举 / 回溯">
+                        <span class="hidden-mobile">22.括号生成：暴力枚举 / 回溯</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href='https://hexo.io' target='_blank' rel='nofollow noopener'><span>Hexo</span></a>'s <a href='https://github.com/fluid-dev/hexo-theme-fluid' target='_blank' rel='nofollow noopener'><span>Fluid</span></a> <i class='iconfont icon-love'></i> <a href='https://letmefly.xyz' target='_blank' rel='nofollow noopener'><span>ALL atricles by LetMeFly</span></a> 
+    </div>
+  
+  
+  
+  
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }}
+  </script>
+  <script src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
