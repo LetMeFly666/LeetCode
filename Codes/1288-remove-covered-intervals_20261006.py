@@ -9,7 +9,7 @@ from typing import List
 class Solution:
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
         intervals.sort(key = lambda x: (x[0], -x[1]))
-        ans, maxr = 0, -1
+        ans, maxr = len(intervals), -1
         for _, r in intervals:
             if r <= maxr:
                 ans -= 1
