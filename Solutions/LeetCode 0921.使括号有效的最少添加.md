@@ -80,24 +80,27 @@ categories: [题解, LeetCode]
 
 ```cpp
 /*
- * @LastEditTime: 2026-10-06 11:26:54
+ * @LastEditTime: 2022-10-04
  */
 class Solution {
 public:
-    int minAddToMakeValid(const string& s) {
-        int ans = 0, diff = 0;
-        for (int i = 0, n = s.size(); i < n; i++) {
-            if (s[i] == '(') {
-                diff++;
-            } else {
-                if (diff) {
-                    diff--;
-                } else {
-                    ans++;
+    int minAddToMakeValid(string& s) {
+        int left = 0;
+        int right = 0;
+        for (char& c : s) {
+            if (c == '(') {
+                left++;
+            }
+            else {
+                if (left) {
+                    left--;
+                }
+                else {
+                    right++;
                 }
             }
         }
-        return ans + diff;
+        return right + left;
     }
 };
 ```
