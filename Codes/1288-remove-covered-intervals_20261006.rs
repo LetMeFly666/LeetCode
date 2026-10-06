@@ -5,7 +5,7 @@
  * @LastEditTime: 2026-10-06 11:59:17
  */
 impl Solution {
-    pub fn remove_covered_intervals(intervals: Vec<Vec<i32>>) -> i32 {
+    pub fn remove_covered_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
         intervals.sort_by_key(|x| (x[0], -x[1]));
         let mut ans = intervals.len() as i32;
         let mut maxr = -1;
