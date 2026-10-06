@@ -1,11 +1,11 @@
 ---
-title: 921.使括号有效的最少添加
+title: 921.使括号有效的最少添加：一次遍历（贪心）
 date: 2022-10-04 07:59:39
 tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】921.使括号有效的最少添加
+# 【LetMeFly】921.使括号有效的最少添加：一次遍历（贪心）
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/](https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/)
 
@@ -65,11 +65,11 @@ categories: [题解, LeetCode]
 
 延续方法一的思想，能否不真正用栈来实现呢？
 
-只需要使用两个变量，```left```记录栈中有多少个左括号，```right```记录栈中有多少个右括号。
+只需要使用两个变量，`left`记录栈中有多少个左括号，`right`记录栈中有多少个右括号。
 
 注意，一旦右括号入栈，就说明前面没有“未匹配的左括号”了，右括号将永远留在栈底无法出栈。
 
-因此，在遍历字符串的过程中，遇到左括号就```left++```，遇到右括号就看```left```是否为0。若不为零，就说明栈中有左括号，就```left--```；否则说明栈中无左括号，就```right++```
+因此，在遍历字符串的过程中，遇到左括号就`left++`，遇到右括号就看`left`是否为0。若不为零，就说明栈中有左括号，就`left--`；否则说明栈中无左括号，就`right++`
 
 + 时间复杂度$O(n)$，其中$n$是字符串长度
 + 空间复杂度$O(1)$
@@ -79,28 +79,121 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2026-10-06 11:26:54
+ */
 class Solution {
 public:
-    int minAddToMakeValid(string& s) {
-        int left = 0;
-        int right = 0;
-        for (char& c : s) {
-            if (c == '(') {
-                left++;
-            }
-            else {
-                if (left) {
-                    left--;
-                }
-                else {
-                    right++;
+    int minAddToMakeValid(const string& s) {
+        int ans = 0, diff = 0;
+        for (int i = 0, n = s.size(); i < n; i++) {
+            if (s[i] == '(') {
+                diff++;
+            } else {
+                if (diff) {
+                    diff--;
+                } else {
+                    ans++;
                 }
             }
         }
-        return right + left;
+        return ans + diff;
     }
 };
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2022/10/04/LeetCode%200921.%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/127158816](https://letmefly.blog.csdn.net/article/details/127158816)
+#### Python
+
+```python
+'''
+LastEditTime: 2026-10-06 11:31:33
+'''
+class Solution:
+    def minAddToMakeValid(self, s: str) -> int:
+        ans = diff = 0
+        for c in s:
+            if c == '(':
+                diff += 1
+            elif diff:
+                diff -= 1
+            else:
+                ans += 1
+        return ans + diff
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-10-06 11:30:17
+ */
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int ans = 0;
+        int diff = 0;
+        for (int i = 0, n = s.length(); i < n; i++) {
+            if (s.charAt(i) == '(') {
+                diff++;
+            } else if (diff > 0) {
+                diff--;
+            } else {
+                ans++;
+            }
+        }
+        return ans + diff;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2026-10-06 11:28:37
+ */
+func minAddToMakeValid(s string) (ans int) {
+	diff := 0
+	for _, c := range s {
+		if c == '(' {
+			diff++
+		} else {
+			if diff > 0 {
+				diff--
+			} else {
+				ans++
+			}
+		}
+	}
+	return ans + diff
+}
+```
+
+#### Rust
+
+```rs
+/*
+ * @LastEditTime: 2026-10-06 11:34:11
+ */
+impl Solution {
+    pub fn min_add_to_make_valid(s: String) -> i32 {
+        let mut ans = 0;
+        let mut diff = 0;
+        for c in s.bytes() {
+            if c == b'(' {
+                diff += 1;
+            } else if diff > 0 {
+                diff -= 1;
+            } else {
+                ans += 1;
+            }
+        }
+        ans + diff
+    }
+}
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/127158816)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2022/10/04/LeetCode%200921.%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

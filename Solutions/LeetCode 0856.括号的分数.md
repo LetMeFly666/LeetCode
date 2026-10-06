@@ -93,6 +93,9 @@ struct SpecialChar {  // 左括号 / 数值
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2022-10-09 09:35:46
+ */
 struct SpecialChar {  // 左括号 / 数值
     bool isLeft;  // 左括号？
     int val;  // 若不是左括号，则此val有效
