@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("0921-minimum-add-to-make-parentheses-valid.rs");  // 这个fileName是会被脚本替换掉的
+include!("1288-remove-covered-intervals_20261006.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
