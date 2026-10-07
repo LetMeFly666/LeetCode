@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-07 11:25:36
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-07 14:26:01
+ * @LastEditTime: 2026-10-07 14:27:15
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -47,6 +47,7 @@ private:
         left += s[idx] == '(' ? 1 : s[idx] == ')' ? -1 : 0;
         now.push_back(s[idx]);
         dfs(s, idx + 1, left, left_removed, right_removed);
+        now.pop_back();
     }
 public:
     vector<string> removeInvalidParentheses(const string& s) {
