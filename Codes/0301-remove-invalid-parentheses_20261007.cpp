@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-07 11:25:36
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-07 11:41:47
+ * @LastEditTime: 2026-10-07 11:47:10
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -34,16 +34,16 @@ private:
 
     string genS(const string& s, int mask) {
         string this_s;
-        this_s.reserve(s.size() - idxs.size());
-        vector<int> cannot;
-        cannot.reserve(idxs.size());
+        this_s.reserve(s.size() - mini_remove);
+        vector<int> deleted;
+        deleted.reserve(idxs.size());
         for (int i = 0; i < idxs.size(); i++) {
             if (mask >> i & 1) {
-                cannot.push_back(idxs[i]);
+                deleted.push_back(idxs[i]);
             }
         }
         for (int is = 0, ic = 0; is < s.size(); is++) {
-            if (ic < cannot.size() && is == cannot[ic]) {
+            if (ic < deleted.size() && is == deleted[ic]) {
                 ic++;
             } else {
                 this_s.push_back(s[is]);
@@ -69,7 +69,7 @@ private:
     }
 public:
     vector<string> removeInvalidParentheses(const string& s) {
-        set<string> se;
+        unordered_set<string> se;
         getInfo(s);
         int parentheses = idxs.size();
         
