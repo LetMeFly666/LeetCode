@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-07 11:25:36
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-07 14:27:15
+ * @LastEditTime: 2026-10-07 14:28:52
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -12,7 +12,7 @@ class Solution {
 private:
     int remove_left, remove_right;
     string now;
-    vector<string> ans;
+    unordered_set<string> ans;
 
     void getInfo(const string& s) {
         remove_left = remove_right = 0;
@@ -32,7 +32,7 @@ private:
     void dfs(const string& s, int idx, int left, int left_removed, int right_removed) {
         if (idx == s.size()) {
             if (left == 0 && left_removed == remove_left && right_removed == remove_right) {
-                ans.push_back(now);
+                ans.insert(now);
             }
             return;
         }
@@ -45,6 +45,9 @@ private:
         }
         // don't remove
         left += s[idx] == '(' ? 1 : s[idx] == ')' ? -1 : 0;
+        if (left < 0) {
+            return;
+        }
         now.push_back(s[idx]);
         dfs(s, idx + 1, left, left_removed, right_removed);
         now.pop_back();
@@ -54,6 +57,6 @@ public:
         getInfo(s);
         now.reserve(s.size() - remove_left - remove_right);
         dfs(s, 0, 0, 0, 0);
-        return ans;
+        return vector<string>(ans.begin(), ans.end());
     }
 };
