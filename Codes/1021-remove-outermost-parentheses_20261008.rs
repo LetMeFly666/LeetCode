@@ -8,7 +8,7 @@ impl Solution {
     pub fn remove_outer_parentheses(s: String) -> String {
         let mut ans = String::new();
         let mut layer = 0;
-        for c in s.chars() {
+        for c in s.bytes() {
             if c == b'(' {
                 if layer != 0 {
                     ans.push(c);
