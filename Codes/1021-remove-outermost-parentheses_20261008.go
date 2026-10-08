@@ -2,11 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2026-10-08 08:52:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-08 09:11:09
+ * @LastEditTime: 2026-10-08 09:15:54
  */
 package main
 
-func removeOuterParentheses(s string) (ans string) {
+import "strings"
+
+func removeOuterParentheses(s string) string {
+	var ans strings.Builder
 	layer := 0
 	for _, c := range s {
 		skip := false
@@ -22,8 +25,8 @@ func removeOuterParentheses(s string) (ans string) {
 			}
 		}
 		if !skip {
-			ans = append(ans, c)
+			ans.WriteRune(c)
 		}
 	}
-	return ans
+	return ans.String()
 }
