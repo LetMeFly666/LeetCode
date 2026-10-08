@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-08 08:52:58
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-08 09:30:19
+ * @LastEditTime: 2026-10-08 09:32:53
  */
 impl Solution {
     pub fn remove_outer_parentheses(s: String) -> String {
@@ -11,13 +11,13 @@ impl Solution {
         for c in s.bytes() {
             if c == b'(' {
                 if layer != 0 {
-                    ans.push(c);
+                    ans.push(c as char);
                 }
                 layer += 1;
             } else {
                 layer -= 1;
                 if layer != 0 {
-                    ans.push(c);
+                    ans.push(c as char);
                 }
             }
         }
