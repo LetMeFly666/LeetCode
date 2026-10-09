@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 08:25:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 08:52:51
+ * @LastEditTime: 2026-10-09 08:55:07
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -47,7 +47,7 @@ public:
             }
         }
         ans += meetLeft(left, right);
-        ans += meetRight(left, right);
+        ans += left * 2;
         return ans;
     }
 };
