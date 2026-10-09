@@ -165,6 +165,6 @@ fi
 
 + 《[知乎：Windows安装Zsh终端](https://zhuanlan.zhihu.com/p/625583037)》
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/165002226)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/11/Other-Windows-Shell-UseZSHByGitBashAndMsys2/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/165002226)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/09/09/Other-Windows-Shell-UseZSHByGitBashAndMsys2/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
