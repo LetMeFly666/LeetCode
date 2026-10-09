@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 08:25:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 08:49:45
+ * @LastEditTime: 2026-10-09 08:52:51
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,6 +23,18 @@ private:
         right = 0;
         return ans;
     }
+
+    int meetRight(int& left, int& right) {
+        int ans = 0;
+        if ((right + 1) / 2 > left) {
+            ans += (right + 1) / 2;
+            left = (right + 1) / 2;
+        }
+        int loss = min(left, right / 2);
+        left -= loss;
+        right -= loss * 2;
+        return ans;
+    }
 public:
     int minInsertions(const string& s) {
         int ans = 0;
@@ -31,11 +43,11 @@ public:
             if (c == '(') {
                 ans += meetLeft(++left, right);
             } else {
-                right++;
+                ans += meetRight(left, ++right);
             }
         }
         ans += meetLeft(left, right);
-        ans += left * 2;
+        ans += meetRight(left, right);
         return ans;
     }
 };
