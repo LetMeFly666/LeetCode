@@ -2,14 +2,14 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 08:25:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 11:15:16
+ * @LastEditTime: 2026-10-09 11:19:46
  */
 package main
 
 func minInsertions(s string) (ans int) {
 	diff := 0
-	for i, c := range s {
-		if c == '(' {
+	for i := 0; i < len(s); i++ {
+		if s[i] == '(' {
 			diff++
 		} else {
 			if diff > 0 {
