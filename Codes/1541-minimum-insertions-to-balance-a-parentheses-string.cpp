@@ -2,28 +2,41 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 08:25:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 08:33:45
+ * @LastEditTime: 2026-10-09 08:49:45
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
 class Solution {
+private:
+    int meetLeft(int& left, int& right) {
+        int ans = 0;
+        if (right % 2) {
+            right++;
+            ans++;
+        }
+        int loss = min(left, right / 2);
+        left -= loss;
+        right -= loss * 2;
+        ans += right / 2;
+        right = 0;
+        return ans;
+    }
 public:
     int minInsertions(const string& s) {
-        int diff = 0;
         int ans = 0;
+        int left = 0, right = 0;
         for (char c : s) {
             if (c == '(') {
-                diff += 2;
-            } else if (diff) {
-                diff--;
+                ans += meetLeft(++left, right);
             } else {
-                diff++;
-                ans++;
+                right++;
             }
         }
-        return ans + diff;
+        ans += meetLeft(left, right);
+        ans += left * 2;
+        return ans;
     }
 };
 
