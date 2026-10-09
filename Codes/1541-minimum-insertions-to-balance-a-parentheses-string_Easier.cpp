@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 10:51:40
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 10:56:49
+ * @LastEditTime: 2026-10-09 10:59:38
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -29,6 +29,6 @@ public:
                 }
             }
         }
-        return ans;
+        return ans + diff * 2;
     }
 };
