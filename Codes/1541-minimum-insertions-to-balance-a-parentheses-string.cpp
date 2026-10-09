@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-09 08:25:57
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-09 08:28:21
+ * @LastEditTime: 2026-10-09 08:33:45
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -26,3 +26,20 @@ public:
         return ans + diff;
     }
 };
+
+/*
+v1错误原因：
+
+(()))(()))()())))
+ ---  ---   ---
+()()()))
+    ---
+()())
+  ---
+()
+())
+
+不可。
+
+左括号后面必须紧跟两个**连续的**右括号
+*/
