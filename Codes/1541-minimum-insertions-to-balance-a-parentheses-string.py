@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-10-10 09:34:46
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-10 09:36:22
+LastEditTime: 2026-10-10 09:39:02
 '''
 class Solution:
     def minInsertions(self, s: str) -> int:
@@ -20,4 +20,5 @@ class Solution:
                     i += 1
                 else:
                     ans += 1
+            i += 1
         return ans + diff * 2
