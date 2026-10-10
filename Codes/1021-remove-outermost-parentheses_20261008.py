@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-10-08 08:52:58
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-08 09:26:04
+LastEditTime: 2026-10-08 10:07:08
 '''
 class Solution:
     def removeOuterParentheses(self, s: str) -> str:
@@ -18,4 +18,3 @@ class Solution:
                 if layer:
                     ans.append(c)
         return ''.join(ans)
-                
