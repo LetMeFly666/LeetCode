@@ -72,7 +72,11 @@ categories: [题解, LeetCode]
     
 ## 解题方法一：左右括号匹配
 
-11111
+类似单个括号匹配《[921.使括号有效的最少添加：一次遍历（贪心）](https://blog.letmefly.xyz/2022/10/04/LeetCode%200921.%E4%BD%BF%E6%8B%AC%E5%8F%B7%E6%9C%89%E6%95%88%E7%9A%84%E6%9C%80%E5%B0%91%E6%B7%BB%E5%8A%A0/)》，我们同样使用一个变量`diff`来统计左括号比*未配对*右括号多多少个。
+
+遍历一次字符串，遇到左括号则`diff++`，遇到右括号则需要进行两个操作：
+
+1. 
 
 + 时间复杂度$O(N^2)$
 + 空间复杂度$O(N\log N)$
@@ -170,6 +174,34 @@ func minInsertions(s string) (ans int) {
     }
     return ans + diff * 2
 }
+```
+
+#### Python
+
+Python没有for(;;)，使用while记得i++。
+
+```python
+'''
+LastEditTime: 2026-10-10 09:39:02
+'''
+class Solution:
+    def minInsertions(self, s: str) -> int:
+        ans = diff = i = 0
+        n = len(s)
+        while i < n:
+            if s[i] == '(':
+                diff += 1
+            else:
+                if diff:
+                    diff -= 1
+                else:
+                    ans += 1
+                if i + 1 < n and s[i + 1] == ')':
+                    i += 1
+                else:
+                    ans += 1
+            i += 1
+        return ans + diff * 2
 ```
 
 ## 解题方法二：不要看了，屎山代码
