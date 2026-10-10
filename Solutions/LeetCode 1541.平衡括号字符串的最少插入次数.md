@@ -1,11 +1,11 @@
 ---
-title: 1541.平衡括号字符串的最少插入次数
+title: 1541.平衡括号字符串的最少插入次数：一次遍历
 date: 2026-10-10 09:31:48
-tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串]
+tags: [题解, LeetCode, 中等, 栈, 贪心, 字符串, 字符串解析, 括号匹配]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1541.平衡括号字符串的最少插入次数
+# 【LetMeFly】1541.平衡括号字符串的最少插入次数：一次遍历
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/](https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/)
 
@@ -76,10 +76,13 @@ categories: [题解, LeetCode]
 
 遍历一次字符串，遇到左括号则`diff++`，遇到右括号则需要进行两个操作：
 
-1. 
+1. 如果有未配对的左括号，则`diff--`，否则需要补一个左括号，`ans++`
+2. 如果下一个字符还是右括号，则匹配成功，抵消掉并且`i++`，否则需要补一个右括号，`ans++`
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+最终剩下多少个左括号就需要补充二倍数量的右括号，`ans += diff * 2`。
+
++ 时间复杂度$O(len(s))$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
@@ -280,6 +283,6 @@ public:
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/10/LeetCode%201541.%E5%B9%B3%E8%A1%A1%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%8F%92%E5%85%A5%E6%AC%A1%E6%95%B0/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/167495472)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/10/LeetCode%201541.%E5%B9%B3%E8%A1%A1%E6%8B%AC%E5%8F%B7%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%B0%91%E6%8F%92%E5%85%A5%E6%AC%A1%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
