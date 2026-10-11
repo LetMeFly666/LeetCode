@@ -14,13 +14,13 @@ public:
         int ans = 0;
         size_t n = nums.size();
         size_t root = sqrt(n);
-        for (int i = 1; i < root; i++) {
+        for (int i = 1; i <= root; i++) {
             if (n % i == 0) {
                 ans += nums[i - 1] * nums[i - 1] + nums[n - i] * nums[n - i];
             }
         }
         if (root * root == n) {
-            ans += nums[root - 1] * nums[root - 1];
+            ans -= nums[root - 1] * nums[root - 1];
         }
         return ans;
     }
