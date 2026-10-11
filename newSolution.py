@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-07-03 11:21:14
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-11 09:11:15
+LastEditTime: 2026-10-11 09:12:57
 Command: python newSolution.py 102. 二叉树的层序遍历
 What's more: 当前仅支持数字开头的题目
 What's more: 代码结构写的很混乱 - 想单文件实现所有操作
@@ -78,7 +78,6 @@ for code2gen in CODES_TO_GEN:
         alreadyExists = True
         break
 dateSuffix = '_' + datetime.datetime.now().strftime("%Y%m%d") if alreadyExists else ''
-dateSuffix = '_rootN'
 for code2gen in CODES_TO_GEN:
     toName = f'Codes/{num:04}-{titleSlug}{dateSuffix}.{mappingSuffix[code2gen]}'
     fromName = f'AllProblems/{num}.{title}/code.{mappingSuffix[code2gen]}'
