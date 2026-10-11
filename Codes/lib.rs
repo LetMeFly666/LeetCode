@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("1021-remove-outermost-parentheses_20261008.rs");  // 这个fileName是会被脚本替换掉的
+include!("2778-sum-of-squares-of-special-elements_rootN.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
