@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2333.最小差值平方和：排序 + 数学计算（不用二分） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/_posts/LeetCode%202333.%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%E5%B9%B3%E6%96%B9%E5%92%8C.html"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>2333.最小差值平方和：排序 + 数学计算（不用二分）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-10-12T11:32:56.000Z" id="date"> 2026-10-12</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】2333-最小差值平方和：排序-数学计算（不用二分）"><a href="#【LetMeFly】2333-最小差值平方和：排序-数学计算（不用二分）" class="headerlink" title="【LetMeFly】2333.最小差值平方和：排序 + 数学计算（不用二分）"></a>【LetMeFly】2333.最小差值平方和：排序 + 数学计算（不用二分）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-sum-of-squared-difference/">https://leetcode.cn/problems/minimum-sum-of-squared-difference/</a></p>
+<p>给你两个下标从 <strong>0</strong>&nbsp;开始的整数数组&nbsp;<code>nums1</code> 和&nbsp;<code>nums2</code>&nbsp;，长度为&nbsp;<code>n</code>&nbsp;。</p>
+
+<p>数组&nbsp;<code>nums1</code> 和&nbsp;<code>nums2</code>&nbsp;的 <strong>差值平方和</strong>&nbsp;定义为所有满足&nbsp;<code>0 &lt;= i &lt; n</code>&nbsp;的&nbsp;<code>(nums1[i] - nums2[i])<sup>2</sup></code>&nbsp;之和。</p>
+
+<p>同时给你两个正整数&nbsp;<code>k1</code> 和&nbsp;<code>k2</code>&nbsp;。你可以将&nbsp;<code>nums1</code>&nbsp;中的任意元素&nbsp;<code>+1</code> 或者&nbsp;<code>-1</code>&nbsp;至多&nbsp;<code>k1</code>&nbsp;次。类似的，你可以将&nbsp;<code>nums2</code>&nbsp;中的任意元素&nbsp;<code>+1</code> 或者&nbsp;<code>-1</code>&nbsp;至多&nbsp;<code>k2</code>&nbsp;次。</p>
+
+<p>请你返回修改数组<em>&nbsp;</em><code>nums1</code><em>&nbsp;</em>至多<em>&nbsp;</em><code>k1</code>&nbsp;次且修改数组<em>&nbsp;</em><code>nums2</code>&nbsp;至多 <code>k2</code><em>&nbsp;</em>次后的最小&nbsp;<strong>差值平方和</strong>&nbsp;。</p>
+
+<p><strong>注意：</strong>你可以将数组中的元素变成&nbsp;<strong>负</strong>&nbsp;整数。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><b>输入：</b>nums1 = [1,2,3,4], nums2 = [2,10,20,19], k1 = 0, k2 = 0
+<b>输出：</b>579
+<b>解释：</b>nums1 和 nums2 中的元素不能修改，因为 k1 = 0 和 k2 = 0 。
+差值平方和为：(1 - 2)<sup>2 </sup>+ (2 - 10)<sup>2 </sup>+ (3 - 20)<sup>2 </sup>+ (4 - 19)<sup>2</sup>&nbsp;= 579 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><b>输入：</b>nums1 = [1,4,10,12], nums2 = [5,8,6,9], k1 = 1, k2 = 1
+<b>输出：</b>43
+<b>解释：</b>一种得到最小差值平方和的方式为：
+- 将 nums1[0] 增加一次。
+- 将 nums2[2] 增加一次。
+最小差值平方和为：
+(2 - 5)<sup>2 </sup>+ (4 - 8)<sup>2 </sup>+ (10 - 7)<sup>2 </sup>+ (12 - 9)<sup>2</sup>&nbsp;= 43 。
+注意，也有其他方式可以得到最小差值平方和，但没有得到比 43 更小答案的方案。</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>n == nums1.length == nums2.length</code></li>
+	<li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>
+	<li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10<sup>5</sup></code></li>
+	<li><code>0 &lt;= k1, k2 &lt;= 10<sup>9</sup></code></li>
+</ul>
+
+
+    
+<h2 id="解题方法：排序-数学计算"><a href="#解题方法：排序-数学计算" class="headerlink" title="解题方法：排序 + 数学计算"></a>解题方法：排序 + 数学计算</h2><p>已知两个前提：</p>
+<ol>
+<li><p>假设有多个正整数只能选其中一个减少$1$，想要使平方和最小，应该减小哪个数？</p>
+<p> 应该减小最大的那个数。</p>
+<blockquote>
+<p>假设$a\gt b$，那么$(a-1)^2 + b^2 &#x3D; a^2 + b^2 + 1 - 2a$，$a^2 + (b-1)^2 &#x3D; a^2 + b^2 + 1 - 2b$，因为$a\gt b$，所以$-2a \lt -2b$，所以减小$a$更优。</p>
+</blockquote>
+</li>
+<li><p>对<code>nums1</code>的操作，总有办法对<code>nums2</code>的等价操作。</p>
+<p> 所以对<code>nums1</code>进行最多<code>k1</code>次操作、对<code>nums2</code>进行最多<code>k2</code>次操作，相当于最多进行<code>k1 + k2</code>次加减一操作。</p>
+<blockquote>
+<p>因为如果想要对<code>nums1[i] + 1</code>然后和<code>nums2[i]</code>求差值平方但是<code>k1</code>已经用完了的话，直接让<code>nums2[i] - 1</code>然后和<code>nums1[i]</code>求差值平方是等价的。</p>
+</blockquote>
+</li>
+</ol>
+<p>所以，我们直接求出两个数组一一对应两元素的差值数组<code>diffs</code>，其中<code>diffs[i] = abs(nums1[i] - nums2[i])</code>，每次减少<code>diffs</code>中最大的元素共计操作至多<code>k1 + k2</code>次（最多减少到$0$），最终的<code>diffs</code>数组中每个元素的平方和即为所求。</p>
+<p>但是，<code>k1 + k2</code>可能是$10^9$级别的，所以我们不能真的一个一个地去试，而是一次减多个元素，每个元素减好几。</p>
+<p>具体而言，对<code>diffs</code>数组从大到小排序。假设当前元素是<code>diffs[i]</code>（下一个元素是<code>diffs[i + 1]</code>），那么我们可以尽量把从<code>diffs[0]</code>到<code>diffs[i]</code>的所有元素都减小到<code>diffs[i + 1]</code>（共计需要减少$(diffs[i] - diffs[i + 1]) \times (i + 1)$次）：</p>
+<ol>
+<li><p>如果剩余的<code>k</code>足够多（$k\geq (diffs[i] - diffs[i + 1]) * (i + 1)$），那么就把<code>diffs[0]</code>到<code>diffs[i]</code>都减小到<code>diffs[i + 1]</code>（消耗$(diffs[i] - diffs[i + 1]) \times (i + 1)$次操作），然后继续处理下一个元素。</p>
+</li>
+<li><p>如果剩余的<code>k</code>不够多（$k &lt; (diffs[i] - diffs[i + 1]) * (i + 1)$），那么只能把$k \mod (i + 1)$个元素减少$\lfloor\frac{k}{i+1}\rfloor+1$以及把$i+1-(k \mod (i + 1))$个元素减少$\lfloor\frac{k}{i+1}\rfloor$。</p>
+<p> 到此为止，<code>k</code>已经消耗完毕，就不需要再继续遍历了，开始计算。$0$到$i$的<code>diff</code>中有$k \mod (i + 1)$个<code>diff</code>是$diffs[i] - \lfloor\frac{k}{i+1}\rfloor - 1$，有$i + 1 - (k \mod (i + 1))$个<code>diff</code>是$diffs[i] - \lfloor\frac{k}{i+1}\rfloor$，剩余的<code>diffs[i + 1]</code>到<code>diffs[n - 1]</code>是原值不变。</p>
+</li>
+</ol>
+<p>特别的，我们可以向<code>diffs</code>数组后面插入一个哨兵元素$0$。如果循环结束了，说明每个<code>diff</code>都减少到了$0$，直接返回$0$。</p>
+<h3 id="时空复杂度"><a href="#时空复杂度" class="headerlink" title="时空复杂度"></a>时空复杂度</h3><ul>
+<li>时间复杂度$O(n\log n)$，时间复杂度主要来自排序</li>
+<li>空间复杂度$O(n)$，如果原地修改其中一个参数数组可以将空间复杂度降低到$O(\log n)$</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-10-12 19:25:34</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ll <span class="title">minSumSquareDiff</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> k1, <span class="type">int</span> k2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">diffs</span><span class="params">(nums1.size() + <span class="number">1</span>)</span></span>;  <span class="comment">// 末尾多一个哨兵</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            diffs[i] = <span class="built_in">abs</span>(nums1[i] - nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        ranges::<span class="built_in">sort</span>(diffs, <span class="built_in">greater</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> k = k1 + k2;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            ll per_diff = diffs[i] - diffs[i + <span class="number">1</span>];</span><br><span class="line">            ll all_need = per_diff * (i + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (k &gt;= all_need) &#123;</span><br><span class="line">                k -= all_need;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">                不够全部减小到目标值了，看看能减小到多少。</span></span><br><span class="line"><span class="comment">                假设k = 3, i = 1, all_need = 5</span></span><br><span class="line"><span class="comment">                k // 2 = 1，2个数每个减少1</span></span><br><span class="line"><span class="comment">                k % 2 = 1，其中1个数再减少一</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            ll all_sub = k / (i + <span class="number">1</span>);</span><br><span class="line">            ll more_sub_1 = k % (i + <span class="number">1</span>);</span><br><span class="line">            ll not_more_sub_1 = i + <span class="number">1</span> - more_sub_1;</span><br><span class="line">            diffs[i] -= all_sub;</span><br><span class="line">            ll ans = not_more_sub_1 * diffs[i] * diffs[i];</span><br><span class="line">            ans += more_sub_1 * (diffs[i] - <span class="number">1</span>) * (diffs[i] - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span> (i++; i &lt; n; i++) &#123;</span><br><span class="line">                ans += (ll) diffs[i] * diffs[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/167811473">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/10/12/LeetCode%202333.%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%E5%B9%B3%E6%96%B9%E5%92%8C/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%912333-%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%E5%B9%B3%E6%96%B9%E5%92%8C%EF%BC%9A%E6%8E%92%E5%BA%8F-%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97%EF%BC%88%E4%B8%8D%E7%94%A8%E4%BA%8C%E5%88%86%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】2333.最小差值平方和：排序 + 数学计算（不用二分）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%8E%92%E5%BA%8F-%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：排序 + 数学计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.1.1.</span> <span class="toc-text">时空复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.2.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
