@@ -57,7 +57,32 @@ categories: [题解, LeetCode]
 
 已知两个前提：
 
-1. 假设有多个正整数只能选
+1. 假设有多个正整数只能选其中一个减少$1$，想要使平方和最小，应该减小哪个数？
+
+    应该减小最大的那个数。
+
+    > 假设$a\gt b$，那么$(a-1)^2 + b^2 = a^2 + b^2 + 1 - 2a$，$a^2 + (b-1)^2 = a^2 + b^2 + 1 - 2b$，因为$a\gt b$，所以$-2a \lt -2b$，所以减小$a$更优。
+
+2. 对`nums1`的操作，总有办法对`nums2`的等价操作。
+
+    所以对`nums1`进行最多`k1`次操作、对`nums2`进行最多`k2`次操作，相当于最多进行`k1 + k2`次加减一操作。
+
+    > 因为如果想要对`nums1[i] + 1`然后和`nums2[i]`求差值平方但是`k1`已经用完了的话，直接让`nums2[i] - 1`然后和`nums1[i]`求差值平方是等价的。
+
+所以，我们直接求出两个数组一一对应两元素的差值数组`diffs`，其中`diffs[i] = abs(nums1[i] - nums2[i])`，每次减少`diffs`中最大的元素共计操作至多`k1 + k2`次（最多减少到$0$），最终的`diffs`数组中每个元素的平方和即为所求。
+
+但是，`k1 + k2`可能是$10^9$级别的，所以我们不能真的一个一个地去试，而是一次减多个元素，每个元素减好几。
+
+具体而言，对`diffs`数组从大到小排序。假设当前元素是`diffs[i]`（下一个元素是`diffs[i + 1]`），那么我们可以尽量把从`diffs[0]`到`diffs[i]`的所有元素都减小到`diffs[i + 1]`（共计需要减少$(diffs[i] - diffs[i + 1]) \times (i + 1)$次）：
+
+1. 如果剩余的`k`足够多（$k\geq (diffs[i] - diffs[i + 1]) * (i + 1)$），那么就把`diffs[0]`到`diffs[i]`都减小到`diffs[i + 1]`（消耗$(diffs[i] - diffs[i + 1]) \times (i + 1)$次操作），然后继续处理下一个元素。
+2. 如果剩余的`k`不够多（$k < (diffs[i] - diffs[i + 1]) * (i + 1)$），那么只能把$k \mod (i + 1)$个元素减少$\lfloor\frac{k}{i+1}\rfloor+1$以及把$i+1-(k \mod (i + 1))$个元素减少$\lfloor\frac{k}{i+1}\rfloor$。
+
+    到此为止，`k`已经消耗完毕，就不需要再继续遍历了，开始计算。$0$到$i$的`diff`中有$k \mod (i + 1)$个`diff`是$diffs[i] - \lfloor\frac{k}{i+1}\rfloor - 1$，有$i + 1 - (k \mod (i + 1))$个`diff`是$diffs[i] - \lfloor\frac{k}{i+1}\rfloor$，剩余的`diffs[i + 1]`到`diffs[n - 1]`是原值不变。
+
+特别的，我们可以向`diffs`数组后面插入一个哨兵元素$0$。如果循环结束了，说明每个`diff`都减少到了$0$，直接返回$0$。
+
+### 时空复杂度
 
 + 时间复杂度$O(N^2)$
 + 空间复杂度$O(N\log N)$
@@ -113,6 +138,6 @@ public:
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/12/LeetCode%202333.%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%E5%B9%B3%E6%96%B9%E5%92%8C/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/167811473)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/12/LeetCode%202333.%E6%9C%80%E5%B0%8F%E5%B7%AE%E5%80%BC%E5%B9%B3%E6%96%B9%E5%92%8C/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
