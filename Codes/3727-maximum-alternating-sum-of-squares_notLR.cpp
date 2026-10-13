@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-13 22:11:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-13 22:16:50
+ * @LastEditTime: 2026-10-13 22:18:09
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,7 +15,7 @@ public:
         for (int& t : nums) {
             t = abs(t);
         }
-        ranges::sort(nums);
+        ranges::sort(nums, greater<int>());
 
         ll ans = 0;
         int half = (nums.size() + 1) / 2;
