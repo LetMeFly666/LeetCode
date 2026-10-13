@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-13 22:11:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-13 22:14:08
+ * @LastEditTime: 2026-10-13 22:15:35
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -15,6 +15,7 @@ public:
         for (int& t : nums) {
             t = abs(t);
         }
+        ranges::sort(nums);
 
         ll ans = 0;
         for (int l = 0, r = nums.size() - 1; l <= r; l++, r--) {
