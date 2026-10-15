@@ -16,7 +16,7 @@ public:
             unordered_set<int> se;
             for (int j = 0; j <= i; j++) {
                 se.insert(nums[j]);
-                ans += se.count() * se.count();
+                ans += se.size() * se.size();
             }
         }
         return ans;
