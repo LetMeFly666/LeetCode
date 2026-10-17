@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 20:54:40
+ * @LastEditTime: 2026-10-17 20:57:05
  */
 struct Union {
     parent: Vec<usize>,
@@ -29,8 +29,8 @@ impl Union {
     }
 
     fn merge(&mut self, x: usize, y: usize) {
-        let px = self.find(x);
-        let py = self.find(y);
+        let mut px = self.find(x);
+        let mut py = self.find(y);
         if px == py {
             return;
         }
@@ -56,7 +56,7 @@ impl Solution {
     pub fn min_swaps(nums: Vec<i32>) -> i32 {
         let n = nums.len();
         let mut idxs: Vec<usize> = (0..n).collect();
-        idxs.sort_by_key(|i| (Solution::get_sum(nums[i]), nums[i]));
+        idxs.sort_by_key(|&i| (Solution::get_sum(nums[i]), nums[i]));  // i是&usize类型，&i是usize类型
         
         let mut union = Union::new(n);
         for i in 0..n {
