@@ -35,7 +35,7 @@ private:
     void initUnion(int n) {
         parent.resize(n);
         ranges::iota(parent, 0);
-        sz.resize(n);
+        sz.assign(n, 1);
     }
 
     int find(int a) {
