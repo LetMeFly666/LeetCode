@@ -2,10 +2,20 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 18:37:55
+ * @LastEditTime: 2026-10-17 18:38:55
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
+#else
+template<class Type>
+void debug(vector<Type>v)
+{
+    for(int i=0;i<v.size();i++)
+    {
+        cout<<v[i]<<' ';
+    }
+    puts("");
+}
 #endif
 
 class Solution {
@@ -53,12 +63,13 @@ public:
     int minSwaps(vector<int>& nums) {
         int n = nums.size();
         vector<int> idxs(n);
-        ranges::iota(nums, 0);
+        ranges::iota(idxs, 0);
         sort(idxs.begin(), idxs.end(), [this, &nums](const int& a, const int& b) {
             int sa = getSum(nums[a]);
             int sb = getSum(nums[b]);
             return sa == sb ? nums[a] < nums[b] : sa < sb;
         });
+        debug(idxs);
 
         int ans = nums.size();
         initUnion(n);
