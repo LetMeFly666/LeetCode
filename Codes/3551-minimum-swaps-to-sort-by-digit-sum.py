@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-10-17 16:31:28
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-17 19:00:47
+LastEditTime: 2026-10-17 19:03:51
 '''
 from typing import List
 
@@ -19,6 +19,7 @@ class Union:
             return
         if self.sz[px] > self.sz[py]:
             px, py = py, px
+        self.parent[px] = py
         self.sz[py] += self.sz[px]
         self.count -= 1
     
@@ -39,7 +40,8 @@ class Solution:
     def minSwaps(self, nums: List[int]) -> int:
         n = len(nums)
         idxs = [i for i in range(n)]
-        idxs.sort(key=lambda x: (self._getSum(x), x))
+        idxs.sort(key=lambda i: (self._getSum(nums[i]), nums[i]))
+        # print(idxs)
         
         union = Union(n)
         for i in range(n):
