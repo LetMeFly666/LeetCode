@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 17:17:31
+ * @LastEditTime: 2026-10-17 18:37:55
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,7 +24,8 @@ private:
 
     void initUnion(int n) {
         parent.resize(n);
-        ranges
+        ranges::iota(parent, 0);
+        sz.resize(n);
     }
 
     int find(int a) {
@@ -46,18 +47,24 @@ private:
         }
         parent[pa] = pb;
         sz[pb] += sz[pa];
+        return true;
     }
 public:
     int minSwaps(vector<int>& nums) {
         int n = nums.size();
         vector<int> idxs(n);
         ranges::iota(nums, 0);
-        sort(nums.begin(), nums.end(), [this, &nums](const int& a, const int& b) {
-            int sa = getSum(a);
-            int sb = getSum(b);
-            return sa == sb ? a < b : sa < sb;
+        sort(idxs.begin(), idxs.end(), [this, &nums](const int& a, const int& b) {
+            int sa = getSum(nums[a]);
+            int sb = getSum(nums[b]);
+            return sa == sb ? nums[a] < nums[b] : sa < sb;
         });
 
-        parent
+        int ans = nums.size();
+        initUnion(n);
+        for (int i = 0; i < n; i++) {
+            ans -= !unite(i, idxs[i]);
+        }
+        return ans;
     }
 };
