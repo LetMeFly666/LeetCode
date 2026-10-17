@@ -68,7 +68,7 @@ func minSwaps(nums []int) int {
 	}
 	sort.Slice(idxs, func(i, j int) bool {
 		if sums[idxs[i]] == sums[idxs[j]] {
-			return nums[idxs[i]] < nums[idxs[i]]
+			return nums[idxs[i]] < nums[idxs[j]]
 		}
 		return sums[idxs[i]] < sums[idxs[j]]
 	})
