@@ -44,4 +44,4 @@ class Solution:
         union = Union(n)
         for i in range(n):
             union.merge(i, idxs[i])
-        return union.count
+        return n - union.count
