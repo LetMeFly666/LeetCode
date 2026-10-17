@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-10-17 16:31:28
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-17 18:59:33
+LastEditTime: 2026-10-17 19:00:47
 '''
 from typing import List
 
@@ -39,7 +39,7 @@ class Solution:
     def minSwaps(self, nums: List[int]) -> int:
         n = len(nums)
         idxs = [i for i in range(n)]
-        idxs.sort(idxs, key=lambda x: (self._getSum(x), x))
+        idxs.sort(key=lambda x: (self._getSum(x), x))
         
         union = Union(n)
         for i in range(n):
