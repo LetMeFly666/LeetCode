@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 18:38:55
+ * @LastEditTime: 2026-10-17 18:40:12
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -69,7 +69,7 @@ public:
             int sb = getSum(nums[b]);
             return sa == sb ? nums[a] < nums[b] : sa < sb;
         });
-        debug(idxs);
+        // debug(idxs);
 
         int ans = nums.size();
         initUnion(n);
