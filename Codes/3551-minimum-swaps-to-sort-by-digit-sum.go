@@ -2,13 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 20:33:31
+ * @LastEditTime: 2026-10-17 20:34:33
  */
 package main
 
 import "sort"
 
-type Union3551 {
+type Union3551 struct {
 	parent []int
 	sz     []int
 	count  int
@@ -32,7 +32,7 @@ func (u *Union3551) Find(x int) int {
 	if u.parent[x] == x {
 		return x
 	}
-	u.parent[x] = Find(u.parent[x])
+	u.parent[x] = u.Find(u.parent[x])
 	return u.parent[x]
 }
 
@@ -66,7 +66,7 @@ func minSwaps(nums []int) int {
 		idxs[i] = i;
 		sums[i] = getSum3551(t)
 	}
-	sort.Slices(idxs, func(i, j int) bool {
+	sort.Slice(idxs, func(i, j int) bool {
 		if sums[nums[i]] == sums[nums[j]] {
 			return nums[i] < nums[j]
 		}
