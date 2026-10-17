@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 20:18:36
+ * @LastEditTime: 2026-10-17 20:21:00
  */
 import java.util.Arrays;
 
@@ -48,7 +48,7 @@ class Union {
 class Solution {
     private int getSum(int n) {
         int ans = 0;
-        while (n) {
+        while (n != 0) {
             ans += n % 10;
             n /= 10;
         }
@@ -57,7 +57,7 @@ class Solution {
 
     public int minSwaps(int[] nums) {
         int n = nums.length;
-        int[] idxs = new int[n];
+        Integer[] idxs = new Integer[n];
         for (int i = 0; i < n; i++) {
             idxs[i] = i;
         }
