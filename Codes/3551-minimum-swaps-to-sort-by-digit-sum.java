@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 20:21:00
+ * @LastEditTime: 2026-10-17 20:22:23
  */
 import java.util.Arrays;
 
@@ -64,7 +64,7 @@ class Solution {
         Arrays.sort(idxs, (a, b) -> {
             int sa = getSum(nums[a]);
             int sb = getSum(nums[b]);
-            return sa == sb ? nums[a] < nums[b] : sa < sb;
+            return sa == sb ? nums[a] - nums[b] : sa - sb;
         });
 
         Union union = new Union(n);
