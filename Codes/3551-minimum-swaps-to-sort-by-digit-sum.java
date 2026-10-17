@@ -31,7 +31,7 @@ class Union {
         if (sz[px] > sz[py]) {
             int tmp = px;
             px = py;
-            py = px;
+            py = tmp;
         }
         sz[py] += sz[px];
         parent[px] = py;
