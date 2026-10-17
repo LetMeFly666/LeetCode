@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-17 16:31:28
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-17 20:34:33
+ * @LastEditTime: 2026-10-17 20:36:32
  */
 package main
 
@@ -67,10 +67,10 @@ func minSwaps(nums []int) int {
 		sums[i] = getSum3551(t)
 	}
 	sort.Slice(idxs, func(i, j int) bool {
-		if sums[nums[i]] == sums[nums[j]] {
-			return nums[i] < nums[j]
+		if sums[idxs[i]] == sums[idxs[j]] {
+			return nums[idxs[i]] < nums[idxs[i]]
 		}
-		return sums[nums[i]] < sums[nums[j]]
+		return sums[idxs[i]] < sums[idxs[j]]
 	})
 
 	union := newUnion3551(n)
