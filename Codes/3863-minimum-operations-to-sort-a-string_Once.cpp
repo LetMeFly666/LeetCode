@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-21 08:00:18
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-21 17:05:31
+ * @LastEditTime: 2026-10-21 17:08:16
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -28,7 +28,7 @@ public:
                 cnt_mn++;
             }
 
-            if (c > mn) {
+            if (c > mx) {
                 mx = c;
                 cnt_mx = 1;
             } else if (c == mx) {
@@ -51,3 +51,19 @@ public:
         return 2;
     }
 };
+
+#ifdef _DEBUG
+/*
+card
+
+2
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        Solution sol;
+        cout << sol.minOperations(s) << endl;
+    }
+    return 0;
+}
+#endif
