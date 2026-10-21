@@ -1,11 +1,11 @@
 ---
-title: 3863.将一个字符串排序的最小操作次数：分类讨论（两次遍历）——简单易懂版
+title: 3863.将一个字符串排序的最小操作次数：分类讨论（一次遍历）——简单易懂版
 date: 2026-10-21 16:52:30
 tags: [题解, LeetCode, 中等, 字符串, 分类讨论]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3863.将一个字符串排序的最小操作次数：分类讨论（两次遍历）——简单易懂版
+# 【LetMeFly】3863.将一个字符串排序的最小操作次数：分类讨论（一次遍历）——简单易懂版
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-operations-to-sort-a-string/](https://leetcode.cn/problems/minimum-operations-to-sort-a-string/)
 
@@ -131,6 +131,57 @@ public:
 
 其实也可以简化为一次遍历，在确认最大字符和最小字符的同时统计下最大字符和最小字符的出现次数即可。
 
+#### C++ —— 一次遍历
+
+```cpp
+/*
+ * @LastEditTime: 2026-10-21 17:08:16
+ */
+class Solution {
+public:
+    int minOperations(const string& s) {
+        char mn = 'z' + 1, mx = 'a' - 1;
+        bool already = true;
+        int cnt_mn = 0, cnt_mx = 0;
+        char last = 'a';
+        for (char c : s) {
+            if (c < last) {
+                already = false;
+            }
+            last = c;
+
+            if (c < mn) {
+                mn = c;
+                cnt_mn = 1;
+            } else if (c == mn) {
+                cnt_mn++;
+            }
+
+            if (c > mx) {
+                mx = c;
+                cnt_mx = 1;
+            } else if (c == mx) {
+                cnt_mx++;
+            }
+        }
+
+        if (already) {
+            return 0;
+        }
+        if (s.size() == 2) {
+            return -1;
+        }
+        if (s[0] == mn || s.back() == mx) {
+            return 1;
+        }
+        if (cnt_mn == 1 && cnt_mx == 1 && s[0] == mx && s.back() == mn) {
+            return 3;
+        }
+        return 2;
+    }
+};
+```
+
 #### Python
 
 ```python
@@ -154,6 +205,6 @@ class Solution:
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/21/LeetCode%203863.%E5%B0%86%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/168658270)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/21/LeetCode%203863.%E5%B0%86%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E7%9A%84%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
