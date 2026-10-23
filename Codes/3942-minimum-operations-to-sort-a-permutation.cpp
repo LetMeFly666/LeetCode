@@ -2,12 +2,50 @@
  * @Author: LetMeFly
  * @Date: 2026-10-22 08:03:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-22 18:41:42
+ * @LastEditTime: 2026-10-23 12:48:56
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
+#ifndef THIS_IS_JUST_NOT_DEFINED
+// 这里是正确解法
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) {
+            return 0;
+        }
+        int start = ranges::find(nums, 0) - nums.begin();
+        int diff = nums[(start + 1) % n] == 1 ? 1 : -1;
+        for (int i = 1; i < n; i++) {
+            if (nums[(start + i) % n] != nums[(start + i - 1) % n] + diff) {
+                return -1;
+            }
+        }
+        
+        if (diff == 1) {
+            return min(start, n - start + 2);  // 左移：start次 | 右移：n-start次+数组翻转2次
+        } else {
+            /*
+                2 1 0 3
+                n=4 start=2
+                右移：n - start
+                3 0 1 2
+                0 1 2 3
+                
+                左移：start + 2
+                1 0 3 2
+                0 3 2 1
+                3 2 1 0
+                0 1 2 3
+            */
+            return min(start  +2, n - start);
+        }
+    }
+};
+#else  // 以下是archive的错误解法
 class Solution {
 public:
     int minOperations(vector<int>& nums) {
@@ -34,6 +72,7 @@ public:
         return 1 + !increase;
     }
 };
+#endif
 
 #ifdef _DEBUG
 /*
