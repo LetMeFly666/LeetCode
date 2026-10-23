@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-22 08:03:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-23 12:48:56
+ * @LastEditTime: 2026-10-23 12:50:28
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ public:
         int start = ranges::find(nums, 0) - nums.begin();
         int diff = nums[(start + 1) % n] == 1 ? 1 : -1;
         for (int i = 1; i < n; i++) {
-            if (nums[(start + i) % n] != nums[(start + i - 1) % n] + diff) {
+            if (nums[(start + i) % n] != (nums[(start + i - 1) % n] + diff + n) % n) {
                 return -1;
             }
         }
