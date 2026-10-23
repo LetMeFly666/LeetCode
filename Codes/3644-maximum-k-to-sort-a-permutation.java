@@ -11,7 +11,7 @@ class Solution {
         }
         int ans = -1;
         for (int i = 0, n = nums.length; i < n; i++) {
-            if (i != n) {
+            if (i != nums[i]) {
                 ans &= i;
             }
         }
