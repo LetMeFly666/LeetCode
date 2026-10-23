@@ -7,7 +7,7 @@
 package main
 
 func sortPermutation(nums []int) int {
-	if nums[0] == 0 {
+	if nums[0] != 0 {
 		return 0
 	}
 	ans := -1
