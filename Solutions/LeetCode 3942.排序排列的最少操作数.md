@@ -1,7 +1,7 @@
 ---
 title: 3942.排序排列的最少操作数：分类讨论（移动0到最左/最右 + 翻转数组）
 date: 2026-10-23 12:50:53
-tags: [题解, LeetCode, 中等, 数组]
+tags: [题解, LeetCode, 中等, 数组, 分类讨论, 模拟]
 categories: [题解, LeetCode]
 ---
 
@@ -88,16 +88,62 @@ categories: [题解, LeetCode]
 
 首先看这串珠子是否是连续的：
 
-> 找到珠子$0$的位置$start$，如果其右边的珠子是$1$则是**递增珠子串**，否则视为**递减珠子串**。
+> 找到珠子$0$的位置$start$，从$start$的下一个珠子开始向右遍历$n-1$个珠子，计算相邻两珠子差值的绝对值。如果这个差值不是$1$也不是$n-1$则说明不连续，返回$-1$。
 > 
-> 从$start$的下一个珠子开始向右遍历$n-1$个珠子，如果相邻两个珠子的值是连续的，
+> 其中由于珠子串是循环的，所以对应到原始数组中$n-1$的下一个元素是$0$。
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+到现在位置，珠子串是连续的了，看下珠子串本身是递增的还是递减的：
+
+> 如果$start$的下一个珠子是$1$，说明是递增的，否则是递减的。
+
+如果珠子串是递增的，则目标是把珠子$0$移动到下标$0$：
+
+1. 可以直接左移$start$次，珠子$0$就移动到下标$0$了。
+2. 如果$start$距离最右边比较近的话，由于不支持右移操作，我们可以多进行两次翻转操作，实现珠子串右移的效果。把$start$右移到$n-1$再右移一次到$0$共需要$n-start$次，加上两次翻转操作共计$n-start+2$次。
+
+如果珠子串是递减的，则目标是把珠子$0$移动到下标$n-1$，再进行一次翻转操作：
+
+1. 把$start$左移至下标$0$再左移一次到下标$n-1$共需要$start+1$次，再翻转一次共计$start+2$次。
+2. 直接右移操作到$n-1$，由于珠子串已经翻转过一次，所以我们其实只需要再翻转一次即可。$start$右移到$n-1$共需要$n-start-1$次，再翻转一次共计$n-start$次。
+
+以上。
+
++ 时间复杂度$O(n)$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
 #### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-10-23 13:08:40
+ */
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) {
+            return 0;
+        }
+        int start = ranges::find(nums, 0) - nums.begin();
+        for (int i = 1; i < n; i++) {
+            int diff = abs(nums[(start + i) % n] - nums[(start + i - 1) % n]);
+            if (diff != 1 && diff != n - 1) {
+                return -1;
+            }
+        }
+        
+        if (nums[(start + 1) % n] == 1) {
+            return min(start, n - start + 2);
+        } else {
+            return min(start + 2, n - start);
+        }
+    }
+};
+```
+
+#### C++ —— 判断是否是循环递增数组的另一种方式
 
 ```cpp
 /*
@@ -136,7 +182,7 @@ public:
                 3 2 1 0
                 0 1 2 3
             */
-            return min(start  +2, n - start);
+            return min(start + 2, n - start);
         }
     }
 };
@@ -192,6 +238,6 @@ int main() {
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/22/LeetCode%203942.%E6%8E%92%E5%BA%8F%E6%8E%92%E5%88%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/168871108)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/22/LeetCode%203942.%E6%8E%92%E5%BA%8F%E6%8E%92%E5%88%97%E7%9A%84%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E6%95%B0/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

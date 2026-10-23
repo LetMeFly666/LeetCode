@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-22 08:03:03
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-23 12:58:43
+ * @LastEditTime: 2026-10-23 13:08:40
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -26,7 +26,7 @@ public:
         if (nums[(start + 1) % n] == 1) {
             return min(start, n - start + 2);
         } else {
-            return min(start  +2, n - start);
+            return min(start + 2, n - start);
         }
     }
 };
