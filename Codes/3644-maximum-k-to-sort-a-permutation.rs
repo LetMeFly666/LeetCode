@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-23 20:28:52
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-23 20:37:54
+ * @LastEditTime: 2026-10-23 20:39:42
  */
 impl Solution {
     pub fn sort_permutation(nums: Vec<i32>) -> i32 {
@@ -11,8 +11,8 @@ impl Solution {
         }
         let mut ans = -1;
         for (i, &t) in nums.iter().enumerate() {
-            if t != i {
-                ans &= i;
+            if t != i as i32 {
+                ans &= i as i32;
             }
         }
         ans.max(0)
