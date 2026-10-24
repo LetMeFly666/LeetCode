@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-24 12:01:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-24 12:12:35
+ * @LastEditTime: 2026-10-24 12:15:30
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -33,17 +33,16 @@ public:
         }
 
         // (bam, bad) -> (alm, ald)
-        int ans = 0;
-        if (alm > bam) {
-            ans = days[bam - 1] - bad + 1;
+        if (bam == alm) {
+            return max(0, ald - bad + 1);
+        } else if (alm < bam) {
+            return 0;
         }
+        int ans = days[bam - 1] - bad + 1;
         for (int m = bam + 1; m < alm; m++) {
             ans += days[m - 1];
         }
         ans += ald;
-        if (bam == alm) {
-            ans +
-        }
         return ans;
     }
 };
