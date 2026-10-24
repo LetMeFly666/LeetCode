@@ -1,11 +1,11 @@
 ---
-title: 2409.统计共同度过的日子数
+title: 2409.统计共同度过的日子数：日期处理
 date: 2023-04-17 10:17:49
 tags: [题解, LeetCode, 简单, 数学, 字符串, 日期处理, 区间交集]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】2409.统计共同度过的日子数
+# 【LetMeFly】2409.统计共同度过的日子数：日期处理
 
 力扣题目链接：[https://leetcode.cn/problems/count-days-spent-together/](https://leetcode.cn/problems/count-days-spent-together/)
 
@@ -67,6 +67,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2023-04-17 10:08:57
+ */
 const int dayPerMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 class Solution {
@@ -93,6 +96,38 @@ public:
             return 0;
         }
         return min(lb, la) - ab + 1;
+    }
+};
+```
+
+两个区间的交集也可以通过$\max(0, right - left + 1)$来计算，其中：
+
++ left是两个区间的左端点的最大值
++ right是两个区间的右端点的最小值
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-10-24 12:29:12
+ */
+class Solution {
+private:
+    static constexpr int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    inline int parse(const string& s) {
+        int m = (s[0] - '0') * 10 + s[1] - '0', d = (s[3] - '0') * 10 + s[4] - '0';
+        int ans = d;
+        for (int i = 0; i < m - 1; i++) {
+            ans += days[i];
+        }
+        return ans;
+    }
+public:
+    int countDaysTogether(const string& arriveAlice, const string& leaveAlice, const string& arriveBob, const string& leaveBob) {
+        int aa = parse(arriveAlice), al = parse(leaveAlice);
+        int ba = parse(arriveBob), bl = parse(leaveBob);
+        return max(0, min(al, bl) - max(aa, ba) + 1);
     }
 };
 ```
@@ -124,5 +159,69 @@ class Solution:
         return min(la, lb) - ab + 1
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/04/17/LeetCode%202409.%E7%BB%9F%E8%AE%A1%E5%85%B1%E5%90%8C%E5%BA%A6%E8%BF%87%E7%9A%84%E6%97%A5%E5%AD%90%E6%95%B0/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/130194499](https://letmefly.blog.csdn.net/article/details/130194499)
+## 方法二：不转为一年中的第几天直接比较计算
+
+假设alice来的比bob早（如果不是则swap）。假设结束时间bob走得比alice晚（如果不是则swap）。
+
+然后我们要计算的区间就变成了从bob来到alice走。
+
++ 时间复杂度$O(1)$
++ 空间复杂度$O(1)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-10-24 12:18:46
+ */
+class Solution {
+private:
+    static constexpr int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    inline pair<int, int> parse(const string& s) {
+        return {(s[0] - '0') * 10 + s[1] - '0', (s[3] - '0') * 10 + s[4] - '0'};
+    }
+
+    inline bool earlier(int am, int ad, int bm, int bd) {
+        return am == bm ? ad < bd : am < bm;
+    }
+public:
+    int countDaysTogether(const string& arriveAlice, const string& leaveAlice, const string& arriveBob, const string& leaveBob) {
+        auto [aam, aad] = parse(arriveAlice);  // AliceArriveMonth, AliceArriveDay
+        auto [bam, bad] = parse(arriveBob);
+        auto [alm, ald] = parse(leaveAlice);
+        auto [blm, bld] = parse(leaveBob);
+        if (earlier(bam, bad, aam, aad)) {  // Bob来的比Alice早
+            swap(aam, bam);
+            swap(aad, bad);
+            swap(alm, blm);
+            swap(ald, bld);
+        }
+        if (earlier(blm, bld, alm, ald)) {  // Bob来得晚走的早
+            swap(blm, alm);
+            swap(bld, ald);
+        }
+
+        // (bam, bad) -> (alm, ald)
+        if (bam == alm) {
+            return max(0, ald - bad + 1);
+        } else if (alm < bam) {
+            return 0;
+        }
+        int ans = days[bam - 1] - bad + 1;
+        for (int m = bam + 1; m < alm; m++) {
+            ans += days[m - 1];
+        }
+        ans += ald;
+        return ans;
+    }
+};
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/130194499)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/04/17/LeetCode%202409.%E7%BB%9F%E8%AE%A1%E5%85%B1%E5%90%8C%E5%BA%A6%E8%BF%87%E7%9A%84%E6%97%A5%E5%AD%90%E6%95%B0/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
