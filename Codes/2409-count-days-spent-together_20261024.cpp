@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-24 12:01:41
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-24 12:15:30
+ * @LastEditTime: 2026-10-24 12:18:46
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -30,6 +30,10 @@ public:
             swap(aad, bad);
             swap(alm, blm);
             swap(ald, bld);
+        }
+        if (earlier(blm, bld, alm, ald)) {  // Bob来得晚走的早
+            swap(blm, alm);
+            swap(bld, ald);
         }
 
         // (bam, bad) -> (alm, ald)
