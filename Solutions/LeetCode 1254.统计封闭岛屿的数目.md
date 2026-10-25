@@ -3,6 +3,7 @@ title: 1254.统计封闭岛屿的数目：广度优先搜索BFS
 date: 2023-06-18 13:53:56
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 数组, 矩阵, 图]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/1254-sample_3_1610.png
 ---
 
 # 【LetMeFly】1254.统计封闭岛屿的数目：广度优先搜索BFS
@@ -17,7 +18,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2019/10/31/sample_3_1610.png" style="height: 151px; width: 240px;" /></p>
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/1254-sample_3_1610.png" style="height: 151px; width: 240px;" /></p>
 
 <pre>
 <strong>输入：</strong>grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]
@@ -27,7 +28,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 2：</strong></p>
 
-<p><img src="https://assets.leetcode.cn/aliyun-lc-upload/uploads/2019/11/07/sample_4_1610.png" style="height: 98px; width: 160px;" /></p>
+<p><img src="https://files.letmefly.xyz/d/n/leetcode/1254-sample_4_1610.png" style="height: 98px; width: 160px;" /></p>
 
 <pre>
 <strong>输入：</strong>grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]
