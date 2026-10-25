@@ -1,11 +1,11 @@
 ---
-title: 1254.统计封闭岛屿的数目
+title: 1254.统计封闭岛屿的数目：广度优先搜索BFS
 date: 2023-06-18 13:53:56
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 数组, 矩阵, 图]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】1254.统计封闭岛屿的数目
+# 【LetMeFly】1254.统计封闭岛屿的数目：广度优先搜索BFS
 
 力扣题目链接：[https://leetcode.cn/problems/number-of-closed-islands/](https://leetcode.cn/problems/number-of-closed-islands/)
 
@@ -74,6 +74,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2023-06-18 13:32:17
+ */
 typedef pair<int, int> pii;
 
 const int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
@@ -134,6 +137,9 @@ public:
 #### Python
 
 ```python
+'''
+LastEditTime: 2023-06-18 13:52:12
+'''
 # from typing import List
 
 
