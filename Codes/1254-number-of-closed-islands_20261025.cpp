@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-25 09:03:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-25 09:13:47
+ * @LastEditTime: 2026-10-25 09:17:30
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -23,23 +23,31 @@ private:
 public:
     int closedIsland(vector<vector<int>>& grid) {
         n = grid.size(), m = grid[0].size();
-        vector<vector<bool>> visited(n, vector<bool>(m));
         int ans = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (grid[i][j] || visited[i][j]) {
+                if (grid[i][j]) {
                     continue;
                 }
                 // 新土地
-                visited[i][j] = true;
+                grid[i][j] = 1;
                 bool ok = isCenter(i, j);
-                for (auto[di, dj] : dirs) {
-                    int ni = i + di, nj = j + dj;
-                    if (!inGrid(ni, nj) || visited[di][dj] || ) {
-                        continue;
+                queue<pair<int, int>> q;
+                q.push({i, j});
+                while (!q.empty()) {
+                    auto [x, y] = q.front();
+                    q.pop();
+                    for (auto[dx, dy] : dirs) {
+                        int nx = x + dx, ny = y + dy;
+                        if (!inGrid(nx, ny) || grid[nx][ny]) {
+                            continue;
+                        }
+                        grid[nx][ny] = 1;
+                        ok &= isCenter(nx, ny);
+                        q.push({nx, ny});
                     }
-
                 }
+                ans += ok;
             }
         }
         return ans;
