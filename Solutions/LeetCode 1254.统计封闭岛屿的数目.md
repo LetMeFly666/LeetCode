@@ -180,6 +180,18 @@ class Solution:
         return ans
 ```
 
+
+## 方法二：BFS，连着边则视为不封闭岛屿
+
+依次遍历地图中每一个节点，遇到一个土地则从该土地开始广搜，将与之相连的所有土地全部标记为水域。
+
+如果遍历过程中遇到了地图边界，则该岛屿是非封闭岛屿，不累加答案。
+
++ 时间复杂度$O(n\times m)$，其中$size(grid)=n\times m$
++ 空间复杂度$O(n\times m)$
+
+### AC代码
+
 #### C++
 
 ```cpp
@@ -444,10 +456,6 @@ impl Solution {
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/10/25/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/131270866)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
-
-
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/131270866](https://letmefly.blog.csdn.net/article/details/131270866)
