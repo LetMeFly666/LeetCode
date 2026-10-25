@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3644-maximum-k-to-sort-a-permutation.rs");  // 这个fileName是会被脚本替换掉的
+include!("1254-number-of-closed-islands_20261025.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

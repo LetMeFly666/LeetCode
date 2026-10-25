@@ -1,11 +1,12 @@
 ---
-title: 1254.统计封闭岛屿的数目
+title: 1254.统计封闭岛屿的数目：广度优先搜索BFS
 date: 2023-06-18 13:53:56
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 数组, 矩阵, 图]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/1254-sample_3_1610.png
 ---
 
-# 【LetMeFly】1254.统计封闭岛屿的数目
+# 【LetMeFly】1254.统计封闭岛屿的数目：广度优先搜索BFS
 
 力扣题目链接：[https://leetcode.cn/problems/number-of-closed-islands/](https://leetcode.cn/problems/number-of-closed-islands/)
 
@@ -17,7 +18,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode.com/uploads/2019/10/31/sample_3_1610.png" style="height: 151px; width: 240px;" /></p>
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/1254-sample_3_1610.png" style="height: 151px; width: 240px;" /></p>
 
 <pre>
 <strong>输入：</strong>grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]
@@ -27,7 +28,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 2：</strong></p>
 
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/07/sample_4_1610.png" style="height: 98px; width: 160px;" /></p>
+<p><img src="https://files.letmefly.xyz/d/n/leetcode/1254-sample_4_1610.png" style="height: 98px; width: 160px;" /></p>
 
 <pre>
 <strong>输入：</strong>grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]
@@ -74,6 +75,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2023-06-18 13:32:17
+ */
 typedef pair<int, int> pii;
 
 const int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
@@ -134,6 +138,9 @@ public:
 #### Python
 
 ```python
+'''
+LastEditTime: 2023-06-18 13:52:12
+'''
 # from typing import List
 
 
@@ -174,5 +181,282 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载请附上[原文链接](https://blog.letmefly.xyz/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/131270866](https://letmefly.blog.csdn.net/article/details/131270866)
+
+## 方法二：BFS，连着边则视为不封闭岛屿
+
+依次遍历地图中每一个节点，遇到一个土地则从该土地开始广搜，将与之相连的所有土地全部标记为水域。
+
+如果遍历过程中遇到了地图边界，则该岛屿是非封闭岛屿，不累加答案。
+
++ 时间复杂度$O(n\times m)$，其中$size(grid)=n\times m$
++ 空间复杂度$O(n\times m)$
+
+### AC代码
+
+#### C++
+
+```cpp
+/*
+ * @LastEditTime: 2026-10-25 09:17:30
+ */
+class Solution {
+private:
+    int n, m;
+    static constexpr int dirs[][2] = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
+
+    bool isCenter(int i, int j) {  // 是否不是四周这一圈
+        return i && i != n - 1 && j && j != m - 1;
+    }
+
+    bool inGrid(int i, int j) {
+        return i >= 0 && i < n && j >=0 && j < m;
+    }
+public:
+    int closedIsland(vector<vector<int>>& grid) {
+        n = grid.size(), m = grid[0].size();
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j]) {
+                    continue;
+                }
+                // 新土地
+                grid[i][j] = 1;
+                bool ok = isCenter(i, j);
+                queue<pair<int, int>> q;
+                q.push({i, j});
+                while (!q.empty()) {
+                    auto [x, y] = q.front();
+                    q.pop();
+                    for (auto[dx, dy] : dirs) {
+                        int nx = x + dx, ny = y + dy;
+                        if (!inGrid(nx, ny) || grid[nx][ny]) {
+                            continue;
+                        }
+                        grid[nx][ny] = 1;
+                        ok &= isCenter(nx, ny);
+                        q.push({nx, ny});
+                    }
+                }
+                ans += ok;
+            }
+        }
+        return ans;
+    }
+};
+```
+
+#### Python
+
+```python
+'''
+LastEditTime: 2026-10-25 09:24:54
+'''
+from typing import List
+
+dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+class Solution:
+    def isCenter(self, i: int, j: int) -> bool:
+        return 0 < i < self.n - 1 and 0 < j < self.m - 1
+    
+    def inGrid(self, i: int, j: int) -> bool:
+        return 0 <= i < self.n and 0 <= j < self.m
+    
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        self.n = len(grid)
+        self.m = len(grid[0])
+        ans = 0
+        for i, line in enumerate(grid):
+            for j, v in enumerate(line):
+                if v:
+                    continue
+                grid[i][j] = 1
+                ok = self.isCenter(i, j)
+                q = [(i, j)]
+                while q:
+                    x, y = q.pop()
+                    for dx, dy in dirs:
+                        nx, ny = x + dx, y + dy
+                        if not self.inGrid(nx, ny) or grid[nx][ny]:
+                            continue
+                        grid[nx][ny] = 1
+                        ok &= self.isCenter(nx, ny)
+                        q.append((nx, ny))
+                ans += ok
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-10-25 12:56:37
+ */
+import java.util.Queue;
+import java.util.LinkedList;
+
+class Solution {
+    private int n, m;
+    private final int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+    private boolean isCenter(int i, int j) {
+        return 0 < i && i < n - 1 && 0 < j && j < m - 1;
+    }
+
+    private boolean inGrid(int i, int j) {
+        return 0 <= i && i < n && 0 <= j && j < m;
+    }
+
+    public int closedIsland(int[][] grid) {
+        n = grid.length;
+        m = grid[0].length;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1) {
+                    continue;
+                }
+                grid[i][j] = 1;
+                boolean ok = isCenter(i, j);
+                Queue<int[]> q = new LinkedList<>();
+                q.offer(new int[]{i, j});
+                while (!q.isEmpty()) {
+                    int[] top = q.poll();
+                    int x = top[0], y = top[1];
+                    for (int[] d : dirs) {
+                        int nx = x + d[0], ny = y + d[1];
+                        if (!inGrid(nx, ny) || grid[nx][ny] == 1) {
+                            continue;
+                        }
+                        grid[nx][ny] = 1;
+                        ok &= isCenter(nx, ny);
+                        q.offer(new int[]{nx, ny});
+                    }
+                }
+                if (ok) {
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2026-10-25 12:16:55
+ */
+package main
+
+func isCenter1254(i, j, n, m int) bool {
+    return 0 < i && i < n - 1 && 0 < j && j < m - 1
+}
+
+func inGrid1254(i, j, n, m int) bool {
+    return 0 <= i && i < n && 0 <= j && j < m
+}
+
+var dirs1254 = [4][2]int{{0, -1}, {0, 1}, {1, 0}, {-1, 0}}
+
+func closedIsland(grid [][]int) (ans int) {
+    n, m := len(grid), len(grid[0])
+    for i, line := range grid {
+        for j, v := range line {
+            if v == 1 {
+                continue
+            }
+            ok := isCenter1254(i, j, n, m)
+            grid[i][j] = 1
+            q := [][2]int{{i, j}}
+            for len(q) > 0 {
+                top := q[len(q) - 1]
+                q = q[:len(q) - 1]
+                x, y := top[0], top[1]
+                for _, d := range dirs1254 {
+                    nx, ny := x + d[0], y + d[1]
+                    if !inGrid1254(nx, ny, n, m) || grid[nx][ny] == 1 {
+                        continue
+                    }
+                    grid[nx][ny] = 1
+                    ok = ok && isCenter1254(nx, ny, n, m)  // go没有bool的&
+                    q = append(q, [2]int{nx, ny})
+                }
+            }
+            if ok {
+                ans++
+            }
+        }
+    }
+    return
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2026-10-25 16:19:59
+ */
+use std::collections::VecDeque;
+
+impl Solution {
+    const DIRS: [(isize, isize); 4] = [(-1, 0), (1, 0), (0, 1), (0, -1)];  // 注意防止usize到-1
+
+    fn is_center(i: usize, j: usize, n: usize, m: usize) -> bool {
+        0 < i && i < n - 1 && 0 < j && j < m - 1
+    }
+
+    fn in_grid(i: isize, j: isize, n: usize, m: usize) -> bool {
+        0 <= i && i < n as isize && 0 <= j && j < m as isize
+    }
+
+    pub fn closed_island(mut grid: Vec<Vec<i32>>) -> i32 {
+        let n = grid.len();
+        let m = grid[0].len();
+        let mut ans = 0;
+        for i in 0..n {
+            for j in 0..m {
+                if grid[i][j] == 1 {
+                    continue;
+                }
+                grid[i][j] = 1;
+                let mut ok = Self::is_center(i, j, n, m);
+                let mut q = VecDeque::new();
+                q.push_back((i, j));
+                while let Some((x, y)) = q.pop_front() {
+                    for &(dx, dy) in &Self::DIRS {
+                        let nx = x as isize + dx;
+                        let ny = y as isize + dy;
+                        if !Self::in_grid(nx, ny, n, m){
+                            continue;
+                        }
+                        let (nx, ny) = (nx as usize, ny as usize);
+                        if grid[nx][ny] == 1 {
+                            continue;
+                        }
+                        grid[nx][ny] = 1;
+                        ok &= Self::is_center(nx, ny, n, m);
+                        q.push_back((nx, ny));
+                    }
+                }
+                ans += if ok {
+                    1
+                } else {
+                    0
+                }
+            }
+        }
+        ans
+    }
+}
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/131270866)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/06/18/LeetCode%201254.%E7%BB%9F%E8%AE%A1%E5%B0%81%E9%97%AD%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%95%B0%E7%9B%AE/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
