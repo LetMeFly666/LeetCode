@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-10-25 09:03:15
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-25 16:18:26
+ * @LastEditTime: 2026-10-25 16:19:59
  */
 use std::collections::VecDeque;
 
@@ -34,10 +34,16 @@ impl Solution {
                     for &(dx, dy) in &Self::DIRS {
                         let nx = x as isize + dx;
                         let ny = y as isize + dy;
-                        if !Self::in_grid(nx, ny, n, m) || grid[nx as usize][ny as usize] == 1 {
+                        if !Self::in_grid(nx, ny, n, m){
                             continue;
                         }
-                        grid[nx]
+                        let (nx, ny) = (nx as usize, ny as usize);
+                        if grid[nx][ny] == 1 {
+                            continue;
+                        }
+                        grid[nx][ny] = 1;
+                        ok &= Self::is_center(nx, ny, n, m);
+                        q.push_back((nx, ny));
                     }
                 }
                 ans += if ok {
