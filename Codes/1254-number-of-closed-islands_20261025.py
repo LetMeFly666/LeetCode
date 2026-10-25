@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-10-25 09:03:15
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-25 09:23:24
+LastEditTime: 2026-10-25 09:24:54
 '''
 from typing import List
 
@@ -35,4 +35,5 @@ class Solution:
                         grid[nx][ny] = 1
                         ok &= self.isCenter(nx, ny)
                         q.append((nx, ny))
+                ans += ok
         return ans
