@@ -2,12 +2,13 @@
  * @Author: LetMeFly
  * @Date: 2026-10-26 21:57:32
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-26 22:03:01
+ * @LastEditTime: 2026-10-26 22:05:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
+typedef long long ll;
 class Solution {
 private:
     int n, m;
@@ -18,7 +19,7 @@ private:
     }
 
     bool bfs(vector<vector<int>>& grid, int x, int y, int k) {
-        int cnt = grid[x][y];
+        ll cnt = grid[x][y];
         grid[x][y] = 0;
         queue<pair<int, int>> q;
         q.push({x, y});
