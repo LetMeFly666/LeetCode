@@ -52,7 +52,7 @@ index_img: https://files.letmefly.xyz/d/n/leetcode/3619-example1griddrawio-1.png
 	<li><code>1 &lt;= m, n &lt;= 1000</code></li>
 	<li><code>1 &lt;= m * n &lt;= 10<sup>5</sup></code></li>
 	<li><code>0 &lt;= grid[i][j] &lt;= 10<sup>6</sup></code></li>
-	<li><code>1 &lt;= k &lt; = 10<sup>6</sup></code></li>
+	<li><code>1 &lt;= k &lt;= 10<sup>6</sup></code></li>
 </ul>
 
 
