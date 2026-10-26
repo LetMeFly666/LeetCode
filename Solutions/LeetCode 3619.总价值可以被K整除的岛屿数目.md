@@ -3,6 +3,7 @@ title: 3619.总价值可以被 K 整除的岛屿数目：广度优先搜索BFS
 date: 2026-10-26 22:06:27
 tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, BFS, 并查集, 数组, 矩阵]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/3619-example1griddrawio-1.png
 ---
 
 # 【LetMeFly】3619.总价值可以被 K 整除的岛屿数目：广度优先搜索BFS
@@ -18,7 +19,7 @@ categories: [题解, LeetCode]
 <p>&nbsp;</p>
 
 <p><strong class="example">示例 1:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2025/03/06/example1griddrawio-1.png" style="width: 200px; height: 200px;" />
+<img alt="" src="https://files.letmefly.xyz/d/n/leetcode/3619-example1griddrawio-1.png" style="width: 200px; height: 200px;" />
 <div class="example-block">
 <p><strong>输入:</strong> <span class="example-io">grid = [[0,2,1,0,0],[0,5,0,0,5],[0,0,1,0,0],[0,1,4,7,0],[0,2,0,0,8]], k = 5</span></p>
 
@@ -30,7 +31,7 @@ categories: [题解, LeetCode]
 </div>
 
 <p><strong class="example">示例 2:</strong></p>
-<img alt="" src="https://assets.leetcode.com/uploads/2025/03/06/example2griddrawio.png" style="width: 200px; height: 150px;" />
+<img alt="" src="https://files.letmefly.xyz/d/n/leetcode/3619-example2griddrawio.png" style="width: 200px; height: 150px;" />
 <div class="example-block">
 <p><strong>输入:</strong> <span class="example-io">grid = [[3,0,3,0], [0,3,0,3], [3,0,3,0]], k = 3</span></p>
 
