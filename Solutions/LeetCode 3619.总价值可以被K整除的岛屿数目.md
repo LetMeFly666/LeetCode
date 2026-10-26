@@ -64,6 +64,8 @@ index_img: https://files.letmefly.xyz/d/n/leetcode/3619-example1griddrawio-1.png
 + 时间复杂度$O(mn)$
 + 空间复杂度$O(mn)$
 
+注意一个岛屿的总价值可能会超过32位int范围，所以某些编程语言可能需要使用如long long等的64位类型。
+
 ### AC代码
 
 #### C++
