@@ -1,3 +1,3 @@
 class Solution:
-    def sortEvenOdd(self, nums: List[int]) -> List[int]:
+    def sortEvenOdd(self, nums: list[int]) -> list[int]:
         

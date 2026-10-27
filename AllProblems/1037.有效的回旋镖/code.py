@@ -1,3 +1,3 @@
 class Solution:
-    def isBoomerang(self, points: List[List[int]]) -> bool:
+    def isBoomerang(self, points: list[list[int]]) -> bool:
         

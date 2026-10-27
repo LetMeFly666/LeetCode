@@ -1,3 +1,3 @@
 class Solution:
-    def numFriendRequests(self, ages: List[int]) -> int:
+    def numFriendRequests(self, ages: list[int]) -> int:
         

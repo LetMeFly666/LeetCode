@@ -1,3 +1,3 @@
 class Solution:
-    def smallestSubarrays(self, nums: List[int]) -> List[int]:
+    def smallestSubarrays(self, nums: list[int]) -> list[int]:
         

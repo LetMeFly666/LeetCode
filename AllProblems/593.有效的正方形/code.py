@@ -1,3 +1,3 @@
 class Solution:
-    def validSquare(self, p1: List[int], p2: List[int], p3: List[int], p4: List[int]) -> bool:
+    def validSquare(self, p1: list[int], p2: list[int], p3: list[int], p4: list[int]) -> bool:
         

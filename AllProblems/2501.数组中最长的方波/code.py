@@ -1,3 +1,3 @@
 class Solution:
-    def longestSquareStreak(self, nums: List[int]) -> int:
+    def longestSquareStreak(self, nums: list[int]) -> int:
         

@@ -4,5 +4,5 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def getDecimalValue(self, head: Optional[ListNode]) -> int:
+    def getDecimalValue(self, head: ListNode | None) -> int:
         

@@ -1,3 +1,5 @@
-bool validMountainArray(int* arr, int arrSize) {
-    
+
+
+bool validMountainArray(int* arr, int arrSize){
+
 }

@@ -1,3 +1,3 @@
 class Solution:
-    def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+    def numMagicSquaresInside(self, grid: list[list[int]]) -> int:
         

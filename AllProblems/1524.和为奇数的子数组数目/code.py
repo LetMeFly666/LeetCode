@@ -1,3 +1,3 @@
 class Solution:
-    def numOfSubarrays(self, arr: List[int]) -> int:
+    def numOfSubarrays(self, arr: list[int]) -> int:
         

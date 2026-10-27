@@ -1,3 +1,3 @@
 class Solution:
-    def splitIntoFibonacci(self, num: str) -> List[int]:
+    def splitIntoFibonacci(self, num: str) -> list[int]:
         

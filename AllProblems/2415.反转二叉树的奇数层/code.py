@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def reverseOddLevels(self, root: TreeNode | None) -> TreeNode | None:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def kthSmallestPrimeFraction(self, arr: List[int], k: int) -> List[int]:
+    def kthSmallestPrimeFraction(self, arr: list[int], k: int) -> list[int]:
         

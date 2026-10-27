@@ -1,3 +1,3 @@
 class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+    def subsetsWithDup(self, nums: list[int]) -> list[list[int]]:
         

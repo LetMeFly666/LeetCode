@@ -1,3 +1,3 @@
 class Solution:
-    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+    def kWeakestRows(self, mat: list[list[int]], k: int) -> list[int]:
         

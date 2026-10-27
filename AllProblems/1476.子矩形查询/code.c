@@ -11,11 +11,11 @@ SubrectangleQueries* subrectangleQueriesCreate(int** rectangle, int rectangleSiz
 }
 
 void subrectangleQueriesUpdateSubrectangle(SubrectangleQueries* obj, int row1, int col1, int row2, int col2, int newValue) {
-    
+  
 }
 
 int subrectangleQueriesGetValue(SubrectangleQueries* obj, int row, int col) {
-    
+  
 }
 
 void subrectangleQueriesFree(SubrectangleQueries* obj) {

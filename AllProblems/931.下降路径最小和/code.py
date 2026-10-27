@@ -1,3 +1,3 @@
 class Solution:
-    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+    def minFallingPathSum(self, matrix: list[list[int]]) -> int:
         

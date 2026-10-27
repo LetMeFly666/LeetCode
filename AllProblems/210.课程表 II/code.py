@@ -1,3 +1,3 @@
 class Solution:
-    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
         

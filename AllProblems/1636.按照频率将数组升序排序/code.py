@@ -1,3 +1,3 @@
 class Solution:
-    def frequencySort(self, nums: List[int]) -> List[int]:
+    def frequencySort(self, nums: list[int]) -> list[int]:
         

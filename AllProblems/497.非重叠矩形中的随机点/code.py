@@ -1,9 +1,9 @@
 class Solution:
 
-    def __init__(self, rects: List[List[int]]):
+    def __init__(self, rects: list[list[int]]):
         
 
-    def pick(self) -> List[int]:
+    def pick(self) -> list[int]:
         
 
 

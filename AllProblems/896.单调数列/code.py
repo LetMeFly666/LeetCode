@@ -1,3 +1,3 @@
 class Solution:
-    def isMonotonic(self, nums: List[int]) -> bool:
+    def isMonotonic(self, nums: list[int]) -> bool:
         

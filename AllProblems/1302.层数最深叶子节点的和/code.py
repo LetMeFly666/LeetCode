@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+    def deepestLeavesSum(self, root: TreeNode | None) -> int:
         

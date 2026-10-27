@@ -1,6 +1,6 @@
 class Encrypter:
 
-    def __init__(self, keys: List[str], values: List[str], dictionary: List[str]):
+    def __init__(self, keys: list[str], values: list[str], dictionary: list[str]):
         
 
     def encrypt(self, word1: str) -> str:

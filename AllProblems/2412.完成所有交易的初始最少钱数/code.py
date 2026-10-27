@@ -1,3 +1,3 @@
 class Solution:
-    def minimumMoney(self, transactions: List[List[int]]) -> int:
+    def minimumMoney(self, transactions: list[list[int]]) -> int:
         

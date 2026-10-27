@@ -1,3 +1,3 @@
 class Solution:
-    def longestStrChain(self, words: List[str]) -> int:
+    def longestStrChain(self, words: list[str]) -> int:
         

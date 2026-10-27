@@ -1,3 +1,3 @@
 class Solution:
-    def longestMountain(self, arr: List[int]) -> int:
+    def longestMountain(self, arr: list[int]) -> int:
         

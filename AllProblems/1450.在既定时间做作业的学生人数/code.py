@@ -1,3 +1,3 @@
 class Solution:
-    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+    def busyStudent(self, startTime: list[int], endTime: list[int], queryTime: int) -> int:
         

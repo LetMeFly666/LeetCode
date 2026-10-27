@@ -1,3 +1,3 @@
 class Solution:
-    def rearrangeBarcodes(self, barcodes: List[int]) -> List[int]:
+    def rearrangeBarcodes(self, barcodes: list[int]) -> list[int]:
         

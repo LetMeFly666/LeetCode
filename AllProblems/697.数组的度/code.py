@@ -1,3 +1,3 @@
 class Solution:
-    def findShortestSubArray(self, nums: List[int]) -> int:
+    def findShortestSubArray(self, nums: list[int]) -> int:
         

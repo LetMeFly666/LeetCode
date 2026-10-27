@@ -1,3 +1,3 @@
 class Solution:
-    def fillCups(self, amount: List[int]) -> int:
+    def fillCups(self, amount: list[int]) -> int:
         

@@ -1,12 +1,12 @@
 class Solution:
 
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums: list[int]):
         
 
-    def reset(self) -> List[int]:
+    def reset(self) -> list[int]:
         
 
-    def shuffle(self) -> List[int]:
+    def shuffle(self) -> list[int]:
         
 
 

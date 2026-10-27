@@ -4,5 +4,5 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+    def partition(self, head: ListNode | None, x: int) -> ListNode | None:
         

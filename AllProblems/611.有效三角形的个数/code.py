@@ -1,3 +1,3 @@
 class Solution:
-    def triangleNumber(self, nums: List[int]) -> int:
+    def triangleNumber(self, nums: list[int]) -> int:
         

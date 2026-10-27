@@ -1,3 +1,3 @@
 class Solution:
-    def numMovesStonesII(self, stones: List[int]) -> List[int]:
+    def numMovesStonesII(self, stones: list[int]) -> list[int]:
         

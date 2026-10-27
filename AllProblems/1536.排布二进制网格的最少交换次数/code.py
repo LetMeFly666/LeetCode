@@ -1,3 +1,3 @@
 class Solution:
-    def minSwaps(self, grid: List[List[int]]) -> int:
+    def minSwaps(self, grid: list[list[int]]) -> int:
         

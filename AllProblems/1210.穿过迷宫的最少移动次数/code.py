@@ -1,3 +1,3 @@
 class Solution:
-    def minimumMoves(self, grid: List[List[int]]) -> int:
+    def minimumMoves(self, grid: list[list[int]]) -> int:
         

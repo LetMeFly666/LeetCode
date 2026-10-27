@@ -1,3 +1,3 @@
 class Solution:
-    def numSimilarGroups(self, strs: List[str]) -> int:
+    def numSimilarGroups(self, strs: list[str]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def cellsInRange(self, s: str) -> List[str]:
+    def cellsInRange(self, s: str) -> list[str]:
         

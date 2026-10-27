@@ -6,7 +6,7 @@
 #         self.right = right
 class FindElements:
 
-    def __init__(self, root: Optional[TreeNode]):
+    def __init__(self, root: TreeNode | None):
         
 
     def find(self, target: int) -> bool:

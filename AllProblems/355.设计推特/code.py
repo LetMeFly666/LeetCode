@@ -6,7 +6,7 @@ class Twitter:
     def postTweet(self, userId: int, tweetId: int) -> None:
         
 
-    def getNewsFeed(self, userId: int) -> List[int]:
+    def getNewsFeed(self, userId: int) -> list[int]:
         
 
     def follow(self, followerId: int, followeeId: int) -> None:

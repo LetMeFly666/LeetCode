@@ -1,3 +1,3 @@
 class Solution:
-    def cutOffTree(self, forest: List[List[int]]) -> int:
+    def cutOffTree(self, forest: list[list[int]]) -> int:
         

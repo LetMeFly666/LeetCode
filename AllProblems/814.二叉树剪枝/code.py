@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def pruneTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def pruneTree(self, root: TreeNode | None) -> TreeNode | None:
         

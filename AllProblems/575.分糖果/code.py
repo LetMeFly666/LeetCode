@@ -1,3 +1,3 @@
 class Solution:
-    def distributeCandies(self, candyType: List[int]) -> int:
+    def distributeCandies(self, candyType: list[int]) -> int:
         

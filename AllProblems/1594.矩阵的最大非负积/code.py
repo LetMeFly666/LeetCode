@@ -1,3 +1,3 @@
 class Solution:
-    def maxProductPath(self, grid: List[List[int]]) -> int:
+    def maxProductPath(self, grid: list[list[int]]) -> int:
         

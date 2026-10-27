@@ -1,3 +1,3 @@
 class Solution:
-    def pathInZigZagTree(self, label: int) -> List[int]:
+    def pathInZigZagTree(self, label: int) -> list[int]:
         

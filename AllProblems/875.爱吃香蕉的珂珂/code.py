@@ -1,3 +1,3 @@
 class Solution:
-    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
         

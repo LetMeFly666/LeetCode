@@ -1,3 +1,3 @@
 class Solution:
-    def largestMultipleOfThree(self, digits: List[int]) -> str:
+    def largestMultipleOfThree(self, digits: list[int]) -> str:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def combinationSum4(self, nums: List[int], target: int) -> int:
+    def combinationSum4(self, nums: list[int], target: int) -> int:
         

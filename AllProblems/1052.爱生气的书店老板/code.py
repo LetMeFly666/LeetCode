@@ -1,3 +1,3 @@
 class Solution:
-    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+    def maxSatisfied(self, customers: list[int], grumpy: list[int], minutes: int) -> int:
         

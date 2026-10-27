@@ -1,3 +1,3 @@
 class Solution:
-    def intersectionSizeTwo(self, intervals: List[List[int]]) -> int:
+    def intersectionSizeTwo(self, intervals: list[list[int]]) -> int:
         

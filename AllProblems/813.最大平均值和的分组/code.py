@@ -1,3 +1,3 @@
 class Solution:
-    def largestSumOfAverages(self, nums: List[int], k: int) -> float:
+    def largestSumOfAverages(self, nums: list[int], k: int) -> float:
         

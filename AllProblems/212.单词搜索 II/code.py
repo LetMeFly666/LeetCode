@@ -1,3 +1,3 @@
 class Solution:
-    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+    def findWords(self, board: list[list[str]], words: list[str]) -> list[str]:
         

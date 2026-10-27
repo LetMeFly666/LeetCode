@@ -1,3 +1,3 @@
 class Solution:
-    def countSquares(self, matrix: List[List[int]]) -> int:
+    def countSquares(self, matrix: list[list[int]]) -> int:
         

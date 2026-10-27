@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def generateTrees(self, n: int) -> List[Optional[TreeNode]]:
+    def generateTrees(self, n: int) -> list[TreeNode | None]:
         

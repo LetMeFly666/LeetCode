@@ -1,3 +1,3 @@
 class Solution:
-    def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
+    def onesMinusZeros(self, grid: list[list[int]]) -> list[list[int]]:
         

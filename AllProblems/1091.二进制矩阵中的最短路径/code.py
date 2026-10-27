@@ -1,3 +1,3 @@
 class Solution:
-    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+    def shortestPathBinaryMatrix(self, grid: list[list[int]]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def removeInvalidParentheses(self, s: str) -> List[str]:
+    def removeInvalidParentheses(self, s: str) -> list[str]:
         

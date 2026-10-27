@@ -1,9 +1,9 @@
 class Cashier:
 
-    def __init__(self, n: int, discount: int, products: List[int], prices: List[int]):
+    def __init__(self, n: int, discount: int, products: list[int], prices: list[int]):
         
 
-    def getBill(self, product: List[int], amount: List[int]) -> float:
+    def getBill(self, product: list[int], amount: list[int]) -> float:
         
 
 

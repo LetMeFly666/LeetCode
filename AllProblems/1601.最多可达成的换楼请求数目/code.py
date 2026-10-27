@@ -1,3 +1,3 @@
 class Solution:
-    def maximumRequests(self, n: int, requests: List[List[int]]) -> int:
+    def maximumRequests(self, n: int, requests: list[list[int]]) -> int:
         

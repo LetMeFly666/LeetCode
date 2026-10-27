@@ -1,3 +1,3 @@
 class Solution:
-    def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
+    def findAndReplacePattern(self, words: list[str], pattern: str) -> list[str]:
         

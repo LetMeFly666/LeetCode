@@ -1,3 +1,3 @@
 class Solution:
-    def kthPalindrome(self, queries: List[int], intLength: int) -> List[int]:
+    def kthPalindrome(self, queries: list[int], intLength: int) -> list[int]:
         

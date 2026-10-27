@@ -1,3 +1,3 @@
 class Solution:
-    def countBattleships(self, board: List[List[str]]) -> int:
+    def countBattleships(self, board: list[list[str]]) -> int:
         

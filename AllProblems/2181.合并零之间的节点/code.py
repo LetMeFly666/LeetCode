@@ -4,5 +4,5 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeNodes(self, head: ListNode | None) -> ListNode | None:
         

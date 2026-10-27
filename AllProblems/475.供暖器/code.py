@@ -1,3 +1,3 @@
 class Solution:
-    def findRadius(self, houses: List[int], heaters: List[int]) -> int:
+    def findRadius(self, houses: list[int], heaters: list[int]) -> int:
         

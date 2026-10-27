@@ -1,3 +1,3 @@
 class Solution:
-    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
+    def nthSuperUglyNumber(self, n: int, primes: list[int]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+    def arrayRankTransform(self, arr: list[int]) -> list[int]:
         

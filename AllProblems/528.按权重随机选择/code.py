@@ -1,6 +1,6 @@
 class Solution:
 
-    def __init__(self, w: List[int]):
+    def __init__(self, w: list[int]):
         
 
     def pickIndex(self) -> int:

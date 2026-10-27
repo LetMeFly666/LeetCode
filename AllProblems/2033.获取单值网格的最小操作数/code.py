@@ -1,3 +1,3 @@
 class Solution:
-    def minOperations(self, grid: List[List[int]], x: int) -> int:
+    def minOperations(self, grid: list[list[int]], x: int) -> int:
         

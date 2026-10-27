@@ -1,3 +1,3 @@
 class Solution:
-    def smallestRangeII(self, nums: List[int], k: int) -> int:
+    def smallestRangeII(self, nums: list[int], k: int) -> int:
         

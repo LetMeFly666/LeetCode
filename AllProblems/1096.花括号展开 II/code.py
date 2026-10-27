@@ -1,3 +1,3 @@
 class Solution:
-    def braceExpansionII(self, expression: str) -> List[str]:
+    def braceExpansionII(self, expression: str) -> list[str]:
         

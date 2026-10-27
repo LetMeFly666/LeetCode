@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    def leafSimilar(self, root1: TreeNode | None, root2: TreeNode | None) -> bool:
         

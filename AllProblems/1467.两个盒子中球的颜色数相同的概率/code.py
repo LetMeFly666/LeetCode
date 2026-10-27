@@ -1,3 +1,3 @@
 class Solution:
-    def getProbability(self, balls: List[int]) -> float:
+    def getProbability(self, balls: list[int]) -> float:
         

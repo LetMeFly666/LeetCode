@@ -1,3 +1,3 @@
 class Solution:
-    def bestCoordinate(self, towers: List[List[int]], radius: int) -> List[int]:
+    def bestCoordinate(self, towers: list[list[int]], radius: int) -> list[int]:
         

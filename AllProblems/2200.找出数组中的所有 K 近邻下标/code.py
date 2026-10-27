@@ -1,3 +1,3 @@
 class Solution:
-    def findKDistantIndices(self, nums: List[int], key: int, k: int) -> List[int]:
+    def findKDistantIndices(self, nums: list[int], key: int, k: int) -> list[int]:
         

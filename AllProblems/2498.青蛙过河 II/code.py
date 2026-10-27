@@ -1,3 +1,3 @@
 class Solution:
-    def maxJump(self, stones: List[int]) -> int:
+    def maxJump(self, stones: list[int]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def trimMean(self, arr: List[int]) -> float:
+    def trimMean(self, arr: list[int]) -> float:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def numSubseq(self, nums: List[int], target: int) -> int:
+    def numSubseq(self, nums: list[int], target: int) -> int:
         

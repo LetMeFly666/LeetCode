@@ -1,3 +1,3 @@
 class Solution:
-    def peopleIndexes(self, favoriteCompanies: List[List[str]]) -> List[int]:
+    def peopleIndexes(self, favoriteCompanies: list[list[str]]) -> list[int]:
         

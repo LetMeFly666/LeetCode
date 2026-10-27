@@ -1,3 +1,3 @@
 class Solution:
-    def findUnsortedSubarray(self, nums: List[int]) -> int:
+    def findUnsortedSubarray(self, nums: list[int]) -> int:
         

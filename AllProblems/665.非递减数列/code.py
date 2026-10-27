@@ -1,3 +1,3 @@
 class Solution:
-    def checkPossibility(self, nums: List[int]) -> bool:
+    def checkPossibility(self, nums: list[int]) -> bool:
         

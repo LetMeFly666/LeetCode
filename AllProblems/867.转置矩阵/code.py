@@ -1,3 +1,3 @@
 class Solution:
-    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+    def transpose(self, matrix: list[list[int]]) -> list[list[int]]:
         

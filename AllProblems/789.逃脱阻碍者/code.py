@@ -1,3 +1,3 @@
 class Solution:
-    def escapeGhosts(self, ghosts: List[List[int]], target: List[int]) -> bool:
+    def escapeGhosts(self, ghosts: list[list[int]], target: list[int]) -> bool:
         

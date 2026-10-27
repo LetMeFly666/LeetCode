@@ -1,3 +1,3 @@
 class Solution:
-    def countServers(self, grid: List[List[int]]) -> int:
+    def countServers(self, grid: list[list[int]]) -> int:
         

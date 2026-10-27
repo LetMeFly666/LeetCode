@@ -1,3 +1,3 @@
 class Solution:
-    def getMinDistSum(self, positions: List[List[int]]) -> float:
+    def getMinDistSum(self, positions: list[list[int]]) -> float:
         

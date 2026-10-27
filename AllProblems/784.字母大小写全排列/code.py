@@ -1,3 +1,3 @@
 class Solution:
-    def letterCasePermutation(self, s: str) -> List[str]:
+    def letterCasePermutation(self, s: str) -> list[str]:
         

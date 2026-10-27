@@ -1,3 +1,3 @@
 class Solution:
-    def find132pattern(self, nums: List[int]) -> bool:
+    def find132pattern(self, nums: list[int]) -> bool:
         

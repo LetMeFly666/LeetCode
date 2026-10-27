@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def btreeGameWinningMove(self, root: Optional[TreeNode], n: int, x: int) -> bool:
+    def btreeGameWinningMove(self, root: TreeNode | None, n: int, x: int) -> bool:
         

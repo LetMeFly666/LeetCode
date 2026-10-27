@@ -1,3 +1,3 @@
 class Solution:
-    def findLengthOfShortestSubarray(self, arr: List[int]) -> int:
+    def findLengthOfShortestSubarray(self, arr: list[int]) -> int:
         

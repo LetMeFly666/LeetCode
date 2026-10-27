@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def recoverFromPreorder(self, traversal: str) -> Optional[TreeNode]:
+    def recoverFromPreorder(self, traversal: str) -> TreeNode | None:
         

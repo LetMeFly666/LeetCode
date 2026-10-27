@@ -1,3 +1,3 @@
 class Solution:
-    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+    def accountsMerge(self, accounts: list[list[str]]) -> list[list[str]]:
         

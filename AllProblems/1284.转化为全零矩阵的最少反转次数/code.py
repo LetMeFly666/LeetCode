@@ -1,3 +1,3 @@
 class Solution:
-    def minFlips(self, mat: List[List[int]]) -> int:
+    def minFlips(self, mat: list[list[int]]) -> int:
         

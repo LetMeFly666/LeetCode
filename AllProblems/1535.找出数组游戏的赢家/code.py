@@ -1,3 +1,3 @@
 class Solution:
-    def getWinner(self, arr: List[int], k: int) -> int:
+    def getWinner(self, arr: list[int], k: int) -> int:
         

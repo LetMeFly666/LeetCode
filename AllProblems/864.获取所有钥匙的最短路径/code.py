@@ -1,3 +1,3 @@
 class Solution:
-    def shortestPathAllKeys(self, grid: List[str]) -> int:
+    def shortestPathAllKeys(self, grid: list[str]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def pathsWithMaxScore(self, board: List[str]) -> List[int]:
+    def pathsWithMaxScore(self, board: list[str]) -> list[int]:
         

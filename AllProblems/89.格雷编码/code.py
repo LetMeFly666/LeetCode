@@ -1,3 +1,3 @@
 class Solution:
-    def grayCode(self, n: int) -> List[int]:
+    def grayCode(self, n: int) -> list[int]:
         

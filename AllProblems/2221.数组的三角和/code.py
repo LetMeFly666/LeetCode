@@ -1,3 +1,3 @@
 class Solution:
-    def triangularSum(self, nums: List[int]) -> int:
+    def triangularSum(self, nums: list[int]) -> int:
         

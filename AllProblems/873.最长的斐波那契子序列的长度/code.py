@@ -1,3 +1,3 @@
 class Solution:
-    def lenLongestFibSubseq(self, arr: List[int]) -> int:
+    def lenLongestFibSubseq(self, arr: list[int]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+    def removeCoveredIntervals(self, intervals: list[list[int]]) -> int:
         

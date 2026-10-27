@@ -1,3 +1,3 @@
 class Solution:
-    def minCost(self, colors: str, neededTime: List[int]) -> int:
+    def minCost(self, colors: str, neededTime: list[int]) -> int:
         

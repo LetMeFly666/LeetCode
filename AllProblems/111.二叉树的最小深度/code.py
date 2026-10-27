@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def minDepth(self, root: Optional[TreeNode]) -> int:
+    def minDepth(self, root: TreeNode | None) -> int:
         

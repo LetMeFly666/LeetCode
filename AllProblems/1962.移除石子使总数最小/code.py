@@ -1,3 +1,3 @@
 class Solution:
-    def minStoneSum(self, piles: List[int], k: int) -> int:
+    def minStoneSum(self, piles: list[int], k: int) -> int:
         

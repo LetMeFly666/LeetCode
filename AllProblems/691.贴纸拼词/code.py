@@ -1,3 +1,3 @@
 class Solution:
-    def minStickers(self, stickers: List[str], target: str) -> int:
+    def minStickers(self, stickers: list[str], target: str) -> int:
         

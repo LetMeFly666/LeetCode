@@ -1,3 +1,3 @@
 class Solution:
-    def getBiggestThree(self, grid: List[List[int]]) -> List[int]:
+    def getBiggestThree(self, grid: list[list[int]]) -> list[int]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def maximumProduct(self, nums: List[int]) -> int:
+    def maximumProduct(self, nums: list[int]) -> int:
         

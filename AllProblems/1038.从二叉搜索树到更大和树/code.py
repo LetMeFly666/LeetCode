@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def bstToGst(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def bstToGst(self, root: TreeNode | None) -> TreeNode | None:
         

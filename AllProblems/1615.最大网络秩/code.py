@@ -1,3 +1,3 @@
 class Solution:
-    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+    def maximalNetworkRank(self, n: int, roads: list[list[int]]) -> int:
         

@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+    def balanceBST(self, root: TreeNode | None) -> TreeNode | None:
         

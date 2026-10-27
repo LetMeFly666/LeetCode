@@ -1,3 +1,3 @@
 class Solution:
-    def waysToSplit(self, nums: List[int]) -> int:
+    def waysToSplit(self, nums: list[int]) -> int:
         

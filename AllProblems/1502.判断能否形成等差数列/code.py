@@ -1,3 +1,3 @@
 class Solution:
-    def canMakeArithmeticProgression(self, arr: List[int]) -> bool:
+    def canMakeArithmeticProgression(self, arr: list[int]) -> bool:
         

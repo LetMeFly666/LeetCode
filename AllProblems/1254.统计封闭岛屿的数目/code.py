@@ -1,3 +1,3 @@
 class Solution:
-    def closedIsland(self, grid: List[List[int]]) -> int:
+    def closedIsland(self, grid: list[list[int]]) -> int:
         

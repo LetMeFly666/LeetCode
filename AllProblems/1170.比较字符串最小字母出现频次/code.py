@@ -1,3 +1,3 @@
 class Solution:
-    def numSmallerByFrequency(self, queries: List[str], words: List[str]) -> List[int]:
+    def numSmallerByFrequency(self, queries: list[str], words: list[str]) -> list[int]:
         

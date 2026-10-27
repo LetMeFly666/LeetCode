@@ -1,3 +1,3 @@
 class Solution:
-    def sumSubarrayMins(self, arr: List[int]) -> int:
+    def sumSubarrayMins(self, arr: list[int]) -> int:
         

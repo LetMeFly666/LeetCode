@@ -1,3 +1,3 @@
 class Solution:
-    def maxValueOfCoins(self, piles: List[List[int]], k: int) -> int:
+    def maxValueOfCoins(self, piles: list[list[int]], k: int) -> int:
         

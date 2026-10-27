@@ -1,3 +1,3 @@
 class Solution:
-    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+    def suggestedProducts(self, products: list[str], searchWord: str) -> list[list[str]]:
         

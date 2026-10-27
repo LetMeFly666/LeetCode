@@ -1,3 +1,3 @@
 class Solution:
-    def maxStarSum(self, vals: List[int], edges: List[List[int]], k: int) -> int:
+    def maxStarSum(self, vals: list[int], edges: list[list[int]], k: int) -> int:
         

@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
+    def isEvenOddTree(self, root: TreeNode | None) -> bool:
         

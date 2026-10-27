@@ -1,3 +1,3 @@
 class Solution:
-    def minMalwareSpread(self, graph: List[List[int]], initial: List[int]) -> int:
+    def minMalwareSpread(self, graph: list[list[int]], initial: list[int]) -> int:
         

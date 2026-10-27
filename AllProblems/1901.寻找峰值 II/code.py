@@ -1,3 +1,3 @@
 class Solution:
-    def findPeakGrid(self, mat: List[List[int]]) -> List[int]:
+    def findPeakGrid(self, mat: list[list[int]]) -> list[int]:
         

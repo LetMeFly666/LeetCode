@@ -30,14 +30,14 @@
 #    def getInteger(self):
 #        """
 #        @return the single integer that this NestedInteger holds, if it holds a single integer
-#        Return None if this NestedInteger holds a nested list
+#        The result is undefined if this NestedInteger holds a nested list
 #        :rtype int
 #        """
 #
 #    def getList(self):
 #        """
 #        @return the nested list that this NestedInteger holds, if it holds a nested list
-#        Return None if this NestedInteger holds a single integer
+#        The result is undefined if this NestedInteger holds a single integer
 #        :rtype List[NestedInteger]
 #        """
 

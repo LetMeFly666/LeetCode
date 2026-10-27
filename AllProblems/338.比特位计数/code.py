@@ -1,3 +1,3 @@
 class Solution:
-    def countBits(self, n: int) -> List[int]:
+    def countBits(self, n: int) -> list[int]:
         

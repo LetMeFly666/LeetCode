@@ -1,3 +1,3 @@
 class Solution:
-    def longestArithSeqLength(self, nums: List[int]) -> int:
+    def longestArithSeqLength(self, nums: list[int]) -> int:
         

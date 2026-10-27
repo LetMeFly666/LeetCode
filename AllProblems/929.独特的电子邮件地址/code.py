@@ -1,3 +1,3 @@
 class Solution:
-    def numUniqueEmails(self, emails: List[str]) -> int:
+    def numUniqueEmails(self, emails: list[str]) -> int:
         

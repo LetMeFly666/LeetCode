@@ -1,3 +1,3 @@
 class Solution:
-    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+    def nextGreatestLetter(self, letters: list[str], target: str) -> str:
         

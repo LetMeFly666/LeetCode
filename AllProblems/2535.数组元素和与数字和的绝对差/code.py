@@ -1,3 +1,3 @@
 class Solution:
-    def differenceOfSum(self, nums: List[int]) -> int:
+    def differenceOfSum(self, nums: list[int]) -> int:
         
