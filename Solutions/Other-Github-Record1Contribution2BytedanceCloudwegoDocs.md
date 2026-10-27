@@ -1,3 +1,9 @@
+<!--
+ * @Author: LetMeFly
+ * @Date: 2026-05-19 15:04:34
+ * @LastEditors: LetMeFly.xyz
+ * @LastEditTime: 2026-10-27 13:00:31
+-->
 ---
 title: Github - 记录一次向字节跳动CloudWeGo文档贡献的commit
 date: 2025-02-14 17:52:28
@@ -74,6 +80,7 @@ categories: [技术思考]
 |[LeetCode-Feedback/LeetCode-Feedback#9736(issue)](https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/9736)|2022.10.4|新版UI无法渲染`sqrt`|Completed|
 |[LeetCode-Feedback/LeetCode-Feedback#9820(issue)](https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/9820)|2022.10.10|题目英译中错误|Completed|
 |[LeetCode-Feedback/LeetCode-Feedback#12523(issue)](https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/12523)|2023.3.23|缺少特殊测试用例|Self-closed|
+|[LeetCode-Feedback/LeetCode-Feedback#41001(issue)](https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/41001)|2026.10.27|数据范围描述存在多余空格|Opening|
 |[liuyong0076/ACMER#1(pr)](https://github.com/liuyong0076/ACMER/pull/1)|2023.7.5|fix: django导入app的数据库|Opening|
 |[kahakaha/bupt-kb-helper#3(pr)](https://github.com/kahakaha/bupt-kb-helper/pull/3)|2023.9.13|fix: 课程名为汉字时无法匹配|Merged|
 |[lin594/code-contributing-practice#142(issue)](https://github.com/lin594/code-contributing-practice/issues/142)<br/>[lin594/code-contributing-practice#143(pr)](https://github.com/lin594/code-contributing-practice/pr/143)|2023.10.9|代码仓库正常练习|Merged|
