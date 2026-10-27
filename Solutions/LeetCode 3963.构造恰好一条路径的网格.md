@@ -3,6 +3,7 @@ title: 3963.构造恰好一条路径的网格：左上到左下再到右下（�
 date: 2026-10-27 20:01:57
 tags: [题解, LeetCode, 简单, 构造, 字符串, 矩阵]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/3963-screenshot-2026-05-26-at-61129pm.png
 ---
 
 # 【LetMeFly】3963.构造恰好一条路径的网格：左上到左下再到右下（构造）
@@ -44,7 +45,7 @@ categories: [题解, LeetCode]
 
 <p><strong>解释：</strong></p>
 
-<p><img src="https://assets.leetcode.com/uploads/2026/05/26/screenshot-2026-05-26-at-61005pm.png" style="width: 200px; height: 95px;" /></p>
+<p><img src="https://files.letmefly.xyz/d/n/leetcode/3963-screenshot-2026-05-26-at-61005pm.png" style="width: 200px; height: 95px;" /></p>
 
 <p>唯一的有效路径是：<code>(0,0) → (0,1) → (1,1) → (1,2)</code></p>
 </div>
@@ -58,7 +59,7 @@ categories: [题解, LeetCode]
 
 <p><strong>解释：</strong></p>
 
-<p><img src="https://assets.leetcode.com/uploads/2026/05/26/screenshot-2026-05-26-at-61129pm.png" style="width: 220px; height: 150px;" /></p>
+<p><img src="https://files.letmefly.xyz/d/n/leetcode/3963-screenshot-2026-05-26-at-61129pm.png" style="width: 220px; height: 150px;" /></p>
 
 <p>唯一的有效路径是：<code>(0,0) → (0,1) → (1,1) → (1,2) → (2,2)</code></p>
 </div>
