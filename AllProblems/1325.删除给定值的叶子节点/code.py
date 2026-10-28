@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
+    def removeLeafNodes(self, root: TreeNode | None, target: int) -> TreeNode | None:
         

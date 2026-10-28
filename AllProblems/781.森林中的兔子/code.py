@@ -1,3 +1,3 @@
 class Solution:
-    def numRabbits(self, answers: List[int]) -> int:
+    def numRabbits(self, answers: list[int]) -> int:
         

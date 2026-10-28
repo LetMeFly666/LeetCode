@@ -1,3 +1,3 @@
 class Solution:
-    def maxEqualRowsAfterFlips(self, matrix: List[List[int]]) -> int:
+    def maxEqualRowsAfterFlips(self, matrix: list[list[int]]) -> int:
         

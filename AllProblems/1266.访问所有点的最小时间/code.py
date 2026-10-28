@@ -1,3 +1,3 @@
 class Solution:
-    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+    def minTimeToVisitAllPoints(self, points: list[list[int]]) -> int:
         

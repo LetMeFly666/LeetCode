@@ -1,6 +1,6 @@
 class LockingTree:
 
-    def __init__(self, parent: List[int]):
+    def __init__(self, parent: list[int]):
         
 
     def lock(self, num: int, user: int) -> bool:

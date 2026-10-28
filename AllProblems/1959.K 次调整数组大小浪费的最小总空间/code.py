@@ -1,3 +1,3 @@
 class Solution:
-    def minSpaceWastedKResizing(self, nums: List[int], k: int) -> int:
+    def minSpaceWastedKResizing(self, nums: list[int], k: int) -> int:
         

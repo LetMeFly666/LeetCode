@@ -1,3 +1,3 @@
 class Solution:
-    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+    def numSubmatrixSumTarget(self, matrix: list[list[int]], target: int) -> int:
         

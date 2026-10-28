@@ -1,3 +1,3 @@
 class Solution:
-    def minimumTime(self, time: List[int], totalTrips: int) -> int:
+    def minimumTime(self, time: list[int], totalTrips: int) -> int:
         

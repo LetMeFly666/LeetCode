@@ -1,3 +1,3 @@
 class Solution:
-    def maximumSum(self, arr: List[int]) -> int:
+    def maximumSum(self, arr: list[int]) -> int:
         

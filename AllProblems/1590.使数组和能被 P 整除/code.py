@@ -1,3 +1,3 @@
 class Solution:
-    def minSubarray(self, nums: List[int], p: int) -> int:
+    def minSubarray(self, nums: list[int], p: int) -> int:
         

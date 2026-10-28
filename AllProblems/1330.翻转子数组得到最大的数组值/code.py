@@ -1,3 +1,3 @@
 class Solution:
-    def maxValueAfterReverse(self, nums: List[int]) -> int:
+    def maxValueAfterReverse(self, nums: list[int]) -> int:
         

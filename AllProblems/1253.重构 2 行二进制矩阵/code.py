@@ -1,3 +1,3 @@
 class Solution:
-    def reconstructMatrix(self, upper: int, lower: int, colsum: List[int]) -> List[List[int]]:
+    def reconstructMatrix(self, upper: int, lower: int, colsum: list[int]) -> list[list[int]]:
         

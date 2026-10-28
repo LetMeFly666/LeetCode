@@ -1,3 +1,3 @@
 class Solution:
-    def threeSumMulti(self, arr: List[int], target: int) -> int:
+    def threeSumMulti(self, arr: list[int], target: int) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def threeEqualParts(self, arr: List[int]) -> List[int]:
+    def threeEqualParts(self, arr: list[int]) -> list[int]:
         

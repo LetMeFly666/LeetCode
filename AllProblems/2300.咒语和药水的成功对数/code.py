@@ -1,3 +1,3 @@
 class Solution:
-    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+    def successfulPairs(self, spells: list[int], potions: list[int], success: int) -> list[int]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def checkIfExist(self, arr: List[int]) -> bool:
+    def checkIfExist(self, arr: list[int]) -> bool:
         

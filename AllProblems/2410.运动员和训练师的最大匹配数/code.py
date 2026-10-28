@@ -1,3 +1,3 @@
 class Solution:
-    def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
+    def matchPlayersAndTrainers(self, players: list[int], trainers: list[int]) -> int:
         

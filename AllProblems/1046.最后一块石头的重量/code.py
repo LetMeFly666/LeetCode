@@ -1,3 +1,3 @@
 class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
+    def lastStoneWeight(self, stones: list[int]) -> int:
         

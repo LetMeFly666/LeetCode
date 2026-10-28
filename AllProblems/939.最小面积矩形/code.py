@@ -1,3 +1,3 @@
 class Solution:
-    def minAreaRect(self, points: List[List[int]]) -> int:
+    def minAreaRect(self, points: list[list[int]]) -> int:
         

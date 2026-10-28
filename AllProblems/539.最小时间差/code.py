@@ -1,3 +1,3 @@
 class Solution:
-    def findMinDifference(self, timePoints: List[str]) -> int:
+    def findMinDifference(self, timePoints: list[str]) -> int:
         

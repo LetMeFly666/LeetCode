@@ -1,3 +1,3 @@
 class Solution:
-    def maxProduct(self, words: List[str]) -> int:
+    def maxProduct(self, words: list[str]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def waysToMakeFair(self, nums: List[int]) -> int:
+    def waysToMakeFair(self, nums: list[int]) -> int:
         

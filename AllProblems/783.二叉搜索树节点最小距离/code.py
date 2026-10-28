@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+    def minDiffInBST(self, root: TreeNode | None) -> int:
         

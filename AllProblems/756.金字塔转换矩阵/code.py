@@ -1,3 +1,3 @@
 class Solution:
-    def pyramidTransition(self, bottom: str, allowed: List[str]) -> bool:
+    def pyramidTransition(self, bottom: str, allowed: list[str]) -> bool:
         

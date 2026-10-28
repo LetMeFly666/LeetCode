@@ -1,3 +1,3 @@
 class Solution:
-    def leastInterval(self, tasks: List[str], n: int) -> int:
+    def leastInterval(self, tasks: list[str], n: int) -> int:
         

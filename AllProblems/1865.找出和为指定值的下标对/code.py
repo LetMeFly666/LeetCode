@@ -1,6 +1,6 @@
 class FindSumPairs:
 
-    def __init__(self, nums1: List[int], nums2: List[int]):
+    def __init__(self, nums1: list[int], nums2: list[int]):
         
 
     def add(self, index: int, val: int) -> None:

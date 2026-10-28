@@ -1,3 +1,3 @@
 class Solution:
-    def findNumbers(self, nums: List[int]) -> int:
+    def findNumbers(self, nums: list[int]) -> int:
         

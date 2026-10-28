@@ -1,3 +1,3 @@
 class Solution:
-    def largeGroupPositions(self, s: str) -> List[List[int]]:
+    def largeGroupPositions(self, s: str) -> list[list[int]]:
         

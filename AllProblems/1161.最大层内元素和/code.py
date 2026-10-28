@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+    def maxLevelSum(self, root: TreeNode | None) -> int:
         

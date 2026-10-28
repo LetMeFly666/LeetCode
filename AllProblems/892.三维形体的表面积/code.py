@@ -1,3 +1,3 @@
 class Solution:
-    def surfaceArea(self, grid: List[List[int]]) -> int:
+    def surfaceArea(self, grid: list[list[int]]) -> int:
         

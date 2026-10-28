@@ -1,3 +1,3 @@
 class Solution:
-    def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
+    def findPoisonedDuration(self, timeSeries: list[int], duration: int) -> int:
         

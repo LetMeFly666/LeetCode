@@ -1,3 +1,3 @@
 class Solution:
-    def largestIsland(self, grid: List[List[int]]) -> int:
+    def largestIsland(self, grid: list[list[int]]) -> int:
         

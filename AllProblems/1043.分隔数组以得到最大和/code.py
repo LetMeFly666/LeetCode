@@ -1,3 +1,3 @@
 class Solution:
-    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+    def maxSumAfterPartitioning(self, arr: list[int], k: int) -> int:
         

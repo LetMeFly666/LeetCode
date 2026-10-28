@@ -1,3 +1,3 @@
 class Solution:
-    def minimumMountainRemovals(self, nums: List[int]) -> int:
+    def minimumMountainRemovals(self, nums: list[int]) -> int:
         

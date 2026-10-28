@@ -1,3 +1,3 @@
 class Solution:
-    def shortestPathLength(self, graph: List[List[int]]) -> int:
+    def shortestPathLength(self, graph: list[list[int]]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def palindromePairs(self, words: List[str]) -> List[List[int]]:
+    def palindromePairs(self, words: list[str]) -> list[list[int]]:
         

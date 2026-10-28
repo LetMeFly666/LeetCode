@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+    def findMode(self, root: TreeNode | None) -> list[int]:
         

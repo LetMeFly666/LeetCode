@@ -1,3 +1,3 @@
 class Solution:
-    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+    def kSmallestPairs(self, nums1: list[int], nums2: list[int], k: int) -> list[list[int]]:
         

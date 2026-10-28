@@ -1,3 +1,3 @@
 class Solution:
-    def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
+    def numSubarrayBoundedMax(self, nums: list[int], left: int, right: int) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def numOfBurgers(self, tomatoSlices: int, cheeseSlices: int) -> List[int]:
+    def numOfBurgers(self, tomatoSlices: int, cheeseSlices: int) -> list[int]:
         

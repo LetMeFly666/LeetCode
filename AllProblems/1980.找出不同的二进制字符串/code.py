@@ -1,3 +1,3 @@
 class Solution:
-    def findDifferentBinaryString(self, nums: List[str]) -> str:
+    def findDifferentBinaryString(self, nums: list[str]) -> str:
         

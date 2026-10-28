@@ -1,3 +1,3 @@
 class Solution:
-    def minSwapsCouples(self, row: List[int]) -> int:
+    def minSwapsCouples(self, row: list[int]) -> int:
         

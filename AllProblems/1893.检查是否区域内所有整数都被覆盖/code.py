@@ -1,3 +1,3 @@
 class Solution:
-    def isCovered(self, ranges: List[List[int]], left: int, right: int) -> bool:
+    def isCovered(self, ranges: list[list[int]], left: int, right: int) -> bool:
         

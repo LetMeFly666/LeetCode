@@ -3,7 +3,7 @@ class Solution:
     def __init__(self, m: int, n: int):
         
 
-    def flip(self) -> List[int]:
+    def flip(self) -> list[int]:
         
 
     def reset(self) -> None:

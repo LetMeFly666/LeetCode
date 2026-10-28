@@ -1,3 +1,3 @@
 class Solution:
-    def singleNumber(self, nums: List[int]) -> List[int]:
+    def singleNumber(self, nums: list[int]) -> list[int]:
         

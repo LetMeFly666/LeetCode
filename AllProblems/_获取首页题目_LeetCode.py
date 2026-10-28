@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2022-06-02 14:14:26
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-06-13 23:36:13
+LastEditTime: 2026-10-27 12:23:13
 '''
 # WorkDir: BASE DIR
 # CMD: python AllProblems/_获取首页题目_LeetCode.py
@@ -14,16 +14,12 @@ import time
 import os
 
 """clean.sh
-rm -rf "AllProblems/69.x 的平方根/"
-
-mv "AllProblems/69.x 的平方根 /69.x 的平方根 .md" "AllProblems/69.x 的平方根 /69.x 的平方根.md"
-
-mv "AllProblems/69.x 的平方根 /" "AllProblems/69.x 的平方根/"
+# rm -rf "AllProblems/69.x 的平方根/"
+# mv "AllProblems/69.x 的平方根 /69.x 的平方根 .md" "AllProblems/69.x 的平方根 /69.x 的平方根.md"
+# mv "AllProblems/69.x 的平方根 /" "AllProblems/69.x 的平方根/"
 
 rm -rf "AllProblems/LCR 084.全排列 II/"
-
 mv "AllProblems/LCR 084.全排列 II /LCR 084.全排列 II .md" "AllProblems/LCR 084.全排列 II /LCR 084.全排列 II.md"
-
 mv "AllProblems/LCR 084.全排列 II /" "AllProblems/LCR 084.全排列 II/"
 """
 

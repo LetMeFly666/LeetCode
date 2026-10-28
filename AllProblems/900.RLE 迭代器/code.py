@@ -1,6 +1,6 @@
 class RLEIterator:
 
-    def __init__(self, encoding: List[int]):
+    def __init__(self, encoding: list[int]):
         
 
     def next(self, n: int) -> int:

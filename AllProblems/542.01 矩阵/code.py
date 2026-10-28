@@ -1,3 +1,3 @@
 class Solution:
-    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+    def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
         

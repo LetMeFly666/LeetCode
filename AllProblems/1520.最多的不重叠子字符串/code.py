@@ -1,3 +1,3 @@
 class Solution:
-    def maxNumOfSubstrings(self, s: str) -> List[str]:
+    def maxNumOfSubstrings(self, s: str) -> list[str]:
         

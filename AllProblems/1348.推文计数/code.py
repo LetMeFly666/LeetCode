@@ -6,7 +6,7 @@ class TweetCounts:
     def recordTweet(self, tweetName: str, time: int) -> None:
         
 
-    def getTweetCountsPerFrequency(self, freq: str, tweetName: str, startTime: int, endTime: int) -> List[int]:
+    def getTweetCountsPerFrequency(self, freq: str, tweetName: str, startTime: int, endTime: int) -> list[int]:
         
 
 

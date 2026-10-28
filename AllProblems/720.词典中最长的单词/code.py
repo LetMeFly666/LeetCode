@@ -1,3 +1,3 @@
 class Solution:
-    def longestWord(self, words: List[str]) -> str:
+    def longestWord(self, words: list[str]) -> str:
         

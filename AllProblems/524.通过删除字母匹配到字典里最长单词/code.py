@@ -1,3 +1,3 @@
 class Solution:
-    def findLongestWord(self, s: str, dictionary: List[str]) -> str:
+    def findLongestWord(self, s: str, dictionary: list[str]) -> str:
         

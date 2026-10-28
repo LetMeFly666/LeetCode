@@ -1,3 +1,3 @@
 class Solution:
-    def matrixRankTransform(self, matrix: List[List[int]]) -> List[List[int]]:
+    def matrixRankTransform(self, matrix: list[list[int]]) -> list[list[int]]:
         

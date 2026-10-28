@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+    def sumNumbers(self, root: TreeNode | None) -> int:
         

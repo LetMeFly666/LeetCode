@@ -1,3 +1,3 @@
 class Solution:
-    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
+    def numEquivDominoPairs(self, dominoes: list[list[int]]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def partitionLabels(self, s: str) -> List[int]:
+    def partitionLabels(self, s: str) -> list[int]:
         

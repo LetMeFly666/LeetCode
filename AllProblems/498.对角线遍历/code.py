@@ -1,3 +1,3 @@
 class Solution:
-    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+    def findDiagonalOrder(self, mat: list[list[int]]) -> list[int]:
         

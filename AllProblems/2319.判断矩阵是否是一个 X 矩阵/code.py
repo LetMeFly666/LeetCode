@@ -1,3 +1,3 @@
 class Solution:
-    def checkXMatrix(self, grid: List[List[int]]) -> bool:
+    def checkXMatrix(self, grid: list[list[int]]) -> bool:
         

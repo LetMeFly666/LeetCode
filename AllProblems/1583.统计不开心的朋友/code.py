@@ -1,3 +1,3 @@
 class Solution:
-    def unhappyFriends(self, n: int, preferences: List[List[int]], pairs: List[List[int]]) -> int:
+    def unhappyFriends(self, n: int, preferences: list[list[int]], pairs: list[list[int]]) -> int:
         

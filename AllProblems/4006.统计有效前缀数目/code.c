@@ -1,0 +1,3 @@
+int countValidPrefixes(char* s) {
+    
+}

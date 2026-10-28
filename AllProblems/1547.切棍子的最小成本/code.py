@@ -1,3 +1,3 @@
 class Solution:
-    def minCost(self, n: int, cuts: List[int]) -> int:
+    def minCost(self, n: int, cuts: list[int]) -> int:
         

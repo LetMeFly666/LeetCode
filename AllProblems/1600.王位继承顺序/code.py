@@ -9,7 +9,7 @@ class ThroneInheritance:
     def death(self, name: str) -> None:
         
 
-    def getInheritanceOrder(self) -> List[str]:
+    def getInheritanceOrder(self) -> list[str]:
         
 
 

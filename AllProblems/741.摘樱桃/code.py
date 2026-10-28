@@ -1,3 +1,3 @@
 class Solution:
-    def cherryPickup(self, grid: List[List[int]]) -> int:
+    def cherryPickup(self, grid: list[list[int]]) -> int:
         

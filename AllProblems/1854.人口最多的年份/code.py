@@ -1,3 +1,3 @@
 class Solution:
-    def maximumPopulation(self, logs: List[List[int]]) -> int:
+    def maximumPopulation(self, logs: list[list[int]]) -> int:
         

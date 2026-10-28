@@ -1,3 +1,3 @@
 class Solution:
-    def isToeplitzMatrix(self, matrix: List[List[int]]) -> bool:
+    def isToeplitzMatrix(self, matrix: list[list[int]]) -> bool:
         

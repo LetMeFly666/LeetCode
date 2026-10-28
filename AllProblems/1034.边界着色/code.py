@@ -1,3 +1,3 @@
 class Solution:
-    def colorBorder(self, grid: List[List[int]], row: int, col: int, color: int) -> List[List[int]]:
+    def colorBorder(self, grid: list[list[int]], row: int, col: int, color: int) -> list[list[int]]:
         

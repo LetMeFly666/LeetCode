@@ -1,3 +1,3 @@
 class Solution:
-    def sumSubseqWidths(self, nums: List[int]) -> int:
+    def sumSubseqWidths(self, nums: list[int]) -> int:
         

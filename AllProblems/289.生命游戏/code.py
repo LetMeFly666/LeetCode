@@ -1,5 +1,5 @@
 class Solution:
-    def gameOfLife(self, board: List[List[int]]) -> None:
+    def gameOfLife(self, board: list[list[int]]) -> None:
         """
         Do not return anything, modify board in-place instead.
         """

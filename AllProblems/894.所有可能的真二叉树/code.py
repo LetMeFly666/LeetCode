@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def allPossibleFBT(self, n: int) -> List[Optional[TreeNode]]:
+    def allPossibleFBT(self, n: int) -> list[TreeNode | None]:
         

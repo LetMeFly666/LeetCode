@@ -1,3 +1,3 @@
 class Solution:
-    def maxRotateFunction(self, nums: List[int]) -> int:
+    def maxRotateFunction(self, nums: list[int]) -> int:
         

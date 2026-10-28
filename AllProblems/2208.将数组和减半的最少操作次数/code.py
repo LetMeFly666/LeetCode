@@ -1,3 +1,3 @@
 class Solution:
-    def halveArray(self, nums: List[int]) -> int:
+    def halveArray(self, nums: list[int]) -> int:
         

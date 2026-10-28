@@ -1,3 +1,3 @@
 class Solution:
-    def captureForts(self, forts: List[int]) -> int:
+    def captureForts(self, forts: list[int]) -> int:
         

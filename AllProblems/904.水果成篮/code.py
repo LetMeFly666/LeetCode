@@ -1,3 +1,3 @@
 class Solution:
-    def totalFruit(self, fruits: List[int]) -> int:
+    def totalFruit(self, fruits: list[int]) -> int:
         

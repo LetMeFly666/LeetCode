@@ -1,3 +1,3 @@
 class Solution:
-    def fairCandySwap(self, aliceSizes: List[int], bobSizes: List[int]) -> List[int]:
+    def fairCandySwap(self, aliceSizes: list[int], bobSizes: list[int]) -> list[int]:
         

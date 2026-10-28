@@ -1,0 +1,3 @@
+int minRotations(char* s) {
+    
+}

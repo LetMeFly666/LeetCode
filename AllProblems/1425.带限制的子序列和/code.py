@@ -1,3 +1,3 @@
 class Solution:
-    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+    def constrainedSubsetSum(self, nums: list[int], k: int) -> int:
         

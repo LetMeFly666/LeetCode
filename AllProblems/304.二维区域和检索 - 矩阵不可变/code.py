@@ -1,6 +1,6 @@
 class NumMatrix:
 
-    def __init__(self, matrix: List[List[int]]):
+    def __init__(self, matrix: list[list[int]]):
         
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:

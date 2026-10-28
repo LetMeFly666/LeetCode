@@ -1,3 +1,3 @@
 class Solution:
-    def maximumStrongPairXor(self, nums: List[int]) -> int:
+    def maximumStrongPairXor(self, nums: list[int]) -> int:
         

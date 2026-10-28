@@ -1,3 +1,3 @@
 class Solution:
-    def bestRotation(self, nums: List[int]) -> int:
+    def bestRotation(self, nums: list[int]) -> int:
         

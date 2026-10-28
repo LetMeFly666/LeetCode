@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+    def maxAncestorDiff(self, root: TreeNode | None) -> int:
         

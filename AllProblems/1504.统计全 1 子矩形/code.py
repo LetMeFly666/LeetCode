@@ -1,3 +1,3 @@
 class Solution:
-    def numSubmat(self, mat: List[List[int]]) -> int:
+    def numSubmat(self, mat: list[list[int]]) -> int:
         

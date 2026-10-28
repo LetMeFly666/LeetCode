@@ -1,3 +1,3 @@
 class Solution:
-    def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
+    def largestDivisibleSubset(self, nums: list[int]) -> list[int]:
         

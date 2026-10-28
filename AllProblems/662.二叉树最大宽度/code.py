@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    def widthOfBinaryTree(self, root: TreeNode | None) -> int:
         

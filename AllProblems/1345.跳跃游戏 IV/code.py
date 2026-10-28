@@ -1,3 +1,3 @@
 class Solution:
-    def minJumps(self, arr: List[int]) -> int:
+    def minJumps(self, arr: list[int]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def minMaxGame(self, nums: List[int]) -> int:
+    def minMaxGame(self, nums: list[int]) -> int:
         

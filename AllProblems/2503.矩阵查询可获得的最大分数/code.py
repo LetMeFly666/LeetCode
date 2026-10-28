@@ -1,3 +1,3 @@
 class Solution:
-    def maxPoints(self, grid: List[List[int]], queries: List[int]) -> List[int]:
+    def maxPoints(self, grid: list[list[int]], queries: list[int]) -> list[int]:
         

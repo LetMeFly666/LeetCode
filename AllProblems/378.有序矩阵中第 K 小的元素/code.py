@@ -1,3 +1,3 @@
 class Solution:
-    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+    def kthSmallest(self, matrix: list[list[int]], k: int) -> int:
         

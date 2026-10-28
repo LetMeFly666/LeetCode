@@ -1,3 +1,3 @@
 class Solution:
-    def ambiguousCoordinates(self, s: str) -> List[str]:
+    def ambiguousCoordinates(self, s: str) -> list[str]:
         

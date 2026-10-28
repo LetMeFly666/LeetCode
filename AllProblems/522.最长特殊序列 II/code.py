@@ -1,3 +1,3 @@
 class Solution:
-    def findLUSlength(self, strs: List[str]) -> int:
+    def findLUSlength(self, strs: list[str]) -> int:
         

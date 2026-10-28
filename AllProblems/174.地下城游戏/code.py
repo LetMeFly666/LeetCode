@@ -1,3 +1,3 @@
 class Solution:
-    def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
+    def calculateMinimumHP(self, dungeon: list[list[int]]) -> int:
         

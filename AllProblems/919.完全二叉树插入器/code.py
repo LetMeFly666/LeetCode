@@ -6,13 +6,13 @@
 #         self.right = right
 class CBTInserter:
 
-    def __init__(self, root: Optional[TreeNode]):
+    def __init__(self, root: TreeNode | None):
         
 
     def insert(self, val: int) -> int:
         
 
-    def get_root(self) -> Optional[TreeNode]:
+    def get_root(self) -> TreeNode | None:
         
 
 

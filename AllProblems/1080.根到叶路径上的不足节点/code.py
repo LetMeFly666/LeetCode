@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sufficientSubset(self, root: Optional[TreeNode], limit: int) -> Optional[TreeNode]:
+    def sufficientSubset(self, root: TreeNode | None, limit: int) -> TreeNode | None:
         

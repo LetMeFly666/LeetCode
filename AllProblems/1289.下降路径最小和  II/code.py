@@ -1,3 +1,3 @@
 class Solution:
-    def minFallingPathSum(self, grid: List[List[int]]) -> int:
+    def minFallingPathSum(self, grid: list[list[int]]) -> int:
         

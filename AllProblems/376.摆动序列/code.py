@@ -1,3 +1,3 @@
 class Solution:
-    def wiggleMaxLength(self, nums: List[int]) -> int:
+    def wiggleMaxLength(self, nums: list[int]) -> int:
         

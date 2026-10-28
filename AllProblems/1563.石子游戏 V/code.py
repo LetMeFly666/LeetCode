@@ -1,3 +1,3 @@
 class Solution:
-    def stoneGameV(self, stoneValue: List[int]) -> int:
+    def stoneGameV(self, stoneValue: list[int]) -> int:
         

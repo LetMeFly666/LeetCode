@@ -1,3 +1,3 @@
 class Solution:
-    def maxSumDivThree(self, nums: List[int]) -> int:
+    def maxSumDivThree(self, nums: list[int]) -> int:
         

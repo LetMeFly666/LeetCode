@@ -1,6 +1,6 @@
 class NumArray:
 
-    def __init__(self, nums: List[int]):
+    def __init__(self, nums: list[int]):
         
 
     def sumRange(self, left: int, right: int) -> int:

@@ -1,3 +1,3 @@
 class Solution:
-    def isRectangleOverlap(self, rec1: List[int], rec2: List[int]) -> bool:
+    def isRectangleOverlap(self, rec1: list[int], rec2: list[int]) -> bool:
         

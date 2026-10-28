@@ -3,7 +3,7 @@ class Solution:
     def __init__(self, radius: float, x_center: float, y_center: float):
         
 
-    def randPoint(self) -> List[float]:
+    def randPoint(self) -> list[float]:
         
 
 

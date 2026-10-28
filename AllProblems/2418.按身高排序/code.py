@@ -1,3 +1,3 @@
 class Solution:
-    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+    def sortPeople(self, names: list[str], heights: list[int]) -> list[str]:
         

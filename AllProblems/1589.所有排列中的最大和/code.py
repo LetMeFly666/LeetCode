@@ -1,3 +1,3 @@
 class Solution:
-    def maxSumRangeQuery(self, nums: List[int], requests: List[List[int]]) -> int:
+    def maxSumRangeQuery(self, nums: list[int], requests: list[list[int]]) -> int:
         

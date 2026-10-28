@@ -1,3 +1,3 @@
 class Solution:
-    def numPoints(self, darts: List[List[int]], r: int) -> int:
+    def numPoints(self, darts: list[list[int]], r: int) -> int:
         

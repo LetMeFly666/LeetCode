@@ -1,3 +1,3 @@
 class Solution:
-    def maxSumOfThreeSubarrays(self, nums: List[int], k: int) -> List[int]:
+    def maxSumOfThreeSubarrays(self, nums: list[int], k: int) -> list[int]:
         

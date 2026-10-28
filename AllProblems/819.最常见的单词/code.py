@@ -1,3 +1,3 @@
 class Solution:
-    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+    def mostCommonWord(self, paragraph: str, banned: list[str]) -> str:
         

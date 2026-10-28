@@ -1,3 +1,3 @@
 class Solution:
-    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+    def maxSubarraySumCircular(self, nums: list[int]) -> int:
         

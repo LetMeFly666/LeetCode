@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sumEvenGrandparent(self, root: Optional[TreeNode]) -> int:
+    def sumEvenGrandparent(self, root: TreeNode | None) -> int:
         

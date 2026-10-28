@@ -1,3 +1,3 @@
 class Solution:
-    def chalkReplacer(self, chalk: List[int], k: int) -> int:
+    def chalkReplacer(self, chalk: list[int], k: int) -> int:
         

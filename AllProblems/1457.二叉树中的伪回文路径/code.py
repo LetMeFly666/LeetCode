@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def pseudoPalindromicPaths (self, root: Optional[TreeNode]) -> int:
+    def pseudoPalindromicPaths (self, root: TreeNode | None) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def minimalKSum(self, nums: List[int], k: int) -> int:
+    def minimalKSum(self, nums: list[int], k: int) -> int:
         

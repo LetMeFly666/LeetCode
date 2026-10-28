@@ -1,3 +1,3 @@
 class Solution:
-    def constructRectangle(self, area: int) -> List[int]:
+    def constructRectangle(self, area: int) -> list[int]:
         

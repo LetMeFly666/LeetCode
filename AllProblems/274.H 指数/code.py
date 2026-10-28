@@ -1,3 +1,3 @@
 class Solution:
-    def hIndex(self, citations: List[int]) -> int:
+    def hIndex(self, citations: list[int]) -> int:
         

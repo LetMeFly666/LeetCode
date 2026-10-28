@@ -1,3 +1,3 @@
 class Solution:
-    def countHillValley(self, nums: List[int]) -> int:
+    def countHillValley(self, nums: list[int]) -> int:
         

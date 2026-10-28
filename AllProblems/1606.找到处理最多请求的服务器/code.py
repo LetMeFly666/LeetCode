@@ -1,3 +1,3 @@
 class Solution:
-    def busiestServers(self, k: int, arrival: List[int], load: List[int]) -> List[int]:
+    def busiestServers(self, k: int, arrival: list[int], load: list[int]) -> list[int]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def rearrangeArray(self, nums: List[int]) -> List[int]:
+    def rearrangeArray(self, nums: list[int]) -> list[int]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def maxCoins(self, nums: List[int]) -> int:
+    def maxCoins(self, nums: list[int]) -> int:
         

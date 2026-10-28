@@ -1,3 +1,3 @@
 class Solution:
-    def findRedundantDirectedConnection(self, edges: List[List[int]]) -> List[int]:
+    def findRedundantDirectedConnection(self, edges: list[list[int]]) -> list[int]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def shortestBridge(self, grid: List[List[int]]) -> int:
+    def shortestBridge(self, grid: list[list[int]]) -> int:
         

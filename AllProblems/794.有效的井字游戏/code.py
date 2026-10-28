@@ -1,3 +1,3 @@
 class Solution:
-    def validTicTacToe(self, board: List[str]) -> bool:
+    def validTicTacToe(self, board: list[str]) -> bool:
         

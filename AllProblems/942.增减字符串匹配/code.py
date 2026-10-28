@@ -1,3 +1,3 @@
 class Solution:
-    def diStringMatch(self, s: str) -> List[int]:
+    def diStringMatch(self, s: str) -> list[int]:
         

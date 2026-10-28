@@ -1,3 +1,3 @@
-int reverse(int x) {
-    
+int reverse(int x){
+
 }

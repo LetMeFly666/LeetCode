@@ -1,3 +1,3 @@
 class Solution:
-    def numberOfWeeks(self, milestones: List[int]) -> int:
+    def numberOfWeeks(self, milestones: list[int]) -> int:
         

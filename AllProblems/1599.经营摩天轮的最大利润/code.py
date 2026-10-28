@@ -1,3 +1,3 @@
 class Solution:
-    def minOperationsMaxProfit(self, customers: List[int], boardingCost: int, runningCost: int) -> int:
+    def minOperationsMaxProfit(self, customers: list[int], boardingCost: int, runningCost: int) -> int:
         

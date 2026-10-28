@@ -1,3 +1,3 @@
 class Solution:
-    def distinctNames(self, ideas: List[str]) -> int:
+    def distinctNames(self, ideas: list[str]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def findKthPositive(self, arr: List[int], k: int) -> int:
+    def findKthPositive(self, arr: list[int], k: int) -> int:
         

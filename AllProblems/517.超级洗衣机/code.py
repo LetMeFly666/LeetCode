@@ -1,3 +1,3 @@
 class Solution:
-    def findMinMoves(self, machines: List[int]) -> int:
+    def findMinMoves(self, machines: list[int]) -> int:
         

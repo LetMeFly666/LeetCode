@@ -1,3 +1,3 @@
 class Solution:
-    def deleteGreatestValue(self, grid: List[List[int]]) -> int:
+    def deleteGreatestValue(self, grid: list[list[int]]) -> int:
         

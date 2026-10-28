@@ -1,3 +1,5 @@
-int minPairSum(int* nums, int numsSize) {
-    
+
+
+int minPairSum(int* nums, int numsSize){
+
 }

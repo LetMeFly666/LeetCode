@@ -1,3 +1,3 @@
 class Solution:
-    def getRow(self, rowIndex: int) -> List[int]:
+    def getRow(self, rowIndex: int) -> list[int]:
         

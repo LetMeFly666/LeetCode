@@ -1,3 +1,3 @@
 class Solution:
-    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+    def sumOddLengthSubarrays(self, arr: list[int]) -> int:
         

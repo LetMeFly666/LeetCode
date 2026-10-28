@@ -1,6 +1,6 @@
 class RangeFreqQuery:
 
-    def __init__(self, arr: List[int]):
+    def __init__(self, arr: list[int]):
         
 
     def query(self, left: int, right: int, value: int) -> int:

@@ -1,3 +1,3 @@
 class Solution:
-    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
+    def robotSim(self, commands: list[int], obstacles: list[list[int]]) -> int:
         

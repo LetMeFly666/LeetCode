@@ -1,3 +1,3 @@
 class Solution:
-    def maxChunksToSorted(self, arr: List[int]) -> int:
+    def maxChunksToSorted(self, arr: list[int]) -> int:
         

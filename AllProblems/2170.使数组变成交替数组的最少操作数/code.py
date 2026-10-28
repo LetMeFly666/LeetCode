@@ -1,3 +1,3 @@
 class Solution:
-    def minimumOperations(self, nums: List[int]) -> int:
+    def minimumOperations(self, nums: list[int]) -> int:
         

@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
 
-    def __init__(self, head: Optional[ListNode]):
+    def __init__(self, head: ListNode | None):
         
 
     def getRandom(self) -> int:

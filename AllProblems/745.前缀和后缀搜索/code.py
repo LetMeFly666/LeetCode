@@ -1,6 +1,6 @@
 class WordFilter:
 
-    def __init__(self, words: List[str]):
+    def __init__(self, words: list[str]):
         
 
     def f(self, pref: str, suff: str) -> int:

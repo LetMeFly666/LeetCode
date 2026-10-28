@@ -5,5 +5,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
+    def findSecondMinimumValue(self, root: TreeNode | None) -> int:
         

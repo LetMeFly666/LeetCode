@@ -1,3 +1,3 @@
 class Solution:
-    def minimumEffort(self, tasks: List[List[int]]) -> int:
+    def minimumEffort(self, tasks: list[list[int]]) -> int:
         

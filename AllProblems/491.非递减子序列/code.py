@@ -1,3 +1,3 @@
 class Solution:
-    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+    def findSubsequences(self, nums: list[int]) -> list[list[int]]:
         

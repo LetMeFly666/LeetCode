@@ -1,3 +1,3 @@
 class Solution:
-    def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
+    def numSubarraysWithSum(self, nums: list[int], goal: int) -> int:
         

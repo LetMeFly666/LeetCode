@@ -1,3 +1,3 @@
 class Solution:
-    def alertNames(self, keyName: List[str], keyTime: List[str]) -> List[str]:
+    def alertNames(self, keyName: list[str], keyTime: list[str]) -> list[str]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def totalHammingDistance(self, nums: List[int]) -> int:
+    def totalHammingDistance(self, nums: list[int]) -> int:
         

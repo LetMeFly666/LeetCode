@@ -1,3 +1,3 @@
 class Solution:
-    def movesToChessboard(self, board: List[List[int]]) -> int:
+    def movesToChessboard(self, board: list[list[int]]) -> int:
         

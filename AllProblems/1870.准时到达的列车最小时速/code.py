@@ -1,3 +1,3 @@
 class Solution:
-    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+    def minSpeedOnTime(self, dist: list[int], hour: float) -> int:
         

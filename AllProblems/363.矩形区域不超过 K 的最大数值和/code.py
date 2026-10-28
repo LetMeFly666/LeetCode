@@ -1,3 +1,3 @@
 class Solution:
-    def maxSumSubmatrix(self, matrix: List[List[int]], k: int) -> int:
+    def maxSumSubmatrix(self, matrix: list[list[int]], k: int) -> int:
         

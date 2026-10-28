@@ -1,3 +1,3 @@
 class Solution:
-    def findFarmland(self, land: List[List[int]]) -> List[List[int]]:
+    def findFarmland(self, land: list[list[int]]) -> list[list[int]]:
         

@@ -4,5 +4,5 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def removeZeroSumSublists(self, head: ListNode | None) -> ListNode | None:
         

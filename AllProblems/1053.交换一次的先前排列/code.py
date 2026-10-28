@@ -1,3 +1,3 @@
 class Solution:
-    def prevPermOpt1(self, arr: List[int]) -> List[int]:
+    def prevPermOpt1(self, arr: list[int]) -> list[int]:
         

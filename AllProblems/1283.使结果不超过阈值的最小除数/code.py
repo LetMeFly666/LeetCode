@@ -1,3 +1,3 @@
 class Solution:
-    def smallestDivisor(self, nums: List[int], threshold: int) -> int:
+    def smallestDivisor(self, nums: list[int], threshold: int) -> int:
         

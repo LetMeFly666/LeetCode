@@ -1,3 +1,3 @@
 class Solution:
-    def restoreIpAddresses(self, s: str) -> List[str]:
+    def restoreIpAddresses(self, s: str) -> list[str]:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def countSpecialSubsequences(self, nums: List[int]) -> int:
+    def countSpecialSubsequences(self, nums: list[int]) -> int:
         

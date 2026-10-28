@@ -1,3 +1,3 @@
 class Solution:
-    def isOneBitCharacter(self, bits: List[int]) -> bool:
+    def isOneBitCharacter(self, bits: list[int]) -> bool:
         

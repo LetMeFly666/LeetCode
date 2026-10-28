@@ -10,5 +10,5 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
+    def sortedListToBST(self, head: ListNode | None) -> TreeNode | None:
         

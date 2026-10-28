@@ -1,3 +1,3 @@
 class Solution:
-    def flipgame(self, fronts: List[int], backs: List[int]) -> int:
+    def flipgame(self, fronts: list[int], backs: list[int]) -> int:
         

@@ -1,3 +1,3 @@
 class Solution:
-    def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
+    def maxNumEdgesToRemove(self, n: int, edges: list[list[int]]) -> int:
         
