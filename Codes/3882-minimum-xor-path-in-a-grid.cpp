@@ -2,17 +2,17 @@
  * @Author: LetMeFly
  * @Date: 2026-10-28 14:47:39
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-10-28 14:59:41
+ * @LastEditTime: 2026-10-28 15:10:52
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
 #endif
 
-#define SIZE 1024
+constexpr int SIZE = 1 << 10;
 typedef bitset<SIZE> state;
 class Solution {
 private:
-    void cal(state& a, state& b, int val) {
+    void transfer(const state& a, state& b, int val) {
         for (int i = 0; i < SIZE; i++) {
             if (a[i]) {
                 b.set(i ^ val);
@@ -36,10 +36,10 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (i) {
-                    cal(res[i - 1][j], res[i][j], grid[i][j]);
+                    transfer(res[i - 1][j], res[i][j], grid[i][j]);
                 }
                 if (j) {
-                    cal(res[i][j - 1], res[i][j], grid[i][j]);
+                    transfer(res[i][j - 1], res[i][j], grid[i][j]);
                 }
             }
         }
