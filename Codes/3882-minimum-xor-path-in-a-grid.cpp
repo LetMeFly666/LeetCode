@@ -20,7 +20,7 @@ private:
         }
     }
 
-    int getFirst(state& a) {
+    int getFirst(const state& a) {
         for (int i = 0; i < SIZE; i++) {
             if (a[i]) {
                 return i;
