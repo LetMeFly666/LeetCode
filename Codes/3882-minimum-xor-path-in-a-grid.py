@@ -2,15 +2,15 @@
 Author: LetMeFly
 Date: 2026-10-28 14:47:39
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-10-28 15:51:58
+LastEditTime: 2026-10-31 12:47:36
 '''
 class Solution:
     def transfer(self, a: int, b: int, val: int) -> int:
         while a:
             lowbit = a & -a
             length = lowbit.bit_length() - 1
-            a ^= 1 << length
-            b |= length ^ val
+            a ^= lowbit
+            b |= 1 << (length ^ val)
         return b
 
     def minCost(self, grid: list[list[int]]) -> int:
