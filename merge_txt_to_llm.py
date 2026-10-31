@@ -3,6 +3,8 @@ Author: LetMeFly
 Date: 2026-10-26 22:28:37
 LastEditors: LetMeFly.xyz
 LastEditTime: 2026-10-26 22:28:42
+Description: from https://github.com/LetMeFly666/LeetCode/blob/440b7bba86cbc720498c39d96078bab1d25f9dd0/merge_txt_to_llm.py
+Description: now https://gist.github.com/LetMeFly666/9594ccb5eebcda162332838fd5cb5bcc
 '''
 from pathlib import Path
 import sys
