@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-01 11:18:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-01 11:31:28
+ * @LastEditTime: 2026-11-01 11:36:06
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -25,13 +25,22 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j]) {  // 镜子
-                    
+                    if (i) {  // left
+                        transfer(grid[i - 1][j] ? up[i - 1][j] : dp[i - 1][j], left[i][j]);
+                    }
+                    if (j) {  // up
+                        transfer(grid[i][j - 1] ? left[i][j - 1] : dp[i][j - 1], up[i][j]);
+                    }
                 } else {  // 空白
-                    if (i && !grid[i - 1][j]) {  // 左空白
-                        transfer(dp[i - 1][j], dp[i][j]);
-                    } else if (i && grid[i - 1][j])
+                    if (i) {  // left
+                        transfer(grid[i - 1][j] ? up[i - 1][j] : dp[i - 1][j], dp[i][j]);
+                    }
+                    if (j) {  // up
+                        transfer(grid[i][j - 1] ? left[i][j - 1] : dp[i][j - 1], dp[i][j]);
+                    }
                 }
             }
         }
+        return dp[n - 1][m - 1];
     }
 };
