@@ -1,11 +1,12 @@
 ---
-title: 1267.统计参与通信的服务器
+title: 1267.统计参与通信的服务器：统计每行每列电脑数量
 date: 2023-08-24 09:16:53
-tags: [题解, LeetCode, 中等, 深度优先搜索, 广度优先搜索, 并查集, 数组, 计数, 矩阵, 哈希表, 哈希]
+tags: [题解, LeetCode, 中等, 数组, 计数, 矩阵, 哈希表, 哈希]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/3963-untitled-diagram-1-3.jpg
 ---
 
-# 【LetMeFly】1267.统计参与通信的服务器
+# 【LetMeFly】1267.统计参与通信的服务器：统计每行每列电脑数量
 
 力扣题目链接：[https://leetcode.cn/problems/count-servers-that-communicate/](https://leetcode.cn/problems/count-servers-that-communicate/)
 
@@ -19,7 +20,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/24/untitled-diagram-6.jpg" style="height: 203px; width: 202px;"></p>
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/3963-untitled-diagram-6.jpg" style="height: 203px; width: 202px;"></p>
 
 <pre><strong>输入：</strong>grid = [[1,0],[0,1]]
 <strong>输出：</strong>0
@@ -27,7 +28,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 2：</strong></p>
 
-<p><strong><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/24/untitled-diagram-4-1.jpg" style="height: 203px; width: 203px;"></strong></p>
+<p><strong><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/3963-untitled-diagram-4-1.jpg" style="height: 203px; width: 203px;"></strong></p>
 
 <pre><strong>输入：</strong>grid = [[1,0],[1,1]]
 <strong>输出：</strong>3
@@ -36,7 +37,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 3：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2019/11/24/untitled-diagram-1-3.jpg" style="height: 443px; width: 443px;"></p>
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/3963-untitled-diagram-1-3.jpg" style="height: 443px; width: 443px;"></p>
 
 <pre><strong>输入：</strong>grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
 <strong>输出：</strong>4
@@ -71,6 +72,9 @@ categories: [题解, LeetCode]
 #### C++
 
 ```cpp
+/*
+ * @LastEditTime: 2023-08-24 09:12:27
+ */
 class Solution {
 public:
     int countServers(vector<vector<int>>& grid) {
@@ -85,6 +89,35 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 ans += grid[i][j] * (row[i] > 1 || col[j] > 1);
+            }
+        }
+        return ans;
+    }
+};
+```
+
+```cpp
+/*
+ * @LastEditTime: 2026-11-08 10:49:20
+ */
+class Solution {
+public:
+    int countServers(vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+        vector<int> line(n), row(m);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j]) {
+                    line[i]++;
+                    row[j]++;
+                }
+            }
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                ans += grid[i][j] && (line[i] > 1 || row[j] > 1);
             }
         }
         return ans;
@@ -112,5 +145,129 @@ class Solution:
         return ans
 ```
 
-> 同步发文于CSDN，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/24/LeetCode%201267.%E7%BB%9F%E8%AE%A1%E5%8F%82%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/)哦~
-> Tisfy：[https://letmefly.blog.csdn.net/article/details/132466649](https://letmefly.blog.csdn.net/article/details/132466649)
+```python
+'''
+LastEditTime: 2026-11-08 10:56:14
+'''
+class Solution:
+    def countServers(self, grid: list[list[int]]) -> int:
+        n, m = len(grid), len(grid[0])
+        a, b = [0] * n, [0] * m
+        for i, row in enumerate(grid):
+            for j, v in enumerate(row):
+                if v:
+                    a[i] += 1
+                    b[j] += 1
+        
+        ans = 0
+        for i, row in enumerate(grid):
+            for j, v in enumerate(row):
+                if v and (a[i] > 1 or b[j] > 1):
+                    ans += 1
+        return ans
+```
+
+#### Java
+
+```java
+/*
+ * @LastEditTime: 2026-11-08 10:54:31
+ */
+class Solution {
+    public int countServers(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int[] a = new int[n];
+        int[] b = new int[m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1) {
+                    a[i]++;
+                    b[j]++;
+                }
+            }
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1 && (a[i] > 1 || b[j] > 1)) {
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
+#### Go
+
+```go
+/*
+ * @LastEditTime: 2026-11-08 10:52:49
+ */
+package main
+
+func countServers(grid [][]int) (ans int) {
+    n, m := len(grid), len(grid[0])
+    a, b := make([]int, n), make([]int, m)
+    for i, row := range grid {
+        for j, v := range row {
+            if v == 1 {
+                a[i]++
+                b[j]++
+            }
+        }
+    }
+
+    for i, row := range grid {
+        for j, v := range row {
+            if v == 1 && (a[i] > 1 || b[j] > 1) {
+                ans++
+            }
+        }
+    }
+    return
+}
+```
+
+#### Rust
+
+```rust
+/*
+ * @LastEditTime: 2026-11-08 10:58:49
+ */
+impl Solution {
+    pub fn count_servers(grid: Vec<Vec<i32>>) -> i32 {
+        let n = grid.len();
+        let m = grid[0].len();
+        let mut a = vec![0; n];
+        let mut b = vec![0; m];
+        for i in 0..n {
+            for j in 0..m {
+                if grid[i][j] == 1 {
+                    a[i] += 1;
+                    b[j] += 1;
+                }
+            }
+        }
+
+        let mut ans = 0;
+        for i in 0..n {
+            for j in 0..m {
+                if grid[i][j] == 1 && (a[i] > 1 || b[j] > 1) {
+                    ans += 1;
+                }
+            }
+        }
+        ans
+    }
+}
+```
+
+## End
+
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/132466649)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2023/08/24/LeetCode%201267.%E7%BB%9F%E8%AE%A1%E5%8F%82%E4%B8%8E%E9%80%9A%E4%BF%A1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/)哦~
+>
+> 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)

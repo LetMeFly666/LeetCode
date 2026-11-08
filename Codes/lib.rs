@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("0453-minimum-moves-to-equal-array-elements_20261101.rs");  // 这个fileName是会被脚本替换掉的
+include!("1267-count-servers-that-communicate_20261108.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
