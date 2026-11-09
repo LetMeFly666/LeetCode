@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-09 22:03:31
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-09 22:15:58
+ * @LastEditTime: 2026-11-09 22:22:01
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -67,12 +67,34 @@ public:
             return vals[a] == vals[b] ? nums[a] < nums[b] : vals[a] < vals[b];
         });
 
+        // for (int i = 0; i < n; i++) {
+        //     cout << idxs[i] << ", ";
+        // }
+        // puts;
+
         MyUnion myUnion(n);
         for (int i = 0; i < n; i++) {
             if (idxs[i] != i) {
                 myUnion.merge(i, idxs[i]);
             }
         }
-        return myUnion.getCnt();
+        return n - myUnion.getCnt();
     }
 };
+
+#ifdef _DEBUG
+/*
+[22,14,33,7]
+
+0
+*/
+int main() {
+    string s;
+    while (cin >> s) {
+        vector<int> a = stringToVector(s);
+        Solution sol;
+        cout << sol.minSwaps(a) << endl;
+    }
+    return 0;
+}
+#endif
