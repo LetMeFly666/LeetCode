@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-09 22:03:31
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-09 22:22:01
+ * @LastEditTime: 2026-11-09 22:23:36
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -66,11 +66,6 @@ public:
         ranges::sort(idxs, [&nums, &vals](const int& a, const int& b) {
             return vals[a] == vals[b] ? nums[a] < nums[b] : vals[a] < vals[b];
         });
-
-        // for (int i = 0; i < n; i++) {
-        //     cout << idxs[i] << ", ";
-        // }
-        // puts;
 
         MyUnion myUnion(n);
         for (int i = 0; i < n; i++) {
