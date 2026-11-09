@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-09 21:28:34
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-09 21:42:20
+ * @LastEditTime: 2026-11-09 21:43:36
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -40,7 +40,7 @@ public:
         }
         int max_times = *ranges::max_element(cnt);
         vector<int> ans;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < k; i++) {
             if (cnt[i] == max_times) {
                 ans.push_back(i);
             }
