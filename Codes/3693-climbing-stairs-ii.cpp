@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-10 21:50:54
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-10 22:01:03
+ * @LastEditTime: 2026-11-10 22:02:17
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -35,7 +35,8 @@ public:
                     abc[2] + 1
                 )
             ));
+            // cout << abc[0] << ", " << abc[1] << ", " << abc[2] << endl;
         }
-        return abc[3];
+        return abc[2];
     }
 };
