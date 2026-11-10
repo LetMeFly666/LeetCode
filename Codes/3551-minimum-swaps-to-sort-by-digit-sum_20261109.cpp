@@ -18,7 +18,7 @@ private:
         return fa[a] == a ? a : (fa[a] = getFa(fa[a]));
     }
 public:
-    MyUnion(int n) : n(n), cnt(n), fa(n), sz(n) {
+    MyUnion(int n) : n(n), cnt(n), fa(n), sz(n, 1) {
         for (int i = 0; i < n; i++) {
             fa[i] = i;
         }
