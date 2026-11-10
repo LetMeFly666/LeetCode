@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="zh-CN" theme-mode="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>1606.找到处理最多请求的服务器：有序集合+优先队列（模拟） | Tisfy的LeetCode题解等博客</title><link rel="canonical" href="https://blog.letmefly.xyz/2026/11/09/LeetCode%201606.%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E6%9C%80%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/"><link rel="icon" type="image/x-icon" href="https://web.letmefly.xyz/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/BenderLight.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/theme/arknights/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/theme/arknights/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/theme/arknights/font/Bender.ttf"), url("/theme/arknights/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/theme/arknights/font/BenderLight.ttf");
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/theme/arknights/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><script>var config = {"root":"/theme/arknights/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}}</script><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/encrypt/hbe.style.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/theme/arknights/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light')
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark')
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/theme/arknights/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/theme/arknights/js/arknights.js"></script><script defer type="module">window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], }, chtml: { scale: 0.8 }};
+</script><script defer src="https://web.letmefly.xyz/Links/JS/MathJax/tex-mml-chtml.js"></script><script defer src="/theme/arknights/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@10.5.0/dist/mermaid.esm.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script defer src="https://web.letmefly.xyz/Links/Common.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/theme/arknights/lib/encrypt/hbe.js"></script><script async src="/theme/arknights/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.busuanzi'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/theme/arknights/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/theme/arknights/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>1606.找到处理最多请求的服务器：有序集合+优先队列（模拟）</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2026-11-09T13:44:02.000Z" id="date"> 2026-11-09</time></div></span></div></div><hr><div id="post-content"><h1 id="【LetMeFly】1606-找到处理最多请求的服务器：有序集合-优先队列（模拟）"><a href="#【LetMeFly】1606-找到处理最多请求的服务器：有序集合-优先队列（模拟）" class="headerlink" title="【LetMeFly】1606.找到处理最多请求的服务器：有序集合+优先队列（模拟）"></a>【LetMeFly】1606.找到处理最多请求的服务器：有序集合+优先队列（模拟）</h1><p>力扣题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-servers-that-handled-most-number-of-requests/">https://leetcode.cn/problems/find-servers-that-handled-most-number-of-requests/</a></p>
+<p>你有 <code>k</code>&nbsp;个服务器，编号为 <code>0</code>&nbsp;到 <code>k-1</code>&nbsp;，它们可以同时处理多个请求组。每个服务器有无穷的计算能力但是 <strong>不能同时处理超过一个请求</strong>&nbsp;。请求分配到服务器的规则如下：</p>
+
+<ul>
+	<li>第&nbsp;<code>i</code>&nbsp;（序号从 0 开始）个请求到达。</li>
+	<li>如果所有服务器都已被占据，那么该请求被舍弃（完全不处理）。</li>
+	<li>如果第&nbsp;<code>(i % k)</code>&nbsp;个服务器空闲，那么对应服务器会处理该请求。</li>
+	<li>否则，将请求安排给下一个空闲的服务器（服务器构成一个环，必要的话可能从第 0 个服务器开始继续找下一个空闲的服务器）。比方说，如果第 <code>i</code>&nbsp;个服务器在忙，那么会查看第 <code>(i+1)</code>&nbsp;个服务器，第 <code>(i+2)</code>&nbsp;个服务器等等。</li>
+</ul>
+
+<p>给你一个 <strong>严格递增</strong>&nbsp;的正整数数组&nbsp;<code>arrival</code>&nbsp;，表示第&nbsp;<code>i</code>&nbsp;个任务的到达时间，和另一个数组&nbsp;<code>load</code>&nbsp;，其中&nbsp;<code>load[i]</code>&nbsp;表示第&nbsp;<code>i</code>&nbsp;个请求的工作量（也就是服务器完成它所需要的时间）。你的任务是找到 <strong>最繁忙的服务器</strong>&nbsp;。最繁忙定义为一个服务器处理的请求数是所有服务器里最多的。</p>
+
+<p>请你返回包含所有&nbsp;<strong>最繁忙服务器</strong>&nbsp;序号的列表，你可以以任意顺序返回这个列表。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p class='item-img' data-src='https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/10/03/load-1.png'><img alt="" src="https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/10/03/load-1.png" style="height: 221px; width: 389px;" /></p>
+
+<pre>
+<strong>输入：</strong>k = 3, arrival = [1,2,3,4,5], load = [5,2,3,3,3] 
+<strong>输出：</strong>[1] 
+<strong>解释：</strong>
+所有服务器一开始都是空闲的。
+前 3 个请求分别由前 3 台服务器依次处理。
+请求 3 进来的时候，服务器 0 被占据，所以它被安排到下一台空闲的服务器，也就是服务器 1 。
+请求 4 进来的时候，由于所有服务器都被占据，该请求被舍弃。
+服务器 0 和 2 分别都处理了一个请求，服务器 1 处理了两个请求。所以服务器 1 是最忙的服务器。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre>
+<strong>输入：</strong>k = 3, arrival = [1,2,3,4], load = [1,2,1,2]
+<strong>输出：</strong>[0]
+<strong>解释：</strong>
+前 3 个请求分别被前 3 个服务器处理。
+请求 3 进来，由于服务器 0 空闲，它被服务器 0 处理。
+服务器 0 处理了两个请求，服务器 1 和 2 分别处理了一个请求。所以服务器 0 是最忙的服务器。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre>
+<strong>输入：</strong>k = 3, arrival = [1,2,3], load = [10,12,11]
+<strong>输出：</strong>[0,1,2]
+<strong>解释：</strong>每个服务器分别处理了一个请求，所以它们都是最忙的服务器。
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre>
+<strong>输入：</strong>k = 3, arrival = [1,2,3,4,8,9,10], load = [5,2,10,3,1,2,2]
+<strong>输出：</strong>[1]
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre>
+<strong>输入：</strong>k = 1, arrival = [1], load = [1]
+<strong>输出：</strong>[0]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+	<li><code>1 &lt;= k &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= arrival.length, load.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>arrival.length == load.length</code></li>
+	<li><code>1 &lt;= arrival[i], load[i] &lt;= 10<sup>9</sup></code></li>
+	<li><code>arrival</code>&nbsp;保证 <strong>严格递增</strong>&nbsp;。</li>
+</ul>
+
+
+    
+<h2 id="解题方法：有序集合-优先队列（模拟）"><a href="#解题方法：有序集合-优先队列（模拟）" class="headerlink" title="解题方法：有序集合+优先队列（模拟）"></a>解题方法：有序集合+优先队列（模拟）</h2><ol>
+<li>使用一个有序集合$available$来维护当前空闲的服务器（初始值是$0$到$k-1$）。使用有序集合的原因是方便在$O(\log k)$的时间内找到最小的$\geq i%k$的服务器编号。</li>
+<li>使用一个优先队列$working$来维护当前正在工作的服务器，排序依据是服务器工作完成的时间，存储内容除了服务器工作完成时间外还有服务器编号。</li>
+<li>使用一个数组$cnt$记录每个服务器处理的请求数。</li>
+</ol>
+<p>遍历每一个请求，对于到达时间是$arrive$且工作时长是$cost$的请求：</p>
+<ol>
+<li>当$working$非空且$队首元素\leq arrive$时，不断将这些在此刻（$arrive$时刻）已经完成任务的服务器出队并加入到$available$中。</li>
+<li>如果$available$为空，说明所有服务器都在工作，当前请求被舍。</li>
+<li>否则，二分查找$available$中最小的$\geq i%k$的服务器编号，如果找不到则循环取到$available$的最小编号。这个编号的服务器处理当前请求（从$available$中删除、服务次数加一、将该任务完成时间$arrive+cost$和服务器编号加入到$working$中）。</li>
+</ol>
+<p>遍历一次计数数组找到最大服务次数，再遍历一次计数数组将服务次数等于最大服务次数的所有服务器加入答案数组中。</p>
+<ul>
+<li>时间复杂度$O(k+\len(arrival)\log k)$</li>
+<li>空间复杂度$O(k)$，力扣返回值不计入算法空间复杂度</li>
+</ul>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @LastEditTime: 2026-11-09 21:43:36</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">busiestServers</span><span class="params">(<span class="type">int</span> k, vector&lt;<span class="type">int</span>&gt;&amp; arrival, vector&lt;<span class="type">int</span>&gt;&amp; load)</span> </span>&#123;</span><br><span class="line">        <span class="function">set&lt;<span class="type">int</span>&gt; <span class="title">available</span><span class="params">(views::iota(<span class="number">0</span>, k).begin(), views::iota(<span class="number">0</span>, k).end())</span></span>;</span><br><span class="line">        priority_queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;, vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;, greater&lt;&gt;&gt; working;  <span class="comment">// [&lt;time_available, id&gt;, ...</span></span><br><span class="line">        <span class="type">int</span> n = arrival.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">cnt</span><span class="params">(k)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> arrive = arrival[i];</span><br><span class="line">            <span class="keyword">while</span> (!working.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> &amp;&amp;[time_available, id] = working.<span class="built_in">top</span>();</span><br><span class="line">                <span class="keyword">if</span> (time_available &gt; arrive) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                available.<span class="built_in">insert</span>(id);</span><br><span class="line">                working.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (available.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            set&lt;<span class="type">int</span>&gt;::iterator it = available.<span class="built_in">lower_bound</span>(i % k);</span><br><span class="line">            <span class="keyword">if</span> (it == available.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                it = available.<span class="built_in">begin</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> id = *it;</span><br><span class="line">            available.<span class="built_in">erase</span>(it);</span><br><span class="line">            cnt[id]++;</span><br><span class="line">            <span class="type">int</span> cost = load[i];</span><br><span class="line">            working.<span class="built_in">push</span>(&#123;arrive + cost, id&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> max_times = *ranges::<span class="built_in">max_element</span>(cnt);</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (cnt[i] == max_times) &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><blockquote>
+<p>同步发文于<a target="_blank" rel="noopener" href="https://letmefly.blog.csdn.net/article/details/170369089">CSDN</a>和我的<a href="https://blog.letmefly.xyz/">个人博客</a>，原创不易，转载经作者同意后请附上<a href="https://blog.letmefly.xyz/2026/11/09/LeetCode%201606.%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E6%9C%80%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8/">原文链接</a>哦~</p>
+<p>千篇源码题解<a target="_blank" rel="noopener" href="https://github.com/LetMeFly666/LeetCode">已开源</a></p>
+</blockquote>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/theme/arknights/9999/12/31/README/">← Next README</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/theme/arknights/2026/11/01/LeetCode%203665.%E7%BB%9F%E8%AE%A1%E9%95%9C%E5%AD%90%E5%8F%8D%E5%B0%84%E8%B7%AF%E5%BE%84%E6%95%B0%E7%9B%AE/">3665.统计镜子反射路径数目：三个动态规划数组 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" href="#toc-div" title="To Catalog">≡</a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/theme/arknights/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">&lt;a href=&quot;https://letmefly.xyz&quot;&gt;Tisfy&lt;/a&gt;</a></h1><div id="description"><p>LeetCode 题解、解题技巧 力扣题解 技术博客</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/LetMeFly666"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/440206990"><i class="fa-brands fa-bilibili" alt="BiliBili"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90LetMeFly%E3%80%911606-%E6%89%BE%E5%88%B0%E5%A4%84%E7%90%86%E6%9C%80%E5%A4%9A%E8%AF%B7%E6%B1%82%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%9A%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%88%E6%A8%A1%E6%8B%9F%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">【LetMeFly】1606.找到处理最多请求的服务器：有序集合+优先队列（模拟）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%88%E6%A8%A1%E6%8B%9F%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">解题方法：有序集合+优先队列（模拟）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AC%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">AC代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">C++</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End"><span class="toc-number">1.2.</span> <span class="toc-text">End</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">ICP</span><a class="icp-content" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/">京ICP备2021029766号-1</a></nobr><br><nobr><span class="icp-title">copyright</span><a class="icp-content" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a></nobr><br><nobr><a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a><span>'s </span><a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>ALL atricles by<a target="_blank" rel="noopener" href="https://letmefly.xyz/">Tisfy</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
