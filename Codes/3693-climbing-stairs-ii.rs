@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-10 21:50:54
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-10 22:32:23
+ * @LastEditTime: 2026-11-10 22:33:54
  */
 use std::ops::Index;
 
@@ -21,7 +21,7 @@ impl ABC {
 
     pub fn push(&mut self, v: i32) {
         self.a[self.diff] = v;
-        self.diff = self.diff + 1;
+        self.diff = (self.diff + 1) % 3;
     }
 }
 
