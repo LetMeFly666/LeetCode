@@ -1,9 +1,19 @@
 <!--
  * @Author: LetMeFly
- * @Date: 2026-11-09 22:00:08
+ * @Date: 2026-11-11 22:04:35
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-09 22:00:49
+ * @LastEditTime: 2026-11-11 22:05:26
 -->
-现在CSDN默认发布文章时候变成“简洁模板”了，很多历史文章不知道什么时候也变成这个模板了。
+今天突然发现力扣题目示例的输入里面还有“rust”和“原文”两种
 
-这个模板以后绝对会出个什么幺蛾子花活的，放心吧。
+```原文
+输入： cost1 = 3, cost2 = 2, costBoth = 1, need1 = 3, need2 = 2
+```
+
+```rust
+let cost1: i32 = 3;
+let cost2: i32 = 2;
+let cost_both: i32 = 1;
+let need1: i32 = 3;
+let need2: i32 = 2;
+```
