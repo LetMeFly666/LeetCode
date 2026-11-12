@@ -17,7 +17,7 @@ func (abc *ABC3693)push(v int) {
 }
 
 func (abc* ABC3693)get(i int) int {
-	return abc.a[(i + abc.diff)]
+	return abc.a[(i + abc.diff) % 3]
 }
 
 func min3693(a, b, c int) int {
