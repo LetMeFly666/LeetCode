@@ -1,11 +1,11 @@
 ---
-title: 3789.采购的最小花费
+title: 3789.采购的最小花费：三种情况无脑算（不用思考不用贪心）
 date: 2026-11-11 22:20:29
-tags: [题解, LeetCode, 中等, 贪心, 数学]
+tags: [题解, LeetCode, 中等, 模拟, 数学]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3789.采购的最小花费
+# 【LetMeFly】3789.采购的最小花费：三种情况无脑算（不用思考不用贪心）
 
 力扣题目链接：[https://leetcode.cn/problems/minimum-cost-to-acquire-required-items/](https://leetcode.cn/problems/minimum-cost-to-acquire-required-items/)
 
@@ -78,14 +78,20 @@ categories: [题解, LeetCode]
 	<li><code>0 &lt;= need1, need2 &lt;= 10<sup>9</sup></code></li>
 </ul>
 
-
+> 能不动脑子就不动脑子(bushi)
     
-## 解题方法：xx
+## 解题方法：取最小
 
-11111
+一共就三种购买方法：
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+1. 类型1和类型2分别买：$cost1 \times need1 + cost2 \times need2$
+2. 类型1和类型2重叠部分一块买，剩下部分单独买（不放假设need1需要的少，否则同理）：$costBoth \times need1 + cost2 \times (need2 - need1)$
+3. 全部买类型3：$costBoth \times max(need1, need2)$
+
+三种购买方法取最小值即可。
+
++ 时间复杂度$O(1)$
++ 空间复杂度$O(1)$
 
 ### AC代码
 
@@ -109,6 +115,6 @@ public:
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/11/11/LeetCode%203789.%E9%87%87%E8%B4%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/170564265)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/11/11/LeetCode%203789.%E9%87%87%E8%B4%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
