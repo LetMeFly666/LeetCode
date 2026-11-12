@@ -2,7 +2,7 @@
 Author: LetMeFly
 Date: 2026-11-12 19:11:20
 LastEditors: LetMeFly.xyz
-LastEditTime: 2026-11-12 19:13:36
+LastEditTime: 2026-11-12 19:15:48
 '''
 from typing import List
 
@@ -16,7 +16,7 @@ class ABC:
         self.diff = (self.diff + 1) % 3
     
     def __getitem__(self, i: int) -> int:
-        return self.a[i]
+        return self.a[(i + self.diff) % 3]
 
 class Solution:
     def climbStairs(self, n: int, costs: List[int]) -> int:
