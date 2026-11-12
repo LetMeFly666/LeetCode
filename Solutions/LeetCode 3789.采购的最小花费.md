@@ -85,7 +85,7 @@ categories: [题解, LeetCode]
 一共就三种购买方法：
 
 1. 类型1和类型2分别买：$cost1 \times need1 + cost2 \times need2$
-2. 类型1和类型2重叠部分一块买，剩下部分单独买（不放假设need1需要的少，否则同理）：$costBoth \times need1 + cost2 \times (need2 - need1)$
+2. 类型1和类型2重叠部分一块买，剩下部分单独买（不妨假设`need1`需要的少，否则同理）：$costBoth \times need1 + cost2 \times (need2 - need1)$
 3. 全部买类型3：$costBoth \times max(need1, need2)$
 
 三种购买方法取最小值即可。
