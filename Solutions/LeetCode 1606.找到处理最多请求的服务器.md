@@ -3,6 +3,7 @@ title: 1606.找到处理最多请求的服务器：有序集合+优先队列（�
 date: 2026-11-09 21:44:02
 tags: [题解, LeetCode, 困难, 数组, 有序集合, 优先队列, 模拟, 大模拟, 堆（优先队列）, 计数]
 categories: [题解, LeetCode]
+index_img: https://files.letmefly.xyz/d/n/leetcode/1606-load-1.png
 ---
 
 # 【LetMeFly】1606.找到处理最多请求的服务器：有序集合+优先队列（模拟）
@@ -26,7 +27,7 @@ categories: [题解, LeetCode]
 
 <p><strong>示例 1：</strong></p>
 
-<p><img alt="" src="https://assets.leetcode.cn/aliyun-lc-upload/uploads/2020/10/03/load-1.png" style="height: 221px; width: 389px;" /></p>
+<p><img alt="" src="https://files.letmefly.xyz/d/n/leetcode/1606-load-1.png" style="height: 221px; width: 389px;" /></p>
 
 <pre>
 <strong>输入：</strong>k = 3, arrival = [1,2,3,4,5], load = [5,2,3,3,3] 
