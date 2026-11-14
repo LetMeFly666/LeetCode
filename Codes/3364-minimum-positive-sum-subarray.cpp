@@ -14,7 +14,7 @@ public:
         int ans = 1000000;
         for (int i = 0, n = nums.size(); i < n; i++) {
             int cnt = 0;
-            for (int j = 0; j < l - 1 && i + j < n; j++) {
+            for (int len = 0; len < l - 1 && i + len < n; len++) {
                 cnt += nums[i + j];
             }
             for (int len = l - 1; len < r && i + len < n; len++) {
