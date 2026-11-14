@@ -112,6 +112,8 @@ public:
 };
 ```
 
+实际代码实现中$len$更像是偏移量，因为$len$是从$0$到$r-1$。
+
 ## End
 
 > 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/170776605)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/11/14/LeetCode%203364.%E6%9C%80%E5%B0%8F%E6%AD%A3%E5%92%8C%E5%AD%90%E6%95%B0%E7%BB%84/)哦~
