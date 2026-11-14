@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-14 12:58:04
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-14 12:59:55
+ * @LastEditTime: 2026-11-14 13:01:20
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -14,10 +14,10 @@ public:
         int ans = 1000000;
         for (int i = 0, n = nums.size(); i < n; i++) {
             int cnt = 0;
-            for (int j = 0; j < l && i + j < n; j++) {
+            for (int j = 0; j < l - 1 && i + j < n; j++) {
                 cnt += nums[i + j];
             }
-            for (int len = l; len <= r && i + len < n; len++) {
+            for (int len = l - 1; len < r && i + len < n; len++) {
                 cnt += nums[i + len];
                 if (cnt > 0) {
                     ans = min(ans, cnt);
