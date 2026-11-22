@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-22 10:34:45
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-22 10:39:06
+ * @LastEditTime: 2026-11-22 10:42:13
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -24,7 +24,7 @@ public:
             return false;
         }
         int n = grid.size(), m = grid[0].size();
-        vector<vector<State>> dp;
+        vector<vector<State>> dp(n, vector<State>(m));
         dp[0][0].set(1);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -32,7 +32,7 @@ public:
                     transfer(dp[i - 1][j], dp[i][j], grid[i][j] == '(');
                 }
                 if (j) {
-                    transfer(dp[i][j - 1], dp[i][j], dp[i][j] == '(');
+                    transfer(dp[i][j - 1], dp[i][j], grid[i][j] == '(');
                 }
             }
         }
