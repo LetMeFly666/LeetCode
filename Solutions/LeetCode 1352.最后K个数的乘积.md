@@ -64,9 +64,9 @@ productOfNumbers.getProduct(2); // 返回 32 。最后 2 个数字的乘积是 4
 
 
     
-## 解题方法：前缀和
+## 解题方法：前缀积
 
-如果输入流中没有$0$，那么可以类似前缀和的思想，我们令$stream[i]$代表 输入的前$i-1$个数的乘积，则最近$k$个数的乘积为$\frac{stream[i]}{stream[i-k]}$。
+如果输入流中没有$0$，那么可以类似前缀和的思想，我们令$stream[i]$代表 输入的前$i$个数的乘积，则最近$k$个数的乘积为$\frac{stream[i]}{stream[i-k]}$。
 
 但现在问题是给定输入中存在$0$，直接这么相乘可能会让乘积结果变成全$0$，且$\frac{0}{0}$无意义。所以对于$0$的情况我们需要特殊处理：
 
@@ -74,8 +74,8 @@ productOfNumbers.getProduct(2); // 返回 32 。最后 2 个数字的乘积是 4
 >
 > 遇到$0$则重新开始前缀积的计算。
 
-+ 时间复杂度：单词操作$O(1)$
-+ 空间复杂度$O(input)$
++ 时间复杂度：单次操作$O(1)$
++ 空间复杂度：$O(add次数)$
 
 ### AC代码
 
@@ -108,7 +108,7 @@ public:
         if (k >= lastZero) {
             return 0;
         }
-        return stream.back() / stream[stream.size() - k - 1];
+        return static_cast<int>(stream.back() / stream[stream.size() - k - 1]);
     }
 };
 ```
