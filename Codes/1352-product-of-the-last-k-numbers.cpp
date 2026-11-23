@@ -31,7 +31,7 @@ public:
         if (k >= lastZero) {
             return 0;
         }
-        return stream.back() / stream[stream.size() - k - 1];
+        return static_cast<int>(stream.back() / stream[stream.size() - k - 1]);
     }
 };
 
