@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-23 18:17:30
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-23 18:33:51
+ * @LastEditTime: 2026-11-23 18:35:57
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -20,7 +20,7 @@ public:
     void add(int num) {
         if (num == 0) {
             lastZero = 1;
-            stream.push_back(stream.back());
+            stream.push_back(1);
         } else {
             lastZero++;
             stream.push_back(stream.back() * num);
