@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-24 13:04:33
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-24 18:26:29
+ * @LastEditTime: 2026-11-24 18:28:15
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,15 +21,15 @@ public:
         
         size_t ans = 1;
         for (size_t i = 0; i < n; i++) {
-            int mul = nums[i], this_gcd = nums[i], this_lcm = nums[i];
+            int prod = nums[i], this_gcd = nums[i], this_lcm = nums[i];
             for (size_t j = i + 1; j < n; j++) {
-                mul *= nums[i];
-                if (mul > up_to) {
+                prod *= nums[i];
+                if (prod > up_to) {
                     break;
                 }
                 this_gcd = gcd(this_gcd, nums[j]);
                 this_lcm = lcm(this_lcm, nums[j]);
-                if (mul == this_gcd * this_lcm) {
+                if (prod == this_gcd * this_lcm) {
                     ans = max(ans, j - i + 1);
                 }
             }
