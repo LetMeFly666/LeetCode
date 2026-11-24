@@ -23,7 +23,7 @@ public:
         for (size_t i = 0; i < n; i++) {
             int prod = nums[i], this_gcd = nums[i], this_lcm = nums[i];
             for (size_t j = i + 1; j < n; j++) {
-                prod *= nums[i];
+                prod *= nums[j];
                 if (prod > up_to) {
                     break;
                 }
