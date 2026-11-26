@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("2124-check-if-all-as-appears-before-all-bs.rs");  // 这个fileName是会被脚本替换掉的
+include!("3360-stone-removal-game.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

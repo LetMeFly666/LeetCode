@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-26 07:52:43
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-26 07:54:18
+ * @LastEditTime: 2026-11-26 07:55:55
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,6 +18,7 @@ public:
                 return state;
             }
             n -= should--;
+            state = !state;
         }
     }
 };
