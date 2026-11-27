@@ -2,14 +2,24 @@
  * @Author: LetMeFly
  * @Date: 2026-11-27 13:58:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-27 17:01:26
+ * @LastEditTime: 2026-11-27 17:02:33
  */
 import java.util.Arrays;
 
 class Solution {
     public int removeCoveredIntervals(int[][] intervals) {
-        Arrays.sort(intervals, (i, j) -> {
-            return intervals[i][0] == intervals[j][0] ? intervals[j][1] - intervals[i][j] : intervals[i][0] - intervals[j][0];
+        Arrays.sort(intervals, (x, y) -> {
+            return x[0] == y[0] ? y[1] - x[1] : x[0] - y[0];
         });
+        int ans = intervals.length;
+        int maxr = 0;
+        for (int[] p : intervals) {
+            if (p[0] <= maxr) {
+                ans--;
+            } else {
+                maxr = p[0];
+            }
+        }
+        return ans;
     }
 }
