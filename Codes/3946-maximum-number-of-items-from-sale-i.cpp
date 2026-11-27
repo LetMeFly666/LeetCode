@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-27 12:45:19
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-27 12:48:58
+ * @LastEditTime: 2026-11-27 12:51:04
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,7 +18,7 @@ public:
             cheap = min(cheap, price);
             int get = 0;
             for (vector<int>& other : items) {
-                if (other[1] % factor == 0) {
+                if (other[0] % factor == 0) {
                     get++;
                 }
             }
