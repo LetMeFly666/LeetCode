@@ -6,7 +6,7 @@
  */
 pub struct Solution;
 
-include!("3360-stone-removal-game.rs");  // 这个fileName是会被脚本替换掉的
+include!("1288-remove-covered-intervals_20261127.rs");  // 这个fileName是会被脚本替换掉的
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

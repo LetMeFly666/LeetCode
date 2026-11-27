@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-27 13:58:14
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-27 17:02:33
+ * @LastEditTime: 2026-11-27 17:03:47
  */
 import java.util.Arrays;
 
@@ -14,10 +14,10 @@ class Solution {
         int ans = intervals.length;
         int maxr = 0;
         for (int[] p : intervals) {
-            if (p[0] <= maxr) {
+            if (p[1] <= maxr) {
                 ans--;
             } else {
-                maxr = p[0];
+                maxr = p[1];
             }
         }
         return ans;
