@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-28 19:02:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-28 20:32:46
+ * @LastEditTime: 2026-11-28 20:35:06
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -57,7 +57,7 @@ public:
             if (!quantity) {
                 break;
             }
-            ans += num * 2;
+            ans += quantity * 2;
             budget -= price * quantity;
         }
         return ans + budget / mini_price;
@@ -70,6 +70,12 @@ public:
 19
 
 5
+*/
+/*
+[[2,8],[1,10],[6,6],[4,12],[5,20],[5,17]]
+35
+
+7
 */
 int main() {
     string s;
