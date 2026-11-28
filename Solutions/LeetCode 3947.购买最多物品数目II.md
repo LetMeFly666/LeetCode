@@ -1,7 +1,7 @@
 ---
 title: 3947.购买最多物品数目 II：贪心（非DP）
 date: 2026-11-28 21:42:28
-tags: [题解, LeetCode, 中等, 贪心, 数组, 排序, 调和级数, 记忆化]
+tags: [题解, LeetCode, 中等, 贪心, 数组, 排序, 调和级数, 记忆化, 哈希表, map, 计数]
 categories: [题解, LeetCode]
 ---
 
@@ -76,12 +76,38 @@ categories: [题解, LeetCode]
 
 
     
-## 解题方法：xx
+## 解题方法：贪心
 
-11111
+### 解题思路
 
-+ 时间复杂度$O(N^2)$
-+ 空间复杂度$O(N\log N)$
+> 单次消费支付一定的金额可以获得1个或2个物品，获得2个物品的次数有限，问一定预算下最多获得多少物品。
+
+怎么买？当然是挑单价最便宜的买啊！具体点呢？
+
+> 假设原始价格最便宜的物品价格是$mini\_price$，对于所有单次可以获得两个物品的买法（有序对 $(i, j)$），如果花费$\geq mini\_price\times 2$，则直接丢弃（不如购买两个最低价，还不限购）
+> 
+> 剩下的买一赠一方案中，按价格升序排序，依次购买，直到预算不够为止。
+> 
+> 买一赠一购买完毕后，剩下的钱全部用来购买$mini\_price$的物品。
+
+### 具体方法
+
+首先我们遍历一遍商品得到一个哈希表$factor\_num$，记录每个factor的商品有多少个。
+
+接着再遍历一遍商品，（如果$价格\lt mini\_price\times 2$则）将`(价格, 该商品可以多少次买一送一)`加入到一个数组$candidates$中。最后对$candidates$按价格升序排序即可。
+
+那么怎么计算`该商品可以多少次买一送一`呢？这就用到我们刚才求得的$factor\_num$数组了。
+
+对于一件$factor$的商品，由于最大$factor$是$items.length$，所以我们只需要枚举$factor$的不超过$items.length$的倍数，如果有商品的$factor$是其中一个倍数则累加这些商品的数量。
+
+这里记得使用一个哈希表记忆化一下，防止重复求值。
+
+### 时空复杂度
+
++ 时间复杂度$O(n\log n)$，其中$n=items.length$。求买一送一数组$candidates$的总时间复杂度是$O(n\log n)$（调和级数）。
++ 空间复杂度$O(n)$
+
+**调和级数：** 本题枚举每个 factor 的所有倍数时，第 $f$ 轮循环约执行 $n/f$ 次，所有轮次相加得到 $n(1 + 1/2 + 1/3 + ... + 1/n)$，即调和级数的前 $n$ 项乘以 $n$，因此总时间复杂度为 $O(n log n)$，而不是 $O(n^2)$。 [^1]
 
 ### AC代码
 
@@ -181,6 +207,8 @@ int main() {
 
 ## End
 
-> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/--------------------------)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/11/28/LeetCode%203947.%E8%B4%AD%E4%B9%B0%E6%9C%80%E5%A4%9A%E7%89%A9%E5%93%81%E6%95%B0%E7%9B%AEII/)哦~
+> 同步发文于[CSDN](https://letmefly.blog.csdn.net/article/details/171556632)和我的[个人博客](https://blog.letmefly.xyz/)，原创不易，转载经作者同意后请附上[原文链接](https://blog.letmefly.xyz/2026/11/28/LeetCode%203947.%E8%B4%AD%E4%B9%B0%E6%9C%80%E5%A4%9A%E7%89%A9%E5%93%81%E6%95%B0%E7%9B%AEII/)哦~
 >
 > 千篇源码题解[已开源](https://github.com/LetMeFly666/LeetCode)
+
+[^1]: 时间复杂度这里调和级数的一句话介绍总结自[ChatGPT](https://chatgpt.com/share/6b0ae036-085c-83ea-a79a-0a34608bb385)[。](https://chatgpt.com/c/6b0adeaa-7d40-83ea-b98f-54582e571695)
