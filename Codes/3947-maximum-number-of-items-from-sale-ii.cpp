@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-28 19:02:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-28 20:35:06
+ * @LastEditTime: 2026-11-28 20:42:49
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -10,6 +10,8 @@
 
 class Solution {
 private:
+    unordered_map<int, int> factor_cache;
+    
     int getMiniPrice(vector<vector<int>>& items) {
         int ans = items[0][1];
         for (vector<int>& item : items) {
@@ -19,6 +21,10 @@ private:
     }
 
     int canGet(int factor, int maxium, const unordered_map<int, int>& factor_num) {
+        unordered_map<int, int>::iterator it = factor_cache.find(factor);
+        if (it != factor_cache.end()) {
+            return it->second;
+        }
         int ans = 0;
         for (int f = factor; f <= maxium; f += factor) {
             unordered_map<int, int>::const_iterator it = factor_num.find(f);
@@ -26,7 +32,7 @@ private:
                 ans += it->second;
             }
         }
-        return --ans;
+        return factor_cache[factor] = --ans;
     }
 public:
     int maximumSaleItems(vector<vector<int>>& items, int budget) {
