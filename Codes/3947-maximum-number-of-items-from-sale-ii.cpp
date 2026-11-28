@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-28 19:02:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-28 19:54:36
+ * @LastEditTime: 2026-11-28 20:29:31
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -18,11 +18,11 @@ private:
         return ans;
     }
 
-    int canGet(int factor, int maxium, const unordered_map<int, int>& price_num) {
+    int canGet(int factor, int maxium, const unordered_map<int, int>& factor_num) {
         int ans = 0;
         for (int f = factor; f <= maxium; f += factor) {
-            unordered_map<int, int>::const_iterator it = price_num.find(f);
-            if (it != price_num.end()) {
+            unordered_map<int, int>::const_iterator it = factor_num.find(f);
+            if (it != factor_num.end()) {
                 ans += it->second;
             }
         }
@@ -33,9 +33,9 @@ public:
         int mini_price = getMiniPrice(items);
         int mini2 = mini_price * 2;
         int n = items.size();
-        unordered_map<int, int> price_num;  // 某个价格的物品有多少个
+        unordered_map<int, int> factor_num;  // 某个factor的物品有多少个
         for (vector<int>& item : items) {
-            price_num[item[1]]++;
+            factor_num[item[0]]++;
         }
 
         vector<pair<int, int>> candidates;
@@ -44,7 +44,7 @@ public:
             if (price >= mini2) {
                 continue;
             }
-            candidates.push_back({price, canGet(factor, n, price_num)});
+            candidates.push_back({price, canGet(factor, n, factor_num)});
         }
         ranges::sort(candidates);
         
@@ -60,3 +60,22 @@ public:
         return ans + budget / mini_price;
     }
 };
+
+#ifdef _DEBUG
+/*
+[[1,6],[2,4],[3,5]]
+19
+
+5
+*/
+int main() {
+    string s;
+    int b;
+    while (cin >> s >> b) {
+        vector<vector<int>> a = stringToVectorVector(s);
+        Solution sol;
+        cout << sol.maximumSaleItems(a, b) << endl;
+    }
+    return 0;
+}
+#endif
