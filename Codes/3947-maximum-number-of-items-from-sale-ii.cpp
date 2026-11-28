@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-28 19:02:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-28 19:25:36
+ * @LastEditTime: 2026-11-28 19:31:14
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -21,8 +21,9 @@ private:
     int canGet(int factor, int maxium, const unordered_map<int, int>& price_num) {
         int ans = 0;
         for (int f = factor; f <= maxium; f += factor) {
-            if (price_num.count(f)) {
-                ans += price_num[f];
+            unordered_map<int, int>::iterator it = price_num.find(f);
+            if (it != price_num.end()) {
+                ans += *it;
             }
         }
         return --ans;
