@@ -2,7 +2,7 @@
  * @Author: LetMeFly
  * @Date: 2026-11-28 19:02:11
  * @LastEditors: LetMeFly.xyz
- * @LastEditTime: 2026-11-28 20:29:31
+ * @LastEditTime: 2026-11-28 20:32:46
  */
 #ifdef _DEBUG
 #include "_[1,2]toVector.h"
@@ -44,7 +44,10 @@ public:
             if (price >= mini2) {
                 continue;
             }
-            candidates.push_back({price, canGet(factor, n, factor_num)});
+            int canGot = canGet(factor, n, factor_num);
+            if (canGot) {
+                candidates.push_back({price, canGot});
+            }
         }
         ranges::sort(candidates);
         
