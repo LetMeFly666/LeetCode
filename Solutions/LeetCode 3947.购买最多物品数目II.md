@@ -1,11 +1,11 @@
 ---
-title: 3947.购买最多物品数目 II
+title: 3947.购买最多物品数目 II：贪心（非DP）
 date: 2026-11-28 21:42:28
-tags: [题解, LeetCode, 中等, 贪心, 数组, 排序, 堆（优先队列）]
+tags: [题解, LeetCode, 中等, 贪心, 数组, 排序, 调和级数, 记忆化]
 categories: [题解, LeetCode]
 ---
 
-# 【LetMeFly】3947.购买最多物品数目 II
+# 【LetMeFly】3947.购买最多物品数目 II：贪心（非DP）
 
 力扣题目链接：[https://leetcode.cn/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.cn/problems/maximum-number-of-items-from-sale-ii/)
 
